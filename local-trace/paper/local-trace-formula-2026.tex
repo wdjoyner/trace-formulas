@@ -74,16 +74,16 @@
 \newcommand{\Wrep}[1]{[W_{#1}\backslash W]}
 
 \title{Simple local trace formulas for unramified $p$-adic groups\\[1ex]
-\large Revised, corrected and updated version (2026)}
-\author{David Joyner}
-\date{Original: Pacific J.\ Math.\ \textbf{154} (1992), 103--129. Corrected version: October 1997.\\
-This revision: November 2026.\footnote{This revision was prepared with the help of Claude (Anthropic). Changes from the 1997 text are listed in the file \texttt{CHANGES.md} that accompanies this paper; substantive changes, and everything not fully verified, are flagged in the text by a dated ``Remark 2026.$n$''. The literal transcription of the 1997 version, its errata log and a referee report are in \texttt{../original-1997/}.}}
+\large Revised, corrected and updated}
+\author{David Joyner and Claude}
+\date{Original: Pacific J.\ Math.\ \textbf{154} (1992), 103--129.\\
+Corrected and updated: November 2026.\footnote{Claude is an AI model made by Anthropic. This revision starts from a corrected version of the paper circulated in October 1997. Changes from the 1997 text are listed in the file \texttt{CHANGES.md} that accompanies this paper; substantive changes, and everything not fully verified, are flagged in the text by a dated ``Remark 2026.$n$''. The literal transcription of the 1997 version, its errata log and a referee report are in \texttt{../original-1997/}.}}
 
 \begin{document}
 \maketitle
 
 \begin{abstract}
-Let $G$ be a connected unramified reductive group over a $p$-adic field $F$, $K$ a hyperspecial maximal compact subgroup, $f$ a spherical function, $f^\vee$ its Satake transform and $\phi$ a smooth compactly supported function on the regular elliptic set. Following the method of Waldspurger [W] for $GL(N)$ (truncation, Casselman's asymptotics, Macdonald's formula), we study the spectral expansion
+Let $G$ be a connected unramified reductive group over a $p$-adic field $F$, $K$ a hyperspecial maximal compact subgroup, $f$ a spherical function, $f^\vee$ its Satake transform and $\phi$ a smooth compactly supported function on the regular elliptic set. Following the method of Waldspurger [Wa89a] for $GL(N)$ (truncation, Casselman's asymptotics, Macdonald's formula), we study the spectral expansion
 \[
 \int_{G(F)^1\times G(F)^1} f(h)\phi(g^{-1}hg)\,dg\,dh=\int f^\vee(\chi)\,dI_\phi(\chi),
 \]
@@ -107,7 +107,7 @@ equivalently of elliptic orbital integrals $\int f(g^{-1}\gamma g)\,dg$ of spher
 \item an example (\S6.2, $SL(2)$) shows that (R) can fail and that the spectral side then needs atoms; the 1997 claim that $I(\chi,\gamma)$ is a rational function is corrected accordingly (Conjecture~4.6);
 \item \S5 is updated: the fundamental lemma is a theorem, and the 1997 closing question becomes Proposition~5.2.
 \end{enumerate}
-New material: worked examples for $PGL(2)$ and $SL(2)$ (\S6), the derivation from Arthur's local trace formula (``Route~B'', \S7), a literature review (\S8) and a glossary (Appendix~A).
+New material: worked examples for $PGL(2)$ and $SL(2)$ (\S6), the derivation from Arthur's local trace formula (``Route~B'', \S7), a literature review before and after 1992 (\S8) and a glossary (Appendix~A).
 
 \paragraph{Status.}
 \begin{center}
@@ -132,7 +132,7 @@ The numerical checks are \texttt{examples/pgl2/pgl2\_check.py} and \texttt{examp
 
 Let $G$ be a connected unramified reductive group over a $p$-adic field $F$, let $G_{reg}$ denote the set of regular semisimple elements of $G(F)$, and let $G_{\ellr}$ denote the set of regular elliptic elements of $G(F)$. Let $C_c^\infty(G(F))$ denote the algebra of locally constant compactly supported functions on $G(F)$ and let $\Hc(G,K)$ denote the commutative subalgebra of spherical (bi-$K$-invariant) functions, where $K$ is a hyperspecial maximal compact subgroup of $G(F)$. Let $G(F)^1$ be the common kernel of the absolute values of the rational characters of $G(F)$ (\S2.1); if $G$ is semisimple, $G(F)^1=G(F)$.
 
-Let $\Phi\subset C_c^\infty(G(F))$ denote the subspace of functions supported in $G_{\ellr}$. Each $\phi\in\Phi$ has compactly generated support modulo conjugation in the sense of Kazhdan [K, \S4] (the 1997 text said ``Ad-finite''). For each $\phi\in\Phi$, define
+Let $\Phi\subset C_c^\infty(G(F))$ denote the subspace of functions supported in $G_{\ellr}$. Each $\phi\in\Phi$ has compactly generated support modulo conjugation in the sense of Kazhdan [Ka86, \S4] (the 1997 text said ``Ad-finite''). For each $\phi\in\Phi$, define
 \begin{equation}\tag{1.1}
 T_\phi: f\longmapsto \int_{G(F)^1\times G(F)^1} f(h)\phi(g^{-1}hg)\,dg\,dh.
 \end{equation}
@@ -140,27 +140,27 @@ It is not hard to show that $T_\phi$ is an ``elliptic'' invariant distribution w
 \begin{equation}\tag{1.2}
 T_\phi(f)=\int f^\vee(\chi)\,dI_\phi(\chi),
 \end{equation}
-where $\chi$ runs over the compact torus $\Thu$ of unitary unramified characters (modulo $W$) and $dI_\phi$ is a measure; see Theorem~4.5 below. For this, we use the geometric lemma of Bernstein and Zelevinsky, Macdonald's Plancherel formula, Macdonald's formula for the spherical function, results of Casselman on intertwining operators and asymptotics of the unramified principal series, and Brion's decomposition of lattice-point generating functions. This derivation follows the procedure of Waldspurger [W] rather closely, where the case of $GL(N)$ was worked out in detail. In \S5, we examine briefly the ``$\kappa$-stable'' version of (1.1) for $SL(n)$:
+where $\chi$ runs over the compact torus $\Thu$ of unitary unramified characters (modulo $W$) and $dI_\phi$ is a measure; see Theorem~4.5 below. For this, we use the geometric lemma of Bernstein and Zelevinsky, Macdonald's Plancherel formula, Macdonald's formula for the spherical function, results of Casselman on intertwining operators and asymptotics of the unramified principal series, and Brion's decomposition of lattice-point generating functions. This derivation follows the procedure of Waldspurger [Wa89a] rather closely, where the case of $GL(N)$ was worked out in detail. In \S5, we examine briefly the ``$\kappa$-stable'' version of (1.1) for $SL(n)$:
 \begin{equation}\tag{1.3}
 T^\kappa_\phi: f\longmapsto I^\kappa(f,\phi):=\int_{SL(n,F)\times PGL(n,F)}\kappa(g)f(g^{-1}hg)\phi(h)\,dg\,dh,
 \end{equation}
 where $\kappa$ is an unramified character of $PGL(n,F)$ of order dividing $n$. After using the Weyl integration formula to obtain a ``geometric'' expansion for $T^\kappa_\phi$, we use the fundamental lemma (now a theorem) to rewrite the result (see (5.6), (5.8) and Proposition~5.2 below).
 
-Of course, the distribution $T_\phi$ also occurs in the context of Arthur's local trace formula [Art1, Art4]. Let $R$ denote the unitary representation of $G(F)\times G(F)$ on $L^2(G(F))$ given by $(R(x_1,x_2)\psi)(y):=\psi(x_1^{-1}yx_2)$. Given $f=(f_1,f_2)$ in $C_c^\infty(G(F))\times C_c^\infty(G(F))\hookrightarrow C_c^\infty(G(F)\times G(F))$, the kernel of the integral operator $R(f)$ is
+Of course, the distribution $T_\phi$ also occurs in the context of Arthur's local trace formula [Ar89, Ar91]. Let $R$ denote the unitary representation of $G(F)\times G(F)$ on $L^2(G(F))$ given by $(R(x_1,x_2)\psi)(y):=\psi(x_1^{-1}yx_2)$. Given $f=(f_1,f_2)$ in $C_c^\infty(G(F))\times C_c^\infty(G(F))\hookrightarrow C_c^\infty(G(F)\times G(F))$, the kernel of the integral operator $R(f)$ is
 \begin{equation}\tag{1.4}
 K_f(x_1,x_2)=\int_{G(F)}f_1(x_1y)f_2(yx_2)\,dy=\int_{G(F)}f_1(y)f_2(x_1^{-1}yx_2)\,dy.
 \end{equation}
 As in the global trace formula, one wants to find both a ``geometric'' and a ``spectral'' formula for a truncated version of the integral of $K_f(x,x)$. It should be emphasized that this is done below only for a very restricted class of $f=(f_1,f_2)$: $f_1$ spherical and $f_2$ supported on the elliptic set. For such $f$ no truncation is needed on the geometric side (Lemma~4.4), and \S7 explains how (1.2) follows from Arthur's formula.
 
-Thus part of this paper could be viewed as a special case of Arthur's local trace formula or as a generalization of part of Waldspurger's work [W]. Another way one might interpret the distributions $\phi\mapsto I(\chi,\phi)$ is as follows. We will see in \S4 below (Proposition~4.2) that $\phi\longmapsto I(\chi,\phi)$ is $G$-admissible in the sense of [HC]. Then, regarding this invariant distribution as a function (the existence of which is assured by [HC, Theorem 19]), we may rewrite (1.2) as
+Thus part of this paper could be viewed as a special case of Arthur's local trace formula or as a generalization of part of Waldspurger's work [Wa89a]. Another way one might interpret the distributions $\phi\mapsto I(\chi,\phi)$ is as follows. We will see in \S4 below (Proposition~4.2) that $\phi\longmapsto I(\chi,\phi)$ is $G$-admissible in the sense of [HC78]. Then, regarding this invariant distribution as a function (the existence of which is assured by [HC78, Theorem 19]), we may rewrite (1.2) as
 \begin{equation}\tag{1.5}
 \int_{G(F)^1}f(g^{-1}\gamma g)\,dg=\int f^\vee(\chi)\,dI_\gamma(\chi),
 \end{equation}
-for $\gamma\in G_{\ellr}$ and $f$ spherical. Thus (1.5) gives a relatively explicit formula for the unramified part of the ``spectral support'' of an elliptic orbital integral on $G(F)$.
+for $\gamma\in G_{\ellr}$ and $f$ spherical. Thus (1.5) gives a relatively explicit formula for the unramified part of the ``spectral support'' of an elliptic orbital integral on $G(F)$. (This was to be the subject of [Jo97], announced in 1997 as ``in preparation'' but never written up.)
 
-In the 1997 version it was asserted that $dI_\gamma=I(\chi,\gamma)\,d\mu(\chi)$ with $I(\cdot,\gamma)$ a rational function on the complex torus of unramified characters (whose compact real form carries the Plancherel measure, [M]). This is correct for $PGL(2)$ (\S6.1), where $I(\cdot,\gamma)$ has double poles at the non-regular characters that are cancelled by the double zeros of the Plancherel density. It is \emph{not} correct for $SL(2)$ (\S6.2): there $dI_\gamma$ has, besides an absolutely continuous part, a point mass at the unramified quadratic character $\chi_0$. This is a non-regular unitary character at which the Plancherel density does not vanish, and $i_{G,A}(\chi_0)$ is reducible. The atom is half the $\kappa$-orbital integral, $\tfrac12 f^\vee(\chi_0)$, as the fundamental lemma predicts. Theorem~4.5 and Conjecture~4.6 state the corrected form.
+In the 1997 version it was asserted that $dI_\gamma=I(\chi,\gamma)\,d\mu(\chi)$ with $I(\cdot,\gamma)$ a rational function on the complex torus of unramified characters (whose compact real form carries the Plancherel measure, [Ma71]). This is correct for $PGL(2)$ (\S6.1), where $I(\cdot,\gamma)$ has double poles at the non-regular characters that are cancelled by the double zeros of the Plancherel density. It is \emph{not} correct for $SL(2)$ (\S6.2): there $dI_\gamma$ has, besides an absolutely continuous part, a point mass at the unramified quadratic character $\chi_0$. This is a non-regular unitary character at which the Plancherel density does not vanish, and $i_{G,A}(\chi_0)$ is reducible. The atom is half the $\kappa$-orbital integral, $\tfrac12 f^\vee(\chi_0)$, as the fundamental lemma predicts. Theorem~4.5 and Conjecture~4.6 state the corrected form.
 
-A somewhat analogous formula to (1.5), for stable unipotent orbits, was conjectured in [A]. Assem's conjecture is a theorem for $GL(n)$, and for $GL(n)$ the germ expansion and Assem's formula yield a relatively explicit formula for $I(\chi,\gamma)$ (this idea can essentially be found in [W]). Finally, in the case of $SL(n)$ the fundamental lemma of Waldspurger [Wa91] may be reformulated as a functorial property of the spectral measures $dI^\kappa_\gamma$ (Proposition~5.2).
+A somewhat analogous formula to (1.5), for stable unipotent orbits, was conjectured in [As91]. Assem's conjecture is a theorem for $GL(n)$, and for $GL(n)$ the germ expansion and Assem's formula yield a relatively explicit formula for $I(\chi,\gamma)$ (this idea can essentially be found in [Wa89a]). Finally, in the case of $SL(n)$ the fundamental lemma of Waldspurger [Wa91] may be reformulated as a functorial property of the spectral measures $dI^\kappa_\gamma$ (Proposition~5.2).
 
 \paragraph{Road map.} The proof of (1.2) has three steps.
 \begin{enumerate}
@@ -169,12 +169,7 @@ A somewhat analogous formula to (1.5), for stable unipotent orbits, was conjectu
 \item \emph{Removing the truncation} (\S4.3). For $T$ large, $T_\phi(f)=\int f^\vee I^T\,d\mu$ exactly (Fubini on a compact set). If the vertex terms are regular enough (Hypothesis (R)), their contributions vanish as $T\to\infty$ and $T_\phi(f)=\int f^\vee I\,d\mu$ (Theorem~4.5). Where (R) fails they leave atoms (Conjecture~4.6, \S6.2).
 \end{enumerate}
 
-\paragraph{Acknowledgements (1997).} I'd like to thank J.-L.~Waldspurger for pointing out an error in a previous version and M.~Assem for helpful discussions. Partially supported by a NARC grant.
-% [Claude] Log item 1.12: the author should spell out the agency behind "NARC".
-
-\begin{rem26}[acronym]
-The acronym ``NARC'' in the 1997 acknowledgement has not been expanded; the author should supply the name of the agency.
-\end{rem26}
+\paragraph{Acknowledgements (1997).} I'd like to thank J.-L.~Waldspurger for pointing out an error in a previous version and M.~Assem for helpful discussions. Partially supported by a Naval Academy Research Council (NARC) grant.
 
 % =====================================================================
 \section{Notation and background}
@@ -199,7 +194,7 @@ A^-_P(\epsilon)=\{a\in A^-:\ |\alpha(a)|_F\le\epsilon\ \ \forall\alpha\in\Delta\
 
 \subsection{Root spaces}
 
-Let $G$ be a connected unramified reductive group of semi-simple rank $\ell$ over $F$, split over a finite unramified extension $E/F$. (Recall that a reductive group $G$ over $F$ is unramified if it is quasi-split over $F$ and split over a finite unramified extension [Car, p.~135].) Let $M_0=Z_G(A)$, $B$ and $A$ be as in \S2.0. Let $\Gamma=\mathrm{Gal}(E/F)$, let $X^*=X^*(M_0)$ denote the character lattice of $M_0$, and let $\Sigma_{M_0}\subset X^*$ denote the (absolute) root system. The $\Gamma$-module structure of $X^*$ leaves $\Sigma_{M_0}$ invariant. Let $\Sigma$ denote the set of reduced roots of $G$ relative to $A$ and $\Delta$ the corresponding reduced fundamental system. The character lattice
+Let $G$ be a connected unramified reductive group of semi-simple rank $\ell$ over $F$, split over a finite unramified extension $E/F$. (Recall that a reductive group $G$ over $F$ is unramified if it is quasi-split over $F$ and split over a finite unramified extension [Ca79, p.~135].) Let $M_0=Z_G(A)$, $B$ and $A$ be as in \S2.0. Let $\Gamma=\mathrm{Gal}(E/F)$, let $X^*=X^*(M_0)$ denote the character lattice of $M_0$, and let $\Sigma_{M_0}\subset X^*$ denote the (absolute) root system. The $\Gamma$-module structure of $X^*$ leaves $\Sigma_{M_0}$ invariant. Let $\Sigma$ denote the set of reduced roots of $G$ relative to $A$ and $\Delta$ the corresponding reduced fundamental system. The character lattice
 \begin{equation}\tag{2.1}
 X^*(A)=\Hom_{F\text{-grps}}(A,GL(1))
 \end{equation}
@@ -207,21 +202,21 @@ may be regarded as a quotient of $X^*$ containing $\Sigma$. Let
 \begin{equation}\tag{2.2}
 X_*(A):=\Hom_{\mathbb{Z}}(X^*(A),\mathbb{Z})
 \end{equation}
-denote the co-character lattice. Let $\Sigma^+\subset\Sigma$ be the set of positive roots containing $\Delta$. For parabolic subgroups $P\subset Q$ containing $A$, let $\Delta_P^Q$ denote the set of simple roots of $(P\cap M_Q,A_P)$, where $Q=M_QN_Q$ is the Levi decomposition and $A_P$ is the split component of the center of $M_P$ [Art2]; $\Delta_P^G=\Delta_P$. Each $w\in W$ has a representative in $K$ via $N_G(A)/Z_G(A)\cong(K\cap N_G(A))/(K\cap Z_G(A))$ [Car, p.~140]. $W$ is generated by the simple reflections $\{w_\alpha:\alpha\in\Delta\}$ ([Cas2], \S1). Let $R$ denote the root lattice generated by $\Delta$ and $L$ the coroot lattice generated by $\Delta^\vee$. If $G$ is semi-simple these lattices and $X^*(A)$, $X_*(A)$ all have rank $\ell$, and $X^*(A)/R$, $X_*(A)/L$ are finite. If $G$ is split, $G$ is adjoint iff $X^*(A)=R$ and simply connected iff $X_*(A)=L$; for non-split $G$ these criteria must be phrased with the absolute root datum (quasi-split $SU(3)$ and $PU(3)$ both have $X^*(A)=R$).
+denote the co-character lattice. Let $\Sigma^+\subset\Sigma$ be the set of positive roots containing $\Delta$. For parabolic subgroups $P\subset Q$ containing $A$, let $\Delta_P^Q$ denote the set of simple roots of $(P\cap M_Q,A_P)$, where $Q=M_QN_Q$ is the Levi decomposition and $A_P$ is the split component of the center of $M_P$ [Ar81]; $\Delta_P^G=\Delta_P$. Each $w\in W$ has a representative in $K$ via $N_G(A)/Z_G(A)\cong(K\cap N_G(A))/(K\cap Z_G(A))$ [Ca79, p.~140]. $W$ is generated by the simple reflections $\{w_\alpha:\alpha\in\Delta\}$ ([Cas95], \S1). Let $R$ denote the root lattice generated by $\Delta$ and $L$ the coroot lattice generated by $\Delta^\vee$. If $G$ is semi-simple these lattices and $X^*(A)$, $X_*(A)$ all have rank $\ell$, and $X^*(A)/R$, $X_*(A)/L$ are finite. If $G$ is split, $G$ is adjoint iff $X^*(A)=R$ and simply connected iff $X_*(A)=L$; for non-split $G$ these criteria must be phrased with the absolute root datum (quasi-split $SU(3)$ and $PU(3)$ both have $X^*(A)=R$).
 
-For each $\theta\subset\Delta$, let $P_\theta=M_\theta N_\theta\supset B$ be the corresponding standard parabolic, so $P_\emptyset=B$ and $M_\emptyset=M_0$; let $A_M=A_\theta$ be the split component of the center of $M=M_\theta$. A Levi component $M=M_P$ of a parabolic $P=M_PN_P$ is called a Levi subgroup of $G$; all Levi and parabolic subgroups are taken to contain $A$. $\cP(M)$ is the set of parabolics with Levi component $M$. For $P\subset Q$ there are orthogonal decompositions $\fa_P=\fa_Q\oplus\fa_P^Q$ and $\fa_P^*=\fa_Q^*\oplus(\fa_P^Q)^*$ [Art3]. The projections of $(\Delta_P^Q)^\vee$ form a basis of $\fa_P^Q$ and $\hat\Delta_P^Q$ a basis of $(\fa_P^Q)^*$. Let $\tau_P^Q$ and $\hat\tau_P^Q$ denote the characteristic functions on $\fa_0$ of
+For each $\theta\subset\Delta$, let $P_\theta=M_\theta N_\theta\supset B$ be the corresponding standard parabolic, so $P_\emptyset=B$ and $M_\emptyset=M_0$; let $A_M=A_\theta$ be the split component of the center of $M=M_\theta$. A Levi component $M=M_P$ of a parabolic $P=M_PN_P$ is called a Levi subgroup of $G$; all Levi and parabolic subgroups are taken to contain $A$. $\cP(M)$ is the set of parabolics with Levi component $M$. For $P\subset Q$ there are orthogonal decompositions $\fa_P=\fa_Q\oplus\fa_P^Q$ and $\fa_P^*=\fa_Q^*\oplus(\fa_P^Q)^*$ [Ar78]. The projections of $(\Delta_P^Q)^\vee$ form a basis of $\fa_P^Q$ and $\hat\Delta_P^Q$ a basis of $(\fa_P^Q)^*$. Let $\tau_P^Q$ and $\hat\tau_P^Q$ denote the characteristic functions on $\fa_0$ of
 \[
 \{X:\ \alpha(X)>0,\ \alpha\in\Delta_P^Q\}\qquad\text{and}\qquad\{X:\ \varpi(X)>0,\ \varpi\in\hat\Delta_P^Q\},
 \]
-respectively, as in [Art3].
+respectively, as in [Ar78].
 
-The kernel of the map $H_M:M(F)\to\fa_P$ of [Art3] is denoted $M(F)^1$; it is the intersection of the kernels of the absolute values of the rational characters of $M(F)$. The Haar measure on $M(F)^1$ is the one determined by those on $M(F)$ and $\fa_P$.
+The kernel of the map $H_M:M(F)\to\fa_P$ of [Ar78] is denoted $M(F)^1$; it is the intersection of the kernels of the absolute values of the rational characters of $M(F)$. The Haar measure on $M(F)^1$ is the one determined by those on $M(F)$ and $\fa_P$.
 
 The pairing $\ip{\cdot,\cdot}:X_*(A)\times X^*(A)\to\mathbb{Z}$, $\ip{\lambda_*,\lambda^*}:=\lambda_*(\lambda^*)$, identifies $X^*(A)$ with the dual lattice of $X_*(A)$. It gives an isomorphism
 \begin{equation}\tag{2.3}
 \Hom_{F\text{-grps}}(GL(1),A)\cong X_*(A),
 \end{equation}
-associating to $\lambda$ the unique $\lambda_*$ with $\lambda^*(\lambda(t))=t^{\ip{\lambda_*,\lambda^*}}$ for all $t\in F^\times$, $\lambda^*\in X^*(A)$. Let $a_\alpha\in A(F)$ denote $\alpha^\vee(\pi)$ (for non-split $G$, the element of [Car, \S3] used in Casselman's formula (2.8)). If $G$ is split then: (a) $\delta_B(a_\alpha)=q^{-2}$ for $\alpha\in\Delta$; (b) the $a_\alpha$ generate the image of the coroot lattice $L$ in $A(F)/(A(F)\cap K)$, freely, and this image is everything iff $G$ is simply connected (in general it has finite index $[X_*(A):L]$); (c) $w_\alpha^{-1}aw_\alpha=a\,a_\alpha^{-\ip{\nu_A(a),\alpha}}$ modulo $A(F)\cap K$, where $\nu_A$ is as in (2.4) ([Car], pp.~141--142, [M], pp.~42--43). To each $\beta\in\Sigma\cup\frac12\Sigma$ there is attached a number $q_\beta>0$ as in [Car]; if $G$ is split and $\alpha\in\Sigma$ then $q_\alpha=q$ and $q_{\alpha/2}=1$.
+associating to $\lambda$ the unique $\lambda_*$ with $\lambda^*(\lambda(t))=t^{\ip{\lambda_*,\lambda^*}}$ for all $t\in F^\times$, $\lambda^*\in X^*(A)$. Let $a_\alpha\in A(F)$ denote $\alpha^\vee(\pi)$ (for non-split $G$, the element of [Ca79, \S3] used in Casselman's formula (2.8)). If $G$ is split then: (a) $\delta_B(a_\alpha)=q^{-2}$ for $\alpha\in\Delta$; (b) the $a_\alpha$ generate the image of the coroot lattice $L$ in $A(F)/(A(F)\cap K)$, freely, and this image is everything iff $G$ is simply connected (in general it has finite index $[X_*(A):L]$); (c) $w_\alpha^{-1}aw_\alpha=a\,a_\alpha^{-\ip{\nu_A(a),\alpha}}$ modulo $A(F)\cap K$, where $\nu_A$ is as in (2.4) ([Ca79], pp.~141--142, [Ma71], pp.~42--43). To each $\beta\in\Sigma\cup\frac12\Sigma$ there is attached a number $q_\beta>0$ as in [Ca79]; if $G$ is split and $\alpha\in\Sigma$ then $q_\alpha=q$ and $q_{\alpha/2}=1$.
 
 Let $\fa_0=X_*(A)\otimes\mathbb{R}$ and $\fa_0^*=X^*(A)\otimes\mathbb{R}$, and extend $\ip{\cdot,\cdot}$ to $\fa_0\times\fa_0^*$. Then $\Delta^\vee\subset\fa_0$ and $\hat\Delta\subset\fa_0^*$ are dual bases (for semisimple $G$): $\ip{\alpha^\vee,\varpi_\beta}=\delta_{\alpha\beta}$ for $\alpha,\beta\in\Delta$. (The 1997 text wrote $\ip{\alpha^\vee,\beta}=2\delta_{\alpha\beta}$; the left side is the Cartan matrix.)
 
@@ -248,16 +243,16 @@ where $\Hom_{unr}(H(F),\mathrm{End}\,V)$ denotes the continuous homomorphisms wi
 
 \subsection{Intertwining operators}
 
-For the unramified principal series representations $i_{G,A}(\chi)=V_B(\chi)$ of $G(F)$ attached to an unramified character $\chi$ of $M_0(F)$ we refer to [Car]. The pairing $\ip{\cdot,\cdot}_G$ on $V_B(\chi)\times V_B(\chi^{-1})$, $\ip{f,f'}_G=\int_Kf(k)f'(k)\,dk$, identifies the contragredient of $i_{G,A}(\chi)$ with $i_{G,A}(\chi^{-1})$.
+For the unramified principal series representations $i_{G,A}(\chi)=V_B(\chi)$ of $G(F)$ attached to an unramified character $\chi$ of $M_0(F)$ we refer to [Ca79]. The pairing $\ip{\cdot,\cdot}_G$ on $V_B(\chi)\times V_B(\chi^{-1})$, $\ip{f,f'}_G=\int_Kf(k)f'(k)\,dk$, identifies the contragredient of $i_{G,A}(\chi)$ with $i_{G,A}(\chi^{-1})$.
 
-Let $\chi$ be a regular unramified character (so the $w\chi$, $w\in W$, are distinct), and let $T_w:V_B(\chi)\to V_B(w\chi)$ denote the intertwining operator of [Car]. If $\Phi_{K,\chi}\in V_B(\chi)^K$ is the $K$-fixed vector with $\Phi_{K,\chi}(1)=1$ then Casselman [Cas1, Thm.~3.1], [Car, Thm.~3.9] has shown that
+Let $\chi$ be a regular unramified character (so the $w\chi$, $w\in W$, are distinct), and let $T_w:V_B(\chi)\to V_B(w\chi)$ denote the intertwining operator of [Ca79]. If $\Phi_{K,\chi}\in V_B(\chi)^K$ is the $K$-fixed vector with $\Phi_{K,\chi}(1)=1$ then Casselman [Cas80, Thm.~3.1], [Ca79, Thm.~3.9] has shown that
 \begin{equation}\tag{2.8}
 T_w(\Phi_{K,\chi})=c_w(\chi)\Phi_{K,w\chi},\qquad c_w(\chi)=\prod_{\alpha\in\Sigma^+,\ w\alpha<0}c_\alpha(\chi),
 \end{equation}
 \[
 c_\alpha(\chi)=\frac{\big(1-q_{\alpha/2}^{-1/2}q_\alpha^{-1}\chi(a_\alpha)\big)\big(1+q_{\alpha/2}^{-1/2}\chi(a_\alpha)\big)}{1-\chi(a_\alpha)^2}.
 \]
-In the split case $c_\alpha(\chi)=(1-q^{-1}\chi(a_\alpha))/(1-\chi(a_\alpha))$. Put $c(\chi)=c_{w_\ell}(\chi)=\prod_{\alpha>0}c_\alpha(\chi)$, $w_\ell$ the longest element of $W$. Also $T_{w_1w_2}=T_{w_1}T_{w_2}$ if $\ell(w_1w_2)=\ell(w_1)+\ell(w_2)$; here $\ell(w)$ is the length of $w$, which is also the number of walls in $\fa_0$ separating the positive chambers of $B^w$ and $B$ [Cas2, ch.~1].
+In the split case $c_\alpha(\chi)=(1-q^{-1}\chi(a_\alpha))/(1-\chi(a_\alpha))$. Put $c(\chi)=c_{w_\ell}(\chi)=\prod_{\alpha>0}c_\alpha(\chi)$, $w_\ell$ the longest element of $W$. Also $T_{w_1w_2}=T_{w_1}T_{w_2}$ if $\ell(w_1w_2)=\ell(w_1)+\ell(w_2)$; here $\ell(w)$ is the length of $w$, which is also the number of walls in $\fa_0$ separating the positive chambers of $B^w$ and $B$ [Cas95, ch.~1].
 
 \begin{rem26}[exponent in $c_\alpha$]\label{r:calpha}
 The 1997 text printed $q_{\alpha/2}^{+1/2}$ in the first factor of $c_\alpha$; we use Casselman's $q_{\alpha/2}^{-1/2}$. The two agree for split $G$. The non-split formula has not been re-derived here; all numerical checks in this paper are for split groups.
@@ -293,11 +288,11 @@ Let $\Omega_K(G)$ denote the set of zonal spherical functions of $G(F)^1$ relati
 \begin{equation}\tag{2.10}
 \Omega_K(G):=\{\omega\in C^\infty(G,K):\ \omega(1)=1\text{ and }f*\omega=\lambda_f\omega\ \text{for all } f\in\Hc(G,K),\ \text{some }\lambda_f\in\mathbb{C}\}.
 \end{equation}
-Let $\Omega^+_K(G)$ denote the subset of positive definite zonal spherical functions. If $\chi$ is unitary then $\Gamma_\chi\in\Omega^+_K(G)$ [M, Thm.~3.3.12]. The Fourier transform of $f\in\Hc(G,K)$ at $\omega\in\Omega_K^+(G)$ is
+Let $\Omega^+_K(G)$ denote the subset of positive definite zonal spherical functions. If $\chi$ is unitary then $\Gamma_\chi\in\Omega^+_K(G)$ [Ma71, Thm.~3.3.12]. The Fourier transform of $f\in\Hc(G,K)$ at $\omega\in\Omega_K^+(G)$ is
 \begin{equation}\tag{2.11}
 f^\vee(\omega):=\int_{G(F)^1}f(g)\omega(g^{-1})\,dg.
 \end{equation}
-The relation between the Fourier transform and the Satake transform is given in [M, p.~47]. The Plancherel measure $d\mu(\omega)$ is the positive measure on $\Omega^+_K(G)$ such that, for all $f\in\Hc(G,K)$,
+The relation between the Fourier transform and the Satake transform is given in [Ma71, p.~47]. The Plancherel measure $d\mu(\omega)$ is the positive measure on $\Omega^+_K(G)$ such that, for all $f\in\Hc(G,K)$,
 \begin{equation}\tag{2.12}
 f^\vee(\omega)\in L^2(\Omega^+_K(G),d\mu)
 \end{equation}
@@ -307,7 +302,7 @@ and
 \end{equation}
 By a theorem of Godement, such a measure exists and is unique.
 
-\begin{Lemma}{2.2}[Macdonald {[M, Thm.~5.1.2]}]
+\begin{Lemma}{2.2}[Macdonald {[Ma71, Thm.~5.1.2]}]
 The support of the Plancherel measure is the image of the compact torus $\Thu$ of (2.6) (modulo $W$). Let $d\chi$ be the Haar probability measure on $\Thu\cong i\fa_0^*/L^\vee$. The Plancherel measure of $G(F)$ with respect to $K$ is
 \[
 d\mu(\chi)=\frac{Q_G}{|W|}\,|c(\chi)|^{-2}\,d\chi.
@@ -326,24 +321,24 @@ For all $f_1,f_2\in\Hc(G,K)$,
 \end{Corollary}
 
 \begin{proof}
-First, $d\mu$ is supported on $\Thu/W$ [M, Thm.~5.1.2], every $\omega$ is a $\Gamma_\chi$ [M, Thm.~3.3.12], $\Gamma_\chi(g^{-1})=\Gamma_{\chi^{-1}}(g)$ [M, Prop.~3.3.2], and $\overline{\Gamma_{\chi^{-1}}(g)}=\Gamma_\chi(g)$ for unitary $\chi$ [Car, p.~150]. So in each statement the second equality follows from the first. The second statement follows from (2.13) by polarization: replace $f$ by $f_1+f_2$ and by $f_1+if_2$ in (2.13), expand, and combine; the first gives the real part and the second the imaginary part of the cross term. The first statement follows from the second by taking $f_2$ to be the characteristic function of a double coset $KgK$ and using the definition (2.11).
+First, $d\mu$ is supported on $\Thu/W$ [Ma71, Thm.~5.1.2], every $\omega$ is a $\Gamma_\chi$ [Ma71, Thm.~3.3.12], $\Gamma_\chi(g^{-1})=\Gamma_{\chi^{-1}}(g)$ [Ma71, Prop.~3.3.2], and $\overline{\Gamma_{\chi^{-1}}(g)}=\Gamma_\chi(g)$ for unitary $\chi$ [Ca79, p.~150]. So in each statement the second equality follows from the first. The second statement follows from (2.13) by polarization: replace $f$ by $f_1+f_2$ and by $f_1+if_2$ in (2.13), expand, and combine; the first gives the real part and the second the imaginary part of the cross term. The first statement follows from the second by taking $f_2$ to be the characteristic function of a double coset $KgK$ and using the definition (2.11).
 \end{proof}
 
 \subsection{The Jacquet functor}
 
-For any parabolic $P=MN$ of $G$ we have $G(F)=P(F)K$, and for each Levi $M$ and parabolic $P^M$ of $M$ we have $M(F)=P^M(F)(K\cap M(F))$ [Car, p.~140]. In this case the notion of ``compactly induced'' representations [BZ, \S1.8] agrees with the usual notion of unitarily induced representations. Let
+For any parabolic $P=MN$ of $G$ we have $G(F)=P(F)K$, and for each Levi $M$ and parabolic $P^M$ of $M$ we have $M(F)=P^M(F)(K\cap M(F))$ [Ca79, p.~140]. In this case the notion of ``compactly induced'' representations [BZ77, \S1.8] agrees with the usual notion of unitarily induced representations. Let
 \begin{equation}\tag{2.14}
 i_{G,M}:\mathrm{Alg}\,M\to\mathrm{Alg}\,G
 \end{equation}
-denote normalized induction, in the notation of [BZ] (so $i_{G,M}(\tau)=V_P(\tau)$ in Arthur's notation), and let
+denote normalized induction, in the notation of [BZ77] (so $i_{G,M}(\tau)=V_P(\tau)$ in Arthur's notation), and let
 \begin{equation}\tag{2.15}
 r_{M,G}:\mathrm{Alg}\,G\to\mathrm{Alg}\,M
 \end{equation}
-denote the normalized Jacquet functor [BZ, \S2.3] (called the first Jacquet functor in [Car, \S2.2]). We sometimes write $\pi_N=r_{M,G}(\pi)$.
+denote the normalized Jacquet functor [BZ77, \S2.3] (called the first Jacquet functor in [Ca79, \S2.2]). We sometimes write $\pi_N=r_{M,G}(\pi)$.
 
 Let $W_M$ denote the Weyl group of $M$. The special case of the geometric lemma of Bernstein--Zelevinsky which we need is the following.
 
-\begin{Lemma}{2.4}[{[BZ, \S2.12]}]
+\begin{Lemma}{2.4}[{[BZ77, \S2.12]}]
 There is an enumeration $w_1,\dots,w_k$ of $\Wrep{M}$ such that, for each character $\chi$ of $M_0(F)$, the $M$-module $r_{M,G}\circ i_{G,A}(\chi)$ has a filtration
 \[
 r_{M,G}\circ i_{G,A}(\chi)=V_k\supset V_{k-1}\supset\dots\supset V_1\supset V_0=\{0\}
@@ -368,11 +363,11 @@ If $\chi$ is regular, then $r_{M,G}\circ i_{G,A}(\chi)\cong\bigoplus_{w\in\Wrep{
 
 These results are used in \S4 only to explain where the regularity Hypothesis (R) comes from; see Remark~\ref{r:GAfam}. (In the 1997 text this subsection was said to be ``not needed''.)
 
-For a collection $\{c_P(\lambda):P\in\cP(M)\}$ of smooth functions on $i\fa_M^*$ we say that it is a \textbf{$(G,M)$-family} if for any adjacent $P,P'\in\cP(M)$, $c_P(\lambda)=c_{P'}(\lambda)$ on the hyperplane spanned by the common wall of the chambers of $P$ and $P'$ [Art2, \S6]. For a collection $\{\tilde c_P(\chi):P\in\cP(A)\}$ of smooth functions on $\Thu$ we say that it is a \textbf{$(G,A)^\sim$-family} if for any adjacent $P,P'\in\cP(A)$ we have $\tilde c_P(\chi_\lambda)=\tilde c_{P'}(\chi_\lambda)$ on the set
+For a collection $\{c_P(\lambda):P\in\cP(M)\}$ of smooth functions on $i\fa_M^*$ we say that it is a \textbf{$(G,M)$-family} if for any adjacent $P,P'\in\cP(M)$, $c_P(\lambda)=c_{P'}(\lambda)$ on the hyperplane spanned by the common wall of the chambers of $P$ and $P'$ [Ar81, \S6]. For a collection $\{\tilde c_P(\chi):P\in\cP(A)\}$ of smooth functions on $\Thu$ we say that it is a \textbf{$(G,A)^\sim$-family} if for any adjacent $P,P'\in\cP(A)$ we have $\tilde c_P(\chi_\lambda)=\tilde c_{P'}(\chi_\lambda)$ on the set
 \[
 \Big\{\lambda\in i\fa_0^*:\ \ip{\alpha^\vee,\lambda}\in\frac{2\pi i}{\log q}\mathbb{Z}\Big\}=\{\lambda:\ \chi_\lambda(a_\alpha)=1\},
 \]
-where $\alpha$ is one of the two roots separating $P$ and $P'$ [W, p.~26].
+where $\alpha$ is one of the two roots separating $P$ and $P'$ [Wa89a, p.~26].
 
 Let $Q\subset R$ be parabolic subgroups and let $L_Q^R$ denote the lattice generated by the projections of $\{\alpha^\vee:\alpha\in\Delta_Q^R\}$. Let
 \begin{equation}\tag{2.16}
@@ -383,11 +378,11 @@ and define $\tilde\theta_B=\tilde\theta$ by
 \tilde\theta(\chi):=\prod_{\alpha\in\Delta}(1-\chi(a_\alpha)).
 \end{equation}
 
-\begin{Lemma}{2.6}[{[Art2, Lemma~6.2]}]
+\begin{Lemma}{2.6}[{[Ar81, Lemma~6.2]}]
 If $\{c_P(\lambda):P\in\cP(M)\}$ is a $(G,M)$-family then $c_M(\lambda):=\sum_{P\in\cP(M)}c_P(\lambda)\theta_P(\lambda)^{-1}$ extends to a smooth function on $i\fa^*_M$.
 \end{Lemma}
 
-\begin{Lemma}{2.7}[{[W, \S7]}]
+\begin{Lemma}{2.7}[{[Wa89a, \S7]}]
 If $\{\tilde c_P(\chi):P\in\cP(A)\}$ is a $(G,A)^\sim$-family then
 \[
 \tilde c_A(\chi):=\sum_{P\in\cP(A)}\tilde c_P(\chi)\tilde\theta_P(\chi)^{-1}
@@ -397,7 +392,7 @@ extends to a smooth function on $\Thu$. Here $\tilde\theta_P(\chi):=\tilde\theta
 
 The factor $\tilde\theta$ is the periodic analogue of $\theta$:
 
-\begin{Lemma}{2.8}[{[W, II.7.1]}]
+\begin{Lemma}{2.8}[{[Wa89a, II.7.1]}]
 There exists $u_B\in C^\infty_c(i\fa_0^*/i\fa_G^*)$ such that
 \begin{enumerate}[label=(\alph*)]
 \item for all $\lambda\in i\fa_0^*$, $\displaystyle\sum_{r\in L^\vee}u_B(\lambda+r)\,\theta_B(\lambda+r)^{-1}=\tilde\theta_B(\chi_\lambda)^{-1}$;
@@ -406,7 +401,7 @@ There exists $u_B\in C^\infty_c(i\fa_0^*/i\fa_G^*)$ such that
 \end{Lemma}
 (One may take $u_B=\eta\,\theta_B/\tilde\theta_B(\chi_\cdot)$, where $\eta\in C_c^\infty$ is supported in a small neighborhood of $0$ and $\sum_{r\in L^\vee}\eta(\lambda+r)=1$; then $u_B$ is smooth because $\theta_B(\lambda)/\tilde\theta_B(\chi_\lambda)$ is smooth near $0$, and (a) holds by periodicity of $\tilde\theta_B(\chi_\lambda)$.)
 
-\begin{Lemma}{2.9}[{[W, \S7]}]
+\begin{Lemma}{2.9}[{[Wa89a, \S7]}]
 Let $\{\tilde c_P(\chi):P\in\cP(A)\}$ be a $(G,A)^\sim$-family. For $P\in\cP(A)$ let $c_P(\lambda)=\tilde c_P(\chi_{\lambda})u_P(\lambda)$, where $u_P(\lambda)=u_B(w_P\lambda)$ and $u_B$ is as in Lemma~2.8. Then $\{c_P\}_P$ is a $(G,A)$-family, and
 \[
 \tilde c_A(\chi_\lambda)=\sum_{r\in L^\vee}c_A(\lambda+r),\qquad c_A(\lambda)=\sum_{P}c_P(\lambda)\theta_P(\lambda)^{-1}.
@@ -415,11 +410,11 @@ Let $\{\tilde c_P(\chi):P\in\cP(A)\}$ be a $(G,A)^\sim$-family. For $P\in\cP(A)$
 (The 1997 statement attached an index $r$ to the family and left a dangling $P$ on the right; since $\chi_{\lambda+r}=\chi_\lambda$ for $r\in L^\vee$, the version above is what the proof via Lemma~2.8 gives.)
 
 \begin{Remark}{2}
-Lemma~2.9 follows from Lemmas~2.6--2.8. These results relate the $(G,A)^\sim$-families occurring implicitly in \S4 to Arthur's $(G,A)$-families [Art2].
+Lemma~2.9 follows from Lemmas~2.6--2.8. These results relate the $(G,A)^\sim$-families occurring implicitly in \S4 to Arthur's $(G,A)$-families [Ar81].
 \end{Remark}
 
 \begin{rem26}[\S2.5]
-Lemmas~2.6 and 2.8 are standard (2.8 by the construction given). The precise form of Lemmas~2.7 and~2.9 has not been re-checked against [W, \S7]; they are not used in any proof below.
+Lemmas~2.6 and 2.8 are standard (2.8 by the construction given). The precise form of Lemmas~2.7 and~2.9 has not been re-checked against [Wa89a, \S7]; they are not used in any proof below.
 \end{rem26}
 
 % =====================================================================
@@ -429,17 +424,17 @@ Lemmas~2.6 and 2.8 are standard (2.8 by the construction given). The precise for
 
 Assume as before that $G$ is connected, unramified and reductive, and use the measures of \S2.0. Let $\chi$ be an unramified regular character of $M_0(F)$ and $V_B(\chi)=i_{G,A}(\chi)$. For $n\ge1$ let $K_n\subset K$ be the $n$-th principal congruence subgroup; it is normal in $K$ and has an Iwahori factorization with respect to every standard parabolic. A vector has \emph{level $n$} if it is fixed by $K_n$. Write $\pi=\pi_\chi=i_{G,A}(\chi)$; its restriction to $K$ does not depend on $\chi$ (compact picture).
 
-\paragraph{Casselman's asymptotics.} Let $P=MN$ be standard and $\bar P=M\bar N$ its opposite. By Casselman [Cas2, \S4, Prop.~4.3.3] there is a canonical $M$-invariant pairing $\ip{\cdot,\cdot}_N$ between $r_{M,G}(\pi_\chi)$ (taken with respect to $P$) and $r_{M,\bar P}(\pi_{\chi^{-1}})$ (taken with respect to $\bar P$), and for every $n$ there is $\epsilon=\epsilon(n)\in(0,1]$, independent of the unramified character $\chi$, such that for all $f\in V_B(\chi)$, $f'\in V_B(\chi^{-1})$ of level $n$
+\paragraph{Casselman's asymptotics.} Let $P=MN$ be standard and $\bar P=M\bar N$ its opposite. By Casselman [Cas95, \S4, Prop.~4.3.3] there is a canonical $M$-invariant pairing $\ip{\cdot,\cdot}_N$ between $r_{M,G}(\pi_\chi)$ (taken with respect to $P$) and $r_{M,\bar P}(\pi_{\chi^{-1}})$ (taken with respect to $\bar P$), and for every $n$ there is $\epsilon=\epsilon(n)\in(0,1]$, independent of the unramified character $\chi$, such that for all $f\in V_B(\chi)$, $f'\in V_B(\chi^{-1})$ of level $n$
 \begin{equation}\tag{3.1}
 \ip{\pi_\chi(a)f,f'}_G=\delta_P^{1/2}(a)\,\ip{r_{M,G}(\pi_\chi)(a)f_N,\,f'_{\bar N}}_N\qquad\text{for all }a\in A^-_P(\epsilon).
 \end{equation}
-For $P=B$ this is the case $a\in A^-(\epsilon)$. The independence of $\epsilon$ from $\chi$ follows from [Car, \S3].
+For $P=B$ this is the case $a\in A^-(\epsilon)$. The independence of $\epsilon$ from $\chi$ follows from [Ca79, \S3].
 
 \begin{rem26}[(3.1)]\label{r:cass}
-Three corrections to the 1997 version of (3.1): the second space is the Jacquet module for the \emph{opposite} parabolic; the factor $\delta_P^{1/2}(a)$ was missing; and $\epsilon$ depends on the level of $f,f'$. We use (3.1) on $A^-_P(\epsilon)$, i.e.\ for $a$ deep only in the $N$-directions. This is how Casselman's argument runs (it uses only that $a$ contracts $N_0$ and contracts $N\cap K_n$ strongly), but we have not checked that [Cas2, Prop.~4.3.3] is stated in exactly this generality rather than for $a$ in the split center of $M$.
+Three corrections to the 1997 version of (3.1): the second space is the Jacquet module for the \emph{opposite} parabolic; the factor $\delta_P^{1/2}(a)$ was missing; and $\epsilon$ depends on the level of $f,f'$. We use (3.1) on $A^-_P(\epsilon)$, i.e.\ for $a$ deep only in the $N$-directions. This is how Casselman's argument runs (it uses only that $a$ contracts $N_0$ and contracts $N\cap K_n$ strongly), but we have not checked that [Cas95, Prop.~4.3.3] is stated in exactly this generality rather than for $a$ in the split center of $M$.
 \end{rem26}
 
-For $f\in V_B(w\chi)$ let $R_Mf=\delta_P^{-1/2}\cdot f|_{M(F)}\in i_{M,A}(w\chi)$; the map $R_M$ factors through $r_{M,G}$ and is $M$-equivariant [W, \S I]. For $w\in\Wrep{M}$ the maps $R_M\circ T_w$ give the decomposition of Remark~1,
+For $f\in V_B(w\chi)$ let $R_Mf=\delta_P^{-1/2}\cdot f|_{M(F)}\in i_{M,A}(w\chi)$; the map $R_M$ factors through $r_{M,G}$ and is $M$-equivariant [Wa89a, \S I]. For $w\in\Wrep{M}$ the maps $R_M\circ T_w$ give the decomposition of Remark~1,
 \begin{equation}\tag{3.2}
 r_{M,G}(\pi_\chi)\ \tilde\longrightarrow\ \bigoplus_{w\in\Wrep{M}}i_{M,A}(w\chi),\qquad f_N\longmapsto(f_w)_w,\quad f_w:=R_M T_wf.
 \end{equation}
@@ -470,7 +465,7 @@ The pairing $\ip{\cdot,\cdot}_N$ is $M$-invariant, so its restriction to the $(w
 \end{proof}
 (The 1997 proof argued that the pairing is ``of the form $\sum a_{w,w'}\ip{z_w,z'_{w'}}_0$'' for any bilinear form and then derived a contradiction from an inequality that $M$-invariance does not forbid; the argument above replaces it.)
 
-The next result generalizes Macdonald's formula. An analogous result is [W, Lemma~I.3.1]. Here we use Macdonald's formula for $G$ and for $M$ to evaluate the constants.
+The next result generalizes Macdonald's formula. An analogous result is [Wa89a, Lemma~I.3.1]. Here we use Macdonald's formula for $G$ and for $M$ to evaluate the constants.
 
 \begin{Lemma}{3.3}
 Let $\chi$ be unramified regular, $f'\in V_B(\chi^{-1})$ of level $n$, and $\epsilon=\epsilon(n)$. There are $M$-maps $\bar R_{M,w}:V_B(\chi^{-1})\to i_{M,A}((w\chi)^{-1})$, $w\in\Wrep{M}$, factoring through $r_{M,\bar P}$, such that for $a\in A^-_P(\epsilon)$
@@ -481,7 +476,7 @@ where $\Phi^M_{w\chi}$ is the normalized $(K\cap M)$-fixed vector of $i_{M,A}(w\
 \[
 c(w,M,\chi)=Q_G^{-1}Q_M\,\frac{\prod_{\alpha\in\Sigma^+\smallsetminus\Sigma_M^+}c_\alpha\big((w\chi)^{-1}\big)}{c_w(\chi)\,c_w(\chi^{-1})},
 \]
-and then the identity holds for all $a\in A^-$. In particular, for $M=M_0$, $c(w,M_0,\chi)=Q_G^{-1}c((w\chi)^{-1})/\big(c_w(\chi)c_w(\chi^{-1})\big)$, as in [M].
+and then the identity holds for all $a\in A^-$. In particular, for $M=M_0$, $c(w,M_0,\chi)=Q_G^{-1}c((w\chi)^{-1})/\big(c_w(\chi)c_w(\chi^{-1})\big)$, as in [Ma71].
 \end{Lemma}
 
 \begin{Remark}{4}
@@ -567,14 +562,14 @@ whose edges are spanned by the fundamental coweights of $M_Q$ (in $\fa_0^Q$) and
 \begin{proof}
 Let $\Pi_T=\{X\in\fa_0:\ip{X,\alpha}\ge0,\ \ip{X-T,\varpi_\alpha}\le0\ \forall\alpha\}$; this is the dominant part of the convex hull of $W\cdot T$. \emph{Vertices.} For $Q$ standard, $T_Q$ satisfies $\ip{T_Q,\alpha}=0$ for $\alpha\in\Delta^Q$ (since $T_Q\in\fa_Q$) and $\ip{T_Q-T,\varpi_\alpha}=0$ for $\alpha\notin\Delta^Q$ (since such $\varpi_\alpha$ vanish on $\fa_0^Q$). Writing $T^Q=\sum_{\beta\in\Delta^Q}t_\beta\beta^\vee$ with $t_\beta\ge0$ (as $T^Q$ is dominant for $M_Q$) and using $\ip{\beta^\vee,\alpha}\le0$ for $\alpha\ne\beta$, one finds $\ip{T_Q,\alpha}\ge\ip{T,\alpha}>0$ for $\alpha\notin\Delta^Q$ and $\ip{T_Q-T,\varpi_\alpha}=-t_\alpha<0$ for $\alpha\in\Delta^Q$. So $T_Q$ is a vertex of $\Pi_T$, with active constraints exactly those defining $C_Q$, and $\Pi_T$ is simple there. Conversely, if $v$ is a vertex and $\theta=\{\alpha:\ip{v,\alpha}=0\}$, then $v\in\fa_{P_\theta}$. For $\alpha\in\theta$ the restriction of $\varpi_\alpha$ to $\fa_{P_\theta}$ is a combination $\sum_{\beta\notin\theta}c_{\alpha\beta}\varpi_\beta$ with $c_{\alpha\beta}=\ip{(\beta^\vee)_{P_\theta},\varpi_\alpha}\ge0$. Hence the constraints $\ip{v-T,\varpi_\alpha}\le0$ for $\alpha\in\theta$ are strict, those for $\beta\notin\theta$ must all be active, and $v=T_{P_\theta}$.
 
-\emph{Counting.} $\mathsf c\cdot\one_{\cA_A(T)}$ is a finite linear combination, with coefficients independent of $T$, of indicator functions of closed faces of $\Pi_T$: write each relatively open face of the dominant cone, and each strict inequality $\ip{\lambda-T,\varpi_\alpha}<0$, by inclusion--exclusion over closed faces. Each closed face $\Pi'$ is a rational polytope whose vertices lie among the $T_Q$, with tangent cones that are faces of the $C_Q$ and do not depend on $T$. By Brion's theorem [Bri] (for rational polytopes, see [Bar]), $\sum_{\lambda\in\Pi'\cap X_*(A)}\psi(\lambda)=\sum_{v}\sigma_{v+C'_v}(\psi)$, the sum of the generating functions of the lattice points of the tangent cones at the vertices $v$ of $\Pi'$. For $v=T_Q\in X_*(A)$ (here we use $T\in L_0$), $\sigma_{T_Q+C'}(\psi)=\psi(T_Q)\sigma_{C'}(\psi)$. Collecting terms gives (3.5A), with $R_Q$ a $T$-independent combination of the $\sigma_{C'}$ for faces $C'$ of $C_Q$. The denominators are those of simplicial-cone generating functions: $\sigma_{C'}=(\text{Laurent polynomial})/\prod(1-\psi(\mu_i))$ over primitive edge vectors $\mu_i$. The edges of $C_Q$: an edge lies in $\fa_0^Q$ and is $M_Q$-dominant extremal (a fundamental coweight of $M_Q$), or lies in $\fa_Q$ and is dual to $\hat\Delta_Q$, i.e.\ is $-(\alpha^\vee)_Q$ for some $\alpha\notin\Delta^Q$. For $Q=G$ the only vertex is $0$ and the cone is $X_*(A)^+$.
+\emph{Counting.} $\mathsf c\cdot\one_{\cA_A(T)}$ is a finite linear combination, with coefficients independent of $T$, of indicator functions of closed faces of $\Pi_T$: write each relatively open face of the dominant cone, and each strict inequality $\ip{\lambda-T,\varpi_\alpha}<0$, by inclusion--exclusion over closed faces. Each closed face $\Pi'$ is a rational polytope whose vertices lie among the $T_Q$, with tangent cones that are faces of the $C_Q$ and do not depend on $T$. By Brion's theorem [Br88] (for rational polytopes, see [Ba08]), $\sum_{\lambda\in\Pi'\cap X_*(A)}\psi(\lambda)=\sum_{v}\sigma_{v+C'_v}(\psi)$, the sum of the generating functions of the lattice points of the tangent cones at the vertices $v$ of $\Pi'$. For $v=T_Q\in X_*(A)$ (here we use $T\in L_0$), $\sigma_{T_Q+C'}(\psi)=\psi(T_Q)\sigma_{C'}(\psi)$. Collecting terms gives (3.5A), with $R_Q$ a $T$-independent combination of the $\sigma_{C'}$ for faces $C'$ of $C_Q$. The denominators are those of simplicial-cone generating functions: $\sigma_{C'}=(\text{Laurent polynomial})/\prod(1-\psi(\mu_i))$ over primitive edge vectors $\mu_i$. The edges of $C_Q$: an edge lies in $\fa_0^Q$ and is $M_Q$-dominant extremal (a fundamental coweight of $M_Q$), or lies in $\fa_Q$ and is dual to $\hat\Delta_Q$, i.e.\ is $-(\alpha^\vee)_Q$ for some $\alpha\notin\Delta^Q$. For $Q=G$ the only vertex is $0$ and the cone is $X_*(A)^+$.
 \end{proof}
 
 \begin{rem26}[Lemma 3.5A]\label{r:brion}
 The 1997 Lemma~3.5 asserted that the $\omega$-th term carries the factor $\prod_\alpha\chi(a_\alpha)^{T_\alpha}$ times a $T$-independent function; this is false already for $SL(2)$, where the regular part is $(z-z^{T})/(1-z)$. It also used coordinates $\ip{a,\alpha}$ on $X_*(A)$, which are unimodular only for adjoint $G$. Lemma~3.5A is the correct form. The vertex description and the edge directions were checked by hand; the inclusion--exclusion bookkeeping for half-open faces is standard but was written out in full only in rank one. In rank one ($X_*(A)=\mathbb{Z}\varpi^\vee$, $z=\psi(\varpi^\vee)$, $\mathsf c\equiv1$): $\sum_{0\le n<T}z^n=\frac1{1-z}-\frac{z^T}{1-z}$, i.e.\ $R_G=\frac1{1-z}$, $R_B=-\frac1{1-z}$.
 \end{rem26}
 
-From [M, Prop.~3.2.15] we have, for $a\in A^-$,
+From [Ma71, Prop.~3.2.15] we have, for $a\in A^-$,
 \begin{equation}\tag{3.7}
 \mathrm{meas}(KaK)=\delta_B(a)^{-1}Q_a,\qquad Q_a=Q_G/Q_{W_a},
 \end{equation}
@@ -661,7 +656,7 @@ By Remark~5 the extra factor is $\kappa(a_\lambda)$ on the $\lambda$-th summand,
 
 \subsection{$(G,A)^\sim$-families}
 
-We prove in this section an analogue of [W, Prop.~II.5]. For $P\in\cP(A)$ let $w_P\in W$ be the element with $P=w_P^{-1}Bw_P$. The 1997 text introduced, for $\phi\in C_c^\infty(G(F))$,
+We prove in this section an analogue of [Wa89a, Prop.~II.5]. For $P\in\cP(A)$ let $w_P\in W$ be the element with $P=w_P^{-1}Bw_P$. The 1997 text introduced, for $\phi\in C_c^\infty(G(F))$,
 \begin{equation}\tag{4.1}
 Q^T(\chi,\chi',w,w',\phi)=\tr\big[T_w^*T_{w'}\,\pi_\chi(\phi)\big]\;C^T(\chi,\chi'^{-1},w,w'),
 \end{equation}
@@ -671,7 +666,7 @@ where $T_w^*$ is the transpose of $T_w$ (an operator $V_B(w\chi)\to V_B(\chi)$ i
 The collection $\{Q^T(\chi,\chi',w_P,w',\phi):P\in\cP(A)\}$ multiplied by $\tilde\theta(w_P\chi/w'\chi')$ forms a $(G,A)^\sim$-family in $\chi$, and similarly in $\chi'$.
 \end{Lemma}
 
-The sketched proof used that $\lambda\mapsto\tr[R_{w_P}\,i_{G,A}(\chi_\lambda)(\phi)]$ ($R_w$ the normalized intertwining operator) is a $(G,A)$-family [Art2, \S7], and that the product of two $(G,A)^\sim$-families is one.
+The sketched proof used that $\lambda\mapsto\tr[R_{w_P}\,i_{G,A}(\chi_\lambda)(\phi)]$ ($R_w$ the normalized intertwining operator) is a $(G,A)$-family [Ar81, \S7], and that the product of two $(G,A)^\sim$-families is one.
 
 \begin{rem26}[Lemma 4.1 and regularity]\label{r:GAfam}
 Since the 2026 Proposition~3.6 no longer produces coefficients of the form $C^T\ip{T_wu,T_{w'}u'}$, Lemma~4.1 is not used below, and it has not been verified. Its purpose in 1997 was to show that the singularities of the individual vertex terms cancel in the sum over $P$. This kind of cancellation does hold: in the $SL(2)$ example (\S6.2) the sum of the vertex terms at the vertex $T$ is a smooth function of $\chi$ for each $T$. But it is not enough for removing the truncation. The sum is smooth for each $T$ but not uniformly in $T$: near the bad point it behaves like a Dirichlet kernel and tends to a point mass as $T\to\infty$. What is needed is regularity of each oscillatory component separately, which is Hypothesis~(R) below. In particular, the argument proposed in the 2026 referee report (M8(b): smoothness of the $(G,A)^\sim$-sum plus the Riemann--Lebesgue lemma) does not suffice.
@@ -728,7 +723,7 @@ the constant term of the non-oscillating part of $I^T(\chi,\phi)$. For generic r
 \end{proof}
 
 \begin{rem26}[Proposition 4.2]\label{r:P42}
-The 1997 Proposition~4.2 stated $I(\chi,\phi)=\lim_{\chi'\to\chi}\sum_{w,w'}Q^T(\chi,\chi',w,w',\phi)\tilde\theta(w\chi/w'\chi')^{-1}$ ``independent of $T$''. But $I^T(\chi,\phi)$ genuinely depends on $T$; the 1997 justification (``follows from Proposition~3.6'') does not apply, and $I(\chi,\phi)$ was never defined independently of the displayed limit. Here $I(\chi,\phi)$ is defined as the $T$-independent part. Part~(b) is a straightforward consequence of Proposition~3.6, except for the confluence step, which we have written out only in rank one. The 1997 claim that $\phi\mapsto I(\chi,\phi)$ is $G$-admissible in the sense of [HC, \S14] is plausible, since by (4.7) it is a finite combination of $\phi\mapsto\tr(A\,\pi_\chi(\phi))$ with finite-rank $A$, but it needs a bound uniform in $n$ that we have not checked. Full $G$-invariance follows from Theorem~4.5(b) when Hypothesis~(R) holds (Corollary~4.5A).
+The 1997 Proposition~4.2 stated $I(\chi,\phi)=\lim_{\chi'\to\chi}\sum_{w,w'}Q^T(\chi,\chi',w,w',\phi)\tilde\theta(w\chi/w'\chi')^{-1}$ ``independent of $T$''. But $I^T(\chi,\phi)$ genuinely depends on $T$; the 1997 justification (``follows from Proposition~3.6'') does not apply, and $I(\chi,\phi)$ was never defined independently of the displayed limit. Here $I(\chi,\phi)$ is defined as the $T$-independent part. Part~(b) is a straightforward consequence of Proposition~3.6, except for the confluence step, which we have written out only in rank one. The 1997 claim that $\phi\mapsto I(\chi,\phi)$ is $G$-admissible in the sense of [HC78, \S14] is plausible, since by (4.7) it is a finite combination of $\phi\mapsto\tr(A\,\pi_\chi(\phi))$ with finite-rank $A$, but it needs a bound uniform in $n$ that we have not checked. Full $G$-invariance follows from Theorem~4.5(b) when Hypothesis~(R) holds (Corollary~4.5A).
 \end{rem26}
 
 \begin{Proposition}{4.3}
@@ -741,7 +736,7 @@ We only prove Proposition~4.2; the proof of 4.3 is similar, using Remark~5 and P
 
 \subsection{The spectral expansion}
 
-Let $\phi$ be a locally constant function with compact support in $G_{\ellr}$. By [K, \S4, Lemma~6] the distribution
+Let $\phi$ be a locally constant function with compact support in $G_{\ellr}$. By [Ka86, \S4, Lemma~6] the distribution
 \begin{equation}\tag{4.8}
 f\longmapsto I(f,\phi)=\int_{G(F)^1\times G(F)^1}f(g^{-1}hg)\phi(h)\,dg\,dh=\int_{G(F)^1}f(h)\Phi_\phi(h)\,dh=\int_{G(F)^1}\Phi_f(h)\phi(h)\,dh,
 \end{equation}
@@ -807,7 +802,7 @@ $I(f,\phi)$ is invariant under conjugation of $\phi$, and the $W$-invariant Laur
 \begin{rem26}[Theorem 4.5]\label{r:T45}
 \begin{enumerate}
 \item Part~(a) is the first line of the 1997 Theorem~4.5 and is unconditional. The 1997 second line, with $I(\chi,\phi)$ ``independent of $T$'', rested on the unsupported claim discussed in Remark~\ref{r:P42}.
-\item Part~(b) is conditional on (R). Hypothesis~(R) holds for $PGL(2)$ (\S6.1). It fails for $SL(2)$ (\S6.2), and there the conclusion of (b) is false: the spectral side needs an extra point mass. We expect (R) to hold whenever $Z(G)$ is connected (Conjecture~4.6(b)); for $GL(N)$ the analogous statement is the content of [W], which we have not re-checked against the formulation here.
+\item Part~(b) is conditional on (R). Hypothesis~(R) holds for $PGL(2)$ (\S6.1). It fails for $SL(2)$ (\S6.2), and there the conclusion of (b) is false: the spectral side needs an extra point mass. We expect (R) to hold whenever $Z(G)$ is connected (Conjecture~4.6(b)); for $GL(N)$ the analogous statement is the content of [Wa89a], which we have not re-checked against the formulation here.
 \item In rank one, the proof of (b) can be sharpened: the oscillatory terms pair to zero \emph{exactly} with $f^\vee$ once $T$ is large, by a Fourier-support argument (\S6.1).
 \end{enumerate}
 \end{rem26}
@@ -822,13 +817,13 @@ Let $\phi\in C_c^\infty(G_{\ellr})$.
 dI_\phi=I(\chi,\phi)\,d\mu(\chi)+dI^{\,sing}_\phi,
 \]
 where $I(\cdot,\phi)$ is the function of Proposition~4.2(c), $I(\cdot,\phi)\rho\in L^1$, and $dI^{\,sing}_\phi$ is supported on the set of non-regular unitary $\chi$ at which $\rho$ does not vanish (to the order forced by the stabilizer of $\chi$). This set is, conjecturally, the set of $\chi$ for which the $R$-group of $i_{G,A}(\chi)$ is non-trivial.
-\item If $Z(G)$ is connected (equivalently, the derived group of $\hat G$ is simply connected), then the $R$-groups of the unitary unramified principal series are trivial [Key], Hypothesis~(R) holds, and $dI^{\,sing}_\phi=0$.
+\item If $Z(G)$ is connected (equivalently, the derived group of $\hat G$ is simply connected), then the $R$-groups of the unitary unramified principal series are trivial [Ke82], Hypothesis~(R) holds, and $dI^{\,sing}_\phi=0$.
 \item For $G=SL(n)$, $dI^{\,sing}_\phi$ is the sum, over the non-trivial unramified $\kappa$, of the contributions $(c_S|\mathfrak D(S)|)^{-1}\,dI^\kappa_\phi$ of (5.4A), which are push-forwards of spectral measures of the elliptic endoscopic groups (Proposition~5.2).
 \end{enumerate}
 \end{Conjecture}
 
 \begin{rem26}[Conjecture 4.6]\label{r:C46}
-Verified for $PGL(2)$ (no singular part) and for $SL(2)$, where $dI^{\,sing}_\gamma=\tfrac12\Delta\,\delta_{\chi_0}$ and $\chi_0$ is the unramified quadratic character (\S6.2). The precise support condition in~(a) is a guess, and in~(c) the normalizations (the size of $\mathfrak D$, transfer factors) have only been checked for $SL(2)$. Part~(b) relies on [Key] (Chevalley groups; the general unramified case via Steinberg's connectedness theorem for centralizers in $\hat G$) for the triviality of $R$-groups; the implication ``trivial $R$-groups $\Rightarrow$ (R)'' is the conjectural part.
+Verified for $PGL(2)$ (no singular part) and for $SL(2)$, where $dI^{\,sing}_\gamma=\tfrac12\Delta\,\delta_{\chi_0}$ and $\chi_0$ is the unramified quadratic character (\S6.2). The precise support condition in~(a) is a guess, and in~(c) the normalizations (the size of $\mathfrak D$, transfer factors) have only been checked for $SL(2)$. Part~(b) relies on [Ke82] (Chevalley groups; the general unramified case via Steinberg's connectedness theorem for centralizers in $\hat G$) for the triviality of $R$-groups; the implication ``trivial $R$-groups $\Rightarrow$ (R)'' is the conjectural part.
 \end{rem26}
 
 \paragraph{The geometric side.} The Weyl integration formula states that
@@ -857,7 +852,7 @@ Let $f$ and $\phi$ be as in Lemma~4.4. Then
 \begin{equation}\tag{5.1}
 I^\kappa(f,\phi):=\int_{G(F)}\int_{G'(F)}\kappa(g)f(g^{-1}hg)\phi(h)\,dg\,dh=\int_{G(F)}\Phi^\kappa_f(h)\phi(h)\,dh=\int_{G(F)}\Phi^{\kappa^{-1}}_\phi(h)f(h)\,dh.
 \end{equation}
-The last equality follows from the substitution $h\mapsto ghg^{-1}$ followed by $g\mapsto g^{-1}$, which turns $\kappa$ into $\kappa^{-1}$. The interchanges of integration are justified by Lemma~4.4. For $h$ regular elliptic, the properties of $\Phi^\kappa_f$ near the singular set of the centralizer were investigated in [Kaz] (see also [Hen]).
+The last equality follows from the substitution $h\mapsto ghg^{-1}$ followed by $g\mapsto g^{-1}$, which turns $\kappa$ into $\kappa^{-1}$. The interchanges of integration are justified by Lemma~4.4. For $h$ regular elliptic, the properties of $\Phi^\kappa_f$ near the singular set of the centralizer were investigated in [Ka84] (see also [He86]).
 
 Let $S\subset G$ be an elliptic maximal torus and $S'$ its image in $G'$. The $G'(F)$-conjugacy class of a regular $s\in S(F)$ is the union of the $G(F)$-classes of the $x^{-1}sx$, $x\in\mathfrak D(S):=G'(F)/G(F)S'(F)$, a finite abelian group. Hence, with $c_S=\vol(S'(F))/\vol(S(F))$,
 \begin{equation}\tag{5.2}
@@ -899,7 +894,7 @@ where $\iota$ also denotes the induced map $\Thu_H/W_H\to\Thu/W$ on unramified u
 \begin{equation}\tag{5.11}
 \Phi^\kappa_f(\gamma)=\Delta_{H,\kappa}(\gamma_H,\gamma)\,S\Phi^H_{\iota^*f}(\gamma_H),
 \end{equation}
-where $S\Phi^H$ is the \emph{stable} orbital integral on $H(F)$ and $\Delta_{H,\kappa}$ is the Langlands--Shelstad transfer factor [LS]; and $\Phi^\kappa_f(\gamma)=0$ for $\gamma$ not coming from $H$. This is now a theorem. For the unit element and $SL(n)$ it is due to Kazhdan [Kaz] ($\kappa$ of order $n$) and Waldspurger [Wa91]. The extension from the unit element to the whole Hecke algebra is due to Hales [Hal]. The general case is due to Ng\^o [Ngo], combined with Waldspurger's reduction from groups to Lie algebras. (The 1997 text said ``it has been conjectured''.)
+where $S\Phi^H$ is the \emph{stable} orbital integral on $H(F)$ and $\Delta_{H,\kappa}$ is the Langlands--Shelstad transfer factor [LS87]; and $\Phi^\kappa_f(\gamma)=0$ for $\gamma$ not coming from $H$. This is now a theorem. For the unit element and $SL(n)$ it is due to Kazhdan [Ka84] ($\kappa$ of order $n$) and Waldspurger [Wa91]. The extension from the unit element to the whole Hecke algebra is due to Hales [Ha95]. The general case is due to Ng\^o [Ng10], combined with Waldspurger's reduction from groups to Lie algebras. (The 1997 text said ``it has been conjectured''.)
 
 \begin{Proposition}{5.1}
 Let $\kappa$ have order $n$, so $H=\ker N_{E/F}$ is compact. Let $\chi_\kappa\in\Thu/W$ be the image under $\iota$ of the trivial character of $H(F)$; its Satake parameter is the class of $\mathrm{diag}(1,\zeta,\dots,\zeta^{n-1})$ in $PGL(n,\mathbb{C})$, $\zeta$ a primitive $n$-th root of unity. For $\gamma\in G_{\ellr}$ coming from $\gamma_H\in H(F)$,
@@ -1106,23 +1101,23 @@ $n$ & $O_\gamma(f_n)$ & $O_{\gamma'}(f_n)$ & $\frac12\int f_n^\vee I_{st}\,d\mu$
 % =====================================================================
 \section{Route B: the identity from Arthur's local trace formula (new)}
 
-This section explains how (1.2) follows from Arthur's local trace formula [Art4], and serves as an introduction to Arthur's work through this special case. It is a sketch.
+This section explains how (1.2) follows from Arthur's local trace formula [Ar91], and serves as an introduction to Arthur's work through this special case. It is a sketch.
 
 \begin{rem26}[\S7]\label{r:routeB}
-Nothing in this section has been checked against [Art4, Art5] at the level of normalizations: the constants $|W_0^M||W_0^G|^{-1}$, the signs $(-1)^{\dim(A_M/A_G)}$, the measures on the spectral sets, and the identification of $I(\chi,\phi)$ with a weighted character (Conjecture~7.3). The structural statements (which terms survive) use only the definitions and the splitting formulas.
+Nothing in this section has been checked against [Ar91, Ar93] at the level of normalizations: the constants $|W_0^M||W_0^G|^{-1}$, the signs $(-1)^{\dim(A_M/A_G)}$, the measures on the spectral sets, and the identification of $I(\chi,\phi)$ with a weighted character (Conjecture~7.3). The structural statements (which terms survive) use only the definitions and the splitting formulas.
 \end{rem26}
 
-\paragraph{7.1 Arthur's formula.} Let $f=f_1\otimes f_2\in C_c^\infty(G(F)\times G(F))$ act on $L^2(G(F))$ by $R$ as in \S1, with kernel (1.4). Arthur truncates the diagonal integral with a function $u(x,T)$, the characteristic function of a large compact set modulo $A_G$ built from the building, and shows that $J^T(f)=\int_{G(F)/A_G(F)}K_f(x,x)u(x,T)\,dx$ is asymptotic to a polynomial in $T$, whose constant term $J(f)$ has two expansions [Art4]:
+\paragraph{7.1 Arthur's formula.} Let $f=f_1\otimes f_2\in C_c^\infty(G(F)\times G(F))$ act on $L^2(G(F))$ by $R$ as in \S1, with kernel (1.4). Arthur truncates the diagonal integral with a function $u(x,T)$, the characteristic function of a large compact set modulo $A_G$ built from the building, and shows that $J^T(f)=\int_{G(F)/A_G(F)}K_f(x,x)u(x,T)\,dx$ is asymptotic to a polynomial in $T$, whose constant term $J(f)$ has two expansions [Ar91]:
 \[
 \begin{aligned}J(f)&=\sum_{M}\frac{|W_0^M|}{|W_0^G|}(-1)^{\dim(A_M/A_G)}\int_{\Gamma_{\ellr}(M)}J_M(\gamma,f)\,d\gamma\\
 &=\sum_{M}\frac{|W_0^M|}{|W_0^G|}(-1)^{\dim(A_M/A_G)}\int_{\Pi(M)}J_M(\pi,f)\,d\pi.
 \end{aligned}
 \]
-Both sums run over Levi subgroups $M\supseteq M_0$. In the first (geometric) expansion, $\Gamma_{\ellr}(M)$ is the set of elliptic conjugacy classes of $M$, and $J_M(\gamma,f)$ is the weighted orbital integral of $f_1\otimes f_2$ over $\gamma$, with weight $v_M(x_1,x_2)$ given by the $(G,M)$-family $e^{-\lambda(H_P(x_1)-H_{\bar P}(x_2))}$. In the second (spectral) expansion, $\Pi(M)$ is a space of tempered representations of $M$; in [Art5] it is reorganized in terms of the virtual elliptic tempered characters $T_{\ellr}(M)$. $J_M(\pi,f)$ is the weighted character, built from the $(G,M)$-family of normalized intertwining operators $\lambda\mapsto R_{P'|P}(\pi)^{-1}R_{P'|P}(\pi_\lambda)$. For $M=G$ the weights are $1$ and $J_G(\gamma,f)=|D(\gamma)|O_\gamma(f_1)O_\gamma(f_2)$, $J_G(\pi,f)=\tr\pi(f_1)\,\tr\pi^\vee(f_2)$.
+Both sums run over Levi subgroups $M\supseteq M_0$. In the first (geometric) expansion, $\Gamma_{\ellr}(M)$ is the set of elliptic conjugacy classes of $M$, and $J_M(\gamma,f)$ is the weighted orbital integral of $f_1\otimes f_2$ over $\gamma$, with weight $v_M(x_1,x_2)$ given by the $(G,M)$-family $e^{-\lambda(H_P(x_1)-H_{\bar P}(x_2))}$. In the second (spectral) expansion, $\Pi(M)$ is a space of tempered representations of $M$; in [Ar93] it is reorganized in terms of the virtual elliptic tempered characters $T_{\ellr}(M)$. $J_M(\pi,f)$ is the weighted character, built from the $(G,M)$-family of normalized intertwining operators $\lambda\mapsto R_{P'|P}(\pi)^{-1}R_{P'|P}(\pi_\lambda)$. For $M=G$ the weights are $1$ and $J_G(\gamma,f)=|D(\gamma)|O_\gamma(f_1)O_\gamma(f_2)$, $J_G(\pi,f)=\tr\pi(f_1)\,\tr\pi^\vee(f_2)$.
 
 \paragraph{7.2 Specialization: geometric side.} Take $f_1=f\in\Hc(G,K)$ and $f_2=\phi$ supported on $G_{\ellr}$. By Lemma~4.4, $x\mapsto K_f(x,x)$ has compact support modulo $A_G$, so $J^T(f)=I(f,\phi)$ for all large $T$ and $J(f)=I(f,\phi)$. For $M\ne G$ and $\gamma\in\Gamma_{\ellr}(M)$ regular in $G$, $\gamma$ is not elliptic in $G$, so $\phi$ vanishes on its $G$-orbit and $J_M(\gamma,f)=0$. (Singular $\gamma$ contribute a set of measure zero.) The geometric side therefore reduces to the $M=G$ term, which is (4.11).
 
-\paragraph{7.3 Specialization: spectral side.} The weighted characters satisfy a splitting formula [Art6]: $J_M(\pi,f_1\otimes f_2)$ is a sum over pairs $(L_1,L_2)$ of Levi subgroups containing $M$, with coefficients $d_M^G(L_1,L_2)$, of products of weighted characters of $L_1$ applied to (a constant term of) $f_1$ and of $L_2$ applied to $f_2$. Two facts simplify it here.
+\paragraph{7.3 Specialization: spectral side.} The weighted characters satisfy a splitting formula [Ar88]: $J_M(\pi,f_1\otimes f_2)$ is a sum over pairs $(L_1,L_2)$ of Levi subgroups containing $M$, with coefficients $d_M^G(L_1,L_2)$, of products of weighted characters of $L_1$ applied to (a constant term of) $f_1$ and of $L_2$ applied to $f_2$. Two facts simplify it here.
 \begin{itemize}
 \item \emph{$f_1$ spherical.} Normalized intertwining operators fix the spherical vector of an unramified principal series. So the weighted characters of $f_1$ for $L_1\supsetneq M$ vanish, forcing $L_1=M$ and $L_2=G$ ($d^G_M(M,G)=1$). Moreover $\tr\pi(f_1)$ is non-zero only if $\pi$ has a $K\cap M$-fixed vector, i.e.\ $\pi$ is a constituent of an unramified principal series of $M$.
 \item \emph{$\phi$ elliptic.} $\phi$ is cuspidal: $\tr\sigma(\phi)=0$ for every properly induced $\sigma$. So only the elliptic part of the spectrum survives in the $L_2=G$ factor, and the factor is the weighted character $J_M(\pi^\vee,\phi)$.
@@ -1145,27 +1140,33 @@ I(\chi,\phi)\rho(\chi)=(-1)^{\dim(A_0/A_G)}|W|^{-1}J_{M_0}(\chi^{-1},\phi).
 % =====================================================================
 \section{Literature review (new)}
 
-\subsection{Before 1997}
+The paper was published in 1992, so we divide the literature at that date: \S8.1 is the background available when the paper was written, and \S8.2 is what came after (including the work that appeared between the published version and the 1997 corrected version).
 
-\paragraph{Spherical harmonic analysis.} The spherical function and the Hecke algebra of a $p$-adic group go back to Satake [Sat], who identified $\Hc(G,K)$ with $W$-invariant functions on the torus of unramified characters (the Satake isomorphism). Macdonald [M] found the explicit formula for zonal spherical functions (Lemma~2.1) and the spherical Plancherel measure (Lemma~2.2). Casselman [Cas1] re-derived Macdonald's formula from intertwining operators and the asymptotics of matrix coefficients, which are developed in his notes [Cas2]; Cartier's survey [Car] collects the unramified theory used throughout this paper. The geometric lemma of Bernstein and Zelevinsky [BZ] describes Jacquet modules of induced representations. Harish-Chandra's theory of admissible invariant distributions [HC] supplies the local integrability of characters and the $G$-admissibility used in \S1. Keys [Key] determined the $R$-groups of unramified principal series of Chevalley groups.
+\subsection{Before 1992}
 
-\paragraph{Arthur's program.} Arthur's trace formula [Art3] and its invariant form [Art2, Art6] introduced truncation, $(G,M)$-families and weighted orbital integrals and characters. ``Towards a local trace formula'' [Art1] and ``A local trace formula'' [Art4] apply these ideas to the regular representation of $G(F)\times G(F)$ on $L^2(G(F))$, producing the identity used in \S7. The elliptic part of harmonic analysis was developed by Kazhdan [K] (cuspidal geometry, the elliptic pairing and density), Bernstein--Deligne--Kazhdan [BDK] (trace Paley--Wiener theorem), and Arthur [Art5] (elliptic tempered characters, and the invariant local trace formula in elliptic form). Arthur [Art7] also expressed characters of supercuspidal representations as weighted orbital integrals, a precursor of the cuspidal specialization in \S7.3.
+\paragraph{Spherical harmonic analysis.} The spherical function and the Hecke algebra of a $p$-adic group go back to Satake [Sa63], who identified $\Hc(G,K)$ with $W$-invariant functions on the torus of unramified characters (the Satake isomorphism). Macdonald [Ma71] found the explicit formula for zonal spherical functions (Lemma~2.1) and the spherical Plancherel measure (Lemma~2.2). Casselman [Cas80] re-derived Macdonald's formula from intertwining operators and the asymptotics of matrix coefficients, which are developed in his notes [Cas95] (first circulated in 1974). Cartier's survey [Ca79] collects the unramified theory used throughout this paper. The geometric lemma of Bernstein and Zelevinsky [BZ77] describes Jacquet modules of induced representations. Harish-Chandra's theory of admissible invariant distributions [HC78] supplies the local integrability of characters and the $G$-admissibility used in \S1. Keys [Ke82] determined the $R$-groups of unramified principal series of Chevalley groups.
 
-\paragraph{Spherical orbital integrals.} Explicit spherical orbital integrals appear in Langlands' base change for $GL(2)$ [Lan] and in Kottwitz's computation for $GL(3)$ [Kot80]. Waldspurger [W] computed the spectral expansion of spherical orbital integrals for $GL(N)$, by the method followed here; his Shalika germ paper [Wald] and Assem's work on unipotent orbital integrals [A] give complementary information near the identity.
+\paragraph{Arthur's program.} Arthur's trace formula [Ar78] and its invariant form [Ar81, Ar88] introduced truncation, $(G,M)$-families, and weighted orbital integrals and characters. Arthur [Ar87] expressed characters of supercuspidal representations as weighted orbital integrals, a precursor of the cuspidal specialization in \S7.3. ``Towards a local trace formula'' [Ar89] and ``A local trace formula'' [Ar91] apply these ideas to the regular representation of $G(F)\times G(F)$ on $L^2(G(F))$, producing the identity used in \S7. The elliptic part of harmonic analysis was developed by Kazhdan [Ka86] (cuspidal geometry, the elliptic pairing and density) and Bernstein--Deligne--Kazhdan [BDK86] (trace Paley--Wiener theorem).
 
-\paragraph{Endoscopy.} Labesse and Langlands [LL] worked out stable conjugacy, $L$-indistinguishability and $\kappa$-orbital integrals for $SL(2)$; the atom of \S6.2 is a shadow of their theory. Kottwitz developed rational and stable conjugacy [Kot82] and the elliptic singular terms of the stable trace formula [Kot86]. Langlands and Shelstad defined transfer factors [LS]. The fundamental lemma for the unit element of $SL(n)$ was proved by Kazhdan [Kaz] for $\kappa$ of order $n$ and by Waldspurger [Wa91] in general; Clozel [Clo] and Labesse [Lab] treated stable base change; Hales [Hal] reduced the fundamental lemma for the whole Hecke algebra to the unit element. Henniart's work on the cyclic case of the local Langlands conjecture [Hen] uses the $\kappa$-orbital integrals of $SL(n)$ considered in \S5. Waldspurger's local trace formula for $p$-adic Lie algebras [Wa95] is the Lie-algebra analogue of [Art4]; his ICM address [Wa] surveys the comparison of orbital integrals as it stood in 1994.
+\paragraph{Spherical orbital integrals.} Explicit spherical orbital integrals appear in Langlands' base change for $GL(2)$ [La80] and in Kottwitz's computation for $GL(3)$ [Ko80]. Waldspurger [Wa89a] computed the spectral expansion of spherical orbital integrals for $GL(N)$, by the method followed here. His Shalika germ paper [Wa89b] and Assem's work on unipotent orbital integrals [As91] give complementary information near the identity.
 
-\subsection{After 1997}
+\paragraph{Endoscopy.} Labesse and Langlands [LL79] worked out stable conjugacy, $L$-indistinguishability and $\kappa$-orbital integrals for $SL(2)$; the atom of \S6.2 is a shadow of their theory. Kottwitz developed rational and stable conjugacy [Ko82] and the elliptic singular terms of the stable trace formula [Ko86]. Langlands and Shelstad defined transfer factors [LS87]. The fundamental lemma for the unit element of $SL(n)$ was proved by Kazhdan [Ka84] for $\kappa$ of order $n$ and by Waldspurger [Wa91] in general. Clozel [Cl90] and Labesse [La90] treated stable base change. Henniart's work on the cyclic case of the local Langlands conjecture [He86] uses the $\kappa$-orbital integrals of $SL(n)$ considered in \S5.
 
-\paragraph{Transfer and the fundamental lemma.} Waldspurger showed that the fundamental lemma implies transfer [Wa97]; Court\`es proved transfer for $SL(n)$-type groups [Cou]. Laumon and Ng\^o proved the fundamental lemma for unitary groups [LN], and Ng\^o proved it in general for Lie algebras [Ngo]. Combined with Waldspurger's transfer from Lie algebras to groups and change of characteristic, and with [Hal], this makes (5.11) a theorem. Statements and surveys: Hales [Hal05], Kottwitz [Kot05]. For twisted endoscopy, Lemaire, M\oe glin and Waldspurger reduced the fundamental lemma to unit elements [LMW], and M\oe glin and Waldspurger developed the twisted local trace formula [MW].
+\paragraph{Lattice points.} The combinatorial input of \S3 is Brion's theorem [Br88] on generating functions of lattice points in rational polytopes.
 
-\paragraph{Elliptic theory via the building.} Schneider and Stuhler [SS] constructed Euler--Poincar\'e functions from the Bruhat--Tits building and identified their orbital integrals with characters on the elliptic set. Reeder [Ree] related the Euler--Poincar\'e pairing of Iwahori-spherical representations to elliptic representations of Weyl groups. Opdam and Solleveld [OS] computed Ext groups of tempered representations of affine Hecke algebras and recovered Arthur's formula for the elliptic pairing. These results bear directly on the singular part in Conjecture~4.6: the elliptic tempered virtual characters with Iwahori-fixed (in particular $K$-fixed) vectors are exactly what Reeder and Opdam--Solleveld classify.
+\subsection{After 1992}
 
-\paragraph{The Plancherel formula.} Waldspurger's exposition of Harish-Chandra's Plancherel formula [Wa03] gives complete proofs of the harmonic analysis behind \S7. A new edition of Macdonald's notes, with A.-M.~Aubert, has appeared [MA].
+\paragraph{Elliptic harmonic analysis.} Arthur's paper on elliptic tempered characters [Ar93] introduced the virtual characters $T_{\ellr}(M)$ and put the local trace formula in its invariant, elliptic form. This is the form used in \S7.3, and it explains the singular part of Conjecture~4.6. Waldspurger's local trace formula for $p$-adic Lie algebras [Wa95a] is the Lie-algebra analogue of [Ar91]. His ICM address [Wa95b] surveys the comparison of orbital integrals as it stood in 1994.
 
-\paragraph{Local relative trace formulas.} The local trace formula has been generalized to relative settings: Feigon [Fei] and Delorme--Harinck [DH] for $PGL(2)$, and Beuzart-Plessis [BP] for the Gan--Gross--Prasad conjecture, following Waldspurger's work on orthogonal groups.
+\paragraph{Transfer and the fundamental lemma.} Hales [Ha95] reduced the fundamental lemma for the whole Hecke algebra to the unit element. Waldspurger showed that the fundamental lemma implies transfer [Wa97], and Court\`es proved transfer for $SL(n)$-type groups [Co97]. Laumon and Ng\^o proved the fundamental lemma for unitary groups [LN08], and Ng\^o proved it in general for Lie algebras [Ng10]. Combined with Waldspurger's transfer from Lie algebras to groups and change of characteristic, and with [Ha95], this makes (5.11) a theorem. For statements and surveys, see Hales [Ha05] and Kottwitz [Ko05]. For twisted endoscopy, Lemaire, M\oe glin and Waldspurger reduced the fundamental lemma to unit elements [LMW18], and M\oe glin and Waldspurger developed the twisted local trace formula [MW18].
 
-\paragraph{Lattice points.} The combinatorial input of \S3 is Brion's theorem [Bri] (see Barvinok [Bar]) on generating functions of lattice points in rational polytopes.
+\paragraph{Elliptic theory via the building.} Schneider and Stuhler [SS97] constructed Euler--Poincar\'e functions from the Bruhat--Tits building and identified their orbital integrals with characters on the elliptic set. Reeder [Re01] related the Euler--Poincar\'e pairing of Iwahori-spherical representations to elliptic representations of Weyl groups. Opdam and Solleveld [OS13] computed Ext groups of tempered representations of affine Hecke algebras and recovered Arthur's formula for the elliptic pairing. These results bear directly on the singular part in Conjecture~4.6: the elliptic tempered virtual characters with Iwahori-fixed (in particular $K$-fixed) vectors are exactly what Reeder and Opdam--Solleveld classify.
+
+\paragraph{The Plancherel formula.} Waldspurger's exposition of Harish-Chandra's Plancherel formula [Wa03] gives complete proofs of the harmonic analysis behind \S7. A new edition of Macdonald's notes, with A.-M.~Aubert, has appeared [MA26].
+
+\paragraph{Local relative trace formulas.} The local trace formula has been generalized to relative settings: Feigon [Fe12] and Delorme--Harinck [DH17] for $PGL(2)$, and Beuzart-Plessis [BP20] for the Gan--Gross--Prasad conjecture, following Waldspurger's work on orthogonal groups.
+
+\paragraph{Lattice points.} Barvinok's book [Ba08] is a modern account of Brion's theorem and its algorithmic uses.
 
 \begin{rem26}[literature]
 The bibliographic data below were checked against publisher, Numdam/EuDML or library records in November 2026, except where marked ``(not verified)''. The review is not exhaustive. In particular, we have not searched systematically for later explicit computations of spherical orbital integrals of $GL(n)$ or $SL(n)$ in terms of the building, which would be the natural comparison for \S6.
@@ -1203,15 +1204,15 @@ The bibliographic data below were checked against publisher, Numdam/EuDML or lib
 \item[$(G,M)$-family; $(G,A)^\sim$-family] Families of functions indexed by $\cP(M)$ that agree on common walls; sums $\sum_Pc_P/\theta_P$ are then smooth (Lemmas~2.6--2.7). The $\sim$-version is the periodic analogue on $\Thu$.
 \item[Truncation parameter $T$; $\cA_A(T)$; $G(T)$] $T\in X_*(A)$ regular dominant; $\cA_A(T)$ is the set of dominant $\lambda$ below $T$ in the sense of (3.3), and $G(T)=\bigcup Ka_\lambda K$.
 \item[Vertex decomposition (Brion)] The generating function of lattice points of a rational polytope is the sum, over its vertices, of the generating functions of the tangent cones (Lemma~3.5A).
-\item[Langlands' combinatorial lemma; $\Gamma^G_M$] The identity $\sum_{Q\supseteq P}(-1)^{\dim\fa_Q^G}\tau_P^Q\hat\tau_Q=\delta_{PG}$ and its relatives [Art3]; used in the 1997 proof of Proposition~3.6.
+\item[Langlands' combinatorial lemma; $\Gamma^G_M$] The identity $\sum_{Q\supseteq P}(-1)^{\dim\fa_Q^G}\tau_P^Q\hat\tau_Q=\delta_{PG}$ and its relatives [Ar78, CLL84]; used in the 1997 proof of Proposition~3.6.
 \item[Hypothesis (R)] Smoothness of the oscillatory coefficients of the truncated kernel times the Plancherel density (\S4.3).
 \item[$R$-group] For unramified $\chi$, the quotient of the stabilizer $W_\chi$ by its subgroup generated by the reflections $s_\alpha$ with $\chi(a_\alpha)=1$. It governs the reducibility of $i_{G,A}(\chi)$ for unitary $\chi$.
-\item[Elliptic tempered (virtual) character] A virtual tempered character not in the span of properly induced ones (Arthur [Art5]); for $SL(2)$, $\pi^+-\pi^-$ at $\chi_0$.
-\item[$G$-admissible distribution] An invariant distribution satisfying Harish-Chandra's finiteness condition [HC, \S14], and hence represented by a locally integrable function on $G_{reg}$.
+\item[Elliptic tempered (virtual) character] A virtual tempered character not in the span of properly induced ones (Arthur [Ar93]); for $SL(2)$, $\pi^+-\pi^-$ at $\chi_0$.
+\item[$G$-admissible distribution] An invariant distribution satisfying Harish-Chandra's finiteness condition [HC78, \S14], and hence represented by a locally integrable function on $G_{reg}$.
 \item[Cuspidal function] $\phi$ with $\tr\sigma(\phi)=0$ for all properly induced $\sigma$; e.g.\ any $\phi$ supported on $G_{\ellr}$.
 \item[Weighted orbital integral; weighted character] Orbital integrals and characters weighted by the $(G,M)$-families $v_M(x)$, resp.\ normalized intertwining operators (\S7).
 \item[Endoscopic group] For $SL(n)$ and $\kappa$ of order $m$, $H_m=\ker(N_{E/F}\circ\det)\subset\mathrm{Res}_{E/F}GL(n/m)$, with an $L$-embedding ${}^LH\to{}^LG$ (\S5).
-\item[Transfer factor $\Delta_{H,\kappa}$] The Langlands--Shelstad factor relating $\kappa$-orbital integrals on $G$ to stable orbital integrals on $H$ [LS].
+\item[Transfer factor $\Delta_{H,\kappa}$] The Langlands--Shelstad factor relating $\kappa$-orbital integrals on $G$ to stable orbital integrals on $H$ [LS87].
 \item[Fundamental lemma] The identity (5.11) for spherical functions, $f_H=\iota^*f$; now a theorem.
 \end{description}
 
@@ -1241,61 +1242,61 @@ Theorem 4.5 & (a) unconditional, (b) under (R); new Conjecture~4.6\\
 \end{center}
 
 % =====================================================================
-\begin{thebibliography}{MA26}
-\bibitem[A]{A} M.~Assem, \emph{Some results on unipotent orbital integrals}, Compositio Math.\ \textbf{78} (1991), 37--78.
-\bibitem[Art1]{Art1} J.~Arthur, \emph{Towards a local trace formula}, in: Algebraic Analysis, Geometry, and Number Theory, Johns Hopkins Univ.\ Press, Baltimore, 1989, 1--24.
-\bibitem[Art2]{Art2} J.~Arthur, \emph{The trace formula in invariant form}, Ann.\ of Math.\ \textbf{114} (1981), 1--74.
-\bibitem[Art3]{Art3} J.~Arthur, \emph{A trace formula for reductive groups I: terms associated to classes in $G(\mathbb{Q})$}, Duke Math.\ J.\ \textbf{45} (1978), 911--952.
-\bibitem[Art4]{Art4} J.~Arthur, \emph{A local trace formula}, Publ.\ Math.\ IH\'ES \textbf{73} (1991), 5--96.
-\bibitem[Art5]{Art5} J.~Arthur, \emph{On elliptic tempered characters}, Acta Math.\ \textbf{171} (1993), 73--138.
-\bibitem[Art6]{Art6} J.~Arthur, \emph{The invariant trace formula I. Local theory}, J.\ Amer.\ Math.\ Soc.\ \textbf{1} (1988), 323--383.
-\bibitem[Art7]{Art7} J.~Arthur, \emph{The characters of supercuspidal representations as weighted orbital integrals}, Proc.\ Indian Acad.\ Sci.\ Math.\ Sci.\ \textbf{97} (1987), 3--19. (not verified)
-\bibitem[Bar]{Bar} A.~Barvinok, \emph{Integer Points in Polyhedra}, Zurich Lectures in Advanced Mathematics, European Math.\ Soc., Z\"urich, 2008.
-\bibitem[BDK]{BDK} J.~Bernstein, P.~Deligne, D.~Kazhdan, \emph{Trace Paley--Wiener theorem for reductive $p$-adic groups}, J.\ Analyse Math.\ \textbf{47} (1986), 180--192.
-\bibitem[BP]{BP} R.~Beuzart-Plessis, \emph{A local trace formula for the Gan--Gross--Prasad conjecture for unitary groups: the archimedean case}, Ast\'erisque \textbf{418} (2020).
-\bibitem[Bri]{Bri} M.~Brion, \emph{Points entiers dans les poly\`edres convexes}, Ann.\ Sci.\ \'Ecole Norm.\ Sup.\ (4) \textbf{21} (1988), 653--663.
-\bibitem[BZ]{BZ} I.~N.~Bernstein, A.~V.~Zelevinsky, \emph{Induced representations of reductive $p$-adic groups.\ I}, Ann.\ Sci.\ \'Ecole Norm.\ Sup.\ (4) \textbf{10} (1977), 441--472.
-\bibitem[Car]{Car} P.~Cartier, \emph{Representations of $p$-adic groups: a survey}, in: Automorphic Forms, Representations and $L$-functions (Corvallis), Proc.\ Sympos.\ Pure Math.\ \textbf{33}, Part~1, Amer.\ Math.\ Soc., 1979, 111--155.
-\bibitem[Cas1]{Cas1} W.~Casselman, \emph{The unramified principal series of $p$-adic groups I.\ The spherical function}, Compositio Math.\ \textbf{40} (1980), 387--406.
-\bibitem[Cas2]{Cas2} W.~Casselman, \emph{Introduction to the theory of admissible representations of $p$-adic reductive groups}, unpublished notes, 1974; revised draft 1995.
-\bibitem[Clo]{Clo} L.~Clozel, \emph{The fundamental lemma for stable base change}, Duke Math.\ J.\ \textbf{61} (1990), 255--302. (not verified)
-\bibitem[Cou]{Cou} F.~Court\`es, \emph{Sur le transfert des int\'egrales orbitales pour les groupes lin\'eaires (cas $p$-adique)}, M\'em.\ Soc.\ Math.\ France (N.S.) \textbf{69} (1997).
-\bibitem[DH]{DH} P.~Delorme, P.~Harinck, \emph{A local relative trace formula for $PGL(2)$}, Pacific J.\ Math.\ \textbf{291} (2017), no.~1.
-\bibitem[Fei]{Fei} B.~Feigon, \emph{A relative trace formula for $PGL(2)$ in the local setting}, Pacific J.\ Math.\ \textbf{260} (2012), no.~2.
-\bibitem[Hal]{Hal} T.~C.~Hales, \emph{On the fundamental lemma for standard endoscopy: reduction to unit elements}, Canad.\ J.\ Math.\ \textbf{47} (1995), 974--994.
-\bibitem[Hal05]{Hal05} T.~C.~Hales, \emph{A statement of the fundamental lemma}, in: Harmonic Analysis, the Trace Formula, and Shimura Varieties, Clay Math.\ Proc.\ \textbf{4}, Amer.\ Math.\ Soc., 2005, 643--658.
-\bibitem[HC]{HC} Harish-Chandra, \emph{Admissible invariant distributions on reductive $p$-adic groups}, Queen's Papers in Pure and Appl.\ Math.\ \textbf{48} (1978), 281--347; revised edition with notes by S.~DeBacker and P.~J.~Sally, Jr., Univ.\ Lecture Ser.\ \textbf{16}, Amer.\ Math.\ Soc., 1999.
-\bibitem[Hen]{Hen} G.~Henniart, \emph{On the local Langlands conjecture for $GL(n)$: the cyclic case}, Ann.\ of Math.\ \textbf{123} (1986), 145--203.
-\bibitem[J]{J} D.~Joyner, \emph{On the support of an elliptic orbital integral}, cited as ``in preparation'' in 1997; not published.
-\bibitem[K]{K} D.~Kazhdan, \emph{Cuspidal geometry of $p$-adic groups}, J.\ Analyse Math.\ \textbf{47} (1986), 1--36.
-\bibitem[Kaz]{Kaz} D.~Kazhdan, \emph{On lifting}, in: Lie Group Representations II, Lecture Notes in Math.\ \textbf{1041}, Springer, 1984, 209--249.
-\bibitem[Key]{Key} C.~D.~Keys, \emph{On the decomposition of reducible principal series representations of $p$-adic Chevalley groups}, Pacific J.\ Math.\ \textbf{101} (1982), 351--388.
-\bibitem[Kot80]{Kot80} R.~E.~Kottwitz, \emph{Orbital integrals on $GL_3$}, Amer.\ J.\ Math.\ \textbf{102} (1980), 327--384. (not verified)
-\bibitem[Kot82]{Kot82} R.~E.~Kottwitz, \emph{Rational conjugacy classes in reductive groups}, Duke Math.\ J.\ \textbf{49} (1982), 785--806. (not verified)
-\bibitem[Kot86]{Kot86} R.~E.~Kottwitz, \emph{Stable trace formula: elliptic singular terms}, Math.\ Ann.\ \textbf{275} (1986), 365--399. (not verified)
-\bibitem[Kot05]{Kot05} R.~E.~Kottwitz, \emph{Harmonic analysis on reductive $p$-adic groups and Lie algebras}, in: Harmonic Analysis, the Trace Formula, and Shimura Varieties, Clay Math.\ Proc.\ \textbf{4}, Amer.\ Math.\ Soc., 2005, 393--522.
-\bibitem[Lab]{Lab} J.-P.~Labesse, \emph{Fonctions \'el\'ementaires et lemme fondamental pour le changement de base stable}, Duke Math.\ J.\ \textbf{61} (1990), 519--530.
-\bibitem[Lan]{Lan} R.~P.~Langlands, \emph{Base Change for $GL(2)$}, Ann.\ of Math.\ Stud.\ \textbf{96}, Princeton Univ.\ Press, 1980.
-\bibitem[LL]{LL} J.-P.~Labesse, R.~P.~Langlands, \emph{$L$-indistinguishability for $SL(2)$}, Canad.\ J.\ Math.\ \textbf{31} (1979), 726--785.
-\bibitem[LMW]{LMW} B.~Lemaire, C.~M\oe glin, J.-L.~Waldspurger, \emph{Le lemme fondamental pour l'endoscopie tordue: r\'eduction aux \'el\'ements unit\'es}, Ann.\ Sci.\ \'Ec.\ Norm.\ Sup\'er.\ (4) \textbf{51} (2018), 281--369.
-\bibitem[LN]{LN} G.~Laumon, B.~C.~Ng\^o, \emph{Le lemme fondamental pour les groupes unitaires}, Ann.\ of Math.\ \textbf{168} (2008), 477--573.
-\bibitem[LS]{LS} R.~P.~Langlands, D.~Shelstad, \emph{On the definition of transfer factors}, Math.\ Ann.\ \textbf{278} (1987), 219--271. (not verified)
-\bibitem[M]{M} I.~G.~Macdonald, \emph{Spherical Functions on a Group of $p$-adic Type}, Publ.\ Ramanujan Inst.\ \textbf{2}, Univ.\ of Madras, 1971.
-\bibitem[MA26]{MA} I.~G.~Macdonald, A.-M.~Aubert, \emph{Spherical Functions on a Group of $p$-adic Type}, new edition, Lecture Notes in Math.\ \textbf{2392}, Springer, 2026.
-\bibitem[Morn]{Morn} L.~Clozel, J.-P.~Labesse, R.~P.~Langlands, \emph{Morning Seminar on the Trace Formula}, IAS, 1983--84; published as J.-P.~Labesse, J.-L.~Waldspurger, \emph{La formule des traces tordue d'apr\`es le Friday Morning Seminar}, CRM Monograph Ser.\ \textbf{31}, Amer.\ Math.\ Soc., 2013.
-\bibitem[MW]{MW} C.~M\oe glin, J.-L.~Waldspurger, \emph{La formule des traces locale tordue}, Mem.\ Amer.\ Math.\ Soc.\ \textbf{251}, no.~1198 (2018).
-\bibitem[Ngo]{Ngo} B.~C.~Ng\^o, \emph{Le lemme fondamental pour les alg\`ebres de Lie}, Publ.\ Math.\ IH\'ES \textbf{111} (2010), 1--169.
-\bibitem[OS]{OS} E.~Opdam, M.~Solleveld, \emph{Extensions of tempered representations}, Geom.\ Funct.\ Anal.\ \textbf{23} (2013). (not verified)
-\bibitem[Ree]{Ree} M.~Reeder, \emph{Euler--Poincar\'e pairings and elliptic representations of Weyl groups and $p$-adic groups}, Compositio Math.\ \textbf{129} (2001), 149--182.
-\bibitem[Sat]{Sat} I.~Satake, \emph{Theory of spherical functions on reductive algebraic groups over $\mathfrak p$-adic fields}, Publ.\ Math.\ IH\'ES \textbf{18} (1963), 5--69. (not verified)
-\bibitem[SS]{SS} P.~Schneider, U.~Stuhler, \emph{Representation theory and sheaves on the Bruhat--Tits building}, Publ.\ Math.\ IH\'ES \textbf{85} (1997), 97--191.
-\bibitem[W]{W} J.-L.~Waldspurger, \emph{Int\'egrales orbitales sph\'eriques pour $GL(N)$ sur un corps $p$-adique}, Ast\'erisque \textbf{171--172} (1989), 279--337.
-\bibitem[Wa]{Wa} J.-L.~Waldspurger, \emph{Comparaison d'int\'egrales orbitales pour des groupes $p$-adiques}, Proc.\ ICM Z\"urich 1994, Birkh\"auser, 1995.
+\begin{thebibliography}{LMW18}
+\bibitem[Ar78]{Ar78} J.~Arthur, \emph{A trace formula for reductive groups I: terms associated to classes in $G(\mathbb{Q})$}, Duke Math.\ J.\ \textbf{45} (1978), 911--952.
+\bibitem[Ar81]{Ar81} J.~Arthur, \emph{The trace formula in invariant form}, Ann.\ of Math.\ \textbf{114} (1981), 1--74.
+\bibitem[Ar87]{Ar87} J.~Arthur, \emph{The characters of supercuspidal representations as weighted orbital integrals}, Proc.\ Indian Acad.\ Sci.\ Math.\ Sci.\ \textbf{97} (1987), 3--19. (not verified)
+\bibitem[Ar88]{Ar88} J.~Arthur, \emph{The invariant trace formula I. Local theory}, J.\ Amer.\ Math.\ Soc.\ \textbf{1} (1988), 323--383.
+\bibitem[Ar89]{Ar89} J.~Arthur, \emph{Towards a local trace formula}, in: Algebraic Analysis, Geometry, and Number Theory, Johns Hopkins Univ.\ Press, Baltimore, 1989, 1--24.
+\bibitem[Ar91]{Ar91} J.~Arthur, \emph{A local trace formula}, Publ.\ Math.\ IH\'ES \textbf{73} (1991), 5--96.
+\bibitem[Ar93]{Ar93} J.~Arthur, \emph{On elliptic tempered characters}, Acta Math.\ \textbf{171} (1993), 73--138.
+\bibitem[As91]{As91} M.~Assem, \emph{Some results on unipotent orbital integrals}, Compositio Math.\ \textbf{78} (1991), 37--78.
+\bibitem[Ba08]{Ba08} A.~Barvinok, \emph{Integer Points in Polyhedra}, Zurich Lectures in Advanced Mathematics, European Math.\ Soc., Z\"urich, 2008.
+\bibitem[BDK86]{BDK86} J.~Bernstein, P.~Deligne, D.~Kazhdan, \emph{Trace Paley--Wiener theorem for reductive $p$-adic groups}, J.\ Analyse Math.\ \textbf{47} (1986), 180--192.
+\bibitem[BP20]{BP20} R.~Beuzart-Plessis, \emph{A local trace formula for the Gan--Gross--Prasad conjecture for unitary groups: the archimedean case}, Ast\'erisque \textbf{418} (2020).
+\bibitem[Br88]{Br88} M.~Brion, \emph{Points entiers dans les poly\`edres convexes}, Ann.\ Sci.\ \'Ecole Norm.\ Sup.\ (4) \textbf{21} (1988), 653--663.
+\bibitem[BZ77]{BZ77} I.~N.~Bernstein, A.~V.~Zelevinsky, \emph{Induced representations of reductive $p$-adic groups.\ I}, Ann.\ Sci.\ \'Ecole Norm.\ Sup.\ (4) \textbf{10} (1977), 441--472.
+\bibitem[Ca79]{Ca79} P.~Cartier, \emph{Representations of $p$-adic groups: a survey}, in: Automorphic Forms, Representations and $L$-functions (Corvallis), Proc.\ Sympos.\ Pure Math.\ \textbf{33}, Part~1, Amer.\ Math.\ Soc., 1979, 111--155.
+\bibitem[Cas80]{Cas80} W.~Casselman, \emph{The unramified principal series of $p$-adic groups I.\ The spherical function}, Compositio Math.\ \textbf{40} (1980), 387--406.
+\bibitem[Cas95]{Cas95} W.~Casselman, \emph{Introduction to the theory of admissible representations of $p$-adic reductive groups}, unpublished notes, 1974; revised draft 1995.
+\bibitem[Cl90]{Cl90} L.~Clozel, \emph{The fundamental lemma for stable base change}, Duke Math.\ J.\ \textbf{61} (1990), 255--302. (not verified)
+\bibitem[CLL84]{CLL84} L.~Clozel, J.-P.~Labesse, R.~P.~Langlands, \emph{Morning Seminar on the Trace Formula}, IAS, 1983--84; published as J.-P.~Labesse, J.-L.~Waldspurger, \emph{La formule des traces tordue d'apr\`es le Friday Morning Seminar}, CRM Monograph Ser.\ \textbf{31}, Amer.\ Math.\ Soc., 2013.
+\bibitem[Co97]{Co97} F.~Court\`es, \emph{Sur le transfert des int\'egrales orbitales pour les groupes lin\'eaires (cas $p$-adique)}, M\'em.\ Soc.\ Math.\ France (N.S.) \textbf{69} (1997).
+\bibitem[DH17]{DH17} P.~Delorme, P.~Harinck, \emph{A local relative trace formula for $PGL(2)$}, Pacific J.\ Math.\ \textbf{291} (2017), no.~1.
+\bibitem[Fe12]{Fe12} B.~Feigon, \emph{A relative trace formula for $PGL(2)$ in the local setting}, Pacific J.\ Math.\ \textbf{260} (2012), no.~2.
+\bibitem[Ha95]{Ha95} T.~C.~Hales, \emph{On the fundamental lemma for standard endoscopy: reduction to unit elements}, Canad.\ J.\ Math.\ \textbf{47} (1995), 974--994.
+\bibitem[Ha05]{Ha05} T.~C.~Hales, \emph{A statement of the fundamental lemma}, in: Harmonic Analysis, the Trace Formula, and Shimura Varieties, Clay Math.\ Proc.\ \textbf{4}, Amer.\ Math.\ Soc., 2005, 643--658.
+\bibitem[HC78]{HC78} Harish-Chandra, \emph{Admissible invariant distributions on reductive $p$-adic groups}, Queen's Papers in Pure and Appl.\ Math.\ \textbf{48} (1978), 281--347; revised edition with notes by S.~DeBacker and P.~J.~Sally, Jr., Univ.\ Lecture Ser.\ \textbf{16}, Amer.\ Math.\ Soc., 1999.
+\bibitem[He86]{He86} G.~Henniart, \emph{On the local Langlands conjecture for $GL(n)$: the cyclic case}, Ann.\ of Math.\ \textbf{123} (1986), 145--203.
+\bibitem[Jo97]{Jo97} D.~Joyner, \emph{On the support of an elliptic orbital integral}, announced as ``in preparation'' in the 1997 version; never written up or published.
+\bibitem[Ka84]{Ka84} D.~Kazhdan, \emph{On lifting}, in: Lie Group Representations II, Lecture Notes in Math.\ \textbf{1041}, Springer, 1984, 209--249.
+\bibitem[Ka86]{Ka86} D.~Kazhdan, \emph{Cuspidal geometry of $p$-adic groups}, J.\ Analyse Math.\ \textbf{47} (1986), 1--36.
+\bibitem[Ke82]{Ke82} C.~D.~Keys, \emph{On the decomposition of reducible principal series representations of $p$-adic Chevalley groups}, Pacific J.\ Math.\ \textbf{101} (1982), 351--388.
+\bibitem[Ko80]{Ko80} R.~E.~Kottwitz, \emph{Orbital integrals on $GL_3$}, Amer.\ J.\ Math.\ \textbf{102} (1980), 327--384. (not verified)
+\bibitem[Ko82]{Ko82} R.~E.~Kottwitz, \emph{Rational conjugacy classes in reductive groups}, Duke Math.\ J.\ \textbf{49} (1982), 785--806. (not verified)
+\bibitem[Ko86]{Ko86} R.~E.~Kottwitz, \emph{Stable trace formula: elliptic singular terms}, Math.\ Ann.\ \textbf{275} (1986), 365--399. (not verified)
+\bibitem[Ko05]{Ko05} R.~E.~Kottwitz, \emph{Harmonic analysis on reductive $p$-adic groups and Lie algebras}, in: Harmonic Analysis, the Trace Formula, and Shimura Varieties, Clay Math.\ Proc.\ \textbf{4}, Amer.\ Math.\ Soc., 2005, 393--522.
+\bibitem[La80]{La80} R.~P.~Langlands, \emph{Base Change for $GL(2)$}, Ann.\ of Math.\ Stud.\ \textbf{96}, Princeton Univ.\ Press, 1980.
+\bibitem[La90]{La90} J.-P.~Labesse, \emph{Fonctions \'el\'ementaires et lemme fondamental pour le changement de base stable}, Duke Math.\ J.\ \textbf{61} (1990), 519--530.
+\bibitem[LL79]{LL79} J.-P.~Labesse, R.~P.~Langlands, \emph{$L$-indistinguishability for $SL(2)$}, Canad.\ J.\ Math.\ \textbf{31} (1979), 726--785.
+\bibitem[LMW18]{LMW18} B.~Lemaire, C.~M\oe glin, J.-L.~Waldspurger, \emph{Le lemme fondamental pour l'endoscopie tordue: r\'eduction aux \'el\'ements unit\'es}, Ann.\ Sci.\ \'Ec.\ Norm.\ Sup\'er.\ (4) \textbf{51} (2018), 281--369.
+\bibitem[LN08]{LN08} G.~Laumon, B.~C.~Ng\^o, \emph{Le lemme fondamental pour les groupes unitaires}, Ann.\ of Math.\ \textbf{168} (2008), 477--573.
+\bibitem[LS87]{LS87} R.~P.~Langlands, D.~Shelstad, \emph{On the definition of transfer factors}, Math.\ Ann.\ \textbf{278} (1987), 219--271. (not verified)
+\bibitem[Ma71]{Ma71} I.~G.~Macdonald, \emph{Spherical Functions on a Group of $p$-adic Type}, Publ.\ Ramanujan Inst.\ \textbf{2}, Univ.\ of Madras, 1971.
+\bibitem[MA26]{MA26} I.~G.~Macdonald, A.-M.~Aubert, \emph{Spherical Functions on a Group of $p$-adic Type}, new edition, Lecture Notes in Math.\ \textbf{2392}, Springer, 2026.
+\bibitem[MW18]{MW18} C.~M\oe glin, J.-L.~Waldspurger, \emph{La formule des traces locale tordue}, Mem.\ Amer.\ Math.\ Soc.\ \textbf{251}, no.~1198 (2018).
+\bibitem[Ng10]{Ng10} B.~C.~Ng\^o, \emph{Le lemme fondamental pour les alg\`ebres de Lie}, Publ.\ Math.\ IH\'ES \textbf{111} (2010), 1--169.
+\bibitem[OS13]{OS13} E.~Opdam, M.~Solleveld, \emph{Extensions of tempered representations}, Geom.\ Funct.\ Anal.\ \textbf{23} (2013). (not verified)
+\bibitem[Re01]{Re01} M.~Reeder, \emph{Euler--Poincar\'e pairings and elliptic representations of Weyl groups and $p$-adic groups}, Compositio Math.\ \textbf{129} (2001), 149--182.
+\bibitem[Sa63]{Sa63} I.~Satake, \emph{Theory of spherical functions on reductive algebraic groups over $\mathfrak p$-adic fields}, Publ.\ Math.\ IH\'ES \textbf{18} (1963), 5--69. (not verified)
+\bibitem[SS97]{SS97} P.~Schneider, U.~Stuhler, \emph{Representation theory and sheaves on the Bruhat--Tits building}, Publ.\ Math.\ IH\'ES \textbf{85} (1997), 97--191.
+\bibitem[Wa89a]{Wa89a} J.-L.~Waldspurger, \emph{Int\'egrales orbitales sph\'eriques pour $GL(N)$ sur un corps $p$-adique}, Ast\'erisque \textbf{171--172} (1989), 279--337.
+\bibitem[Wa89b]{Wa89b} J.-L.~Waldspurger, \emph{Sur les germes de Shalika pour les groupes lin\'eaires}, Math.\ Ann.\ \textbf{284} (1989), 199--221.
 \bibitem[Wa91]{Wa91} J.-L.~Waldspurger, \emph{Sur les int\'egrales orbitales tordues pour les groupes lin\'eaires: un lemme fondamental}, Canad.\ J.\ Math.\ \textbf{43} (1991), 852--896.
-\bibitem[Wa95]{Wa95} J.-L.~Waldspurger, \emph{Une formule des traces locale pour les alg\`ebres de Lie $p$-adiques}, J.\ Reine Angew.\ Math.\ \textbf{465} (1995), 41--100.
+\bibitem[Wa95a]{Wa95a} J.-L.~Waldspurger, \emph{Une formule des traces locale pour les alg\`ebres de Lie $p$-adiques}, J.\ Reine Angew.\ Math.\ \textbf{465} (1995), 41--100.
+\bibitem[Wa95b]{Wa95b} J.-L.~Waldspurger, \emph{Comparaison d'int\'egrales orbitales pour des groupes $p$-adiques}, Proc.\ ICM Z\"urich 1994, Birkh\"auser, 1995.
 \bibitem[Wa97]{Wa97} J.-L.~Waldspurger, \emph{Le lemme fondamental implique le transfert}, Compositio Math.\ \textbf{105} (1997), 153--236.
 \bibitem[Wa03]{Wa03} J.-L.~Waldspurger, \emph{La formule de Plancherel pour les groupes $p$-adiques (d'apr\`es Harish-Chandra)}, J.\ Inst.\ Math.\ Jussieu \textbf{2} (2003), 235--333.
-\bibitem[Wald]{Wald} J.-L.~Waldspurger, \emph{Sur les germes de Shalika pour les groupes lin\'eaires}, Math.\ Ann.\ \textbf{284} (1989), 199--221.
 \end{thebibliography}
 
 \end{document}

@@ -1,0 +1,815 @@
+% SPDX-License-Identifier: CC-BY-4.0
+% =====================================================================
+% Section 2 of D. Joyner, "A hitch-hiker's guide to the metaplectic trace
+% formula for SL(2)", revised for the 2-fold cover (n = 2), November 2026.
+%
+% Stage 1 of ../revision_log.md. Source: ../original-1995/cctrace_new.tex,
+% Section 2 (lines 98-717), with ../book-1997/book1.tex for the global NAK
+% lemma. Referee items I.1-I.10 and the Section 2 minor items are fixed here;
+% see the "Stage 1" section of ../revision_log.md for the item-by-item list.
+%
+% This file is \input by the master; it compiles on its own through
+% stage1-preview.tex. Lemma numbers 2.1-2.9 are those of the 1995 notes;
+% Lemma 2.10 is new. Every explicit formula for n = 2 is checked by
+% checks/sec2_n2_check.py (exact rational arithmetic).
+% Comments beginning "% [Claude]" are editorial notes by Claude.
+% =====================================================================
+
+\section{Background on the metaplectic double cover}\label{sec:background}
+
+This section fixes the double cover of $G=\Res_{k/\Q}SL(2)$ and the
+conventions used in the rest of the paper. Section~\ref{sec:local}
+treats a single place: Kubota's cocycle, the splittings over unipotent
+and compact subgroups, the center, and the preimages of tori. These are
+then assembled into the cover of $G(\Q_p)$. Section~\ref{sec:global}
+builds the adelic cover and its splitting over $G(\Q)$, and
+Section~\ref{sec:gl2} fixes a double cover of $GL(2)$ and the resulting
+$GL(2)$-action on the cover of $SL(2)$, which is what Section~7 uses.
+
+From now on $n=2$. The 1995 notes treated the $n$-fold cover; for
+$n=2$ several statements become simpler, and one, the
+commutativity of preimages of abelian subgroups
+(Lemma~\ref{lem:local}(g)), becomes a two-line argument. What changes
+for general $n$ is listed in Remark~\ref{rem:general-n}.
+
+\subsection*{Notation}
+
+Let $k$ be a number field. (For $n=2$ the hypothesis
+$\mu_n\subset k$ of the 1995 notes always holds, and $k$ may have real
+places.) Let $\Sigma_k$ be the set of places of $k$, $\Sigma_k^\infty$
+the archimedean places and $\Sigma_k^f$ the finite places. Let $\A$ be
+the adele ring of $\Q$ and $\A_k$ that of $k$. For $v\in\Sigma_k$ let
+$k_v$ be the completion. For $F=k_v$ non-archimedean let $\OO=\OO_F$ be
+its ring of integers, $\varpi=\varpi_F$ a uniformizer, $q$ the order of
+the residue field and $\ord=\ord_F\colon F^\times\to\Z$ the normalized
+valuation, so $\ord(\varpi)=1$ and $|\varpi|=q^{-1}$. We call $v$
+\emph{dyadic} if $v\mid 2$, and put $e_v=\ord_v(2)$. Absolute values
+are normalized; at a complex place $|z|_v=z\bar z$.
+
+Let $(a,b)=(a,b)_v$ be the quadratic Hilbert symbol of
+$F=k_v$~\cite{W1,Se}. We use only the following properties:
+\begin{enumerate}[label=(H\arabic*)]
+\item\label{H1} $(\cdot,\cdot)$ is bimultiplicative and symmetric,
+  with values $\pm1$; hence $(a^{-1},b)=(a,b)$.
+\item\label{H2} $(a,b)=1$ if $a$ or $b$ lies in $F^{\times2}$;
+  $(a,-a)=1$; and $(a,1-a)=1$ for $a\neq 0,1$ (the Steinberg relation).
+\item\label{H3} If $v$ is finite and not dyadic and $a,b\in\OO^\times$,
+  then $(a,b)=1$. If $v$ is complex, $(\cdot,\cdot)\equiv1$. If $v$
+  is real, $(a,b)=-1$ exactly when $a<0$ and $b<0$.
+\item\label{H4} (Product formula) For $a,b\in k^\times$,
+  $(a,b)_v=1$ for almost all $v$ and $\prod_v(a,b)_v=1$.
+\end{enumerate}
+By~\ref{H3}, $(-1,-1)_v=1$ at non-dyadic finite places and at complex
+places, and $(-1,-1)_v=-1$ at real places. At a dyadic place both values
+occur; $(-1,-1)_{\Q_2}=-1$.
+
+Let $G$ be the group over $\Q$ obtained from $SL(2)$ by restriction of
+scalars from $k$ to $\Q$, so $G(\Q)=SL(2,k)$ and
+$G(\Q_p)=\prod_{v\mid p}SL(2,k_v)$.
+
+\subsection{Local aspects}\label{sec:local}
+
+Here $F=k_v$ for one place $v$. We define the cover, compute it on the
+subgroups that matter later (unipotent, compact, diagonal, central,
+anisotropic), and then pass to $G(\Q_p)$.
+
+For $g=\begin{pmatrix}a&b\\c&d\end{pmatrix}\in SL(2,F)$ put
+$x(g)=c$ if $c\neq0$ and $x(g)=d$ if $c=0$, and define
+$\beta=\beta_v\colon SL(2,F)\times SL(2,F)\to\mu_2$ by
+\begin{equation}\label{eq:beta}
+\beta(g_1,g_2)
+=\Bigl(\frac{x(g_1g_2)}{x(g_1)},\frac{x(g_1g_2)}{x(g_2)}\Bigr)
+=\bigl(x(g_1),x(g_2)\bigr)\bigl(-x(g_1)^{-1}x(g_2),\,x(g_1g_2)\bigr).
+\end{equation}
+At a complex place $\beta\equiv1$ by~\ref{H3}.
+
+\begin{lemma}[Kubota~\cite{K1}, Moore~\cite{M}]\label{lem:kubota}
+$\beta$ is a continuous Borel $2$-cocycle, $\mu_2$ carrying the discrete
+topology. Its class in $H^2(SL(2,F),\mu_2)$ defines a topological
+central extension
+\[
+1\to\mu_2\to\overline{SL(2,F)}\xrightarrow{\;p\;}SL(2,F)\to1,
+\]
+which is nontrivial unless $F=\C$.
+\end{lemma}
+
+The two expressions in~\eqref{eq:beta} agree, and the cocycle identity
+holds; both are checked on random elements over $\R$, $\Q_2$, $\Q_3$,
+$\Q_5$ and $\Q_7$ in \texttt{checks/sec2\_n2\_check.py}. For $F=\R$ the
+group $\overline{SL(2,\R)}$ is the metaplectic group $Mp(2,\R)$.
+
+For a subgroup $H\subset SL(2,F)$ put $\overline H=p^{-1}(H)$. Elements
+of $\overline{SL(2,F)}$ are written $(g,\zeta)$ with $g\in SL(2,F)$,
+$\zeta\in\mu_2$, and multiplied by
+\begin{equation}\label{eq:law}
+(g_1,\zeta_1)(g_2,\zeta_2)=(g_1g_2,\ \beta(g_1,g_2)\zeta_1\zeta_2).
+\end{equation}
+Since $\zeta^{-1}=\zeta$, inverses and conjugates are
+\begin{equation}\label{eq:inverse}
+(g,\zeta)^{-1}=(g^{-1},\beta(g,g^{-1})\zeta),\qquad
+(g,\zeta)(h,\zeta')(g,\zeta)^{-1}
+=\bigl(ghg^{-1},\ \beta(g,h)\beta(gh,g^{-1})\beta(g,g^{-1})\zeta'\bigr).
+\end{equation}
+
+Let $B\subset SL(2)$ be the upper triangular Borel subgroup, $N$ its
+unipotent radical and $A$ the diagonal torus. Write
+$a(t)=\diag(t,t^{-1})$ and $n(u)=\begin{pmatrix}1&u\\0&1\end{pmatrix}$.
+For $\theta\in F^\times\smallsetminus F^{\times2}$ let
+\[
+T_\theta=\Bigl\{\begin{pmatrix}a&b\theta\\b&a\end{pmatrix}
+\;\Big|\;a,b\in F,\ a^2-\theta b^2=1\Bigr\}\cong E^1,
+\qquad E=F(\sqrt\theta),
+\]
+the norm-one group of $E$. Every anisotropic maximal torus of
+$SL(2,F)$ is $GL(2,F)$-conjugate to some $T_\theta$.
+% [Claude] The 1995 text has "a^2+b^2\theta=1", which is not the
+% determinant of the displayed matrix.
+
+If $v$ is finite let $K=K_0=SL(2,\OO)$ and, for $m\ge1$,
+\[
+K_m=\Bigl\{\begin{pmatrix}a&b\\c&d\end{pmatrix}\in SL(2,\OO)
+\;\Big|\;a-1,\ d-1,\ b,\ c\in\varpi^m\OO\Bigr\}.
+\]
+If $v$ is non-dyadic, define $\kappa=\kappa_v\colon K\to\mu_2$ by
+\begin{equation}\label{eq:kappa}
+\kappa\begin{pmatrix}a&b\\c&d\end{pmatrix}
+=\begin{cases}(c,d)_v,&0<|c|_v<1,\\ 1,&\text{otherwise.}\end{cases}
+\end{equation}
+If $v$ is archimedean let $K=SO(2)$ ($v$ real) or $K=SU(2)$
+($v$ complex).
+
+\begin{lemma}\label{lem:local}
+Let $F=k_v$.
+\begin{enumerate}[label=(\alph*)]
+\item $\beta\equiv1$ on $N(F)\times N(F)$, so $n\mapsto(n,1)$ is a
+  homomorphism and $\overline{N(F)}=N(F)\times\mu_2$.
+\item Let $v$ be finite and non-dyadic. Then $\beta(k_1,k_2)=
+  \kappa(k_1)\kappa(k_2)\kappa(k_1k_2)$ for $k_1,k_2\in K$, so
+  $k\mapsto(k,\kappa(k))$ is a homomorphism and
+  $\overline K=K^*\times\mu_2$ with $K^*=\{(k,\kappa(k))\}$. The
+  restriction of $\beta$ to $K\times K$ is not identically $1$, so the
+  set $\{(k,1)\mid k\in K\}$ is not a subgroup.
+\item Let $v$ be finite and $m\ge1$ with $1+\varpi^m\OO\subset
+  F^{\times2}$. Then $\beta\equiv1$ on $K_m\times K_m$, so
+  $k\mapsto(k,1)$ splits $\overline{K_m}$. The hypothesis holds for every
+  $m\ge1$ if $v$ is non-dyadic, and for $m\ge 2e_v+1$ if $v$ is dyadic.
+\item Let $v$ be archimedean. If $v$ is complex,
+  $\overline{SL(2,F)}=SL(2,F)\times\mu_2$. If $v$ is real, $\beta\equiv1$
+  on $A(\R)^0\times A(\R)^0$, so $\overline{A(\R)^0}=A(\R)^0\times\mu_2$,
+  while $\overline{SO(2)}$ is connected, the nontrivial double cover of
+  the circle~\cite{Ge2}.
+\item The center of $\overline{SL(2,F)}$ is $\overline{\{\pm1\}}$, a
+  group of order $4$ in which $(-1,\zeta)^2=(1,(-1,-1)_v)$. It is cyclic
+  when $(-1,-1)_v=-1$ (for example $F=\R$ or $F=\Q_2$) and is
+  $\{\pm1\}\times\mu_2$ otherwise.
+\item On $A(F)$, $\beta(a(t_1),a(t_2))=(t_1,t_2)_v$. Hence
+  $\overline{A(F)}$ is abelian, and
+  $(a(t),\zeta)^2=(a(t^2),(t,-1)_v)$.
+\item If $g_1,g_2\in SL(2,F)$ commute, then $\beta(g_1,g_2)=
+  \beta(g_2,g_1)$. Consequently $\overline H$ is abelian for every abelian
+  subgroup $H\subset SL(2,F)$; in particular $\overline{A(F)}$ and every
+  $\overline{T_\theta}$ are abelian.
+\item Let $U=gNg^{-1}$ with $g\in SL(2,F)$. Then $u\mapsto(u,1)$ is the
+  unique homomorphic section of $\overline U\to U$. Consequently, for every
+  $(g,\zeta)\in\overline{SL(2,F)}$ and $u\in N(F)$,
+  \[
+  (g,\zeta)(u,1)(g,\zeta)^{-1}=(gug^{-1},1).
+  \]
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+(a) For $n_1,n_2\in N(F)$ all three values of $x$ equal $1$.
+
+(b) This is Kubota's computation~\cite{K2}; see also~\cite{Ge2}. The
+identity is also checked numerically for $F=\Q_3,\Q_5,\Q_7$, together
+with the existence of pairs in $K\times K$ with $\beta=-1$.
+
+(c) Let $k_i=\begin{pmatrix}a_i&b_i\\c_i&d_i\end{pmatrix}\in K_m$ for
+$i=1,2$, and $k_1k_2=\begin{pmatrix}a_3&b_3\\c_3&d_3\end{pmatrix}$. All
+$a_i$ and $d_i$ lie in $1+\varpi^m\OO\subset F^{\times2}$, and
+$c_3=c_1a_2+d_1c_2$. If $c_1,c_2,c_3\neq0$, then
+$c_1a_2/c_3+d_1c_2/c_3=1$, so by~\ref{H2} and~\ref{H1}
+\[
+\beta(k_1,k_2)=\Bigl(\frac{c_3}{c_1},\frac{c_3}{c_2}\Bigr)
+=\Bigl(\frac{c_1a_2}{c_3},\frac{d_1c_2}{c_3}\Bigr)=1,
+\]
+because $a_2$ and $d_1$ are squares. If $c_3=0\neq c_1c_2$, then
+$x(k_1k_2)=d_3$ is a square and $c_2=-c_1a_2/d_1$, so
+$\beta=(c_1,c_2)=(c_1,-c_1)(c_1,a_2/d_1)=1$. If $c_1=0\ne c_2$, then
+$x(k_1)=d_1$ is a square and $c_3=d_1c_2$, so
+$\beta=(c_3/d_1,\,d_1)=1$; the case $c_2=0\neq c_1$ is the same with
+$a_2$ in place of $d_1$. If $c_1=c_2=0$, all $x$-values are squares.
+Finally, $1+\varpi\OO\subset F^{\times2}$ for non-dyadic $F$ by Hensel's
+lemma, and $1+4\varpi\OO\subset F^{\times2}$ for dyadic $F$ by the
+binomial series for $(1+4\varpi y)^{1/2}$; and $4\varpi\OO=
+\varpi^{2e_v+1}\OO$.
+
+(d) At a complex place $\beta\equiv1$ by~\ref{H3}. For $t_1,t_2>0$,
+$(t_1,t_2)_\R=1$ by~\ref{H3} and~(f). The statement about $SO(2)$ is
+standard~\cite{Ge2}.
+
+(e) Commuting elements give commuting lifts by~(g), so
+$\overline{\{\pm1\}}$ is central; conversely, the image of a central
+element is central in $SL(2,F)$. Since $x(-1)=-1$ and $x(1)=1$,
+$(-1,\zeta)^2=(1,\beta(-1,-1))=(1,(-1,-1)_v)$ by~\eqref{eq:beta}. A
+group of order $4$ with an element of order $4$ is cyclic, and one of
+exponent $2$ is $\{\pm1\}\times\mu_2$.
+
+(f) Here $x(a(t))=t^{-1}$, so~\eqref{eq:beta} gives
+$\beta(a(t_1),a(t_2))=(t_2^{-1},t_1^{-1})=(t_1,t_2)$ by~\ref{H1}. The
+square is $(a(t^2),(t,t))$, and $(t,t)=(t,-1)$ by~\ref{H2}.
+
+(g) If $g_1g_2=g_2g_1$, then $x(g_1g_2)=x(g_2g_1)$, and the first
+expression in~\eqref{eq:beta} is symmetric in $g_1,g_2$ because the
+quadratic Hilbert symbol is symmetric~\ref{H1}. By~\eqref{eq:law}, lifts
+$(g_1,\zeta_1)$ and $(g_2,\zeta_2)$ commute if and only if
+$\beta(g_1,g_2)=\beta(g_2,g_1)$.
+
+(h) If $g\in B(F)$, then $U=N$ and the claim is~(a). Otherwise $g$ has
+lower left entry $\gamma\ne0$, and $u_s=g\,n(s)\,g^{-1}$ has lower left
+entry $-\gamma^2s$. So for $s_1,s_2\ne0$ with $s_1+s_2\ne0$,
+\[
+\beta(u_{s_1},u_{s_2})
+=\Bigl(\frac{s_1+s_2}{s_1},\frac{s_1+s_2}{s_2}\Bigr)
+=\Bigl(\frac{s_1}{s_1+s_2},\frac{s_2}{s_1+s_2}\Bigr)=1
+\]
+by~\ref{H1} and the Steinberg relation~\ref{H2}. If $s_1+s_2=0$, then
+$x(u_{s_1}u_{s_2})=1$ and $\beta=(1/s_1,-1/s_1)=1$. So $u\mapsto(u,1)$
+is a homomorphism on $U$. Two homomorphic sections differ by a
+continuous homomorphism $U\cong F\to\mu_2$, which is trivial because
+$F=2F$. Conjugation by $(g,\zeta)$ carries the section $n\mapsto(n,1)$
+of $\overline N$ to a homomorphic section of $\overline{gNg^{-1}}$, which
+is therefore $u\mapsto(u,1)$.
+\end{proof}
+
+\begin{example}\label{ex:real}
+Take $F=\R$. By~(e) and~(f), the element $(a(-1),1)=(-1,1)$ has order
+$4$, so $\overline{\{\pm1\}}\cong\Z/4$ and $\overline{A(\R)}$ is an
+abelian group which is not $A(\R)\times\mu_2$. By~(d), $\overline{A(\R)}$
+is generated by $\overline{A(\R)^0}=A(\R)^0\times\mu_2$ and $(-1,1)$.
+At a non-dyadic place, on the other hand, $(-1,-1)_v=1$, so the center
+is $\{\pm1\}\times\mu_2$; and $\overline{A(\OO^\times)}$ is split by
+$a\mapsto(a,1)$, because $(t_1,t_2)_v=1$ for units by~\ref{H3}. This is
+consistent with~(b), since $\kappa\equiv1$ on $A(\OO^\times)$.
+\end{example}
+
+\begin{remarkrev}\label{rem:dyadic}
+For $F=\Q_2$, Lemma~\ref{lem:local}(c) gives the splitting $k\mapsto
+(k,1)$ over $K_3$, and $\beta$ is not identically $1$ on $K_2\times K_2$.
+The cover nevertheless splits over $K_2$, by $k\mapsto(k,(c,d)_2)$ for
+$c\ne0$ and $k\mapsto(k,1)$ for $c=0$. This is the local form at $2$ of
+the classical splitting over $\Gamma_1(4)$~\cite{K2,Ge2}. We have
+verified it numerically only (\texttt{checks/sec2\_n2\_check.py}), and
+the same section fails on $K_1$. Nothing below depends on it: the rest
+of the paper uses only that some $K_m$ splits at each dyadic place.
+\end{remarkrev}
+
+\paragraph{The cover of \texorpdfstring{$G(\Q_p)$}{G(Qp)}.}
+Let $\overline{G(\Q_p)}$ be the extension of $G(\Q_p)=\prod_{v\mid p}
+SL(2,k_v)$ by $\mu_2$ defined by the cocycle
+\[
+\beta_p(g_1,g_2)=\prod_{v\mid p}\beta_v(g_{1,v},g_{2,v}).
+\]
+It is the \emph{quotient} of $\prod_{v\mid p}\overline{SL(2,k_v)}$ by
+the kernel $\{(\zeta_v)\mid\prod_v\zeta_v=1\}$ of the product map
+$\prod_{v\mid p}\mu_2\to\mu_2$. (The 1995 notes call it a subgroup.)
+For $H\subset G(\Q_p)$ put $\overline H=p^{-1}(H)$. Let $B$, $N$, $A$ be
+the $\Q$-subgroups of $G$ obtained from those of $SL(2)$, and let
+$T=\prod_{v\mid p}T_v$ with each $T_v$ a maximal torus of $SL(2,k_v)$.
+Let $K_p=\prod_{v\mid p}K_v$. For $p$ odd, $K_p^*=\prod_{v\mid p}K_v^*$,
+with $K_v^*$ as in Lemma~\ref{lem:local}(b), maps to a subgroup of
+$\overline{G(\Q_p)}$ which we also denote by $K_p^*$.
+
+\begin{lemma}\label{lem:Qp}
+\begin{enumerate}[label=(\alph*)]
+\item $n\mapsto(n,1)$ splits $\overline{N(\Q_p)}$.
+\item If $p$ is odd, $\overline{K_p}=K_p^*\times\mu_2$.
+\item For every $p$, $k\mapsto(k,1)$ splits $\overline{K_{m,p}}$, where
+  $K_{m,p}=\prod_{v\mid p}K_{m,v}$, as soon as $m\ge 2e_v+1$ for every
+  $v\mid p$; if $p$ is odd, $m\ge1$ suffices.
+\item If $p=\infty$, $\overline{A(\R)^0}=A(\R)^0\times\mu_2$, where
+  $A(\R)^0$ is the identity component of $A(k\otimes\R)$.
+\item The center of $\overline{G(\Q_p)}$ is
+  $\overline{\{\pm1\}^{S_p}}$, where $S_p=\{v\mid p\}$. It is abelian,
+  and the square of a lift of $\varepsilon=(\varepsilon_v)$ is
+  $\prod_{v\mid p,\ \varepsilon_v=-1}(-1,-1)_v$.
+\item $\beta_p(a_1,a_2)=\prod_{v\mid p}(t_{1,v},t_{2,v})_v$ for
+  $a_i=a(t_i)\in A(\Q_p)$, and $\overline{A(\Q_p)}$ is abelian.
+\item The preimage of any abelian subgroup of $G(\Q_p)$, in particular
+  $\overline T$, is abelian, and Lemma~\ref{lem:local}(h) holds for
+  $G(\Q_p)$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+Each statement holds componentwise by Lemma~\ref{lem:local}, and the
+quotient map is compatible with all of them.
+\end{proof}
+
+\subsubsection{\texorpdfstring{$NAK$}{NAK} decompositions}
+
+\begin{lemma}\label{lem:NAK-local}
+$\overline{G(\Q_p)}=N(\Q_p)\cdot\overline{A(\Q_p)}\cdot\overline{K_p}$,
+with $N(\Q_p)$ embedded by $n\mapsto(n,1)$. If
+$(n,1)\,\tilde a\,\tilde k=(n',1)\,\tilde a'\,\tilde k'$ are two such
+decompositions, then $p(\tilde a')\in p(\tilde a)\,(A(\Q_p)\cap K_p)$.
+In particular $|t|_p:=\prod_{v\mid p}|t_v|_v$ is well defined for
+$p(\tilde a)=a(t)$, and depends only on $(g,\zeta)$. For $p$ odd one may
+take $\tilde k\in K_p^*$.
+\end{lemma}
+
+\begin{proof}
+The Iwasawa decomposition $G(\Q_p)=N(\Q_p)A(\Q_p)K_p$ holds, with
+$a$ determined modulo $A(\Q_p)\cap K_p$, which is
+$\prod_{v\mid p}A(\OO_v^\times)$ for $p<\infty$ and a product of copies
+of $\{\pm1\}$ and of $\{\diag(z,\bar z):|z|=1\}$ for $p=\infty$. Since
+$\mu_2$ is central and lies in $\overline{A(\Q_p)}$, this lifts to
+$\overline{G(\Q_p)}$. For $p$ odd, $\overline{K_p}=K_p^*\mu_2$ and the
+$\mu_2$ factor can be moved into $\tilde a$. The absolute value $|t|_p$
+is trivial on $A(\Q_p)\cap K_p$.
+\end{proof}
+
+% [Claude] The 1995 lemma says that a is determined modulo the center and
+% identifies K_p with {(k,1)}; both are corrected here (items I.1, I.7).
+
+\subsubsection{Heights}
+
+For $g=(g_v)\in G(\Q_p)$ put $\|g\|_p=\prod_{v\mid p}\|g_v\|_v$, where
+$\|g_v\|_v=\max(|a|_v,|b|_v,|c|_v,|d|_v)$ for $v$ finite and
+$\|g_v\|_v=(|a|^2+|b|^2+|c|^2+|d|^2)^{1/2}$, raised to the power
+$[k_v:\R]$, for $v$ archimedean (here $|\cdot|$ is the usual absolute
+value). Extend to the cover by $\|(g,\zeta)\|_p=\|g\|_p$.
+
+Define $H=H_B\colon\overline{G(\Q_p)}\to\R$ by
+\begin{equation}\label{eq:H}
+H(g,\zeta)=\log|t|_p=\sum_{v\mid p}\log|t_v|_v,
+\end{equation}
+where $(g,\zeta)=(n,1)\,\tilde a\,\tilde k$ as in
+Lemma~\ref{lem:NAK-local} and $p(\tilde a)=a(t)$. This is the product
+of the normalized absolute values over $v\mid p$, that is
+$|N_{k\otimes\Q_p/\Q_p}(t)|_p$, and not the maximum used in the 1995
+notes; see Section~\ref{sec:chambers}.
+
+\begin{lemma}\label{lem:H}
+\begin{enumerate}[label=(\alph*)]
+\item $H(\tilde a\tilde a')=H(\tilde a)+H(\tilde a')$ for
+  $\tilde a,\tilde a'\in\overline{A(\Q_p)}$.
+\item $H(\tilde n\,x\,\tilde k)=H(x)$ for $\tilde n\in\overline{N(\Q_p)}$,
+  $x\in\overline{G(\Q_p)}$ and $\tilde k\in\overline{K_p}$.
+\item $|H(x)|\ll1+\log\|x\|_p$ for $x\in\overline{G(\Q_p)}$~\cite{A2}.
+\end{enumerate}
+\end{lemma}
+
+The global analog, including invariance under $B(\Q)$ on the left, is
+Lemma~\ref{lem:NAK-global}.
+% [Claude] The 1995 Lemma 2.5 is stated over A(A) and G(A) before these
+% are defined, and (b) asserts left K-invariance, which fails; H is left
+% N-invariant and right K-invariant.
+
+\subsubsection{Characteristic functions of Weyl chambers}\label{sec:chambers}
+
+Let $P_0=B$; the standard parabolic subgroups are $B$ and $G$. For a
+standard $P=MN_P$ let $A_P$ be the split component of the center of $M$
+over $\Q$. Thus $A_G=1$, because the center $\{\pm1\}$ of $SL(2)$ is
+finite, and $A_B\cong\mathbb G_m$ is the image of
+$t\mapsto a(t)$, $t\in\Q^\times\subset k^\times$: the $\Q$-split part of
+the torus $A\cong\Res_{k/\Q}\mathbb G_m$, which has $\Q$-rank one.
+
+The $\Q$-rational characters of $A$ form $X(A)_\Q\cong\Z$, generated by
+$\chi_1=N_{k/\Q}\circ t$. Put $\mathfrak a=\mathfrak a_B=
+\Hom(X(A)_\Q,\R)$, identified with $\R$ by $X\mapsto X(\chi_1)$. Then
+$H$ of~\eqref{eq:H} and its global analog are
+$\langle H(x),\chi_1\rangle=\log|\chi_1(\tilde a)|$, which is why $H$
+uses the norm. The simple root is $\alpha(a(t))=t^2$; restricted to
+$A_B$ it is $\alpha=2\chi_1$, so $\alpha(X)=2X$ under
+$\mathfrak a\cong\R$. Let $\alpha^\vee=X_\alpha\in\mathfrak a$ be the
+coroot, so $X_\alpha=1$ and $\alpha(\alpha^\vee)=2$, and let
+$\varpi=\tfrac12\alpha^\vee$ be the fundamental coweight, so
+$\alpha(\varpi)=1$. (The 1995 notes call $\varpi$ the dual root.)
+
+Let $\mathfrak a^+=\{X\in\mathfrak a\mid\alpha(X)>0\}$ and
+$(\mathfrak a^*)^+=\{\Lambda\in\mathfrak a^*\mid\Lambda(\varpi)>0\}$,
+with characteristic functions $\tau_B$ and $\hat\tau_B$, and set
+$\tau_G=\hat\tau_G=1$. For standard $P_1\subset P_2$ let
+$\tau_1^2$, $\hat\tau_1^2$ and $\sigma_1^2$ be as in~\cite{A2}. With
+$\mathfrak a\cong\R$:
+\begin{gather}
+\tau_B=\tau_B^G=\hat\tau_B=\hat\tau_B^G
+=\text{characteristic function of }\{u\in\R\mid u>0\},\qquad
+\tau_1^2=\begin{cases}\tau_1,&P_2=G,\\1,&P_2\ne G,\end{cases}
+\label{eq:tau}\\
+\sigma_B^G=\tau_B,\qquad\sigma_B^B=0,\qquad\sigma_G^G=1.
+\label{eq:sigma}
+\end{gather}
+
+\subsubsection{Algebras of functions}\label{sec:functions}
+
+We follow Li~\cite{LiI,LiIV}. A representation $\pi$ of a cover is
+\emph{genuine} if $\pi(1,\zeta)=\zeta$ for $\zeta\in\mu_2$, and a
+function $f$ on the cover is \emph{anti-genuine} if
+$f(g,\zeta)=\zeta^{-1}f(g,1)$. Test functions are anti-genuine. Then
+$\pi(f)=\int f(\tilde g)\pi(\tilde g)\,d\tilde g$ picks up the factor
+$\int_{\mu_2}\zeta^{-1}\zeta\,d\zeta=1$, so it is in general nonzero on
+genuine representations, and it vanishes on representations that are
+trivial on $\mu_2$.
+
+For $n=2$, $\zeta^{-1}=\zeta$, so ``anti-genuine'' and ``genuine''
+define the same functions, and the conventions of the 1995 notes (genuine
+functions in~\S2.1.4, $\pi(g,\zeta)=\zeta^{-1}\pi(g,1)$ in~\S3.1) agree
+with Li's. We keep Li's terminology so that the formulas remain correct
+for general $n$; see Remark~\ref{rem:general-n}.
+
+Let $C_c^\infty(\overline{G(\Q_p)})_-$ be the space of anti-genuine
+$f$ such that $g\mapsto f(g,1)$ lies in $C_c^\infty(G(\Q_p))$. Let $p$
+be odd. The \emph{spherical Hecke algebra}
+$\mathcal H(\overline{G(\Q_p)},K_p^*)$ consists of the
+$f\in C_c^\infty(\overline{G(\Q_p)})_-$ with
+$f(\tilde k\,x\,\tilde k')=f(x)$ for $\tilde k,\tilde k'\in K_p^*$. Its
+unit element is
+\begin{equation}\label{eq:unit}
+e_p(\tilde k\zeta)=\zeta^{-1}\ (\tilde k\in K_p^*,\ \zeta\in\mu_2),\qquad
+e_p=0\ \text{off}\ \overline{K_p}.
+\end{equation}
+The function $(k,\zeta)\mapsto\zeta^{-1}$ on $\overline{K_p}$, which is
+what the identification $k\mapsto(k,1)$ of the 1995 notes suggests, is
+$\prod_v\kappa_v\cdot e_p$; it is not bi-$K_p^*$-invariant.
+
+\subsubsection{Measures}\label{sec:measures-local}
+
+Let $dk$ be the Haar measure on $K_p$ of total volume $1$. Fix a
+nontrivial additive character $\psi_v$ of $k_v$ for each $v$, and let
+$dn$ be the measure on $N(\Q_p)\cong\bigoplus_{v\mid p}k_v$ that is the
+product of the self-dual measures for the $\psi_v$. Let $da$ be a Haar
+measure on $A(\Q_p)$. If $T$ is a maximal torus of $G$ over $\Q_p$, and
+$h\in G(\overline{\Q}_p)$ conjugates $T$ to $A$, let $dt$ be the
+pull-back of $da$ as in~\cite{R}; stably conjugate tori get compatible
+measures as in~\cite{R}. Put
+\[
+\delta_B(a(t))=|\alpha(a(t))|_p=|t|_p^2.
+\]
+Normalize the Haar measure $dg$ on $G(\Q_p)$ by
+\begin{equation}\label{eq:iwasawa}
+\int_{G(\Q_p)}\phi(g)\,dg
+=\int_{N}\int_{A}\int_{K}\phi(nak)\,\delta_B(a)^{-1}\,dk\,da\,dn
+=\int_{K}\int_{A}\int_{N}\phi(kan)\,\delta_B(a)\,dn\,da\,dk.
+\end{equation}
+The two expressions agree because $dg$ is invariant under
+$g\mapsto g^{-1}$ (as $G$ is unimodular) and $(nak)^{-1}=k^{-1}a^{-1}
+n^{-1}$; see~\cite[Ch.~VIII]{Kn} for the real case. (The 1995 notes
+have $\delta_B(a)^{1/2}$ for $g=kan$; the exponent must be $1$ for
+$g=kan$ and $-1$ for $g=nak$.)
+
+On a cover we use $d\tilde g=dg\,d\zeta$, where $d\zeta$ gives
+$\mu_2$ total volume~$1$. Then $\overline{K_p}$ has volume $1$, and
+$e_p$ of~\eqref{eq:unit} is idempotent: for $x=\tilde k\in K_p^*$,
+\[
+(e_p*e_p)(x)=\int_{\overline{K_p}}e_p(y)\,e_p(y^{-1}x)\,dy
+=\int_{K_p^*}\int_{\mu_2}\zeta^{-1}\zeta\,d\zeta\,dy=1.
+\]
+
+\subsection{Global aspects}\label{sec:global}
+
+The adelic cover is not the cover defined by $\prod_v\beta_v$: that
+product does not converge, because $\beta_v$ is not trivial on
+$K_v\times K_v$ (Lemma~\ref{lem:local}(b)). The standard
+remedy~\cite{K2,Ge2,KP}, used here, is to correct $\beta_v$ by the
+coboundary of $\kappa_v$. This choice also fixes the splitting over
+$G(\Q)$.
+
+For each place $v$ of $k$ extend $\kappa_v$ to $SL(2,k_v)$ by
+\[
+\kappa_v(g)=\begin{cases}(c,d)_v,&v\ \text{finite non-dyadic},\ g\in K_v,\
+0<|c|_v<1,\\ 1,&\text{otherwise,}\end{cases}
+\]
+so $\kappa_v\equiv1$ at dyadic and archimedean places, and put
+\begin{equation}\label{eq:sigma-v}
+\sigma_v(g_1,g_2)=\beta_v(g_1,g_2)\,\kappa_v(g_1)\kappa_v(g_2)\kappa_v(g_1g_2).
+\end{equation}
+This cocycle is cohomologous to $\beta_v$; it defines the same cover
+$\overline{SL(2,k_v)}$, identified with the $\beta_v$-model by
+$(g,\zeta)_{\sigma}\mapsto(g,\kappa_v(g)\zeta)_\beta$. By
+Lemma~\ref{lem:local}(b), $\sigma_v\equiv1$ on $K_v\times K_v$ at every
+finite non-dyadic $v$. Since $g\in G(\A)$ has $g_v\in K_v$ for almost all
+$v$, the product
+\begin{equation}\label{eq:sigma-A}
+\sigma_\A(g_1,g_2)=\prod_v\sigma_v(g_{1,v},g_{2,v})
+\end{equation}
+has only finitely many factors different from $1$. It is a continuous
+$2$-cocycle on $G(\A)=SL(2,\A_k)$ and defines
+\[
+1\to\mu_2\to\overline{G(\A)}\xrightarrow{\;p\;}G(\A)\to1.
+\]
+Equivalently, $\overline{G(\A)}$ is the restricted product of the
+$\overline{SL(2,k_v)}$ with respect to the subgroups $K_v^*$, divided by
+$\{(\zeta_v)\in\bigoplus_v\mu_2\mid\prod_v\zeta_v=1\}$. It is a
+\emph{quotient} of the restricted product, not a subgroup. Factorization
+of genuine representations of $\overline{G(\A)}$ (and of
+$\overline{A(\A)}$ in Section~3) refers to this quotient. Group law,
+inverses and conjugation are given by~\eqref{eq:law}
+and~\eqref{eq:inverse} with $\sigma_\A$ in place of $\beta$. For
+$H\subset G(\A)$ put $\overline H=p^{-1}(H)$.
+
+For $\gamma\in SL(2,k)$ we have $\gamma\in K_v$ and
+$\ord_v(c)\le0$ or $c=0$ for almost all $v$, so
+\begin{equation}\label{eq:kappa-A}
+\kappa_\A(\gamma)=\prod_v\kappa_v(\gamma)
+=\prod_{\substack{v\ \text{finite non-dyadic}\\ \gamma\in K_v,\ 0<|c|_v<1}}(c,d)_v
+\end{equation}
+is a finite product.
+
+\begin{lemma}\label{lem:global}
+\begin{enumerate}[label=(\alph*)]
+\item The map $\gamma\mapsto(\gamma,\kappa_\A(\gamma))$ is a homomorphism
+  $G(\Q)\to\overline{G(\A)}$, so $\overline{G(\Q)}=G(\Q)\times\mu_2$.
+\item $n\mapsto(n,1)$ splits $\overline{N(\A)}$, and on $B(\Q)$ the
+  splitting of~(a) is $b\mapsto(b,1)$.
+\item Let $S$ be a finite set of places containing the archimedean and
+  dyadic places, and let $K_f=\prod_{v\in S\smallsetminus\Sigma_k^\infty}
+  K_{m_v,v}\times\prod_{v\notin S}K_v$, with $m_v\ge1$, and $m_v\ge
+  2e_v+1$ if $v$ is dyadic. Then $k\mapsto(k,1)$ is a homomorphism
+  $K_f\to\overline{G(\A)}$; we write $K_f^*$ for its image. (At $v\notin S$,
+  translated to the $\beta_v$-model, its component is $K_v^*$.)
+\item The center of $\overline{G(\A)}$ is $\overline{Z(G(\A))}$,
+  where $Z(G(\A))=\prod_v\{\pm1\}$. It is abelian, and a lift of
+  $\varepsilon=(\varepsilon_v)$ has square
+  $\prod_{v:\,\varepsilon_v=-1}(-1,-1)_v$, a finite product. It contains the
+  subgroup $Z(G(\Q))\times\mu_2$ of order $4$, a direct product, embedded
+  by~(a). It is not the direct product $Z(G(\A))\times\mu_2$ when $k$ has
+  a real place.
+\item $\sigma_\A(a(t_1),a(t_2))=\prod_v(t_{1,v},t_{2,v})_v$ for
+  $t_1,t_2\in\A_k^\times$, and the preimage of every abelian subgroup of
+  $G(\A)$, in particular $\overline{A(\A)}$, is abelian.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+(a) For $\gamma_1,\gamma_2\in SL(2,k)$, $\prod_v\beta_v(\gamma_1,\gamma_2)
+=1$ by the product formula~\ref{H4}, because $\beta_v(\gamma_1,\gamma_2)$
+is the local Hilbert symbol of two elements of $k^\times$. Hence
+$\sigma_\A(\gamma_1,\gamma_2)=\kappa_\A(\gamma_1)\kappa_\A(\gamma_2)
+\kappa_\A(\gamma_1\gamma_2)$, which is the condition for
+$\gamma\mapsto(\gamma,\kappa_\A(\gamma))$ to be a homomorphism.
+
+(b) On $N$ every $\beta_v$ and $\kappa_v$ is $1$. On $B(\Q)$ every
+$\kappa_v$ is $1$ because $c=0$.
+
+(c) It suffices that $\sigma_v\equiv1$ on the $v$-component of
+$K_f\times K_f$ for each finite $v$. At $v\notin S$ this is
+Lemma~\ref{lem:local}(b). At finite $v\in S$, $\kappa_v\equiv1$ on
+$K_{m_v,v}$ (non-dyadic: $c\in\varpi\OO$ and $d$ is a square; dyadic: by
+definition), so $\sigma_v=\beta_v\equiv1$ there by
+Lemma~\ref{lem:local}(c).
+
+(d) Lemma~\ref{lem:local}(g) applies to $\sigma_v$, since
+$\kappa_v(g_1)\kappa_v(g_2)\kappa_v(g_1g_2)$ is symmetric in commuting
+$g_1,g_2$; so preimages of abelian subgroups are abelian, and
+$\overline{Z(G(\A))}$ is central. Its image under $p$ is central, so
+equality holds. Since $\kappa_v(\pm1)=1$, the square of a lift of
+$\varepsilon$ is $\prod_v\sigma_v(\varepsilon_v,\varepsilon_v)=
+\prod_{\varepsilon_v=-1}(-1,-1)_v$, which is finite by~\ref{H3}. For
+$\varepsilon=-1\in Z(G(\Q))$ it is $\prod_v(-1,-1)_v=1$ by~\ref{H4}. If
+$v_0$ is real, the lift of the element that is $-1$ at $v_0$ and $1$
+elsewhere has order $4$.
+
+(e) As in Lemma~\ref{lem:local}(f), since $\kappa_v\equiv1$ on $A$.
+\end{proof}
+
+From now on we identify $G(\Q)$ with its image under
+Lemma~\ref{lem:global}(a), and $N(\A)$ with $N(\A)\times1$. By~(b), the
+two identifications agree on $N(\Q)$. The splitting over $B(\Q)$ by
+$b\mapsto(b,1)$ is what the constant terms, Eisenstein series and the
+truncation operator of Sections~4 and~5 use.
+
+\begin{example}\label{ex:jacobi}
+Let $k=\Q$ and $\gamma=\begin{pmatrix}a&b\\c&d\end{pmatrix}\in SL(2,\Z)$
+with $c\ne0$. Then $\gamma\in K_v$ for every $v$, and for odd
+$p\mid c$, $(c,d)_p=\bigl(\tfrac dp\bigr)^{\ord_p(c)}$ by~\ref{H3}. So
+\[
+\kappa_\A(\gamma)=\Bigl(\frac{d}{c'}\Bigr),\qquad
+c'=\text{the odd part of }|c|,
+\]
+a Jacobi symbol: the factor behind the theta multiplier on
+$\Gamma_0(4)$~\cite{K2,Ge2}. The script checks this on random elements
+of $SL(2,\Z)$.
+\end{example}
+
+\begin{remarkrev}\label{rem:old-2.9}
+The 1995 notes define the splitting as $\gamma\mapsto(\gamma,
+s_\A(\gamma)^{-1})$, with $s_v(\gamma)^{-1}=(c,d)_v$ when $v$ is finite,
+$cd\ne0$ and $n\nmid\ord_v(c)$, and with the cocycle $\prod_v\beta_v$.
+That cocycle does not converge, and the formula belongs to a different
+normalization. In the normalization~\eqref{eq:sigma-A},
+$\kappa_\A$ of~\eqref{eq:kappa-A} replaces $s_\A^{-1}$. For $n=2$ the two
+agree at every non-dyadic $v$ with $\gamma\in K_v$: if $\ord_v(c)>0$ is
+even, or if $\ord_v(c)=0$, both $(c,d)_v$ and $\kappa_v(\gamma)$ are $1$.
+They differ only at the finitely many places where $\gamma\notin K_v$,
+and at dyadic places.
+\end{remarkrev}
+
+Let $K_0=\prod_vK_v$ be the standard maximal compact subgroup of
+$G(\A)$, with $K_v$ as in Section~\ref{sec:local}; $K_f$ and $K_\infty$
+denote its finite and archimedean parts.
+
+\begin{lemma}[Strong approximation; compare~{\cite[Prop.~5]{K2}},
+\cite{Ge2}]\label{lem:strong}
+Let $K_f$ and $K_f^*$ be as in Lemma~\ref{lem:global}(c), and put
+$\Gamma=G(\Q)\cap K_f$, a congruence subgroup of $SL(2,\OO_k)$, viewed in
+$G(\R)=SL(2,k\otimes\R)$. For $\gamma\in\Gamma$ let $\tilde k_\gamma\in K_f^*$ be the lift of
+$\gamma_f$. Then $\tilde\gamma=\gamma\,\tilde k_\gamma^{-1}$ lies in
+$\overline{G(\R)}$, the map $\gamma\mapsto\tilde\gamma$ is an injective
+homomorphism, its image $\widetilde\Gamma$ is discrete of finite
+covolume, and
+\[
+G(\Q)\backslash\overline{G(\A)}/K_f^*\;\cong\;
+\widetilde\Gamma\backslash\overline{G(\R)}.
+\]
+\end{lemma}
+
+\begin{proof}
+Since $SL(2)$ is simply connected and $G(\R)$ is not compact, strong
+approximation gives $G(\A)=G(\Q)\,G(\R)\,K_f$. Lifting to the cover,
+with $\mu_2\subset\overline{G(\R)}$, gives $\overline{G(\A)}=
+G(\Q)\,\overline{G(\R)}\,K_f^*$, so the double coset space has a single
+component. The stabilizer computation is the usual one: $\gamma\in
+G(\Q)$ lies in $\overline{G(\R)}K_f^*$ exactly when $\gamma_f\in K_f$,
+and then $\gamma=\tilde\gamma\,\tilde k_\gamma$. The map
+$\gamma\mapsto\tilde\gamma$ is a homomorphism because lifts of elements
+of $G(\A)$ with disjoint supports commute: $\sigma_v(1,h)=\sigma_v(h,1)=1$.
+\end{proof}
+
+% [Claude] The 1995 lemma uses K = prod_{p<=infty} K_p, which is not open,
+% and a disjoint union over i; for simply connected G there is one term.
+
+\subsubsection{\texorpdfstring{$NAK$}{NAK} decompositions}
+
+% [Claude] Part (a) follows the corrected global lemma of book1.tex.
+\begin{lemma}\label{lem:NAK-global}
+\begin{enumerate}[label=(\alph*)]
+\item $\overline{G(\A)}=N(\A)\cdot\overline{A(\A)}\cdot\overline{K_0}$. In
+  a decomposition $(n,1)\,\tilde a\,\tilde k$, $p(\tilde a)$ is determined
+  modulo $A(\A)\cap K_0$, and
+  \[
+  H(g,\zeta)=\log|t|_{\A_k}=\sum_v\log|t_v|_v,\qquad p(\tilde a)=a(t),
+  \]
+  is well defined.
+\item $H$ satisfies Lemma~\ref{lem:H}(a)--(c) globally, and
+  $H(\gamma x)=H(x)$ for $\gamma\in B(\Q)$ and $x\in\overline{G(\A)}$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+(a) As for Lemma~\ref{lem:NAK-local}, place by place. (b) For
+$\gamma=n'a(s)\in B(\Q)$, identified with $(\gamma,1)$ by
+Lemma~\ref{lem:global}(b), and $x=(n,1)\tilde a\tilde k$,
+$\gamma x=(n'',1)\,(a(s),1)\tilde a\,\tilde k$ with $n''\in N(\A)$, so
+$H(\gamma x)=\log|s|_{\A_k}+H(x)=H(x)$ by the product formula.
+\end{proof}
+
+\subsubsection{Heights}
+
+For $g=(g_v)\in G(\A)$ put $\|g\|=\prod_v\|g_v\|_v$ and
+$\|(g,\zeta)\|=\|g\|$.
+
+\begin{lemma}\label{lem:heights}
+For $x,y\in\overline{G(\A)}$ and $\tilde k,\tilde k'\in\overline{K_0}$:
+\begin{enumerate*}[label=(\alph*)]
+\item $\|x\|\ge1$;
+\item $\|\tilde k\,x\,\tilde k'\|=\|x\|$;
+\item $\|xy\|\le\|x\|\,\|y\|$;
+\item $\|x^{-1}\|=\|x\|$.
+\end{enumerate*}
+\end{lemma}
+
+\begin{proof}
+Each holds for $G(\A)$ place by place, since $\det g_v=1$ forces
+$\|g_v\|_v\ge1$. For~(d), $g^{-1}$ has the same entries as $g$ up to
+order and sign. The cover does not change $\|\cdot\|$.
+\end{proof}
+
+\subsubsection{Algebras of functions}
+
+A function on $\overline{G(\A)}$ is \emph{anti-genuine} if
+$f(g,\zeta)=\zeta^{-1}f(g,1)$. Let $\mathcal H(\overline{G(\A)})$ be the
+span of the functions $f=\bigotimes_vf_v$, $f_v\in
+C_c^\infty(\overline{SL(2,k_v)})_-$, with $f_v$ equal to the unit element
+$e_v$ of~\eqref{eq:unit} (defined with $K_v^*$) for almost all $v$. Such
+a product is a function on the restricted product of the local covers
+which is invariant under $\{(\zeta_v)\mid\prod\zeta_v=1\}$, because each
+$f_v$ is anti-genuine; so it descends to $\overline{G(\A)}$ and is
+anti-genuine there.
+
+\subsubsection{Measures}
+
+Let $dk=\prod_vdk_v$ on $K_0$. Let $dg=\prod_vdg_v$ be the Tamagawa
+measure on $G(\A)$~\cite{W2}, with $dg_v$ built from the self-dual
+measures of a fixed nontrivial character $\psi=\prod\psi_v$ of
+$\A_k/k$; then $\mathrm{vol}(G(\Q)\backslash G(\A))=1$. For a maximal
+torus $T$ of $G$ over $\Q$ let $dt$ be the Tamagawa measure on $T(\A)$,
+written $da$ for $T=A$, and let $dn$ be the product measure on $N(\A)$,
+for which $\mathrm{vol}(N(\Q)\backslash N(\A))=1$. On the cover put
+$d\tilde g=dg\,d\zeta$ with $\mathrm{vol}(\mu_2)=1$, so
+$\mathrm{vol}(G(\Q)\backslash\overline{G(\A)})=1$.
+
+\subsection{The double cover of \texorpdfstring{$GL(2)$}{GL(2)}}\label{sec:gl2}
+
+Section~7 compares $SL(2)$-conjugacy with $GL(2)$-conjugacy on the cover,
+so we need a double cover of $GL(2)$ which restricts to the one above.
+There are two natural choices for $n=2$ (Remark~\ref{rem:gl2-twist}); we
+fix one, and compute the conjugation action of $GL(2,F)$ on
+$\overline{SL(2,F)}$ for later use.
+
+For $g_1,g_2\in GL(2,F)$, with $x(g)$ defined as before, put
+\begin{equation}\label{eq:sigma-gl2}
+\sigma(g_1,g_2)=\Bigl(\frac{x(g_1g_2)}{x(g_1)},\
+\frac{x(g_1g_2)}{x(g_2)\det g_1}\Bigr)_v,
+\end{equation}
+the $n=2$ case of Kubota's cocycle on $GL(2)$~\cite{K2,Ge2}. Let
+$\overline{GL(2,F)}$ be the corresponding extension by $\mu_2$.
+
+\begin{lemma}\label{lem:gl2}
+\begin{enumerate}[label=(\alph*)]
+\item $\sigma$ is a $2$-cocycle on $GL(2,F)$ whose restriction to
+  $SL(2,F)$ is $\beta$. Hence $p^{-1}(SL(2,F))\subset\overline{GL(2,F)}$
+  is the cover $\overline{SL(2,F)}$ of Section~\ref{sec:local}.
+\item For $v$ finite non-dyadic, $k\mapsto(k,\kappa'(k))$ is a
+  homomorphism on $GL(2,\OO)$, where $\kappa'(k)=(c,\,d/\det k)_v$ if
+  $0<|c|_v<1$ and $\kappa'(k)=1$ otherwise. On $SL(2,\OO)$,
+  $\kappa'=\kappa$.
+\item Conjugation by any lift of $h\in GL(2,F)$ defines an automorphism
+  $\mathrm{Ad}(h)$ of $\overline{SL(2,F)}$ lifting conjugation by $h$, and
+  $h\mapsto\mathrm{Ad}(h)$ is an action of $GL(2,F)$. If $h$ commutes with
+  $\gamma\in SL(2,F)$, then
+  \begin{equation}\label{eq:gl2-commutator}
+  \mathrm{Ad}(h)(\gamma,\zeta)
+  =\Bigl(\gamma,\ \Bigl(\frac{x(h\gamma)}{x(h)},\ \det h\Bigr)_v\,\zeta\Bigr).
+  \end{equation}
+  In particular $\mathrm{Ad}(\diag(y,1))(a(t),\zeta)=(a(t),(y,t)_v\zeta)$,
+  so the preimage of the diagonal torus of $GL(2,F)$ is not abelian
+  unless $F=\C$. Likewise $E^\times\supset T_\theta$ (embedded as
+  $\{\begin{pmatrix}a&b\theta\\b&a\end{pmatrix}\}$) acts on
+  $\overline{T_\theta}$ through~\eqref{eq:gl2-commutator}.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+(a) On $SL(2)$, $\det g_1=1$ and~\eqref{eq:sigma-gl2}
+becomes~\eqref{eq:beta}. The cocycle identity is due to
+Kubota~\cite{K2}; we have also checked it numerically.
+
+(b) We have checked this numerically for $F=\Q_3,\Q_5,\Q_7$; see
+Remark~\ref{rem:verified}.
+
+(c) Since $\mu_2$ is central, conjugation by $(h,\zeta)$ does not depend
+on $\zeta$, and it preserves $p^{-1}(SL(2,F))$. If $h\gamma=\gamma h$,
+then $\mathrm{Ad}(h)(\gamma,\zeta)=(\gamma,\zeta\,\sigma(h,\gamma)
+\sigma(\gamma,h))$. With $x_3=x(h\gamma)$, bimultiplicativity gives
+$\sigma(h,\gamma)=(x_3/x(h),x_3/x(\gamma))\,(x_3/x(h),\det h)$, and
+$\sigma(\gamma,h)=(x_3/x(\gamma),x_3/x(h))$ since $\det\gamma=1$. By
+symmetry~\ref{H1} the first factors cancel. For $h=\diag(y,1)$ and
+$\gamma=a(t)$: $x(h\gamma)=t^{-1}$ and $x(h)=1$, giving $(t^{-1},y)=
+(y,t)$. This is nontrivial for suitable $y,t$ unless $F=\C$.
+\end{proof}
+
+The consequences for Section~7 (the functions $\delta\mapsto
+I_{\mathcal O}(f^\delta)$ are defined on $D(T/F)$ only up to the
+character~\eqref{eq:gl2-commutator}, and the choice of $D(A/F)$) are
+taken up there.
+
+\begin{remarkrev}\label{rem:gl2-twist}
+The cocycle $\sigma'(g_1,g_2)=\sigma(g_1,g_2)\,(\det g_1,\det g_2)_v$ is
+another double cover of $GL(2,F)$ with the same restriction to $SL(2,F)$;
+these are the two Kazhdan--Patterson covers for $n=2$~\cite{KP}. We fix
+$\sigma$. Whether Section~7 needs $\sigma'$ instead has not been checked
+at this stage. The commutator formula~\eqref{eq:gl2-commutator} is the
+same for $\sigma'$: the extra factor $(\det h,\det\gamma)(\det\gamma,\det
+h)$ is $1$ by~\ref{H1}. The
+adelic cover of $GL(2,\A_k)$ is built as in Section~\ref{sec:global},
+with $\kappa'_v$ in place of $\kappa_v$; Hilbert reciprocity for
+$\prod_v\sigma_v$ on $GL(2,k)$ is checked numerically for $k=\Q$.
+\end{remarkrev}
+
+\begin{remarkrev}\label{rem:general-n}
+For general $n$ (with $\mu_n\subset k$) the following change. The
+conjugation action of $\overline{A(F)}$ on itself is through
+$(t_1,t_2)_n^2$, so $\overline{A(F)}$ is abelian only for $n\le2$; the
+argument of Lemma~\ref{lem:local}(g) uses the symmetry of the quadratic
+symbol and does not extend. Lemma~\ref{lem:local}(c) holds with
+$1+\varpi^m\OO\subset F^{\times n}$ (the same proof). Genuine
+($\zeta$) and anti-genuine ($\zeta^{-1}$) differ, and with the 1995
+convention $R(f)$ vanishes on $L^2_{\mathrm{gen}}$ unless $n\mid2$.
+\end{remarkrev}
+
+\begin{remarkrev}\label{rem:verified}
+The script \texttt{checks/sec2\_n2\_check.py} verifies, in exact rational
+arithmetic at $v=\infty,2,3,5,7$: the cocycle identity and the two forms
+of~\eqref{eq:beta}; Lemma~\ref{lem:local}(a)--(c), (e)--(h);
+Remark~\ref{rem:dyadic}; the product formula and the splitting of
+Lemma~\ref{lem:global}(a),~(b),~(d); Example~\ref{ex:jacobi}; and
+Lemma~\ref{lem:gl2}(a)--(c) with Remark~\ref{rem:gl2-twist}. The checks
+are on random elements of $SL(2,\Q)$, $GL(2,\Q)$, $SL(2,\Z_{(p)})$ and
+the tori $T_\theta(\Q)$; they are evidence, not proofs. Of the
+statements in this section, Lemma~\ref{lem:local}(b) and
+Lemma~\ref{lem:gl2}(a),~(b) are supported here only by citation and these
+checks.
+\end{remarkrev}

@@ -11,6 +11,7 @@ The paper works out Arthur's trace formula, in non-invariant and then invariant 
 | `original-1995/` | The notes as received: `cctrace_new.tex` (LaTeX2e master), `cctrace1.tex` (older Scientific Word master), `cctrace2.tex`–`cctrace7.tex`, `cctracer.tex` (bibliography). The file `cctrac3b.tex` that the master inputs was not among these files (see below). |
 | `book-1997/` | Chapters of the 1997 book manuscript *An application of Arthur's invariant trace formula for SL(2)* (Scientific Word; needs `tcilatex`). Chapter 9 (`book7a`–`book7h`) is the source of the notes. |
 | `revision_log.md` | Every referee item, with its location, the planned fix, the revision stage, and its status |
+| `revised/` | The 2026 revision (n = 2), section by section: `sec2-foundations.tex` (stage 1), its standalone build `stage1-preview.tex`/`.pdf`, and `checks/` (verification scripts) |
 
 The notes correspond to Chapter 9 of the book file by file:
 
@@ -28,7 +29,7 @@ The notes correspond to Chapter 9 of the book file by file:
 ## Status (November 2026)
 
 - Referee report (2026): [Claude Docs](https://claude.ai/artifact/7MmqhX7GnoJNup9xbb9RNG). Its items are tracked in `revision_log.md`.
-- Revision: planned in stages (see `revision_log.md`). Stage 0 (a clean, compiling source tree with no mathematical changes) is next.
+- Revision: in stages (see `revision_log.md`). Stage 1 (Section 2, foundations of the double cover) is drafted in `revised/` and checked by `revised/checks/sec2_n2_check.py`. Stage 0 (a clean, compiling source tree with no mathematical changes) is still to do; it will `\input` the revised Section 2.
 
 ## Building
 

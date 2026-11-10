@@ -260,3 +260,21 @@ The report and a point-by-point response are in [`RESPONSE-TO-REFEREE-2.md`](RES
   - Its one useful observation, that smoothness of the sum of vertex terms does not suffice, is kept as Remark 2026.12, now placed after Hypothesis (R) in §4.3. The definition of Q^T moves into that remark, which swaps the numbers of Remarks 2026.11 and 2026.12.
   - The remaining subsections keep their 1997 numbers 4.2 and 4.3, and the concordance (Appendix C.2) records the omission.
 - **Orientation.** Every section and subsection (Appendices A–C included) now opens with a paragraph telling the reader what it does and how it fits into the argument.
+
+## Changes of 2026-11-10 (seventh pass: background, examples, style, at the author's request)
+
+- **Remarks.** "Remark 2026.n" no longer carries a date or a color.
+- **Draft comparisons moved out of the body.**
+  - Statements of the form "the 1997 text said…", "the first 2026 draft…" and "a referee pointed out…" are removed from §§1–8.
+  - The remarks are reworded as mathematical caveats.
+  - "(new)" and "[2026 form]" are dropped from headings.
+  - The removed notes are collected, by location, in the new Appendix C.3.
+- **Citations.** All citations are now `\cite` commands to the bibliography entries (136 converted). Lemma headers name the author, e.g. "Lemma 2.7 (Waldspurger [Wa89a, §7])", meaning the lemma is taken from §7 of [Wa89a].
+- **New background in §2.**
+  - §2.1A, Representations and matrix coefficients: smooth and admissible representations, contragredient, matrix coefficients, the unramified principal series in the compact picture, the spherical vector and function, and Casselman's asymptotics.
+  - §2.3A, Fourier analysis: Fourier series on the compact torus, the Satake transform as a Fourier transform, exponential polynomials and uniqueness, and Dirichlet kernels and the Sokhotski–Plemelj formula (2.16).
+- **Examples in every section.**
+  - Examples 2.1, 2.1A, 2.2, 2.3, 2.3A, 2.4, 3.1, 3.5, 3.6, 4.2, 4.5, 5.1 and 7.3 (mainly PGL(2) and SL(2)).
+  - Example 3.6 shows that ∫_{G(T)}|Γ_χ|² grows like T/ρ(χ).
+  - Example 4.5 derives the SL(2) atom from the Dirichlet kernel.
+  - New §6.0, "The rank-one dictionary", collects the examples.

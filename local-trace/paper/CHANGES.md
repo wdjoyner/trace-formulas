@@ -26,13 +26,13 @@ For each item of the errata log [`../original-1997/transcription_log.md`](../ori
 | 10 | Proposition 3.6 | new proof; conditional on (C) in rank ≥ 2 |
 | 11 | Lemma 4.1 and regularity | not used; (G,A)~-smoothness is insufficient |
 | 12 | Proposition 4.2 | new form; confluence replaced by Lemma 3.5B(ii) |
-| 13 | Theorem 4.5 | (a) unconditional, (b) under (C) and (R); (R) not necessary (App. C) |
+| 13 | Theorem 4.5 | (a) unconditional, (b) under (C) and (R); (R) not necessary (App. B) |
 | 14 | Conjecture 4.6 | new; verified for PGL(2), SL(2), numerically for one γ in PGL(3); (b) no longer asserts (R) |
 | 15 | §5 | rewritten; normalizations checked only for SL(2) |
 | 16 | §6.2 SL(2) | proved for all q; also verified numerically and symbolically |
 | 17 | §7 Route B | proposed route; normalizations not checked |
 | 18 | literature | all entries checked |
-| 19 | Observation C.2 (PGL(3) displacement table) | observed on the building, not proved |
+| 19 | Observation B.2 (PGL(3) displacement table) | observed on the building, not proved |
 | 20 | Hypothesis (R′) | proposed; consistent with PGL(3) data |
 
 ## Main mathematical changes
@@ -53,8 +53,8 @@ For each item of the errata log [`../original-1997/transcription_log.md`](../ori
 - §7 Route B (from Arthur's local trace formula)
 - §8 Literature review
 - Appendix A Glossary
-- Appendix B Concordance
-- Appendix C PGL(3): a rank-two test of Hypothesis (R)
+- Appendix B PGL(3): a rank-two test of Hypothesis (R)
+- Appendix B Revision notes (formerly "About this revision") and concordance with the 1997 version
 
 New numerical check: [`../examples/sl2/sl2_check.py`](../examples/sl2/sl2_check.py).
 
@@ -231,10 +231,10 @@ The report and a point-by-point response are in [`RESPONSE-TO-REFEREE-2.md`](RES
 
 ## Changes of 2026-11-10 (fourth pass: PGL(3), at the author's request)
 
-- **Appendix C (new): PGL(3) on the Bruhat–Tits building.** The element γ is unramified elliptic of depth 0.
-  - Observation C.2 gives the displacement table N(λ,μ). It was checked on 86 017 vertices (q = 2) and 62 193 vertices (q = 3), but is not proved. [R19]
-  - Closed form (C.4) for I(χ,γ). It has double poles only on the root walls, and Iρ is smooth.
-  - Spectral identity with no singular part (Table C.1).
+- **Appendix B (new): PGL(3) on the Bruhat–Tits building.** The element γ is unramified elliptic of depth 0.
+  - Observation B.2 gives the displacement table N(λ,μ). It was checked on 86 017 vertices (q = 2) and 62 193 vertices (q = 3), but is not proved. [R19]
+  - Closed form (B.4) for I(χ,γ). It has double poles only on the root walls, and Iρ is smooth.
+  - Spectral identity with no singular part (Table B.1).
   - (4.7A) is confirmed, with 19 frequencies of the form T ↦ w⁻¹T − w′⁻¹T.
   - **Hypothesis (R) fails**: there are simple poles along the non-root subtori z_i³ = 1. The poles cancel in pairs, and the pairs tend to 0 by Riemann–Lebesgue along the subtorus.
   - Remark 2026.20 proposes the weaker hypothesis (R′), which separates PGL(3) from SL(2). [R20]
@@ -247,3 +247,9 @@ The report and a point-by-point response are in [`RESPONSE-TO-REFEREE-2.md`](RES
 - **Bibliography.** [Jo92] (the 1992 Pacific J. Math. paper) added and cited in "About this revision".
 - **Acknowledgements.** ChatGPT (OpenAI) is credited explicitly for the second referee report.
 - **New check.** `examples/pgl3/pgl3_check.py` (about 6 s, numpy and sympy), with `examples/pgl3/building.py` and a README.
+
+## Changes of 2026-11-10 (fifth pass: layout, at the author's request)
+
+- **Front matter moved.** The section "About this revision" (history, what changed, status table) no longer precedes the Introduction. It is now Appendix C.1, merged with the concordance (now C.2). The title footnote is shortened and points to Appendix C.
+- **Appendices reordered.** The PGL(3) computation is now Appendix B (B.1–B.7, equations (B.1)–(B.4), Observation B.2, Table B.1). The revision notes and concordance are Appendix C.
+- **Abstract.** Rewritten to announce the main results and conjectures: the truncated identity, the spectral identity under regularity, the PGL(2), SL(2) and PGL(3) examples, the weaker hypothesis (R′), and Conjecture 4.6. Remarks about corrections to [Jo92] and to the 1997 version are left to Appendix C and this log. The opening sentence about [Jo92] is kept.

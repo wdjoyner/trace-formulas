@@ -26,8 +26,8 @@ The 1997 paper contains errors and two genuine gaps; see the [referee report](lo
 - **Proved and numerically verified:** the main identity for G = PGL(2), with explicit I(χ,γ) for all elliptic γ ([worked example](local-trace/examples/pgl2/pgl2_worked_example.pdf); §6.1 of the [revised paper](local-trace/paper/)).
 - **Proved for semisimple G** (more generally, anisotropic center): the truncated identity (Theorem 4.5(a)) and the Brion combinatorics (Lemmas 3.5A–C). The vertex decomposition of the truncated kernel (Props. 3.6, 4.2) and the spectral identity under Hypothesis (R) (Theorem 4.5(b)) are proved in rank one, and in rank ≥ 2 they are conditional on a uniform form (C) of Casselman's asymptotics.
 - **Corrected:** the 1997 claim that I(χ,γ) is always a rational function. For SL(2) the spectral measure has an atom at the quadratic unramified character, given by the κ-orbital integral (§6.2, [`examples/sl2/`](local-trace/examples/sl2/)). All normalization errors in the errata log are corrected in the revision; see [`CHANGES.md`](local-trace/paper/CHANGES.md).
-- **Rank two (PGL(3), numerical):** for an unramified elliptic γ of depth 0, the spectral identity holds with no singular part, but Hypothesis (R) *fails*. So (R) is not necessary, and the paper proposes a weaker hypothesis (R′) (Appendix C, [`examples/pgl3/`](local-trace/examples/pgl3/)).
-- **Open (rank ≥ 2):** a proof of (R′) or of Conjecture 4.6 (the shape of the singular part); a proof of the PGL(3) displacement table (Observation C.2); other conjugacy classes.
+- **Rank two (PGL(3), numerical):** for an unramified elliptic γ of depth 0, the spectral identity holds with no singular part, but Hypothesis (R) *fails*. So (R) is not necessary, and the paper proposes a weaker hypothesis (R′) (Appendix B, [`examples/pgl3/`](local-trace/examples/pgl3/)).
+- **Open (rank ≥ 2):** a proof of (R′) or of Conjecture 4.6 (the shape of the singular part); a proof of the PGL(3) displacement table (Observation B.2); other conjugacy classes.
 
 ## Reproducing the checks
 

@@ -77,62 +77,28 @@
 \large Revised, corrected and updated}
 \author{David Joyner and Claude}
 \date{Original: Pacific J.\ Math.\ \textbf{154} (1992), 103--129.\\
-Corrected and updated: November 2026.\footnote{Claude is an AI model made by Anthropic. This revision starts from a corrected version of the paper circulated in October 1997. Changes from the 1997 text are listed in the file \texttt{CHANGES.md} that accompanies this paper; substantive changes, and everything not fully verified, are flagged in the text by a dated ``Remark 2026.$n$''. The literal transcription of the 1997 version, its errata log and a referee report are in \texttt{../original-1997/}.}}
+Corrected and updated: November 2026.\footnote{Claude is an AI model made by Anthropic. Statements not fully verified are flagged by a dated ``Remark 2026.$n$''. The history of the paper and a summary of the changes are in Appendix~C.}}
 
 \begin{document}
 \maketitle
 
 \begin{abstract}
-This AI-aided paper revises and updates the first author's earlier paper [Jo92]. Let $G$ be a connected unramified semisimple group over a $p$-adic field $F$ (more generally, an unramified group with anisotropic center), $K$ a hyperspecial maximal compact subgroup, $f$ a spherical function, $f^\vee$ its Satake transform and $\phi$ a smooth compactly supported function on the regular elliptic set. Following the method of Waldspurger [Wa89a] for $GL(N)$ (truncation, Casselman's asymptotics, Macdonald's formula), we study the spectral expansion
+This AI-aided paper revises and updates the first author's earlier paper [Jo92]. Let $G$ be a connected unramified semisimple group over a $p$-adic field $F$, $K$ a hyperspecial maximal compact subgroup, $f$ a spherical function with Satake transform $f^\vee$, and $\phi$ a smooth compactly supported function on the regular elliptic set. Following Waldspurger's method for $GL(N)$, we study the spectral expansion
 \[
-\int_{G(F)\times G(F)} f(h)\phi(g^{-1}hg)\,dg\,dh=\int f^\vee(\chi)\,dI_\phi(\chi),
+\int_{G(F)\times G(F)} f(h)\phi(g^{-1}hg)\,dg\,dh=\int f^\vee(\chi)\,dI_\phi(\chi)
 \]
-equivalently of elliptic orbital integrals $\int f(g^{-1}\gamma g)\,dg$ of spherical functions, as an integral over the compact torus of unitary unramified characters. For a truncation parameter $T$ the identity holds exactly with an explicit truncated kernel $I^T(\chi,\phi)$, and $I^T$ is a finite sum of vertex terms $\psi(T_Q)p(T_Q)$ (Brion's decomposition), whose $T$-independent part $I(\chi,\phi)$ is a rational function of $\chi$. Under a strong regularity hypothesis on the vertex terms (and, in rank $\ge2$, a uniform form of Casselman's asymptotics) the identity holds with $dI_\phi=I(\chi,\phi)\,d\mu(\chi)$, $d\mu$ the Plancherel measure; the hypothesis is verified for $PGL(2)$. A computation on the Bruhat--Tits building of $PGL(3)$ shows that it is not necessary: for an unramified elliptic element of depth~$0$ it fails, yet the identity holds with no singular part. For $SL(2)$ it fails, and the spectral measure has an atom at the unramified quadratic character, the non-regular unitary character where the Plancherel density does not vanish; the atom is the $\kappa$-orbital integral, as the fundamental lemma predicts. This corrects the claim of the 1997 version that $I(\chi,\gamma)$ is always a rational function. We also give the $\kappa$-twisted version for $SL(n)$ in the light of the now-proved fundamental lemma, worked examples for $PGL(2)$ and $SL(2)$ checked numerically on the Bruhat--Tits tree, a sketch of the derivation from Arthur's local trace formula, a literature review and a glossary.
+over the compact torus of unitary unramified characters, and with it the spectral expansion of elliptic orbital integrals of spherical functions. We prove a truncated form of the identity, with an explicit kernel $I^T(\chi,\phi)$. By Brion's theorem, $I^T$ is a finite sum of vertex terms whose $T$-independent part $I(\chi,\phi)$ is a rational function of $\chi$. Under a regularity hypothesis on the vertex terms (and, in rank $\ge2$, a uniform form of Casselman's asymptotics) we prove that $dI_\phi=I(\chi,\phi)\,d\mu(\chi)$, with $d\mu$ the Plancherel measure.
+
+Three examples are computed in closed form.
+\begin{itemize}
+\item For $PGL(2)$ the hypothesis holds.
+\item For $SL(2)$ it fails, and $dI_\phi$ has an atom at the unramified quadratic character, given by the $\kappa$-orbital integral, as the fundamental lemma predicts.
+\item For $PGL(3)$, a computation on the Bruhat--Tits building shows that the hypothesis also fails for an unramified elliptic element of depth~$0$. Numerically, the spectral measure is nevertheless absolutely continuous, with an explicit density.
+\end{itemize}
+We propose a weaker regularity hypothesis that separates these cases. We also conjecture that the singular part of $dI_\phi$ is supported where the $R$-groups of the unitary unramified principal series are non-trivial, and that for $SL(n)$ it is given by endoscopy. We give the $\kappa$-twisted version for $SL(n)$ and a sketch of the derivation from Arthur's local trace formula.
 \end{abstract}
 
 \tableofcontents
-
-% =====================================================================
-\section*{About this revision}
-\addcontentsline{toc}{section}{About this revision}
-
-\paragraph{History.} The paper was published in Pacific J.\ Math.\ \textbf{154} (1992), 103--129 [Jo92]. In October 1997 a corrected and extended version was circulated; it added \S2.5 on $(G,M)$-families, Proposition~3.7, \S4.1, Proposition~4.3 and all of \S5 (the 1997 footnotes recording this are merged into this paragraph). This 2026 version is built from a literal transcription of the 1997 text and its errata log (both in \texttt{original-1997/}).
-
-\paragraph{What changed.} Typos, misquoted normalizations and wrong references have been corrected silently; they are listed item by item in \texttt{CHANGES.md}. The substantive changes are:
-\begin{enumerate}
-\item the constant and the chamber in Macdonald's formula (Lemma~2.1) and the $\delta_P^{1/2}$ factor in Casselman's asymptotics (Lemma~3.3);
-\item Lemma~3.5 is replaced by Brion's vertex decomposition (Lemma~3.5A);
-\item Proposition~3.6 is restated as ``vertex terms plus a $T$-independent remainder'' and given a new, direct proof (the 1997 inductive argument did not control the $T$-independent remainder);
-\item Proposition~4.2 and Theorem~4.5 are restated: $I(\chi,\phi)$ is defined as the $T$-independent part of the truncated kernel, and the spectral identity is proved under an explicit regularity hypothesis~(R);
-\item an example (\S6.2, $SL(2)$) shows that (R) can fail and that the spectral side then needs atoms; the 1997 claim that $I(\chi,\gamma)$ is a rational function is corrected accordingly (Conjecture~4.6);
-\item \S5 is updated: the fundamental lemma is a theorem, and the 1997 closing question becomes the conditional Proposition~5.2;
-\item following a second referee report: the standing hypothesis is semisimple $G$ (more generally, anisotropic center), as in 1992 (Remark~\ref{r:scope}); Lemma~2.8 holds only when the coroot lattice is saturated (Remark~\ref{r:L28}); Casselman's input (C) is stated explicitly; the combinatorics of Proposition~3.6 is proved in full (Lemmas~3.5B, 3.5C) and checked in rank two; and (R) is proved for $PGL(2)$ (Lemma~6.1A);
-\item a computation on the building of $PGL(3)$ (Appendix~C) shows that (R) fails in rank two even when $Z(G)$ is connected, while the conclusion of Theorem~4.5(b) still holds there. This leads to the weaker hypothesis (R$'$) of Remark~\ref{r:Rprime}, and Conjecture~4.6(b) no longer asserts (R).
-\end{enumerate}
-New material: worked examples for $PGL(2)$ and $SL(2)$ (\S6), the derivation from Arthur's local trace formula (``Route~B'', \S7), a literature review before and after 1992 (\S8), a glossary (Appendix~A) and the $PGL(3)$ computation (Appendix~C).
-
-\paragraph{Status.}
-\begin{center}
-\begin{tabular}{p{0.52\textwidth}p{0.4\textwidth}}
-\toprule
-Statement & Status (November 2026)\\
-\midrule
-Truncated identity, Theorem~4.5(a) & proved, for $G$ satisfying (H)\\
-Brion decomposition, Lemmas~3.5A--C & proved; checked for $SL(3)$, $PGL(3)$\\
-Vertex decomposition of $J^T$, $I^T$ (Props.~3.6, 4.2) & proved in rank one; in rank $\ge2$ conditional on Casselman's input (C); (4.7A) confirmed for one $\gamma$ in $PGL(3)$ (App.~C)\\
-Spectral identity, Theorem~4.5(b) & proved under (C) and (R); holds numerically for one $\gamma$ in $PGL(3)$, where (R) fails (App.~C)\\
-Hypothesis (R) & proved for $PGL(2)$ (Lemma~6.1A); fails for $SL(2)$ (\S6.2) and for $PGL(3)$ (App.~C)\\
-Weaker hypothesis (R$'$), Remark~\ref{r:Rprime} & proposed; consistent with the $PGL(3)$ data\\
-$SL(2)$ atom, Proposition~6.4 & proved, all $q$\\
-Shape of the spectral measure, Conjecture~4.6 & verified for $PGL(2)$, $SL(2)$; numerically for one $\gamma$ in $PGL(3)$; open in general\\
-$\kappa$-spectral measure, $\kappa$ of order $n$, Prop.~5.1 & proved (from the fundamental lemma); normalizations checked for $SL(2)$\\
-$\kappa$-spectral measure, general $m\mid n$, Prop.~5.2 & conditional on a stable Theorem~4.5 for $H_m$\\
-Lemma~2.8 & proved when $\mathbb{Z}\Delta^\vee$ is saturated; false for $PGL(2)$\\
-Route B (\S7) & proposed route; normalizations not checked\\
-\bottomrule
-\end{tabular}
-\end{center}
-The numerical checks are \texttt{examples/pgl2/pgl2\_check.py}, \texttt{examples/sl2/sl2\_check.py}, \texttt{examples/rank2/brion\_check.py} and \texttt{examples/pgl3/pgl3\_check.py} (run all with \texttt{python3 run\_checks.py} at the top of the repository).
 
 % =====================================================================
 \section{Introduction}
@@ -179,16 +145,16 @@ A somewhat analogous formula to (1.5), for stable unipotent orbits, was conjectu
 \begin{enumerate}
 \item \emph{Truncated inner products} (\S3). For a truncation parameter $T$, the integral $J^T$ of a product of two matrix coefficients over $G(T)=\bigcup_{a}KaK$ (the finitely many double cosets ``below $T$'') is computed from Casselman's asymptotics on the regions where they apply. Brion's theorem turns the resulting lattice-point sums into vertex terms $\psi(T_Q)R_Q$, one for each standard parabolic $Q$; the vertex $T_G=0$ gives a $T$-independent term (Proposition~3.6).
 \item \emph{The truncated kernel} (\S4.2). Expanding the spherical function in matrix coefficients expresses $I^T(\chi,\phi)=\int_{G(T)\times G}\Gamma_\chi(g^{-1}hg)\phi(h)$ through $J^T$. So $I^T$ is a sum of vertex terms, and its $T$-independent part defines $I(\chi,\phi)$ (Proposition~4.2).
-\item \emph{Removing the truncation} (\S4.3). For $T$ large, $T_\phi(f)=\int f^\vee I^T\,d\mu$ exactly (Fubini on a compact set). If the vertex terms are regular enough (Hypothesis (R)), their contributions vanish as $T\to\infty$ and $T_\phi(f)=\int f^\vee I\,d\mu$ (Theorem~4.5). Where (R) fails they can leave atoms (Conjecture~4.6, \S6.2), or they can cancel in the limit (Appendix~C).
+\item \emph{Removing the truncation} (\S4.3). For $T$ large, $T_\phi(f)=\int f^\vee I^T\,d\mu$ exactly (Fubini on a compact set). If the vertex terms are regular enough (Hypothesis (R)), their contributions vanish as $T\to\infty$ and $T_\phi(f)=\int f^\vee I\,d\mu$ (Theorem~4.5). Where (R) fails they can leave atoms (Conjecture~4.6, \S6.2), or they can cancel in the limit (Appendix~B).
 \end{enumerate}
 
 \paragraph{What is proved, what is conditional, what is conjectural.}
 \begin{itemize}
 \item \emph{Proved for all $G$ satisfying (H):} the truncated identity, Theorem~4.5(a); the combinatorial Lemmas~3.5A--3.5B (also checked by exact computation for $SL(3)$ and $PGL(3)$); Lemma~2.8 when the coroot lattice is saturated in $X_*(A)$.
 \item \emph{Proved modulo one input from Casselman's theory:} Propositions~3.6 and 4.2 use Casselman's asymptotics in the form (C) of \S3.1, on the regions $A^-_P(\epsilon)$. In rank one, (C) is Casselman's theorem itself, and these propositions are unconditional.
-\item \emph{Proved under Hypothesis (R):} the spectral identity, Theorem~4.5(b), and Corollary~4.5A. Hypothesis (R) is a strong condition with representation-theoretic content, not a routine regularity assumption. It is not necessary (Appendix~C).
+\item \emph{Proved under Hypothesis (R):} the spectral identity, Theorem~4.5(b), and Corollary~4.5A. Hypothesis (R) is a strong condition with representation-theoretic content, not a routine regularity assumption. It is not necessary (Appendix~B).
 \item \emph{Examples, proved:} for $PGL(2)$, (R) holds and $I(\chi,\gamma)$ is given in closed form (Theorem~6.1, Lemma~6.1A). For $SL(2)$, (R) fails and the spectral measure has an atom (Proposition~6.4, for every $q$).
-\item \emph{Example, numerical:} for $PGL(3)$ and an unramified elliptic $\gamma$ of depth~$0$, $I(\chi,\gamma)$ is given in closed form, (R) fails, and the spectral identity holds with no singular part (Appendix~C; one combinatorial input is observed, not proved).
+\item \emph{Example, numerical:} for $PGL(3)$ and an unramified elliptic $\gamma$ of depth~$0$, $I(\chi,\gamma)$ is given in closed form, (R) fails, and the spectral identity holds with no singular part (Appendix~B; one combinatorial input is observed, not proved).
 \item \emph{Endoscopy:} Proposition~5.1 follows from the fundamental lemma, which is a theorem; its normalizations were checked for $SL(2)$. Proposition~5.2 is conditional on a stable form of Theorem~4.5 for the endoscopic group.
 \item \emph{Conjectural:} Conjecture~4.6 (shape of the spectral measure when (R) fails) and Conjecture~7.3 (comparison with Arthur's weighted characters). Section~7 describes a proposed route to Conjecture~4.6, not a proof.
 \end{itemize}
@@ -849,7 +815,7 @@ Then $I(f,\phi)=\int_{G(T)\times G(F)}f(g^{-1}hg)\phi(h)\,dg\,dh$. For $f\in\Hc(
 For every bi-$K_n$-invariant $\phi\in C_c^\infty(G_{\ellr})$ and every $\mu\in\mathcal M(G,n)$, each coefficient of the polynomial $P_\mu(T;\chi,\phi)$ of (4.7A), multiplied by $\rho(\chi)$, extends to a $C^\infty$ function of $\chi\in\Thu$.
 \end{Hypothesis}
 
-Hypothesis (R) is a strong condition with representation-theoretic content, not a routine regularity assumption. It asks that each oscillatory component separately be regular against the Plancherel density, and it fails for $SL(2)$ (\S6.2) exactly at a reducibility point of the unitary principal series. For $PGL(2)$ it is proved in Lemma~6.1A. It also fails for $PGL(3)$, along non-root subtori where $\rho\ne0$, but there the conclusion of Theorem~4.5(b) still holds (Appendix~C). The weaker Hypothesis (R$'$) of Remark~\ref{r:Rprime} suffices for the proof of Theorem~4.5(b).
+Hypothesis (R) is a strong condition with representation-theoretic content, not a routine regularity assumption. It asks that each oscillatory component separately be regular against the Plancherel density, and it fails for $SL(2)$ (\S6.2) exactly at a reducibility point of the unitary principal series. For $PGL(2)$ it is proved in Lemma~6.1A. It also fails for $PGL(3)$, along non-root subtori where $\rho\ne0$, but there the conclusion of Theorem~4.5(b) still holds (Appendix~B). The weaker Hypothesis (R$'$) of Remark~\ref{r:Rprime} suffices for the proof of Theorem~4.5(b).
 
 \begin{Theorem}{4.5}[2026 form]
 Let $f\in\Hc(G,K)$, let $\phi\in C_c^\infty(G_{\ellr})$ be bi-$K_n$-invariant, and let $T(f,\phi)$ be as in (4.9).
@@ -893,7 +859,7 @@ $I(f,\phi)$ is invariant under conjugation of $\phi$, and the $W$-invariant Laur
 \begin{rem26}[Theorem 4.5]\label{r:T45}
 \begin{enumerate}
 \item Part~(a) is the first line of the 1997 Theorem~4.5 and is unconditional. The 1997 second line, with $I(\chi,\phi)$ ``independent of $T$'', rested on the unsupported claim discussed in Remark~\ref{r:P42}.
-\item Part~(b) is conditional on (R). Hypothesis~(R) holds for $PGL(2)$ (\S6.1). It fails for $SL(2)$ (\S6.2), and there the conclusion of (b) is false: the spectral side needs an extra point mass. The 2026 first draft expected (R) to hold whenever $Z(G)$ is connected. That is false: (R) fails for $PGL(3)$, although the conclusion of (b) holds there (Appendix~C). The proof of (b) works verbatim under the weaker (R$'$) of Remark~\ref{r:Rprime}. For $GL(N)$ the analogous statement is the content of [Wa89a], which we have not re-checked against the formulation here.
+\item Part~(b) is conditional on (R). Hypothesis~(R) holds for $PGL(2)$ (\S6.1). It fails for $SL(2)$ (\S6.2), and there the conclusion of (b) is false: the spectral side needs an extra point mass. The 2026 first draft expected (R) to hold whenever $Z(G)$ is connected. That is false: (R) fails for $PGL(3)$, although the conclusion of (b) holds there (Appendix~B). The proof of (b) works verbatim under the weaker (R$'$) of Remark~\ref{r:Rprime}. For $GL(N)$ the analogous statement is the content of [Wa89a], which we have not re-checked against the formulation here.
 \item In rank one, the proof of (b) can be sharpened: the oscillatory terms pair to zero \emph{exactly} with $f^\vee$ once $T$ is large, by a Fourier-support argument (\S6.1).
 \end{enumerate}
 \end{rem26}
@@ -906,7 +872,7 @@ $I(f,\phi)$ is invariant under conjugation of $\phi$, and the $W$-invariant Laur
 \end{enumerate}
 Under (C) and (R), $\Lambda_\phi$ is the absolutely continuous measure $I(\chi,\phi)\,d\mu$ (Theorem~4.5(b)). In general, that $\Lambda_\phi$ is a measure is part of Conjecture~4.6. For $SL(2)$ it is a measure with an atom (Proposition~6.4).
 
-\paragraph{When (R) fails.} The singular behavior comes from the denominators $1-\psi(\mu_e)$ of Lemma~3.5A, with $\psi=w\chi/w'\chi$, at points where $\rho$ does not vanish to compensate. On such a hypersurface a term $\chi(\mu(T))a(\chi)$ with $a\rho$ having a simple pole behaves, as $T\to\infty$, like a Dirichlet kernel, and its pairing with $f^\vee$ tends to a multiple of the restriction of $f^\vee$ to the hypersurface (the Sokhotski--Plemelj formula on the circle). The limit exists because $I(f,\phi)$ does not depend on $T$. In rank $\ge2$ the hypersurface can carry a further oscillation. In $PGL(3)$ the poles of two terms cancel in a pair whose frequencies agree on the hypersurface, and the common frequency still moves along the hypersurface as $T$ grows. Then the Dirichlet kernel is multiplied by a character oscillating along the hypersurface, and the limit is $0$ (Appendix~C.6). This motivates:
+\paragraph{When (R) fails.} The singular behavior comes from the denominators $1-\psi(\mu_e)$ of Lemma~3.5A, with $\psi=w\chi/w'\chi$, at points where $\rho$ does not vanish to compensate. On such a hypersurface a term $\chi(\mu(T))a(\chi)$ with $a\rho$ having a simple pole behaves, as $T\to\infty$, like a Dirichlet kernel, and its pairing with $f^\vee$ tends to a multiple of the restriction of $f^\vee$ to the hypersurface (the Sokhotski--Plemelj formula on the circle). The limit exists because $I(f,\phi)$ does not depend on $T$. In rank $\ge2$ the hypersurface can carry a further oscillation. In $PGL(3)$ the poles of two terms cancel in a pair whose frequencies agree on the hypersurface, and the common frequency still moves along the hypersurface as $T$ grows. Then the Dirichlet kernel is multiplied by a character oscillating along the hypersurface, and the limit is $0$ (Appendix~B.6). This motivates:
 
 \begin{Conjecture}{4.6}
 Let $\phi\in C_c^\infty(G_{\ellr})$.
@@ -922,7 +888,7 @@ where $I(\cdot,\phi)$ is the function of Proposition~4.2(c), $I(\cdot,\phi)\rho\
 \end{Conjecture}
 
 \begin{rem26}[Conjecture 4.6]\label{r:C46}
-Verified for $PGL(2)$ (no singular part) and for $SL(2)$, where $dI^{\,sing}_\gamma=\tfrac12\Delta\,\delta_{\chi_0}$ and $\chi_0$ is the unramified quadratic character (\S6.2). The precise support condition in~(a) is a guess, and in~(c) the normalizations (the size of $\mathfrak D$, transfer factors) have only been checked for $SL(2)$. Part~(b) relies on [Ke82] (Chevalley groups; the general unramified case via Steinberg's connectedness theorem for centralizers in $\hat G$) for the triviality of $R$-groups. The first 2026 draft also asserted that (R) holds in case~(b). That is false for $PGL(3)$ (Appendix~C), so it has been removed. The conjectural part of~(b) is ``trivial $R$-groups $\Rightarrow dI^{\,sing}_\phi=0$'', which we expect to go through (R$'$) (Remark~\ref{r:Rprime}). For $PGL(3)$, part~(b) holds for the depth-$0$ unramified elliptic elements of Appendix~C, numerically and modulo Observation~C.2.
+Verified for $PGL(2)$ (no singular part) and for $SL(2)$, where $dI^{\,sing}_\gamma=\tfrac12\Delta\,\delta_{\chi_0}$ and $\chi_0$ is the unramified quadratic character (\S6.2). The precise support condition in~(a) is a guess, and in~(c) the normalizations (the size of $\mathfrak D$, transfer factors) have only been checked for $SL(2)$. Part~(b) relies on [Ke82] (Chevalley groups; the general unramified case via Steinberg's connectedness theorem for centralizers in $\hat G$) for the triviality of $R$-groups. The first 2026 draft also asserted that (R) holds in case~(b). That is false for $PGL(3)$ (Appendix~B), so it has been removed. The conjectural part of~(b) is ``trivial $R$-groups $\Rightarrow dI^{\,sing}_\phi=0$'', which we expect to go through (R$'$) (Remark~\ref{r:Rprime}). For $PGL(3)$, part~(b) holds for the depth-$0$ unramified elliptic elements of Appendix~B, numerically and modulo Observation~B.2.
 \end{rem26}
 
 \paragraph{The geometric side.} The Weyl integration formula states that
@@ -1346,46 +1312,21 @@ All bibliographic entries below were checked against publisher, Numdam/EuDML or 
 \item[Fundamental lemma] The identity (5.11) for spherical functions, $f_H=\iota^*f$; now a theorem.
 \end{description}
 
-\section{Concordance with the 1997 version}
-
-Section, equation and result numbers are those of 1997 (new items carry letters or the numbers 6.$n$, 7.$n$). The item-by-item disposition of the errata log \texttt{transcription\_log.md} is in \texttt{CHANGES.md}. In summary:
-\begin{center}\small
-\begin{tabular}{ll}
-\toprule
-1997 & 2026\\
-\midrule
-Lemma 2.1, 2.2 & corrected constant $Q_G$ and chamber (Remark~\ref{r:mac})\\
-Lemma 2.4, Cor.\ 2.5, Remark 1 & $\Wrep{M}$; ``irreducible'' deleted; direct-sum statement\\
-\S2.5 (Lemmas 2.6--2.9) & kept in place, notation fixed; explanatory role only\\
-(3.1), Lemmas 3.2--3.4 & opposite parabolic, $\delta_P^{1/2}$, $A^-_P(\epsilon)$, new proof of 3.2\\
-Lemma 3.5, (3.5)--(3.6), Remark 6 & replaced by Lemma~3.5A\\
-(3.7), (3.8) & $Q_a\in\mathbb{Q}$; (3.8) via Lemma~3.5A\\
-Prop.\ 3.6, proof (3.9)--(3.23) & 2026 statement and proof (Remark~\ref{r:P36})\\
-Lemma 4.1 & kept as a 1997 statement, not used (Remark~\ref{r:GAfam})\\
-Prop.\ 4.2, 4.3 & 2026 form; $I(\chi,\phi)$ = $T$-independent part\\
-Theorem 4.5 & (a) unconditional, (b) under (R); new Conjecture~4.6\\
-(4.10), (4.11) & Weyl discriminant, measures fixed\\
-\S5 & rewritten: (5.1)--(5.4A), Props.\ 5.1--5.2\\
---- & new: \S\S6--8 (examples, Route B, literature), Apps.~A, C\\
-\bottomrule
-\end{tabular}
-\end{center}
-
 % =====================================================================
 \section{$PGL(3)$: a rank-two test of Hypothesis (R)}\label{app:pgl3}
 
 This appendix reports a computation on the Bruhat--Tits building of $PGL(3)$. It was done to test Hypothesis~(R) in rank two. In brief:
 \begin{itemize}
-\item for an unramified elliptic element $\gamma$ of depth~$0$, the $T$-independent part $I(\chi,\gamma)$ has the closed form (C.4), with double poles only on the root walls;
-\item the spectral identity $O_\gamma(f)=\int f^\vee(\chi)I(\chi,\gamma)\,d\mu(\chi)$ holds, with no singular part (Table~C.1);
+\item for an unramified elliptic element $\gamma$ of depth~$0$, the $T$-independent part $I(\chi,\gamma)$ has the closed form (B.4), with double poles only on the root walls;
+\item the spectral identity $O_\gamma(f)=\int f^\vee(\chi)I(\chi,\gamma)\,d\mu(\chi)$ holds, with no singular part (Table~B.1);
 \item yet Hypothesis~(R) \emph{fails}: some oscillatory coefficients, times $\rho$, have simple poles along non-root subtori where $\rho\ne0$.
 \end{itemize}
 So (R) is sufficient for Theorem~4.5(b) but not necessary. A weaker hypothesis (R$'$), which separates $PGL(3)$ from $SL(2)$, is proposed in Remark~\ref{r:Rprime}. The computations are in \texttt{examples/pgl3/} (\texttt{pgl3\_check.py} runs them in a few seconds).
 
-\subsection*{C.1 Setup}
+\subsection*{B.1 Setup}
 
 Let $G=PGL(3)$ over $F$ with residue field of order $q$, $K=PGL(3,\OO)$, and $\vol(K)=1$. The vertices of the building $\mathcal X$ are the homothety classes of $\OO$-lattices in $F^3$, and $G(F)/K$ is the set of vertices; $v_0$ is the class of $\OO^3$. For vertices $v,v'$ the \emph{vector distance} $d(v,v')$ is the dominant coweight $\lambda=(l_1,l_2,0)$, $l_1\ge l_2\ge0$, such that $v'=g a_\lambda v_0$ when $v=gv_0$, where $a_\lambda=\mathrm{diag}(\pi^{l_1},\pi^{l_2},1)$. Concretely, if $L'\subseteq L$ represent $v',v$, then $\pi^{l_1}$, $\pi^{l_2}$, $1$ are the elementary divisors of $L'$ in $L$ after scaling. We write $a=\ip{\lambda,\alpha_1}=l_1-l_2$, $b=\ip{\lambda,\alpha_2}=l_2$, and use $(a,b)$ and $(l_1,l_2)$ interchangeably. Then
-\begin{equation}\tag{C.1}
+\begin{equation}\tag{B.1}
 \vol(Ka_\lambda K)=\begin{cases}1&\lambda=0,\\ \frac{Q}{1+q^{-1}}\,q^{2l_1}&\lambda\ne0,\ ab=0,\\ Q\,q^{2l_1}&ab\ne0,\end{cases}\qquad Q=Q_G=(1+q^{-1})(1+q^{-1}+q^{-2}),
 \end{equation}
 and $\ip{2\rho,\lambda}=2l_1$.
@@ -1397,16 +1338,16 @@ I^T(\chi,\gamma)=\sum_{v:\ d(v_0,v)\in\cA_A(T)}\Gamma_\chi\big(a_{d(v,\gamma v)}
 \]
 where $\mathcal X^0$ is the set of vertices. In the coordinates $t_1=\ip{T,\alpha_1}$, $t_2=\ip{T,\alpha_2}$, the truncation set $\cA_A(T)$ of \S3 is $\{(a,b)\in\mathbb{Z}_{\ge0}^2:\ 2a+b<2t_1+t_2,\ a+2b<t_1+2t_2\}$, because $\ip{\lambda,\varpi_1}=(2a+b)/3$ and $\ip{\lambda,\varpi_2}=(a+2b)/3$. We take $\gamma$ to be the companion matrix of $x^3+x+1$ for $q=2$, and of $x^3-x+1$ for $q=3$.
 
-\subsection*{C.2 The displacement table}
+\subsection*{B.2 The displacement table}
 
-Write the vertices in canonical (Hermite normal form) bases, and enumerate them by breadth-first search from $v_0$. Each vertex has $2(q^2+q+1)$ neighbors, corresponding to the lines and planes of $\mathbb{F}_q^3$. The number of vertices at vector distance $\lambda$ from $v_0$ agrees with (C.1). Tabulating
+Write the vertices in canonical (Hermite normal form) bases, and enumerate them by breadth-first search from $v_0$. Each vertex has $2(q^2+q+1)$ neighbors, corresponding to the lines and planes of $\mathbb{F}_q^3$. The number of vertices at vector distance $\lambda$ from $v_0$ agrees with (B.1). Tabulating
 \[
 N(\lambda,\mu)=\#\{v:\ d(v_0,v)=\lambda,\ d(v,\gamma v)=\mu\}
 \]
 for all $v$ with $l_1\le6$ when $q=2$ ($86\,017$ vertices) and all $v$ with $l_1\le4$ when $q=3$ ($62\,193$ vertices) gives the following.
 
-\paragraph{Observation C.2.} Let $k=l_1=a+b$ and $s=\min(a,b)$. Then $d(v,\gamma v)=\lambda+\lambda^*-j\alpha^\vee$ for some $\alpha\in\{\alpha_1,\alpha_2\}$ and some $0\le j\le s$, where $\lambda+\lambda^*=k\rho^\vee$, i.e.\ $\mu=(2k,k)$, $(2k-j,k+j)$ or $(2k-j,k-2j)$ in the coordinates $(m_1,m_2)$. The proportions are as follows.
-\begin{equation}\tag{C.2}
+\paragraph{Observation B.2.} Let $k=l_1=a+b$ and $s=\min(a,b)$. Then $d(v,\gamma v)=\lambda+\lambda^*-j\alpha^\vee$ for some $\alpha\in\{\alpha_1,\alpha_2\}$ and some $0\le j\le s$, where $\lambda+\lambda^*=k\rho^\vee$, i.e.\ $\mu=(2k,k)$, $(2k-j,k+j)$ or $(2k-j,k-2j)$ in the coordinates $(m_1,m_2)$. The proportions are as follows.
+\begin{equation}\tag{B.2}
 \frac{N(\lambda,\mu)}{\vol(Ka_\lambda K)}=
 \begin{cases}
 1, & s=0,\ \mu=k\rho^\vee;\\[0.5ex]
@@ -1417,19 +1358,19 @@ for all $v$ with $l_1\le6$ when $q=2$ ($86\,017$ vertices) and all $v$ with $l_1
 \end{equation}
 The table is the same for three other elements of $\gamma K_1$ that were tried, so for $\phi$ the normalized characteristic function of $\gamma K_1$ one has $I^T(\chi,\phi)=I^T(\chi,\gamma)$.
 
-\begin{rem26}[Observation C.2]\label{r:C2}
-(C.2) is an observation, checked on every vertex in the ranges stated, not a theorem. On the walls ($s=0$) it is easy: $\gamma$ moves every line and every plane of $\mathbb{F}_q^3$, and $d(v,\gamma v)=k\rho^\vee$. In the interior the parameter $j$ measures how far the flag attached to $v$ is from being $\gamma$-stable modulo $\pi^{j}$. We have not written out a proof. Everything below that uses (C.2) for $l_1$ beyond the checked range is conditional on it.
+\begin{rem26}[Observation B.2]\label{r:C2}
+(B.2) is an observation, checked on every vertex in the ranges stated, not a theorem. On the walls ($s=0$) it is easy: $\gamma$ moves every line and every plane of $\mathbb{F}_q^3$, and $d(v,\gamma v)=k\rho^\vee$. In the interior the parameter $j$ measures how far the flag attached to $v$ is from being $\gamma$-stable modulo $\pi^{j}$. We have not written out a proof. Everything below that uses (B.2) for $l_1$ beyond the checked range is conditional on it.
 \end{rem26}
 
-\subsection*{C.3 The spectral side}
+\subsection*{B.3 The spectral side}
 
 Write $z=(z_1,z_2,z_3)$, $z_1z_2z_3=1$, for the unramified character $\chi$ with $\chi(\mathrm{diag}(x_1,x_2,x_3))=\prod z_i^{v(x_i)}$, $z^\alpha=z_i/z_j$ for $\alpha=e_i-e_j$, and $c(\chi)=\prod_{\alpha>0}(1-q^{-1}z^\alpha)/(1-z^\alpha)$. For dominant $\mu=(m_1,m_2,0)$, Macdonald's formula (Lemma~2.1, written for the dominant representative of $Ka_\mu K$) is
-\begin{equation}\tag{C.3}
+\begin{equation}\tag{B.3}
 \Gamma_\chi(a_\mu)=Q^{-1}q^{-m_1}\sum_{w\in W}c\big((w\chi)^{-1}\big)(w\chi)(a_\mu),\qquad \rho(\chi)=\frac Q6\,|c(\chi)|^{-2}.
 \end{equation}
 Passing to the dominant representative may replace $\chi$ by $\chi^{-1}$. This does not matter here, because every function below is invariant under $\chi\mapsto\chi^{-1}$.
 
-Put $u_w=(w\chi)(a_{\alpha_1^\vee})$, $v_w=(w\chi)(a_{\alpha_2^\vee})$ and $X_w=u_wv_w$. Insert (C.2) into $\sum_\mu N(\lambda,\mu)\Gamma_\chi(a_\mu)$. The volume (C.1), the factor $q^{-m_1}=q^{-(2k-j)}$ and $Q^{-1}$ combine to the weight $\frac{q-1}{q+1}$ for $j<s$ and $\frac q{q+1}$ for $j=s$ and on the walls. Since $\mu=k\rho^\vee-j\alpha^\vee$, one gets $(w\chi)(a_\mu)=X_w^k u_w^{-j}$ or $X_w^kv_w^{-j}$. Hence
+Put $u_w=(w\chi)(a_{\alpha_1^\vee})$, $v_w=(w\chi)(a_{\alpha_2^\vee})$ and $X_w=u_wv_w$. Insert (B.2) into $\sum_\mu N(\lambda,\mu)\Gamma_\chi(a_\mu)$. The volume (B.1), the factor $q^{-m_1}=q^{-(2k-j)}$ and $Q^{-1}$ combine to the weight $\frac{q-1}{q+1}$ for $j<s$ and $\frac q{q+1}$ for $j=s$ and on the walls. Since $\mu=k\rho^\vee-j\alpha^\vee$, one gets $(w\chi)(a_\mu)=X_w^k u_w^{-j}$ or $X_w^kv_w^{-j}$. Hence
 \[
 I^T(\chi,\gamma)=1+\sum_{w\in W}c\big((w\chi)^{-1}\big)\sum_{0\ne\lambda\in\cA_A(T)}S_\lambda(u_w,v_w),
 \]
@@ -1442,7 +1383,7 @@ The $T$-independent part of the inner sum is its sum over the whole dominant con
 F_0(u,v)=\frac{X\big[(q-1)(X+X^3)-(q+1)X^2+q\big(2+(u+v)(1-X)\big)\big]}{(q+1)(1-X)(1-u^2v)(1-uv^2)}.
 \]
 The denominators $1-u_w^2v_w$ and $1-u_wv_w^2$ vanish on the subtori $H_i=\{z_i^3=1\}$, which are not root hypersurfaces. On these subtori $\rho\ne0$. These poles cancel in the sum over $W$, and an exact (computer-algebra) computation gives
-\begin{equation}\tag{C.4}
+\begin{equation}\tag{B.4}
 \begin{aligned}
 I(\chi,\gamma)&=\frac{3(q-1)^2}{q^3(q+1)}\cdot\frac{2(q^2+q+1)-q\sum_{\alpha\in\Phi}z^\alpha}{\prod_{\alpha>0}|1-z^\alpha|^2},\\
 I(\chi,\gamma)\rho(\chi)&=\frac{(q-1)^2(q^2+q+1)}{2q^6}\cdot\frac{2(q^2+q+1)-q\sum_{\alpha\in\Phi}z^\alpha}{\prod_{\alpha\in\Phi}(1-q^{-1}z^\alpha)}.
@@ -1450,7 +1391,7 @@ I(\chi,\gamma)\rho(\chi)&=\frac{(q-1)^2(q^2+q+1)}{2q^6}\cdot\frac{2(q^2+q+1)-q\s
 \end{equation}
 Thus $I(\cdot,\gamma)$ has double poles exactly on the root walls, like the $PGL(2)$ kernel of Theorem~6.1, and $I\rho$ is smooth on $\Thu$. Since $\sum_\Phi z^\alpha\le6$, the numerator is at least $2(q-1)^2$, so $I>0$. Compare type (U$_0$) for $PGL(2)$: $I=2(1-q^{-1})/|1-y|^2$.
 
-\subsection*{C.4 The spectral identity}
+\subsection*{B.4 The spectral identity}
 
 $O_\gamma(f_\nu)$ was counted on the building and compared with $\int f_\nu^\vee I\,d\mu$, where $f_\nu^\vee=\vol(Ka_\nu K)\Gamma_\chi(a_\nu)$ is computed as an explicit Laurent polynomial. The integral was evaluated on a $160\times160$ grid. The integrand is smooth, so this is accurate to rounding error.
 
@@ -1465,20 +1406,20 @@ $O_\gamma(f_\nu)$, $q=3$ & 1 & 26 & 39 & 312 & 702 & 702 & 3510 & 1053\\
 \end{tabular}
 
 \smallskip
-\textsc{Table C.1.} Elliptic orbital integrals of $PGL(3)$ for $\gamma$ of depth~$0$. In every case $\int f_\nu^\vee I(\chi,\gamma)\,d\mu$ agrees to within $10^{-12}$, and also for $\nu=(1,0),(2,0),(3,1),(4,1)$, where both sides are $0$.
+\textsc{Table B.1.} Elliptic orbital integrals of $PGL(3)$ for $\gamma$ of depth~$0$. In every case $\int f_\nu^\vee I(\chi,\gamma)\,d\mu$ agrees to within $10^{-12}$, and also for $\nu=(1,0),(2,0),(3,1),(4,1)$, where both sides are $0$.
 \end{center}
 
 So $dI_\gamma=I(\chi,\gamma)\,d\mu$, with no singular part. This is what Conjecture~4.6(b) predicts, since $Z(G)$ is connected.
 
-\subsection*{C.5 The expansion in $T$}
+\subsection*{B.5 The expansion in $T$}
 
 At a fixed generic $\chi$, $I^T(\chi,\gamma)$ was computed for $66$ values of $T$ with $t_1,t_2$ even and $t_1\equiv t_2\bmod3$, so that all the vertices of the truncated region are lattice points. Every value is fitted exactly (residual $10^{-14}$) by an exponential polynomial with constant coefficients:
 \[
 I^T(\chi,\gamma)=\sum_{\mu}a_\mu(\chi)\,\chi(\mu(T)),
 \]
-with $19$ non-zero terms. The maps $\mu$ all have the form $T\mapsto w^{-1}T-w'^{-1}T$, as in (4.7A) with $Q=B$. Here $a_0=I(\chi,\gamma)$ is (C.4), and a fit on the cone $t_1\le t_2$ predicts the values on $t_1>t_2$. This is a rank-two check of Proposition~4.2(b) for this $\gamma$. (The individual Weyl terms in C.3 are only \emph{piecewise} exponential polynomials, switching along $t_1=t_2$ because of $\min(a,b)$ in (C.2). The switching cancels in the sum over $W$.)
+with $19$ non-zero terms. The maps $\mu$ all have the form $T\mapsto w^{-1}T-w'^{-1}T$, as in (4.7A) with $Q=B$. Here $a_0=I(\chi,\gamma)$ is (B.4), and a fit on the cone $t_1\le t_2$ predicts the values on $t_1>t_2$. This is a rank-two check of Proposition~4.2(b) for this $\gamma$. (The individual Weyl terms in B.3 are only \emph{piecewise} exponential polynomials, switching along $t_1=t_2$ because of $\min(a,b)$ in (B.2). The switching cancels in the sum over $W$.)
 
-\subsection*{C.6 Hypothesis (R) fails}
+\subsection*{B.6 Hypothesis (R) fails}
 
 Let $\chi$ approach a point of $H_3=\{z_3^3=1\}$ that is not on a root wall, at distance $\epsilon$. Then $8$ of the coefficients $a_\mu(\chi)\rho(\chi)$ grow like $\epsilon^{-1}$ (measured for $\epsilon=10^{-2},10^{-3},10^{-4}$). So they have simple poles along $H_3$, where $\rho\ne0$, and Hypothesis~(R) fails for $PGL(3)$. By symmetry the same holds along $H_1$ and $H_2$.
 
@@ -1503,27 +1444,97 @@ b(\chi)\,p(T)\,\chi(\mu(T))\sum_{m=0}^{M(T)-1}\chi(m\nu),
 where $b\rho$ is smooth on $\Thu$, $p$ is a polynomial, $\nu\in X_*(A)$, $M$ is affine with $M\ge1$, and $|\mu(T)+m\nu|\ge c|T|$ for $0\le m<M(T)$, with some $c>0$.
 
 \smallskip
-\noindent Hypothesis~(R) is the case $M\equiv1$. Under (R$'$) the proof of Theorem~4.5(b) goes through unchanged: each term pairs with $f^\vee$ to at most $M(T)$ Fourier coefficients of the smooth function $f^\vee\rho b$, at frequencies of size $\ge c|T|$. For the $PGL(3)$ element above, the numerical structure of C.6 is that of (R$'$) with $\nu$ transverse to $H_i$. This has not been verified for all $19$ terms analytically, or for other $\gamma$. For $SL(2)$, (R$'$) fails, because $\mu(T)+m\nu$ passes through $0$. We conjecture that (R$'$), rather than (R), is the condition behind Conjecture~4.6(b).
+\noindent Hypothesis~(R) is the case $M\equiv1$. Under (R$'$) the proof of Theorem~4.5(b) goes through unchanged: each term pairs with $f^\vee$ to at most $M(T)$ Fourier coefficients of the smooth function $f^\vee\rho b$, at frequencies of size $\ge c|T|$. For the $PGL(3)$ element above, the numerical structure of B.6 is that of (R$'$) with $\nu$ transverse to $H_i$. This has not been verified for all $19$ terms analytically, or for other $\gamma$. For $SL(2)$, (R$'$) fails, because $\mu(T)+m\nu$ passes through $0$. We conjecture that (R$'$), rather than (R), is the condition behind Conjecture~4.6(b).
 \end{rem26}
 
-\subsection*{C.7 What this shows}
+\subsection*{B.7 What this shows}
 
 For $PGL(3)$, an unramified elliptic $\gamma$ of depth~$0$ and $\phi$ supported on $\gamma K_1$:
 \begin{enumerate}
-\item (C.2) is observed on the building for $l_1\le6$ ($q=2$) and $l_1\le4$ ($q=3$), but not proved;
-\item given (C.2), the closed form (C.4) is exact, and $I\rho$ is smooth;
+\item (B.2) is observed on the building for $l_1\le6$ ($q=2$) and $l_1\le4$ ($q=3$), but not proved;
+\item given (B.2), the closed form (B.4) is exact, and $I\rho$ is smooth;
 \item the spectral identity of Theorem~4.5(b) holds, numerically to $10^{-12}$, for all $f_\nu$ with $n_1\le6$, $q=2,3$, with no singular part;
 \item (4.7A) holds, with frequencies of the predicted form;
-\item Hypothesis~(R) fails. Its conclusion survives through the mechanism of C.6, which suggests the weaker (R$'$) of Remark~\ref{r:Rprime}.
+\item Hypothesis~(R) fails. Its conclusion survives through the mechanism of B.6, which suggests the weaker (R$'$) of Remark~\ref{r:Rprime}.
 \end{enumerate}
 Other conjugacy classes (positive depth, ramified $E$, split-by-quadratic tori) have not been treated.
+
+% =====================================================================
+\section{Revision notes and concordance with the 1997 version}\label{app:revision}
+
+\subsection*{C.1 About this revision}
+
+\paragraph{History.} The paper was published in Pacific J.\ Math.\ \textbf{154} (1992), 103--129 [Jo92]. In October 1997 a corrected and extended version was circulated; it added \S2.5 on $(G,M)$-families, Proposition~3.7, \S4.1, Proposition~4.3 and all of \S5 (the 1997 footnotes recording this are merged into this paragraph). This 2026 version is built from a literal transcription of the 1997 text and its errata log (both in \texttt{original-1997/}).
+
+\paragraph{What changed.} Typos, misquoted normalizations and wrong references have been corrected silently; they are listed item by item in \texttt{CHANGES.md}. The substantive changes are:
+\begin{enumerate}
+\item the constant and the chamber in Macdonald's formula (Lemma~2.1) and the $\delta_P^{1/2}$ factor in Casselman's asymptotics (Lemma~3.3);
+\item Lemma~3.5 is replaced by Brion's vertex decomposition (Lemma~3.5A);
+\item Proposition~3.6 is restated as ``vertex terms plus a $T$-independent remainder'' and given a new, direct proof (the 1997 inductive argument did not control the $T$-independent remainder);
+\item Proposition~4.2 and Theorem~4.5 are restated: $I(\chi,\phi)$ is defined as the $T$-independent part of the truncated kernel, and the spectral identity is proved under an explicit regularity hypothesis~(R);
+\item an example (\S6.2, $SL(2)$) shows that (R) can fail and that the spectral side then needs atoms; the 1997 claim that $I(\chi,\gamma)$ is a rational function is corrected accordingly (Conjecture~4.6);
+\item \S5 is updated: the fundamental lemma is a theorem, and the 1997 closing question becomes the conditional Proposition~5.2;
+\item following a second referee report: the standing hypothesis is semisimple $G$ (more generally, anisotropic center), as in 1992 (Remark~\ref{r:scope}); Lemma~2.8 holds only when the coroot lattice is saturated (Remark~\ref{r:L28}); Casselman's input (C) is stated explicitly; the combinatorics of Proposition~3.6 is proved in full (Lemmas~3.5B, 3.5C) and checked in rank two; and (R) is proved for $PGL(2)$ (Lemma~6.1A);
+\item a computation on the building of $PGL(3)$ (Appendix~B) shows that (R) fails in rank two even when $Z(G)$ is connected, while the conclusion of Theorem~4.5(b) still holds there. This leads to the weaker hypothesis (R$'$) of Remark~\ref{r:Rprime}, and Conjecture~4.6(b) no longer asserts (R).
+\end{enumerate}
+New material: worked examples for $PGL(2)$ and $SL(2)$ (\S6), the derivation from Arthur's local trace formula (``Route~B'', \S7), a literature review before and after 1992 (\S8), a glossary (Appendix~A) and the $PGL(3)$ computation (Appendix~B).
+
+\paragraph{Status.}
+\begin{center}
+\begin{tabular}{p{0.52\textwidth}p{0.4\textwidth}}
+\toprule
+Statement & Status (November 2026)\\
+\midrule
+Truncated identity, Theorem~4.5(a) & proved, for $G$ satisfying (H)\\
+Brion decomposition, Lemmas~3.5A--C & proved; checked for $SL(3)$, $PGL(3)$\\
+Vertex decomposition of $J^T$, $I^T$ (Props.~3.6, 4.2) & proved in rank one; in rank $\ge2$ conditional on Casselman's input (C); (4.7A) confirmed for one $\gamma$ in $PGL(3)$ (App.~B)\\
+Spectral identity, Theorem~4.5(b) & proved under (C) and (R); holds numerically for one $\gamma$ in $PGL(3)$, where (R) fails (App.~B)\\
+Hypothesis (R) & proved for $PGL(2)$ (Lemma~6.1A); fails for $SL(2)$ (\S6.2) and for $PGL(3)$ (App.~B)\\
+Weaker hypothesis (R$'$), Remark~\ref{r:Rprime} & proposed; consistent with the $PGL(3)$ data\\
+$SL(2)$ atom, Proposition~6.4 & proved, all $q$\\
+Shape of the spectral measure, Conjecture~4.6 & verified for $PGL(2)$, $SL(2)$; numerically for one $\gamma$ in $PGL(3)$; open in general\\
+$\kappa$-spectral measure, $\kappa$ of order $n$, Prop.~5.1 & proved (from the fundamental lemma); normalizations checked for $SL(2)$\\
+$\kappa$-spectral measure, general $m\mid n$, Prop.~5.2 & conditional on a stable Theorem~4.5 for $H_m$\\
+Lemma~2.8 & proved when $\mathbb{Z}\Delta^\vee$ is saturated; false for $PGL(2)$\\
+Route B (\S7) & proposed route; normalizations not checked\\
+\bottomrule
+\end{tabular}
+\end{center}
+The numerical checks are \texttt{examples/pgl2/pgl2\_check.py}, \texttt{examples/sl2/sl2\_check.py}, \texttt{examples/rank2/brion\_check.py} and \texttt{examples/pgl3/pgl3\_check.py} (run all with \texttt{python3 run\_checks.py} at the top of the repository).
+
+%
+
+\subsection*{C.2 Concordance with the 1997 version}
+
+Section, equation and result numbers are those of 1997 (new items carry letters or the numbers 6.$n$, 7.$n$). The item-by-item disposition of the errata log \texttt{transcription\_log.md} is in \texttt{CHANGES.md}. In summary:
+\begin{center}\small
+\begin{tabular}{ll}
+\toprule
+1997 & 2026\\
+\midrule
+Lemma 2.1, 2.2 & corrected constant $Q_G$ and chamber (Remark~\ref{r:mac})\\
+Lemma 2.4, Cor.\ 2.5, Remark 1 & $\Wrep{M}$; ``irreducible'' deleted; direct-sum statement\\
+\S2.5 (Lemmas 2.6--2.9) & kept in place, notation fixed; explanatory role only\\
+(3.1), Lemmas 3.2--3.4 & opposite parabolic, $\delta_P^{1/2}$, $A^-_P(\epsilon)$, new proof of 3.2\\
+Lemma 3.5, (3.5)--(3.6), Remark 6 & replaced by Lemma~3.5A\\
+(3.7), (3.8) & $Q_a\in\mathbb{Q}$; (3.8) via Lemma~3.5A\\
+Prop.\ 3.6, proof (3.9)--(3.23) & 2026 statement and proof (Remark~\ref{r:P36})\\
+Lemma 4.1 & kept as a 1997 statement, not used (Remark~\ref{r:GAfam})\\
+Prop.\ 4.2, 4.3 & 2026 form; $I(\chi,\phi)$ = $T$-independent part\\
+Theorem 4.5 & (a) unconditional, (b) under (R); new Conjecture~4.6\\
+(4.10), (4.11) & Weyl discriminant, measures fixed\\
+\S5 & rewritten: (5.1)--(5.4A), Props.\ 5.1--5.2\\
+--- & new: \S\S6--8 (examples, Route B, literature), Apps.~A, B\\
+\bottomrule
+\end{tabular}
+\end{center}
 
 % =====================================================================
 \section*{Acknowledgements}
 \addcontentsline{toc}{section}{Acknowledgements}
 \emph{From the 1997 version:} I'd like to thank J.-L.~Waldspurger for pointing out an error in a previous version and M.~Assem for helpful discussions. Partially supported by a Naval Academy Research Council (NARC) grant.
 
-\emph{2026:} The 2026 revision benefited from two referee reports on drafts of it, prepared with the help of AI models. The first was written with Claude (Anthropic). The second was written by ChatGPT (OpenAI) at the first author's request, and we thank it for a careful and useful report. The counterexamples in Remarks~\ref{r:scope} and~\ref{r:L28}, the correction to the $SL(2)$ example in \S6.2, the insistence that Casselman's input in higher rank be treated as an essential hypothesis, and the request for a detailed rank-two example (which led to the checks of Lemmas~3.5A--C and to Appendix~C) all come from it.
+\emph{2026:} The 2026 revision benefited from two referee reports on drafts of it, prepared with the help of AI models. The first was written with Claude (Anthropic). The second was written by ChatGPT (OpenAI) at the first author's request, and we thank it for a careful and useful report. The counterexamples in Remarks~\ref{r:scope} and~\ref{r:L28}, the correction to the $SL(2)$ example in \S6.2, the insistence that Casselman's input in higher rank be treated as an essential hypothesis, and the request for a detailed rank-two example (which led to the checks of Lemmas~3.5A--C and to Appendix~B) all come from it.
 
 \begin{thebibliography}{LMW18}
 \bibitem[Ar78]{Ar78} J.~Arthur, \emph{A trace formula for reductive groups I: terms associated to classes in $G(\mathbb{Q})$}, Duke Math.\ J.\ \textbf{45} (1978), 911--952.

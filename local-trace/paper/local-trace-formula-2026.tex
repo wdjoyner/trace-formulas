@@ -83,11 +83,11 @@ Corrected and updated: November 2026.\footnote{Claude is an AI model made by Ant
 \maketitle
 
 \begin{abstract}
-Let $G$ be a connected unramified reductive group over a $p$-adic field $F$, $K$ a hyperspecial maximal compact subgroup, $f$ a spherical function, $f^\vee$ its Satake transform and $\phi$ a smooth compactly supported function on the regular elliptic set. Following the method of Waldspurger [Wa89a] for $GL(N)$ (truncation, Casselman's asymptotics, Macdonald's formula), we study the spectral expansion
+Let $G$ be a connected unramified semisimple group over a $p$-adic field $F$ (more generally, an unramified group with anisotropic center), $K$ a hyperspecial maximal compact subgroup, $f$ a spherical function, $f^\vee$ its Satake transform and $\phi$ a smooth compactly supported function on the regular elliptic set. Following the method of Waldspurger [Wa89a] for $GL(N)$ (truncation, Casselman's asymptotics, Macdonald's formula), we study the spectral expansion
 \[
-\int_{G(F)^1\times G(F)^1} f(h)\phi(g^{-1}hg)\,dg\,dh=\int f^\vee(\chi)\,dI_\phi(\chi),
+\int_{G(F)\times G(F)} f(h)\phi(g^{-1}hg)\,dg\,dh=\int f^\vee(\chi)\,dI_\phi(\chi),
 \]
-equivalently of elliptic orbital integrals $\int f(g^{-1}\gamma g)\,dg$ of spherical functions, as an integral over the compact torus of unitary unramified characters. For a truncation parameter $T$ the identity holds exactly with an explicit truncated kernel $I^T(\chi,\phi)$, and $I^T$ is a finite sum of vertex terms $\psi(T_Q)p(T_Q)$ (Brion's decomposition), whose $T$-independent part $I(\chi,\phi)$ is a rational function of $\chi$. Under a regularity hypothesis on the vertex terms the identity holds with $dI_\phi=I(\chi,\phi)\,d\mu(\chi)$, $d\mu$ the Plancherel measure; the hypothesis is verified for $PGL(2)$. For $SL(2)$ it fails, and the spectral measure has an atom at the unramified quadratic character, the non-regular unitary character where the Plancherel density does not vanish; the atom is the $\kappa$-orbital integral, as the fundamental lemma predicts. This corrects the claim of the 1997 version that $I(\chi,\gamma)$ is always a rational function. We also give the $\kappa$-twisted version for $SL(n)$ in the light of the now-proved fundamental lemma, worked examples for $PGL(2)$ and $SL(2)$ checked numerically on the Bruhat--Tits tree, a sketch of the derivation from Arthur's local trace formula, a literature review and a glossary.
+equivalently of elliptic orbital integrals $\int f(g^{-1}\gamma g)\,dg$ of spherical functions, as an integral over the compact torus of unitary unramified characters. For a truncation parameter $T$ the identity holds exactly with an explicit truncated kernel $I^T(\chi,\phi)$, and $I^T$ is a finite sum of vertex terms $\psi(T_Q)p(T_Q)$ (Brion's decomposition), whose $T$-independent part $I(\chi,\phi)$ is a rational function of $\chi$. Under a strong regularity hypothesis on the vertex terms (and, in rank $\ge2$, a uniform form of Casselman's asymptotics) the identity holds with $dI_\phi=I(\chi,\phi)\,d\mu(\chi)$, $d\mu$ the Plancherel measure; the hypothesis is verified for $PGL(2)$. For $SL(2)$ it fails, and the spectral measure has an atom at the unramified quadratic character, the non-regular unitary character where the Plancherel density does not vanish; the atom is the $\kappa$-orbital integral, as the fundamental lemma predicts. This corrects the claim of the 1997 version that $I(\chi,\gamma)$ is always a rational function. We also give the $\kappa$-twisted version for $SL(n)$ in the light of the now-proved fundamental lemma, worked examples for $PGL(2)$ and $SL(2)$ checked numerically on the Bruhat--Tits tree, a sketch of the derivation from Arthur's local trace formula, a literature review and a glossary.
 \end{abstract}
 
 \tableofcontents
@@ -105,7 +105,8 @@ equivalently of elliptic orbital integrals $\int f(g^{-1}\gamma g)\,dg$ of spher
 \item Proposition~3.6 is restated as ``vertex terms plus a $T$-independent remainder'' and given a new, direct proof (the 1997 inductive argument did not control the $T$-independent remainder);
 \item Proposition~4.2 and Theorem~4.5 are restated: $I(\chi,\phi)$ is defined as the $T$-independent part of the truncated kernel, and the spectral identity is proved under an explicit regularity hypothesis~(R);
 \item an example (\S6.2, $SL(2)$) shows that (R) can fail and that the spectral side then needs atoms; the 1997 claim that $I(\chi,\gamma)$ is a rational function is corrected accordingly (Conjecture~4.6);
-\item \S5 is updated: the fundamental lemma is a theorem, and the 1997 closing question becomes Proposition~5.2.
+\item \S5 is updated: the fundamental lemma is a theorem, and the 1997 closing question becomes the conditional Proposition~5.2;
+\item following a second referee report: the standing hypothesis is semisimple $G$ (more generally, anisotropic center), as in 1992 (Remark~\ref{r:scope}); Lemma~2.8 holds only when the coroot lattice is saturated (Remark~\ref{r:L28}); Casselman's input (C) is stated explicitly; the combinatorics of Proposition~3.6 is proved in full (Lemmas~3.5B, 3.5C) and checked in rank two; and (R) is proved for $PGL(2)$ (Lemma~6.1A).
 \end{enumerate}
 New material: worked examples for $PGL(2)$ and $SL(2)$ (\S6), the derivation from Arthur's local trace formula (``Route~B'', \S7), a literature review before and after 1992 (\S8) and a glossary (Appendix~A).
 
@@ -115,26 +116,36 @@ New material: worked examples for $PGL(2)$ and $SL(2)$ (\S6), the derivation fro
 \toprule
 Statement & Status (November 2026)\\
 \midrule
-Truncated identity, Theorem~4.5(a) & proved\\
-Vertex decomposition of $J^T$, $I^T$ (Prop.~3.6, 4.2) & proved; details checked in rank one\\
-Spectral identity under (R), Theorem~4.5(b) & proved\\
-Hypothesis (R) & holds for $PGL(2)$ (\S6.1); fails for $SL(2)$ (\S6.2); open in rank $\ge2$\\
-Atoms at non-regular characters, Conjecture~4.6 & verified for $SL(2)$; open in general\\
-$\kappa$-spectral measure for $SL(n)$, Prop.~5.1--5.2 & conditional on Theorem~4.5 for $H$; checked for $SL(2)$\\
-Route B (\S7) & sketch; normalizations not checked\\
+Truncated identity, Theorem~4.5(a) & proved, for $G$ satisfying (H)\\
+Brion decomposition, Lemmas~3.5A--C & proved; checked for $SL(3)$, $PGL(3)$\\
+Vertex decomposition of $J^T$, $I^T$ (Props.~3.6, 4.2) & proved in rank one; in rank $\ge2$ conditional on Casselman's input (C)\\
+Spectral identity, Theorem~4.5(b) & proved under (C) and (R)\\
+Hypothesis (R) & proved for $PGL(2)$ (Lemma~6.1A); fails for $SL(2)$ (\S6.2); open in rank $\ge2$\\
+$SL(2)$ atom, Proposition~6.4 & proved, all $q$\\
+Shape of the spectral measure, Conjecture~4.6 & verified for $PGL(2)$, $SL(2)$; open in general\\
+$\kappa$-spectral measure, $\kappa$ of order $n$, Prop.~5.1 & proved (from the fundamental lemma); normalizations checked for $SL(2)$\\
+$\kappa$-spectral measure, general $m\mid n$, Prop.~5.2 & conditional on a stable Theorem~4.5 for $H_m$\\
+Lemma~2.8 & proved when $\mathbb{Z}\Delta^\vee$ is saturated; false for $PGL(2)$\\
+Route B (\S7) & proposed route; normalizations not checked\\
 \bottomrule
 \end{tabular}
 \end{center}
-The numerical checks are \texttt{examples/pgl2/pgl2\_check.py} and \texttt{examples/sl2/sl2\_check.py} (run all with \texttt{python3 run\_checks.py} at the top of the repository).
+The numerical checks are \texttt{examples/pgl2/pgl2\_check.py}, \texttt{examples/sl2/sl2\_check.py} and \texttt{examples/rank2/brion\_check.py} (run all with \texttt{python3 run\_checks.py} at the top of the repository).
 
 % =====================================================================
 \section{Introduction}
 
-Let $G$ be a connected unramified reductive group over a $p$-adic field $F$, let $G_{reg}$ denote the set of regular semisimple elements of $G(F)$, and let $G_{\ellr}$ denote the set of regular elliptic elements of $G(F)$. Let $C_c^\infty(G(F))$ denote the algebra of locally constant compactly supported functions on $G(F)$ and let $\Hc(G,K)$ denote the commutative subalgebra of spherical (bi-$K$-invariant) functions, where $K$ is a hyperspecial maximal compact subgroup of $G(F)$. Let $G(F)^1$ be the common kernel of the absolute values of the rational characters of $G(F)$ (\S2.1); if $G$ is semisimple, $G(F)^1=G(F)$.
+Let $G$ be a connected unramified group over a $p$-adic field $F$, let $G_{reg}$ denote the set of regular semisimple elements of $G(F)$, and let $G_{\ellr}$ denote the set of regular elliptic elements of $G(F)$. Let $C_c^\infty(G(F))$ denote the algebra of locally constant compactly supported functions on $G(F)$ and let $\Hc(G,K)$ denote the commutative subalgebra of spherical (bi-$K$-invariant) functions, where $K$ is a hyperspecial maximal compact subgroup of $G(F)$.
+
+\paragraph{Standing hypothesis (H).} Throughout, $G$ is semisimple, or more generally reductive with anisotropic center (equivalently, the split component $A_G$ of its center is trivial). Then $G(F)^1=G(F)$, the spherical transform (2.9) is an integral over all of $G(F)$, and $X_*(A_G)=0$ in (3.3). Levi subgroups $M$ of $G$ are of course reductive with non-compact center; they enter only through Macdonald's formula and Casselman's asymptotics for $M$, which hold for all reductive groups. The endoscopic groups $H_m$ of \S5 satisfy (H).
+
+\begin{rem26}[scope]\label{r:scope}
+The first 2026 draft allowed arbitrary reductive $G$, with $G(F)^1$ in place of $G(F)$. That is wrong as stated (pointed out by a referee). For $G=GL(2)$ and $f=\one_{\pi I_2K}$ the support of $f$ misses $G(F)^1$, so $f^\vee\equiv0$ while $f(\pi I_2)=1$, and Corollary~2.3 fails. Like the 1992 paper, we therefore assume (H). An extension to general reductive $G$ would have to keep track of central characters (equivalently, of the variable in $\fa_G^*$) in the Plancherel formula and in the truncation; this is not attempted here. Waldspurger's $GL(N)$ results [Wa89a] are of this kind.
+\end{rem26}
 
 Let $\Phi\subset C_c^\infty(G(F))$ denote the subspace of functions supported in $G_{\ellr}$. Each $\phi\in\Phi$ has compactly generated support modulo conjugation in the sense of Kazhdan [Ka86, \S4] (the 1997 text said ``Ad-finite''). For each $\phi\in\Phi$, define
 \begin{equation}\tag{1.1}
-T_\phi: f\longmapsto \int_{G(F)^1\times G(F)^1} f(h)\phi(g^{-1}hg)\,dg\,dh.
+T_\phi: f\longmapsto \int_{G(F)\times G(F)} f(h)\phi(g^{-1}hg)\,dg\,dh.
 \end{equation}
 It is not hard to show that $T_\phi$ is an ``elliptic'' invariant distribution with compactly generated support (Lemma~4.4). In this note we restrict $T_\phi$ to $\Hc(G,K)$ and compute, in \S\S3--4, a (Macdonald--)Plancherel-type formula for $T_\phi$:
 \begin{equation}\tag{1.2}
@@ -152,11 +163,11 @@ K_f(x_1,x_2)=\int_{G(F)}f_1(x_1y)f_2(yx_2)\,dy=\int_{G(F)}f_1(y)f_2(x_1^{-1}yx_2
 \end{equation}
 As in the global trace formula, one wants to find both a ``geometric'' and a ``spectral'' formula for a truncated version of the integral of $K_f(x,x)$. It should be emphasized that this is done below only for a very restricted class of $f=(f_1,f_2)$: $f_1$ spherical and $f_2$ supported on the elliptic set. For such $f$ no truncation is needed on the geometric side (Lemma~4.4), and \S7 explains how (1.2) follows from Arthur's formula.
 
-Thus part of this paper could be viewed as a special case of Arthur's local trace formula or as a generalization of part of Waldspurger's work [Wa89a]. Another way one might interpret the distributions $\phi\mapsto I(\chi,\phi)$ is as follows. We will see in \S4 below (Proposition~4.2) that $\phi\longmapsto I(\chi,\phi)$ is $G$-admissible in the sense of [HC78]. Then, regarding this invariant distribution as a function (the existence of which is assured by [HC78, Theorem 19]), we may rewrite (1.2) as
+Thus part of this paper could be viewed as a special case of Arthur's local trace formula or as a generalization of part of Waldspurger's work [Wa89a]. Another way one might interpret the distributions $\phi\mapsto I(\chi,\phi)$ is as follows. Proposition~4.2 below shows that $\phi\longmapsto I(\chi,\phi)$ is linear and invariant under conjugation by $K$. When Hypothesis~(R) holds it is $G$-invariant (Corollary~4.5A), and it is expected, but not proved here, to be $G$-admissible in the sense of [HC78]. Regarding this invariant distribution as a function (as [HC78, Theorem 19] would then allow), one may rewrite (1.2) as
 \begin{equation}\tag{1.5}
-\int_{G(F)^1}f(g^{-1}\gamma g)\,dg=\int f^\vee(\chi)\,dI_\gamma(\chi),
+\int_{G(F)}f(g^{-1}\gamma g)\,dg=\int f^\vee(\chi)\,dI_\gamma(\chi),
 \end{equation}
-for $\gamma\in G_{\ellr}$ and $f$ spherical. Thus (1.5) gives a relatively explicit formula for the unramified part of the ``spectral support'' of an elliptic orbital integral on $G(F)$. (This was to be the subject of [Jo97], announced in 1997 as ``in preparation'' but never written up.)
+for $\gamma\in G_{\ellr}$ and $f$ spherical. Under (R) this holds with $dI_\gamma=I(\chi,\gamma)\,d\mu(\chi)$ (Corollary~4.5A); in general, that the right side is given by a measure at all is part of Conjecture~4.6. Thus (1.5) gives a relatively explicit formula for the unramified part of the ``spectral support'' of an elliptic orbital integral on $G(F)$. (This was to be the subject of [Jo97], announced in 1997 as ``in preparation'' but never written up.)
 
 In the 1997 version it was asserted that $dI_\gamma=I(\chi,\gamma)\,d\mu(\chi)$ with $I(\cdot,\gamma)$ a rational function on the complex torus of unramified characters (whose compact real form carries the Plancherel measure, [Ma71]). This is correct for $PGL(2)$ (\S6.1), where $I(\cdot,\gamma)$ has double poles at the non-regular characters that are cancelled by the double zeros of the Plancherel density. It is \emph{not} correct for $SL(2)$ (\S6.2): there $dI_\gamma$ has, besides an absolutely continuous part, a point mass at the unramified quadratic character $\chi_0$. This is a non-regular unitary character at which the Plancherel density does not vanish, and $i_{G,A}(\chi_0)$ is reducible. The atom is half the $\kappa$-orbital integral, $\tfrac12 f^\vee(\chi_0)$, as the fundamental lemma predicts. Theorem~4.5 and Conjecture~4.6 state the corrected form.
 
@@ -169,7 +180,16 @@ A somewhat analogous formula to (1.5), for stable unipotent orbits, was conjectu
 \item \emph{Removing the truncation} (\S4.3). For $T$ large, $T_\phi(f)=\int f^\vee I^T\,d\mu$ exactly (Fubini on a compact set). If the vertex terms are regular enough (Hypothesis (R)), their contributions vanish as $T\to\infty$ and $T_\phi(f)=\int f^\vee I\,d\mu$ (Theorem~4.5). Where (R) fails they leave atoms (Conjecture~4.6, \S6.2).
 \end{enumerate}
 
-\paragraph{Acknowledgements (1997).} I'd like to thank J.-L.~Waldspurger for pointing out an error in a previous version and M.~Assem for helpful discussions. Partially supported by a Naval Academy Research Council (NARC) grant.
+\paragraph{What is proved, what is conditional, what is conjectural.}
+\begin{itemize}
+\item \emph{Proved for all $G$ satisfying (H):} the truncated identity, Theorem~4.5(a); the combinatorial Lemmas~3.5A--3.5B (also checked by exact computation for $SL(3)$ and $PGL(3)$); Lemma~2.8 when the coroot lattice is saturated in $X_*(A)$.
+\item \emph{Proved modulo one input from Casselman's theory:} Propositions~3.6 and 4.2 use Casselman's asymptotics in the form (C) of \S3.1, on the regions $A^-_P(\epsilon)$. In rank one, (C) is Casselman's theorem itself, and these propositions are unconditional.
+\item \emph{Proved under Hypothesis (R):} the spectral identity, Theorem~4.5(b), and Corollary~4.5A. Hypothesis (R) is a strong condition with representation-theoretic content, not a routine regularity assumption.
+\item \emph{Examples, proved:} for $PGL(2)$, (R) holds and $I(\chi,\gamma)$ is given in closed form (Theorem~6.1, Lemma~6.1A). For $SL(2)$, (R) fails and the spectral measure has an atom (Proposition~6.4, for every $q$).
+\item \emph{Endoscopy:} Proposition~5.1 follows from the fundamental lemma, which is a theorem; its normalizations were checked for $SL(2)$. Proposition~5.2 is conditional on a stable form of Theorem~4.5 for the endoscopic group.
+\item \emph{Conjectural:} Conjecture~4.6 (shape of the spectral measure when (R) fails) and Conjecture~7.3 (comparison with Arthur's weighted characters). Section~7 describes a proposed route to Conjecture~4.6, not a proof.
+\end{itemize}
+Readers who want a concrete picture first may read \S6 (the examples $PGL(2)$ and $SL(2)$) before \S\S3--4; it uses only \S2 and the statements of \S4.
 
 % =====================================================================
 \section{Notation and background}
@@ -282,15 +302,15 @@ Two corrections to the 1997 statement, which read $\Gamma_\chi(a)=Q^{-1}\delta_B
 
 For $f\in\Hc(G,K)$ and $\chi$ unramified, define the Fourier (Satake) transform of $f$ at $\chi$ by
 \begin{equation}\tag{2.9}
-f^\vee(\chi):=\int_{G(F)^1}f(g)\Gamma_\chi(g^{-1})\,dg.
+f^\vee(\chi):=\int_{G(F)}f(g)\Gamma_\chi(g^{-1})\,dg.
 \end{equation}
-Let $\Omega_K(G)$ denote the set of zonal spherical functions of $G(F)^1$ relative to $K$:
+Let $\Omega_K(G)$ denote the set of zonal spherical functions of $G(F)$ relative to $K$:
 \begin{equation}\tag{2.10}
 \Omega_K(G):=\{\omega\in C^\infty(G,K):\ \omega(1)=1\text{ and }f*\omega=\lambda_f\omega\ \text{for all } f\in\Hc(G,K),\ \text{some }\lambda_f\in\mathbb{C}\}.
 \end{equation}
 Let $\Omega^+_K(G)$ denote the subset of positive definite zonal spherical functions. If $\chi$ is unitary then $\Gamma_\chi\in\Omega^+_K(G)$ [Ma71, Thm.~3.3.12]. The Fourier transform of $f\in\Hc(G,K)$ at $\omega\in\Omega_K^+(G)$ is
 \begin{equation}\tag{2.11}
-f^\vee(\omega):=\int_{G(F)^1}f(g)\omega(g^{-1})\,dg.
+f^\vee(\omega):=\int_{G(F)}f(g)\omega(g^{-1})\,dg.
 \end{equation}
 The relation between the Fourier transform and the Satake transform is given in [Ma71, p.~47]. The Plancherel measure $d\mu(\omega)$ is the positive measure on $\Omega^+_K(G)$ such that, for all $f\in\Hc(G,K)$,
 \begin{equation}\tag{2.12}
@@ -298,7 +318,7 @@ f^\vee(\omega)\in L^2(\Omega^+_K(G),d\mu)
 \end{equation}
 and
 \begin{equation}\tag{2.13}
-\int_{G(F)^1}|f(g)|^2\,dg=\int_{\Omega^+_K(G)}|f^\vee(\omega)|^2\,d\mu(\omega).
+\int_{G(F)}|f(g)|^2\,dg=\int_{\Omega^+_K(G)}|f^\vee(\omega)|^2\,d\mu(\omega).
 \end{equation}
 By a theorem of Godement, such a measure exists and is unique.
 
@@ -316,7 +336,7 @@ f(g)=\int_{\Omega^+_K(G)}f^\vee(\omega)\overline{\omega(g^{-1})}\,d\mu(\omega)=\
 \]
 For all $f_1,f_2\in\Hc(G,K)$,
 \[
-\int_{G(F)^1}f_1(g)\overline{f_2(g)}\,dg=\int_{\Omega^+_K(G)}f_1^\vee(\omega)\overline{f_2^\vee(\omega)}\,d\mu(\omega)=\int_{\Thu}f_1^\vee(\chi)\overline{f_2^\vee(\chi)}\,d\mu(\chi).
+\int_{G(F)}f_1(g)\overline{f_2(g)}\,dg=\int_{\Omega^+_K(G)}f_1^\vee(\omega)\overline{f_2^\vee(\omega)}\,d\mu(\omega)=\int_{\Thu}f_1^\vee(\chi)\overline{f_2^\vee(\chi)}\,d\mu(\chi).
 \]
 \end{Corollary}
 
@@ -392,17 +412,24 @@ extends to a smooth function on $\Thu$. Here $\tilde\theta_P(\chi):=\tilde\theta
 
 The factor $\tilde\theta$ is the periodic analogue of $\theta$:
 
-\begin{Lemma}{2.8}[{[Wa89a, II.7.1]}]
-There exists $u_B\in C^\infty_c(i\fa_0^*/i\fa_G^*)$ such that
+\begin{Lemma}{2.8}[{cf.\ [Wa89a, II.7.1]}]
+Assume (H), and assume that the coroot lattice $\mathbb{Z}\Delta^\vee$ is saturated in $X_*(A)$, i.e.\ $X_*(A)/\mathbb{Z}\Delta^\vee$ is torsion-free. (Under (H) this means $\mathbb{Z}\Delta^\vee=X_*(A)$; e.g.\ $G=SL(n)$, or $G$ simply connected.) Then there exists $u_B\in C^\infty_c(i\fa_0^*)$ such that
 \begin{enumerate}[label=(\alph*)]
-\item for all $\lambda\in i\fa_0^*$, $\displaystyle\sum_{r\in L^\vee}u_B(\lambda+r)\,\theta_B(\lambda+r)^{-1}=\tilde\theta_B(\chi_\lambda)^{-1}$;
+\item for all $\lambda\in i\fa_0^*$, $\displaystyle\sum_{r\in L^\vee}u_B(\lambda+r)\,\theta_B(\lambda+r)^{-1}=\tilde\theta_B(\chi_\lambda)^{-1}$ (an identity of meromorphic functions);
 \item if $r\in L^\vee$ lies in the support of $u_B$ then $r=0$.
 \end{enumerate}
 \end{Lemma}
-(One may take $u_B=\eta\,\theta_B/\tilde\theta_B(\chi_\cdot)$, where $\eta\in C_c^\infty$ is supported in a small neighborhood of $0$ and $\sum_{r\in L^\vee}\eta(\lambda+r)=1$; then $u_B$ is smooth because $\theta_B(\lambda)/\tilde\theta_B(\chi_\lambda)$ is smooth near $0$, and (a) holds by periodicity of $\tilde\theta_B(\chi_\lambda)$.)
+
+\begin{proof}
+Let $U=\{\lambda\in i\fa_0^*:\ |\ip{\alpha^\vee,\lambda}|<2\pi/\log q\ \ \forall\alpha\in\Delta\}$, a bounded open set since $\Delta^\vee$ spans $\fa_0$. The zeros of $\tilde\theta_B(\chi_\lambda)=\prod_\alpha(1-q^{-\ip{\alpha^\vee,\lambda}})$ are the hyperplanes $\ip{\alpha^\vee,\lambda}\in\frac{2\pi i}{\log q}\mathbb{Z}$. In $U$ only the hyperplanes $\ip{\alpha^\vee,\lambda}=0$ occur, and these are exactly the zeros of $\theta_B$, each simple. So $\theta_B(\lambda)/\tilde\theta_B(\chi_\lambda)$ is smooth and nowhere zero on $U$. By saturation, $r\mapsto(\ip{\alpha^\vee,r})_{\alpha\in\Delta}$ maps $X^*(A)$ onto $\mathbb{Z}^\Delta$, so every $\lambda$ has a translate $\lambda+r$, $r\in L^\vee$, with $|\ip{\alpha^\vee,\lambda+r}|\le\pi/\log q$ for all $\alpha$. Hence $U+L^\vee=i\fa_0^*$, and there is $\eta\in C_c^\infty(U)$, $\eta\ge0$, with $\sum_{r\in L^\vee}\eta(\lambda+r)=1$ (normalize any $\eta_0\in C^\infty_c(U)$ that is positive on the closed set where all $|\ip{\alpha^\vee,\lambda}|\le\pi/\log q$ by its periodization). Put $u_B=\eta\,\theta_B/\tilde\theta_B(\chi_\cdot)$. Then $u_B$ is smooth, (a) holds because $\tilde\theta_B(\chi_{\lambda+r})=\tilde\theta_B(\chi_\lambda)$, and (b) holds because $r\in U\cap L^\vee$ forces $\ip{\alpha^\vee,r}=0$ for all $\alpha$.
+\end{proof}
+
+\begin{rem26}[Lemma 2.8]\label{r:L28}
+Without saturation, Lemma~2.8 is false (pointed out by a referee). For $G=PGL(2)$, $X_*(A)=\mathbb{Z}\varpi^\vee$ and $\alpha^\vee=2\varpi^\vee$, so with $z=\chi_\lambda(\varpi^\vee(\pi))$ we have $\tilde\theta_B(\chi_\lambda)=1-z^2$. This has a pole at $z=-1$, i.e.\ at $\ip{\varpi^\vee,\lambda}=\pi i/\log q$. But $\ip{\alpha^\vee,\lambda+r}=\frac{2\pi i}{\log q}(1+2k)\ne0$ there for every $r\in L^\vee$, so the left side of (a) is smooth near that point for any smooth $u_B$. The extra singular hyperplanes of $\tilde\theta_B$ are not $L^\vee$-translates of those of $\theta_B$. A general version would have to replace $\theta_B$ by a function adapted to the full periodic hyperplane arrangement (or pass to the cover defined by $\mathbb{Z}\Delta^\vee$); we do not pursue this. The first 2026 draft stated the lemma without hypothesis, and its parenthetical proof was wrong: a compactly supported $\eta$ with $\sum_r\eta(\lambda+r)=1$ cannot be concentrated near $0$. This phenomenon (the extra hyperplane $z=-1$) is the same one that produces the atom for $SL(2)$ in \S6.2, there in the frequencies $w\chi/w'\chi$ rather than in $\chi$ itself.
+\end{rem26}
 
 \begin{Lemma}{2.9}[{[Wa89a, \S7]}]
-Let $\{\tilde c_P(\chi):P\in\cP(A)\}$ be a $(G,A)^\sim$-family. For $P\in\cP(A)$ let $c_P(\lambda)=\tilde c_P(\chi_{\lambda})u_P(\lambda)$, where $u_P(\lambda)=u_B(w_P\lambda)$ and $u_B$ is as in Lemma~2.8. Then $\{c_P\}_P$ is a $(G,A)$-family, and
+Assume the hypotheses of Lemma~2.8, and let $\{\tilde c_P(\chi):P\in\cP(A)\}$ be a $(G,A)^\sim$-family. For $P\in\cP(A)$ let $c_P(\lambda)=\tilde c_P(\chi_{\lambda})u_P(\lambda)$, where $u_P(\lambda)=u_B(w_P\lambda)$ and $u_B$ is as in Lemma~2.8. Then $\{c_P\}_P$ is a $(G,A)$-family, and
 \[
 \tilde c_A(\chi_\lambda)=\sum_{r\in L^\vee}c_A(\lambda+r),\qquad c_A(\lambda)=\sum_{P}c_P(\lambda)\theta_P(\lambda)^{-1}.
 \]
@@ -414,7 +441,7 @@ Lemma~2.9 follows from Lemmas~2.6--2.8. These results relate the $(G,A)^\sim$-fa
 \end{Remark}
 
 \begin{rem26}[\S2.5]
-Lemmas~2.6 and 2.8 are standard (2.8 by the construction given). The precise form of Lemmas~2.7 and~2.9 has not been re-checked against [Wa89a, \S7]; they are not used in any proof below.
+Lemma~2.6 is standard, and Lemma~2.8 is proved above under the saturation hypothesis. The precise form of Lemmas~2.7 and~2.9 has not been re-checked against [Wa89a, \S7] (where $G=GL(N)$, for which the coroot lattice is saturated). None of Lemmas~2.6--2.9 is used in any proof below.
 \end{rem26}
 
 % =====================================================================
@@ -422,16 +449,18 @@ Lemmas~2.6 and 2.8 are standard (2.8 by the construction given). The precise for
 
 \subsection{Matrix coefficients}
 
-Assume as before that $G$ is connected, unramified and reductive, and use the measures of \S2.0. Let $\chi$ be an unramified regular character of $M_0(F)$ and $V_B(\chi)=i_{G,A}(\chi)$. For $n\ge1$ let $K_n\subset K$ be the $n$-th principal congruence subgroup; it is normal in $K$ and has an Iwahori factorization with respect to every standard parabolic. A vector has \emph{level $n$} if it is fixed by $K_n$. Write $\pi=\pi_\chi=i_{G,A}(\chi)$; its restriction to $K$ does not depend on $\chi$ (compact picture).
+Assume as before that $G$ satisfies (H), and use the measures of \S2.0. Let $\chi$ be an unramified regular character of $M_0(F)$ and $V_B(\chi)=i_{G,A}(\chi)$. For $n\ge1$ let $K_n\subset K$ be the $n$-th principal congruence subgroup; it is normal in $K$ and has an Iwahori factorization with respect to every standard parabolic. A vector has \emph{level $n$} if it is fixed by $K_n$. Write $\pi=\pi_\chi=i_{G,A}(\chi)$; its restriction to $K$ does not depend on $\chi$ (compact picture).
 
-\paragraph{Casselman's asymptotics.} Let $P=MN$ be standard and $\bar P=M\bar N$ its opposite. By Casselman [Cas95, \S4, Prop.~4.3.3] there is a canonical $M$-invariant pairing $\ip{\cdot,\cdot}_N$ between $r_{M,G}(\pi_\chi)$ (taken with respect to $P$) and $r_{M,\bar P}(\pi_{\chi^{-1}})$ (taken with respect to $\bar P$), and for every $n$ there is $\epsilon=\epsilon(n)\in(0,1]$, independent of the unramified character $\chi$, such that for all $f\in V_B(\chi)$, $f'\in V_B(\chi^{-1})$ of level $n$
+\paragraph{Casselman's asymptotics; the input (C).} Let $P=MN$ be standard and $\bar P=M\bar N$ its opposite. By Casselman [Cas95, \S4] there is a canonical $M$-invariant pairing $\ip{\cdot,\cdot}_N$ between $r_{M,G}(\pi_\chi)$ (taken with respect to $P$) and $r_{M,\bar P}(\pi_{\chi^{-1}})$ (taken with respect to $\bar P$). We use the following statement, which we call (C):
+
+\smallskip\noindent\textbf{(C)} \emph{For every $n$ there is $\epsilon=\epsilon(n)\in(0,1]$, independent of the unramified character $\chi$, such that for every standard $P$ and all $f\in V_B(\chi)$, $f'\in V_B(\chi^{-1})$ of level $n$}
 \begin{equation}\tag{3.1}
 \ip{\pi_\chi(a)f,f'}_G=\delta_P^{1/2}(a)\,\ip{r_{M,G}(\pi_\chi)(a)f_N,\,f'_{\bar N}}_N\qquad\text{for all }a\in A^-_P(\epsilon).
 \end{equation}
-For $P=B$ this is the case $a\in A^-(\epsilon)$. The independence of $\epsilon$ from $\chi$ follows from [Ca79, \S3].
+For $P=B$ the region is $A^-(\epsilon)$, and (C) is Casselman's theorem [Cas95, Prop.~4.3.3], [Cas80]; the independence of $\epsilon$ from $\chi$ follows from [Ca79, \S3] (the restriction of $\pi_\chi$ to $K$ does not depend on $\chi$). In rank one only $P=B$ and $P=G$ occur, so (C) holds. For intermediate $P$, (C) asks for the asymptotic on all of $A^-_P(\epsilon)$, where $a$ is deep in the $N$-directions only; Casselman's theorem as usually stated gives it for $a$ in the split center $A_M$ of $M$.
 
 \begin{rem26}[(3.1)]\label{r:cass}
-Three corrections to the 1997 version of (3.1): the second space is the Jacquet module for the \emph{opposite} parabolic; the factor $\delta_P^{1/2}(a)$ was missing; and $\epsilon$ depends on the level of $f,f'$. We use (3.1) on $A^-_P(\epsilon)$, i.e.\ for $a$ deep only in the $N$-directions. This is how Casselman's argument runs (it uses only that $a$ contracts $N_0$ and contracts $N\cap K_n$ strongly), but we have not checked that [Cas95, Prop.~4.3.3] is stated in exactly this generality rather than for $a$ in the split center of $M$.
+Three corrections to the 1997 version of (3.1): the second space is the Jacquet module for the \emph{opposite} parabolic; the factor $\delta_P^{1/2}(a)$ was missing; and $\epsilon$ depends on the level of $f,f'$. (C) is an essential input to Propositions~3.6 and 4.2 in rank $\ge2$, not an editorial detail. Casselman's proof (Jacquet's lemma for a contracting element, with a level subgroup having an Iwahori factorization) appears to use only that $a\in A^-$ contracts $N_0$ and contracts $N\cap K_n$ by a factor $\le\epsilon$, which holds on $A^-_P(\epsilon)$; but we have not written out this extension, and we have not found it stated in this form in the literature. A reduction to the $A_M$ case is not immediate: writing $a=a_ea_\nu$ with $a_\nu\in A_M$, the level of $\pi(a_e)\Phi$ grows with the size of $a_e$, so the constants become circular. Accordingly, Propositions~3.6 and~4.2 are stated as conditional on (C) in rank $\ge2$.
 \end{rem26}
 
 For $f\in V_B(w\chi)$ let $R_Mf=\delta_P^{-1/2}\cdot f|_{M(F)}\in i_{M,A}(w\chi)$; the map $R_M$ factors through $r_{M,G}$ and is $M$-equivariant [Wa89a, \S I]. For $w\in\Wrep{M}$ the maps $R_M\circ T_w$ give the decomposition of Remark~1,
@@ -547,12 +576,61 @@ L_0=\{T\in X_*(A):\ T_Q\in X_*(A)\ \text{for every standard }Q\},
 \]
 a sublattice of finite index in $X_*(A)$. If $G$ is semisimple, $T_G=0$ and $T_B=T$.
 
+Two general lemmas come first: a form of Brion's theorem that covers half-open polytopes and degenerate characters, and a positivity statement for root systems.
+
+\begin{Lemma}{3.5B}[Brion's theorem, half-open and degenerate forms]
+Let $\Lambda$ be a lattice in a real vector space $V$ of dimension $d$, let $\ell_1,\dots,\ell_m$ be $\Lambda$-rational linear forms on $V$, and for $b\in\mathbb{R}^m$ let
+\[
+\Pi(b)=\{x\in V:\ \ell_i(x)\le b_i\ (i\in I_\le),\ \ \ell_i(x)<b_i\ (i\in I_<)\},\qquad I_\le\sqcup I_<=\{1,\dots,m\}.
+\]
+Let $\mathcal C\subset\mathbb{R}^m$ be an open set of parameters on which the closure $\bar\Pi(b)$ is a simple polytope of constant combinatorial type, with vertices $v(b)$ depending linearly on $b$, and let $B_0\subset\mathcal C$ be a set of parameters for which all $v(b)\in\Lambda$. For a vertex $v$ let $C_v=\{x:\ \ell_i(x)\le0\ (i\in I_\le\text{ active at }v),\ \ell_i(x)<0\ (i\in I_<\text{ active at }v)\}$ be the half-open tangent cone; it does not depend on $b\in\mathcal C$.
+\begin{enumerate}[label=(\roman*)]
+\item For $\psi\in\Hom(\Lambda,\mathbb{C}^\times)$ outside the polar divisors below, and $b\in B_0$,
+\[
+\sum_{x\in\Pi(b)\cap\Lambda}\psi(x)=\sum_{v}\psi(v(b))\,\sigma_{C_v}(\psi),
+\]
+where $\sigma_{C}(\psi)$ is the rational function continuing $\sum_{x\in C\cap\Lambda}\psi(x)$. Its denominator divides $\prod_{e}(1-\psi(\mu_e))$, the product over the $d$ edges $e$ of $C$ with primitive vectors $\mu_e\in\Lambda$.
+\item For every $\psi$ (including points of the polar divisors) and $b\in B_0$, $\sum_{x\in\Pi(b)\cap\Lambda}\psi(x)=\sum_v\psi(v(b))\,p_v(b;\psi)$, where $p_v(\cdot\,;\psi)$ is a polynomial of degree $\le d$. If $\psi$ runs over an irreducible subvariety of $\Hom(\Lambda,\mathbb{C}^\times)$ on which the set $\{e:\psi(\mu_e)=1\}$ is constant, the coefficients of $p_v$ are rational functions on that subvariety.
+\end{enumerate}
+\end{Lemma}
+
+\begin{proof}
+(i) For closed rational polyhedra this is Brion's theorem [Br88], in the form: the map $P\mapsto\sigma_P$ is a valuation on the algebra generated by indicator functions of rational polyhedra, vanishing on polyhedra that contain lines, and $[P]\equiv\sum_v[v+\mathrm{tcone}(P,v)]$ modulo polyhedra containing lines [Ba08]. For the half-open $\Pi(b)$, inclusion--exclusion over the strict constraints gives $\one_{\Pi(b)}=\sum_{J\subseteq I_<}(-1)^{|J|}\one_{F_J}$ with $F_J=\bar\Pi(b)\cap\{\ell_i=b_i,\ i\in J\}$, a closed face of $\bar\Pi(b)$ (possibly empty). Apply Brion's theorem to each $F_J$. The vertices of $F_J$ are the vertices $v$ of $\bar\Pi(b)$ at which all $i\in J$ are active, and $\mathrm{tcone}(F_J,v)=\mathrm{tcone}(\bar\Pi(b),v)\cap\{\ell_i=0,\ i\in J\}$. Regrouping by $v$, the same inclusion--exclusion applied to the cone $\mathrm{tcone}(\bar\Pi(b),v)$ gives $\sum_{J}(-1)^{|J|}[\mathrm{tcone}(F_J,v)]=[C_v]$, the sum running over subsets $J$ of the strict constraints active at $v$. Since $\bar\Pi(b)$ is simple, each $C_v$ is a half-open simplicial cone, whose generating function has the stated denominator. Translating by $v(b)\in\Lambda$ multiplies by $\psi(v(b))$.
+
+(ii) Choose $\xi\in\Hom(\Lambda,\mathbb{R})$ with $\xi(\mu_e)\neq0$ for all edge vectors $\mu_e$ of all the $C_v$, and put $\psi_\varepsilon=\psi\,e^{\varepsilon\xi}$. For small $\varepsilon\ne0$, $\psi_\varepsilon$ avoids the polar divisors, so (i) applies. The left side is an entire function of $\varepsilon$ (a finite sum). Each vertex term $\psi(v(b))e^{\varepsilon\xi(v(b))}\sigma_{C_v}(\psi_\varepsilon)$ is meromorphic at $\varepsilon=0$ with a pole of order $\le d$. Expanding $e^{\varepsilon\xi(v(b))}=\sum_k\varepsilon^k\xi(v(b))^k/k!$, the coefficient of $\varepsilon^0$ is $\psi(v(b))$ times a polynomial of degree $\le d$ in $\xi(v(b))$, hence in $b$. The sum of these coefficients equals the left side at $\varepsilon=0$. The Laurent coefficients of $\sigma_{C_v}(\psi_\varepsilon)$ at $\varepsilon=0$ are rational in $\psi$ on any subvariety along which the set of vanishing factors $1-\psi(\mu_e)$ is constant.
+\end{proof}
+
+\begin{Lemma}{3.5C}[positivity]
+Let $P=MN$ be a standard parabolic and let $\varpi^{M}_\gamma$ and $\varpi^{M\vee}_\gamma$ ($\gamma\in\Delta^M$) be the fundamental weights and coweights of $M$, the latter in $\fa_0^P$.
+\begin{enumerate}[label=(\alph*)]
+\item The vectors $(\beta^\vee)_P$, $\beta\in\Delta\smallsetminus\Delta^M$, form the basis of $\fa_P$ dual to $\{\varpi_\beta|_{\fa_P}\}$. For $\alpha\in\Delta^M$ and $Y\in\fa_P$, $\varpi_\alpha(Y)=\sum_{\beta\notin\Delta^M}c_{\alpha\beta}\varpi_\beta(Y)$ with $c_{\alpha\beta}=\varpi_\alpha((\beta^\vee)_P)\ge0$.
+\item If $X\in\fa_0$ is dominant, then $X^P=\sum_{\gamma\in\Delta^M}t_\gamma\gamma^\vee$ with $t_\gamma=\varpi_\gamma(X^P)\ge\kappa_M\min_{\delta\in\Delta^M}\ip{X,\delta}\ge0$, where $\kappa_M>0$ depends only on $M$. Moreover $\ip{X_P,\beta}\ge\ip{X,\beta}$ for $\beta\notin\Delta^M$, and $\ip{X_P-X,\varpi_\alpha}=-t_\alpha$ for $\alpha\in\Delta^M$.
+\end{enumerate}
+\end{Lemma}
+
+\begin{proof}
+(a) For $\beta\notin\Delta^M$, $\varpi_\beta$ vanishes on $\fa_0^P$ (it pairs to $0$ with $\Delta^{M\vee}$), so $\varpi_\beta((\beta'^\vee)_P)=\varpi_\beta(\beta'^\vee)=\delta_{\beta\beta'}$. This gives the dual basis and the expansion. Next, $(\beta^\vee)^P\in\fa_0^P$ is determined by $\ip{(\beta^\vee)^P,\gamma}=\ip{\beta^\vee,\gamma}$ for $\gamma\in\Delta^M$ (since $\gamma$ vanishes on $\fa_P$), so $(\beta^\vee)^P=\sum_{\gamma\in\Delta^M}\ip{\beta^\vee,\gamma}\varpi^{M\vee}_\gamma$. As $\varpi_\alpha(\beta^\vee)=0$ for $\alpha\ne\beta$,
+\[
+c_{\alpha\beta}=-\varpi_\alpha((\beta^\vee)^P)=-\sum_{\gamma\in\Delta^M}\ip{\beta^\vee,\gamma}\,\varpi_\alpha(\varpi^{M\vee}_\gamma).
+\]
+Here $\ip{\beta^\vee,\gamma}\le0$ (off-diagonal Cartan entries), and $\varpi_\alpha(\varpi^{M\vee}_\gamma)=\varpi^M_\alpha(\varpi^{M\vee}_\gamma)\ge0$ is an entry of the inverse Cartan matrix of $M$ (fundamental coweights are non-negative combinations of simple coroots). Hence $c_{\alpha\beta}\ge0$.
+
+(b) $X^P$ is $M$-dominant, since $\ip{X^P,\gamma}=\ip{X,\gamma}\ge0$. So
+\[
+t_\gamma=\varpi_\gamma(X^P)=\sum_{\delta\in\Delta^M}\varpi^M_\gamma(\varpi^{M\vee}_\delta)\,\ip{X,\delta},
+\]
+a combination with non-negative coefficients and positive diagonal coefficients; take $\kappa_M=\min_\gamma\varpi^M_\gamma(\varpi^{M\vee}_\gamma)$. Then, for $\beta\notin\Delta^M$ and $\alpha\in\Delta^M$,
+\[
+\ip{X_P,\beta}=\ip{X,\beta}-\sum_\gamma t_\gamma\ip{\gamma^\vee,\beta}\ge\ip{X,\beta},\qquad\ip{X_P-X,\varpi_\alpha}=-\ip{X^P,\varpi_\alpha}=-t_\alpha.
+\]
+\end{proof}
+
 \begin{Lemma}{3.5A}[vertex decomposition; replaces Lemma 3.5]
-Assume $G$ semisimple (in general, work modulo $X_*(A_G)$). Let $\psi$ be a character of $X_*(A)$, i.e.\ a point of $\Th$, and let $\mathsf c:X_*(A)^+\to\mathbb{C}$ be a function that depends only on the set $\{\alpha\in\Delta:\ip{\lambda,\alpha}=0\}$. For each standard parabolic $Q$ there is a rational function $R_Q=R_Q^{\mathsf c}$ on $\Th$, independent of $T$, such that for all $T\in L_0$ with $d(T)>0$
+Assume (H), so that $X_*(A_G)=0$. Let $\psi$ be a character of $X_*(A)$, i.e.\ a point of $\Th$, and let $\mathsf c:X_*(A)^+\to\mathbb{C}$ be a function that depends only on the set $\{\alpha\in\Delta:\ip{\lambda,\alpha}=0\}$. For each standard parabolic $Q$ there is a rational function $R_Q=R_Q^{\mathsf c}$ on $\Th$, independent of $T$, such that for all $T\in L_0$ with $d(T)>0$
 \begin{equation}\tag{3.5A}
 \sum_{\lambda\in\cA_A(T)}\mathsf c(\lambda)\,\psi(\lambda)=\sum_{Q\supseteq B}\psi(T_Q)\,R_Q(\psi)
 \end{equation}
-as rational functions of $\psi$. The denominator of $R_Q$ is a product of factors $1-\psi(\mu)$, where $\mu\in X_*(A)\smallsetminus\{0\}$ runs over primitive vectors on the edges of the cone
+as rational functions of $\psi$; for $\psi$ on a polar divisor, $R_Q(\psi)$ is to be replaced by a polynomial $p_Q(T;\psi)$ in $T$ as in Lemma~3.5B(ii). The denominator of $R_Q$ is a product of factors $1-\psi(\mu)$, where $\mu\in X_*(A)\smallsetminus\{0\}$ runs over primitive vectors on the edges of the cone
 \[
 C_Q=\{X\in\fa_0:\ \ip{X,\alpha}\ge0\ (\alpha\in\Delta^Q),\ \ \ip{X,\varpi_\alpha}\le0\ (\alpha\in\Delta\smallsetminus\Delta^Q)\},
 \]
@@ -560,13 +638,15 @@ whose edges are spanned by the fundamental coweights of $M_Q$ (in $\fa_0^Q$) and
 \end{Lemma}
 
 \begin{proof}
-Let $\Pi_T=\{X\in\fa_0:\ip{X,\alpha}\ge0,\ \ip{X-T,\varpi_\alpha}\le0\ \forall\alpha\}$; this is the dominant part of the convex hull of $W\cdot T$. \emph{Vertices.} For $Q$ standard, $T_Q$ satisfies $\ip{T_Q,\alpha}=0$ for $\alpha\in\Delta^Q$ (since $T_Q\in\fa_Q$) and $\ip{T_Q-T,\varpi_\alpha}=0$ for $\alpha\notin\Delta^Q$ (since such $\varpi_\alpha$ vanish on $\fa_0^Q$). Writing $T^Q=\sum_{\beta\in\Delta^Q}t_\beta\beta^\vee$ with $t_\beta\ge0$ (as $T^Q$ is dominant for $M_Q$) and using $\ip{\beta^\vee,\alpha}\le0$ for $\alpha\ne\beta$, one finds $\ip{T_Q,\alpha}\ge\ip{T,\alpha}>0$ for $\alpha\notin\Delta^Q$ and $\ip{T_Q-T,\varpi_\alpha}=-t_\alpha<0$ for $\alpha\in\Delta^Q$. So $T_Q$ is a vertex of $\Pi_T$, with active constraints exactly those defining $C_Q$, and $\Pi_T$ is simple there. Conversely, if $v$ is a vertex and $\theta=\{\alpha:\ip{v,\alpha}=0\}$, then $v\in\fa_{P_\theta}$. For $\alpha\in\theta$ the restriction of $\varpi_\alpha$ to $\fa_{P_\theta}$ is a combination $\sum_{\beta\notin\theta}c_{\alpha\beta}\varpi_\beta$ with $c_{\alpha\beta}=\ip{(\beta^\vee)_{P_\theta},\varpi_\alpha}\ge0$. Hence the constraints $\ip{v-T,\varpi_\alpha}\le0$ for $\alpha\in\theta$ are strict, those for $\beta\notin\theta$ must all be active, and $v=T_{P_\theta}$.
+Let $\Pi_T=\{X\in\fa_0:\ip{X,\alpha}\ge0,\ \ip{X-T,\varpi_\alpha}\le0\ \forall\alpha\}$; this is the dominant part of the convex hull of $W\cdot T$.
 
-\emph{Counting.} $\mathsf c\cdot\one_{\cA_A(T)}$ is a finite linear combination, with coefficients independent of $T$, of indicator functions of closed faces of $\Pi_T$: write each relatively open face of the dominant cone, and each strict inequality $\ip{\lambda-T,\varpi_\alpha}<0$, by inclusion--exclusion over closed faces. Each closed face $\Pi'$ is a rational polytope whose vertices lie among the $T_Q$, with tangent cones that are faces of the $C_Q$ and do not depend on $T$. By Brion's theorem [Br88] (for rational polytopes, see [Ba08]), $\sum_{\lambda\in\Pi'\cap X_*(A)}\psi(\lambda)=\sum_{v}\sigma_{v+C'_v}(\psi)$, the sum of the generating functions of the lattice points of the tangent cones at the vertices $v$ of $\Pi'$. For $v=T_Q\in X_*(A)$ (here we use $T\in L_0$), $\sigma_{T_Q+C'}(\psi)=\psi(T_Q)\sigma_{C'}(\psi)$. Collecting terms gives (3.5A), with $R_Q$ a $T$-independent combination of the $\sigma_{C'}$ for faces $C'$ of $C_Q$. The denominators are those of simplicial-cone generating functions: $\sigma_{C'}=(\text{Laurent polynomial})/\prod(1-\psi(\mu_i))$ over primitive edge vectors $\mu_i$. The edges of $C_Q$: an edge lies in $\fa_0^Q$ and is $M_Q$-dominant extremal (a fundamental coweight of $M_Q$), or lies in $\fa_Q$ and is dual to $\hat\Delta_Q$, i.e.\ is $-(\alpha^\vee)_Q$ for some $\alpha\notin\Delta^Q$. For $Q=G$ the only vertex is $0$ and the cone is $X_*(A)^+$.
+\emph{Vertices.} For $Q$ standard, $T_Q$ satisfies $\ip{T_Q,\alpha}=0$ for $\alpha\in\Delta^Q$ (since $T_Q\in\fa_Q$) and $\ip{T_Q-T,\varpi_\alpha}=0$ for $\alpha\notin\Delta^Q$ (since such $\varpi_\alpha$ vanish on $\fa_0^Q$). By Lemma~3.5C(b) applied to $X=T$, $\ip{T_Q,\alpha}\ge\ip{T,\alpha}>0$ for $\alpha\notin\Delta^Q$ and $\ip{T_Q-T,\varpi_\alpha}=-t_\alpha<0$ for $\alpha\in\Delta^Q$. So $T_Q$ is a vertex of $\Pi_T$ at which exactly the constraints defining $C_Q$ are active ($\ell=\dim\fa_0$ of them), and $\Pi_T$ is simple there. Conversely, let $v$ be a vertex and $\theta=\{\alpha:\ip{v,\alpha}=0\}$, so $v\in\fa_{P_\theta}$. By Lemma~3.5C(a), for $\alpha\in\theta$, $\varpi_\alpha(v)=\sum_{\beta\notin\theta}c_{\alpha\beta}\varpi_\beta(v)\le\sum_\beta c_{\alpha\beta}\varpi_\beta(T)=\varpi_\alpha(T_{P_\theta})<\varpi_\alpha(T)$. So the constraints $\ip{v-T,\varpi_\alpha}\le0$ with $\alpha\in\theta$ are not active, those with $\beta\notin\theta$ must all be active, and $v=T_{P_\theta}$. The combinatorial type is therefore the same for all regular $T$, and the vertices depend linearly on $T$.
+
+\emph{Counting.} Write $\mathsf c\cdot\one_{\cA_A(T)}=\sum_{\theta\subseteq\Delta}\mathsf c_\theta\,\one_{\cA_\theta(T)}$, where $\cA_\theta(T)=\{\lambda\in\cA_A(T):\ip{\lambda,\alpha}=0\iff\alpha\in\theta\}$ and $\mathsf c_\theta$ is the value of $\mathsf c$ there. Each $\cA_\theta(T)$ is the set of lattice points of a half-open polytope in the subspace $\fa_{P_\theta}$ (with the lattice $X_*(A)\cap\fa_{P_\theta}$): the inequalities $\ip{\lambda,\alpha}>0$ ($\alpha\notin\theta$) and $\ip{\lambda-T,\varpi_\alpha}<0$ are strict. Its closure is the face $\Pi_T\cap\fa_{P_\theta}$ of $\Pi_T$, whose vertices are the $T_Q$ with $Q\supseteq P_\theta$; its half-open tangent cones are the corresponding faces of the $C_Q$, independent of $T$. Apply Lemma~3.5B(i) to each $\cA_\theta(T)$; for $T\in L_0$ the vertices $T_Q$ are lattice points, so each vertex contributes $\psi(T_Q)$ times a $T$-independent rational function. Collecting by $Q$ gives (3.5A), with $R_Q=\sum_{\theta:\,P_\theta\subseteq Q}\mathsf c_\theta\,\sigma_{C_{Q,\theta}}$, where $C_{Q,\theta}$ is the half-open tangent cone at $T_Q$ of $\cA_\theta(T)$. The statement for $\psi$ on a polar divisor is Lemma~3.5B(ii). The edges of $C_Q$ are as follows. An edge in $\fa_0^Q$ is an extremal ray of the dominant cone of $M_Q$, so it is spanned by a fundamental coweight of $M_Q$. An edge in $\fa_Q$ is dual to $\hat\Delta_Q$, so it is spanned by $-(\alpha^\vee)_Q$ for some $\alpha\notin\Delta^Q$ (Lemma~3.5C(a)). For $Q=G$ the only vertex is $0$ and the cone is the closed dominant cone, so $R_G=\sum_\theta\mathsf c_\theta\sigma_{\text{relint face }\theta}$ continues $\sum_{\lambda\in X_*(A)^+}\mathsf c(\lambda)\psi(\lambda)$.
 \end{proof}
 
 \begin{rem26}[Lemma 3.5A]\label{r:brion}
-The 1997 Lemma~3.5 asserted that the $\omega$-th term carries the factor $\prod_\alpha\chi(a_\alpha)^{T_\alpha}$ times a $T$-independent function; this is false already for $SL(2)$, where the regular part is $(z-z^{T})/(1-z)$. It also used coordinates $\ip{a,\alpha}$ on $X_*(A)$, which are unimodular only for adjoint $G$. Lemma~3.5A is the correct form. The vertex description and the edge directions were checked by hand; the inclusion--exclusion bookkeeping for half-open faces is standard but was written out in full only in rank one. In rank one ($X_*(A)=\mathbb{Z}\varpi^\vee$, $z=\psi(\varpi^\vee)$, $\mathsf c\equiv1$): $\sum_{0\le n<T}z^n=\frac1{1-z}-\frac{z^T}{1-z}$, i.e.\ $R_G=\frac1{1-z}$, $R_B=-\frac1{1-z}$.
+The 1997 Lemma~3.5 asserted that the $\omega$-th term carries the factor $\prod_\alpha\chi(a_\alpha)^{T_\alpha}$ times a $T$-independent function; this is false already for $SL(2)$, where the regular part is $(z-z^{T})/(1-z)$. It also used coordinates $\ip{a,\alpha}$ on $X_*(A)$, which are unimodular only for adjoint $G$. Lemma~3.5A is the correct form. The half-open bookkeeping is now Lemma~3.5B, and the positivity used for the vertices is Lemma~3.5C. Lemma~3.5A was also checked by exact computation for $SL(3)$ and $PGL(3)$, with $\mathsf c=1$ and $\mathsf c(\lambda)=Q_{a_\lambda}$, including degenerate $\psi$ (\texttt{examples/rank2/brion\_check.py}). For $PGL(3)$ the dominant cone is not unimodular in root coordinates. In rank one ($X_*(A)=\mathbb{Z}\varpi^\vee$, $z=\psi(\varpi^\vee)$, $\mathsf c\equiv1$): $\sum_{0\le n<T}z^n=\frac1{1-z}-\frac{z^T}{1-z}$, i.e.\ $R_G=\frac1{1-z}$, $R_B=-\frac1{1-z}$.
 \end{rem26}
 
 From [Ma71, Prop.~3.2.15] we have, for $a\in A^-$,
@@ -591,22 +671,22 @@ This replaces the 1997 formula (3.8), which used the incorrect Lemma~3.5.
 \paragraph{The main proposition.}
 
 \begin{Proposition}{3.6}[2026 form]
-Fix a level $n$. There are $c=c(n)\ge1$ and $d_0=d_0(n)$ with the following property. Let $\chi,\chi'$ be unramified regular characters and $u\in V_B(\chi^{-1})$, $u'\in V_B(\chi'^{-1})$ of level $n$. Then for $T\in L_0$ with $d(T)\ge d_0$,
+Assume (C) of \S3.1 (automatic in rank one). Fix a level $n$. There are $c=c(n)\ge1$ and $d_0=d_0(n)$ with the following property. Let $\chi,\chi'$ be unramified regular characters and $u\in V_B(\chi^{-1})$, $u'\in V_B(\chi'^{-1})$ of level $n$. Then for $T\in L_0$ with $d(T)\ge d_0$,
 \begin{equation}\tag{3.9}
 J^T(\chi,\chi',u,u')=\sum_{Q\supseteq B}J^T_Q(\chi,\chi',u,u'),\qquad
 J^T_Q=\sum_{P\subseteq Q}\ \sum_{w,w'\in\Wrep{M_P}}\psi_{w,w'}(T_Q)\,\mathcal{R}^{P,Q}_{w,w'}(\chi,\chi';u,u'),
 \end{equation}
-where $\psi_{w,w'}=(w\chi)(w'\chi')$, and each $\mathcal R^{P,Q}_{w,w'}$ is bilinear in $(u,u')$, rational in $(\chi,\chi')$ and independent of $T$. In particular $J^T_G(\chi,\chi',u,u')=:J_G(\chi,\chi',u,u')$ does not depend on $T$; it is the ``$T$-independent remainder'', and it contains the contribution of the compact core where no asymptotics are available. For $K$-fixed $u,u'$, (3.9) is (3.8).
+where $\psi_{w,w'}=(w\chi)(w'\chi')$, and each $\mathcal R^{P,Q}_{w,w'}$ is bilinear in $(u,u')$, rational in $(\chi,\chi')$ and independent of $T$. This holds for $(\chi,\chi')$ off finitely many polar divisors. For all $(\chi,\chi')$, including $\chi'=\chi^{-1}$, (3.9) holds with each $\mathcal R^{P,Q}_{w,w'}$ replaced by a polynomial in $T$ of degree $\le\dim\fa_P$ (Lemma~3.5B(ii)). In particular $J^T_G(\chi,\chi',u,u')=:J_G(\chi,\chi',u,u')$ does not depend on $T$; it is the ``$T$-independent remainder'', and it contains the contribution of the compact core where no asymptotics are available. For $K$-fixed $u,u'$, (3.9) is (3.8).
 \end{Proposition}
 
 \begin{proof}
-Let $\epsilon=\epsilon(n)$ be as in (3.1) and choose an integer $c\ge1$ with $q^{-c}\le\epsilon$.
+Let $\epsilon=\epsilon(n)$ be as in (C) and choose an integer $c\ge1$ with $q^{-c}\le\epsilon$.
 
 \emph{Step 1: regions.} For a standard parabolic $P=MN$ let
 \[
 S_P=\{\lambda\in X_*(A)^+:\ \ip{\lambda,\alpha}<c\iff\alpha\in\Delta^M\}.
 \]
-These sets partition $X_*(A)^+$, and $a_\lambda\in A^-_P(\epsilon)$ for $\lambda\in S_P$. The map $\lambda\mapsto\lambda^P$ identifies $X_*(A)/X_*(A_M)$ with a lattice in $\fa_0^P$, and for $\lambda\in S_P$, $\lambda^P$ lies in the bounded set $\{X\in\fa_0^P:0\le\ip{X,\alpha}<c,\ \alpha\in\Delta^M\}$. So $S_P$ meets only finitely many cosets of $X_*(A_M)$. Choose representatives $e\in S_P$ for them, a finite set $E_P$. Then
+These sets partition $X_*(A)^+$, and $a_\lambda\in A^-_P(\epsilon)$ for $\lambda\in S_P$. The map $\lambda\mapsto\lambda^P$ identifies $X_*(A)/X_*(A_M)$ with a lattice in $\fa_0^P$, and for $\lambda\in S_P$, $\lambda^P$ lies in the bounded set $\{X\in\fa_0^P:0\le\ip{X,\alpha}<c,\ \alpha\in\Delta^M\}$. So $S_P$ meets only finitely many cosets of $X_*(A_M)$. Choose representatives $e\in S_P$ for them, a finite set $E_P$. Neither $S_P$ nor $E_P$ involves $T$: they depend only on $c=c(n)$, so the coefficients $C^P_{w,w',e}$ of Step~2 are independent of $T$. Then
 \[
 S_P\cap(e+X_*(A_M))=e+\{\nu\in X_*(A_M):\ \ip{e+\nu,\alpha}\ge c\ \ (\alpha\in\Delta\smallsetminus\Delta^M)\}.
 \]
@@ -622,25 +702,25 @@ C^P_{w,w',e}(u,u')=\frac{Q_{a_e}c_w(\chi)c_{w'}(\chi')}{\delta_{B\cap M}(a_e)}\i
 \end{aligned}
 \]
 
-\emph{Step 3: the truncated region on $S_P\cap(e+X_*(A_M))$.} The conditions $\ip{e+\nu-T,\varpi_\alpha}<0$ for $\alpha\in\Delta^M$ are implied by those for $\alpha\notin\Delta^M$ once $d(T)$ is large. Indeed, for $Y\in\fa_P$ and $\alpha\in\Delta^M$, $\varpi_\alpha(Y)=\sum_{\beta\notin\Delta^M}c_{\alpha\beta}\varpi_\beta(Y)$ with $c_{\alpha\beta}=\varpi_\alpha((\beta^\vee)_P)\ge0$ (proof of Lemma~3.5A). So if $\varpi_\beta(e+\nu)<\varpi_\beta(T)$ for all $\beta\notin\Delta^M$, then
+\emph{Step 3: the truncated region on $S_P\cap(e+X_*(A_M))$.} The conditions $\ip{e+\nu-T,\varpi_\alpha}<0$ for $\alpha\in\Delta^M$ are implied by those for $\alpha\notin\Delta^M$ once $d(T)$ is large. Indeed, for $Y\in\fa_P$ and $\alpha\in\Delta^M$, $\varpi_\alpha(Y)=\sum_{\beta\notin\Delta^M}c_{\alpha\beta}\varpi_\beta(Y)$ with $c_{\alpha\beta}=\varpi_\alpha((\beta^\vee)_P)\ge0$ (Lemma~3.5C(a)). So if $\varpi_\beta(e+\nu)<\varpi_\beta(T)$ for all $\beta\notin\Delta^M$, then
 \[
 \varpi_\alpha(e+\nu)=\varpi_\alpha(e^P)+\textstyle\sum_\beta c_{\alpha\beta}\varpi_\beta(e+\nu)<\varpi_\alpha(e^P)+\varpi_\alpha(T_P)=\varpi_\alpha(T)-\varpi_\alpha(T^P)+\varpi_\alpha(e^P),
 \]
-and $\varpi_\alpha(T^P)\ge\varpi_\alpha(e^P)$ as soon as $d(T)\ge d_0$, since $\varpi_\alpha(T^P)$ grows linearly in $d(T)$ while $E_P$ is finite. (For $P=G$, $\nu=0$ and the condition is $e\in\cA_A(T)$, true for all $e\in E_G$ once $d(T)\ge d_0$.) Thus the $\nu$ that occur form the lattice points of the half-open polytope
+and $\varpi_\alpha(T^P)\ge\kappa_Md(T)\ge\varpi_\alpha(e^P)$ as soon as $d(T)\ge d_0$ (Lemma~3.5C(b); $E_P$ is finite). (For $P=G$, $\nu=0$ and the condition is $e\in\cA_A(T)$, true for all $e\in E_G$ once $d(T)\ge d_0$.) Thus the $\nu$ that occur form the lattice points of the half-open polytope
 \[
 \Pi_{P,e}(T)=\{\nu\in\fa_P:\ \ip{\nu,\alpha}\ge c-\ip{e,\alpha}\ (\alpha\in\Delta\smallsetminus\Delta^M),\ \ \ip{\nu-(T-e),\varpi_\beta}<0\ (\beta\in\Delta\smallsetminus\Delta^M)\},
 \]
-which has the shape of (3.3) for the root datum $(\fa_P,\Delta_P,\hat\Delta_P)$. Exactly as in the proof of Lemma~3.5A, its vertices are the points $v_{Q,e}(T)$, $Q\supseteq P$, determined by $\ip{v,\alpha}=c-\ip{e,\alpha}$ for $\alpha\in\Delta^Q\smallsetminus\Delta^M$ and $\ip{v-(T-e),\varpi_\beta}=0$ for $\beta\notin\Delta^Q$. Decomposing $v=v_Q+v^Q$ in $\fa_P=\fa_Q\oplus\fa_P^Q$ gives $v_Q=T_Q-e_Q$, and $v^Q\in\fa_P^Q$ is determined by $T$-independent equations. Thus $v_{Q,e}(T)=T_Q+x_{Q,e}$ with $x_{Q,e}$ independent of $T$. Since $T_Q\in X_*(A)\cap\fa_Q\subset X_*(A_M)$ for $T\in L_0$, Brion's theorem gives
+which has the shape of (3.3) for the datum $(\fa_P,\Delta_P,\hat\Delta_P)$, with the lower bounds shifted by the bounded amounts $c-\ip{e,\alpha}$. The argument for Lemma~3.5A carries over: it uses Lemma~3.5C for the parabolics $Q\supseteq P$, and the shifts are absorbed by enlarging $d_0$, since by Lemma~3.5C(b) the slack in every inactive constraint grows at least like $\kappa\,d(T)$. So for $d(T)\ge d_0$ the closure of $\Pi_{P,e}(T)$ is a simple polytope of constant combinatorial type whose vertices are the points $v_{Q,e}(T)$, $Q\supseteq P$, determined by $\ip{v,\alpha}=c-\ip{e,\alpha}$ for $\alpha\in\Delta^Q\smallsetminus\Delta^M$ and $\ip{v-(T-e),\varpi_\beta}=0$ for $\beta\notin\Delta^Q$. Decomposing $v=v_Q+v^Q$ in $\fa_P=\fa_Q\oplus\fa_P^Q$ gives $v_Q=T_Q-e_Q$, and $v^Q\in\fa_P^Q$ is determined by $T$-independent equations. Thus $v_{Q,e}(T)=T_Q+x_{Q,e}$ with $x_{Q,e}$ independent of $T$. Since $T_Q\in X_*(A)\cap\fa_Q\subset X_*(A_M)$ for $T\in L_0$, the vertices move by lattice vectors as $T$ varies in $L_0$, and Lemma~3.5B(i) (with $\Lambda=X_*(A_M)$; the vertex $T_Q+x_{Q,e}$ contributes $\psi(T_Q)\psi(x_{Q,e})\sigma$, where $x_{Q,e}$ is fixed and only its class modulo $\Lambda$ matters) gives
 \[
 \sum_{\nu\in\Pi_{P,e}(T)\cap X_*(A_M)}\psi(\nu)=\sum_{Q\supseteq P}\psi(T_Q)\,R_{P,Q,e}(\psi)
 \]
-with $T$-independent rational $R_{P,Q,e}$.
+with $T$-independent rational $R_{P,Q,e}$; for degenerate $\psi$, Lemma~3.5B(ii) gives the polynomial version.
 
 \emph{Step 4.} Summing $F$ over $\cA_A(T)=\bigsqcup_P\bigsqcup_{e\in E_P}\big(\cA_A(T)\cap(e+X_*(A_M))\big)$ gives (3.9) with $\mathcal R^{P,Q}_{w,w'}=\sum_{e\in E_P}C^P_{w,w',e}\,R_{P,Q,e}(\psi_{w,w'})$. For $K$-fixed vectors we may take $\epsilon=1$, and the computation reduces to (3.8).
 \end{proof}
 
 \begin{rem26}[Proposition 3.6]\label{r:P36}
-The 1997 Proposition~3.6 claimed $J^T=\sum_{w,w'\in W}C^T(\chi,\chi',w,w')\ip{T_wu,T_{w'}u'}_G$ with coefficients independent of $u,u'$, and that $C^T$ could be computed from Lemma~3.5. Its inductive proof (equations (3.9)--(3.23) of 1997, via the functions $\xi(M,D,T,U)$ and Langlands' combinatorial lemma) shows only that $J^T-F(T)=J^U-F(U)$ for an explicit $F$. That leaves a $T$-independent constant undetermined (the compact-core contribution), and the structural claim for arbitrary $u,u'$ is unsupported (log items 3.46, 3.69). The proof above is new (2026). It keeps the ingredients of the 1997 argument (Casselman's asymptotics on the regions $A^-_P(\epsilon)$, Macdonald's formula, and a combinatorial identity for truncated cones), but uses a direct partition of the dominant cone together with Brion's theorem instead of the induction on Levi subgroups. It does not determine the remainder $J_G$, which is genuinely non-zero (in the $PGL(2)$ example it produces $|B_r|=O_\gamma(\one_K)$, \S6.1). Steps 1--4 have been checked in rank one against \S6; in higher rank they have been checked on paper only.
+The 1997 Proposition~3.6 claimed $J^T=\sum_{w,w'\in W}C^T(\chi,\chi',w,w')\ip{T_wu,T_{w'}u'}_G$ with coefficients independent of $u,u'$, and that $C^T$ could be computed from Lemma~3.5. Its inductive proof (equations (3.9)--(3.23) of 1997, via the functions $\xi(M,D,T,U)$ and Langlands' combinatorial lemma) shows only that $J^T-F(T)=J^U-F(U)$ for an explicit $F$. That leaves a $T$-independent constant undetermined (the compact-core contribution), and the structural claim for arbitrary $u,u'$ is unsupported (log items 3.46, 3.69). The proof above is new (2026). It keeps the ingredients of the 1997 argument (Casselman's asymptotics on the regions $A^-_P(\epsilon)$, Macdonald's formula, and a combinatorial identity for truncated cones), but uses a direct partition of the dominant cone together with Brion's theorem instead of the induction on Levi subgroups. It does not determine the remainder $J_G$, which is genuinely non-zero (in the $PGL(2)$ example it produces $|B_r|=O_\gamma(\one_K)$, \S6.1). Steps 1--4 have been checked in rank one against \S6. In higher rank, the combinatorial steps are now proved in full (Lemmas~3.5B, 3.5C) and were checked numerically for $SL(3)$ and $PGL(3)$. The representation-theoretic input (C) remains unverified for intermediate parabolics (Remark~\ref{r:cass}), and the proposition is conditional on it.
 \end{rem26}
 
 \begin{Proposition}{3.7}
@@ -684,7 +764,7 @@ and recall
 \end{equation}
 For $\phi\in C_c^\infty(G(F))$ we define the \emph{truncated orbital integral} (the Fourier transform of the truncated orbital integral of $\phi$)
 \begin{equation}\tag{4.4}
-I^T(\chi,\phi)=\int_{G(F)^1}\Gamma_\chi(h)\int_{G(T)}\phi(g^{-1}hg)\,dg\,dh=\int_{G(T)\times G(F)^1}\Gamma_\chi(g^{-1}hg)\phi(h)\,dh\,dg.
+I^T(\chi,\phi)=\int_{G(F)}\Gamma_\chi(h)\int_{G(T)}\phi(g^{-1}hg)\,dg\,dh=\int_{G(T)\times G(F)}\Gamma_\chi(g^{-1}hg)\phi(h)\,dh\,dg.
 \end{equation}
 In \S5 we also consider
 \begin{equation}\tag{4.5}
@@ -701,7 +781,7 @@ Let $\phi\in C_c^\infty(G_{\ellr})$ be bi-$K_n$-invariant and let $\chi$ be unra
 \begin{equation}\tag{4.7}
 I^T(\chi,\phi)=\sum_{i,j}J^T(\chi,\chi^{-1},u_i^*,u_j)\,\ip{\pi_\chi(\phi)u_i,u_j^*}_G.
 \end{equation}
-\item There is a finite set $\mathcal M=\mathcal M(G,n)$ of linear maps $\mu:L_0\to X_*(A)$, containing $0$ and independent of $\chi$ and $\phi$, such that for $T\in L_0$ with $d(T)\ge d_0(n)$
+\item Assume (C) (automatic in rank one). There is a finite set $\mathcal M=\mathcal M(G,n)$ of linear maps $\mu:L_0\to X_*(A)$, containing $0$ and independent of $\chi$ and $\phi$, such that for $T\in L_0$ with $d(T)\ge d_0(n)$
 \begin{equation}\tag{4.7A}
 I^T(\chi,\phi)=\sum_{\mu\in\mathcal M}\chi(\mu(T))\,P_\mu(T;\chi,\phi),
 \end{equation}
@@ -717,13 +797,19 @@ the constant term of the non-oscillating part of $I^T(\chi,\phi)$. For generic r
 \begin{proof}
 (a) Since $\phi$ is bi-$K_n$-invariant, $\pi_\chi(\phi)$ kills the complement of $V_B(\chi)^{K_n}$ and takes values in $V_B(\chi)^{K_n}$. So $\pi_\chi(\phi)v=\sum_{i,j}\ip{v,u_i^*}\ip{\pi_\chi(\phi)u_i,u_j^*}u_j$ for every $v$. Apply this to $v=\pi_\chi(g)\Phi_{K,\chi}$ in (4.3), integrate over $h$ against $\phi$ and over $g\in G(T)$, and use $\ip{u_j,\pi_{\chi^{-1}}(g)\Phi_{K,\chi^{-1}}}=\ip{\pi_{\chi^{-1}}(g)\Phi_{K,\chi^{-1}},u_j}$. Every vector involved has level $n$, independently of $T$. (The 1997 version expanded $\pi(g)\Phi_{K,\chi}$ itself, whose level grows with $g$, and had $u_j^*$ in place of $u_j$ in (4.7).)
 
-(b) Apply Proposition~3.6 to each $J^T(\chi,\chi',u_i^*,u_j)$ with $\chi'$ near $\chi^{-1}$. The frequencies $\psi_{w,w'}(T_Q)=(w\chi)(w'\chi')(T_Q)$ tend to $\chi(\mu(T))$ with $\mu(T)=w^{-1}T_Q-w'^{-1}T_Q$. Group the terms of (3.9) according to the limit map $\mu$. The total is analytic in $\chi'$ at $\chi'=\chi^{-1}$ (it is a finite sum of matrix-coefficient integrals over the compact set $G(T)$). For generic regular $\chi$ the characters $T\mapsto\chi(\mu(T))$, $\mu\in\mathcal M$, of $L_0$ are pairwise distinct. So by the uniqueness of exponential-polynomial expansions on a translated cone of $L_0$, each group extends analytically to $\chi'=\chi^{-1}$, and its value there is $\chi(\mu(T))$ times a polynomial in $T$. These polynomials are the confluent limits of the coalescing exponentials. Rationality in $\chi$ is inherited from Proposition~3.6.
+(b) Apply Proposition~3.6 directly with $\chi'=\chi^{-1}$ (which is regular), in its polynomial form, i.e.\ via Lemma~3.5B(ii) in Step~3. Each vertex $v_{Q,e}(T)=T_Q+x_{Q,e}$ contributes $\psi_{w,w'}(T_Q)\,\psi_{w,w'}(x_{Q,e})\,p(T)$ with $p$ a polynomial, and
+\[
+\psi_{w,w'}(T_Q)=(w\chi)(T_Q)\,(w'\chi^{-1})(T_Q)=\chi\big(w^{-1}T_Q-w'^{-1}T_Q\big)=\chi(\mu(T)).
+\]
+Grouping the terms of (4.7) by the linear map $\mu$ gives (4.7A). The set $\mathcal M$ depends only on $G$ and $n$ (through the finitely many $P$, $Q$, $w$, $w'$), and it contains $\mu=0$ (take $Q=G$, or $w=w'$).
+
+\emph{Rationality.} Let $\mathcal Z\subset\Th$ be the union of the finitely many proper subtori on which some factor $1-\psi_{w,w'}(\mu_e)$ (with $\mu_e$ an edge vector of one of the cones in Step~3) vanishes without vanishing identically in $\chi$. On $\Th\smallsetminus\mathcal Z$ the set of vanishing factors is constant, so by Lemma~3.5B(ii) the coefficients of the polynomials $P_\mu$ are rational functions of $\chi$ there. They are linear in $\phi$ by (4.7). This replaces the confluence argument of the first 2026 draft, which passed to the limit $\chi'\to\chi^{-1}$.
 
 (c) Intrinsic: by uniqueness of the expansion. Linearity is clear from (4.7). For $k\in K$, conjugating $\phi$ by $k$ amounts to translating $g\mapsto gk$ in (4.4), and $G(T)$ is right $K$-invariant.
 \end{proof}
 
 \begin{rem26}[Proposition 4.2]\label{r:P42}
-The 1997 Proposition~4.2 stated $I(\chi,\phi)=\lim_{\chi'\to\chi}\sum_{w,w'}Q^T(\chi,\chi',w,w',\phi)\tilde\theta(w\chi/w'\chi')^{-1}$ ``independent of $T$''. But $I^T(\chi,\phi)$ genuinely depends on $T$; the 1997 justification (``follows from Proposition~3.6'') does not apply, and $I(\chi,\phi)$ was never defined independently of the displayed limit. Here $I(\chi,\phi)$ is defined as the $T$-independent part. Part~(b) is a straightforward consequence of Proposition~3.6, except for the confluence step, which we have written out only in rank one. The 1997 claim that $\phi\mapsto I(\chi,\phi)$ is $G$-admissible in the sense of [HC78, \S14] is plausible, since by (4.7) it is a finite combination of $\phi\mapsto\tr(A\,\pi_\chi(\phi))$ with finite-rank $A$, but it needs a bound uniform in $n$ that we have not checked. Full $G$-invariance follows from Theorem~4.5(b) when Hypothesis~(R) holds (Corollary~4.5A).
+The 1997 Proposition~4.2 stated $I(\chi,\phi)=\lim_{\chi'\to\chi}\sum_{w,w'}Q^T(\chi,\chi',w,w',\phi)\tilde\theta(w\chi/w'\chi')^{-1}$ ``independent of $T$''. But $I^T(\chi,\phi)$ genuinely depends on $T$; the 1997 justification (``follows from Proposition~3.6'') does not apply, and $I(\chi,\phi)$ was never defined independently of the displayed limit. Here $I(\chi,\phi)$ is defined as the $T$-independent part. Part~(b) follows from Proposition~3.6 and Lemma~3.5B(ii), and is therefore conditional on (C) in rank $\ge2$. The 1997 claim that $\phi\mapsto I(\chi,\phi)$ is $G$-admissible in the sense of [HC78, \S14] is plausible, since by (4.7) it is a finite combination of $\phi\mapsto\tr(A\,\pi_\chi(\phi))$ with finite-rank $A$, but it needs a bound uniform in $n$ that we have not checked. Full $G$-invariance follows from Theorem~4.5(b) when Hypothesis~(R) holds (Corollary~4.5A).
 \end{rem26}
 
 \begin{Proposition}{4.3}
@@ -738,27 +824,29 @@ We only prove Proposition~4.2; the proof of 4.3 is similar, using Remark~5 and P
 
 Let $\phi$ be a locally constant function with compact support in $G_{\ellr}$. By [Ka86, \S4, Lemma~6] the distribution
 \begin{equation}\tag{4.8}
-f\longmapsto I(f,\phi)=\int_{G(F)^1\times G(F)^1}f(g^{-1}hg)\phi(h)\,dg\,dh=\int_{G(F)^1}f(h)\Phi_\phi(h)\,dh=\int_{G(F)^1}\Phi_f(h)\phi(h)\,dh,
+f\longmapsto I(f,\phi)=\int_{G(F)\times G(F)}f(g^{-1}hg)\phi(h)\,dg\,dh=\int_{G(F)}f(h)\Phi_\phi(h)\,dh=\int_{G(F)}\Phi_f(h)\phi(h)\,dh,
 \end{equation}
-$f\in C_c^\infty(G(F))$, has compactly generated support. Here, for $h\in G_{\ellr}$, $\Phi_\phi(h):=\int_{G(F)^1}\phi(g^{-1}hg)\,dg$, and $\Phi_f$ is defined in the same way. (In (4.8) $f$ may be any function in $C_c^\infty(G(F))$; from Lemma~4.4 on, $f\in\Hc(G,K)$.)
+$f\in C_c^\infty(G(F))$, has compactly generated support. Here, for $h\in G_{\ellr}$, $\Phi_\phi(h):=\int_{G(F)}\phi(g^{-1}hg)\,dg$, and $\Phi_f$ is defined in the same way. (In (4.8) $f$ may be any function in $C_c^\infty(G(F))$; from Lemma~4.4 on, $f\in\Hc(G,K)$.)
 
 \begin{Lemma}{4.4}
-Let $\phi$ be locally constant with compact support in $G_{\ellr}$, and let $f\in\Hc(G,K)$. There is a compact set $C_{f,\phi}\subset G(F)^1$ such that $f(g^{-1}hg)\phi(h)\ne0$ implies $g\in C_{f,\phi}$. If $G=SL(n)$ and $G'=PGL(n)$, there is likewise a compact $C'_{f,\phi}\subset G'(F)$ for the action of $G'(F)$ by conjugation.
+Let $\phi$ be locally constant with compact support in $G_{\ellr}$, and let $f\in\Hc(G,K)$. There is a compact set $C_{f,\phi}\subset G(F)$ such that $f(g^{-1}hg)\phi(h)\ne0$ implies $g\in C_{f,\phi}$. If $G=SL(n)$ and $G'=PGL(n)$, there is likewise a compact $C'_{f,\phi}\subset G'(F)$ for the action of $G'(F)$ by conjugation.
 \end{Lemma}
 
 \begin{proof}
-For each $h\in G_{\ellr}$ there are a neighborhood $V_{h,f}$ of $h$ and a compact set $C_{h,f}\subset G(F)^1$ such that $f(g^{-1}h'g)\ne0$ and $h'\in V_{h,f}$ imply $g\in C_{h,f}$. This uses that the centralizer of an elliptic element is compact modulo $A_G$. Finitely many $V_{h,f}$ cover $\mathrm{supp}(\phi)$. The second part is similar.
+For each $h\in G_{\ellr}$ there are a neighborhood $V_{h,f}$ of $h$ and a compact set $C_{h,f}\subset G(F)$ such that $f(g^{-1}h'g)\ne0$ and $h'\in V_{h,f}$ imply $g\in C_{h,f}$. This uses that the centralizer of an elliptic element is compact modulo $A_G$. Finitely many $V_{h,f}$ cover $\mathrm{supp}(\phi)$. The second part is similar.
 \end{proof}
 
 Choose $T=T(f,\phi)\in L_0$ with $d(T)\ge d_0(n)$ and $G(T)\supseteq C_{f,\phi}$, so that
 \begin{equation}\tag{4.9}
-\mathrm{supp}_g\Big(\int_{G(F)^1}f(g^{-1}hg)\phi(h)\,dh\Big)\subset G(T).
+\mathrm{supp}_g\Big(\int_{G(F)}f(g^{-1}hg)\phi(h)\,dh\Big)\subset G(T).
 \end{equation}
-Then $I(f,\phi)=\int_{G(T)\times G(F)^1}f(g^{-1}hg)\phi(h)\,dg\,dh$. For $f\in\Hc(G,K)$, Corollary~2.3 gives $f(g^{-1}hg)=\int_{\Thu}f^\vee(\chi)\Gamma_\chi(g^{-1}hg)\,d\mu(\chi)$. Write $d\mu(\chi)=\rho(\chi)\,d\chi$ with $\rho=\frac{Q_G}{|W|}|c(\chi)|^{-2}$.
+Then $I(f,\phi)=\int_{G(T)\times G(F)}f(g^{-1}hg)\phi(h)\,dg\,dh$. For $f\in\Hc(G,K)$, Corollary~2.3 gives $f(g^{-1}hg)=\int_{\Thu}f^\vee(\chi)\Gamma_\chi(g^{-1}hg)\,d\mu(\chi)$. Write $d\mu(\chi)=\rho(\chi)\,d\chi$ with $\rho=\frac{Q_G}{|W|}|c(\chi)|^{-2}$.
 
 \begin{Hypothesis}{(R)}[regularity, for $G$ and level $n$]
 For every bi-$K_n$-invariant $\phi\in C_c^\infty(G_{\ellr})$ and every $\mu\in\mathcal M(G,n)$, each coefficient of the polynomial $P_\mu(T;\chi,\phi)$ of (4.7A), multiplied by $\rho(\chi)$, extends to a $C^\infty$ function of $\chi\in\Thu$.
 \end{Hypothesis}
+
+Hypothesis (R) is a strong condition with representation-theoretic content, not a routine regularity assumption. It asks that each oscillatory component separately be regular against the Plancherel density, and it fails for $SL(2)$ (\S6.2) exactly at a reducibility point of the unitary principal series. For $PGL(2)$ it is proved in Lemma~6.1A.
 
 \begin{Theorem}{4.5}[2026 form]
 Let $f\in\Hc(G,K)$, let $\phi\in C_c^\infty(G_{\ellr})$ be bi-$K_n$-invariant, and let $T(f,\phi)$ be as in (4.9).
@@ -766,11 +854,11 @@ Let $f\in\Hc(G,K)$, let $\phi\in C_c^\infty(G_{\ellr})$ be bi-$K_n$-invariant, a
 \item For all $T\in L_0$ with $G(T)\supseteq G(T(f,\phi))$,
 \[
 \begin{aligned}
-I(f,\phi)&=\sum_{\lambda\in\cA_A(T)}\int_{Ka_\lambda K\times G(F)^1}\int_{\Thu}f^\vee(\chi)\Gamma_\chi(g^{-1}hg)\,d\mu(\chi)\,\phi(h)\,dg\,dh\\
+I(f,\phi)&=\sum_{\lambda\in\cA_A(T)}\int_{Ka_\lambda K\times G(F)}\int_{\Thu}f^\vee(\chi)\Gamma_\chi(g^{-1}hg)\,d\mu(\chi)\,\phi(h)\,dg\,dh\\
 &=\int_{\Thu}f^\vee(\chi)\,I^T(\chi,\phi)\,d\mu(\chi).
 \end{aligned}
 \]
-\item If Hypothesis~(R) holds for $G$ and $n$, then
+\item Assume (C) (automatic in rank one). If Hypothesis~(R) holds for $G$ and $n$, then
 \[
 I(f,\phi)=\int_{\Thu}f^\vee(\chi)\,I(\chi,\phi)\,d\mu(\chi),
 \]
@@ -791,7 +879,7 @@ Fix $T_2\in\mathcal C$ and a regular dominant $T_1\in L_0$ with $\mu(T_1)\ne0$ f
 \begin{Corollary}{4.5A}
 Assume (R) for $G$ and all $n$. Then $\phi\mapsto I(\chi,\phi)\rho(\chi)$ is, for almost every $\chi$, a $G$-invariant distribution on $G_{\ellr}$, and for each $\gamma\in G_{\ellr}$ there is a function $I(\cdot,\gamma)$ with $I(\cdot,\gamma)\rho$ smooth, such that (1.5) holds in the form
 \[
-\int_{G(F)^1}f(g^{-1}\gamma g)\,dg=\int_{\Thu}f^\vee(\chi)I(\chi,\gamma)\,d\mu(\chi)\qquad(f\in\Hc(G,K)).
+\int_{G(F)}f(g^{-1}\gamma g)\,dg=\int_{\Thu}f^\vee(\chi)I(\chi,\gamma)\,d\mu(\chi)\qquad(f\in\Hc(G,K)).
 \]
 \end{Corollary}
 
@@ -807,18 +895,26 @@ $I(f,\phi)$ is invariant under conjugation of $\phi$, and the $W$-invariant Laur
 \end{enumerate}
 \end{rem26}
 
+\paragraph{Functionals, distributions and measures.} We distinguish three levels of structure on the spectral side. Let $\mathrm{PW}=\{f^\vee:f\in\Hc(G,K)\}$, the $W$-invariant Laurent polynomials on $\Th$, restricted to $\Thu$.
+\begin{enumerate}[label=(\roman*)]
+\item By Theorem~4.5(a), $\Lambda_\phi:f^\vee\mapsto I(f,\phi)$ is a well-defined \emph{linear functional} on $\mathrm{PW}$. This is all that is proved in general.
+\item $\Lambda_\phi$ is a \emph{distribution} on $\Thu/W$ if it is continuous for the $C^\infty$ topology, i.e.\ if $|\Lambda_\phi(f^\vee)|\le C\|f^\vee\|_{C^k}$ for some $k$. The bound $|I^T(\chi,\phi)|\le\vol(G(T))\|\phi\|_1$ from (4.4) grows exponentially with $T$, and $T$ must grow with $\deg f$, so (i) does not imply (ii).
+\item $\Lambda_\phi$ is given by a \emph{finite complex measure} if $k=0$ suffices.
+\end{enumerate}
+Under (C) and (R), $\Lambda_\phi$ is the absolutely continuous measure $I(\chi,\phi)\,d\mu$ (Theorem~4.5(b)). In general, that $\Lambda_\phi$ is a measure is part of Conjecture~4.6. For $SL(2)$ it is a measure with an atom (Proposition~6.4).
+
 \paragraph{When (R) fails.} The singular behavior comes from the denominators $1-\psi(\mu_e)$ of Lemma~3.5A, with $\psi=w\chi/w'\chi$, at points where $\rho$ does not vanish to compensate. On such a hypersurface a term $\chi(\mu(T))a(\chi)$ with $a\rho$ having a simple pole behaves, as $T\to\infty$, like a Dirichlet kernel, and its pairing with $f^\vee$ tends to a multiple of the restriction of $f^\vee$ to the hypersurface (the Sokhotski--Plemelj formula on the circle). The limit exists because $I(f,\phi)$ does not depend on $T$. This motivates:
 
 \begin{Conjecture}{4.6}
 Let $\phi\in C_c^\infty(G_{\ellr})$.
 \begin{enumerate}[label=(\alph*)]
-\item The linear form $f^\vee\mapsto I(f,\phi)$ on Satake transforms is given by a measure $dI_\phi$ on $\Thu/W$ of the form
+\item The linear functional $\Lambda_\phi:f^\vee\mapsto I(f,\phi)$ on Satake transforms is given by a finite complex measure $dI_\phi$ on $\Thu/W$ of the form
 \[
 dI_\phi=I(\chi,\phi)\,d\mu(\chi)+dI^{\,sing}_\phi,
 \]
 where $I(\cdot,\phi)$ is the function of Proposition~4.2(c), $I(\cdot,\phi)\rho\in L^1$, and $dI^{\,sing}_\phi$ is supported on the set of non-regular unitary $\chi$ at which $\rho$ does not vanish (to the order forced by the stabilizer of $\chi$). This set is, conjecturally, the set of $\chi$ for which the $R$-group of $i_{G,A}(\chi)$ is non-trivial.
 \item If $Z(G)$ is connected (equivalently, the derived group of $\hat G$ is simply connected), then the $R$-groups of the unitary unramified principal series are trivial [Ke82], Hypothesis~(R) holds, and $dI^{\,sing}_\phi=0$.
-\item For $G=SL(n)$, $dI^{\,sing}_\phi$ is the sum, over the non-trivial unramified $\kappa$, of the contributions $(c_S|\mathfrak D(S)|)^{-1}\,dI^\kappa_\phi$ of (5.4A), which are push-forwards of spectral measures of the elliptic endoscopic groups (Proposition~5.2).
+\item For $G=SL(n)$, $dI^{\,sing}_\phi$ is the sum, over the non-trivial unramified $\kappa$ (ramified $\kappa$ do not contribute, by Lemma~5.0), of the contributions $(c_S|\mathfrak D(S)|)^{-1}\,dI^\kappa_\phi$ of (5.4A), which are push-forwards of spectral measures of the elliptic endoscopic groups (Proposition~5.2).
 \end{enumerate}
 \end{Conjecture}
 
@@ -828,13 +924,13 @@ Verified for $PGL(2)$ (no singular part) and for $SL(2)$, where $dI^{\,sing}_\ga
 
 \paragraph{The geometric side.} The Weyl integration formula states that
 \begin{equation}\tag{4.10}
-\int_{G(F)^1}\psi(h)\,dh=\sum_{S}\frac{1}{|W(G,S)|}\int_{S(F)\cap G(F)^1}|D(s)|\int_{S(F)\backslash G(F)^1}\psi(g^{-1}sg)\,d\dot g\,ds,
+\int_{G(F)}\psi(h)\,dh=\sum_{S}\frac{1}{|W(G,S)|}\int_{S(F)}|D(s)|\int_{S(F)\backslash G(F)}\psi(g^{-1}sg)\,d\dot g\,ds,
 \end{equation}
 where $S$ runs over a set of representatives of the $G(F)$-conjugacy classes of maximal $F$-tori, $W(G,S)=N_{G(F)}(S)/S(F)$, $D(s)$ is the Weyl discriminant, and $d\dot g$ is the quotient measure. (The 1997 text wrote ``$\Delta(t)^2\,\mathrm{meas}(T(F))$'' in one line and not in the next, and used $T$ for these tori.) If $\phi$ is supported on $G_{\ellr}$, only elliptic $S$ contribute. Plugging $\psi=f\Phi_\phi$ into (4.10) gives the ``geometric'' expansion
 \begin{equation}\tag{4.11}
-I(f,\phi)=\sum_{S\ \ellr}\frac{\vol(S(F)/A_G(F))}{|W(G,S)|}\int_{S(F)\cap G(F)^1}|D(s)|\,O_s(f)\,O_s(\phi)\,ds,
+I(f,\phi)=\sum_{S\ \ellr}\frac{\vol(S(F))}{|W(G,S)|}\int_{S(F)}|D(s)|\,O_s(f)\,O_s(\phi)\,ds,
 \end{equation}
-where $O_s(f)=\int_{S(F)\backslash G(F)^1}f(g^{-1}sg)\,d\dot g$.
+where $O_s(f)=\int_{S(F)\backslash G(F)}f(g^{-1}sg)\,d\dot g$.
 The equality between Theorem~4.5 and (4.11) is a special case of Arthur's local trace formula (\S7).
 
 % =====================================================================
@@ -854,10 +950,18 @@ I^\kappa(f,\phi):=\int_{G(F)}\int_{G'(F)}\kappa(g)f(g^{-1}hg)\phi(h)\,dg\,dh=\in
 \end{equation}
 The last equality follows from the substitution $h\mapsto ghg^{-1}$ followed by $g\mapsto g^{-1}$, which turns $\kappa$ into $\kappa^{-1}$. The interchanges of integration are justified by Lemma~4.4. For $h$ regular elliptic, the properties of $\Phi^\kappa_f$ near the singular set of the centralizer were investigated in [Ka84] (see also [He86]).
 
-Let $S\subset G$ be an elliptic maximal torus and $S'$ its image in $G'$. The $G'(F)$-conjugacy class of a regular $s\in S(F)$ is the union of the $G(F)$-classes of the $x^{-1}sx$, $x\in\mathfrak D(S):=G'(F)/G(F)S'(F)$, a finite abelian group. Hence, with $c_S=\vol(S'(F))/\vol(S(F))$,
+Let $S\subset G$ be an elliptic maximal torus and $S'\subset G'$ the centralizer in $G'$ of $S$ (the image of the corresponding maximal torus of $GL(n)$). The map $G(F)=SL(n,F)\to G'(F)=PGL(n,F)$ has kernel $\mu_n(F)$; write $\bar G(F)$ for its image, a normal subgroup with abelian quotient. The $G'(F)$-conjugacy class of a regular $s\in S(F)$ is the union of the $G(F)$-classes of the $x^{-1}sx$, $x\in\mathfrak D(S):=G'(F)/\bar G(F)S'(F)$, a finite abelian group. We give $\bar G(F)$ the push-forward of the Haar measure of $G(F)$ (so $\vol(\bar K)=1$ for the image $\bar K$ of $K$), and we put $c_S=\vol(S'(F))/\vol(\bar S(F))$, where $\bar S(F)$ is the image of $S(F)$. Hence
 \begin{equation}\tag{5.2}
 \Phi^\kappa_f(s)=c_S\sum_{x\in\mathfrak D(S)}\kappa(x)\,O_{x^{-1}sx}(f)\quad\text{if }\kappa|_{S'(F)}=1,\qquad\Phi^\kappa_f(s)=0\quad\text{otherwise.}
 \end{equation}
+\begin{Lemma}{5.0}
+Let $f\in\Hc(G,K)$. If $\kappa$ is ramified, i.e.\ $\eta$ is non-trivial on $\OO^\times$, then $\Phi^\kappa_f\equiv0$. Hence only unramified $\kappa$ contribute to $\kappa$-orbital integrals of spherical functions.
+\end{Lemma}
+
+\begin{proof}
+Choose $u\in\OO^\times$ with $\eta(u)\ne1$ and let $x$ be the image in $G'(F)$ of $\mathrm{diag}(u,1,\dots,1)\in GL(n,\OO)$. Conjugation by $x$ preserves $K=SL(n,\OO)$ and fixes the diagonal elements $a_\lambda$, so it preserves every double coset $Ka_\lambda K$, and $f(x^{-1}gx)=f(g)$. Substituting $g\mapsto gx$ in the definition of $\Phi^\kappa_f$ gives $\Phi^\kappa_f(h)=\kappa(x)\Phi^\kappa_f(h)=\eta(u)\Phi^\kappa_f(h)$, so $\Phi^\kappa_f(h)=0$.
+\end{proof}
+
 Since $\Phi^\kappa_f$ is $G(F)$-invariant, the Weyl integration formula (4.10) for $G(F)$ gives
 \begin{equation}\tag{5.4}
 I^\kappa(f,\phi)=\sum_{S\ \ellr}\frac{1}{|W(G,S)|}\int_{S(F)}|D(s)|\,\Phi^\kappa_f(s)\,O_s(\phi)\,ds.
@@ -890,18 +994,22 @@ It is unramified over $F$ and split over $E$. (The 1997 text wrote $\mathrm{Res}
 \[
 (\iota^*f)^\vee(\chi_H)=f^\vee(\iota(\chi_H)),
 \]
-where $\iota$ also denotes the induced map $\Thu_H/W_H\to\Thu/W$ on unramified unitary characters. The \emph{fundamental lemma} for the spherical Hecke algebra asserts that for $\gamma\in G_{\ellr}$ coming from a $(G,H)$-regular $\gamma_H\in H(F)$,
-\begin{equation}\tag{5.11}
-\Phi^\kappa_f(\gamma)=\Delta_{H,\kappa}(\gamma_H,\gamma)\,S\Phi^H_{\iota^*f}(\gamma_H),
+where $\iota$ also denotes the induced map $\Thu_H/W_H\to\Thu/W$ on unramified unitary characters. \paragraph{Normalizations.} Orbital integrals $O_\gamma(f)=\int_{G_\gamma(F)\backslash G(F)}f(g^{-1}\gamma g)\,d\dot g$ use $\vol(K)=1$ on $G(F)$. Stable orbital integrals on $H(F)$ use $\vol(K_H)=1$ for a hyperspecial $K_H$. The Haar measures on the centralizers $G_\gamma=S$ and $H_{\gamma_H}=S_H$ correspond under the admissible isomorphism $S_H\cong S$ attached to the matching $\gamma_H\leftrightarrow\gamma$. In the form of Langlands and Shelstad [LS87, (1.4)], the \emph{fundamental lemma} for the spherical Hecke algebra asserts that for every $(G,H)$-regular semisimple $\gamma_H\in H(F)$,
+\begin{equation}\tag{5.10}
+\sum_{\gamma'}\Delta_{H,\kappa}(\gamma_H,\gamma')\,O_{\gamma'}(f)=S\Phi^H_{\iota^*f}(\gamma_H),
 \end{equation}
-where $S\Phi^H$ is the \emph{stable} orbital integral on $H(F)$ and $\Delta_{H,\kappa}$ is the Langlands--Shelstad transfer factor [LS87]; and $\Phi^\kappa_f(\gamma)=0$ for $\gamma$ not coming from $H$. This is now a theorem. For the unit element and $SL(n)$ it is due to Kazhdan [Ka84] ($\kappa$ of order $n$) and Waldspurger [Wa91]. The extension from the unit element to the whole Hecke algebra is due to Hales [Ha95]. The general case is due to Ng\^o [Ng10], combined with Waldspurger's reduction from groups to Lie algebras. (The 1997 text said ``it has been conjectured''.)
+where $\gamma'$ runs over the $G(F)$-conjugacy classes of regular elements of $G(F)$ whose stable class corresponds to $\gamma_H$ (the sum is $0$ if there are none), $S\Phi^H$ is the stable orbital integral on $H(F)$, and $\Delta_{H,\kappa}$ is the transfer factor. For $SL(n)$ the classes $\gamma'$ in the stable class of $\gamma$ are the $x^{-1}\gamma x$, $x\in\mathfrak D(S)$, and $\Delta_{H,\kappa}(\gamma_H,x^{-1}\gamma x)=\kappa(x)\Delta_{H,\kappa}(\gamma_H,\gamma)$ (the $\kappa$-dependence of transfer factors on the invariant $\mathrm{inv}(\gamma,\gamma')$). Comparing with (5.2), (5.10) becomes
+\begin{equation}\tag{5.11}
+\Phi^\kappa_f(\gamma)=c_S\,\Delta_{H,\kappa}(\gamma_H,\gamma)^{-1}\,S\Phi^H_{\iota^*f}(\gamma_H)\qquad(\gamma\text{ corresponding to }\gamma_H),
+\end{equation}
+and $\Phi^\kappa_f(\gamma)=0$ for $\gamma$ not coming from $H$. (Transfer factors here have absolute value $1$, and with the normalizations we use in \S6.2, $\Delta=1$.) This is now a theorem. For the unit element and $SL(n)$ it is due to Kazhdan [Ka84] ($\kappa$ of order $n$) and Waldspurger [Wa91]. The extension from the unit element to the whole Hecke algebra is due to Hales [Ha95]. The general case is due to Ng\^o [Ng10], combined with Waldspurger's reduction from groups to Lie algebras. (The 1997 text said ``it has been conjectured''.)
 
 \begin{Proposition}{5.1}
 Let $\kappa$ have order $n$, so $H=\ker N_{E/F}$ is compact. Let $\chi_\kappa\in\Thu/W$ be the image under $\iota$ of the trivial character of $H(F)$; its Satake parameter is the class of $\mathrm{diag}(1,\zeta,\dots,\zeta^{n-1})$ in $PGL(n,\mathbb{C})$, $\zeta$ a primitive $n$-th root of unity. For $\gamma\in G_{\ellr}$ coming from $\gamma_H\in H(F)$,
 \[
-\Phi^\kappa_f(\gamma)=\Delta_{H,\kappa}(\gamma_H,\gamma)\,f^\vee(\chi_\kappa)\qquad(f\in\Hc(G,K)),
+\Phi^\kappa_f(\gamma)=c_S\,\Delta_{H,\kappa}(\gamma_H,\gamma)^{-1}\,f^\vee(\chi_\kappa)\qquad(f\in\Hc(G,K)),
 \]
-that is, $dI^\kappa_\gamma=\Delta_{H,\kappa}(\gamma_H,\gamma)\,\delta_{\chi_\kappa}$ is a point mass.
+that is, $dI^\kappa_\gamma=c_S\Delta_{H,\kappa}(\gamma_H,\gamma)^{-1}\,\delta_{\chi_\kappa}$ is a point mass. This is unconditional: it uses only the fundamental lemma (5.10).
 \end{Proposition}
 
 \begin{proof}
@@ -911,19 +1019,19 @@ $H(F)$ is compact, so $\Hc(H,H(F))$ consists of constants, $S\Phi^H_{\iota^*f}(\
 \begin{Proposition}{5.2}
 Let $m\mid n$ and suppose that Theorem~4.5 holds for $H=H_m$ in its stable form: for $\gamma_H\in H_{\ellr}$ there is a measure $dI^{H,st}_{\gamma_H}$ on $\Thu_H/W_H$ with $S\Phi^H_{f_H}(\gamma_H)=\int f_H^\vee\,dI^{H,st}_{\gamma_H}$ for $f_H\in\Hc(H,K_H)$. Then for $\gamma$ coming from $\gamma_H$,
 \[
-dI^\kappa_\gamma=\Delta_{H,\kappa}(\gamma_H,\gamma)\cdot\iota_*\big(dI^{H,st}_{\gamma_H}\big).
+dI^\kappa_\gamma=c_S\,\Delta_{H,\kappa}(\gamma_H,\gamma)^{-1}\cdot\iota_*\big(dI^{H,st}_{\gamma_H}\big).
 \]
 In words: the $\kappa$-spectral measure of $G$ is the transfer factor times the push-forward, along the dual embedding, of the stable spectral measure of $H$.
 \end{Proposition}
 
 \begin{proof}
-Combine (5.11) with $(\iota^*f)^\vee=f^\vee\circ\iota$: $\Phi^\kappa_f(\gamma)=\Delta\int(f^\vee\circ\iota)\,dI^{H,st}_{\gamma_H}=\Delta\int f^\vee\,d\iota_*(dI^{H,st}_{\gamma_H})$. The measure $dI^\kappa_\gamma$ is determined by its values on the dense set of Satake transforms.
+Combine (5.11) with $(\iota^*f)^\vee=f^\vee\circ\iota$: with $\Delta'=c_S\Delta_{H,\kappa}(\gamma_H,\gamma)^{-1}$, $\Phi^\kappa_f(\gamma)=\Delta'\int(f^\vee\circ\iota)\,dI^{H,st}_{\gamma_H}=\Delta'\int f^\vee\,d\iota_*(dI^{H,st}_{\gamma_H})$. The measure $dI^\kappa_\gamma$ is determined by its values on the dense set of Satake transforms.
 \end{proof}
 
-This answers the question with which the 1997 version closed: the distribution $\phi\mapsto I^\kappa(\iota(\chi_H),\phi)$ on $G$ ``transfers'' to $\phi_H\mapsto I^{H,st}(\chi_H,\phi_H)$ in the sense of Proposition~5.2. By (5.4A), the ordinary spectral measure of $SL(n)$ is $dI_\gamma=(c_S|\mathfrak D(S)|)^{-1}\sum_\kappa dI^\kappa_\gamma$. The $\kappa=1$ term is the stable part, and the $\kappa\ne1$ terms are push-forwards from endoscopic groups, supported on the proper subvarieties $\iota(\Thu_H/W_H)$ of $\Thu/W$. This is the source of the singular part in Conjecture~4.6(c). For $n=2$ it is the atom found in \S6.2.
+Conditionally on its hypothesis, Proposition~5.2 answers the question with which the 1997 version closed: the distribution $\phi\mapsto I^\kappa(\iota(\chi_H),\phi)$ on $G$ ``transfers'' to $\phi_H\mapsto I^{H,st}(\chi_H,\phi_H)$. By (5.4A) and Lemma~5.0, the ordinary spectral functional of $SL(n)$ is $(c_S|\mathfrak D(S)|)^{-1}\sum_\kappa\Lambda^\kappa_\gamma$, summed over the unramified characters $\kappa$ of $\mathfrak D(S)$. The $\kappa=1$ term is the stable part. If Proposition~5.2 applies to the $\kappa\ne1$ terms, they are push-forwards from endoscopic groups supported on the proper subvarieties $\iota(\Thu_H/W_H)$ of $\Thu/W$; this is the expected source of the singular part in Conjecture~4.6(c). For $\kappa$ of order $n$ no hypothesis is needed (Proposition~5.1), and for $n=2$ this is the atom found in \S6.2.
 
 \begin{rem26}[\S5]\label{r:S5}
-The structure of \S5 (signs of $\kappa$, $\mathfrak D(S)$, the endoscopic groups $H_m$, the fundamental lemma as a theorem) is standard. The normalizations ($c_S$, the measures on $S(F)$ and $S'(F)$, the transfer factor $\Delta_{H,\kappa}$ and the choice of $\iota$) have been checked only for $SL(2)$ and the element $\gamma=\left(\begin{smallmatrix}0&-1\\1&0\end{smallmatrix}\right)$, where $\Phi^\kappa_f(\gamma)=O_\gamma(f)-O_{\gamma'}(f)=f^\vee(\chi_0)$ (\S6.2). The description of $\chi_\kappa$ via the $n$-cycle is correct up to the choice of $L$-embedding, which may twist it by a central element. Proposition~5.2 assumes a stable version of Theorem~4.5 for $H$, which is not proved here (for $m<n$, $H$ is not a torus).
+The structure of \S5 (signs of $\kappa$, $\mathfrak D(S)$, the endoscopic groups $H_m$, the fundamental lemma as a theorem) is standard. The normalizations ($c_S$, the measures on $S(F)$, $S'(F)$ and $\bar G(F)$, the transfer factor $\Delta_{H,\kappa}$ and the choice of $\iota$) have been checked only for $SL(2)$ and a depth-zero unramified elliptic $\gamma$, where $c_S=1$, $\Delta=1$ and $\Phi^\kappa_f(\gamma)=O_\gamma(f)-O_{\gamma'}(f)=f^\vee(\chi_0)$ (\S6.2). The relation $\Delta(\gamma_H,x^{-1}\gamma x)=\kappa(x)\Delta(\gamma_H,\gamma)$ is quoted (sign conventions vary between $\kappa$ and $\kappa^{-1}$). The description of $\chi_\kappa$ via the $n$-cycle is correct up to the choice of $L$-embedding, which may twist it by a central element. Proposition~5.2 assumes a stable version of Theorem~4.5 for $H$, which is not proved here (for $m<n$, $H$ is not a torus).
 \end{rem26}
 
 % =====================================================================
@@ -967,7 +1075,7 @@ type & $O_\gamma(f_0)$ & $O_\gamma(f_{2m})$ & $O_\gamma(f_{2m+1})$\\
 \bottomrule
 \end{tabular}
 \end{center}
-These counts were verified for $q=3$ by enumerating the $4373$ vertices of the ball of radius $7$, for $\gamma=\left(\begin{smallmatrix}0&-1\\1&0\end{smallmatrix}\right)$ (U$_0$), $\left(\begin{smallmatrix}1&-3\\3&1\end{smallmatrix}\right)$ (U$_1$), $\left(\begin{smallmatrix}1&3\\1&1\end{smallmatrix}\right)$ (R$_0$) and $\left(\begin{smallmatrix}0&3\\1&0\end{smallmatrix}\right)$ (R$'$).
+These counts were verified for $q=3$ by enumerating the $4373$ vertices of the ball of radius $7$, for $\gamma=\left(\begin{smallmatrix}0&-1\\1&0\end{smallmatrix}\right)$ (U$_0$; this element is elliptic of type U$_0$ exactly when $-1$ is a non-square in the residue field, e.g.\ $q\equiv3\bmod4$, as for $q=3$), $\left(\begin{smallmatrix}1&-3\\3&1\end{smallmatrix}\right)$ (U$_1$), $\left(\begin{smallmatrix}1&3\\1&1\end{smallmatrix}\right)$ (R$_0$) and $\left(\begin{smallmatrix}0&3\\1&0\end{smallmatrix}\right)$ (R$'$).
 
 \paragraph{The truncated kernel.} If the fixed ball of $\gamma$ of type (U$_r$) is centred at the base vertex, then $G(T)$ consists of the vertices at distance $<T$ from it, and (4.4) becomes
 \begin{equation}\tag{6.4}
@@ -986,7 +1094,7 @@ For $G=PGL(2)$ and regular unitary $\chi$ ($z\ne\pm1$), $I(\chi,\gamma)$ is the 
 \text{(R}_r\text{):}&\quad I(\chi,\gamma)=\frac{2(q^{r+1}-1)}{q-1}+\frac{2q^{r+1}}{q+1}\cdot\frac{\cos\theta-q^{-1}}{1-\cos\theta},\\
 \text{(R}'\text{):}&\quad I(\chi,\gamma)=\frac{q^{1/2}(1-q^{-1})}{q+1}\cdot\frac{\cos\psi}{\sin^2\psi}\qquad(z=e^{i\psi}).
 \end{align*}
-Hypothesis (R) holds, and $O_\gamma(f)=\int f^\vee(\chi)I(\chi,\gamma)\,d\mu(\chi)$ for all $f\in\Hc(G,K)$, the integral converging absolutely.
+Hypothesis (R) holds (Lemma~6.1A), and $O_\gamma(f)=\int f^\vee(\chi)I(\chi,\gamma)\,d\mu(\chi)$ for all $f\in\Hc(G,K)$, the integral converging absolutely.
 \end{Theorem}
 
 \begin{proof}
@@ -995,6 +1103,22 @@ Type (U$_r$); the others are identical. Multiply (6.5) by $\rho=\frac Q2(c_\alph
 (I^T-I)\rho=-\frac Q2\,q^r\Big(\frac{y^{M+1}}{1-q^{-1}y}+\frac{y^{-M-1}}{1-q^{-1}y^{-1}}\Big).
 \]
 The coefficient of each oscillatory term, times $\rho$, is smooth on $|z|=1$, which is (R). Better, the first term has Fourier modes $y^k$ only for $k\ge M+1$ and the second only for $k\le-M-1$. Since $f^\vee$ is a Laurent polynomial in $z$ of degree $\le\deg f$ (the largest $n$ with $f(a_n)\ne0$), $\int f^\vee(I^T-I)\,d\mu=0$ \emph{exactly} once $2(M+1)>\deg f$. Combine with Theorem~4.5(a). The closed forms follow by summing the geometric series. $I\rho$ is smooth: see the next remark.
+\end{proof}
+
+\begin{Lemma}{6.1A}[(R) for $PGL(2)$]
+Hypothesis (R) holds for $G=PGL(2)$ and every level $n$.
+\end{Lemma}
+
+\begin{proof}
+For $\phi\in C_c^\infty(G_{\ellr})$, (4.4) gives $I^T(\chi,\phi)=\int\phi(h)\,I^T(\chi,h)\,dh$ with $I^T(\chi,h)=\int_{G(T)}\Gamma_\chi(g^{-1}hg)\,dg=\sum_v\Gamma_\chi(a_{d(v,hv)})$, the sum over the vertices $v$ with $d(v_0,v)<T$. For elliptic $h$, let $F_h$ be its fixed-point set (a ball or the neighborhood of an edge), or the reversed edge in type (R$'$). For $v\notin F_h$ we have $d(v,hv)=2d(v,F_h)$, or $2d(v,F_h)+1$ in type (R$'$). Sort the vertices at distance $m\ge1$ from $F_h$ by the branch of the tree through which they leave $F_h$, and, on the branch towards $v_0$ (if $v_0\notin F_h$), by the point where the geodesic to $v$ leaves the geodesic to $v_0$. There are finitely many classes $j$, depending only on $h$. In each class the number of vertices at distance $m$ is $A_jq^m$ for $m\ge m_j$, and $d(v_0,v)=m+k_j$ with $k_j\in\mathbb{Z}$ fixed. Hence, for $T$ large,
+\[
+I^T(\chi,h)=C(h,\chi)+\sum_j A_j\sum_{m=m_j}^{T-1-k_j}q^m\,\Gamma_\chi(a_{2m+\epsilon})\qquad(\epsilon\in\{0,1\}),
+\]
+where $C(h,\chi)$ collects finitely many terms independent of $T$. By (6.1), $q^m\Gamma_\chi(a_{2m+\epsilon})$ is a combination of $c_\alpha(\chi^{-1})z^\epsilon y^m$ and $c_\alpha(\chi)z^{-\epsilon}y^{-m}$, with constant coefficients. Summing the geometric series, the oscillatory terms are fixed multiples of
+\[
+c_\alpha(\chi^{-1})\frac{y^{T-k_j}}{1-y},\qquad c_\alpha(\chi)\frac{y^{-(T-k_j)}}{1-y^{-1}}
+\]
+(times $z^{\pm\epsilon}$), and the $T$-independent part is $C(h,\chi)$ plus terms of the same shape with $T$ removed. Multiplying by $\rho=\frac Q2(c_\alpha(\chi)c_\alpha(\chi^{-1}))^{-1}$ gives $\frac Q2(1-q^{-1}y)^{-1}$ and $\frac Q2(1-q^{-1}y^{-1})^{-1}$ up to monomials, which are smooth on $|y|=1$. The terms in $C(h,\chi)$ are finite combinations of $\Gamma_\chi(a_k)$, and $\Gamma_\chi\rho$ is smooth. All the data ($F_h$, the classes $j$, $A_j$, $k_j$, $m_j$) are locally constant in $h$, so on $\mathrm{supp}\,\phi$ they take finitely many values. Integrating against $\phi$ therefore gives coefficients of the required form.
 \end{proof}
 
 \begin{Remark}{6.2}[poles and the Plancherel density]
@@ -1038,7 +1162,7 @@ O_\gamma(f_n)=\#\{v:\ d(v_0,v)\ \text{even},\ d(v,\gamma v)=2n\}.
 
 The non-regular unitary characters are $z=1$ and $z=-1$. At $z=1$, $\rho$ has a double zero, as for $PGL(2)$. At $z=-1$ (the unramified quadratic character $\chi_0$), $s\chi_0=\chi_0$ but $\chi_0(a_\alpha)=-1\ne1$, so $\rho(\chi_0)=\frac Q2\cdot\frac{4}{(1+q^{-1})^2}\ne0$. Here $i_{G,A}(\chi_0)=\pi^+\oplus\pi^-$ is reducible, with $R$-group of order~$2$.
 
-\paragraph{An unramified elliptic element.} Let $\gamma=\left(\begin{smallmatrix}0&-1\\1&0\end{smallmatrix}\right)$ (type U$_0$; it fixes $v_0$ only), and let $\gamma'$ be its conjugate by $\mathrm{diag}(\pi,1)\in GL(2,F)$. Then $\gamma'$ is stably conjugate but not $SL(2,F)$-conjugate to $\gamma$; it fixes only the neighbor $\mathrm{diag}(\pi,1)v_0$, which has odd type. Counting gives
+\paragraph{An unramified elliptic element.} Let $\gamma\in SL(2,\OO)$ have characteristic polynomial $x^2-tx+1$ irreducible modulo $\pi$. Then $E=F[\gamma]$ is the unramified quadratic extension, $\gamma\in\OO_E^\times$ has depth $0$ (type U$_0$), and $\gamma$ fixes exactly the base vertex $v_0$. For example, $\gamma=\left(\begin{smallmatrix}0&-1\\1&t\end{smallmatrix}\right)$ for any such $t$; when $q\equiv3\bmod 4$ one may take $\gamma=\left(\begin{smallmatrix}0&-1\\1&0\end{smallmatrix}\right)$, as in the numerical checks ($q=3$). (For $q\equiv1\bmod4$ that element is split, since $-1$ is a square; a referee pointed out that the first 2026 draft overlooked this.) Let $\gamma'$ be its conjugate by $\mathrm{diag}(\pi,1)\in GL(2,F)$. Then $\gamma'$ is stably conjugate but not $SL(2,F)$-conjugate to $\gamma$; it fixes only the neighbor $\mathrm{diag}(\pi,1)v_0$, which has odd type. Counting gives
 \[
 O_\gamma(f_n)=(q+1)q^{n-1}\cdot\tfrac{1+(-1)^n}{2},\qquad O_{\gamma'}(f_n)=(q+1)q^{n-1}\cdot\tfrac{1-(-1)^n}{2}\qquad(n\ge1),
 \]
@@ -1107,7 +1231,7 @@ This section explains how (1.2) follows from Arthur's local trace formula [Ar91]
 Nothing in this section has been checked against [Ar91, Ar93] at the level of normalizations: the constants $|W_0^M||W_0^G|^{-1}$, the signs $(-1)^{\dim(A_M/A_G)}$, the measures on the spectral sets, and the identification of $I(\chi,\phi)$ with a weighted character (Conjecture~7.3). The structural statements (which terms survive) use only the definitions and the splitting formulas.
 \end{rem26}
 
-\paragraph{7.1 Arthur's formula.} Let $f=f_1\otimes f_2\in C_c^\infty(G(F)\times G(F))$ act on $L^2(G(F))$ by $R$ as in \S1, with kernel (1.4). Arthur truncates the diagonal integral with a function $u(x,T)$, the characteristic function of a large compact set modulo $A_G$ built from the building, and shows that $J^T(f)=\int_{G(F)/A_G(F)}K_f(x,x)u(x,T)\,dx$ is asymptotic to a polynomial in $T$, whose constant term $J(f)$ has two expansions [Ar91]:
+\subsection{Arthur's formula} Let $f=f_1\otimes f_2\in C_c^\infty(G(F)\times G(F))$ act on $L^2(G(F))$ by $R$ as in \S1, with kernel (1.4). Arthur truncates the diagonal integral with a function $u(x,T)$, the characteristic function of a large compact set modulo $A_G$ built from the building, and shows that $J^T(f)=\int_{G(F)/A_G(F)}K_f(x,x)u(x,T)\,dx$ is asymptotic to a polynomial in $T$, whose constant term $J(f)$ has two expansions [Ar91]:
 \[
 \begin{aligned}J(f)&=\sum_{M}\frac{|W_0^M|}{|W_0^G|}(-1)^{\dim(A_M/A_G)}\int_{\Gamma_{\ellr}(M)}J_M(\gamma,f)\,d\gamma\\
 &=\sum_{M}\frac{|W_0^M|}{|W_0^G|}(-1)^{\dim(A_M/A_G)}\int_{\Pi(M)}J_M(\pi,f)\,d\pi.
@@ -1115,9 +1239,9 @@ Nothing in this section has been checked against [Ar91, Ar93] at the level of no
 \]
 Both sums run over Levi subgroups $M\supseteq M_0$. In the first (geometric) expansion, $\Gamma_{\ellr}(M)$ is the set of elliptic conjugacy classes of $M$, and $J_M(\gamma,f)$ is the weighted orbital integral of $f_1\otimes f_2$ over $\gamma$, with weight $v_M(x_1,x_2)$ given by the $(G,M)$-family $e^{-\lambda(H_P(x_1)-H_{\bar P}(x_2))}$. In the second (spectral) expansion, $\Pi(M)$ is a space of tempered representations of $M$; in [Ar93] it is reorganized in terms of the virtual elliptic tempered characters $T_{\ellr}(M)$. $J_M(\pi,f)$ is the weighted character, built from the $(G,M)$-family of normalized intertwining operators $\lambda\mapsto R_{P'|P}(\pi)^{-1}R_{P'|P}(\pi_\lambda)$. For $M=G$ the weights are $1$ and $J_G(\gamma,f)=|D(\gamma)|O_\gamma(f_1)O_\gamma(f_2)$, $J_G(\pi,f)=\tr\pi(f_1)\,\tr\pi^\vee(f_2)$.
 
-\paragraph{7.2 Specialization: geometric side.} Take $f_1=f\in\Hc(G,K)$ and $f_2=\phi$ supported on $G_{\ellr}$. By Lemma~4.4, $x\mapsto K_f(x,x)$ has compact support modulo $A_G$, so $J^T(f)=I(f,\phi)$ for all large $T$ and $J(f)=I(f,\phi)$. For $M\ne G$ and $\gamma\in\Gamma_{\ellr}(M)$ regular in $G$, $\gamma$ is not elliptic in $G$, so $\phi$ vanishes on its $G$-orbit and $J_M(\gamma,f)=0$. (Singular $\gamma$ contribute a set of measure zero.) The geometric side therefore reduces to the $M=G$ term, which is (4.11).
+\subsection{Specialization: the geometric side} Take $f_1=f\in\Hc(G,K)$ and $f_2=\phi$ supported on $G_{\ellr}$. By Lemma~4.4, $x\mapsto K_f(x,x)$ has compact support modulo $A_G$, so $J^T(f)=I(f,\phi)$ for all large $T$ and $J(f)=I(f,\phi)$. For $M\ne G$ and $\gamma\in\Gamma_{\ellr}(M)$ regular in $G$, $\gamma$ is not elliptic in $G$, so $\phi$ vanishes on its $G$-orbit and $J_M(\gamma,f)=0$. (Singular $\gamma$ contribute a set of measure zero.) The geometric side therefore reduces to the $M=G$ term, which is (4.11).
 
-\paragraph{7.3 Specialization: spectral side.} The weighted characters satisfy a splitting formula [Ar88]: $J_M(\pi,f_1\otimes f_2)$ is a sum over pairs $(L_1,L_2)$ of Levi subgroups containing $M$, with coefficients $d_M^G(L_1,L_2)$, of products of weighted characters of $L_1$ applied to (a constant term of) $f_1$ and of $L_2$ applied to $f_2$. Two facts simplify it here.
+\subsection{Specialization: the spectral side} The weighted characters satisfy a splitting formula [Ar88]: $J_M(\pi,f_1\otimes f_2)$ is a sum over pairs $(L_1,L_2)$ of Levi subgroups containing $M$, with coefficients $d_M^G(L_1,L_2)$, of products of weighted characters of $L_1$ applied to (a constant term of) $f_1$ and of $L_2$ applied to $f_2$. Two facts simplify it here.
 \begin{itemize}
 \item \emph{$f_1$ spherical.} Normalized intertwining operators fix the spherical vector of an unramified principal series. So the weighted characters of $f_1$ for $L_1\supsetneq M$ vanish, forcing $L_1=M$ and $L_2=G$ ($d^G_M(M,G)=1$). Moreover $\tr\pi(f_1)$ is non-zero only if $\pi$ has a $K\cap M$-fixed vector, i.e.\ $\pi$ is a constituent of an unramified principal series of $M$.
 \item \emph{$\phi$ elliptic.} $\phi$ is cuspidal: $\tr\sigma(\phi)=0$ for every properly induced $\sigma$. So only the elliptic part of the spectrum survives in the $L_2=G$ factor, and the factor is the weighted character $J_M(\pi^\vee,\phi)$.
@@ -1135,7 +1259,10 @@ I(\chi,\phi)\rho(\chi)=(-1)^{\dim(A_0/A_G)}|W|^{-1}J_{M_0}(\chi^{-1},\phi).
 \] The singular part $dI_\phi^{\,sing}$ of Conjecture~4.6 is the sum of the contributions of the elliptic tempered virtual characters with $K$-fixed vectors of the Levi subgroups $M\supsetneq M_0$.
 \end{Conjecture}
 
-\paragraph{7.4 Comparison with Route A.} If Arthur's formula is taken as known, \S\S7.2--7.3 give an unconditional proof of (1.2) in the form of Conjecture~4.6(a): a measure with an absolutely continuous part given by a weighted character and a singular part supported where $R$-groups are non-trivial. What Route A adds is an explicit and elementary description of the absolutely continuous part, as the $T$-independent part of the truncated kernel (Proposition~4.2), together with closed forms in rank one (\S6). The two truncations are related. Arthur's $u(x,T)$ and our $G(T)$ are both defined by the convex hull of $W\cdot T$ in $\fa_0$. Our vertex terms $\psi(T_Q)R_Q$ (Lemma~3.5A) are the periodic counterparts of Arthur's $e^{\lambda(T_Q)}c_Q(\lambda)/\theta_Q(\lambda)$, and Lemma~2.8 converts one into the other. In rank one, the constant term of $\sum_Q e^{\lambda(T_Q)}c_Q(\lambda)/\theta_Q(\lambda)$ at $\lambda=0$ is a logarithmic derivative of an intertwining operator, which is how weighted characters arise. That is the structure visible in (6.5).
+\subsection{A proposed route to Conjecture 4.6, and comparison with Route A}
+The argument of \S\S7.2--7.3 is a proposed route to Conjecture~4.6(a), not a proof. To complete it one would have to (i)~justify the splitting and vanishing statements of \S7.3 with Arthur's actual normalizations; (ii)~show that the spectral side, for $f_1$ spherical and $f_2$ elliptic, is given by a finite complex measure in the unramified variable (Arthur's spectral side is a priori an expansion of a linear form, and its convergence in this form is part of what must be checked); and (iii)~identify the singular part with the elliptic tempered characters having $K$-fixed vectors. If this is carried out, the result would be an existence statement for $dI_\phi$ as in Conjecture~4.6(a), with absolutely continuous part a weighted character and singular part supported where $R$-groups are non-trivial.
+
+What Route A adds is an explicit and elementary description of the absolutely continuous part, as the $T$-independent part of the truncated kernel (Proposition~4.2), together with closed forms in rank one (\S6). The two truncations are related: Arthur's $u(x,T)$ and our $G(T)$ are both defined by the convex hull of $W\cdot T$ in $\fa_0$, and our vertex terms $\psi(T_Q)R_Q$ (Lemma~3.5A) are periodic counterparts of Arthur's $e^{\lambda(T_Q)}c_Q(\lambda)/\theta_Q(\lambda)$. (We do not claim a general dictionary between the two: Lemma~2.8, which would provide one, holds only when the coroot lattice is saturated; Remark~\ref{r:L28}.) In rank one, the constant term of $\sum_Qe^{\lambda(T_Q)}c_Q(\lambda)/\theta_Q(\lambda)$ at $\lambda=0$ is a logarithmic derivative of an intertwining operator, which is how weighted characters arise; that is the structure visible in (6.5).
 
 % =====================================================================
 \section{Literature review (new)}
@@ -1169,7 +1296,7 @@ The paper was published in 1992, so we divide the literature at that date: \S8.1
 \paragraph{Lattice points.} Barvinok's book [Ba08] is a modern account of Brion's theorem and its algorithmic uses.
 
 \begin{rem26}[literature]
-The bibliographic data below were checked against publisher, Numdam/EuDML or library records in November 2026, except where marked ``(not verified)''. The review is not exhaustive. In particular, we have not searched systematically for later explicit computations of spherical orbital integrals of $GL(n)$ or $SL(n)$ in terms of the building, which would be the natural comparison for \S6.
+All bibliographic entries below were checked against publisher, Numdam/EuDML or library records in November 2026. The review is not exhaustive. In particular, we have not surveyed systematically the later explicit computations of spherical orbital integrals of $GL(n)$ or $SL(n)$ in terms of the building, which would be the natural comparison for \S6.
 \end{rem26}
 
 % =====================================================================
@@ -1242,10 +1369,16 @@ Theorem 4.5 & (a) unconditional, (b) under (R); new Conjecture~4.6\\
 \end{center}
 
 % =====================================================================
+\section*{Acknowledgements}
+\addcontentsline{toc}{section}{Acknowledgements}
+\emph{From the 1997 version:} I'd like to thank J.-L.~Waldspurger for pointing out an error in a previous version and M.~Assem for helpful discussions. Partially supported by a Naval Academy Research Council (NARC) grant.
+
+\emph{2026:} The 2026 revision benefited from two referee reports on drafts of it, prepared with the help of AI models (Claude and ChatGPT); the counterexamples in Remarks~\ref{r:scope} and~\ref{r:L28} come from the second.
+
 \begin{thebibliography}{LMW18}
 \bibitem[Ar78]{Ar78} J.~Arthur, \emph{A trace formula for reductive groups I: terms associated to classes in $G(\mathbb{Q})$}, Duke Math.\ J.\ \textbf{45} (1978), 911--952.
 \bibitem[Ar81]{Ar81} J.~Arthur, \emph{The trace formula in invariant form}, Ann.\ of Math.\ \textbf{114} (1981), 1--74.
-\bibitem[Ar87]{Ar87} J.~Arthur, \emph{The characters of supercuspidal representations as weighted orbital integrals}, Proc.\ Indian Acad.\ Sci.\ Math.\ Sci.\ \textbf{97} (1987), 3--19. (not verified)
+\bibitem[Ar87]{Ar87} J.~Arthur, \emph{The characters of supercuspidal representations as weighted orbital integrals}, Proc.\ Indian Acad.\ Sci.\ Math.\ Sci.\ \textbf{97} (1987), 3--19.
 \bibitem[Ar88]{Ar88} J.~Arthur, \emph{The invariant trace formula I. Local theory}, J.\ Amer.\ Math.\ Soc.\ \textbf{1} (1988), 323--383.
 \bibitem[Ar89]{Ar89} J.~Arthur, \emph{Towards a local trace formula}, in: Algebraic Analysis, Geometry, and Number Theory, Johns Hopkins Univ.\ Press, Baltimore, 1989, 1--24.
 \bibitem[Ar91]{Ar91} J.~Arthur, \emph{A local trace formula}, Publ.\ Math.\ IH\'ES \textbf{73} (1991), 5--96.
@@ -1259,7 +1392,7 @@ Theorem 4.5 & (a) unconditional, (b) under (R); new Conjecture~4.6\\
 \bibitem[Ca79]{Ca79} P.~Cartier, \emph{Representations of $p$-adic groups: a survey}, in: Automorphic Forms, Representations and $L$-functions (Corvallis), Proc.\ Sympos.\ Pure Math.\ \textbf{33}, Part~1, Amer.\ Math.\ Soc., 1979, 111--155.
 \bibitem[Cas80]{Cas80} W.~Casselman, \emph{The unramified principal series of $p$-adic groups I.\ The spherical function}, Compositio Math.\ \textbf{40} (1980), 387--406.
 \bibitem[Cas95]{Cas95} W.~Casselman, \emph{Introduction to the theory of admissible representations of $p$-adic reductive groups}, unpublished notes, 1974; revised draft 1995.
-\bibitem[Cl90]{Cl90} L.~Clozel, \emph{The fundamental lemma for stable base change}, Duke Math.\ J.\ \textbf{61} (1990), 255--302. (not verified)
+\bibitem[Cl90]{Cl90} L.~Clozel, \emph{The fundamental lemma for stable base change}, Duke Math.\ J.\ \textbf{61} (1990), 255--302.
 \bibitem[CLL84]{CLL84} L.~Clozel, J.-P.~Labesse, R.~P.~Langlands, \emph{Morning Seminar on the Trace Formula}, IAS, 1983--84; published as J.-P.~Labesse, J.-L.~Waldspurger, \emph{La formule des traces tordue d'apr\`es le Friday Morning Seminar}, CRM Monograph Ser.\ \textbf{31}, Amer.\ Math.\ Soc., 2013.
 \bibitem[Co97]{Co97} F.~Court\`es, \emph{Sur le transfert des int\'egrales orbitales pour les groupes lin\'eaires (cas $p$-adique)}, M\'em.\ Soc.\ Math.\ France (N.S.) \textbf{69} (1997).
 \bibitem[DH17]{DH17} P.~Delorme, P.~Harinck, \emph{A local relative trace formula for $PGL(2)$}, Pacific J.\ Math.\ \textbf{291} (2017), no.~1.
@@ -1272,23 +1405,23 @@ Theorem 4.5 & (a) unconditional, (b) under (R); new Conjecture~4.6\\
 \bibitem[Ka84]{Ka84} D.~Kazhdan, \emph{On lifting}, in: Lie Group Representations II, Lecture Notes in Math.\ \textbf{1041}, Springer, 1984, 209--249.
 \bibitem[Ka86]{Ka86} D.~Kazhdan, \emph{Cuspidal geometry of $p$-adic groups}, J.\ Analyse Math.\ \textbf{47} (1986), 1--36.
 \bibitem[Ke82]{Ke82} C.~D.~Keys, \emph{On the decomposition of reducible principal series representations of $p$-adic Chevalley groups}, Pacific J.\ Math.\ \textbf{101} (1982), 351--388.
-\bibitem[Ko80]{Ko80} R.~E.~Kottwitz, \emph{Orbital integrals on $GL_3$}, Amer.\ J.\ Math.\ \textbf{102} (1980), 327--384. (not verified)
-\bibitem[Ko82]{Ko82} R.~E.~Kottwitz, \emph{Rational conjugacy classes in reductive groups}, Duke Math.\ J.\ \textbf{49} (1982), 785--806. (not verified)
-\bibitem[Ko86]{Ko86} R.~E.~Kottwitz, \emph{Stable trace formula: elliptic singular terms}, Math.\ Ann.\ \textbf{275} (1986), 365--399. (not verified)
+\bibitem[Ko80]{Ko80} R.~E.~Kottwitz, \emph{Orbital integrals on $GL_3$}, Amer.\ J.\ Math.\ \textbf{102} (1980), 327--384.
+\bibitem[Ko82]{Ko82} R.~E.~Kottwitz, \emph{Rational conjugacy classes in reductive groups}, Duke Math.\ J.\ \textbf{49} (1982), 785--806.
+\bibitem[Ko86]{Ko86} R.~E.~Kottwitz, \emph{Stable trace formula: elliptic singular terms}, Math.\ Ann.\ \textbf{275} (1986), 365--399.
 \bibitem[Ko05]{Ko05} R.~E.~Kottwitz, \emph{Harmonic analysis on reductive $p$-adic groups and Lie algebras}, in: Harmonic Analysis, the Trace Formula, and Shimura Varieties, Clay Math.\ Proc.\ \textbf{4}, Amer.\ Math.\ Soc., 2005, 393--522.
 \bibitem[La80]{La80} R.~P.~Langlands, \emph{Base Change for $GL(2)$}, Ann.\ of Math.\ Stud.\ \textbf{96}, Princeton Univ.\ Press, 1980.
 \bibitem[La90]{La90} J.-P.~Labesse, \emph{Fonctions \'el\'ementaires et lemme fondamental pour le changement de base stable}, Duke Math.\ J.\ \textbf{61} (1990), 519--530.
 \bibitem[LL79]{LL79} J.-P.~Labesse, R.~P.~Langlands, \emph{$L$-indistinguishability for $SL(2)$}, Canad.\ J.\ Math.\ \textbf{31} (1979), 726--785.
 \bibitem[LMW18]{LMW18} B.~Lemaire, C.~M\oe glin, J.-L.~Waldspurger, \emph{Le lemme fondamental pour l'endoscopie tordue: r\'eduction aux \'el\'ements unit\'es}, Ann.\ Sci.\ \'Ec.\ Norm.\ Sup\'er.\ (4) \textbf{51} (2018), 281--369.
 \bibitem[LN08]{LN08} G.~Laumon, B.~C.~Ng\^o, \emph{Le lemme fondamental pour les groupes unitaires}, Ann.\ of Math.\ \textbf{168} (2008), 477--573.
-\bibitem[LS87]{LS87} R.~P.~Langlands, D.~Shelstad, \emph{On the definition of transfer factors}, Math.\ Ann.\ \textbf{278} (1987), 219--271. (not verified)
+\bibitem[LS87]{LS87} R.~P.~Langlands, D.~Shelstad, \emph{On the definition of transfer factors}, Math.\ Ann.\ \textbf{278} (1987), 219--271.
 \bibitem[Ma71]{Ma71} I.~G.~Macdonald, \emph{Spherical Functions on a Group of $p$-adic Type}, Publ.\ Ramanujan Inst.\ \textbf{2}, Univ.\ of Madras, 1971.
 \bibitem[MA26]{MA26} I.~G.~Macdonald, A.-M.~Aubert, \emph{Spherical Functions on a Group of $p$-adic Type}, new edition, Lecture Notes in Math.\ \textbf{2392}, Springer, 2026.
 \bibitem[MW18]{MW18} C.~M\oe glin, J.-L.~Waldspurger, \emph{La formule des traces locale tordue}, Mem.\ Amer.\ Math.\ Soc.\ \textbf{251}, no.~1198 (2018).
 \bibitem[Ng10]{Ng10} B.~C.~Ng\^o, \emph{Le lemme fondamental pour les alg\`ebres de Lie}, Publ.\ Math.\ IH\'ES \textbf{111} (2010), 1--169.
-\bibitem[OS13]{OS13} E.~Opdam, M.~Solleveld, \emph{Extensions of tempered representations}, Geom.\ Funct.\ Anal.\ \textbf{23} (2013). (not verified)
+\bibitem[OS13]{OS13} E.~Opdam, M.~Solleveld, \emph{Extensions of tempered representations}, Geom.\ Funct.\ Anal.\ \textbf{23} (2013), 664--714.
 \bibitem[Re01]{Re01} M.~Reeder, \emph{Euler--Poincar\'e pairings and elliptic representations of Weyl groups and $p$-adic groups}, Compositio Math.\ \textbf{129} (2001), 149--182.
-\bibitem[Sa63]{Sa63} I.~Satake, \emph{Theory of spherical functions on reductive algebraic groups over $\mathfrak p$-adic fields}, Publ.\ Math.\ IH\'ES \textbf{18} (1963), 5--69. (not verified)
+\bibitem[Sa63]{Sa63} I.~Satake, \emph{Theory of spherical functions on reductive algebraic groups over $\mathfrak p$-adic fields}, Publ.\ Math.\ IH\'ES \textbf{18} (1963), 5--69.
 \bibitem[SS97]{SS97} P.~Schneider, U.~Stuhler, \emph{Representation theory and sheaves on the Bruhat--Tits building}, Publ.\ Math.\ IH\'ES \textbf{85} (1997), 97--191.
 \bibitem[Wa89a]{Wa89a} J.-L.~Waldspurger, \emph{Int\'egrales orbitales sph\'eriques pour $GL(N)$ sur un corps $p$-adique}, Ast\'erisque \textbf{171--172} (1989), 279--337.
 \bibitem[Wa89b]{Wa89b} J.-L.~Waldspurger, \emph{Sur les germes de Shalika pour les groupes lin\'eaires}, Math.\ Ann.\ \textbf{284} (1989), 199--221.

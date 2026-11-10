@@ -1,6 +1,7 @@
 % SPDX-License-Identifier: CC-BY-4.0
-% Stand-alone build of the revised Section 2 (stage 1 of ../revision_log.md).
-% The stage-0 master will \input sec2-foundations.tex with the same macros.
+% Stand-alone build of the revised sections done so far (stages 1-2 of
+% ../revision_log.md). The stage-0 master will \input the same section files
+% with the same macros.
 \documentclass[11pt]{article}
 \usepackage[margin=1.1in]{geometry}
 \usepackage{amsmath,amssymb,amsthm}
@@ -34,17 +35,21 @@
 
 \begin{document}
 \title{A hitch-hiker's guide to the metaplectic trace formula for $SL(2)$\\[2pt]
-\large Section 2, revised for the double cover (stage 1 draft)}
+\large Sections 2--3, revised for the double cover (draft)}
 \author{David Joyner and Claude}
 \date{November 2026}
 \maketitle
 
-\noindent This is the revised Section~2 of the 1995 notes, restricted to
-$n=2$, compiled on its own. Lemmas~2.1--2.9 keep the numbers of the 1995
-notes; Lemma~2.10 is new. The changes are listed in \texttt{revision\_log.md}.
+\noindent These are the revised Sections~2 and~3 of the 1995 notes,
+restricted to $n=2$, compiled on their own. In Section~2, Lemmas~2.1--2.9
+keep the numbers of the 1995 notes and Lemma~2.10 is new. Section~3 is
+shorter than in 1995, because for $n=2$ the cover of a torus is abelian;
+the old and new numbers are matched in \texttt{revision\_log.md}, which
+also lists the changes.
 
 \setcounter{section}{1}
 \input{sec2-foundations}
+\input{sec3-rank0}
 
 \begin{thebibliography}{99}
 \bibitem[A2]{A2} J. Arthur, ``A trace formula for reductive groups, I: terms
@@ -67,11 +72,18 @@ de groupes r\'eductifs connexes. IV. Distributions invariantes'', Ann. Inst.
 Fourier \textbf{64} (2014), 2379--2448.
 \bibitem[M]{M} C. C. Moore, ``Group extensions of $p$-adic and adelic linear
 groups'', Publ. Math. IHES \textbf{35} (1968), 157--222.
+\bibitem[PR]{PR} V. Platonov and A. Rapinchuk, \emph{Algebraic groups and
+number theory}, Academic Press, 1994.
 \bibitem[R]{R} J. Rogawski, \emph{Automorphic representations of unitary groups
 in three variables}, Ann. of Math. Studies \textbf{123}, Princeton, 1990.
+\bibitem[Ro]{Ro} A. Robert, \emph{Introduction to the representation theory of
+compact and locally compact groups}, London Math. Soc. Lecture Note Ser.
+\textbf{80}, Cambridge, 1983.
 \bibitem[Se]{Se} J.-P. Serre, \emph{A course in arithmetic}, Graduate Texts in
 Math. \textbf{7}, Springer, 1973.
 \bibitem[W1]{W1} A. Weil, \emph{Basic number theory}, Springer, 1974.
 \bibitem[W2]{W2} A. Weil, \emph{Adeles and algebraic groups}, Birkh\"auser, 1982.
+\bibitem[We64]{We64} A. Weil, ``Sur certains groupes d'op\'erateurs
+unitaires'', Acta Math. \textbf{111} (1964), 143--211.
 \end{thebibliography}
 \end{document}

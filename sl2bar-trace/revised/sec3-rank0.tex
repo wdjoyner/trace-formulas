@@ -1,0 +1,389 @@
+% SPDX-License-Identifier: CC-BY-4.0
+% =====================================================================
+% Section 3 of D. Joyner, "A hitch-hiker's guide to the metaplectic trace
+% formula for SL(2)", revised for the 2-fold cover (n = 2), November 2026.
+%
+% Stage 2 of ../revision_log.md. Source: ../original-1995/cctrace2.tex
+% (= ../book-1997/book7b.tex). For n = 2 the cover of a torus is abelian, so
+% the Clifford-Mackey part of the 1995 section (Lemmas 3.3, 3.5, Remarks
+% 3.4, 3.6, 3.7, 3.10) is not needed; the general-n situation is summarized
+% in Remark 2026.7. The map from 1995 numbers to the numbers here is in the
+% "Stage 2 notes" of ../revision_log.md. Explicit formulas are checked by
+% checks/sec3_n2_check.py.
+% Comments beginning "% [Claude]" are editorial notes by Claude.
+% =====================================================================
+
+\section{The rank 0 case}\label{sec:rank0}
+
+Before the trace formula for $\overline{G(\A)}$ we treat the covers of
+the tori of $G$, where it is elementary. For $n=2$ these covers are
+abelian (Lemma~\ref{lem:global}(e)), but in general not split, so a
+genuine automorphic character cannot be written as an ordinary one
+times a sign (Example~\ref{ex:order4}). The trace formula is then
+Poisson summation twisted by one fixed genuine automorphic character
+(Theorem~\ref{thm:tf-rank0}, Lemma~\ref{lem:transfer}), and it gives a
+bijection between genuine automorphic characters and Hecke characters
+(Theorem~\ref{thm:corr}). For the split torus, Weil's character
+$\chi_\psi$ (Lemma~\ref{lem:weil}) makes the bijection canonical once
+$\psi$ is fixed. We also define the distributions $I^A_{\mathcal O}$ and
+$I^A_{\bar\chi}$ used in Section~6. We work with an arbitrary maximal
+torus because Section~7 applies the same formula to anisotropic tori.
+
+\subsection{The cover of a torus}\label{sec:torus-cover}
+
+Let $T$ be a maximal torus of $G$ defined over $\Q$. Then
+$T=\Res_{k/\Q}T_k$ for a maximal torus $T_k$ of $SL(2)$ over $k$, which
+is either split, and then $GL(2,k)$-conjugate to $A$, or of the form
+$T_\theta$ of Section~\ref{sec:local} with $E=k(\sqrt\theta)$ a quadratic
+extension of $k$. Put
+\[
+T(\A)^1=\{t\in T(\A)\mid |\chi(t)|=1\ \text{for all}\ \chi\in X(T)_\Q\}.
+\]
+For $T=A$ this is $A(\A)^1=\{a(t)\mid |t|_{\A_k}=1\}$, the kernel of
+$H$ of Lemma~\ref{lem:NAK-global}; for $T_k=T_\theta$ the torus $T$ is
+anisotropic over $\Q$ and $T(\A)^1=T(\A)$. In both cases
+$T(\Q)\subset T(\A)^1$ and $T(\Q)\backslash T(\A)^1$ is
+compact~\cite{PR}.
+
+Let $\overline{T(\A)}$ and $\overline{T(\A)^1}$ be the preimages in
+$\overline{G(\A)}$, and $\overline{T(k_v)}$ the preimage of $T_k(k_v)$
+in $\overline{SL(2,k_v)}$. By Lemmas~\ref{lem:local}(g)
+and~\ref{lem:global}(e) these groups are abelian. On $A$ the cocycle is
+\begin{equation}\label{eq:cocycle-A}
+\sigma_\A(a(t_1),a(t_2))=\prod_v(t_{1,v},t_{2,v})_v,\qquad
+t_1,t_2\in\A_k^\times,
+\end{equation}
+since $\kappa_v\equiv1$ on $A$. (The 1995 formula
+$\beta(g_1,g_2)=(g_1^{-1},g_2^{-1})(-g_1g_2^{-1},g_1^{-1}g_2^{-1})$
+reduces to this for $n=2$.) Exactly as for $G$ in
+Section~\ref{sec:global}, $\overline{T(\A)}$ is the \emph{quotient} of the
+restricted product of the $\overline{T(k_v)}$, taken with respect to the
+subgroups $T(\OO_v)^*=\{(t,\kappa_v(t))\mid t\in T_k(k_v)\cap K_v\}$, by
+$\{(\zeta_v)\mid\prod_v\zeta_v=1\}$; it is not a subgroup of that
+restricted product. Each $\overline{T(k_v)}$ maps injectively into
+$\overline{T(\A)}$. We regard $T(\Q)$ as a subgroup of $\overline{T(\A)^1}$
+by Lemma~\ref{lem:global}(a), $\gamma\mapsto(\gamma,\kappa_\A(\gamma))$;
+for $T=A$ this is $a(t)\mapsto(a(t),1)$, $t\in k^\times$.
+
+\paragraph{Conventions.}
+As in Section~\ref{sec:functions}, a representation $\pi$ of one of these
+covers is \emph{genuine} if $\pi(1,\zeta)=\zeta$, and a function $f$ is
+\emph{anti-genuine} if $f(x\zeta)=\zeta^{-1}f(x)$ for $\zeta\in\mu_2$.
+For $n=2$ the two conditions on functions coincide. Let
+$C_c^\infty(\overline{T(k_v)})_-$ and $C_c^\infty(\overline{T(\A)^1})_-$
+be the anti-genuine functions whose restriction to $T\times\{1\}$ is
+smooth and compactly supported. At places where $T(\OO_v)^*$ is defined
+let $e_{T,v}$ be the anti-genuine function equal to $1$ on
+$T(\OO_v)^*$ and supported on $\overline{T(\OO_v)}$. Let
+$\mathcal H(\overline{T(\A)})$ be the span of the products
+$\bigotimes_vf_v$, $f_v\in C_c^\infty(\overline{T(k_v)})_-$, with
+$f_v=e_{T,v}$ for almost all $v$; these descend to $\overline{T(\A)}$ as
+in Section~\ref{sec:global}. Measures on $T(\A)$ are as in
+Section~\ref{sec:global}, and on covers $\mu_2$ has total volume $1$.
+
+For a locally compact group $H$ let $\Pi(H)$ be the set of
+(equivalence classes of) irreducible admissible genuine representations
+of $H$, and $\Pi_u(H)$ the unitary ones.
+
+\begin{lemma}\label{lem:genuine-chars}
+Let $F=k_v$.
+\begin{enumerate}[label=(\alph*)]
+\item Every element of $\Pi(\overline{T(F)})$, $\Pi(\overline{T(\A)})$ or
+  $\Pi(\overline{T(\A)^1})$ is a genuine character.
+\item Genuine characters of $\overline{T(F)}$ exist, and any two differ
+  by a character of $T(F)$: they form a torsor under $T(F)^\wedge$.
+\item Every genuine character $\bar\chi$ of $\overline{T(\A)}$ factors
+  uniquely as $\bar\chi=\prod_v\bar\chi_v$, where $\bar\chi_v$ is a
+  genuine character of $\overline{T(k_v)}$, trivial on $T(\OO_v)^*$ for
+  almost all $v$. Conversely, every such family defines a genuine
+  character of $\overline{T(\A)}$. The same holds for unitary characters.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+(a) The groups are abelian, so Schur's lemma applies; for unitary
+representations of locally compact abelian groups this is standard, and
+for admissible representations Schur's lemma holds because they have
+countable dimension. Since $\mu_2$ is central, it acts by a character,
+and that character is the identity because the representation is
+genuine.
+
+(b) $\mu_2$ is a closed subgroup of the locally compact abelian group
+$\overline{T(F)}$, so the character $\zeta\mapsto\zeta$ of $\mu_2$
+extends~\cite{Ro}. The quotient of two genuine characters is trivial on
+$\mu_2$, hence is the pull-back of a character of $T(F)$.
+
+(c) Put $\bar\chi_v=\bar\chi\circ\iota_v$, where $\iota_v$ is the
+inclusion of $\overline{T(k_v)}$. Since $\bar\chi$ is continuous, its
+kernel contains an open subgroup, and hence contains $T(\OO_v)^*$ for all
+$v$ outside a finite set $S$. Every $x\in\overline{T(\A)}$ is the image of
+some $(x_v)$ with $x_v\in T(\OO_v)^*$ for $v\notin S'$, and then
+$\bar\chi(x)=\prod_{v\in S'}\bar\chi_v(x_v)$. Conversely, $\prod_v
+\bar\chi_v$ is a character of the restricted product, and it is trivial
+on $\{(\zeta_v)\mid\prod\zeta_v=1\}$ because each $\bar\chi_v$ is
+genuine. So it descends to $\overline{T(\A)}$.
+\end{proof}
+
+This replaces Lemma~3.1 of the 1995 notes, which cited~\cite{Ge2} for
+factorizability of genuine representations of the restricted product.
+For $n=2$ the statement concerns the quotient and needs no citation.
+
+Let $X_T=T(\Q)\backslash\overline{T(\A)^1}$. It is a compact abelian
+group, an extension of the compact group $T(\Q)\backslash T(\A)^1$ by
+$\mu_2$; $\mu_2$ injects into $X_T$ because $T(\Q)$ meets $\mu_2$
+trivially in $\overline{G(\A)}$. Let $\Pi_{\mathrm{aut}}(X_T)$ be the set
+of genuine characters of $\overline{T(\A)^1}$ that are trivial on
+$T(\Q)$, i.e.\ the genuine characters of $X_T$.
+
+\begin{theorem}\label{thm:corr}
+\begin{enumerate}[label=(\alph*)]
+\item $L^2(X_T)_{\mathrm{gen}}=\widehat\bigoplus_{\bar\chi\in
+  \Pi_{\mathrm{aut}}(X_T)}\C\,\bar\chi$, each character occurring with
+  multiplicity one.
+\item $\Pi_{\mathrm{aut}}(X_T)$ is not empty. For any
+  $\bar\chi_0\in\Pi_{\mathrm{aut}}(X_T)$, the map
+  $\chi\mapsto\bar\chi_0\cdot(\chi\circ p)$ is a bijection from the
+  characters of $T(\Q)\backslash T(\A)^1$ onto $\Pi_{\mathrm{aut}}(X_T)$.
+  Replacing $\bar\chi_0$ by another element changes this bijection by a
+  translation of $(T(\Q)\backslash T(\A)^1)^\wedge$.
+\item For $T=A$, the character $\chi_\psi$ of Lemma~\ref{lem:weil} lies
+  in $\Pi_{\mathrm{aut}}(X_A)$; it depends only on the fixed additive
+  character $\psi$ of $\A_k/k$.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+(a) Peter--Weyl for the compact abelian group $X_T$: $L^2(X_T)$ is the
+Hilbert sum of its characters, each once, and the genuine subspace is
+spanned by the genuine ones. (b) Apply Lemma~\ref{lem:genuine-chars}(b)
+to the closed subgroup $\mu_2$ of $X_T$; the second sentence follows
+as in that lemma. (c) is Lemma~\ref{lem:weil}(c).
+\end{proof}
+
+Theorem~\ref{thm:corr} is the $n=2$ form of Theorem~3.2 of the 1995
+notes, restated as a correspondence of automorphic spectra. The 1995
+statement matches genuine representations with characters $\chi^N$,
+$N=n/\gcd(n,2)$; for $n=2$, $N=1$, and the matching requires the choice
+of $\bar\chi_0$, which the 1995 text did not make. The choice cannot be
+avoided:
+
+\begin{example}\label{ex:order4}
+Let $k=\Q$, and let $\varepsilon\in A(\A)^1$ be $a(-1)$ at the real place
+and $1$ at every finite place. By Lemma~\ref{lem:local}(e) any lift
+$\tilde\varepsilon$ satisfies $\tilde\varepsilon^2=(1,(-1,-1)_\infty)
+=(1,-1)$. So every genuine character $\bar\chi$ of $\overline{A(\A)^1}$
+has $\bar\chi(\tilde\varepsilon)=\pm i$, and no genuine character is of
+the form $(\chi\circ p)\cdot\mathrm{sgn}$ for a splitting $A(\A)^1\to
+\overline{A(\A)^1}$; indeed no such splitting exists.
+\end{example}
+
+For the split torus there is a canonical choice, given by Weil
+indices~\cite{We64}. Let $\psi=\prod_v\psi_v$ be the nontrivial
+character of $\A_k/k$ fixed in Section~\ref{sec:global}. For $a\in
+k_v^\times$ let $\gamma_v(a)\in\mu_8$ be the Weil index of the character
+$x\mapsto\psi_v(ax^2)$ of $k_v$, normalized by
+\begin{equation}\label{eq:weil-index}
+\int_{k_v}\psi_v(ax^2)\,dx=\gamma_v(a)\,|2a|_v^{-1/2}
+\end{equation}
+(self-dual measure; for $v$ finite the integral is the limit over the
+lattices $\varpi^{-M}\OO_v$, $M\to\infty$).
+
+\begin{lemma}[Weil~\cite{We64}]\label{lem:weil}
+\begin{enumerate}[label=(\alph*)]
+\item $\gamma_v(a)$ depends only on the class of $a$ in
+  $k_v^\times/k_v^{\times2}$, and
+  $\gamma_v(ab)\gamma_v(1)=\gamma_v(a)\gamma_v(b)(a,b)_v$.
+\item If $v$ is finite and non-dyadic and $\psi_v$ is unramified, then
+  $\gamma_v(u)=\gamma_v(1)=1$ for $u\in\OO_v^\times$. For $a\in k^\times$,
+  $\prod_v\gamma_v(a)=1$.
+\item Hence $\chi_{\psi,v}(a(t),\zeta)=\zeta\,\gamma_v(t)/\gamma_v(1)$ is
+  a genuine character of $\overline{A(k_v)}$, trivial on $A(\OO_v)^*=
+  A(\OO_v)\times\{1\}$ for almost all $v$, and
+  $\chi_\psi=\prod_v\chi_{\psi,v}$ is a genuine character of
+  $\overline{A(\A)}$ trivial on $A(\Q)$. Its restriction to
+  $\overline{A(\A)^1}$ lies in $\Pi_{\mathrm{aut}}(X_A)$.
+\item For $b\in k^\times$ and $\psi_b(x)=\psi(bx)$,
+  $\chi_{\psi_b}=\chi_\psi\cdot\bigl(a(t)\mapsto\prod_v(b,t_v)_v\bigr)$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+(a) and (b) are due to Weil~\cite[\S\S14, 28]{We64}. (c) By~(a),
+$\chi_{\psi,v}(a(t_1),1)\chi_{\psi,v}(a(t_2),1)=(t_1,t_2)_v\,
+\chi_{\psi,v}(a(t_1t_2),1)=\chi_{\psi,v}((a(t_1),1)(a(t_2),1))$, using the
+group law~\eqref{eq:cocycle-A}. Unramifiedness is~(b), and triviality on
+$(a(t),1)$, $t\in k^\times$, is the product formula in~(b) applied to
+$\gamma(t)$ and to $\gamma(1)$. (d) $\psi_{b,v}(ax^2)=\psi_v(abx^2)$, so
+$\gamma_{\psi_b,v}(t)/\gamma_{\psi_b,v}(1)=\gamma_v(bt)/\gamma_v(b)=
+(\gamma_v(t)/\gamma_v(1))\,(b,t)_v$ by~(a).
+\end{proof}
+
+\begin{example}\label{ex:weil-Q}
+Let $k=\Q$, $\psi_p(x)=e^{2\pi i\{x\}_p}$ and $\psi_\infty(x)=
+e^{-2\pi ix}$, so $\psi$ is trivial on $\Q$. Then
+$\gamma_\infty(a)=e^{-\pi i\,\mathrm{sgn}(a)/4}$, and for odd $p$,
+$\gamma_p(u)=1$ and $\gamma_p(pu)=\bigl(\tfrac up\bigr)\epsilon_p$ for
+$u\in\Z_p^\times$, where $\epsilon_p=1$ if $p\equiv1\pmod4$ and
+$\epsilon_p=i$ if $p\equiv3\pmod4$. So
+$\chi_{\psi,\infty}(a(-1),1)=i$, in accordance with
+Example~\ref{ex:order4}, and $\chi_{\psi,p}(a(p),1)=\epsilon_p$ for odd
+$p$. The dyadic values are tabulated by the check script, which computes
+$\gamma_v$ from~\eqref{eq:weil-index} as a finite Gauss sum and verifies
+Lemma~\ref{lem:weil}(a)--(c) at $v=\infty,2,3,5,7$ and the product
+formula on random $a\in\Q^\times$.
+\end{example}
+
+\subsection{The trace formula}\label{sec:tf-rank0}
+
+Let $R$ be the right regular representation of $\overline{T(\A)^1}$ on
+$L^2(X_T)_{\mathrm{gen}}$, and for $f\in C_c^\infty(\overline{T(\A)^1})_-$
+put $R(f)=\int_{\overline{T(\A)^1}}f(y)R(y)\,dy$ and
+\[
+\bar\chi(f)=\int_{\overline{T(\A)^1}}f(y)\bar\chi(y)\,dy,\qquad
+\bar\chi\in\Pi(\overline{T(\A)^1}).
+\]
+The integrand $f\bar\chi$ is invariant under $\mu_2$, so $\bar\chi(f)$ is
+an integral over $T(\A)^1$; if $\bar\chi$ were trivial on $\mu_2$ instead,
+the integral would vanish.
+
+\begin{theorem}\label{thm:tf-rank0}
+Let $f\in C_c^\infty(\overline{T(\A)^1})_-$.
+\begin{enumerate}[label=(\alph*)]
+\item $R(f)$ is the integral operator on $L^2(X_T)_{\mathrm{gen}}$ with
+  kernel
+  \[
+  K_f(x,y)=\sum_{\delta\in T(\Q)}f(x^{-1}\delta y),
+  \]
+  and $R(f)\bar\chi=\bar\chi(f)\,\bar\chi$ for
+  $\bar\chi\in\Pi_{\mathrm{aut}}(X_T)$.
+\item $R(f)$ is of trace class, and
+  \begin{equation}\label{eq:tf-rank0}
+  \sum_{\bar\chi\in\Pi_{\mathrm{aut}}(X_T)}\bar\chi(f)
+  =\operatorname{tr}R(f)=\int_{X_T}K_f(x,x)\,dx
+  =\mathrm{vol}\bigl(T(\Q)\backslash T(\A)^1\bigr)\sum_{\delta\in T(\Q)}f(\delta),
+  \end{equation}
+  the sum on the left converging absolutely.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+(a) For $\varphi\in L^2(X_T)_{\mathrm{gen}}$,
+\[
+(R(f)\varphi)(x)=\int_{\overline{T(\A)^1}}f(y)\varphi(xy)\,dy
+=\int_{\overline{T(\A)^1}}f(x^{-1}y)\varphi(y)\,dy
+=\int_{X_T}\sum_{\delta\in T(\Q)}f(x^{-1}\delta y)\varphi(y)\,dy,
+\]
+because $\varphi(\delta y)=\varphi(y)$. For $\varphi=\bar\chi$ the first
+expression is $\bar\chi(x)\bar\chi(f)$.
+
+(b) The group is abelian, so $f(x^{-1}\delta x)=f(\delta)$, and
+$\int_{X_T}K_f(x,x)\,dx=\mathrm{vol}(X_T)\sum_\delta f(\delta)$ with
+$\mathrm{vol}(X_T)=\mathrm{vol}(T(\Q)\backslash T(\A)^1)$ since $\mu_2$
+has volume $1$. The function $F(x)=\sum_{\delta}f(\delta x)$ is smooth on
+$X_T$ (the sum is locally finite, $T(\Q)$ being discrete), so its Fourier
+series converges absolutely; its Fourier coefficient at $\bar\chi$ is
+$\int_{X_T}F\bar\chi=\bar\chi(f)$, which vanishes unless $\bar\chi$ is
+genuine. Evaluating the Fourier series at $x=1$ gives the outer equality
+of~\eqref{eq:tf-rank0}, i.e.\ Poisson summation. Since $R(f)$ is diagonal
+in the orthonormal basis $\mathrm{vol}(X_T)^{-1/2}\bar\chi$ with summable
+eigenvalues $\bar\chi(f)$, it is of trace class with that trace.
+\end{proof}
+
+Theorem~\ref{thm:tf-rank0} replaces Theorems~3.8 and~3.9 of the 1995
+notes. For $n=2$ every conjugacy class in $\overline{T(\A)^1}$ is a
+point and every centralizer is the whole group, so the orbital integrals
+there reduce to the values $f(\delta)$. Here $f(\delta)$ means $f$ at
+the image $(\delta,\kappa_\A(\delta))$ of $\delta$; for $T=A$ it is
+$f(a(\delta),1)$.
+
+The trace formula for $\overline{T(\A)^1}$ is literally Poisson summation
+on $T(\Q)\backslash T(\A)^1$, after multiplying by a genuine automorphic
+character:
+
+\begin{lemma}\label{lem:transfer}
+Fix $\bar\chi_0\in\Pi_{\mathrm{aut}}(X_T)$ with local components
+$\bar\chi_{0,v}$, as in Lemma~\ref{lem:genuine-chars}(c). For an
+anti-genuine $\bar f$ on $\overline{T(\A)^1}$ (resp.\
+$\overline{T(k_v)}$) define $f$ on $T(\A)^1$ (resp.\ $T_k(k_v)$) by
+$f(t)=\bar f(\tilde t)\bar\chi_0(\tilde t)$ (resp.\ $\bar\chi_{0,v}$),
+$\tilde t$ any lift of $t$.
+\begin{enumerate}[label=(\alph*)]
+\item $\bar f\mapsto f$ is well defined, bijective from
+  $C_c^\infty(\overline{T(\cdot)})_-$ onto $C_c^\infty(T(\cdot))$, and
+  carries convolution to convolution.
+\item At every $v$ where $\bar\chi_{0,v}$ is trivial on $T(\OO_v)^*$
+  (almost all $v$), it carries $e_{T,v}$ to the characteristic function of
+  $T_k(k_v)\cap K_v$, which is the unit of the Hecke algebra of
+  $T_k(k_v)$ when $T_k(k_v)\cap K_v$ has volume $1$.
+\item $f(\delta)=\bar f(\delta)$ for $\delta\in T(\Q)$, and
+  $(\bar\chi_0\cdot(\chi\circ p))(\bar f)=\hat f(\chi):=\int_{T(\A)^1}
+  f(t)\chi(t)\,dt$ for every character $\chi$ of $T(\A)^1$.
+\end{enumerate}
+Consequently~\eqref{eq:tf-rank0} for $\bar f$ is the Poisson summation
+formula $\sum_\chi\hat f(\chi)=\mathrm{vol}(T(\Q)\backslash T(\A)^1)
+\sum_{\delta\in T(\Q)}f(\delta)$ for $f$, $\chi$ running over the
+characters of $T(\Q)\backslash T(\A)^1$.
+\end{lemma}
+
+\begin{proof}
+(a) $\bar f\bar\chi_0$ is $\mu_2$-invariant because $\bar f$ is
+anti-genuine and $\bar\chi_0$ genuine, and the inverse map is
+$f\mapsto(f\circ p)\bar\chi_0^{-1}$. For convolution,
+$(\bar f_1*\bar f_2)(x)\bar\chi_0(x)=\int\bar f_1(y)\bar\chi_0(y)\,
+\bar f_2(y^{-1}x)\bar\chi_0(y^{-1}x)\,dy$, and the integrand is
+$\mu_2$-invariant in $y$, so the integral over the cover equals the
+integral over $T$. (b) is immediate. (c) $\bar\chi_0$ is trivial on
+$T(\Q)$; the second identity is the definition, the integrand being
+$\mu_2$-invariant.
+\end{proof}
+
+This replaces Lemmas~3.11 and~3.12 and the argument through Claims~1
+and~2 of the 1995 notes. The local maps $\bar f_v\mapsto f_v$ involve no
+sum over $T(\Q_p)_\delta\backslash T(\Q_p)$ and no factor
+$s_\A(\delta)$, because there is no conjugation. Together with
+Theorem~\ref{thm:tf-rank0} they show that the correspondence
+$\chi\leftrightarrow\bar\chi_0\cdot(\chi\circ p)$ of Theorem~\ref{thm:corr}
+matches the two trace formulas term by term.
+
+\subsection{Distributions for Section 6}\label{sec:IA}
+
+Let $S$ be a finite set of places of $\Q$ and let $\overline{A(\A_S)}$ be
+the cover of $A(\A_S)=\prod_{p\in S}A(\Q_p)$ defined by
+$\prod_{p\in S}\beta_p$. Let $\mathcal H(\overline{A(\A_S)})$ be the
+algebra of functions $\bigotimes_{p\in S}f_p$, $f_p\in
+C_c^\infty(\overline{A(\Q_p)})_-$, and the analogous algebra
+$\mathcal H(\overline{A(\A)})$ of Section~\ref{sec:torus-cover}. For a
+class $\mathcal O=\{\delta\}$ of $A(\Q)$ (a single element, since the
+cover is abelian) and $\bar\chi\in\Pi_u(\overline{A(\A_S)})$, put
+\begin{equation}\label{eq:IA}
+I^A_{\mathcal O}(f)=f(a(\delta),1),\qquad
+I^A_{\bar\chi}(f)=\bar\chi(f)=\int_{\overline{A(\A_S)}}f(y)\bar\chi(y)\,dy,
+\end{equation}
+for $f\in\mathcal H(\overline{A(\A_S)})$, and likewise over $\A$. Here
+$(a(\delta),1)$ is the image of $\delta$ under the rational splitting
+(Lemma~\ref{lem:global}(b)). Both are invariant distributions: the cover
+is abelian, so conjugation acts trivially.
+
+\begin{remarkrev}\label{rem:general-n-rank0}
+For general $n$ the cover of $A$ is not abelian: by the computation in
+Lemma~\ref{lem:local}(f), $\overline{A(F)}$ is a Heisenberg-type group
+whose commutator pairing is $(t_1,t_2)_n^{-2}$. Its genuine irreducible
+representations are then parametrized by genuine characters of its
+center, the preimage of $A^N$ with $N=n/\gcd(n,2)$. Matching them with
+characters of $A^N$ requires a splitting over $A^N$, and the global
+argument requires a Hasse principle for $N$-th powers, which holds when
+$\mu_N\subset k$. These are referee items II.1--II.4; none of them arises
+for $n=2$, and this section does not treat $n>2$.
+\end{remarkrev}
+
+\begin{remarkrev}\label{rem:verified-rank0}
+The script \texttt{checks/sec3\_n2\_check.py} verifies: that the 1995
+cocycle on $A$ equals~\eqref{eq:cocycle-A}; that $\gamma_v$, computed
+from~\eqref{eq:weil-index}, is an eighth root of unity, depends only on
+the square class, is $1$ on units at $p=3,5,7$, and satisfies
+Lemma~\ref{lem:weil}(a); that $\chi_{\psi,v}$ respects the group law
+(Lemma~\ref{lem:weil}(c)) at $v=\infty,2,3,5,7$; the product formula of
+Lemma~\ref{lem:weil}(b) for random $a\in\Q^\times$; the odd-$p$ values of
+Example~\ref{ex:weil-Q}; and Example~\ref{ex:order4}. The rest of the
+section is proved in the text.
+\end{remarkrev}

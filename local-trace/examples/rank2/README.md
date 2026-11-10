@@ -7,4 +7,4 @@
 3. **The strict inequalities matter.** With "≤" in place of "<" in the truncation, the same R_Q no longer work.
 4. **The degenerate character ψ = 1** gives a polynomial in T on L_0.
 
-This tests the combinatorial part of Proposition 3.6 in rank two. It does not test the representation-theoretic input (Casselman's asymptotics). A rank-two check of Hypothesis (R) on the building of PGL(3) is still to be done.
+This tests the combinatorial part of Proposition 3.6 in rank two. It does not test the representation-theoretic input (Casselman's asymptotics). The rank-two check of Hypothesis (R) on the building of PGL(3) is in `../pgl3/`.

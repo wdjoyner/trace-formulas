@@ -26,12 +26,14 @@ For each item of the errata log [`../original-1997/transcription_log.md`](../ori
 | 10 | Proposition 3.6 | new proof; conditional on (C) in rank ≥ 2 |
 | 11 | Lemma 4.1 and regularity | not used; (G,A)~-smoothness is insufficient |
 | 12 | Proposition 4.2 | new form; confluence replaced by Lemma 3.5B(ii) |
-| 13 | Theorem 4.5 | (a) unconditional, (b) under (C) and (R) |
-| 14 | Conjecture 4.6 | new; verified for PGL(2), SL(2) |
+| 13 | Theorem 4.5 | (a) unconditional, (b) under (C) and (R); (R) not necessary (App. C) |
+| 14 | Conjecture 4.6 | new; verified for PGL(2), SL(2), numerically for one γ in PGL(3); (b) no longer asserts (R) |
 | 15 | §5 | rewritten; normalizations checked only for SL(2) |
 | 16 | §6.2 SL(2) | proved for all q; also verified numerically and symbolically |
 | 17 | §7 Route B | proposed route; normalizations not checked |
 | 18 | literature | all entries checked |
+| 19 | Observation C.2 (PGL(3) displacement table) | observed on the building, not proved |
+| 20 | Hypothesis (R′) | proposed; consistent with PGL(3) data |
 
 ## Main mathematical changes
 
@@ -52,6 +54,7 @@ For each item of the errata log [`../original-1997/transcription_log.md`](../ori
 - §8 Literature review
 - Appendix A Glossary
 - Appendix B Concordance
+- Appendix C PGL(3): a rank-two test of Hypothesis (R)
 
 New numerical check: [`../examples/sl2/sl2_check.py`](../examples/sl2/sl2_check.py).
 
@@ -225,3 +228,22 @@ The report and a point-by-point response are in [`RESPONSE-TO-REFEREE-2.md`](RES
   - Acknowledgements moved to the end.
   - §7.1–7.4 are now real subsections.
   - All "not verified" bibliography flags removed after checking; OS13 pages added.
+
+## Changes of 2026-11-10 (fourth pass: PGL(3), at the author's request)
+
+- **Appendix C (new): PGL(3) on the Bruhat–Tits building.** The element γ is unramified elliptic of depth 0.
+  - Observation C.2 gives the displacement table N(λ,μ). It was checked on 86 017 vertices (q = 2) and 62 193 vertices (q = 3), but is not proved. [R19]
+  - Closed form (C.4) for I(χ,γ). It has double poles only on the root walls, and Iρ is smooth.
+  - Spectral identity with no singular part (Table C.1).
+  - (4.7A) is confirmed, with 19 frequencies of the form T ↦ w⁻¹T − w′⁻¹T.
+  - **Hypothesis (R) fails**: there are simple poles along the non-root subtori z_i³ = 1. The poles cancel in pairs, and the pairs tend to 0 by Riemann–Lebesgue along the subtorus.
+  - Remark 2026.20 proposes the weaker hypothesis (R′), which separates PGL(3) from SL(2). [R20]
+- **Consequential changes.**
+  - Abstract, "What changed", status table, "What is proved" and road map updated.
+  - The paragraph after Hypothesis (R) and Remark 2026.13 (Theorem 4.5) updated.
+  - The paragraph "When (R) fails" gains the rank-two mechanism.
+  - Conjecture 4.6(b) no longer asserts that (R) holds when Z(G) is connected, and Remark 2026.14 explains why.
+- **Abstract.** It now opens with "This AI-aided paper revises and updates the first author's earlier paper [Jo92]."
+- **Bibliography.** [Jo92] (the 1992 Pacific J. Math. paper) added and cited in "About this revision".
+- **Acknowledgements.** ChatGPT (OpenAI) is credited explicitly for the second referee report.
+- **New check.** `examples/pgl3/pgl3_check.py` (about 6 s, numpy and sympy), with `examples/pgl3/building.py` and a README.

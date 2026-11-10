@@ -1,0 +1,190 @@
+%% This document created by Scientific Word (R) Version 2.0
+%% Starting shell: book
+	
+
+\documentclass[12pt,thmsa]{book}
+\usepackage{amsfonts}
+%%%%%
+\usepackage{sw20lbck}
+
+%TCIDATA{TCIstyle=Book/book.lat,lbck,book}
+
+\input tcilatex
+\QQQ{Language}{
+American English
+}
+
+\begin{document}
+
+\author{David Joyner}
+\title{An application of Arthur's invariant trace formula for $SL(2)$}
+\date{4-6-97}
+\maketitle
+
+\begin{abstract}
+We apply the invariant trace formula to the study of cuspidal automorphic
+representations of $SL(2,\Bbb{A})$ as compared with the genuine cuspidal
+automorphic representations of the 2-fold metaplectic cover $\overline{SL(2,%
+\Bbb{A})}$. The main tools are the trace formula, combined with results of
+Arthur, Gelbart-Sally, Labesse-Langlands, and Waldspurger.
+\end{abstract}
+
+\tableofcontents
+
+\chapter{Introduction}
+
+The goals of this book are two-fold: on one hand this is a detailed
+exposition of Arthur's invariant trace formula in the simple case of $SL(2)$
+which may serve as an introduction to his work, and on the other hand, the
+problem we have applied it to (in chapter 10) will hopefully be of some
+interest to researchers in the field of the theory of automorphic
+representations. Interestingly enough, our intuition regarding automorphic
+representations of reductive groups gained from the Langlands philosophy
+fails to offer proper guidance for automorphic representations of
+metaplectic covers of reductive groups. This was one motivation for the
+amount of detail included. The motivation for researching the problem
+discussed in chapter 10 has its origins in several stimulating conversations
+with R. Langlands in the late 1980's.
+
+To possibly save the reader some time, we will briefly explain the purpose
+of each chapter. Most chapters have an introduction so this will merely be
+an overview.
+
+Since we have in mind not only the study of the automorphic representations
+of $SL(2)$ but also its 2-fold cover, we have put all the background
+information on the metaplectic covering groups into a single chapter. As a
+guiding principle in all of the chapters, when it is no harder to work with
+n-fold covers we shall do so.
+
+Since our techniques ultimately rely on the trace formula, a generalization
+of Poisson summation in abelian harmonic analysis, it is not surprising that
+several instances of Poisson summation must be used at various stages. We
+present in the next chapter a detailed summary of all the cases of Poisson
+summation which we will use. In addition, to give a feel for the argument in
+chapter 10, we give in this chapter the analogous metaplectic correspondence
+in the case where $SL(2)$ has been replaced by $GL(1)$. In addition, we
+define some distributions which will be needed in an inductive step in the
+derivation of the invariant trace formula in chapters 8 and 9. The fact that
+the metaplectic $GL(1)$ comparison used these distributions gives us added
+confidence that we have gotten them right.
+
+Arthur's original derivation of the invariant trace formula required making
+certain assumptions in local harmonic analysis. Since his original paper 
+\cite{A6} appeared, these assumptions have been verified. The purpose of the
+next chapter is to survey the representation theory of $SL(2)$ over a p-adic
+field and verify directly some of these assumptions. For example, the
+structure of the unitary dual of $SL(2)$ is explicitly recalled.
+From this explicit information we can deduce the metaplectic analog
+of the trace Paley-Wiener theorem \cite{BDK} for
+the $2$-fold cover of $SL(2,{\Bbb{Q}}_p)$.
+
+Chapter 5 presents the local correspondences needed in the comparison
+between the invariant trace formula of $SL(2)$ and its 2-fold cover. The
+results are rather technical to state but relatively easy to prove (at least
+once you know what you want) compared to similar works in the field \cite{L4}%
+, \cite{Fl}, \cite{R}. On the other hand, these comparisons are more
+involved than those of \cite{JL}, \cite{LL}.
+
+The chapter after that is the metaplectic analog of chapter 4 for the n-fold
+cover of $SL(2)$. Unfortunately, much less is known in this case and we must
+resort to stating conjectures. Fortunately, what we need for the derivation
+of the invariant metaplectic trace formula in chapter 9 in the case of $n=2$
+is known.
+
+In the next chapter we use a construction of supercuspidals due to Kutzko
+and Manderscheid along with the Frobenius formula to prove a local
+correspondence between the supercuspidals of $SL(2)$ and its 2-fold cover.
+This chapter owes much to discussions with Jason Adams and Jason
+Schultz who pointed out an error in an earlier version.
+This correspondence will be useful in chapter 10.
+
+Chapter 8 derives the invariant trace formula for $SL(2)$. In fact, we go
+further than is needed for the comparison in chapter 10: we derive the
+stable trace formula from the invariant trace formula. Note that this is not
+exactly the same as the stable trace formula of \cite{LL} since the
+invariant trace formula gives a formula for the trace of the right regular
+representation $R_{cusp}$ of $SL(2,\Bbb{A})$ on the space of
+square-integrable cusp forms whereas the trace formula of \cite{LL} gives a
+formula for the trace of the right regular representation of $SL(2,\Bbb{A})$
+on the space of all square-integrable automorphic forms which occur
+discretely in the spectrum. Note that (for simplicity) this derivation is
+only for $SL(2)/{\Bbb{Q}}$ even though we shall actually use it for $SL(2)$
+over any number field. This chapter may also serve as an introduction to the
+papers \cite{LL}, \cite{A2}, \cite{A3}, \cite{A6}, \cite{A9}, \cite{A10}.
+
+At this point we must confess that it would have been possible to establish
+the comparisons of chapter 10 using the original (non-invariant) trace
+formula of $SL(2)$ and its 2-fold cover. This wasn't discovered this until
+after the material in chapters 8, 9 had already been written. This material
+on the invariant trace formula and on the stable trace formula for $SL(2)$
+serves as an exposition of Arthur's work and the work of Labesse-Langlands
+and complements other introductions (\cite{Sho}, \cite{A5}, \cite{A15}, \cite
+{Lab} ...). In any case, readers may skip any parts of chapters 8, 9 dealing
+with the invariant trace formula or the stable trace formula, and may skip
+the parts in chapters 4, 6 which establish the local assumptions for the
+invariant trace formula (which means everything except for the character
+formulas).
+
+Chapter 9 is the metaplectic analog of most of chapter 8. We do not put the
+spectral side of the metaplectic trace formula into stable form, only the
+geometric side. This is almost forced on us because the structure of the
+unitary dual of the n-fold cover of $SL(2)$ depends so much on the parity of 
+$n$ and a case-by-case analysis would take us too far afield. Again, for
+simplicity this derivation is only for the two-fold cover of
+$SL(2,{\Bbb{A}}_{\Bbb{Q}})$ even though we shall
+actually use it for the two-fold cover of $SL(2)$ over any number field.
+The metaplectic analog of one of
+Arthur's assumptions \cite{A6} in his derivation of the
+invariant trace formula, the metaplectic analog of the
+trace Paley-Wiener theorems in the $2$-adic case (\cite{CD}, \cite{Bou}, \cite{Ao})
+is, as far as I know, unknown at this time.
+In general, we must therefore assume that the
+metaplectic analog of the Paley-Wiener theorem is true for the
+$2$-fold cover of $SL(2,F)$, where $F$ is $2$-adic,
+in our derivation of the invariant trace formula for
+the 2-fold cover of $SL(2)$. 
+In any case, as we mentioned in the previous paragraph, the main result
+will not depend on the validity of this assumption. 
+
+Chapter 10 is the application. Using the results of chapters 4, 5, 6, 7, 8
+and 9, we compare the corresponding terms in the invariant
+trace formula of $SL(2)$ and its 2-fold cover. The comparisons
+yield an equality of the
+following sort:
+$\mathrm{tr}\;R_{cusp}(f)=\mathrm{tr}\;\overline{R}_{cusp}(\overline{f})$,
+for all corresponding functions $f,\overline{f}$ in their
+respective Hecke algebras. This, combined with some results of Waldspurger,
+implies a relationship between the automorphic cuspidal
+representations of $SL(2,\Bbb{A})$ and the genuine automorphic
+cuspidal representations of the
+2-fold cover $\overline{SL(2,\Bbb{A})}$. From this we obtain that each
+``good'' cuspidal representation of $SL(2,{\Bbb{A}})$ occurs with
+multiplicity one. Here ``good'' simply means that if $\pi =\otimes \pi _v$
+and $v|2$ then $\pi _v$ is either a unitary principal series (in the
+``continuous series'') or a complementary series. This is forced on us
+because of our poor understanding of character relations of the discrete
+series representations when $p=2$. This type of result has been anticipated
+by \cite{Lab} and in some unpublished work of Y. Flicker. D. Blasius has
+shown that the analog of this multiplicity one result is false for $SL(n),\
+n>2$ \cite{Blas}.
+
+We say nothing here about L-packets. However, we do note that the ``image of
+this correspondence from $\overline{SL(2,\Bbb{A})}$ to $SL(2,\Bbb{A})$''
+does not consist of the cuspidal automorphic representations with trivial
+central character. This might be compared with Flicker's correspondence \cite
+{Fl}, where the image has an ``even'' central character.
+
+Finally, this was written on a sabbatical visiting the University of
+Maryland, College Park. I'm grateful to the Naval Academy for giving me the
+time off to think about these questions and
+to the Mathematics Department at the
+University of Maryland for the stimulating atmosphere.
+
+\input book1.tex \input book2.tex \input book2a.tex \input book3.tex 
+\input book3b.tex \input book4.tex \input book5nw.tex \input book6a.tex 
+\input book6b.tex \input book6c.tex \input book6d.tex \input book6e.tex 
+\input book6f.tex \input book6g.tex \input book7a.tex \input book7c.tex 
+\input book7d.tex \input book7e.tex \input book7f.tex \input book7gnw.tex 
+\input book7h.tex \input book8.tex \input bookrefn.tex
+
+\end{document}

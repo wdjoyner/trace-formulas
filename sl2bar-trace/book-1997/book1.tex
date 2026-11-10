@@ -1,0 +1,729 @@
+\chapter{Background on covers of $SL(2)$}
+
+\section{Local covers of $SL(2)$}
+
+Let $F$ be a local field of characteristic zero
+containing the $n-th$ roots of unity $\mu_n$.
+If $F$ is a p-adic field, let $O$ denote its ring of integers.
+By our assumptions, $\mu _n\subset F^{\times }$. Let 
+\begin{equation}
+N=\left\{ 
+\begin{array}{c}
+n,\;\;\;n\;{\rm odd}, \\ 
+n/2,\;\;\;n\;{\rm even}.
+\end{array}
+\right. 
+\end{equation}
+
+For $g=\left( 
+\begin{array}{cc}
+a & b \\ 
+c & d
+\end{array}
+\right) \in SL_2(F)$, let 
+\[
+x(g)=\left\{ 
+\begin{array}{c}
+c,\;\;\;c\neq 0, \\ 
+d,\;\;\;c=0,
+\end{array}
+\right. 
+\]
+and let $\beta =\beta _v:SL_2(F)\times SL_2(F)\rightarrow \mu _n$ be defined
+by 
+\begin{eqnarray}
+\beta (g_1,g_2) &=&(x(g_1),x(g_2))_n\cdot (-x(g_1)^{-1}x(g_2),x(g_1g_2))_n \\
+&=&(\frac{x(g_1g_2)}{x(g_1)},\frac{x(g_1g_2)}{x(g_2)})_n,  \nonumber
+\end{eqnarray}
+where $(...,...)_n=(...,...)_{n,v}:F^{\times }\times F^{\times }\rightarrow $
+$\mu _n$ denotes the Hilbert symbol \cite{W1}.
+Note that this is trivial if $F={\Bbb {C}}$.
+
+\begin{lemma}
+(Kubota \cite{K1}, Moore \cite{M})
+The map $\beta $ defines a continuous Borel
+2-cocycle (giving $\mu _n$ the discrete topology of course). Its cohomology
+class in the continuous cohomology group $H^2(SL_2(F),\mu _n)$ corresponds
+to an n-fold topological central extension $\overline{SL_2(F)}$ which fits
+into the short exact sequence 
+\[
+1\rightarrow \mu _n\rightarrow \overline{SL_2(F)}\stackrel{p}{\rightarrow }%
+SL_2(F)\rightarrow 1.
+\]
+\end{lemma}
+
+If $H<SL_2(F)$ is a subgroup then we define $\overline{H}=p^{-1}(H)\subset 
+\overline{SL_2(F)}$.
+
+If $g\in GL_2(F)$, let 
+\begin{eqnarray*}
+p(g) &=&\left( 
+\begin{array}{cc}
+1 & 0 \\ 
+0 & \det g
+\end{array}
+\right) ^{-1}g, \\
+d(a,b) &=&\left( 
+\begin{array}{cc}
+a & 0 \\ 
+0 & b
+\end{array}
+\right) , \\
+g^x &=&x^{-1}gx,
+\end{eqnarray*}
+and define the extension $\beta _1$ of the above cocyle to
+$G_1(F)=GL_2(F)$ by 
+\begin{equation}
+\beta _1(g_1,g_2)=\beta (p(g_1)^{d(1,\det g_2)},p(g_2))\cdot v(\deg
+g_2,p(g_1)),
+\end{equation}
+where $v:F^{\times }\times SL_2(F)\rightarrow \mu _n$ is defined by 
+\[
+v(z,g)=\left\{ 
+\begin{array}{c}
+1,\;\;\;c\neq 0,\;F\neq {\Bbb R}, \\ 
+(z,d)_n,\;\;\;\;\;\;\;c=0,
+\end{array}
+\right. 
+\]
+and $v=1$ if $F={\Bbb R}$. This defines an n-fold metaplectic cover of $%
+GL_2(F)$.
+
+Elements of $\overline{SL_2(F)}$ will be denoted by $(g,\varsigma )$, where $%
+g\in SL_2(F)$, $\varsigma \in \mu _n$. Multiplication on $\overline{SL_2(F)}$
+is given by 
+\begin{equation}
+(g_1,\varsigma _1)\cdot (g_2,\varsigma _2)=(g_1g_2,\beta (g_1,g_2)\varsigma
+_1\varsigma _2).
+\end{equation}
+so inverses are given by 
+\begin{equation}
+(g,\varsigma )^{-1}=(g^{-1},\beta (g,g^{-1})^{-1}\varsigma ^{-1})
+\end{equation}
+and conjugation is given by 
+\begin{equation}
+(g,\varsigma )\cdot (h,\varsigma ^{\prime })\cdot (g,\varsigma
+)^{-1}=(ghg^{-1},\beta (gh,g^{-1})\beta (g,h)\beta (g,g^{-1})^{-1}\varsigma
+^{\prime }),
+\end{equation}
+for $g,h,g_1,g_2\in G(F)$.
+
+These identities also hold for $\beta _1$,
+for $g,h,g_1,g_2\in G_1(F)$.
+
+We let $B=\{\left( 
+\begin{array}{cc}
+\ast  & * \\ 
+0 & *
+\end{array}
+\right) \}\subset G=SL_2$ denote the standard Borel, $N$ its unipotent
+radical, and $A$ its Levi component. Let
+$\theta\in F^\times -F^{\times 2}$ and let
+$T=T_\theta\subset G(F)$ denote the non-split Cartan subgroup
+\[
+T=\{
+    \left(
+    \begin{array}{cc}
+    a&b\theta\\
+    b&a
+    \end{array}
+    \right)
+    \ |\ a^2+b^2\theta =1,\ a,b\in F^\times
+  \}.
+\]
+\begin{lemma}
+For all $g\in A(F)$, 
+\[
+g=\left( 
+\begin{array}{cc}
+a & 0 \\ 
+0 & a^{-1}
+\end{array}
+\right) ,
+\]
+$\varsigma \in \mu _n$, we have $(g,\varsigma
+)^{-1}=(g^{-1},(a,a)_n\varsigma ^{-1})$.
+\end{lemma}
+
+Let $p=\infty$ if $F$ is archimedian and otherwise
+let $p$ denote the residual characteristic of $F$.
+If $p<\infty$, let
+\[
+{\cal{O}}={\cal{O}}_0\subset {\cal{O}}_1=1+\pi{\cal{O}}
+\subset {\cal{O}}_2=1+\pi^2{\cal{O}}\subset ...
+\]
+denote the standard filtration.
+\begin{lemma}
+(a) $\overline{N(F)}=N(F)\times \mu _n$ (direct product),
+
+(b) if $p$ is relatively prime to $n$ then
+$\overline{SL_2(O)}\cong SL_2(O)\times
+\mu _n$ (direct product but the splitting is non-trivial),
+
+(c) if $K_0=SL_2({\cal{O}})$ and 
+\[
+K_{m,j}=\{\left( 
+\begin{array}{cc}
+a & b \\ 
+c & d
+\end{array}
+\right) \in SL_2({\cal{O}})\;|\;a-1,d-1,b,c\in \pi ^m{\cal{O}}_j\},
+\;m>0,
+\]
+then $\overline{K_{n,j}}=K_{n,j}\times \mu _n$
+(direct product) for all sufficiently large $j$,
+
+(d) if $n=2,$ $F={\Bbb {R}}$, and $K=SO(2,{\Bbb {R})}$ then
+$\overline{K}$ does not split,
+
+(e) The center of $\overline{SL_2(F)}$ is $Z(\overline{SL_2(F)})=\{\pm
+1_2\}\times \mu _n$ (direct product if $(p,n)=1$).
+
+(f) For $a_i=\left( 
+\begin{array}{cc}
+t_i & 0 \\ 
+0 & t_i^{-1}
+\end{array}
+\right) \in A(F)$, $i=1,2$, and $\varsigma _i\in \mu _n$, we have $%
+(a_1,\varsigma _1)\cdot (a_2,\varsigma _2)\cdot (a_1,\varsigma
+_1)^{-1}=(a_2,(t_1,t_2)_n^{-2}\varsigma _2)$,
+
+(g) the largest abelian subgroup of $\overline{A(F)}$ contains the cover of
+\[
+A(F)^N=\{\left( 
+\begin{array}{cc}
+a & 0 \\ 
+0 & a^{-1}
+\end{array}
+\right) \;|\;a\in (F^{\times })^N\},
+\]
+where $N$ is as in (2.1). 
+
+(h) $\overline{T}$ is abelian.
+
+(i) If $g\in G(F)$ and
+$n=
+\left(
+\begin{array}{cc}
+1 & 1\\
+0 & 1
+\end{array}
+\right)
+$
+then $(g,\zeta)(n,\zeta ')(g,\zeta)^{-1}
+=(gng^{-1},\zeta')$.
+
+\end{lemma}
+
+\begin{remark}
+These were proven in \cite{K2} or follow from the properties of the Hilbert
+symbol \cite{W1}.
+For example, (h) is a consequence of a calculation in \cite{Fl}, p. 128.
+We shall include the proof of part (f) since it will be basic for many
+other results.
+\end{remark}
+
+proof of (f):
+For (f), we have
+
+\[
+\begin{array}{c}
+(a_1,\varsigma _1)^{-1}\cdot (a_2,\varsigma _2)\cdot (a_1,\varsigma
+_1)=(a_1^{-1},(t_1,t_1)_n\varsigma _1^{-1})\cdot (a_2,\varsigma _2)\cdot
+(a_1,\varsigma _1) \\
+=(a_2,(t_1,t_1)_n\varsigma _2\beta (a_1^{-1},a_2a_1)\beta (a_2,a_1)).
+\end{array}
+\]
+
+Now we compute
+\[
+\begin{array}{c}
+\beta (a_2,a_1)=(t_2^{-1},t_1^{-1})_n\cdot (-t_2t_1^{-1},t_2^{-1}t_1^{-1})_n
+\\
+=(t_2^{-1},t_1^{-1})_n\cdot (-t_2t_1^{-1},t_2^{-1})_n\cdot
+(-t_2t_1^{-1},t_1^{-1})_n \\
+=(t_2^{-1},t_1^{-1})_n\cdot (-t_2,t_2^{-1})_n\cdot
+(t_1^{-1},t_2^{-1})_n\cdot (-t_2,t_1^{-1})_n\cdot (t_1^{-1},t_1^{-1})_n \\
+=(-t_2,t_2^{-1})_n\cdot (-t_2,t_1^{-1})_n\cdot (t_1,t_1)_n
+\end{array}
+\]
+and
+\[
+\begin{array}{c}
+\beta (a_1^{-1},a_2a_1)=(t_1,t_2^{-1}t_1^{-1})_n\cdot
+(-t_2^{-1}t_1^{-2},t_2^{-1})_n \\
+=(t_1,t_2^{-1})_n\cdot (t_1,t_1^{-1})_n\cdot (-t_2^{-1},t_2^{-1})_n\cdot
+(t_1^{-2},t_2^{-1})_n \\
+=(t_1,t_1^{-1})_n\cdot (-t_2^{-1},t_2^{-1})_n\cdot (t_1^{-1},t_2^{-1})_n
+\end{array}
+\]
+The result follows since $(a_1,a_1)_n=(-a_1,a_1)_n\cdot
+(-1,a_1)_n=(-1,a_1)_n $.$\Box $
+
+\begin{corollary}
+If $n=2$\ then the 2-fold metaplectic cover $\overline{A(F)}$ is abelian.
+\end{corollary}
+
+\subsection{$NAK$ decompositions}
+
+By the above lemma, we may identify $N({\Bbb{Q}}_p)$ with a subgroup of $%
+\overline{G({\Bbb{Q}}_p)}$ via $n\longmapsto (n,1)$. We may identify $%
+K_0=K_{0,p}$ with a subset of $\overline{G({\Bbb{Q}}_p)}$ via $k\longmapsto
+(k,1)$. 
+
+\begin{lemma}
+We have 
+\[
+\overline{G({\Bbb{Q}}_p)}=N({\Bbb{Q}}_p)\cdot \overline{A({\Bbb{Q}}_p)}\cdot K_p.
+\]
+Furthermore, if $(g,\varsigma )=(n,1)\cdot (a,\varsigma ^{\prime })\cdot
+(k,1)$ then the map $(g,\varsigma )\longmapsto a\;(\limfunc{mod}\;Z(G({\Bbb{Q}}%
+_p))$ is well-defined.
+\end{lemma}
+
+\subsection{Local heights}
+
+For $x\in \prod_{v|p}x_v$, let $|x|_p=\stackunder{v|p}{\max }\{|x_v|_v\}$.
+Let $g=\left( 
+\begin{array}{cc}
+a & b \\ 
+c & d
+\end{array}
+\right) \in G({\Bbb{Q}}_p)$ and define 
+\[
+||g||_p=\left\{ 
+\begin{array}{c}
+\max (|a|_p,|b|_p,|c|_p,|d|_p),\;\;p<\infty , \\ 
+\sqrt{|a|_\infty ^2+|b|_\infty ^2+|c|_\infty ^2+|d|_\infty ^2},\;p=\infty .
+\end{array}
+\right. 
+\]
+This is called the height or norm of $g$. We extend this to
+$\overline{G({{\Bbb{Q}}}_p)}$ by $||(g,\zeta)||_p=||g||_p$.
+
+\subsection{Characteristic functions of Weyl chambers}
+
+Let $P_0=B$ denote the minimal parabolic defined above Lemma 2.3.
+This will be our fixed
+minimal parabolic in the set-up of \cite{A2}, \cite{A3}.
+The set of all standard
+parabolics is simply the set $\{B,G\}$. Let $P=MN$ denote a standard
+parabolic and let $A_P$ denote the center of $M$. Thus $A_B=A$ and
+$A_G=\{\pm 1\}$.
+
+Define $H=H_B:\overline{G({\Bbb{Q}}_p)}\rightarrow \Bbb{R}$
+by $H(g)=\log |t|_{{\Bbb{Q}}_p}$, where $g=(nak,\zeta)$ and
+$a=\left( 
+\begin{array}{cc}
+t & 0 \\ 
+0 & t^{-1}
+\end{array}
+\right) \in A({\Bbb{Q}}_p)$, $t\in {\Bbb{Q}}_p$.
+Define $H=H_{B,{\Bbb{A}}}$ by
+$H(g)=\sum_v H_{B,v}(g_v)$ if
+$g=(\otimes_v g_v,\zeta)\in \overline{G({\Bbb{A}})}$.
+
+\begin{lemma}
+(a) $H(gg^{\prime })=H(g)+H(g^{\prime }),
+\;\forall g,g^{\prime }\in \overline{G({\Bbb{A}})}$.
+
+(b) $H(kxk^{\prime })=H(x),\;\forall k,k^{\prime }\in K$.
+
+(c) $|H(x)|<<1+\log ||x||,\;\forall x\in \overline{G({\Bbb{A}})}$.
+
+(d) For all $x\in \overline{G({\Bbb{A}})}$,
+$\gamma \in B({\Bbb{Q}})$, $H(\gamma x)=H(x)$.
+\end{lemma}
+
+Let $X(A)=Hom_{{\Bbb{Q}}}(A,{\Bbb{G}}_m)\cong {\Bbb{Z}}$ \
+(send the character $\chi _n$ defined by $\chi _n(a)=t^n$
+to $n\in {\Bbb{Z}}$) and identify ${{\frak{a}}}=Hom(X(A),\Bbb{R})$
+with $\Bbb{R}$ (send $X\in {\frak{a}}$ to $X(\chi _1)$).
+Let $X_{\alpha}\in {\frak{a}}$ denote the map such that
+$X_{\alpha} (\chi_1)=1$.
+Let ${\frak{a}}^{*}=Hom({\frak{a}},\Bbb{R})$ and let $\alpha \in {\frak{a}}^{*}$
+be defined by $\alpha (X)=2X(\chi _1)$.
+We may identify ${\frak{a}}$ and ${\frak{a}}^*$ by means of the
+linear map which sends
+$X_{\alpha}\in {\frak{a}}$ to $\alpha\in {\frak{a}}^*$.
+Note $\alpha(X_{\alpha} )=2$.
+We also let $\alpha \in X(A)$ be the
+element such that $\alpha (a)=t^2$, where $a=\left( 
+\begin{array}{cc}
+t & 0 \\ 
+0 & t^{-1}
+\end{array}
+\right) \in A$, so $\alpha $ the simple positive root of $(G,A)$. By
+duality, there is an $\varpi \in ({\frak{a}}^{*})^{*}\cong {\frak{a}}$
+such that 
+$\varpi (\alpha )=1$, so $\varpi $ is the dual root of $\alpha $. We
+may identify $\varpi$ with ${1\over 2}X_{\alpha}$.
+
+Let ${\frak{a}}^{+}=\{X\in {\frak{a}}\;|\;\alpha (X)>0\}$
+denote the positive
+Weyl chamber and let
+$({\frak{a}}^{*})^{+}=\{X\in {\frak{a}}^{*}\;|\;\varpi (X)>0\}$
+denote the dual positive Weyl chamber. The elements of
+${\frak{a}}^{+} $ are called \textbf{regular}. Let $\tau _B$ denote
+the characteristic
+function of ${\frak{a}}^{+}$ and let $\tau _B^{\wedge }$ denote the
+characteristic function of $({\frak{a}}^{*}\frak{)}^{+}$.
+Define $\tau _G=\tau _G^{\wedge }=1$.
+
+More generally, if $P_1\subset P_2$ denote two standard
+parabolics. let $\Delta _1^2\subset \Delta _1$, $\tau _1^2$,
+and $\tau _1^{\wedge ,2}=(\tau^{\wedge })_1^2$ be as in \cite{A2}.
+If we identify ${\frak{a}}={\frak{a}}_B$ with $R$
+as above then we have 
+\begin{eqnarray}
+\tau _0 &=&\tau _B=\tau _0^G=\tau _B^G=\mathrm{char.\;fcn.\;of}
+\;\{u\in {\Bbb{R}}\;|\;u>0\} \\
+\tau _0^{\wedge }
+&=&\tau _B^{\wedge }=\tau _0^{\wedge ,G}
+=\tau _B^{\wedge,G}=\mathrm{char.\;fcn.\;of}
+\;\{u\in {\Bbb{R}}\;|\;u>0\}  \nonumber \\
+\tau _1^2 &=&\left\{ 
+\begin{array}{c}
+\tau _1,\;\;\mathrm{if}\;P_2=G, \\ 
+1,\;\;\;\mathrm{if}\;P_2\neq G,
+\end{array}
+\right.  \nonumber
+\end{eqnarray}
+Finally, if $\sigma _1^2$ is as in \cite{A2}, then 
+\begin{equation}
+\sigma _1^2=\left\{ 
+\begin{array}{c}
+\tau _1,\;\;\mathrm{if}\;P_1=B,\;P_2=G, \\ 
+0,\;\;\;\;\;\mathrm{if}\;P_2=P_1=B, \\ 
+1,\;\;\;\;\mathrm{if}\;P_2=P_1=G.
+\end{array}
+\right.
+\end{equation}
+
+\subsection{Local algebras of functions}
+
+If $H$ is the group of $F$-rational points of a reductive algebraic group
+over a real or p-adic field $F$, let $C_c^\infty (H)$ denote the usual
+algebra of compactly supported smooth functions under convolution and $%
+C^\infty (H//K)$ the space of smooth functions which are bi-$K$-invariant. A
+function $f:\overline{G({\Bbb{Q}}_p)}\rightarrow {\Bbb{C}}$ such that 
+\begin{equation}
+f(g,\varsigma )=\varsigma \cdot f(g,1)
+\end{equation}
+will be called \textbf{genuine}. Let 
+\begin{eqnarray*}
+C_c^\infty (\overline{G({\Bbb{Q}}_p)})_{gen}
+&=&\{f:\overline{G({\Bbb{Q}}_p)}%
+\rightarrow {\Bbb{C}}\
+|\;(i)\;f|_{G({\Bbb{Q}}_p)}\in C_c^\infty (G({\Bbb{Q}}_p)),
+\\
+&&(ii)\;f\;\mathrm{is\;genuine}\}
+\end{eqnarray*}
+denote the Schwartz-Bruhat algebra of smooth genuine functions.
+If $(p,2n)=1$ then let 
+\begin{eqnarray*}
+{\cal{H}}(\overline{G({\Bbb{Q}}_p)},K_p)
+&=&\{f:\overline{G({\Bbb{Q}}_p)}\rightarrow {\Bbb{C}}
+\ |\;(i)\;f|_{G({\Bbb{Q}}_p)}\in
+C^\infty (G({\Bbb{Q}}_p)//K_p), \\
+&&\ (ii)\;f\;\mathrm{is\;genuine}\}
+\end{eqnarray*}
+denote the Hecke algebra of genuine spherical functions.
+
+\subsection{Local measures}
+
+Let $dk$ denote the Haar measure on $K_p$ normalized so that $K_p$ has
+volume 1. Fix an additive non-trivial character $\psi _v$ of
+$k_v$, for each $v\in \Sigma _k$, and let $dn$ denote a Haar
+measure on $N({\Bbb{Q}}_p)$
+which is induced by a self-dual measue on the additive group
+$\bigoplus\Sb v\in \Sigma _k  \\ v|p  \endSb k_v$
+(with respect to the $\psi _v,$ $v|p$).
+Let $da$ be a Haar measure on $A({\Bbb{Q}}_p)$. If $T$ is a
+Cartan subgroup of 
+$G$ defined over ${\Bbb{Q}}_p$ and $\psi :T\rightarrow A$
+is a $\overline{\Bbb{Q}_p}$-isomorphism given by
+$h\longmapsto t^h$, some $h\in G({\Bbb{Q}}_p)$,
+then we define $dt$ to be the pull-back of $da$ from $A$ to $T$ as in
+\cite{R}.
+If $T^{\prime }$ is another Cartan subgroup of $G$ defined over ${\Bbb{Q}}_p$
+which is stably conjugate to $T$ then we assume that its Haar measure
+$dt^{\prime }$ is compatible with $dt$ as in
+\cite{R}. Let $dg$ be a Haar measure
+on $G({\Bbb{Q}}_p)$ such that $dg=\delta _B(a)^{1/2}dkdadn$, $g=kan$, where 
+\begin{equation}
+\delta _B(a)=|t|^2,\;\;a=\left( 
+\begin{array}{cc}
+t & 0 \\ 
+0 & t^{-1}
+\end{array}
+\right) .
+\end{equation}
+
+We extend these measures to the n-fold cover by imposing the discrete
+measure $d\varsigma $ on $\mu _n$ which gives $\mu _n$ total volume 1. For
+example, the measure on $\overline{G({\Bbb{Q}}_p)}$ will be denoted $d%
+\overline{g}=dg\cdot d\varsigma $.
+
+\section{Adele ring of a number field}
+
+References for this section are \cite{W1}.
+
+Let ${\Bbb A}$ denote the adeles of ${\Bbb Q}$, so 
+\[
+{\Bbb A=}\Pi _{p\leq \infty }^{\prime }{\Bbb Q}_p, 
+\]
+where $\prod^{\prime }$ denotes the restricted direct product and ${\Bbb Q}%
+_\infty ={\Bbb R}$. The rational numbers ${\Bbb Q}$ embeds into the adele
+ring ``diagonally'': $r\longmapsto (r,r,...)\in \Pi _{p\leq \infty }^{\prime
+}{\Bbb Q}_p$. Let ${\Bbb Z}_p$ denote the p-adic integers, $p<\infty $, and
+let ${\Bbb Z}^{\wedge }=\Pi _{p<\infty }{\Bbb Z}_p$. Let $|..|_p$ denote the
+normalized valuation of ${\Bbb Q}_p$ and let $|..|_{{\Bbb A}}$ denote the
+product valuation on the adeles (we denote these both simply by $|..|$ when
+there is no ambiguity). The local fields ${\Bbb Q}_p$ are given the topology
+induced by the metric $d(x,y)=|x-y|_p$. The adeles are given the topology of
+the restricted direct product (a subset $U{\Bbb =}\Pi _{p\leq \infty
+}^{\prime }U_p\subset {\Bbb A=}\Pi _{p\leq \infty }^{\prime }{\Bbb Q}_p$ is
+open if and only if each $U_p\subset {\Bbb Q}_p$ is open and $U_p={\Bbb Z}_p$
+for all but finitely many $p$).
+
+Let $E$ denote a number field with degree $[E:{\Bbb Q}]=d$. Let $\Sigma _E$
+denote the set of all places of $E$, $\Sigma _E^f$ denote the set of all
+non-archimedian (``finite'') places of $E$, and $\Sigma _E^\infty
+=\Sigma_E-\Sigma _E^f$ denote the set of all archimedian (``infinite'')
+places of $E$. Let ${\Bbb A}_E$ denote the adeles of $E$, so 
+\[
+{\Bbb A}_E{\Bbb =}\Pi _{v\in \Sigma _E}^{\prime }E_v, 
+\]
+where $\prod^{\prime }$ denotes the restricted direct product. The
+``rationals'' $E$ embed into the adele ring ``diagonally'': $r\longmapsto
+(r,r,...)\in \Pi _{v\in \Sigma _E}^{\prime }E_v$. Let $O_v$ denote the
+p-adic integers, $v\in \Sigma _E^f$. Let $|..|_v$ denote the normalized
+valuation of $E_v$ and let $|..|_{{\Bbb A}_E}$ denote the product valuation
+on the adeles (we denote these both simply by $|..|$ when there is no
+ambiguity). The adeles are given the topology of the restricted direct
+product.
+
+Let $N=N_{E/{\Bbb Q}}:E\rightarrow {\Bbb Q}$ denote the norm map, which we
+extend to each completion $E_v$.
+
+\subsection{Idele group of a number field}
+
+Let $G$ denote, in this subsection, the group over ${\Bbb Q}$ \ defined by
+restriction of scalars, $G=Res_{E/{\Bbb Q}}({\Bbb G}_m/E),$ so $G({\Bbb Q}%
+)=E^{\times },\;G({\Bbb A})={\Bbb A}_E^{\times }$. Here ${\Bbb G}_m$ denotes
+the multipicative group. The group ${\Bbb A}_E^{\times }$ is called the {\bf %
+idele group} of $E$ and $E^{\times }$ the (diagonally embedded) subgroup of 
+{\bf principal ideles}.
+
+\section{Global aspects}
+
+Notation: Let $k$ denote a number field containing the group of $n^{th}$
+roots of unity $\mu _n\subset {\Bbb{C}}^{\times }$. In particular, if $n>2$
+then $k$ is totally imaginary. Let $\Sigma _k$ denote the set of places of $k
+$, $\Sigma _k^\infty $ denote the set of archimedian places of $k$ (which we
+may identify with the set of inequivalent complex embeddings $k\hookrightarrow 
+{\Bbb{C}}$), and let $\Sigma _k^f$ denote the set of non-archimedian places of 
+$k$ (which we may identify with the set of non-zero prime ideals of $%
+{\cal{O}}_k$). Let ${\Bbb{A}}$ $\;$denote the adele ring of ${\Bbb{Q}}$ and
+let ${\Bbb{A}}_k$ denote the adele ring of $k$ and, for $v\in \Sigma _k$, let $%
+k_v$ denote the completion of $k$ with respect to $v$. For $F=k_v$ p-adic,
+let ${\cal{O}}={\cal{O}}_F={\cal{O}}_v$ denote the ring of integers of 
+$F$, $\pi =\pi _F=\pi _v$ a local uniformizer, $q$ the cardinality of the
+residue field, and $\nu =\nu _F=\nu _v:F^{\times }\rightarrow {\Bbb{Z}}$ \ the
+normalized valuation, so that $\nu (\pi )=q^{-1}$.
+
+Let $G$ denote the reductive group over ${\Bbb{Q}}$ defined by $SL(2)$\ via
+restriction of scalars $k/{\Bbb{Q}}$, so for example $G({\Bbb{Q}})=SL(2,k)$.
+
+Define a map $\beta =\beta _{{\Bbb{A}}}:G({\Bbb{A}})\times G({\Bbb{A}})\rightarrow
+\mu _n$ by 
+\[
+\beta (g_1,g_2)=\prod_{p\leq \infty }\beta _p(g_{1,v},g_{2,v}).
+\]
+This product converges by Lemma 3(b) and the definition of the restricted
+direct product. As a product of local 2-cocycles it inherits the cocycle
+property and therefore defines an element of $H^2(G({\Bbb{A}}),\mu _n)$
+associated to an n-fold central topological covering group $\overline{G(\Bbb{%
+A})}$ fitting into the following exact sequence 
+\begin{equation}
+1\rightarrow \mu _n\rightarrow \overline{G({\Bbb{A}})}\stackrel{p}{\rightarrow 
+}G({\Bbb{A}})\rightarrow 1.
+\end{equation}
+The rules of multiplication, inverses, and conjugation are still as in
+equations (2.1-2.3) above.
+
+Note that we may identify $\overline{G({\Bbb{A}})}$ with a subgroup of the
+restricted direct product
+$\prod_{v\in \Sigma _k}\overline{SL_2(k_v)}$. Again,
+if $H<G({\Bbb{A}})$ is a subgroup then we define
+$\overline{H}=p^{-1}(H)<\overline{G({\Bbb{A}})}$.
+
+\begin{lemma}
+(a)\ $\overline{G({\Bbb{Q}})}\cong G({\Bbb{Q}})\times \mu _n$,
+where the splitting isomorphism in $\cong$ will be
+described below,
+
+(b)\ $\overline{N({\Bbb{Q}})}=N({\Bbb{Q}})\times \mu _n$ (direct product),
+
+(c) if $K(n)^f=\prod_{p|n}K_{n,p}$, $K(n)_f=\prod_{(p,n)=1}K_{0,p}$, and
+$K(n)=K(n)^f\times K(n)_f$ then 
+\[
+\overline{K(n)}\cong K(n)\times \mu _n,
+\ \ \ {\rm (direct product)}.
+\]
+
+(d) The center of $\overline{G({\Bbb{A}})}$ is
+$Z(\overline{G({\Bbb{A}})})=Z(G({{\Bbb{A}}}))\times \mu _n$,
+
+(e) For $a_i=\left( 
+\begin{array}{cc}
+t_i & 0 \\ 
+0 & t_i^{-1}
+\end{array}
+\right) \in A({\Bbb{A}})$, $i=1,2$, and $\varsigma _i\in \mu _n$, we have $%
+(a_1,\varsigma _1)^{-1}\cdot (a_2,\varsigma _2)\cdot (a_1,\varsigma
+_1)=(a_2,(t_1,t_2)_n^2\varsigma _2)$. Here $(...,...)_n$ denotes the global
+Hilbert symbol.
+\end{lemma}
+
+proof: This is an immediate conseqeunce of the results in
+\cite{K2}, the properties summarized in section 1 above
+or properties of the global Hilbert symbol \cite{W1}. $\Box $
+
+From \cite{K2}, we see that
+the splitting of the above exact sequence indicated in part (a) of the above
+lemma is not given by $\gamma \longmapsto (\gamma ,1)$ but by $\gamma
+\longmapsto (\gamma ,s_{{\Bbb{A}}}(\gamma )^{-1})$, where 
+\[
+s_{{\Bbb{A}}}(\gamma )=
+\prod_{v\in \Sigma _k}
+s_v(\gamma),
+\]
+and
+\begin{equation}
+s_v(\gamma)=\left\{ 
+\begin{array}{c}
+(c,d)_{v,n}^{-1},
+\;\;\;cd\neq 0{\rm \ and\ }
+n\;\mathrm{does\;not\;divide}\;v(c)
+{\rm \ and\ }v<\infty, \\ 
+1,\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;
+\mathrm{\;otherwise}.\;\;\;\;\;\;\;\;
+\end{array}
+\right.
+\end{equation}
+Here $\gamma =\left[ 
+\begin{array}{cc}
+a & b \\ 
+c & d
+\end{array}
+\right] \in SL_2(k)$.
+
+{\em From now on, we identify $G({\Bbb{Q}})$ with its image
+in $\overline{G({\Bbb{A}})}$ under this splitting (and the diagonal
+embedding).} We identify $N({\Bbb{A}})$ with the
+subgroup
+$N({\Bbb{A}})\times 1\subset \overline{G({\Bbb{A}})}$.
+
+Let $K_0=\Pi_{p\leq infty}K_{0,p}$
+denote the ``usual'' maximal compact subgroup of $G({\Bbb{A}})$.
+Here, if $p<\infty $ then $K_{0,p}=G({\Bbb Z}_p)$ and
+otherwise
+$K_{0,\infty}=\prod\Sb v|\infty\\ v\in\Sigma_k\endSb
+K_v$, where $K_v=SO(2,{\Bbb{R}})$ if $v$ is real and
+$K_v=SU(2,{\Bbb{C}})$ if $v$ is complex.
+
+The following result is essentially due to Kubota \cite{K2},
+Proposition 5 (see also \cite{Ge2}, Lemma 3.2).
+
+\begin{lemma}
+For each compact open subgroup $K=\Pi _{p\leq \infty }K_p\subset K_0\subset
+G({\Bbb{A}}),$ there are discrete subgroups of cofinite volume $\Gamma
+_i\subset \overline{G({\Bbb{R}})}$ such that 
+\[
+G({\Bbb Q})\backslash \overline{G({\Bbb{A}})}/\overline{K}
+\cong \coprod_i
+\Gamma _i\backslash \overline{G({\Bbb{R}})}/\overline{K_\infty }.
+\]
+\end{lemma}
+
+\subsection{Global $NAK$ decomposition}
+
+By the above lemma, we may identify $N({\Bbb{A}})$ with a subgroup of $%
+\overline{G({\Bbb{A}})}$ via $n\longmapsto (n,1)$. We may identify $%
+K_0=\prod_{p\leq \infty }K_{0,p}$ with a {\em subset} of
+$\overline{G({\Bbb{A}})}$ via $k\longmapsto (k,1)$.
+
+\begin{lemma}
+We have 
+\[
+\overline{G({\Bbb{A}})}
+=N({\Bbb{A}})\cdot \overline{A({\Bbb{A}})}\cdot K_0.
+\]
+Furthermore, if $(g,\varsigma )=(n,1)\cdot (a,\varsigma ^{\prime })\cdot
+(k,1)$ then the map
+$(g,\varsigma )\longmapsto a\;(\limfunc{mod}\;A({\Bbb{A}})\cap K_0)$
+is well-defined.
+\end{lemma}
+
+\subsection{Global heights}
+
+For $g\in \prod_{p\leq \infty }g_p\in G({\Bbb{A}})$,
+$g_p=\left( 
+\begin{array}{cc}
+a_p & b_p \\ 
+c_p & d_p
+\end{array}
+\right) \in G({\Bbb{Q}}_p)$, define 
+\begin{equation}
+||g||=\prod_{p\leq \infty }||g_p||_p
+\end{equation}
+This is called the height or norm of $g$. Extend this to
+$\overline{G({\Bbb{A}})}$ by $||(g,\zeta)||=||g||$.
+
+\begin{lemma}
+(a) $||x||\geq 1,\;\forall x\in \overline{G({\Bbb{A}})}$.
+
+(b) $||kxk^{\prime }||=||x||,\;\forall k,k^{\prime }\in K$.
+
+(c) $||xy||\leq ||x||\cdot ||y||,\;\forall x,y\in \overline{G({\Bbb{A}})}$.
+
+(d) There is a constant $N>0$ such that for all
+$x\in \overline{G({\Bbb{A}})}$,
+$||x^{-1}||\leq ||x||^N$.
+\end{lemma}
+
+\subsection{Global algebras of functions}
+
+A function $f:\overline{G({\Bbb{A}})}\rightarrow {\Bbb{C}}$
+such that (2.9)
+holds will be called \textbf{genuine}. Let 
+${\cal{H}}(\overline{G({\Bbb{A}})})$ denote the algebra of 
+functions generated by the elements of the
+restricted tensor product 
+$\bigotimes_{p\leq \infty }
+C_c^\infty (\overline{G({\Bbb{Q}}_p)})_{gen}$, 
+where almost all $f_p$ in the product 
+$f=\otimes _{p\leq \infty}f_p\in 
+\bigotimes_{p\leq \infty }C_c^\infty (\overline{G({\Bbb{Q}}_p)})_{gen}$ are
+spherical in the sense of 2.1.4.
+
+\subsection{Global measures}
+
+Let $dk$ denote the Haar measure on $K=\prod_{p\leq \infty }K_p$
+defined by $dk=\prod_{p\leq \infty }dk_p$.
+Let $dg$ be the Tamagawa measure on
+$G({\Bbb{A}})$ \cite{W2}. For any Cartan subgroup
+$T$ of $G$ defined over ${\Bbb{Q}}$, let $dt$
+denote the global Tamagawa measure on
+$T({\Bbb{A}})$. If $T=A$ then this will
+be denoted by $da$. Let $dn$ denote the product measure on $N({\Bbb{A}})$.
+
+We extend these measures to the n-fold cover by imposing the discrete
+measure $d\varsigma $ on $\mu _n$ which gives $\mu _n$ total volume 1. For
+example, the measure on $\overline{G({\Bbb{A}})}$ will be denoted
+$d\overline{g}=dg\cdot d\varsigma $.
+
+
+

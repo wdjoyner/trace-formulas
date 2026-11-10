@@ -1,0 +1,519 @@
+\section{The spectral side of the trace formula}
+
+The spectral side of the trace formula comprises the collection of terms
+associated with the representations of the group. This side, though
+analogous to the already discussed geometric side of the trace formula in
+terms of the overall structure, requires more background to state.
+
+A general remark may be in order here. The spectral theory used in
+\cite{A2}
+relies on the general theory of Eisenstein series on a quotient $\Gamma
+\backslash H$ developed in \cite{L1},
+where $H$ denotes a Lie group with finitely
+many connected components and $\Gamma $ denotes a discrete subgroup
+satisfying certain assumptions. By passing to the archimedian place, the
+quotient $G({\Bbb{Q}})\backslash \overline{G({\Bbb{A}})^1}$
+may be regarded as a
+finite union of quotients $\Gamma _i\backslash H$ as in \cite{L1}
+(see Lemma 8 above). Thus we may apply the results of \cite{L1} here.
+
+We begin with a brief overview of some of the background. Some results we
+will eventually need are the decomposition (9.25), Proposition 286
+and the basis definition following it. 
+We need a basis for the space of automorphic forms in order to
+calculate a trace.
+
+\subsection{The spectral decomposition}
+
+We refer the reader to Lemma 197 in \S 8.4.1 for motivation
+and basic definitions.
+
+\subsubsection{The partial decomposition in the adelic case: cuspidals}
+
+For each parabolic $P=MN$ of $G$ defined over ${\Bbb{Q}}$, define 
+\begin{equation}
+\begin{array}{c}
+L^2(M({\Bbb{Q}})\backslash \overline{M({\Bbb{A}})^1})_{cusp} \\ 
+=\{\phi \in L^2(M({{\Bbb{Q}}})\backslash \overline{M({\Bbb{A}})^1})
+\ {\rm \ genuine\ }|\;{\rm for\;any\;parabolic}\;
+P_1\subset P,\;P_1\neq P, \\ 
+{\rm we\;have}
+\int_{N_1({\Bbb{Q}})\cap M({\Bbb{Q}})\backslash
+N_1({\Bbb{A}})\cap M({\Bbb{A}})}\phi (nm)dn=0, \\ 
+{\rm for\;almost\;all}\;m\in \overline{M({\Bbb{A}})^1}\}.
+\end{array}
+\end{equation}
+This is the space of genuine {\bf cusp forms} on
+$\overline{M({\Bbb{A}})^1}$.
+
+\begin{example}
+(representations of adele groups) {\sf Case} $P=M=G=SL(2)$:
+The genuine unitary representations $\pi $ of
+$\overline{G({{\Bbb{A}}})}$ are all
+``factorizable'', i.e.,
+$\pi =\otimes _{p\leq \infty}\pi _p$ on
+$\overline{G({{\Bbb{A}}})}$, where
+$\pi _p$ is a genuine irreducible unitary representation of
+$\overline{G({\Bbb{Q}}_p)}$ and almost all $\pi _p$
+are unramified (i.e., has a non-trivial
+$\overline{K_p}$-fixed vector). Conversely, given a collection 
+\[
+\{\pi _p\;|\;\pi _p\in \Pi _u(\overline{G({\Bbb{Q}}_p)}),
+\;{\rm almost\;all}\;\pi _p\;{\rm are\;unramified}\},
+\]
+the restricted tensor product
+$\pi =\otimes _{p\leq \infty}\pi _p$
+defines an element of $\Pi _u(\overline{G({\Bbb{A}})})$. For a proof,
+see for example, \cite{Ge2}, \S 3.
+
+\end{example}
+
+\begin{proposition}
+For each $\rho \in \Pi _u(\overline{M({\Bbb{A}})^1})$
+there is an integer $m(\rho )\geq 0$ such that 
+\[
+L^2(M({{\Bbb{Q}}})\backslash \overline{M({\Bbb{A}})^1})_{cusp}\cong
+\bigoplus_{\rho \in \Pi _u(\overline{M({\Bbb{A}})^1})}m(\rho )\rho .
+\]
+\end{proposition}
+
+If
+$\rho \in \Pi _u(\overline{M({\Bbb{A}})^1})$ and if $m(\rho )\neq 0$
+then we call $\rho $ a genuine {\bf cuspidal
+representation} of $\overline{M({\Bbb{A}})^1}$.
+
+We identify the Weyl group $\Omega$ with a
+subgroup of $G({\Bbb{Q}})$ (hence as a subgroup of
+$\overline{G({\Bbb{A}})}$) by $s\longmapsto w_s\in G({\Bbb{Q}})$.
+If $P,P^{\prime }$ are associate and if 
+$\rho \in \Pi _u(\overline{M({\Bbb{A}})^1}),
+\;\rho ^{\prime }\in \Pi _u(\overline{M^{\prime }({\Bbb{A}})^1})$
+are cuspidal then we call $(M,\rho )$ {\bf equivalent} to
+$(M^{\prime },\rho ^{\prime })$ if there exists an
+$s\in \Omega ({\frak{a}}, {\frak{a}}^{\prime })$ such that
+$s\rho $ is unitarily equivalent (as a
+representation of $\overline{M^{\prime }({\Bbb{A}})^1})$
+to $\rho ^{\prime }$, where 
+\[
+(s\rho )(m^{\prime })=\rho (w_s^{-1}m^{\prime }w_s),
+\;\;\;\;m^{\prime }\in \overline{M^{\prime }({{\Bbb{A}}})^1}. 
+\]
+{\bf Notation}:
+Let ${\cal{X}}={\cal{X}}^G$ denote the set of equivalent classes of such
+pairs $(M,\rho )$.
+For each $\chi \in {\cal X}$, we denote by
+${\cal P}_\chi $ the corresponding class of associated parabolics.
+Let ${\cal{X}}(G)$ denote the set of equivalent classes of
+cuspidal pairs $(G,\rho )$.
+
+\begin{example}
+Two parabolics $P,P^{\prime }$ of $G=SL(2)$ with Levi $A$
+are associate if and only they are opposite.
+Therefore $(M,\rho )$ is equivalent to $(M^{\prime },\rho ^{\prime })$
+if and only if $M=M^{\prime }=G$ and $\rho =\rho ^{\prime }$
+(as equivalence classes of representations of
+$\overline{G({\Bbb{A}})}$),
+or $M=M'=A$ and $\rho ={\rho'}^w$, where 
+$w=
+\left(
+\begin{array}{cc}
+0 &-1\\
+1&0
+\end{array}
+\right)$
+denotes the non-trivial element of the Weyl group of $A$.
+\end{example}
+
+For each $P=MN$ and each $\chi \in {\cal X}$, we let 
+\begin{equation}
+L^2(M({{\Bbb{Q}}})\backslash \overline{M({\Bbb{A}})^1})_{cusp,\chi }
+\cong
+\bigoplus\Sb \rho \in \Pi _u(\overline{M({\Bbb{A}})^1})  \\
+(M,\rho )\in \chi  \endSb
+m(\rho )\rho .
+\end{equation}
+Note that if $P\notin {\cal P}_\chi $ then this sum is empty (which, by
+convention, we define to be $0$).
+
+The above theorem has the following
+
+\begin{corollary}
+$L^2(M({\Bbb{Q}})\backslash \overline{M({\Bbb{A}})^1})_{cusp}
+=\bigoplus_{\chi \in {\cal X}}
+L^2(M({\Bbb{Q}})\backslash \overline{M({\Bbb{A}})^1})_{cusp,\chi }$.
+In particular, 
+\[
+L^2(G({\Bbb{Q}})\backslash \overline{G({\Bbb{A}})})_{cusp}
+=\bigoplus_{\chi \in {\cal X}}
+L^2(G({\Bbb{Q}})\backslash \overline{G({\Bbb{A}})})_{cusp,\chi }.
+\]
+\end{corollary}
+
+In other words, the space of cuspidal automorphic functions decomposes into
+``irreducible'' subspaces on which the action of $\overline{G({\Bbb{A}})}$ is the
+more-or-less the same.
+
+\subsubsection{The partial decomposition in the adelic case: theta functions}
+
+We seek an analogous result for all of
+$L^2(G({\Bbb{Q}})\backslash \overline{G({\Bbb{A}})})_{gen}$.
+
+Let ${\frak{Z}}_M$ denote the center of the
+universal enveloping algebra ${\frak{U}}_M$ of $M$. Each
+$X\in {\frak{Z}}_M$ defines a densely defined
+unbounded operator on
+$L^2(M({\Bbb{Q}})\backslash \overline{M({\Bbb{A}})^1})_{cusp}$.
+
+Let ${\cal H}_P^0$ denote 
+\begin{equation}
+\begin{array}{c}
+{\cal H}_P^0
+=\{\varphi \in
+C_c(N({\Bbb{A}})M({\Bbb{Q}})\backslash \overline{G({\Bbb{A}})})
+\ {\rm genuine}\;|\; \\ 
+(i)\;\forall x\in \overline{G({\Bbb{A}})},
+\;{\rm the\;function}\;m\longmapsto \varphi (mx),
+\;m\in M({\Bbb{A}}), \\ 
+{\rm is}\;{\frak{Z}}_{M({\Bbb{R}})}{\rm -finite}, \\ 
+(ii)\;{\rm the\;span\;of\;all\;functions}
+\;\varphi _k:x\longmapsto \varphi (xk),\;k\in \overline{K}, \\ 
+{\rm is\;finite\;}\text{{\rm dimensional}}, \\ 
+(iii)\;||\varphi ||^2=
+\int_{\overline{K}}
+\int_{M({\Bbb{Q}})\backslash \overline{M({\Bbb{A}})^1}}
+|\varphi (mk)|^2dmdk<\infty \} .
+\end{array}
+\end{equation}
+Let $L^2(N({\Bbb{A}})M({\Bbb{Q}})\backslash \overline{G({\Bbb{A}})})$
+denote the closure of ${\cal H}_P^0$ with respect to this
+norm in (iii).
+
+For $\varphi \in
+L^2(N({\Bbb{A}})M({\Bbb{Q}})\backslash \overline{G({\Bbb{A}})})$,
+$\lambda \in {\frak{a}}_{{\Bbb C}},\;x,y\in \overline{G({\Bbb{A}})}$,
+define $I_P(\lambda ):\overline{G({\Bbb{A}})}\rightarrow
+End(L^2(N({\Bbb{A}})M({\Bbb{Q}})\backslash \overline{G({\Bbb{A}})}))$ by 
+\[
+(I_P(\lambda ,y)\varphi )(x)=\varphi (xy)\exp (<\lambda +\rho
+_P,H_P(xy)>)\exp (-<\lambda +\rho _P,H_P(x)>). 
+\]
+Here $\rho _P\in {\frak{a}}$ is the element such that
+$|\det (Ad(m))_{{\frak{n}}({\Bbb A})}|
+=\exp (<2\rho _P,H_P(m)>),\;m\in \overline{M({\Bbb{A}})}$.
+Because of Theorem 287(a)(ii) below, the intertwining operators
+(9.26) below intertwine $I_P(\lambda)$ and $I_{P'}(s\lambda)$,
+where $P,P'$ are associate parabolics by $s\in \Omega$.
+
+For each $P=MN$ and each $\chi \in {\cal X}$, we define
+$L^2(M({\Bbb{Q}})\backslash \overline{M({\Bbb{A}})^1})_\chi $
+as follows. If there is no $P_1\in {\cal P}_\chi $
+with $P_1\subset P$ then we define
+$L^2(M({{\Bbb{Q}}})\backslash \overline{M({\Bbb{A}})^1})_\chi $
+to be $0$. Otherwise, let $\Psi (P_1,P,\chi,W )$ denote the space of
+all genuine complex-valued functions
+$\psi :N({\Bbb{A}})M_1({\Bbb{Q}})\backslash \overline{G({\Bbb{A}})}
+\rightarrow {\Bbb C}$, $P_1=N_1M_1\in {\cal{P}}_\chi $ 
+with $P_1\subset P$, such that
+
+\begin{enumerate}
+\item  $\psi (amk)$, as a function of 
+$a\in A_1({\Bbb{Q}})\backslash \overline{A_1({\Bbb{A}})}$ (fixed 
+$m\in M_1({\Bbb{Q}})\backslash \overline{M_1({\Bbb{A}})^1},\;k\in K$),
+is compactly supported,
+
+\item  $\psi (amk)$, as a function of $k\in \overline{K_\infty}$,
+belongs to the
+vector space defined by the span of the matrix coefficients of some
+irreducible representation $W$ of $\overline{K_\infty}$,
+
+\item  $\psi (amk)$, as a function of $m\in M$, belongs to 
+$L^2(M({{\Bbb{Q}}})\backslash \overline{M({\Bbb{A}})^1})_{cusp,\chi }$.
+\end{enumerate}
+
+Given $\psi \in \Psi (P_1,P,\chi,W )$, $P_1\subset P$, let 
+\[
+\psi ^{\wedge ,M}(m)=
+\sum_{\delta \in P_1({\Bbb{Q}})\cap
+M({\Bbb{Q}})\backslash M({\Bbb{Q}})}
+\psi (\delta m),\;\;\;\;\;
+m\in M({\Bbb{Q}})\backslash \overline{M({\Bbb{A}})^1}, 
+\]
+so that
+$\psi ^{\wedge ,M}\in
+L^2(M({\Bbb{Q}})\backslash \overline{M({\Bbb{A}})^1})$
+\cite{L1}, Lemma 1. Let
+$L^2(M({\Bbb{Q}})\backslash \overline{M({\Bbb{A}})^1})_\chi $ denote
+the $L^2$-closure of the span of all the
+$\psi ^{\wedge ,M}$ with $\psi \in \Psi (P_1,P,\chi )$,
+some $P_1\subset P$ and $W$ as above. Lemma 2 of \cite{L1} implies 
+\begin{equation}
+L^2(M({\Bbb{Q}})\backslash \overline{M({\Bbb{A}})^1})
+=\bigoplus_{\chi \in {\cal X}}
+L^2(M({\Bbb{Q}})\backslash \overline{M({\Bbb{A}})^1})_\chi .
+\end{equation}
+
+\subsection{Eisenstein series in the adelic case}
+
+For $\varphi \in {\cal H}_P^0,\;\lambda \in {\frak{a}}_{{\Bbb C}},\;s\in
+\Omega ({\frak{a}},{\frak{a}}_1),\;x\in \overline{G({\Bbb{A}})}$, let
+$M(s,\lambda)$ denote the intertwining integral
+\begin{equation}
+\begin{array}{c}
+M(s,\lambda )\phi(x) \\ 
+=\exp (-<s\lambda +\rho _1,H_P(x)>)\times \;\;\;\;\;\;\;\;\;\;\;\;\; \\ 
+\;\;\;\;\;\;\times
+\int_{N_1({\Bbb{A}})\cap w_sN({\Bbb{A}})w_s^{-1}\backslash
+N_1({\Bbb{A}})}\varphi (w_s^{-1}nx)
+\exp (<\lambda +\rho_P,H_P(w_s^{-1}nx)>)dn,
+\end{array}
+\end{equation}
+with a suitably normalized measure $dn$.
+We define $M(s,\pi_\zeta)$ below (see (9.30)).
+
+Let ${\frak{a}}^{+}$ denote the positive Weyl chamber ${\frak{a}}^{+}=\{X\in 
+{\frak{a}}\;|\;\alpha (X)>0,\;\forall \alpha >0\}$.
+For $\varphi \in {\cal{H}}_P^0,
+\;\lambda \in {\frak{a}}_{{\Bbb C}},
+\;Re(\lambda )\in \rho _P+{\frak{a}}^{+},
+\;x\in \overline{G({\Bbb{A}})}$, let 
+\begin{equation}
+E(x,\varphi ,\lambda )=
+\sum_{\delta \in P({\Bbb{Q}})\backslash G({\Bbb{Q}})}
+\varphi (\delta x)\exp (<\lambda +\rho _P,H_P(\delta x)>).
+\end{equation}
+This is the {\bf Eisenstein series} associated to $P$ and $\varphi $ and is
+known to converge absolutely. This will, as explained in the previous
+chapter, intertwines $I_P(\lambda)$ with the regular representation.
+
+Let $P=MN$ denote a parabolic and let
+$\pi \in \Pi _u(\overline{M({\Bbb{A}})^1})$.
+Following \cite{A2}, we define 
+\begin{equation}
+\begin{array}{c}
+{\cal H}_P^0(\pi )=\{\varphi :N({\Bbb{A}})M({\Bbb{Q}})
+\backslash \overline{G({\Bbb{A}})}\rightarrow {\Bbb C}\;
+{\rm genuine,\ smooth\ }|\; \\ 
+(i)\;\phi \;{\rm is\;right}\;K{\rm -finite,} \\ 
+(ii)\;\forall x\in \overline{G({\Bbb{A}})},
+\;{\rm the\;function}\;m\longmapsto \varphi (mx)
+\;(m\in \overline{M({{\Bbb{A}}})^1}) \\ 
+{\rm is\;a\;matrix\;coefficient\;of}\;\pi , \\ 
+(iii)\;||\varphi ||^2
+=\int_K\int_{M({\Bbb{Q}})\backslash \overline{M({\Bbb{A}})^1}}|
+\varphi (mk)|^2dmdk<\infty \}.
+\end{array}
+\end{equation}
+
+Let $L^2(N({\Bbb{A}})M({\Bbb{Q}})\backslash \overline{G({\Bbb{A}})})_\pi $
+denote the completion of ${\cal H}_P^0(\pi )$ with
+respect to the norm $||...||$ in (iii). For
+$\phi \in
+L^2(N({\Bbb{A}})M({\Bbb{Q}})\backslash \overline{G({\Bbb{A}})})_\pi $,
+$\varsigma \in i{\frak{a}}^{*},$ let
+\begin{eqnarray*}
+\phi _\varsigma (x)
+&=&\phi (x)e^{\varsigma (H_P(x))},\;\;\;x\in \overline{G({\Bbb{A}})},
+\\
+\pi _\varsigma  &=&\pi \otimes \chi _\varsigma ,\;\;\;\chi _\varsigma
+(x)=e^{\varsigma (H_P(x))},\;\;x\in \overline{G({\Bbb{A}})}, \\
+(I_P(\pi _\varsigma ,y)\phi _\varsigma )(x) &=&\phi _\varsigma (xy)\delta
+_P(xy)^{1/2}\delta _P(x)^{-1/2},\;\;\;x,y\in \overline{G({\Bbb{A}})}.
+\end{eqnarray*}
+
+Let $P=MN$ denote a parabolic, let $\pi \in \Pi _u(\overline{M({\Bbb{A}})})$,
+let $f$ be a function on $\overline{M({\Bbb{A}})}$,
+and let $\zeta\in {\frak{a}}^*_{\Bbb{C}}$. Define $\pi_\zeta$ by
+\begin{equation}
+\begin{array}{c}
+f_\zeta (m)=f(m)e^{\zeta(H_M(m))},\\
+\pi_\zeta(m)=\pi(m)e^{\zeta(H_M(m))},\ \ \ m\in \overline{M({\Bbb{A}})}.
+\end{array}
+\end{equation}
+
+The space of (genuine) matrix coefficients of $\pi$, which we denote by
+${\cal A}(\pi)$, is isomorphic to that of $\pi_\zeta$, for
+$\zeta\in i{\frak{a}}^*$:
+$$
+{\cal A}(\pi)\cong {\cal A}(\pi_\zeta).
+$$
+We have a natural isomorphism
+$$
+\begin{array}{c}
+L^2(N({\Bbb{A}})M({\Bbb{Q}})\backslash \overline{G({\Bbb{A}})})_\pi
+\rightarrow
+L^2(N({\Bbb{A}})M({\Bbb{Q}})\backslash \overline{G({\Bbb{A}})})_{\pi_\zeta},
+\\
+\phi\longmapsto \phi_\zeta,
+\end{array}
+$$
+For $\pi \in \Pi _u(\overline{M({\Bbb{A}})})$,
+$\phi \in {\cal H}_P^0(\pi )$,
+$\varsigma \in {\frak{a}}_{P,{\Bbb C}}^{*}$,
+$s\in \Omega ({\frak{a}},{\frak{a}}^{\prime})$,
+$Re(\varsigma )\in \rho _P+({\frak{a}}_P^{*})^{+}$, define
+\begin{equation}
+\begin{array}{c}
+E(x,\phi _\varsigma )
+=\sum_{\delta \in P({\Bbb{Q}})\backslash G({\Bbb{Q}})}
+\phi _\varsigma (\delta x)\delta _P(\delta x)^{1/2}, \\
+(M(s,\pi _\varsigma )\phi _\varsigma )(x)
+=\delta_P(x)^{-1/2}
+\int_{N^{\prime }({\Bbb{A}})\cap w_sN({\Bbb{A}})w_s^{-1}\backslash
+N^{\prime }({\Bbb{A}})}
+\phi _\varsigma (w_s^{-1}nx)\delta_P(w_s^{-1}nx)^{1/2}dn.
+\end{array}
+\end{equation}
+
+Let
+\[
+\begin{array}{c}
+L^2(N({\Bbb{A}})M({\Bbb{Q}})\backslash \overline{G({\Bbb{A}})})_{\pi,\chi}
+=\\
+\{\phi \in
+L^2(N({\Bbb{A}})M({\Bbb{Q}})\backslash \overline{G({\Bbb{A}})})_{\pi}
+\;|\;m\longmapsto \varphi (mx)
+\;(m\in M({\Bbb{Q}})\backslash \overline{M({\Bbb{A}})}^1) \\
+{\rm \;\;\;\;\;\;\;\;\;\;\;\;belongs\;to}
+\;L^2(M({\Bbb{Q}})\backslash \overline{M({\Bbb{A}})^1})_\chi \}.
+\end{array}
+\]
+
+\begin{proposition}
+$L^2(N({\Bbb{A}})M({\Bbb{Q}})\backslash \overline{G({\Bbb{A}})})_\pi
+=\bigoplus_{\chi \in {\cal X}}
+L^2(N({\Bbb{A}})M({\Bbb{Q}})\backslash \overline{G({\Bbb{A}})})_{\pi ,\chi}$.
+\end{proposition}
+
+Let $K\subset G({\Bbb{A}}_f)\cap K_0$ be an open compact subgroup and let 
+\begin{equation}
+L^2(N({\Bbb{A}})M({\Bbb{Q}})\backslash
+\overline{G({\Bbb{A}})})_{\pi ,\chi ,\overline{K}}
+\subset
+L^2(N({\Bbb{A}})M({\Bbb{Q}})\backslash \overline{G({\Bbb{A}})})_{\pi ,\chi} 
+\end{equation}
+denote the subspace which is right invariant under
+$\overline{K}$. Let $W$ denote a genuine
+irreducible representation of $\overline{K_\infty} $ and let 
+\begin{equation}
+L^2(N({\Bbb{A}})M({\Bbb{Q}})\backslash
+\overline{G({\Bbb{A}})})_{\pi ,\chi ,\overline{K},W}
+\subset
+L^2(N({\Bbb{A}})M({\Bbb{Q}})\backslash
+\overline{G({\Bbb{A}})})_{\pi ,\chi ,\overline{K}}
+\end{equation}
+denote the subspace of functions $\phi $ such that
+$k\longmapsto \phi (xk)\;\;(k\in \overline{K_\infty} )$
+is a matrix coefficient of $W$.
+
+\begin{proposition}
+$\dim
+L^2(N({\Bbb{A}})M({\Bbb{Q}})\backslash
+\overline{G({\Bbb{A}})})_{\pi ,\chi ,\overline{K},W}<\infty $.
+\end{proposition}
+
+We apply this to fixing a choice of a basis:
+For each connected component $\Pi^0\subset
+\Pi_u(\overline{M({\Bbb{A}})}^1)$, fix an element $\pi^0\in \Pi^0$.
+Every other $\pi\in\Pi^0$ may be uniquely written as
+$\pi=\pi^0_\zeta$, for some $\zeta\in i{\frak{a}}^*_P$.
+Let ${\cal B}_P(\pi^0 )_\chi $
+denote a basis of
+$L^2(N({\Bbb{A}})M({\Bbb{Q}})\backslash
+\overline{G({\Bbb{A}})})_{\pi^0 ,\chi} $ satisfying the following
+properties:
+
+\begin{enumerate}
+\item  each $\phi \in {\cal B}_P(\pi^0 )_\chi $ belongs to
+$L^2(N({\Bbb{A}})M({\Bbb{Q}})\backslash
+\overline{G({\Bbb{A}})})_{\pi^0,\chi ,\overline{K},W}$
+for some $K,W$ (possibly depending on $\phi $),
+
+\item  the elements of ${\cal B}_P(\pi^0 )_\chi $
+form an orthonormal set with
+respect to the inner product
+\[
+(\phi _1,\phi _2)=
+\int_K\int_{M({\Bbb{Q}})\backslash \overline{M({\Bbb{A}})}^1}
+\phi _1(mk)\overline{\phi _2(mk)}dmdk,
+\]
+
+\item  if $\varsigma \in i{\frak{a}}^{*}$ then 
+\[
+{\cal B}_P(\pi^0_\varsigma )_\chi =\{\phi _\varsigma \;|\;
+\phi \in {\cal B}_P(\pi^0 )_\chi \}.
+\]
+\end{enumerate}
+
+${\cal B}_P(\pi)_\chi$ is a basis for
+$L^2(N({\Bbb{A}})M({\Bbb{Q}})\backslash \overline{G({\Bbb{A}})})_{\pi,\chi}$,
+if $\pi=\pi^0$, and is a subset of
+$L^2(N({\Bbb{A}})M({\Bbb{Q}})\backslash \overline{G({\Bbb{A}})})_\pi$
+in general.
+
+Let ${\cal P}$ denote a class of associated parabolics. Let
+$L_{{\cal P}}^{\wedge }$ denote the
+set of collections $F=\{F_P\;|\;P\in {\cal P}\}$ of
+measurable functions
+$F_P:\Pi _u(\overline{M({\Bbb{A}})})\rightarrow
+L^2(N({\Bbb{A}})M({\Bbb{Q}})\backslash \overline{G({\Bbb{A}})})$ such
+that
+
+(i) if $s\in \Omega ({\frak{a}},{\frak{a}}_1)$ then 
+\[
+F_{P_1}(s\pi )=M(s,\pi )F_P(\pi ),
+\]
+
+(ii) if $N(A)$ denotes the number of chambers in ${\frak{a}}$
+(which is equal to 1 for $SL(2)$) then 
+\[
+||F||^2=\sum_{P\in {\cal{P}}}{\left({1\over 2\pi }\right)}^{dim(A)}
+\int_{\Pi _u(\overline{M({\Bbb{A}})})}
+||F_P(\pi )||^2d\pi <\infty .
+\]
+
+The following result of Langlands
+describes some basic properties of Eisenstein series.
+
+\begin{theorem} For
+$s\in \Omega ({\frak{a}},{\frak{a}}_1)$, we have
+
+(a)\ If $\varphi \in {\cal H}_P^0(\pi )$\ then
+$E(x,\varphi _\varsigma )$ and
+$M(s,\pi _\varsigma )\varphi _\varsigma $
+can be analytically continued
+to a meromorphic function on ${\frak{a}}_{{\Bbb C}}^{*}$. On 
+$i{\frak{a}}$ the
+Eisenstein series $E(x,\varphi_\varsigma )$
+has no poles and the intertwining operator $M(s,\pi_\varsigma )$
+is unitary. For $\overline{K_0}$-finite
+$f\in C_c^\infty (\overline{G({\Bbb{A}})})_{gen}$,
+$t\in \Omega ({\frak{a}}_1,{\frak{a}}_2)$, we have 
+\[
+\begin{array}{c}
+(i)\;\;\;\;E(x,I_P(\pi ,f)\varphi )
+=\int_{\overline{G({\Bbb{A}})}}f(y)E(xy,\varphi )dy,
+\\ 
+(ii)\;\;\;\;\;E(x,M(s,\pi )\varphi )=E(x,\varphi ), \\ 
+(iii)\;\;\;\;M(ts,\pi )=M(t,s\pi )M(s,\pi ).
+\end{array}
+\]
+(b) There is a dense subspace of $L_{{\cal P}}^{\wedge }$\ on which the map 
+\[
+F\longmapsto \sum_{P\in {\cal P}}n(A)^{-1}
+\left( \frac 1{2\pi }\right)^{\dim (A)}
+\int_{\Pi _u(\overline{M({\Bbb{A}})})}E(x,F_P(\pi ))d\pi 
+\]
+is defined. This extends to all of $L_{{\cal P}}^{\wedge }$\ and defines a
+unitary map of $L_{{\cal P}}^{\wedge }$\ onto a closed subspace 
+\[
+L_{{\cal P}}^2(G({{\Bbb{Q}}})\backslash \overline{G({\Bbb{A}})})
+\subset L^2(G({\Bbb{Q}})\backslash \overline{G({\Bbb{A}})})_{gen}.
+\]
+Moreover, 
+\[
+L^2(G({\Bbb{Q}})\backslash \overline{G({\Bbb{A}})})_{gen}
+=\bigoplus_{\cal{P}}
+L_{\cal{P}}^2(G({\Bbb{Q}})\backslash \overline{G({\Bbb{A}})}).
+\]
+\end{theorem}
+

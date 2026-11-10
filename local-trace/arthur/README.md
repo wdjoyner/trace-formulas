@@ -13,4 +13,6 @@ Status (November 2026): a sketch is §7 of the revised paper (`../paper/`), incl
 - the main theorem in outline;
 - the comparison with Route A;
 - the examples PGL(2), SL(2) and PGL(3), plus a new prediction for SL(3) (a point mass at the characters (1, ζ, ζ²));
-- §10, the list of what remains to be checked.
+- a literature review before and after 1997 (§10);
+- §11, the list of what remains to be checked;
+- a glossary (Appendix A).

@@ -22,7 +22,8 @@ where f^∨ is the Satake transform and dμ the spherical Plancherel measure. Th
 | `original-1997/referee_report_ltf.tex` / `.pdf` | Referee report (2026) |
 | `examples/pgl2/` | PGL(2) worked example + verification script |
 | `examples/sl2/` | SL(2) check: the atom at the quadratic unramified character |
-| `paper/` | Revised paper (2026) and `CHANGES.md` |
+| `examples/rank2/` | Exact rank-two check of the Brion vertex decomposition (SL(3), PGL(3)) |
+| `paper/` | Revised paper (2026), `CHANGES.md`, second referee report and response |
 | `arthur/` | Route B: a sketch is §7 of the revised paper; a standalone guide is planned |
 
 ## Plan for the revision ("Route A") and its status

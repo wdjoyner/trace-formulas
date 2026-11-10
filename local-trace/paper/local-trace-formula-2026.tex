@@ -422,6 +422,223 @@ Lemma~2.9 follows from Lemmas~2.6--2.8. These results relate the $(G,A)^\sim$-fa
 Lemmas~2.6 and 2.8 are standard (2.8 by the construction given). The precise form of Lemmas~2.7 and~2.9 has not been re-checked against [W, \S7]; they are not used in any proof below.
 \end{rem26}
 
-%%PART2%%
+% =====================================================================
+\section{Inner products of some matrix coefficients}
+
+\subsection{Matrix coefficients}
+
+Assume as before that $G$ is connected, unramified and reductive, and use the measures of \S2.0. Let $\chi$ be an unramified regular character of $M_0(F)$ and $V_B(\chi)=i_{G,A}(\chi)$. For $n\ge1$ let $K_n\subset K$ be the $n$-th principal congruence subgroup; it is normal in $K$ and has an Iwahori factorization with respect to every standard parabolic. A vector has \emph{level $n$} if it is fixed by $K_n$. Write $\pi=\pi_\chi=i_{G,A}(\chi)$; its restriction to $K$ does not depend on $\chi$ (compact picture).
+
+\paragraph{Casselman's asymptotics.} Let $P=MN$ be standard and $\bar P=M\bar N$ its opposite. By Casselman [Cas2, \S4, Prop.~4.3.3] there is a canonical $M$-invariant pairing $\ip{\cdot,\cdot}_N$ between $r_{M,G}(\pi_\chi)$ (taken with respect to $P$) and $r_{M,\bar P}(\pi_{\chi^{-1}})$ (taken with respect to $\bar P$), and for every $n$ there is $\epsilon=\epsilon(n)\in(0,1]$, independent of the unramified character $\chi$, such that for all $f\in V_B(\chi)$, $f'\in V_B(\chi^{-1})$ of level $n$
+\begin{equation}\tag{3.1}
+\ip{\pi_\chi(a)f,f'}_G=\delta_P^{1/2}(a)\,\ip{r_{M,G}(\pi_\chi)(a)f_N,\,f'_{\bar N}}_N\qquad\text{for all }a\in A^-_P(\epsilon).
+\end{equation}
+For $P=B$ this is the case $a\in A^-(\epsilon)$. The independence of $\epsilon$ from $\chi$ follows from [Car, \S3].
+
+\begin{rem26}[(3.1)]\label{r:cass}
+Three corrections to the 1997 version of (3.1): the second space is the Jacquet module for the \emph{opposite} parabolic; the factor $\delta_P^{1/2}(a)$ was missing; and $\epsilon$ depends on the level of $f,f'$. We use (3.1) on $A^-_P(\epsilon)$, i.e.\ for $a$ deep only in the $N$-directions. This is how Casselman's argument runs (it uses only that $a$ contracts $N_0$ and contracts $N\cap K_n$ strongly), but we have not checked that [Cas2, Prop.~4.3.3] is stated in exactly this generality rather than for $a$ in the split center of $M$.
+\end{rem26}
+
+For $f\in V_B(w\chi)$ let $R_Mf=\delta_P^{-1/2}\cdot f|_{M(F)}\in i_{M,A}(w\chi)$; the map $R_M$ factors through $r_{M,G}$ and is $M$-equivariant [W, \S I]. For $w\in\Wrep{M}$ the maps $R_M\circ T_w$ give the decomposition of Remark~1,
+\begin{equation}\tag{3.2}
+r_{M,G}(\pi_\chi)\ \tilde\longrightarrow\ \bigoplus_{w\in\Wrep{M}}i_{M,A}(w\chi),\qquad f_N\longmapsto(f_w)_w,\quad f_w:=R_M T_wf.
+\end{equation}
+
+\begin{Lemma}{3.1}
+For $\chi$ unramified regular, $f\in V_B(\chi)$ and $a\in A(F)$,
+$\big(\pi_\chi(a)f\big)_w=i_{M,A}(w\chi)(a)f_w$ for every $w\in\Wrep{M}$.
+\end{Lemma}
+
+\begin{proof}
+$R_M$ and $T_w$ are intertwining maps, so $R_MT_w\pi_\chi(a)f=i_{M,A}(w\chi)(a)R_MT_wf$.
+\end{proof}
+
+\begin{Lemma}{3.2}
+Let $\chi$ be regular. In terms of the decomposition (3.2) of $r_{M,G}(\pi_\chi)$ and the corresponding decomposition of $r_{M,\bar P}(\pi_{\chi^{-1}})$ into summands isomorphic to $i_{M,A}((w\chi)^{-1})$, $w\in\Wrep{M}$, the pairing $\ip{\cdot,\cdot}_N$ is block-diagonal, and on the $w$-th block it is a scalar multiple of the standard pairing
+\[
+\ip{u,u'}_M:=\int_{M(F)\cap K}u(k)u'(k)\,dk
+\]
+between $i_{M,A}(w\chi)$ and $i_{M,A}((w\chi)^{-1})$.
+\end{Lemma}
+
+\begin{Remark}{3}
+For our choice of Haar measures, if $u,u'$ are $(M\cap K)$-fixed vectors in $i_{M,A}(w\chi)$ and $i_{M,A}((w\chi)^{-1})$, then $\ip{u,u'}_M=u(1)u'(1)$.
+\end{Remark}
+
+\begin{proof}[Proof of Lemma 3.2]
+The pairing $\ip{\cdot,\cdot}_N$ is $M$-invariant, so its restriction to the $(w,w')$ block lies in $\Hom_M\big(i_{M,A}(w\chi)\otimes i_{M,A}((w'\chi)^{-1}),\mathbb{C}\big)=\Hom_M\big(i_{M,A}(w\chi),i_{M,A}(w'\chi)\big)$. A non-zero element forces a common cuspidal support, $W_Mw\chi=W_Mw'\chi$, hence $W_Mw=W_Mw'$ by regularity. For $w=w'$, Bruhat theory gives $\dim\mathrm{End}_M(i_{M,A}(w\chi))\le\#\{v\in W_M:vw\chi=w\chi\}=1$.
+\end{proof}
+(The 1997 proof argued that the pairing is ``of the form $\sum a_{w,w'}\ip{z_w,z'_{w'}}_0$'' for any bilinear form and then derived a contradiction from an inequality that $M$-invariance does not forbid; the argument above replaces it.)
+
+The next result generalizes Macdonald's formula. An analogous result is [W, Lemma~I.3.1]. Here we use Macdonald's formula for $G$ and for $M$ to evaluate the constants.
+
+\begin{Lemma}{3.3}
+Let $\chi$ be unramified regular, $f'\in V_B(\chi^{-1})$ of level $n$, and $\epsilon=\epsilon(n)$. There are $M$-maps $\bar R_{M,w}:V_B(\chi^{-1})\to i_{M,A}((w\chi)^{-1})$, $w\in\Wrep{M}$, factoring through $r_{M,\bar P}$, such that for $a\in A^-_P(\epsilon)$
+\[
+\ip{\pi_\chi(a)\Phi_{K,\chi},f'}_G=\delta_P^{1/2}(a)\sum_{w\in\Wrep{M}}c_w(\chi)\,\ip{i_{M,A}(w\chi)(a)\Phi^M_{w\chi},\ \bar R_{M,w}f'}_M,
+\]
+where $\Phi^M_{w\chi}$ is the normalized $(K\cap M)$-fixed vector of $i_{M,A}(w\chi)$. For $f'=\Phi_{K,\chi^{-1}}$ one has $\bar R_{M,w}\Phi_{K,\chi^{-1}}=c(w,M,\chi)\,c_w(\chi^{-1})\,\Phi^M_{(w\chi)^{-1}}$ with
+\[
+c(w,M,\chi)=Q_G^{-1}Q_M\,\frac{\prod_{\alpha\in\Sigma^+\smallsetminus\Sigma_M^+}c_\alpha\big((w\chi)^{-1}\big)}{c_w(\chi)\,c_w(\chi^{-1})},
+\]
+and then the identity holds for all $a\in A^-$. In particular, for $M=M_0$, $c(w,M_0,\chi)=Q_G^{-1}c((w\chi)^{-1})/\big(c_w(\chi)c_w(\chi^{-1})\big)$, as in [M].
+\end{Lemma}
+
+\begin{Remark}{4}
+Since $K_n$ is normal in $K$, $\pi(k)f'$ has level $n$ whenever $f'$ does, so one $\epsilon=\epsilon(n)$ serves for all $\pi(k)f'$, $k\in K$; and since the vectors $u(w,k)$ of Lemma~3.4 have level $\le n$ in $M$, the same $\epsilon$ serves for the analogous identity on Levi subgroups.
+\end{Remark}
+
+\begin{proof}[Proof of Lemma 3.3]
+The first identity is (3.1) combined with Lemmas~3.1 and~3.2, with $(\Phi_{K,\chi})_w=R_MT_w\Phi_{K,\chi}=c_w(\chi)\Phi^M_{w\chi}$ by (2.8); the scalars of Lemma~3.2 are absorbed into $\bar R_{M,w}$.
+
+For the constants take $f'=\Phi_{K,\chi^{-1}}$. Then the left side is $\Gamma_\chi(a)$, and by $K\cap M$-invariance $\bar R_{M,w}\Phi_{K,\chi^{-1}}$ is a multiple of $\Phi^M_{(w\chi)^{-1}}$; write the multiple as $c(w,M,\chi)c_w(\chi^{-1})$. Since $\ip{i_{M,A}(w\chi)(a)\Phi^M_{w\chi},\Phi^M_{(w\chi)^{-1}}}_M=\Gamma^M_{w\chi}(a)$, Macdonald's formula for $M$ (Lemma~2.1 for $M$, valid on $A^-\subset A^-_M$) gives, with $\delta_P^{1/2}\delta_{B\cap M}^{1/2}=\delta_B^{1/2}$,
+\[
+\text{RHS}=Q_M^{-1}\delta_B^{1/2}(a)\sum_{w\in\Wrep{M}}c(w,M,\chi)c_w(\chi)c_w(\chi^{-1})\sum_{v\in W_M}c_M\big((vw\chi)^{-1}\big)(vw\chi)(a),
+\]
+while Macdonald's formula for $G$ gives $\Gamma_\chi(a)=Q_G^{-1}\delta_B^{1/2}(a)\sum_{\sigma\in W}c((\sigma\chi)^{-1})(\sigma\chi)(a)$. Every $\sigma\in W$ is uniquely $\sigma=vw$ with $v\in W_M$, $w\in\Wrep{M}$, and the characters $a\mapsto(\sigma\chi)(a)$ are linearly independent on $A^-_P(\epsilon)$ for regular $\chi$. Comparing coefficients,
+\[
+c(w,M,\chi)=Q_G^{-1}Q_M\frac{c((vw\chi)^{-1})}{c_M((vw\chi)^{-1})\,c_w(\chi)c_w(\chi^{-1})}\qquad(v\in W_M).
+\]
+The ratio $c(\eta)/c_M(\eta)=\prod_{\alpha\in\Sigma^+\smallsetminus\Sigma^+_M}c_\alpha(\eta)$ is unchanged when $\eta$ is replaced by $v\eta$, because $W_M$ permutes $\Sigma^+\smallsetminus\Sigma^+_M$; this gives the formula. Since both Macdonald formulas hold on all of $A^-$, so does the identity for spherical vectors.
+\end{proof}
+
+\begin{rem26}[Lemma 3.3]\label{r:L33}
+The 1997 statement paired $R_MT_wf$ with $R_MT_wf'$ for \emph{arbitrary} $f,f'$, omitted $\delta_P^{1/2}(a)$, was stated on $A^-(\epsilon)$, and had $c(w\chi)$ where (with the corrected Lemma~2.1) $c((w\chi)^{-1})$ belongs. For general $f'$ the functional $f'\mapsto\ip{\pi(a)\Phi,f'}$ factors through the $\bar P$-Jacquet module, not the $P$-Jacquet module, so we have stated the lemma with $\bar R_{M,w}$. Identifying $\bar R_{M,w}$ with ``$R_MT_w$'' requires Waldspurger's opposite-parabolic conventions, which is presumably the origin of the factor $w^G_\ell w^M_\ell$ in the 1997 text (log item 3.61). Only the spherical case is used explicitly below.
+\end{rem26}
+
+\begin{Lemma}{3.4}
+Let $\chi,\chi'$ be regular unramified characters, $u\in V_B(\chi^{-1})$ and $u'\in V_B(\chi'^{-1})$ of level $n$, and $a\in A^-_P(\epsilon(n))$. Then
+\[
+\int_{KaK}\ip{\pi_\chi(g)\Phi_{K,\chi},u}_G\ip{\pi_{\chi'}(g)\Phi_{K,\chi'},u'}_G\,dg
+=\mathrm{meas}(KaK)\,\delta_P(a)\!\!\sum_{w,w'\in\Wrep{M}}\!\!c_w(\chi)c_{w'}(\chi')\int_K\ip{i_{M,A}(w\chi)(a)\Phi^M_{w\chi},u(w,k)}_M\ip{i_{M,A}(w'\chi')(a)\Phi^M_{w'\chi'},u'(w',k)}_M\,dk,
+\]
+where $u(w,k)=\bar R_{M,w}(\pi(k)u)$ and $u'(w',k)=\bar R_{M,w'}(\pi(k)u')$ (with $\bar R$ formed for $\chi$, resp.\ $\chi'$).
+\end{Lemma}
+
+\begin{Remark}{5}
+If $\kappa$ is an unramified character of $G(F)$ then $\kappa$ is constant on $KaK$, so the integral above with an extra factor $\kappa(g)$ equals $\kappa(a)$ times the integral without it. This is used for Proposition~3.7.
+\end{Remark}
+
+\begin{proof}[Proof of Lemma 3.4]
+The push-forward of Haar measure on $K\times K$ under $(k_1,k_2)\mapsto k_1ak_2$ is $\mathrm{meas}(KaK)^{-1}$ times Haar measure on $KaK$. Since $\Phi_{K,\chi}$ is $K$-fixed, $\ip{\pi_\chi(k_1ak_2)\Phi_{K,\chi},u}_G=\ip{\pi_\chi(a)\Phi_{K,\chi},\pi(k_1^{-1})u}_G$. Substituting $k=k_1^{-1}$, the left side is $\mathrm{meas}(KaK)\int_K\ip{\pi_\chi(a)\Phi_{K,\chi},\pi(k)u}\ip{\pi_{\chi'}(a)\Phi_{K,\chi'},\pi(k)u'}\,dk$. Now apply Lemma~3.3 to each factor, which is legitimate by Remark~4, and multiply out.
+\end{proof}
+
+\subsection{Truncated inner products of matrix coefficients}
+
+Let $T\in X_*(A)$ with $d(T):=\min_{\alpha\in\Delta}\ip{T,\alpha}>0$. The set
+\begin{equation}\tag{3.3}
+\cA_A(T)=\big\{\lambda\in X_*(A)/X_*(A_G):\ \ip{\lambda,\alpha}\ge0,\ \ip{\lambda-T,\varpi_\alpha}<0\ \ \forall\alpha\in\Delta\big\}
+\end{equation}
+is finite. Using (2.5), define
+\begin{equation}\tag{3.4}
+J^T(\chi,\chi',u,u')=\sum_{\lambda\in\cA_A(T)}\int_{Ka_\lambda K}\ip{\pi_\chi(g)\Phi_{K,\chi},u}_G\ip{\pi_{\chi'}(g)\Phi_{K,\chi'},u'}_G\,dg,
+\end{equation}
+and put $G(T)=\bigcup_{\lambda\in\cA_A(T)}Ka_\lambda K$ as in (4.2).
+
+\begin{rem26}[a false claim deleted]
+The 1997 text asserted that $T$ can be chosen so that $\nu_A^{-1}(\cA_A(T)^c)\subset A^-(\epsilon)$, i.e.\ that everything outside the truncated region is deep in every simple direction. This is false: in $SL(3)$, $\lambda_n=n(2\alpha_1^\vee+\alpha_2^\vee)$ lies outside $\cA_A(T)$ for large $n$ while $\ip{\lambda_n,\alpha_2}=0$. The proof of Proposition~3.6 below avoids the claim by decomposing the dominant cone into regions on each of which some $A^-_P(\epsilon)$-asymptotic applies.
+\end{rem26}
+
+\paragraph{The vertex decomposition.} For a standard parabolic $Q$ let $T_Q$ denote the projection of $T$ to $\fa_Q$. Let
+\[
+L_0=\{T\in X_*(A):\ T_Q\in X_*(A)\ \text{for every standard }Q\},
+\]
+a sublattice of finite index in $X_*(A)$. If $G$ is semisimple, $T_G=0$ and $T_B=T$.
+
+\begin{Lemma}{3.5A}[vertex decomposition; replaces Lemma 3.5]
+Assume $G$ semisimple (in general, work modulo $X_*(A_G)$). Let $\psi$ be a character of $X_*(A)$, i.e.\ a point of $\Th$, and let $\mathsf c:X_*(A)^+\to\mathbb{C}$ be a function that depends only on the set $\{\alpha\in\Delta:\ip{\lambda,\alpha}=0\}$. For each standard parabolic $Q$ there is a rational function $R_Q=R_Q^{\mathsf c}$ on $\Th$, independent of $T$, such that for all $T\in L_0$ with $d(T)>0$
+\begin{equation}\tag{3.5A}
+\sum_{\lambda\in\cA_A(T)}\mathsf c(\lambda)\,\psi(\lambda)=\sum_{Q\supseteq B}\psi(T_Q)\,R_Q(\psi)
+\end{equation}
+as rational functions of $\psi$. The denominator of $R_Q$ is a product of factors $1-\psi(\mu)$, where $\mu\in X_*(A)\smallsetminus\{0\}$ runs over primitive vectors on the edges of the cone
+\[
+C_Q=\{X\in\fa_0:\ \ip{X,\alpha}\ge0\ (\alpha\in\Delta^Q),\ \ \ip{X,\varpi_\alpha}\le0\ (\alpha\in\Delta\smallsetminus\Delta^Q)\},
+\]
+whose edges are spanned by the fundamental coweights of $M_Q$ (in $\fa_0^Q$) and by the vectors $-(\alpha^\vee)_Q$, $\alpha\in\Delta\smallsetminus\Delta^Q$. The term for $Q=G$ is independent of $T$: $R_G(\psi)$ is the meromorphic continuation of $\sum_{\lambda\in X_*(A)^+}\mathsf c(\lambda)\psi(\lambda)$.
+\end{Lemma}
+
+\begin{proof}
+Let $\Pi_T=\{X\in\fa_0:\ip{X,\alpha}\ge0,\ \ip{X-T,\varpi_\alpha}\le0\ \forall\alpha\}$; this is the dominant part of the convex hull of $W\cdot T$. \emph{Vertices.} For $Q$ standard, $T_Q$ satisfies $\ip{T_Q,\alpha}=0$ for $\alpha\in\Delta^Q$ (since $T_Q\in\fa_Q$) and $\ip{T_Q-T,\varpi_\alpha}=0$ for $\alpha\notin\Delta^Q$ (since such $\varpi_\alpha$ vanish on $\fa_0^Q$). Writing $T^Q=\sum_{\beta\in\Delta^Q}t_\beta\beta^\vee$ with $t_\beta\ge0$ (as $T^Q$ is dominant for $M_Q$) and using $\ip{\beta^\vee,\alpha}\le0$ for $\alpha\ne\beta$, one finds $\ip{T_Q,\alpha}\ge\ip{T,\alpha}>0$ for $\alpha\notin\Delta^Q$ and $\ip{T_Q-T,\varpi_\alpha}=-t_\alpha<0$ for $\alpha\in\Delta^Q$. So $T_Q$ is a vertex of $\Pi_T$, with active constraints exactly those defining $C_Q$, and $\Pi_T$ is simple there. Conversely, if $v$ is a vertex and $\theta=\{\alpha:\ip{v,\alpha}=0\}$, then $v\in\fa_{P_\theta}$. For $\alpha\in\theta$ the restriction of $\varpi_\alpha$ to $\fa_{P_\theta}$ is a combination $\sum_{\beta\notin\theta}c_{\alpha\beta}\varpi_\beta$ with $c_{\alpha\beta}=\ip{(\beta^\vee)_{P_\theta},\varpi_\alpha}\ge0$. Hence the constraints $\ip{v-T,\varpi_\alpha}\le0$ for $\alpha\in\theta$ are strict, those for $\beta\notin\theta$ must all be active, and $v=T_{P_\theta}$.
+
+\emph{Counting.} $\mathsf c\cdot\one_{\cA_A(T)}$ is a finite linear combination, with coefficients independent of $T$, of indicator functions of closed faces of $\Pi_T$: write each relatively open face of the dominant cone, and each strict inequality $\ip{\lambda-T,\varpi_\alpha}<0$, by inclusion--exclusion over closed faces. Each closed face $\Pi'$ is a rational polytope whose vertices lie among the $T_Q$, with tangent cones that are faces of the $C_Q$ and do not depend on $T$. By Brion's theorem [Bri] (for rational polytopes, see [Bar, Ch.~13]), $\sum_{\lambda\in\Pi'\cap X_*(A)}\psi(\lambda)=\sum_{v}\sigma_{v+C'_v}(\psi)$, the sum of the generating functions of the lattice points of the tangent cones at the vertices $v$ of $\Pi'$. For $v=T_Q\in X_*(A)$ (here we use $T\in L_0$), $\sigma_{T_Q+C'}(\psi)=\psi(T_Q)\sigma_{C'}(\psi)$. Collecting terms gives (3.5A), with $R_Q$ a $T$-independent combination of the $\sigma_{C'}$ for faces $C'$ of $C_Q$. The denominators are those of simplicial-cone generating functions: $\sigma_{C'}=(\text{Laurent polynomial})/\prod(1-\psi(\mu_i))$ over primitive edge vectors $\mu_i$. The edges of $C_Q$: an edge lies in $\fa_0^Q$ and is $M_Q$-dominant extremal (a fundamental coweight of $M_Q$), or lies in $\fa_Q$ and is dual to $\hat\Delta_Q$, i.e.\ is $-(\alpha^\vee)_Q$ for some $\alpha\notin\Delta^Q$. For $Q=G$ the only vertex is $0$ and the cone is $X_*(A)^+$.
+\end{proof}
+
+\begin{rem26}[Lemma 3.5A]\label{r:brion}
+The 1997 Lemma~3.5 asserted that the $\omega$-th term carries the factor $\prod_\alpha\chi(a_\alpha)^{T_\alpha}$ times a $T$-independent function; this is false already for $SL(2)$, where the regular part is $(z-z^{T})/(1-z)$. It also used coordinates $\ip{a,\alpha}$ on $X_*(A)$, which are unimodular only for adjoint $G$. Lemma~3.5A is the correct form. The vertex description and the edge directions were checked by hand; the inclusion--exclusion bookkeeping for half-open faces is standard but was written out in full only in rank one. In rank one ($X_*(A)=\mathbb{Z}\varpi^\vee$, $z=\psi(\varpi^\vee)$, $\mathsf c\equiv1$): $\sum_{0\le n<T}z^n=\frac1{1-z}-\frac{z^T}{1-z}$, i.e.\ $R_G=\frac1{1-z}$, $R_B=-\frac1{1-z}$.
+\end{rem26}
+
+From [M, Prop.~3.2.15] we have, for $a\in A^-$,
+\begin{equation}\tag{3.7}
+\mathrm{meas}(KaK)=\delta_B(a)^{-1}Q_a,\qquad Q_a=Q_G/Q_{W_a},
+\end{equation}
+where $W_a\subset W$ is the stabilizer of $\nu_A(a)$ (generated by the $w_\alpha$ with $\ip{\nu_A(a),\alpha}=0$) and $Q_{W_a}=\sum_{w\in W_a}(IwI:I)^{-1}$. So $Q_a$ is a rational number (for $SL(2)$ and $a\ne1$, $Q_a=1+q^{-1}$), depending only on the face of the dominant cone containing $\nu_A(a)$. The 1997 text wrote $Q_a\in\mathbb{Z}$.
+
+The case of Lemma~3.5A needed for $K$-fixed vectors is this. For $K$-fixed $u=\Phi_{K,\chi^{-1}}$, $u'=\Phi_{K,\chi'^{-1}}$, Lemma~3.3 holds on all of $A^-$, and Lemma~3.4 with $P=B$ gives $J^T=\sum_{w,w'}C_{w,w'}\sum_{\lambda\in\cA_A(T)}Q_{a_\lambda}((w\chi)(w'\chi'))(\lambda)$ with $C_{w,w'}=c_w(\chi)c_{w'}(\chi')c(w,M_0,\chi)c(w',M_0,\chi')c_w(\chi^{-1})c_{w'}(\chi'^{-1})$. By Lemma~3.5A with $\mathsf c(\lambda)=Q_{a_\lambda}$ and $\psi=(w\chi)(w'\chi')$, this equals
+\begin{equation}\tag{3.8}
+\sum_{w,w'\in W}C_{w,w'}\sum_{Q\supseteq B}\big((w\chi)(w'\chi')\big)(T_Q)\,R_Q\big((w\chi)(w'\chi')\big).
+\end{equation}
+This replaces the 1997 formula (3.8), which used the incorrect Lemma~3.5.
+
+\paragraph{The main proposition.}
+
+\begin{Proposition}{3.6}[2026 form]
+Fix a level $n$. There are $c=c(n)\ge1$ and $d_0=d_0(n)$ with the following property. Let $\chi,\chi'$ be unramified regular characters and $u\in V_B(\chi^{-1})$, $u'\in V_B(\chi'^{-1})$ of level $n$. Then for $T\in L_0$ with $d(T)\ge d_0$,
+\begin{equation}\tag{3.9}
+J^T(\chi,\chi',u,u')=\sum_{Q\supseteq B}J^T_Q(\chi,\chi',u,u'),\qquad
+J^T_Q=\sum_{P\subseteq Q}\ \sum_{w,w'\in\Wrep{M_P}}\psi_{w,w'}(T_Q)\,\mathcal{R}^{P,Q}_{w,w'}(\chi,\chi';u,u'),
+\end{equation}
+where $\psi_{w,w'}=(w\chi)(w'\chi')$, and each $\mathcal R^{P,Q}_{w,w'}$ is bilinear in $(u,u')$, rational in $(\chi,\chi')$ and independent of $T$. In particular $J^T_G(\chi,\chi',u,u')=:J_G(\chi,\chi',u,u')$ does not depend on $T$; it is the ``$T$-independent remainder'', and it contains the contribution of the compact core where no asymptotics are available. For $K$-fixed $u,u'$, (3.9) is (3.8).
+\end{Proposition}
+
+\begin{proof}
+Let $\epsilon=\epsilon(n)$ be as in (3.1) and choose an integer $c\ge1$ with $q^{-c}\le\epsilon$.
+
+\emph{Step 1: regions.} For a standard parabolic $P=MN$ let
+\[
+S_P=\{\lambda\in X_*(A)^+:\ \ip{\lambda,\alpha}<c\iff\alpha\in\Delta^M\}.
+\]
+These sets partition $X_*(A)^+$, and $a_\lambda\in A^-_P(\epsilon)$ for $\lambda\in S_P$. The map $\lambda\mapsto\lambda^P$ identifies $X_*(A)/X_*(A_M)$ with a lattice in $\fa_0^P$, and for $\lambda\in S_P$, $\lambda^P$ lies in the bounded set $\{X\in\fa_0^P:0\le\ip{X,\alpha}<c,\ \alpha\in\Delta^M\}$. So $S_P$ meets only finitely many cosets of $X_*(A_M)$. Choose representatives $e\in S_P$ for them, a finite set $E_P$. Then
+\[
+S_P\cap(e+X_*(A_M))=e+\{\nu\in X_*(A_M):\ \ip{e+\nu,\alpha}\ge c\ \ (\alpha\in\Delta\smallsetminus\Delta^M)\}.
+\]
+
+\emph{Step 2: exponential form on each region.} Let $F(\lambda)$ denote the $\lambda$-th summand of (3.4). For $\lambda=e+\nu\in S_P$, apply Lemma~3.4. We have $a_\lambda=a_ea_\nu$ with $a_\nu\in A_M(F)$ central in $M$, so $i_{M,A}(w\chi)(a_\lambda)=(w\chi)(\nu)\,i_{M,A}(w\chi)(a_e)$. Further $\mathrm{meas}(Ka_\lambda K)\delta_P(a_\lambda)=\delta_{B\cap M}(a_\lambda)^{-1}Q_{a_\lambda}=\delta_{B\cap M}(a_e)^{-1}Q_{a_e}$, because $\delta_{B\cap M}$ is trivial on $A_M$ and the stabilizer $W_{a_\lambda}$ only involves roots in $\Delta^M$, where $\ip{\nu,\alpha}=0$. Hence
+\[
+F(e+\nu)=\sum_{w,w'\in\Wrep{M}}\psi_{w,w'}(\nu)\,C^P_{w,w',e}(u,u'),
+\]
+\[
+C^P_{w,w',e}(u,u')=\frac{Q_{a_e}c_w(\chi)c_{w'}(\chi')}{\delta_{B\cap M}(a_e)}\int_K\ip{i_{M,A}(w\chi)(a_e)\Phi^M_{w\chi},u(w,k)}_M\ip{i_{M,A}(w'\chi')(a_e)\Phi^M_{w'\chi'},u'(w',k)}_M\,dk.
+\]
+
+\emph{Step 3: the truncated region on $S_P\cap(e+X_*(A_M))$.} The conditions $\ip{e+\nu-T,\varpi_\alpha}<0$ for $\alpha\in\Delta^M$ are implied by those for $\alpha\notin\Delta^M$ once $d(T)$ is large. Indeed, for $Y\in\fa_P$ and $\alpha\in\Delta^M$, $\varpi_\alpha(Y)=\sum_{\beta\notin\Delta^M}c_{\alpha\beta}\varpi_\beta(Y)$ with $c_{\alpha\beta}=\varpi_\alpha((\beta^\vee)_P)\ge0$ (proof of Lemma~3.5A). So if $\varpi_\beta(e+\nu)<\varpi_\beta(T)$ for all $\beta\notin\Delta^M$, then
+\[
+\varpi_\alpha(e+\nu)=\varpi_\alpha(e^P)+\textstyle\sum_\beta c_{\alpha\beta}\varpi_\beta(e+\nu)<\varpi_\alpha(e^P)+\varpi_\alpha(T_P)=\varpi_\alpha(T)-\varpi_\alpha(T^P)+\varpi_\alpha(e^P),
+\]
+and $\varpi_\alpha(T^P)\ge\varpi_\alpha(e^P)$ as soon as $d(T)\ge d_0$, since $\varpi_\alpha(T^P)$ grows linearly in $d(T)$ while $E_P$ is finite. (For $P=G$, $\nu=0$ and the condition is $e\in\cA_A(T)$, true for all $e\in E_G$ once $d(T)\ge d_0$.) Thus the $\nu$ that occur form the lattice points of the half-open polytope
+\[
+\Pi_{P,e}(T)=\{\nu\in\fa_P:\ \ip{\nu,\alpha}\ge c-\ip{e,\alpha}\ (\alpha\in\Delta\smallsetminus\Delta^M),\ \ \ip{\nu-(T-e),\varpi_\beta}<0\ (\beta\in\Delta\smallsetminus\Delta^M)\},
+\]
+which has the shape of (3.3) for the root datum $(\fa_P,\Delta_P,\hat\Delta_P)$. Exactly as in the proof of Lemma~3.5A, its vertices are the points $v_{Q,e}(T)$, $Q\supseteq P$, determined by $\ip{v,\alpha}=c-\ip{e,\alpha}$ for $\alpha\in\Delta^Q\smallsetminus\Delta^M$ and $\ip{v-(T-e),\varpi_\beta}=0$ for $\beta\notin\Delta^Q$. Decomposing $v=v_Q+v^Q$ in $\fa_P=\fa_Q\oplus\fa_P^Q$ gives $v_Q=T_Q-e_Q$, and $v^Q\in\fa_P^Q$ is determined by $T$-independent equations. Thus $v_{Q,e}(T)=T_Q+x_{Q,e}$ with $x_{Q,e}$ independent of $T$. Since $T_Q\in X_*(A)\cap\fa_Q\subset X_*(A_M)$ for $T\in L_0$, Brion's theorem gives
+\[
+\sum_{\nu\in\Pi_{P,e}(T)\cap X_*(A_M)}\psi(\nu)=\sum_{Q\supseteq P}\psi(T_Q)\,R_{P,Q,e}(\psi)
+\]
+with $T$-independent rational $R_{P,Q,e}$.
+
+\emph{Step 4.} Summing $F$ over $\cA_A(T)=\bigsqcup_P\bigsqcup_{e\in E_P}\big(\cA_A(T)\cap(e+X_*(A_M))\big)$ gives (3.9) with $\mathcal R^{P,Q}_{w,w'}=\sum_{e\in E_P}C^P_{w,w',e}\,R_{P,Q,e}(\psi_{w,w'})$. For $K$-fixed vectors we may take $\epsilon=1$, and the computation reduces to (3.8).
+\end{proof}
+
+\begin{rem26}[Proposition 3.6]\label{r:P36}
+The 1997 Proposition~3.6 claimed $J^T=\sum_{w,w'\in W}C^T(\chi,\chi',w,w')\ip{T_wu,T_{w'}u'}_G$ with coefficients independent of $u,u'$, and that $C^T$ could be computed from Lemma~3.5. Its inductive proof (equations (3.9)--(3.23) of 1997, via the functions $\xi(M,D,T,U)$ and Langlands' combinatorial lemma) shows only that $J^T-F(T)=J^U-F(U)$ for an explicit $F$. That leaves a $T$-independent constant undetermined (the compact-core contribution), and the structural claim for arbitrary $u,u'$ is unsupported (log items 3.46, 3.69). The proof above is new (2026). It keeps the ingredients of the 1997 argument (Casselman's asymptotics on the regions $A^-_P(\epsilon)$, Macdonald's formula, and a combinatorial identity for truncated cones), but uses a direct partition of the dominant cone together with Brion's theorem instead of the induction on Levi subgroups. It does not determine the remainder $J_G$, which is genuinely non-zero (in the $PGL(2)$ example it produces $|B_r|=O_\gamma(\one_K)$, \S6.1). Steps 1--4 have been checked in rank one against \S6; in higher rank they have been checked on paper only.
+\end{rem26}
+
+\begin{Proposition}{3.7}
+Let $\kappa$ be an unramified character of $G(F)$. Then $w\kappa=\kappa$ for all $w\in W$ (represented in $K$), and the analogue $J^{T,\kappa}$ of (3.4) with an extra factor $\kappa(g)$ in the integrand has the decomposition (3.9) with $\psi_{w,w'}$ replaced by $\kappa|_{M_0(F)}\cdot\psi_{w,w'}$.
+\end{Proposition}
+
+\begin{proof}
+By Remark~5 the extra factor is $\kappa(a_\lambda)$ on the $\lambda$-th summand, and $\lambda\mapsto\kappa(a_\lambda)$ is a character of $X_*(A)$; so the proof of Proposition~3.6 applies verbatim.
+\end{proof}
+
+%%PART3%%
 
 \end{document}

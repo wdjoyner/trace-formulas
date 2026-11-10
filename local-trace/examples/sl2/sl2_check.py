@@ -24,6 +24,8 @@ What is checked (q = 3):
   (3) The atom-free Abel limit I = sum_n O_gamma(f_n) Gamma_chi(a_n) gives only
       1/2 int f^vee I_st dmu: it misses exactly the atom 1/2 f^vee(chi_0).
   (4) For a ramified elliptic gamma there is no atom.
+  (5) The paper's truncated kernel (4.4), I^T = 1 + sum_{1<=k<T}(c(chi^-1) z^{2k}
+      + c(chi) z^{-2k}), reproduces O_gamma(f) exactly (Theorem 4.5(a)).
 Prepared by Claude (Anthropic) for D. Joyner, 2026.
 """
 import pathlib
@@ -106,6 +108,15 @@ if __name__ == "__main__":
         assert abs(O1 - (st + atom)) < 1e-6, ("atom formula, gamma", n)
         assert abs(O2 - (st - atom)) < 1e-6, ("atom formula, gamma'", n)
         assert abs(O1 - nv - atom) < 1e-6, ("atom-free limit misses the atom", n)
+
+    print("\nCheck (5): the paper's truncated kernel (4.4) for gamma = [[0,-1],[1,0]]:")
+    print("I^T = 1 + sum_{1<=k<T} (c(chi^-1) z^{2k} + c(chi) z^{-2k}) reproduces O_gamma(f_n) for T > n")
+    for n in range(4):
+        for Tt in (n + 1, n + 3):
+            IT = 1 + sum(cfun(1 / z) * z ** (2 * k) + cfun(z) * z ** (-2 * k) for k in range(1, Tt))
+            s = integ(fvee(z, n) * IT)
+            assert abs(s - c1.get(2 * n, 0)) < 1e-6, ("paper truncation", n, Tt)
+        print("  n=%d: int f^v I^T dmu = %d for T = %d, %d" % (n, c1.get(2 * n, 0), n + 1, n + 3))
 
     print("\nCheck (4): ramified gamma = [[2,3],[1,2]] (E = Q_3(sqrt 3)), no atom")
     gr = [[Fr(2), Fr(3)], [Fr(1), Fr(2)]]

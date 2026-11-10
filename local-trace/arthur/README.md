@@ -5,3 +5,12 @@ Planned: a short, self-contained guide showing how the main identity of the pape
 Status (November 2026): a sketch is §7 of the revised paper (`../paper/`), including what survives of the geometric and spectral sides when one test function is spherical and the other elliptic, and the expected identification of I(χ,φ) with a weighted character (Conjecture 7.3). Normalizations are not yet checked.
 
 **Outline of a companion paper:** [`OUTLINE.md`](OUTLINE.md) (November 2026). It covers the target theorems (existence of the spectral measure, the absolutely continuous part as a weighted character, the singular part from elliptic tempered characters with K-fixed vectors, and endoscopy for SL(n)), the specialization of Arthur's local trace formula, the comparison with Route A, the examples PGL(2), SL(2), PGL(3) and SL(3), and a work plan.
+
+**Draft paper:** [`route-b-draft.tex`](route-b-draft.tex) / [`route-b-draft.pdf`](route-b-draft.pdf), started 10 November 2026. Written so far:
+- the unramified background, including the lemma that weighted characters of spherical functions vanish for the canonical normalization;
+- the statement of Arthur's local trace formula;
+- the geometric and spectral specializations;
+- the main theorem in outline;
+- the comparison with Route A;
+- the examples PGL(2), SL(2) and PGL(3), plus a new prediction for SL(3) (a point mass at the characters (1, ζ, ζ²));
+- §10, the list of what remains to be checked.

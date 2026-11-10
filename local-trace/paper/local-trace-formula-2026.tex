@@ -639,6 +639,277 @@ Let $\kappa$ be an unramified character of $G(F)$. Then $w\kappa=\kappa$ for all
 By Remark~5 the extra factor is $\kappa(a_\lambda)$ on the $\lambda$-th summand, and $\lambda\mapsto\kappa(a_\lambda)$ is a character of $X_*(A)$; so the proof of Proposition~3.6 applies verbatim.
 \end{proof}
 
-%%PART3%%
+% =====================================================================
+\section{Integrating the kernel}
+
+\subsection{$(G,A)^\sim$-families}
+
+We prove in this section an analogue of [W, Prop.~II.5]. For $P\in\cP(A)$ let $w_P\in W$ be the element with $P=w_P^{-1}Bw_P$. The 1997 text introduced, for $\phi\in C_c^\infty(G(F))$,
+\begin{equation}\tag{4.1}
+Q^T(\chi,\chi',w,w',\phi)=\tr\big[T_w^*T_{w'}\,\pi_\chi(\phi)\big]\;C^T(\chi,\chi'^{-1},w,w'),
+\end{equation}
+where $T_w^*$ is the transpose of $T_w$ (an operator $V_B(w\chi)\to V_B(\chi)$ in the compact picture) and $C^T$ is the coefficient of the 1997 Proposition~3.6. (The 1997 definition also contained a factor $\tilde\theta(w\chi/w'\chi')$, which Proposition~4.2 then divided out again.) It asserted:
+
+\begin{Lemma}{4.1}[1997]
+The collection $\{Q^T(\chi,\chi',w_P,w',\phi):P\in\cP(A)\}$ multiplied by $\tilde\theta(w_P\chi/w'\chi')$ forms a $(G,A)^\sim$-family in $\chi$, and similarly in $\chi'$.
+\end{Lemma}
+
+The sketched proof used that $\lambda\mapsto\tr[R_{w_P}\,i_{G,A}(\chi_\lambda)(\phi)]$ ($R_w$ the normalized intertwining operator) is a $(G,A)$-family [Art2, \S7], and that the product of two $(G,A)^\sim$-families is one.
+
+\begin{rem26}[Lemma 4.1 and regularity]\label{r:GAfam}
+Since the 2026 Proposition~3.6 no longer produces coefficients of the form $C^T\ip{T_wu,T_{w'}u'}$, Lemma~4.1 is not used below, and it has not been verified. Its purpose in 1997 was to show that the singularities of the individual vertex terms cancel in the sum over $P$. This kind of cancellation does hold: in the $SL(2)$ example (\S6.2) the sum of the vertex terms at the vertex $T$ is a smooth function of $\chi$ for each $T$. But it is not enough for removing the truncation. The sum is smooth for each $T$ but not uniformly in $T$: near the bad point it behaves like a Dirichlet kernel and tends to a point mass as $T\to\infty$. What is needed is regularity of each oscillatory component separately, which is Hypothesis~(R) below. In particular, the argument proposed in the 2026 referee report (M8(b): smoothness of the $(G,A)^\sim$-sum plus the Riemann--Lebesgue lemma) does not suffice.
+\end{rem26}
+
+\subsection{The Fourier transform of a truncated orbital integral}
+
+Let
+\begin{equation}\tag{4.2}
+G(T):=\bigcup_{\lambda\in\cA_A(T)}Ka_\lambda K,
+\end{equation}
+and recall
+\begin{equation}\tag{4.3}
+\Gamma_\chi(g^{-1}hg)=\ip{\pi_\chi(h)\pi_\chi(g)\Phi_{K,\chi},\ \pi_{\chi^{-1}}(g)\Phi_{K,\chi^{-1}}}_G.
+\end{equation}
+For $\phi\in C_c^\infty(G(F))$ we define the \emph{truncated orbital integral} (the Fourier transform of the truncated orbital integral of $\phi$)
+\begin{equation}\tag{4.4}
+I^T(\chi,\phi)=\int_{G(F)^1}\Gamma_\chi(h)\int_{G(T)}\phi(g^{-1}hg)\,dg\,dh=\int_{G(T)\times G(F)^1}\Gamma_\chi(g^{-1}hg)\phi(h)\,dh\,dg.
+\end{equation}
+In \S5 we also consider
+\begin{equation}\tag{4.5}
+I^{T,\kappa}(\chi,\phi):=\int_{G'(T)\times G(F)}\kappa(g)\Gamma_\chi(g^{-1}hg)\phi(h)\,dh\,dg,
+\end{equation}
+where $G=SL(n)$, $G'=PGL(n)$, $\kappa$ is an unramified character of $G'(F)$, and $G'(T)$ is the set (4.2) formed for $G'$ (with $K'=PGL(n,\OO)$ and the same $T$, viewed in $X_*(A')\otimes\mathbb{Q}$).
+
+The idea is to expand (4.3) using a basis and, term by term, to use the computations of \S3.
+
+\begin{Proposition}{4.2}[2026 form]
+Let $\phi\in C_c^\infty(G_{\ellr})$ be bi-$K_n$-invariant and let $\chi$ be unramified and regular. Let $\{u_i\}$ be a basis of $V_B(\chi)^{K_n}$ and $\{u_i^*\}$ the dual basis of $V_B(\chi^{-1})^{K_n}$.
+\begin{enumerate}[label=(\alph*)]
+\item For every $T$, with finite sums,
+\begin{equation}\tag{4.7}
+I^T(\chi,\phi)=\sum_{i,j}J^T(\chi,\chi^{-1},u_i^*,u_j)\,\ip{\pi_\chi(\phi)u_i,u_j^*}_G.
+\end{equation}
+\item There is a finite set $\mathcal M=\mathcal M(G,n)$ of linear maps $\mu:L_0\to X_*(A)$, containing $0$ and independent of $\chi$ and $\phi$, such that for $T\in L_0$ with $d(T)\ge d_0(n)$
+\begin{equation}\tag{4.7A}
+I^T(\chi,\phi)=\sum_{\mu\in\mathcal M}\chi(\mu(T))\,P_\mu(T;\chi,\phi),
+\end{equation}
+where $P_\mu(\cdot\,;\chi,\phi)$ is a polynomial function on $L_0$ whose coefficients are rational functions of $\chi$, regular at generic regular $\chi$, and linear in $\phi$. The maps $\mu$ have the form $T\mapsto w^{-1}T_Q-w'^{-1}T_Q$ with $Q$ standard and $w,w'\in W$.
+\item Define
+\[
+I(\chi,\phi):=P_0(0;\chi,\phi),
+\]
+the constant term of the non-oscillating part of $I^T(\chi,\phi)$. For generic regular $\chi$ this is intrinsic: it is the constant coefficient of the trivial character in the unique expansion of $T\mapsto I^T(\chi,\phi)$, on $\{T\in L_0:d(T)\ge d_0\}$, as an exponential polynomial. The map $\phi\mapsto I(\chi,\phi)$ is linear and invariant under conjugation by $K$.
+\end{enumerate}
+\end{Proposition}
+
+\begin{proof}
+(a) Since $\phi$ is bi-$K_n$-invariant, $\pi_\chi(\phi)$ kills the complement of $V_B(\chi)^{K_n}$ and takes values in $V_B(\chi)^{K_n}$. So $\pi_\chi(\phi)v=\sum_{i,j}\ip{v,u_i^*}\ip{\pi_\chi(\phi)u_i,u_j^*}u_j$ for every $v$. Apply this to $v=\pi_\chi(g)\Phi_{K,\chi}$ in (4.3), integrate over $h$ against $\phi$ and over $g\in G(T)$, and use $\ip{u_j,\pi_{\chi^{-1}}(g)\Phi_{K,\chi^{-1}}}=\ip{\pi_{\chi^{-1}}(g)\Phi_{K,\chi^{-1}},u_j}$. Every vector involved has level $n$, independently of $T$. (The 1997 version expanded $\pi(g)\Phi_{K,\chi}$ itself, whose level grows with $g$, and had $u_j^*$ in place of $u_j$ in (4.7).)
+
+(b) Apply Proposition~3.6 to each $J^T(\chi,\chi',u_i^*,u_j)$ with $\chi'$ near $\chi^{-1}$. The frequencies $\psi_{w,w'}(T_Q)=(w\chi)(w'\chi')(T_Q)$ tend to $\chi(\mu(T))$ with $\mu(T)=w^{-1}T_Q-w'^{-1}T_Q$. Group the terms of (3.9) according to the limit map $\mu$. The total is analytic in $\chi'$ at $\chi'=\chi^{-1}$ (it is a finite sum of matrix-coefficient integrals over the compact set $G(T)$). For generic regular $\chi$ the characters $T\mapsto\chi(\mu(T))$, $\mu\in\mathcal M$, of $L_0$ are pairwise distinct. So by the uniqueness of exponential-polynomial expansions on a translated cone of $L_0$, each group extends analytically to $\chi'=\chi^{-1}$, and its value there is $\chi(\mu(T))$ times a polynomial in $T$. These polynomials are the confluent limits of the coalescing exponentials. Rationality in $\chi$ is inherited from Proposition~3.6.
+
+(c) Intrinsic: by uniqueness of the expansion. Linearity is clear from (4.7). For $k\in K$, conjugating $\phi$ by $k$ amounts to translating $g\mapsto gk$ in (4.4), and $G(T)$ is right $K$-invariant.
+\end{proof}
+
+\begin{rem26}[Proposition 4.2]\label{r:P42}
+The 1997 Proposition~4.2 stated $I(\chi,\phi)=\lim_{\chi'\to\chi}\sum_{w,w'}Q^T(\chi,\chi',w,w',\phi)\tilde\theta(w\chi/w'\chi')^{-1}$ ``independent of $T$''. But $I^T(\chi,\phi)$ genuinely depends on $T$; the 1997 justification (``follows from Proposition~3.6'') does not apply, and $I(\chi,\phi)$ was never defined independently of the displayed limit. Here $I(\chi,\phi)$ is defined as the $T$-independent part. Part~(b) is a straightforward consequence of Proposition~3.6, except for the confluence step, which we have written out only in rank one. The 1997 claim that $\phi\mapsto I(\chi,\phi)$ is $G$-admissible in the sense of [HC, \S14] is plausible, since by (4.7) it is a finite combination of $\phi\mapsto\tr(A\,\pi_\chi(\phi))$ with finite-rank $A$, but it needs a bound uniform in $n$ that we have not checked. Full $G$-invariance follows from Theorem~4.5(b) when Hypothesis~(R) holds (Corollary~4.5A).
+\end{rem26}
+
+\begin{Proposition}{4.3}
+Let $G=SL(n)$, $G'=PGL(n)$, $A'$ the diagonal torus of $G'$, and $\kappa$ an unramified character of $G'(F)$. For $\chi$ an unramified regular character of $M_0(F)$, the truncated $\kappa$-integral $I^{T,\kappa}(\chi,\phi)$ has an expansion (4.7A), obtained by applying Proposition~3.7 for $G'$ to the restriction of $\Gamma_\chi$ to $G'(T)$-conjugates. We put $I^\kappa(\chi,\phi):=P^\kappa_0(0;\chi,\phi)$.
+\end{Proposition}
+
+\begin{Remark}{9}
+We only prove Proposition~4.2; the proof of 4.3 is similar, using Remark~5 and Proposition~3.7, with $\kappa|_{A'(F)}\cdot\chi$ in place of $\chi$ in the frequencies.
+\end{Remark}
+
+\subsection{The spectral expansion}
+
+Let $\phi$ be a locally constant function with compact support in $G_{\ellr}$. By [K, \S4, Lemma~6] the distribution
+\begin{equation}\tag{4.8}
+f\longmapsto I(f,\phi)=\int_{G(F)^1\times G(F)^1}f(g^{-1}hg)\phi(h)\,dg\,dh=\int_{G(F)^1}f(h)\Phi_\phi(h)\,dh=\int_{G(F)^1}\Phi_f(h)\phi(h)\,dh,
+\end{equation}
+$f\in C_c^\infty(G(F))$, has compactly generated support. Here, for $h\in G_{\ellr}$, $\Phi_\phi(h):=\int_{G(F)^1}\phi(g^{-1}hg)\,dg$, and $\Phi_f$ is defined in the same way. (In (4.8) $f$ may be any function in $C_c^\infty(G(F))$; from Lemma~4.4 on, $f\in\Hc(G,K)$.)
+
+\begin{Lemma}{4.4}
+Let $\phi$ be locally constant with compact support in $G_{\ellr}$, and let $f\in\Hc(G,K)$. There is a compact set $C_{f,\phi}\subset G(F)^1$ such that $f(g^{-1}hg)\phi(h)\ne0$ implies $g\in C_{f,\phi}$. If $G=SL(n)$ and $G'=PGL(n)$, there is likewise a compact $C'_{f,\phi}\subset G'(F)$ for the action of $G'(F)$ by conjugation.
+\end{Lemma}
+
+\begin{proof}
+For each $h\in G_{\ellr}$ there are a neighborhood $V_{h,f}$ of $h$ and a compact set $C_{h,f}\subset G(F)^1$ such that $f(g^{-1}h'g)\ne0$ and $h'\in V_{h,f}$ imply $g\in C_{h,f}$. This uses that the centralizer of an elliptic element is compact modulo $A_G$. Finitely many $V_{h,f}$ cover $\mathrm{supp}(\phi)$. The second part is similar.
+\end{proof}
+
+Choose $T=T(f,\phi)\in L_0$ with $d(T)\ge d_0(n)$ and $G(T)\supseteq C_{f,\phi}$, so that
+\begin{equation}\tag{4.9}
+\mathrm{supp}_g\Big(\int_{G(F)^1}f(g^{-1}hg)\phi(h)\,dh\Big)\subset G(T).
+\end{equation}
+Then $I(f,\phi)=\int_{G(T)\times G(F)^1}f(g^{-1}hg)\phi(h)\,dg\,dh$. For $f\in\Hc(G,K)$, Corollary~2.3 gives $f(g^{-1}hg)=\int_{\Thu}f^\vee(\chi)\Gamma_\chi(g^{-1}hg)\,d\mu(\chi)$. Write $d\mu(\chi)=\rho(\chi)\,d\chi$ with $\rho=\frac{Q_G}{|W|}|c(\chi)|^{-2}$.
+
+\begin{Hypothesis}{(R)}[regularity, for $G$ and level $n$]
+For every bi-$K_n$-invariant $\phi\in C_c^\infty(G_{\ellr})$ and every $\mu\in\mathcal M(G,n)$, each coefficient of the polynomial $P_\mu(T;\chi,\phi)$ of (4.7A), multiplied by $\rho(\chi)$, extends to a $C^\infty$ function of $\chi\in\Thu$.
+\end{Hypothesis}
+
+\begin{Theorem}{4.5}[2026 form]
+Let $f\in\Hc(G,K)$, let $\phi\in C_c^\infty(G_{\ellr})$ be bi-$K_n$-invariant, and let $T(f,\phi)$ be as in (4.9).
+\begin{enumerate}[label=(\alph*)]
+\item For all $T\in L_0$ with $G(T)\supseteq G(T(f,\phi))$,
+\[
+I(f,\phi)=\sum_{\lambda\in\cA_A(T)}\int_{Ka_\lambda K\times G(F)^1}\int_{\Thu}f^\vee(\chi)\Gamma_\chi(g^{-1}hg)\,d\mu(\chi)\,\phi(h)\,dg\,dh=\int_{\Thu}f^\vee(\chi)\,I^T(\chi,\phi)\,d\mu(\chi).
+\]
+\item If Hypothesis~(R) holds for $G$ and $n$, then
+\[
+I(f,\phi)=\int_{\Thu}f^\vee(\chi)\,I(\chi,\phi)\,d\mu(\chi),
+\]
+the integral converging absolutely, with $I(\chi,\phi)$ as in Proposition~4.2(c).
+\end{enumerate}
+\end{Theorem}
+
+\begin{proof}
+(a) Fubini on the compact set $G(T)\times\mathrm{supp}\,\phi$, the integrand $f^\vee(\chi)\Gamma_\chi(g^{-1}hg)\phi(h)$ being bounded on $\Thu\times G(T)\times\mathrm{supp}\,\phi$.
+
+(b) By (a) and (4.7A), for $T\in L_0$ in the cone $\mathcal C=\{T: G(T)\supseteq G(T(f,\phi)),\ d(T)\ge d_0\}$,
+\[
+I(f,\phi)=\sum_{\mu\in\mathcal M}\int_{\Thu}f^\vee(\chi)\rho(\chi)\chi(\mu(T))P_\mu(T;\chi,\phi)\,d\chi.
+\]
+Fix $T_2\in\mathcal C$ and a regular dominant $T_1\in L_0$ with $\mu(T_1)\ne0$ for every $\mu\ne0$ in $\mathcal M$ (possible, since $\mathcal M$ is finite). Put $T=T_2+tT_1$, $t\in\mathbb{Z}_{\ge0}$. For $\mu\ne0$ the $\mu$-term is a finite sum of terms $p(t)\,\hat g(-\mu(T_2)-t\mu(T_1))$, where $p$ is a polynomial and $\hat g$ denotes Fourier coefficients of a function $g=f^\vee\rho\,a$ which is $C^\infty$ by (R). Fourier coefficients of smooth functions on a compact torus decay faster than any power, so these terms tend to $0$ as $t\to\infty$. Hence the $\mu=0$ term, which is a polynomial in $t$, converges to $I(f,\phi)$ as $t\to\infty$, so it is constant in $t$. Since $T_1$ ranges over an open cone of directions, the polynomial $T\mapsto\int f^\vee\rho\,P_0(T;\chi,\phi)\,d\chi$ on $L_0$ is constant along a spanning set of directions from every point of $\mathcal C$, hence constant, and equal to its value at $T=0$. That value is $\int f^\vee(\chi)I(\chi,\phi)\,d\mu(\chi)$. Absolute convergence holds because $I(\cdot,\phi)\rho$ is smooth by (R).
+\end{proof}
+
+\begin{Corollary}{4.5A}
+Assume (R) for $G$ and all $n$. Then $\phi\mapsto I(\chi,\phi)\rho(\chi)$ is, for almost every $\chi$, a $G$-invariant distribution on $G_{\ellr}$, and for each $\gamma\in G_{\ellr}$ there is a function $I(\cdot,\gamma)$ with $I(\cdot,\gamma)\rho$ smooth, such that (1.5) holds in the form
+\[
+\int_{G(F)^1}f(g^{-1}\gamma g)\,dg=\int_{\Thu}f^\vee(\chi)I(\chi,\gamma)\,d\mu(\chi)\qquad(f\in\Hc(G,K)).
+\]
+\end{Corollary}
+
+\begin{proof}
+$I(f,\phi)$ is invariant under conjugation of $\phi$, and the $W$-invariant Laurent polynomials $f^\vee$ are dense in $C(\Thu/W)$; since $I(\cdot,\phi)\rho$ is smooth and $W$-invariant, it is determined by the numbers $I(f,\phi)$. Taking $\phi$ to be normalized characteristic functions of small neighborhoods of $\gamma$, on which orbital integrals of $f$ are constant, gives the second statement.
+\end{proof}
+
+\begin{rem26}[Theorem 4.5]\label{r:T45}
+\begin{enumerate}
+\item Part~(a) is the first line of the 1997 Theorem~4.5 and is unconditional. The 1997 second line, with $I(\chi,\phi)$ ``independent of $T$'', rested on the unsupported claim discussed in Remark~\ref{r:P42}.
+\item Part~(b) is conditional on (R). Hypothesis~(R) holds for $PGL(2)$ (\S6.1). It fails for $SL(2)$ (\S6.2), and there the conclusion of (b) is false: the spectral side needs an extra point mass. We expect (R) to hold whenever $Z(G)$ is connected (Conjecture~4.6(b)); for $GL(N)$ the analogous statement is the content of [W], which we have not re-checked against the formulation here.
+\item In rank one, the proof of (b) can be sharpened: the oscillatory terms pair to zero \emph{exactly} with $f^\vee$ once $T$ is large, by a Fourier-support argument (\S6.1).
+\end{enumerate}
+\end{rem26}
+
+\paragraph{When (R) fails.} The singular behavior comes from the denominators $1-\psi(\mu_e)$ of Lemma~3.5A, with $\psi=w\chi/w'\chi$, at points where $\rho$ does not vanish to compensate. On such a hypersurface a term $\chi(\mu(T))a(\chi)$ with $a\rho$ having a simple pole behaves, as $T\to\infty$, like a Dirichlet kernel, and its pairing with $f^\vee$ tends to a multiple of the restriction of $f^\vee$ to the hypersurface (the Sokhotski--Plemelj formula on the circle). The limit exists because $I(f,\phi)$ does not depend on $T$. This motivates:
+
+\begin{Conjecture}{4.6}
+Let $\phi\in C_c^\infty(G_{\ellr})$.
+\begin{enumerate}[label=(\alph*)]
+\item The linear form $f^\vee\mapsto I(f,\phi)$ on Satake transforms is given by a measure $dI_\phi$ on $\Thu/W$ of the form
+\[
+dI_\phi=I(\chi,\phi)\,d\mu(\chi)+dI^{\,sing}_\phi,
+\]
+where $I(\cdot,\phi)$ is the function of Proposition~4.2(c), $I(\cdot,\phi)\rho\in L^1$, and $dI^{\,sing}_\phi$ is supported on the set of non-regular unitary $\chi$ at which $\rho$ does not vanish (to the order forced by the stabilizer of $\chi$). This set is, conjecturally, the set of $\chi$ for which the $R$-group of $i_{G,A}(\chi)$ is non-trivial.
+\item If $Z(G)$ is connected (equivalently, the derived group of $\hat G$ is simply connected), then the $R$-groups of the unitary unramified principal series are trivial [Key], Hypothesis~(R) holds, and $dI^{\,sing}_\phi=0$.
+\item For $G=SL(n)$, $dI^{\,sing}_\phi$ is the sum, over the non-trivial unramified $\kappa$, of the contributions $(c_S|\mathfrak D(S)|)^{-1}\,dI^\kappa_\phi$ of (5.4A), which are push-forwards of spectral measures of the elliptic endoscopic groups (Proposition~5.2).
+\end{enumerate}
+\end{Conjecture}
+
+\begin{rem26}[Conjecture 4.6]\label{r:C46}
+Verified for $PGL(2)$ (no singular part) and for $SL(2)$, where $dI^{\,sing}_\gamma=\tfrac12\Delta\,\delta_{\chi_0}$ and $\chi_0$ is the unramified quadratic character (\S6.2). The precise support condition in~(a) is a guess, and in~(c) the normalizations (the size of $\mathfrak D$, transfer factors) have only been checked for $SL(2)$. Part~(b) relies on [Key] (Chevalley groups; the general unramified case via Steinberg's connectedness theorem for centralizers in $\hat G$) for the triviality of $R$-groups; the implication ``trivial $R$-groups $\Rightarrow$ (R)'' is the conjectural part.
+\end{rem26}
+
+\paragraph{The geometric side.} The Weyl integration formula states that
+\begin{equation}\tag{4.10}
+\int_{G(F)^1}\psi(h)\,dh=\sum_{S}\frac{1}{|W(G,S)|}\int_{S(F)\cap G(F)^1}|D(s)|\int_{S(F)\backslash G(F)^1}\psi(g^{-1}sg)\,d\dot g\,ds,
+\end{equation}
+where $S$ runs over a set of representatives of the $G(F)$-conjugacy classes of maximal $F$-tori, $W(G,S)=N_{G(F)}(S)/S(F)$, $D(s)$ is the Weyl discriminant, and $d\dot g$ is the quotient measure. (The 1997 text wrote ``$\Delta(t)^2\,\mathrm{meas}(T(F))$'' in one line and not in the next, and used $T$ for these tori.) If $\phi$ is supported on $G_{\ellr}$, only elliptic $S$ contribute. Plugging $\psi=f\Phi_\phi$ into (4.10) gives the ``geometric'' expansion
+\begin{equation}\tag{4.11}
+I(f,\phi)=\sum_{S\ \ellr}\frac{\vol(S(F)/A_G(F))}{|W(G,S)|}\int_{S(F)\cap G(F)^1}|D(s)|\,O_s(f)\,O_s(\phi)\,ds,\qquad O_s(f)=\int_{S(F)\backslash G(F)^1}f(g^{-1}sg)\,d\dot g.
+\end{equation}
+The equality between Theorem~4.5 and (4.11) is a special case of Arthur's local trace formula (\S7).
+
+% =====================================================================
+\section{The $\kappa$-stable trace formula on $SL(n)$}
+
+\subsection{A twisted trace formula on $SL(n,F)$}
+
+Let $G:=SL(n)$, $G':=PGL(n)$, $m\mid n$, and let $\eta:F^\times\to\mathbb{C}^\times$ be an unramified character of order $m$. Then $\kappa'(g):=\eta(\det g)$ is a character of $GL(n,F)$, trivial on the center since $\eta(z^n)=1$; let $\kappa$ be the corresponding character of $G'(F)$. It is trivial on the image of $G(F)$, so for $f\in C_c^\infty(G(F))$ the \emph{$\kappa$-orbital integral}
+\[
+\Phi^\kappa_f(h):=\int_{G'(F)}\kappa(g)f(g^{-1}hg)\,dg\qquad(h\in G_{\ellr})
+\]
+is invariant under conjugation by $G(F)$, and $\Phi^\kappa_f(x^{-1}hx)=\kappa(x)^{-1}\Phi^\kappa_f(h)$ for $x\in G'(F)$. (The 1997 computation (5.3) wrote $f$ for $\phi$ in the integrand, and its sign conventions for $\kappa$ were inconsistent.)
+
+Let $f$ and $\phi$ be as in Lemma~4.4. Then
+\begin{equation}\tag{5.1}
+I^\kappa(f,\phi):=\int_{G(F)}\int_{G'(F)}\kappa(g)f(g^{-1}hg)\phi(h)\,dg\,dh=\int_{G(F)}\Phi^\kappa_f(h)\phi(h)\,dh=\int_{G(F)}\Phi^{\kappa^{-1}}_\phi(h)f(h)\,dh.
+\end{equation}
+The last equality follows from the substitution $h\mapsto ghg^{-1}$ followed by $g\mapsto g^{-1}$, which turns $\kappa$ into $\kappa^{-1}$. The interchanges of integration are justified by Lemma~4.4. For $h$ regular elliptic, the properties of $\Phi^\kappa_f$ near the singular set of the centralizer were investigated in [Kaz] (see also [Hen]).
+
+Let $S\subset G$ be an elliptic maximal torus and $S'$ its image in $G'$. The $G'(F)$-conjugacy class of a regular $s\in S(F)$ is the union of the $G(F)$-classes of the $x^{-1}sx$, $x\in\mathfrak D(S):=G'(F)/G(F)S'(F)$, a finite abelian group. Hence, with $c_S=\vol(S'(F))/\vol(S(F))$,
+\begin{equation}\tag{5.2}
+\Phi^\kappa_f(s)=c_S\sum_{x\in\mathfrak D(S)}\kappa(x)\,O_{x^{-1}sx}(f)\quad\text{if }\kappa|_{S'(F)}=1,\qquad\Phi^\kappa_f(s)=0\quad\text{otherwise.}
+\end{equation}
+Since $\Phi^\kappa_f$ is $G(F)$-invariant, the Weyl integration formula (4.10) for $G(F)$ gives
+\begin{equation}\tag{5.4}
+I^\kappa(f,\phi)=\sum_{S\ \ellr}\frac{1}{|W(G,S)|}\int_{S(F)}|D(s)|\,\Phi^\kappa_f(s)\,O_s(\phi)\,ds.
+\end{equation}
+This replaces (5.2)--(5.4) of 1997, which integrated over $S(F)\backslash G'(F)$ although the integrand lives on $G(F)$; the finite group $\mathfrak D(S)$ in (5.2) is the source of the $\kappa$-weights. Fourier inversion on $\mathfrak D(S)$ recovers ordinary orbital integrals:
+\begin{equation}\tag{5.4A}
+O_s(f)=\frac{1}{c_S|\mathfrak D(S)|}\sum_{\kappa\in\mathfrak D(S)^\wedge}\Phi^\kappa_f(s).
+\end{equation}
+
+The method of proof of Theorem~4.5 applies to $I^\kappa$ (Proposition~4.3). It gives an expression
+\begin{equation}\tag{5.7}
+I^\kappa(f,\phi)=\int_{\Thu}f^\vee(\chi)\,dI^\kappa_\phi(\chi),
+\end{equation}
+where $A$ is the maximal split torus of $G$. Under (R) for $I^{T,\kappa}$, $dI^\kappa_\phi=I^\kappa(\chi,\phi)\,d\mu(\chi)$. Combining (5.7) and (5.4),
+\begin{equation}\tag{5.8}
+\int_{\Thu}f^\vee(\chi)\,dI^\kappa_\phi(\chi)=\sum_{S\ \ellr}\frac{1}{|W(G,S)|}\int_{S(F)}|D(s)|\,\Phi^\kappa_f(s)\,O_s(\phi)\,ds,
+\end{equation}
+a special case of a $\kappa$-stable form of Arthur's local trace formula. For $\gamma\in G_{\ellr}$ we write (5.7) as
+\begin{equation}\tag{5.9}
+\Phi^\kappa_f(\gamma)=\int_{\Thu}f^\vee(\chi)\,dI^\kappa_\gamma(\chi),\qquad f\in\Hc(G,K).
+\end{equation}
+
+\subsection{The fundamental lemma and the spectral measures $dI^\kappa_\gamma$}
+
+For $\kappa$ of order $m\mid n$ the corresponding elliptic endoscopic group of $SL(n)$ is
+\[
+H=H_m=\ker\big(N_{E/F}\circ\det:\ \mathrm{Res}_{E/F}GL(n/m)\to\mathbb{G}_m\big),\qquad E/F\ \text{unramified},\ [E:F]=m.
+\]
+It is unramified over $F$ and split over $E$. (The 1997 text wrote $\mathrm{Res}_{E/F}(GL(m)/E)$, and for $m=n$ ``an elliptic Cartan of $GL(n)$''. In fact, for $m=n$, $H$ is the norm-one torus $\ker N_{E/F}$, an elliptic maximal torus of $SL(n)$.) Fix an $L$-embedding $\iota:{}^LH\hookrightarrow{}^LG$ and let $\iota^*:\Hc(G,K)\to\Hc(H,K_H)$ be the induced homomorphism, characterized by
+\[
+(\iota^*f)^\vee(\chi_H)=f^\vee(\iota(\chi_H)),
+\]
+where $\iota$ also denotes the induced map $\Thu_H/W_H\to\Thu/W$ on unramified unitary characters. The \emph{fundamental lemma} for the spherical Hecke algebra asserts that for $\gamma\in G_{\ellr}$ coming from a $(G,H)$-regular $\gamma_H\in H(F)$,
+\begin{equation}\tag{5.11}
+\Phi^\kappa_f(\gamma)=\Delta_{H,\kappa}(\gamma_H,\gamma)\,S\Phi^H_{\iota^*f}(\gamma_H),
+\end{equation}
+where $S\Phi^H$ is the \emph{stable} orbital integral on $H(F)$ and $\Delta_{H,\kappa}$ is the Langlands--Shelstad transfer factor [LS]; and $\Phi^\kappa_f(\gamma)=0$ for $\gamma$ not coming from $H$. This is now a theorem. For the unit element and $SL(n)$ it is due to Kazhdan [Kaz] ($\kappa$ of order $n$) and Waldspurger [Wa91]. The extension from the unit element to the whole Hecke algebra is due to Hales [Hal]. The general case is due to Ng\^o [Ngo], combined with Waldspurger's reduction from groups to Lie algebras. (The 1997 text said ``it has been conjectured''.)
+
+\begin{Proposition}{5.1}
+Let $\kappa$ have order $n$, so $H=\ker N_{E/F}$ is compact. Let $\chi_\kappa\in\Thu/W$ be the image under $\iota$ of the trivial character of $H(F)$; its Satake parameter is the class of $\mathrm{diag}(1,\zeta,\dots,\zeta^{n-1})$ in $PGL(n,\mathbb{C})$, $\zeta$ a primitive $n$-th root of unity. For $\gamma\in G_{\ellr}$ coming from $\gamma_H\in H(F)$,
+\[
+\Phi^\kappa_f(\gamma)=\Delta_{H,\kappa}(\gamma_H,\gamma)\,f^\vee(\chi_\kappa)\qquad(f\in\Hc(G,K)),
+\]
+that is, $dI^\kappa_\gamma=\Delta_{H,\kappa}(\gamma_H,\gamma)\,\delta_{\chi_\kappa}$ is a point mass.
+\end{Proposition}
+
+\begin{proof}
+$H(F)$ is compact, so $\Hc(H,H(F))$ consists of constants, $S\Phi^H_{\iota^*f}(\gamma_H)=(\iota^*f)(\gamma_H)$ (with $\vol H(F)=1$), and $\iota^*f$ is the constant $(\iota^*f)^\vee(1)=f^\vee(\chi_\kappa)$. Now apply (5.11). Under $\iota$, Frobenius is sent to an $n$-cycle in the Weyl group of $\hat G=PGL(n,\mathbb{C})$, whose semisimple class has eigenvalues the $n$-th roots of unity.
+\end{proof}
+
+\begin{Proposition}{5.2}
+Let $m\mid n$ and suppose that Theorem~4.5 holds for $H=H_m$ in its stable form: for $\gamma_H\in H_{\ellr}$ there is a measure $dI^{H,st}_{\gamma_H}$ on $\Thu_H/W_H$ with $S\Phi^H_{f_H}(\gamma_H)=\int f_H^\vee\,dI^{H,st}_{\gamma_H}$ for $f_H\in\Hc(H,K_H)$. Then for $\gamma$ coming from $\gamma_H$,
+\[
+dI^\kappa_\gamma=\Delta_{H,\kappa}(\gamma_H,\gamma)\cdot\iota_*\big(dI^{H,st}_{\gamma_H}\big).
+\]
+In words: the $\kappa$-spectral measure of $G$ is the transfer factor times the push-forward, along the dual embedding, of the stable spectral measure of $H$.
+\end{Proposition}
+
+\begin{proof}
+Combine (5.11) with $(\iota^*f)^\vee=f^\vee\circ\iota$: $\Phi^\kappa_f(\gamma)=\Delta\int(f^\vee\circ\iota)\,dI^{H,st}_{\gamma_H}=\Delta\int f^\vee\,d\iota_*(dI^{H,st}_{\gamma_H})$. The measure $dI^\kappa_\gamma$ is determined by its values on the dense set of Satake transforms.
+\end{proof}
+
+This answers the question with which the 1997 version closed: the distribution $\phi\mapsto I^\kappa(\iota(\chi_H),\phi)$ on $G$ ``transfers'' to $\phi_H\mapsto I^{H,st}(\chi_H,\phi_H)$ in the sense of Proposition~5.2. By (5.4A), the ordinary spectral measure of $SL(n)$ is $dI_\gamma=(c_S|\mathfrak D(S)|)^{-1}\sum_\kappa dI^\kappa_\gamma$. The $\kappa=1$ term is the stable part, and the $\kappa\ne1$ terms are push-forwards from endoscopic groups, supported on the proper subvarieties $\iota(\Thu_H/W_H)$ of $\Thu/W$. This is the source of the singular part in Conjecture~4.6(c). For $n=2$ it is the atom found in \S6.2.
+
+\begin{rem26}[\S5]\label{r:S5}
+The structure of \S5 (signs of $\kappa$, $\mathfrak D(S)$, the endoscopic groups $H_m$, the fundamental lemma as a theorem) is standard. The normalizations ($c_S$, the measures on $S(F)$ and $S'(F)$, the transfer factor $\Delta_{H,\kappa}$ and the choice of $\iota$) have been checked only for $SL(2)$ and the element $\gamma=\left(\begin{smallmatrix}0&-1\\1&0\end{smallmatrix}\right)$, where $\Phi^\kappa_f(\gamma)=O_\gamma(f)-O_{\gamma'}(f)=f^\vee(\chi_0)$ (\S6.2). The description of $\chi_\kappa$ via the $n$-cycle is correct up to the choice of $L$-embedding, which may twist it by a central element. Proposition~5.2 assumes a stable version of Theorem~4.5 for $H$, which is not proved here (for $m<n$, $H$ is not a torus).
+\end{rem26}
+
+%%PART4%%
 
 \end{document}

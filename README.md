@@ -13,7 +13,7 @@ Maintained by David Joyner. Parts of this repository were prepared with the help
 | [`local-trace/examples/pgl2/`](local-trace/examples/pgl2/) | Worked example for PGL(2): closed forms for the spectral distribution I(χ,γ) for every elliptic type, verified on the Bruhat–Tits tree | Complete, verified (q = 3) |
 | [`local-trace/paper/`](local-trace/paper/) | The revised, corrected and updated paper (glossary, literature review before/after 1997) | Not started |
 | [`local-trace/arthur/`](local-trace/arthur/) | Short guide: deriving the main identity from Arthur's local trace formula ("Route B") | Planned |
-| [`finite-trace/`](finite-trace/) | The analogous trace formula for finite groups (toy model, e.g. GL(2, F_q)) | Planned |
+| [`finite-trace/`](finite-trace/) | Trace formulas for finite groups: the 1996–2003 notes and their 2026 corrected and expanded version | Notes posted; refereeing of the 2026 corrections pending |
 | [`common/`](common/) | Shared notation, glossary and bibliography | Started |
 
 ## What is proved, what is checked, what is open

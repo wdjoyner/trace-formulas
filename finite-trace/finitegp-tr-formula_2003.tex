@@ -1,0 +1,813 @@
+%original notes, unpublished, by wdjoyner
+\documentclass[12pt]{article}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{amsgen}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+
+\newtheorem{theorem}{Theorem} 
+\newtheorem{corollary}[theorem]{Corollary} 
+\newtheorem{conjecture}[theorem]{Conjecture} 
+\newtheorem{lemma}[theorem]{Lemma} 
+\newtheorem{proposition}[theorem]{Proposition} 
+\newtheorem{definition}[theorem]{Definition} 
+\newtheorem{example}[theorem]{Example} 
+\newtheorem{exercise}[theorem]{Exercise} 
+\newtheorem{axiom}{Axiom} 
+\newtheorem{remark}{Remark} 
+\def\fff{\mathbb{F}}
+\def\aaa{\mathbb{A}}
+\def\qqq{\mathbb{Q}}
+\def\rrr{\mathbb{R}}
+\def\ccc{\mathbb{C}}
+\def\zzz{\mathbb{Z}}
+\def\hhh{{\cal H}}
+\def\pf{{\bf proof}:\ }
+\def\qed{$\Box$}
+
+
+\begin{document}
+
+
+\author{David Joyner}
+\title{Notes on trace formulas for finite groups\thanks{Notes 
+written summer 1996 visiting Stanford Univ.. 
+Some details added June, November 1997, August 2000, March 2003}
+}
+\date{3-3-2003}
+\maketitle
+
+\tableofcontents
+
+\vskip .4in
+
+We will write down some analogs of the ``global" (or Selberg)
+trace formula and the ``global" trace formula of Arthur
+in the case of finite groups. We shall only assume a basic
+familiarity with groups and representations. For the sake
+of drawing an analogy, we shall often write sums as
+integrals.
+
+\textbf{Notation}: Let $G$ be a finite group, $G_{*}$ the set of conjugacy
+classes, $G^{*}$ the set of equivalence classes of irreducible complex
+representations. We denote a conjugacy class in $G$ by
+\[
+\{\gamma \}=\{g^{-1}\gamma g\;|\;g\in G\},\;\;\;\;\;\gamma \in G.
+\]
+We often identify $G_{*}$ (resp., $G^{*}$ ) with a complete set of
+representatives of these classes. Let $C(X)$ denote the vector space of
+complex-valued functions on a finite set $X$. Let $dx$ denote the counting
+measure on $G$.
+
+The vector space $C(G_{*})$ is called the space of \textbf{class functions}
+on $G$.
+
+\section{Orbital integrals and characters}
+
+
+We can construct a class function
+from any function $f\in C(G)$ by summing over
+all the conjugate elements:
+Define the \textbf{orbital integral} by 
+\begin{eqnarray*}
+O &:&C(G)\rightarrow C(G_{*}), \\
+O(f,\gamma ) &=&\int_Gf(x^{-1}\gamma x)\, dx,\ \ \ \gamma\in G.
+\end{eqnarray*}
+Here $dg$ denotes the counting measure.
+For $\pi \in G^{*}$, let $\mathrm{tr}$\medskip\ $\pi \in C(G_{*})$ denote
+the trace (or \textbf{character}) of $\pi $. The following two lemmas are
+well-known (due to Frobenius or Schur):
+
+\begin{lemma}
+$C(G_{*})=\mathrm{span}\{\mathrm{tr}$\medskip\ $\pi \;|\;\pi \in G^{*}\}$
+and $\dim $\medskip\ $C(G_{*})=|G_{*}|=|G^{*}|$. In other words, the
+characters form a basis for the vector space of class functions.
+\end{lemma}
+
+This lemma will be referred to as the \textbf{completeness lemma}.
+
+\begin{lemma}
+For $\pi ,\pi ^{\prime }\in G^{*}$, we have
+\[
+{1\over |G|}\sum_{g\in G}\mathrm{tr}\medskip\ \pi\, (g)\cdot \overline{\mathrm{tr}\medskip\ \pi
+^{\prime }(g)}=\left\{ 
+\begin{array}{cc}
+1, &\pi \cong \pi ^{\prime }, \\ 
+0, &\mathrm{otherwise}.
+\end{array}
+\right. .
+\]
+\end{lemma}
+
+This lemma will be referred to as \textbf{orthogonality of characters}.
+
+\begin{corollary} For all $\pi \in G^*$, we have
+\begin{equation}
+\label{eq:orthog}
+{1\over |G|}\sum_{g\in G} {\rm tr}\,\pi\,(g)
+=
+\left\{
+\begin{array}{cc}
+1, & \pi\cong 1,\\
+0, & {\rm otherwise},
+\end{array}
+\right.
+\end{equation}
+\end{corollary}
+
+For $f_1,f_2\in C(G)$, let
+\[
+(f_1,f_2)={1\over |G|}\sum_{g\in G}f_1 (g)\cdot \overline{f_2(g)}.
+\]
+We call this the {\bf Schur inner product} on $C(G)$.
+Note that the collection of functions
+\[
+\delta_x(y)=
+\left\{
+\begin{array}{cc}
+1,& {\rm if }\ x=y,\\
+0, & {\rm if}\ x\not=y.
+\end{array}
+\right. ,\ \ \ \ \ \ \ 
+\]
+for $x\in G$, 
+form a basis for the vector space $C(G)$ which is orthonormal
+with respect to the Schur inner product. The above lemma
+says that the collection of irreducible characters form an
+orthonomal basis as well.
+
+\begin{example}
+Let $G=S_3$, the symmetric group on 3 letters. Let 
+$\sigma =(1\;2),\;\tau =(1\;2\;3)$, so
+\[
+G=\{1,\sigma ,\tau ,\tau ^2,\sigma \tau ,\sigma \tau ^2\}.
+\]
+
+Using the fact that $\sigma \tau \sigma ^{-1}=\tau ^2$, it can be shown that 
+$G$ has only $3$ distinct conjugacy classes:
+\[
+G_{*}=\{\{1\},\{\sigma \},\{\tau \}\}.
+\]
+
+In fact, 
+\[
+|\{1\}|=1,\;\;\;\;\;|\{\sigma \}|=3,\;\;\;\;|\{\tau \}|=2.
+\]
+
+There are three inequivalent irreducible complex representations of $G$:
+\begin{eqnarray*}
+\pi _1 &:&g\longmapsto \mathrm{identity\;map\;on}\;\ccc
+\mathrm{(trivial\;rep)} \\
+\pi _2 &:&g\longmapsto (z\longmapsto sgn(g)\cdot z)\;\mathrm{on}\;
+\ccc\mathrm{(sign\;rep)} \\
+\pi _3 &:&g\longmapsto \mathrm{associated}\;3\times 3\;\mathrm{permutation\;matrix}
+\ \mathrm{(standard\;rep)}\\
+ & &\ \ \ \ \ \ \ \ \ \ \ \ \  {\rm acting\ on\ }
+\ccc^3/\{(x,y,z)\ |\ x+y+z=0\}.
+\end{eqnarray*}
+
+Their values on the conjugacy classes are summarized as follows:
+\begin{center}
+\begin{tabular}{|c|c|c|c|} \hline
+tr\ $\pi\backslash |\{\gamma\}|$& 1 & 3 & 2 \\ \hline
+tr\ $\pi\backslash \{\gamma\}$& $\{1\}$ & $\{\sigma \}$ & $\{\tau \}$ \\ \hline
+tr\ $\pi _1$ & 1 & 1 & 1 \\ 
+tr\ $\pi _2$ & 1 & -1 & 1 \\ 
+tr\ $\pi _3$ & 2 & 0 & -1\\ \hline
+\end{tabular}
+\end{center}
+We shall explain why the columns of this table are orthogonal in the 
+next section.
+
+\end{example}
+
+\begin{example}
+The group $A_5$ of even permutations on $\{1,2,3,4,5\}$
+has $5$ conjugacy classes:
+\[
+\{1\},\ \ \ \{a=(1,2)(3,4)\},\ \ \ \{b=(1,2,3)\},
+\]
+\[
+\{c=(1,2,3,4,5)\},\ \ \ 
+\{d=(1,3,5,2,4)\}.
+\]
+There are $5$ ireducible characters.
+Their values on the conjugacy classes are summarized as follows:
+\begin{center}
+\begin{tabular}{|c|c|c|c|c|c|} \hline
+tr\ $\pi\backslash |\{\gamma\}|$& 1 & 15 & 20 & 12 & 12 \\ \hline
+tr\ $\pi\backslash \{\gamma\}$& $\{1\}$ & $\{a \}$ & $\{b \}$ & $\{ c\}$ & $\{ d\}$ \\ \hline
+tr\ $\pi _1$ & 1 & 1 & 1 & 1 & 1\\ 
+tr\ $\pi _2$ & 3 & -1 & 0 & $\phi$ & $\overline{\phi}$ \\ 
+tr\ $\pi _3$ & 3 & -1 & 0 & $\overline{\phi}$ & $\phi$ \\
+tr\ $\pi _4$ & 4 & 0 & 1 & -1 & -1 \\ 
+tr\ $\pi _5$ & 5 & 1 & -1 & 0 & 0 \\ \hline
+\end{tabular}
+\end{center}
+Here $\phi=(1+\sqrt{5})/2$ and $\overline{\phi}=(1-\sqrt{5})/2$.
+\end{example}
+
+We close this section with a
+
+\begin{remark}
+One may show (without using the completeness lemma) that the orbital 
+integral map $O:C(G)\rightarrow C(G_{*})$ is surjective and that
+\[
+\ker \medskip\ O=\mathrm{span}\{f-f^g\;|\;f\in C(G),\;\;g\in G\},
+\]
+where $f^g(x)=f(g^{-1}xg)$, for $x,g\in G$.
+The is equivalent to saying that the sequence
+
+\[
+0\rightarrow I(G)\stackrel{i}{\rightarrow} C(G)\stackrel{O}{\rightarrow} C(G_*)\rightarrow 0,
+\]
+is exact, where $I(G)=C(G)^{G-1}=\{f^g-f\ |\ f\in C(G),\ g\in G\}$
+and $i$ is inclusion. 
+
+Since these three groups $I(G)$, $C(G)$ and $C(G_*)$ are all $G$-module
+(under the action induced by conjugation), one may ask what their
+cohomology groups are. Since the action of $G$ on $C(G_*)$ is trivial and
+since $C(G_*)$ is a finite dimensional complex vector space, we know that
+$H^1(G,C(G_*))=Hom(G,C(G_*))=0$. What are the other cohomology groups?
+\end{remark}
+
+\section{A Fourier expansion}
+
+Let 
+\[
+\overline{\pi}(f) = \int_G f(g)\overline{\pi(g)}\, dg
+=\sum_{g\in G} f(g)\overline{\pi}(g)
+\]
+and
+\[
+{\rm tr}\,\overline{\pi}\,(f)=
+\int_G {\rm tr}\,\overline{\pi}\,(g)f(g)\, dg
+=\sum_{g\in G} {\rm tr}\,\overline{\pi}\,(g)f(g).
+\]
+By completeness, each orbital integral may be written as a linear
+combination of characters. Indeed, we have the following
+expansion.
+
+\begin{lemma} For $f\in C(G)$ and $\gamma\in G$, we have
+\begin{equation}
+O(f,\gamma)
+=\sum_{\pi\in G^*}
+%\frac{1}{d_\pi^2}
+ {\rm tr}\,\overline{\pi}\, (f)\cdot {\rm tr}\,\pi\,(\gamma).
+\label{eq:2.1}
+\end{equation}
+
+\end{lemma}
+
+\pf 
+By the completeness lemma, there are constants
+$a_\pi(f)\in \ccc$ such that
+\[
+O(f,\gamma)=\sum_{\pi\in G^*} a_\pi(f)\cdot {\rm tr}\,\pi\,(\gamma).
+\]
+Using the orthogonality of characters, we have
+\[
+\begin{split}
+|G|\cdot a_\pi(f)
+&=\int_G (\sum_{\pi'\in G^*} a_{\pi'}(f)\cdot 
+{\rm tr}\,\pi'(x))\overline{{\rm tr}\,\pi\, (x)}\, dx\\
+&=\int_G O(f,x)\overline{{\rm tr}\,\pi(x)}\, dx\\
+&=\int_G \int_G f(g^{-1}xg)\overline{{\rm tr}\,\pi\,(x)}\, dgdx\\
+&=\int_G \int_G f(x)\overline{{\rm tr}\,\pi\,(g^{-1}xg)}\, dgdx\\
+&=|G|{\rm tr}\,\overline{\pi}\,(f).
+\end{split}
+\]
+\qed
+
+For example, let $\gamma'\in G$ and 
+let $f$ denote the characteristic function of the
+{\it set} $\{\gamma'\}$. Then
+${\rm tr}\,{\pi}(f)=
+{\rm tr}\,{\pi}(\gamma')$,
+In this case,
+\[
+\sum_{\pi\in G^*}
+ {\rm tr}\,\overline{\pi}(f)\cdot {\rm tr}\,\pi(\gamma)
+=\sum_{\pi\in G^*}
+ {\rm tr}\,\overline{\pi}(\gamma')\cdot {\rm tr}\,\pi(\gamma).
+\]
+By the lemma above, this is $=0$ if
+$\gamma$ is not conjugate to $\gamma'$
+(and is non-zero if $\gamma\in \{\gamma'\}$).
+This is equivalent to saying that
+distinct columns of the character table of a finite group are orthogonal.
+
+
+\section{An analog of the global trace formula}
+
+
+Let $\Gamma $ be a subgroup of $G$ and let
+$G_\gamma$ denote the centralizer of $\gamma$ in $G$:
+\[
+G_\gamma = \{g\in G\ |\ g\gamma = \gamma g\}.
+\]
+
+Let
+\[
+C(\Gamma \backslash G)=\{\phi:G\rightarrow \ccc\ |\ \phi(hg)=\phi(g),
+\ \forall h\in \Gamma ,\ \forall g\in G\}.
+\]
+Note that $G$ acts on $C(\Gamma \backslash G)$ by right translation:
+\[
+(R(g)\phi)(x)=\phi(xg^{-1}),\ \ \ x,g\in G.
+\]
+(To check this we must verify that, for each $\phi\in 
+C(\Gamma \backslash G)$, we have (a) $R(1)\phi=\phi$, 
+which is obvious, and (b) $R(g_1)R(g_2)\phi=R(g_1g_2)\phi$,
+which follows from the equation
+\[
+\begin{split}
+(R(g_1)R(g_2)\phi)(x)
+&=(R(g_1)\phi_{g_2})(x)=\phi_{g_2}(xg_1^{-1})\\
+&=\phi(xg_2^{-1}g_1^{-1})=\phi(x(g_1g_2)^{-1})=(R(g_1g_2)\phi)(x),
+\ \ \ x,g_1,g_2\in G,
+\end{split}
+\]
+where $\phi_y(x)=\phi(xy^{-1})$.) In other words, each
+$g\in G$ gives rise to an automorphism
+\[
+R(g): C(\Gamma \backslash G)\rightarrow C(\Gamma \backslash G).
+\]
+This is called the {\bf right regular representation
+of $G$ on $C(\Gamma \backslash G)$}.
+For each fixed $f \in C(G)$, define
+\[
+R(f): C(\Gamma \backslash G)\rightarrow C(\Gamma \backslash G)
+\]
+by
+\[
+(R(f)\phi)(x)=\int_G f(y)(R(y)\phi)(x)\ dy,\ \ \ x\in G.
+\]
+This is called the {\bf right regular representation
+of $C(G)$ on $C(\Gamma \backslash G)$}. We may rewrite this as
+\begin{equation}
+\label{eq:rt_reg}
+\begin{split}
+(R(f)\phi)(x)
+&=\int_G f(y)(R(y)\phi)(x)\ dy\\
+&=\int_G f(y)\phi(xy^{-1})\ dy\\
+&=\int_G {1\over {\rm meas}(\Gamma )}\int_\Gamma  f(y)\phi(hxy^{-1})\ dh\ dy\\
+&=\int_G K_f(x,y)\phi(y)\ dy,
+\end{split}
+\end{equation}
+where
+\[
+K_f(x,y)={1\over {\rm meas}(\Gamma )}\int_\Gamma  f(y^{-1}hx)\ dh
+\]
+and where ${\rm meas}(\Gamma )=\int_\Gamma  1\ dh$ is the {\bf measure}
+of $\Gamma $. The function $K_f:G\times G\rightarrow \ccc$
+is called the {\bf kernel function} of the right regular representation
+of $G$ on $C(\Gamma \backslash G)$. 
+
+Choose the measure $dh$ as the counting measure,
+so that ${\rm meas}(\Gamma )=|\Gamma |$. Another way to write this is
+\[
+K_f(x,y)={1\over |\Gamma |}\sum_{\gamma \in \Gamma } f(y^{-1}\gamma x).
+\]
+
+\begin{lemma} ${\rm tr}(R(f))={|\Gamma |\over |G|}\sum_{g\in G} K_f(x,x)$.
+\end{lemma}
+
+\pf
+The delta functions $\{\delta_x\ |\ x\in \Gamma \backslash G\}$,
+form an orthonormal basis for $C(\Gamma \backslash G)$ with respect to
+the inner product
+\[
+(f_1,f_2)
+={|\Gamma |\over |G|}\sum_{x\in \Gamma \backslash G}f_1 (x)\cdot 
+\overline{f_2(x)}.
+\]
+These elements may be used to compute a matrix 
+representation of $R(f)$. The trace is therefore given by
+\[
+\begin{split}
+{\rm tr}(R(f))
+&=\sum_{g\in \Gamma \backslash G}(R(f)\delta_g,\delta_g)
+={|\Gamma |\over |G|}\sum_{g\in \Gamma \backslash G}
+\sum_{x\in \Gamma \backslash G}(R(f)\delta_g)(x)\delta_g(x)\\
+&={|\Gamma |\over |G|}\sum_{g\in \Gamma \backslash G}
+\sum_{g\in \Gamma \backslash G}\sum_{y\in G}
+f(y)(R(y)\delta_g)(x)\delta_g(x)\\
+&={|\Gamma |\over |G|}\sum_{g\in \Gamma \backslash G}
+\sum_{x\in \Gamma \backslash G}\sum_{y\in G}
+f(y)\delta_g(xy^{-1})\delta_g(x)\\
+&={|\Gamma |\over |G|}\sum_{g\in \Gamma \backslash G}
+\sum_{x\in \Gamma \backslash G}\sum_{y\in g^{-1}\Gamma x}
+f(y)\delta_g(x)\\
+&={|\Gamma |\over |G|}\sum_{g\in \Gamma \backslash G}\sum_{y\in \Gamma }f(g^{-1}hg)
+={1\over |G|}\sum_{g\in G}\sum_{y\in \Gamma }f(g^{-1}hg),
+\end{split}
+\]
+as desired.   
+\qed
+
+\begin{lemma} If
+\[
+R=\oplus_{\pi\in G^*}m^\Gamma _\pi \pi
+\]
+then 
+
+(a) ${\rm tr}(R(f))=\sum_{\pi\in G^*}m^\Gamma _\pi {\rm tr}(\pi(f))$,
+for all $f\in C(G)$,
+
+(b) $m^\Gamma _\pi \not= 0$ if and only if the restriction of
+$\pi$ to $\Gamma $, $res_\Gamma ^G(\pi)$,
+contains the trivial representation of $\Gamma $.
+\end{lemma}
+
+\pf
+We only prove (b). Let 
+$\rho\in G^*$ and $f={\rm tr}(\rho)$.
+By (a) and orthogonality, ${\rm tr}(R({\rm tr}(\rho)))=m_\rho$.
+By the previous lemma, we have
+\[
+{\rm tr}(R({\rm tr}(\rho)))
+={1\over |G|}\sum_{g\in G}\sum_{y\in \Gamma }{\rm tr}(\rho)(g^{-1}hg)
+=\sum_{y\in \Gamma }{\rm tr}(\rho)(h).
+\]
+If 
+\[
+Res_\Gamma ^G(\rho)=
+\oplus_{\sigma\in \Gamma ^*}n_\sigma \sigma
+\]
+then, by orthogonality, 
+\[
+\sum_{h\in \Gamma }{\rm tr}(\rho)(h)=|\Gamma |n_1,
+\]
+where $n_1$ denotes the multiplicity of the trivial
+representation of $\Gamma $ in $res_\Gamma ^G(\rho)$.
+\qed
+
+\begin{lemma}
+$\int_G K_f(x,x)\, dx = {1\over |\Gamma |}
+\sum_{\gamma\in \Gamma ^G} |G/G_\gamma|O(f,\gamma)$, 
+where $G_\gamma$ is the centralizer of $\gamma$ and where
+\[
+\Gamma ^G = \{\{g^{-1}hg\ |\ g\in G\}\ |\ h\in \Gamma \}
+\]
+is the set of $G$-conjugacy classes in $\Gamma $.
+\end{lemma}
+
+This will be called the ``geometric side" of 
+the ``global" trace formula
+for finite groups. It is the trace of the
+operator $R(f)$ in (\ref{eq:rt_reg}).
+
+\pf
+Since
+\[
+\begin{array}{c}
+G/G_\gamma \rightarrow \{\gamma\} \\
+g G_\gamma \longmapsto g\gamma g^{-1},
+\end{array}
+\]
+is a bijection, we have
+\[
+\begin{split}
+\int_G K_f(x,x)\, dx 
+&= {1\over |\Gamma |}
+\sum_{\gamma\in \Gamma } \int_G f(x^{-1}\gamma x)\, dx\\
+&= {1\over |\Gamma |}
+\sum_{\gamma\in \Gamma ^G} \sum_{\gamma'\in \{\gamma\}}
+\int_G f(x^{-1}\gamma' x)\, dx\\
+&= {1\over |\Gamma |}
+\sum_{\gamma\in \Gamma ^G} |\{\gamma\}| O(f,\gamma)\\
+&={1\over |\Gamma |}
+\sum_{\gamma\in \Gamma ^G} |G/G_\gamma| O(f,\gamma).
+\end{split}
+\]
+\qed
+
+On the other hand, 
+substituting the Fourier expansion (\ref{eq:2.1}) into the 
+result of the above lemma, we obtain
+\[
+\begin{split}
+\int_G K_f(x,x)\, dx 
+&=
+{1\over |\Gamma |}\sum_{\gamma\in \Gamma ^G} |G/G_\gamma| 
+\sum_{\pi\in G^*} 
+{\rm tr}\,\overline{\pi}(f)\cdot {\rm tr}\,\pi(\gamma)\\
+&={1\over |\Gamma |}\sum_{\pi\in G^*} 
+{\rm tr}\,\overline{\pi}(f)
+\sum_{\gamma\in \Gamma ^G} |\{\gamma\}|{\rm tr}\,\pi(\gamma)\\
+&={1\over |\Gamma |}\sum_{\pi\in G^*} 
+{\rm tr}\,\overline{\pi}(f)
+\sum_{g\in \Gamma } {\rm tr}\,\pi(g).
+\end{split}
+\]
+
+This will be called the ``spectral side".
+
+Setting the geometric side equal to the spectral side gives the
+
+\begin{theorem} (``global" trace formula for finite groups)
+If $R$ is the right regular representation of
+$C(G)$ on $C(G/\Gamma )$ then 
+\[
+R=\oplus_{\pi\in G^*}m^\Gamma _\pi \pi
+\]
+then, for all $f\in C(G)$, we have
+\[
+\sum_{\pi\in G^*}m^\Gamma _\pi {\rm tr}(\pi)(f)=
+\sum_{\gamma\in \Gamma ^G} |G_\gamma|^{-1}O(f,\gamma)
+={1\over |G|}
+\sum_{\pi\in G^*} 
+{\rm tr}\,\overline{\pi}(f)\sum_{h\in \Gamma } {\rm tr}\,\pi(h).
+\]
+\end{theorem}
+
+\subsection{Special cases of the ``global'' trace formula}
+
+The following result may be regarded as an analog of
+the Plancherel theorem.
+
+\begin{corollary} Let $\Gamma =1$ and let $f\in C(G)$ be arbitrary.
+Then
+\[
+f(1)={1\over |G|}\sum_{\pi\in G^*} 
+({\rm dim}\ \pi){\rm tr}\,\overline{\pi}(f).
+\]
+\end{corollary}
+
+\begin{example} Assume that $\Gamma $ is a subgroup of $G$.
+If $\pi$ is an irreducible representation induced from $\Gamma $,
+say $\pi=ind_\Gamma ^G\sigma$ with $\sigma\not= 1$, then
+the Frobenius formula states that
+\[
+{\rm tr}\,\pi(g)
+=\sum_{x\in G, x^{-1}gx\in \Gamma } {\rm tr}\,\sigma(x^{-1}gx).
+\]
+This imples 
+\[
+\sum_{g\in \Gamma } {\rm tr}\,\pi(g)=
+\sum_{g\in \Gamma }\sum_{x\in G, x^{-1}gx\in \Gamma } {\rm tr}\,\sigma(x^{-1}gx).
+\]
+Orthogonality (\ref{eq:orthog}) implies
+\[
+\sum_{g\in \Gamma }{\rm tr}\,\sigma(x^{-1}gx)=0,
+\]
+since $x^{-1}\Gamma x= \Gamma $.  Therefore, such induced representations do
+not contribute to the ``trace formula" above.
+\end{example}
+
+Consider the case $\Gamma =G$ of the above theorem.
+Since ${\rm tr}\,\overline{1}(f)=\int_G f(g)\, dg$, the orthogonality of 
+characters implies the following result.
+
+\begin{corollary} (a) 
+$\int_G f(g) dg = 
+\sum_{\gamma\in G_*} |G_\gamma|^{-1} O(f,\gamma)$, for $f\in C(G)$.
+
+(b) $\int_G f(g)\, dg= 
+\sum_{\pi\in G^*}
+%\frac{1}{d_\pi^2}
+m_\pi^G
+ {\rm tr}\,\overline{\pi}(f)$.
+\end{corollary}
+
+We call (a) the {\bf Weyl integration formula} for (the finite group) $G$.
+(This formula has an easier proof than the one above: as an exercise the
+reader may try to prove it using the decomposition
+$G=\bigcup_{\gamma\in G_*}\{\gamma\}$). Part (b) is another form of
+the Plancherel theorem.
+
+We next consider the case where $\Gamma $ is a subgroup
+of $G$ of index 2 in the above theorem. In this case, $\Gamma $ is automatically
+a normal subgroup of $G$. There is a theorem of Clifford which tells
+us precisely which representations in $G^*$ are induced from $\Gamma $.
+
+\begin{lemma} (Clifford) Let $\pi\in G^*$. Fix any $s\in G-\Gamma $,
+where $\Gamma $ is a subgroup of $G$ of index 2. Either
+
+(a) the restriction of $\pi$ is irreducible, in which case $\pi$
+is not induced from a representation of $\Gamma $ but
+$\pi$ is an irreducible constituent of a representation 
+$ind_\Gamma ^G\sigma$, for some $\sigma\in \Gamma ^*$ which satisfies 
+$\sigma\cong \sigma^s$ and the restriction of $\pi$ to $\Gamma $
+is $\sigma$, 
+
+or
+
+(b) the restriction of $\pi$ is reducible, say $\pi=\sigma \oplus \sigma'$
+(some $\sigma,\sigma'\in \Gamma ^*$) in which case $\sigma'\cong\sigma^s$,
+$\sigma'$ is inequivalent to $\sigma$, and
+\[
+\pi\cong ind_\Gamma ^G\sigma \cong ind_\Gamma ^G\sigma' .
+\]
+\end{lemma}
+
+By orthogonality, the sum $\sum_{g\in \Gamma } {\rm tr}\,\pi(g)$
+vanishes if the restriction of $\pi$ to $\Gamma $ is irreducible and non-trivial.
+But by the remark above, the sum $\sum_{g\in \Gamma } {\rm tr}\,\pi(g)$
+vanishes if $\pi$ is induced irreducibly from $\Gamma $. By Cliffords' lemma,
+one of these cases must hold, so we have the following result.
+
+\begin{lemma} Assume $\Gamma $ is a subgroup of $G$ of index $2$.
+For all $f\in C(G)$, we have
+\[
+\sum_{\gamma\in \Gamma ^G} |G/G_\gamma|O(f,\gamma)
+={1\over |\Gamma |}\sum_{\pi\in G^*, \pi|_{\Gamma }=1} {\rm tr}\,\overline{\pi}(f).
+\]
+\end{lemma}
+
+\section{Analog of the local trace formula for finite groups}
+
+We try to compute 
+\[
+\int_G \int_G f_1(x^{-1}yx)f_2(y)\, dxdy
+\]
+in two ways.
+
+Let
+\[
+h(g) = \int_G f_1(x^{-1}gx)f_2(g)\, dx.
+\]
+The Weyl integration formula gives 
+\[
+\begin{split}
+\int_G \int_G f_1(x^{-1}gx)f_2(g)\, dxdg
+&=\int_G h(g)\, dg\\
+&=\sum_{\gamma\in G_*} |G_\gamma|^{-1} O(h,\gamma)\\
+&=\sum_{\gamma\in G_*} |G_\gamma|^{-1} O(f_1,\gamma)O(f_2,\gamma).
+\end{split}
+\]
+This will be called the ``geometric side".
+
+The Fourier expansion (\ref{eq:2.1}) gives
+\[
+\begin{split}
+\int_G \int_G f_1(x^{-1}gx)f_2(g)\, dxdg
+&=\int_G O(f_1,y)f_2(y)\, dy\\
+&=\sum_{\pi\in G^*} 
+{\rm tr}\,\overline{\pi}(f_1){\rm tr}\,\pi(f_2).
+\end{split}
+\]
+This will be called the ``spectral side".
+
+Setting the geometric side equal to the spectral side gives the
+
+\begin{theorem} (``local" trace formula for finite groups)
+For $f_1,f_2\in C(G)$, we have
+\[
+\sum_{\pi\in G^*} 
+{\rm tr}\,\overline{\pi}(f_1){\rm tr}\,\pi(f_2)
+=\sum_{\gamma\in G_*} |G_\gamma|^{-1} O(f_1,\gamma)O(f_2,\gamma).
+\]
+\end{theorem}
+
+\subsection{Special cases of the local trace formula}
+
+Setting $f_1=f_2$ gives the following curious identity:
+
+\begin{corollary} For $f\in C(G)$ real-valued, we have
+\[
+\sum_{\pi\in G^*} 
+%\frac{1}{d_\pi^2}
+|{\rm tr}\,\pi(f)|^2
+=\sum_{\gamma\in G_*} |G_\gamma|^{-1} O(f,\gamma)^2.
+\]
+\label{cor:squares}
+\end{corollary}
+
+\begin{example}
+If $G=A_5$ and $f$ is the characteristic function
+of the conjugacy class $\{(1,2,3)\}\subset A_5$
+then
+\footnote{This computation was performed with the aid of GAP,
+a group theory software package. For more details, see
+\cite{J}.}
+$\sum_{\pi\in G^*} |{\rm tr}\,\pi(f)|^2
+=400+400+400=1200$ and
+$\sum_{\gamma\in G_*} |G_\gamma|^{-1} O(f,\gamma)^2=1200$,
+as expected.
+\end{example}
+
+Next, we write the local trace formula for finite groups
+down more explicitly.
+First, some notation. If we let $r=|G_*|=|G^*|$ then we can let
+
+\[
+\begin{split}
+G_*&=\{\gamma_1,...,\gamma_r\},\\
+G^*&=\{\pi_1,...,\pi_r\},\\
+G_i&=G_{\gamma_i},\ \ \ \ \ \ 1\leq i\leq r,\\
+f_\gamma &= |G|^{-1}ch_\gamma,\ \ \ \ \ \gamma\in G_*,
+\end{split}
+\]
+where $ch_X$ denotes the characteristic function of a finite set 
+$X\subset G$. Finally, let
+\[
+a_{\ell m}={\rm tr}\,\pi_\ell(f_{\gamma_m}),\ \ \ \ 1\leq \ell,m\leq r.
+\]
+(These $a_{ij}$ are equal to $|G_j|^{-1}$ times the $ij^{th}$ entry
+in the character table for $G$.) Then $O(\gamma_i,f_j)=\delta_{ij}$,
+where $\delta_{ij}$ is the Kronecker delta function,
+\[
+\delta_{ij}
+=\left\{
+\begin{array}{cc}
+1, & i=j,\\
+0, &i\not= j,
+\end{array}
+\right.
+\]
+and where $a_{ij}=|G_j|^{-1}{\rm tr}\,\pi_i(\gamma_j)$.
+
+Let $A=(a_{ij})_{1\leq i,j\leq r}=(\vec{a}_1,...,\vec{a}_r)$,
+where $\vec{a}_k$ is the $k-th$ column vector of the matrix $A$.
+If we put $f_1=f_{\gamma_j}$ and $f_2=f_{\gamma_i}$
+then the trace formula in this case says 
+\[
+\langle \vec{a}_i,\vec{a}_j\rangle
+=|G_i|^{-1}\delta_{ij},\ \ \ \ \ 1\leq i,j\leq r,
+\]
+where $\langle\vec{v},\vec{w}\rangle =\sum_i v_i\overline{w}_i$ is the usual 
+Hermitian inner
+product on $\ccc^r$. In other words, the trace formula in this 
+case says 
+\[
+A^*A={\rm diag}(|G_1|^{-1},...,|G_r|^{-1}),
+\]
+where $A^* = \overline{A^t}$ is the conjugate transpose.
+
+\begin{example} Let $G=S_3$ and let
+\[
+\gamma_1=1,\ \ \ \ \gamma_2=(1\ 2),\ \ \ \gamma_3=(1\ 2\ 3).
+\]
+and we label $\pi_1$, $\pi_2$, and $\pi_3$ as before. We have
+\[
+A=
+\left(
+\begin{array}{ccc}
+a_{11} & a_{12} & a_{13}  \\
+a_{21} & a_{22} & a_{23}  \\
+a_{31} & a_{32} & a_{33}  
+\end{array}
+\right)
+=\left(
+\begin{array}{ccc}
+1/6 & 1/2 & 1/3 \\
+1/6 & -1/2 & 1/3 \\
+1/3 & 0 & -1/3  
+\end{array}
+\right)
+=
+{1\over 6}
+\left(
+\begin{array}{ccc}
+1 & 3 & 2 \\
+1 & -3 & 2 \\
+2 & 0 & -2  
+\end{array}
+\right)
+\]
+and
+\[
+|G_1|=6,\ \ \ \ \ |G_2|=2,\ \ \ \ |G_3|=3.
+\]
+It is easy to check that
+\[
+A\cdot A^* ={\rm diag}(6^{-1},2^{-1},3^{-1}),
+\]
+as predicted by the trace formula.
+(However, $A$ is not normal and $A^*A$ is not
+diagonal.)
+\end{example}
+
+\begin{exercise} Compute explicitly both sides of the
+equation in corollary \ref{cor:squares} in case $G=S_3$ and 
+$f=a_1f_{\gamma_1}+a_2f_{\gamma_2}+a_3f_{\gamma_3}$,
+where $a_1,a_2,a_3$ are arbitrary real coefficients.
+\end{exercise}
+
+\begin{thebibliography}{99}  
+
+\bibitem[GAP]{GAP} Groups, Algorithms, and Programming
+(GAP - a free system for computational discrete algebra), at
+\newline
+\verb+ http://www.gap-system.org/+
+
+\bibitem[J]{J} D. Joyner, ``Representations of $A_5$ using GAP,''
+at
+\newline
+\verb+http://web.usna.navy.mil/~wdj/papers.html+
+
+\bibitem[S]{S}
+J.-P. Serre, {\bf Linear representations of finite groups}, 
+Springer-Verlag, Grad Texts in Math 
+\underbar{42}, 1977
+
+\end{thebibliography}
+
+\end{document}
+
+
+
+

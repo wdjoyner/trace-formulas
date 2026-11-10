@@ -1,0 +1,1637 @@
+\documentclass[12pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{booktabs,array,longtable}
+\usepackage[margin=1.05in]{geometry}
+\usepackage{microtype}
+\usepackage[hidelinks]{hyperref}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+\usepackage{mathrsfs}
+\allowdisplaybreaks[1]
+\setcounter{tocdepth}{2}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{definition}[theorem]{Definition}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{exercise}[theorem]{Exercise}
+\newcommand{\C}{\mathbb C}
+\newcommand{\A}{\mathbb A}
+\newcommand{\Hom}{\operatorname{Hom}}
+\newcommand{\Ind}{\operatorname{Ind}}
+\newcommand{\Res}{\operatorname{Res}}
+\newcommand{\tr}{\operatorname{tr}}
+\newcommand{\id}{\mathbf 1}
+\newcommand{\cl}{\operatorname{Cl}}
+\newcommand{\Irr}{\operatorname{Irr}}
+\newcommand{\cG}{\mathcal C(G)}
+\newcommand{\cH}{\mathcal C}
+\newcommand{\Orb}{\mathcal O}
+\newcommand{\eps}{\varepsilon}
+\newcommand{\diag}{\operatorname{diag}}
+\newcommand{\conv}{\mathbin{\widehat\otimes}}
+\newcommand{\Gal}{\Gamma}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small Finite-group trace formulas}
+\fancyhead[R]{\small Corrected and expanded notes}
+\fancyfoot[C]{\thepage}
+\setlength{\headheight}{14pt}
+\title{\textbf{Finite-Group Trace Formulas:}\\
+Compact Global and Local Analogies, and a $p$-Adic Bridge\\[5pt]
+\large Corrected and expanded version of the 1996--2003 notes}
+\author{David Joyner\\[4pt]
+\normalsize Revised and expanded with mathematical and editorial assistance from ChatGPT (OpenAI)}
+\date{Original notes: 1996--2003 \quad $\cdot$ \quad Revised: November 2026}
+\begin{document}
+\maketitle
+\begin{abstract}
+For a finite group $G$, the trace of a convolution operator on the
+permutation representation $\C[\Gamma\backslash G]$ has two descriptions:
+one involving conjugacy classes and orbital sums, the other involving
+irreducible representations and their characters.  This elementary identity
+models the Selberg trace formula for a compact quotient.  The analogous
+bilinear identity on $\C[G]$ is a finite counterpart of the \emph{compact}
+case of Arthur's local trace formula.  An important observation is that the
+latter identity follows from the former by applying it to
+$(G\times G,\Delta G)$, where $\Delta G$ is the diagonal subgroup.
+We carefully fix counting-measure conventions, give proofs and explicit
+examples for $S_3$ and $A_5$, and explain both the value and the limits
+of the comparison with Arthur's global and local theories.
+An additional section explains, through an exact $\mathrm{GL}_2(F)$
+divergence calculation, why the noncompact $p$-adic local formula
+requires truncation, Levi subgroups, and weighted distributions.
+Throughout, we indicate how the finite-group formulations relate to
+Arthur's finite example, Vign'eras's regular-bimodule method,
+Yang's coset-space formulas, and Terras's finite spectral analogues.
+A literature guide, glossary, exercises, and an account of corrections
+appear at the end.
+\end{abstract}
+\noindent\textit{Historical and editorial note.}
+The underlying exposition began as notes written by David Joyner during a
+Stanford visit in summer 1996, with additions in 1997, 2000, and 2003.
+The present revision corrects several representation-theoretic and
+normalization errors, adds the diagonal-subgroup interpretation of the
+local formula, and supplies background and references. The present edition also
+adds a worked $p$-adic bridge. Its finite-group ideas have important
+precedents in Arthur \cite{ArthurHecke1989}, Vign'eras
+\cite{Vigneras1991}, and Terras \cite{Terras1999}; Yang's later
+work \cite{Yang2006} treats closely related coset-space representations.
+The original 1996--2003 notes predate Yang's 2006 publication. No
+claim of priority is intended for the standard finite-group identities.
+This is a revised exposition, not a reproduction of the original source.
+\tableofcontents
+
+\section{Why trace formulas have two sides}
+\subsection{The global picture}
+Let $H$ be a locally compact unimodular group and $\Gamma\subset H$ a
+discrete subgroup such that $\Gamma\backslash H$ is compact.  Under
+standard hypotheses on the test function $f$, right convolution on
+$L^2(\Gamma\backslash H)$ has a kernel built from the translates of $f$.
+Computing its trace by integrating the diagonal of the kernel yields
+\emph{geometric terms}, grouped by conjugacy classes in $\Gamma$.
+Decomposing the same operator into irreducible representations yields
+\emph{spectral terms}.  In its schematic compact-quotient form,
+\begin{equation}\label{eq:realcompact}
+ \sum_{\pi}m_\Gamma(\pi)\,\tr\pi(f)
+ =\sum_{[\gamma]_\Gamma}
+ \operatorname{vol}(\Gamma_\gamma\backslash H_\gamma)
+ \int_{H_\gamma\backslash H}f(x^{-1}\gamma x)\,d\dot x.
+\end{equation}
+Here $H_\gamma$ and $\Gamma_\gamma$ are centralizers, and the
+measures must be chosen compatibly. Arthur's 1989 introductory
+lecture derives this compact-quotient formula and then considers the
+case of finite groups, obtaining Frobenius reciprocity as a special
+case \cite[Example~2, p.~14]{ArthurHecke1989}; see also
+\cite[\S1]{ArthurIntro2005}.
+A finite group $G$, with any subgroup $\Gamma$, gives a setting in which
+every sum is finite and none of the analytic convergence difficulties occur.
+
+\subsection{The local picture}
+For a local field $F$ and a connected reductive group $\mathbf G$ over
+$F$, Arthur starts with the two-sided action of
+$\mathbf G(F)\times\mathbf G(F)$ on $L^2(\mathbf G(F))$:
+\begin{equation}\label{eq:two-sided-intro}
+ ((a,b)\cdot\phi)(x)=\phi(a^{-1}xb).
+\end{equation}
+The trace of an operator obtained from two test functions can again be
+analyzed geometrically and spectrally.  When $\mathbf G(F)$ is noncompact,
+truncation is essential; the general result involves weighted orbital
+integrals, weighted characters, Levi subgroups, and continuous spectral
+parameters \cite{ArthurTowards1989,ArthurLocal1991}.
+For a finite $G$, however, \eqref{eq:two-sided-intro} produces an
+identity whose two sides involve nothing beyond orbital sums and
+irreducible characters.  This is a model of the \emph{compact-group
+case} of the local trace formula, not a formula for general reductive
+$p$-adic groups. Vign'eras \cite[\S1.1]{Vigneras1991} uses exactly
+this two-sided regular representation as the elementary entry point
+to Arthur's theory, and develops the connection much further.
+
+\subsection{Conventions and a map of the results}
+\textbf{Every sum over $G$ in this note uses unnormalized counting
+measure.} Thus $\sum_{g\in G}1=|G|$.  On $\Gamma\backslash G$ we also
+use counting measure, so a delta function of one coset has norm one.
+We shall make no tacit substitution between the normalized average
+$|G|^{-1}\sum_G$ and the unnormalized sum $\sum_G$.
+The main identities are:
+\begin{align}
+ \tr R_\Gamma(f)
+ &=\sum_{\pi\in\Irr(G)}m_\Gamma(\pi)\,\tr\pi(f)
+  =\sum_{[\gamma]_\Gamma}
+    \frac{\Orb_G(f,\gamma)}{|\Gamma_\gamma|},
+ \label{eq:preview-global}\\
+ \sum_{\pi\in\Irr(G)}
+   \tr\bar\pi(f_1)\,\tr\pi(f_2)
+ &=\sum_{[\gamma]_G}
+    \frac{\Orb_G(f_1,\gamma)\Orb_G(f_2,\gamma)}{|G_\gamma|}.
+ \label{eq:preview-local}
+\end{align}
+The orbital sum $\Orb_G$ is defined below. The centralizers in the
+two formulas are \emph{different}: $\Gamma_\gamma$ in the first,
+$G_\gamma$ in the second.
+
+\paragraph{Four complementary precedents.}
+Arthur's finite-group example \cite[Example~2]{ArthurHecke1989}
+explains the first formula through Frobenius reciprocity.
+Vign\'eras \cite[\S1]{Vigneras1991} starts from the two-sided
+$G\times G$ action underlying the second formula.
+Yang \cite{Yang2006} develops related trace formulas for
+coset-space representations, including vector-valued functions,
+whereas Terras \cite[Chs.~22--23]{Terras1999} explores finite
+Selberg-type identities in geometric and spectral settings.
+These are overlapping but not identical approaches; the purpose
+of the present note is to connect them using one fixed system
+of normalization conventions.
+
+\section{Finite harmonic analysis: notation and basic facts}
+\subsection{Conjugacy and characters}
+Write $\Irr(G)$ for the set of isomorphism classes of irreducible
+finite-dimensional complex representations.  We denote the conjugacy
+class of $\gamma\in G$ by
+\[
+ [\gamma]_G=\{x^{-1}\gamma x:x\in G\},\qquad
+ G_\gamma=C_G(\gamma)=\{x\in G:x\gamma=\gamma x\}.
+\]
+The class has size $|G|/|G_\gamma|$.
+We distinguish $[\gamma]_G$ from $[\gamma]_\Gamma$ when $\gamma\in\Gamma$.
+They need not be the same set. Let $\cG=\{f:G\to\C\}$ and let
+$\cG^G$ be the subspace of class functions, those constant on each
+$G$-conjugacy class.
+For $\pi\in\Irr(G)$, write $\chi_\pi(g)=\tr(\pi(g))$, and set
+\[
+ \pi(f)=\sum_{g\in G}f(g)\pi(g),\qquad
+ \chi_\pi(f)=\tr\pi(f)=\sum_{g\in G}f(g)\chi_\pi(g).
+\]
+The contragredient (equivalently, complex-conjugate unitary)
+representation is $\bar\pi$, whose character satisfies
+$\chi_{\bar\pi}(g)=\overline{\chi_\pi(g)}=\chi_\pi(g^{-1})$.
+
+\begin{theorem}[Character orthogonality and completeness]\label{thm:chars}
+The irreducible characters are an orthonormal basis of $\cG^G$ for
+\[
+ \langle f,h\rangle_G
+   =\frac1{|G|}\sum_{g\in G}f(g)\overline{h(g)}.
+\]
+In particular,
+$|\Irr(G)|=\#\{G\text{-conjugacy classes}\}$.
+For a treatment that derives orthogonality and completeness
+systematically from the two-sided trace identity, see
+\cite[\S\S1.1--1.9]{Vigneras1991}; compare the classical
+character-theoretic approach in \cite{Serre}.
+\end{theorem}
+\begin{remark}
+The characters are \emph{not} a basis of all of $\cG$ unless $G$ is
+abelian.  Also, the ordinary point masses $\delta_g$ have squared norm
+$1/|G|$ for the normalized inner product above: they are orthogonal,
+but not normalized.  The functions $\sqrt{|G|}\,\delta_g$ are an
+orthonormal basis of $\cG$.
+\end{remark}
+
+\subsection{Counting-measure orbital sums}
+\begin{definition}
+For $f\in\cG$ and $\gamma\in G$, the \emph{orbital sum} is
+\begin{equation}\label{eq:def-orbit}
+ \Orb_G(f,\gamma)=\sum_{x\in G}f(x^{-1}\gamma x).
+\end{equation}
+It is a class function in $\gamma$.
+\end{definition}
+Since each conjugate is attained by $|G_\gamma|$ elements $x$,
+\begin{equation}\label{eq:orbitquot}
+ \Orb_G(f,\gamma)
+  =|G_\gamma|\sum_{\eta\in[\gamma]_G}f(\eta).
+\end{equation}
+The sum $\sum_{\eta\in[\gamma]_G}f(\eta)$ is the orbital integral
+with counting measure on $G_\gamma\backslash G$.
+Consequently the (finite) Weyl integration formula is simply
+\begin{equation}\label{eq:weyl}
+ \sum_{g\in G}f(g)
+ =\sum_{[\gamma]_G}\frac{\Orb_G(f,\gamma)}{|G_\gamma|}.
+\end{equation}
+This is just a partition of $G$ into conjugacy classes.
+It is the elementary precursor of the Weyl-integration
+rearrangement used in Arthur's compact formula
+\cite[\S1]{ArthurHecke1989} and in finite geometric analogues
+such as \cite[Ch.~22]{Terras1999}.
+
+\begin{proposition}[Fourier expansion of an orbital sum]\label{prop:fourier}
+For every $f\in\cG$ and $\gamma\in G$,
+\begin{equation}\label{eq:fourier}
+ \boxed{\displaystyle
+ \Orb_G(f,\gamma)=
+ \sum_{\pi\in\Irr(G)}\chi_{\bar\pi}(f)\chi_\pi(\gamma).}
+\end{equation}
+\end{proposition}
+\begin{proof}
+Expand the class function $\gamma\mapsto\Orb_G(f,\gamma)$
+in the orthonormal character basis. Its coefficient at $\chi_\pi$ is
+\begin{align*}
+ \frac1{|G|}\sum_{\gamma\in G}
+       \Orb_G(f,\gamma)\overline{\chi_\pi(\gamma)}
+ &=\frac1{|G|}\sum_{x,\gamma\in G}
+       f(x^{-1}\gamma x)\overline{\chi_\pi(\gamma)}\\
+ &=\sum_{y\in G}f(y)\overline{\chi_\pi(y)}
+ =\chi_{\bar\pi}(f).
+\end{align*}
+In the second equality we used the conjugation-invariance of
+$\chi_\pi$ and changed variables $y=x^{-1}\gamma x$.
+\end{proof}
+\begin{corollary}[Column orthogonality]\label{cor:column}
+For $\eta,\gamma\in G$,
+\begin{equation}\label{eq:columnorth}
+ \sum_{\pi\in\Irr(G)}
+   \overline{\chi_\pi(\eta)}\,\chi_\pi(\gamma)
+ =\begin{cases}
+    |G_\gamma|,&[\eta]_G=[\gamma]_G,\\
+    0,&\text{otherwise}.
+   \end{cases}
+\end{equation}
+\end{corollary}
+\begin{proof}
+Apply \eqref{eq:fourier} with $f=\delta_\eta$. Its left-hand side
+counts the $x\in G$ for which $x^{-1}\gamma x=\eta$.
+\end{proof}
+\begin{remark}[The characteristic function of a class is not a point mass]
+If $f=\mathbf1_{[\eta]_G}$, then
+$\chi_\pi(f)=|[\eta]_G|\chi_\pi(\eta)$ and
+$\Orb_G(f,\gamma)=|G|$ whenever $\gamma$ is conjugate to $\eta$.
+If instead $f=\delta_\eta$, then $\chi_\pi(f)=\chi_\pi(\eta)$ and
+the orbital sum in the matching class equals $|G_\eta|$.
+Confusing these two functions loses a factor of the class size.
+\end{remark}
+
+\section{Two character-table examples}
+\subsection{$S_3$}
+The conjugacy classes of $S_3$ are represented by
+$e$, $s=(12)$, and $t=(123)$; their sizes are $1,3,2$, and the
+centralizer orders are $6,2,3$.  The irreducible representations are
+the trivial $\id$, the sign representation $\eps$, and the
+\emph{two-dimensional} standard representation $V$:
+\[
+ V=\{(z_1,z_2,z_3)\in\C^3:z_1+z_2+z_3=0\}.
+\]
+Equivalently, $V\cong\C^3/\C(1,1,1)$, but it is \emph{not}
+$\C^3/V$, which is one-dimensional.
+\begin{center}
+\begin{tabular}{lrrr}
+\toprule
+ & $[e]$ (size $1$) & $[s]$ (size $3$) & $[t]$ (size $2$)\\
+\midrule
+$\chi_{\id}$ & $1$&$1$&$1$\\
+$\chi_{\eps}$ & $1$&$-1$&$1$\\
+$\chi_V$ & $2$&$0$&$-1$\\
+\bottomrule
+\end{tabular}
+\end{center}
+For example, $1^2+1^2+2^2=6=|G_e|$, while
+$1^2+(-1)^2+0^2=2=|G_s|$, in agreement with
+\eqref{eq:columnorth}.
+
+\subsection{$A_5$}
+In $A_5$ there are five conjugacy classes, with representatives
+\[
+ e,\quad a=(12)(34),\quad b=(123),\quad
+ c=(12345),\quad d=c^2=(13524),
+\]
+and respective sizes $1,15,20,12,12$. Put
+\[
+ \phi_+=\frac{1+\sqrt5}{2},\qquad
+ \phi_-=\frac{1-\sqrt5}{2}.
+\]
+The two numbers $\phi_+$ and $\phi_-$ are real algebraic
+conjugates, \emph{not} complex conjugates.  With this notation:
+\begin{center}
+\begin{tabular}{lrrrrr}
+\toprule
+ & $e$ & $a$ & $b$ & $c$ & $d$\\
+\midrule
+class size & $1$&$15$&$20$&$12$&$12$\\
+$\chi_1$ (degree 1) & $1$&$1$&$1$&$1$&$1$\\
+$\chi_2$ (degree 3) & $3$&$-1$&$0$&$\phi_+$&$\phi_-$\\
+$\chi_3$ (degree 3) & $3$&$-1$&$0$&$\phi_-$&$\phi_+$\\
+$\chi_4$ (degree 4) & $4$&$0$&$1$&$-1$&$-1$\\
+$\chi_5$ (degree 5) & $5$&$1$&$-1$&$0$&$0$\\
+\bottomrule
+\end{tabular}
+\end{center}
+As a useful check, the sum of the squares of the degrees is
+$1+9+9+16+25=60=|A_5|$.  We will revisit the $3$-cycle class
+when proving the local formula.
+
+\section{The compact global trace formula for finite groups}
+\subsection{The right-translation representation and its kernel}
+Fix a subgroup $\Gamma\leq G$.  This is the finite
+compact-quotient construction considered by Arthur
+\cite[Example~2]{ArthurHecke1989}. For a closely related and
+more general treatment using vector-valued functions on the coset
+space, compare Yang \cite{Yang2006}.  Let
+\[
+ \cH_\Gamma=\C[\Gamma\backslash G]
+ =\{\varphi:G\to\C:\varphi(\gamma x)=\varphi(x)
+                    \text{ for }\gamma\in\Gamma\}.
+\]
+We use the honest right-translation \emph{representation}
+\begin{equation}\label{eq:Rh}
+ (R(g)\varphi)(x)=\varphi(xg),\qquad
+ R(g_1)R(g_2)=R(g_1g_2).
+\end{equation}
+(Using $\varphi(xg^{-1})$ instead, with operators composed in the
+usual order, gives an anti-representation.) For $f\in\cG$ define
+\[
+ R_\Gamma(f)=\sum_{g\in G}f(g)R(g).
+\]
+Choose counting measure on the coset set.  Then
+\begin{equation}\label{eq:kernel}
+ (R_\Gamma(f)\varphi)(x)
+  =\sum_{y\in\Gamma\backslash G} K_f(x,y)\varphi(y),\quad
+ K_f(x,y)=\sum_{\gamma\in\Gamma}f(x^{-1}\gamma y).
+\end{equation}
+The kernel is well-defined on left cosets in each variable:
+replacing $x$ or $y$ by a representative of the same coset
+simply reindexes the sum. In particular,
+\begin{align}
+ \tr R_\Gamma(f)
+ &=\sum_{x\in\Gamma\backslash G} K_f(x,x)
+  =\frac1{|\Gamma|}\sum_{x\in G}\sum_{\gamma\in\Gamma}
+                                  f(x^{-1}\gamma x)\notag\\
+ &=\frac1{|\Gamma|}\sum_{\gamma\in\Gamma}
+                                  \Orb_G(f,\gamma).
+ \label{eq:rawgeo}
+\end{align}
+The factor $1/|\Gamma|$ is the passage from a sum over elements
+of $G$ to a sum over left cosets. It is \emph{not} a factor $1/|G|$.
+
+\subsection{Geometric expansion: two valid ways to group terms}
+Within $\Gamma$, group the summands of \eqref{eq:rawgeo} by
+$\Gamma$-conjugacy classes.  The orbital sum
+$\Orb_G(f,\gamma)$ is constant along each such class, and
+$|[\gamma]_\Gamma|=|\Gamma|/|\Gamma_\gamma|$.
+Hence
+\begin{equation}\label{eq:geoGamma}
+ \boxed{\displaystyle
+ \tr R_\Gamma(f)=
+ \sum_{[\gamma]_\Gamma}\frac{\Orb_G(f,\gamma)}{|\Gamma_\gamma|}.}
+\end{equation}
+Alternatively, one may group \emph{by $G$-conjugacy classes}, but
+then one must count only the elements of each class that lie in
+$\Gamma$:
+\begin{equation}\label{eq:geoG}
+ \tr R_\Gamma(f)=
+ \frac1{|\Gamma|}\sum_{[\gamma]_G:\,[\gamma]_G\cap\Gamma\ne\varnothing}
+ \bigl|[\gamma]_G\cap\Gamma\bigr|\Orb_G(f,\gamma).
+\end{equation}
+It is generally \emph{incorrect} to replace
+$\bigl|[\gamma]_G\cap\Gamma\bigr|$ by
+$\bigl|[\gamma]_G\bigr|$.
+
+\begin{remark}[Comparison with the compact-quotient coefficient]
+Define the quotient-orbit sum
+\[
+ \Orb_G^{\mathrm{quot}}(f,\gamma)
+  =\sum_{x\in G_\gamma\backslash G}f(x^{-1}\gamma x)
+  =\frac{\Orb_G(f,\gamma)}{|G_\gamma|}.
+\]
+Then \eqref{eq:geoGamma} becomes
+\[
+ \sum_{[\gamma]_\Gamma}
+  \frac{|G_\gamma|}{|\Gamma_\gamma|}
+  \Orb_G^{\mathrm{quot}}(f,\gamma).
+\]
+This is exactly the finite counting-measure counterpart of the
+coefficient $\operatorname{vol}(\Gamma_\gamma\backslash H_\gamma)$
+in \eqref{eq:realcompact}.
+\end{remark}
+
+\subsection{Spectral expansion and Frobenius reciprocity}
+Over $\C$ the finite-dimensional representation $\cH_\Gamma$
+is completely reducible:
+\begin{equation}\label{eq:decomp}
+ \cH_\Gamma\cong
+ \bigoplus_{\pi\in\Irr(G)}m_\Gamma(\pi)\,\pi.
+\end{equation}
+It is the permutation module $\Ind_\Gamma^G\id_\Gamma$, so
+Frobenius reciprocity gives
+\begin{equation}\label{eq:mult}
+ \boxed{\displaystyle
+ m_\Gamma(\pi)=\dim\pi^\Gamma
+  =\frac1{|\Gamma|}\sum_{\gamma\in\Gamma}\chi_\pi(\gamma).}
+\end{equation}
+Thus the multiplicity formula is precisely the finite-group
+Frobenius-reciprocity calculation singled out by Arthur
+\cite[p.~14]{ArthurHecke1989}. The averaging operator
+$P_\Gamma=|\Gamma|^{-1}\sum_{\gamma\in\Gamma}\pi(\gamma)$
+is the projection onto the $\Gamma$-fixed vectors. Taking its trace
+proves the last equality directly. It follows that
+\begin{equation}\label{eq:spec}
+ \tr R_\Gamma(f)
+ =\sum_{\pi\in\Irr(G)}m_\Gamma(\pi)\chi_\pi(f).
+\end{equation}
+The multiplicity $m_\Gamma(\pi)$ is a nonnegative integer;
+no unexplained dimension or group-order factor belongs in
+\eqref{eq:spec}.
+
+\begin{theorem}[Finite compact-global trace formula]\label{thm:global}
+For any finite group $G$, subgroup $\Gamma\leq G$, and function
+$f:G\to\C$,
+\begin{equation}\label{eq:globalboxed}
+ \boxed{\displaystyle
+ \sum_{\pi\in\Irr(G)}m_\Gamma(\pi)\chi_\pi(f)
+ =\sum_{[\gamma]_\Gamma}
+      \frac{\Orb_G(f,\gamma)}{|\Gamma_\gamma|}
+ =\frac1{|\Gamma|}\sum_{\gamma\in\Gamma}
+      \Orb_G(f,\gamma).}
+\end{equation}
+An equivalent Fourier expression is
+\begin{equation}\label{eq:globalfourier}
+ \tr R_\Gamma(f)
+ =\frac1{|\Gamma|}\sum_{\pi\in\Irr(G)}
+     \chi_{\bar\pi}(f)\sum_{\gamma\in\Gamma}\chi_\pi(\gamma).
+\end{equation}
+\end{theorem}
+\begin{proof}
+The first equality in \eqref{eq:globalboxed} equates
+\eqref{eq:spec} and \eqref{eq:geoGamma}; the second is
+\eqref{eq:rawgeo}. Inserting \eqref{eq:fourier} into
+\eqref{eq:rawgeo} gives \eqref{eq:globalfourier}. The latter agrees
+with the first expression because $m_\Gamma(\bar\pi)
+=m_\Gamma(\pi)$ and $\pi\mapsto\bar\pi$ permutes $\Irr(G)$.
+\end{proof}
+\begin{example}[A diagnostic normalization check]\label{ex:s3global}
+Let $G=S_3$, $\Gamma=\{e,(12)\}$, and $f=\delta_e$.
+Then $R_\Gamma(e)$ acts as the identity on the three-dimensional
+space $\C[\Gamma\backslash G]$, so its trace is $3$.
+The geometric formula gives
+\[
+ \frac{\Orb_G(\delta_e,e)}{|\Gamma_e|}
+ =\frac{6}{2}=3.
+\]
+And $\Ind_\Gamma^{S_3}\id\cong\id\oplus V$, hence the
+spectral side is $1+2=3$. An expression with the coefficient
+$|G_e|^{-1}$ in place of $|\Gamma_e|^{-1}$ would incorrectly give $1$.
+\end{example}
+
+\subsection{Special cases and correct interpretations}
+\begin{corollary}[The regular representation: $\Gamma=\{e\}$]
+When $\Gamma=\{e\}$, $m_\Gamma(\pi)=\dim\pi$, and
+\begin{equation}\label{eq:reg}
+ \sum_{\pi\in\Irr(G)}(\dim\pi)\chi_\pi(f)
+  =|G|\,f(e).
+\end{equation}
+Equivalently, $f(e)=|G|^{-1}\sum_\pi (\dim\pi)\chi_\pi(f)$.
+This is the finite-group Fourier inversion formula at the identity.
+\end{corollary}
+\begin{corollary}[The one-dimensional quotient: $\Gamma=G$]
+When $\Gamma=G$, the representation $\C[G\backslash G]$ is trivial:
+\begin{equation}\label{eq:gammaG}
+ \sum_{g\in G}f(g)
+ =\sum_{[\gamma]_G}\frac{\Orb_G(f,\gamma)}{|G_\gamma|}.
+\end{equation}
+The right-hand side is the finite Weyl integration formula
+\eqref{eq:weyl}. The spectral side has \emph{only the trivial
+representation}; it is not the full finite-group Plancherel sum.
+\end{corollary}
+\begin{corollary}[An index-two subgroup]\label{cor:index2}
+If $\Gamma\lhd G$ has index two, and
+$\eps:G\to\{\pm1\}$ is the nontrivial character of $G/\Gamma$,
+then
+\[
+ \C[\Gamma\backslash G]\cong\id\oplus\eps,
+ \qquad
+ \sum_{[\gamma]_\Gamma}
+     \frac{\Orb_G(f,\gamma)}{|\Gamma_\gamma|}
+ =\chi_{\id}(f)+\chi_\eps(f)
+ =2\sum_{\gamma\in\Gamma}f(\gamma).
+\]
+\end{corollary}
+\begin{proof}
+The two cosets are permuted through the quotient $G/\Gamma\cong C_2$;
+its permutation representation is $\id\oplus\eps$.
+\end{proof}
+
+\subsection{A caution about induced representations}
+The character of $\Ind_\Gamma^G\sigma$, for a representation
+$\sigma$ of $\Gamma$, is
+\begin{equation}\label{eq:indchar}
+ \chi_{\Ind_\Gamma^G\sigma}(g)
+  =\frac1{|\Gamma|}
+    \sum_{\substack{x\in G\\x^{-1}gx\in\Gamma}}
+       \chi_\sigma(x^{-1}gx).
+\end{equation}
+The factor $1/|\Gamma|$ is essential.  In general the argument
+``$x^{-1}\Gamma x=\Gamma$'' is false: it holds only if $\Gamma$
+is normal (or for $x$ in its normalizer).  Thus one cannot conclude
+that the induced representation has no $\Gamma$-fixed vectors just
+because $\sigma\not\cong\id_\Gamma$.
+
+For example, with $G=S_3$, $\Gamma=\langle(12)\rangle$, and
+$\sigma=\eps_\Gamma$ the nontrivial character of $C_2$, one has
+\[
+ \Ind_\Gamma^G\sigma\cong\eps_G\oplus V.
+\]
+The restriction $V|_\Gamma\cong\id_\Gamma\oplus\eps_\Gamma$,
+so $\Ind_\Gamma^G\sigma$ \emph{does} have a
+$\Gamma$-fixed vector.  For a normal subgroup $\Gamma\lhd G$,
+in contrast, the restriction of $\Ind_\Gamma^G\sigma$ is a sum
+of conjugates of $\sigma$, and a nontrivial irreducible $\sigma$
+then gives no $\Gamma$-fixed vectors.  The appropriate general tool
+is Mackey's double-coset formula, not the unqualified vanishing claim;
+see \cite[Chapters 7--8]{Serre}. Yang's coset-space trace formulas
+\cite{Yang2006} provide a complementary framework for extending
+the scalar permutation-module setting used here.
+
+\section{The compact local trace formula for finite groups}
+\subsection{The bilinear identity}
+Let $f_1,f_2:G\to\C$, and consider the finite sum
+\begin{equation}\label{eq:Idef}
+ I(f_1,f_2)=\sum_{x,y\in G}
+          f_1(x^{-1}yx)f_2(y).
+\end{equation}
+This is the two-sided trace computation appearing, in different
+notation, in Vign\'eras \cite[\S1.1]{Vigneras1991}.
+Using the orbital expansion \eqref{eq:fourier}, we obtain
+\begin{align}
+ I(f_1,f_2)
+ &=\sum_{y\in G}\Orb_G(f_1,y)f_2(y)\notag\\
+ &=\sum_{\pi\in\Irr(G)}
+     \chi_{\bar\pi}(f_1)\chi_\pi(f_2).
+ \label{eq:local-spec}
+\end{align}
+On the other hand, partition the $y$-sum by conjugacy classes.  For
+any class function $A(y)$,
+$\sum_y A(y)f_2(y)=
+\sum_{[\gamma]_G}A(\gamma)\Orb_G(f_2,\gamma)/|G_\gamma|$.
+Taking $A(y)=\Orb_G(f_1,y)$ gives
+\begin{equation}\label{eq:local-geom}
+ I(f_1,f_2)
+ =\sum_{[\gamma]_G}\frac{\Orb_G(f_1,\gamma)
+                               \Orb_G(f_2,\gamma)}{|G_\gamma|}.
+\end{equation}
+\begin{theorem}[Finite compact-local trace formula]\label{thm:local}
+For arbitrary complex-valued functions $f_1,f_2$ on $G$,
+\begin{equation}\label{eq:localboxed}
+ \boxed{\displaystyle
+ \sum_{\pi\in\Irr(G)}
+  \chi_{\bar\pi}(f_1)\chi_\pi(f_2)
+ =\sum_{[\gamma]_G}\frac{\Orb_G(f_1,\gamma)
+                             \Orb_G(f_2,\gamma)}{|G_\gamma|}.}
+\end{equation}
+\end{theorem}
+\begin{proof}
+Equate \eqref{eq:local-spec} and \eqref{eq:local-geom},
+which both compute \eqref{eq:Idef}.
+\end{proof}
+\begin{remark}[What Vign\'eras's treatment adds]
+Vign\'eras \cite[\S1]{Vigneras1991} begins with a field
+$L$ whose characteristic does not divide $|G|$, rather than
+only $\C$, and derives Schur's lemma, completeness, and
+orthogonality from this starting point. We retain $\C$
+so that contragredients, complex conjugation, and the positive
+identity \eqref{eq:squares} have their familiar Hilbert-space
+meaning. In characteristic dividing $|G|$, semisimplicity fails
+in general and the subsequent spectral argument requires a
+different formulation.
+\end{remark}
+\begin{corollary}[Positive form; class-function Plancherel]\label{cor:squares}
+For every complex-valued $f$ on $G$,
+\begin{equation}\label{eq:squares}
+ \boxed{\displaystyle
+ \sum_{\pi\in\Irr(G)}|\chi_\pi(f)|^2
+ =\sum_{[\gamma]_G}
+      \frac{|\Orb_G(f,\gamma)|^2}{|G_\gamma|}.}
+\end{equation}
+\end{corollary}
+\begin{proof}
+In \eqref{eq:localboxed}, put $f_1=f$ and $f_2=\bar f$.
+The left-hand side becomes
+$\sum_\pi|\chi_{\bar\pi}(f)|^2$, which equals
+$\sum_\pi|\chi_\pi(f)|^2$ after relabeling irreducibles;
+$\Orb_G(\bar f,\gamma)=\overline{\Orb_G(f,\gamma)}$.
+\end{proof}
+\begin{remark}
+This identity is a Parseval/Plancherel statement for the
+\emph{conjugacy-invariant projection} of $f$, with the particular
+unnormalized Fourier and orbital transforms chosen here. It does not
+assert that character traces determine an arbitrary function on $G$:
+they determine its conjugation average.
+\end{remark}
+
+\subsection{A stronger interpretation: the diagonal subgroup}
+The preceding two identities are not unrelated analogies.  There is an
+exact reduction of the \emph{finite local} identity to the \emph{finite
+global} identity. The regular $G\times G$ representation itself
+is the point of departure in Vign\'eras \cite[\S1.1]{Vigneras1991};
+our additional point here is to obtain it by applying the
+coset-space theorem to the diagonal subgroup.
+\begin{theorem}[The local identity is a global identity on
+$G\times G$]\label{thm:diagonal}
+Let $H=G\times G$, let
+$\Delta G=\{(g,g):g\in G\}\leq H$, and define
+$F(a,b)=f_1(a)f_2(b)$.  Applying
+Theorem~\ref{thm:global} to $(H,\Delta G,F)$ gives exactly
+Theorem~\ref{thm:local}.
+\end{theorem}
+\begin{proof}
+The map
+\[
+ \Delta G\backslash(G\times G)\longrightarrow G,
+ \qquad [(g_1,g_2)]\longmapsto g_1^{-1}g_2
+\]
+is a bijection.  Under it, the right action of $(a,b)\in G\times G$
+becomes
+\begin{equation}\label{eq:two-sided}
+ ((a,b)\cdot\varphi)(x)=\varphi(a^{-1}xb),
+\end{equation}
+Arthur's two-sided regular action.  Finite Peter--Weyl theory
+(or decomposition of the regular bimodule) gives
+\begin{equation}\label{eq:peter-weyl}
+ \C[G]\cong
+   \bigoplus_{\pi\in\Irr(G)}\bar\pi\boxtimes\pi
+ \qquad\text{as a $(G\times G)$-module}.
+\end{equation}
+Each summand occurs once.  Its character at $(a,b)$ is
+$\chi_{\bar\pi}(a)\chi_\pi(b)$. Thus the spectral side for $F$ is
+$\sum_\pi\chi_{\bar\pi}(f_1)\chi_\pi(f_2)$.
+
+Conjugacy classes of $\Delta G$ are indexed by $G$-conjugacy classes:
+$[(\gamma,\gamma)]_{\Delta G}$ corresponds to $[\gamma]_G$.
+Its centralizer in $\Delta G$ has order $|G_\gamma|$.  Moreover
+\[
+ \Orb_{G\times G}(F,(\gamma,\gamma))
+ =\sum_{x,y\in G}f_1(x^{-1}\gamma x)f_2(y^{-1}\gamma y)
+ =\Orb_G(f_1,\gamma)\Orb_G(f_2,\gamma).
+\]
+The global geometric expansion \eqref{eq:geoGamma}, now for
+$(H,\Delta G)$, is exactly the right-hand side of
+\eqref{eq:localboxed}.  This proves the assertion.
+\end{proof}
+\begin{remark}[A kernel matching Arthur's construction]
+The convolution operator for $F=f_1\otimes f_2$ on $\C[G]$ is
+\[
+ (T_F\varphi)(x)=
+ \sum_{a,b\in G}f_1(a)f_2(b)\varphi(a^{-1}xb).
+\]
+Its matrix kernel (with counting measure in the $y$ variable) is
+\[
+ K_F(x,y)=\sum_{a\in G}f_1(a)f_2(x^{-1}ay),
+\]
+so
+\[
+ \tr T_F=\sum_{x,a\in G}f_1(a)f_2(x^{-1}ax)=I(f_1,f_2).
+\]
+The last equality follows by interchanging the two functions and
+changing variables in \eqref{eq:Idef}.  This double-sided kernel is a
+closer parallel to Arthur's local trace-formula starting point than
+the bilinear identity viewed solely as character orthogonality;
+compare \cite[\S1.1]{Vigneras1991} and
+\cite[\S1]{ArthurTowards1989}.
+\end{remark}
+
+\subsection{The character-table matrix is orthogonal after weighting}
+Choose representatives $\gamma_1,\ldots,\gamma_r$ for
+$G$-conjugacy classes and irreducibles
+$\pi_1,\ldots,\pi_r$; set $c_j=|G_{\gamma_j}|$.  For each $j$ let
+\begin{equation}\label{eq:basis-orb}
+ f_j=|G|^{-1}\mathbf1_{[\gamma_j]_G}.
+\end{equation}
+Then $\Orb_G(f_j,\gamma_i)=\delta_{ij}$, by
+\eqref{eq:def-orbit}. Define
+\[
+ a_{ij}=\chi_{\pi_i}(f_j)
+ =\frac{\chi_{\pi_i}(\gamma_j)}{c_j},\qquad
+ A=(a_{ij})_{1\leq i,j\leq r}.
+\]
+The local formula for $f_i,f_j$ gives column orthogonality:
+\begin{equation}\label{eq:matrix}
+ \boxed{\displaystyle
+ A^*A=\diag(c_1^{-1},\ldots,c_r^{-1}).}
+\end{equation}
+Equivalently,
+$A\diag(\sqrt{c_1},\ldots,\sqrt{c_r})$ is unitary.
+\emph{The order of multiplication in \eqref{eq:matrix} matters.}
+The matrix $AA^*$ is generally not diagonal.
+\begin{example}[$S_3$ revisited]
+With $\gamma_1=e$, $\gamma_2=(12)$, $\gamma_3=(123)$,
+\[
+ A=\begin{pmatrix}
+ 1/6&1/2&1/3\\
+ 1/6&-1/2&1/3\\
+ 1/3&0&-1/3
+ \end{pmatrix}.
+\]
+A direct calculation yields
+\[
+ A^*A=\diag(1/6,1/2,1/3),\qquad
+ (AA^*)_{12}=-\frac19\ne0.
+\]
+Thus a claim that $AA^*$ is diagonal would be false even for $S_3$.
+\end{example}
+\begin{example}[$A_5$ and a class indicator]\label{ex:A5}
+Let $f=\mathbf1_{[(123)]_{A_5}}$, the indicator of the class of
+$20$ three-cycles. From the character table,
+\[
+ (\chi_1(f),\ldots,\chi_5(f))=(20,0,0,20,-20),
+\]
+so the left side of \eqref{eq:squares} is
+$20^2+20^2+(-20)^2=1200$.  The orbital sum is zero on other
+classes and is $60$ at a three-cycle, since $|A_5|=60$.
+Its centralizer has order $3$, so the right-hand side is
+$60^2/3=1200$.  The equality holds with no hidden measure factors.
+\end{example}
+
+\section{What these finite identities do and do not model}
+\subsection{The compact-quotient Selberg formula}
+The finite global formula, Theorem~\ref{thm:global}, reproduces the
+\emph{form} of the Selberg trace formula for compact quotient:
+this is the analogy made explicit in Arthur's finite-group example
+\cite[Example~2]{ArthurHecke1989}.
+\begin{center}
+\begin{tabular}{@{}p{0.32\linewidth}p{0.54\linewidth}@{}}
+\toprule
+Finite group & Locally compact compact quotient\\
+\midrule
+$\C[\Gamma\backslash G]$ & $L^2(\Gamma\backslash H)$\\
+$\chi_\pi(f)$ & trace of $\pi(f)$\\
+$m_\Gamma(\pi)$ & discrete spectral multiplicity\\
+$\Orb_G(f,\gamma)/|G_\gamma|$ & orbital integral over $H_\gamma\backslash H$\\
+$|G_\gamma|/|\Gamma_\gamma|$ & $\operatorname{vol}(\Gamma_\gamma\backslash H_\gamma)$\\
+finite sum on $\Gamma\backslash G$ & integral of the kernel on the diagonal\\
+\bottomrule
+\end{tabular}
+\end{center}
+Terras \cite[Ch.~22]{Terras1999} takes a different, complementary
+route from trace formulas to finite spectral geometry, including
+isospectral nonisomorphic examples; Chapter~23 turns to finite
+upper half planes. Those applications require extra geometric
+structures and should not be identified with the bare coset-space
+identity above.
+
+The compact quotient condition should not be confused with
+compactness of the group itself.  For example, a cocompact lattice
+in a noncompact Lie group yields a compact quotient.  Finite groups
+are a particularly simple case in which both the group and the
+quotient are compact.
+
+\subsection{Why Arthur's global formula is harder}
+In adelic examples, $H=\mathbf G(\A_F)$ (with the appropriate
+central quotient) and $\Gamma=\mathbf G(F)$ for a reductive group
+over a number field $F$. The quotient usually is not compact.
+The kernel need not be integrable along its diagonal, and the spectrum
+need not be purely discrete.  Selberg's and Arthur's theory handles
+continuous spectrum, parabolic subgroups, Eisenstein series, and
+truncation; refined formulas feature weighted geometric and spectral
+terms. None of these difficulties can be detected in the finite
+counting-measure identity. See
+\cite{Gelbart1996,ArthurIntro2005,Arthur1978,Arthur1980}.
+
+\subsection{Why the local analogy is genuinely relevant}
+Arthur explicitly begins his 1989 article \emph{Towards a local trace
+formula} with the two-sided $\mathbf G(F)\times\mathbf G(F)$-action,
+then works out the compact-group case by a Weyl integration formula
+and Peter--Weyl decomposition \cite[\S\S1--2]{ArthurTowards1989}.
+Theorem~\ref{thm:diagonal} gives the precise finite-group version
+of that construction. Vign\'eras \cite[\S\S1--2]{Vigneras1991}
+provides an especially useful intermediate presentation from the
+finite calculation to the $p$-adic analytic issues.
+Section~\ref{sec:padic-bridge} analyzes
+the noncompact transition in detail. When $\mathbf G(F)$ is noncompact, the
+integral of the diagonal kernel may diverge. Arthur's full local trace
+formula replaces the simple finite sums by a carefully truncated
+identity whose geometric and spectral expansions include terms
+indexed by Levi subgroups \cite{ArthurLocal1991}.
+In particular, the finite formula is \emph{not} the general
+Arthur local trace formula with all analytic difficulties suppressed:
+its lack of proper parabolic/Levi data and continuous spectrum means
+that major structural features are absent.
+
+
+\section{From finite groups to reductive $p$-adic groups:\\
+why the local trace formula acquires new terms}
+\label{sec:padic-bridge}
+The finite identity \eqref{eq:localboxed} has two ingredients:
+conjugation orbits on the geometric side and a decomposition of the
+regular representation on the spectral side. Both ingredients survive
+for a reductive $p$-adic group.  What fails is the final, seemingly
+innocent step of integrating the kernel along the diagonal.  This
+section explains that failure and the resulting changes in the
+formulas. The goal is a conceptual bridge, \emph{not} a proof of
+Arthur's local trace formula; the latter requires substantial analytic
+and combinatorial arguments \cite{ArthurTowards1989,ArthurLocal1991}.
+Vign\'eras \cite[\S2]{Vigneras1991} offers a shorter
+complementary orientation, especially for elliptic elements,
+weighted orbital integrals, and tempered distributions.
+
+\subsection{The setting: Haar measure, Hecke algebra, and admissibility}
+Let $F$ be a non-Archimedean local field of characteristic zero, with
+ring of integers $\mathcal O_F$, uniformizer $\varpi$, and residue
+field of cardinality $q$.  Thus $|\varpi|_F=q^{-1}$.  Let
+$\mathbf G$ be a connected reductive algebraic group over $F$, and
+write $G=\mathbf G(F)$.  The group $G$ is locally compact,
+totally disconnected, and unimodular.  Its Haar measure $dg$ is an
+analogue of counting measure, but $\operatorname{vol}(G)$ is usually
+infinite.  We use
+\[
+ \mathcal H(G)=C_c^\infty(G)
+ =\{f:G\longrightarrow\C:\ f\text{ is locally constant and
+ compactly supported}\},
+\]
+where ``smooth'' in this context means locally constant. For a
+compact open subgroup $K\subset G$, $\mathbf 1_K$ belongs to
+$\mathcal H(G)$; we often normalize $dg$ by
+$\operatorname{vol}(K)=1$.
+
+The analogue of a finite-dimensional complex representation is now
+often a \emph{smooth admissible} representation $(\pi,V)$:
+for every $v\in V$ the stabilizer of $v$ is open, and for every
+compact open $K$ the space $V^K$ is finite-dimensional. For such a
+representation,
+\[
+ \pi(f)=\int_G f(g)\pi(g)\,dg
+\]
+is finite-rank when $f\in\mathcal H(G)$: choose $K$ fixing $f$ on
+both sides; then $\pi(f)$ has image in $V^K$. Its trace
+$\Theta_\pi(f)=\operatorname{tr}\pi(f)$ is the
+\emph{distribution character}. Unlike a finite-group character,
+$\Theta_\pi$ need not be a globally defined ordinary function,
+although Harish-Chandra's regularity theory represents it by a
+locally integrable function and by a locally constant function on
+the regular semisimple locus.  For foundational material see
+\cite{Casselman1995,Silberger1979}.
+
+\begin{remark}[A change of meaning for the diagonal subgroup]
+For finite $G$, the identification
+$\Delta G\backslash(G\times G)\simeq G$ in
+Theorem~\ref{thm:diagonal} is an instance of a quotient by a
+\emph{discrete} subgroup, and the quotient is compact. For a
+non-discrete $p$-adic $G$, the same identification remains valid
+as an isomorphism of homogeneous spaces, but $\Delta G$ is
+\emph{closed and non-discrete}, while the quotient is usually
+noncompact. One therefore cannot apply the usual compact-lattice
+Selberg trace formula to $(G\times G,\Delta G)$ and expect a
+local trace formula for free. The regular-bimodule analogy persists;
+the trace-class argument does not.
+\end{remark}
+
+\subsection{The same kernel, but potentially an infinite trace}
+Let $f_1,f_2\in\mathcal H(G)$, and use the same two-sided
+representation as in \eqref{eq:two-sided-intro}:
+\[
+ (R(a,b)\phi)(x)=\phi(a^{-1}xb), \qquad \phi\in L^2(G).
+\]
+For $f=f_1\otimes f_2$, the operator
+$R(f)=\int_{G\times G}f_1(a)f_2(b)R(a,b)\,da\,db$
+has the integral kernel
+\begin{equation}\label{eq:padic-kernel}
+ K_f(x,y)=\int_G f_1(xu)f_2(uy)\,du.
+\end{equation}
+Indeed, substitute $a=xu$ and then $b=uy$ in the expression for
+$R(f)\phi(x)$.  On the diagonal, the change of variables
+$u\mapsto x^{-1}u$ yields
+\begin{equation}\label{eq:padic-diagonal}
+ K_f(x,x)=\int_G f_1(u)f_2(x^{-1}ux)\,du.
+\end{equation}
+For a finite group, integrating \eqref{eq:padic-diagonal} over $x$
+gives exactly $I(f_1,f_2)$ of \eqref{eq:Idef}. For a compact group,
+Haar integration and Peter--Weyl theory similarly give a well-defined
+trace. For noncompact $G$, the tempting expression
+\[
+ \int_G K_f(x,x)\,dx
+\]
+can diverge.  It may still diverge after the obvious noncompactness
+of the split center has been removed.  The following calculation
+shows this explicitly.
+
+\subsection{An exact divergence calculation for $\mathrm{GL}_2(F)$}
+\begin{proposition}[Every Cartan shell contributes one unit]
+\label{prop:gl2-divergence}
+Take $G=\mathrm{GL}_2(F)$,
+$K=\mathrm{GL}_2(\mathcal O_F)$, and
+$f_1=f_2=\mathbf1_K$, with $\operatorname{vol}(K)=1$.
+Let $Z=F^\times I_2$ be the center and give $Z\backslash G$
+Haar measure for which the image $\bar K$ of $K$ has volume one.
+Then $K_f(x,x)$ descends to $Z\backslash G$, but
+\begin{equation}\label{eq:gl2-divergence}
+ \int_{Z\backslash G}K_f(x,x)\,d\bar x=+\infty.
+\end{equation}
+More precisely, with $a_n=\operatorname{diag}(\varpi^n,1)$,
+$\bar a_n\in Z\backslash G$, and
+\[
+ s_0=1,\qquad s_n=(q+1)q^{n-1}\quad(n\geq1),
+\]
+the Cartan double coset $\bar K\bar a_n\bar K$ has volume $s_n$,
+while $K_f(x,x)=s_n^{-1}$ everywhere on that coset. Hence the
+integral over the first $N+1$ double cosets is exactly $N+1$.
+\end{proposition}
+\begin{proof}
+Formula \eqref{eq:padic-diagonal} gives
+\begin{equation}\label{eq:gl2-overlap}
+ K_f(x,x)=\int_G \mathbf1_K(u)\mathbf1_K(x^{-1}ux)\,du
+ =\operatorname{vol}(K\cap xKx^{-1}).
+\end{equation}
+This is unchanged when $x$ is multiplied by a scalar matrix or
+on either side by an element of $K$.  The Cartan decomposition
+\[
+ Z\backslash G=\coprod_{n\geq0}\bar K\bar a_n\bar K
+\]
+therefore partitions the quotient into shells on which
+\eqref{eq:gl2-overlap} is constant.  For $n\geq1$ the index
+\[
+ [K:K\cap a_nKa_n^{-1}]
+  =\#\mathbb P^1(\mathcal O_F/\varpi^n\mathcal O_F)
+  =(q+1)q^{n-1}
+\]
+is $s_n$; equivalently this is the number of vertices at distance
+$n$ from a fixed vertex in the $(q+1)$-regular Bruhat--Tits tree of
+$\mathrm{PGL}_2(F)$.  Thus the intersection has volume $s_n^{-1}$,
+whereas the associated double coset in $Z\backslash G$ has
+volume $s_n$.  Each shell contributes $s_n s_n^{-1}=1$.
+Summing over all $n$ proves \eqref{eq:gl2-divergence}.
+\end{proof}
+\begin{remark}[What the example proves---and does not prove]
+This is an actual divergence of the \emph{untruncated diagonal
+integral}, even modulo the split center $Z=A_G(F)$. It is not a
+counterexample to Arthur's local trace formula: the latter is built
+from a truncated kernel and a carefully extracted distribution.
+The elementary radial cutoff
+$u_N=\mathbf1_{\coprod_{n=0}^N\bar K\bar a_n\bar K}$
+yields $\int_{Z\backslash G}K_f(x,x)u_N(x)\,d\bar x=N+1$,
+which illustrates how polynomial growth in a truncation parameter
+can arise.  Arthur's precise truncation is more structured than this
+radial cutoff; we do \emph{not} identify their constant terms.
+\end{remark}
+
+\subsection{Why the spectral side also changes}
+Finite Peter--Weyl theory decomposes $\C[G]$ into a finite direct
+sum of $\bar\pi\boxtimes\pi$. In contrast, the unitary regular
+representation of a reductive $p$-adic group is described by
+Harish-Chandra's Plancherel theorem, involving direct \emph{integrals}
+and a continuous family of tempered representations. One version of
+Fourier inversion has the schematic form
+\begin{equation}\label{eq:padic-plancherel}
+ f(e)=\int_{\widehat G_{\mathrm{temp}}}
+    \Theta_\pi(f)\,d\mu_{\mathrm{Pl}}(\pi),
+ \qquad f\in\mathcal H(G),
+\end{equation}
+with the usual interpretation of the measure, characters, and
+normalizations.  Unlike \eqref{eq:reg}, this is generally not a
+finite character sum.
+
+One source of the continuous parameters is \emph{normalized parabolic
+induction}. For $G=\mathrm{GL}_2(F)$, let $B=TN$ be the upper
+triangular Borel subgroup, with
+\[
+ T=\left\{\begin{pmatrix}a&0\\0&d\end{pmatrix}:
+ a,d\in F^\times\right\},\quad
+ N=\left\{\begin{pmatrix}1&u\\0&1\end{pmatrix}:
+ u\in F\right\}.
+\]
+The modulus character is
+$\delta_B(\operatorname{diag}(a,d))=|a/d|_F$.
+For quasicharacters $\chi_1,\chi_2$ of $F^\times$, the normalized
+principal-series representation is
+\begin{equation}\label{eq:principal-series}
+ \operatorname{Ind}_{B}^{G}
+  (\chi_1\boxtimes\chi_2)
+ =\left\{\phi:G\to\C:\ 
+ \phi(tng)=\delta_B(t)^{1/2}
+       \chi_1(a)\chi_2(d)\phi(g),\quad
+ t=\operatorname{diag}(a,d),\ n\in N\right\},
+\end{equation}
+with the right-translation action and the usual smoothness
+conditions.  Taking $\chi_j(x)=|x|_F^{it_j}$ already gives
+continuous unitary parameters; reducibility and equivalences must
+be treated separately.  Intertwining operators relate different
+parabolic realizations. Their normalized forms, and derivatives
+thereof, enter the weighted spectral distributions of the local
+trace formula \cite{Casselman1995,ArthurLocal1991}.
+
+\subsection{Levi subgroups and the geometric indexing}
+A parabolic subgroup $P$ has a Levi decomposition $P=MN$:
+$M$ is reductive and $N$ its unipotent radical. Fix a minimal
+$F$-Levi subgroup $M_0$ and denote by $\mathcal L(M_0)$ the
+Levi subgroups containing it.  For each $M$ let $A_M$ be the
+maximal $F$-split torus in its center. These tori provide the
+real vector spaces $\mathfrak a_M$ used in truncation.
+
+For $\mathrm{GL}_2$ there are only two standard Levi choices:
+\[
+ \mathcal L(M_0)=\{M_0=\mathrm{GL}_1\times\mathrm{GL}_1,
+                     \ G=\mathrm{GL}_2\}.
+\]
+A regular semisimple element whose characteristic polynomial splits
+over $F$ is conjugate into $M_0$; it is elliptic in $M_0$ but not
+in $G$.  A regular element with irreducible quadratic characteristic
+polynomial has a centralizer isomorphic to $E^\times$ for a
+quadratic field extension $E/F$, and $E^\times/F^\times$ is compact:
+it is \emph{elliptic modulo the center} in $G$.
+This elementary dichotomy is the rank-one shadow of the
+Levi-indexed expansion on Arthur's geometric side.
+
+For a regular semisimple $\gamma$ the ordinary orbital integral is
+\begin{equation}\label{eq:padic-orbital}
+ O_\gamma(f)=\int_{G_\gamma\backslash G}
+       f(x^{-1}\gamma x)\,d\dot x,
+\end{equation}
+with compatible Haar measures.  In many conventions a
+\emph{normalized} orbital integral includes the factor
+$|D^G(\gamma)|_F^{1/2}$, where
+\[
+ D^G(\gamma)=\det(1-\operatorname{Ad}(\gamma)
+                     \mid\mathfrak g/\mathfrak g_\gamma).
+\]
+This analytic discriminant is not the finite-group centralizer
+factor $|G_\gamma|$ from \eqref{eq:localboxed}.
+
+\subsection{Truncation, weighted orbital integrals, and weighted characters}
+Write $A_G$ for the maximal split central torus of $G$.  Arthur
+introduces a truncation function $u(x,T)$ on $A_G(F)\backslash G$,
+parametrized by a point $T$ sufficiently far into a positive chamber,
+and first studies
+\begin{equation}\label{eq:padic-trunc}
+ K^T(f)=\int_{A_G(F)\backslash G}
+         K_f(x,x)u(x,T)\,d\bar x.
+\end{equation}
+In the non-Archimedean case the parameter lies on an appropriate
+lattice. The truncation is designed to be computable in both
+the geometric expansion (from Weyl integration) and the spectral
+expansion (from Plancherel theory).
+
+For a proper Levi $M$, the geometric expansion involves a weight
+$v_M$, built from the relative positions of the parabolic height
+functions $H_P(x)$ for parabolics with Levi factor $M$.
+These heights lie in $\mathfrak a_M$ and encode the different
+ways $x$ approaches infinity along a parabolic direction.  An
+\emph{illustrative}, single-variable weighted orbital integral has
+shape
+\begin{equation}\label{eq:weighted-model}
+ \int_{G_\gamma\backslash G}
+    f(x^{-1}\gamma x)\,v_M(x)\,d\dot x,
+\end{equation}
+possibly multiplied by a Weyl discriminant or other measure factors.
+In Arthur's local formula the functions are on $G\times G$,
+and the actual weight depends on the pair $(x_1,x_2)$; the final
+weighted distribution is a \emph{double} orbital integral. For
+example, in the conventions of \cite[\S12]{ArthurLocal1991}, for a
+suitable $G$-regular $\gamma\in M(F)$ it has the form
+\begin{equation}\label{eq:arthur-weighted-pair}
+ J_M(\gamma,f)=|D^G(\gamma)|_F
+ \int_{A_M(F)\backslash G}\!\int_{A_M(F)\backslash G}
+ f_1(x_1^{-1}\gamma x_1)f_2(x_2^{-1}\gamma x_2)
+ v_M(x_1,x_2)\,dx_1\,dx_2.
+\end{equation}
+For a concise introduction to the role of these weights,
+see Vign\'eras \cite[\S2.2]{Vigneras1991}.
+The exact definition of $v_M$ and the domains of validity are
+part of Arthur's theory; \eqref{eq:arthur-weighted-pair}
+should not be taken as a free-standing definition for arbitrary
+singular $\gamma$. For $M=G$, no proper parabolic direction
+remains, and the ordinary product-of-orbital-integrals pattern
+reappears (with the local Weyl-discriminant normalization).
+
+On the spectral side one obtains \emph{weighted characters}:
+these are no longer just $\Theta_{\bar\pi}(f_1)\Theta_\pi(f_2)$.
+They involve parabolically induced representations and
+intertwining-operator data. In particular, taking the derivatives
+of suitable operator families is a spectral analogue of keeping
+track of the contributions at infinity. In general the resulting
+weighted distributions for proper $M$ are not individually
+conjugation-invariant; Arthur also develops invariant versions.
+
+\subsection{The shape of Arthur's identity, and a comparison chart}
+In a common schematic notation, Arthur's local formula is an
+equality between sums of the form
+\begin{equation}\label{eq:arthur-schematic}
+ \underbrace{\sum_{M\in\mathcal L(M_0)} c_M
+ \int_{\Gamma_{\mathrm{ell}}(M)}
+ J_M(\gamma,f)\,d\gamma}_{\text{geometric expansion}}
+ =
+ \underbrace{\sum_{M\in\mathcal L(M_0)} c_M
+ \int_{\mathscr T_{\mathrm{disc}}(M)}
+ a^M(\tau)J_M(\tau,f)\,d\tau}_{\text{spectral expansion}},
+\end{equation}
+where the notation $\mathscr T_{\mathrm{disc}}(M)$ is a placeholder
+for Arthur's discrete spectral parameter data, \emph{not} simply a
+set of ordinary irreducible representations. The coefficients have
+the usual Weyl-group/sign pattern
+\[
+ c_M=\frac{|W_0^M|}{|W_0^G|}
+             (-1)^{\dim(\mathfrak a_M/\mathfrak a_G)},
+\]
+with measures and conventions as in Arthur's
+\cite[Theorem 12.2]{ArthurLocal1991}.  This display deliberately
+suppresses the detailed definitions of $J_M(\tau,f)$,
+$a^M(\tau)$, parameter spaces, and normalizing factors. It is a
+\emph{reading guide}, not an independent statement or proof of
+Theorem 12.2. For $\mathrm{GL}_2$, the two Levi choices have
+$c_G=1$ and $c_{M_0}=-\tfrac12$.
+
+\begin{center}
+\small
+\begin{tabular}{@{}p{0.29\linewidth}p{0.59\linewidth}@{}}
+\toprule
+Finite-group step & Reductive $p$-adic replacement\\
+\midrule
+Counting measure on $G$ & Haar measure on a noncompact $G$\\
+Every function is a test function & Hecke algebra $C_c^\infty(G)$\\
+Finite sum over $\Irr(G)$ & Tempered Plancherel direct integral\\
+Ordinary character $\chi_\pi(g)$ & Distribution character $\Theta_\pi(f)$\\
+Conjugacy-class sum & Weyl integration over regular semisimple orbits\\
+Kernel diagonal is summable & Kernel diagonal may diverge, even modulo $A_G$\\
+No proper Levi terms & Levi-indexed geometric and spectral terms\\
+Unweighted orbital products & Weighted orbital distributions $J_M(\gamma,f)$\\
+Product of ordinary traces & Weighted characters $J_M(\tau,f)$\\
+No truncation & Truncation and extraction of a regularized term\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\subsection{Suggested reading order and the limits of the analogy}
+A practical route through the literature is to begin with
+Vign\'eras \cite[\S1]{Vigneras1991} beside
+Theorem~\ref{thm:diagonal} and Yang \cite{Yang2006}
+beside Theorem~\ref{thm:global}. For the finite-geometric
+variant, see Terras \cite[Chs.~22--23]{Terras1999}.
+Then read \cite[\S\S1--2]{ArthurTowards1989} alongside
+the diagonal-subgroup proof, and check the exact
+$\mathrm{GL}_2$ divergence in Proposition~\ref{prop:gl2-divergence}.
+Next read \cite[\S\S1--3]{ArthurLocal1991} for the kernel,
+Plancherel expansion, and truncation; \cite[\S\S4--6]{ArthurLocal1991}
+for the geometric weights; and \cite[\S\S7--12]{ArthurLocal1991}
+for the spectral expansion and final identity.  The elementary
+$p$-adic representation theory needed along the way is developed in
+\cite{Casselman1995,Silberger1979}; \cite{Macdonald1971}
+provides the spherical-function viewpoint.
+
+\begin{remark}[What the finite model predicts, and what it does not]
+The finite identities correctly predict a \emph{two-sided kernel},
+a geometric/spectral comparison, and the importance of Weyl
+integration and Plancherel theory.  They do \emph{not} predict the
+analytic regularization, the family of parabolic directions, the
+intertwining-operator terms, or the invariantization procedure.
+Those are mathematical content, not bookkeeping corrections to the
+finite formulas.
+\end{remark}
+
+\section{A brief literature review and reading path}
+\label{sec:literature}
+\paragraph{Four papers closest to the present approach.}
+The finite-group identities in this note are classical; their significance
+here is as a teaching device for the geometric/spectral dichotomy.
+The most directly relevant references are the following.
+
+\smallskip
+\noindent\emph{Arthur's finite-group example (1989).}
+In \emph{The Trace Formula and Hecke Operators}
+\cite[\S1, Example~2, pp.~13--14]{ArthurHecke1989}, Arthur
+specializes the compact-quotient Selberg formula to a finite group
+$G$ and a subgroup $\Gamma$. Choosing a suitable irreducible
+character as a test function shows that a spectral multiplicity
+equals $\dim\pi^\Gamma$---the content of Frobenius reciprocity.
+This is the closest direct precedent for our Theorem~\ref{thm:global}.
+Arthur also explains why the compact trace formula can be viewed
+as an extension of finite-group reciprocity to locally compact groups.
+
+\smallskip
+\noindent\emph{Vign\'eras's local analogue (1991).}
+\emph{An Elementary Introduction to the Local Trace Formula of
+J.~Arthur: The Case of Finite Groups} \cite{Vigneras1991}
+begins with the $G\times G$-representation on $L[G]$ for a field $L$
+of characteristic not dividing $|G|$. Her \S1 derives character
+orthogonality, complete reducibility, and further structure of the
+group algebra from a two-sided trace identity. The same
+regular-bimodule mechanism underlies our
+Theorem~\ref{thm:local} and the kernel computation in
+Theorem~\ref{thm:diagonal}; our proof obtains it from the global
+coset-space theorem by setting $(H,\Gamma)=(G\times G,\Delta G)$.
+Vign\'eras then discusses elliptic elements, weighted orbital
+integrals, and the actual reductive $p$-adic local formula in \S2,
+with a final discussion of possible applications and limitations.
+Her caution is worth emphasizing: a trace identity by itself
+need not establish the character correspondences one would like.
+
+\smallskip
+\noindent\emph{Terras's finite Selberg analogues (1999).}
+Chapter~22 of \emph{Fourier Analysis on Finite Groups and
+Applications} \cite{Terras1999} develops finite versions of the
+Selberg trace formula in relation to isospectral spectral geometry.
+Chapter~23 studies the trace formula on finite upper half planes,
+and Chapter~24 concerns a tree and Ihara's zeta function.
+These chapters furnish geometric and spectral applications,
+beyond the formal identity for $\C[\Gamma\backslash G]$.
+The distinction matters: an elementary trace identity does not,
+by itself, imply a graph-theoretic isospectrality theorem.
+
+\smallskip
+\noindent\emph{Yang's coset-space formulas (2006).}
+Yang \cite{Yang2006} studies right-regular representations
+on spaces of vector-valued functions associated with
+$\Gamma\backslash G$ and states trace formulas building on
+Vign\'eras. The scalar permutation module used here is a
+simpler instance of the coset-space perspective.
+Because Yang's paper appeared in 2006, it is a later related
+contribution, not a source for the original 1996--2003 notes.
+
+\paragraph{Finite representation theory.}
+Serre's \emph{Linear Representations of Finite Groups} \cite{Serre}
+supplies character orthogonality, induction, and Frobenius reciprocity.
+In particular, it explains the averaging projection used in
+\eqref{eq:mult} and the character-theoretic proof of
+\eqref{eq:fourier}. For a trace-formula-first derivation
+of these same foundations, compare Vign\'eras \cite[\S1]{Vigneras1991}.
+
+\paragraph{The compact and noncompact global trace formulas.}
+Arthur's later exposition \cite[Part~I, \S1]{ArthurIntro2005}
+sets out the compact quotient and identifies the
+centralizer-volume coefficient. Gelbart's lectures \cite{Gelbart1996}
+introduce the general Arthur--Selberg framework, often through
+$\mathrm{GL}_2$. Arthur's reductive-group papers
+\cite{Arthur1978,Arthur1980,ArthurInvariant1981} develop the
+truncation and invariant distributions needed once the quotient
+is noncompact.
+
+\paragraph{Background on reductive $p$-adic groups.}
+Casselman \cite{Casselman1995} explains smooth and admissible
+representations, parabolic induction, and intertwining operators;
+Silberger \cite{Silberger1979} provides an analytic treatment.
+Macdonald \cite{Macdonald1971} is useful for the Cartan
+decomposition and spherical-function viewpoint used in the
+$\mathrm{GL}_2(F)$ example of Section~\ref{sec:padic-bridge}.
+
+\paragraph{The actual local trace formula.}
+Arthur's \emph{Towards a Local Trace Formula}
+\cite[\S\S1--2]{ArthurTowards1989} introduces the $G(F)\times G(F)$
+kernel and discusses the compact case; Vign\'eras
+\cite[\S2]{Vigneras1991} offers a particularly accessible
+parallel introduction. Arthur's \emph{A Local Trace Formula}
+\cite{ArthurLocal1991} develops truncation and the
+Levi-indexed geometric and spectral expansions for the
+noncompact reductive case. Those weighted terms are the
+additional substance of the theory, not simply a notational
+version of our finite sums.
+
+\paragraph{Three guided reading routes.}
+To understand \emph{the global finite analogy}, read
+Theorem~\ref{thm:global}, Arthur's 1989 Example~2
+\cite{ArthurHecke1989}, and Yang \cite{Yang2006}.
+For \emph{the local finite analogy}, read
+Theorem~\ref{thm:diagonal} beside Vign\'eras's \S1
+\cite{Vigneras1991}. For \emph{geometric applications},
+turn to Terras \cite[Chs.~22--24]{Terras1999}.
+Only then proceed to Section~\ref{sec:padic-bridge},
+Vign\'eras's \S2, and Arthur's local papers.
+
+\section{Glossary of terms and notation}
+\begin{description}[style=nextline,leftmargin=1.4em,itemsep=4pt]
+\item[$A_M$ and $\mathfrak a_M$]
+The maximal $F$-split torus in the center of a Levi subgroup
+$M$ and its associated real vector space of logarithmic
+rational-character data, respectively.
+\item[Arthur--Selberg trace formula]
+A family of identities equating geometric orbital terms with spectral
+representation-theoretic terms, often after truncation.
+\item[Character $\chi_\pi$]
+The class function $g\mapsto\tr(\pi(g))$ of a representation $\pi$.
+\item[Class function]
+A function constant on conjugacy classes.
+\item[Compact quotient]
+A homogeneous space $\Gamma\backslash H$ which is compact, even if
+$H$ itself is not compact.
+\item[Conjugacy class $\operatorname{Cl}_G(\gamma)$]
+The set $\{x^{-1}\gamma x:x\in G\}$.
+\item[Centralizer $G_\gamma$]
+The subgroup of elements commuting with $\gamma$; if
+$\gamma\in\Gamma$ then $\Gamma_\gamma=G_\gamma\cap\Gamma$.
+\item[Contragredient representation $\bar\pi$]
+The dual representation; for a finite group one may choose a unitary
+model in which $\chi_{\bar\pi}(g)=\overline{\chi_\pi(g)}$.
+\item[Counting measure]
+The convention $\int_X f=\sum_{x\in X}f(x)$ for finite $X$.
+\item[Cartan double cosets]
+In the $\mathrm{GL}_2(F)$ example, the sets
+$\bar K\bar a_n\bar K$ partition $Z\backslash G$;
+their measure grows as $(q+1)q^{n-1}$.
+\item[Diagonal subgroup $\Delta G$]
+The subgroup $\{(g,g):g\in G\}$ of $G\times G$.
+\item[Eisenstein series]
+Functions built from parabolic induction that help describe continuous
+automorphic spectrum on noncompact arithmetic quotients.
+\item[Frobenius reciprocity]
+The adjunction relating $\Hom_G(\Ind_\Gamma^G\sigma,\pi)$ to
+$\Hom_\Gamma(\sigma,\Res_\Gamma^G\pi)$.
+\item[Geometric side]
+The trace expansion organized by conjugacy classes and orbital integrals.
+\item[Harish-Chandra's Plancherel theorem]
+Describes the regular representation of a reductive local group
+by a direct integral of tempered representations and a
+Plancherel measure.
+\item[Induced representation]
+A representation of $G$ built from one of a subgroup, written
+$\Ind_\Gamma^G\sigma$.
+\item[Invariant vectors $\pi^\Gamma$]
+Vectors fixed by every element of $\Gamma$; their dimension is the
+multiplicity in \eqref{eq:mult}.
+\item[Irreducible representation]
+A representation with no nonzero proper invariant subspace.
+\item[Hecke algebra $\mathcal H(G)$]
+The convolution algebra of compactly supported locally constant
+functions on a totally disconnected group $G$.
+\item[Levi subgroup]
+A reductive factor of a parabolic subgroup; Levi subgroups index many
+terms in Arthur's noncompact global and local expansions.
+\item[Local field]
+A locally compact nondiscrete topological field, such as
+$\mathbb R$, $\C$, or a finite extension of $\mathbb Q_p$.
+\item[Normalized parabolic induction]
+Induction from a Levi subgroup of a parabolic, including the factor
+$\delta_P^{1/2}$ built from the modulus character.
+\item[Orbital integral / orbital sum]
+An integral (or finite sum) of a test function along a conjugacy orbit.
+Here $\Orb_G$ is deliberately the \emph{sum over all $x\in G$};
+it includes a factor of $|G_\gamma|$ relative to summing once
+per element of $G_\gamma\backslash G$.
+\item[Peter--Weyl decomposition]
+A decomposition of the regular representation of a compact group into
+matrix coefficients of irreducibles.  For finite $G$ it yields
+\eqref{eq:peter-weyl}.
+\item[Schur orthogonality]
+The orthogonality relations for irreducible matrix coefficients and,
+in particular, for irreducible characters.
+\item[Smooth admissible representation]
+A smooth representation for which the fixed-vector space under
+any compact open subgroup is finite-dimensional.
+\item[Spectral side]
+The trace expansion organized by irreducible representations and
+multiplicities or spectral measure.
+\item[Tempered representation]
+A representation in the Plancherel support, broadly analogous to
+the part of Fourier analysis that contributes to the regular
+$L^2$-spectrum; precise definitions use matrix-coefficient decay.
+\item[Test function]
+A function $f$ used to form a convolution operator; in finite groups
+it is any element of $\C[G]$.
+\item[Truncation]
+A regularization procedure used when the kernel or its diagonal is
+not integrable on a noncompact space.
+\item[Unipotent radical $N$]
+The unipotent normal subgroup in a parabolic decomposition $P=MN$.
+\item[Weighted orbital integral / weighted character]
+A more elaborate geometric or spectral distribution appearing in
+Arthur's local/global trace formulas for noncompact reductive groups.
+\item[Weyl integration formula]
+A decomposition of integrals into orbital integrals. In the finite
+setting it is \eqref{eq:weyl}.
+\end{description}
+
+\section{Exercises and optional extensions}
+\begin{exercise}[A general $S_3$ calculation]
+For $a,b,c\in\C$, set
+$f=a f_1+b f_2+c f_3$, using the normalized class indicators
+in \eqref{eq:basis-orb} for $S_3$. Verify directly that
+\[
+ \sum_{\pi\in\Irr(S_3)}|\chi_\pi(f)|^2
+ =\frac{|a|^2}{6}+\frac{|b|^2}{2}+\frac{|c|^2}{3}.
+\]
+\end{exercise}
+\begin{exercise}[A nonnormal subgroup]
+For $G=S_3$ and $\Gamma=\langle(12)\rangle$,
+check the trace formula on the three point masses
+$\delta_e$, $\delta_{(12)}$, and $\delta_{(123)}$.
+In the last case, the trace is zero.
+\end{exercise}
+\begin{exercise}[A diagonal-global computation]
+Apply Theorem~\ref{thm:global} directly to
+$(G\times G,\Delta G)$ with $f_1=\delta_u$ and
+$f_2=\delta_v$. Recover column orthogonality
+\eqref{eq:columnorth}.
+\end{exercise}
+
+\begin{exercise}[The $\mathrm{GL}_2$ shell count]
+For a finite ring $R=\mathcal O_F/\varpi^n\mathcal O_F$,
+verify that $\#\mathbb P^1(R)=q^n+q^{n-1}$. Deduce
+$[K:K\cap a_nKa_n^{-1}]=(q+1)q^{n-1}$.
+\end{exercise}
+\begin{exercise}[Two kinds of elliptic elements]
+In $\mathrm{GL}_2(F)$, compare the centralizers of
+$\operatorname{diag}(a,d)$, $a\ne d$, and a regular matrix with
+irreducible quadratic characteristic polynomial. Explain why
+one class is elliptic only in the diagonal Levi and the other is
+elliptic modulo the center in $G$.
+\end{exercise}
+
+\begin{exercise}[Arthur's Frobenius-reciprocity example]
+Fix $\pi\in\Irr(G)$ and set
+$f_\pi(g)=\chi_\pi(g^{-1})$. Use Theorem~\ref{thm:global}
+and the orthogonality of irreducible characters to isolate
+$m_\Gamma(\pi)$. Recover
+$m_\Gamma(\pi)=\dim\pi^\Gamma$ and compare the calculation
+with \cite[Example~2]{ArthurHecke1989}.
+\end{exercise}
+\begin{exercise}[Reading Vign\'eras and Terras]
+Compare Vign\'eras's characteristic-sum notation
+\cite[\S1.1]{Vigneras1991} with
+$\Orb_G(f,\gamma)$ in \eqref{eq:def-orbit}.
+Then consult Terras \cite[Ch.~22]{Terras1999}:
+what finite geometric or spectral data enter beyond the
+permutation module $\C[\Gamma\backslash G]$?
+\end{exercise}
+
+\appendix
+\section{A short exact sequence and group cohomology}
+The conjugation action of $G$ on $\cG$ is
+$(h\cdot f)(x)=f(h^{-1}xh)$. Its averaging projection is
+\[
+ (Pf)(x)=\frac1{|G|}\sum_{h\in G}f(h^{-1}xh)
+        =\frac1{|G|}\Orb_G(f,x).
+\]
+It satisfies $P^2=P$ and has image $\cG^G$, the class functions.
+Moreover,
+\[
+ \ker P=\operatorname{span}_\C
+ \{f-h\cdot f:f\in\cG,\ h\in G\}=:I(G).
+\]
+Consequently
+\[
+ 0\longrightarrow I(G)\longrightarrow\cG
+   \overset P\longrightarrow\cG^G\longrightarrow0
+\]
+is a split exact sequence of complex $G$-modules.  The word
+``span'' is necessary: the \emph{set} of all single differences
+$f-h\cdot f$ need not itself be a linear subspace.
+Since $G$ is finite and the coefficient field has characteristic
+zero, averaging makes the invariants functor exact. In particular,
+for every complex $G$-module $M$ and every $n>0$,
+\[
+ H^n(G,M)=0.
+\]
+Thus all higher cohomology groups of $I(G)$, $\cG$, and
+$\cG^G$ vanish. The nontrivial information here is in degree zero:
+$\cG^G$ is the class-function space and $I(G)^G=0$.
+
+\section{Summary of substantive corrections to the original notes}
+\begin{enumerate}[leftmargin=*,itemsep=5pt]
+\item Corrected $S_3$'s standard representation from the wrong
+quotient $\C^3/\{z_1+z_2+z_3=0\}$ to the two-dimensional
+subspace $\{z_1+z_2+z_3=0\}$ (or quotient by the diagonal line).
+\item Distinguished point masses from class indicators in the
+character-table argument; the latter have a class-size factor.
+\item Distinguished the normalized character inner product from
+unnormalized point masses, and noted that characters span class
+functions rather than all functions on $G$.
+\item Replaced the inverse-argument right translation, which was an
+anti-representation under ordinary composition, by the correct
+representation $R(g)\varphi(x)=\varphi(xg)$.
+\item Recomputed the kernel with counting measure on
+$\Gamma\backslash G$; fixed the factors $|\Gamma|$ and $|G|$.
+\item Corrected the geometric side: sum over $\Gamma$-conjugacy
+classes with $1/|\Gamma_\gamma|$, or sum over $G$-classes with
+$|[\gamma]_G\cap\Gamma|/|\Gamma|$.
+\item Replaced the faulty extraction of spectral multiplicities
+by the projection formula $m_\Gamma(\pi)=\dim\pi^\Gamma$.
+\item Supplied the missing $1/|\Gamma|$ in the induced-character
+formula and removed the unjustified assumption that every subgroup
+is stable under conjugation.
+\item Replaced the index-two argument by the direct identity
+$\Ind_\Gamma^G\id=\id\oplus\eps$.
+\item Corrected the $A_5$ notation: $(1\pm\sqrt5)/2$ are real
+algebraic conjugates, not complex conjugates.
+\item Corrected the character-table matrix identity to
+$A^*A=\diag(|G_{\gamma_j}|^{-1})$, not $AA^*$.
+\item Kept the valid bilinear local identity, strengthened it to
+complex functions with a positive Hermitian form, and identified it
+as the global trace formula for $(G\times G,\Delta G)$.
+\item Distinguished the compact local analogue from the full
+Arthur local trace formula, which requires truncation and weighted
+terms in noncompact situations.
+\item In the subsequent expansion, showed explicitly for
+$\mathrm{GL}_2(F)$ that the untruncated local diagonal integral
+diverges even modulo the center and detailed the role of Levi groups,
+parabolic induction, and weighted distributions.
+\end{enumerate}
+
+\section{Concluding perspective}
+The finite trace formulas rest on two familiar operations:
+computing the trace of a convolution operator on its diagonal, and
+computing the trace after decomposing a representation into
+irreducibles.  For $\C[\Gamma\backslash G]$ this gives the
+compact-global identity; for the two-sided action of $G\times G$ on
+$\C[G]$ it gives the compact-local identity.  Their common structure
+is especially transparent because the second is literally the first
+applied to the diagonal subgroup.  The main conceptual leap in
+Selberg's and Arthur's work is to make related comparisons meaningful
+for noncompact groups and quotients, where continuous spectrum,
+parabolic induction, and truncation all become central. The precise
+$\mathrm{GL}_2(F)$ calculation in Section~\ref{sec:padic-bridge}
+shows why the passage to the local trace formula is not merely
+a change from finite sums to integrals.
+
+\begin{thebibliography}{99}
+\bibitem{ArthurHecke1989}
+J. Arthur, ``The trace formula and Hecke operators,'' in
+\emph{Number Theory, Trace Formulas and Discrete Groups},
+Academic Press,
+1989, pp.~11--27.
+\url{https://www.claymath.org/library/cw/arthur/pdf/31.pdf}
+
+\bibitem{Vigneras1991}
+M.-F. Vign\'eras, ``An elementary introduction to the local
+trace formula of J.~Arthur: the case of finite groups,''
+in a Deutsche Mathematiker-Vereinigung jubilee volume,
+B.~G. Teubner, Stuttgart, 1991.
+\url{https://perso.imj-prg.fr/mariefrance-vigneras/wp-content/uploads/vigneras-pub/dmv.pdf}
+
+\bibitem{Terras1999}
+A. Terras, \emph{Fourier Analysis on Finite Groups and
+Applications}, London Mathematical Society Student Texts 43,
+Cambridge University Press, 1999; esp. Ch.~22,
+``Selberg's trace formula and isospectral non-isomorphic
+graphs,'' pp.~385--393, and Ch.~23, pp.~394--407.
+\url{https://doi.org/10.1017/CBO9780511626265.025}
+
+\bibitem{Yang2006}
+J.-H. Yang, ``Trace formulas on finite groups,''
+\emph{Communications of the Korean Mathematical Society}
+\textbf{21} (2006), no.~1, 17--25.
+\url{https://arxiv.org/abs/math/0612362}
+
+\bibitem{Casselman1995}
+W. Casselman, \emph{Introduction to the Theory of Admissible
+Representations of $p$-Adic Reductive Groups},
+draft, 1 May 1995.
+\url{https://www.math.utah.edu/~ptrapa/math-library/casselman/casselman-p-adic-book.pdf}
+
+\bibitem{Silberger1979}
+A. J. Silberger, \emph{Introduction to Harmonic Analysis on
+Reductive $p$-Adic Groups}, Mathematical Notes 23, Princeton
+University Press, 1979.
+
+\bibitem{Macdonald1971}
+I. G. Macdonald, \emph{Spherical Functions on a Group of
+$p$-Adic Type}, Publications of the Ramanujan Institute,
+University of Madras, no. 2, 1971.
+\url{https://math.soimeme.org/~arunram/Resources/SFOAGOPTContents.html}
+
+\bibitem{Serre}
+J.-P. Serre, \emph{Linear Representations of Finite Groups},
+Graduate Texts in Mathematics 42, Springer, New York, 1977.
+
+\bibitem{Arthur1978}
+J. Arthur, ``A trace formula for reductive groups I:
+Terms associated to classes in $G(\mathbb Q)$,''
+\emph{Duke Math. J.} \textbf{45} (1978), 911--952.
+
+\bibitem{Arthur1980}
+J. Arthur, ``A trace formula for reductive groups II:
+Applications of a truncation operator,''
+\emph{Compositio Math.} \textbf{40} (1980), 87--121.
+
+\bibitem{ArthurInvariant1981}
+J. Arthur, ``The trace formula in invariant form,''
+\emph{Ann. of Math.} (2) \textbf{114} (1981), 1--74.
+
+\bibitem{ArthurTowards1989}
+J. Arthur, ``Towards a local trace formula,'' in
+\emph{Algebraic Analysis, Geometry, and Number Theory},
+Johns Hopkins University Press, Baltimore, 1989, pp. 1--23.
+\url{https://www.claymath.org/library/cw/arthur/pdf/36.pdf}
+
+\bibitem{ArthurLocal1991}
+J. Arthur, ``A local trace formula,''
+\emph{Publications Math\'ematiques de l'IH\'ES} \textbf{73}
+(1991), 5--96. \url{https://doi.org/10.1007/BF02699256}
+
+\bibitem{Gelbart1996}
+S. Gelbart, \emph{Lectures on the Arthur--Selberg Trace Formula},
+University Lecture Series 9, American Mathematical Society,
+Providence, RI, 1996. \url{https://arxiv.org/abs/math/9505206}
+
+\bibitem{ArthurIntro2005}
+J. Arthur, ``An introduction to the trace formula,'' in
+\emph{Harmonic Analysis, the Trace Formula, and Shimura Varieties},
+Clay Mathematics Proceedings 4, American Mathematical Society,
+Providence, RI, 2005, pp. 1--263.
+\url{https://www.claymath.org/online-resources/arthur/}
+\end{thebibliography}
+\end{document}

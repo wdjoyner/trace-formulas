@@ -1,0 +1,462 @@
+\chapter{On a global correspondence}
+
+\section{Introduction}
+In this chapter, we use results from previous chapters
+to obtain a correspondence using the trace
+formula between cuspidal automorphic representations of
+$G({\Bbb {A}})=SL(2,{\Bbb {A}})$ and genuine cuspidal
+automorphic representations of the 2-fold
+metaplectic cover $\overline{SL(2,{\Bbb {A}})}$.
+
+Our main result here is the following
+
+\begin{theorem}
+There is a correspondence between automorphic cuspidal representations
+of $G({\Bbb A})$ and those of $\overline{G({\Bbb A})}$:
+
+(a) to each cuspidal automorphic representation $\pi $ of $G({\Bbb A})$
+there is a {\em unique} genuine cuspidal automorphic
+representation $\overline{\pi }$ of
+$\overline{G({\Bbb A})}$ such that 
+\[
+{\rm tr}\;\pi _v(f_v)={\rm tr}\;\overline{\pi }_v(\overline{f}_v)
+\]
+for almost all places $v$, where $f_v$ and $\overline{f}_v$ are
+corresponding in the sense described below,
+
+(b) to each cuspidal automorphic representation
+$\overline{\pi }$ of $\overline{G({\Bbb A})}$ there
+is a genuine cuspidal automorphic
+representation $\pi $ of $G({\Bbb A})$ such that 
+\[
+{\rm tr}\;\pi _v(f_v)={\rm tr}\;\overline{\pi }_v(\overline{f}_v)
+\]
+for almost all places $v$, where $f_v$ and $\overline{f}_v$ are
+corresponding in the sense described below.
+
+Moreover, a cuspidal automorphic representation $\pi $ of $G({\Bbb A})$
+occurs with multiplicity one provided
+
+(i) $\pi $ corresponds to a $\overline{\pi }$ as in (a), and
+
+(ii) ${\rm tr}\;\pi _v(f_v)={\rm tr}\;\overline{\pi }_v(\overline{f}_v)$,
+for {\em all} places $v$, where $f_v$ and $\overline{f}_v$
+are corresponding in the sense described below.
+\end{theorem}
+
+\begin{definition} Let $p$ be a place of ${\Bbb{Q}}$.
+We say that an automorphic representation
+$\pi$ is {\bf $p$-good}
+if $\pi=\otimes \pi_v$ and $p|v$ then $\pi_v$ is
+either a unitary principal series (in the ``continuous series'') or
+a complementary series.
+\end{definition}
+
+\begin{corollary} If $\pi=\otimes_v \pi_v$ is a 2-good
+automorphic cuspidal representation of $G({\Bbb{A}})$ then $\pi$
+occurs with multiplicity one in the spectrum of
+$L^2(G({\Bbb{Q}})\backslash G({\Bbb{A}}))$.
+\end{corollary}
+
+proof: This corollary is a consequence of the proof below and the local
+comparisons in previous chapters but some words of
+explanation are warranted.
+The result is a straightforward consequence of
+the last part of the theorem and the character formulas
+of chapters 4, 5, 6, 7 for all automorphic representations
+which are either $p$-good for all $p$ or have a supercuspidal
+component at some place $v$ not dividing $2$. (It
+may very well follow from \cite{LL} in this case as well.)
+
+We first focus our attention on the $\pi=\otimes_w\pi_w$
+with a local component $\pi_v$, $v$ not dividing $2$, which is
+special: $\pi_v=\sigma_v$ (the special representation,
+for $v$ non-archimedian, and the ``lowest'' discrete series
+whose character is equal to $-1$ on $SO(2,{\Bbb{R}})$, for
+$v$ real). We know from chapter 6, \S 5, that
+if $v$ is non-archimedian then there is a matching
+$tr \sigma_v(f_v)=tr\overline{\sigma}_v(\overline{f}_v)$,
+where $f_v$, $\overline{f}_v$ are matching and are
+supported in a neighborhood of the identity. Here
+$\overline{\sigma}_v$ denotes the odd oscillator representation
+$\omega_{odd}$. The archimedian case follows from
+the character relations in \cite{Fl}, \S 2.4, for functions
+supported on the elliptic set. See J. Adams \cite{Ad}
+for the character of $\overline{\sigma}_v$ in general
+for $v$ real. Similarly for the trivial representation.
+
+We must extract a result, proven in the next section,
+which follows from the comparison of the
+trace formulas. Fix a place $v_0$.
+Let $V$ be a finite set of places
+containing at most one place $w$ where $\pi_w$ is a discrete series
+and containing $v_0$ but no other place $w$ where $\pi_w$ is
+a reducible principal series. Then
+\[
+\sum\Sb \pi^{\prime }\\ \pi _w^{\prime }\cong\pi _w^0\\ w\notin V \endSb 
+m(\pi^{\prime })\prod_{v\in V}{\rm tr}\;\pi _v^{\prime }(f_v)
+=\prod_{v\in V}{\rm tr}\;\overline{\pi }_v(\overline{f}_v).
+\]
+If $V=\{v_0\}$ then the above equation implies
+\begin{equation}
+\sum\Sb \pi^{\prime }\\ \pi _w^{\prime }\cong\pi _w^0\\ w\not= v_0 \endSb 
+m(\pi^{\prime }){\rm tr}\;\pi _{v_0}^{\prime }(f_{v_0})
+={\rm tr}\;\overline{\pi }_{v_0}(\overline{f}_{v_0}).
+\end{equation}
+
+Let $v_0$ be real.
+If $\overline{\pi}_{v_0}=\overline{\sigma}_{v_0}$ and
+if $\overline{f}_{v_0}$, $f_{v_0}$ are matching and supported on the
+elliptic set then this last equation and the above remarks imply
+that there are constants $a_k$ such that
+\[
+-\overline{F}^{\wedge}(0)=\sum_k a_k F^{\wedge}(k),
+\]
+where $F(\theta)=F_{f_{v_0}}(r(\theta))$,
+where $r(\theta)\in SO(2,{\Bbb{R}})$
+is the usual rotation matrix (as in \cite{Fl}, \S 2.4, for
+example), where
+$\overline{F}(\theta)=F_{\overline{f}_{v_0}}(r(\theta))$, and where
+$F^\wedge$ denote the Fourier transform with respect to $\theta$.
+Since $f_{v_0}$, $\overline{f}_{v_0}$ are matching,
+$\overline{F}^\wedge(0)=F^\wedge(0)$. By linear independence, this forces
+$a_0=-1$ and $a_k=0$ for $k>1$. This implies that 
+$tr \sigma_v(f_{v_0})=tr\overline{\sigma}_{v_0}(\overline{f}_{v_0})$,
+for all $f_v$, $\overline{f}_v$ which are matching. The result now
+follows for $\pi$ with $\sigma_v$ as a local constituent.
+
+Since the character formulas in chapters 5, 7
+imply that the characters of irreducible
+admissible representations are linearly independent in a
+neighborhood of the identity, the last part of the theorem holds
+if condition (ii) is replaced by a local matching condition.
+This, in conjunction with the proof of the theorem below,
+implies the corollary for all automorphic representations
+which do not contain local components $\pi_v$ which are
+limits of discrete series. 
+
+The limits of discrete series representations do not have a
+matching as in part (ii) of the theorem because there
+are no reducible unitary principal series on the cover to match
+with (at least if $p\not= 2$, see \S 6.3.1).
+Let $\pi=\otimes_v\pi_v$ be a cuspidal automorphic
+representation and let $\pi_{v_0},\pi_{v_0}'$ be as in the statement
+of the corollary below (we shall finish the proof of the above
+corollary and prove the corollary below at the same time).
+
+We know that $tr\overline{\pi}_{v_0}(\overline{f}_v)
+=tr \pi_{v_0}(f_{v_0})+tr \pi'_{v_0}(f_{v_0})$,
+where $\overline{\pi_{v_0}}$ is the representation
+corresponding (as in chapters 4,5,6)
+to the full induced unitary representation containing $\pi_{v_0}$
+as a component.
+This fact, along with linear independence and the equation
+(10.1), implies Corollaries 345 above and 346 below. $\Box$
+
+\begin{corollary} Let $\pi=\otimes_v \pi_v$ be an automorphic
+cuspidal representation of $G({\Bbb{A}})$.
+Let $w$ be a non-archimedian place of $k$ with
+$|2|_w=1$, let $\pi_w$ be a reducible unitary principal
+series (a ``limit of
+discrete series'') of $SL(2,k_w)$ occuring as a local component
+of $\pi$ and let $\pi'_w$ is its
+``complement'' (in the full induced unitary representation).
+Then $\pi'=\otimes_{v\not= w}\pi_v\otimes\pi'_w$
+is a cuspidal automorphic representation.
+\end{corollary}
+
+The previous corollary is very similar to results in
+\cite{LL} but I don't see how to derive it from their
+results.
+
+\begin{definition} Let $V$ be a finite set of places and let
+$\pi =\otimes _v\pi _v,\ \pi' =\otimes _v\pi' _v$ be two
+representations of $G({\Bbb{A}})$.
+We say that $\pi$ is {\bf $V$-nearly equivalent} to $\pi'$ if
+$\pi_v\cong \pi'_v$ for all $v\notin V$.
+\end{definition}
+
+We shall make the correspondence more specific.
+
+\begin{corollary}
+Let $\pi =\otimes _v\pi _v$ be a fixed cuspidal automorphic representation
+of $G({\Bbb A})$.
+Let $V=V(\pi)$ be a finite set of places containing at most one
+place $v$ for which $\pi_v$ is a discrete series.
+For each $w\notin V$, let $\pi _w^0=\pi _w$. There is a
+unique genuine cuspidal automorphic representation $\overline{\pi }=\otimes
+_v\overline{\pi }_v$ of $\overline{G({\Bbb A})}$ such that 
+\[
+\sum\Sb \pi ^{\prime } \\ \pi _w^{\prime }\cong \pi _w^0 \\
+w\notin V \endSb
+m(\pi ^{\prime })\prod_{v\in V}
+{\rm tr}\;\pi _v^{\prime }(f_v)
+=\prod_{v\in V}{\rm tr}\;\overline{\pi }_v(\overline{f}_v),
+\]
+where one of the representations $\pi ^{\prime }$ occurring in the sum on
+the left is $\pi $.
+
+Conversely, given a genuine cuspidal automorphic
+representation $\overline{\pi }=\otimes _v\overline{\pi }_v$ of
+$\overline{G({\Bbb A})}$, it corresponds to a cuspidal automorphic
+representation $\pi $
+of $G({\Bbb A})$ if and only if $\pi $ is $V$-nearly equivalent to
+some representation $\pi^0=\otimes _v \pi^0_v$ of
+$G({\Bbb{A}})$, for some set of places $V$ with the following
+two properties:
+
+(i) the complement $V'$ of $V$ contains all but possibly one of the
+the places $w$ for which $\overline{\pi}_w$ is a discrete
+series representation, and
+
+(ii) $\overline{\pi}_v$ corresponds to $\pi_v^0$ for all $v\notin V$.
+\end{corollary}
+
+\section{Proof of the main result}
+
+We write the trace formula of $\overline{G({\Bbb A})}$ in
+the form
+\begin{eqnarray}
+&&{\rm tr}\;R_{cusp}(\phi )-S_1(\phi )+
+\sum_{\chi \in \overline{{\cal X}}-\overline{{\cal X}}(G)}
+I_\chi (\phi ) \\
+&=&\sum_{{\cal O}\in {\cal C}}SI_{{\cal O}}(\phi )
++S_2(\phi )+S_3(\phi )+
+\sum\Sb \Sb H \\ cuspidal \endSb  \\ endoscopic \endSb
+\sum_{{\cal O}_H}SI_{{\cal O}_H}^H(\phi ^H).  \nonumber
+\end{eqnarray}
+We write the trace formula of $G({\Bbb A})$ in the form
+\begin{eqnarray}
+&&\ {\rm tr}\;R_{cusp}(f)-S_1(f)+
+\sum_{\chi \in {\cal X}-{\cal X}(G)}I_\chi(f) \\
+\  &=&\sum_{{\cal O}\in {\cal C}}SI_{{\cal O}}(f)
++S_2(f)+S_3(f)+\sum\Sb \Sb H
+\\ cuspidal \endSb  \\ endoscopic \endSb
+\sum_{{\cal O}_H}SI_{{\cal O}_H}^H(f^H).  \nonumber
+\end{eqnarray}
+
+This trace formula differs slightly from that in \cite{LL}
+in that its ``spectral
+side'' has not been put in stable form. This form is more
+convenient for us.
+
+Assume that $f,\phi $ are both factorizable. We shall replace $\phi $ by a
+genuine function $\overline{f}$ such that
+$\overline{f}_v$ matches with $f_v$ for all $v$ in the sense of
+chapter 5, \S 3. Since we have only matched weighted orbital integrals
+of spherical functions at the unit elements, we must assume that
+at each place $f$ and $\overline{f}$ are either both
+smooth functions or both unit elements. Moreover, at the real place
+and at the places dividing $2$, we assume that they are smooth.
+
+It turns out to be relatively simple (see chapter 5)
+to compare all of the
+corresponding terms between these two expressions, except for
+\begin{equation}
+{\rm tr}\;R_{cusp}(\overline{f})\stackrel{?}{=}{\rm tr}\;R_{cusp}(f)
+\end{equation}
+and
+\begin{equation}
+S_1(\overline{f})\stackrel{?}{=}S_1(f)
+\end{equation}
+and 
+
+\begin{equation}
+\sum_{\chi \in \overline{{\cal X}}-\overline{{\cal X}}(G)}
+I_\chi ^{\prime }(\overline{f})\stackrel{?}{=}
+\sum_{\chi \in {\cal X}-{\cal X}(G)}I_\chi^{\prime }(f),
+\end{equation}
+and the stable $A$-elliptic terms in \S 8.6.9 (c), \S 9.5.8 (c).
+\begin{remark}
+All we really care about is proving the first equation (10.4). One idea,
+originally due to Langlands \cite{L4}, is to prove that 
+\[
+{\rm tr}\;R_{cusp}(\overline{f})-{\rm tr}\;R_{cusp}(f)=S_1(\overline{f}%
+)-S_1(f)-\sum_{\chi \in \overline{{\cal X}}-\overline{{\cal X}}(G)}I_\chi
+^{\prime }(\overline{f})+\sum_{\chi \in {\cal X}-{\cal X}(G)}I_\chi ^{\prime
+}(f)
+\]
+cannot be true (which we know it is by the comparisons mentioned above)
+unless both sides are zero. It involves facts about the Satake transform and
+was used in \cite{L4}, \cite{Fl}, sections 4.1-2
+and \cite{R}, sections 10.5, 14.5 (where it is called the
+decomposition of measures argument).
+
+Another idea is that used in \cite{AC}, ch 2, section 10.
+It may apply but it is
+so technical I haven't been able to understand it fully yet.
+
+We shall use another idea. It is described in chapter 5
+and relies on results in \cite{A6}.
+\end{remark}
+
+The comparison in chapter 5,
+immediately implies the matching for $S_1$ in (10.5) is true.
+
+Recall that
+\begin{equation}
+I_\chi ^{\prime }(\overline{f})=
+\sum_{\overline{\eta }\in \overline{E}_\chi }
+\frac{m^{\prime }(\overline{\eta })}{m(\overline{\eta })}
+{\rm tr}\;I_A(\overline{\eta },\overline{f})
+\end{equation}
+and 
+\begin{equation}
+I_\chi ^{\prime }(f)=\sum_{\eta \in E_\chi }\frac{m^{\prime
+}(\eta )}{m(\eta )}{\rm tr}\;I_A(\eta ,f),
+\end{equation}
+where the indexing sets $\overline{E}_\chi ,E_\chi $ have been described
+previously. 
+
+We claim that the indexing sets $\overline{E}_\chi ,E_\chi $ are in 1-1
+correspondence.
+
+We also claim that the indexing sets
+$\overline{{\cal X}}-\overline{{\cal X}}(G)$,
+${\cal X}-{\cal X}(G)$ are in 1-1 correspondence.
+
+Both of these claims follow from that fact that
+$\overline{A({\Bbb{A}}_S)}$ is
+abelian.
+
+The comparison between ${\rm tr}\;I_A(\overline{\eta },\overline{f})$,
+${\rm tr}\;I_A(\eta ,f)$ was done in chapter 5. 
+
+{\bf Claim}
+If $\overline{\chi }\in \overline{{\cal X}}-\overline{{\cal X}}(G)$
+corresponds to $\chi \in {\cal X}-{\cal X}(G)$ and if $\overline{\eta }\in 
+\overline{E}_{\overline{\chi }}$ corresponds to $\eta \in E_\chi $ then
+$m(\overline{\eta })=m(\eta )$.
+
+This follows along the same lines as the analogous comparison
+in \cite{Fl}. We use chapter 5, at the finite places and
+\cite{Sa} at the real places. At the complex archimedian places (if any),
+the local covering splits and known results apply
+(see \cite{Sha} for example).
+
+To compare (10.7), (10.8), and the stable hyperbolic terms,
+it suffices to compare
+\[
+I_A(\pi ,f)\;\;{\rm and}\;\;I_A(\overline{\pi },\overline{f})\;
+\]
+and
+\[
+\varphi _A^G(\pi ,f)\;\;{\rm and}\;\;
+\varphi _A^G(\overline{\pi },\overline{f}),\;
+\]
+for $(\pi ,A)\in {\cal X}-{\cal X}(G)$ corresponding to
+$(\overline{\pi },A)\in \overline{{\cal X}}-\overline{{\cal X}}(G)$.
+These boil down to comparisons established in chapter 5. 
+
+We conclude that (10.4) is true, as desired.
+
+We now proceed to use (10.4) to verify our main result.
+
+It is known from Waldspurger \cite{Wa1} (see also
+\cite{GPS} and \cite{PS})
+that $m(\overline{\pi })=0$ or $=1$ for all genuine
+automorphic cuspidal representations $\overline{\pi }$ of
+$\overline{G({\Bbb A})}$. However, strong
+multiplicity one fails to hold for $\overline{G({\Bbb A})}$.
+There is a weak (pun intended) version of strong
+multiplicity one for $\overline{G({\Bbb A})}$ due to Waldspurger
+whose form below I derive from \cite{PS}:
+
+\begin{lemma} (\cite{Wa2}) Let $\overline{\pi }
+=\otimes_v\overline{\pi }_v$ 
+be a genuine automorphic cuspidal representations of
+$\overline{G({\Bbb A})}$. Let $V$ be a finite set of places. Let
+\[
+%\begin{array}{c}
+\Sigma=\Sigma(\overline{\pi })=\{v\ |\ 
+\overline{\pi }_v\ {\rm is \ a \ discrete\ series\ representation}
+%\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \
+%{\rm arising \ from\ the\ correspondence\ from}\ O(1)
+\}.
+%\end{array}
+\]
+Assume $\Sigma\cap V$ has even cardinality.
+The number of genuine automorphic cuspidal representations
+$\overline{\pi}'$ of $\overline{G({\Bbb A})}$ such that
+\[
+\overline{\pi }_v\cong \overline{\pi }_v',\ \ \ \
+{\rm for\ all\ }v\notin V,
+\]
+is $1$ if $\Sigma \subset V$ and $2^{|\Sigma|-|\Sigma\cap V|-1} $
+otherwise.
+\end{lemma}
+
+Let $V$ denote a finite set of places of $k$ containing all
+$v\in \Sigma^\infty_k$.
+
+Let $w\notin V$ be fixed for the moment and let $\pi _w^0$,
+$\overline{\pi }_w^0$ be fixed corresponding
+unramified principal series representations (in
+the sense of chapter 5).
+We claim that
+\[
+\sum\Sb \pi  \\ \pi _w\cong \pi _w^0 \endSb m(\pi )
+\prod_{v\neq w}{\rm tr}\;
+\pi _v(f_v)=\sum\Sb \overline{\pi } \\
+\overline{\pi }_w\cong \overline{\pi }_w^0 \endSb
+m(\overline{\pi })\prod_{v\neq w}{\rm tr}\;
+\overline{\pi }_v(\overline{f}_v).
+\]
+This is the analog of \cite{GJ}, Lemma 8.18 and is proven the same way.
+
+Now, for each $w\notin V$, fix corresponding representations
+$\pi _w^0$, $\overline{\pi }_w^0$ in the sense of chapter 5 or chapter 7,
+almost all of which
+must be unramified principal series representations.
+We claim that
+\[
+\sum\Sb \pi  \\ \pi _w\cong \pi _w^0 \\ w\notin V \endSb m(\pi )\prod_{v\in
+V}{\rm tr}\;\pi _v(f_v)=\sum\Sb \overline{\pi } \\ \overline{\pi }_w\cong 
+\overline{\pi }_w^0 \\ w\notin V \endSb
+m(\overline{\pi })\prod_{v\in V}{\rm tr}\;
+\overline{\pi }_v(\overline{f}_v).
+\]
+This is the analog of \cite{GJ}, Lemma 8.19 and is proven the same way.
+
+Let $\pi =\otimes _v\pi _v$ be a fixed cuspidal automorphic representation
+of $G({\Bbb A})$. For each $w\notin V$, let $\pi _w^0=\pi _w$.
+Assume $V$ has been choosen so that its complement
+contains all, with possibly one exception, places $w$ such that
+$\pi_w^0$ is a discrete series. Each $\pi_w^0$, $w\notin V$,
+which is a discrete series corresponds to an
+$\overline{\pi}_w^0$ which is also a discrete series.
+We claim that
+there is a unique genuine cuspidal automorphic representation $\overline{\pi 
+}=\otimes _v\overline{\pi }_v$ of $\overline{G({\Bbb A})}$ such that 
+\begin{equation}
+\sum\Sb \pi ^{\prime } \\ \pi _w^{\prime }\cong \pi _w^0 \\ w\notin V \endSb %
+m(\pi ^{\prime })\prod_{v\in V}{\rm tr}\;\pi _v^{\prime }(f_v)=\prod_{v\in V}%
+{\rm tr}\;\overline{\pi }_v(\overline{f}_v).
+\end{equation}
+This is the analog of \cite{GJ}, Proposition 8.20
+and is proven the same way. (We have used Lemma 349
+above to obtain uniqueness and multiplicity one to
+take $m(\overline{\pi })=1$.) This proves part (a) of the theorem above.
+
+Part (b) of the theorem is proven similarly. (Note in this case, neither
+strong multiplicity one or multiplicity one may be invoked.)
+
+To verify the last part, by our hypothesis, with $V$ choosen as above,
+\[
+\sum\Sb \pi ^{\prime } \\ \pi _w^{\prime }\cong \pi _w^0 \\
+w\notin V \endSb
+m(\pi ^{\prime })\prod_{v\in V}{\rm tr}\;
+\pi _v^{\prime }(f_v)
+=\prod_{v\in V}{\rm tr}\;\overline{\pi }_v(\overline{f}_v)
+=\prod_{v\in V}{\rm tr}\;\pi_v(f_v),
+\]
+so 
+\[
+\sum\Sb \pi ^{\prime }\neq \pi  \\ \pi _w^{\prime }\cong \pi _w^0 \\ w\notin
+V \endSb m(\pi ^{\prime })\prod_{v\in V}{\rm tr}\;\pi _v^{\prime
+}(f_v)+(m(\pi )-1)\prod_{v\in V}{\rm tr}\;\pi _v(f_v)=0.
+\]
+By the linear independence of characters, $m(\pi ^{\prime })=0$ for $\pi
+^{\prime }\neq \pi $ and $m(\pi )-1=0$, as desired. $\Box $
+
+

@@ -1,0 +1,1238 @@
+
+\chapter{Local comparisons on the groups}
+
+\section{Introduction}
+We prove the identities necessary to compare the
+invariant trace formula to its metaplectic analog in chapter 10.
+
+\section{Weighted orbital integrals}
+
+Certain weighted orbital integrals occur naturally in the invariant trace
+formula. We will need some of their properties to put the trace formula in
+stable form as well as to compare trace formulas.  
+
+If $M\in \{A,G\}$, $f\in C_c^\infty (\overline{G(F)})_{gen}$, and $g\in 
+\overline{M(F)}$ is regular, let
+\[
+J_M(g,f)=|D(g)|^{1/2}
+\int_{\overline{G(F)}_g\backslash \overline{G(F)}}
+f(x^{-1}gx)v_M(x)dx.
+\]
+If $F={\Bbb{Q}}_p$ or $F={\Bbb{R}}$ then
+\[
+v_M(x)=\left\{ 
+\begin{array}{c}
+1,\;\;\;\;M=G, \\ 
+\log \sqrt{|1+n^2|_F},\;\;M=A,
+\end{array}
+\right. 
+\]
+where $x=a\left( 
+\begin{array}{cc}
+1 & n \\ 
+0 & 1
+\end{array}
+\right) k$. We will need to compute the Fourier transform of $J_M(a,f)$ as a
+function on $A$.
+
+First, consider $M=G$.
+
+\begin{lemma}
+Let $f\in C_c^\infty (\overline{G(F)})_{gen}$. The function $m\longmapsto
+J_G(m,f)$ from $\overline{A(F)}\rightarrow {\Bbb C}$ vanishes unless $m\in 
+\overline{A(F)^N}$.
+\end{lemma}
+
+proof: The usual trick: Let $g=\left( 
+\begin{array}{cc}
+a & 0 \\ 
+0 & a^{-1}
+\end{array}
+\right) $, $h=\left( 
+\begin{array}{cc}
+b & 0 \\ 
+0 & b^{-1}
+\end{array}
+\right) $, so
+\[
+(g,1)^{-1}(h,1)(g,1)=(h,(a,b)^{-2}).
+\]
+Since the measure $dx$ is translation invariant, if $m=(h,1)$ then we have
+\[
+\int_{\overline{G(F)}_m\backslash \overline{G(F)}}f(x^{-1}mx)dx=(a,b)^{-2}%
+\int_{\overline{G(F)}_m\backslash \overline{G(F)}}f(x^{-1}mx)dx.
+\]
+The function $b\longmapsto (a,b)^{-2}$ is trivial if and only if $a\in A(F)^N
+$. $\Box $
+
+As a corollary we shall want later,
+
+\begin{lemma}
+Let $f\in C_c^\infty (\overline{G(F)})_{gen}$. The function 
+\[
+m\longmapsto \int_{N(F)}\int_{\overline{K}}f(k^{-1}n^{-1}mnk)dkdn
+\]
+from $\overline{A(F)}\rightarrow {\Bbb C}$ vanishes unless
+$m\in \overline{A(F)^N}$.
+\end{lemma}
+
+Since the weight $v_M(x)$ satisfies $v_M(ax)=v_M(x)$ for
+all $a\in\overline{A(F)}$, the same proof yields the analogous
+fact for the weighted orbital integrals:
+
+\begin{lemma}
+Let $f\in C_c^\infty (\overline{G(F)})_{gen}$. The function
+$m\longmapsto J_M(m,f)$ from $\overline{A(F)}\rightarrow {\Bbb C}$
+vanishes unless $m\in \overline{A(F)^N}$.
+\end{lemma}
+
+Indeed,
+\begin{lemma}
+Let $f\in C_c^\infty (\overline{G(F)})_{gen}$. The function 
+\[
+m\longmapsto
+\int_{N(F)}\int_{\overline{K}}f(k^{-1}n^{-1}mnk)v_M(nk)dkdn
+\]
+from $\overline{A(F)}\rightarrow {\Bbb C}$ vanishes unless
+$m\in \overline{A(F)^N}$.
+\end{lemma}
+
+Note that the centralizer in $\overline{G(F)}$ of a regular element
+in $a\in A(F)^N$ is $\overline{A(F)}$. As a consequence of the
+above lemmas, we may therefore write,
+for a regular $a\in \overline{A(F)}$,
+\begin{equation}
+J_M(a,f)=
+\left\{
+\begin{array}{c}
+|D(g)|^{1/2}\int_{\overline{A(F)}\backslash \overline{G(F)}}
+f(x^{-1}gx)v_M(x)dx,\ \ \ a\in \overline{A(F)^N},\\
+0,\ \ a\in \overline{A(F)}- \overline{A(F)^N}.
+\end{array}
+\right.
+\end{equation}
+
+\subsection{Elliptic orbital integrals}
+
+We now discuss the elliptic orbital integrals $J_G(\gamma)$,
+$\gamma\in \overline{T}_{reg}$, where $\overline{T}_{reg}$
+denotes the subset of elements of the form $(x,\zeta)$
+where $x$ has distinct eigenvalues.
+
+By Lemma 3(h), we have
+\[
+\overline{G(F)}_\gamma
+=\overline{T},\ \ \ \ \ \
+\gamma\in \overline{T}_{reg}.
+\]
+We have
+\begin{equation}
+\begin{array}{c}
+\int_{\overline{G(F)}_\gamma\backslash \overline{G(F)}}
+f(x^{-1}\gamma x){dx\over dt}
+=\int_{\overline{T}\backslash \overline{G(F)}}
+f(x^{-1}\gamma x){dx\over dt}\\
+=\int_{T\backslash G(F)}
+f(x^{-1}gx,1){dx\over dt},
+\end{array}
+\end{equation}
+where $\gamma =(g,1)\in \overline{T}_{reg}$.
+
+\subsection{Hyperbolic orbital integrals (n=2)}
+
+If $n=2$ then by Lemma 3(g), we have
+\[
+\overline{G(F)}_\gamma
+=\overline{A(F)},\ \ \ \ \ \
+\gamma\in \overline{A(F)}_{reg}.
+\]
+We have
+\begin{equation}
+\begin{array}{c}
+\int_{\overline{G(F)}_\gamma\backslash \overline{G(F)}}
+f(x^{-1}\gamma x){dx\over da}
+=\int_{\overline{A(F)}\backslash \overline{G(F)}}
+f(x^{-1}\gamma x){dx\over da}\\
+=\int_{A(F)\backslash G(F)}
+f(x^{-1}gx,1){dx\over da},
+\end{array}
+\end{equation}
+where $\gamma =(g,1)\in \overline{A(F)}_{reg}$.
+
+This equation suggests, somewhat misleadingly, a ``naive'' matching between
+smooth functions: simply send $\overline{f}(g,1)$ to
+$f=\overline{f}(g,1)$. The correct matching will be defined in the
+next section.
+
+\subsection{Unipotent orbital integrals}
+
+Using (2.6) a straightforward calculation involving only the definitions
+yields the following result:
+\[
+\overline{G(F)}_\gamma
+=\overline{N(F)},\ \ \ \ \ \
+\gamma=
+(
+\pm \left(
+\begin{array}{cc}
+1 & 1\\
+0 & 1
+\end{array}
+\right)
+,1)\in \overline{N(F)}.
+\]
+We have
+\begin{equation}
+\begin{array}{c}
+\int_{\overline{G(F)}_\gamma\backslash \overline{G(F)}}
+f(x^{-1}\gamma x){dx\over dn}
+=\int_{\overline{N(F)}\backslash \overline{G(F)}}
+f(x^{-1}\gamma x){dx\over dn}\\
+=\int_{N(F)\backslash G(F)}
+f(x^{-1}gx,1){dx\over dn},
+\end{array}
+\end{equation}
+where $\gamma $ is as above.
+
+\subsection{Weighted orbital integrals (n=2)}
+
+Assume $n=2$, so the two-fold cover of $A(F)$ is abelian.
+If $\gamma =(g,1)\in \overline{A(F)}_{reg}$ and if
+\[
+g=
+\pm \left(
+\begin{array}{cc}
+a & 0\\
+0 & a^{-1}
+\end{array}
+\right)
+\in A(F),
+\]
+then 
+\begin{equation}
+\begin{array}{c}
+\int_{\overline{G(F)}_\gamma\backslash \overline{G(F)}}
+f(x^{-1}\gamma x)v_A(x){dx\over da}
+=\int_{\overline{A(F)}\backslash \overline{G(F)}}
+f(x^{-1}\gamma x)v_A(x){dx\over da}\\
+=\int_{A(F)\backslash G(F)}
+f(x^{-1}gx,1)v_A(x){dx\over da},
+\end{array}
+\end{equation}
+as in \S 5.2.2.
+
+If
+\[
+\gamma=
+(
+\pm \left(
+\begin{array}{cc}
+1 & 0\\
+0 & 1
+\end{array}
+\right)
+,1)\in Z_{\overline{G}}(F),
+\]
+we have
+\begin{equation}
+\begin{array}{c}
+J_M(\gamma,f)=
+\lim\Sb a\rightarrow 1\\ a\ {\rm regular}\endSb
+\int_{\overline{G(F)}_{a\gamma}\backslash \overline{G(F)}}
+f(x^{-1}\gamma a x)v_A(x){dx\over dt}\\
+=\lim\Sb a\rightarrow 1\\ a\ {\rm regular}\endSb
+\int_{\overline{A(F)}\backslash \overline{G(F)}}
+f(x^{-1}\gamma a x)v_A(x){dx\over dt}\\
+=\lim\Sb a\rightarrow 1\\ a\ {\rm regular}\endSb
+\int_{A(F)\backslash G(F)}
+f(x^{-1}p(\gamma)a x,1)v_A(x){dx\over dt},
+\end{array}
+\end{equation}
+
+\section{Corresponding functions, $n=2$}
+
+We define the notion of a ``smooth matching''.
+
+\subsection{Corresponding functions on $A$}
+
+We concentrate first on
+the set $A(F)_{reg}$.
+
+\subsubsection{Characters of $\overline{A(F)}$ for $n=2$}
+
+We assume $p>2$ throughout this subsection unless otherwise
+stated,
+
+Let
+\[
+A_2(F)=\{
+a=\left(
+\begin{array}{cc}
+x & 0\\
+0 & x^{-1}
+\end{array}
+\right)
+\ |\ \nu (x)\ {\rm \ even}\},
+\]
+so $\overline{A_2(F)}
+=A_2(F)\times \mu_2$ (direct product).
+The elements of $\Pi(\overline{A(F)})$ are obtained by extending
+the elements of $\Pi(\overline{A_2(F)})$.
+If $\chi_1\in \Pi(\overline{A_2(F)})$ then
+$\chi_1=\chi_2\times id^{-1}$,
+for some $\chi_2\in \Pi(A_2(F))$
+
+We extend $\chi_1$ to $\overline{A(F)}$ by
+\begin{equation}
+\chi(a,\zeta)=\chi_\epsilon (a,\zeta)=
+\left\{
+\begin{array}{c}
+\zeta^{-1}\chi_1(x),\ \ \ a\in A_2(F),\\
+\epsilon\zeta^{-1}(x,\pi)^{-1}\chi_1(x/\pi),
+\ \ \ a\in A(F)-A_2(F),
+\end{array}
+\right.
+\end{equation}
+where $\epsilon^2 = (\pi,\pi)^{-1}\chi_1(\pi^2)$. We claim
+that this defines a character. (This is left to
+the reader but see also \cite{GS}, Lemma 2.1 for an equivalent form.)
+Therefore, the characters of $\overline{A(F)}$ are in 2-1 correspondence
+with the characters of $A_2(F)$.
+
+Since $A(F)/A_2(F)$ is order 2, the characters of $A(F)$ are
+also in 2-1 correspondence with the characters of $A_2(F)$.
+Explicitly, given any $\chi_1\in \Pi(A_2(F))$, we
+may extend $\chi_1$ to $A(F)$ by
+\begin{equation}
+\chi(a)=\chi_\theta (a)=
+\left\{
+\begin{array}{c}
+\chi_1(x),\ \ \ a\in A_2(F),\\
+\theta \chi_1(x/\pi), \ \ \ a\in A(F)-A_2(F),
+\end{array}
+\right.
+\end{equation}
+where $\theta^2 = \chi_1(\pi^2)$.
+
+\begin{definition} Let $\chi_1\in \Pi(A_2(F))$ be given.
+We say that
+$\chi_\epsilon\in \Pi(\overline{A(F)})$ {\bf corresponds}
+to $\chi_\theta \in \Pi(A(F))$ if $\epsilon =\theta$.
+If $\chi \in \Pi(A(F))$ is given we let
+$\overline{\chi}\in \Pi(\overline{A(F)})$ denote
+its corresponding genuine character.
+\end{definition}
+
+\subsubsection{Corresponding functions on $\overline{A(F)}_{reg}$}
+
+First, we investigate the conditions on
+$\phi \in C_c^\infty(A(F))$,
+$\overline{\phi}
+\in C_c^\infty(\overline{A(F)})_{gen}$
+under which
+\[
+\phi^{\wedge}(\chi)=
+\overline{\phi}^{\wedge}(\overline{\chi}),
+\]
+if $\chi \in \Pi(A(F))$.
+
+We have
+\begin{equation}
+\begin{array}{c}
+\phi^{\wedge}(\chi)=
+\int_{A(F)}\phi(a)\chi(a) da\\
+=\int_{A_2(F)}\phi(a)\chi_1(x_a) da +
+\epsilon \int_{A(F)-A_2(F)}\phi(a)\chi_1(x_a/\pi) da
+\end{array}
+\end{equation}
+where
+\[
+a=\left(
+\begin{array}{cc}
+x_a & 0\\
+0 & x_a^{-1}
+\end{array}
+\right).
+\]
+
+Similarly, 
+\begin{equation}
+\begin{array}{c}
+\overline{\phi}^{\wedge}(\overline{\chi})=
+\int_{A(F)}\overline{\phi}(a,1)\overline{\chi}(a,1) da\\
+=\int_{A_2(F)}\overline{\phi}(a,1)\chi_1(x_a) da +
+\epsilon \int_{A(F)-A_2(F)}\overline{\phi}(a,1)\chi_1(x_a/\pi) da.
+\end{array}
+\end{equation}
+
+\begin{definition} We say that
+$\phi \in C_c^\infty(A(F))$ {\bf corresponds} to
+$\overline{\phi}
+\in C_c^\infty(\overline{A(F)})_{gen}$
+if
+\[
+\overline{\phi}(a,1)=
+\left\{
+\begin{array}{c}
+f(a),\ \ \ \ a\in A_2(F),\\
+(x_a,\pi)^{-1}f(a),\ \ \ \ a\in A(F)-A_2(F).
+\end{array}
+\right.
+\]
+\end{definition}
+
+We have proven
+
+\begin{lemma} If
+$\phi \in C_c^\infty(A(F))$ corresponds to
+$\overline{\phi}\in C_c^\infty(\overline{A(F)})_{gen}$
+then
+\[
+\phi^{\wedge}(\chi)=
+\overline{\phi}^{\wedge}(\overline{\chi}),
+\]
+if $\chi \in \Pi(A(F))$.
+\end{lemma}
+
+\begin{definition} We say that
+$f \in C_c^\infty(G(F))$ {\bf corresponds on $A(F)_{reg}$} to
+$\overline{f}\in C_c^\infty(\overline{G(F)})_{gen}$
+if $F_f\in C_c^\infty(A(F))$ corresponds to
+$F_{\overline{f}}\in C_c^\infty(\overline{A(F)})_{gen}$
+in the sense above.
+\end{definition}
+
+The following remark holds even if $p=2$:
+For $f$ of sufficiently small support, it can be
+shown by a direct calculation of the orbital integrals that if
+$f \in C_c^\infty(G(F))$ corresponds on $A(F)_{reg}$ to
+$\overline{f}\in C_c^\infty(\overline{G(F)})_{gen}$
+then the weighted orbital integral of
+$f$ corresponds to the weighted orbital integral of
+$\overline{f}$ in the sense above.
+This remark shall be used later in chapter 10.
+
+\subsubsection{Case $p=2$}
+
+Now we discuss the case $p=2$ briefly. Let
+\[
+A_2'(F)=\{
+a=\left(
+\begin{array}{cc}
+x & 0\\
+0 & x^{-1}
+\end{array}
+\right)
+\ |\ \nu (x)\ {\rm \ even\ and\ }x/\pi^{-\nu(x)}\in B\},
+\]
+where $B\subset {\cal{O}}_F$ is choosen to be finite index and
+so that the Hilbert symbol on $B\times B$ is trivial.
+Thus $\overline{A_2'(F)}
+=A_2'(F)\times \mu_2$ (direct product).
+The elements of $\Pi(\overline{A(F)})$ are obtained by extending
+the elements of $\Pi(\overline{A_2'(F)})$.
+If $\chi_1\in \Pi(\overline{A_2'(F)})$ then
+$\chi_1=\chi_2\times id^{-1}$,
+for some $\chi_2\in \Pi(A_2'(F))$.
+
+The elements of $\Pi(A(F))$ are obtained by extending
+the elements of $\Pi(A_2'(F))$. Since everything is abelian,
+\begin{lemma} There exists a (non-canonical) 1-1 correspondence
+between elements of $\Pi(\overline{A(F)})$ and
+elements of $\Pi(A(F))$. 
+\end{lemma}
+
+Since there are several, fix one
+once and for all.
+If $\chi\in \Pi(A(F))$ then
+we denote by $\overline{\chi}\in \Pi(\overline{A(F)})$
+the corresponding character.
+
+\begin{definition}
+We say that $\phi \in C_c^\infty(A(F))$ {\bf corresponds} to
+$\overline{\phi}\in C_c^\infty(\overline{A(F)})_{gen}$
+if
+\[
+\phi^{\wedge}(\chi)=
+\overline{\phi}^{\wedge}(\overline{\chi}),
+\]
+for all $\chi \in \Pi(A(F))$.
+\end{definition}
+
+In the case $p=2$ we repeat the above definition.
+
+\begin{definition} We say that
+$f \in C_c^\infty(G(F))$ {\bf corresponds on $A(F)_{reg}$} to
+$\overline{f}\in C_c^\infty(\overline{G(F)})_{gen}$
+if $F_f\in C_c^\infty(A(F))$ corresponds to
+$F_{\overline{f}}\in C_c^\infty(\overline{A(F)})_{gen}$
+in the sense above.
+\end{definition}
+
+\subsection{Corresponding functions on
+$\overline{A({\Bbb{R}})}$, $n=2$}
+
+Let $F={\Bbb{R}}$ in this subsection.
+The genuine characters of $\overline{A(F)}$, $n=2$, are
+described in \cite{GS} and they are shown to be in 1-1 correspondence with
+the characters of $A(F)$.
+If $\chi\in \Pi(A(F))$ then
+we denote by $\overline{\chi}\in \Pi(\overline{A(F)})$
+the corresponding character.
+
+\begin{definition}
+We say that $\phi \in C_c^\infty(A(F))$ {\bf corresponds} to
+$\overline{\phi}\in C_c^\infty(\overline{A(F)})_{gen}$
+if
+\[
+\phi^{\wedge}(\chi)=
+\overline{\phi}^{\wedge}(\overline{\chi}),
+\]
+for all $\chi \in \Pi(A(F))$.
+\end{definition}
+
+\begin{definition} We say that
+$f \in C_c^\infty(G(F))$ {\bf corresponds on $A(F)_{reg}$} to
+$\overline{f}\in C_c^\infty(\overline{G(F)})_{gen}$
+if $F_f\in C_c^\infty(A(F))$ corresponds to
+$F_{\overline{f}}\in C_c^\infty(\overline{A(F)})_{gen}$
+in the sense above.
+\end{definition}
+
+Note that as far as the comparison of orbital integrals is concerned,
+the assumption that the functions be infinitely differentiable
+may be weakened, if desired, to the assumption that the
+functions be compactly supported and piecewise
+continuous. The space of infinitely differentiable
+functions of compact support is dense in the space of
+piecewise continuous functions of compact support, so if we can
+establish the comparison of orbital integrals for functions
+in one space we may deduce it for functions in the
+other space. Using an approximation argument involving
+step functions, it can be
+shown by a direct calculation of the orbital integrals that if
+$f \in C_c^\infty(G({\Bbb{R}}))$ corresponds on
+$A({\Bbb{R}})_{reg}$ to
+$\overline{f}\in C_c^\infty(\overline{G({\Bbb{R}})})_{gen}$
+then the weighted orbital integral of
+$f$ corresponds to the weighted orbital integral of
+$\overline{f}$ in the sense above.
+This remark shall be used later in chapter 10.
+
+We shall consider the correspondence between characters of
+$A({\Bbb{R}})$ and its two-fold cover in a little more
+detail.
+
+Let $a(x)$ denote the diagonal matrix with entries $x,x^{-1}$.
+Let
+\[
+(x,y)_2=
+\left\{
+\begin{array}{c}
+1,\ \ \ \ {\rm if \ }x>0,\\
+-1,\ \ \ \ {\rm if \ }x<0.
+\end{array}
+\right.
+\]
+Let $\chi_1$ be a character on ${\Bbb{R}}_+^\times$. Define
+$\chi$ on $A({\Bbb{R}})$ by
+\[
+\chi(a(x))=\chi_\epsilon(a(x))
+=
+\left\{
+\begin{array}{c}
+\chi_1(x),\ \ \ \ {\rm if \ }x>0,\\
+\epsilon \chi_1(-x),\ \ \ \ {\rm if \ }x<0,
+\end{array}
+\right.
+\]
+where $\epsilon =\pm 1$. Define
+$\overline{\chi}$ on $\overline{A({\Bbb{R}})}$ by
+\[
+\overline{\chi}(a(x),\zeta)=\overline{\chi}_\eta(a(x),\zeta)
+=
+\left\{
+\begin{array}{c}
+\zeta^{-1}\chi_1(x),\ \ \ \ {\rm if \ }x>0,\\
+\zeta^{-1}\eta \chi_1(-x),\ \ \ \ {\rm if \ }x<0,
+\end{array}
+\right.
+\]
+where $\eta=\pm i$. We say that
+$\chi$ {\bf corresponds} to $\overline{\chi}$ if
+$\eta =\epsilon i$.
+
+The above definition boils down to saying that
+a smooth function $f$ on $A({\Bbb{R}})$
+{\bf corresponds to} a genuine smooth function
+$\overline{f}$ on $\overline{A({\Bbb{R}})}$ if
+\begin{equation}
+f(a,1)=
+\left\{
+\begin{array}{c}
+f(a),\ \ \ \ {\rm if \ }a=a(x),\ x>0,\\
+\epsilon f(a),\ \ \ \ {\rm if \ }a=a(x),\ x<0,
+\end{array}
+\right.
+\end{equation}
+
+\subsection{Corresponding functions on the elliptic set}
+
+In this subsection, $F$ may be either real or p-adic.
+
+Finally, we concentrate on the set $T(F)_{reg}$, $T$ elliptic.
+
+\begin{definition} We say that
+$f \in C_c^\infty(G(F))$ {\bf corresponds on $T(F)_{reg}$} to
+$\overline{f}\in C_c^\infty(\overline{G(F)})_{gen}$
+if the orbital integral $F_f\in C_c^\infty(T(F)_{reg})$
+at $t\in T(F)_{reg}$ equals the orbital integral
+$F_{\overline{f}}\in C_c^\infty(\overline{T(F)}_{reg})_{gen}$
+at $(t,1)\in \overline{T(F)}_{reg}$.
+\end{definition}
+
+\subsection{Corresponding spherical functions, $p> 2$}
+
+We sketch the Satake correspondence for $\overline{G(F)}$
+following \cite{J}, \S 1.3 and using its notation.
+
+Recall that the genuine characters of
+$\overline{A(F)}$ are in 1-1 correspondence with
+the characters of $A(F)$. Moreover, from results recalled in
+the next chapter we deduce that all
+the unramified genuine representations of
+$\overline{G(F)}$ belong to the unramified principal series.
+Replacing $GL(r)$ by
+$SL(2)$ in \cite{J}, \S 1.3, we first observe that the
+set $\Pi_{unr.p.s.}(\overline{G(F)})_{gen}$ is
+parametrized by the $W$-orbit of unramified
+genuine characters of $\overline{A(F)}$. Therefore, we have the following
+
+\begin{lemma} The set $\Pi_{unr.p.s.}(\overline{G(F)})_{gen}$ is
+in natural 1-1 correspondence with
+$\Pi_{unr.p.s.}(G(F))$.
+\end{lemma}
+
+In other words, the ``L-group'' of $\overline{G(F)}$ is the
+same as that of $G(F)$ - namely, $PGL(2,{\Bbb{C}})$.
+
+Following now \cite{J}, \S 1.4, we obtain a transform
+\begin{equation}
+\begin{array}{c}
+{\cal{H}}(\overline{G(F)},K)_{gen}\rightarrow
+{\cal{A}}_{cl.fcn}(PGL(2,{\Bbb{C}}))\\
+f\longmapsto S_0 f(\chi)={\rm tr}I_A(\chi,f).
+\end{array}
+\end{equation}
+
+This is essentially the inverse Fourier transform of the Satake
+transform, which we define next. The Satake transform of a
+genuine spherical function is defined as in the non-metaplectic Case:
+\begin{equation}
+Sf(a)=\delta(a)^{1/2}\int_{N(F)}f(an)dn.
+\end{equation}
+The relationship between this expression and an orbital integral
+is well-known - see for example \cite{C}.
+
+This defines an algebra isomorphism
+\begin{equation}
+\begin{array}{c}
+{\cal{H}}(\overline{G(F)},K)_{gen}\rightarrow
+{\cal{H}}(\overline{A(F)},K\cap A(F))^W_{gen}\\
+f\longmapsto Sf(a).
+\end{array}
+\end{equation}
+
+Since
+${\cal{H}}(\overline{A(F)},K\cap A(F))^W_{gen}\cong
+{\cal{H}}(A(F),K\cap A(F))^W$, we have that
+\[
+{\cal{H}}(\overline{G(F)},K)_{gen}\cong {\cal{H}}(G(F),K).
+\]
+
+This implies the matching of orbital integrals for spherical functions.
+
+We shall now make a remark on the matching of
+weighted orbital integrals of spherical functions.
+Every global smooth genuine function
+$\overline{f}=\otimes_v\overline{f}_v$ is a restricted direct product
+of local smooth functions, almost all of which are units of the
+local Hecke algebra of genuine spherical functions on
+$\overline{G(k_v)}$. In order to match weighted orbital integrals
+of such global smooth functions, we must match them locally.
+A direct calculation of the weighted orbital integrals
+shows that if $\overline{f}$ is 
+the unit element of the Hecke algebra of genuine spherical functions on
+$\overline{G(F)}$ and if $f$ is the
+unit element of the Hecke algebra of spherical functions on
+$G(F)$ then the weighted orbital integral of $\overline{f}$ on
+$\overline{A(F)}$ matches the weighted orbital integral of $f$ on
+$A(F)$. We shall use this later in our comparisons in chapter 10.
+
+\section{Weighted characters}
+
+Certain weighted characters occur naturally in the invariant trace formula.
+We will need some of their properties to put the trace formula in stable
+form. 
+
+\subsection{Irreducible representations of $\overline{A(F)}$}
+
+We use Clifford-Mackey theory to determine the genuine irreducible
+representations\ of the local covers $\overline{A(F)}$. We assume that all
+representations are smooth (the definition of smooth is recalled in the next
+section).
+
+Let $\chi $ denote a genuine (smooth, one-dimensional) character of
+$\overline{C}$, where $\overline{C}$ is a maximal abelian subgroup
+of $\overline{A(F)}$ as in the previous subsection. Define
+$\chi^{a_2}(a_1)=\chi (a_2a_1a_2^{-1})$, for
+$a_1\in \overline{C},\;a_2\in \overline{A(F)}$.
+The conjugates $\chi ^{a_2}$ are of the form 
+\begin{eqnarray}
+\chi ^{a_2}(a_1) &=&(t_1,t_2)_n^2\cdot \chi (a_1)\;\;\;\;\;\;\;\;(=\chi
+(a_1),\;{\rm if\;}\;a_i\in \overline{C},\;i=1,2)  \nonumber \\
+a_1 &=&(\left( 
+\begin{array}{cc}
+t_1 & 0 \\ 
+0 & t_1^{-1}
+\end{array}
+\right) ,\varsigma _1)\in \overline{C},\;a_2=(\left( 
+\begin{array}{cc}
+t_2 & 0 \\ 
+0 & t_2^{-1}
+\end{array}
+\right) ,\varsigma _2)\in \overline{A(F)}.
+\end{eqnarray}
+In particular, there are no genuine 1-dimensional representations of $%
+\overline{A(F)}$ unless $n=1,2$.
+
+\begin{lemma}
+The characters of $A(F)/C$ are in 1-1 correspondence
+with $A(F)/C$ itself. Explicitly, the correspondence is given by
+$x\longmapsto \chi _x$, where $\chi _x(y)=(x,y)_n^2$.
+\end{lemma}
+proof: Pontryagin duality. $\Box$
+
+Therefore, there are $\#[A(F)/C$ $]$ distinct characters of
+$A(F)$ which are trivial on $C$. The
+number of distinct characters of $C$ of the form $\chi _x\;(x\in A(F))$ is
+therefore $\#[A(F)/C$ $]$. This proves the following
+
+\begin{lemma}
+Let $\chi $ denote a genuine character of $\overline{C}$, where $C$ is as in
+the previous subsection. The number of distinct conjugates $\chi ^h$ of
+$\chi $\ is $\#[A(F)/C]$.
+\end{lemma}
+
+\begin{lemma}
+(Clifford-Mackey) If $\chi \in \Pi (\overline{C})$ then
+$\chi ^h\neq \chi $ for all $h\in \overline{A(F)}/\overline{C}$ and 
+\[
+Ind_{\overline{C}}^{\overline{A(F)}}(\chi )\cong
+Ind_{\overline{C}}^{\overline{A(F)}}(\chi ^h),
+\;\;\;h\in \overline{A(F)},
+\]
+is both irreducible and genuine.
+\end{lemma}
+
+\begin{remark}
+This would follow from an irreducibility criterion of Mackey (stated in
+\cite{Se}, section 7.4 for finite groups) if we knew it applied in
+our case. To see
+that the proof in \cite{Se} extends to the case
+considered here we must verify
+the Frobenius reciprocity theorem in our case. (As noted in
+\cite{C}, Frobenius
+reciprocity is false for totally disconnected groups in general.) 
+\end{remark}
+
+{\sf proof:} In this proof, let $H<G$ denote
+two groups of td type in the sense of \cite{C}, section 1,
+such that $H$ is finite index in $G$. Then the inclusion map 
+$\varphi :H\hookrightarrow G$ is open. Let $W$ be a smooth representation of 
+$H$ and let $V$ be a smooth representation of $G$. By \cite{C}, 1.7(c),
+Frobenuis reciprocity holds in this case and we have
+\begin{equation}
+\dim Hom_H(W,V|_H)=\dim Hom_G(Ind_H^GW,V).
+\end{equation}
+
+We apply this to the proof of \cite{Se}, Corollary in section 7.4
+with $H=\overline{C}$ and $G=\overline{A(F)}$. 
+
+The representation $V=Ind_{\overline{C}}^{\overline{A(F)}}(\chi )$ is
+irreducible if and only if
+\[\dim Hom_{\overline{A(F)}}(Ind_{\overline{C}}^{\overline{A(F)}}(\chi ),
+Ind_{\overline{C}}^{\overline{A(F)}}(\chi ))=1.
+\]
+Since 
+\begin{equation}
+Ind_{\overline{C}}^{\overline{A(F)}}(\chi )|_{\overline{C}}=\sum_{h\in 
+\overline{A(F)}/\overline{C}}\chi ^h,
+\end{equation}
+we have $\dim Hom_{\overline{C}}(\chi ,Ind_{\overline{C}}^{\overline{A(F)}%
+}(\chi )|_{\overline{C}})=1$ if and only if all the $\chi ^h$ are distinct. $%
+\Box $
+
+\begin{lemma}
+Let $\sigma \in \Pi (\overline{A(F)})$. Then
+
+(a) 
+\[
+\sigma |_{\overline{C}}=\bigoplus_{i=1}^mm\chi _i
+\]
+for some distinct characters $\ \chi _i$ of $\overline{C}$ and some integers 
+$m>0$ (all equal).
+
+(b) If $\ \sigma {\rm \;},\sigma ^{\prime }\in \Pi (\overline{A(F)})$
+satisfy 
+\[
+\sigma |_{\overline{C}}=\bigoplus_{i=1}^m\chi _i,
+\;\;\;\;\sigma ^{\prime }|_{\overline{C}}
+=\bigoplus_{i=1}^{m^{\prime }}\chi _i^{\prime },\;\;
+\]
+and $\ \chi _i=\ \chi _j^{\prime }$ for some $i,j$ then $m=m^{\prime }$,
+$\{\ \chi _i\;|\;1\leq i\leq m\}=\{\ \chi _i^{\prime }\;|\;1\leq i\leq
+m^{\prime }\}$, and
+$\ \sigma ^{\prime }\cong \mu \otimes \ \sigma {\rm \;}$
+for some character $\mu $ of $\overline{A(F)}$ which is trivial
+on $\overline{C}$.
+
+(c) $\ \sigma {\rm \;}$ is a subrepresentation of $Ind_{\overline{C}}^{%
+\overline{A(F)}}\ \chi $ for some character $\ \chi $ of $\overline{C}$.
+\end{lemma}
+
+proof: These all follow from the lemmas in \cite{GeKn}, section 2, except
+possibly (c), which follows from Frobenius reciprocity. $\Box $
+
+\begin{corollary}
+If $\ \sigma {\rm \;}=Ind_{\overline{C}}^{\overline{A(F)}}\ \chi
+\in \Pi (\overline{A(F)})$ then 
+\[
+{\rm tr}\;\sigma {\rm \;}(a)=\left\{ 
+\begin{array}{c}
+\sum_{h\in \overline{A(F)}/\overline{C}}\chi
+^h(a),\;\;\;\;\;\;\;\;\;\;\;\;\;a\in \overline{C}, \\ 
+0,\;\;\;\;\;\;\;\;\;a\in \overline{A(F)}-\overline{C}.
+\end{array}
+\right. 
+\]
+Indeed, by equation (5.15) we have that
+\[
+\sum_{h\in \overline{A(F)}/\overline{C}}\chi^h(a),
+\]
+vanishes unless $a\in \overline{A(F)^N}$. Therefore,
+${\rm tr}\;\sigma {\rm \;}(a)$ is supported on
+$\overline{A(F)^N}$.
+\end{corollary}
+
+\subsection{Principal series representations}
+From results recalled in the next chapter, we have
+
+\begin{lemma}
+Assume $\chi =Ind_{\overline{C}}^{\overline{A(F)}}\mu
+\in \Pi (\overline{A(F)})$ and suppose that $\chi \neq \chi ^w$.
+The character of the
+irreducible representation $\pi =I_{A}(\chi )$\ is given on the regular
+set by
+\[
+\Theta _\pi (x)=\left\{
+\begin{array}{c}
+\frac{tr\chi (a)+tr(\chi (a^w))}{|a_1-a_2|},
+\;\;x=a^g,\;{\rm for\;some}\;g\in \overline{G(F)},
+\;a\in \overline{C}-\{\pm 1\}, \\
+0,\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;
+{\rm \;if\;}\;\;\;
+x\in \overline{G(F)}^{\prime }-\overline{C}^{\overline{G(F)}},
+\end{array}
+\right.
+\]
+where
+\[
+\overline{C}^{\overline{G(F)}}=\{a^g\;|\;a\in \overline{C},\;g\in
+\overline{G(F)}\}.\
+\]
+\end{lemma}
+
+\begin{remark} As noted above, on the regular set,
+this character vanishes off the conjugacy class of $\overline{A(F)^N}$.
+\end{remark}
+
+Now we describe the character of a principal series representation
+as the Fourier transform of the function $a\longmapsto J_G(a,f)$.
+For the existence of characters of metaplectic covering groups,
+see the next chapter.
+
+Let $\chi =Ind_{\overline{C}}^{\overline{A(F)}}\mu \in
+\Pi (\overline{A(F)})$,
+$\pi =I_{A}(\chi )\in \Pi (\overline{G(F)})$. Then
+\begin{equation}
+{\rm tr}\chi (a,1)=
+\#( \overline{A(F)}/\overline{C})\mu (a,1),
+\end{equation}
+if $a\in A(F)^N$. This lemma and the Weyl integration formula
+imply that, for $f\in C_c^\infty
+(\overline{G(F)})$,
+\begin{equation}
+\begin{array}{c}
+\Theta _\pi (f)=\int_{\overline{G(F)}}\Theta _\pi (x)f(x)dx \\
+=\frac 12\int_{A(F)}({\rm tr}\chi (a,1)+{\rm tr}(\chi
+(a^w,1)))F_f^{A(F)}(a,1)da \\
+=\#( \overline{A(F)}/\overline{C})
+\int_{A(F)^N}\mu (a,1)F_f^{A(F)}(a,1)da \\
+=\#(A(F)/C)
+(F_f^{A(F)})^{\wedge }(\mu ) ,
+\end{array}
+\end{equation}
+where the Fourier transform is defined by
+\begin{equation}
+\begin{array}{c}
+\varphi ^{\wedge }(\mu )=\int_{A(F)^N}\mu (x)\varphi
+(x)dx \\
+\ \ \ \ \ \ \mu \in \Pi (\overline{A(F)^N}).
+\end{array}
+\end{equation}
+Note that this formula for the character extends to the
+Schwartz space provided $\mu $ (and hence $\pi $) is unitary.
+
+\begin{corollary}
+Let $n=2$. If $\phi\in C^\infty_c(\overline{G(F)})_{gen}$
+is related to $f\in C_c^\infty(G(F))$ by
+\[
+\phi=\overline{f},
+\]
+as in section 5.4 above, and if
+$\overline{\pi}\in \Pi(\overline{G(F)})$ is related to
+$\pi\in\Pi(G(F))$ by
+\[
+\overline{\pi}
+=I_A(\overline{\chi}),\ \ \
+\pi=I_A(\chi),
+\]
+for $\chi\in\Pi(A(F))$, then
+\[
+\Theta_{\overline{\pi}}(\phi)=\Theta_{\pi}(f).
+\]
+\end{corollary}
+
+\begin{lemma} Let $n=2$. For $\pi=I_A(\chi)$,
+$\chi=Ind_{\overline{C}}^{\overline{A(F)}}(\mu)$, as above,
+the distribution $f\longmapsto \Theta_\pi(f)$ is
+invariant under conjugation by elements of
+$\overline{G_1(F)}$.
+Moreover, its inverse Fourier transform
+distribution $f\longmapsto F_f^{\overline{A(F)}}$ is
+invariant under conjugation by elements of
+$\overline{G_1(F)}$.
+\end{lemma}
+
+\begin{lemma}
+If $F(\sigma)={\rm tr}(I_A(\sigma,f))$ then
+\[
+F^\vee(\gamma)
+=|a_1-a_2|J_G(\gamma,f),
+\]
+for $\gamma =(a,\zeta)\in \overline{A(F)}$, $a\not= \pm 1$.
+\end{lemma}
+
+proof: This follows from our results above. $\Box$
+
+The following few result will not be needed.
+
+\begin{lemma} If $\theta_1$ is an irreducible genuine representation
+of $\overline{T_1({\Bbb Q}_p)}$ and $\pi_1(\theta_1)$ is the
+irreducible genuine admissible representation of
+$\overline{G_1({\Bbb Q}_p)}$ associated to it in \cite{J}
+(at least if $n$ is odd), let
+$\theta =\theta_1|_{\overline{T({\Bbb{Q}}_p)}}$ and let
+$\pi(\theta)$ denote one of the irreducible
+constituents of
+$\pi(\theta) =\pi_1(\theta_1)|_{\overline{G({\Bbb{Q}}_p)}}$.
+If $n>1$ then
+\[
+\# L(\pi(\theta))=
+\prod_{v|p}\#( k_v^\times/k_v^{\times n}).
+\]
+\end{lemma}
+
+proof: For the proof in the case $n=2$, see \cite{GPS}, \S 1.
+The proof in general is similar, noting that
+the Hilbert symbol provides a perfect pairing
+$F^\times/F^{\times n}\times F^\times/F^{\times n}
+\rightarrow \mu_n$. $\Box$
+
+\begin{lemma}
+For each elliptic torus $T$ and each
+$\overline{f}\in {\cal{H}}(\overline{G({\Bbb{A}}_S)})_{gen}$,
+we have
+\[
+\begin{array}{c}
+<\theta ,I_{*}^\kappa (\overline{f} )> \\
+=[D(T/{\Bbb{Q}}):D(T/{\Bbb{A}}_S)]^{-1}
+\prod_{p\in S}
+\sum_{\delta\in D(T/{\Bbb Q}_p)}
+\sum_{\pi _p\in \Pi (\theta_p^\delta)}
+\kappa _{*}(\pi _p)\chi _{\pi_p}(f_p),
+\end{array}
+\]
+where $\kappa _{*}(\pi _p):=\kappa (\delta)$ if
+$\pi _p\in \Pi(\theta_p^\delta)$,
+${\theta }_p^h$ denotes the conjugate of ${\theta }_p$ by $h$,
+${\theta }_p$ is a unitary character
+of $T({\Bbb{Q}}_p)$, and $f_p(g)=\overline{f}_p(g,1)$.
+\end{lemma}
+
+\begin{remark}
+This result is essentially \cite{LL}, (2.4-5) and p. 762.
+This is, after a suitable
+choice of global measures, related to a special case of
+\cite{J}, Theorem 3.41 which was only proven under in the case $n$ odd.
+\end{remark}
+
+proof: We prove the local analog:
+\[
+\begin{array}{c}
+(I_{*}^\kappa (f ))^\wedge(\theta) \\
+=\sum_{\delta\in D(T/{\Bbb Q}_p)}
+\sum_{\pi\in L({\pi }({\theta }^\delta))}
+\kappa _{*}(\pi)\chi _{\pi }(f).
+\end{array}
+\]
+This is a consequence of the above-mentioned result of
+\cite{LL} and Definition 73 above. $\Box$
+
+\subsection{Weighted characters }
+
+The operator
+$M(\mu):I_A(\mu)\rightarrow I_A(\mu^w)$ denotes the usual
+intertwining operator as in \cite{Ar}, \cite{Mo1}, \cite{Mo2}.
+We will eventually
+assume that the normalized intertwining operator
+$R(\mu)$ satisfies the assumptions in section 4 of chapter 9.
+Here, however, we simply assume that there is a scalar valued
+function (the normalizing factor) $m(\mu)$ such that
+\[
+R(\mu)=m(\mu)^{-1}M(\mu).
+\]
+
+
+Let $\delta(g)=|a_1/a_2|$, if $g=(nak,\zeta)\in \overline{G_1(F)}$. Let
+$N(g)$ denote the operator on the space of functions on $K$ given by
+\[
+f(k)\longmapsto f(k)\log\delta(kg).
+\]
+This operator also occurs in connection with the terms in the
+invariant trace formula associated to the normalized intertwining
+operators.
+
+\begin{lemma}
+For $g\in \overline{G_1(F)}$, we have
+\[
+{\rm tr}(I_A(\sigma,f)N(g))
+=\int_K K_{I_A(\sigma)}(k,k)\log\delta(kg)dk,
+\]
+here
+\[
+K_{I_A(\sigma)}(k,k')
+\int_{\overline{A(F)}}\int_{N(F)}
+\delta(a)^{1/2}{\rm tr}\chi(a)f(k^{-1}ank')dnda.
+\]
+\end{lemma}
+
+\begin{lemma}
+For $g\in \overline{G_1(F)}$, if
+$F(\sigma)={\rm tr}(I_A(\sigma,f)N(g))$ then
+\[
+J_A(a,f^{g^{-1}})-J_A(a,f)
+=F^\vee(a)+F^\vee(a^w)
+\]
+\end{lemma}
+proof: We shall follow \cite{LL}, Lemma 3.2, p. 743.
+We have
+\[
+J_A(a,f^{g^{-1}})-J_A(a,f)
+=\int_{\overline{G(F)}_a\backslash \overline{G(F)}}
+f(x^{-1}ax)(v_M(gx)-v_M(x))dx.
+\]
+This is, by a lemma above, zero unless
+$a\in\overline{A(F)^N}$. We first show that
+
+{\bf Claim} $v_A(nk)=\log\delta(nk)+\log\delta(wnk)$.
+
+This is verified by direct calculations using the matrix calculation
+\[
+\left(
+\begin{array}{cc}
+0 & -1\\
+1 & 0
+\end{array}
+\right)
+\left(
+\begin{array}{cc}
+1 & x\\
+0 & 1
+\end{array}
+\right)
+=
+\left(
+\begin{array}{cc}
+1 & -x^3\\
+0 & 1
+\end{array}
+\right)
+\left(
+\begin{array}{cc}
+x & 0\\
+0 & x^{-1}
+\end{array}
+\right)
+\left(
+\begin{array}{cc}
+1 & 0\\
+x^{-1} & 1
+\end{array}
+\right).
+\]
+
+Since
+$\delta(g_1g_2)=\delta(g_1)\delta(g_2)$,
+the above claim implies imply that
+$v_A(x)=\log\delta(x)+\log\delta(wx)$ for all $x$.
+These identities are all we need to carry over the argument
+in \cite{LL}, p. 743. $\Box$
+
+The following result will not be needed.
+
+\begin{lemma} For $g\in\overline{G_1(F)}$, we have
+\[
+\begin{array}{c}
+{\rm tr}[R(\mu)^{-1}R'(\mu)I_A(\mu,f^{g^{-1}})]
+-{\rm tr}[R(\mu)^{-1}R'(\mu)I_A(\mu,f)]\\
+={\rm tr}[I_A(\mu,f)N(g))+
+{\rm tr}[I_A(\mu^w,f)N(g)],
+\end{array}
+\]
+where $N(g)$ is defined above.
+\end{lemma}
+
+For the proof in the case n=1, see \cite{LL}, Lemma 3.6.
+The proof for $n>1$ is the same, although we include a sketch of
+it for the sake of completeness.
+proof: First, we show that the Lemma follows from the identity
+\begin{equation}
+\pi_{{\mu}^w}(g)R'({\mu})I_A(\mu)(g)^{-1}-R'(\mu)
+=R(\mu)N(g)+N(g)R(\mu).
+\end{equation}
+Indeed, this equation yields
+\[
+\begin{array}{c}
+I_A(\mu^w)(g)R'({\mu})I_A(\mu)(g)^{-1}
+I_A(\mu,f)-R'(\mu)I_A(\mu,f)\\
+=R(\mu)N(g)I_A(\mu,f)+
+N(g)R(\mu)I_A(\mu,f),
+\end{array}
+\]
+and this gives
+\[
+\begin{array}{c}
+R({\mu})^{-1}I_A(\mu^w)(g)R'({\mu})
+I_A(\mu)(g)^{-1}I_A(\mu,f)
+-R(\mu)^{-1}R'(\mu)I_A(\mu,f)\\
+=I_A(\mu)(g)[R(\mu)^{-1}R'({\mu})
+I_A(\mu)(g)^{-1}
+I_A(\mu,f)I_A(\mu)(g)]I_A(\mu)(g)^{-1}
+-R(\mu)^{-1}R'(\mu)I_A(\mu,f)\\
+=N(g)I_A(\mu,f)
++R(\mu)^{-1}N(g)R(\mu)I_A(\mu,f)\\
+=N(g)I_A(\mu,f)+R(\mu)^{-1}
+[N(g)I_A(\mu^w,f)]R(\mu).
+\end{array}
+\]
+This implies the Lemma.
+\par
+Now we verify (5.21). By the metaplectic Iwasawa decomposition, we
+may write $wnk=n_1a_1k_1$, for some $n_1\in N(F)$,
+$a_1\in\overline{A(F)}$,$k_1\in\overline{K}$ and a unique $p(a_1)\in A(F)$.
+For $k\in\overline{K}$ and $\phi\in V(\pi_s)$, we have
+$$
+M'(\mu)\phi (k):=\int_{N(F)}{d\over ds}\phi (wnk)dn=
+\int_{N(F)}\log \delta(p(a_1))\phi (wnk)dn.
+$$
+Let
+\[
+\begin{array}{c}
+kg=n_2a_2k_2,\\
+wnk_2=n_1'a_1'k_1',\\
+k_1g=n_3a_3k_3,
+\end{array}
+\]
+so that
+\[
+\begin{array}{c}
+\pi_{{\mu}^w}(g)M'(\mu)\pi_{{\mu}}(g)^{-1}\phi (k)
+=\int_{N(F)}\log \delta(p(a_1'))\phi (wnk)dn,\\
+\log \delta (p(a_1'))
+=\log \delta (p(a_1))+\log \delta (p(a_2))+\log \delta (p(a_3)),\\
+M(\mu)N(g)\phi (k)
+=\int_{N(F)}\log \delta(p(a_2))\phi (wnk)dn,\\
+N(g)M(\mu)\phi (k)
+=\int_{N(F)}\log \delta(p(a_3))\phi (wnk)dn.
+\end{array}
+\]
+From these identities, the Lemma follows as in \cite{LL}, p. 746.
+$\Box$
+
+\subsection{A matching of weighted characters}
+
+\begin{lemma}
+Let $n=2$. If $\overline{f}\in C^\infty_c(\overline{G(F)})_{gen}$
+is related to $f\in C_c^\infty(G(F))$ as in section 5.2
+above. Then
+\[
+{\rm tr}(R(\overline{\chi})^{-1}R'(\overline{\chi})
+I_A(\overline{\chi},\overline{f}))=
+{\rm tr}(R(\chi)^{-1}R'(\chi)I_A(\chi,f)).
+\]
+\end{lemma}
+
+\begin{remark} In spite of its apparent simplicity, the proof
+below implicitly uses the assumptions in chapter 9, \S 4
+and results of \cite{A6}.
+\end{remark}
+
+proof: This is equivalent to saying that the Fourier transforms of both
+sides (with respect to $\chi$) are the same at $a\in A(F)_{reg}$,
+resp. $(a,1)\in \overline{A(F)}_{reg}$.
+By (9.68) below (which is a special case of
+\cite{A6}, Proposition 4.1), this is in turn equivalent to saying that
+\begin{equation}
+(I_{\cal{O}}^A)^\wedge(\phi_A^G(f))
+=(I_{\overline{\cal{O}}}^{\overline{A}})^\wedge
+(\phi_{\overline{A}}^{\overline{G}}(\overline{f}))
+\end{equation}
+where we have distinguished objects on $G(F)$ and their analogs on
+$\overline{G(F)}$ by an overline. We have already shown that
+the distribution on $G(F)$
+\[
+f\longmapsto J(f)=J_{\cal{O}}(f)-
+J_{\overline{\cal{O}}}(\overline{f}))
+\]
+is trivial. By \cite{A6}, Proposition 4.1, there are {\em unique}
+invariant distributions
+$I_{\cal{O}}^{M}$, $I_{\overline{\cal{O}}}^{\overline{M}}$ such that
+\[
+J(f)=\sum_M [ c(M)\hat{I}_{\cal{O}}^M(\phi_M^G(f))-
+ c(\overline{M})\hat{I}_{\overline{\cal{O}}}^{\overline{M}}
+(\phi_{\overline{M}}^{\overline{G}}(\overline{f})).
+\]
+By uniqueness,
+\[
+\hat{I}_{\cal{O}}^M(\phi_M^G(f))
+={c(\overline{M})\over c(M)}
+\hat{I}_{\overline{\cal{O}}}^M
+(\phi_{\overline{M}}^{\overline{G}}(\overline{f})).
+\]
+We see that $c(A)=c(\overline{A})=1/2$ by (9.68) below
+and its non-metaplectic analog, so the result follows. $\Box$
+
+
+

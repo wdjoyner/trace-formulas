@@ -1,0 +1,1018 @@
+
+\section{The global trace formula in stable(r) form}\label{sec:stable}
+
+Our primary references for this section are \cite{LL}, \cite{L3}.
+\subsection{Definitions and a general discussion of the results}
+
+We define $G_1=GL(2)$. 
+
+Suppose that $\gamma ,\gamma ^{\prime }\in G(\qqq )$. Following the
+well-known definition, if there is a $g\in G(\overline{\qqq })$ such that $%
+\gamma ^{\prime }=g^{-1}\gamma g$ then we call $\gamma ,\gamma ^{\prime }$ 
+\textbf{stably conjugate}. Here $\overline{\qqq }$ denotes an algebraic
+closure of $\qqq $. As is well-known, two elements $\gamma ,\gamma
+^{\prime }\in G(\qqq )$ are conjugate under
+$G(\overline{\qqq })$ if and
+only if they are conjugate under $G_1(\qqq )$. See \cite{L3}, \cite{LL}.
+
+Here is reformulation of this definition: If there is a
+$g\in G_1(\qqq )\hookrightarrow G_1(\aaa _S)$ such
+that $\gamma ^{\prime}=g^{-1}\gamma g$ then
+$\gamma ,\gamma ^{\prime }$ are \textbf{stably conjugate}.
+This condition has the following local analog which we make our
+local definition:
+Suppose that $\gamma ,\gamma ^{\prime }\in \overline{G(F)}$. If there
+is a $g\in G_1(F\mathbb{)}$ such that 
+$\gamma ^{\prime }=g^{-1}\gamma g$ then $\gamma ,\gamma ^{\prime }$ are 
+\textbf{stably conjugate}.
+
+\begin{remark}\label{rem:7.1}
+We shall mention briefly that the paper of Springer-Steinberg
+contains a comment (actually an exercise)
+which may be worth mentioning in connection with
+these definitions: \cite[ch IV, (2.15)]{SpSt} says that if $E$ is
+algebraically closed and $G\subset GL(n)$ is either a symplectic
+group or an orthogonal group then then $g_1,g_2\in G(E)$ are
+conjugate in $G(E)$ if and only if they are conjugate in $GL(n,E)$.
+(I believe it is assumed throughout that $E$ is not of characteristic $2$.)
+In particular, if $F$ is a p-adic field, $\overline{F}$ is its
+algebraic closure and if $g_1,g_2\in G(F)$ are conjugate in
+$GL(n,F)$ then they are conjugate in $G(\overline{F})$.
+Recall the fact that if $g_1,g_2\in GL(n,F)$
+are conjugate in $GL(n,\overline{F})$
+then they are conjugate in $GL(n,{F})$ (``each conjugacy class
+in $GL(n)$ is stable'', i.e., ``$GL(n)$ has no L-indistinguishability'').
+These in conjunction imply that stable conjugacy in the
+symplectic or orthogonal groups may be ``realized'' as
+$GL(n,F)$-conjugacy.
+\end{remark}
+
+The global invariant trace formula is an equality of the form \eqref{eq:6.4}.
+We will say that a distribution $T$ on ${\mathcal{H}}(\overline{G(\aaa _S)})$ is 
+\textbf{stably invariant} in case $T(f)=T(f^y)$ for all
+$f\in {\mathcal{H}}(\overline{G(\aaa _S)})$ and all
+$y\in G_1(\aaa _S)$. Not all the expressions
+in the invariant trace formula \eqref{eq:6.4} are stably invariant.
+The object
+of this section is to write the invariant trace formula
+as the sum of stable
+terms which we write in the form (as in \cite{L3})
+
+\begin{equation}\label{eq:7.1}
+\begin{array}{c}
+{\rm tr}R_{cusp}(f)=
+\sum_{\chi \in {\mathcal{X}}(G)}I'_\chi (f)\\
+=-\sum_{\chi \in {\mathcal{X}}-{\mathcal{X}}(G)}I_\chi (f)
++S(f)
++\sum_{\mathcal{O}\in \mathcal{C}}SI_{\mathcal{O}}(f)
++{\rm\ ``endoscopic\ terms''}
+\end{array}
+\end{equation}
+where $S=S_1+S_2+S_3$ is defined in \eqref{eq:7.22}--\eqref{eq:7.24},
+$I'_\chi$ is equal to $I_\chi$ plus a term described in
+\S\ref{ssec:stabletf} (g) below ($\chi\in
+{\mathcal{X}}-{\mathcal{X}}(G)$), and
+the endoscopic terms are a sum of terms of the form
+
+\begin{equation}\label{eq:7.2}
+\begin{array}{c}
+{\rm\ ``endoscopic\ terms''}
+=
+{1\over 4}
+\sum_{ H\not= G, {\rm cuspidal}}
+\left[
+\sum_{{\mathcal{O}}\in {\mathcal{C}}^H}SI^H_{\mathcal{O}}(f^H)
+-\sum_{\theta\in E_H^G}<\theta,f^H>
+\right]\\
+={1\over 4}
+\sum_{ H\not= G, {\rm cuspidal}}
+\sum_{
+\theta\in \Pi_u(H(\qqq )\backslash H(\aaa _S)),
+\theta\not= 1}
+<\theta,f^H>
+\end{array}
+\end{equation}
+which are stable distributions on endoscopic groups $H$ of $G$
+(not $\overline{G(\aaa _S)}$)
+arising from the stable trace formula of $H$.
+Here ${\mathcal{C}}^H=\{\{\gamma\}\ |\ \gamma\in H(\qqq )\}$,
+$E_H^G$ is the subset of
+$\Pi_u(H(\qqq )\backslash {H(\aaa _S)})$,
+and $f^H$ is a function on
+$H(\aaa _S)$ associated to
+$f\in {\mathcal{H}}(\overline{G(\aaa _S)})_{gen}$.
+In the version presented below we will not
+stabilize the $I_\chi$ in this paper.
+We shall explain the terms ``$H$ a cuspidal endoscopic group of
+$G$'' in \eqref{eq:7.2} in the next subsection.
+
+\subsection{Some basics on endoscopic groups}
+
+We shall define what an endoscopic group is in the simple case
+of $G=SL(2)$ and discuss the sets $D(T/F)$, $D(T/{\mathbb Q})$,
+and $D(T/{\mathbb A})$. The important but more technical distinction
+between an endoscopic group and the sharper notion of
+endoscopic data (\cite{L3}, \cite{She}) will be glossed over.
+Our main reference is \cite{LL}.
+
+In the case of $SL(2)$, a group $H$ is an endoscopic group
+if $H$ is a Cartan subgroup of $G$. Moreover, up to ``equivalence''
+these are the only ones. In general an endoscopic group $H$
+is not a subgroup of $G$ nor are they in general abelian. A
+cuspidal endoscopic group of $SL(2)$ over $F$
+is an elliptic Cartan (i.e., not conjugate to $A(\qqq )$ by an
+element of $G(\qqq )$) of $SL(2)$. 
+
+If $T$ is an elliptic Cartan of $SL(2)$ defined over
+a local or global field $F$ then let
+\begin{equation}\label{eq:7.3}
+D(T/F)=T_1(F)\backslash G_1(F)/G(F),
+\end{equation}
+where $G_1=GL(2)$ and $T_1=Cent(T,G_1)$.
+We identify without further mention this double coset space with the
+space
+$\overline{T_1(F)}\backslash \overline{G_1(F)}/ \overline{G(F)}$,
+where $\overline{G_1(F)}$ denotes the n-fold cover defined using the
+cocyle $\beta$ in \S\ref{ssec:local}.
+If $T$ is an elliptic Cartan of $SL(2)$ defined over
+${\mathbb Q}$ then let
+\begin{equation}\label{eq:7.4}
+D(T/\aaa )
+=\oplus_p T_1(\qqq _p)\backslash G_1(\qqq _p)/G(\qqq _p).
+\end{equation}
+We embed $D(T/\qqq )$ into $D(T/\aaa )$
+or $D(T/\aaa _S)$ diagonally.
+
+For general definitions, see \cite{L3}.
+The expressions $SI_{{\mathcal{O}}_H}$ and $f^H$ are discussed there but
+will also be mentioned (indirectly) below.
+
+\subsection{Stabilizing the elliptic regular terms}
+
+We shall call an element
+$\gamma\in G(\qqq )$ (resp.,
+$(\gamma,\zeta) \in \overline{G(F)}$) \textbf{semisimple} if $\gamma $ is
+diagonalizable and {\bf regular} if its eigenvalues
+$\gamma_1,\gamma_2$ are distinct.
+We shall call a semisimple element
+$\gamma \in G(\qqq )$
+(resp., $(\gamma,\zeta) \in \overline{G(F)}$) \textbf{elliptic}
+(or $G$-\textbf{elliptic}) if $\gamma $ belongs to
+an elliptic Cartan.
+
+We first shall recall the idea of stabilizing the elliptic regular terms of
+\eqref{eq:7.1} following \cite{LL}, \cite{L3}, \cite{Ko1}.
+
+For $\gamma \in G(\qqq )$, let
+${\mathcal{O}}_\gamma \in {\mathcal{C}}$ denote
+the equivalence class containing $\gamma $. 
+
+We now turn to the trace formula in the rank $0$ case, as discussed in
+Section~\ref{sec:rank0} above.
+
+\begin{proposition}\label{prop:7.2} (Poisson summation)
+Let $T\subset G$ be an elliptic Cartan defined over $\qqq $. For any
+$\phi \in C_c^\infty (\overline{T(\aaa _S)})_{gen}$, we have 
+\begin{eqnarray*}
+&&{\mathrm{vol}}(T(\qqq )\backslash \overline{T(\aaa _S)})
+\sum_{\gamma \in T(\qqq )}\phi (\gamma ) \\
+&=&\sum_{\theta \in \Pi _u(T(\qqq )\backslash \overline{T(\aaa _S)})}
+<\theta,\phi>.
+\end{eqnarray*}
+If $\theta =\otimes _p\theta _p$ and $\phi=\otimes _p \phi_p$ then 
+\[
+<\theta ,\phi>=\prod_p{\rm tr}\theta _p(\phi_p).
+\]
+\end{proposition}
+
+\begin{remark}\label{rem:7.3}
+({\bf A preview of coming attractions})
+We shall eventually apply this with $\phi (\gamma )$ equal to
+
+\begin{equation}\label{eq:7.5}
+I_\gamma ^\kappa (f)=
+[D(T/\qqq ): D(T/\aaa _S)]^{-1}
+\sum_{\delta\in
+D(T/\qqq )\backslash D(T/\aaa _S)}
+\kappa (\det \delta)I_{\mathcal{O}}(f^\delta),
+\end{equation}
+where $\kappa \in \Pi _u(D(T/\qqq )\backslash D(T/\aaa _S))$,
+$\gamma\in T(\qqq )$ elliptic, and
+$f\in {\mathcal H}(\overline{G(\aaa _S)})$.
+These terms \eqref{eq:7.5} do not occur in the invariant trace formula.
+However, after grouping terms as in \eqref{eq:7.6} below and substituting
+the expression in Lemma~\ref{lem:7.5} below, all the terms \eqref{eq:7.5},
+$\gamma\in T(\qqq )$, will occur in the trace formula
+except for $\gamma =\pm 1$. The terms corresponding to
+$\gamma =\pm 1$ will be discussed in \S\ref{ssec:singular} below.
+The terms \eqref{eq:7.5} with $\kappa = 1$, $\gamma\not= \pm 1$,
+will comprise part of the sum over
+${\mathcal{O}}\in {\mathcal{C}}$ in \eqref{eq:7.1}. The
+terms \eqref{eq:7.5} with $\kappa \not= \pm 1$,
+will comprise part of the sum in \eqref{eq:7.2}.  
+\end{remark}
+
+Next we record a corollary of the above proposition 
+which we will substitute into the trace formula later.
+
+\begin{corollary}\label{cor:7.4}
+For each elliptic torus T, we have 
+\[
+vol[T(\qqq )\setminus \overline{T(\aaa _S)}]\cdot
+\sum_{\gamma \in T({\mathbb Q})}
+I_\gamma ^\kappa (f)=\sum_\theta <\theta ,I_{*}^\kappa (f)>
+\]
+where $I_{*}^\kappa $ is the unstable orbital integral defined in \eqref{eq:7.5}
+above (for its properties, as a function on $T$, in particular on the
+singular set of $T$, see \cite{LL} or \S\ref{ssec:singular} below).
+\end{corollary}
+
+This expression will form part of what is meant by \eqref{eq:7.2}.
+
+As we will see in Lemma~\ref{lem:7.21} below,
+we may use \cite{LL} to to relate $<\theta,I_{*}^\kappa (f)>$ to
+a linear combination of characters of automorphic representations of
+$\Pi_u(\overline{G(\aaa _S)})$. If $\mathcal{O}=\mathcal{O}_\gamma $
+and $\gamma \in \overline{T(\aaa _S)}$ is elliptic regular, let 
+\begin{equation}\label{eq:7.6}
+\begin{array}{c}
+I^{st}_{\mathcal{O}}(f)=\sum_{\delta\in D(T/\qqq )}
+I_{\mathcal{O}}(f^\delta),\\
+SI_{\mathcal{O}}(f)=I^1_{\gamma}(f)\; .
+\end{array}
+\end{equation}
+These distributions $SI_{\mathcal{O}}$ are stable.
+
+\begin{lemma}\label{lem:7.5}
+(a)\ If $\mathcal{O}=\mathcal{O}_\gamma $ and
+$\gamma \in \overline{T(\aaa _S)}$ is
+elliptic regular, we have 
+\[
+SI_{\mathcal{O}}(f)
+=\sum_{\kappa \in \Pi _u(D(T/{\mathbb Q})\backslash D(T/\aaa ))}
+I_\gamma ^\kappa (f)
+\]
+(b) If $\mathcal{O}=\mathcal{O}_\gamma $ and
+$\gamma \in \overline{T(\aaa _S)}$ is elliptic regular, we have 
+\[
+I_{h^{-1}\gamma h}^\kappa (f)=\kappa (\det h)I_\gamma ^\kappa (f)=I_\gamma
+^\kappa (f^h),\ \ \ \ \ \ h\in \overline{G_1(\aaa _S)}.
+\]
+\end{lemma}
+
+Any function $g$ satisfying $g(h^{-1}\gamma h)=\kappa (\det (h))g(\gamma )$,
+for all $h\in \overline{G_1(\aaa _S)}$, will be called
+\textbf{$\kappa $-stable}.
+
+proof: It is elementary that if $A$ and $B$ are
+discrete countable abelian groups, with $A\subset B$ of finite
+index, and if $f$ is any compactly supported function on $B$ then 
+\begin{equation}\label{eq:7.7}
+\sum_{a\in A}f(a)=[B:A]^{-1}\sum_{\kappa \in (B/A)^{\wedge }}\sum_{b\in
+B}\kappa (b)f(b),
+\end{equation}
+whenever the sums converge absolutely. We apply this to our sum over $\delta 
+$: 
+\[
+\sum_{\delta \in D(T/\qqq )}
+I_{\mathcal{O}}(f^\delta)
+=
+\sum_{\kappa \in (D(T/\aaa )/D(T/\qqq ))^{\wedge}}
+[D(T/\aaa ):D(T/\qqq )]^{-1}
+\sum_{\delta \in D(T/\aaa )}
+\kappa (\delta )I_{\mathcal{O}}(f^\delta),
+\]
+which we may equate with
+\begin{equation}\label{eq:7.8}
+\sum_{\kappa \in \Pi_u(D(T/\aaa )/D(T/\qqq ))}
+I^\kappa_\gamma (f).
+\end{equation}
+$\Box$
+
+\subsection{Stabilizing the $A$-elliptic regular terms}
+
+We shall call a semisimple element
+$\gamma \in G(\qqq )$
+(resp., $\gamma \in \overline{G(F)}$) $A$-\textbf{elliptic} regular if
+$\gamma $ is conjugate to an element $a\in A(F)$
+which is elliptic regular in $A(F)$ (i.e., $a\not= \pm 1$).
+
+If $\mathcal{O}=\mathcal{O}_\gamma $ and
+$\gamma \in G(\qqq )$ is $A$-elliptic regular, let 
+\begin{equation}\label{eq:7.9}
+\begin{array}{c}
+I^{st}_{\mathcal{O}}(f)=
+\sum_{\delta\in D(A/\qqq )}
+I_{\mathcal{O}} (f^\delta),\\
+I^\kappa_\gamma(f)
+=[D(A/\qqq ):D(A/\aaa _S)]^{-1}
+\sum_{\delta\in D(A/\aaa _S)}
+\kappa(\delta) I_{\mathcal{O}} (f^\delta),
+\end{array}
+\end{equation}
+where
+\[
+\begin{array}{c}
+D(A/\qqq )
+=A(\qqq )Z(G_1(\qqq ))\backslash G_1(\qqq )/G(\qqq ) \\
+D(A/\aaa _S)
+=A(\aaa _S)Z(\overline{G_1(\aaa _S)})
+\backslash \overline{G_1(\aaa _S)}/G(\aaa _S) \\
+\kappa\in \Pi_u(D(A/\qqq )\backslash D(A/\aaa _S)).
+\end{array}
+\]
+Let
+\[
+SI_{\mathcal{O}}(f)=I^1_{\gamma} (f),
+\]
+From \eqref{eq:7.7}, we have
+\begin{equation}\label{eq:7.10}
+I^{st}_{\mathcal{O}}(f)=
+\sum_{\kappa\in \Pi_u(D(A/\qqq )\backslash D(A/\aaa _S))}
+I^\kappa_\gamma(f)
+\end{equation}
+\begin{lemma}\label{lem:7.6}
+If $\mathcal{O}=\mathcal{O}_\gamma $ and
+$\gamma \in G(\qqq )$ is $A$-elliptic regular, then
+$SI_{\mathcal{O}}(f)$ is stable.
+\end{lemma}
+
+Recall that this term $SI_{\mathcal{O}}$ is defined using
+\begin{equation}\label{eq:7.11}
+I_{\mathcal{O}}(f)
+=\sum_{\gamma\in {\mathcal{O}}}a^G(S,\gamma)I_G(\gamma,f)
++{1\over 2}\sum_{\gamma\in {\mathcal{O}}\cap A(\qqq )}
+a^A(S,\gamma)I_A(\gamma,f).
+\end{equation}
+The $I_M(\gamma,f)$ were defined by
+\[
+I_G(\gamma,f)=J_G(\gamma,f),
+\]
+which is an ``ordinary'' orbital integral over
+$\overline{G(\aaa _S)}_\gamma\backslash \overline{G(\aaa _S)}$, and
+\[
+I_A(\gamma,f)=J_A(\gamma,f)-\hat{I}_A^A(\gamma,\phi_A(f)).
+\]
+(It turns out that
+$\overline{G(\aaa _S)}_\gamma\subset \overline{A(\aaa _S)}$,
+with equality if $\gamma$ is an $N$-th power, and
+$J_G(\gamma,f)=0$ if $\gamma$ is not an $N$-th power - provided
+$f$ is genuine as we have assumed.)
+To see that the sum
+$\sum_{\gamma\in {\mathcal{O}}}a^G(S,\gamma)I_G(\gamma,f)$
+is stably invariant, we claim that $I_G(\gamma,f)$ is stably invariant.
+This is proven in \cite{J3}.
+
+The term $J_A(\gamma,f)$ is not invariant. We examine it
+more closely in Lemma~\ref{lem:7.9} and \eqref{eq:7.14} below.
+(See also \cite[Corollary 4.2]{A16} for a general formula for it
+in the case $n=1$.)
+
+The term $\hat{I}_A^A(\gamma,\phi_A(f))$ is not invariant. It is the
+Fourier transform of the map
+\[
+\chi\rightarrow {\rm tr}(I_A(\chi,f)R_A(\chi,B)),
+\]
+see \eqref{eq:7.18}. The instability of $f\longmapsto \phi_A(f)$ is
+examined in Lemma~\ref{lem:7.23} below.
+
+Let $F=\qqq _p$, $p<\infty$, $K=G({\mathbb{Z}}_p)$ which we
+identify with a {\em subset} $(K,1)$ of $\overline{G(F)}$,
+$\sigma\in \Pi(\overline{A(F)})$. Let $K_{I_A(\sigma)}(k,k')$
+denote the kernel function of the induced representation
+$I_A(\sigma)$ on the space of functions on $K$, so
+\begin{equation}\label{eq:7.12}
+{\rm tr}(I_A(\sigma,f))
+=\int_K K_{I_A(\sigma)}(k,k)dk .
+\end{equation}
+
+\begin{lemma}\label{lem:7.7}
+If $F(\sigma)={\rm tr}(I_A(\sigma,f))$ then
+\[
+F^\vee(\gamma)
+=|a_1-a_2|J_G(\gamma,f),
+\]
+for $\gamma =(a,\zeta)\in \overline{A(F)}$, $a\not= \pm 1$.
+\end{lemma}
+
+proof: This will be proven in \cite{J3}.
+
+As a corollary, it follows from this lemma without to much work
+that $f\longmapsto I_G(\gamma,f)$ is stable, for
+$\gamma =(a,\zeta)\in \overline{A(F)},\ a\not= \pm 1$.
+
+Let $\delta(g)=|a_1/a_2|$, if $g=(nak,\zeta)\in \overline{G_1(F)}$. Let
+$N(g)$ denote the operator on the space of functions on $K$ given by
+\[
+f(k)\longmapsto f(k)\log\delta(kg).
+\]
+This operator also occurs in connection with the terms in the
+invariant trace formula associated to the normalized intertwining
+operators.
+
+\begin{lemma}\label{lem:7.8}
+For $g\in G_1(F)$, we have
+\[
+{\rm tr}(I_A(\sigma,f)N(g))
+=\int_K K_{I_A(\sigma)}(k,k)\log\delta(kg)dk.
+\]
+\end{lemma}
+
+\begin{lemma}\label{lem:7.9}
+For $g\in G_1(F)$, if
+$F(\sigma)={\rm tr}(I_A(\sigma,f)N(g))$ then
+\[
+J_A(a,f^{g^{-1}})-J_A(a,f)
+=F^\vee(a)+F^\vee(a^w)
+\]
+\end{lemma}
+proof: This will be proven in \cite{J3}.
+
+If $v>2$ then we may represent $D(A/F)$ by
+\[
+\{
+\left(
+\begin{array}{cc}
+a&0\\
+0&1
+\end{array}
+\right)\ |\ a=1,\epsilon, \pi, \epsilon\pi \},
+\]
+where $\pi$ is a uniformizer and $\epsilon$ is a unit
+which is not a quadratic residue. If $v=2$ the situation is similar...
+Therefore, if $\kappa$ is non-trivial
+we may apply Lemma~\ref{lem:7.9} above to compute
+\[
+\sum_{\delta\in D(A/F)}
+\kappa(\delta)J_A(\gamma,f^\delta).
+\]
+
+If $x=a
+\left(
+\begin{array}{cc}
+1&n\\
+0&1
+\end{array}
+\right) k$, $n\in \aaa _S$, then
+\begin{equation}\label{eq:7.13}
+v_A(x)
+=v(x,0)=\sum_v v(0,x_v)=
+\sum_v \log\sqrt{|1+n_v^2|_v}
+\end{equation}
+and
+\begin{equation}\label{eq:7.14}
+\begin{array}{c}
+J_A(\gamma,f)
+=|D(\gamma)|^{1/2}
+\int_{\overline{G(\aaa _S)}_\gamma
+\backslash \overline{G(\aaa _S)}}
+f(x^{-1}\gamma x)v_A(x)dx\\
+=
+\sum_w\prod_v
+|D(\gamma_v)|_v^{1/2}
+\int_{\overline{G(\qqq _p)}_\gamma
+\backslash \overline{G(\qqq _p)}}
+f_v(x_v^{-1}\gamma_v x_v)v_A(x_w)dx_v\\
+=\sum_v |D(\gamma_v)|_v^{1/2} J_A(\gamma_v,f_v)
+\prod_{w\not= v}|D(\gamma_w)|_w^{1/2} J_G(\gamma_w,f_w).
+\end{array}
+\end{equation}
+
+\begin{remark}\label{rem:7.10} This comprises metaplectic analog of
+the $a\not= \pm 1$
+part of the distribution denoted $S_2$ in \cite{LL}. It
+will be combined with other distribution
+described in the next section to yield a stably
+invariant distribution.
+\end{remark}
+
+\subsection{Stabilizing the singular terms}\label{ssec:singular}
+
+A term $I_{\mathcal{O}}(f)$ is called {\bf singular} if ${\mathcal{O}}$
+does not contain any $M$-elliptic elements, for any $M\in \{A,G\}$.
+An element $\gamma\in G(\qqq )$ is called {\bf singular}
+if its eigenvalues $\gamma_1,\gamma_2$ are equal (i.e.,
+$\gamma$ is not regular).
+
+In this subsection, our goal is to show that part of
+the singular terms of the geometric side of the invariant
+trace formula \eqref{eq:6.4} ``combine'' with the sum of the terms
+$I_\gamma ^\kappa (f)$,
+with $\kappa \neq 1$ and with
+$\gamma \in T(\qqq )$ elliptic \emph{singular}
+(i.e., $\gamma =\pm 1$) to contribute to \eqref{eq:7.2}. 
+If ${\mathcal O}=\{z\}$, $z=\pm 1$, then define
+\begin{equation}\label{eq:7.15}
+SI_{\mathcal O}(f)=c\cdot f(z),
+\end{equation}
+where $c=vol(G({\mathbb Q})\backslash \overline{G(\aaa _S)})$ is a volume.
+
+\begin{lemma}\label{lem:7.11} If $z\in {\mathcal{O}}$, with $z=\pm 1$, then
+\[
+I_{\mathcal O}(f)-SI_{\mathcal O}(f)=
+\sum_{ \gamma\in {\mathcal{O}}, \gamma\not= z}
+a^G(S,\gamma)I_G(\gamma,f)+
+{1\over 2}a^A(S,z)I_A(z,f).
+\]
+\end{lemma}
+proof: This equation follows from Proposition~\ref{prop:6.17}
+(also Proposition~\ref{prop:4.15}, Example~\ref{ex:4.16}). $\Box$
+
+\begin{definition}\label{defn:7.12}
+Let $\kappa$ be a character of
+$D(T/F)$ of order $2$.
+Define $\Phi^{T/\kappa}$ on the regular set of $\gamma\in T(F)$ by
+\[
+\begin{array}{c}
+\Phi^{T/\kappa}(\gamma,f)=
+\Delta(\gamma,T,\kappa)
+\int_{\overline{G_1(F)}_\gamma\backslash \overline{G_1(F)}}
+\kappa(\det{g})f(g^{-1}\gamma g)dg\\
+=
+\lambda(E/F,\psi)
+\kappa({\gamma_{1,v}-\gamma_{2,v}\over \gamma_{1,v}^0-\gamma_{2,v}^0})
+\int_{\mathcal{O}}\epsilon(x)f(x)|\omega_\gamma|,
+\end{array}
+\]
+where $\epsilon(g^{-1}\gamma g)=\kappa(\det(g))$,
+$\gamma^0\in \overline{T(F)}$
+is fixed, and $\mathcal{O}$ denotes the conjugacy class of
+$\gamma$ in $\overline{G(F)}$.
+\end{definition}
+
+We leave the relation between the global expressions
+$\Phi^{T/\kappa}(\gamma,f)$ and $I^\kappa_\gamma(f)$ to
+the reader (use the Hilbert product formula).
+
+Let ${\mathcal{O}}(\gamma)$ denote the orbit of
+$\gamma$ in $\overline{G(F)}$ and,
+for $a\in F^\times$, which we identify with the center of $G_1(F)$, let
+\[
+n(a)=a
+\left(
+\begin{array}{cc}
+1&1\\ 0&1
+\end{array}
+\right).
+\]
+
+\begin{definition}\label{defn:7.13} If $z\in Z(\overline{G(F)})$, then we define
+\[
+\Phi^{T/\kappa}(z,f)
+=
+\left\{
+\begin{array}{c}
+\int_{{\mathcal{O}}(n(z))}
+f(x)dx,\ \ \ \ T=A,\ \kappa =1\\
+\lambda(E/F,\psi)
+\kappa({\pi_E-\overline{\pi_E}\over \gamma_{1,v}^0-\gamma_{2,v}^0})
+\int_{{\mathcal{O}}(n(z))}\epsilon(x)f(x)dx,\ \ \ \ T_1(F)=E^\times,
+\kappa\in \Pi_u(F^\times),
+\end{array}
+\right.
+\]
+where $\pi_E$ is a uniformizer for $E/F$, $T_1(F)=E^{\times 1}$,
+and
+\[
+\epsilon(g^{-1}n(z)g)=
+\left\{
+\begin{array}{c}
+\kappa(-b),\ \ \ \ b\not= 0,\\
+\kappa(c),\ \ \ \ b= 0,\\
+\end{array}
+\right.
+\]
+if
+\[
+g^{-1}n(z)g=
+\left(
+\begin{array}{cc}
+a&b\\c&d
+\end{array}
+\right).
+\]
+\end{definition}
+
+\begin{lemma}\label{lem:7.14} If $\kappa\in \Pi_u(F^\times)$ is the character
+of order 2
+associated to $E/F$ be local class field theory ($\kappa =1$
+if $E=F\times F$) and $T_1(F)=E^\times$, then
+$\gamma\longmapsto \Phi^{T/\kappa}(\gamma,f)$ is a smooth function on
+$T(F)$.
+\end{lemma}
+
+proof: This follows from the results on Shalika germs. It is proven
+in \cite{J3}.
+
+\begin{lemma}\label{lem:7.15} For $z\in Z(\overline{G(F)})$, we have
+\[
+\begin{array}{c}
+\lim_{\gamma\rightarrow z}
+\int_{\overline{G_1(F)}_\gamma\backslash \overline{G_1(F)}}
+\kappa(\det{g})f(g^{-1}\gamma g)dg\\
+c{1\over L(1,\kappa)}
+\int_{\overline{G_1(F)}_{n(1)}\backslash \overline{G_1(F)}}
+\kappa(\det{g})f(g^{-1}n(z) g)dg
+\end{array}
+\]
+where $c=|\gamma_{1,v}-\gamma_{2,v}|$.
+\end{lemma} 
+
+proof: This will be proven in \cite{J3}.
+
+\begin{lemma}\label{lem:7.16} Let $\kappa$ be a character of
+$\aaa _S^\times $ of order 2 which we extend to
+$\overline{G_1(\aaa _S)}$ via the $\det$ map,
+and $T$ be a Cartan of $G$ associated to $\kappa$ by class field
+theory then
+\begin{equation}\label{eq:7.16}
+\sum_{\delta\in D(A/\aaa _S)}
+\kappa(\delta)I_G(n(z),f^\delta)
+=c
+\lim_{ \gamma\rightarrow z , \gamma\in T(\qqq )}
+\sum_{\delta\in D(T/\aaa _S)}
+\kappa(\delta)I_G (\gamma, f^\delta),
+\end{equation}
+for $z =\pm 1$, $\kappa \in \Pi _u(G_1(\aaa _S))$ of order 2,
+where the constant $c=c(T,\kappa,S)$ is given by
+\[
+c=\prod_v |\gamma_{1,v}^0-\gamma_{2,v}^0|_v^{-1}L(1,\kappa_v) .
+\]
+\end{lemma}
+
+\begin{remark}\label{rem:7.17} The terms on the right hand side of the above
+lemma go into \eqref{eq:7.20} below. To see this, just relate them to
+\eqref{eq:7.5} by using \eqref{eq:7.11} and the fact that
+${\mathcal{O}}\cap A(\qqq ) =\emptyset$.
+
+The terms on the left hand side will examined following the proof
+below.
+\end{remark}
+
+proof: This is is a consequence of the previous lemma and the
+definitions. $\Box$
+
+If $z\in {\mathcal{O}}$ is an equivalence class of $G(\qqq )$
+as above then part of $I_{\mathcal{O}}(f)$ may be written as
+\begin{equation}\label{eq:7.17}
+\begin{array}{c}
+\sum_{\gamma\in {\mathcal{O}}} J_G(\gamma,f)
+=J_G(z,f)+\sum_{a\in \qqq ^{\times}/\qqq ^{\times 2}}
+\int_{\overline{G(\aaa _S)}_{n(1)}
+\backslash \overline{G(\aaa _S)}} f(g^{-1} z\cdot
+\left(
+\begin{array}{cc}
+1 & a\\
+0 & 1
+\end{array}
+\right)
+g)dg\\
+=J_G(z,f)+
+\sum_{\kappa \in \Pi_u(\aaa _S^{\times}/\aaa _S^{\times 2})}
+\sum_{a \in \aaa _S^{\times}/\aaa _S^{\times 2}}
+\kappa (a)
+\int_{\overline{G(\aaa _S)}_{n(1)}
+\backslash \overline{G(\aaa _S)}} f(g^{-1} z\cdot
+\left(
+\begin{array}{cc}
+1 & a\\
+0 & 1
+\end{array}
+\right)
+g)dg\\
+=J_G(z,f)+
+\sum_{\kappa \in \Pi_u(\aaa _S^{\times}/\aaa _S^{\times 2})}
+\int_{\overline{G_1(\aaa _S)}_{n(1)}
+\backslash \overline{G_1(\aaa _S)}} \kappa(\det{g})
+f(g^{-1} n(z) g)dg,
+\end{array}
+\end{equation}
+which we write as $J_G(z,f)$ plus the sum over
+$\kappa \in \Pi_u(\aaa _S^{\times}/\aaa _S^{\times 2})$
+of the left hand side of the equation in Lemma~\ref{lem:7.16} above.
+
+Regarding the expression
+\[
+{a^A(S,z)\over 2}
+\sum_\delta \kappa(\delta)
+(J_A(z,f^\delta)-\hat{I}_A^A(z,\phi_A(f^\delta)))),
+\]
+we must also compute $a^A(S,z)$ and discuss the terms
+$\sum_\delta \kappa(\delta)J_A(z,\phi_A(f^\delta))$ and
+$\sum_\delta \kappa(\delta)\hat{I}_A^A(z,\phi_A(f^\delta))$.
+
+Computation of $a^A(S,z)$: By Proposition~\ref{prop:4.15},
+\[
+a^A(S,z)=vol(A(\qqq )\backslash \overline{A(\aaa _S)^1}).
+\]
+
+Computation of
+$\sum_\delta \kappa(\delta)J_A(z,\phi_A(f^\delta))$:
+See Example~\ref{ex:4.13} above and \eqref{eq:7.14}. These terms
+comprise the $a=\pm 1$ part of the distribution denoted by
+$S_2(f)$ ``missing'' from \eqref{eq:7.14}.
+
+Computation of $\sum_\delta \kappa(\delta)\hat{I}_A^A(z,\phi_A(f^\delta))$:
+First, we note that the map
+$\phi_A:{\mathcal{H}}(\overline{G(\aaa _S)}) \rightarrow I(A(\aaa _S))$
+of \S\ref{sssec:ass51} is a ``weighted
+character'' of an induced representation:
+\begin{equation}\label{eq:7.18}
+\begin{array}{c}
+\phi_A(\sigma,f)=
+{\rm tr}(R_{\overline{B}|B}(\sigma_\lambda)^{-1}
+R'_{\overline{B}|B}(\sigma_\lambda)I_A(\sigma_\lambda,f))|_{\lambda =0}\\
+=\sum_v
+{\rm tr}(R_{\overline{B}|B}(\sigma_v)^{-1}
+R'_{\overline{B}|B}(\sigma_v)I_A(\sigma_v,f_v))
+\prod_{w\not= v}{\rm tr}(I_A(\sigma_w,f_w)).
+\end{array}
+\end{equation}
+for $\sigma\in \Pi_u(\overline{A(\aaa _S)})$.
+The inverse Fourier transform of the function
+$\sigma\longmapsto \phi_A(\sigma, f)$ evaluated at $a=1$ is
+essentially the distribution denoted by $S_1(f)$ in \cite{LL}.
+
+\subsection{The geometric side of the stable trace formula}
+
+The stable elliptic regular terms are 
+\begin{equation}\label{eq:7.19}
+\sum_{ {\mathcal{O}}\in {\mathcal{C}}_G ,
+\mathcal{O}\;\mathrm{regular\ elliptic} }
+SI_{\mathcal{O}}(f),
+\end{equation}
+where the $SI$'s are defined by \eqref{eq:7.6}, \eqref{eq:7.9}, 
+
+\begin{definition}\label{defn:7.18} If $\pi$ is an irreducible admissible
+genuine representation of
+$\overline{G({\mathbb Q}_p)}$ then let
+$L(\pi)$ denote the set of inequivalent representations
+$\pi^g$ where $g\in \overline{G_1(\qqq _p)}$.
+\end{definition}
+
+\begin{remark}\label{rem:7.19} For $\pi$ as above and $n>1$ then
+\[
+\# L(\pi)=
+\prod_{v|p}\#( k_v^\times/k_v^{\times 2}).
+\]
+\end{remark}
+
+\begin{lemma}\label{lem:7.20} If $\theta_1$ is an irreducible genuine representation
+of ${T_1({\mathbb Q}_p)}$ and $\pi_1(\theta_1)$ is the
+irreducible admissible representation of
+${G_1({\mathbb Q}_p)}$ associated to it in \cite{J2}
+(at least if $n$ is odd), let
+$\theta =\theta_1|_{{T(\qqq _p)}}$ and let
+$\pi(\theta)$ denote one of the irreducible
+constituents of
+$\pi(\theta) =\pi_1(\theta_1)|_{G(\qqq _p)}$.
+\end{lemma}
+
+This is proven in \cite{J3}.
+
+The following lemma will not be used here. Note that it related
+the distribution
+\[
+\begin{array}{c}
+C_c^\infty(\overline{G(\aaa _S)})_{gen}
+\rightarrow
+C_c^\infty(\overline{T(\aaa _S)})_{gen}\\
+f\longmapsto I_*^\kappa(f)
+\end{array}
+\]
+to a map
+\[
+\begin{array}{c}
+C_c^\infty(T(\aaa _S))'
+\rightarrow
+C_c^\infty(\overline{G(\aaa _S)})'_{gen}\\
+\theta \longmapsto
+\prod_{p\in S}\sum_{\pi _p\in \Pi (\theta_p)}
+\kappa _{*}(\pi _p)\chi _{\pi _p}(f_p),
+\end{array}
+\]
+after relating $C_c^\infty(\overline{T(\aaa _S)})_{gen}$
+to $C_c^\infty(T(\aaa _S))$.
+\begin{lemma}\label{lem:7.21}
+For each elliptic torus T and each factorizable
+$f\in {\mathcal{H}}(\overline{G(\aaa _S)})_{gen}$, we have 
+\[
+\begin{array}{c}
+<\theta ,I_{*}^\kappa (f )> \\ 
+=[D(T/\qqq ):D(T/\aaa _S)]^{-1}
+\prod_{p\in S}
+\sum_{\delta\in D(T/{\mathbb Q}_p)}
+\sum_{\pi _p\in \Pi (\theta_p^\delta)}
+\kappa _{*}(\pi _p)\chi _{\pi _p}(f_p),
+\end{array}
+\]
+where $\kappa _{*}(\pi _p):=\kappa (\delta)$ if
+$\pi _p\in \Pi (\theta_p^\delta)$,
+${\theta }_p^h$ denotes the conjugate of ${\theta }_p$ by $h$,
+${\theta }_p$ is a unitary genuine irreducible
+representation of $\overline{T(\aaa _S)}$, and
+$f_p(g)=f_p(g,1)$ (with apologies for the abuse of
+notation).
+\end{lemma}
+
+This is proven in \cite{J3}.
+\begin{remark}\label{rem:7.22}
+This result is essentially the metaplectic analog of
+\cite[(2.4-5)]{LL}, \cite[p. 762]{LL}. This is, after a suitable 
+choice of global measures, related to a special case of
+\cite[(3.42)]{J2} which was only proven under in the case $n$ odd.
+\end{remark}
+
+By this lemma and the trace formula for rank 0 (in
+Proposition~\ref{prop:7.2})
+the terms 
+\begin{equation}\label{eq:7.20}
+\sum_{ T \; , G-\mathrm{elliptic} }
+{\rm vol}(T(\qqq )\backslash \overline{T(\aaa _S)})
+\sum_{\gamma \in T(\qqq )}
+\sum_{ \kappa \in \Pi _u(D(T/{\mathbb Q})\backslash D(T/\aaa _S)),
+ \kappa \neq 1}
+I_\gamma ^\kappa (f)
+\end{equation}
+may be expressed as a linear combination of characters of representations 
+\begin{equation}\label{eq:7.21}
+\sum_T
+\sum_\theta c_\theta tr(\pi (\theta )(f)),
+\end{equation}
+for some constants $c_\theta$, where $\theta$ runs over
+$\Pi_u(T(\qqq )\backslash \overline{T(\aaa _S)})$.
+Note that we may rewrite the terms in \eqref{eq:7.20} as
+\[
+\sum_{H\ cuspidal}
+\sum_{ {\mathcal O}_H\not= \pm 1,
+a\ conj,
+class\ in\ H}
+SI_{{\mathcal O}_H}^H(f^H)
+\]
+in the notation of \eqref{eq:7.2}.
+
+In \eqref{eq:7.20} the terms $\gamma =\pm 1$ occuring
+in the middle sum on the right
+come from the singular elliptic terms in Lemma~\ref{lem:7.16} above.
+
+\subsection{Stabilizing the remaining terms}
+
+Let $F=\qqq _p$.
+
+\begin{lemma}\label{lem:7.23} For all $g\in \overline{G_1(F)}$,
+\[
+\begin{array}{c}
+{\rm tr}(R_{\overline{B}|B}(\sigma)^{-1}
+R'_{\overline{B}|B}(\sigma)I_A(\sigma,f^{g^{-1}}))
+-{\rm tr}(R_{\overline{B}|B}(\sigma)^{-1}
+R'_{\overline{B}|B}(\sigma)I_A(\sigma,f))\\
+={\rm tr}(I_A(\sigma,f)N(g))+{\rm tr}(I_A(\sigma^w,f)N(g))
+\end{array}
+\]
+\end{lemma}
+
+proof: Proven in \cite{J3}.
+
+From Example~\ref{ex:5.28}, \eqref{eq:5.28}, and Theorem~\ref{thm:6.22}, let
+\begin{equation}\label{eq:7.22}
+S_1(f)=\sum_{\chi\in{\mathcal{X}}-{\mathcal{X}}(G)}
+\sum_v {1\over 2}
+\int_{\Pi(A,\chi)}
+{\rm tr}(R_{\overline{B}|B}(\sigma_v)^{-1}
+R'_{\overline{B}|B}(\sigma_v)I_A(\sigma_v,f_v))
+\prod_{w\not= v}
+{\rm tr}(I_A(\sigma_w,f_w))|d\pi |.
+\end{equation}
+
+Let
+\begin{equation}\label{eq:7.23}
+S_2(f)=
+-{1\over 2}
+\sum_v \sum_{\{a,a^w\}\in A(\qqq )}
+{|D(a)|^{1/2}_v
+J_A(a,f_v)\over L(1,\qqq _v)}
+\prod_{w\not= v}
+{|D(a)|^{1/2}_w J_G(a,f_w)\over L(1,\qqq _w)}.
+\end{equation}
+
+Let
+\begin{equation}\label{eq:7.24}
+\begin{array}{c}
+S_3(f)=\\
+=Res_{s=0}{1\over s}
+\sum_{z\in Z(G(\qqq ))}
+\sum_{
+x\in \qqq ^\times /\qqq ^{\times 2}
+x\not= 1 }
+vol(Z(G(\qqq ))\backslash Z(\overline{G(\aaa _S)}))\times \\
+\times
+\int_{\overline{G(\aaa _S)}_{n(1)}
+\backslash \overline{G(\aaa _S)}}
+f(g^{-1}z
+\left(
+\begin{array}{cc}
+1&x\\ 0&1
+\end{array}
+\right)
+ g)\lambda(g)^{-s}dg ,
+\end{array}
+\end{equation}
+where $\lambda(g)=\delta(g)\delta(wg)$.
+
+The following will not be needed. It is the analog of a result in
+\cite{LL}, the proof of which used the analogs of Lemmas~\ref{lem:7.9}
+and~\ref{lem:7.23} above.
+\begin{conjecture}\label{conj:7.24}
+Let $S=S_1+S_2+S_3$. Then $S$ is stable
+$S(f^g)=S(f)$ for all $g\in \overline{G_1(\aaa _S)}$.
+\end{conjecture}
+
+Perhaps the proof of this (assuming it i correct)
+is similar to the proof of its analog in \cite{LL}.
+
+\subsection{The stable trace formula}\label{ssec:stabletf}
+
+This is the equality 
+\begin{equation}\label{eq:7.25}
+\sum_{\mathcal{O}\in \mathcal{C}}SI_{\mathcal{O}}(f)
+=\sum_{\chi \in {\mathcal{X}}}I_\chi (f)
+-\sum_{H\ cuspidal}\sum_{{\mathcal O}_H}SI_{{\mathcal O}_H}^H(f^H),
+\end{equation}
+where the $SI_{\mathcal{O}}$ are as in sections 7.2-7.3.
+
+The geometric side of the stable(r)
+trace formula is the sum of the following terms:
+
+(a) the sum over $(G,S)$-classes ${\mathcal{O}}\subset G(\qqq )$
+such that ${\mathcal{O}}\cap Z(G(\qqq ))\not= \emptyset$ of
+\begin{equation}\label{eq:7.26}
+SI_{\mathcal{O}}(f)=
+a^G(S,z)f(z),
+\end{equation}
+where $a^G$ is (a volume) is given in \S\ref{ssec:explicit} 
+(these do not include the ``nilpotent terms'', which
+got combined with some other terms ...),
+
+(b) the sum over elliptic regular classes 
+${\mathcal{O}}\subset G(\qqq )$
+of
+\begin{equation}\label{eq:7.27}
+SI_{\mathcal{O}}(f)=
+\sum_{\delta\in D(T/\aaa _S)}
+a^G(S,\gamma)J_G(\gamma,f^\delta),
+\end{equation}
+where $\gamma\in {\mathcal{O}}$, $T=G_\gamma$, and
+$J_G$ (an orbital integral) and $a^G$ (a volume)
+are given in \S\ref{ssec:explicit},
+
+(c)  the sum over $A$-elliptic regular classes
+${\mathcal{O}}\subset G(\qqq )$
+of
+\begin{equation}\label{eq:7.28}
+SI_{\mathcal{O}}(f)=
+\sum_{\delta\in D(A/\aaa _S)}
+I_{\mathcal{O}}(f^\delta),
+\end{equation}
+
+(d) plus terms associated to the geometric side of the 
+trace formula for each cuspidal endoscopic of $G$,
+
+(e) the ``geometric part'' of the endoscopic terms \eqref{eq:7.2}.
+
+The spectral side of the stable(r) metaplectic
+trace formula is the sum of the following terms:
+
+(f) the sum over classes $\chi\in {\mathcal{X}}(G)$ of
+\begin{equation}\label{eq:7.29}
+I_\chi(f)=
+{\rm tr}(\pi(f)),\ \ \ (\pi,G)\in\chi.
+\end{equation}
+
+(g) The sum over classes $\chi\in {\mathcal{X}}-{\mathcal{X}}(G)$
+of
+\begin{equation}\label{eq:7.30}
+I_\chi(f)+\sum_{ \sigma,
+(\sigma,A)\in\chi}
+{m'(\sigma)\over m(\sigma)}
+{\rm tr}(I_A(\sigma,f)),
+\end{equation}
+
+(h) the sum of the distributions $S_1$, $S_2$, and $S_3$
+
+(i) the ``spectral part'' of the endoscopic terms \eqref{eq:7.2}
+(which we have omitted ...).
+
+\section{Some food for thought}
+
+It would be nice if we had
+
+(1) provided a natural interpretation of the
+stabilization of the terms in (h),
+
+(2) uncovered endoscopic analogs of Arthur's
+inductive formulas \eqref{eq:6.19}, \eqref{eq:6.23} of the invariant
+distributions $I_{\mathcal{O}}$ and $I_\chi$ (if one exists),
+
+(3) a stabilization of the terms in (f).
+
+

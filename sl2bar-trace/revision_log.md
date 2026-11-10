@@ -1,6 +1,6 @@
 # Revision log: metaplectic trace formula for SL(2)
 
-This log tracks every item of the 2026 referee report ([Claude Docs](https://claude.ai/artifact/7MmqhX7GnoJNup9xbb9RNG)) through the revision. Section numbers refer to `original-1995/cctrace_new.tex` as compiled; item numbers match the report.
+This log tracks every item of the 2026 referee report (`referee_report_2026.md`; also in [Claude Docs](https://claude.ai/artifact/7MmqhX7GnoJNup9xbb9RNG)) through the revision. Item numbers match the report. Section numbers in the item tables refer to `original-1995/cctrace_new.tex` as compiled; `paper/CHANGES.md` maps them to the revision.
 
 ## Decisions
 
@@ -12,7 +12,7 @@ This log tracks every item of the 2026 referee report ([Claude Docs](https://cla
 
 | Stage | Scope | Status |
 |---|---|---|
-| 0 | Clean source tree: `cctrac3b.tex` from `book7d.tex`, remove Scientific Word macros, `\numberwithin`, `\label`/`\ref`/`\cite`, bibliography fixes. No mathematical changes. | Pending |
+| 0 | Clean source tree: `cctrac3b.tex` from `book7d.tex`, remove Scientific Word macros, `\numberwithin`, `\label`/`\ref`/`\cite`, bibliography fixes. No mathematical changes. | Done 2026-11-10 (see `paper/CHANGES.md`) |
 | 1 | §2 foundations: κ-splitting, global cover, genuine conventions, center, NAK, measures, GL(2) cover | Pending |
 | 2 | §3 rank 0 (much simpler for n = 2: the cover of A is abelian) | Pending |
 | 3 | §4 and `cctrac3b.tex`: geometric side | Pending |
@@ -91,4 +91,10 @@ Status values: open, fixed, moot (n = 2), deferred.
 
 ### Minor issues, cross-references, bibliography (stage 0 unless noted)
 
-The full lists are in the referee report: the minor-issues table, the stale cross-references, and the bibliography corrections table. Stage 0 fixes the cross-references and the bibliography; the minor mathematical slips are fixed in the stage of their section.
+The full lists are in the referee report: the minor-issues table, the stale cross-references, and the bibliography corrections table.
+
+- Cross-references: fixed in stage 0.
+- Bibliography: fixed in stage 0, except adding Li I–IV (later stages) and the status of [J1], [J3] (stage 6).
+- Preamble and Scientific Word macros: fixed in stage 0.
+- Introduction, "cups forms" and the commented-out line: fixed in stage 0.
+- The other minor slips are fixed in the stage of their section.

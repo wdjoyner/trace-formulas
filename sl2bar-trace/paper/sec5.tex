@@ -1,0 +1,597 @@
+
+\subsection{The integrability of $k_\chi ^T(x,f)$}
+
+For $K$-finite compactly supported $f$ as above, let 
+\begin{equation}\label{eq:5.12}
+K_{P,\chi }(x,y)=\sum_{P_1\subset P}n_P(A_1)^{-1}
+\int_{\Pi _u(\overline{M(\aaa )})}
+\sum_{\phi \in {\mathcal{B}}_{P_1}(\pi )_\chi }
+E_P(x,I_{P_1}(\pi ,f)\phi )\overline{E_P(y,\phi )}d\pi
+\end{equation}
+and 
+\begin{equation}\label{eq:5.13}
+k_\chi ^T(x,f)=\sum_P(-1)^{\dim (A_P/Z)}
+\sum_{\delta \in P(\qqq )\backslash G(\qqq )}
+K_{P,\chi }(x,x)\tau _P^{\wedge }(H(\delta x)-T).
+\end{equation}
+
+\begin{lemma}\label{lem:5.9}
+$K_{P,\chi }(x,y)$ is the kernel function for the regular 
+representation $R_P(f)$ of $\overline{G(\aaa )}$ on 
+\[
+L^2(G(\qqq )\backslash \overline{G(\aaa )})_{\mathcal{P},\chi }
+=L^2(G(\qqq )\backslash \overline{G(\aaa )})_{\mathcal{P}}
+\cap L^2(G(\qqq )\backslash \overline{G(\aaa )})_{\chi},
+\]
+where $\mathcal{P}$ denotes the associate class of $P$. In particular,
+$K_{G,\chi }(x,y)=K_\chi (x,y)$ is the kernel function for the regular
+representation $R_P(f)$ of $\overline{G(\aaa )}$ on
+$L^2(G(\qqq )\backslash \overline{G(\aaa )})_\chi $.
+\end{lemma}
+
+\begin{remark}\label{rem:5.10} In \cite{A15}, different notation is used: $R_P(f)$ denotes
+the convolution operator associated to right translation on
+\[
+L^2(N_P(\aaa )M_P(\qqq )\backslash \overline{G(\aaa )}))
+=\oplus_\chi
+L^2(N_P(\aaa )M_P(\qqq )\backslash \overline{G(\aaa )}))_\chi .
+\]
+\end{remark}
+
+\begin{theorem}\label{thm:5.11}
+$\sum_{\chi \in \mathcal{X}}K_{P,\chi }(x,y)
+=\sum_{{\mathcal O}\in \mathcal{C}}
+K_{P,{\mathcal O}}(x,y)$.
+\end{theorem}
+
+proof: Both sides represent the kernel function for the regular
+representation $R_P(f)$ of $\overline{G(\aaa )}$
+on $L^2(G(\qqq )\backslash \overline{G(\aaa )})$. $\Box $
+
+The trace formula is obtained by integrating both sides of 
+\[
+\sum_{\chi \in \mathcal{X}}\Lambda ^TK_{P,\chi }(x,x)
+=\sum_{{\mathcal O}\in \mathcal{C}}
+\Lambda ^TK_{P,{\mathcal O}}(x,x) 
+\]
+over $G(\qqq )\backslash \overline{G(\aaa )}$,
+where $\Lambda ^T$ is the
+truncation operator defined below. We know from earlier sections that the
+right-hand side is a polynomial in $T$, so the left-hand side is too. The 
+\textbf{global trace formula} is the constant term of this expression. 
+
+To prove the integrability of $k_\chi ^T(x,f)$ a truncation operator is
+introduced.
+If $\phi \in C(G(\qqq )\backslash \overline{G(\aaa )})_{gen}$
+then define,
+as in \cite[p 89]{A3}, the \textbf{truncation operator} by 
+\begin{equation}\label{eq:5.14}
+\Lambda ^T\phi (x)
+=\sum_P(-1)^{\dim (A/Z)}
+\sum_{\delta \in P(\qqq )\backslash G(\qqq )}
+\int_{N(\qqq )\backslash N(\aaa )}\phi (n\delta
+x)dn\cdot \tau _P^{\wedge }(H(\delta x)-T).
+\end{equation}
+More generally, if $P_1\subset G$ is a parabolic and if
+$\phi \in C(P_1(\qqq )\backslash \overline{G(\aaa )})_{gen}$ then
+define, as in \cite[p 97]{A3}, the \textbf{truncation operator} by 
+\begin{equation}\label{eq:5.15}
+\Lambda ^{T,P_1}\phi (x)
+=\sum_{R , P_0\subset R\subset P_1}
+(-1)^{\dim (A_R/A_1)}
+\sum_{\delta \in R(\qqq )\backslash P_1(\qqq )}
+\int_{N_R(\qqq )\backslash N_R(\aaa )}
+\phi (n\delta x)dn\cdot \tau_R^{\wedge ,1}(H(\delta x)-T).
+\end{equation}
+In the classical case of $SL(2)$, the truncation operator acting
+on the Eisenstein series has the effect of subtracting
+off the ``$y^s$ term'' in its Fourier expansion. This allows one 
+to compute the inner product of two truncated Eisenstein series
+(see Theorem~\ref{thm:5.27} below).
+
+\begin{example}\label{ex:5.12}
+For $G=SL(2),P_1=G$ this formula becomes 
+\begin{equation}\label{eq:5.16}
+\Lambda ^T\phi (x)=\phi (x)-\sum_{\delta \in B(\qqq )\backslash G(\qqq %
+)}\int_{N(\qqq )\backslash N(\aaa )}\phi (n\delta x)dn\cdot \tau
+_B^{\wedge }(H(\delta x)-T).
+\end{equation}
+\end{example}
+
+\begin{lemma}\label{lem:5.13}
+The truncation operator is a self-adjoint idempotent on
+$C(G(\qqq )\backslash \overline{G(\aaa )})_{gen}
+\cap L^2(G(\qqq )\backslash \overline{G(\aaa )})$ .
+\end{lemma}
+proof: This is an immediate consequence of the non-metaplectic
+version \cite{A3} since the metaplectic cover splits over $N$. $\Box$
+
+\begin{lemma}\label{lem:5.14}
+(\cite[Lemma 1.5]{A3}) For
+$\phi \in C(P(\qqq )\backslash \overline{G(\aaa )})_{gen}$, we
+have 
+\[
+\sum_{ P_1 , P_0\subset P_1\subset P }
+\sum_{\delta \in P_1(\qqq )\backslash P(\qqq )}
+\Lambda ^{T,P_1}\phi (\delta x)\tau _1^P(H_0(\delta x)-T)
+=\int_{N(\qqq )\backslash N(\aaa )}\phi (nx)dn.
+\]
+\end{lemma}
+
+proof in the case $G=SL(2)$: Suppose $P=G$. First, from the fact that 
+\begin{equation}\label{eq:5.17}
+\sum_{ P_1 , R\subset P_1\subset Q}
+ (-1)^{\dim (A_R/A_1)}\tau_R^{\wedge ,1}(X)\tau _1^Q(X)
+=\left\{ 
+\begin{array}{c}
+1,\;\;\;\;Q=R, \\ 
+0,\;\;\;\;Q\neq R,
+\end{array}
+\right.
+\end{equation}
+(this is Langlands' combinatorial lemma; see \cite{A3})
+% Claude (2026): the original cited a nonexistent "lemma 6.9".
+, we have $\tau
+_B^{\wedge ,B}(X)\tau _B^G(X)=\tau _B^{\wedge ,G}(X)\tau _G^G(X)=\tau
+_B^{\wedge }(X)$. The LHS of the equation in the above lemma is 
+\begin{eqnarray*}
+&&\sum_{ P_1, B\subset P_1\subset G } 
+\sum_{\delta \in P_1(\qqq )\backslash G(\qqq )}
+\Lambda ^{T,P_1}\phi (\delta x)\tau _1^G(H_0(\delta x)-T) \\
+&=&\Lambda ^{T,G}\phi (x)\tau _G^G(H_0(x)-T)+ \\
+&&+\sum_{\delta \in B(\qqq )\backslash G(\qqq )}\Lambda ^{T,B}\phi
+(\delta x)\tau _B^G(H_0(\delta x)-T) \\
+&=&\Lambda ^{T,G}\phi (x)+\sum_{\delta \in B(\qqq )\backslash G(\qqq %
+)}\int_{N(\qqq )\backslash N(\aaa )}\phi (n\delta x)dn\cdot \tau
+_B^{\wedge ,B}(H_0(\delta x)-T)\cdot \tau _B^G(H_0(\delta x)-T) \\
+&=&\Lambda ^{T,G}\phi (x)+\sum_{\delta \in B(\qqq )\backslash G(\qqq %
+)}\int_{N(\qqq )\backslash N(\aaa )}\phi (n\delta x)dn\cdot \tau
+_B^{\wedge }(H_0(\delta x)-T) \\
+&=&\phi (x),
+\end{eqnarray*}
+by the previous example.
+
+Suppose $P=B$. The LHS of the equation in the above lemma is 
+\[
+\Lambda ^{T,B}\phi (x)\tau _B^B(H_0(x)-T)
+=\int_{N(\qqq )\backslash N(\mathbb{A})}\phi (nx)dn, 
+\]
+since $\tau _B^B(X)=1$.
+
+This verifies the lemma in both cases. $\Box $
+
+\begin{lemma}\label{lem:5.15}
+(\cite[Lemma 2.2]{A3})
+
+\begin{eqnarray*}
+k_\chi ^T(x,f)=\sum_{ P_1,P_2 {\rm s.t.} P_0\subset P_1\subset P_2}
+\sum_{\delta \in P_1(\qqq )\backslash G(\qqq )}
+\sigma _1^2(H_0(\delta x)-T)\times  \\
+\times \left\{ \sum_{ P, P_1\subset P\subset P_2 }
+(-1)^{\dim (A/Z)}\Lambda _2^{T,P}K_{P,\chi }(\delta x,\delta x)\right\} .
+\end{eqnarray*}
+(The subscript $2$ in $\Lambda _2^{T,P}$ means that it is to be applied to
+the second variable.)
+\end{lemma}
+
+\begin{example}\label{ex:5.16}
+Let $G=SL(2)$. The above lemma becomes 
+\begin{eqnarray*}
+k_\chi ^T(x,f)=
+\sum_{ P_1,P_2 {\rm s.t.} (P_1,P_2)\in  \{(B,B),(B,G),(G,G)\}} 
+\sum_{\delta \in P_1(\qqq )\backslash G(\qqq )}
+\sigma_1^2(H_0(\delta x)-T)\times  \\
+\ \times \left\{ \sum_{ P , P_1\subset P\subset P_2 }
+(-1)^{\dim (A/Z)}\Lambda _2^{T,P_1}K_{P,\chi }(\delta x,\delta x)\right\}  \\
+=-\sum_{\delta \in B(\qqq )\backslash G(\qqq )}\sigma _B^B(H_0(\delta
+x)-T)\Lambda _2^{T,B}K_{B,\chi }(\delta x,\delta x)\;\;(\mathrm{the}\;(B,B)\;%
+\mathrm{term}) \\
++\sigma _G^G(H_0(x)-T)\Lambda _2^{T,G}K_{G,\chi }(x,x)\;\;(\mathrm{the}%
+\;(G,G)\;\mathrm{term}) \\
++\sum_{\delta \in B(\qqq )\backslash G(\qqq )}\sigma _B^G(H_0(\delta
+x)-T)\times  \\
+\;\;\times \left\{ -\Lambda _2^{T,B}K_{B,\chi }(\delta x,\delta x)+\Lambda
+_2^{T,B}K_{G,\chi }(\delta x,\delta x)\right\} \;\;\;\;\;\;\;(\mathrm{the}%
+\;(B,G)\;\mathrm{term}) \\
+=\Lambda _2^{T,G}K_{G,\chi }(x,x)+ \\
++\sum_{\delta \in B(\qqq )\backslash G(\qqq )}\tau _B(H_0(\delta
+x)-T)\left\{ -\Lambda _2^{T,B}K_{B,\chi }(\delta x,\delta x)+\Lambda
+_2^{T,B}K_{G,\chi }(\delta x,\delta x)\right\}  \\
+=\Lambda _2^{T,G}K_{G,\chi }(x,x)+\sum_{\delta \in B(\qqq )\backslash G(%
+\qqq )}\tau _B(H_0(\delta x)-T)\Lambda _2^{T,B}K_{G,\chi }(\delta x,\delta
+x).
+\end{eqnarray*}
+by \eqref{eq:2.5}.
+% Claude (2026): the original cited "lemma 4.7" here.
+The definition is 
+\begin{equation}\label{eq:5.18}
+k_\chi ^T(x,f)=K_{G,\chi }(x,x)-\sum_{\delta \in B(\qqq )\backslash G(\mathbb{%
+Q})}K_{B,\chi }(\delta x,\delta x)\tau _B^{\wedge }(H_0(\delta x)-T).
+\end{equation}
+
+We claim now that 
+\begin{equation}\label{eq:5.19}
+\Lambda _2^{T,G}K_{G,\chi }(x,x)=K_{G,\chi }(x,x)-\sum_{\delta \in B(\qqq %
+)\backslash G(\qqq )}\tau _B(H(\delta x)-T)\Lambda _2^{T,B}K_{G,\chi
+}(\delta x,\delta x).
+\end{equation}
+To see this, note 
+\[
+\Lambda _2^{T,G}K_{G,\chi }(x,x)=K_{G,\chi }(x,x)-\sum_{\delta \in B(\qqq %
+)\backslash G(\qqq )}\int_{N(\qqq )\backslash N(\aaa )}\Lambda
+_2^{T,B}K_{G,\chi }(x,n\delta x)dn\cdot \tau _B^{\wedge }(H(\delta x)-T).
+\]
+On the other hand, 
+\[
+\Lambda _2^{T,B}K_{G,\chi }(x,x)=\int_{N(\qqq )\backslash N(\aaa %
+)}K_{G,\chi }(x,nx)dn\cdot \tau _B^{\wedge ,B}(H(\delta x)-T),
+\]
+so 
+\begin{eqnarray}
+\sum_{\delta \in B(\qqq )\backslash G(\qqq )}\int_{N(\qqq )\backslash
+N(\aaa )}\Lambda _2^{T,B}K_{G,\chi }(x,n\delta x)dn\cdot \tau _B^{\wedge
+}(H(\delta x)-T)  \nonumber \\
+=\sum_{\delta \in B(\qqq )\backslash G(\qqq )}\Lambda _2^{T,B}K_{G,\chi
+}(x,\delta x)\cdot \tau _B^{\wedge }(H(\delta x)-T)  \nonumber \\
+=\sum_{\delta \in B(\qqq )\backslash G(\qqq )}\Lambda _2^{T,B}K_{G,\chi
+}(\delta x,\delta x)\cdot \tau _B(H(\delta x)-T),
+\label{eq:5.20}\end{eqnarray}
+since the volume of $N(\qqq )\backslash N(\aaa )$ and $\tau _B(X)=\tau
+_B^{\wedge }(X)$ in this case. The claimed result follows.
+\end{example}
+
+\begin{example}\label{ex:5.17}
+Let $G=SL(2),\;P=G$. Then 
+\[
+E_G(x,\phi )=E(x,\phi )=\sum_{\delta \in B(\qqq )\backslash G(\qqq %
+)}\phi (\delta x)\delta _B(\delta x)^{1/2}.
+\]
+
+If $P=B$ then $E_B(x,\phi )=\phi (x)\delta _B(x)^{1/2}$.
+\end{example}
+
+\begin{example}\label{ex:5.18}
+Let $G=SL(2),\;P=B$. For $\pi \in \Pi _u(\overline{A(\aaa )})$,
+$\chi \in \mathcal{X}$,
+the set ${\mathcal{B}}_B(\pi )_\chi $ is an orthonormal basis for
+${\mathcal{H}}_B(\pi )_\chi $. We have 
+\[
+{\mathcal{H}}_B(\pi )_\chi =\left\{
+\begin{array}{c}
+\phi:N(\aaa )A(\qqq )\setminus \overline{G(\aaa )}\rightarrow
+{\mathbb C}\ {\rm genuine\ }|\ \\
+(1)\ \  \phi {\rm\ is\  right}\  \overline{K_0}\ {\rm -finite},\\
+(2) \ \ \phi(ag)=\pi(a)\phi(g),
+\ \ a\in \overline{A(\aaa )},\ g\in \overline{G(\aaa )},\\
+(3)\ \  ||\phi ||<\infty
+\end{array}
+\right\}.
+\]
+\end{example}
+
+\begin{example}\label{ex:5.19}
+Let $G=SL(2),\;P=G$. For $\pi \in \Pi _u(\overline{G(\aaa )})$
+cuspidal,$\;\chi \in 
+\mathcal{X}$, the set ${\mathcal{B}}_G(\pi )_\chi $ is an orthonormal basis
+for ${\mathcal{H}}_G(\pi )_\chi $. If $\chi = (G,\pi )$
+(in $\mathcal{X}$) then this space is non-zero and consists of
+(measurable equivalence classes of) square-integrable
+genuine functions on $G(\qqq )\backslash \overline{G(\aaa )}$
+which are cuspidal automorphic forms of type $\pi_\infty $.
+Since almost every $\pi _p$ is unramified, the action of almost
+all $\overline{K_{0,p}}$ is trivial on the
+functions in this space. Since the functions in
+this space are all $\overline{K_0}$-finite,
+we may decompose it by the action of $\overline{K_0}$ on
+the right: 
+\[
+{\mathcal{H}}_G(\pi )_\chi =
+\bigoplus_{\sigma \in \Pi(\overline{K_0})}
+{\mathcal{H}}_G(\pi )_{\chi ,\sigma }
+\]
+where each irreducible representation
+$\sigma \in \Pi(\overline{K_0})$ occurs at
+most with finite multiplicity. For the basis above, one must pick a element
+in each one of these ``$\overline{K_0}$-types''.
+\end{example}
+
+\begin{example}\label{ex:5.20}
+Let $G=SL(2),\;P=B$. Recalling the determination of
+${\mathcal{B}}_B(\pi)_\chi $ above, we have 
+\[
+K_{B,\chi }(x,y)
+=\int_{\Pi _u(\overline{A(\aaa )})}
+\sum_{\phi \in {\mathcal{B}}_B(\pi)_\chi }
+I_B(\pi ,f)\phi (x)d\pi \cdot \delta _B(x)\overline{\phi (y)}
+\]
+\end{example}
+
+\begin{example}\label{ex:5.21}
+Let $G=SL(2),\;P=G$. Recalling the determination
+of ${\mathcal{B}}_B(\pi)_\chi $ above, we have 
+\begin{eqnarray*}
+K_{G,\chi }(x,y)
+=\int_{\Pi _u(\overline{G(\aaa )})}
+\sum_{\phi \in {\mathcal{B}}_G(\pi)_\chi }
+E(x,I_G(\pi ,f)\phi )d\pi \cdot \overline{E(y,\phi )}+ \\
+\int_{\Pi _u(\overline{A(\aaa )})}
+\sum_{\phi \in {\mathcal{B}}_B(\pi )_\chi }
+I_B(\pi,f)\phi (x)d\pi \cdot \delta _B(x)\overline{\phi (y)}.
+\end{eqnarray*}
+\end{example}
+
+\begin{example}\label{ex:5.22}
+Let $G=SL(2)$. We have 
+\begin{eqnarray*}
+k_\chi ^T(x,f)
+=K_{G,\chi }(x,x)-\sum_{\delta \in B(\qqq )\backslash G(\mathbb{Q})}
+K_{B,\chi }(\delta x,\delta x)
+\tau _B^{\wedge }(H_0(\delta x)-T) \\
+=\int_{\Pi _u(\overline{G(\aaa )})}
+\sum_{\phi \in {\mathcal{B}}_G(\pi )_\chi}
+E_G(x,I_G(\pi ,f)\phi )d\pi \cdot \overline{E_G(x,\phi )}+ \\
++\int_{\Pi _u(\overline{A(\aaa )})}
+\sum_{\phi \in {\mathcal{B}}_B(\pi )_\chi }
+I_B(\pi,f)\phi (\delta x)d\pi \cdot \delta _B(\delta x)
+\overline{\phi (\delta x)}(1-\tau _B^{\wedge }(H(x)-T)) \\
+-\sum_{ \delta \in B(\qqq )\backslash G(\qqq ), \delta \neq 1 }
+\int_{\Pi _u(\overline{A(\aaa )})}
+\sum_{\phi \in {\mathcal{B}}_B(\pi )_\chi }I_B(\pi,f)
+\phi (\delta x)d\pi \cdot \delta _B(\delta x)
+\overline{\phi (\delta x)}\tau _B^{\wedge }(H(x)-T)
+\end{eqnarray*}
+\end{example}
+
+Let 
+\begin{equation}\label{eq:5.21}
+K_\chi ^T(f)=\int_{G(\qqq )\backslash \overline{G(\aaa )}}
+\Lambda _2^TK_\chi (x,x)dx.
+\end{equation}
+Define 
+\begin{equation}\label{eq:5.22}
+J_\chi ^T(x,y)=\sum_Pn(A)^{-1}
+\int_{\Pi _u(\overline{M(\aaa )})}
+\sum_{\phi \in {\mathcal{B}}_P(\pi )_\chi }
+E(x,I_P(\pi ,f)\phi )\overline{\Lambda ^TE(y,\phi )}d\pi
+\end{equation}
+and $j_\chi ^T(x,f)=J_\chi ^T(x,x)$. Let 
+\[
+J_\chi ^T(f)
+=\int_{G(\qqq )\backslash \overline{G(\aaa )}}
+J_\chi ^T(x,x)dx 
+\]
+and let
+\begin{equation}\label{eq:5.23}
+J_\chi (f)=J_\chi ^T(f)|_{T=0}.
+\end{equation}
+
+\begin{lemma}\label{lem:5.23}
+The integrals $K_\chi ^T(f),J_\chi ^T(f)$ are absolutely convergent and $%
+K_\chi ^T(f)=J_\chi ^T(f)$ if $T$ is sufficiently regular.
+\end{lemma}
+
+\begin{remark}\label{rem:5.24}
+The equality above is the metaplectic analog of \cite[Lemma 2.4]{A3}
+for $SL(2)$.
+\end{remark}
+
+proof in the case $G=SL(2)$: The integral 
+\[
+K_\chi ^T(f)
+=\int_{G(\qqq )\backslash \overline{G(\aaa )}}
+\Lambda _2^TK_\chi (x,x)dx. 
+\]
+is absolutely convergent since the integrand is compactly
+supported on $G(\qqq )\backslash \overline{G(\aaa )}$.
+
+Let $F(P_1,P_2)$ denote the subset of elements of
+$P_1(\qqq )\backslash P_2(\qqq )$ which do not belong
+to for some parabolic $P$ with $P_1\subset
+P\subset P_2,\;P\neq P_2$. Then 
+\[
+F(P_1,P_2)=\left\{ 
+\begin{array}{c}
+\{1\},\;\;\;\;P_1=P_2, \\ 
+B(\qqq )\backslash G(\qqq )-\{1\},\;\;P_1=B,\;P_2=G,
+\end{array}
+\right. 
+\]
+and, from \cite[p. 105]{A3}, 
+\begin{eqnarray*}
+&&\int_{G(\qqq )\backslash \overline{G(\aaa )}}
+k_\chi ^T(x,f)dx \\
+&&=\sum_{P_1\subset P_2}(-1)^{\dim (A_2/Z)}
+\int_{P_1(\qqq )\backslash \overline{G(\aaa )}}
+\sum_{\gamma \in F(P_1,P_2)}\sigma _1^2(H(x)-T)
+\Lambda_2^{T,P_1}K_{P_1,\chi }(\gamma x,x)dx \\
+&&=\int_{G(\qqq )\backslash \overline{G(\aaa )}}
+\sigma _G^G(H(x)-T)\Lambda_2^{T,G}K_{G,\chi }(x,x)dx\\
+&&\;\;\;\;\;(the\ P_1=P_2=G\ term) \\
+&&+\int_{B(\qqq )\backslash \overline{G(\aaa )}}
+\sigma _B^G(H(x)-T)
+\sum_{\gamma\in B(\qqq )\backslash G(\qqq )-\{1\}}
+\Lambda _2^{T,B}K_{B,\chi }(\gamma x,x)dx\\
+&&\;\;\;\;\;(the\ P_1 =B,\;P_2=G\ term) \\
+&&-\int_{B(\qqq )\backslash \overline{G(\aaa )}}
+\sigma _B^B(H(x)-T)\Lambda_2^{T,B}K_{B,\chi }(x,x)dx
+\;\;\;\;\;(P_1 =P_2=B)
+\end{eqnarray*}
+Each of these integrals converge absolutely since the integral is continuous
+and compactly supported. $\Box $
+
+\begin{lemma}\label{lem:5.25}
+$\sum_{ \chi =(M,\rho )\in \mathcal{X}, M\neq G }
+\int_{G(\qqq )\backslash \overline{G(\aaa )}}
+|j_\chi ^T(x,f)|dx<\infty $.
+\end{lemma}
+
+proof in the case $G=SL(2)$: Since
+$K_P(x,y)=\sum_{\chi \in {\mathcal{X}}}K_{P,\chi }(x,y)$
+is absolutely and uniformly convergent on compacta in
+$x,y $, $K_P(x,y)$ is continuous in $x,y$. The same
+reasoning as in the
+previous lemma therefore applies here as well. $\Box $
+
+\begin{lemma}\label{lem:5.26}
+For $\chi \in \mathcal{X}$, we have 
+\[
+\int_{G(\qqq )\backslash \overline{G(\aaa )}}
+j_\chi^T(x,f)dx=\sum_Pn(A)^{-1}
+\int_{\Pi _u(\overline{M(\aaa )})}
+\sum_{\phi \in {\mathcal{B}}_P(\pi )_\chi }
+\Lambda ^TE(x,I_P(\pi ,f)\phi )\overline{\Lambda ^TE(y,\phi )}d\pi .
+\]
+\end{lemma}
+
+proof: This follows from Lemma~\ref{lem:5.23} above on the
+equality of $J_\chi ^T(f)$ and $K_\chi ^T(f)$, along with the
+metaplectic analog of the fact that
+fact $\Lambda^T\circ \Lambda ^T=\Lambda ^T$
+\cite[Corollary 1.2]{A3} and that $\Lambda ^T$ is
+self-adjoint \cite[Lemma 1.3]{A3} (see Lemma~\ref{lem:5.13} above). $\Box $
+
+Let $L_P\subset {{\mathfrak{a}}}_P^G$ denote the integral
+lattice generated by the
+co-roots $\{\alpha ^{\vee }\;|\;\alpha \in \Delta _P\}$. For $\phi \in 
+{\mathcal{H}}_{P_1}^0(\pi ),
+\;s\in \Omega ({{\mathfrak{a}}}_1,{{\mathfrak{a}}}_2),\varsigma
+\in {{\mathfrak{a}}}_{1,\mathbb{C}}^{*}$, let 
+\[
+M(s,\pi ,\varsigma )\phi =(M(s,\pi _\varsigma )\phi _\varsigma
+)_{-s\varsigma }. 
+\]
+\begin{theorem}\label{thm:5.27}
+If $\chi \in \mathcal{X}$ is an unramified class then (\cite[section 4]{A3}) 
+\[
+J_\chi ^T(f)=\sum_{P\in \mathcal{P}_\chi }
+n(A)^{-1}\int_{\Pi _u(\overline{M(\aaa )})}
+tr(M_P^T(\pi )_\chi I_P(\pi ,f)_\chi )d\pi ,
+\]
+where 
+\[
+M_P^T(\pi )_\chi =vol({{\mathfrak{a}}}_P^G/L_P)\lim_{\varsigma \rightarrow
+0}\sum_{P_2\in \mathcal{P}_\chi }
+\sum_{s\in \Omega ({{\mathfrak{a}}},{{\mathfrak{a}}}_2)}
+\frac{e^{(s\varsigma )(T)}M(s,\pi )^{-1}M(s,\pi ,\varsigma )}{\prod_{\alpha
+\in \Delta _2}(s\varsigma )(\alpha ^{\vee })}.
+\]
+\end{theorem}
+
+For a similar but more general result (in the non-metaplectic case),
+see \cite[Theorem 8.2]{A14}, which does not assume that $\chi$ is unramified.
+
+\begin{example}\label{ex:5.28} For $G=SL(2)$, each $(G,\pi)\in\chi\in{\mathcal{X}}$ is
+unramified. Moreover, $(A,\mu)\in\chi\in{\mathcal{X}}$ is unramified
+if and only if $\mu^w\not=\mu$.
+($P=G,\chi =(G,\rho )$) $M_G^T(\pi )_\chi =1$
+
+($P=B,\chi =(G,\rho )$) $M_B^T(\pi )_\chi =1$
+
+($P=B,\chi =(A,\rho )$ unramified) 
+\[
+\begin{array}{c}
+M_B^T(\pi )_\chi \\
+=vol({\mathbb{R}}/{\mathbb{Z}})
+\lim_{\varsigma \rightarrow 0}
+\left[
+\frac{e^{\varsigma (T)}
+M(1,\pi )^{-1}M(1,\pi ,\varsigma )}{\varsigma (\alpha^{\vee })}
++\frac{e^{-\varsigma (T)}
+M(s,\pi )^{-1}M(s,\pi ,\varsigma )}{-\varsigma (\alpha^{\vee })}
+\right]\\
+=M(s,\pi)^{-1}
+\lim_{\varsigma \rightarrow 0}
+{M(s,\pi)-e^{-2\varsigma (T)}M(s,\pi,\varsigma)
+\over \varsigma(\alpha^\vee)} ,
+\end{array}
+\]
+where $\alpha $ denotes the unique positive root.
+We identify ${\mathfrak{a}}^*$ with ${\mathbb{R}}$, ${\mathfrak{a}}$ with
+${\mathbb{R}}$, and
+${\mathfrak{a}}^*\times {\mathfrak{a}}\rightarrow {\mathbb{R}}$ with
+the map $(x,y)\longmapsto 2xy$
+of real numbers. Thus, at a function $\phi$
+on $K$, the above limit becomes 
+\[
+\begin{array}{c}
+M(s,\pi)^{-1}
+\lim_{\varsigma \rightarrow 0}
+{M(s,\pi)\phi(k)-e^{-2\varsigma (T)}e^{\varsigma (H(k))}
+M(s,\pi_\varsigma)\phi_\varsigma(k)
+\over \varsigma(\alpha^\vee)} \\
+=M(s,\pi)^{-1}
+\lim_{\varsigma \rightarrow 0}
+{M(s,\pi)\phi(k)-e^{-2\varsigma (T)}M(s,\pi_\varsigma)\phi_\varsigma
+\over \varsigma(\alpha^\vee)} \\
+=-M(s,\pi)^{-1}M'(s,\pi)\phi(k)+4 \phi(k) T,
+\end{array}
+\]
+where the prime denotes differentiation with respect to
+$\varsigma$. Thus
+\[
+M_B^T(\pi )_\chi =
+-M(s,\pi)^{-1}M'(s,\pi)+4\cdot I\cdot T,
+\]
+where $I$ denotes the identity. (There appears to be a sign
+mistake here - the minus sign perhaps differs with some
+calculations of Arthur. However, the sign it gives for the
+corresponding expression in the trace formula
+seems to agree with the corresponding sign in \cite{LL}.)
+
+For
+examples and properties of more general limits, see \cite[section 6]{A6}.
+\end{example}
+
+
+\subsection{The trace formula}
+
+The geometric side of the trace formula is the sum of the following terms:
+
+(a) the sum over classes ${\mathcal{O}}\subset G(\qqq )$
+such that ${\mathcal{O}}\cap Z(G(\qqq ))\not= \emptyset$ of
+\begin{equation}\label{eq:5.24}
+J_{\mathcal{O}}(f)=
+a^G(S,z)f(z)+{1\over 2}a^A(S,z)J_A(z,f),
+\end{equation}
+where $J_A$ and $a^M$ are given in \S\S\ref{ssec:JMu}--\ref{ssec:explicit} (these include the
+``nilpotent terms''),
+
+(b) the sum over elliptic regular classes ${\mathcal{O}}\subset G(\qqq )$
+of
+\begin{equation}\label{eq:5.25}
+J_{\mathcal{O}}(f)=
+a^G(S,\gamma)J_G(\gamma,f),
+\end{equation}
+where $\gamma\in {\mathcal{O}}$ and
+$J_G$ (an orbital integral) and $a^G$ (a volume)
+are given in \S\S\ref{ssec:JMu}--\ref{ssec:explicit},
+
+(c) the sum over ``hyperbolic'' regular classes
+${\mathcal{O}}\subset G(\qqq )$
+of
+\begin{equation}\label{eq:5.26}
+J_{\mathcal{O}}(f)=
+a^A(S,\gamma)J_A(\gamma,f),
+\end{equation}
+where $J_A$ (a weighted orbital integral) and $a^A$ (a volume)
+are given in \S\S\ref{ssec:JMu}--\ref{ssec:explicit}.
+
+The spectral side of the trace formula is the sum of the following terms:
+
+(a) the sum over the cuspidal classes $\chi\in {\mathcal{X}}(G)$ of
+\begin{equation}\label{eq:5.27}
+J_\chi(f)=
+{\rm tr}(\pi(f)),\ \ \ (\pi,G)\in\chi,
+\end{equation}
+
+(b) the sum over classes $\chi\in {\mathcal{X}}-{\mathcal{X}}(G)$ of
+\begin{equation}\label{eq:5.28}
+J_\chi(f)=
+{1\over 2}\int_{\Pi_u(\overline{A(\aaa _S)})}
+{\rm tr}(M_A(\pi)_\chi I_B(\pi,f)_\chi)d\pi,
+\end{equation}
+where $M_A(\pi)_\chi =M_A^T(\pi)_\chi|_{T=0}$ is
+(essentially a logarithmic derivative of an intertwining operator)
+given by Example~\ref{ex:5.28}.
+
+

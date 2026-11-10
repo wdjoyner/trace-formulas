@@ -1,0 +1,475 @@
+\subsection{Basic properties}
+
+\subsubsection{Definitions}\label{sssec:defs}
+
+Let $S$ be a subset of places of ${\mathbb{Q}}$ and let
+$||...||:G({\mathbb{A}}_S)\rightarrow {\mathbb{R}}_+$ be a ``height'' function
+as in Section~\ref{sec:background}. Let $N>0$ and let
+$\Gamma\subset \Pi(\overline{K})$
+be a finite set of inequivalent genuine irreducible representations
+of the n-fold cover of $K=K_{0,S}=\prod_{p\in S}K_{0,p}$.
+
+We call a genuine factorizable function
+$f=\prod_{p\in S}f_p:\overline{G({\mathbb{A}}_S)}\rightarrow {\mathbb{C}}$
+{\bf smooth} if
+
+(a) $f_\infty\in C^\infty(\overline{G({\mathbb{R}})})_{gen}$
+if $p=\infty \in S$, and
+
+(b) $f_p\in C_c^\infty(\overline{G({\mathbb{Q}}_p)})_{gen}$
+if $p\in S-\{\infty\}$.
+
+\noindent
+In general, a genuine
+function $f:\overline{G({\mathbb{A}}_S)}\rightarrow {\mathbb{C}}$
+is {\bf smooth} if it is a finite linear combination of factorizable smooth
+functions. Define
+${\mathcal{H}}_N(\overline{G({\mathbb{A}}_S)})_\Gamma$
+to be the vector space of
+all genuine smooth complex valued functions
+$f:\overline{G({\mathbb{A}}_S)}\rightarrow {\mathbb{C}}$
+such that
+\begin{equation}\label{eq:4.11}
+\begin{array}{c}
+{\rm supp}(f)\subset \overline{G({\mathbb{A}}_S,N)}
+=\{ g\in \overline{G({\mathbb{A}}_S)}\ |\ ||g||\leq e^N\}\\
+{\rm The \ spans\ of\ }
+k\longmapsto f(kg){\rm \ generates\ a \ repn\ in\ }\Gamma,\\
+{\rm The \ spans\ of\ }
+k\longmapsto f(gk){\rm \ generates\ a \ repn\ in\ }\Gamma .
+\end{array}
+\end{equation}
+The semi-norms
+\[
+||f||_D=\sup_{x\in \overline{G({\mathbb{A}}_S)}} |Df(x)|,
+\]
+$D$ a differential operator on $\overline{G({\mathbb{R}})}$,
+induces a topology on
+${\mathcal{H}}_N(\overline{G({\mathbb{A}}_S)})_\Gamma$
+making it into a topological
+vector space. By \cite{Ru}, ch 1,
+we may complete this space using the above
+family of seminorms and obtain a Frech\'et space.
+
+Define
+\[
+{\mathcal{H}}(\overline{G({\mathbb{A}}_S)})=\lim_{\Gamma}
+{\mathcal{H}}(\overline{G({\mathbb{A}}_S)})_\Gamma
+\]
+where
+\[
+{\mathcal{H}}(\overline{G({\mathbb{A}}_S)})_\Gamma =\lim_{N}
+{\mathcal{H}}_N(\overline{G({\mathbb{A}}_S)})_\Gamma .
+\]
+Therefore, each function in
+${\mathcal{H}}(\overline{G({\mathbb{A}}_S)})$
+is both right and left $\overline{K}$-finite.
+
+Similarly, if $A$ denotes the usual
+diagonal torus of $G=SL(2)$, then we define
+${\mathcal{H}}(\overline{A({\mathbb{A}}_S)})$.
+
+From \cite[section 11]{A11}, another space of functions of
+``almost compact'' support,
+${\mathcal{H}}_{ac}(\overline{G({\mathbb{A}}_S)})$, is introduced,
+as well as its subspace of ``moderate'' functions,
+which we denote by
+${\mathcal{H}}_{mod}(\overline{G({\mathbb{A}}_S)})$.
+However, in the case $G=SL(2)$ it turns out that
+\[
+\begin{array}{c}
+{\mathcal{H}}_{mod}(\overline{G({\mathbb{A}}_S)})=
+{\mathcal{H}}_{ac}(\overline{G({\mathbb{A}}_S)})=
+{\mathcal{H}}(\overline{G({\mathbb{A}}_S)}),\\  
+{\mathcal{H}}_{mod}(\overline{A({\mathbb{A}}_S)})=
+{\mathcal{H}}_{ac}(\overline{A({\mathbb{A}}_S)})=
+{\mathcal{H}}(\overline{A({\mathbb{A}}_S)}).
+\end{array}
+\]
+
+We shall only sketch the definition of the Schwartz
+space ${\mathcal{C}}(\overline{G({\mathbb{A}}_S)})$: this is the space spanned by
+factorizable functions $f$ each of whose local components
+belong to the local Schwartz space, defined for example
+in \cite{J1}.
+% Claude (2026): the 1997 book cites its Chapter 6 here.
+This space will play a bigger role in Section~\ref{sec:invariant} below.
+
+\subsection{An equivalence relation on $G({\mathbb{Q}})$}
+
+Let $\gamma ,\gamma ^{\prime }\in G({\mathbb{Q}})$ and let
+$\gamma =\gamma_u\gamma _s$ denote its Jordan decomposition.
+We say that $\gamma ,\gamma^{\prime }$ are \textbf{equivalent},
+written $\gamma \sim \gamma ^{\prime }$,
+if $\gamma _s$ is $G({\mathbb{Q}})$-conjugate to
+$\gamma _s^{\prime }$. Clearly
+if $\gamma ,\gamma ^{\prime }$ are conjugate and
+semi-simple then they are
+equivalent. In fact, by the uniqueness of the Jordan decomposition, it can
+be shown that if $\gamma ,\gamma ^{\prime }$ are conjugate then they are
+equivalent. Define $\mathcal{C}$ to be the set of all equivalence classes.
+This definition holds in general.
+
+At least for $G=SL(n)$, the classical analog of this definition is the
+following: Let $\gamma ,\gamma ^{\prime }\in G({\mathbb{Z}})$. We say that
+$\gamma ,\gamma ^{\prime }$ are \textbf{equivalent}, written $\gamma \sim
+\gamma ^{\prime }$, if $\gamma _s$ is $G(\mathbb{C})$-conjugate to $\gamma
+_s^{\prime } $. In other words, $\gamma ,\gamma ^{\prime }$ are equivalent
+if they have the same set of eigenvalues.
+
+We call $(\gamma ,\zeta)\in \overline{G({\mathbb{A}})}$
+semi-simple if $\gamma\in G({\mathbb{A}})$ is semi-simple.
+Let ${\mathcal{O}}\in \mathcal{C}$ denote a
+class consisting entirely of semisimple
+elements (we call such a class \textbf{semi-simple}).
+If $\gamma \in {\mathcal{O}}$
+then the centralizer $G_\gamma $ is reductive and anisotropic modulo its
+center:
+
+\begin{equation}\label{eq:4.12}
+\begin{array}{c}
+G_\gamma =\left\{ 
+\begin{array}{c}
+G,\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\gamma =\pm 1, \\ 
+A^x,\;\;\;\gamma \neq \pm 1\;and\;\gamma \sim a\in A, \\ 
+T,\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\mathrm{otherwise},
+\end{array}
+\right.
+\end{array}
+\end{equation}
+where $A^x=x^{-1}Ax$ and $x^{-1}\gamma x\in A$.
+In particular, all such classes are unramified in the sense of
+\cite{A2}, p. 949.
+
+Let ${\mathcal{O}}\in \mathcal{C}$ denote an unramified
+semi-simple class, let $P=MN\in\{B,G\}$, and let
+$\mu \in {\mathcal{O}}\cap M({\mathbb{Q}})$.
+Then
+
+\begin{equation}\label{eq:4.13}
+\begin{array}{c}
+J_{B,{\mathcal{O}}}(\delta x,\delta x)
+=\sum_{\eta \in M_\mu ( {\mathbb{Q}})\backslash M(\mathbb{Q})}
+\sum_{\varsigma \in N({\mathbb{Q}})}
+f(x^{-1}\delta ^{-1}\varsigma ^{-1}\eta^{-1}\mu \eta \varsigma \delta x) \\ 
+=\sum_{\eta \in M_\mu ({\mathbb{Q}})\backslash P({\mathbb{Q}})}
+f(x^{-1}\delta^{-1}\eta ^{-1}\mu \eta \delta x).
+\end{array}
+\end{equation}
+
+If $P=B$ then $M=A$ and $M_\mu =A$ for
+$\mu \in {\mathcal{O}}$ as above. If $P=G$ then
+$M=G$ and $M_\mu =G_\mu $ is one of the above
+centralizers for $\mu \in {\mathcal{O}}$ as
+above. As we saw above, if $P=B$ then
+
+\begin{equation}\label{eq:4.14}
+\begin{array}{c}
+J_{B,{\mathcal{O}}}(\delta x,\delta x)
+=\sum_{\varsigma \in N( {\mathbb{Q}})}
+f(x^{-1}\delta^{-1}\varsigma ^{-1}\mu \varsigma \delta x) \\ 
+=\sum_{\eta \in A({\mathbb{Q}})\backslash B({\mathbb{Q}})}
+f(x^{-1}\delta ^{-1}\eta^{-1}\mu \eta \delta x).
+\end{array}
+\end{equation}
+We have then by an equation above
+
+\begin{equation}\label{eq:4.15}
+\begin{array}{c}
+j_{\mathcal{O}}^T(x,f)
+=\sum_{P\in \{B,G\}}(-1)^{\dim A_P}
+\sum_{\delta \in P( {\mathbb{Q}})\backslash G({\mathbb{Q}})}
+J_{P,{\mathcal{O}}}(\delta x,\delta x) \tau _P^{\wedge}(H_B(\delta x)-T) \\ 
+=\sum_{P\in \{B,G\}}(-1)^{\dim A_P}
+\sum_{\eta \in M_\mu ( {\mathbb{Q}})\backslash G({\mathbb{Q}})}
+f(x^{-1}\eta ^{-1}\mu \eta x)\tau _P^{\wedge}(H_B(\eta x)-T) \\ 
+=\sum_{\eta \in G_\mu ({\mathbb{Q}})\backslash G({\mathbb{Q}} )}
+f(x^{-1}\eta ^{-1}\mu\eta x)
+\sum_{P\in \{B,G\}}(-1)^{\dim A_P} \tau_P^{\wedge }(H_B(\eta x)-T).
+\end{array}
+\end{equation}
+Also
+
+\begin{equation}\label{eq:4.16}
+\begin{array}{c}
+J_{\mathcal{O}}^T(f)
+=\int_{G({\mathbb{Q}})\backslash
+\overline{G({\mathbb{A}})}}
+j_{\mathcal{O}}^T(x)dx \\ 
+=\int_{G({\mathbb{Q}})\backslash \overline{G({\mathbb{A}})}}
+\sum_{\delta \in G_\mu ({\mathbb{Q}})\backslash G({\mathbb{Q}})}
+f(x^{-1}\delta ^{-1}\mu \delta x)
+\sum_{P\in\{B,G\}}(-1)^{\dim A_P}\tau _P^{\wedge }(H_B(\delta x)-T)dx \\ 
+=\int_{G_\mu ({\mathbb{Q}})\backslash \overline{G({\mathbb{A}})}}
+f(x^{-1}\mu x)\sum_{P\in\{B,G\}}(-1)^{\dim A_P}
+\tau _P^{\wedge }(H_B(x)-T)dx \\ 
+=vol(G_\mu ({\mathbb{Q}})\backslash \overline{G({\mathbb{A}})}_\mu)
+\int_{\overline{G({\mathbb{A}})}_\mu\backslash \overline{G({\mathbb{A}})}}
+f(x^{-1}\mu x)\sum_{P\in \{B,G\}}(-1)^{\dim A_P}
+\tau_P^{\wedge }(H_B(x)-T)dx \\ 
+=vol(A_{\mathcal{O}}({\mathbb{R}})^oG_\mu ({\mathbb{Q}})\backslash
+\overline{G ({\mathbb{A}})}_\mu)
+\int_{\overline{G ({\mathbb{A}})_\mu}\backslash \overline{G({\mathbb{A}})}}
+f(x^{-1}\mu x)v(x,T)dx
+\end{array}
+\end{equation}
+(see also \cite[(5.5)]{Sho}), where 
+\begin{equation}\label{eq:4.17}
+v(x,T)=\int_{A_{\mathcal{O}}({\mathbb{R}})^o}
+\sum_{P\in \{B,G\}}(-1)^{\dim A_P}\tau_P^{\wedge }(H_B(ax)-T)da.
+\end{equation}
+
+If $A_{\mathcal{O}}=A$, that is to say if there is an
+$a\in A({\mathbb{Q}})-\{\pm I_2\}$ in the class ${\mathcal{O}}$
+then $v(x,T)$ is the ``volume'' of the convex hull of 
+\[
+\{T-H(x),-(T-H(wx))\}. 
+\]
+Thus 
+\begin{equation}\label{eq:4.18}
+v(x,T)=2T-\log \delta(x)-\log \delta(wx).
+\end{equation}
+
+This proves the following
+
+\begin{theorem}\label{thm:4.10}
+Let ${\mathcal{O}}\in \mathcal{C}$ and suppose that
+${\mathcal{O}}\cap (A({\mathbb{Q}})-\{\pm I_2\})\not=\emptyset $.
+Then 
+\[
+J_{\mathcal{O}}^T(f)
+=vol(A_{\mathcal{O}}({\mathbb{R}})^oG_\mu ({\mathbb{Q}})\backslash G_\mu ({\mathbb{A}}))
+\int_{G_\mu ({\mathbb{A}})\backslash G({\mathbb{A}})}f(x^{-1}\mu x)v(x,T)dx. 
+\]
+\end{theorem}
+
+These are called \textbf{weighted orbital integrals}.
+The case where $1\in {\mathcal{O}}$ will be discussed below.
+
+\subsection{The definition of $J_M(u,f)$}\label{ssec:JMu}
+
+Let $f\in C_c^\infty (\overline{G({\mathbb {A}}_S)})_{gen}$ and let
+$\overline{\gamma}=(\gamma,1) \in \overline{M({\mathbb {A}}_S)}$
+have Jordan decomposition
+$\gamma =\sigma u$. Suppose that
+$\overline{M({\mathbb{A}}_S)}_{\overline{\gamma}}
+=\overline{G({\mathbb{A}}_S)}_{\overline{\gamma}} $.
+Assume that $S$ is a ``sufficiently large'' finite set which contains
+the archimedian places. In this case, define 
+\begin{equation}\label{eq:4.19}
+J_M(\overline{\gamma} ,f)=|D(\gamma )|^{1/2}
+\int_{\overline{M({\mathbb {A}}_S)}
+\backslash \overline{G({\mathbb {A}}_S)}}
+\int_{{\mathcal O}_{\overline{\gamma}} (\overline{M({\mathbb {A}}_S)})}
+f(x^{-1}\mu x)v_M(x)d\mu dx,
+\end{equation}
+where ${\mathcal O}_{\overline{\gamma}} (\overline{M({\mathbb {A}}_S)})
+=\{m^{-1}\overline{\gamma} m\;m\in \overline{M({\mathbb {A}}_S)})$.
+Here $v_M$ is the ``volume'' of the convex hull of the points
+$\{H_B(x),H_{B^{-}}(x)\}$ in ${\mathfrak a}$. If $x=nk$ then
+$H_B(x)=0$, so $v_M(nk)=|H_{B^{-}}(x)|$.
+In any case, this integral can be written as 
+\[
+J_M(\overline{\gamma} ,f)=|D(\gamma )|^{1/2}
+\int_{\overline{G({\mathbb {A}}_S)}_{\overline{\gamma}}
+\backslash \overline{G({\mathbb{A}}_S)}}
+f(x^{-1}\overline{\gamma} x)v_M(x)dx. 
+\]
+This is a function on $\overline{M({\mathbb {A}}_S)}$.
+
+If $\gamma \in \overline{M({\mathbb {A}}_S)}$
+is {\em arbitrary} and $a\in \overline{A_M({\mathbb {A}}_S)}$ is
+chosen so that
+$M({\mathbb {A}}_S)_{a\gamma }=G({\mathbb {A}}_S)_{a\gamma }$
+then $J_M(a\gamma ,f)$ is well-defined. We may consider
+$a\rightarrow 1$.
+
+As in \cite[\S 3]{A7}, let 
+\[
+r_\beta (\lambda ,u,a)
+=|a^\beta -a^{-\beta }|^{\rho (\beta ,u)\lambda (\beta^{\vee })},
+\;\;\;\;\lambda \in {\mathfrak {a}}_{M,{\mathbb {C}}}^{*}, 
+\]
+and let 
+\[
+r_P(\lambda ,u,a)
+=\prod_{v\in S}\prod_\beta
+r_\beta (\frac \lambda 2,u_v,a_v), 
+\]
+where $\beta $ runs over the reduced roots of
+$(P_{\sigma _v},A_{M_{\sigma_v}})$. By definition, 
+\[
+r_M(u ,a)=\lim_{\lambda \rightarrow 0}
+\sum_{P\in {\mathcal P}(M)}r_P(\lambda ,u,a)\theta _P(\lambda )^{-1}, 
+\]
+and 
+\[
+v_M(x)=\lim_{\lambda \rightarrow 0}
+\sum_{P\in {\mathcal P}(M)}e^{-\lambda (H_P(x))}
+\theta _P(\lambda )^{-1}. 
+\]
+Following \cite[(8.1)]{A7},
+we define $J_M(\gamma ,f)$ to be the limit at $a=1$
+of 
+\begin{equation}\label{eq:4.20}
+\begin{array}{c}
+|D(a\gamma )|^{1/2}
+\int_{\overline{G({\mathbb {A}}_S)}_\sigma \backslash
+\overline{G({\mathbb {A}}_S)}}
+\int_{\overline{M({\mathbb {A}}_S)}_\gamma
+\backslash \overline{G({\mathbb {A}}_S)}_\sigma }
+f(y^{-1}\sigma x^{-1}a u xy)\times \\
+\times
+\left( \sum_{L\in {\mathcal{L}}(M)}
+r_M^L(\gamma ,a)v_L(xy)\right) dxdy,
+\end{array}
+\end{equation}
+where $\gamma\in \overline{M({\mathbb A}_S)}$ is as above.
+\begin{example}\label{ex:4.11}
+Let $G=SL(2),\;M=A,\;a=\left( 
+\begin{array}{cc}
+t & 0 \\ 
+0 & t^{-1}
+\end{array}
+\right) $, where $t\neq \pm 1$. In this case, 
+\[
+r_A(\gamma ,a)=1,
+\]
+and 
+\[
+v_A(x)=\sum_{p\in S}\log (\sqrt{|1+n_p^2|_p}),
+\]
+where $x=\prod_{p\in S}a_p\cdot \left[ 
+\begin{array}{cc}
+1 & n_p \\ 
+0 & 1
+\end{array}
+\right] \cdot k_p,$ for
+$a_p\in \overline{A({\mathbb {Q}}_p)}$, $k_p\in \overline{K_{0,p}}$
+(\cite{A6}, Intro., \cite{Sho}, chap. 6). Therefore,
+$J_A(z,f)$, for $z\in Z(G({\mathbb Q}))$,
+is the limit as $a\rightarrow 1$ of 
+\begin{equation}\label{eq:4.21}
+\ |D(a)|^{1/2}
+\int_{\overline{A({\mathbb {A}}_S)}\backslash \overline{G({\mathbb {A}}_S)}}
+f(y^{-1} az y)v_A(y)dy 
+\end{equation}
+\cite[section 6.1]{Sho}, p. 64.
+\end{example}
+
+\subsection{A more explicit form of the geometric terms}\label{ssec:explicit}
+
+\begin{definition}\label{defn:4.12}
+Let 
+\[
+K_{P,unip}(x,y)
+=\sum_{\gamma \in {\mathcal U}_{M_P}{\mathbb {(Q)}}}
+\int_{N_P({\mathbb {A})}}f(x^{-1}\gamma ny)dn,
+\]
+and for $T_0=0$, let 
+\begin{eqnarray*}
+J_{unip}(f)
+&=&J_{unip}^{T_0}(f) \\
+&=&\int_{G({\mathbb{Q}})\backslash \overline{G({\mathbb{A}})}}
+\sum_P(-1)^{\dim(A_P/A_G)}
+\sum_{\delta \in P({\mathbb {Q}})\backslash G({\mathbb{Q}})}
+K_{P,unip}(\delta x,\delta x)
+\tau _P^{\wedge }(H(\delta x)-T_0)dx.
+\end{eqnarray*}
+\end{definition}
+
+\begin{example}\label{ex:4.13}
+Let $G=SL(2),\;M=A$. Then 
+\[
+K_{P,unip}(x,y)
+=\sum_{\gamma \in {\mathcal U}_{M_P}({\mathbb {Q}})}
+\int_{N_P({\mathbb {A})}}f(x^{-1}\gamma ny)dn
+\]
+and 
+\begin{eqnarray*}
+J_{unip}(f)
+=\int_{G({\mathbb {Q}})\backslash \overline{G({\mathbb{A}})}}
+\sum_P(-1)^{\dim(A_P/A_G)}
+\sum_{\delta \in P({\mathbb {Q}})\backslash G({\mathbb{Q}})}
+K_{P,unip}(\delta x,\delta x)
+\tau _P^{\wedge }(H(\delta x)-T_0)dx \\
+=\int_{G({\mathbb{Q}})\backslash \overline{G({\mathbb{A}})}}
+(K_{G,unip}(x,x)-
+\sum_{\delta \in B({\mathbb {Q}})\backslash G({\mathbb{Q}})}
+K_{B,unip}(\delta x,\delta x)
+\tau _B^{\wedge }(H(\delta x)-T_0))dx
+\end{eqnarray*}
+\end{example}
+
+\begin{definition}\label{defn:4.14}
+Let $J_M(u,f)$ denote the weighted unipotent orbital integrals defined in
+the previous subsection,
+$u\in M({\mathbb A}_S)$ unipotent.
+We define $a^M(S,u)$ by the property that 
+\[
+J_{unip}(f)
+=\sum_P
+\sum_{u\in {\mathcal U}_{M_P}({\mathbb {Q}})}
+|W_0^M|\cdot |W_0^G|^{-1}a^M(S,u)J_M(u,f).
+\]
+(The verification that this definition makes sense can be found
+for example in \cite[section 6.2, pp.~66--67]{Sho}.) For
+$\gamma\in \overline{M({\mathbb A}_S)}$, we define $a^M(S,\gamma )$ by 
+\[
+a^M(S,\gamma )
+=\varepsilon ^M(\sigma )|\iota ^M(\sigma)|^{-1}
+\sum_{\{u\;|\;\sigma u\sim \gamma \}}a^{M_\sigma }(S,u),
+\]
+where 
+\[
+\varepsilon ^M(\sigma )=\left\{ 
+\begin{array}{c}
+1,\;\;{\rm if}\ \sigma \;{\rm is\ }k-{\rm elliptic\;on}\;M \\ 
+0,\;\;\;{\rm otherwise}.\;\;\;\;\;\;\;\;
+\end{array}
+\right. 
+\]
+Furthermore, in the case of $G=SL(2)$, if $\gamma =\sigma u$
+is the Jordan decomposition then
+$a^M(S,\gamma)=\epsilon^M(\sigma)a^M(S,u)$.
+\end{definition}
+
+The relationship between the $J_{{\mathcal O}}(f)$ and the
+$J_M(f)$ is given by the following:
+
+\begin{proposition}\label{prop:4.15}
+(\cite[Theorem 8.1]{A12}) If $S$ is a sufficiently large finite set of
+valuations and
+$f\in C_c^\infty (\overline{G({\mathbb {A}}_S)})_{gen}$ then 
+\[
+J_{{\mathcal O}}(f)=\sum_{M\in \{A,G\}}
+|W_0^M|\cdot |W_0^G|^{-1}
+\sum_{\gamma \in M({\mathbb {Q}})\cap {\mathcal{O}}}
+a^M(S,\gamma )J_M(\gamma ,f) 
+\]
+where the constants $a^M(S,\gamma )$ defined above
+satisfy, if $\gamma $ is semisimple, the property 
+\[
+a^M(S,\gamma )=\left\{ 
+\begin{array}{c}
+vol(M({\mathbb {Q}})_\gamma \backslash \overline{M({\mathbb {A}}_S)}_\gamma ^1),
+\;\;\;\;{\rm if\;}\gamma \;{\rm is}\;
+{\mathbb {Q}}-{\rm elliptic\;in}\;M({\mathbb {Q}}), \\ 
+0,\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;{\rm otherwise},\;\;\;\;\;
+\end{array}
+\right. 
+\]
+\end{proposition}
+
+\begin{example}\label{ex:4.16} For $G=SL(2)$, $1\in {\mathcal O}$, we have
+\[
+J_{\mathcal O}(f)=\sum_{\gamma\in {\mathcal{O}}}
+a^G(S,\gamma)J_G(\gamma,f)
++{1\over 2}a^A(S,1)J_A(1,f)
+\]
+where $J_A(1,f)$ is in Example~\ref{ex:4.13} above and $J_G(\gamma,f)$
+is defined in \eqref{eq:4.19} above.
+A similar result holds for the ${\mathcal{O}}$ with $-1\in {\mathcal{O}}$.
+\end{example}
+
+

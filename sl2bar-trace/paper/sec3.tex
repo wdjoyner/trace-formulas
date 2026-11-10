@@ -1,0 +1,376 @@
+\section{The geometric side of the metaplectic trace formula}\label{sec:geometric}
+
+We follow \cite{A2,A3}.
+
+\subsection{The kernel function}
+
+Let ${\mathcal{C}}$ denote the set of equivalence classes of
+$\gamma \in G({\mathbb{Q}})$ as in \cite[section 2]{A2}.
+Recall that ${\mathcal{C}}$ is in bijection
+with the set of equivalence classes of pairs $(M,{\mathcal{O}}_M)$,
+where $P=MN $ is a standard parabolic and
+${\mathcal{O}}_M\subset M({\mathbb{Q}})$ is a
+conjugacy class of elliptic elements.
+
+For ${\mathcal{O}}\in {\mathcal{C}}$, let 
+\[
+K_{{\mathcal{O}}}(x,y)=\sum_{\gamma \in {\mathcal{O}}}f(x\gamma y^{-1}),
+\]
+and more generally, let 
+\begin{equation}\label{eq:4.1}
+K_{P,{\mathcal{O}}}(x,y)=\sum_{\gamma \in M({\mathbb{Q}})\cap {\mathcal{O}}}
+\int_{N({\mathbb{A}})}f(x\gamma y^{-1})dn,
+\end{equation}
+where $P$ is a parabolic as above.
+
+\begin{lemma}\label{lem:4.1}
+For $\overline{K_0}$-finite
+$f\in {\mathcal{H}}(\overline{G({\mathbb{A}})})$, the sum
+$K_P(x,y)=\sum_{{\mathcal{O}}\in {\mathcal{C}}}K_{{\mathcal{O}}}(x,y)$
+converges to the kernel
+function of $R_P$, where $R_P$ denotes the right
+regular representation of
+${\mathcal{H}}(\overline{G({\mathbb{A}})})_{gen}$ on
+$L^2(N({\mathbb{A}})M({\mathbb{Q}})\backslash \overline{G({\mathbb{A}})})_{gen}$.
+\end{lemma}
+
+proof: For
+$\phi \in C_c^\infty (N({\mathbb{A}})M({\mathbb{Q}})
+\backslash \overline{G({\mathbb{A}})})_{gen}$, we have 
+\begin{eqnarray*}
+(R_P(f)\phi )(x) &=&\int_{\overline{G({\mathbb{A}})}}\phi (g)f(xg^{-1})dg \\
+&=&\int_{\overline{G({\mathbb{A}})}}\phi (n^{-1}\gamma ^{-1}g)f(xg^{-1})dg \\
+&=&\int_{\overline{G({\mathbb{A}})}}\phi (g)f(xn\gamma g^{-1})dg \\
+&=&\int_{M({\mathbb{Q}})\backslash \overline{G({\mathbb{A}})}}\phi (g)\sum_{\gamma \in
+M({\mathbb{Q}})}f(xn\gamma g^{-1})dg \\
+&=&\int_{N({\mathbb{A}})M({\mathbb{Q}})\backslash \overline{G({\mathbb{A}})}}\phi
+(g)\sum_{\gamma \in M({\mathbb{Q}})}\int_{N({\mathbb{A}})}f(xn\gamma g^{-1})dndg.
+\end{eqnarray*}
+
+The convergence of the inner sum is established, for example, by passing to
+the place at infinity and carrying out the estimates in the usual manner.
+For the description of
+$G({\mathbb{Q}})\cap (\overline{G({\mathbb{R}})\times K^f})$,
+see \cite{K2} for example.$\Box $
+
+\subsubsection{Some analytic reduction theory}
+
+Let 
+\[
+N({\mathbb{A}})_u=\{\left( 
+\begin{array}{cc}
+1 & n \\ 
+0 & 1
+\end{array}
+\right) \;|\;|n|_{{\mathbb{A}}}\leq u\}. 
+\]
+For $\omega \subset N({\mathbb{A}})_u\cdot A({\mathbb{A}})^1$
+relatively compact, $T_0\in {\mathfrak{a}}^{+}$, let 
+\[
+S(T_0,\omega )=
+\{nak\in \overline{\omega \cdot A({\mathbb{R}})^0\cdot K_0}
+\;|\;\alpha (H(a)-T_0)>0\}. 
+\]
+This is a Siegel domain of $\overline{G({\mathbb{A}})}$. It has finite volume
+with respect to the measure $\delta (a)dndadk$. For $T_0\in {\mathfrak{a}}^{+}$
+and $\omega \subset N({\mathbb{A}})_u\cdot A({\mathbb{A}})^1$ relatively
+compact both
+``sufficiently large'' ($u\geq 1/2,\;T_0>\sqrt{3}/2$), we have 
+\[
+\overline{G({\mathbb{A}})}=G({\mathbb{Q}})\cdot S(T_0,\omega ). 
+\]
+In particular, $G({\mathbb{Q}})\backslash \overline{G({\mathbb{A}})}$ is
+finite volume.
+
+\begin{lemma}\label{lem:4.2}
+There exists an $N>0$ such that for all $g\in \overline{G({\mathbb{A}})}$,
+$T_0\in {\mathfrak{a}}^{+}$, we have 
+\[
+\sum_{\delta \in B({\mathbb{Q}})\backslash G({\mathbb{Q}})}
+\tau _B^{\wedge }(H(\delta x)-T_0)\leq 1.
+\]
+\end{lemma}
+
+This is an immediate consequence of the corresponding result in \cite{A2}.
+
+For $T_0>T_1$ in ${\mathfrak{a}}^{+}$, let 
+\[
+S(T_0,T_1,\omega )=\{nak\in S(T_0,\omega )\;|\;\omega (H(a)-T_0)\leq 0\}. 
+\]
+Let $F^G(x,T_1,T_0)$ denote the characteristic function of the image
+$\overline{S(T_0,T_1,\omega )}\subset
+G({\mathbb{Q}})\backslash \overline{G({\mathbb{A}})}$ of
+$S(T_0,T_1,\omega )$ under the quotient map
+$\overline{G({\mathbb{A}})}\rightarrow
+G({\mathbb{Q}})\backslash \overline{G({\mathbb{A}})}$. Let
+$F^B(x,T_1,T_0)$
+denote the characteristic function of the set of all
+$xB({\mathbb{Q}})\in B({\mathbb{Q}})\backslash \overline{G({\mathbb{A}})}$ such
+that $\delta x\in \overline{\omega \cdot A({\mathbb{R}})^o\cdot K_0}$
+for some $\delta \in B({\mathbb{Q}})$.
+
+\begin{lemma}\label{lem:4.3}
+For $\omega \subset N({\mathbb{A}})_u\cdot A({\mathbb{A}})^1$ relatively
+compact and
+$T_0\in {\mathfrak{a}}^{+}$ sufficiently large,
+$x\in \overline{G({\mathbb{A}})}$, we
+have 
+\[
+\sum_{P\in \{B,G\}}
+\sum_{\delta \in P({\mathbb{Q}})\backslash G({\mathbb{Q}})}
+F^P(\delta x,T_1,T_0)\tau _P(H(\delta x)-T_1)=1.
+\]
+\end{lemma}
+
+This is an immediate consequence of the corresponding result in \cite{A2}.
+
+\subsubsection{The truncated kernel}
+
+The auxiliary kernel function is by definition 
+\[
+k^T(x,f)=\sum_{P\in \{B,G\}}(-1)^{\dim (A_P)}
+\sum_{\delta \in P({\mathbb{Q}})\backslash G({\mathbb{Q}})}
+K_P(\delta x,\delta x)\tau _P^{\wedge }(H(\delta x)-T). 
+\]
+This sum is finite by Lemma~\ref{lem:4.2} above. Using the previous Lemma~\ref{lem:4.3},
+this may be rewritten as 
+\begin{eqnarray*}
+k^T(x,f) &=&\sum_{P,Q\in \{B,G\}}(-1)^{\dim (A_P)}\times \\
+&&\;\;\;\;\;\;\;\;\;\;\;\times
+\sum_{\delta \in Q({\mathbb{Q}})\backslash G({\mathbb{Q}})}
+K_Q(\delta x,\delta x)\tau _Q^{\wedge }(H(\delta x)-T)
+F^P(\delta x,T,T_0)\tau _P^Q(H(\delta x)-T),
+\end{eqnarray*}
+for $T>T_0$ regular. This may be rewritten as
+\begin{eqnarray}
+k^T(x,f) &=&K_G(x,x)F^G(x,T,T_0)+ \label{eq:4.2}\\
+&&\sum_{\delta \in B({\mathbb{Q}})\backslash G({\mathbb{Q}})}
+\tau _B(H(\delta x)-T)
+F^B(\delta x,T,T_0)(K_G(\delta x,\delta x)-K_B(\delta x,\delta x)). 
+\nonumber
+\end{eqnarray}
+
+We want to prove
+
+\begin{lemma}\label{lem:4.4}
+$\int_{G({\mathbb{Q}})\backslash \overline{G({\mathbb{A}})}}|k^T(x,f)|dx<\infty .$
+\end{lemma}
+
+We majorize this by the sum of the integrals of the absolute values of the
+two terms on the right hand side of \eqref{eq:4.2}. The integral over the first term
+on the right hand side of \eqref{eq:4.2}, 
+\[
+\int_{G({\mathbb{Q}})\backslash \overline{G({\mathbb{A}})}}|K_G(x,x)F^G(x,T,T_0)|dx 
+\]
+clearly converges since $F^G(x,T,T_0)$ is compactly supported. To estimate
+the second term, we first write that 
+\begin{eqnarray}
+&&\int_{G({\mathbb{Q}})\backslash \overline{G({\mathbb{A}})}}|
+\sum_{\delta \in B({\mathbb{Q}})\backslash G({\mathbb{Q}})}
+\tau _B(H(\delta x)-T)\times \label{eq:4.3}\\
+&&\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\times F^B(\delta
+x,T,T_0)(K_G(\delta x,\delta x)-K_B(\delta x,\delta x))|dx \label{eq:4.4}\\
+&<&<\int_{G({\mathbb{Q}})\backslash \overline{G({\mathbb{A}})}}
+\tau _B(H(\delta x)-T)F^B(\delta x,T,T_0)\times  \nonumber \\
+&&\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\times
+|\sum_{\delta \in G({\mathbb{Q}})}f(x^{-1}\delta x)
+-\int_{N({\mathbb{A}})}f(x^{-1}\mu n^{\prime }x)dn^{\prime }|dx.
+\label{eq:4.5}\end{eqnarray}
+Next, we again pass to the archimedian place. Let 
+\begin{eqnarray}
+\Gamma _0 &=&N({\mathbb{Q}})\cap (\overline{G({\mathbb{R}})\times K^f}),
+\;\Gamma_\infty
+=N({\mathbb{R}})\cap (\overline{G({\mathbb{R}})\times K_0^f}),\; \label{eq:4.6}\\
+A({\mathbb{R}})_T &=&\{\prod_{v|\infty}
+\left( 
+\begin{array}{cc}
+t_v & 0 \\ 
+0 & t_v^{-1}
+\end{array}
+\right) \in A({\mathbb{R}})\;|\;|t_v|>T^{1/2}\},
+\;G({\mathbb{R}})_T=N({\mathbb{R}})\cdot A({\mathbb{R}})_T\cdot K_\infty ,  
+\nonumber
+\end{eqnarray}
+so $\Gamma _0\subset \Gamma _\infty $ is a co-compact discrete abelian
+group. The above upper bound \eqref{eq:4.5} is finite if 
+\begin{equation}\label{eq:4.7}
+\int_{\Gamma _0\backslash \overline{G({\mathbb{R}})_T}}|\sum_{\gamma \in \Gamma
+_0}f(x^{-1}\gamma x)-\int_{\Gamma _\infty }f(x^{-1}nx)dn|dx<\infty .
+\end{equation}
+We may apply the theory of Fourier transforms, as in \cite{W1}, to the 
+quotient $\Gamma _0\backslash \Gamma _\infty $. 
+Choosing Haar measures appropriately,
+there is a non-trivial character 
+$\psi $ of $\Gamma _\infty $ such that the Fourier transform 
+\[
+\varphi ^{\wedge }(\gamma )
+=\int_{\Gamma _\infty }\varphi (\gamma ^{\prime})
+\psi (<\gamma ,\gamma ^{\prime }>)d\gamma ^{\prime },
+\;\;\;\varphi \in L^2(\Gamma _0\backslash \Gamma _\infty ), 
+\]
+satisfies 
+\[
+\varphi ^{\wedge }(1)=\int_{\Gamma _\infty }\varphi (\gamma ^{\prime
+})d\gamma ^{\prime }. 
+\]
+
+Take $\varphi (\gamma )=\varphi _x(\gamma )=f(x^{-1}\gamma x)$, so by the
+Poisson summation formula \cite{W1}, 
+\[
+\sum_{\gamma \in \Gamma _0}f(x^{-1}\gamma x)-\int_{\Gamma _\infty
+}f(x^{-1}nx)dn=\sum_{\gamma ^{*}\in \Gamma _0^{*}}\varphi _x^{\wedge
+}(\gamma ^{*}), 
+\]
+where $\Gamma _0^{*}$ denotes the dual lattice of $\Gamma _0$. Since $f$ is
+smooth, $\varphi _x^{\wedge }$ is rapidly decreasing. For sufficiently
+regular $T$, standard arguments now suffice to show that, for any constant $%
+C>0$, we have 
+\[
+\int_{\Gamma _0\backslash \overline{G({\mathbb{R}})_T}}|\sum_{\gamma ^{*}\in
+\Gamma _0^{*}}\varphi _x^{\wedge }(\gamma ^{*})|dx<<_{C,f,n}T^{-C}. 
+\]
+
+This verifies \eqref{eq:4.7}, which proves the lemma. $\Box $
+
+The above proof actually establishes more, namely,
+
+\begin{corollary}\label{cor:4.5}
+(of the above proof) For each constant $C>0$, we have 
+\[
+\int_{G({\mathbb{Q}})\backslash \overline{G({\mathbb{A}})}}k^T(x,f)dx-\int_{G({\mathbb{Q}}%
+)\backslash \overline{G({\mathbb{A}})_T}}K^G(x,x)dx<<_{C,f,n}T^{-C}. 
+\]
+Here 
+\[
+G({\mathbb{A}})_T=N({\mathbb{A}})_u\cdot A({\mathbb{A}})^T\cdot K 
+\]
+where $A({\mathbb{A}})^T=\{a\in A({\mathbb{A}})\;|\;|\delta (a)|_{\mathbb A}\leq T\}$.
+\end{corollary}
+
+In fact, the proof yields more than this. If we let 
+\[
+k_{{\mathcal{O}}}^T(x,f)=\sum_{P\in \{B,G\}}(-1)^{\dim (A_P)}\sum_{\delta \in
+P({\mathbb{Q}})\backslash G({\mathbb{Q}})}K_{P,{\mathcal{O}}}(\delta x,\delta x)\tau
+_P^{\wedge }(H(\delta x)-T), 
+\]
+for ${\mathcal{O}}\in {\mathcal{C}}$, then the above proof establishes
+
+\begin{corollary}\label{cor:4.6}
+(of the above proof) For each constant $C>0$, we have 
+\[
+\sum_{{\mathcal{O}}\in {\mathcal{C}}}\int_{G({\mathbb{Q}})\backslash \overline{G(\mathbb{%
+A})}}|k_{{\mathcal{O}}}^T(x,f)dx-F^G(x,T,T_0)K_{G,{\mathcal{O}}%
+}(x,x)|dx<<_{C,f,n}T^{-C}. 
+\]
+\end{corollary}
+
+\subsection{Computing the integral of $k^T(x,f)$}
+
+For a class ${\mathcal{O}}\in {\mathcal{C}}$ and a standard parabolic $P=MN$,
+let 
+\[
+J_{P,{\mathcal{O}}}(x,y)=\sum_{\mu \in M({\mathbb{Q}})\cap {\mathcal{O}}%
+}\sum_{\varsigma \in N_{\mu _s}({\mathbb{Q}})\backslash N({\mathbb{Q}})}\int_{N_{\mu
+_s}({\mathbb{A}})}f(x^{-1}\varsigma ^{-1}\mu n\varsigma y)dn, 
+\]
+where $\mu =\mu _s\mu _u$ denotes the Jordan decomposition (over $\overline{%
+{\mathbb{Q}}}$), and let 
+\[
+j_{{\mathcal{O}}}^T(x,f)=\sum_{P\in \{B,G\}}(-1)^{\dim (A_P)}\sum_{\delta \in
+P({\mathbb{Q}})\backslash G({\mathbb{Q}})}J_{P,{\mathcal{O}}}(\delta x,\delta x)\tau
+_P^{\wedge }(H(\delta x)-T). 
+\]
+the above proof establishes
+
+\begin{corollary}\label{cor:4.7}
+(of the above proof) For each constant $C>0$, we have 
+\[
+\sum_{{\mathcal{O}}\in {\mathcal{C}}}\int_{G({\mathbb{Q}})\backslash \overline{G(\mathbb{%
+A})}}|j_{{\mathcal{O}}}^T(x,f)dx-F^G(x,T,T_0)J_{G,{\mathcal{O}}%
+}(x,x)|dx<<_{C,f,n}T^{-C}. 
+\]
+\end{corollary}
+
+Let 
+\begin{eqnarray*}
+J_{{\mathcal{O}}}^T(f) &=&\int_{G({\mathbb{Q}})\backslash \overline{G({\mathbb{A}})}}j_{%
+{\mathcal{O}}}^T(x,f)dx, \\
+K_{{\mathcal{O}}}^T(f) &=&\int_{G({\mathbb{Q}})\backslash \overline{G({\mathbb{A}})}}k_{%
+{\mathcal{O}}}^T(x,f)dx.
+\end{eqnarray*}
+
+\begin{proposition}\label{prop:4.8}
+Both $
+J_{{\mathcal{O}}}^T(f)
+$ and $K_{{\mathcal{O}}}^T(f)$ are polynomials in
+$T$.
+\end{proposition}
+
+Define
+\begin{equation}\label{eq:4.8}
+J_{{\mathcal{O}}}(f)
+=J_{{\mathcal{O}}}^T(f)|_{T=0}.
+\end{equation}
+
+We will prove this below. First, we record a
+
+\begin{corollary}\label{cor:4.9}
+$\sum_{{\mathcal{O}}\in {\mathcal{C}}}J_{{\mathcal{O}}}^T(f)=\sum_{{\mathcal{O}}\in 
+{\mathcal{C}}}K_{{\mathcal{O}}}^T(f)$.
+\end{corollary}
+
+proof: The difference between them is a polynomial, $p$ say, in $T$ by the
+proposition. Since $J_{G,{\mathcal{O}}}(x,y)=K_{G,{\mathcal{O}}}(x,y)$, this
+polynomial $p$ must be the zero polynomial by Corollaries~\ref{cor:4.6}
+and~\ref{cor:4.7}. $\Box $
+
+Let ${\mathcal{O}}\in {\mathcal{C}}$ denote an unramified semi-simple class \cite[p. 949]{A2}. If $\mu \in {\mathcal{O}}$ then its centralizer $G_\mu $ is either $G$
+or a Cartan subgroup of $G$ defined over ${\mathbb{Q}}$.
+
+As in \cite{A2}, we have 
+\begin{equation}\label{eq:4.9}
+j_{{\mathcal{O}}}^T(x,f)=
+\sum_{\eta \in G_\mu ({\mathbb{Q}})\backslash G({\mathbb{Q}})}
+f(x^{-1}\eta ^{-1}\mu \eta x)\sum_{P\in \{B,G\}}(-1)^{\dim (A_P)}
+\tau_P^{\wedge }(H(\eta x)-T),
+\end{equation}
+so 
+\begin{eqnarray}
+J_{{\mathcal{O}}}^T(f)
+&=&\int_{G_\mu ({\mathbb{Q}})\backslash \overline{G({\mathbb{A}})}}
+f(x^{-1}\mu x)\sum_{P\in \{B,G\}}(-1)^{\dim (A_P)}
+\tau _P^{\wedge}(H(x)-T)dx \label{eq:4.10}\\
+&=&vol(A_{{\mathcal{O}}}({\mathbb{R}})^0G_\mu ({\mathbb{Q}})
+\backslash \overline{G_\mu ({\mathbb{A}})}
+\int_{\overline{G_\mu ({\mathbb{A}})}\backslash \overline{G({\mathbb{A}})}}
+f(x^{-1}\mu x)v_{{\mathcal{O}}}(x,T)dx,  \nonumber
+\end{eqnarray}
+where $A_{{\mathcal{O}}}$ denotes the center of $M_\mu $ and 
+\[
+v_{{\mathcal{O}}}(x,T)
+=\int_{A_{{\mathcal{O}}}({\mathbb{R}})^0}\sum_{P\in
+\{B,G\}}(-1)^{\dim (A_P)}\tau _P^{\wedge }(H(ax)-T)da. 
+\]
+Note that the global cocycle $\beta $ splits over
+$A_{{\mathcal{O}}}({\mathbb{R}})^o\subset A({\mathbb{R}})^o$.
+In the case where $A_{\mathcal{O}}=A$, this may be
+computed to be 
+\[
+v_{{\mathcal{O}}}(x,T)=2(T-H(x)). 
+\]
+
+If $\mu \in {\mathcal{O}}$ is semi-simple but not regular then 
+\[
+j_{{\mathcal{O}}}^T(x,f)
+=f(\mu )\sum_{P\in \{B,G\}}(-1)^{\dim (A_P)}
+\tau_P^{\wedge }(H(x)-T) 
+\]
+so 
+\begin{equation}
+J_{{\mathcal{O}}}^T(f)=f(\mu )
+\int_{G({\mathbb{Q}})\backslash \overline{G({\mathbb{A}})}}
+\sum_{P\in \{B,G\}}(-1)^{\dim (A_P)}
+\tau _P^{\wedge }(H(x)-T)dx.  \nonumber
+\end{equation}
+
+

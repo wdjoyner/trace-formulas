@@ -10,6 +10,8 @@ The paper works out Arthur's trace formula, in non-invariant and then invariant 
 |---|---|
 | `original-1995/` | The notes as received: `cctrace_new.tex` (LaTeX2e master), `cctrace1.tex` (older Scientific Word master), `cctrace2.tex`–`cctrace7.tex`, `cctracer.tex` (bibliography). The file `cctrac3b.tex` that the master inputs was not among these files (see below). |
 | `book-1997/` | Chapters of the 1997 book manuscript *An application of Arthur's invariant trace formula for SL(2)* (Scientific Word; needs `tcilatex`). Chapter 9 (`book7a`–`book7h`) is the source of the notes. |
+| `paper/` | The 2026 revision: `sl2bar-trace.tex` (master) and section files, compiled PDF, `CHANGES.md` |
+| `referee_report_2026.md` | Referee report (2026) |
 | `revision_log.md` | Every referee item, with its location, the planned fix, the revision stage, and its status |
 
 The notes correspond to Chapter 9 of the book file by file:
@@ -27,12 +29,12 @@ The notes correspond to Chapter 9 of the book file by file:
 
 ## Status (November 2026)
 
-- Referee report (2026): [Claude Docs](https://claude.ai/artifact/7MmqhX7GnoJNup9xbb9RNG). Its items are tracked in `revision_log.md`.
-- Revision: planned in stages (see `revision_log.md`). Stage 0 (a clean, compiling source tree with no mathematical changes) is next.
+- Referee report (2026): `referee_report_2026.md` (also in [Claude Docs](https://claude.ai/artifact/7MmqhX7GnoJNup9xbb9RNG)). Its items are tracked in `revision_log.md`.
+- Revision: in stages (see `revision_log.md`). Stage 0 is done: `paper/` is a clean, compiling copy of the notes with working cross-references and a corrected bibliography, and no mathematical changes. Stage 1 (the foundations in §2) is next.
 
 ## Building
 
-`original-1995/cctrace_new.tex` builds with `pdflatex` once a `cctrac3b.tex` is supplied. With an empty stub, it compiles. The book files need Scientific Word's `tcilatex` and do not build with a standard TeX installation.
+`paper/sl2bar-trace.tex` builds with `pdflatex` (run it twice). `original-1995/cctrace_new.tex` needs a `cctrac3b.tex`; `book-1997/book7d.tex` is that file. The book files need Scientific Word's `tcilatex` and do not build with a standard TeX installation.
 
 ## License
 

@@ -49,7 +49,7 @@
 \maketitle
 
 \begin{abstract}
-Let $G$ be an unramified semisimple group over a $p$-adic field, $K$ a hyperspecial maximal compact subgroup, and $\gamma$ a regular elliptic element. Taking one test function spherical and the other supported on the elliptic set, we specialize Arthur's local trace formula. On the geometric side only the orbital integrals of $G$ survive. On the spectral side only two kinds of terms survive: the unramified principal series of $G$, weighted by a weighted character of the elliptic test function, and Arthur's elliptic tempered virtual characters with $K$-fixed vectors. We deduce that the spherical orbital integrals of $\gamma$ are given by a finite measure on the unitary unramified characters. Its absolutely continuous part has density a weighted character. Its singular part is supported on subtori where the $R$-groups of the unramified principal series are non-trivial, and it vanishes when the center of $G$ is connected. For $SL(n)$ the singular part is given by $\kappa$-orbital integrals. We compare the result with the truncation method of the companion paper \cite{JC26}, and work out $PGL(2)$, $SL(2)$, $PGL(3)$ and $SL(3)$.
+This AI-aided paper revises and updates the first author's earlier paper \cite{Jo92}, using a method different from the one used in the analogous paper \cite{JC26}. Let $G$ be an unramified semisimple group over a $p$-adic field, $K$ a hyperspecial maximal compact subgroup, and $\gamma$ a regular elliptic element. Taking one test function spherical and the other supported on the elliptic set, we specialize Arthur's local trace formula. On the geometric side only the orbital integrals of $G$ survive. On the spectral side only two kinds of terms survive: the unramified principal series of $G$, weighted by a weighted character of the elliptic test function, and Arthur's elliptic tempered virtual characters with $K$-fixed vectors. We deduce that the spherical orbital integrals of $\gamma$ are given by a finite measure on the unitary unramified characters. Its absolutely continuous part has density a weighted character. Its singular part is supported on subtori where the $R$-groups of the unramified principal series are non-trivial, and it vanishes when the center of $G$ is connected. For $SL(n)$ the singular part is given by $\kappa$-orbital integrals. We compare the result with the truncation method of the companion paper \cite{JC26}, and work out $PGL(2)$, $SL(2)$, $PGL(3)$ and $SL(3)$.
 \end{abstract}
 
 \tableofcontents
@@ -101,7 +101,7 @@ The comparison with Route A is Conjecture~\ref{c:AB}: the function $I_B$ of Theo
 
 \paragraph{Why this is useful.} Arthur's local trace formula is one of the deepest tools of local harmonic analysis, and most of its terms are hard to compute. In the case treated here every surviving term can be made explicit. The paper is meant both as an independent proof of (\ref{e:main}) and as an introduction to Arthur's local theory through a concrete case.
 
-\paragraph{Plan.} \S\ref{s:bg} collects the unramified background: normalized intertwining operators, $R$-groups, and weighted characters. \S\ref{s:ltf} states Arthur's local trace formula. \S\ref{s:geom} and \S\ref{s:spec} specialize its two sides. \S\ref{s:main} assembles Theorems A--C. \S\ref{s:compare} compares the result with Route A. \S\ref{s:endo} treats $SL(n)$. \S\ref{s:ex} works out examples. \S\ref{s:status} lists what remains to be checked.
+\paragraph{Plan.} \S\ref{s:bg} collects the unramified background: normalized intertwining operators, $R$-groups, and weighted characters. \S\ref{s:ltf} states Arthur's local trace formula. \S\ref{s:geom} and \S\ref{s:spec} specialize its two sides. \S\ref{s:main} assembles Theorems A--C. \S\ref{s:compare} compares the result with Route A. \S\ref{s:endo} treats $SL(n)$. \S\ref{s:ex} works out examples. \S\ref{s:lit} reviews the literature before and after 1997. \S\ref{s:status} lists what remains to be checked, and Appendix~\ref{s:gloss} is a glossary.
 
 % =====================================================================
 \section{Unramified background}\label{s:bg}
@@ -376,6 +376,39 @@ To be tested numerically on the building of $SL(3)$, by adapting the $PGL(3)$ co
 \end{status}
 
 % =====================================================================
+\section{Literature review}\label{s:lit}
+
+The first version of the companion paper was published in 1992 \cite{Jo92} and corrected in 1997. Arthur's local trace formula and his theory of elliptic tempered characters appeared in between. So we divide the literature at 1997. \S\ref{s:litpre} describes the tools available when the earlier versions were written, and \S\ref{s:litpost} describes what came later and bears on Route~B.
+
+\subsection{Before 1997}\label{s:litpre}
+
+\paragraph{Spherical harmonic analysis.} Satake identified the spherical Hecke algebra with $W$-invariant functions on the torus of unramified characters \cite{Sa63}. Macdonald gave the explicit formulas for the spherical function and the spherical Plancherel measure \cite{Ma71}. Casselman re-derived Macdonald's formula from intertwining operators and the asymptotics of matrix coefficients \cite{Cas80}, using the theory of Jacquet modules in his notes \cite{Cas95}. Cartier's survey \cite{Ca79} collects the unramified theory. Bernstein and Zelevinsky's geometric lemma \cite{BZ77} describes Jacquet modules of induced representations.
+
+\paragraph{Intertwining operators and $R$-groups.} Knapp and Stein introduced the $R$-group governing the reducibility of induced representations for real groups \cite{KS71}, and Silberger proved the $p$-adic analogue of their dimension theorem \cite{Si78}. Keys computed the $R$-groups of the unramified principal series of Chevalley groups \cite{Ke82}. Langlands' normalizing factors for intertwining operators, built from $L$-functions, go back to his work on Eisenstein series \cite{La76}. Van Dijk's formula for induced characters \cite{vD72} gives the vanishing of characters of cuspidal functions on properly induced representations.
+
+\paragraph{Arthur's trace formula and $(G,M)$-families.} The invariant trace formula \cite{Ar81,Ar88} introduced $(G,M)$-families, weighted orbital integrals and weighted characters, and the splitting formulas. Arthur studied weighted characters as functions of the representation in \cite{Ar89b}. The local trace formula was announced in \cite{Ar89a} and proved in \cite{Ar91}. Arthur then reorganized its spectral side in terms of elliptic tempered virtual characters \cite{Ar93}, and studied the Fourier transforms of weighted orbital integrals \cite{Ar94}. His paper on local character relations \cite{Ar96} relates these objects to endoscopic transfer.
+
+\paragraph{Elliptic harmonic analysis and endoscopy.} Kazhdan's cuspidal geometry \cite{Ka86} and the trace Paley--Wiener theorem of Bernstein, Deligne and Kazhdan \cite{BDK86} control the elliptic part of harmonic analysis. Labesse and Langlands worked out $L$-indistinguishability and $\kappa$-orbital integrals for $SL(2)$ \cite{LL79}, and Langlands and Shelstad defined transfer factors \cite{LS87}. Waldspurger computed the spherical orbital integrals of $GL(N)$ spectrally \cite{Wa89a}, by the truncation method that Route~A follows.
+
+\subsection{After 1997}\label{s:litpost}
+
+\paragraph{Normalization and transfer of weighted characters.} Arthur proposed a canonical normalization of weighted characters, and a conjectural transfer identity for them \cite{Ar98}. He then studied the transfer of weighted orbital integrals \cite{Ar99}, and stabilized the trace formula in a series of three papers \cite{ArSTF}. The stabilization was completed for twisted groups by M\oe glin and Waldspurger \cite{MW16}. Arthur's classification of representations of classical groups \cite{Ar13} uses the stabilized local and global trace formulas.
+
+\paragraph{The fundamental lemma.} Ng\^o's proof of the fundamental lemma \cite{Ng10}, combined with earlier reductions (see \cite[\S8]{JC26}), made the endoscopic statements of \S\ref{s:endo} unconditional at the level of orbital integrals.
+
+\paragraph{Elliptic representations.} Reeder related the Euler--Poincar\'e pairing of Iwahori-spherical representations to elliptic representations of Weyl groups \cite{Re01}. Opdam and Solleveld computed Ext groups of tempered representations of affine Hecke algebras, recovering Arthur's elliptic pairing \cite{OS13}. These results describe exactly the elliptic virtual characters with Iwahori-fixed vectors, a class containing those that appear in Theorem~C.
+
+\paragraph{The Plancherel formula.} Waldspurger's exposition of Harish-Chandra's Plancherel formula \cite{Wa03} supplies complete proofs of the harmonic analysis behind Arthur's spectral side.
+
+\paragraph{Variants of the local trace formula.} Waldspurger proved a local trace formula adapted to the Gross--Prasad conjecture \cite{Wa10}. Beuzart-Plessis proved one for the unitary Gan--Gross--Prasad conjecture \cite{BP20}. Peng made the spectral side of the stable local trace formula explicit when one test function is cuspidal \cite{Pe16}. H.~Li proved a local trace formula for infinitesimal symmetric spaces \cite{Li21}.
+
+\paragraph{Route~A.} The companion paper \cite{JC26} revises \cite{Jo92} by the truncation method, with the regularity hypothesis (R), and with examples in ranks one and two.
+
+\begin{status}
+The entries cited in this section have not yet all been checked against publisher records. The page ranges of \cite{ArSTF}, \cite{MW16} and \cite{Wa10} in particular are to be verified.
+\end{status}
+
+% =====================================================================
 \section{Status and what remains}\label{s:status}
 
 \begin{enumerate}[label=(N\arabic*)]
@@ -388,6 +421,37 @@ To be tested numerically on the building of $SL(3)$, by adapting the $PGL(3)$ co
 \item \emph{$SL(3)$.} Run the numerical test of the prediction.
 \item \emph{Theorem~D.} Write \S\ref{s:endo} in full.
 \end{enumerate}
+
+% =====================================================================
+\appendix
+\section{Glossary}\label{s:gloss}
+
+This glossary gives short definitions of the terms used in this paper, with pointers to where they are used. Terms already in the glossary of \cite{JC26} are repeated only briefly.
+
+\begin{description}[leftmargin=1em,style=nextline,itemsep=3pt]
+\item[Unramified group; hyperspecial $K$] A reductive group over $F$, quasi-split and split over an unramified extension. $K$ is the stabilizer of a hyperspecial vertex of the building; for split $G$, $K=G(\OO)$.
+\item[Spherical function $\Gamma_\chi$; Satake transform $f^\vee$] $\Gamma_\chi$ is the bi-$K$-invariant matrix coefficient of the spherical vectors of $I_B(\chi)$. The Satake transform is $f^\vee(\chi)=\tr I_B(\chi,f)$ for $f\in\Hc(G,K)$, a $W$-invariant Laurent polynomial in $\chi$.
+\item[Plancherel measure $d\mu=\rho\,d\chi$] The measure on $\Thu/W$ for which $f\mapsto f^\vee$ is an isometry from $L^2(K\backslash G/K)$ (Macdonald). $\rho$ is proportional to $|c(\chi)|^{-2}$.
+\item[Principal series $I_P(\chi)$; compact picture] Normalized induction from a character of $M_0(F)$, realized on functions on $K$ so that all $I_P(\chi)$ share one space.
+\item[Intertwining operator $J_{P'|P}(\chi)$] The operator $I_P(\chi)\to I_{P'}(\chi)$ given by integration over $N_{P'}\cap N_{\bar P}$, meromorphic in $\chi$ (\S\ref{s:norm}).
+\item[Normalizing factor; normalized operator $R_{P'|P}$] A scalar $r_{P'|P}(\chi)$ with $R=r^{-1}J$ unitary and holomorphic on the unitary axis and multiplicative. In the unramified case it is the product of $L(0,\chi_\alpha)/L(1,\chi_\alpha)$ over the relevant roots, and $R$ fixes the spherical vector (\ref{e:fix}).
+\item[$(G,M)$-family] A family $\{c_Q(\Lambda)\}_{Q\in\cP(M)}$ of smooth functions that agree on common walls. Its limit $c_M=\lim_{\Lambda\to0}\sum_Qc_Q(\Lambda)\theta_Q(\Lambda)^{-1}$ exists. For a constant family $c_M=0$ unless $M=G$ \cite{Ar81}.
+\item[Weighted orbital integral $J_M(\gamma,f)$] An orbital integral against the weight function $v_M$ attached to a $(G,M)$-family. It is not invariant unless $M=G$. These are the terms of the geometric side of Arthur's trace formulas.
+\item[Weighted character $J_M(\pi,f)$] $\tr(\mathcal R_M(\pi,P)I_P(\pi,f))$, with $\mathcal R_M$ the limit of the $(G,M)$-family of normalized intertwining operators (\S\ref{s:wchar}). These are the terms of the spectral side. They depend on the normalization.
+\item[Splitting formula] The expression (\ref{e:split}) of a weighted character of $f_1\otimes f_2$ through weighted characters of $f_1$ and of $f_2$ on Levi subgroups, with coefficients $d_M^G(L_1,L_2)$.
+\item[Local trace formula] Arthur's identity between the geometric expansion (\ref{e:geo}) and the spectral expansion (\ref{e:spec}) of the constant term $J(f)$ of a truncated integral of the kernel of $R(f)$ on $L^2(G(F))$, for $f\in C_c^\infty(G(F)\times G(F))$ \cite{Ar91}.
+\item[Truncation $u(x,T)$] The characteristic function of the compact set of $x\in G(F)$ whose Cartan component lies in the convex hull of $W\cdot T$. It is the analogue of the set $G(T)$ of Route~A.
+\item[Regular elliptic element; $G_{\ellr}$] A regular semisimple element whose centralizer is an anisotropic torus (modulo the center).
+\item[Cuspidal function] $\phi\in C_c^\infty(G(F))$ whose orbital integrals vanish on non-elliptic regular elements; equivalently, $\tr\sigma(\phi)=0$ for properly induced $\sigma$. Functions supported on $G_{\ellr}$ are cuspidal (Lemma~\ref{l:cusp}).
+\item[$R$-group $R_\chi$] $W_\chi/W^\circ_\chi$, the stabilizer of $\chi$ in $W$ modulo the subgroup generated by the reflections in roots $\alpha$ with $\chi_\alpha=1$. It controls the reducibility of $I_P(\chi)$ (\S\ref{s:R}).
+\item[Elliptic element of an $R$-group] An $r\in R_\chi$ represented by $w$ with no non-zero fixed vector in $\fa_0^G$ (or in $\fa_0^M$, for $M$).
+\item[$\Tdisc(M)$, $\Tell(M)$] Arthur's sets of virtual tempered characters: triples $(L,\sigma,r)$ with $\sigma$ square-integrable on a Levi $L\subseteq M$ and $r$ in the $R$-group of $\sigma$ in $M$. $\Tell(M)$ is the subset with $r$ elliptic \cite{Ar93}.
+\item[Absolutely continuous and singular parts] The decomposition $dI_\phi=I_B\,d\mu+dI^{\mathrm{sing}}_\phi$ of the spectral measure (Theorems~B and C).
+\item[$\kappa$-orbital integral; endoscopic group; transfer factor] See \cite[\S5]{JC26}. For $SL(n)$, $\kappa$ is a character of $PGL(n,F)$ trivial on the image of $SL(n,F)$. The elliptic endoscopic groups are the $H_m$, and transfer factors $\Delta$ relate their stable orbital integrals to $\kappa$-orbital integrals.
+\item[Fundamental lemma] The identity, for the spherical Hecke algebra, between $\kappa$-orbital integrals and stable orbital integrals on endoscopic groups. It is a theorem (Ng\^o \cite{Ng10} and others).
+\item[Route A, Route B] Route A is the truncation method of \cite{JC26}. Route B, this paper, specializes Arthur's local trace formula.
+\item[Hypothesis (R)] The regularity hypothesis of \cite[\S4.3]{JC26}: each oscillatory coefficient of the truncated kernel, times $\rho$, is smooth. It is sufficient for the spectral identity but not necessary (\S\ref{s:compare}).
+\end{description}
 
 \section*{Acknowledgements}
 This draft was prepared with the help of Claude (Anthropic); its plan follows the outline \texttt{OUTLINE.md} in the same directory.
@@ -402,17 +466,36 @@ This draft was prepared with the help of Claude (Anthropic); its plan follows th
 \bibitem[Ar94]{Ar94} J.~Arthur, \emph{On the Fourier transforms of weighted orbital integrals}, J.\ reine angew.\ Math.\ \textbf{452} (1994), 163--217.
 \bibitem[Ar96]{Ar96} J.~Arthur, \emph{On local character relations}, Selecta Math.\ (N.S.) \textbf{2} (1996), 501--579.
 \bibitem[Ar98]{Ar98} J.~Arthur, \emph{Canonical normalization of weighted characters and a transfer conjecture}, C.\ R.\ Math.\ Rep.\ Acad.\ Sci.\ Canada \textbf{20} (1998), 35--52.
+\bibitem[ArSTF]{ArSTF} J.~Arthur, \emph{A stable trace formula I. General expansions}, J.\ Inst.\ Math.\ Jussieu \textbf{1} (2002), 175--277; \emph{II. Global descent}, Invent.\ Math.\ \textbf{143} (2001), 157--220; \emph{III. Proof of the main theorems}, Ann.\ of Math.\ \textbf{158} (2003), 769--873.
+\bibitem[Ar13]{Ar13} J.~Arthur, \emph{The Endoscopic Classification of Representations: Orthogonal and Symplectic Groups}, Amer.\ Math.\ Soc.\ Colloquium Publications \textbf{61}, 2013.
 \bibitem[Ar99]{Ar99} J.~Arthur, \emph{On the transfer of distributions: weighted orbital integrals}, Duke Math.\ J.\ \textbf{99} (1999), 209--283.
+\bibitem[BDK86]{BDK86} J.~Bernstein, P.~Deligne, D.~Kazhdan, \emph{Trace Paley--Wiener theorem for reductive $p$-adic groups}, J.\ Analyse Math.\ \textbf{47} (1986), 180--192.
+\bibitem[BP20]{BP20} R.~Beuzart-Plessis, \emph{A local trace formula for the Gan--Gross--Prasad conjecture for unitary groups: the archimedean case}, Ast\'erisque \textbf{418} (2020).
+\bibitem[BZ77]{BZ77} I.~N.~Bernstein, A.~V.~Zelevinsky, \emph{Induced representations of reductive $p$-adic groups.\ I}, Ann.\ Sci.\ \'Ecole Norm.\ Sup.\ (4) \textbf{10} (1977), 441--472.
+\bibitem[Ca79]{Ca79} P.~Cartier, \emph{Representations of $p$-adic groups: a survey}, in: Automorphic Forms, Representations and $L$-functions (Corvallis), Proc.\ Sympos.\ Pure Math.\ \textbf{33}, Part~1, Amer.\ Math.\ Soc., 1979, 111--155.
 \bibitem[Cas80]{Cas80} W.~Casselman, \emph{The unramified principal series of $\mathfrak p$-adic groups I. The spherical function}, Compositio Math.\ \textbf{40} (1980), 387--406.
 \bibitem[Cas95]{Cas95} W.~Casselman, \emph{Introduction to the theory of admissible representations of $p$-adic reductive groups}, unpublished notes, 1974; revised draft 1995.
 \bibitem[vD72]{vD72} G.~van Dijk, \emph{Computation of certain induced characters of $\mathfrak p$-adic groups}, Math.\ Ann.\ \textbf{199} (1972), 229--240.
-\bibitem[JC26]{JC26} D.~Joyner and Claude, \emph{Simple local trace formulas for unramified $p$-adic groups}, revised, corrected and updated version (2026) of \cite{Jo92}, \url{https://github.com/wdjoyner/trace-formulas}.
+\bibitem[JC26]{JC26} D.~Joyner and Claude, \emph{Simple local trace formulas for unramified $p$-adic groups. Revised, corrected and updated}, preprint, November 2026 (a revision of \cite{Jo92} by the truncation method; ``Route~A''), \url{https://github.com/wdjoyner/trace-formulas/tree/main/local-trace/paper}.
 \bibitem[Jo92]{Jo92} D.~Joyner, \emph{Simple local trace formulas for unramified $p$-adic groups}, Pacific J.\ Math.\ \textbf{154} (1992), 103--129.
 \bibitem[Ka86]{Ka86} D.~Kazhdan, \emph{Cuspidal geometry of $p$-adic groups}, J.\ Analyse Math.\ \textbf{47} (1986), 1--36.
+\bibitem[KS71]{KS71} A.~W.~Knapp, E.~M.~Stein, \emph{Intertwining operators for semisimple groups}, Ann.\ of Math.\ \textbf{93} (1971), 489--578.
 \bibitem[Ke82]{Ke82} C.~D.~Keys, \emph{On the decomposition of reducible principal series representations of $p$-adic Chevalley groups}, Pacific J.\ Math.\ \textbf{101} (1982), 351--388.
 \bibitem[La76]{La76} R.~P.~Langlands, \emph{On the Functional Equations Satisfied by Eisenstein Series}, Lecture Notes in Math.\ \textbf{544}, Springer, 1976.
+\bibitem[LL79]{LL79} J.-P.~Labesse, R.~P.~Langlands, \emph{$L$-indistinguishability for $SL(2)$}, Canad.\ J.\ Math.\ \textbf{31} (1979), 726--785.
+\bibitem[LS87]{LS87} R.~P.~Langlands, D.~Shelstad, \emph{On the definition of transfer factors}, Math.\ Ann.\ \textbf{278} (1987), 219--271.
+\bibitem[Li21]{Li21} H.~Li, \emph{A local trace formula for $p$-adic infinitesimal symmetric spaces: the case of Guo--Jacquet}, preprint, arXiv:2105.00087.
+\bibitem[Ma71]{Ma71} I.~G.~Macdonald, \emph{Spherical Functions on a Group of $p$-adic Type}, Publ.\ Ramanujan Inst.\ \textbf{2}, Univ.\ of Madras, 1971.
+\bibitem[MW16]{MW16} C.~M\oe glin, J.-L.~Waldspurger, \emph{Stabilisation de la formule des traces tordue}, Vols.~1--2, Progress in Math.\ \textbf{316}--\textbf{317}, Birkh\"auser, 2016.
+\bibitem[Ng10]{Ng10} B.~C.~Ng\^o, \emph{Le lemme fondamental pour les alg\`ebres de Lie}, Publ.\ Math.\ IH\'ES \textbf{111} (2010), 1--169.
+\bibitem[OS13]{OS13} E.~Opdam, M.~Solleveld, \emph{Extensions of tempered representations}, Geom.\ Funct.\ Anal.\ \textbf{23} (2013), 664--714.
 \bibitem[Pe16]{Pe16} Z.~Peng, \emph{Multiplicity formula and stable trace formula}, preprint, arXiv:1608.00055.
+\bibitem[Re01]{Re01} M.~Reeder, \emph{Euler--Poincar\'e pairings and elliptic representations of Weyl groups and $p$-adic groups}, Compositio Math.\ \textbf{129} (2001), 149--182.
+\bibitem[Sa63]{Sa63} I.~Satake, \emph{Theory of spherical functions on reductive algebraic groups over $\mathfrak p$-adic fields}, Publ.\ Math.\ IH\'ES \textbf{18} (1963), 5--69.
+\bibitem[Si78]{Si78} A.~J.~Silberger, \emph{The Knapp--Stein dimension theorem for $p$-adic groups}, Proc.\ Amer.\ Math.\ Soc.\ \textbf{68} (1978), 243--246.
+\bibitem[Wa89a]{Wa89a} J.-L.~Waldspurger, \emph{Int\'egrales orbitales sph\'eriques pour $GL(N)$ sur un corps $p$-adique}, Ast\'erisque \textbf{171--172} (1989), 279--337.
 \bibitem[Wa03]{Wa03} J.-L.~Waldspurger, \emph{La formule de Plancherel pour les groupes $p$-adiques (d'apr\`es Harish-Chandra)}, J.\ Inst.\ Math.\ Jussieu \textbf{2} (2003), 235--333.
+\bibitem[Wa10]{Wa10} J.-L.~Waldspurger, \emph{Une formule int\'egrale reli\'ee \`a la conjecture locale de Gross--Prasad}, Compositio Math.\ \textbf{146} (2010), 1180--1290.
 \end{thebibliography}
 
 \end{document}

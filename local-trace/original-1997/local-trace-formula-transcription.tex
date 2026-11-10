@@ -1,0 +1,1158 @@
+% =====================================================================
+% [Claude, 2026-11-10] LITERAL TRANSCRIPTION of
+%   D. Joyner, "Simple local trace formulas for unramified p-adic groups",
+%   version dated 10-97 (35-page PostScript/PDF; corrected version of
+%   Pacific J. Math. 154 (1992) 103-129).
+% Transcribed from the scan local-trace-formula.pdf by Claude (Anthropic).
+% The text, formulas, numbering, typos and errors of the original are
+% reproduced as printed. No corrections have been made.
+% All typos, mathematical errors and bibliographic problems are recorded
+% in the separate file  transcription_log.md , NOT here.
+% The only additions to this source are comments beginning with
+%   % [Claude]
+% which mark transcription notes (e.g. layout choices or uncertain readings).
+% Page numbers in the table of contents will differ from the original.
+% =====================================================================
+\documentclass[12pt]{article}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage[margin=1.15in]{geometry}
+
+\newtheorem{lemma}{Lemma}[section]
+\newtheorem{corollary}[lemma]{Corollary}
+\newtheorem{proposition}[lemma]{Proposition}
+\newtheorem{theorem}[lemma]{Theorem}
+\newtheorem{remark}{Remark}
+% [Claude] The original's proofs begin with "proof:" / "proof" in bold
+% (inconsistent punctuation, reproduced as printed).
+\newenvironment{pf}[1][proof:]{\par\medskip\noindent\textbf{#1} }{\par\medskip}
+\newcommand{\qedbox}{\hfill$\Box$}
+
+\begin{document}
+
+\title{Simple local trace formulas for unramified p-adic groups}
+\author{David Joyner}
+\date{10-97}
+\maketitle
+% [Claude] In the original the footnote mark "1" stands alone below the date.
+\noindent\footnote{This version contains corrections and some minor additions to the published version, Pac. J. Math. \underline{154}(1992)103-129}
+
+\begin{abstract}
+Let $G$ be a connected unramified semi-simple group over a p-adic field $F$. In this note, we compute a (Macdonald-)Plancherel formula:
+\[
+\int_{G(F)\times G(F)} f(h)\phi(g^{-1}hg)dgdh=\int f^\vee(\chi)I(\chi,\phi)d\mu(\chi).
+\]
+Here $f$ is a spherical function, $f^\vee$ is its Satake transform, and $\phi$ is a smooth function on the elliptic set. For this, we use the Geometrical lemma of Bernstein and Zelevinsky, Macdonald's Plancherel formula, Macdonald's formula for the spherical function, results of Casselman on intertwining operators of the unramified series, and a combinatorial lemma of Arthur. This derivation follows the procedure of Waldspurger [W] rather closely, where the case of $GL(n)$ was worked out in detail. We may rewrite this formula as $\int_{G(F)} f(g^{-1}\gamma g)dg=\int f^\vee(\chi)I(\chi,\gamma)d\mu(\chi)$, for $\gamma\in G_{ell}$ and $f$ spherical. Here $I(\chi,\gamma)$ is a distribution on the support of the Plancherel measure (regarded as a compact complex analytic variety).
+\end{abstract}
+
+\tableofcontents
+
+\section{Introduction}
+
+Let $G$ be a connected unramified semi-simple group over a p-adic field $F$, let $G_{reg}$ denote the subset of regular elements of $G(F)$, and let $G_{ell}$ denote the subset of elliptic regular elements of $G(F)$. Let $C_c^\infty(G(F))$ denote the algebra of locally constant compactly supported functions on $G(F)$ and let $\mathcal{H}(G,K)$ denote the commutative subalgebra of spherical functions associated to a hyperspecial, good, maximally bounded subgroup $K$ of $G(F)$.
+
+Let $\Phi\subset C_c^\infty(G(F))$ denote the subspace of functions on $G(F)$ supported in $G_{ell}$, so each $\phi\in\Phi$ is Ad-finite in the sense of [K]. For each $\phi\in\Phi$, define
+\begin{equation}\tag{1.1}
+T_\phi: f\longmapsto \int_{G(F)\times G(F)} f(h)\phi(g^{-1}hg)dgdh.
+\end{equation}
+It is not hard to show that $T_\phi$ defines an ``elliptic'' invariant distribution in $C_c^\infty(G(F))'$ with compactly generated support. In this note, we restrict $T_\phi$ to $\mathcal{H}(G,K)$ and compute, in \S\S2-3, a (Macdonald-)Plancherel-type formula for $T_\phi$:
+\begin{equation}\tag{1.2}
+T_\phi(f)=\int f^\vee(\chi)I(\chi,\phi)d\mu(\chi),
+\end{equation}
+(see Theorem 4.5 below). For this, we use the Geometrical Lemma of Bernstein and Zelevinsky, Macdonald's Plancherel formula, Macdonald's formula for the spherical function, results of Casselman on intertwining operators of the unramified series, and a combinatorial lemma of Arthur. This derivation follows the procedure of Waldspurger [W] rather closely, where the case of $GL(n)$ was worked out in detail. In \S4, we examine briefly the ``$\kappa$-stable'' version of (1.1) for $SL(n)$:
+\begin{equation}\tag{1.3}
+T^\kappa_\phi: f\longmapsto I^\kappa(f,\phi):=\int_{PGL(n,F)\times SL(n,F)}\kappa(g)f(h)\phi(g^{-1}hg)dgdh,
+\end{equation}
+where $\kappa$ is an unramified character of order $n$. After using the Weyl integration formula to obtain a ``geometric'' expansion for $T_\phi$, we use Kazhdan's fundamental lemma [Kaz] to rewrite the result (see (5.6) and (5.8) below).
+
+Of course, the distribution $T_\phi$ also occurs in the context of Arthur's local trace formula [Art1]. Let $R$ denote the unitary representation of $G(F)\times G(F)$ on $L^2(G(F))$ given by $(R(x_1,x_2)\psi)(y):=\psi(x_1^{-1}yx_2)$, \qquad $\psi\in L^2(G(F))$. Given $f=(f_1,f_2)$ in $C_c^\infty(G(F))\times C_c^\infty(G(F))\hookrightarrow C_c^\infty(G(F)\times G(F))$, the kernel of the integral operator $R(f)$ is
+\begin{equation}\tag{1.4}
+K_f(x_1,x_2)=\int_{G(F)}f_1(x_1y)f_2(yx_2)\ dy=\int_{G(F)}f_1(y)f_2(x_1^{-1}yx_2)\ dy.
+\end{equation}
+As in the global trace formula, one wants to find a both a ``geometric'' and a ``spectral'' formula for a truncated version of the integral of $K_f(x,x)$. It should be emphasized that this is done below only for a very restricted class of $f=(f_1,f_2)$.
+
+Thus part of this paper could be viewed as a special case of Arthur's local trace formula [Art1] or as a generalization of part of Waldspurger's work [W]. Another way one might interprete these distributions $I(\chi,\phi)$ is as follows. We will see in \S3 below that $\phi\longmapsto I(\chi,\phi)$ is $G$-admissible in the sense of [HC]. Then, regarding this invariant distribution as a function (the existence of which is assured by applying [HC], Theorem 19), we may rewrite (1.2) as
+\begin{equation}\tag{1.5}
+\int_{G(F)}f(g^{-1}\gamma g)dg=\int f^\vee(\chi)I(\chi,\gamma)d\mu(\chi),
+\end{equation}
+for $\gamma\in G_{ell}$ and $f$ spherical. Finally, as is observed in [J], (1.5) gives a relatively explicit formula for the unramified part of the ``singular support'' of an elliptic orbital integral on $G(F)$. Here $I(\chi,\gamma)$ is a rational function on the support of the Plancheral measure (regarded as a compact complex analytic manifold [M]).
+
+A somewhat analogous formula to (1.5), for stable unipotent orbits, has been conjectured in [A]. Assem's conjecture is a theorem for $GL(n)$, the germ expansion and Assem's formula yield a relatively explicit for $I(\chi,\gamma)$ (this idea can be essentially be found in [W]). Finally, we remark that in the case of $SL(n)$ the fundamental lemma of Waldspurger [Wa] may be reformulated as a functorial property of the $I(\chi,\gamma)$.
+
+Acknowledgements: I'd like to thank J.-L. Waldspurger for pointing out an error in a previous version and M. Assem for helpful discussions. Partially supported by a NARC grant.
+
+\section{Notation and background}
+
+\subsection{Root spaces}
+
+Let $G$ be a connected unramified reductive group of semi-simple rank $\ell$ over $F$ which has a splitting defined over a finite unramified extension $E/F$. (Recall that a reductive group $G$ over $F$ is unramified if it is quasi-split over $F$ and has a splitting defined over a finite unramified extension [Car], p. 135.) Let $T$ denote a maximal torus of $G$, $B$ a Borel subgroup of $G$ defined over $F$, and $A$ a maximal $F$-split torus of $G$ contained in $B$. Let $\Gamma=Gal(E/F)$, let $X^*$ denote the character lattice over $T$, and let $\Sigma_T\subset X^*$ denote the root system in $X^*$ with respect to $T$. The $\Gamma$-module structure of $X^*$ leaves $\Sigma_T$ invariant. Let $\Sigma$ denote the set of reduced roots of $G$ relative to $A$ and $\Delta$ the corresponding reduced fundamental system. These are also left invariant by $\Gamma$. The character lattice
+\begin{equation}\tag{2.1}
+X^*(A)=\ Hom_{F-grps}(A,GL(1)),
+\end{equation}
+may be regarded as a quotient of $X^*$ containing $\Sigma$. Let
+\begin{equation}\tag{2.2}
+X_*(A):=\ Hom_{\mathbb{Z}}(X^*(A),\mathbb{Z}),
+\end{equation}
+denote the co-character lattice. Let $\Sigma^+\subset\Sigma$ be the subset of positive roots of $G$ containing $\Delta$. As in [Art2], we let $\Delta^\vee$ denote the set of dual roots $\{\varpi_\alpha\ |\ \alpha\in\Delta\}$ associated to $\Delta$. For parabolic subgroups $P$ and $Q$ with $A\subset P\subset Q$, let $\Delta_P^Q$ denote the set of simple positive roots of $(P\cap M_Q,A_P)$, where $Q=M_QN_Q$ denotes the Levi decomposition and $A_P$ denotes the center of $M_P$ as in [Art2]. As usual, if $Q=G$ then we drop the superscript: $\Delta_P^G=\Delta_P$. Each $w\in W_G=N_G(A)/C_G(A)$ has a representative in $K$ by means of the identification $N_G(A)/C_G(A)\cong(K\cap N_G(A))/(K\cap C_G(A))$ [Car], p. 140 (here $C_G$ denotes the centralizer and $N_G$ denotes the normalizer). $W_G$ is generated by the simple reflections $S:=\{w_\alpha\ |\ \alpha\in\Delta\}$ [Cas2], \S1). Let $R$ denote the root lattice generated by $\Delta$ and $L$ the coroot lattice generated by $\Delta^\vee$. If $G$ is semi-simple these four lattices are all of rank $\ell$ as $\mathbb{Z}$-modules and the quotients, $X^*(A)/R$ and $X_*(A)/L$ are both finite ($g$ is adjoint if the first quotient is trivial and is simply connected if the second quotient is trivial.) For each subset $\theta\subset\Delta$, we denote by $P_\theta$ the parabolic subgroup containing $B$ associated to $\theta$, by $P_\theta=M_\theta N_\theta$ its Levi decomosition (so $P_\phi=B$, $M_\phi=A$), and by $A_M=A_\theta$ the split component of the center of $M=M_\theta$. We abuse language and call a Levi component $M=M_P$ of a parabolic subgroup $P=MN=M_PN_P$ a Levi subgroup of $G$. Furthermore, by a Levi (parabolic) subgroup we will always mean a Levi (parabolic) subgroup containing the torus $A$ above. We denote by $\mathcal{P}(M)$ the set of parabolic subgroups of $G$ having Levi component $M$. If $P\subset Q$ are parabolic subgroups there is a surjective map between the Lie algebras $\mathfrak{a}_P\rightarrow\mathfrak{a}_Q$ whose kernel will be denoted $\mathfrak{a}_P^Q$. From [Art3] we know that there are orthogonal decompositions $\mathfrak{a}_P=\mathfrak{a}_Q\oplus\mathfrak{a}_P^Q$ and $\mathfrak{a}_P^*=\mathfrak{a}_Q^*\oplus(\mathfrak{a}_P^Q)^*$. Furthermore, $(\Delta_P^Q)^\vee$ forms a basis for $\mathfrak{a}_P^Q$ and $(\Delta_P^Q)^\wedge$ forms a basis for $(\mathfrak{a}_P^Q)^*$. The projection $\mathfrak{a}_B\rightarrow\mathfrak{a}_B^P$ will be denoted $X\longmapsto X_M$, where $X\in\mathfrak{a}_B$ and $P=MN$ is the Levi decomposition of the parabolic $P$. The projection $\mathfrak{a}_B\rightarrow\mathfrak{a}_P$ will be denoted $X\longmapsto X^M$. Let $\tau_P^Q$ denote the characteristic function on $\mathfrak{a}_B$ of the set
+\[
+\{X\in\mathfrak{a}_P^Q\ |\ \alpha(X)>0,\ \alpha\in\Delta_P^Q\},
+\]
+and let $\hat\tau_P^Q$ denote the characteristic function on $\mathfrak{a}_B$ of the set
+\[
+\{X\in\mathfrak{a}_P^Q\ |\ \alpha(X)>0,\ \alpha\in\Delta_P^Q\},
+\]
+as in [Art3].
+
+The kernel of the map $H_M:M(F)\rightarrow\mathfrak{a}_P$ defined in [Art3] will be denoted by $M(F)^1$. This may also be described as the intersection of all the kernels of the absolute values of the rational characters of $M(F)$. The Haar measure on $M(F)^1$ will be that measure determined by those on $M(F)$, $\mathfrak{a}_P$, and the pull-back by the map $H_M$.
+
+The pairing $<.,.>:X_*(A)\times X^*(A)\rightarrow\mathbb{Z}$ defined by $<\lambda_*,\lambda^*>:=\lambda_*(\lambda^*)$ allows us to identify $X^*(A)$ with the dual lattice of $X_*(A)$. Using this, we may define an isomorphism
+\begin{equation}\tag{2.3}
+Hom_{F-grps}(GL(1),A)\cong X_*(A)
+\end{equation}
+by associating to each $\lambda\in Hom_{F-grps}(GL(1),A)$ the unique $\lambda_*\in X_*(A)$ for which
+\[
+\lambda^*(\lambda(t))=t^{<\lambda_*,\lambda^*>},
+\]
+for all $t\in F^\times$ and all $\lambda^*\in X^*(A)$. We fix a uniformizing parameter $\pi$ of $F$, $|\pi|_F=q^{-1}$, and let $a_\alpha\in A(F)$ denote the image $\alpha^\vee(\pi)$ of $\pi$, regarding the coroot $\alpha^\vee$ as an element of $Hom_{F-grps}(GL(1),A)$. If $G$ is split over $F$ then it satisfies (a) $\delta_B(a_\alpha)=q^{-2}$, (b) $\{a_\alpha\ |\ \alpha\in\Delta\}$ generates the abelian group $A(F)/(A(F)\cap K)$ freely, and (c) $w_\alpha^{-1}aw_\alpha=aa_\alpha^{-<\nu_A(a),\alpha>}$, where $\nu_A$ is as in (2.4) below and $a\in A(F)/(A(F)\cap K)$ ([Car], pp. 141-142, [M], pp. 42-43). To each $\beta\in\Sigma\cup\frac{1}{2}\Sigma$, we associate as in [Car] a real number $q_\beta>0$. If $G$ is split and $\alpha\in\Sigma$ then $q_\alpha=q$ and $q_{\alpha/2}=1$.
+
+Let
+\[
+\mathcal{A}_{A,\mathbb{R}}:=X_*(A)_{\mathbb{R}}:=X_*(A)\otimes_{\mathbb{Z}}\mathbb{R}=\mathfrak{a}_B,\quad X^*(A)_{\mathbb{R}}:=X^*(A)\otimes_{\mathbb{Z}}\mathbb{R},
+\]
+and extend $<.,.>$ to $X_*(A)_{\mathbb{R}}\times X^*(A)_{\mathbb{R}}$. We use this pairing to identify $X^*(A)_{\mathbb{R}}$ and its $\mathbb{R}$-vector space dual with $\mathcal{A}_{A,\mathbb{R}}$. Thus we have two bases $\Delta\subset X^*(A)_{\mathbb{R}}$ and $\Delta^\vee\subset X_*(A)_{\mathbb{R}}$ of $\mathcal{A}_{A,\mathbb{R}}$ such that $<\alpha^\vee,\beta>=2\delta_{\alpha\beta}$ for all $\alpha,\ \beta\in\Delta$.
+
+There is a surjection $\nu_A:A(F)\rightarrow X_*(A)$ characterized by
+\begin{equation}\tag{2.4}
+<\nu_A(a),\lambda^*>=\nu_F(\lambda^*(a)),\quad\forall\lambda^*\in X^*(A),\ a\in A(F),
+\end{equation}
+where $\nu_F:F^\times\rightarrow\mathbb{Z}$ denotes the normalized valuation. Thus we obtain an isomorphism
+\begin{equation}\tag{2.5}
+\nu_A^{-1}:X_*(A)\tilde{\rightarrow}A(F)/(A(F)\cap K).
+\end{equation}
+Thus every unramified character of $A(F)$ may be identified with a character of the discrete group $X_*(A)$. More generally, to each Levi $M$ of $G$ we have
+\[
+X_*(A_M)=\{X\in X_*(A)\ |\ \nu_A^{-1}(X)\in A_M(F)/(A_M(F)\cap K)\}.
+\]
+Denote
+\[
+\mathcal{A}_{M,\mathbb{R}}:=\mathfrak{a}_P=X_*(A_M)\otimes_{\mathbb{Z}}\mathbb{R}.
+\]
+Let
+\[
+\mathcal{A}^M_{\mathbb{Z}}:=\{X\in X_*(A)\ |\ \nu_A^{-1}(X)\in M^1(F)/(A(F)\cap K\cap M^1(F))\}
+\]
+and let $\mathcal{A}^M_{\mathbb{R}}:=\mathcal{A}^M_{\mathbb{Z}}\otimes_{\mathbb{Z}}\mathbb{R}$. Denote the projection $\mathcal{A}_{A,\mathbb{R}}\rightarrow\mathcal{A}^M_{\mathbb{R}}$ by $X\longmapsto X^M$.
+
+The Pontryagin dual of $X_*(A)$ is
+\begin{equation}\tag{2.6}
+X_*(A)^\wedge=X^*(A)_{\mathbb{C}}/X_*(A)^\perp,
+\end{equation}
+where $X_*(A)^\perp$ denotes the lattice of all $\lambda^*\in X^*(A)_{\mathbb{C}}$ such that, for all $\lambda_*\in X_*(A)$, $<\lambda_*,\lambda^*>\in2\pi i\mathbb{Z}$. We will use the notation $\mathcal{A}^*_{A,\mathbb{R}}$ to denote the complex dual of $\mathcal{A}_{A,\mathbb{R}}$, so that
+\begin{equation}\tag{2.7}
+Hom_{unr}(A(F),\mathbb{C}^{\times1})\cong\mathcal{A}^*_{A,\mathbb{R}}/L,
+\end{equation}
+as complex varieties, where
+\[
+L=\{\lambda\in\mathcal{A}^*_{A,\mathbb{R}}\ |\ \lambda(\hat\alpha)\in\mathbb{Z},\ \forall\alpha\in\Delta\}.
+\]
+In fact, once we fix an ordering of the roots $\Delta$ this isomophism is canonical. Here $Hom_{unr}$ is defined as follows. If $H(F)$ is any closed subgroup of $G(F)$, with the inherited compact-open topology and if $V$ is any (complex) Hilbert space, with the discrete topology, then $Hom_{unr}(H(F),End\ V)$ is the set of continuous homomorphisms $H(F)\rightarrow End\ V$ with a non-zero $H(F)\cap K$-fiexed vector.
+
+\subsection{Intertwining operators}
+
+For the unramified principal series representations $(\nu_\chi,I(\chi))$ of $G(F)$, associated to a character $\chi$ of $A(F)$, we refer to [Car]. We remark that the pairing $<.,.>$ on $I(\chi)\times I(\chi^{-1})$ defined in [Car] allows us to identify the contragredient representation $(\nu^\sim_\chi,I(\chi)^\sim)$ with $(\nu_{\chi^{-1}},I(\chi^{-1}))$.
+
+Let $\chi$ be a regular unramified character of $A(F)$ (so $w\chi$, $w\in W_G$, are all distinct), and let $T_w:I(\chi)\rightarrow I(w\chi)$ denote the intertwining operator of [Car]. If $\Phi_{K,\chi}\in I(\chi)^K$ denotes the unique $K$-fixed vector satisfying $\Phi_{K\chi}(1)=1$ then Casselman [Cas1], [Car], Theorem 3.9 has shown that
+\begin{equation}\tag{2.8}
+T_w(\Phi_{K,\chi})=c_w(\chi)\Phi_{K,w\chi},
+\end{equation}
+where
+\[
+c_w(\chi):=\prod_{\alpha\in\Sigma^+,\ w\alpha<0}c_\alpha(\chi),
+\]
+\[
+c_\alpha(\chi)=\frac{(1-q_{\alpha/2}^{1/2}q_\alpha^{-1}\chi(a_\alpha))(1+q_{\alpha/2}^{-1/2}\chi(a_\alpha))}{1-\chi(a_\alpha)^2}.
+\]
+It is also known that $T_{w_1w_2}=T_{w_1}T_{w_2}$, provided $\ell(w_1w_2)=\ell(w_1)+\ell(w_2)$ (here $\ell(w)$ denotes the length of $w\in W$ - this is also the number of singular hyperplanes (``walls'') in $\mathcal{A}_{A,\mathbb{R}}$ which separate the positive Weyl chambers of $B^w$ and $B$ [Cas2], chapter 1).
+
+\subsection{Plancherel's formula and Macdonald's formula}
+
+Let $\mathcal{H}(G,K)$ denote the subalgebra of $C_c^\infty(G)$ consisting of bi-$K$-invariant functions and $C^\infty(G,K)$ the analogous subalgebra of $C^\infty(G)$ - the space of locally constant functions on $G(F)$. Let $G(F)^1$ denote the kernel of the map $H_G:G(F)\rightarrow\mathfrak{a}_G$.
+
+For $f\in I(\chi)$, and $\chi$ unramified, define
+\[
+f^\natural(g)=\int_Kf(kg)dk,
+\]
+where the measure on $K$ has total volume 1, and let $\Gamma_\chi=\Phi^\natural_{K,\chi}$. Macdonald's formula states that
+
+% [Claude] "f chi is" (missing "I") is printed this way in the original.
+\begin{lemma}
+f $\chi$ is an unramified regular character of $A(F)$ then
+\[
+\Gamma_\chi(a)=Q^{-1}\delta_B(a)^{1/2}\sum_{w\in W}c(w\chi)(w\chi)(a),\quad a\in A(F),
+\]
+where
+\[
+Q:=\sum_{w\in W}(IwI:I),
+\]
+$I$ denoting the Iwahori subgroup of $G$ and $c(\chi)=c_{w_\ell}(\chi)$, where $w_\ell\in W$ denotes the largest element.
+\end{lemma}
+
+For $f\in\mathcal{H}(G,K)$ and $\chi$ unramified, define the Fourier transform of $f$ at $\chi$ by
+\begin{equation}\tag{2.9}
+f^\vee(\chi):=\int_{G(F)^1}f(g)\Gamma_\chi(g^{-1})dg.
+\end{equation}
+Let $\Omega_K(G)$ denote the set of all zonal spherical functions of $G(F)^1$ relative to $K$:
+\begin{equation}\tag{2.10}
+\Omega_K(G):=\{\omega\in C^\infty(G,K)\ |\ \omega(1)=1\ {\rm and,}\ \forall f\in\mathcal{H}(G,K),\ f*\omega=\lambda_f\omega,\ {\rm some}\ \lambda_f\in\mathbb{C}\}.
+\end{equation}
+Let $\Omega^+_K(G)$ denote the subset of all positive definite zonal spherical functions. It is known that, if $\chi$ is unitary then $\Gamma_\chi\in\Omega^+_K(G)$ [M], Theorem 3.3.12. We define, more generally, the Fourier transform of $f\in\mathcal{H}(G,K)$ at $\omega\in\Omega_K^+(G)$ by
+\begin{equation}\tag{2.11}
+f^\vee(\omega):=\int_{G(F)^1}f(g)\omega(g^{-1})dg.
+\end{equation}
+The relation between the Fourier transform and the Satake transform is given on [M], p. 47. The Plancherel measure $d\mu(\omega)$ is a positive measure on $\Omega^+_K(G)$ such that, for all $f\in\mathcal{H}(G,K)$,
+\begin{equation}\tag{2.12}
+f^\vee(\omega)\in L^2(\Omega^+_K(G),d\mu)
+\end{equation}
+and
+\begin{equation}\tag{2.13}
+\int_{G(F)^1}|f(g)|^2dg=\int_{\Omega^+_K(G)}|f^\vee(\omega)|^2d\mu(\omega).
+\end{equation}
+By a theorem of Godement, such a measure exists and is unique.
+
+\begin{lemma}
+(Macdonald [M], Theorem 5.1.2) The support of the Plancherel measure is the complex torus (2.7). Let $s=(s_1,\dots,s_\ell)\in\mathcal{A}^*_{A,\mathbb{R}}$, let $ds$ denote the Haar measure on $\mathcal{A}^*_{A,\mathbb{R}}/L$ having total volume 1, and let $d\chi$ be the corresponding Haar measure on $Hom_{cont}(A(F),\mathbb{C}^{\times1})$ obtained by transport of measure by (2.7). The Plancherel measure of $G(F)$ with respect to $K$ is
+\[
+d\mu(\chi)=\frac{Q}{|W|}|c(\chi)|^{-2}d\chi.
+\]
+\end{lemma}
+
+\begin{corollary}
+For all $f\in\mathcal{H}(G,K)$, we have
+\[
+\begin{array}{rl}
+f(g)&=\int_{\Omega^+_K(G)}f^\vee(\omega)\overline{\omega(g^{-1})}d\mu(\omega)\\
+&=\int_{\mathcal{A}^*_{A,\mathbb{R}}/L}f^\vee(\chi)\Gamma_\chi(g)d\mu(\chi).
+\end{array}
+\]
+Also, for all $f_1,f_2\in\mathcal{H}(G,K)$, we have
+\[
+\begin{array}{rl}
+\int_{G(F)^1}f_1(g)\overline{f_2(g)}dg&=\int_{\Omega^+_K(G)}f_1^\vee(\omega)\overline{f_1^\vee(\omega)}d\mu(\omega)\\
+&=\int_{\mathcal{A}^*_{A,\mathbb{R}}/L}f_1^\vee(\chi)\overline{f_1^\vee(\chi)}d\mu(\chi).
+\end{array}
+\]
+\end{corollary}
+
+\begin{pf}
+First, observe that $d\mu$ is supported on $\mathcal{A}^*_{A,\mathbb{R}}/L$ [M], Theorem 5.1.2, that $\omega=\Gamma_\chi$ for some $\chi$ [M], Theorem 3.3.12, that $\Gamma_\chi(g^{-1})=\Gamma_{\chi^{-1}}(g)$ [M], Proposition 3.3.2, and that $\overline{\Gamma_{\chi^{-1}}(g)}=\Gamma_\chi(g)$ for unitary $\chi$ [Car], p. 150. Therefore, for both the first statement and the second statement of the corollary, the second equation follows from the first.
+
+We verify the first equation, for each of the two statements of the corollary. The second statement of the corollary follows from (2.13) by using the ``polarization'' identity (replace $f$ by $f_1+f_2$ in (2.13), multiply it out, and cancel common terms). The first identity of the corollary follows from the second by a simple argument, replacing $f_2$ by a function supported on a fixed coset $KgK$ and using the definition of the Fourier transform. $\Box$
+\end{pf}
+
+\subsection{The Jacquet functor}
+
+The maximal compact subgroup $K$ has the property that for any parabolic subgroup $P=MN$ of $G$, $G(F)=P(F)K$, and for each Levi $M$ of $G$, and every parabolic $P^M$ of $M$, we also have $M(F)=P^M(F)(K\cap M(F))$ [Car], p. 140. In this case, the notion of ``compactly induced'' representations [BZ], \S1.8. agrees with the usual notion of ``unitarily induced'' representations. Let
+\begin{equation}\tag{2.14}
+i_{G,M}:Alg\ M\rightarrow Alg\ G,
+\end{equation}
+denote unitary induction, in the notation of [BZ] (so $i_{G,M}(\tau)=V_P(\tau)$ in Arthur's notation), and let
+\begin{equation}\tag{2.15}
+r_{M,G}:Alg\ G\rightarrow Alg\ M,
+\end{equation}
+denote the Jacquet functor [BZ], \S2.3 (called the first Jacquet functor in [Car], \S2.2). We shall sometimes write $\pi_N=r_{M,G}(\pi)$ and $V_P(\tau)=i_{G,M}(\tau)$.
+
+Let $W_M$ denotes the Weyl group of $M$. The special case of the ``Geometrical lemma'' of Bernstein-Zelevinsky which we need is the following
+
+\begin{lemma}
+([BZ], \S2.12) There is an enumeration $w_1,\dots,w_k$ of $W/W_M$ (which we regard as a subgroup of $W$ as in [Cas2], \S1) such that, for each $\chi\in Alg\ A$, we have the following decomposition of $M$-modules
+\[
+r_{M,G}\circ i_{G,A}(\chi)=V_k\supset V_{k-1}\supset\dots\supset V_1\supset V_0=\{0\},
+\]
+where each
+\[
+V_{j+1}/V_j\cong i_{M,A}(w_j\chi),
+\]
+is an irreducible $M$-module.
+\end{lemma}
+
+Let $V_{(s)}$ denote the semi-simplification of an $M$-module $V$.
+
+\begin{corollary}
+For each $\chi\in Alg\ A$, we have the following decomposition of $M$-modules
+\[
+r_{M,G}\circ i_{G,A}(\chi)_{(s)}\cong\oplus_{w\in W/W_M}i_{M,A}(w\chi),
+\]
+where the coset representatives $w$ are choosen as in Lemma 2.4.
+\end{corollary}
+
+\begin{remark}
+If $\chi$ is regular, so $w\chi\neq\chi$ for all $w\in W/W_M$, then a result of Casselman [Cas2], \S\S3 and 6, implies that $r_{M,G}\circ i_{G,A}(\chi)$ is a semi-simple $M$-module.
+\end{remark}
+
+\begin{pf}[proof]
+Follows from Lemma 2.4 and the definition of the semi-simplification. $\Box$
+\end{pf}
+
+\subsection{$(G,M)$-families}
+% [Claude] In the original the footnote mark "2" stands alone on the line below the subsection title.
+\footnote{This subsection is not in the published version. It is a review of material closely related to results proven later but will not be needed.}
+
+For a collection $\{c_P(\lambda)\ |\ P\in\mathcal{P}(A)\}$ of functions in $C_c^\infty(i\mathcal{A}_{A,\mathbb{R}})$, we say that this forms a \textbf{$(G,A)$-family}, provided for any neighboring standard minimal parabolics $P,\ P'$, we have $c_P(\lambda)=c_{P'}(\lambda)$ on the hyperplane shared by the positive chambers of $P$ and $P'$ [Art2], \S6. Let $A(F)^{\wedge1}$ denote the unitary dual of $A(F)$. For a collection $\{\tilde{c}_P(\lambda)\ |\ P\in\mathcal{P}(A)\}$ of functions in $C_c^\infty(A(F)^{\wedge1})$, we say that this forms a \textbf{$(G,A)^\sim$-family}, provided for any neighboring standard minimal parabolics $P,\ P'$, we have $\tilde{c}_P(\chi_\lambda)=\tilde{c}_{P'}(\chi_\lambda)$ on the set
+\[
+\{\lambda\in i\mathcal{A}_{A,\mathbb{R}}\ |\ <\alpha,\lambda>\in\frac{2\pi i}{\log q}\mathbb{Z}\},
+\]
+where $\alpha\in\Sigma$ denotes on of the two roots separating $P$ and $P'$ [W], p. 26, and $\chi_\lambda(a)=<\nu_A^{-1}(a),\lambda>$.
+
+Let $Q\subset R$ denote parabolic subgroups, let $L_Q^R$ denote the lattice generated by the coroots $\{\alpha^\wedge\ |\ \alpha\in\Delta_Q^R\}$, let
+\begin{equation}\tag{2.16}
+\theta_Q^R(\lambda)=vol(\mathfrak{a}_Q^R/L_Q^R)^{-1}\prod_{\alpha\in\Delta_Q^R}\lambda(\alpha^\wedge),\quad\lambda\in i\mathfrak{a}^*_M,
+\end{equation}
+and define $\tilde\theta_B=\tilde\theta$ by
+\begin{equation}\tag{2.17}
+\tilde\theta(\chi):=\prod_{\alpha\in\Delta}(1-\chi(a_\alpha)).
+\end{equation}
+
+\begin{lemma}
+([Art2], Lemma 6.2) If $\{c_P(\lambda)\ |\ P\in\mathcal{P}(M)\}$ is a $(G,M)$-family then
+\[
+c_M(\lambda):=\sum_{P\in\mathcal{P}(M)}c_P(\lambda)\theta_P(\lambda)^{-1}
+\]
+can be extended to a smooth function on $i\mathfrak{a}^*_M$.
+\end{lemma}
+
+\begin{lemma}
+([W], \S7) If $\{\tilde{c}_P(\chi)\ |\ P\in\mathcal{P}(A)\}$ is a $(G,A)^\sim$-family then
+\[
+\tilde{c}_A(\chi):=\sum_{P\in\mathcal{P}(A)}c_P(\chi)\tilde\theta_P(\chi)^{-1}
+\]
+can be extended to a smooth function on $A(F)^{\wedge1}\cong i\mathcal{A}_{A,\mathbb{R}}$. Here $\tilde\theta_P$ is defined by $\tilde\theta_P(\chi):=\tilde\theta_B(w_P\chi)$, where $\tilde\theta_B$ is defined in (2.13) and $w_P\in W$ is the unique element such that $P=w_P^{-1}B$.
+\end{lemma}
+
+Let $R^\wedge$ denote the lattice generated by the dual roots. The factor $\tilde\theta$ is analogous to the factor $\theta$. The connection between the two is contained in the following
+
+\begin{lemma}
+([W], II.7.1) There exists a function $u_B\in C^\infty_c(i\mathcal{A}_{A,\mathbb{R}}/i\mathcal{A}_{G,\mathbb{R}})$ such that\\
+(a) for all $\lambda\in i\mathcal{A}_{A,\mathbb{R}}$ we have
+\[
+\sum_{r\in\hat{R}}u_B(\lambda+\frac{2\pi ir}{\log q})\theta_B(\lambda+\frac{2\pi ir}{\log q})^{-1}=\tilde\theta_B(\chi_\lambda)^{-1},
+\]
+where $\hat{R}$ denotes the dual lattice (generated by the dual roots $\Delta^\wedge$) and $\chi_\lambda(a):=<\nu_A^{-1}(a),\lambda>$.\\
+(b) If $r\in\hat{R}$ and if $\frac{2\pi ir}{\log q}$ belongs to the support of $u_B$ then $r=0$.
+\end{lemma}
+
+\begin{lemma}
+([W], \S7) If $\{\tilde{c}_P(\lambda)\ |\ P\in\mathcal{P}(A)\}$ is a $(G,A)^\sim$-family and $r\in R^\wedge$ let
+\[
+c_P^r(\lambda)=\tilde{c}_P(\chi_{\lambda-\frac{2\pi i}{\log q}r})u_P(\lambda),
+\]
+where $u_P(\lambda)=u_B(w_P\lambda)$ ($w_P\in W$ is as above), $u_B$ is as in Lemma 2.8 above, and where $\chi_\lambda(a):=<\lambda,\nu_A(a)>$. We have
+\[
+\tilde{c}_A(\chi_\lambda)=\sum_{r\in R^\wedge}c_P^r(\lambda+\frac{2\pi i}{\log q}r).
+\]
+\end{lemma}
+
+\begin{remark}
+This follows from Lemmas 2.6, 2.7, and 2.8. These results will not be needed here since in the particular example we have all the facts we require can be proven directly. They are included for the reader who wishes to relate the $(G,A)^\sim$-families implicitly occuring here with Arthur's $(G,A)$-families [Art2].
+\end{remark}
+
+\section{Inner products of some matrix coefficients}
+
+\subsection{Matrix coefficients}
+
+Assume as before that $G$ is connected, unramified, and reductive.
+
+We choose measures $da$, $dn$, $dg$ so that $meas(A(F)\cap K)=meas(N(F)\cap K)=meas(K)=1$, let $\chi$ denote an unramified regular character of $A(F)$, and let $V_B(\chi)$ denote the space of the full principal series representation induced unitarily from $\chi$. From Casselman [Cas2], \S4, there is a canonical pairing $<.,.>_N$ on $V_B(\chi)_N\times V_B(\chi^{-1})_N$ such that, for some $\epsilon>0$ (independent of $\chi$)
+\begin{equation}\tag{3.1}
+<i_{G,A}(\chi)(a)f,f'>_G=<r_{A,G}\circ i_{G,A}(\chi)(a)f_N,f'_N>_N,
+\end{equation}
+for all $a\in A^-(\epsilon)$, where
+\[
+A^-(\epsilon)=\{a\in A(F)/Z(G(F))\ |\ |\alpha(a)|_F\leq\epsilon,\ \forall\alpha\in\Delta\},
+\]
+and where $<.,.>_G$ is as in [Car]. When $\epsilon=1$ we denote this by $A^-$. This pairing allows us to identify $V_B(\chi^{-1})_N$ with the contragredient of $V_B(\chi)_N$. The fact that $\epsilon$ is independent of (unramified) $\chi$ follows from [Car], \S3.
+
+\begin{lemma}
+For $\chi$ unramified regular, and any $a\in A^-$,
+\[
+r_{M,G}(i_{G,A}(\chi)(a)f)=\sum_{w\in W/W_M}i_{M,A}(w\chi)(a)f_w,
+\]
+where $f_w$ is defined by $r_{M,G}(f)=f_N=\oplus_wf_w$ for $f\in V_B(\chi)$. Here the decomposition is by Corollary 2.5 above and the coset representatives $w$ are choosen (without further mention) as in Lemma 2.4.
+\end{lemma}
+
+\begin{pf}
+This is an immediate consequence of the fact that
+\begin{equation}\tag{3.2}
+f_N=\sum_wR_M\circ T_wf
+\end{equation}
+and hence
+\[
+\begin{array}{rl}
+(i_{G,A}(\chi)(a)f)_N&=\sum_wR_M\circ T_wi_{G,A}(\chi)(a)f\\
+&=\sum_wi_{M,A}(\chi)_N(a)R_M\circ T_wv\\
+&=i_{M,A}(\chi)_N(a)f_N.
+\end{array}
+\]
+$\Box$
+\end{pf}
+
+\begin{lemma}
+If the image of $f\in V_B(\chi)$ under the Jacquet functor is $f_N=\oplus_{w\in W/W_M}f_w\in V_B(\chi)_N$ and the image of $f'\in V_B(\chi^{-1})$ under the Jacquet functor is $f'_N=\oplus_{w\in W/W_M}f'_w\in V_B(\chi^{-1})_N$ then
+\[
+<f_N,f'_N>_N=\sum_{w\in W/W_M}c(w,M,\chi)<f_w,f'_w>_A,
+\]
+for some constants $c(w,M,\chi)$ (to be determined later) and where
+\[
+<u,u'>_M:=\int_{M(F)\cap K}u(k)u'(k)dk.
+\]
+\end{lemma}
+
+\begin{remark}
+We remark that for our choice of Haar measures, if $u,\ u'\in\mathcal{H}(M,M\cap K)$ then $<u,u'>_M=u(1)u'(1)$.
+\end{remark}
+
+\begin{pf}
+Identify $V_B(\chi)_N$ with the $M$-module $\oplus_{w\in W/W_M}i_{A,M}(w\chi)$ and $V_B(\chi^{-1})_N$ with the $M$-module $\oplus_{w\in W/W_M}i_{A,M}(w\chi^{-1})$. As vector spaces, any bilinear pairing on
+\[
+V_B(\chi)_N\times V_B(\chi^{-1})_N
+\]
+is of the form
+\[
+<z,z'>=\sum_{w,w'\in W/W_M}a_{w,w'}<z_w,z'_{w'}>_0,
+\]
+where the $a_{w,w'}$ are constants, $z=(z_w\ |\ w\in W/W_M)\in\oplus_wi_{M,A}(w\chi)$, $z'=(z'_{w'}\ |\ w'\in W/W_M)\in\oplus_{w'}i_{M,A}(w'\chi^{-1})$, and $<z_w,z'_{w'}>_0$ denotes the pairing on $V_B^M(\chi)=i_{M,A}(\chi)$. Using (3.1), we want to show that $a_{w,w'}=0$ if $w\neq w'$.
+
+Suppose not: if $a_{w,w'}\neq0$ for some $w\neq w'$, choose $z$ to be such that every component is zero except $z_w$ and choose $z'$ to be such that every component is zero except $z'_{w'}$. We have
+\[
+r_{M,G}\circ i_{G,A}(\chi)(a)|_{i_{M,A}(w\chi)}:z\longmapsto\delta^{1/2}(a)(w\chi)(a)z,
+\]
+\[
+r_{M,G}\circ i_{G,A}(\chi^{-1})(a)|_{i_{M,A}(w\chi^{-1})}:z'\longmapsto\delta^{1/2}(a)(w\chi^{-1})(a)z',
+\]
+and, of course, $(w'\chi^{-1})(a)=(w'\chi)(a)^{-1}$. In particular,
+\[
+<r_{M,G}\circ i_{G,A}(\chi)(a)z,z'>\neq<z,r_{M,G}\circ i_{G,A}(\chi^{-1})(a)z'>,
+\]
+for $a\in A^-(\epsilon)$. This contradicts (3.1). $\Box$
+\end{pf}
+
+The following result generalizes Macdonald's formula (for split groups). An analogous result is in [W], Lemma I.3.1. The proof given here, which is more of a verification than a derivation, is different from that in [W] in that we use Macdonald's formula (twice, in fact) to evaluate the coefficients instead of a direct calculation.
+
+\begin{lemma}
+Let $\chi$ be as in Lemma 3.1, $f\in V_B(\chi)$, and $f'\in V_B(\chi^{-1})$. For $a\in A^-(\epsilon)$, we have
+\[
+\begin{array}{c}
+<i_{G,A}(\chi)(a)f,f'>\\
+=\sum_{w\in W/W_M}c(w,M,\chi)<i_{M,A}(w\chi)(a)R_M\circ T_wf,R_M\circ T_wf'>_M,
+\end{array}
+\]
+for some $\epsilon>0$ which depends only on the level of $f$, $f'$. Here $c(w,M,\chi)$ is given by
+\[
+Q_G^{-1}Q_M\frac{c(w\chi)}{c^M_w(\chi)c^M_w(\chi')c_M(w\chi)},
+\]
+and the restriction map $R_M$ is as in [W], \S I. In particular, if $M=A$ then
+\[
+c(w,A,\chi)=Q^{-1}\frac{c(w\chi)}{c_w(\chi)c_w(\chi^{-1})},
+\]
+as in [M] (for $f=\Phi_{K,\chi}$ and $f'=\Phi_{K,\chi'}$).
+\end{lemma}
+
+\begin{remark}
+Suppose that $f$ is bi-invariant under $K_f\subset K$ and $f'$ is bi-invariant under $K_{f'}\subset K$. We will use the fact that we may choose $\epsilon>0$ once and for all with the property that the analogous identity holds true (with this fixed value of $\epsilon$) even if $G$ is replaced by a Levi $M$ and $f$ is replaced by $f(w,k):=i_{M,A}(w\chi)R_MT_wf$, where $w\in W/W_M$ and $k\in K\cap M(F)$ are arbitrary.
+\end{remark}
+
+\begin{pf}
+The identity itself, modulo the evaluation of the constants, follows from (3.1) and Lemmas 3.1 and 3.2. To evaluate the constants when $M=A$, take $f=\Phi_{K,\chi}$ and $f'=\Phi_{K,\chi^{-1}}$ (in the notation of [Car]). Then $<i_{G,A}(\chi)(a)f,f'>=\Gamma_\chi(a)$, by [Car], p. 151. Moreover,
+\[
+T_wf=T_w\Phi_{K,\chi}=c_w(\chi)\Phi_{K,w\chi},
+\]
+and
+\[
+T_wf'=T_w\Phi_{K,\chi^{-1}}=c_w(\chi^{-1})\Phi_{K,w\chi^{-1}},
+\]
+by (2.8), so by the remark following Lemma 3.2, the identity becomes
+\[
+\Gamma_\chi(a)=\sum_{w\in W}c(w,A,\chi)\delta(a)(w\chi)(a)(w\chi^{-1})(a)c_w(\chi)c_w(\chi^{-1}).
+\]
+Comparing this with Macdonald's formula (Lemma 2.1) gives the result claimed when $M=A$.
+
+In general we must proceed as follows. Taking $f$, $f'$ as above, we find that
+\[
+\begin{array}{rl}
+\Gamma_\chi(a)&=\sum_{w\in W/W_M}c(w,M,\chi)<i_{M,A}(\chi)(a)T_w\Phi^M_{K^M,\chi},T_w\Phi^M_{K^M,\chi^{-1}}>_M\\
+&=\sum_{w\in W/W_M}c(w,M,\chi)\Gamma^M_{w\chi}(a)c^M_w(\chi)c^M_w(\chi')\\
+&=\delta(a)^{1/2}\sum_{w'\in W}(w'\chi)(a)c(w'\chi).
+\end{array}
+\]
+The last equality is just Macdonald's formula for $G$. On the other hand, Macdonald's formula for $M$ states that
+\[
+\Gamma^M_{w\chi}(a)=\delta_M(a)^{1/2}\sum_{v\in W_M}(vw\chi)(a)c_M(vw\chi).
+\]
+Plugging this into the above equation gives
+\[
+\begin{array}{c}
+\Gamma_\chi(a)\\
+=\delta_M(a)^{1/2}Q_M^{-1}\sum_{w\in W/W_M}c(w,M,\chi)\sum_{v\in W_M}(vw\chi)(a)c_M(vw\chi)c^M_w(\chi)c^M_w(\chi^{-1}).
+\end{array}
+\]
+Comparing these two equations gives
+\[
+c(w,M,\chi)=\frac{c(vw\chi)}{c_M(vw\chi)c^M_w(\chi)c^M_w(\chi^{-1})},
+\]
+for any $v\in W/W_M$. Taking $v=1$ gives the lemma. $\Box$
+\end{pf}
+
+\begin{lemma}
+Let $\chi$, $\chi'$ be two regular unramified characters of $A(F)$ and let $u\in V_B(\chi^{-1})$ and $u'\in V_B(\chi'^{-1})$. For all $a\in A^-(\epsilon)$, with $\epsilon>0$ as in Lemma 3.3,
+\[
+\begin{array}{l}
+\int_{KaK}<i_{G,A}(\chi)(g)\Phi_{K,\chi},u>_G<i_{G,A}(\chi')(g)\Phi_{K,\chi'},u'>_G\ dg\\
+=meas(KaK)\sum_{w,w'\in W/W_M}c_M(a,w,\chi)c_M(a,w',\chi')<u(w,*),u'(w',*)>_G,
+\end{array}
+\]
+where $u(w,g):=<i_{G,A}(\chi)(a)R_MT_w\Phi_{K\chi},R_MT_w\pi(k)u>_M$, for $g=kak'\in KaK$, where $c_M(a,w,\chi)=c(w,M,\chi)c_w(\chi)$, and where $\pi=i_{G,A}(\chi)|_K$.
+\end{lemma}
+
+\begin{remark}
+Observe that if $\kappa$ is an unramified character of $G(F)$ then
+\[
+\begin{array}{l}
+\int_{KaK}\kappa(g)<i_{G,A}(\chi)(g)\Phi_{K,\chi},u>_G<i_{G,A}(\chi')(g)\Phi_{K,\chi'},u'>_G\ dg\\
+=\kappa(g)\int_{KaK}<i_{G,A}(\chi)(g)\Phi_{K,\chi},u>_G<i_{G,A}(\chi')(g)\Phi_{K,\chi'},u'>_G\ dg.
+\end{array}
+\]
+This remark will be used later.
+\end{remark}
+
+\begin{pf}[proof]
+Using Lemma 3.3, we have
+\[
+\begin{array}{l}
+\int_{KaK}<i_{G,A}(\chi)(g)\Phi_{K,\chi},u>_G<i_{G,A}(\chi')(g)\Phi_{K,\chi'},u'>_G\ dg\\
+\quad=meas(KaK)\int_K<i_{G,A}(\chi)(a)\Phi_{K,\chi},\pi(k)u>_G<i_{G,A}(\chi')(a)\Phi_{K,\chi'},\pi(k)u'>_G\ dk\\
+\quad\quad=meas(KaK)\sum_{w,w'\in W/W_M}c(w,M,\chi)\times\\
+\quad\quad\quad\times c(w',M,\chi')\int_K<i_{G,A}(\chi)(a)R_MT_w\Phi_{K,\chi},R_MT_w\pi(k)u>_M\times\\
+\quad\quad\quad\quad\times<i_{G,A}(\chi')(a)R_MT_{w'}\Phi_{K,\chi'},R_MT_{w'}\pi(k)u'>_M\ dk,
+\end{array}
+\]
+where $\pi=i_{G,A}(\chi)|_K=i_{G,A}(\chi')|_K$ is independent of (unramified) $\chi$. Plugging Casselman's (2.8) into this, we find that the above equation equals
+\[
+\begin{array}{l}
+\delta(a)meas(KaK)\sum_{w,w'\in W/W_M}c(w,M,\chi)c(w',M,\chi')c_w(\chi)c_{w'}(\chi)\times\\
+\quad\times\int_K<i_{M,A}(w\chi)(a)R_M\Phi_{K,w\chi},R_MT_w\pi(k)u'>_M\times\\
+\quad\quad\times<i_{M,A}(w'\chi')(a)R_M\Phi_{K,w'\chi'},R_MT_{w'}\pi(k)u''>_M\ dk.
+\end{array}
+\]
+Putting these equations together gives the desired result. $\Box$
+\end{pf}
+
+\subsection{A truncated inner products of matrix coefficients}
+
+Let $T\in\mathcal{A}_{A,\mathbb{R}}$ and assume that $d(T):=\inf_{\alpha\in\Delta}<T,\alpha>$ is positive, so $T$ belongs to the positive Weyl chamber. The set
+\begin{equation}\tag{3.3}
+\mathcal{A}_A(T)=\{a\in X_*(A)\ {\rm mod}\ \nu_A(Z(G(F)))\ |\ <a,\alpha>\geq0,\ <\hat\alpha,a-T><0,\forall\alpha\in\Delta\},
+\end{equation}
+is obviously finite. By (2.4), we may choose $T$ as above so that
+\[
+\nu_A^{-1}(\mathcal{A}_A(T)^c)\subset A^-(\epsilon),
+\]
+where $\mathcal{A}_A(T)^c=\nu_A(A^-)-\mathcal{A}_A(T)$. Define $G(T)=K\nu_A^{-1}(\mathcal{A}_A(T)^c)K\subset K\cdot A^-(\epsilon)\cdot K$.
+
+Using the bijection (2.5), we define
+\begin{equation}\tag{3.4}
+\begin{array}{c}
+J^T(\chi,\chi',u,u')\\
+=\sum_{a\in\nu_A^{-1}(\mathcal{A}_A(T))}\int_{KaK}<i_{G,A}(\chi)(g)\Phi_{K,\chi},u>_G<i_{G,A}(\chi')(g)\Phi_{K,\chi'},u'>_G\ dg.
+\end{array}
+\end{equation}
+Before calculating this, we need the following
+
+\begin{lemma}
+Let $\chi$ be a regular unramified character of $A(F)$ and let $T=\sum_\alpha T_\alpha\alpha^\vee\in X_*(A)\subset\mathcal{A}_{A,\mathbb{R}}$ be as above. For each subset $\omega\subset\Delta$ with corresponding parabolic $P=P_\omega$, there is an entire function of $\chi$, denoted $F_{\omega,T}(\chi)=F_{P,T}(\chi)$, uniformly bounded on the support of the Plancheral measure (2.3), such that
+\[
+\begin{array}{rl}
+\sum_{a\in\nu_A^{-1}(\mathcal{A}_A(T))}\chi(a)&=\sum_{\omega\subset\Delta}F_{\omega,T}(\chi)\prod_{\alpha\in\omega}(1-\chi(a_\alpha))^{-1}\\
+&=\prod_{\alpha\in\Delta}(1-\chi(a_\alpha))^{-1}\sum_{\omega\subset\Delta}F_{\omega,T}(\chi)\prod_{\alpha\in\Delta-\omega}(1-\chi(a_\alpha))\\
+&=\tilde\theta(\chi)^{-1}\sum_{B\subset P}F_{P,T}(\chi)\prod_{\alpha\in\Delta-\Delta_P}(1-\chi(a_\alpha)),
+\end{array}
+\]
+where $\tilde\theta$ is defined in (3.8) below. (Of course, the zeros of $F_{\omega,T}(\chi)$ cancel with the poles of $\prod_{\alpha\in\omega}(1-\chi(a_\alpha))^{-1}$, since $\nu_A^{-1}(\mathcal{A}_A(T))$ is finite.) In fact, $F_{\omega,T}(\chi)$ may be written as
+\[
+F_{\omega,T}(\chi)=\prod_\alpha\chi(a_\alpha)^{T_\alpha}\cdot F_\omega(\chi),
+\]
+where $F_\omega(\chi)$ is independent of $T$.
+\end{lemma}
+
+\begin{remark}
+The statement of the lemma remains true if we replace $\nu_A^{-1}(\mathcal{A}_A(T))$ by $A^-(1)$, provided the sum is defined (either $\chi$ is is in the product of half-planes where the sum converges absolutely, or, if $\chi$ belongs to the complement of this region inside (2.6) define the sum is by analytic continuation). In this case, the poles of this meromorphic function of $\chi$ are precisely those of $\prod_{\alpha\in\omega}(1-\chi(a_\alpha))^{-1}$.
+\end{remark}
+
+\begin{pf}
+First consider the part of $\nu_A^{-1}(\mathcal{A}_A(T))$ away from the walls:
+\[
+\begin{array}{c}
+\mathcal{A}_A(T)_{reg}=\\
+\{a\in X_*(A)\ {\rm mod}\ \nu_A(Z(G(F)))\ |\ <a,\alpha>>0,\ <\alpha^\vee,a-T><0,\forall\alpha\in\Delta\}.
+\end{array}
+\]
+We can assume $\chi(a)$ is of the form
+\[
+\chi(a)=\prod_{\alpha\in\Delta}q^{s_\alpha n_\alpha}=\prod_{\alpha\in\Delta}q^{s_\alpha<a,\alpha>},
+\]
+where $Re\ s_\alpha<0$. In this case, one can see directly that
+\[
+\sum_{a\in\nu_A^{-1}(\mathcal{A}_A(T)_{reg})}\chi(a)=F_{\Delta,T}(\chi)\prod_{\alpha\in\Delta}(1-\chi(a_\alpha))^{-1},
+\]
+where $F_{\Delta,T}(\chi)$ is a polynomial in the $\chi(a_\alpha)$. Now let
+\[
+\mathcal{A}_A(T)_\omega:=\{a\in\ \mathcal{A}_A(T)\ |\ <a,\alpha>>0,\forall\alpha\in\omega,<a,\alpha>=0,\forall\alpha\in\Delta-\omega\},
+\]
+so $\mathcal{A}_A(T)_\Delta=\mathcal{A}_A(T)_{reg}$ and
+\begin{equation}\tag{3.5}
+\mathcal{A}_A(T)=\coprod_{\omega\subset\Delta}\mathcal{A}_A(T)_\omega.
+\end{equation}
+In each case, one can see directly that
+\begin{equation}\tag{3.6}
+\sum_{a\in\nu_A^{-1}(\mathcal{A}_A(T)_\omega)}\chi(a)=F_{\omega,T}(\chi)\prod_{\alpha\in\omega}(1-\chi(a_\alpha))^{-1},
+\end{equation}
+and the result follows. $\Box$
+\end{pf}
+
+From [M], Proposition 3.2.15 we find that, for $a\in A^-(1)$,
+\begin{equation}\tag{3.7}
+meas(KaK)=\delta(a)^{-1}Q_a,
+\end{equation}
+where $Q_a=Q_\omega\in\mathbb{Z}$ is constant on each $\nu_A^{-1}(\mathcal{A}_A(T)_\omega)$. The case of the above lemma which we will need is the following. Assume that $\chi$, $\chi'$ are unramified regular unitary characters of $A(F)$. Then
+\[
+\sum_{a\in\nu_A^{-1}(\mathcal{A}_A(T))}\sum_{w,w'\in W}(w\chi)(a)(w'\chi')(a)Q_a,
+\]
+equals
+\begin{equation}\tag{3.8}
+\sum_{w,w'\in W}\tilde\theta(w\chi w'\chi')^{-1}\sum_{P_0\subset P}Q_PF_{P,T}(w\chi w'\chi')\prod_{\alpha\in\Delta-\Delta_P}(1-(w\chi w'\chi')(a_\alpha)),
+\end{equation}
+where
+\[
+\tilde\theta(\chi):=\prod_{\alpha\in\Delta}(1-\chi(a_\alpha)).
+\]
+
+\begin{proposition}
+Assume that $\chi$, $\chi'$ are unramified regular characters of $A(F)$, that $u\in V_B(\chi^{-1})$, $u'\in V_B(\chi'^{-1})$, and that $T\in\mathcal{A}_{A,\mathbb{R}}$ is choosen as above (depending on $G$ and the ``level'' of $u$, $u'$). We have
+\[
+J^T(\chi,\chi',u,u')=\sum_{w,w'\in W}C^T(\chi,\chi',w,w')<T_wu,T_{w'}u'>_G,
+\]
+If $T\in X_*(A)$ is choosen sufficiently regular as in Lemma 3.5 then $C^T(\chi,\chi',w,w')$ may be effectively calculated using Lemma 3.5 and (3.8). In any case, $C^T(\chi,\chi',w,w')$ meromorphic in $\chi$ and $\chi'$ and has no poles on the support of the Plancheral measure Lemma 2.2. (Note that the sum here is over $W$ and not $W/W_M$.)
+\end{proposition}
+
+\begin{remark}
+We only indicate below the formal derivation of the formula, referring the proof of the statement about the poles and meromorphicity to Lemma 3.5 and (3.8). In fact, our induction hypothesis will be that the equation in Proposition 3.6 holds, with $G$ replaced by a proper Levi $M$ and $C^T$ satisfying (3.20) below.
+\end{remark}
+
+\begin{proposition}
+\footnote{This result did not appear in the published version}
+If $\kappa$ is an unramified character of $G(F)$ then $w\kappa=\kappa$, for all $w\in W$ (represented in $K$), and if
+\[
+\begin{array}{c}
+J^{T,\kappa}(\chi,\chi',u,u')\\
+:=\sum_{a\in\nu_A^{-1}(\mathcal{A}_A(T))}\int_{KaK}\kappa(g)<i_{G,A}(\chi)(g)\Phi_{K,\chi},u>_G<i_{G,A}(\chi')(g)\Phi_{K,\chi'},u'>_G\ dg,
+\end{array}
+\]
+then
+\[
+J^{T,\kappa}(\chi,\chi',u,u')=\sum_{w,w'\in W}C^T(\kappa\chi,\chi',w,w')<T_wu,T_{w'}u'>_G\ .
+\]
+\end{proposition}
+
+\begin{remark}
+We only prove Proposition 3.6 since the proof of 3.7 is similar, using the remark following Lemma 3.2.
+\end{remark}
+
+\begin{pf}
+The proof is by induction on the semi-simple rank of $G$.
+
+If the semi-simple rank of $G$ is 0 then $G$ is a torus $A$ and the result follows immediately from definition (3.4), (3.7), Lemma 3.4 and the case $G=GL(1)^r$ of Lemma 3.5 mentioned in (3.8). Indeed, in this case
+\[
+\nu_A^{-1}(\mathcal{A}_A(T))=\{(a_1,...,a_r)\ |\ 0<\nu_F(a_i)<T_i\},\quad T=(T_1,...,T_r),
+\]
+so (3.7) gives
+\begin{equation}\tag{3.9}
+\begin{array}{c}
+\sum_{a\in\nu_A^{-1}(\mathcal{A}_A(T))}\delta(a)(w\chi)(a)(w'\chi')(a)meas(KaK)\\
+=\sum_{a\in\nu_A^{-1}(\mathcal{A}_A(T))}(w\chi)(a)(w'\chi')(a)Q_a.
+\end{array}
+\end{equation}
+By (3.8), this is
+\begin{equation}\tag{3.10}
+\sum_{\omega\subset\Delta}Q_\omega F_{\omega,T}(w\chi w'\chi')\prod_{\alpha\in\omega}(1-(w\chi w'\chi')(a_\alpha))^{-1}.
+\end{equation}
+Putting these together gives the result since
+\[
+\begin{array}{c}
+J^T(\chi,\chi',u,u')\\
+=\sum_{a\in\nu_A^{-1}(\mathcal{A}_A(T))}\int_{KaK}<i_{G,A}(\chi)(g)\Phi_{K,\chi},u>_G<i_{G,A}(\chi')(g)\Phi_{K,\chi'},u'>_G\ dg\\
+=\sum_{w,w'\in W}\sum_{a\in\nu_A^{-1}(\mathcal{A}_A(T))}c_M(a,w,\chi)c_M(a,w',\chi')<T_wu,T_{w'}u'>_G,
+\end{array}
+\]
+by Lemma 3.4. This implies that $C^T$ satisfies (3.20) below.
+
+Now suppose that the semi-simple rank of $G$ is greater than zero. By the induction hypothesis the result holds true for all Levi subgroups of $G$.
+
+Let $D\subset\nu_A(Z(G))\otimes\mathbb{R}$ be a subset invariant under translation by $\nu_A(Z(G))$, let $T,U\in\mathcal{A}_{A,\mathbb{R}}$ be such that $d(U-T)>0$ with $T$ as above. Let $\xi(M,D,T,U)$ denote the characteristic function of the set of $X\in\mathcal{A}_{A,\mathbb{R}}$ such that
+\[
+X_G\in D,
+\]
+\[
+<\alpha,X^M>\geq0,\ <\hat\alpha,X^M>\leq<\hat\alpha,T^M>,\quad\forall\alpha\in\Delta^M,
+\]
+\[
+<\alpha,X_M>><\alpha,T_M>,\ <\hat\alpha,X_M>\leq<\hat\alpha,U_M>,\quad\forall\alpha\in\Delta^G-\Delta^M.
+\]
+Here $\hat\alpha$ may be identified with Arthur's $\varpi_\alpha$, provided we identify $\mathfrak{a}_B$ with it's dual, and, for each standard Levi $M$, $\Delta^M$ denotes the set of simple roots of $M$ regarded as a subset of $\Delta=\Delta^G$. Let $I_D(X)$ equal 1 if $X_G\in D$ and equal 0 otherwise. Observe that the statement and proof of [W], Lemma II.3.1, in the context of $GL(n)$, is valid without change for the more general class of groups $G$ used here. Multiplying both sides of the equation in [W], Lemma II.3.1, by $I_D$ we obtain the following equation (see also [W], p. 15):
+\[
+\xi(G,D,U,U)=\sum_{M\subset G}\xi(M,D,T,U).
+\]
+We will use the same notation for the pull-back of $\xi(M,D,T,U)$ to $A(F)$ via $\nu_A$ in (2.4).
+
+Let
+\begin{equation}\tag{3.11}
+\begin{array}{rl}
+\multicolumn{2}{c}{J_D^U(\chi,\chi',u,u')}\\
+:=&\sum_{a\in\nu_A^{-1}(\mathcal{A}_A(U))}I_D(a)\int_{KaK}<i_{G,A}(\chi)(g)\Phi_{K,\chi},u>_G<i_{G,A}(\chi')(g)\Phi_{K,\chi'},u'>_G\ dg\\
+=&\sum_{a\in A^-}\xi(G,D,U,U)(a)\int_{KaK}<i_{G,A}(\chi)(g)\Phi_{K,\chi},u>_G\times\\
+&\quad\times<i_{G,A}(\chi')(g)\Phi_{K,\chi'},u'>_G\ dg\\
+=&\sum_{M\subset G}\sum_{a\in A^-}\int_{KaK}<i_{G,A}(\chi)(g)\Phi_{K,\chi},u>_G\times\\
+&\quad\times<i_{G,A}(\chi')(g)\Phi_{K,\chi'},u'>_G\ dg\cdot\xi(M,D,T,U)(a)\\
+=:&\sum_{M\subset G}J^{T,U}_D(M,\chi,\chi',u,u'),
+\end{array}
+\end{equation}
+where each $J^{T,U}_D(M,\chi,\chi',u,u')$, defined by the identity above, depends on $T$ and $U$ but the sum over $M$ of them depends only on $U$.
+
+To verify the proposition we calculate the $J^{T,U}_D(M,\chi,\chi',u,u')$ inductively. We consider the cases $M=G$ and $M\neq G$ separately.
+
+Case $M=G$. In this case there is no dependence on $U$:
+\begin{equation}\tag{3.12}
+\begin{array}{rl}
+J^{T,U}_D(G,\chi,\chi',u,u')&=\sum_{a\in A^-}\int_{KaK}<i_{G,A}(\chi)(g)\Phi_{K,\chi},u>_G\times\\
+&\quad\times<i_{G,A}(\chi')(g)\Phi_{K,\chi'},u'>_G\ dg\cdot\xi(G,D,T,T)(a)\\
+&=J^T_D(\chi,\chi',u,u').
+\end{array}
+\end{equation}
+
+Case $M\neq G$. In this case the semi-simple rank of $M$ is strictly less than that of $G$, so the induction hypothesis is applicable to $M$. Suppose $X\in a_B$ is such that $\xi(M,D,T,U)(X)=1$. For each $\alpha\in\Sigma^G-\Sigma^M$ with $\alpha>0$ there exists a $\beta\in\Delta^G-\Delta^M$ such that $\alpha-\beta$ is either 0 or a positive root, so $<\alpha,X>\geq<\beta,X>$. We thus have $<\alpha,X>\geq<\beta,X>\geq<\beta,T>$. With $T$ choosen sufficiently regular, the proof of Lemma 3.4 gives
+\begin{equation}\tag{3.13}
+\begin{array}{rl}
+\int_{KaK}&<i_{G,A}(\chi)(g)\Phi_{K,\chi},u>_G<i_{G,A}(\chi')(g)\Phi_{K,\chi'},u'>_G\ dg\\
+=&\sum_{w,w'\in W/W_M}meas(KaK)\int_K<i_{G,A}(w\chi)(a)R_M\Phi_{K,w\chi},R_MT_w\pi(k)u'>_M\times\\
+&\quad\times<i_{G,A}(w'\chi')(a)R_M\Phi_{K,w'\chi'},R_MT_{w'}\pi(k)u''>_M\ dk\\
+=&\sum_{w,w'\in W/W_M}meas(KaK)c_w(\chi)c_{w'}(\chi')\int_K<i_{G,A}(w\chi)(a)\Phi^M_{K^M,w\chi},u(w,k)>_M\times\\
+&\quad\times<i_{G,A}(w'\chi')(a)\Phi^M_{K^M,w'\chi'},u'(w',k)>_M\ dk,
+\end{array}
+\end{equation}
+where $u(w,k):=R_MT_w\pi(k)u$. (Note the change in notation.) Concerning the integral in this last expression, reversing the reasoning in the proof of Lemma 3.4 above gives
+\begin{equation}\tag{3.14}
+\begin{array}{l}
+\int_K<i_{G,A}(w\chi)(a)\Phi^M_{K^M,w\chi},u(w,k)>_M\times\\
+\quad\times<i_{G,A}(w'\chi')(a)\Phi^M_{K^M,w'\chi'},u'(w',k)>_M\ dk\\
+=\int_K\int_{K^M}<i_{G,A}(w\chi)(a)\Phi^M_{K^M,w\chi},u(w,hk)>_M\times\\
+\quad\times<i_{G,A}(w'\chi')(a)\Phi^M_{K^M,w'\chi'},u'(w',hk)>_M\ dhdk\\
+=\delta_M(a)^{-1}\delta(a)vol(K^MaK^M)^{-1}\int_K\int_{K^MaK^M}<i_{M,A}(w\chi)(m)\Phi^M_{K^M,w\chi},u(w,k)>_M\times\\
+\quad\times<i_{M,A}(w'\chi')(m)\Phi^M_{K^M,w'\chi'},u'(w',k)>_M\ dmdk.
+\end{array}
+\end{equation}
+(This is the analog of the calculation on [W], bottom of p. 16.) We will now show that this last expression is the integral over $K$ of the summand of
+\begin{equation}\tag{3.15}
+J^{T,U,M}_{D'}(w\chi,w'\chi',u(w,k),u(w',k)),
+\end{equation}
+where $D'$ will be defined below. This inner product (3.15) is an $M$-analog of our original inner product, so the induction hypothesis applies.
+
+In more detail, by (3.7) there is a constant $c_M$ independent of $a$ such that
+\[
+c_M\delta_M(a)\delta(a)^{-1}=vol(KaK)vol(K^MaK^M)^{-1}.
+\]
+Now plug (3.14) into (3.13) to get
+\begin{equation}\tag{3.16}
+\begin{array}{l}
+\multicolumn{1}{c}{J^{T,U}_D(M,\chi,\chi',u,u')}\\
+=c_M\sum_{w,w'\in W/W_M}\int_K\big[\sum_{a\in A^-}\xi(M,D,T,U)(a)\times\\
+\quad\times\int_{K^MaK^M}<i_{M,A}(w\chi)(m)\Phi^M_{K^M,w\chi},u(w,k)>_M\times\\
+\quad\times<i_{M,A}(w'\chi')(m)\Phi^M_{K^M,w'\chi'},u'(w',k)>_M\ dm\big]dk.
+\end{array}
+\end{equation}
+Denote by $D_M(T,U)$ the set of $X\in\mathcal{A}_{A,\mathbb{R}}$ such that
+\[
+X_G\in D,\quad<\alpha,X-T>>0\ {\rm and}\ <\hat\alpha,X-U>\leq0,\ \forall\alpha\in\Delta^G-\Delta^M.
+\]
+We have ([W], p. 17)
+\begin{equation}\tag{3.17}
+\xi(M,D,T,U)=\xi^M(M,D_M(T,U),T,T),
+\end{equation}
+which gives our $D'$ mentioned above. Putting together (3.16), (3.17), and the definition of the inner product integral, we obtain
+\[
+\begin{array}{c}
+J^{T,U}_D(M,\chi,\chi',u,u')\\
+=c_M\sum_{w,w'\in W/W_M}\int_KJ^T_{D_M(T,U)}(w\chi,w'\chi',u(w,k),u'(w',k))dk.
+\end{array}
+\]
+Note that the $T$ choosen above depends only on $G$ and the ``level'' of $u$ and $u'$. We want to apply the induction hypothesis with $u$ and $u'$ replaced by $u(w,k)$ and $u'(w',k)$, but with the same $T$. To check that this is valid it suffices to check that the level of $u(w,k)$ and $u'(w',k)$ in $M$ is not worst that the level of $u$ and $u'$ in $G$. Since $W$ is finite, $K$ is compact, and $u$, $u'$ are supported in some fixed compact set, we may fix $T$ so large that the induction hypothesis applies to $u$, $u'$ and all the $u(w,k)$, $u'(w',k)$. Applying the induction hypothesis to $J^T_{D_M(T,U)}(w\chi,w'\chi',u(w,k),u'(w',k))$, we obtain
+\begin{equation}\tag{3.18}
+\begin{array}{c}
+J^{T,U}_D(M,\chi,\chi',u,u')\\
+=c_M\sum_{w,w'\in W/W_M}\int_K\sum_{v,v'\in W_M}C^T_M(w\chi,w'\chi',v,v')\times\\
+\times<T^M_vu(w,k),T^M_{v'}u'(w',k)>_M\ dk.
+\end{array}
+\end{equation}
+In fact, since $u(w,k):=R_MT_w\pi(k)u$ it follows that
+\[
+\int_K\sum_{v,v'\in W_M}<T^M_vu(w,k),T^M_{v'}u'(w',k)>_M\ dk=\sum_{v,v'\in W_M}<T_\sigma u,T_{\sigma'}u'>_G
+\]
+where $\sigma=w^G_\ell w^M_\ell vw$, $\sigma'=w^G_\ell w^M_\ell v'w'$, and $w_\ell^M$ denotes the longest element of $W_M$ (see [W], p. 17, eqs (2), (3)). Therefore,
+\begin{equation}\tag{3.19}
+\begin{array}{c}
+J^{T,U}_D(M,\chi,\chi',u,u')\\
+=c_M\sum_{w,w'\in W}C^{T,U}_M(v,v')<T_wu,T_{w'}u'>_G\ dk,
+\end{array}
+\end{equation}
+where $C^{T,U}_M(v,v')$ takes the form
+\begin{equation}\tag{3.20}
+C^{T,U}_M(v,v')=c_M(-1)^{rk(M)}\sum_{a\in A^-}\chi(M)(a)\gamma_a(\chi,\chi',v,v').
+\end{equation}
+Here $\gamma_a(\chi,\chi',v,v')$ is meromorphic in $\chi$ and $\chi'$, having no poles on the support of the Plancheral measure (see Lemma 2.2), and $\chi(M)$ denotes the characteristic function of the set of $a\in A^-$ such that
+\[
+\nu_A(a)_G\in D,
+\]
+\[
+<\alpha,\nu_A(a)_M-T_M>>0,\ <\hat\alpha,\nu_A(a)_M-U_M><0,\ \forall\alpha\in\Delta^G-\Delta^M,
+\]
+\[
+<\hat\alpha,\nu_A(a)^M-T^M>>0,\ \forall\alpha\in\Delta^M.
+\]
+Collecting equations (3.11), (3.12), (3.18), (3.19), and (3.20), we get
+\begin{equation}\tag{3.21}
+\begin{array}{c}
+J^{T,U}_D(\chi,\chi',u,u')\\
+=J^{T,U}_D(G,\chi,\chi',u,u')+\sum_{M\subset G,M\neq G}J^{T,U}_D(M,\chi,\chi',u,u')\\
+=J^T_D(\chi,\chi',u,u')+\sum_{w,w'\in W}<T_wu,T_{w'}u'>_G\sum_{M\subset G,M\neq G}C^{T,U}_M(v,v')\\
+=J^T_D(\chi,\chi',u,u')+\\
++c_M\sum_{w,w'\in W}<T_wu,T_{w'}u'>_G\sum_{a\in A^-}\gamma_a(\chi,\chi',v,v')\sum_{M\subset G,M\neq G}(-1)^{rk(M)}\chi(M)(a).
+\end{array}
+\end{equation}
+Here is where we apply a combinatorial lemma. In the notation of [Art3], we have
+\begin{equation}\tag{3.22}
+\chi(M)(a)=1_D(\nu_G(a)_G)\Gamma^G_M(\nu_G(a)-T,U-T)\hat\tau^M(\nu_G(a)-T),
+\end{equation}
+where $1_D$ denotes the characteristic function of $D$ and $\Gamma^G_M(X,Y)=\tau^G_M(X-Y)\hat\tau^M(Y-X)$. We have (by [Morn], Lemma 13.1.3, lecture 13, or [Art2], \S2)
+\begin{equation}\tag{3.23}
+\sum_{M\subset G,M\neq G}(-1)^{rk(M)}\chi(M)(a)=1_D(\nu_G(a)_G)(-1)^{rk(G)}[\hat\tau^M(\nu_A(a)-U)-\hat\tau^M(\nu_A(a)-T)].
+\end{equation}
+The function $1_D(\nu_G(a)_G)\hat\tau^M(\nu_G(a)-T)$ is the characteristic function of $\nu_A^{-1}(\mathcal{A}_A(T)^c)$. From (3.22) and (3.23), we obtain
+\[
+\begin{array}{l}
+\quad\quad\sum_{a\in A^-}\gamma_a(\chi,\chi',v,v')\sum_{M\subset G,M\neq G}(-1)^{rk(M)}\chi(M)(a)\\
+=(-1)^{rk(G)}\sum_{a\in\nu_A^{-1}(\mathcal{A}_A(U)^c)}\gamma_a(\chi,\chi',v,v')-(-1)^{rk(G)}\sum_{a\in\nu_A^{-1}(\mathcal{A}_A(T)^c)}\gamma_a(\chi,\chi',v,v')\\
+=(-1)^{rk(G)}\sum_{a\in\nu_A^{-1}(\mathcal{A}_A(T))}\gamma_a(\chi,\chi',v,v')-(-1)^{rk(G)}\sum_{a\in\nu_A^{-1}(\mathcal{A}_A(U))}\gamma_a(\chi,\chi',v,v').
+\end{array}
+\]
+Plugging these into (3.21), we obtain the Proposition. Note that the dependence on $T$ in the final expression is fictitious since the left hand side depends only on $U$.
+
+In fact, these sums can be rewritten using Lemma 3.5 - see also (3.8). $\Box$
+\end{pf}
+
+\section{Integrating the kernel}
+
+\subsection{Introducing a $(G,A)^\sim$-family}
+% [Claude] In the original the footnote mark "4" stands alone on the line below the subsection title.
+\footnote{This subsection did not appear in the published version}
+
+We prove in this section an analog of Proposition II.5 of [W].
+
+Let $P\in\mathcal{P}(A)$ and let $w_P\in W$ denote the unique element for which $P=w_P^{-1}B$. Let $T$, $\chi$, and $\chi'$ be as in section 2, let $\phi\in C_c^\infty(G)$, and let
+\begin{equation}\tag{4.1}
+\begin{array}{c}
+Q^T(\chi,\chi',w,w',\phi)\\
+=tr\big[T^*_wT_{w'}i_{G,A}(\chi)(\phi)\big]\,C^T(\chi,\chi'^{-1},w,w')\tilde\theta(w\chi/w'\chi'),
+\end{array}
+\end{equation}
+in the notation of (3.8) and Propositions 3.6, 3.7. If $w\chi=w'\chi'$ then $C^T(\chi,\chi'^{-1},w,w')$ is independent of $T\in X_*(A)$ by Proposition 3.6. Since $T$ depends indirectly in $\phi$, $Q^T(\chi,\chi',w,w',...)$ does not define a meromorphic family of distributions on $C_c^\infty(G)$ since they are not even linear in $\phi$. However, we will show that in the limit aa $\chi'\rightarrow\chi$ we will produce such a distribution. The following lemma will not be needed here since in the example treated the necessary result can be proven directly. However, it is included here as it helps put the calculation in the context of Arthur's (and Waldspurger's) theory.
+
+\begin{lemma}
+The collection $\{Q^T(\chi,\chi',w_P,w',\phi)\ |\ P\in\mathcal{P}(A)\}$ forms a $(G,A)^\sim$-family in $\chi$ and $\{Q^T(\chi,\chi',w,w_P,\phi)\ |\ P\in\mathcal{P}(A)\}$ forms a $(G,A)^\sim$-family in $\chi'$.
+\end{lemma}
+
+\begin{pf}[proof]
+It follows from [Art2], \S7, that $c_P(\lambda):=tr[R_{w_P}i_{G,A}(\chi_\lambda)]$ forms a $(G,A)$-family, where $R_w$ denotes the normalized intertwining operator associated to $T_w$. From this, the definition of a $(G,A)^\sim$-family, and the properties of the $a_\alpha$ listed in [Car] (for $G$ is split see \S1 following (2.3)), one sees that $\tilde{c}_P(\chi):=tr[T_{w_P}i_{G,A}(\chi)]$ forms a $(G,A)^\sim$-family. From the definition, (3.8), and Proposition 3.6, one similarly concludes that $\tilde{c}_P(\chi):=C^T(\chi,\chi'^{-1},w,w')\tilde\theta(w\chi/w'\chi')$ forms a $(G,A)^\sim$-family. Since the product of two $(G,A)^\sim$-families is a $(G,A)^\sim$-family, the result follows. $\Box$
+\end{pf}
+
+\subsection{The Fourier transform of a truncated orbital integral}
+
+Let
+\begin{equation}\tag{4.2}
+G(T):=\bigcup_{a\in\nu_A^{-1}(\mathcal{A}_A(T))}KaK,
+\end{equation}
+and recall
+\begin{equation}\tag{4.3}
+\Gamma_\chi(g^{-1}hg)=<i_{G,A}(\chi)(h)i_{G,A}(\chi)(g)\Phi_{K,\chi},i_{G,A}(\chi^{-1})(g)\Phi_{K,\chi^{-1}}>_G.
+\end{equation}
+We wish to calculate, for $\phi\in C_c^\infty(G)$, the Fourier transform
+\begin{equation}\tag{4.4}
+\begin{array}{rl}
+I^T(\chi,\phi)&=\int_{G(F)}\Gamma_\chi(h)\int_{G(T)}\phi(g^{-1}hg)dgdh\\
+&=\int_{G(T)\times G(F)}\Gamma_\chi(g^{-1}hg)\phi(h)dhdg.
+\end{array}
+\end{equation}
+In \S4, we will also consider
+\begin{equation}\tag{4.5}
+I^{T,\kappa}(\chi,\phi):=\int_{G'(T)\times G(F)}\kappa(g)\Gamma_\chi(g^{-1}hg)\phi(h)dhdg,
+\end{equation}
+where $G=SL(n)$, $G'=PGL(n)$, and $\kappa$ is an unramified character of order $n$ on $G'(F)$.
+
+The idea is to expand (4.3) into a double series using an orthonormal basis and, for each term in the expansion, use the computations of the previous section to evaluate (4.4) and (4.5).
+
+\begin{proposition}
+Let $T\in X_*(A)$ be as in Proposition 3.6 and let $\chi$ be unramified, regular character of $A(F)$. We have
+\[
+I(\chi,\phi)=\lim_{\chi'\rightarrow\chi}\sum_{w,w'\in W}Q^T(\chi,\chi',w,w',\phi)\tilde\theta(w\chi/w'\chi')^{-1},
+\]
+where $\tilde\theta$ is as in (3.8) and $Q^T$ is as in (4.1). The map $\phi\longmapsto I(\chi,\phi)$ is an invariant $G$-admissible distribution on $G_{ell}$ in the sense of [HC].
+\end{proposition}
+
+\begin{proposition}
+\footnote{This result did not appear in the published version}
+Let $G=SL(n)$ and $G'=PGL(n)$. Let $\chi$ be unramified, regular character of $A'(F)$. We have
+\[
+I^\kappa(\chi,\phi)=\lim_{\chi'\rightarrow\chi}\sum_{w,w'\in W}Q^T(\kappa\chi,\chi',w,w',\phi)\tilde\theta(w\kappa\chi/w'\chi')^{-1},
+\]
+independent of $T$, where $A'$ denotes the maximal split torus of $G'$ and $B'$ the standard Borel. The map $\phi\longmapsto I^\kappa(\chi,\phi)$ is a $G$-invariant $G$-admissible distribution on $G_{ell}$.
+\end{proposition}
+
+\begin{remark}
+We only prove part (a) since the proof of part (b) is similar.
+\end{remark}
+
+\begin{pf}[proof of 4.2]
+The operator adjoint to
+\[
+T_w:V_B(\chi^{-1})\rightarrow V_{B^w}(w\chi^{-1})
+\]
+is
+\[
+T_w:V_B(w\chi)\rightarrow V_B(\chi),
+\]
+so
+\begin{equation}\tag{4.6}
+<T_wu,T_{w'}u'>_G=<u,T^*_wT_{w'}u'>_G\ .
+\end{equation}
+Let $\{u_i\ |\ i\in I\}$ denote an $(A(F)\cap K)$-bi-invariant orthonormal basis for $V_B(\chi)$, $\{u_i^*\ |\ i\in I\}$ its dual basis for $V_B(\chi^{-1})$ (so $<u_i,u_j^*>_G=\delta_{ij}$). Expand
+\[
+i_{G,A}(\chi)(g)\Phi_{K,\chi}=\sum_i<i_{G,A}(\chi)(g)\Phi_{K,\chi},u_i^*>u_i,
+\]
+and
+\[
+i_{G,A}(\chi^{-1})(g)\Phi_{K\chi^{-1}}=\sum_j<i_{G,A}(\chi^{-1})(g)\Phi_{K,\chi^{-1}},u_j>u_j^*.
+\]
+This and (4.3) give
+\[
+\begin{array}{rl}
+\Gamma_\chi(g^{-1}hg)&=\sum_{i,j\in I}<i_{G,A}(\chi)(g)\Phi_{K,\chi},u_i^*>_G\times\\
+&\quad\times<i_{G,A}(\chi)(h)u_i,u_j^*>_G<i_{G,A}(\chi^{-1})(g)\Phi_{K,\chi^{-1}},u_j>_G\ .
+\end{array}
+\]
+Plugging this into the definition of $I^T(\chi,\phi)$ gives
+\begin{equation}\tag{4.7}
+\begin{array}{rl}
+I^T(\chi,\phi)=&\sum_{a\in\nu_A^{-1}(\mathcal{A}_A(T))}\sum_{i,j\in I}\int_{KaK}<i_{G,A}(\chi)(g)\Phi_{K,\chi},u_i^*>_G\times\\
+&\quad\times<i_{G,A}(\chi^{-1})(g)\Phi_{K,\chi^{-1}},u_j>_G\ dg\times\\
+&\quad\times\int_{G(F)}\phi(h)<i_{G,A}(\chi)(h)u_i,u_j^*>_G\ dh\\
+&=\sum_{i,j\in I}J^T(\chi,\chi^{-1},u_i^*,u_j^*)\times\\
+&\quad\times\int_{G(F)}\phi(h)<i_{G,A}(\chi)(h)u_i,u_j^*>_G\ dh\\
+=&\sum_{i,j\in I}J^T(\chi,\chi^{-1},u_i^*,u_j^*)<i_{G,A}(\chi)(\phi)u_i,u_j^*>_G\ .
+\end{array}
+\end{equation}
+By Proposition 3.6 and (4.6), this is
+\[
+\sum_{i,j\in I}\sum_{w,w'\in W}C^T(\chi,\chi^{-1},w,w')<u_i,T^*_wT_{w'}u_j^*>_G<i_{G,A}(\chi)(\phi)u_i,u_j^*>_G\ .
+\]
+Since $\{u_i\}$, $\{u_i^*\}$ are orthonormal bases,
+\[
+\begin{array}{rl}
+\sum_{i,j\in I}<u_i,T^*_wT_{w'}u_j^*>_G<i_{G,A}(\chi)(\phi)u_i,u_j^*>_G\\
+=tr[T^*_wT_{w'}i_{G,A}(\chi)(\phi)].
+\end{array}
+\]
+Collecting these results gives the first statement of the proposition, except for the claim that the result is independent of $T\in X_*(A)$. Putting together Proposition 4.2, the definition (4.1), and the evaluation of the coefficients $C^T(\chi,\chi',w,w')$ in (3.8), we obtain the last part of the Proposition. The claim that the result is independent of $T$ follows from Proposition 3.6.
+
+It remains to prove the admissibility. From [HC], \S14, it follows that the distribution $\phi\longmapsto tr\big[T^*_wT_{w'}i_{G,A}(\chi)(\phi)\big]$ is a meromorphic family of admissible distributions. Therefore, $\phi\longmapsto Q^T(\chi,\chi',w,w',\phi)$ satisfies the $G$-admissibility property of [HC], \S14. Since $I(\chi,\phi)$ is the limit of a linear combination of the $Q^T(\chi,\chi',w,w',\phi)$, it also satisfies the $G$-admissibility property. This proves the proposition completely. $\Box$
+\end{pf}
+
+\subsection{The spectral expansion}
+
+Let $\phi\in C_c^\infty(G)$ be an Ad-finite function, in the sense of [K], \S4. The support of the distribution
+\begin{equation}\tag{4.8}
+\begin{array}{rl}
+f\longmapsto I(f,\phi)&=\int_{G(F)^1\times G(F)^1}f(g^{-1}hg)\phi(h)dgdh\\
+&=\int_{G(F)^1}f(h)\Phi_\phi(h)dh\\
+&=\int_{G(F)^1}\Phi_f(h)\phi(h)dh,
+\end{array}
+\end{equation}
+for $f\in C_c^\infty(G)$, is compactly generated by [K], Lemma 6, \S4. Here, for $h\in G_{ell}$,
+\[
+\Phi_\phi(h):=\int_{G(F)^1}\phi(g^{-1}hg)dg,
+\]
+with respect to ordinary Haar measure on $G(F)^1$. Let $f\in C_c^\infty(G)$ and let $\phi$ be any locally constant function with compact support in $G_{ell}$ so that, writing
+\[
+G(F)^1=\bigcup_{a\in A^-(1)}KaK,
+\]
+there are only finitely many cosets $KaK$ which support $f$ and $\phi$.
+
+\begin{lemma}
+Let $\phi$ be any locally constant function with compact support in $G_{ell}$ and let $f\in\mathcal{H}(G,K)$. There is a compact set $C_{f,\phi}\subset G(F)$ for which $f(g^{-1}hg)\phi(h)\neq0$ implies $g\in C_{f,\phi}$. Moreover, if $G=SL(n)$ and $G'=PGL(n)$ then there is a compact set $C'_{f,\phi}\subset G'(F)$ for which $f(g^{-1}hg)\phi(h)\neq0$ implies $g\in C'_{f,\phi}$.
+\end{lemma}
+
+\begin{pf}[proof]
+For each $h\in G_{ell}$ there is a neighborhood $V_{h,f}$ of $h$ and a compact set $C_{h,f}$ of $G(F)$ for which $f(g^{-1}h'g)\neq0$ and $h'\in V_{h,f}$ implies $g\in C_{h,f}$. Since $\phi$ is compactly supported in $G_{ell}$, we may take finitely many $V_{h,f}$'s to cover $supp(\phi)$. The first part of the lemma follows. The proof of the second part is similar. $\Box$
+\end{pf}
+
+For $f$ and $\phi$ as above, by Lemma 4.4 we have
+\begin{equation}\tag{4.9}
+supp(\int_{G(F)^1}f(g^{-1}hg)\phi(h)dh)\subset K\nu_A^{-1}(\mathcal{A}_A(T))K,
+\end{equation}
+where $T$ is sufficiently large and satisfies the conditions of Proposition 3.6. Fix such a $T=T(f,\phi)$ and let
+\[
+I^T(f,\phi)=\int_{G(T)\times G(F)^1}f(g^{-1}hg)\phi(h)dgdh,
+\]
+so $I^T(f,\phi)=I(f,\phi)$. For $f\in\mathcal{H}(G,K)$, the Plancherel formula (see Lemma 2.4) gives
+\[
+f(g^{-1}hg)=\int_{\mathcal{A}^*_{A,\mathbb{R}}/L}f^\vee(\chi)\Gamma_\chi(g^{-1}hg)d\mu(\chi).
+\]
+From this we obtain the following ``spectral expansion'':
+
+\begin{theorem}
+Let $f$ and $\phi$ be as in Lemma 4.4, and $T=T(f,\phi)$ as in (4.9). We have
+\[
+\begin{array}{rl}
+I(f,\phi)&=\sum_{a\in\nu_A^{-1}(\mathcal{A}_A(T))}\int_{KaK\times G(F)^1}\int_{\mathcal{A}^*_{A,\mathbb{R}}/L}f^\vee(\chi)\Gamma_\chi(g^{-1}hg)d\mu(\chi)\phi(h)dgdh\\
+&=\int_{\mathcal{A}^*_{A,\mathbb{R}}/L}f^\vee(\chi)I(\chi,\phi)d\mu(\chi),
+\end{array}
+\]
+where $I(\chi,\phi)$ is given by Proposition 4.2.
+\end{theorem}
+
+The Weyl integration formula states that
+\begin{equation}\tag{4.10}
+\int_{G(F)^1}\psi(h)dh=\sum_T\frac{1}{|W_T|}\int_{T(F)}\Delta(t)^2meas(T(F))\int_{T(F)\backslash G(F)^1}\psi(g^{-1}tg)\frac{dg}{dt}dt,
+\end{equation}
+where $T$ runs over a complete set of representatives of non-conjugate Cartans of $G(F)^1$ and $W_T$ denotes the Weyl group of $T$. Taking $f$, $\phi$ as in Lemma 4.4, we have that $\int_C\phi(c)dc=0$, for any regular non-elliptic conjugacy class $C\subset G(F)^1$. Plugging $\psi=f\Phi_\phi$ into (4.10), we obtain the ``geometric'' expansion:
+\begin{equation}\tag{4.11}
+I(f,\phi)=\sum_T\frac{1}{|W_T|}\int_{T(F)}\Delta(t)^2\Phi_f(t)\Phi_\phi(t)dt,
+\end{equation}
+where $\Phi_f$ is the orbital integral of $f$ as above.
+
+The equality between the identity in Theorem 4.5 and (4.11) may be regarded as a special case of Arthur's local trace formula.
+
+\section{The $\kappa$-stable trace formula on $SL(n)$}
+% [Claude] In the original the footnote mark "6" stands alone on the line below the section title.
+\footnote{This section did not appear in the published version}
+
+\subsection{A relative trace formula on $SL(n,F)$}
+
+Let $G:=SL(n)$, $G':=PGL(n)$, and let $\kappa$ be an unramified character of order $n$ of $G'(F)$. Such a character is obtained as follows: let $\eta:F^\times\rightarrow\mathbb{C}$ be an unramified character of order $n$, let $\kappa'(g):=\eta(det\ g)$ be the corresponding character of order $n$ on $GL(n,F)$, and, since $\kappa'$ is trivial on the center of $GL(n,F)$, we may take $\kappa$ to be the corresponding character on $G'(F)$.
+
+Let $f$ and $\phi$ be as in Lemma 4.4, and let
+\begin{equation}\tag{5.1}
+\begin{array}{rl}
+I^\kappa(f,\phi)&:=\int_{G(F)\times G'(F)}\kappa(g)f(g^{-1}hg)\phi(h)dgdh\\
+&=\int_{G(F)\times G'(F)}\kappa(g)f(h)\phi(g^{-1}hg)dgdh\\
+&=\int_{G(F)}\Phi^\kappa_f(h)\phi(h)dgdh\\
+&=\int_{G(F)}\Phi^\kappa_\phi(h)f(h)dgdh,
+\end{array}
+\end{equation}
+where
+\[
+\Phi^\kappa_f(h):=\int_{G'(F)}\kappa(g)f(g^{-1}hg)dg,
+\]
+with respect to ordinary Haar measure on $G'(F)$. The interchange of orders of integration in (5.1) is valid by Lemma 4.4, . If $h\in G'(F)_{ell}$, the properties of $\Phi^\kappa_f$, as a function on the regular variety of the centralizer $G'(F)_h^{reg}$, were investigated in [Kaz] (see also [Hen]).
+
+Letting $\psi=\Phi^\kappa_\phi f$ in the Weyl integration formula (4.10), we find that
+\begin{equation}\tag{5.2}
+\begin{array}{rl}
+I^\kappa(f,\phi)&=\sum_T\frac{1}{|W_T|}\int_{T(F)}meas(T(F))\Delta(t)^2\int_{T(F)\backslash G'(F)}\Phi^\kappa_\phi(g^{-1}tg)f(g^{-1}tg)dgdt\\
+&=\sum_T\frac{1}{|W_T|}\int_{T(F)}meas(T(F))\Delta(t)^2\Phi^\kappa_\phi(t)\int_{T(F)\backslash G'(F)}\kappa(g)^{-1}f(g^{-1}tg)dgdt,
+\end{array}
+\end{equation}
+since
+\begin{equation}\tag{5.3}
+\begin{array}{rl}
+\Phi^\kappa_\phi(x^{-1}tx)&=\int_{G'(F)}\kappa(g)f(g^{-1}x^{-1}txg)dg\\
+&=\int_{G'(F)}\kappa(x^{-1}g)f(g^{-1}tg)dg\\
+&=\kappa(x^{-1})\Phi^\kappa_\phi(t).
+\end{array}
+\end{equation}
+We have assumed that $\phi$ is supported on $G'(F)_{ell}$, so only elliptic Cartans occur in the sum over $T$ in (5.2). Since $\int_{G'}\dots dg=meas(T(F))\int_{T\backslash G'}\dots\frac{dg}{dt}$ this is
+\begin{equation}\tag{5.4}
+I^\kappa(f,\phi)=\sum_T\frac{1}{|W_T|}\int_{T(F)}\Delta(t)^2\Phi^\kappa_\phi(t)\Phi^{\kappa^{-1}}_f(t)dt.
+\end{equation}
+Kazhdan ([Kaz] or [Hen], \S5.10, \S5.21) has shown that, for all $t\in T(F)_{reg}$,
+\begin{equation}\tag{5.5}
+\Delta_{T,\kappa}(t)\Phi^\kappa_\phi(t)=\phi^T(t),
+\end{equation}
+for some $\phi^T\in C_c^\infty(T_{reg})$, where $\Delta_{T,\kappa}$ is defined in [Hen], (3), \S5.3. (If $T/F$ is unramified and $\phi\in\mathcal{H}(G,K)$ then $\phi^T=i_*(\phi)(t)$, where $i_*:\mathcal{H}(G',K')\rightarrow\mathcal{H}(T,T\cap K')$ is the usual map defined by L-parameters [Hen], \S5.10). Observe that $\Delta_{T,\kappa}\Delta_{T,\kappa^{-1}}=|\Delta_{T,\kappa}|^2=\Delta^2$. Thus (5.4) and (5.5) imply that
+\begin{equation}\tag{5.6}
+I^\kappa(f,\phi)=\sum_{T\ {\rm elliptic}}\frac{1}{|W_T|}\int_{T(F)}f^T(t)\phi^T(t)dt,
+\end{equation}
+With apologies for the overuse of $T$, the method of proof of Theorem 4.5 gives us an expression of the form
+\begin{equation}\tag{5.7}
+I^\kappa(f,\phi)=\int_{\mathcal{A}^*_{A,\mathbb{R}}/L}f^\vee(\chi)I^\kappa(\chi,\phi)d\mu(\chi),
+\end{equation}
+where $A$ is the maximal split torus of $G$. We therefore have
+\begin{equation}\tag{5.8}
+\int_{\mathcal{A}^*_{A,\mathbb{R}}/L}f^\vee(\chi)I^\kappa(\chi,\phi)d\mu(\chi)=\sum_T\frac{1}{|W_T|}\int_{T(F)}\Delta_{T,\kappa}\Phi^\kappa_\phi(t)\cdot\Delta_{T,\kappa^{-1}}\Phi^{\kappa^{-1}}_f(t)dt.
+\end{equation}
+which is a special case of an $\kappa$-stable form of Arthur's local trace formula.
+
+For $\gamma\in G_{ell}$, we may write (5.7) in the form
+\begin{equation}\tag{5.9}
+\Phi^\kappa_f(\gamma)=\int_{\mathcal{A}^*_{A,\mathbb{R}}/L}f^\vee(\chi)I^\kappa(\chi,\gamma)d\mu(\chi),
+\end{equation}
+for $f$ a spherical function on $SL(n,F)$. This equality holds for any unramified $\kappa$ of order $m|n$. Roughly speaking, it has been conjectured that this $\kappa$-orbital integral is equal, up to a ``$\Delta$-factor'', to an ordinary orbital integral of a related spherical function on $H:=Res_{E/F}(GL(m)/E)$, where $E/F$ is an unramified extension which depends on $\kappa$. This group $H$ is unramified over $F$ and split over $E$ so our Theorem 4.5 applies. We find that for any spherical function $f_H$ of $H(F)$ and any $\gamma_H\in H_{ell}$ we have
+\begin{equation}\tag{5.10}
+\Phi_{f_H}(\gamma_H)=\int_{\mathcal{A}^*_{A_H,\mathbb{R}}/L_H}f^\vee_H(\chi_H)I_H(\chi_H,\gamma_H)d\mu_H(\chi_H).
+\end{equation}
+Let us for the moment take the example where $\kappa$ is of order $n$ and $H=T$ is an elliptic Cartan of $GL(n,F)$. In this case, (5.10) may be written
+\[
+\int_{\mathcal{A}^*_{A_T,\mathbb{R}}/L_T}f^\vee_T(\chi_T)I_T(\chi_T,\gamma)d\mu_T(\chi_T)=f_T(\gamma),
+\]
+for $\gamma\in T(F)_{reg}$. Here $A_T$ is just the center of $GL(n)$, $I(\chi_T,\gamma)$ is the spherical function $\Gamma_{\chi_T}$ in $\mathcal{H}(T,T\cap K)$ associated to $\chi_T$ and this is the well-known Fourier-Satake inversion formula on $T$, by Corollary 2.3 above.
+
+Fixing an embedding $\eta:H(F)\hookrightarrow G(F)$ (which we may regard as the identity in this case) and an embedding of L-groups $\iota:{}^LH(\mathbb{C})\hookrightarrow{}^LG(\mathbb{C})$, we let $\iota^*:\mathcal{H}(G,K)\rightarrow\mathcal{H}(H,K_H)$ denote the homomorphism of the algebra of spherical functions such that
+\[
+(\iota^*f)^\vee(\chi_H)=f^\vee(\iota(\chi_H)).
+\]
+Under the first embedding it is not hard to check that $\gamma_H\in H(F)$ elliptic in $H$ implies that $\eta(\gamma_H)\in G(F)$ is elliptic in $G$. The conjecture mentioned above may be expressed in the form
+\begin{equation}\tag{5.11}
+\Phi^\kappa_f(\eta(\gamma_H))=\Delta_{H,\kappa}(\gamma_H)\Phi_{f_H}(\gamma_H),
+\end{equation}
+where $f_H=\iota^*f$ and $\Delta_{H,\kappa}$ is a ``transfer factor'' which we will not define here. On the basis of this it seems reasonable to ask if the distribution on $C_c^\infty(G)$, $\phi\longmapsto I^\kappa(\iota(\chi_H),\phi)$, ``transfers'' or ``is matching with'' the distribution on $C_c^\infty(H)$, $\phi_H\longmapsto I_H(\chi_H,\phi_H)$.
+
+% [Claude] The original bibliography is reproduced verbatim, including its
+% ordering, underlining, punctuation and spelling.
+\begin{thebibliography}{Wald}
+\bibitem[Art1]{Art1} J. Arthur, ``Towards a local trace formula'', preprint
+\bibitem[Art2]{Art2} ------, ``The trace formula in invariant form'', Ann. Math. \underline{114}(1981)1-74
+\bibitem[Art3]{Art3} ------, ``A trace formula for reductive groups I'', Duke Math. J. \underline{45}(1978)911-952
+\bibitem[A]{A} M. Assem, ``Some results on unipotent orbital integrals'', Comp. Math. \underline{78} (1991), 317-378
+\bibitem[BD]{BD} ---, ``Le centre de Bernstein'', (notes by P. Deligne), in \underline{Repr\'esentations} \underline{des} \underline{groupes} \underline{r\'eductifs} \underline{sur} \underline{un} \underline{corp} \underline{local}, Hermann, Paris, 1984
+\bibitem[BDK]{BDK} J. Bernstein, P. Deligne, D. Kazhdan, ``Trace Paley-Wiener theorem for reductive p-adic groups'', J. d'Anal. Math. \underline{47}(1986)180-192 (see also the preprint version)
+\bibitem[BZ]{BZ} J. Bernstein and A. Zelevinsky, ``Induced representations of reductive p-adic groups'', Ann. scient. \'Ec. Norm. Sup. \underline{10}(1977)441-472
+\bibitem[BC]{BC} A. Borel and W. Casselman (editors), \underline{Automorphic Forms, Representations,} \underline{and L-functions}, (``Corvallis''), AMS Proc. Symp. Pure Math. \underline{33}, 1979
+\bibitem[Car]{Car} P. Cartier, ``Representations of p-adic groups: a survey'', in [BC]
+\bibitem[Cas1]{Cas1} W. Casselman, ``The unramified series of p-adic groups I: the spherical function'', Comp. Math. \underline{40} (1980) 387-406
+\bibitem[Cas2]{Cas2} ------, ``Introduction to the theory of admissible representations of p-adic reductive groups'', preprint
+\bibitem[HC]{HC} Harish-Chandra, ``Admissible invariant distributions on reductive p-adic groups'', in his Collected Works, vol. IV, Springer-Verlag
+\bibitem[Hen]{Hen} G. Henniart, ``On the local Langlands conjecture for $GL(n)$: the cyclic case'', Ann. Math. \underline{123} (1986) 145-203
+\bibitem[J]{J} D. Joyner, ``On the support of an elliptic orbital integral'', in preparation
+\bibitem[K]{K} D. Kazhdan, ``Cuspidal geometry of p-adic groups'', preprint
+\bibitem[Kaz]{Kaz} ------, ``On lifting'', in Lie Group Representations II, Springer LNM \underline{1041}(1983)
+\bibitem[M]{M} I. Macdonald, \underline{Spherical functions on a group of p-adic type}, Ramanujan Instit. Lecture Notes in Math., Univ. Madras, 1981
+\bibitem[Morn]{Morn} L. Clozel, J.-P. Labesse, R. Langlands, Morning seminar on the twisted trace formula, Institute for Advanced Study, 1983-84
+\bibitem[W]{W} M. Waldspurger, ``Integrales orbitales spheriques pour $GL(N)$ sur un corps p-adique'', preprint
+\bibitem[Wa]{Wa} M. Waldspurger, ``Comparaison d'integrales orbitales pour des groupes p-adiques,'' Proc. ICM
+\bibitem[Wald]{Wald} ------, ``Sur les germes de Shalika pour le groupe lin\'eare'', Math. Ann. \underline{284}(1989)199-221
+\end{thebibliography}
+
+\end{document}

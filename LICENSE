@@ -1,0 +1,13 @@
+This repository is dual-licensed by file type.
+
+1. Source code -- files ending in .py or .sage, and any other program code --
+   is licensed under the MIT License. See LICENSES/MIT.txt.
+   SPDX-License-Identifier: MIT
+
+2. Documents -- LaTeX sources (.tex, .bib), Markdown (.md), and PDFs --
+   are licensed under the Creative Commons Attribution 4.0 International
+   License. See LICENSES/CC-BY-4.0.txt or
+   https://creativecommons.org/licenses/by/4.0/
+   SPDX-License-Identifier: CC-BY-4.0
+
+Copyright (c) 1997-2026 David Joyner.

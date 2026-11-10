@@ -1,0 +1,318 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathrsfs,enumitem,booktabs}
+\usepackage{xcolor}
+\usepackage[colorlinks=true,linkcolor=blue!50!black,urlcolor=blue!50!black,citecolor=blue!50!black]{hyperref}
+\setlist{itemsep=3pt,topsep=4pt}
+\newcommand{\cA}{\mathcal{A}}
+\newcommand{\fa}{\mathfrak{a}}
+\newcommand{\ip}[1]{\langle #1\rangle}
+\newcommand{\Ind}{i_{G,A}}
+\title{Referee report on\\ ``Simple local trace formulas for unramified $p$-adic groups''\\ by David Joyner (version dated 10-97)}
+\author{Notes prepared by Claude (Anthropic) for D.~Joyner}
+\date{November 10, 2026}
+\emergencystretch=3em
+\begin{document}
+\maketitle
+
+\noindent\textbf{Scope.} This report covers the 35-page 1997 revision of the paper (the version whose title-page footnote says it corrects the published version, Pacific J.\ Math.\ \textbf{154} (1992), 103--129). Page, section and equation numbers refer to that PDF. I checked every displayed formula against the standard sources the paper cites (Macdonald, Casselman, Cartier, Bernstein--Zelevinsky, Arthur, Waldspurger) as far as I can reconstruct them. Where I could not settle a point, I say so and phrase it as a question.
+
+\tableofcontents
+
+\section{Summary and recommendation}
+
+\paragraph{What the paper does.} Let $G$ be unramified over a $p$-adic field $F$ and $K$ hyperspecial. For a spherical $f$ and a test function $\phi$ supported on the regular elliptic set, the paper wants a ``Macdonald--Plancherel'' expansion
+\[
+T_\phi(f)=\int_{G(F)\times G(F)} f(h)\phi(g^{-1}hg)\,dg\,dh=\int f^\vee(\chi)\,I(\chi,\phi)\,d\mu(\chi).
+\]
+Equivalently, it wants a spectral formula for elliptic orbital integrals of spherical functions. The method follows Waldspurger's $GL(N)$ paper:
+\begin{itemize}
+\item truncate the integral over $G(F)$ to $G(T)=\bigcup_{a\in\nu_A^{-1}(\cA_A(T))}KaK$;
+\item expand $\Gamma_\chi(g^{-1}hg)$ in matrix coefficients;
+\item evaluate the truncated inner products of matrix coefficients (\S3) using Casselman's asymptotics, Macdonald's formula and an Arthur--Langlands combinatorial lemma;
+\item pass to a $T$-independent distribution $I(\chi,\phi)$ (\S4).
+\end{itemize}
+Section~5 sketches a $\kappa$-twisted version for $SL(n)$ and its relation to endoscopic transfer.
+
+\paragraph{Assessment.} The strategy is sound and natural, and the main identity (Theorem~4.5) is very plausibly true. As written, though, the paper does not prove it.
+\begin{itemize}
+\item Several standard inputs are misquoted: the constant and the domain of Macdonald's formula, the geometric lemma, Casselman's pairing, and a $\delta_P^{1/2}$ factor.
+\item The key combinatorial Lemma~3.5 is false as stated.
+\item Two steps carry the whole argument but are only asserted:
+  \begin{itemize}
+  \item that $J^T$ has the form claimed in Proposition~3.6 (the induction only controls $J^U-J^T$);
+  \item that the limit in Proposition~4.2 is independent of $T$.
+  \end{itemize}
+\end{itemize}
+None of this looks fatal: each problem has a standard repair, which I indicate below. But the repairs are substantive, not cosmetic.
+
+\paragraph{Readability.} The paper is hard to read. Notation is overloaded:
+\begin{itemize}
+\item $T$ is a maximal torus, a truncation parameter and an elliptic Cartan;
+\item $\chi$ is a character and also $\chi(M)$, a characteristic function;
+\item $Q$ is a parabolic subgroup and also Macdonald's constant;
+\item $\hat\alpha$, $\alpha^\wedge$, $\varpi_\alpha$, $\Delta^\vee$ and $R^\wedge$ are used for overlapping objects.
+\end{itemize}
+Several conventions are never fixed: which chamber is ``negative,'' normalized versus unnormalized Jacquet modules, and the side on which $W_M$ acts. Lemmas 2.6--2.9 and~4.1 are said to be ``not needed,'' yet in my view they are exactly what is needed to close the gap in \S4 (see M8).
+
+\paragraph{Recommendation.} Major revision. Specifically:
+\begin{enumerate}
+\item Fix the standard inputs (M1--M4).
+\item Replace Lemma~3.5 with a correct vertex (Brion-type) decomposition (M6).
+\item Either prove the structural statement in Proposition~3.6 or weaken it to what the induction gives (M7).
+\item Make the $T$-independence in \S4 an honest argument, using the $(G,A)^\sim$-family machinery that is already in \S2.5 (M8).
+\item Update \S5 in light of the now-proved fundamental lemma (M9).
+\end{enumerate}
+
+\section{Major issues}
+
+\subsection*{M1. Macdonald's formula (Lemma 2.1, p.~8): constant and domain}
+\begin{enumerate}[label=(\alph*)]
+\item \textbf{Wrong constant.} With $c_\alpha(\chi)=(1-q^{-1}\chi(a_\alpha))/(1-\chi(a_\alpha))$ in the split case and $\mathrm{vol}(K)=1$, the constant must be
+\[ Q=\sum_{w\in W}(IwI:I)^{-1}=\sum_{w\in W}q^{-\ell(w)},\]
+not $\sum_w (IwI:I)$.
+\begin{itemize}
+\item \emph{Check at $a=1$.} For $PGL(2)$, with $z=\chi(a_\alpha)$, $\sum_w c(w\chi)=c(z)+c(z^{-1})=1+q^{-1}$. So $\Gamma_\chi(1)=1$ forces $Q=1+q^{-1}$.
+\item \emph{Check against Plancherel.} I verified numerically that $\frac{Q}{|W|}\int|c(\chi)|^{-2}\,d\chi=1=\|1_K\|^2$ holds for $Q=1+q^{-1}$ and fails for $Q=1+q$ (it would give $q$ instead of $1$).
+\end{itemize}
+The same $Q$ appears in Lemma~2.2, Lemma~3.3 and (3.7), so the correction propagates there.
+\item \textbf{Wrong domain.} Macdonald's formula holds only for $a$ in the closed dominant (in the paper's convention, ``negative'') chamber, i.e.\ $a\in A^-$. It is not valid for all $a\in A(F)$; $\Gamma_\chi$ is $W$-invariant, while the right side is not. Lemma~2.1 should read ``$a\in A^-$.'' This matters, because the paper later applies the formula on $A^-$ and on Levi subgroups.
+\item \textbf{Exponent in $c_\alpha$ (p.~7).} The first factor of $c_\alpha(\chi)$ is printed as $1-q_{\alpha/2}^{1/2}q_\alpha^{-1}\chi(a_\alpha)$. In Casselman's formula [Cas1, Thm.~3.1] the exponent is $-1/2$. The two agree when $G$ is split ($q_{\alpha/2}=1$) but differ for non-reduced relative root systems. Please check.
+\end{enumerate}
+
+\subsection*{M2. The geometric lemma (Lemma 2.4, Corollary 2.5, Remark 1, pp.~10--11)}
+\begin{enumerate}[label=(\alph*)]
+\item \textbf{Cosets.} The subquotients of $r_{M,G}\circ i_{G,A}(\chi)$ are indexed by $W_M\backslash W$ (equivalently, by $W^{M}$, the minimal-length representatives $w$ with $w^{-1}(\Delta^M)>0$), not by $W/W_M$. With left cosets $wW_M$ the character $w\chi$ is not well defined even up to $W_M$-conjugacy. This is visible later: the proof of Lemma~3.3 (p.~17) writes $vw$ with $v\in W_M$ on the left, which only makes sense for right cosets $W_Mw$.
+\item \textbf{Irreducibility is false.} The lemma says ``each $V_{j+1}/V_j\cong i_{M,A}(w_j\chi)$ is an irreducible $M$-module.'' This is false in general: take $M=G$, where the claim would say every unramified principal series is irreducible. Delete ``irreducible.''
+\item \textbf{Remark 1 is false for $M=G$.} For example, $\chi=\delta_B^{1/2}$ on $SL(2)$ is regular, but $i_{G,A}(\chi)$ is a non-split extension of the trivial and Steinberg representations. What is true for regular $\chi$ is this: the $W_M\backslash W$-pieces have distinct cuspidal supports $W_M w\chi$, so the Bernstein decomposition of $\mathrm{Alg}\,M$ makes $r_{M,G}\circ i_{G,A}(\chi)$ a \emph{direct sum} of the (possibly reducible) $i_{M,A}(w\chi)$. That is precisely what Lemma~3.1 and Lemma~3.2 need.
+\item \textbf{Placement.} Remark~1 sits between Corollary~2.5 and its proof; please move it.
+\end{enumerate}
+
+\subsection*{M3. Lemma 3.2: the uniqueness argument (pp.~14--15)}
+The proof as written has four problems.
+\begin{enumerate}[label=(\roman*)]
+\item ``Any bilinear pairing \dots{} is of the form $\sum a_{w,w'}\ip{z_w,z'_{w'}}_0$'' is false for arbitrary bilinear forms. It needs $M$-invariance of $\ip{\cdot,\cdot}_N$ (Casselman) together with a multiplicity-one statement.
+\item The displayed actions $z\mapsto\delta^{1/2}(a)(w\chi)(a)z$ are scalars only for $a\in A_M(F)$ (the split center of $M$), not for $a\in A(F)$.
+\item Invariance means $\ip{\pi(a)z,\tilde\pi(a)z'}=\ip{z,z'}$. The inequality $\ip{r(a)z,z'}\neq\ip{z,r(a)z'}$ is not what invariance forbids.
+\item Casselman's canonical pairing is between $V_N$ and $\tilde V_{\bar N}$ (opposite parabolic), not $\tilde V_N$.
+\end{enumerate}
+\emph{Suggested proof.} The pairing lies in $\mathrm{Hom}_M\big(\bigoplus_w i_{M,A}(w\chi)\otimes\bigoplus_{w'} i_{M,A}(w'\chi^{-1}),\mathbb{C}\big)$.
+\begin{itemize}
+\item A non-zero invariant pairing between $i_{M,A}(w\chi)$ and $i_{M,A}(w'\chi^{-1})$ forces a common cuspidal support, so $W_Mw\chi=W_Mw'\chi$, and hence $W_Mw=W_Mw'$ by regularity.
+\item For $w=w'$, Bruhat theory gives $\dim\mathrm{Hom}_M\big(i_{M,A}(w\chi),i_{M,A}(w\chi^{-1})^\sim\big)\le\#\{v\in W_M:vw\chi=w\chi\}=1$.
+\end{itemize}
+Also, the subscript $\ip{f_w,f'_w}_A$ in the statement should be $\ip{\cdot,\cdot}_M$. In Remark~3, ``$u,u'\in\mathcal{H}(M,M\cap K)$'' should read ``$u,u'$ are $(M\cap K)$-fixed vectors in $i_{M,A}(w\chi^{\pm1})$.''
+
+\subsection*{M4. Lemma 3.3 and Lemma 3.4: missing $\delta_P^{1/2}$, wrong domain, proof errors (pp.~15--17)}
+\begin{enumerate}[label=(\alph*)]
+\item \textbf{Missing modulus factor.} With normalized induction and Jacquet functors, Casselman's asymptotic is
+\[\ip{\pi(a)f,f'}=\delta_P^{1/2}(a)\ip{\pi_N(a)f_N,f'_{\bar N}}_N.\]
+The statement of Lemma~3.3 omits $\delta_P^{1/2}(a)$. For $M=A$ the lemma must reproduce Macdonald's $\delta_B^{1/2}(a)$, and the proof itself inserts $\delta(a)^{1/2}$. Similarly, Lemma~3.4 needs $\delta_P(a)$ and the coefficients $c(w,M,\chi)c(w',M,\chi')$ in its statement. Its proof has them, but the statement and~(3.13) do not.
+\item \textbf{Domain.} As stated, for $a\in A^-(\epsilon)$ (deep in \emph{every} simple direction), the version for general $M$ adds nothing beyond $M=A$. The inductive proof of Proposition~3.6 actually uses it on the region
+\[A^-_{P}(\epsilon)=\{a\in A^-:\ |\alpha(a)|\le\epsilon\ \ \forall\alpha\in\Delta\smallsetminus\Delta^M\},\]
+which is deep only in the $N$-directions. This is Casselman's Proposition~4.3.3 [Cas2], and it is the correct hypothesis for Lemmas 3.3--3.4. Please restate them this way.
+\item \textbf{Errors in the proof of Lemma 3.3.}
+\begin{itemize}
+\item The display $\Gamma_\chi(a)=\sum_w c(w,A,\chi)\delta(a)(w\chi)(a)(w\chi^{-1})(a)c_w(\chi)c_w(\chi^{-1})$ contains $(w\chi)(a)(w\chi^{-1})(a)=1$. Only the first argument is translated, so the factor $(w\chi^{-1})(a)$ must go, and $\delta(a)$ should be $\delta(a)^{1/2}$.
+\item In the general-$M$ computation, Macdonald's formula for $G$ is missing $Q_G^{-1}$, and the formula for $M$ is missing $Q_M^{-1}$ on the first line where it is used.
+\item The final display drops the factor $Q_G^{-1}Q_M$ that appears in the statement.
+\item ``for any $v\in W/W_M$'' should be $v\in W_M$.
+\end{itemize}
+\item \textbf{Undefined notation.} $c^M_w$ is never defined. Since $w$ is a minimal-length representative, $c^M_w=c_w$; please say so. Also, $\chi'$ in the lemma should be $\chi^{-1}$.
+\item \textbf{Remark 5.} The right side reads $\kappa(g)\int_{KaK}\cdots dg$, with the integration variable left outside. It should be $\kappa(a)$; this holds because $\kappa$ is unramified, hence constant on $KaK$.
+\item \textbf{Levels.} For Lemma~3.4 one needs $\pi(k)u$ to have the same level as $u$. Choose the level subgroups normal in $K$ (principal congruence subgroups).
+\end{enumerate}
+With (a)--(b) fixed, the formula for $c(w,M,\chi)$ in Lemma~3.3 is correct. I checked it against Macdonald's formula for $G$ and $M$; the ratio $c(vw\chi)/c_M(vw\chi)$ is independent of $v\in W_M$, as required.
+
+\subsection*{M5. The claim $\nu_A^{-1}(\cA_A(T)^c)\subset A^-(\epsilon)$ (p.~18) is false}
+The complement of the truncated region contains points near walls.
+\begin{itemize}
+\item \emph{Counterexample.} In $SL(3)$, $a_n=\nu_A^{-1}(3n\varpi_1^\vee)$ with $3\varpi_1^\vee=2\alpha_1^\vee+\alpha_2^\vee$ lies outside $\cA_A(T)$ for $n\gg0$, yet $|\alpha_2(a_n)|=1>\epsilon$.
+\item \emph{Consequence.} The consequence $G(T)^c\subset KA^-(\epsilon)K$ fails as well.
+\item \emph{Repair.} This is harmless once M4(b) is adopted: the $\xi(M,D,T,U)$-decomposition in Proposition~3.6 exists precisely to cut the complement into pieces where the appropriate $A^-_P(\epsilon)$-asymptotic applies. Delete the claim and say this instead.
+\item \emph{Related step.} On p.~22 the inequality $\ip{\beta,X}\ge\ip{\beta,T}$ needs justification: $\ip{\beta,X^M}\le0$, so one only gets $\ip{\beta,X}>\ip{\beta,T_M}+\ip{\beta,X^M}$. The bound is fine up to a constant depending on $T^M$, which suffices for $T$ sufficiently regular, but this should be written out.
+\end{itemize}
+
+\subsection*{M6. Lemma 3.5 and (3.7) (pp.~18--19)}
+\begin{enumerate}[label=(\alph*)]
+\item \textbf{Parametrization.} The proof writes $\chi(a)=\prod_\alpha q^{s_\alpha\ip{a,\alpha}}$. This treats $a\mapsto(\ip{a,\alpha})_{\alpha\in\Delta}$ as a bijection $X_*(A)\to\mathbb{Z}^\ell$, which holds only when $X_*(A)$ is the coweight lattice (adjoint $G$). The generators of the dominant cone are then $\varpi_\alpha^\vee(\pi)$, not $a_\alpha=\alpha^\vee(\pi)$. In general the dominant cone in $X_*(A)$ is not unimodular, and the generating function has a numerator from a fundamental parallelepiped. Either restrict to adjoint $G$ or state the general form.
+\item \textbf{The ``in fact'' clause is false, already for $SL(2)$.} With $T=T_\alpha\alpha^\vee$ and $z=\chi(a_\alpha)$, one gets $\nu_A^{-1}(\cA_A(T))=\{\nu_A^{-1}(n\alpha^\vee):0\le n<T_\alpha\}$. The $\omega=\Delta$ piece is
+\[\sum_{n=1}^{T_\alpha-1}z^n=\frac{z-z^{T_\alpha}}{1-z},\]
+so $F_{\Delta,T}(\chi)=z-z^{T_\alpha}$. That is not of the form $z^{T_\alpha}F_\Delta(z)$. Also, $F_{\emptyset,T}=1$ carries no $\chi(T)$ factor at all.
+\item \textbf{The correct statement} is a vertex (Brion--Lawrence) decomposition:
+\[\sum_{a\in\nu_A^{-1}(\cA_A(T))}\chi(a)=\sum_{\omega\subset\Delta}\chi(T_\omega)\,R_\omega(\chi),\]
+where $T_\omega$ is the vertex of the truncated polytope determined by $\omega$ and each $R_\omega$ is a rational function independent of $T$. In rank one this is $\frac{1}{1-z}-\frac{z^{T}}{1-z}$. This is the form that the later $T\to\infty$ argument needs: the $\omega=\emptyset$ term is $T$-independent, and the others oscillate in $T$. As written, the face decomposition (3.5) in the proof does not deliver it, because the truncation $\ip{\varpi_\alpha,a-T}<0$ is a simplex-type condition, not a box, in the coordinates $n_\alpha$.
+\item \textbf{(3.7).} Macdonald gives $\mathrm{meas}(KaK)=\delta(a)^{-1}W(q^{-1})/W_a(q^{-1})$, where $W_a$ is the stabilizer of $a$. So $Q_a$ is rational, not an integer; for $SL(2)$, $a\ne1$ gives $Q_a=1+q^{-1}$.
+\item \textbf{Remark 6.} The poles statement inherits (a).
+\end{enumerate}
+
+\subsection*{M7. Proposition 3.6: what the induction actually proves}
+\begin{enumerate}[label=(\alph*)]
+\item \textbf{A $T$-independent constant is left over.} The inductive step computes the pieces $M\neq G$ of $J^U_D=\sum_M J^{T,U}_D(M,\cdot)$, where the $M=G$ piece is $J^T_D$ itself, and then applies the combinatorial lemma (3.23). This shows
+\[J^T-F(T)=J^U-F(U)\qquad(U\ge T\ge T_0),\]
+with $F(T)=c_G(-1)^{\mathrm{rk}G}\sum_{a\in\cA_A(T)}\gamma_a$. Hence $J^T=F(T)+C$, with $C$ independent of $T$. The argument never shows $C=0$, and $C$ is exactly the contribution of the compact core, where no asymptotics are available. Please either:
+\begin{itemize}
+\item supply the missing step (e.g.\ via the exponential-polynomial structure in $T$ from M6(c), identifying the $T$-independent term); or
+\item state the proposition as an identity for $J^T-J^U$.
+\end{itemize}
+\item \textbf{Is the structural claim plausible for arbitrary $u,u'$?} $J^T(u,u')$ is a bilinear form on $V_B(\chi^{-1})\times V_B(\chi'^{-1})$ that is invariant only under the diagonal $K$-action. The space of such forms is infinite-dimensional. A priori there is no reason it should lie in the span of the $|W|^2$ forms $\ip{T_wu,T_{w'}u'}$ with coefficients independent of $u,u'$. For $K$-fixed (or Iwahori-fixed) $u,u'$ the exact Macdonald/Casselman formulas hold on all of $A^-$, and the claim is credible. For general $u,u'$ I would want to see a proof. (This only matters in \S4, where $u_i$ runs over a basis.)
+\item \textbf{Base case.} For a torus, definition~(3.3) makes $\cA_A(T)$ a single point (everything is taken modulo the center), not the box $0<\nu_F(a_i)<T_i$. The box belongs to the $M$-relative truncation. Please align the definitions. The sign $(-1)^{\mathrm{rk}(M)}$ in (3.20) needs a definition of $\mathrm{rk}$ ($\dim\fa_M/\fa_G$?) and a check in the base case.
+\item \textbf{Reindexing on p.~24.} I would have expected $\sigma=vw$ with $\ell(vw)=\ell(v)+\ell(w)$, so that $T_v^M R_M T_w=R_MT_{vw}$, rather than $\sigma=w^G_\ell w^M_\ell vw$. The latter would come from Waldspurger's opposite-parabolic conventions. Whichever is intended, it must be used consistently with the characters $\sigma\chi$ appearing in $\gamma_a$.
+\item \textbf{Notation clash.} $\chi(M)$ for a characteristic function, next to the character $\chi$, is confusing; please rename it (e.g.\ $\mathbf 1_M$).
+\end{enumerate}
+
+\subsection*{M8. Proposition 4.2 and Theorem 4.5: $T$-independence is not established}
+\begin{enumerate}[label=(\alph*)]
+\item \textbf{What is shown and what is not.} For $T\ge T(f,\phi)$, Fubini over the compact set $G(T)$ correctly gives
+\[I(f,\phi)=\int f^\vee(\chi)\,I^T(\chi,\phi)\,d\mu(\chi).\]
+But $I^T(\chi,\phi)$ itself depends on $T$: enlarging $T$ adds the integral of $\Gamma_\chi(g^{-1}hg)\phi(h)$ over a shell, which is generally non-zero and oscillates in $\chi$. Indeed $g\mapsto\int\Gamma_\chi(g^{-1}hg)\phi(h)\,dh$ is not compactly supported, which is why a truncation was introduced in the first place. The sentence ``the claim that the result is independent of $T$ follows from Proposition~3.6'' is therefore unsupported; Proposition~3.6 says nothing of the kind.
+\item \textbf{Suggested argument.} Write $I^T(\chi,\phi)=I(\chi,\phi)+\sum(\text{terms of the form } (w\chi/w'\chi)(T)\cdot S(\chi))$, where $I(\chi,\phi)$ is the $T$-independent ($\omega=\emptyset$) part. Show that the coefficients $S$ are \emph{smooth} on the unitary torus after summing over $w,w'$. This is exactly the $(G,A)^\sim$-family statement of Lemmas 2.7, 2.9 and 4.1, which removes the apparent poles of $\tilde\theta(w\chi/w'\chi)^{-1}$. Then $\int f^\vee(I^T-I)\,d\mu$ tends to $0$ as $T\to\infty$ (Riemann--Lebesgue on the compact torus). Since the left side is constant for $T\ge T(f,\phi)$, it vanishes. So, contrary to the remarks on pp.~13 and~26, those lemmas \emph{are} needed. This is also how Waldspurger and Arthur argue.
+\item \textbf{Definition of $I(\chi,\phi)$.} Proposition~4.2 never defines $I(\chi,\phi)$ independently of the displayed limit. Also, $Q^T$ in (4.1) already contains the factor $\tilde\theta(w\chi/w'\chi')$, which the proposition then divides out again. Please define $I(\chi,\phi)$ explicitly (e.g.\ as the $T$-independent term) and state Proposition~4.2 as ``for all $T\ge T(\phi)$, $I^T(\chi,\phi)=I(\chi,\phi)+(\text{oscillatory terms})$.''
+\item \textbf{The trace identity (p.~29).} The second argument in (4.7) should be $u_j$, not $u_j^*$: $J^T(\chi,\chi^{-1},u_i^*,u_j)$. Moreover $T_w^*T_{w'}$ only makes sense as an operator on one space after identifying all $V_B(\cdot)$ with $C^\infty(K\cap B\backslash K)$ (the compact picture); please say so. The ``$(A(F)\cap K)$-bi-invariant orthonormal basis'' should be a basis adapted to a filtration by normal open subgroups $K_n\subset K$. That is what makes the sums over $i,j$ finite, since $\pi(g)\Phi_{K,\chi}$ is $K_n$-fixed for $g$ in a compact set.
+\item \textbf{Admissibility.} $G$-admissibility of $\phi\mapsto I(\chi,\phi)$ via [HC, \S14] is fine once (b) is in place.
+\item \textbf{Geometric side.} In (4.10)--(4.11) the factor $\mathrm{meas}(T(F))$ appears in one line and not the next. ``$\Delta(t)^2$'' should be defined; it is the Weyl discriminant $|D(t)|$.
+\end{enumerate}
+
+\subsection*{M9. Section 5 ($\kappa$-orbital integrals on $SL(n)$)}
+\begin{enumerate}[label=(\alph*)]
+\item \textbf{Sign of $\kappa$ in (5.1).} The change of variables $h\mapsto ghg^{-1}$ followed by $g\mapsto g^{-1}$ produces $\kappa(g)^{-1}$. So the second line of (5.1) should carry $\kappa^{-1}$, and the last line should read $\Phi^{\kappa^{-1}}_\phi$. This is consistent with (5.4), where $\Phi^{\kappa^{-1}}_f$ appears. In (5.3), the integrand defining $\Phi^\kappa_\phi$ should contain $\phi$, not $f$. Lines 3--4 of (5.1) have a stray ``$dg$.''
+\item \textbf{Weyl integration on $SL(n)$ versus $PGL(n)$.} (5.2) integrates over $T(F)\backslash G'(F)$, while $\psi$ lives on $G(F)=SL(n,F)$. One must account for the finite group $G'(F)/G(F)T'(F)$, which permutes the $SL(n)$-classes inside a $PGL(n)$-class. This is where the $\kappa$-weights come from, and it should be written out.
+\item \textbf{Endoscopic groups.} For $\kappa$ of order $m\mid n$, the elliptic endoscopic group of $SL(n)$ is
+\[H=\ker\big(N_{E/F}\circ\det\big)\subset \mathrm{Res}_{E/F}GL(n/m),\qquad [E:F]=m,\]
+not $\mathrm{Res}_{E/F}GL(m)$. For $m=n$, $H$ is the norm-one torus (a Cartan of $SL(n)$), not a Cartan of $GL(n)$. In (5.11) the right side should be a \emph{stable} orbital integral $S\Phi_{f_H}$. Also, $H$ is reductive, not semisimple, so Theorem~4.5 must be stated with $G(F)^1$ for reductive groups.
+\item \textbf{The fundamental lemma is now a theorem.} ``It has been conjectured'' is out of date:
+\begin{itemize}
+\item for the unit element for $SL(n)$: Kazhdan for $\kappa$ of order~$n$, and Waldspurger [Canad.\ J.\ Math.\ 43 (1991)];
+\item reduction to unit elements: Hales [Canad.\ J.\ Math.\ 47 (1995)];
+\item in general: Ng\^o [Publ.\ Math.\ IH\'ES 111 (2010)], with Waldspurger's transfer from Lie algebras to groups and Laumon--Ng\^o for unitary groups.
+\end{itemize}
+The final question (does $\phi\mapsto I^\kappa(\iota(\chi_H),\phi)$ transfer to $\phi_H\mapsto I_H(\chi_H,\phi_H)$?) is formally a consequence of the FL for the Hecke algebra together with Theorem~4.5 for $G$ and $H$. It would make a nice concluding proposition rather than a question.
+\item \textbf{Parenthetical on p.~32.} The parenthetical ``if $\phi\in\mathcal H(G,K)$ then $\phi^T=i_*(\phi)(t)$'' conflicts with the standing assumption that $\phi$ is supported on $G_{ell}$. It should be phrased for a general $\phi$, or refer to $f$.
+\end{enumerate}
+
+\section{Minor mathematical corrections (by location)}
+\begin{description}[leftmargin=1.2em,style=nextline]
+\item[Abstract / p.~2] The abstract says ``semi-simple,'' while \S2.1 and \S3 allow reductive groups (and the induction needs Levi subgroups, which are reductive). State the main theorem for reductive $G$ with $G(F)^1$. ``A distribution on the support of the Plancherel measure (regarded as a compact complex analytic variety)'': the support is the compact real torus of unitary unramified characters modulo $W$. Its complexification is the complex torus on which $I(\chi,\gamma)$ is rational. Please separate the two.
+\item[p.~2] ``compute, in \S\S2--3'': the computation is in \S\S3--4.
+\item[p.~3] ``In \S4, we examine \dots{} the $\kappa$-stable version'': that is \S5. ``(see Theorem 4.5 below)'' is fine.
+\item[p.~4, \S2.1] $T$ should be the centralizer of $A$ (a maximal torus defined over $F$, containing $A$, inside $B$). It is not an arbitrary maximal torus.
+\item[p.~4] ``$\Delta^\vee$ the set of dual roots $\{\varpi_\alpha\}$'' conflicts with p.~5, where $(\Delta_P^Q)^\vee$ is a basis of $\fa_P^Q$ (coroots) and $(\Delta_P^Q)^\wedge$ a basis of $(\fa_P^Q)^*$ (fundamental weights). Follow Arthur: $\Delta^\vee=\{\alpha^\vee\}$ and $\hat\Delta=\{\varpi_\alpha\}$.
+\item[p.~5] ``$X^*(A)/R$ trivial iff adjoint, $X_*(A)/L$ trivial iff simply connected'' is correct for the absolute root datum, or for split $G$. For relative roots of non-split groups it can fail; e.g.\ quasi-split $SU(3)$ and $PU(3)$ both have $X^*(A)=R$.
+\item[p.~5] ``$P_\emptyset=B$, $M_\emptyset=A$'': $M_\emptyset=Z_G(A)=T$, which equals $A$ only for split $G$.
+\item[p.~5] $\hat\tau_P^Q$ is defined by exactly the same condition as $\tau_P^Q$. It should be $\{X:\varpi(X)>0,\ \varpi\in\hat\Delta_P^Q\}$.
+\item[p.~6] Property (b), that the $a_\alpha$ generate $A(F)/A(F)\cap K$ freely, holds only for simply connected $G$. In general they generate a sublattice of finite index $[X_*(A):L]$.
+\item[p.~6] ``$\ip{\alpha^\vee,\beta}=2\delta_{\alpha\beta}$'' is false; the left side is the Cartan matrix. The dual basis to $\Delta^\vee$ is the set of fundamental weights, with $\ip{\alpha^\vee,\varpi_\beta}=\delta_{\alpha\beta}$.
+\item[p.~7] (2.6)--(2.7):
+\begin{itemize}
+\item $X^*(A)_\mathbb{C}/X_*(A)^\perp$ is the group of all complex characters of $X_*(A)$ (a complex torus); the Pontryagin dual is its compact real form.
+\item The lattice in (2.7) should be $\frac{2\pi i}{\log q}X^*(A)$, the dual of $X_*(A)$, scaled by $2\pi i/\log q$. It is not $\{\lambda:\lambda(\hat\alpha)\in\mathbb{Z},\ \alpha\in\Delta\}$, which is the right lattice only in the adjoint case and has the wrong scaling.
+\item ``$\mathcal{A}^*_{A,\mathbb{R}}$ the complex dual'' is self-contradictory notation.
+\item Please define $\mathbb{C}^{\times1}$ (the unit circle).
+\end{itemize}
+\item[p.~9] Lemma 2.2: the measure lives on $i\fa^*/L$ (the unitary characters). The second statement of Corollary~2.3 has $f_1^\vee\overline{f_1^\vee}$; it should be $f_1^\vee\overline{f_2^\vee}$. Polarization needs both $f_1+f_2$ and $f_1+if_2$.
+\item[pp.~11--13] Three different definitions of $\chi_\lambda$ appear: $\ip{\nu_A^{-1}(a),\lambda}$, then $\ip{\lambda,\nu_A(a)}$. The first is not even well typed, and neither is a character. It should be $\chi_\lambda(a)=q^{-\ip{\nu_A(a),\lambda}}$ (or $e^{\ip{\nu_A(a),\lambda}\log q}$, with the sign fixed once). In the hyperplane condition, $\ip{\alpha,\lambda}$ should be $\ip{\alpha^\vee,\lambda}$.
+\item[p.~12] Lemma 2.7: ``$c_P(\chi)$'' should be $\tilde c_P(\chi)$, and ``$\tilde\theta_B$ is defined in (2.13)'' should cite (2.17). Lemma 2.8: $R^\wedge$ and $\hat R$ name the same lattice twice. For the shift-invariance to make sense it must be (a scaled copy of) $X^*(A)$, i.e.\ $L$ from (2.7).
+\item[p.~13] Lemma 2.9: the right side $\sum_r c^r_P(\cdots)$ has a dangling $P$. Presumably $\{c^r_P\}_P$ is a $(G,A)$-family for each $r$, and the sum is of $c^r_A$.
+\item[p.~13] (3.1): ``$\epsilon$ independent of $\chi$'' is right, but $\epsilon$ depends on the level of $f,f'$ (as Lemma~3.3 later says); state it here.
+\item[p.~14] The proof of Lemma 3.1: the displayed lines should read $i_{M,A}(w\chi)(a)R_MT_wf$ (not $i_{M,A}(\chi)_N(a)R_MT_wv$).
+\item[p.~18] (3.3) uses $\ip{\hat\alpha,a-T}$, while the proof on p.~19 uses $\ip{\alpha^\vee,a-T}$, which pairs $X_*$ with $X_*$. Use $\varpi_\alpha$ consistently.
+\item[p.~26] Lemma 4.1: ``$\mathrm{tr}[R_{w_P}i_{G,A}(\chi_\lambda)]$'' is missing the argument $(\phi)$. ``Let $T,\chi,\chi'$ be as in section~2'' should say section~3.
+\item[p.~27] ``In \S4, we will also consider'' should say \S5. In Proposition~4.3, $\kappa\chi$ mixes a character of $G'(F)$ with one of $A(F)$; say ``$\kappa|_{A(F)}\chi$,'' and note that $\chi$ is a character of $A(F)$, not $A'(F)$.
+\item[p.~28] Remark 9 refers to ``part (a)/(b),'' but Propositions 4.2 and~4.3 have no parts. It should say ``we prove 4.2; 4.3 is similar.''
+\item[p.~30] ``the Plancherel formula (see Lemma 2.4)'' should cite Corollary~2.3.
+\end{description}
+
+\section{Typos and wording}
+\noindent
+interprete $\to$ interpret (p.~3);
+Plancheral $\to$ Plancherel (pp.~4, 18, 20, 25);
+fiexed $\to$ fixed (p.~7);
+decomosition $\to$ decomposition (p.~5);
+isomophism $\to$ isomorphism (p.~7);
+``Lemma 2.1. f $\chi$ is'' $\to$ ``If $\chi$ is'' (p.~8);
+choosen $\to$ chosen (passim);
+``on of the two roots'' $\to$ ``one of'' (p.~11);
+occuring $\to$ occurring (p.~13);
+``A truncated inner products'' $\to$ ``A truncated inner product'' (\S3.2 title);
+``in the limit aa'' $\to$ ``as'' (p.~26);
+``it's dual'' $\to$ ``its dual'' (p.~21);
+``not worst than'' $\to$ ``no worse than'' (p.~24);
+$u''$ $\to$ $u'$ (pp.~17, 23);
+stray ``$dk$'' at the end of (3.19);
+``Lemma 4.4, .'' (p.~31);
+``Let $W_M$ denotes'' $\to$ ``denote'' (p.~10);
+``one wants to find a both'' $\to$ ``to find both'' (p.~3);
+``relatively explicit for $I(\chi,\gamma)$'' is missing a noun (p.~4);
+``NARC grant'' (please spell out the agency);
+``Ad-finite in the sense of [K]'' (Kazhdan calls these compactly generated supports; please give the precise reference).
+
+\section{Readability recommendations}
+\begin{enumerate}
+\item \textbf{Fix conventions once (new \S2.0).} State:
+  \begin{itemize}
+  \item normalized induction and Jacquet functors;
+  \item which chamber $A^-$ is;
+  \item $W_M\backslash W$ and minimal-length representatives;
+  \item the sign convention for $\chi_\lambda$;
+  \item the measure normalizations ($\mathrm{vol}(K)=1$, $\mathrm{vol}(A\cap K)=1$).
+  \end{itemize}
+\item \textbf{Rename overloaded symbols.} Use $\mathbf{T}$ (or $Y$) for the truncation parameter, $T$ for tori, $\mathbf 1_M$ for characteristic functions, $Q_G$ for Macdonald's constant, and $\hat\Delta$ for fundamental weights.
+\item \textbf{Add a road map.} The proof of Theorem 4.5 passes through Propositions 3.6 $\to$ 4.2 $\to$ 4.5; a half-page overview in the introduction would help a lot.
+\item \textbf{Work out $SL(2)$ / $PGL(2)$ in full.} An appendix computing $I(\chi,\gamma)$ explicitly for elliptic $\gamma$ would check the normalizations end to end and would show readers what the ``rational function'' $I(\chi,\gamma)$ looks like. I would also recommend checking it numerically against a direct orbital-integral computation.
+\item \textbf{Move \S2.5 next to where it is used.} Once M8 is fixed, the $(G,A)^\sim$-family material is used, so it belongs in \S4.
+\item \textbf{Footnotes on the publication history.} The footnotes saying which parts ``did not appear in the published version'' are useful historically. In a revised version they could become a single paragraph in the introduction.
+\end{enumerate}
+
+\section{Bibliography corrections}
+\begin{description}[leftmargin=1.2em,style=nextline]
+\item[{[A]}] M. Assem, Compositio Math.\ \textbf{78} (1991), \textbf{37--78} (not 317--378).
+\item[{[Art1]}] Published: J.~Arthur, ``Towards a local trace formula,'' in \emph{Algebraic Analysis, Geometry and Number Theory}, Johns Hopkins Univ.\ Press, 1989, 1--24. Also cite the definitive paper: ``A local trace formula,'' Publ.\ Math.\ IH\'ES \textbf{73} (1991), 5--96.
+\item[{[BD]}] The ``---'' attributes this to Assem. The author is J.~Bernstein (r\'edig\'e par P.~Deligne), ``Le centre de Bernstein,'' in \emph{Repr\'esentations des groupes r\'eductifs sur un corps local}, Travaux en Cours, Hermann, 1984. (It is also never cited in the text.)
+\item[{[Car]}] Add: Proc.\ Sympos.\ Pure Math.\ \textbf{33}, Part~1 (1979), 111--155.
+\item[{[Cas2]}] Casselman's notes remained unpublished; cite the date (1974/1995 draft).
+\item[{[HC]}] Harish-Chandra, \emph{Admissible invariant distributions on reductive $p$-adic groups}, Queen's Papers in Pure and Appl.\ Math.\ \textbf{48} (1978), 281--347. A revised edition, with notes by S.~DeBacker and P.~Sally, appeared as AMS University Lecture Series~16 (1999).
+\item[{[K]}] D.~Kazhdan, ``Cuspidal geometry of $p$-adic groups,'' J.\ Analyse Math.\ \textbf{47} (1986), 1--36.
+\item[{[Kaz]}] LNM \textbf{1041} (1984), 209--249.
+\item[{[M]}] Macdonald's notes are from \textbf{1971} (Publ.\ Ramanujan Inst.\ 2), not 1981. A new edition, with Anne-Marie Aubert, has just appeared in Springer LNM \textbf{2392} (2026).
+\item[{[W]}] J.-L.~Waldspurger, ``Int\'egrales orbitales sph\'eriques pour $GL(N)$ sur un corps $p$-adique,'' Ast\'erisque \textbf{171--172} (1989), 279--337.
+\item[{[Wa]}] Proc.\ ICM Z\"urich 1994, Birkh\"auser 1995.
+\item[{[Wald]}] Correct title: ``Sur les germes de Shalika pour les groupes lin\'eaires,'' Math.\ Ann.\ \textbf{284} (1989), 199--221. (It is not cited in the text; the reference to the germ expansion on p.~4 cites [W].)
+\item[{[J]}] ``In preparation.'' If this never appeared, remove the reference or describe the result inline.
+\end{description}
+
+\appendix
+\section{Plan for the revised version}
+For the transcribed revision I propose:
+\begin{itemize}
+\item keep your text and numbering as close as possible to the original;
+\item make the corrections above silently where they are clear-cut (M1--M4, M9(a), \S3);
+\item mark each substantive change with a dated ``Remark (2026)'';
+\item for the two genuine gaps (M7(a) and M8), either insert the repair sketched above as a new lemma, or, where I cannot fully verify the repair, state precisely what is proved and flag the rest.
+\end{itemize}
+
+\paragraph{Glossary (proposed entries).}
+unramified group; hyperspecial maximal compact subgroup; Iwahori subgroup; relative root system and reduced roots; coroots and fundamental (co)weights; $\fa_P$, $\fa_P^Q$, $H_M$, $G(F)^1$; $\tau_P^Q$, $\hat\tau_P^Q$; unramified character and the complex/compact tori of characters; unramified principal series $i_{G,A}(\chi)$; normalized Jacquet functor $r_{M,G}$; geometric lemma; regular character; intertwining operator $T_w$ and $c$-functions $c_\alpha$, $c_w$, $c(\chi)$; zonal spherical function $\Gamma_\chi$; Satake transform $f^\vee$; Macdonald's formula; spherical Plancherel measure; Casselman's canonical pairing; regular elliptic element; orbital integral; $\kappa$-orbital integral; stable orbital integral; Weyl discriminant; $(G,M)$-family and $(G,A)^\sim$-family; truncation parameter; Langlands' combinatorial lemma ($\Gamma_M^G$); $G$-admissible distribution; endoscopic group; transfer factor; fundamental lemma.
+
+\paragraph{Literature review: outline with verified references.}
+\emph{Before 1997.}
+\begin{itemize}
+\item \emph{Spherical harmonic analysis:} Satake (1963); Macdonald (1971); Casselman (1980); Bernstein--Zelevinsky (1977); Harish-Chandra's Plancherel theorem and admissible invariant distributions (1970s).
+\item \emph{Arthur's global-to-local program:} the trace formula, Duke 1978, and its invariant form, Ann.\ Math.\ 1981; ``Towards a local trace formula'' (1989); and the local trace formula itself, Publ.\ Math.\ IH\'ES \textbf{73} (1991), 5--96.
+\item \emph{Elliptic harmonic analysis:} Kazhdan's cuspidal geometry and elliptic pairing (J.\ Analyse Math.\ \textbf{47}, 1986); Bernstein--Deligne--Kazhdan (1986); Arthur, ``On elliptic tempered characters,'' Acta Math.\ \textbf{171} (1993), 73--138.
+\item \emph{Spherical orbital integrals:} Waldspurger's computation for $GL(N)$ (Ast\'erisque 171--172, 1989); his Shalika germs paper (Math.\ Ann.\ 1989); Assem's unipotent orbital integrals (Compositio 1991).
+\item \emph{Endoscopy:} Kottwitz (rational conjugacy, 1982; elliptic singular terms, 1986); Langlands--Shelstad transfer factors (Math.\ Ann.\ \textbf{278}, 1987); Kazhdan, ``On lifting'' (LNM 1041, 1984); Waldspurger's fundamental lemma for $SL(n)$ (Canad.\ J.\ Math.\ \textbf{43}, 1991, 852--896); Clozel and Labesse on stable base change (Duke \textbf{61}, 1990); Hales' reduction to unit elements (Canad.\ J.\ Math.\ \textbf{47}, 1995, 974--994).
+\item \emph{Lie algebras:} Waldspurger's local trace formula for $p$-adic Lie algebras (J.\ reine angew.\ Math.\ \textbf{465}, 1995, 41--100).
+\end{itemize}
+\emph{After 1997.}
+\begin{itemize}
+\item \emph{Transfer for $SL(n)$:} Court\`es (M\'em.\ SMF \textbf{69}, 1997).
+\item \emph{Transfer in general:} Waldspurger, ``Le lemme fondamental implique le transfert'' (Compositio \textbf{105}, 1997, 153--236).
+\item \emph{Elliptic theory via the building:} Schneider--Stuhler on Euler--Poincar\'e functions and elliptic characters (Publ.\ Math.\ IH\'ES \textbf{85}, 1997, 97--191); Reeder's elliptic pairings for Iwahori-spherical representations (Compositio, 2001). These are directly relevant to the elliptic part of the unramified principal series studied here.
+\item \emph{Plancherel formula:} Waldspurger's exposition of Harish-Chandra's Plancherel formula (J.\ Inst.\ Math.\ Jussieu \textbf{2}, 2003, 235--333).
+\item \emph{The fundamental lemma:} Laumon--Ng\^o (Ann.\ Math.\ \textbf{168}, 2008, 477--573); Ng\^o's proof (Publ.\ Math.\ IH\'ES \textbf{111}, 2010, 1--169).
+\item \emph{Twisted versions:} Lemaire--M\oe glin--Waldspurger's reduction to unit elements for twisted endoscopy (Ann.\ Sci.\ ENS \textbf{51}, 2018); M\oe glin--Waldspurger, \emph{La formule des traces locale tordue} (Mem.\ AMS \textbf{251}, no.~1198, 2018).
+\item \emph{Local relative trace formulas:} Feigon (Pacific J.\ Math.\ \textbf{260}, 2012); Delorme--Harinck (Pacific J.\ Math.\ \textbf{291}, 2017); Delorme--Harinck--Souaifi; Beuzart-Plessis's local trace formula for Gan--Gross--Prasad (Ast\'erisque \textbf{417}, 2020).
+\item \emph{New edition of Macdonald:} with A.-M.~Aubert (LNM \textbf{2392}, 2026).
+\end{itemize}
+
+\end{document}

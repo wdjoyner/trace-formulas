@@ -45,12 +45,15 @@
 \title{\textbf{Finite-Group Trace Formulas:}\\
 Compact Global and Local Analogies, and a $p$-Adic Bridge\\[5pt]
 \large Corrected and expanded version of the 1996--2003 notes}
-\author{David Joyner\\[4pt]
-\normalsize Revised and expanded with mathematical and editorial assistance from ChatGPT (OpenAI)}
+\author{David Joyner}
 \date{Original notes: 1996--2003 \quad $\cdot$ \quad Revised: November 2026}
 \begin{document}
 \maketitle
 \begin{abstract}
+This AI-aided paper expands on some (expository) unpublished lecture
+notes on trace formulas for finite groups I wrote over 20 years ago.
+I used both mathematical and editorial assistance from ChatGPT (OpenAI)
+and Claude (Anthropic).
 For a finite group $G$, the trace of a convolution operator on the
 permutation representation $\C[\Gamma\backslash G]$ has two descriptions:
 one involving conjugacy classes and orbital sums, the other involving
@@ -67,7 +70,7 @@ An additional section explains, through an exact $\mathrm{GL}_2(F)$
 divergence calculation, why the noncompact $p$-adic local formula
 requires truncation, Levi subgroups, and weighted distributions.
 Throughout, we indicate how the finite-group formulations relate to
-Arthur's finite example, Vign'eras's regular-bimodule method,
+Arthur's finite example, Vign\'eras's regular-bimodule method,
 Yang's coset-space formulas, and Terras's finite spectral analogues.
 A literature guide, glossary, exercises, and an account of corrections
 appear at the end.
@@ -79,7 +82,7 @@ The present revision corrects several representation-theoretic and
 normalization errors, adds the diagonal-subgroup interpretation of the
 local formula, and supplies background and references. The present edition also
 adds a worked $p$-adic bridge. Its finite-group ideas have important
-precedents in Arthur \cite{ArthurHecke1989}, Vign'eras
+precedents in Arthur \cite{ArthurHecke1989}, Vign\'eras
 \cite{Vigneras1991}, and Terras \cite{Terras1999}; Yang's later
 work \cite{Yang2006} treats closely related coset-space representations.
 The original 1996--2003 notes predate Yang's 2006 publication. No
@@ -112,6 +115,66 @@ case \cite[Example~2, p.~14]{ArthurHecke1989}; see also
 A finite group $G$, with any subgroup $\Gamma$, gives a setting in which
 every sum is finite and none of the analytic convergence difficulties occur.
 
+\subsection{Background: Selberg's formula for a compact Riemann surface}
+\label{subsec:selberg-classical}
+For readers who have not seen a trace formula before, it may help to
+recall the example that started the subject \cite{Selberg1956}.
+Let $\mathbb H$ be the upper half plane with its hyperbolic metric,
+$H=\mathrm{PSL}_2(\mathbb R)$, and let $\Gamma\subset H$ be a discrete,
+torsion-free subgroup with $X=\Gamma\backslash\mathbb H$ compact, so
+that $X$ is a compact Riemann surface of genus at least $2$.
+Every $\gamma\ne1$ in $\Gamma$ is then \emph{hyperbolic}: it is conjugate
+in $H$ to $z\mapsto N(\gamma)z$ with \emph{norm} $N(\gamma)>1$, and
+$\log N(\gamma)$ is the length of the closed geodesic on $X$ determined
+by the $\Gamma$-conjugacy class of $\gamma$.  Each such $\gamma$ is a
+power $P^k$ ($k\ge1$) of a unique \emph{primitive} element $P$, and the
+centralizer $\Gamma_\gamma$ is the infinite cyclic group $\langle P\rangle$.
+
+The Laplacian on $X$ has discrete spectrum
+$0=\lambda_0<\lambda_1\le\lambda_2\le\cdots$; write
+$\lambda_j=\tfrac14+r_j^2$.  Let $h$ be an even function, holomorphic
+in a strip $|\operatorname{Im}r|\le\tfrac12+\epsilon$ and decaying like
+$(1+|r|)^{-2-\epsilon}$ there, and let
+$g(u)=\frac1{2\pi}\int_{\mathbb R}h(r)e^{-iru}\,dr$.  Selberg's trace
+formula (see \cite[Ch.~10]{Iwaniec2002} or \cite{Hejhal1976}) reads
+\begin{equation}\label{eq:selberg-classical}
+ \sum_{j\ge0}h(r_j)
+ =\frac{\operatorname{area}(X)}{4\pi}
+   \int_{-\infty}^{\infty}r\,h(r)\tanh(\pi r)\,dr
+ +\sum_{\{P\}}\sum_{k\ge1}
+   \frac{\log N(P)}{N(P)^{k/2}-N(P)^{-k/2}}\,g\bigl(k\log N(P)\bigr),
+\end{equation}
+where $\{P\}$ runs over the primitive hyperbolic $\Gamma$-conjugacy
+classes.  This is the special case of \eqref{eq:realcompact} in which
+$f$ is a bi-$\mathrm{PSO}(2)$-invariant test function on $H$ and $h$ is
+its spherical (Selberg/Harish-Chandra) transform; then $\tr\pi(f)$ is
+$h(r_j)$ for the spherical representation attached to $\lambda_j$ and
+vanishes for the others.
+
+Each term of \eqref{eq:selberg-classical} has a finite-group shadow in
+Theorem~\ref{thm:global} below.
+\begin{itemize}[itemsep=2pt]
+\item The left-hand side is the spectral side
+ $\sum_\pi m_\Gamma(\pi)\tr\pi(f)$.
+\item The first term on the right is the contribution of $\gamma=1$.
+ In the finite case this is
+ $\Orb_G(f,e)/|\Gamma|=[G:\Gamma]\,f(e)$, that is,
+ ``volume of the quotient'' times $f(e)$.  By the Plancherel formula
+ \eqref{eq:reg}, $f(e)=|G|^{-1}\sum_\pi(\dim\pi)\tr\pi(f)$; the
+ density $r\tanh(\pi r)/4\pi$ plays the role of the Plancherel weights
+ $\dim\pi/|G|$.
+\item The remaining terms are the contributions of the nontrivial
+ $\Gamma$-conjugacy classes.  The factor $\log N(P)$ is the volume
+ $\operatorname{vol}(\Gamma_\gamma\backslash H_\gamma)$ of
+ \eqref{eq:realcompact}, the counterpart of $|G_\gamma|/|\Gamma_\gamma|$
+ in the finite formula (Remark~\ref{rem:quotcoef}), and
+ $g(k\log N(P))/(N(P)^{k/2}-N(P)^{-k/2})$ is the orbital integral of
+ $f$ over $H_\gamma\backslash H$.
+\end{itemize}
+The analytic content of \eqref{eq:selberg-classical}---for instance,
+the prime geodesic theorem and Weyl's law for $X$---has no finite
+analogue, but its bookkeeping is exactly that of the finite formula.
+
 \subsection{The local picture}
 For a local field $F$ and a connected reductive group $\mathbf G$ over
 $F$, Arthur starts with the two-sided action of
@@ -128,9 +191,19 @@ For a finite $G$, however, \eqref{eq:two-sided-intro} produces an
 identity whose two sides involve nothing beyond orbital sums and
 irreducible characters.  This is a model of the \emph{compact-group
 case} of the local trace formula, not a formula for general reductive
-$p$-adic groups. Vign'eras \cite[\S1.1]{Vigneras1991} uses exactly
+$p$-adic groups. Vign\'eras \cite[\S1.1]{Vigneras1991} uses exactly
 this two-sided regular representation as the elementary entry point
 to Arthur's theory, and develops the connection much further.
+
+\subsection{Prerequisites}
+Sections~\ref{sec:harmonic}--\ref{sec:models} assume only the
+representation theory of finite groups over $\C$ at the level of
+\cite[Part~I]{Serre}: characters, orthogonality, induction, and
+Frobenius reciprocity.  Section~\ref{sec:padic-bridge} assumes some
+familiarity with $p$-adic fields and with the language of reductive
+groups (parabolic and Levi subgroups); it can be read as a guided tour,
+with \cite{Casselman1995,Kottwitz2005} as background references.
+A glossary of terms appears in Section~\ref{sec:glossary}.
 
 \subsection{Conventions and a map of the results}
 \textbf{Every sum over $G$ in this note uses unnormalized counting
@@ -169,6 +242,7 @@ of the present note is to connect them using one fixed system
 of normalization conventions.
 
 \section{Finite harmonic analysis: notation and basic facts}
+\label{sec:harmonic}
 \subsection{Conjugacy and characters}
 Write $\Irr(G)$ for the set of isomorphism classes of irreducible
 finite-dimensional complex representations.  We denote the conjugacy
@@ -409,6 +483,7 @@ $\bigl|[\gamma]_G\cap\Gamma\bigr|$ by
 $\bigl|[\gamma]_G\bigr|$.
 
 \begin{remark}[Comparison with the compact-quotient coefficient]
+\label{rem:quotcoef}
 Define the quotient-orbit sum
 \[
  \Orb_G^{\mathrm{quot}}(f,\gamma)
@@ -482,7 +557,7 @@ with the first expression because $m_\Gamma(\bar\pi)
 \end{proof}
 \begin{example}[A diagnostic normalization check]\label{ex:s3global}
 Let $G=S_3$, $\Gamma=\{e,(12)\}$, and $f=\delta_e$.
-Then $R_\Gamma(e)$ acts as the identity on the three-dimensional
+Then $R_\Gamma(\delta_e)=R(e)$ acts as the identity on the three-dimensional
 space $\C[\Gamma\backslash G]$, so its trace is $3$.
 The geometric formula gives
 \[
@@ -605,8 +680,8 @@ Equate \eqref{eq:local-spec} and \eqref{eq:local-geom},
 which both compute \eqref{eq:Idef}.
 \end{proof}
 \begin{remark}[What Vign\'eras's treatment adds]
-Vign\'eras \cite[\S1]{Vigneras1991} begins with a field
-$L$ whose characteristic does not divide $|G|$, rather than
+Vign\'eras \cite[\S1]{Vigneras1991} begins with an algebraically
+closed field $L$ whose characteristic does not divide $|G|$, rather than
 only $\C$, and derives Schur's lemma, completeness, and
 orthogonality from this starting point. We retain $\C$
 so that contragredients, complex conjugation, and the positive
@@ -702,8 +777,9 @@ so
 \[
  \tr T_F=\sum_{x,a\in G}f_1(a)f_2(x^{-1}ax)=I(f_1,f_2).
 \]
-The last equality follows by interchanging the two functions and
-changing variables in \eqref{eq:Idef}.  This double-sided kernel is a
+The last equality is the change of variables $y=x^{-1}ax$
+(so $a=xyx^{-1}$), followed by $x\mapsto x^{-1}$, in
+\eqref{eq:Idef}; no interchange of $f_1$ and $f_2$ is needed.  This double-sided kernel is a
 closer parallel to Arthur's local trace-formula starting point than
 the bilinear identity viewed solely as character orthogonality;
 compare \cite[\S1.1]{Vigneras1991} and
@@ -763,6 +839,7 @@ $60^2/3=1200$.  The equality holds with no hidden measure factors.
 \end{example}
 
 \section{What these finite identities do and do not model}
+\label{sec:models}
 \subsection{The compact-quotient Selberg formula}
 The finite global formula, Theorem~\ref{thm:global}, reproduces the
 \emph{form} of the Selberg trace formula for compact quotient:
@@ -1218,8 +1295,8 @@ as an extension of finite-group reciprocity to locally compact groups.
 \noindent\emph{Vign\'eras's local analogue (1991).}
 \emph{An Elementary Introduction to the Local Trace Formula of
 J.~Arthur: The Case of Finite Groups} \cite{Vigneras1991}
-begins with the $G\times G$-representation on $L[G]$ for a field $L$
-of characteristic not dividing $|G|$. Her \S1 derives character
+begins with the $G\times G$-representation on $L[G]$ for an
+algebraically closed field $L$ of characteristic not dividing $|G|$. Her \S1 derives character
 orthogonality, complete reducibility, and further structure of the
 group algebra from a two-sided trace identity. The same
 regular-bimodule mechanism underlies our
@@ -1254,6 +1331,18 @@ simpler instance of the coset-space perspective.
 Because Yang's paper appeared in 2006, it is a later related
 contribution, not a source for the original 1996--2003 notes.
 
+\paragraph{Selberg's original setting.}
+Selberg's 1956 paper \cite{Selberg1956} introduced the trace formula
+for compact and finite-volume quotients of the upper half plane and
+for weakly symmetric spaces more generally, and used it to study
+eigenvalues of the Laplacian and lengths of closed geodesics.
+Hejhal's monograph \cite{Hejhal1976} gives a complete account of the
+cocompact case for $\mathrm{PSL}_2(\mathbb R)$, and Iwaniec
+\cite[Ch.~10]{Iwaniec2002} gives a compact modern derivation of
+\eqref{eq:selberg-classical}.  These are good places to see how the
+bookkeeping of Theorem~\ref{thm:global} becomes a tool with real
+analytic consequences.
+
 \paragraph{Finite representation theory.}
 Serre's \emph{Linear Representations of Finite Groups} \cite{Serre}
 supplies character orthogonality, induction, and Frobenius reciprocity.
@@ -1279,6 +1368,10 @@ Silberger \cite{Silberger1979} provides an analytic treatment.
 Macdonald \cite{Macdonald1971} is useful for the Cartan
 decomposition and spherical-function viewpoint used in the
 $\mathrm{GL}_2(F)$ example of Section~\ref{sec:padic-bridge}.
+Kottwitz's lectures \cite{Kottwitz2005} survey orbital integrals,
+Harish-Chandra's character theory, and weighted orbital integrals
+on $p$-adic groups at a level well suited to a first reading of
+Arthur's local papers.
 
 \paragraph{The actual local trace formula.}
 Arthur's \emph{Towards a Local Trace Formula}
@@ -1304,14 +1397,27 @@ Only then proceed to Section~\ref{sec:padic-bridge},
 Vign\'eras's \S2, and Arthur's local papers.
 
 \section{Glossary of terms and notation}
+\label{sec:glossary}
 \begin{description}[style=nextline,leftmargin=1.4em,itemsep=4pt]
 \item[$A_M$ and $\mathfrak a_M$]
 The maximal $F$-split torus in the center of a Levi subgroup
-$M$ and its associated real vector space of logarithmic
-rational-character data, respectively.
+$M$ and its associated real vector space
+$\mathfrak a_M=\Hom(X^*(M)_F,\mathbb R)$, respectively.
+\item[Admissible representation]
+See \emph{smooth admissible representation}.
 \item[Arthur--Selberg trace formula]
 A family of identities equating geometric orbital terms with spectral
 representation-theoretic terms, often after truncation.
+\item[Bruhat--Tits tree]
+For $\mathrm{PGL}_2(F)$, the $(q+1)$-regular tree whose vertices are
+the cosets $G/ZK$; it organizes the Cartan double cosets.
+\item[Cartan double cosets]
+In the $\mathrm{GL}_2(F)$ example, the sets
+$\bar K\bar a_n\bar K$ partition $Z\backslash G$;
+their measure is $1$ for $n=0$ and $(q+1)q^{n-1}$ for $n\ge1$.
+\item[Centralizer $G_\gamma$]
+The subgroup of elements commuting with $\gamma$; if
+$\gamma\in\Gamma$ then $\Gamma_\gamma=G_\gamma\cap\Gamma$.
 \item[Character $\chi_\pi$]
 The class function $g\mapsto\tr(\pi(g))$ of a representation $\pi$.
 \item[Class function]
@@ -1319,25 +1425,26 @@ A function constant on conjugacy classes.
 \item[Compact quotient]
 A homogeneous space $\Gamma\backslash H$ which is compact, even if
 $H$ itself is not compact.
-\item[Conjugacy class $\operatorname{Cl}_G(\gamma)$]
-The set $\{x^{-1}\gamma x:x\in G\}$.
-\item[Centralizer $G_\gamma$]
-The subgroup of elements commuting with $\gamma$; if
-$\gamma\in\Gamma$ then $\Gamma_\gamma=G_\gamma\cap\Gamma$.
+\item[{Conjugacy class $[\gamma]_G$}]
+The set $\{x^{-1}\gamma x:x\in G\}$; for $\gamma\in\Gamma$ the
+generally smaller set $[\gamma]_\Gamma$ uses only $x\in\Gamma$.
 \item[Contragredient representation $\bar\pi$]
 The dual representation; for a finite group one may choose a unitary
 model in which $\chi_{\bar\pi}(g)=\overline{\chi_\pi(g)}$.
 \item[Counting measure]
 The convention $\int_X f=\sum_{x\in X}f(x)$ for finite $X$.
-\item[Cartan double cosets]
-In the $\mathrm{GL}_2(F)$ example, the sets
-$\bar K\bar a_n\bar K$ partition $Z\backslash G$;
-their measure grows as $(q+1)q^{n-1}$.
 \item[Diagonal subgroup $\Delta G$]
 The subgroup $\{(g,g):g\in G\}$ of $G\times G$.
+\item[Distribution character $\Theta_\pi$]
+The linear functional $f\mapsto\tr\pi(f)$ on $\mathcal H(G)$ attached
+to an admissible representation of a $p$-adic group.
 \item[Eisenstein series]
 Functions built from parabolic induction that help describe continuous
 automorphic spectrum on noncompact arithmetic quotients.
+\item[Elliptic element]
+A semisimple element whose centralizer is compact modulo the split
+center; in $\mathrm{GL}_2(F)$, a regular element with irreducible
+characteristic polynomial.
 \item[Frobenius reciprocity]
 The adjunction relating $\Hom_G(\Ind_\Gamma^G\sigma,\pi)$ to
 $\Hom_\Gamma(\sigma,\Res_\Gamma^G\pi)$.
@@ -1347,6 +1454,13 @@ The trace expansion organized by conjugacy classes and orbital integrals.
 Describes the regular representation of a reductive local group
 by a direct integral of tempered representations and a
 Plancherel measure.
+\item[Hecke algebra $\mathcal H(G)$]
+The convolution algebra of compactly supported locally constant
+functions on a totally disconnected group $G$.
+\item[Hyperbolic element]
+In $\mathrm{PSL}_2(\mathbb R)$, an element with two distinct real
+fixed points on $\mathbb R\cup\{\infty\}$; it is conjugate to
+$z\mapsto N z$ with $N>1$.
 \item[Induced representation]
 A representation of $G$ built from one of a subgroup, written
 $\Ind_\Gamma^G\sigma$.
@@ -1355,15 +1469,22 @@ Vectors fixed by every element of $\Gamma$; their dimension is the
 multiplicity in \eqref{eq:mult}.
 \item[Irreducible representation]
 A representation with no nonzero proper invariant subspace.
-\item[Hecke algebra $\mathcal H(G)$]
-The convolution algebra of compactly supported locally constant
-functions on a totally disconnected group $G$.
 \item[Levi subgroup]
 A reductive factor of a parabolic subgroup; Levi subgroups index many
 terms in Arthur's noncompact global and local expansions.
 \item[Local field]
 A locally compact nondiscrete topological field, such as
-$\mathbb R$, $\C$, or a finite extension of $\mathbb Q_p$.
+$\mathbb R$, $\C$, a finite extension of $\mathbb Q_p$, or
+$\mathbb F_q((t))$. Section~\ref{sec:padic-bridge} assumes
+characteristic zero, as Arthur does.
+\item[Mackey's formula]
+The double-coset decomposition of
+$\Res_H\Ind_\Gamma^G\sigma$; it replaces naive arguments about
+conjugates of $\Gamma$ \cite[\S7.3]{Serre}.
+\item[Modulus character $\delta_P$]
+The character by which conjugation on the unipotent radical scales
+Haar measure; for the Borel of $\mathrm{GL}_2$,
+$\delta_B(\diag(a,d))=|a/d|_F$.
 \item[Normalized parabolic induction]
 Induction from a Levi subgroup of a parabolic, including the factor
 $\delta_P^{1/2}$ built from the modulus character.
@@ -1372,6 +1493,9 @@ An integral (or finite sum) of a test function along a conjugacy orbit.
 Here $\Orb_G$ is deliberately the \emph{sum over all $x\in G$};
 it includes a factor of $|G_\gamma|$ relative to summing once
 per element of $G_\gamma\backslash G$.
+\item[Permutation module]
+The representation $\C[\Gamma\backslash G]\cong\Ind_\Gamma^G\id$ of
+$G$ on functions on a coset space.
 \item[Peter--Weyl decomposition]
 A decomposition of the regular representation of a compact group into
 matrix coefficients of irreducibles.  For finite $G$ it yields
@@ -1379,16 +1503,21 @@ matrix coefficients of irreducibles.  For finite $G$ it yields
 \item[Schur orthogonality]
 The orthogonality relations for irreducible matrix coefficients and,
 in particular, for irreducible characters.
+\item[Selberg trace formula]
+The trace formula for $L^2(\Gamma\backslash H)$ with $\Gamma$ a
+lattice; for a compact Riemann surface it is
+\eqref{eq:selberg-classical}.
 \item[Smooth admissible representation]
-A smooth representation for which the fixed-vector space under
-any compact open subgroup is finite-dimensional.
+A representation in which every vector has an open stabilizer and
+the fixed-vector space under any compact open subgroup is
+finite-dimensional.
 \item[Spectral side]
 The trace expansion organized by irreducible representations and
 multiplicities or spectral measure.
 \item[Tempered representation]
-A representation in the Plancherel support, broadly analogous to
-the part of Fourier analysis that contributes to the regular
-$L^2$-spectrum; precise definitions use matrix-coefficient decay.
+An irreducible unitary representation whose matrix coefficients are
+almost square-integrable (in Harish-Chandra's sense); the Plancherel
+measure is supported on the tempered dual.
 \item[Test function]
 A function $f$ used to form a convolution operator; in finite groups
 it is any element of $\C[G]$.
@@ -1470,11 +1599,11 @@ It satisfies $P^2=P$ and has image $\cG^G$, the class functions.
 Moreover,
 \[
  \ker P=\operatorname{span}_\C
- \{f-h\cdot f:f\in\cG,\ h\in G\}=:I(G).
+ \{f-h\cdot f:f\in\cG,\ h\in G\}=:\mathcal I(G).
 \]
 Consequently
 \[
- 0\longrightarrow I(G)\longrightarrow\cG
+ 0\longrightarrow \mathcal I(G)\longrightarrow\cG
    \overset P\longrightarrow\cG^G\longrightarrow0
 \]
 is a split exact sequence of complex $G$-modules.  The word
@@ -1486,9 +1615,11 @@ for every complex $G$-module $M$ and every $n>0$,
 \[
  H^n(G,M)=0.
 \]
-Thus all higher cohomology groups of $I(G)$, $\cG$, and
+Thus all higher cohomology groups of $\mathcal I(G)$, $\cG$, and
 $\cG^G$ vanish. The nontrivial information here is in degree zero:
-$\cG^G$ is the class-function space and $I(G)^G=0$.
+$\cG^G$ is the class-function space and $\mathcal I(G)^G=0$.
+(We write $\mathcal I(G)$ rather than $I(G)$ to avoid a clash with the
+bilinear form $I(f_1,f_2)$ of \eqref{eq:Idef}.)
 
 \section{Summary of substantive corrections to the original notes}
 \begin{enumerate}[leftmargin=*,itemsep=5pt]
@@ -1531,6 +1662,34 @@ diverges even modulo the center and detailed the role of Levi groups,
 parabolic induction, and weighted distributions.
 \end{enumerate}
 
+\subsection*{Further corrections in the November 2026 review}
+A second review of the revised text (by Claude) found the mathematics
+above to be correct; all identities, character tables, and numerical
+examples were rechecked.  The following smaller corrections and
+additions were made.
+\begin{enumerate}[leftmargin=*,itemsep=4pt]
+\item In Example~\ref{ex:s3global}, the operator is
+$R_\Gamma(\delta_e)=R(e)$, not ``$R_\Gamma(e)$''.
+\item In the kernel remark following Theorem~\ref{thm:diagonal},
+the equality $\tr T_F=I(f_1,f_2)$ is a change of variables; the
+earlier wording suggested that $f_1$ and $f_2$ had to be interchanged.
+\item Vign\'eras works over an \emph{algebraically closed} field $L$
+of characteristic prime to $|G|$; this hypothesis was restored.
+\item The kernel of the averaging map in the appendix is now written
+$\mathcal I(G)$, avoiding a clash with the bilinear form $I(f_1,f_2)$.
+\item The glossary now uses the notation $[\gamma]_G$ of the text
+(not $\operatorname{Cl}_G(\gamma)$), is alphabetized, gives the
+correct $n=0$ case for Cartan shells, and has a more precise entry
+for tempered representations.
+\item Added a background subsection on Selberg's formula for a
+compact Riemann surface (\S\ref{subsec:selberg-classical}) with a
+term-by-term dictionary to the finite formula, a prerequisites
+paragraph, further glossary entries, and literature on Selberg's
+setting and on $p$-adic harmonic analysis
+\cite{Selberg1956,Hejhal1976,Iwaniec2002,Kottwitz2005}.
+\item Fixed several typographical errors (``Vign'eras'').
+\end{enumerate}
+
 \section{Concluding perspective}
 The finite trace formulas rest on two familiar operations:
 computing the trace of a convolution operator on its diagonal, and
@@ -1546,6 +1705,17 @@ parabolic induction, and truncation all become central. The precise
 $\mathrm{GL}_2(F)$ calculation in Section~\ref{sec:padic-bridge}
 shows why the passage to the local trace formula is not merely
 a change from finite sums to integrals.
+
+\section*{Acknowledgments}
+\addcontentsline{toc}{section}{Acknowledgments}
+I thank ChatGPT (OpenAI), which corrected the original 1996--2003
+notes and expanded them with the diagonal-subgroup interpretation, the
+$p$-adic bridge, the literature guide, and the glossary.  I also thank
+Claude (Anthropic), which checked the revised version for mathematical
+correctness, fixed the small errors listed at the end of the
+corrections appendix, and added the background on Selberg's classical
+formula, further glossary entries, and additional references.
+Any remaining errors are my responsibility.
 
 \begin{thebibliography}{99}
 \bibitem{ArthurHecke1989}
@@ -1592,6 +1762,27 @@ I. G. Macdonald, \emph{Spherical Functions on a Group of
 $p$-Adic Type}, Publications of the Ramanujan Institute,
 University of Madras, no. 2, 1971.
 \url{https://math.soimeme.org/~arunram/Resources/SFOAGOPTContents.html}
+
+\bibitem{Selberg1956}
+A. Selberg, ``Harmonic analysis and discontinuous groups in weakly
+symmetric Riemannian spaces with applications to Dirichlet series,''
+\emph{J. Indian Math. Soc. (N.S.)} \textbf{20} (1956), 47--87.
+
+\bibitem{Hejhal1976}
+D. A. Hejhal, \emph{The Selberg Trace Formula for
+$\mathrm{PSL}(2,\mathbb R)$, Vol.~1}, Lecture Notes in Mathematics
+548, Springer, Berlin, 1976.
+
+\bibitem{Iwaniec2002}
+H. Iwaniec, \emph{Spectral Methods of Automorphic Forms}, 2nd ed.,
+Graduate Studies in Mathematics 53, American Mathematical Society,
+Providence, RI, 2002.
+
+\bibitem{Kottwitz2005}
+R. E. Kottwitz, ``Harmonic analysis on reductive $p$-adic groups and
+Lie algebras,'' in \emph{Harmonic Analysis, the Trace Formula, and
+Shimura Varieties}, Clay Mathematics Proceedings 4, American
+Mathematical Society, Providence, RI, 2005, pp.~393--522.
 
 \bibitem{Serre}
 J.-P. Serre, \emph{Linear Representations of Finite Groups},

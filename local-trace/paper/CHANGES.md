@@ -24,8 +24,8 @@ For each item of the errata log [`../original-1997/transcription_log.md`](../ori
 | 8 | false claim on p. 18 | deleted |
 | 9 | Lemma 3.5A (Brion) | proved (Lemmas 3.5B–C); checked for SL(3), PGL(3) |
 | 10 | Proposition 3.6 | new proof; conditional on (C) in rank ≥ 2 |
-| 11 | Lemma 4.1 and regularity | not used; (G,A)~-smoothness is insufficient |
-| 12 | Proposition 4.2 | new form; confluence replaced by Lemma 3.5B(ii) |
+| 11 | Proposition 4.2 | new form; confluence replaced by Lemma 3.5B(ii) |
+| 12 | the omitted Lemma 4.1; why (R) is needed | §4.1 omitted; (G,A)~-smoothness is insufficient |
 | 13 | Theorem 4.5 | (a) unconditional, (b) under (C) and (R); (R) not necessary (App. B) |
 | 14 | Conjecture 4.6 | new; verified for PGL(2), SL(2), numerically for one γ in PGL(3); (b) no longer asserts (R) |
 | 15 | §5 | rewritten; normalizations checked only for SL(2) |
@@ -253,3 +253,10 @@ The report and a point-by-point response are in [`RESPONSE-TO-REFEREE-2.md`](RES
 - **Front matter moved.** The section "About this revision" (history, what changed, status table) no longer precedes the Introduction. It is now Appendix C.1, merged with the concordance (now C.2). The title footnote is shortened and points to Appendix C.
 - **Appendices reordered.** The PGL(3) computation is now Appendix B (B.1–B.7, equations (B.1)–(B.4), Observation B.2, Table B.1). The revision notes and concordance are Appendix C.
 - **Abstract.** Rewritten to announce the main results and conjectures: the truncated identity, the spectral identity under regularity, the PGL(2), SL(2) and PGL(3) examples, the weaker hypothesis (R′), and Conjecture 4.6. Remarks about corrections to [Jo92] and to the 1997 version are left to Appendix C and this log. The opening sentence about [Jo92] is kept.
+
+## Changes of 2026-11-10 (sixth pass: orientation, §4.1, at the author's request)
+
+- **§4.1 omitted.** The 1997 §4.1 ((G,A)~-families, equation (4.1), Lemma 4.1) is removed. Lemma 4.1 was never verified and the 2026 argument does not use it.
+  - Its one useful observation, that smoothness of the sum of vertex terms does not suffice, is kept as Remark 2026.12, now placed after Hypothesis (R) in §4.3. The definition of Q^T moves into that remark, which swaps the numbers of Remarks 2026.11 and 2026.12.
+  - The remaining subsections keep their 1997 numbers 4.2 and 4.3, and the concordance (Appendix C.2) records the omission.
+- **Orientation.** Every section and subsection (Appendices A–C included) now opens with a paragraph telling the reader what it does and how it fits into the argument.

@@ -27,6 +27,7 @@ The transcription reproduces the original exactly, errors included. This file re
 | 0.4 | passim | Citations are typed literally as "[W]", "[Car], p. 135", etc., as in the original (no `\cite`). |
 | 0.5 | passim | The pairing is typeset with `<` and `>` as in the original (not `\langle \rangle`). |
 | 0.6 | passim | Proof headers ("proof:", "proof", "proof of 4.2") keep the original's inconsistent punctuation. |
+| 0.8 | p. 1, footnote 1 | Changed by the author on 2026-11-10. The original reads "This version contains corrections and some minor additions to the published version, Pac. J. Math. 154(1992)103-129". The transcription now reads "For the published version, see Pac. J. Math. 154(1992)103-129". This is the one intentional departure from the scan. |
 | 0.7 | — | No readings were left uncertain. Hard spots ((2.8) c_α, (3.8), the σ on p. 24, H on p. 33) were checked at 200 dpi. |
 
 ---

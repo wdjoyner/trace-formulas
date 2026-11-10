@@ -2,13 +2,13 @@
 # Copyright (c) 2026 David Joyner
 """
 Rank-two test of Hypothesis (R): PGL(3), an unramified elliptic element of depth 0.
-See README.md and Appendix C of the revised paper.  Prepared by Claude (Anthropic), 2026.
+See README.md and Appendix B of the revised paper.  Prepared by Claude (Anthropic), 2026.
 
 Checks
   1. Building: the displacement table N(lambda, mu) = #{v : d(v0,v)=lambda, d(v,gamma v)=mu}
-     agrees with the closed form (C.2) (q=2, radius 4; q=3, radius 3).
-  2. Orbital integrals O_gamma(f_nu) counted on the building agree with (C.2).
-  3. The T-independent part I(chi,gamma) of the truncated kernel equals the closed form (C.4)
+     agrees with the closed form (B.2) (q=2, radius 4; q=3, radius 3).
+  2. Orbital integrals O_gamma(f_nu) counted on the building agree with (B.2).
+  3. The T-independent part I(chi,gamma) of the truncated kernel equals the closed form (B.4)
      (sum over the full cone, at random characters).
   4. Spectral identity: int f_nu^vee I dmu = O_gamma(f_nu) for nu_1 <= 6, q = 2, 3
      (no singular part).
@@ -58,7 +58,7 @@ def vol(l1, l2, q):
 
 
 def N_closed(l1, l2, q):
-    """(C.2): distribution of d(v, gamma v) over the vertices v with d(v0, v) = (l1, l2)."""
+    """(B.2): distribution of d(v, gamma v) over the vertices v with d(v0, v) = (l1, l2)."""
     a, b, k = l1 - l2, l2, l1
     s = min(a, b)
     V = vol(l1, l2, q)
@@ -98,16 +98,16 @@ def building_checks():
         for H in S.values():
             tab[B.vdist(ID, H, p)][B.vdist(H, B.matmul(g, H), p)] += 1
         bad = [lam for lam, c in tab.items() if dict(c) != dict(N_closed(*lam, p))]
-        check("N(lambda,mu) = (C.2), q=%d, radius %d (%d vertices, %.0fs)"
+        check("N(lambda,mu) = (B.2), q=%d, radius %d (%d vertices, %.0fs)"
               % (p, R, len(S), time.time() - t0), not bad, str(bad))
-        # orbital integrals: all v with d(v, gamma v) = nu lie at l1 <= 2 nu_1/3 (by C.2)
+        # orbital integrals: all v with d(v, gamma v) = nu lie at l1 <= 2 nu_1/3 (by B.2)
         disp = collections.Counter()
         for lam, c in tab.items():
             for mu, n in c.items():
                 disp[mu] += n
         nus = [nu for nu in disp if 2 * nu[0] / 3 <= R]
         bad = [nu for nu in nus if disp[nu] != O_closed(nu, p)]
-        check("O_gamma(f_nu) on building = (C.2), q=%d, %d values of nu" % (p, len(nus)), not bad, str(bad))
+        check("O_gamma(f_nu) on building = (B.2), q=%d, %d values of nu" % (p, len(nus)), not bad, str(bad))
 
 
 # ---------------------------------------------------------------- spectral side
@@ -133,7 +133,7 @@ def F0(u, v, q):
 
 
 def I_closed(z, q):
-    """(C.4)."""
+    """(B.4)."""
     z1, z2, z3 = z
     roots = [z1 / z2, z2 / z3, z1 / z3]
     S = sum(r + 1 / r for r in roots)
@@ -181,7 +181,7 @@ def spectral_checks():
         th = rng.uniform(0, 2 * np.pi, (2, 20))
         z = (np.exp(1j * th[0]), np.exp(1j * th[1]), np.exp(-1j * (th[0] + th[1])))
         err = np.max(abs(I_from_cone(z, q) - I_closed(z, q)) / abs(I_closed(z, q)))
-        check("I(chi,gamma) = full-cone sum = (C.4), q=%d" % q, err < 1e-9, "rel err %.1e" % err)
+        check("I(chi,gamma) = full-cone sum = (B.4), q=%d" % q, err < 1e-9, "rel err %.1e" % err)
         err = np.max(abs(I_closed(z, q) * rho(z, q) - Irho_closed(z, q)))
         check("I*rho closed form, q=%d" % q, err < 1e-9, "err %.1e" % err)
     nus = [(0, 0), (1, 0), (2, 1), (2, 0), (3, 0), (3, 1), (4, 2), (4, 1), (5, 1), (5, 4), (6, 3), (6, 0)]
@@ -277,7 +277,7 @@ def expansion_checks():
     coef, res, D, y = expansion(z, q, maps)
     check("I^T is one exponential polynomial on the whole cone (%d candidate frequencies)" % len(maps),
           res < 1e-10, "resid %.1e on %d values of T" % (res, len(TS)))
-    check("its constant term is I(chi,gamma) of (C.4)", abs(coef[zero] - I_closed(z, q)) < 1e-10)
+    check("its constant term is I(chi,gamma) of (B.4)", abs(coef[zero] - I_closed(z, q)) < 1e-10)
     cwt = lambda ta, tb: np.array([2 * ta + tb, -ta + tb, -ta - 2 * tb]) / 3     # T as a coweight
     W = list(itertools.permutations(range(3)))
     diffs = {tuple(np.round(np.concatenate([cwt(1, 0)[list(s)] - cwt(1, 0)[list(t)],

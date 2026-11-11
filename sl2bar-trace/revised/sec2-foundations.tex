@@ -9,7 +9,7 @@
 % see the "Stage 1" section of ../revision_log.md for the item-by-item list.
 %
 % This file is \input by the master; it compiles on its own through
-% stage1-preview.tex. Lemma numbers 2.1-2.9 are those of the 1995 notes;
+% preview.tex. Lemma numbers 2.1-2.9 are those of the 1995 notes;
 % Lemma 2.10 is new. Every explicit formula for n = 2 is checked by
 % checks/sec2_n2_check.py (exact rational arithmetic).
 % Comments beginning "% [Claude]" are editorial notes by Claude.
@@ -381,12 +381,16 @@ $\chi_1=N_{k/\Q}\circ t$. Put $\mathfrak a=\mathfrak a_B=
 \Hom(X(A)_\Q,\R)$, identified with $\R$ by $X\mapsto X(\chi_1)$. Then
 $H$ of~\eqref{eq:H} and its global analog are
 $\langle H(x),\chi_1\rangle=\log|\chi_1(\tilde a)|$, which is why $H$
-uses the norm. The simple root is $\alpha(a(t))=t^2$; restricted to
-$A_B$ it is $\alpha=2\chi_1$, so $\alpha(X)=2X$ under
+uses the norm. Let $d=[k:\Q]$. The simple root $\alpha$ of $(B,A_B)$ is
+$a(s)\mapsto s^2$ ($s\in\Q^\times$), while $\chi_1(a(s))=s^d$; so
+$\alpha=(2/d)\chi_1$ in $\mathfrak a^*$, and $\alpha(X)=2X/d$ under
 $\mathfrak a\cong\R$. Let $\alpha^\vee=X_\alpha\in\mathfrak a$ be the
-coroot, so $X_\alpha=1$ and $\alpha(\alpha^\vee)=2$, and let
-$\varpi=\tfrac12\alpha^\vee$ be the fundamental coweight, so
-$\alpha(\varpi)=1$. (The 1995 notes call $\varpi$ the dual root.)
+coroot $s\mapsto a(s)$, so $X_\alpha=\langle\chi_1,\alpha^\vee\rangle=d$
+and $\alpha(\alpha^\vee)=2$, and let $\varpi=\tfrac12\alpha^\vee$ be the
+fundamental coweight, so $\alpha(\varpi)=1$. The modulus character is
+$\delta_B=e^{2H}$. (The 1995 notes call $\varpi$ the dual root.)
+% [Claude] Stage 3 correction: the stage-1 text had alpha = 2 chi_1 and
+% X_alpha = 1, which holds only for k = Q. See Remark 2026.8.
 
 Let $\mathfrak a^+=\{X\in\mathfrak a\mid\alpha(X)>0\}$ and
 $(\mathfrak a^*)^+=\{\Lambda\in\mathfrak a^*\mid\Lambda(\varpi)>0\}$,

@@ -1,0 +1,976 @@
+% SPDX-License-Identifier: CC-BY-4.0
+% =====================================================================
+% Section 5 of D. Joyner, "A hitch-hiker's guide to the metaplectic trace
+% formula for SL(2)", revised for the 2-fold cover (n = 2), November 2026.
+%
+% Stage 4 of ../revision_log.md. Sources: ../original-1995/cctrace4.tex
+% (= ../book-1997/book7e.tex, Sections 5.1-5.2) and cctrace5.tex
+% (= ../book-1997/book7f.tex, Sections 5.3-5.4). Referee items II.9-II.13,
+% the Section 5 part of II.6 and the Section 5 minor items are fixed here;
+% see the "Stage 4 notes" in ../revision_log.md, which also map the 1995
+% numbers to the numbers here.
+%
+% This file is \input by the master; it compiles on its own through
+% preview.tex. Explicit formulas are checked by checks/sec5_n2_check.py.
+% Comments beginning "% [Claude]" are editorial notes by Claude.
+% =====================================================================
+
+\providecommand{\GA}{\overline{G(\A)}}
+
+\section{The spectral side}\label{sec:spectral}
+
+This section computes the spectral side of the trace formula for $\GA$,
+class by class, and assembles the trace formula. The general theory is
+due to Langlands~\cite{L2} and Arthur~\cite{A3,A14} for connected
+reductive groups, and to M\oe glin--Waldspurger~\cite{MW2} and
+Li~\cite{LiIII} for covering groups; as in Section~\ref{sec:geometric},
+we state it for the double cover of $G=\Res_{k/\Q}SL(2)$ and make the
+terms explicit. Three things are new compared with the 1995 notes. The
+residual spectrum is not empty: it consists of one even Weil
+representation for each class in $k^\times/k^{\times2}$
+(Theorem~\ref{thm:residual}). These classes are exactly the cuspidal
+data $(A,\mu)$ with $\mu^w=\mu$, which the 1995 notes omit
+(Lemma~\ref{lem:w-action}, Theorem~\ref{thm:Jchi}(c)). And the operator
+$M_B^T$ is $2T-M^{-1}M'$ (Theorem~\ref{thm:Jchi}), whose $T$-term we check
+against the geometric side (Proposition~\ref{prop:Tcoef}). The
+normalizing factor of the intertwining operator, $L^S(2\lambda,\chi^2)/
+L^S(2\lambda+1,\chi^2)$, is computed in Lemma~\ref{lem:intertwining}.
+
+\paragraph{Conventions.} $L^2_{\mathrm{gen}}=L^2(G(\Q)\backslash\GA)_
+{\mathrm{gen}}$ is the space of $\varphi$ with $\varphi(\gamma x\zeta)=
+\zeta\varphi(x)$, with the measure of Section~\ref{sec:global} (total
+volume $1$), and $R$ is the right regular representation; test functions
+$f\in\mathcal H(\GA)$ are anti-genuine and $R(f)=\int f(y)R(y)\,dy$, as in
+Section~\ref{sec:kernels}. As in Section~\ref{sec:chambers} and
+Remark~\ref{rem:alpha}, $\mathfrak a\cong\R$ by $X\mapsto X(\chi_1)$, with
+Lebesgue measure $dX$, and we identify $\mathfrak a^*_\C$ with $\C$ so that
+$\lambda(X)=\lambda X$. Then $e^{\lambda(H(x))}=e^{\lambda H(x)}$,
+\[
+\rho=\rho_B=1,\qquad\alpha=2/d,\qquad\alpha^\vee=d,\qquad d=[k:\Q],
+\]
+since $\delta_B=e^{2H}$, and $\lambda\in i\R$ is written $\lambda=it$ with
+the measure $dt/2\pi$, dual to $dX$. For $k=\Q$ and $x=n(u)a(t)k$ the
+point $x\cdot i$ of the upper half plane has imaginary part $y=t^2$, so
+$e^{(\lambda+1)H(x)}=y^{s}$ with $s=(\lambda+1)/2$. We write $c_k=
+\mathrm{vol}(A(\Q)\backslash A(\A)^1)$ as in Section~\ref{sec:coarse}, and
+$X_A=A(\Q)\backslash\overline{A(\A)^1}$ and $\Pi_{\mathrm{aut}}(X_A)$ as
+in Section~\ref{sec:torus-cover}; $\Pi_u(H)$ is the set of irreducible
+unitary genuine representations of $H$, as there.
+
+\subsection{The spectral decomposition and cuspidal data}\label{sec:decomp}
+
+\begin{lemma}\label{lem:spec-decomp}
+$L^2_{\mathrm{gen}}=L^2_{\mathrm{disc}}\oplus L^2_{\mathrm{cont}}$, where
+$L^2_{\mathrm{disc}}$ is the closed span of the irreducible closed
+invariant subspaces. Each $\pi\in\Pi_u(\GA)$ occurs in
+$L^2_{\mathrm{disc}}$ with finite multiplicity $m(\pi)$, and
+$L^2_{\mathrm{disc}}=L^2_{\mathrm{cusp}}\oplus L^2_{\mathrm{res}}$, where
+$L^2_{\mathrm{cusp}}$ is the space of cusp forms,
+\[
+\int_{N(\Q)\backslash N(\A)}\varphi(nx)\,dn=0\quad\text{for almost all }x,
+\]
+and $L^2_{\mathrm{res}}$ is its orthogonal complement in
+$L^2_{\mathrm{disc}}$.
+\end{lemma}
+
+\begin{proof}
+By Lemma~\ref{lem:strong}, $G(\Q)\backslash\GA/K_f^*\cong
+\widetilde\Gamma\backslash\overline{G(\R)}$ with $\widetilde\Gamma$ a
+lattice, so this is Langlands' theory~\cite{L2} for
+$\widetilde\Gamma\backslash\overline{G(\R)}$; in adelic form,
+see~\cite{MW2}, whose setting includes finite central covers. The finiteness of multiplicities in
+$L^2_{\mathrm{disc}}$ is Harish-Chandra's finiteness theorem for
+automorphic forms.
+\end{proof}
+
+Lemma~5.1 of the 1995 notes asserts that the right regular representation
+on $L^2(\Gamma\backslash G)$ decomposes into irreducibles ``each occurring
+with finite multiplicity'' for every discrete $\Gamma$ in a unimodular
+$G$. That is false in general (take $\Gamma=1$); what holds is a direct
+integral decomposition for $G$ of type~I, and finite multiplicities in
+the discrete part for lattices in reductive groups, as above.
+
+\begin{lemma}\label{lem:factor}
+Every $\pi\in\Pi_u(\GA)$ is a restricted tensor product
+$\pi\cong\bigotimes'_v\pi_v$, with $\pi_v\in\Pi_u(\overline{SL(2,k_v)})$
+genuine and $\pi_v$ having a nonzero $K_v^*$-fixed vector for almost all
+$v$; the restricted product is taken with respect to these vectors.
+Conversely every such family defines an element of $\Pi_u(\GA)$.
+\end{lemma}
+
+\begin{proof}
+A representation of $\GA$ is a representation of the restricted product
+of the $\overline{SL(2,k_v)}$ (with respect to the $K_v^*$) that is
+trivial on $Z_0=\{(\zeta_v)\mid\prod_v\zeta_v=1\}$
+(Section~\ref{sec:global}). Flath's theorem~\cite{F} applies to the
+restricted product and gives $\pi\cong\bigotimes'\pi_v$. Each $\mu_2$ at
+$v$ acts by a sign $\varepsilon_v$; triviality on $Z_0$ forces all
+$\varepsilon_v$ to be equal, and genuineness forces them to be the
+identity. Conversely, if every $\pi_v$ is genuine, $\bigotimes'\pi_v$ is
+trivial on $Z_0$ and descends.
+\end{proof}
+
+This corrects Example~5.2 of the 1995 notes, which says that all genuine
+unitary representations are factorizable (it should say irreducible),
+that $\pi_v$ is unramified when it has a $\overline{K_v}$-fixed vector
+(genuine representations have none; the condition is a $K_v^*$-fixed
+vector), and which treats $\GA$ as a restricted product rather than a
+quotient of one (item~I.4).
+
+\paragraph{Cuspidal data.} The \emph{cuspidal data} are the pairs
+$(G,\pi)$, with $\pi\in\Pi_u(\GA)$ occurring in $L^2_{\mathrm{cusp}}$, and
+the pairs $(A,\mu)$, with $\mu\in\Pi_{\mathrm{aut}}(X_A)$ a genuine
+character of $X_A$ (Theorem~\ref{thm:corr}). Among the standard
+parabolic subgroups, $B$ is associate only to itself, with
+$W(\mathfrak a)=\Omega(\mathfrak a,\mathfrak a)=\{1,w\}$. (The opposite
+$\bar B=wBw^{-1}$ also has Levi $A$ and is associate to $B$, but it is not
+standard.) For $\mu$ as above put
+$\mu^w(\tilde a)=\mu(w^{-1}\tilde aw)$, where $w$ stands for its image
+$(w,\kappa_\A(w))=(w,1)$ in $\GA$. Two data are \emph{equivalent} if they
+are equal or of the form $(A,\mu)$, $(A,\mu^w)$. Let $\mathcal X$ be the
+set of classes, $\mathcal X_G$ the classes of the $(G,\pi)$ and
+$\mathcal X_A$ those of the $(A,\mu)$; for $\chi\in\mathcal X_A$ we write
+$\mu\in\chi$ for the members of the set $\{\mu,\mu^w\}$, which has one or
+two elements. A class $\chi\in\mathcal X_A$ is \emph{unramified} if
+$\mu^w\ne\mu$, and \emph{ramified} if $\mu^w=\mu$~\cite[\S4]{A3}.
+
+This replaces Example~5.4 of the 1995 notes, which says that two
+parabolics with Levi $A$ are associate only if they are opposite (but $B$
+is associate to itself), and that $(A,\rho)\sim(A,\rho')$ only if
+$\rho=\rho'^w$; the correct condition is $\rho=\rho'$ or $\rho=\rho'^w$
+(item~II.13).
+
+\begin{lemma}\label{lem:w-action}
+\begin{enumerate}[label=(\alph*)]
+\item For $t\in\A_k^\times$ and $\zeta\in\mu_2$,
+  $(w,1)\,(a(t),\zeta)\,(w,1)^{-1}=(a(t^{-1}),\zeta)$ in $\GA$, and the same
+  holds in each $\overline{SL(2,k_v)}$.
+\item $(a(t),1)^{-1}=(a(t^{-1}),\prod_v(t_v,-1)_v)$; so $w$-conjugation is
+  not inversion on $\overline{A(\A)}$, and
+  $\mu^w(a(t),1)=\mu(a(t),1)^{-1}\prod_v(t_v,-1)_v$.
+\item $\chi_\psi^w=\chi_\psi$ for Weil's character $\chi_\psi$
+  (Lemma~\ref{lem:weil}). Hence, writing $\mu=\chi_\psi\cdot(\chi\circ p)$
+  with $\chi$ a character of $A(\Q)\backslash A(\A)^1$
+  (Theorem~\ref{thm:corr}), $\mu^w=\chi_\psi\cdot(\chi^{-1}\circ p)$.
+\item $\mu^w=\mu$ if and only if $\chi^2=1$, and then
+  $\mu=\chi_{\psi_b}$ on $\overline{A(\A)^1}$ for a unique $b\in
+  k^\times/k^{\times2}$. So the ramified classes in $\mathcal X_A$ are the
+  classes $\chi_b$ of $(A,\chi_{\psi_b})$, $b\in k^\times/k^{\times2}$,
+  each with one member, and every other class in $\mathcal X_A$ has two
+  members.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+(a) At one place, with $x(\cdot)$ as in~\eqref{eq:beta}: $x(w)=1$,
+$x(a(t))=t^{-1}$, $wa(t)=\begin{pmatrix}0&-t^{-1}\\t&0\end{pmatrix}$ has
+$x=t$, $wa(t)w^{-1}=a(t^{-1})$ has $x=t$, and $x(w^{-1})=-1$. So by the
+conjugation formula~\eqref{eq:inverse},
+$\beta(w,a(t))\beta(wa(t),w^{-1})\beta(w,w^{-1})=(t,t^2)(1,-t)(1,-1)=1$.
+At non-dyadic finite $v$ the correction $\kappa_v$ is $1$ on $w$,
+$w^{-1}$, $a(t)$, $a(t^{-1})$ and $wa(t)$ (the lower left entry is $0$ or
+of absolute value $\ge1$), so $\sigma_v=\beta_v$ on these pairs. Taking
+the product over $v$ gives the global statement.
+
+(b) $(a(t),1)(a(t^{-1}),\varepsilon)=(1,\sigma_\A(a(t),a(t^{-1}))
+\varepsilon)$ and $(t_v,t_v^{-1})_v=(t_v,t_v)_v=(t_v,-1)_v$ by~\ref{H1}
+and~\ref{H2}. The formula for $\mu^w$ follows from~(a).
+
+(c) $t^{-1}=t\cdot t^{-2}$ is in the square class of $t$, so
+$\gamma_v(t^{-1})=\gamma_v(t)$ by Lemma~\ref{lem:weil}(a), and
+$\chi_\psi(a(t^{-1}),\zeta)=\chi_\psi(a(t),\zeta)$. By~(a),
+$\mu^w(a(t),\zeta)=\mu(a(t^{-1}),\zeta)=\chi_\psi(a(t),\zeta)\,
+\chi(a(t))^{-1}$.
+
+(d) By~(c), $\mu^w=\mu$ if and only if $\chi^2=1$. A quadratic character
+of $k^\times\backslash\A_k^1$ extends uniquely to a quadratic character of
+$k^\times\backslash\A_k^\times$ trivial on $\R_{>0}$ (embedded diagonally
+at the archimedean places). By class field theory the quadratic
+characters of $k^\times\backslash\A_k^\times$ are the
+$t\mapsto\prod_v(b,t_v)_v$, $b\in k^\times$, and two values of $b$ give
+the same character exactly when they differ by an element of
+$k^\times\cap\prod_vk_v^{\times2}=k^{\times2}$; each such character is
+trivial on $\R_{>0}$, since $(b,u)_v=1$ for $u>0$ at a real $v$. By
+Lemma~\ref{lem:weil}(d), $\chi_\psi\cdot(b,\cdot)=\chi_{\psi_b}$.
+\end{proof}
+
+For $SL(2)$ itself the ramified classes are $(A,\mu)$ with $\mu^2=1$,
+because there $w$ acts on $A$ by inversion~\cite{LL}. For the cover,
+inversion is twisted by $(t,-1)$, and Weil's character absorbs the twist.
+
+\begin{example}\label{ex:ramified-Q}
+Let $k=\Q$. Then $k^\times/k^{\times2}$ is represented by the squarefree
+integers $b$, positive and negative, and the ramified classes are the
+$\chi_{\psi_b}$. If $f=f_S\otimes e^S$ as in Section~\ref{sec:local-dist},
+only the classes with $\chi_{\psi_b,p}$ trivial on $A(\Z_p)$ for every
+$p\notin S$ can contribute; since $(b,u)_p=1$ for all units $u$ exactly
+when $\ord_p(b)$ is even, these are the $b$ whose prime factors lie in
+$S$. For $S=\{\infty,2\}$ they are $b\in\{\pm1,\pm2\}$.
+\end{example}
+
+\begin{proposition}\label{prop:Lchi}
+$L^2_{\mathrm{gen}}=\widehat\bigoplus_{\chi\in\mathcal X}L^2_\chi$, an
+orthogonal decomposition into invariant subspaces, where:
+\begin{enumerate}[label=(\alph*)]
+\item for $\chi$ the class of $(G,\pi)$, $L^2_\chi$ is the
+  $\pi$-isotypic subspace of $L^2_{\mathrm{cusp}}$, of multiplicity
+  $m(\pi)$;
+\item for $\chi\in\mathcal X_A$ with $\mu\in\chi$,
+  $L^2_\chi=L^2_{\chi,\mathrm{res}}\oplus L^2_{\chi,\mathrm{cont}}$, where
+  $L^2_{\chi,\mathrm{cont}}$ is the closed span of the wave packets
+  $\int_\R E(x,\Phi(t),it)\,dt$ of the Eisenstein series of
+  Section~\ref{sec:eisenstein}, $\Phi\in C_c^\infty(\R,\mathcal H_B(\mu))$
+  with values in a finite sum of $\overline{K_0}$-types, and
+  $L^2_{\chi,\mathrm{res}}=L^2_{\mathrm{res}}\cap L^2_\chi$ is spanned by
+  residues of these Eisenstein series at poles with $\mathrm{Re}\,\lambda
+  >0$. In particular $L^2_{\mathrm{cusp}}=\widehat\bigoplus_{\chi\in
+  \mathcal X_G}L^2_\chi$.
+\end{enumerate}
+\end{proposition}
+
+This is Langlands' decomposition~\cite[Ch.~7]{L2} along cuspidal
+data~\cite[Ch.~II, V]{MW2}. It replaces~(5.2)--(5.4), Corollary~5.5 and
+Proposition~5.6 of the 1995 notes. The 1995 description of
+$L^2(M(\Q)\backslash\overline{M(\A)^1})_\chi$ through the spaces
+$\Psi(P_1,P,\chi)$ is Langlands' original one; for $SL(2)$ the description
+above is all that is used. By Lemma~\ref{lem:w-action}(d) and
+Lemma~\ref{lem:intertwining}(c) below, $L^2_{\chi,\mathrm{res}}=0$ unless
+$\chi$ is ramified.
+
+\subsection{Eisenstein series and intertwining operators}\label{sec:eisenstein}
+
+For $\mu\in\Pi_{\mathrm{aut}}(X_A)$ let $\mathcal H_B(\mu)$ be the space of
+genuine functions $\varphi$ on $N(\A)A(\Q)A_B(\R)^0\backslash\GA$ that are
+right $\overline{K_0}$-finite and satisfy
+\begin{equation}\label{eq:HBmu}
+\varphi(\tilde a x)=\mu(\tilde a)\varphi(x)\quad(\tilde a\in
+\overline{A(\A)^1}),\qquad
+\langle\varphi,\varphi'\rangle=\int_{X_A}\int_{\overline{K_0}}
+\varphi(\tilde a\tilde k)\overline{\varphi'(\tilde a\tilde k)}\,d\tilde k\,
+d\tilde a=c_k\int_{\overline{K_0}}\varphi\overline{\varphi'}.
+\end{equation}
+Here $A(\Q)$ and $N(\A)$ are embedded by $b\mapsto(b,1)$
+(Lemma~\ref{lem:global}(b)), $\mu$ is extended to $\overline{A(\A)}$
+trivially on $A_B(\R)^0$, and restriction to $\overline{K_0}$ is injective
+by Lemma~\ref{lem:NAK-global}. For $\lambda\in\C$ put
+$\varphi_\lambda(x)=\varphi(x)e^{(\lambda+1)H(x)}$, and let
+$I(\mu_\lambda)$ be the representation on $\mathcal H_B(\mu)$ given by
+$(I(\mu_\lambda,y)\varphi)_\lambda(x)=\varphi_\lambda(xy)$, and
+$I(\mu_\lambda,f)=\int_{\GA}f(y)I(\mu_\lambda,y)\,dy$. It is the induced
+representation $\mathrm{Ind}_{\overline{B(\A)}}^{\GA}(\mu\,e^{\lambda H})$
+(normalized induction), unitary for $\lambda\in i\R$. In
+Example~5.18 of the 1995 notes the condition $\varphi(ag)=\pi(a)
+\varphi(g)$ is imposed for all $a\in\overline{A(\A)}$, so that the
+parameter $\lambda$ is part of $\pi$ and the factor $\delta_B^{1/2}$ is
+missing; here $\varphi$ is $A_B(\R)^0$-invariant and $\lambda$ enters
+through $\varphi_\lambda$.
+
+For $\varphi\in\mathcal H_B(\mu)$ and $\mathrm{Re}\,\lambda>1$ put
+\begin{gather}
+E(x,\varphi,\lambda)=\sum_{\delta\in B(\Q)\backslash G(\Q)}
+\varphi_\lambda(\delta x),\label{eq:Eis}\\
+\bigl(M(w,\lambda)\varphi\bigr)_{-\lambda}(x)=\int_{N(\A)}
+\varphi_\lambda(w^{-1}nx)\,dn .\label{eq:Mw}
+\end{gather}
+The sum is well defined because $\varphi_\lambda$ is left
+$B(\Q)$-invariant (Lemma~\ref{lem:NAK-global}(b), and $\mu$ is trivial
+on $A(\Q)$). By Lemma~\ref{lem:w-action}(a), $M(w,\lambda)$ maps
+$\mathcal H_B(\mu)$ to $\mathcal H_B(\mu^w)$, and it intertwines
+$I(\mu_\lambda)$ with $I(\mu^w_{-\lambda})$. The constant term of a
+function $\phi$ on $G(\Q)\backslash\GA$ is $\phi_B(x)=\int_{N(\Q)
+\backslash N(\A)}\phi(nx)\,dn$.
+
+\begin{theorem}[Langlands~\cite{L2}; M\oe glin--Waldspurger~\cite{MW2}
+for covers]\label{thm:eisenstein}
+Let $\mu\in\Pi_{\mathrm{aut}}(X_A)$ and $\varphi\in\mathcal H_B(\mu)$.
+\begin{enumerate}[label=(\alph*)]
+\item The series~\eqref{eq:Eis} and the integral~\eqref{eq:Mw} converge
+  absolutely for $\mathrm{Re}\,\lambda>1$, and $E(x,\varphi,\lambda)$
+  and $M(w,\lambda)\varphi$ continue to meromorphic functions of
+  $\lambda\in\C$.
+\item $E_B(x,\varphi,\lambda)=\varphi_\lambda(x)+(M(w,\lambda)
+  \varphi)_{-\lambda}(x)$.
+\item $E(x,M(w,\lambda)\varphi,-\lambda)=E(x,\varphi,\lambda)$ and
+  $M(w,-\lambda)M(w,\lambda)=1$.
+\item On $i\R$, $E(x,\varphi,\lambda)$ and $M(w,\lambda)$ are holomorphic
+  and $M(w,\lambda)$ is unitary. In $\mathrm{Re}\,\lambda>0$ they have at
+  most finitely many poles, all simple and in $(0,1]$, and the poles of
+  $E$ are those of $M(w,\lambda)$.
+\item $E(x,I(\mu_\lambda,f)\varphi,\lambda)=\int_{\GA}f(y)
+  E(xy,\varphi,\lambda)\,dy$, and $M(w,\lambda)I(\mu_\lambda,f)=
+  I(\mu^w_{-\lambda},f)M(w,\lambda)$.
+\end{enumerate}
+\end{theorem}
+
+This is Theorem~5.8 of the 1995 notes, specialized to $P=B$, with three
+corrections. The measure on $i\mathfrak a^*$ is $dt/2\pi$ (the 1995 text
+has $(1/2\pi i)^{\dim A}$ in~(b) and $(1/2\pi)^{\dim A}$ in the norm of
+$L^\wedge_{\mathcal P}$). The number $n(A_B)$ of chambers in
+$\mathfrak a$ is $2$, not $1$; it produces the factor $\frac12$ in
+Proposition~\ref{prop:kernels-spec}. And the theorem is stated for one
+$\mu$, the spectral decomposition being Proposition~\ref{prop:Lchi}. The
+convergence of~\eqref{eq:Eis} for $\mathrm{Re}\,\lambda>\rho=1$ is
+Godement's criterion; the integral~\eqref{eq:Mw} in fact converges for
+$\mathrm{Re}\,\lambda>\frac12$, by Lemma~\ref{lem:intertwining}.
+
+\begin{lemma}\label{lem:intertwining}
+Let $\mu=\chi_\psi\cdot(\chi\circ p)\in\Pi_{\mathrm{aut}}(X_A)$. Let $S$
+be a finite set of places of $k$ containing the archimedean and dyadic
+places and those where $\psi_v$ has conductor $\ne\OO_v$ or $\chi_v$ is
+ramified. For $v\notin S$ let $\varphi_v^0\in I(\mu_{v,\lambda})$ be the
+$K_v^*$-fixed vector with $\varphi_v^0=1$ on $K_v^*$, and let $M_v(\lambda)$
+be the local intertwining operator, $(M_v(\lambda)\varphi_v)(x)=
+\int_{k_v}\varphi_{v,\lambda}(w^{-1}n(y)x)\,dy$ with the self-dual
+measure.
+\begin{enumerate}[label=(\alph*)]
+\item For $\varphi=\varphi_S\otimes\bigotimes_{v\notin S}\varphi_v^0$,
+  $M(w,\lambda)\varphi=(M_S(\lambda)\varphi_S)\otimes\bigotimes_{v\notin S}
+  M_v(\lambda)\varphi_v^0$, with $M_S=\bigotimes_{v\in S}M_v$.
+\item For $v\notin S$, with $q=q_v$ and $\chi_v(\varpi)$ the value at a
+  uniformizer,
+  \[
+  M_v(\lambda)\varphi_v^0=\frac{1-\chi_v(\varpi)^2q^{-1-2\lambda}}
+  {1-\chi_v(\varpi)^2q^{-2\lambda}}\,\varphi_v^{0,w}
+  =\frac{L_v(2\lambda,\chi_v^2)}{L_v(2\lambda+1,\chi_v^2)}\,
+  \varphi_v^{0,w},
+  \]
+  where $\varphi_v^{0,w}$ is the $K_v^*$-fixed vector of
+  $I(\mu^w_{v,-\lambda})$. Hence $M(w,\lambda)=m^S(\mu,\lambda)\,M_S(\lambda)
+  \otimes1$ on such $\varphi$, with
+  \begin{equation}\label{eq:mS}
+  m^S(\mu,\lambda)=\frac{L^S(2\lambda,\chi^2)}{L^S(2\lambda+1,\chi^2)} .
+  \end{equation}
+\item In $\mathrm{Re}\,\lambda>0$, $M(w,\lambda)$ is holomorphic unless
+  $\chi^2=1$ ($\chi$ extended to $k^\times\backslash\A_k^\times$ trivially
+  on $\R_{>0}$). If $\chi^2=1$, its only pole there is a simple pole at
+  $\lambda=\frac12$, with residue $\mathrm{Res}_{s=1}\zeta_k^S(s)\,
+  \bigl(2\zeta_k^S(2)\bigr)^{-1}M_S(\tfrac12)\otimes1$, which is not $0$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+(a) The lift $(w,1)$ of $w\in G(\Q)$ is the product of the local lifts
+$(w,1)_v$ ($\kappa_v(w)=1$ for all $v$), $N(\A)$ is the restricted
+product of the $N(k_v)$ with $dn=\prod dn_v$, and a factorizable
+$\varphi$ is a product of local functions (Lemma~\ref{lem:factor}).
+
+(b) Since $\chi_{\psi,v}$ is trivial on $A(\OO_v)^*$
+(Lemma~\ref{lem:weil}(b)), $\varphi_v^0((n,1)(a(t),\zeta)\tilde k)=\zeta
+\mu_v(a(t),1)|t|^{\lambda+1}$ for $\tilde k\in K_v^*$ is well defined. If
+$|y|\le1$, then $w^{-1}n(y)\in K_v$, its lift lies in $K_v^*$ because
+$\sigma_v\equiv1$ on $K_v\times K_v$, and the integrand is $1$. If
+$|y|=q^m$ with $m\ge1$, write $y=\varpi^{-m}u$, $u\in\OO^\times$; then
+\[
+w^{-1}n(y)=n(-y^{-1})\,a(-y^{-1})\,\begin{pmatrix}1&0\\y^{-1}&1
+\end{pmatrix},
+\]
+the last factor in $K_v$. Computing the cocycle of this decomposition, the
+integrand is $\chi_v(\varpi)^m|y|^{-\lambda-1}$ times $1$ if $m$ is even,
+and times $c\,(u,\varpi)_v$ with a constant $c$ of absolute value $1$ if
+$m$ is odd. (The odd case uses $\gamma_v(\varpi u)=(u,\varpi)_v
+\gamma_v(\varpi)$, Lemma~\ref{lem:weil}(a)--(b); both cases are checked in
+\texttt{checks/sec5\_n2\_check.py} at $p=3,5,7$.) The shell
+$\{|y|=q^m\}$ has volume $q^m(1-q^{-1})$, and $u\mapsto(u,\varpi)_v$ is a
+nontrivial character of $\OO^\times$, so the odd shells contribute $0$
+and
+\[
+M_v(\lambda)\varphi_v^0(1)=1+(1-q^{-1})\sum_{j\ge1}\bigl(\chi_v(\varpi)^2
+q^{-2\lambda}\bigr)^j=\frac{1-\chi_v(\varpi)^2q^{-1-2\lambda}}
+{1-\chi_v(\varpi)^2q^{-2\lambda}} .
+\]
+$M_v(\lambda)\varphi_v^0$ is $K_v^*$-fixed, so it is this multiple of
+$\varphi_v^{0,w}$.
+
+(c) The local integrals at $v\in S$ converge absolutely for
+$\mathrm{Re}\,\lambda>0$, since the integrand is $O(|y|^{-\mathrm{Re}\,
+\lambda-1})$, so $M_S(\lambda)$ is holomorphic there. If $\chi^2\ne1$,
+$L^S(s,\chi^2)$ is entire (the removed Euler factors have no poles in
+$\mathrm{Re}\,s>0$) and $L^S(s,\chi^2)\ne0$ for $\mathrm{Re}\,s\ge1$.
+If $\chi^2=1$, $m^S=\zeta_k^S(2\lambda)/\zeta_k^S(2\lambda+1)$, whose only
+pole in $\mathrm{Re}\,\lambda>0$ is at $2\lambda=1$. The operator
+$M_S(\frac12)$ is not $0$: if $\varphi_S$ is supported in
+$\overline{B(\Q_S)}\,w^{-1}N(U)$ for a small compact neighborhood $U$ of
+$0$, then $(M_S(\frac12)\varphi_S)_{-1/2}(1)=\int_U\varphi_{S,1/2}
+(w^{-1}n(y))\,dy$, and on the big cell $\varphi_S$ may be any smooth
+compactly supported function of $y$.
+\end{proof}
+
+For $SL(2)$ itself the same computation gives
+$L_v(\lambda,\chi_v)/L_v(\lambda+1,\chi_v)$, with the pole at
+$\lambda=1=\rho$ for $\chi=1$ (the script checks this too). On the double
+cover the variable is doubled and the character squared; this is the
+Gindikin--Karpelevich formula for the double cover~\cite{KP}. The 1995
+notes leave $M(s,\pi)$ unnormalized; the factor~\eqref{eq:mS} is what
+produces the logarithmic derivative $m'/m$ in Section~6 (item~II.16).
+
+\begin{theorem}\label{thm:residual}
+\begin{enumerate}[label=(\alph*)]
+\item $L^2_{\chi,\mathrm{res}}=0$ for every $\chi\in\mathcal X_A$ that is
+  unramified.
+\item For $b\in k^\times$, $V_b:=L^2_{\chi_b,\mathrm{res}}$ is the closed
+  span of the residues $\theta_\varphi(x)=\mathrm{Res}_{\lambda=1/2}
+  E(x,\varphi,\lambda)$, $\varphi\in\mathcal H_B(\chi_{\psi_b})$; it is
+  not $0$, and $\theta_{\varphi,B}(x)=(\mathrm{Res}_{\lambda=1/2}
+  M(w,\lambda)\varphi)_{-1/2}(x)$, of order $e^{H(x)/2}$.
+\item $L^2_{\mathrm{res}}=\widehat\bigoplus_{b\in k^\times/k^{\times2}}V_b$,
+  and each $V_b$ is irreducible, isomorphic to an even Weil representation
+  $r^+_{\psi_{b'}}=\bigotimes'_vr^+_{\psi_{b',v}}$ with $b'\in k^\times$
+  (Remark~\ref{rem:sec5-status}). Its elements are the theta functions
+  $x\mapsto\sum_{\xi\in k}(\omega_{\psi_{b'}}(x)\phi)(\xi)$, $\phi$ an even
+  Schwartz--Bruhat function on $\A_k$.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+(a) and the first part of (b): by Proposition~\ref{prop:Lchi}(b) and
+Theorem~\ref{thm:eisenstein}(d), $L^2_{\chi,\mathrm{res}}$ is spanned by
+residues of $E$ at poles of $M(w,\lambda)$ with $\mathrm{Re}\,\lambda>0$,
+and by Lemma~\ref{lem:intertwining}(c) there are none unless
+$\chi^2=1$, i.e.\ $\mu=\chi_{\psi_b}$ (Lemma~\ref{lem:w-action}(d)), and
+then only $\lambda=\frac12$. The constant term of the residue is the
+residue of Theorem~\ref{thm:eisenstein}(b), in which $\varphi_\lambda$ is
+holomorphic; it is nonzero by Lemma~\ref{lem:intertwining}(c), and it is
+$O(e^{(-\frac12+1)H(x)})$. Since $\int_T^\infty e^{X}e^{-2X}\,dX<\infty$
+for the measure $\delta_B^{-1}=e^{-2X}$, $\theta_\varphi$ is square
+integrable (its difference with the constant term is rapidly decreasing
+on a Siegel set). (c) is due to Gelbart~\cite{Ge2}, Gelbart and
+Piatetski-Shapiro~\cite{GPS80} and Waldspurger~\cite{Wa80}; the
+identification of the residues with theta functions is the Siegel--Weil
+formula in this case.
+\end{proof}
+
+\begin{example}\label{ex:theta}
+Let $k=\Q$ and $b=1$. The residual representation $V_1$ contains the
+theta function of $\phi=e^{-\pi\xi^2}\otimes\mathbf 1_{\hat\Z}$, which
+corresponds to the classical $\theta(z)=\sum_{n\in\Z}e^{2\pi in^2z}$ (or its
+complex conjugate, according to the sign of $\psi_\infty$), of weight
+$\frac12$ on $\Gamma_0(4)$; its multiplier involves the Jacobi symbol of
+Example~\ref{ex:jacobi}. In the classical variable $s=(\lambda+1)/2$ the
+pole is at $s=\frac34$, and the constant term of $\theta$ is a multiple
+of $y^{1/4}$. For $SL(2)$ the only residual representation is the trivial
+one, the residue of $E$ at $\lambda=1$ ($s=1$), whose constant term is a
+constant. With $S=\{\infty,2\}$ and $\mu=\chi_\psi$,
+$m^S(\mu,\lambda)=(1-2^{-2\lambda})\zeta(2\lambda)/\bigl((1-2^{-1-2\lambda})
+\zeta(2\lambda+1)\bigr)$, with residue $2/\pi^2$ at $\lambda=\frac12$.
+\end{example}
+
+Theorem~\ref{thm:residual} corrects the Introduction of the 1995 notes,
+which says that the formula has no term corresponding to the residual
+term~\cite[(5.5)]{LL} (item~II.9). The odd Weil representations, the
+products $\bigotimes'_vr^{\varepsilon_v}_{\psi_{b,v}}$ with some
+$\varepsilon_v=-$, are not residual: those that are automorphic occur in
+$L^2_{\mathrm{cusp}}$~\cite{GPS80,Wa80}, and they are counted among the
+$(G,\pi)$.
+
+\subsection{Kernels, truncation and the terms \texorpdfstring{$J_\chi$}{J\_chi}}\label{sec:Jchi}
+
+For $\chi\in\mathcal X$ let $K_{G,\chi}(x,y)$ be the kernel of $R(f)$ on
+$L^2_\chi$, and $K_{B,\chi}(x,y)$ the kernel of $R_B(f)$
+(Lemma~\ref{lem:kernels}) on the $\chi$-part of
+$L^2(N(\A)A(\Q)\backslash\GA)_{\mathrm{gen}}$, which is $0$ for
+$\chi\in\mathcal X_G$ and the closed span of the $\mathcal H_B(\mu)\,
+e^{(\lambda+1)H}$, $\mu\in\chi$, $\lambda\in i\R$, for $\chi\in\mathcal X_A$.
+For $\mu\in\Pi_{\mathrm{aut}}(X_A)$ let $\mathcal B(\mu)$ be an orthonormal
+basis of $\mathcal H_B(\mu)$, for~\eqref{eq:HBmu}, consisting of
+$\overline{K_0}$-finite vectors.
+
+\begin{proposition}\label{prop:kernels-spec}
+\begin{enumerate}[label=(\alph*)]
+\item If $\chi$ is the class of $(G,\pi)$, then $K_{B,\chi}=0$ and
+  $K_{G,\chi}(x,y)=\sum_\phi(R(f)\phi)(x)\overline{\phi(y)}$, $\phi$
+  running over an orthonormal basis of $L^2_\chi$ of
+  $\overline{K_0}$-finite vectors.
+\item If $\chi\in\mathcal X_A$, then
+  \begin{align}
+  K_{B,\chi}(x,y)&=\sum_{\mu\in\chi}\frac1{2\pi}\int_\R\sum_{\varphi\in
+  \mathcal B(\mu)}\bigl(I(\mu_{it},f)\varphi\bigr)_{it}(x)\,
+  \overline{\varphi_{it}(y)}\,dt,\label{eq:KBchi}\\
+  K_{G,\chi}(x,y)&=K_{\chi,\mathrm{res}}(x,y)+\frac12\sum_{\mu\in\chi}
+  \frac1{2\pi}\int_\R\sum_{\varphi\in\mathcal B(\mu)}
+  E\bigl(x,I(\mu_{it},f)\varphi,it\bigr)\,\overline{E(y,\varphi,it)}\,dt,
+  \label{eq:KGchi}
+  \end{align}
+  where $K_{\chi,\mathrm{res}}(x,y)=\sum_\theta(R(f)\theta)(x)
+  \overline{\theta(y)}$ over an orthonormal basis of
+  $L^2_{\chi,\mathrm{res}}$; it is $0$ unless $\chi=\chi_b$. If
+  $\mu^w\ne\mu$, the two terms of the sum over $\mu\in\chi$
+  in~\eqref{eq:KGchi} are equal.
+\item $\sum_{\chi\in\mathcal X}K_{P,\chi}(x,y)=K_P(x,y)=
+  \sum_{\mathcal O\in\mathcal C}K_{P,\mathcal O}(x,y)$ for $P\in\{B,G\}$, the
+  sum over $\chi$ converging absolutely and uniformly on compact sets.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+(a) is the spectral theorem on the discrete space $L^2_\chi$, and
+$L^2_\chi$ has no constant terms. For~\eqref{eq:KBchi}, write $x=n\,
+\tilde a^1e^Xk$ with $\tilde a^1\in\overline{A(\A)^1}$; for a function
+$F$ on $N(\A)A(\Q)\backslash\GA$, $e^{-X}F$ is a function on
+$X_A\times\R\times\overline{K_0}$ with $\int|F|^2dx=\int|e^{-X}F|^2\,
+d\tilde a^1\,dX\,dk$, because $dx=\delta_B^{-1}dn\,da\,dk$. Fourier
+analysis on $X_A$ (Theorem~\ref{thm:corr}(a); only genuine characters
+occur) and on $\R$ (with $dX$ and $dt/2\pi$) writes $F$ as
+$\sum_\mu\frac1{2\pi}\int\varphi_{\mu,t,it}\,dt$ with $\varphi_{\mu,t}\in
+\mathcal H_B(\mu)$ and $\|F\|^2=\sum_\mu\frac1{2\pi}\int
+\|\varphi_{\mu,t}\|^2dt$, the norm being~\eqref{eq:HBmu}. So
+$R_B(f)$ is the direct integral of the $I(\mu_{it},f)$, which
+gives~\eqref{eq:KBchi}. Formula~\eqref{eq:KGchi} is Langlands' spectral
+decomposition of $L^2_{\chi,\mathrm{cont}}$ by wave packets of
+Eisenstein series~\cite[Ch.~7]{L2}, \cite[Ch.~V]{MW2}, written as
+in~\cite[\S4]{A3}; the factor $\frac12=n(A_B)^{-1}$ is the reciprocal of
+the number of chambers $\pm\mathfrak a^+$ in $\mathfrak a$~\cite[p.~927]{A2}.
+(Proposition~\ref{prop:Tcoef} checks this factor against the geometric
+side.) The equality of the two terms is Theorem~\ref{thm:eisenstein}(c),(e)
+and the unitarity of $M(w,it)$. (c) Both sides are kernels of the same
+operator; the absolute convergence is~\cite[\S3]{A3}, \cite{MW2},
+\cite{LiIII}.
+\end{proof}
+
+This replaces Lemma~5.9, Theorem~5.11 and Examples~5.17--5.22 of the 1995
+notes. Examples~5.21--5.22 there put the term
+$I_B(\pi,f)\phi(x)\delta_B(x)\overline{\phi(y)}$ into $K_{G,\chi}$; it
+belongs to $K_{B,\chi}$, and for $\chi$ cuspidal there is no Eisenstein
+series in $K_{G,\chi}$ (item~II.13). Example~5.20 omits $\lambda$ and the
+measure. The 1995 definition of $k^T_\chi$ has $K_{P,\chi}(x,x)$ where
+$K_{P,\chi}(\delta x,\delta x)$ is meant (as in \texttt{book7f.tex}).
+
+\paragraph{Truncation.} For a continuous function $\phi$ on
+$G(\Q)\backslash\GA$ and $T\ge0$ put
+\begin{equation}\label{eq:trunc}
+\Lambda^T\phi(x)=\phi(x)-\sum_{\delta\in B(\Q)\backslash G(\Q)}
+\hat\tau_B\bigl(H(\delta x)-T\bigr)\,\phi_B(\delta x).
+\end{equation}
+By Lemma~\ref{lem:height-ineq}(b) the sum has at most one nonzero term.
+
+\begin{lemma}\label{lem:truncation}
+Let $T\ge0$.
+\begin{enumerate}[label=(\alph*)]
+\item $(\Lambda^T\phi)_B(x)=0$ if $H(x)>T$.
+\item $\Lambda^T\Lambda^T=\Lambda^T$, and $\langle\Lambda^T\phi,\phi'\rangle
+  =\langle\phi,\Lambda^T\phi'\rangle$ whenever both sides converge
+  absolutely.
+\item If $\phi$ is an automorphic form, for example $E(\cdot,\varphi,
+  \lambda)$ at a regular point $\lambda$, then $\Lambda^T\phi$ is rapidly
+  decreasing on $G(\Q)\backslash\GA$. It is not compactly supported in
+  general.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+(a) Integrating~\eqref{eq:trunc} over $n\in N(\Q)\backslash N(\A)$, the
+term $\delta=1$ gives $\hat\tau_B(H(x)-T)\phi_B(x)=\phi_B(x)$. For
+$\delta\ne1$ and every $n$, $H(\delta nx)\le-H(nx)=-H(x)<-T\le T$ by
+Lemma~\ref{lem:height-ineq}(b), so these terms vanish. (b) Idempotence
+follows from~(a), since $\Lambda^T\phi$ then has no constant term where
+$\hat\tau_B(H(x)-T)\ne0$. For self-adjointness, unfold:
+$\langle\phi-\Lambda^T\phi,\phi'\rangle=\int_{B(\Q)\backslash\GA}
+\hat\tau_B(H(x)-T)\phi_B(x)\overline{\phi'(x)}\,dx=\int_{N(\A)B(\Q)
+\backslash\GA}\hat\tau_B(H(x)-T)\phi_B(x)\overline{\phi'_B(x)}\,dx$, because
+$\hat\tau_B(H(x)-T)\phi_B(x)$ is left $N(\A)$-invariant; this is symmetric.
+(c) is in~\cite[\S1]{A3}; the cover splits over $N(\A)$
+(Lemma~\ref{lem:global}(b)), so the proof applies verbatim.
+\end{proof}
+
+This replaces Lemma~5.13 of the 1995 notes (proved there by reference to
+the non-metaplectic case) and makes the range of $T$ explicit.
+Lemma~5.14 and Example~5.12 there are the case $P=G$ of~\cite[Lemma~1.5]
+{A3}; for $SL(2)$ that identity is~\eqref{eq:trunc} itself, since
+$\hat\tau_B=\tau_B$, and we do not repeat it.
+
+Define, for $\chi\in\mathcal X$ and $T\ge0$,
+\begin{equation}\label{eq:kchi}
+k^T_\chi(x,f)=K_{G,\chi}(x,x)-\sum_{\delta\in B(\Q)\backslash G(\Q)}
+K_{B,\chi}(\delta x,\delta x)\,\hat\tau_B\bigl(H(\delta x)-T\bigr).
+\end{equation}
+
+\begin{lemma}\label{lem:kchi}
+For $T\ge0$, $k^T_\chi(x,f)=F^G(x,T)K_{G,\chi}(x,x)+\sum_{\delta}
+\tau_B(H(\delta x)-T)\bigl(K_{G,\chi}-K_{B,\chi}\bigr)(\delta x,\delta x)$,
+and $\sum_\chi k^T_\chi(x,f)=k^T(x,f)$.
+\end{lemma}
+
+\begin{proof}
+As for Lemma~\ref{lem:partition}, whose first identity is used; the sum
+over $\chi$ is Proposition~\ref{prop:kernels-spec}(c) and~\eqref{eq:kT}.
+\end{proof}
+
+This is Lemma~5.15 and Example~5.16 of the 1995 notes; their reference
+``lemma~4.7'' for the partition is Lemma~\ref{lem:partition}.
+
+\begin{theorem}[Arthur~{\cite[\S\S2--4]{A3}}; Li~\cite{LiIII} for
+covers]\label{thm:Jchi-poly}
+Let $f\in\mathcal H(\GA)$.
+\begin{enumerate}[label=(\alph*)]
+\item For $T$ sufficiently large, $\sum_{\chi\in\mathcal X}\int_{G(\Q)
+  \backslash\GA}|k^T_\chi(x,f)|\,dx<\infty$.
+\item $J^T_\chi(f):=\int_{G(\Q)\backslash\GA}k^T_\chi(x,f)\,dx$ is, for
+  such $T$, a polynomial in $T$, and $\sum_\chi J^T_\chi(f)=J^T(f)$, the
+  geometric side of Theorem~\ref{thm:coarse}.
+\item $J^T_\chi(f)-\int_{G(\Q)\backslash\GA}\Lambda^T_2K_{G,\chi}(x,x)\,dx
+  \to0$ as $T\to\infty$, where $\Lambda^T_2$ is $\Lambda^T$ applied to the
+  second variable.
+\end{enumerate}
+We put $J_\chi(f)=J^0_\chi(f)$, the value of the polynomial at $T=0$.
+\end{theorem}
+
+Theorem~\ref{thm:Jchi-poly} replaces Lemmas~5.23, 5.25 and~5.26 of the
+1995 notes, whose proofs are incomplete (item~II.12). The proof of
+Lemma~5.23 asserts that $\Lambda^T_2K_\chi(x,x)$ is compactly supported;
+it is only rapidly decreasing (Lemma~\ref{lem:truncation}(c)). The proof
+of Lemma~5.25 (``$K_P$ is continuous, hence integrable'') does not give
+integrability. And the equality $K^T_\chi=J^T_\chi$ claimed there, of
+$\int\Lambda^T_2K_\chi$ and $\int\sum E\,\overline{\Lambda^TE}$, is a
+consequence of Lemma~\ref{lem:truncation}(b), not the content of
+Arthur's~\cite[Lemma~2.4]{A3}; what is needed is~(c), which compares them
+with $\int k^T_\chi$. By Theorem~\ref{thm:Jchi} below each $J^T_\chi$ has
+degree at most $1$, so $J^T(f)=\sum_\chi J^T_\chi(f)$, with
+Theorem~\ref{thm:coarse}, is an identity of polynomials of degree at most
+$1$ and holds for every $T$, in particular at $T=0$.
+
+\begin{lemma}[Maass--Selberg relations]\label{lem:MS}
+Let $\mu,\mu'\in\Pi_{\mathrm{aut}}(X_A)$, $\varphi\in\mathcal H_B(\mu)$,
+$\varphi'\in\mathcal H_B(\mu')$, $T\ge0$, and let $\lambda,\lambda'$ be
+regular points with $\lambda+\bar\lambda'\ne0$ and
+$\lambda-\bar\lambda'\ne0$. Then, with $M=M(w,\lambda)$ and
+$\check M=M(w,\lambda')$,
+\begin{multline}\label{eq:MS}
+\bigl\langle\Lambda^TE(\varphi,\lambda),\Lambda^TE(\varphi',\lambda')
+\bigr\rangle
+=\frac{\langle\varphi,\varphi'\rangle e^{(\lambda+\bar\lambda')T}
+-\langle M\varphi,\check M\varphi'\rangle e^{-(\lambda+\bar\lambda')T}}
+{\lambda+\bar\lambda'}\\
++\frac{\langle M\varphi,\varphi'\rangle e^{(-\lambda+\bar\lambda')T}}
+{-\lambda+\bar\lambda'}
++\frac{\langle\varphi,\check M\varphi'\rangle e^{(\lambda-\bar\lambda')T}}
+{\lambda-\bar\lambda'} .
+\end{multline}
+The inner products are those of~\eqref{eq:HBmu} and vanish unless the
+characters agree; in particular the last two terms vanish unless
+$\mu'=\mu^w$.
+\end{lemma}
+
+\begin{proof}[Sketch]
+For $\mathrm{Re}\,\lambda'$ large, Lemma~\ref{lem:truncation}(b) gives
+$\langle\Lambda^TE,\Lambda^TE'\rangle=\langle\Lambda^TE,E'\rangle$. Unfold
+$E'$ and integrate over $N(\Q)\backslash N(\A)$ first. By the proof of
+Lemma~\ref{lem:truncation}, $(\Lambda^TE)_B=E_B$ on $\{H\le T\}$ minus the
+terms $\delta\ne1$; folding these back into a sum over $G(\Q)$ and
+unfolding the other way, they contribute
+$-\int_{H>T}E_B\,\overline{(\check M\varphi')_{-\lambda'}}$, because the
+constant term of $E'-\varphi'_{\lambda'}$ is $(\check M\varphi')_{-\lambda'}$.
+So
+\[
+\langle\Lambda^TE,E'\rangle=\int_{H(x)\le T}E_B\,\overline{\varphi'_{\lambda'}}
+-\int_{H(x)>T}E_B\,\overline{(\check M\varphi')_{-\lambda'}},
+\]
+integrals over $N(\A)A(\Q)\backslash\GA$. Insert
+Theorem~\ref{thm:eisenstein}(b); in the coordinates $x=\tilde a^1e^Xk$ each
+of the four products is $e^{\nu X}$ times a product of values on
+$\overline{K_0}$, with $\nu\in\{\pm\lambda\pm\bar\lambda'\}$, and
+$\int_{-\infty}^Te^{\nu X}dX=e^{\nu T}/\nu$, $\int_T^\infty e^{\nu X}dX=
+-e^{\nu T}/\nu$ in the appropriate half planes. The integral over
+$X_A\times\overline{K_0}$ gives the inner products~\eqref{eq:HBmu}. The
+general case follows by analytic continuation. In general the relations
+are due to Langlands; see~\cite[\S4]{A3}, \cite{MW2}, \cite{LiIII}.
+\end{proof}
+
+\begin{theorem}\label{thm:Jchi}
+Let $f\in\mathcal H(\GA)$, and for $\mu\in\Pi_{\mathrm{aut}}(X_A)$ and
+$\lambda\in i\R$ put
+\begin{equation}\label{eq:MT}
+M_B^T(\mu,\lambda)=2T-M(w,\lambda)^{-1}\frac{d}{d\lambda}M(w,\lambda),
+\end{equation}
+an operator on $\mathcal H_B(\mu)$, self-adjoint for $\lambda\in i\R$.
+\begin{enumerate}[label=(\alph*)]
+\item If $\chi$ is the class of $(G,\pi)$, then $J^T_\chi(f)=
+  m(\pi)\operatorname{tr}\pi(f)$.
+\item If $\chi\in\mathcal X_A$ is unramified and $\mu\in\chi$, then
+  \[
+  J^T_\chi(f)=\frac1{2\pi}\int_\R\operatorname{tr}\bigl(M_B^T(\mu,it)\,
+  I(\mu_{it},f)\bigr)\,dt .
+  \]
+\item If $\chi=\chi_b$ is ramified and $\mu=\chi_{\psi_b}$, then
+  \[
+  J^T_\chi(f)=\operatorname{tr}\bigl(R(f)|_{V_b}\bigr)
+  +\frac12\cdot\frac1{2\pi}\int_\R\operatorname{tr}\bigl(M_B^T(\mu,it)\,
+  I(\mu_{it},f)\bigr)\,dt
+  +\frac14\operatorname{tr}\bigl(M(w,0)\,I(\mu_0,f)\bigr).
+  \]
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+By Theorem~\ref{thm:Jchi-poly}(c) it suffices to compute
+$\int\Lambda^T_2K_{G,\chi}(x,x)\,dx$ up to $o(1)$ as $T\to\infty$. By
+Lemma~\ref{lem:truncation}(b) and Proposition~\ref{prop:kernels-spec}
+this is $\sum_\phi\langle R(f)\phi,\Lambda^T\phi\rangle$ in case~(a) and
+\[
+\sum_\theta\langle R(f)\theta,\Lambda^T\theta\rangle+\frac12\sum_{\mu\in\chi}
+\frac1{2\pi}\int_\R\sum_{\varphi\in\mathcal B(\mu)}\bigl\langle\Lambda^T
+E(I(\mu_{it},f)\varphi,it),\Lambda^TE(\varphi,it)\bigr\rangle\,dt
+\]
+in cases~(b)--(c), the inner product on $i\R$ being the value at
+$\lambda'=\lambda$ of~\eqref{eq:MS}, which is regular there; the
+interchange of the integrals is justified as in~\cite[\S4]{A3}. (a) Cusp
+forms satisfy $\Lambda^T\phi=\phi$. For the residual part,
+$\Lambda^T\theta\to\theta$ in $L^2$, so the first sum tends to
+$\operatorname{tr}(R(f)|_{V_b})$.
+
+Now let $\lambda=it$, $\lambda'=\lambda+\varepsilon$ with
+$\varepsilon\in i\R$, so $\lambda+\bar\lambda'=-\varepsilon$. Expanding
+$M(w,\lambda')=M+\varepsilon\,\frac{dM}{d\lambda}+O(\varepsilon^2)$ and
+using $M^*=M^{-1}$ on $i\R$, the first fraction of~\eqref{eq:MS} tends to
+$\langle\varphi,M_B^T(\mu,\lambda)\varphi'\rangle$ as $\varepsilon\to0$.
+With $\varphi=I(\mu_\lambda,f)\varphi_j$, $\varphi'=\varphi_j$ and the sum
+over $j$ this gives $\operatorname{tr}(M_B^T(\mu,\lambda)
+I(\mu_\lambda,f))$, using that $M^{-1}\frac{dM}{d\lambda}$ is self-adjoint on
+$i\R$ (differentiate $M(it)^*M(it)=1$). For $\mu^w\ne\mu$ the two $\mu\in
+\chi$ give equal contributions, and the factor $\frac12$ cancels; this
+proves~(b), the expression being already linear in $T$.
+
+For $\mu^w=\mu$ the last two terms of~\eqref{eq:MS} also contribute, with
+$-\lambda+\bar\lambda'\to-2it$ and $\lambda-\bar\lambda'\to2it$. Put
+$F(t)=\operatorname{tr}(M(w,it)I(\mu_{it},f))$; by
+Theorem~\ref{thm:eisenstein}(c),(e),
+$\operatorname{tr}(M(w,-it)I(\mu_{it},f))=F(-t)$. The contribution is
+\[
+\frac12\cdot\frac1{2\pi}\,\mathrm{PV}\!\int_\R\frac{F(-t)e^{2itT}-F(t)
+e^{-2itT}}{2it}\,dt
+=\frac1{4\pi}\Bigl(\int_\R F(t)\frac{\sin2tT}{t}\,dt
++i\,\mathrm{PV}\!\int_\R F(t)\frac{\cos2tT}{t}\,dt\Bigr),
+\]
+which tends to $\frac1{4\pi}\cdot\pi F(0)=\frac14F(0)$ as $T\to\infty$, by
+Dirichlet's integral and the Riemann--Lebesgue lemma applied to
+$(F(t)-F(-t))/t$. Since $J^T_\chi$ is a polynomial, it equals the
+polynomial part of these limits, which is~(c).
+\end{proof}
+
+Theorem~\ref{thm:Jchi} replaces Theorem~5.27 and Example~5.28 of the
+1995 notes. Three things change.
+\begin{itemize}
+\item \emph{The factor of $T$} (item~II.11). Arthur's formula
+  \[
+  M_B^T=\mathrm{vol}(\mathfrak a/\Z\alpha^\vee)\lim_{\zeta\to0}
+  \sum_{s\in\{1,w\}}\frac{e^{(s\zeta)(T)}M(s,\lambda)^{-1}
+  M(s,\lambda+\zeta)}{\theta(s\zeta)},
+  \]
+  with $\theta(\zeta)=\zeta(\alpha^\vee)=d\zeta$
+  and $\mathrm{vol}(\mathfrak a/\Z\alpha^\vee)=d$ for our $dX$
+  (Remark~\ref{rem:alpha}), gives~\eqref{eq:MT} for every $k$; the factor
+  $d$ cancels, so the stage-3 correction $\alpha^\vee=d$ does not change
+  $M_B^T$ once the volume is taken with the same measure. The 1995
+  computation identifies $\varsigma(T)=2\varsigma T$ and
+  $\varsigma(\alpha^\vee)=2\varsigma$ (correct for $k=\Q$, where
+  $\lambda=2\varsigma$), takes the volume to be $1$, and then omits the
+  division by $\varsigma(\alpha^\vee)$; the limit is
+  $2T-\frac12M^{-1}\frac{dM}{d\varsigma}$, which is~\eqref{eq:MT}, not
+  $4T-M^{-1}M'$. The sign is right, as the 1995 text suspected and as
+  in~\cite{LL}; Proposition~\ref{prop:Tcoef} confirms the factor.
+\item \emph{Ramified classes} (item~II.10). The 1995 Theorem~5.27 assumes
+  $\chi$ unramified, and its Example~5.28 says correctly that $(A,\mu)$
+  is unramified if and only if $\mu^w\ne\mu$, but the classes with
+  $\mu^w=\mu$ never appear. By Lemma~\ref{lem:w-action}(d) they are the
+  $\chi_b$, and they carry the residual spectrum and the term
+  $\frac14\operatorname{tr}(M(w,0)I(\mu_0,f))$. In Arthur's fine
+  expansion~\cite[Thm.~8.2]{A14}, \cite{LiIII} this is the term
+  $|W^A_0||W^G_0|^{-1}|\det(w-1)_{\mathfrak a}|^{-1}
+  \operatorname{tr}(M(w,0)I(\mu_0,f))$, with $|W^A_0||W^G_0|^{-1}=\frac12$
+  and $|\det(w-1)_{\mathfrak a}|=2$. In the trace formula for $GL(2)$
+  of~\cite[\S6]{GJ} the same term is written $-\frac14\operatorname{tr}
+  (M(0)\pi_0(f))$, next to $+\frac1{4\pi}\int\operatorname{tr}(M(-iy)M'(iy)
+  \pi_{iy}(f))\,dy$: that formula has the trace of $R(f)$ on the discrete
+  spectrum alone on one side, and moving both terms to the spectral side
+  gives the signs of Theorem~\ref{thm:tf}(e). The sign of the cross terms
+  in~\eqref{eq:MS}, from which it comes, is also checked numerically on
+  the Eisenstein series of $SL(2,\Z)$ (Remark~\ref{rem:verified-sec6}),
+  and $M(w,0)$ is computed in Proposition~\ref{prop:Mw0}.
+\item The lines ``$M_G^T(\pi)_\chi=1$'' and ``($P=B$, $\chi=(G,\rho)$)
+  $M_B^T(\pi)_\chi=1$'' of Example~5.28 are dropped: for cuspidal $\chi$
+  there is no $B$-term.
+\end{itemize}
+
+\begin{corollary}\label{cor:mprime}
+Let $S$ and $\mu=\chi_\psi\cdot(\chi\circ p)$ be as in
+Lemma~\ref{lem:intertwining}, $f=f_S\otimes e^S$, and $\lambda\in i\R$.
+Then $I(\mu_\lambda,f)=0$ unless $\mu_v$ is trivial on $A(\OO_v)^*$ for
+all $v\notin S$, and in that case
+\begin{multline*}
+\operatorname{tr}\Bigl(M(w,\lambda)^{-1}\tfrac{dM}{d\lambda}(w,\lambda)
+I(\mu_\lambda,f)\Bigr)\\
+=\frac{(m^S)'}{m^S}(\mu,\lambda)\operatorname{tr}
+I_S(\mu_{S,\lambda},f_S)+\operatorname{tr}\Bigl(M_S(\lambda)^{-1}
+\tfrac{dM_S}{d\lambda}(\lambda)I_S(\mu_{S,\lambda},f_S)\Bigr),
+\end{multline*}
+where $I_S=\bigotimes_{v\in S}I_v$ and
+$\frac{(m^S)'}{m^S}(\mu,\lambda)=2\frac{(L^S)'}{L^S}(2\lambda,\chi^2)
+-2\frac{(L^S)'}{L^S}(2\lambda+1,\chi^2)$.
+\end{corollary}
+
+\begin{proof}
+$I(\mu_\lambda,e_v)$ is the projection onto the $K_v^*$-fixed vectors,
+which are $0$ unless $\mu_v$ is trivial on $A(\OO_v)^*$. Then apply
+Lemma~\ref{lem:intertwining}(a)--(b) and the Leibniz rule.
+\end{proof}
+
+\begin{example}\label{ex:mprime-Q}
+For $k=\Q$, $S=\{\infty,2\}$ and $\mu=\chi_\psi$,
+$\frac{(m^S)'}{m^S}(\lambda)=2\frac{\zeta'}{\zeta}(2\lambda)
+-2\frac{\zeta'}{\zeta}(2\lambda+1)+\frac{2\log2\cdot2^{-2\lambda}}
+{1-2^{-2\lambda}}-\frac{2\log2\cdot2^{-1-2\lambda}}{1-2^{-1-2\lambda}}$.
+For $SL(2)$ the corresponding factor is
+$\frac{\zeta'}{\zeta}(\lambda)-\frac{\zeta'}{\zeta}(\lambda+1)$ plus the
+$2$-adic terms.
+\end{example}
+
+\subsection{The trace formula}\label{sec:tf}
+
+\begin{theorem}\label{thm:tf}
+Let $S$ be a finite set of places of $\Q$ as in
+Section~\ref{sec:local-dist}, large enough for Theorem~\ref{thm:fine} and
+containing the places below which $\psi$ is ramified; let $f_S\in
+\mathcal H(\overline{G(\Q_S)})$ and $f=f_S\otimes e^S$. Then
+$\sum_{\mathcal O}J_{\mathcal O}(f)=\sum_{\chi}J_\chi(f)$, where both
+sides converge absolutely and:
+\begin{enumerate}[label=(\alph*)]
+\item for the central classes $\mathcal O_z$, $z\in\{\pm1\}$,
+  \[
+  J_{\mathcal O_z}(f)=a^G(S,1)f_S(z)+\sum_{\xi\in k_S^\times/k_S^{\times2}}
+  a^G(S,u_\xi)\,J_G(zu_\xi,f_S)+\tfrac12\,c_k\,J_A(z,f_S);
+  \]
+\item for $\mathcal O$ elliptic, $J_{\mathcal O}(f)=
+  \mathrm{vol}(T_\mu(\Q)\backslash T_\mu(\A))\,J_G(\mu_S,f_S)$;
+\item for $\mathcal O$ hyperbolic, the class of $a(t)$,
+  $J_{\mathcal O}(f)=c_k\,J_A(a(t)_S,f_S)$;
+\item for $\chi$ the class of $(G,\pi)$, $J_\chi(f)=m(\pi)
+  \operatorname{tr}\pi(f)$;
+\item summed over $\chi\in\mathcal X_A$,
+  \begin{multline*}
+  \sum_{\chi\in\mathcal X_A}J_\chi(f)=\sum_{b}\operatorname{tr}
+  \bigl(R(f)|_{V_b}\bigr)
+  -\frac12\sum_{\mu}\frac1{2\pi}\int_\R\operatorname{tr}\Bigl(M(w,it)^{-1}
+  \tfrac{dM}{d\lambda}(w,it)\,I(\mu_{it},f)\Bigr)\,dt\\
+  +\frac14\sum_b\operatorname{tr}\bigl(M(w,0)\,I(\chi_{\psi_b,0},f)
+  \bigr),
+  \end{multline*}
+  where $b$ runs over $k^\times/k^{\times2}$ and $\mu$ over
+  $\Pi_{\mathrm{aut}}(X_A)$; only finitely many $b$, and only $\mu$
+  unramified outside $S$, contribute (Example~\ref{ex:ramified-Q},
+  Corollary~\ref{cor:mprime}).
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+At $T=0$, Theorem~\ref{thm:coarse}, Theorem~\ref{thm:fine} and
+Theorem~\ref{thm:Jchi-poly}(b) give $J(f)=\sum_{\mathcal O}J_{\mathcal O}(f)
+=\sum_\chi J_\chi(f)$. (a)--(c) are Theorem~\ref{thm:fine}. (d)--(e) are
+Theorem~\ref{thm:Jchi} at $T=0$: in~(b) of that theorem, write the
+integral as half the sum over the two members of $\chi$; in~(c) the class
+has one member. The absolute convergence of the spectral side
+is~\cite{A3}, \cite{LiIII}.
+\end{proof}
+
+In the 1995 notes, Section~5.4 lists~(a) as
+$a^G(S,z)f(z)+\frac12a^A(S,z)J_A(z,f)$, without the unipotent terms
+$a^G(S,u_\xi)J_G(zu_\xi,f_S)$; \texttt{book7f.tex} has them in the form
+$\sum_{\gamma\in\mathcal O}a^G(S,\gamma)J_G(\gamma,f)$, a sum over the
+rational class instead of the $(G,S)$-classes (items~II.6, A.7).
+Item~(e) there is $\frac12\int\operatorname{tr}(M_A(\pi)_\chi I_B(\pi,f)_
+\chi)\,d\pi$ over $\chi\in\mathcal X\smallsetminus\mathcal X_G$ with
+$M_A=M_A^T|_{T=0}$, without the residual and ramified terms. Section~5.4
+also uses $S$ and $\A_S$ before Section~6 defines them; they are now
+defined in Section~\ref{sec:local-dist}, and ``given in section~5''
+refers to Section~\ref{sec:geometric}.
+
+\begin{proposition}\label{prop:Tcoef}
+The coefficients of $T$ in $\sum_\chi J^T_\chi(f)$ and in
+$\sum_{\mathcal O}J^T_{\mathcal O}(f)$ agree. Both equal
+$c_k\sum_{\gamma\in A(\Q)}F_f(\gamma)$, where $F_f(x)=\int_{\overline{K_0}}
+\int_{N(\A)}f(\tilde k^{-1}xn\tilde k)\,dn\,d\tilde k$.
+\end{proposition}
+
+\begin{proof}
+Spectral side. By Theorem~\ref{thm:Jchi}, only the term $2T$ of $M_B^T$
+contributes, and summing over $\chi$ the coefficient is
+$\sum_\mu\frac1{2\pi}\int_\R\operatorname{tr}I(\mu_{it},f)\,dt$ (each
+unramified class contributes twice $\frac12$ through its two members).
+Computing $I(\mu_\lambda,f)$ on $\overline{K_0}$ in the coordinates
+$y=n\tilde ak'$ of~\eqref{eq:iwasawa} gives the kernel
+$\int_{\overline{A(\A)}}\int_{N(\A)}f(\tilde k^{-1}\tilde an\tilde k')\mu(\tilde
+a)e^{(\lambda+1)H(\tilde a)}\,dn\,d\tilde a$, so $\operatorname{tr}
+I(\mu_\lambda,f)=\int_{\overline{A(\A)}}e^{H(\tilde a)}F_f(\tilde a)
+\mu(\tilde a)e^{\lambda H(\tilde a)}\,d\tilde a$. Fourier inversion on $\R$
+($dX$, $dt/2\pi$) and then Theorem~\ref{thm:tf-rank0} on $X_A$, applied
+to the anti-genuine function $F_f$ on $\overline{A(\A)^1}$, give
+$\sum_\mu\frac1{2\pi}\int\operatorname{tr}I(\mu_{it},f)\,dt=c_k\sum_{\gamma\in
+A(\Q)}F_f(\gamma)$.
+
+Geometric side. By Propositions~\ref{prop:hyperbolic}--\ref{prop:central},
+the coefficient is $c_k\bigl(\hat\Phi_f(0)+\hat\Phi_{f_{-1}}(0)\bigr)
++2c_k\sum_{\mathcal O\ \mathrm{hyp}}\int_{\overline{A(\A)}\backslash\GA}
+f(y^{-1}\mu y)\,dy$. Here $\hat\Phi_{f_z}(0)=F_f(z)$ for $z=\pm1$. For
+$\mu=a(t)$, $t\in k^\times\smallsetminus\{\pm1\}$, the coordinates
+$y=n(z)\tilde k$ and $y^{-1}\mu y=\tilde k^{-1}\mu\,n((1-t^{-2})z)\tilde k$
+give $\int f(y^{-1}\mu y)\,dy=|1-t^{-2}|_{\A_k}^{-1}F_f(\mu)=F_f(\mu)$ by the
+product formula. The integral is the same for $a(t^{-1})=w\,a(t)\,w^{-1}$
+(Lemma~\ref{lem:w-action}(a)), so $2F_f(a(t))=F_f(a(t))+F_f(a(t^{-1}))$,
+and the hyperbolic class of $a(t)$ accounts for the two elements
+$a(t^{\pm1})$ of $A(\Q)$.
+\end{proof}
+
+Proposition~\ref{prop:Tcoef} is a consistency check between
+Sections~\ref{sec:geometric} and~\ref{sec:spectral}: with the 1995 values
+($4T$ in $M_B^T$, or $n(A_B)=1$), the spectral coefficient would be
+twice the geometric one, or four times with both.
+
+\begin{remarkrev}\label{rem:sec5-norm}
+\emph{Normalizations.} Everything here uses $\lambda(X)=\lambda X$ on
+$\mathfrak a\cong\R$, Lebesgue $dX$ and $dt/2\pi$ on $i\R$, and the inner
+product~\eqref{eq:HBmu}, which includes $c_k$. Arthur normalizes the
+measure on $\mathfrak a$ so that $\mathfrak a/\Z\alpha^\vee$ has volume
+$1$, i.e.\ $dX/d$, and takes the dual measure on $i\mathfrak a^*$; the
+operator $M_B^T$ then carries the factor $\mathrm{vol}(\mathfrak a/
+\Z\alpha^\vee)\theta(\zeta)^{-1}$, and the products in
+Theorem~\ref{thm:Jchi} do not change (Remark~\ref{rem:alpha}). In the
+classical variable $s=(\lambda+1)/2$ of the Conventions above, for
+$k=\Q$, $\frac{d}{d\lambda}=\frac12\frac{d}{ds}$, and $2T=\log y_T$, where
+$y_T=e^{2T}$ is the height at which $\Lambda^T$ truncates.
+\end{remarkrev}
+
+\begin{remarkrev}\label{rem:sec5-status}
+\emph{What rests on citation.} Proved here: Lemma~\ref{lem:factor} (given Flath's
+theorem); Lemmas~\ref{lem:w-action}, \ref{lem:truncation}(a)--(b)
+and~\ref{lem:kchi}; Lemma~\ref{lem:intertwining}, with~(b) also checked
+numerically;
+Theorem~\ref{thm:residual}(a)--(b), the computations in the proofs of
+Lemma~\ref{lem:MS} and Theorem~\ref{thm:Jchi} from~\eqref{eq:MS}, and
+Proposition~\ref{prop:Tcoef}. Taken from the literature:
+Lemma~\ref{lem:spec-decomp}, Proposition~\ref{prop:Lchi},
+Theorem~\ref{thm:eisenstein}~\cite{L2,MW2}; the wave-packet formula~\eqref{eq:KGchi} and the
+absolute convergence in Proposition~\ref{prop:kernels-spec};
+Lemma~\ref{lem:truncation}(c); Theorem~\ref{thm:Jchi-poly}~\cite{A3,
+LiIII}, including the interchange of integrals used for
+Theorem~\ref{thm:Jchi}; the analytic continuation in Lemma~\ref{lem:MS};
+and Theorem~\ref{thm:residual}(c)~\cite{Ge2,GPS80,Wa80}. In~(c) the
+parameter $b'$ is $b$ or $-b$ (or differs from $b$ by a fixed factor),
+according to the normalization of the Weil representation
+$\omega_\psi$ (whether $n(u)$ acts by $\psi(ux^2)$ or by
+$\psi(\frac12ux^2)$, and the sign convention for $\chi_\psi$); we have not
+fixed this matching. The range ``$T$ sufficiently large'' in
+Theorem~\ref{thm:Jchi-poly} is Arthur's; for this group we expect $T\ge0$
+to suffice, as on the geometric side, but have not checked it.
+\end{remarkrev}
+
+\begin{remarkrev}\label{rem:verified-sec5}
+The script \texttt{checks/sec5\_n2\_check.py} verifies, for $k=\Q$:
+Lemma~\ref{lem:w-action}(a)--(c) at $v=\infty,2,3,5,7$ (exactly, with
+$\sigma_v$ and the Weil index); the unramified intertwining integral of
+Lemma~\ref{lem:intertwining}(b) at $p=3,5,7$, by an explicit
+decomposition of the lift of $w^{-1}n(y)$, shell by shell, including the
+shape of the integrand on odd and even shells, and the same integral for
+$SL(2)$; Arthur's limit for $M_B^T$ for $d=1,2,3$ and the 1995
+normalization (symbolically); the diagonal limit of~\eqref{eq:MS} and the
+self-adjointness of $M^{-1}M'$ for a model unitary family; the limit
+$\frac14F(0)$ of the cross terms; the residue $2/\pi^2$ of
+Example~\ref{ex:theta}; and, at $v=\R$, the two local identities behind
+Proposition~\ref{prop:Tcoef}.
+\end{remarkrev}

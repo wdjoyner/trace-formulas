@@ -16,10 +16,10 @@ This log tracks every item of the 2026 referee report ([Claude Docs](https://cla
 | 1 | §2 foundations: κ-splitting, global cover, genuine conventions, center, NAK, measures, GL(2) cover | Done 2026-11-10: `revised/sec2-foundations.tex`, checked by `revised/checks/sec2_n2_check.py` (see *Stage 1 notes*). Written before stage 0, as a standalone file for the stage-0 master to `\input`. |
 | 2 | §3 rank 0 (much simpler for n = 2: the cover of A is abelian) | Done 2026-11-10: `revised/sec3-rank0.tex`, checked by `revised/checks/sec3_n2_check.py` (see *Stage 2 notes*) |
 | 3 | §4 and `cctrac3b.tex`: geometric side | Done 2026-11-10: `revised/sec4-geometric.tex`, checked by `revised/checks/sec4_n2_check.py` (see *Stage 3 notes*) |
-| 4 | §5 spectral side: residual (Weil representation) spectrum, ramified χ, M_B^T | Pending |
+| 4 | §5 spectral side: residual (Weil representation) spectrum, ramified χ, M_B^T | Done 2026-11-10: `revised/sec5-spectral.tex`, checked by `revised/checks/sec5_n2_check.py` (see *Stage 4 notes*) |
 | 5 | §6 invariant form | Pending |
 | 6 | §7 stable(r) form | Pending |
-| 7 | Consistency pass, independent re-referee, literature review, title page | Pending |
+| 7 | Consistency pass, independent re-referee, literature review, title page; Introduction (residual spectrum, II.9) | Pending |
 
 ## Items
 
@@ -49,14 +49,14 @@ Status values: open, fixed, moot (n = 2), deferred.
 | II.3 | (3.18) | Hasse principle for N-th powers | 2 | moot (n = 2: N = 1); noted in Remark 2026.6 |
 | II.4 | Lemmas 3.3–3.4 | Mackey/Clifford; citation of [GeKn] | 2 | moot (n = 2): the Clifford–Mackey part is removed; the cocycle remark is answered by (3.1) |
 | II.5 | (4.4) | Weight v_O must be 2T − H(x) − H(wx) (book7d has it) | 3 | fixed: Prop. 4.6, J^T_O = c_k ∫ f(y⁻¹μy)(2T + v_A(y)) dy with v_A = −H(y) − H(wy) ≥ 0 (Lemma 4.3(c)) |
-| II.6 | (4.5), §5.4(a) | Unipotent terms in central classes (book7d, book7f have them) | 3 | fixed in §4: Prop. 4.8 (explicit, via the zeta integral Z(f,s)) and Thm 4.11(a) (fine form); §5.4(a) in stage 4, §6.4(a) in stage 5 |
+| II.6 | (4.5), §5.4(a) | Unipotent terms in central classes (book7d, book7f have them) | 3, 4 | fixed in §4: Prop. 4.8 (explicit, via the zeta integral Z(f,s)) and Thm 4.11(a) (fine form); in §5: Thm 5.15(a) uses Thm 4.11(a) in full; §6.4(a) in stage 5 |
 | II.7 | Lemma 4.4, Cor. 4.5–4.7 | Proof incomplete; cite [A2, §7], [A12] | 3 | fixed: Thm 4.5, proved directly for this group class by class (T ≥ 0), with [A2, §§7–8], [A3], [Li I] cited for the general case |
 | II.8 | Prop. 4.8 | Polynomiality claim too strong, unproved | 3 | fixed: J^T_O := ∫ k^T_O = ∫ j^T_O (Thm 4.5(b)); each is linear in T, explicitly (Props. 4.6–4.8) |
-| II.9 | Intro, §5 | Residual spectrum not empty (even Weil representation, [Ge2]) | 4 | open |
-| II.10 | Thm 5.31, §5.4(b) | Ramified χ (μ^w = μ) omitted | 4 | open |
-| II.11 | Example 5.32 | Sign is right; factor 2 wrong: 2T·I − ½M⁻¹M′ | 4 | open |
-| II.12 | Lemmas 5.28–5.29 | Not proved; cite Maass–Selberg ([MW2], Li III) | 4 | open |
-| II.13 | Examples 5.5, 5.24, 5.25 | E_G vs E_B confusion; equivalence of cuspidal data | 4 | open |
+| II.9 | Intro, §5 | Residual spectrum not empty (even Weil representation, [Ge2]) | 4, 7 | fixed in §5: Thm 5.7, one even Weil representation V_b for each b ∈ k^×/k^{×2}, the residue at λ = ½ of the Eisenstein series of χ_{ψ_b}; Example 5.B (θ(z)). The Introduction is rewritten in stage 7 |
+| II.10 | Thm 5.31, §5.4(b) | Ramified χ (μ^w = μ) omitted | 4 | fixed: Lemma 5.3 (μ^w = μ iff μ = χ_{ψ_b}), Thm 5.13(c) (residual part, ½ of the continuous term, and ¼ tr(M(w,0)I(μ₀,f))), Thm 5.15(e). Sign: see *Stage 4 notes* |
+| II.11 | Example 5.32 | Sign is right; factor 2 wrong: 2T·I − ½M⁻¹M′ | 4 | fixed: M_B^T = 2T − M⁻¹ dM/dλ (5.10) in the coordinate λ(X) = λX, for every k (the α^∨ = d factor cancels against vol(𝔞/ℤα^∨) = d); the T-coefficient is checked against §4 (Prop. 5.16) |
+| II.12 | Lemmas 5.28–5.29 | Not proved; cite Maass–Selberg ([MW2], Li III) | 4 | fixed: Thm 5.11 cites [A3], Li III, and the false claims (compact support; "continuous, hence integrable") are corrected; Lemma 5.12 (Maass–Selberg) is stated for T ≥ 0 with a proof sketch |
+| II.13 | Examples 5.5, 5.24, 5.25 | E_G vs E_B confusion; equivalence of cuspidal data | 4 | fixed: cuspidal data and their equivalence (§5.1, Lemma 5.3); kernels K_{B,χ}, K_{G,χ} (Prop. 5.8) |
 | II.14 | §6.1 | Conjectures 6.2–6.6 are now Li II/IV; Aoki at ℝ (book7gnw) | 5 | open |
 | II.15 | Example 6.1 | u′_B = −H_B(ky) | 5 | open |
 | II.16 | §6.4(b) | m′/m term missing (book7g/7gnw item (e) has it) | 5 | open |
@@ -218,3 +218,79 @@ The local distribution J_A(z,f) at a central element is Arthur's limit with the 
   - compute a^G(S,u_ξ) from Prop. 4.8 (the ξ-decomposition of Z(f,s) has infinite fibers over k_S^×/k_S^{×2}; this is item II.21);
   - replace (7.13) by Lemma 4.9;
   - use J_A(z,f) of Lemma 4.10 in §7.
+
+## Stage 4 notes (2026-11-10)
+
+**Files.** `revised/sec5-spectral.tex` is the new Section 5. It merges `cctrace4.tex` (= `book7e.tex`, §§5.1–5.2) and `cctrace5.tex` (= `book7f.tex`, §§5.3–5.4). `revised/preview.tex` now builds Sections 2–5, with the PDF committed; it gained a `corollary` environment, which the stage-0 master also needs. `revised/checks/sec5_n2_check.py` adds 45 checks (about 3 seconds; needs SymPy and mpmath).
+
+**What changed, and why.**
+- **The Weyl action on the cover of A** (Lemma 5.3). Conjugation by w sends (a(t),ζ) to (a(t⁻¹),ζ). This is not inversion, which is (a(t),1)⁻¹ = (a(t⁻¹),(t,−1)). Weil's character satisfies χ_ψ^w = χ_ψ, so for μ = χ_ψ·χ we get μ^w = χ_ψ·χ⁻¹. Hence the ramified classes (μ^w = μ) are exactly the χ_{ψ_b}, b ∈ k^×/k^{×2}. For SL(2) itself they are the μ with μ² = 1.
+- **The intertwining operator** (Lemma 5.6). The unramified local factor on the double cover is L_v(2λ,χ_v²)/L_v(2λ+1,χ_v²), against L_v(λ,χ_v)/L_v(λ+1,χ_v) for SL(2). It is computed by an explicit Iwasawa decomposition of the lift of w⁻¹n(y): the odd shells cancel, because the integrand there is a constant times the quadratic character of the unit part. So M(w,λ) = m^S(μ,λ)·M_S(λ) with m^S = L^S(2λ,χ²)/L^S(2λ+1,χ²). In Re λ > 0 it has a pole only when χ² = 1, and then only at λ = ½.
+- **The residual spectrum** (Theorem 5.7, item II.9). It is one even Weil representation V_b for each b ∈ k^×/k^{×2}: the residues at λ = ½ of the Eisenstein series of χ_{ψ_b}. Their constant terms have order e^{H/2}. For k = ℚ, b = 1 this is θ(z) = Σ q^{n²} (Example 5.B). That V_b is nonzero and lives in the class χ_b is proved here; that V_b is irreducible and isomorphic to r⁺_{ψ_{b′}} is cited ([Ge2], [GPS80], [Wa80]).
+- **The kernels** (Prop. 5.8, item II.13). For cuspidal χ there is no Eisenstein series. For χ ∈ 𝒳_A, K_{G,χ} carries the factor ½ = n(A_B)⁻¹ and a sum over both members of χ. The term that the 1995 notes put in K_{G,χ} belongs to K_{B,χ}.
+- **Truncation** (Lemma 5.9). For T ≥ 0, Λ^T is idempotent and self-adjoint, by the height inequality of Lemma 4.3(b). Λ^T E is rapidly decreasing, not compactly supported (item II.12).
+- **The terms J_χ^T** (Theorem 5.13). They are derived from the Maass–Selberg relations (Lemma 5.12, with a proof sketch for T ≥ 0): (a) m(π) tr π(f); (b) the integral of tr(M_B^T I) with M_B^T = 2T − M⁻¹ dM/dλ (item II.11); (c) for ramified χ_b, the residual trace, ½ of the continuous term, and ¼ tr(M(w,0)I(μ₀,f)) (item II.10). The last comes from the cross terms of the Maass–Selberg relation in the limit T → ∞.
+- **The global normalizing factor** (Corollary 5.14). tr(M⁻¹M′ I) = (m^S)′/m^S · tr I_S + tr(M_S⁻¹M_S′ I_S), where (m^S)′/m^S = 2(L^S)′/L^S(2λ,χ²) − 2(L^S)′/L^S(2λ+1,χ²). Stage 5 needs this for the m′/m term (item II.16).
+- **The trace formula** (Theorem 5.15). The central classes use Theorem 4.11(a) in full (item II.6). The spectral side has the residual and ramified terms.
+- **A consistency check** (Prop. 5.16). The T-coefficients of the spectral and geometric sides agree: both are c_k Σ_{γ∈A(ℚ)} F_f(γ), where F_f is the Abel transform. This checks the factor 2T and the ½ = n(A_B)⁻¹ against §4, which was derived independently. With the 1995 values (4T, n(A) = 1) the two sides would differ by a factor of 4.
+
+**Numbering map (1995 → 2026).** The 1995 numbers are those of `cctrace_new.tex` as compiled (with `cctrac3b.tex` = `book7d.tex`). Equations are now numbered (5.1)–(5.10).
+
+| 1995 (compiled) | 2026 |
+|---|---|
+| Lemma 5.1 | Lemma 5.1 (corrected) |
+| Example 5.2 (factorization) | Lemma 5.2 |
+| Prop. 5.3 | Lemma 5.1, Prop. 5.4(a) |
+| associate parabolics, 𝒳, Example 5.4 | *Cuspidal data* paragraph, Lemma 5.3 |
+| (5.2)–(5.4), Corollary 5.5, Prop. 5.6 | Prop. 5.4 |
+| §5.2 definitions ℋ_P, I_P, E, M(s,·) | (5.1)–(5.3) |
+| Prop. 5.7, the bases ℬ_P(π)_χ, L^∧_𝒫 | ℬ(μ) before Prop. 5.8 (a basis of ℋ_B(μ), independent of λ) |
+| Theorem 5.8 (Langlands) | Theorem 5.5 |
+| Lemma 5.9, Remark 5.10, Theorem 5.11, Examples 5.17–5.22 | Prop. 5.8 |
+| truncation, Example 5.12, Lemmas 5.13–5.14 | (5.7), Lemma 5.9 |
+| Lemma 5.15, Example 5.16 | (5.8), Lemma 5.10 |
+| Lemma 5.23, Remark 5.24, Lemmas 5.25–5.26 | Theorem 5.11 |
+| Theorem 5.27, Example 5.28 | Theorem 5.13, (5.10) |
+| §5.4 | Theorem 5.15 |
+| — | new: Lemma 5.6, Theorem 5.7, Lemma 5.12, Corollary 5.14, Prop. 5.16, Examples 5.A–5.C, Remarks 2026.11–2026.13 |
+
+The report's §5 numbers do not match the compiled text: its "Example 5.5" is Example 5.4, its "Examples 5.24, 5.25" are Examples 5.21, 5.22, its "Lemmas 5.28–5.29" are Lemmas 5.23 and 5.25, its "Theorem 5.31" is Theorem 5.27, and its "Example 5.32" is Example 5.28. The 1995 text cites itself with yet other numbers ("Lemma 5.28 above" for Lemma 5.23, "Lemma 5.19 above" for Lemma 5.13).
+
+**Where this revision departs from the report.**
+- *II.11.* The report's 2T·I − ½M⁻¹M′ (in the 1995 coordinate ς) is (5.10) in our coordinate λ = 2ς, for k = ℚ. For general k, Arthur's formula has vol(𝔞/ℤα^∨) = d and θ(ζ) = dζ, so d cancels: the stage-3 correction α^∨ = d does not change M_B^T, provided the volume is computed with the same measure dX. The script checks this for d = 1, 2, 3.
+- *II.10.* The report calls the ramified term "the −¼ tr(M(w,0)I_B(μ,f)) term of Jacquet–Langlands and Gelbart–Jacquet". In J_χ we get **+**¼ tr(M(w,0)I(μ₀,f)). This agrees with the sign of the discrete term in Arthur's fine spectral expansion [A14, Thm 8.2]; it is derived in the proof of Theorem 5.13(c), and the limit is checked numerically. We have not reconciled this with the sign conventions of [JL] and [GJ], where the term may sit on the other side of the formula or M(w,0) may be normalized differently.
+- *II.12.* Besides the citations the report asks for, Lemma 5.12 gives the Maass–Selberg relation for this group with a proof sketch (unfolding plus Lemma 5.9). The rest of the 1995 Lemma 5.23 (K^T_χ = J^T_χ) is just the self-adjointness of Λ^T; what is actually needed is Theorem 5.11(c).
+
+**Found in this stage, not in the report.**
+- n(A_B), the number of chambers in 𝔞, is 2, not 1 as stated in the 1995 Theorem 5.8. This is the ½ in K_{G,χ}.
+- The 1995 measures on i𝔞* are inconsistent: (1/2πi) in Theorem 5.8(b), (1/2π) in the norm on L^∧_𝒫. The measure here is dt/2π.
+- The 1995 Example 5.18 imposes φ(ag) = π(a)φ(g) for all a ∈ A(𝔸)-bar, so λ is folded into π and the factor δ_B^{1/2} is missing. Here φ is A_B(ℝ)⁰-invariant and λ enters through φ_λ.
+- The 1995 Example 5.2 says *all* genuine unitary representations factor (it should say irreducible). It calls π_p unramified if it has an overline{K_p}-fixed vector, which no genuine representation has; the right condition is a K_p^*-fixed vector.
+- On the double cover, w-conjugation of the cover of A is not inversion (Lemma 5.3(b)). The 1995 notes assume the SL(2) picture.
+- The intertwining integral converges for Re λ > ½, not only for Re λ > 1 (Lemma 5.6).
+- Arthur's Theorem 5.11 is for "T sufficiently large". On the geometric side T ≥ 0 suffices (§4); on the spectral side Lemmas 5.9 and 5.12 hold for T ≥ 0, but we have not checked Theorem 5.11 itself in that range (Remark 2026.12).
+
+**Minor §5 items from the report.** All fixed:
+- the stale references in the §5 intro ("Lemma 1.7", "(4.5)", "Proposition 4.14", "Theorem 6.15", "4.1.1");
+- Lemma 5.1 (finite multiplicity, direct integral);
+- in §5.3, K_{P,χ}(δx,δx) in the definition of k^T_χ, and the unfinished sentence after (5.9) (it belonged to a claim that is now dropped);
+- in §5.4, S and 𝔸_S are now defined in §4.4, and "given in section 5" now points to §4.
+
+**Still resting on citation and numerics only** (Remark 2026.12):
+- Lemma 5.1, Prop. 5.4 and Theorem 5.5 [L2, MW2];
+- the wave-packet formula (5.6) and the absolute convergence in Prop. 5.8;
+- Lemma 5.9(c);
+- Theorem 5.11 [A3, Li III], including the interchange of integrals used for Theorem 5.13;
+- the analytic continuation in Lemma 5.12;
+- Theorem 5.7(c) [Ge2, GPS80, Wa80].
+
+Which b′ (b, −b, or b times a fixed factor) labels the Weil representation in V_b depends on the normalization of ω_ψ, and is not fixed here. Lemma 5.6(b) is proved in the text and also checked numerically at p = 3, 5, 7.
+
+**For later stages.**
+- *Stage 5:*
+  - §6 takes J_χ from Theorem 5.13 and Theorem 5.15(d)–(e).
+  - The m′/m term (item II.16) is Corollary 5.14.
+  - The new residual term tr(R(f)|V_b) and the ramified term ¼ tr(M(w,0)I(μ₀,f)) need invariant forms.
+  - `cctrace6.tex` cites "Example 5.32" (line 681), which is now Theorem 5.13 and (5.10); "subsection 5.1.1" (line 143), which is now the *Test functions* paragraph of §4.4; "(5.16)" for τ (line 97), which is now (2.6)–(2.7); and "(5.27) … Example 5.23" (line 287), which has to be identified from context.
+- *Stage 6:* `cctrace7.tex` cites "Example 5.26, (5.28)" (line 876), which is now Theorems 5.13 and 5.15. The stable form must account for the residual Weil representations V_b: their local packets {r⁺, r⁻} are Waldspurger's.
+- *Stage 7 (or stage 0):* the master needs `\newtheorem{corollary}`. The Introduction's claim that there is no residual term must go (item II.9).

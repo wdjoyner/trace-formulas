@@ -1,0 +1,77 @@
+% SPDX-License-Identifier: CC-BY-4.0
+% Stand-alone build of the revised Section 2 (stage 1 of ../revision_log.md).
+% The stage-0 master will \input sec2-foundations.tex with the same macros.
+\documentclass[11pt]{article}
+\usepackage[margin=1.1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage[inline]{enumitem}
+\usepackage{xcolor}
+\usepackage[colorlinks=true,linkcolor=blue!50!black,citecolor=blue!50!black,urlcolor=blue!50!black]{hyperref}
+\emergencystretch=3em
+
+\numberwithin{equation}{section}
+\theoremstyle{plain}
+\newtheorem{lemma}{Lemma}[section]
+\newtheorem{proposition}[lemma]{Proposition}
+\newtheorem{theorem}[lemma]{Theorem}
+\theoremstyle{definition}
+\newtheorem{example}{Example}[section]
+\renewcommand{\theexample}{\thesection.\Alph{example}}
+\theoremstyle{remark}
+\newtheorem{remarkrev}{Remark}
+\renewcommand{\theremarkrev}{2026.\arabic{remarkrev}}
+
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\A}{\mathbb{A}}
+\newcommand{\OO}{\mathcal{O}}
+\DeclareMathOperator{\Res}{Res}
+\DeclareMathOperator{\ord}{ord}
+\DeclareMathOperator{\diag}{diag}
+\DeclareMathOperator{\Hom}{Hom}
+
+\begin{document}
+\title{A hitch-hiker's guide to the metaplectic trace formula for $SL(2)$\\[2pt]
+\large Section 2, revised for the double cover (stage 1 draft)}
+\author{David Joyner and Claude}
+\date{November 2026}
+\maketitle
+
+\noindent This is the revised Section~2 of the 1995 notes, restricted to
+$n=2$, compiled on its own. Lemmas~2.1--2.9 keep the numbers of the 1995
+notes; Lemma~2.10 is new. The changes are listed in \texttt{revision\_log.md}.
+
+\setcounter{section}{1}
+\input{sec2-foundations}
+
+\begin{thebibliography}{99}
+\bibitem[A2]{A2} J. Arthur, ``A trace formula for reductive groups, I: terms
+associated to classes in $G(\mathbb{Q})$'', Duke Math. J. \textbf{45} (1978), 911--952.
+\bibitem[Ge2]{Ge2} S. Gelbart, \emph{Weil's representation and the spectrum of
+the metaplectic group}, Lecture Notes in Math. \textbf{530}, Springer, 1976.
+\bibitem[KP]{KP} D. Kazhdan and S. J. Patterson, ``Metaplectic forms'', Publ.
+Math. IHES \textbf{59} (1984), 35--142.
+\bibitem[Kn]{Kn} A. W. Knapp, \emph{Lie groups beyond an introduction}, 2nd ed.,
+Birkh\"auser, 2002.
+\bibitem[K1]{K1} T. Kubota, ``Topological covering of $SL(2)$ over a local
+field'', J. Math. Soc. Japan \textbf{19} (1967), 114--121.
+\bibitem[K2]{K2} T. Kubota, \emph{On automorphic functions and the reciprocity
+law in a number field}, Lectures in Math. \textbf{2}, Kinokuniya, Tokyo, 1969.
+\bibitem[Li I]{LiI} W.-W. Li, ``La formule des traces pour les rev\^etements
+de groupes r\'eductifs connexes. I. Le d\'eveloppement g\'eom\'etrique fin'',
+J. reine angew. Math. \textbf{686} (2014), 37--109.
+\bibitem[Li IV]{LiIV} W.-W. Li, ``La formule des traces pour les rev\^etements
+de groupes r\'eductifs connexes. IV. Distributions invariantes'', Ann. Inst.
+Fourier \textbf{64} (2014), 2379--2448.
+\bibitem[M]{M} C. C. Moore, ``Group extensions of $p$-adic and adelic linear
+groups'', Publ. Math. IHES \textbf{35} (1968), 157--222.
+\bibitem[R]{R} J. Rogawski, \emph{Automorphic representations of unitary groups
+in three variables}, Ann. of Math. Studies \textbf{123}, Princeton, 1990.
+\bibitem[Se]{Se} J.-P. Serre, \emph{A course in arithmetic}, Graduate Texts in
+Math. \textbf{7}, Springer, 1973.
+\bibitem[W1]{W1} A. Weil, \emph{Basic number theory}, Springer, 1974.
+\bibitem[W2]{W2} A. Weil, \emph{Adeles and algebraic groups}, Birkh\"auser, 1982.
+\end{thebibliography}
+\end{document}

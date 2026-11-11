@@ -1,0 +1,1576 @@
+% SPDX-License-Identifier: CC-BY-4.0
+% =====================================================================
+% Section 7 of D. Joyner and Claude, "A hitch-hiker's guide to the
+% metaplectic trace formula for SL(2)", revised for the 2-fold cover
+% (n = 2), November 2026.
+%
+% Stage 6 of ../revision_log.md. Sources: ../original-1995/cctrace7.tex
+% (= ../book-1997/book7h.tex) and ../book-1997/book3b.tex. Referee items
+% II.18-II.23, C.1, C.3, C.4 and the Section 7 part of I.1 and II.22 are
+% treated here; see the "Stage 6 notes" in ../revision_log.md, which also
+% map the 1995 numbers to the numbers here.
+%
+% This file is \input by the master; it compiles on its own through
+% preview.tex. Explicit formulas are checked by checks/sec7_n2_check.py.
+% Comments beginning "% [Claude]" are editorial notes by Claude.
+% =====================================================================
+
+\providecommand{\GA}{\overline{G(\A)}}
+\providecommand{\GS}{\overline{G(\Q_S)}}
+\providecommand{\AS}{\overline{A(\Q_S)}}
+\providecommand{\KS}{\overline{K_S}}
+\providecommand{\Gb}{\overline{SL(2,F)}}
+
+\section{The trace formula in stable(r) form}\label{sec:stable}
+
+The invariant trace formula of Theorem~\ref{thm:itf} is an identity
+between distributions that are invariant under conjugation by the cover
+itself. For $SL(2)$, Labesse and Langlands~\cite{LL} went one step
+further: they regrouped the terms according to conjugacy under $GL(2)$,
+which for $SL(2)$ is stable conjugacy, and identified the part of the
+formula that is not stably invariant with contributions of the elliptic
+tori. This section carries out the first half of that program for the
+double cover: it determines how $GL(2)$ acts on the cover, what stable
+conjugacy is, and how each term of the trace formula behaves. We call the
+result the \emph{stable(r) form}: the terms are organized by stable
+classes, and the elliptic regular terms are written as stable orbital
+integrals, but nothing is transferred to another group.
+
+For the double cover of $Sp(2n)$ the full theory exists and is due to
+Li: stable conjugacy and the transfer of orbital
+integrals~\cite{Li11}, following Adams~\cite{Ad}, Renard~\cite{Re} and,
+for the group here over a $p$-adic field, Schultz~\cite{Sch} (see
+also~\cite{How}); the stabilization of the elliptic
+terms~\cite{Li15}; and the stabilization of the whole invariant trace
+formula~\cite{Li21}. The elliptic endoscopic groups of the double cover of
+$Sp(2n)$ are the groups $SO(2n'+1)\times SO(2n''+1)$, $n'+n''=n$. For
+$n=1$ these are two copies of $SO(3)=PGL(2)$, attached to the pairs
+$(1,0)$ and $(0,1)$; the tori of $SL(2)$, which are the endoscopic groups
+of $SL(2)$ in~\cite{LL}, do not occur. We do not reprove any of this.
+What can be done by hand for the group of this paper, and is done below,
+is the following.
+
+\paragraph{Results.}
+\begin{itemize}
+\item $GL(2,F)$ acts on $\Gb$ by automorphisms $\mathrm{Ad}(h)$, with an
+  explicit formula (Lemma~\ref{lem:Ad}). An element $h$ that commutes
+  with a semisimple $\gamma$ multiplies the lifts of $\gamma$ by the sign
+  $(\det h,\det(1+\gamma))_v$ (Lemma~\ref{lem:eta}). So conjugation by
+  $GL(2)$ can carry a lift of $\gamma$ to the other lift, and it is not
+  stable conjugacy.
+\item Stable conjugacy on the cover is $GL(2)$-conjugacy \emph{twisted}
+  by that sign: $h\star x=(\det h,\det(1+x))_v\,\mathrm{Ad}(h)x$. Its
+  classes are the level sets, over the stable classes of $SL(2,F)$, of an
+  explicit genuine function $\Delta_\psi$ with values in $\mu_8$
+  (Lemma~\ref{lem:Delta}). This function is $|\det(1+x)|^{1/2}$ times the
+  character of the difference $r^+_\psi-r^-_\psi$ of the two halves of
+  the Weil representation (Proposition~\ref{prop:weil-char}), so the
+  definition agrees with that of Adams and Li.
+\item For a regular elliptic $\gamma\in G(\Q)$ with splitting field $E$,
+  the terms of the trace formula attached to the $GL(2,k)$-conjugates of
+  $\gamma$ add up to $\frac12$ of a stable orbital integral plus $\frac12$
+  of a $\kappa$-orbital integral, as for $SL(2)$. For the cover the
+  $\kappa$-orbital integral at $\gamma$ is again a stable orbital
+  integral: that of the translate $f_-$ of $f$ by the central element
+  $-1$, at $-\gamma$ (Lemma~\ref{lem:kappa-orbital}). Hence the elliptic
+  regular part of the trace formula is $S_{\mathrm{ell}}(f)+
+  S_{\mathrm{ell}}(f_-)$ with one stable distribution $S_{\mathrm{ell}}$
+  (Theorem~\ref{thm:elliptic-stable}). This is the shape of Li's
+  stable trace formula for $n=1$, with its two endoscopic data.
+\item The remaining geometric terms transform under $GL(2,k_S)$ by
+  explicit characters (Proposition~\ref{prop:IA-gl2}), and the
+  unipotent coefficients $a^G(S,u_\xi)$, left open in
+  Section~\ref{sec:geometric}, are computed:
+  $a^G(S,u_\xi)=\frac12\bigl(c_S+\sum_{\kappa\ne1}\kappa_S(\xi)L^S(1,\kappa)
+  \bigr)$, the sum over the quadratic Hecke characters unramified outside
+  $S$ (Proposition~\ref{prop:unipotent}).
+\item On the spectral side, $GL(2,k)$ permutes the pieces of the
+  spectrum, and $V_b\mapsto V_{ab}$. The theta functions attached to
+  $\psi_{-b}$ span a subspace of the discrete spectrum whose trace is
+  $\frac12\Theta(f)+\frac12\Theta(f_-)$ with $\Theta$ a stable character
+  (Proposition~\ref{prop:theta-packet}): the simplest instance of the
+  same pattern on the spectral side.
+\end{itemize}
+The hyperbolic terms, the unipotent terms and the cuspidal spectrum are
+\emph{not} stabilized here; Section~\ref{sec:stable-form} says what is
+missing, and Remark~\ref{rem:sec7-status} what rests on citation.
+
+\paragraph{Conventions.} $F=k_v$ is a local field of characteristic $0$,
+as in Section~\ref{sec:local}; we write $G_1=GL(2)$, $Z$ for its center,
+and $\delta_a=\diag(a,1)$. For $h\in G_1(F)$, $\mathrm{Ad}(h)$ is the
+automorphism of $\Gb$ of Lemma~\ref{lem:gl2}(c), and for a function $f$
+on the cover
+\[
+f^h(x)=f(\mathrm{Ad}(h)x),
+\]
+which for $h\in SL(2,F)$ is the function $f^y$ of
+Section~\ref{sec:invariant}, $y$ a lift of $h$. For a central element
+$z$ of a cover, $f_z(x)=f(zx)$, as in Section~\ref{sec:coarse}. The
+element $-1\in G(\Q)$ is identified with its image $s(-1)=(-1,1)$ in
+$\GA$, and
+\[
+f_-(x)=f_{-1}(x)=f\bigl(s(-1)\,x\bigr),\qquad f\in\mathcal H(\GA).
+\]
+Since $s(-1)^2=1$, $(f_-)_-=f$. For a quadratic extension $E=F(\sqrt\theta)$
+let $\kappa_E=(\cdot,\theta)_v$ be the quadratic character of $F^\times$
+with kernel $N E^\times=N_{E/F}(E^\times)$; for $E=F\times F$ put
+$N E^\times=F^\times$ and $\kappa_E=1$.
+
+\subsection{Conjugation by \texorpdfstring{$GL(2)$}{GL(2)}}\label{sec:Ad}
+
+Conjugation by $h\in G_1(F)$ is an automorphism of $SL(2,F)$, and it
+lifts to the cover in exactly one way. This subsection makes the lift
+explicit and computes it on the subgroups that matter: $N$, $A$, the
+center, the maximal compact subgroup, the tori, and globally on $G(\Q)$.
+
+\begin{lemma}\label{lem:Ad}
+Let $h\in G_1(F)$.
+\begin{enumerate}[label=(\alph*)]
+\item $\mathrm{Ad}(h)$ is the only automorphism of the group $\Gb$ that
+  induces $g\mapsto hgh^{-1}$ on $SL(2,F)$. It is a homeomorphism for
+  the topology of Lemma~\ref{lem:kubota}(c), and it fixes $\mu_2$
+  pointwise.
+\item $\mathrm{Ad}(h)$ depends only on the image of $h$ in $PGL(2,F)$.
+  For $h\in SL(2,F)$ it is conjugation by either lift of $h$. So
+  $\mathrm{Ad}(h)$ is inner when $\det h\in F^{\times2}$, and the group
+  $F^\times/F^{\times2}$ acts through the $\mathrm{Ad}(\delta_a)$ modulo
+  inner automorphisms.
+\item For $a\in F^\times$ and $g=\begin{pmatrix}\alpha&b\\c&d
+  \end{pmatrix}\in SL(2,F)$,
+  \begin{equation}\label{eq:Ad-delta}
+  \mathrm{Ad}(\delta_a)(g,\zeta)=\bigl(\delta_ag\delta_a^{-1},\ v_a(g)\,
+  \zeta\bigr),\qquad v_a(g)=\begin{cases}1,&c\ne0,\\(a,d)_v,&c=0.
+  \end{cases}
+  \end{equation}
+\item In particular
+  \begin{align*}
+  \mathrm{Ad}(\delta_a)(n(u),1)&=(n(au),1),&
+  \mathrm{Ad}(\delta_a)(a(t),\zeta)&=(a(t),(a,t)_v\zeta),\\
+  \mathrm{Ad}(\delta_a)(-1,\zeta)&=(-1,(a,-1)_v\zeta),&
+  \mathrm{Ad}(\delta_a)(w,1)&=(a(a),1)(w,1).
+  \end{align*}
+\item Let $v$ be finite and non-dyadic. If $h\in Z(F)GL(2,\OO)$, then
+  $\mathrm{Ad}(h)K^*=K^*$ and $e_v^h=e_v$ for the unit element $e_v$
+  of~\eqref{eq:unit}.
+\item (Global.) For $h=(h_v)\in G_1(\A_k)$ the automorphisms
+  $\mathrm{Ad}(h_v)$ define an automorphism $\mathrm{Ad}(h)$ of $\GA$,
+  and $f^h\in\mathcal H(\GA)$ for $f\in\mathcal H(\GA)$. If
+  $h\in G_1(k)$, then $\mathrm{Ad}(h)$ preserves the image of $G(\Q)$:
+  $\mathrm{Ad}(h)s(\gamma)=s(h\gamma h^{-1})$ for $\gamma\in G(\Q)$, where
+  $s(\gamma)=(\gamma,\kappa_\A(\gamma))$ is the splitting of
+  Lemma~\ref{lem:global}(a).
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+(a) Two automorphisms that induce the same automorphism of $SL(2,F)$
+differ by a homomorphism $SL(2,F)\to\mu_2$, which is trivial because
+$SL(2,F)$ is perfect. $\mathrm{Ad}(h)$ fixes $\mu_2$ because $\mu_2$ is
+central in the cover of $GL(2,F)$. For continuity it suffices to look
+near the identity. Let $U$ be as in Lemma~\ref{lem:kubota}(b), and let
+$V\subset U$ be a neighborhood of $1$ with $hVh^{-1}\subset U$. For
+$g\in V$ write $\mathrm{Ad}(h)(g,1)=(hgh^{-1},\varepsilon(g))$. Since
+$\beta\equiv1$ on $U\times U$, $\varepsilon(g_1g_2)=\varepsilon(g_1)
+\varepsilon(g_2)$ whenever $g_1,g_2,g_1g_2\in V$; and every $g$ in a
+smaller neighborhood is a square of an element of $V$, as in the proof of
+Lemma~\ref{lem:kubota}(c). So $\varepsilon=1$ near $1$, and
+$\mathrm{Ad}(h)$ maps the basic neighborhoods $\{(g,1)\mid g\in V'\}$ to
+basic neighborhoods.
+
+(b) A scalar matrix induces the identity on $SL(2,F)$, so by~(a) it acts
+trivially on the cover; and conjugation by a lift of $h\in SL(2,F)$ is an
+automorphism over $g\mapsto hgh^{-1}$. If $\det h=c^2$, then $c^{-1}h\in
+SL(2,F)$.
+
+(c) By definition $\mathrm{Ad}(\delta_a)(g,\zeta)=(\delta_a,1)(g,\zeta)
+(\delta_a,1)^{-1}$ in $\overline{GL(2,F)}$, which is
+\[
+\bigl(\delta_ag\delta_a^{-1},\ \zeta\,\sigma(\delta_a,g)\,\sigma(\delta_ag,
+\delta_a^{-1})\,\sigma(\delta_a,\delta_a^{-1})\bigr)
+\]
+with the cocycle~\eqref{eq:sigma-gl2}. Here $x(\delta_a)=x(\delta_a^{-1})=1$ and
+$x(\delta_ag)=x(g)$, so $\sigma(\delta_a,g)=(x(g),a)_v$ and
+$\sigma(\delta_a,\delta_a^{-1})=1$. If $c\ne0$, then $x(\delta_ag
+\delta_a^{-1})=c/a$ and $\sigma(\delta_ag,\delta_a^{-1})=(a^{-1},c/a^2)_v
+=(a,c)_v$, so the product is $1$. If $c=0$, then
+$x(\delta_ag\delta_a^{-1})=d=x(g)$ and $\sigma(\delta_ag,\delta_a^{-1})=
+(1,d/a)_v=1$, so the product is $(d,a)_v$. (The script also checks
+directly that~\eqref{eq:Ad-delta} is a homomorphism for $\beta$, which
+by~(a) proves~(c) without reference to the cover of $GL(2)$.)
+
+(d) The first three are~\eqref{eq:Ad-delta} with $c=0$ and $d=1$,
+$t^{-1}$, $-1$. For the last, $\delta_aw\delta_a^{-1}=a(a)w$ has lower
+left entry $a^{-1}\ne0$, so $\mathrm{Ad}(\delta_a)(w,1)=(a(a)w,1)$, and
+$\beta(a(a),w)=(1,a^{-1})_v=1$.
+
+(e) By~(b) we may take $h\in GL(2,\OO)$, so $hKh^{-1}=K$. Then
+$k\mapsto\mathrm{Ad}(h)^{-1}(hkh^{-1},\kappa(hkh^{-1}))$ is a
+homomorphic section of $\overline K\to K$. It differs from
+$k\mapsto(k,\kappa(k))$ by a homomorphism $K=SL(2,\OO)\to\mu_2$, and there
+is none except the trivial one: $K$ is generated by elementary matrices,
+which are squares.
+
+(f) By~(e), $\mathrm{Ad}(h_v)$ preserves $K_v^*$ for almost all $v$, so
+the product acts on the restricted product of the local covers; it fixes
+every $\mu_2$, hence the subgroup $Z_0$ of Section~\ref{sec:global}, and
+descends to $\GA$. For $f=\bigotimes f_v$ we get
+$f^h=\bigotimes f_v^{h_v}$ with $f_v^{h_v}=e_v$ for almost all $v$. If
+$h\in G_1(k)$, then $\gamma\mapsto\mathrm{Ad}(h)^{-1}s(h\gamma h^{-1})$ is a
+homomorphic section of $\overline{G(\Q)}\to G(\Q)$; it equals $s$ because
+$SL(2,k)$ is perfect.
+\end{proof}
+
+Part~(d) already shows that $\mathrm{Ad}(h)$ is not inner in general: it
+acts on the abelian group $\overline{A(F)}$ by the character
+$a(t)\mapsto(a,t)_v$, and it exchanges the two lifts of $-1$ when
+$(\det h,-1)_v=-1$. The next lemma gives the general statement. For a
+semisimple $\gamma\in SL(2,F)$, $\gamma\ne-1$, put
+\begin{equation}\label{eq:eta}
+D^+(\gamma)=\det(1+\gamma)=2+\operatorname{tr}\gamma\ \in F^\times,\qquad
+\eta_\gamma(a)=\bigl(a,D^+(\gamma)\bigr)_v\quad(a\in F^\times).
+\end{equation}
+The definition of $D^+$ and $\eta_\gamma$ makes sense for every $\gamma$
+with $\operatorname{tr}\gamma\ne-2$, and depends only on the trace.
+
+\begin{lemma}\label{lem:eta}
+Let $\gamma\in SL(2,F)$ be semisimple, $\gamma\ne-1$, and let $h\in
+G_1(F)$ commute with $\gamma$. Then
+\[
+\mathrm{Ad}(h)(\gamma,\zeta)=\bigl(\gamma,\ \eta_\gamma(\det h)\,\zeta
+\bigr).
+\]
+For $\gamma=-1$ and every $h\in G_1(F)$,
+$\mathrm{Ad}(h)(-1,\zeta)=(-1,(\det h,-1)_v\zeta)$.
+\end{lemma}
+
+\begin{proof}
+The second statement is Lemma~\ref{lem:Ad}(b),(d). For $\gamma=1$ there is
+nothing to prove ($D^+=4$). Let $\gamma$ be regular. Its centralizer in
+$M_2(F)$ is the commutative algebra $E=F[\gamma]$, and $h\in E^\times$.
+Put $z=1+\gamma\in E$. Then $\det z=D^+(\gamma)\ne0$, and $z\gamma^{-1}=
+1+\gamma^{-1}$ is the conjugate $\bar z$ of $z$ in $E$, so
+$z\bar z=\det z$ and
+\[
+\gamma\cdot\bigl(D^+(\gamma)\cdot1\bigr)=z^2\qquad\text{in }E^\times
+\subset G_1(F).
+\]
+For commuting $x,y\in G_1(F)$ let $[x,y]\in\mu_2$ be the commutator of
+any two lifts to $\overline{GL(2,F)}$. On the commutative group
+$E^\times$ it is bimultiplicative, so $[h,z^2]=[h,z]^2=1$ and therefore
+$[h,\gamma]=[h,D^+(\gamma)\cdot1]$. For a scalar $\lambda$ and any $h$,
+\eqref{eq:sigma-gl2} gives $\sigma(h,\lambda)=(\lambda,x(h)/\det h)_v$ and
+$\sigma(\lambda,h)=(x(h),\lambda)_v$, so $[h,\lambda]=(\lambda,\det h)_v$.
+Hence $\mathrm{Ad}(h)(\gamma,\zeta)=(\gamma,[h,\gamma]\zeta)$ with
+$[h,\gamma]=(D^+(\gamma),\det h)_v$.
+\end{proof}
+
+By~\eqref{eq:gl2-commutator} the sign is also $(x(h\gamma)/x(h),\det
+h)_v$; the lemma says that this equals $(\det h,2+\operatorname{tr}
+\gamma)_v$, which the script confirms on random elements of the tori
+$T_\theta(\Q)$. If $\gamma$ is regular with centralizer $E^\times$ in
+$G_1(F)$, then $\det h$ runs through $N E^\times$, and $D^+(\gamma)=
+N_{E/F}(1+\gamma)$ is itself a norm. So the lifts of $\gamma$ are
+exchanged by the centralizer of $\gamma$ in $G_1(F)$ exactly when
+$\eta_\gamma$ is not trivial on $N E^\times$.
+
+\begin{example}\label{ex:eta}
+(a) \emph{Split torus.} For $\gamma=a(t)$, $t\ne\pm1$:
+$D^+=(1+t)^2/t$, so $\eta_\gamma=(\cdot,t)_v$ and $N E^\times=F^\times$.
+The two lifts of $a(t)$ are conjugate under $G_1(F)$ if and only if
+$t\notin F^{\times2}$.
+
+(b) \emph{$F=\R$, $\gamma$ elliptic.} $N E^\times=\R_{>0}$ and
+$D^+=2+2\cos\theta>0$, so $\eta_\gamma=1$. In $Mp(2,\R)$ the automorphism
+$\mathrm{Ad}(\delta_{-1})$ sends the element $\tilde k_\theta$ of
+Lemma~\ref{lem:explicit-r}(b) to $\tilde k_{-\theta}$; on the center
+$\{\tilde k_{j\pi}\}\cong\Z/4$ it is inversion, in agreement with
+$(-1,-1)_\R=-1$.
+
+(c) \emph{$F$ non-dyadic, $E/F$ unramified, $\gamma\in K$.} The norms are
+the elements of even valuation, and $\eta_\gamma$ is trivial on them if
+$D^+(\gamma)$ is a unit. But $\eta_\gamma(\varpi)=(\varpi,D^+(\gamma))_v$
+is $+1$ or $-1$ according as the unit $D^+(\gamma)$ is a square or not;
+both occur.
+
+(d) \emph{$F=\Q_3$, $E=\Q_3(\sqrt3)$.} Let $h=\begin{pmatrix}0&3\\1&0
+\end{pmatrix}$, which is $\sqrt3\in E^\times$, of determinant $-3$. Then
+$\mathrm{Ad}(h)(-1,\zeta)=(-1,(-3,-1)_3\zeta)=(-1,-\zeta)$. By continuity
+the elements of $\overline{T_3}$ close to a lift of $-1$ are conjugate
+under $G_1(\Q_3)$, indeed under the centralizer $E^\times$, to their
+negatives; here $D^+(\gamma)\in-3\,\Q_3^{\times2}$ and
+$(-3,-3)_3=-1$.
+\end{example}
+
+\subsection{Stable conjugacy}\label{sec:stable-conj}
+
+Two elements of $SL(2,F)$ are \emph{stably conjugate} if they are
+conjugate in $SL(2,\bar F)$; for semisimple elements this is the same as
+conjugacy under $G_1(F)$~\cite{LL}. On the cover, conjugacy under
+$G_1(F)$ is too coarse, by Example~\ref{ex:eta}: it can identify the two
+lifts of an element, on which every genuine function takes opposite
+values. The remedy is to twist the action by the sign of
+Lemma~\ref{lem:eta}.
+
+Let $\Gb^\flat$ be the set of $x\in\Gb$ whose image $p(x)$ has trace
+different from $-2$; it is open, dense, invariant under every
+$\mathrm{Ad}(h)$, and contains the regular semisimple elements. For
+$x\in\Gb^\flat$ write $\eta_x=\eta_{p(x)}$, and for $h\in G_1(F)$ put
+\begin{equation}\label{eq:star}
+h\star x=\eta_x(\det h)\cdot\mathrm{Ad}(h)x,\qquad
+\eta_x(\det h)=\bigl(\det h,\ \det(1+p(x))\bigr)_v\in\mu_2 .
+\end{equation}
+Since $\eta_x$ depends only on the trace of $p(x)$, which
+$\mathrm{Ad}(h)$ preserves, $(h_1h_2)\star x=h_1\star(h_2\star x)$: this
+is an action of $G_1(F)$ on $\Gb^\flat$. Scalars act trivially, and
+$h\in SL(2,F)$ acts by conjugation. Two elements of $\Gb^\flat$ are
+called \emph{stably conjugate} if they lie in the same orbit of this
+action. For a function $f$ on $\Gb$ put
+\[
+f^{[h]}(x)=f(h\star x)=\eta_x(\det h)\,f^h(x)\qquad(x\in\Gb^\flat),
+\]
+the last equality for anti-genuine $f$. The complement of $\Gb^\flat$ has
+measure $0$, so $f^{[h]}$ is defined almost everywhere; it is smooth on
+$\Gb^\flat$ but in general not across $\operatorname{tr}=-2$. A locally
+integrable class function $\Theta$ on $\Gb$, and the invariant
+distribution $f\mapsto\int f\,\Theta$ it defines, are called
+\emph{stable} if $\Theta(h\star x)=\Theta(x)$ for all $h\in G_1(F)$ and
+almost all $x$. Since $x\mapsto h\star x$ preserves the Haar measure,
+this means $\int f^{[h]}\Theta=\int f\,\Theta$.
+
+By Lemma~\ref{lem:eta}, a regular semisimple $x$ over $\gamma$ is fixed
+by $h\star$ for every $h$ in the centralizer $E^\times$ of $\gamma$. So
+the stable class of $x$ maps bijectively onto the $G_1(F)$-conjugacy
+class of $\gamma$; it never contains the other lift of $\gamma$; and it
+is the union of the conjugacy classes of the $\delta_a\star x$, $a\in
+F^\times/N E^\times$: two classes if $E$ is a field, and one if $\gamma$
+is hyperbolic.
+
+That this is the right notion is shown by the following function, which
+separates the two lifts and is constant on stable classes. Let
+$\gamma_v(a)$ be the Weil index of~\eqref{eq:weil-index}, for the fixed
+character $\psi=\psi_v$.
+
+\begin{lemma}\label{lem:Delta}
+Let $\Gb_{\mathrm{reg}}$ be the set of regular semisimple elements of
+$\Gb$.
+\begin{enumerate}[label=(\alph*)]
+\item There is exactly one function $\Delta_\psi\colon
+  \Gb_{\mathrm{reg}}\to\mu_8$ that is invariant under conjugation by
+  $\Gb$ and satisfies
+  \begin{equation}\label{eq:Delta}
+  \Delta_\psi(g,\zeta)=\zeta\,\bigl(c,D^+(g)\bigr)_v\,
+  \frac{\gamma_v(D^+(g))}{\gamma_v(1)}\qquad\text{for }
+  g=\begin{pmatrix}\alpha&b\\c&d\end{pmatrix},\ c\ne0.
+  \end{equation}
+  It is genuine: $\Delta_\psi(x\zeta)=\zeta\,\Delta_\psi(x)$.
+\item $\Delta_\psi(\mathrm{Ad}(h)x)=\eta_x(\det h)\,\Delta_\psi(x)$ for
+  $h\in G_1(F)$; that is, $\Delta_\psi(h\star x)=\Delta_\psi(x)$. So two
+  elements of $\Gb_{\mathrm{reg}}$ are stably conjugate if and only if
+  their images in $SL(2,F)$ are conjugate under $G_1(F)$ and
+  $\Delta_\psi$ takes the same value on them.
+\item On the split torus, $\Delta_\psi(a(t),\zeta)=\zeta\,\gamma_v(1)/
+  \gamma_v(t)=\chi_{\psi_{-1},v}(a(t),\zeta)$, the complex conjugate of
+  Weil's character $\chi_{\psi,v}$ (Lemma~\ref{lem:weil}).
+\item For $a\in F^\times$, $\Delta_{\psi_a}=\eta_x(a)\,\Delta_\psi$, where
+  $\psi_a(u)=\psi(au)$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+Write $\Delta$ for the right side of~\eqref{eq:Delta}, a function on the
+set $X$ of $(g,\zeta)$ with $c\ne0$ and $\operatorname{tr}g\ne-2$; and
+$D=D^+(g)$, which is invariant under conjugation. We show that
+$\Delta(yxy^{-1})=\Delta(x)$ when $x$ and $yxy^{-1}$ lie in $X$.
+
+\emph{Conjugation by $(n(u),1)$.} The lower left entry is unchanged, and
+by~\eqref{eq:inverse} the sign is $\beta(n(u),g)\beta(n(u)g,n(-u))
+\beta(n(u),n(-u))=(c,1)_v(1,c)_v=1$.
+
+\emph{Conjugation by $(a(s),1)$.} The lower left entry becomes
+$c/s^2$, and the sign is
+\[
+\beta(a(s),g)\,\beta(a(s)g,a(s)^{-1})\,\beta(a(s),a(s)^{-1})
+=(c,s)_v\cdot(s,cs)_v\cdot(s,-1)_v=1 .
+\]
+So $\Delta$ is unchanged.
+
+\emph{Conjugation by $(w,1)$, when $b\ne0$.} Here $wgw^{-1}=
+\begin{pmatrix}d&-c\\-b&\alpha\end{pmatrix}$. Suppose $\alpha\ne0$.
+Then $x(wg)=\alpha$, and the sign is $\beta(w,g)\beta(wg,w^{-1})
+\beta(w,w^{-1})=(\alpha,\alpha/c)_v(-b/\alpha,b)_v=
+(\alpha,-c)_v(\alpha,b)_v=(\alpha,-b c)_v$. So invariance amounts
+to $(-b,D)_v(\alpha,-b c)_v=(c,D)_v$, that is, to
+$(-b c,\ \alpha D)_v=1$. Put $X_0=-b c=1-\alpha d$ and
+$Y_0=\alpha+1$. Then $\alpha D=\alpha^2+\alpha d+2\alpha=Y_0^2-X_0$, and
+$(X_0,Y_0^2-X_0)_v=1$ because $Y_0^2-X_0$ is the norm of $Y_0+\sqrt{X_0}$.
+If $\alpha=0$, then $b c=-1$, $x(wg)=b$, the sign is
+$(b,b/c)_v(-1,b)_v=(b,-b^2)_v(-1,b)_v=1$, and the
+identity to be checked is $(-b,D)_v=(c,D)_v$, i.e.\ $(-b c,D)_v=1$,
+which holds because $-b c=1$.
+
+Now let $y\in\Gb$ be arbitrary with $x,yxy^{-1}\in X$. If $p(y)\in B$,
+then $y$ is a product of elements of the first two kinds and of $\mu_2$.
+Otherwise $p(y)=b_1wn$ with $b_1\in B(F)$ and $n\in N(F)$ (Bruhat). The
+element $x'=(n,1)x(n,1)^{-1}$ is in $X$, and its upper right entry is not
+$0$: otherwise $(w,1)x'(w,1)^{-1}$, hence $yxy^{-1}$, would be upper
+triangular. So the three steps apply in turn. Finally, every regular
+semisimple element is conjugate to an element of $X$ (if $c=0\ne b$,
+conjugate by $w$; if $c=b=0$, first by $n(1)$), which gives existence
+and uniqueness of $\Delta_\psi$. The values lie in $\mu_8$, and
+genuineness is clear.
+
+(b) For $h\in SL(2,F)$ this is~(a). For $h=\delta_a$ and $x=(g,\zeta)\in
+X$, \eqref{eq:Ad-delta} gives $\mathrm{Ad}(\delta_a)x=(\delta_ag
+\delta_a^{-1},\zeta)$ with lower left entry $c/a$, so
+$\Delta(\mathrm{Ad}(\delta_a)x)=(a,D)_v\Delta(x)$. Since $G_1(F)$ is
+generated by $Z(F)$, $SL(2,F)$ and the $\delta_a$, the formula follows.
+For the last statement, if $p(x')=hp(x)h^{-1}$, then $x'=\pm\,h\star x$,
+and $\Delta_\psi(x')=\pm\Delta_\psi(x)$ accordingly.
+
+(c) $(a(t),1)$ is conjugate, by $(n(1),1)$ and then $(w,1)$, to
+$(g_2,(t^2-1,t)_v)$ with $g_2=\begin{pmatrix}t^{-1}&0\\t-t^{-1}&t
+\end{pmatrix}$: the first conjugation has sign $1$, and the second has
+sign $\beta(w,g_1)\beta(wg_1,w^{-1})=(1-t^{-2},t)_v=(t^2-1,t)_v$, where
+$g_1=n(1)a(t)n(-1)$. Here
+$D=(t+1)^2/t$, so $(c,D)_v=((t^2-1)/t,t)_v=(t^2-1,t)_v(t,-1)_v$ and
+$\Delta_\psi(a(t),1)=(t,-1)_v\gamma_v(t)/\gamma_v(1)$. By
+Lemma~\ref{lem:weil}(a), $(\gamma_v(t)/\gamma_v(1))^2=(t,-1)_v$, so this
+is $\gamma_v(1)/\gamma_v(t)$; and $\chi_{\psi_{-1}}=\chi_\psi\cdot
+(-1,\cdot)_v$ by Lemma~\ref{lem:weil}(d).
+
+(d) $\gamma_{\psi_a,v}(D)/\gamma_{\psi_a,v}(1)=\gamma_v(aD)/\gamma_v(a)=
+(a,D)_v\,\gamma_v(D)/\gamma_v(1)$, by Lemma~\ref{lem:weil}(a).
+\end{proof}
+
+So stable conjugacy can be described without $GL(2)$: \emph{$x$ and $x'$
+are stably conjugate when $p(x)$, $p(x')$ are stably conjugate in
+$SL(2,F)$ and $\Delta_\psi(x)=\Delta_\psi(x')$}; by~(d) the condition does
+not depend on $\psi$. This is the definition of Adams~\cite{Ad} and
+Li~\cite[\S5]{Li11}, who use, in place of $\Delta_\psi$, the character of
+the difference of the two halves of the Weil representation. The two
+functions agree up to a positive factor:
+
+\begin{lemma}\label{lem:weil-kernel}
+Let $\omega=\omega_{\psi'}$ be the Weil representation
+of~\eqref{eq:weil-rep}, and $\gamma'$ the Weil index of $\psi'$. Then
+$\omega(w,1)\phi(x)=\gamma'(1)^{-1}\int\phi(y)\psi'(-2xy)\,dy$, and for
+$g=\begin{pmatrix}\alpha&b\\c&d\end{pmatrix}$ with $c\ne0$,
+\begin{equation}\label{eq:weil-kernel}
+\omega(g,1)\phi(x)=\gamma'(c)^{-1}\,|c|_v^{-1/2}\int_{F}\psi'\Bigl(
+\frac{\alpha x^2-2xy+dy^2}{c}\Bigr)\phi(y)\,dy,
+\end{equation}
+with the measure that is self-dual for $\psi'(2xy)$. Moreover
+$\omega_{\psi'}\circ\mathrm{Ad}(\delta_a)=\omega_{\psi'_a}$ for $a\in
+F^\times$, as representations on $\mathcal S(F)$; in particular
+$r^\pm_{\psi'}\circ\mathrm{Ad}(\delta_a)=r^\pm_{\psi'_a}$.
+\end{lemma}
+
+\begin{proof}
+In the proof of Lemma~\ref{lem:weil-rep} it is shown that
+$\omega(w(t),1)\phi(x)=\gamma'(t)|t|^{1/2}(\mathcal F\phi)(tx)$ for
+$w(t)=\begin{pmatrix}0&t\\-t^{-1}&0\end{pmatrix}$; for $t=-1$ this is the
+first formula, since $w(-1)=w$ and $\gamma'(-1)=\gamma'(1)^{-1}$. For
+$c\ne0$, $g=n(\alpha/c)\,a(c^{-1})\,w\,n(d/c)$, and the same holds for
+the lifts $(\cdot,1)$, because the three values of Kubota's cocycle are
+$(c,1)_v$, $(1,c)_v$ and $(1,c)_v$. Apply~\eqref{eq:weil-rep},
+Lemma~\ref{lem:weil-rep} with $t=c^{-1}$, and $\gamma'(-1)\gamma'(1)=1$.
+For the last statement it suffices to compare the two representations on
+$(n(u),1)$ and $(w,1)$, which generate $\Gb$ together with $\mu_2$. By
+Lemma~\ref{lem:Ad}(d), $\omega_{\psi'}(\mathrm{Ad}(\delta_a)(n(u),1))$ is
+multiplication by $\psi'(aux^2)$, and
+$\omega_{\psi'}(\mathrm{Ad}(\delta_a)(w,1))\phi(x)=\frac{\gamma'(1)}
+{\gamma'(a)}|a|^{1/2}\cdot\gamma'(1)^{-1}\int\phi(y)\psi'(-2axy)\,dy$. This
+is $\omega_{\psi'_a}(w,1)\phi(x)$: the Weil index of $\psi'_a$ at $1$ is
+$\gamma'(a)$, and the measure self-dual for $\psi'_a(2xy)$ is $|a|^{1/2}$
+times the one for $\psi'(2xy)$.
+\end{proof}
+
+As a check on the constant in~\eqref{eq:weil-kernel}: composing the
+kernels of $(g_1,1)$ and $(g_2,1)$ by a Gaussian integral gives the
+kernel of $g_1g_2$ times $\gamma'(c_3/c_1c_2)\gamma'(c_3)/\gamma'(c_1)
+\gamma'(c_2)$, where $c_3$ is the lower left entry of $g_1g_2$; by
+Lemma~\ref{lem:weil}(a) this is $(c_3/c_1,c_3/c_2)_v=\beta(g_1,g_2)$. So
+\eqref{eq:weil-kernel} is a genuine representation of the cover defined
+by Kubota's cocycle, with no further constant.
+
+\begin{proposition}\label{prop:weil-char}
+Let $\Theta^\pm_{\psi}$ be the characters of $r^\pm_{\psi}$. On
+$\Gb_{\mathrm{reg}}$,
+\begin{equation}\label{eq:weil-char}
+\Theta^+_\psi(x)-\Theta^-_\psi(x)=\frac{\Delta_\psi(x)}{|D^+(x)|_v^{1/2}} .
+\end{equation}
+Hence $\Theta^+_\psi-\Theta^-_\psi$ is a stable character, it does not
+vanish on $\Gb_{\mathrm{reg}}$, and stable conjugacy as defined above
+coincides with stable conjugacy in the sense of~\cite{Ad,Li11}.
+\end{proposition}
+
+\begin{proof}
+Let $P\phi(x)=\phi(-x)$, so that $\Theta^+_\psi-\Theta^-_\psi$ is the
+character of $x\mapsto\operatorname{tr}(\omega_\psi(x)P)$. By
+Maktouf~\cite{Mak} and Thomas~\cite{Th08} the character of the Weil
+representation is a locally integrable function, smooth on the regular
+set, and it is obtained by integrating the kernel over the diagonal in
+the sense of oscillatory integrals. For $x=(g,1)$ with $c\ne0$ the
+kernel of $\omega(g,1)P$ on the diagonal is, by~\eqref{eq:weil-kernel},
+$\gamma_v(c)^{-1}|c|^{-1/2}\psi((\alpha+d+2)x^2/c)$, and
+by~\eqref{eq:weil-index} (the measure being $|2|_v^{1/2}$ times the one
+there)
+\[
+\gamma_v(c)^{-1}|c|_v^{-1/2}\int_F\psi\Bigl(\frac{D\,x^2}{c}\Bigr)dx
+=\frac{\gamma_v(cD)}{\gamma_v(c)}\,|D|_v^{-1/2}
+=(c,D)_v\,\frac{\gamma_v(D)}{\gamma_v(1)}\,|D|_v^{-1/2},
+\]
+with $D=D^+(g)$; the last step is Lemma~\ref{lem:weil}(a). This
+is~\eqref{eq:weil-char} on $X$, and both sides are class functions. The
+rest follows from Lemma~\ref{lem:Delta}(b) and $\Delta_\psi\ne0$.
+\end{proof}
+
+The same computation without $P$ gives the character of $\omega_\psi$
+itself,
+\[
+(c,D^-)_v\,\frac{\gamma_v(D^-)}{\gamma_v(1)}\,|D^-|_v^{-1/2},\qquad
+D^-=\operatorname{tr}g-2 .
+\]
+We use the analytic input from~\cite{Mak,Th08} only for Proposition~\ref{prop:weil-char} and
+Proposition~\ref{prop:theta-packet}; Lemma~\ref{lem:Delta}, on which the
+rest of the section depends, is algebraic
+(Remark~\ref{rem:sec7-status}).
+
+\begin{example}\label{ex:Delta-real}
+Let $F=\R$. For $0<\theta<\pi$ the element $\tilde k_\theta=(k_\theta,1)$
+has $c=-\sin\theta<0$ and $D^+=4\cos^2\frac\theta2>0$, so
+$\Delta_\psi(\tilde k_\theta)=1$ and~\eqref{eq:weil-char} gives
+$\Theta^+-\Theta^-=1/(2\cos\frac\theta2)$. Directly: if $r^+_\psi$ has
+lowest weight $\frac12$, its weights are $\frac12+2j$ and those of
+$r^-_\psi$ are $\frac32+2j$, $j\ge0$, and
+\[
+\sum_{j\ge0}e^{i(\frac12+2j)\theta}-\sum_{j\ge0}e^{i(\frac32+2j)\theta}
+=\frac{e^{i\theta/2}}{1+e^{i\theta}}=\frac1{2\cos\frac\theta2}
+\]
+(Abel summation). The function is even in $\theta$, in agreement with
+Example~\ref{ex:eta}(b): $\tilde k_\theta$ and $\tilde k_{-\theta}=
+\mathrm{Ad}(\delta_{-1})\tilde k_\theta$ are stably conjugate, and they
+are not conjugate. On the hyperbolic elements over $a(t)$, $t<0$, the
+stable class is the conjugacy class, and $\mathrm{Ad}(\delta_{-1})$
+exchanges the two lifts.
+\end{example}
+
+\begin{example}\label{ex:Delta-finite}
+Let $v$ be finite and non-dyadic, $\psi$ unramified, and $x=(g,\kappa(g))
+\in K^*$ with $c$ and $D^+(g)$ units. Then $\Delta_\psi(x)=1$ and
+$\Delta_{\psi_\varpi}(x)=(\varpi,D^+(g))_v$, the quadratic residue symbol
+of $\det(1+g)$. The second value can be seen in the Weil representation
+of $SL(2,\mathbb F_q)$ on the functions on $\mathbb F_q$, which is the
+space of vectors of $\omega_{\psi_\varpi}$ fixed by $K_1$ (the functions on
+$\varpi^{-1}\OO/\OO$): there the trace of $\omega(g)P$ is
+$\bigl(\frac{\det(1+g)}{q}\bigr)$ for every $g$ with $\det(1+g)\ne0$. The
+script verifies this for $q=3,5,7,11$ by computing the matrices. (The
+character of $\omega_{\psi_\varpi}$ also involves the vectors of higher
+level, which we have not computed separately.)
+\end{example}
+
+\paragraph{The dual group.} The unramified genuine principal series of
+$\Gb$ are parametrized by $\chi_v(\varpi)\in\C^\times$ modulo inversion,
+through $\pi_v=\chi_{\psi,v}\cdot(\chi_v\circ p)$, and the intertwining
+operator has the normalizing factor $L_v(2\lambda,\chi_v^2)/L_v(2\lambda+1,
+\chi_v^2)$ (Lemma~\ref{lem:intertwining}). This is the normalizing factor
+of the principal series of $PGL(2,F)$ induced from $\diag(t_1,t_2)\mapsto
+\chi_v(t_1/t_2)$, whose Satake parameter is $\diag(\chi_v(\varpi),
+\chi_v(\varpi)^{-1})\in SL(2,\C)$. So the dual group of the double cover
+of $SL(2)$ is $SL(2,\C)$, the dual group of $SO(3)=PGL(2)$, and not
+$PGL(2,\C)$, the dual group of $SL(2)$~\cite{Sav,Li11,GGW,We18}. The
+elliptic endoscopic data correspond to the two central elements $\pm1$
+of $SL(2,\C)$. This is why the endoscopic groups are $SO(3)$ twice, why
+the translation by $-1$ appears below, and why no tori occur.
+
+\subsection{Stable and \texorpdfstring{$\kappa$}{kappa}-orbital
+integrals}\label{sec:kappa}
+
+We now sort the orbital integrals in a $G_1(F)$-conjugacy class by the
+characters of $F^\times/N E^\times$. For $SL(2)$ this gives the stable
+orbital integral and one $\kappa$-orbital integral~\cite{LL}. On the
+cover there are again two combinations, and the second is a stable
+orbital integral at another point.
+
+Fix Haar measures on the centralizers so that they are compatible under
+every $\mathrm{Ad}(h)$, $h\in G_1(F)$ (Section~\ref{sec:measures-local}).
+For $x\in\Gb_{\mathrm{reg}}$ over $\gamma$, with centralizer $T_x=T_\gamma$
+in $SL(2,F)$, and $f\in C_c^\infty(\Gb)_-$, let
+\[
+J_G(x,f)=|D(\gamma)|_v^{1/2}\int_{T_x\backslash SL(2,F)}f(y^{-1}xy)\,dy,
+\qquad D(\gamma)=(\operatorname{tr}\gamma)^2-4,
+\]
+as in~\eqref{eq:JG}. Then $J_G(x,f^h)=J_G(\mathrm{Ad}(h)x,f)$ and
+$J_G(x,f^{[h]})=J_G(h\star x,f)$ for $h\in G_1(F)$. Let $E=F[\gamma]$,
+and define
+\begin{equation}\label{eq:Jst}
+J^{\mathrm{st}}_G(x,f)=\sum_{a\in F^\times/N E^\times}J_G(\delta_a\star x,f),
+\qquad
+J^{\kappa}_G(x,f)=\sum_{a\in F^\times/N E^\times}\kappa_E(a)\,
+J_G(\delta_a\star x,f).
+\end{equation}
+The terms depend only on $a$ modulo $N E^\times$, because $\delta_{aN(e)}
+\star x$ is conjugate to $\delta_a\star(e\star x)=\delta_a\star x$ for
+$e\in E^\times$. If $\gamma$ is hyperbolic, both are $J_G(x,f)$.
+
+\begin{lemma}\label{lem:kappa-orbital}
+Let $x\in\Gb_{\mathrm{reg}}$ lie over $\gamma$, $E=F[\gamma]$, and
+$f\in C_c^\infty(\Gb)_-$.
+\begin{enumerate}[label=(\alph*)]
+\item $J^{\mathrm{st}}_G(h\star x,f)=J^{\mathrm{st}}_G(x,f)$ and
+  $J^\kappa_G(h\star x,f)=\kappa_E(\det h)J^\kappa_G(x,f)$ for $h\in
+  G_1(F)$. Equivalently, $J^{\mathrm{st}}_G(x,f^{[h]})=J^{\mathrm{st}}_G(x,
+  f)$: the distribution $J^{\mathrm{st}}_G(x,\cdot)$ is stable.
+\item For a character $\kappa'$ of $F^\times/F^{\times2}$,
+  \[
+  \sum_{a\in F^\times/F^{\times2}}\kappa'(a)\,J_G(x,f^{\delta_a})
+  =[N E^\times:F^{\times2}]\cdot\begin{cases}
+  J^{\mathrm{st}}_G(x,f),&\kappa'=\eta_\gamma,\\
+  J^{\kappa}_G(x,f),&\kappa'=\eta_\gamma\kappa_E,\\
+  0,&\text{otherwise.}\end{cases}
+  \]
+  In particular the average of $J_G(x,f^h)$ over $h\in G_1(F)/Z(F)SL(2,F)$
+  vanishes unless $D^+(\gamma)\in F^{\times2}\cup\theta F^{\times2}$; for
+  $\gamma=a(t)$, unless $t$ is a square.
+\item Let $E$ be a field, and let $\tilde z$ be a lift of $-1$. Then
+  \[
+  J^\kappa_G(x,f_{\tilde z})=J^{\mathrm{st}}_G(\tilde zx,f),
+  \qquad\text{that is,}\qquad
+  J^\kappa_G(x,f)=J^{\mathrm{st}}_G(\tilde zx,f_{\tilde z^{-1}}).
+  \]
+\item Let $v$ be finite and non-dyadic, $f=e_v$, $x\in K^*$ and
+  $|D(\gamma)|_v=1$, and let $T_\gamma\cap K$ have volume $1$. Then
+  $J^{\mathrm{st}}_G(x,e_v)=J^\kappa_G(x,e_v)=J_G(x,e_v)=1$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+(a) $\delta_a\star(h\star x)=(\delta_ah)\star x$. Write
+$\delta_ah=\delta_{a\det h}h_0$ with $h_0\in SL(2,F)$; then $(\delta_ah)
+\star x$ is conjugate to $\delta_{a\det h}\star x$, by
+$\delta_{a\det h}h_0\delta_{a\det h}^{-1}$. So the terms of~\eqref{eq:Jst}
+are permuted by $a\mapsto a\det h$. The reformulation is
+$J_G(y,f^{[h]})=J_G(h\star y,f)$.
+
+(b) $J_G(x,f^{\delta_a})=J_G(\mathrm{Ad}(\delta_a)x,f)=\eta_\gamma(a)
+J_G(\delta_a\star x,f)$, since $f$ is anti-genuine. So the left side is
+$\sum_a\kappa'(a)\eta_\gamma(a)J_G(\delta_a\star x,f)$, and the summand
+$J_G(\delta_a\star x,f)$ depends only on $a$ modulo $N E^\times$. The sum
+of $\kappa'\eta_\gamma$ over a coset of $N E^\times/F^{\times2}$ is $0$
+unless $\kappa'\eta_\gamma$ is trivial on $N E^\times$, that is, unless
+$\kappa'\eta_\gamma\in\{1,\kappa_E\}$. For $\kappa'=1$ the condition is
+$\eta_\gamma\in\{1,\kappa_E\}$.
+
+(c) Write $\gamma=\begin{pmatrix}x_0&y_0\theta\\y_0&x_0\end{pmatrix}$ in a
+suitable basis, $x_0^2-\theta y_0^2=1$. Then
+$D^+(\gamma)D^+(-\gamma)=4-(2x_0)^2=-4\theta y_0^2$, so
+\begin{equation}\label{eq:eta-minus}
+\eta_\gamma\,\eta_{-\gamma}=(\cdot,-\theta)_v=\kappa_E\cdot(\cdot,-1)_v .
+\end{equation}
+By Lemma~\ref{lem:eta}, $\mathrm{Ad}(\delta_a)\tilde z=(a,-1)_v\tilde z$.
+Hence
+\[
+\delta_a\star(\tilde zx)=\eta_{-\gamma}(a)\,(a,-1)_v\,\tilde z\,
+\mathrm{Ad}(\delta_a)x=\eta_{-\gamma}(a)(a,-1)_v\eta_\gamma(a)\cdot
+\tilde z\,(\delta_a\star x)=\kappa_E(a)\,\tilde z\,(\delta_a\star x).
+\]
+Since $J_G(\tilde zy,f)=J_G(y,f_{\tilde z})$, $J_G(\varepsilon y,f)=
+\varepsilon J_G(y,f)$ for $\varepsilon\in\mu_2$, and $D(-\gamma)=D(\gamma)$,
+summing over $a$ gives $J^{\mathrm{st}}_G(\tilde zx,f)=J^\kappa_G(x,
+f_{\tilde z})$.
+
+(d) $J_G(x,e_v)=1$ is the unramified computation used for
+Theorem~\ref{thm:fine}. If $E$ is a field, it is unramified, and
+$\delta_\varpi\star x$ lies over $\delta_\varpi\gamma\delta_\varpi^{-1}$,
+which has no $SL(2,F)$-conjugate in $K$ (proof of
+Theorem~\ref{thm:coarse}(a)); so $J_G(\delta_\varpi\star x,e_v)=0$.
+\end{proof}
+
+Part~(b) explains a statement of the 1995 notes: for the double cover the
+orbital integral of a genuine function at a lift of $a(t)$ does not
+vanish when $t$ is not a square, but its average over the $G_1(F)$-orbit
+does (Appendix~\ref{sec:appendix-1995}). Part~(c) is the form that the
+relation between the endoscopic data $(1,0)$ and $(0,1)$ takes here: Li's
+transfer factors for the two data differ by the translation by the
+central element $-1$~\cite[\S5]{Li11}, and correspondingly the
+$\kappa$-orbital integral of $f$ at $x$ is the stable orbital integral of
+a translate of $f$ at $\tilde zx$. For $SL(2)$ there is no such
+identity: there $J^\kappa$ is a new function on the torus $T_\gamma$, and
+\cite{LL} apply Poisson summation on $T_\gamma$ to it.
+
+By Lemma~\ref{lem:Delta}(b), $x\mapsto\Delta_\psi(x)^{-1}J^{\mathrm{st}}_G
+(x,f)$ is invariant under $\mu_2$ and under $\star$, so it is a function
+of the stable conjugacy class of $p(x)$ in $SL(2,F)$, that is, of the
+trace. Li's transfer theorem~\cite{Li11} says that it is the stable
+orbital integral of a function $f'$ on $SO(3,F)$ at the element with
+eigenvalues $\epsilon,1,\epsilon^{-1}$, where $\epsilon^{\pm1}$ are the
+eigenvalues of $p(x)$, up to a normalization of the transfer factor. We
+do not use this.
+
+\subsection{The elliptic regular terms}\label{sec:elliptic-stable}
+
+Let $\gamma\in G(\Q)=SL(2,k)$ be regular elliptic, $E=k[\gamma]$ its
+splitting field, $T_\gamma$ its centralizer and $\kappa_E=\prod_v\kappa_{E_v}$
+the quadratic character of $k^\times\backslash\A_k^\times$ attached to
+$E$. Everything in Sections~\ref{sec:Ad}--\ref{sec:kappa} has an adelic
+version. Let
+\[
+\eta_\gamma(a)=\prod_v\bigl(a_v,D^+(\gamma)\bigr)_v,\qquad a\in\A_k^\times,
+\]
+a quadratic character of $\A_k^\times$ which is trivial on $k^\times$ by
+the product formula~\ref{H4}, because $D^+(\gamma)=2+\operatorname{tr}
+\gamma\in k^\times$. For $h\in G_1(\A_k)$ and $x$ in the orbit of
+$\pm s(\gamma)$ under $\mathrm{Ad}(G_1(\A_k))$ put
+$h\star x=\eta_\gamma(\det h)\,\mathrm{Ad}(h)x$; its component at $v$ is
+$h_v\star x_v$ in the sense of~\eqref{eq:star}. So for $a\in k^\times$,
+\begin{equation}\label{eq:rational-stable}
+s(\delta_a\gamma\delta_a^{-1})=\mathrm{Ad}(\delta_a)s(\gamma)=\delta_a
+\star s(\gamma)
+\end{equation}
+by Lemma~\ref{lem:Ad}(f): \emph{rational elements that are conjugate
+under $G_1(k)$ are stably conjugate in $\GA$, at every place.} This is
+what makes a stabilization possible, and it is the reason for the twist
+in~\eqref{eq:star}: the untwisted local conjugates
+$\mathrm{Ad}(\delta_a)\gamma_v$ are not coherent in $v$. (Compare
+\cite[Lemme~4.1.7]{Li15}.)
+
+For $f\in\mathcal H(\GA)$ and $x=a\star s(\gamma)$, $a\in\A_k^\times$
+(we write $a\star$ for $\delta_a\star$), let $J_G(x,f)=\int f(y^{-1}xy)\,
+dy$ over $T_x(\A)\backslash G(\A)$, with the Tamagawa measures on $G(\A)$
+and on $T_x(\A)=\delta_aT_\gamma(\A)\delta_a^{-1}$; no factor $|D|^{1/2}$ is
+needed, since $|D(\gamma)|_{\A_k}=1$. Put
+\begin{equation}\label{eq:Jst-global}
+J^{\mathrm{st}}_G(\gamma,f)=\sum_{a\in\A_k^\times/N\A_E^\times}J_G\bigl(a\star
+s(\gamma),f\bigr),\qquad
+J^{\kappa}_G(\gamma,f)=\sum_{a\in\A_k^\times/N\A_E^\times}\kappa_E(a)\,J_G\bigl(
+a\star s(\gamma),f\bigr).
+\end{equation}
+Here $\A_k^\times/N\A_E^\times=\bigoplus_vk_v^\times/N E_v^\times$. By
+Lemma~\ref{lem:kappa-orbital}(d) only finitely many $a$ contribute, and
+for $f=\bigotimes f_v$ and local measures whose products are the Tamagawa
+measures,
+\[
+J^{\mathrm{st}}_G(\gamma,f)=\prod_vJ^{\mathrm{st}}_G(\gamma_v,f_v),\qquad
+J^{\kappa}_G(\gamma,f)=\prod_vJ^{\kappa}_G(\gamma_v,f_v),
+\]
+where $(\gamma_v)$ are local components of $s(\gamma)$; the products do
+not depend on their choice, and almost all factors are $1$.
+
+\begin{theorem}\label{thm:elliptic-stable}
+For $f\in\mathcal H(\GA)$ let
+\[
+S_{\mathrm{ell}}(f)=\frac12\sum_{\gamma}\mathrm{vol}\bigl(T_\gamma(\Q)
+\backslash T_\gamma(\A)\bigr)\,J^{\mathrm{st}}_G(\gamma,f),
+\]
+the sum over a set of representatives $\gamma$ of the $G_1(k)$-conjugacy
+classes of regular elliptic elements of $SL(2,k)$. The sum is finite, and
+\[
+\sum_{\mathcal O\ \mathrm{elliptic}}J_{\mathcal O}(f)=S_{\mathrm{ell}}(f)
++S_{\mathrm{ell}}(f_-).
+\]
+More precisely, for each $\gamma$ the classes $\mathcal O$ contained in
+the $G_1(k)$-conjugacy class of $\gamma$ contribute
+\begin{equation}\label{eq:pre-stab}
+\sum_{\mathcal O\subset G_1(k)\cdot\gamma}J_{\mathcal O}(f)=\frac12\,
+\mathrm{vol}\bigl(T_\gamma(\Q)\backslash T_\gamma(\A)\bigr)\Bigl(
+J^{\mathrm{st}}_G(\gamma,f)+J^{\kappa}_G(\gamma,f)\Bigr),
+\qquad J^\kappa_G(\gamma,f)=J^{\mathrm{st}}_G(-\gamma,f_-).
+\end{equation}
+The distribution $S_{\mathrm{ell}}$ is stable: for $f=\bigotimes_vf_v$ it
+is a finite sum of products of the stable local distributions
+$J^{\mathrm{st}}_G(\gamma_v,\cdot)$ of Lemma~\ref{lem:kappa-orbital}(a).
+\end{theorem}
+
+\begin{proof}
+The $SL(2,k)$-conjugacy classes in the $G_1(k)$-class of $\gamma$ are the
+classes $\mathcal O_a$ of $\delta_a\gamma\delta_a^{-1}$, $a\in k^\times/
+N E^\times$. By Proposition~\ref{prop:elliptic}
+and~\eqref{eq:rational-stable}, $J_{\mathcal O_a}(f)=\mathrm{vol}\cdot
+J_G(a\star s(\gamma),f)$, with the same volume for all $a$, the Tamagawa
+measure being compatible with $\mathrm{Ad}(\delta_a)$. Let
+$\Phi(a)=J_G(a\star s(\gamma),f)$ for $a\in\A_k^\times$. It depends only
+on the image of $a$ in $\A_k^\times/N\A_E^\times$, and it vanishes outside
+a finite set. By the Hasse norm theorem, $k^\times/N E^\times$ injects
+into $\A_k^\times/N\A_E^\times$, and by class field theory its image is the
+kernel of $\kappa_E$, of index $2$~\cite{CF}. Therefore
+\[
+\sum_{a\in k^\times/N E^\times}\Phi(a)=\frac12\sum_{a\in\A_k^\times/N\A_E^\times}
+\bigl(1+\kappa_E(a)\bigr)\Phi(a)=\frac12\Bigl(J^{\mathrm{st}}_G(\gamma,f)+
+J^\kappa_G(\gamma,f)\Bigr).
+\]
+For the second formula of~\eqref{eq:pre-stab} we may take
+$f=\bigotimes f_v$. Choose local components $\gamma_v$ of $s(\gamma)$ and
+$\tilde z_v$ of $s(-1)$. Then $(\tilde z_v\gamma_v)$ are local components
+of $s(-1)s(\gamma)=s(-\gamma)$, and $\bigotimes_v(f_v)_{\tilde z_v^{-1}}=
+f_{s(-1)^{-1}}=f_-$. By Lemma~\ref{lem:kappa-orbital}(c) at the places
+where $E_v$ is a field (at the others both sides are $J_G$),
+\[
+J^\kappa_G(\gamma,f)=\prod_vJ^{\mathrm{st}}_G\bigl(\tilde z_v\gamma_v,
+(f_v)_{\tilde z_v^{-1}}\bigr)=J^{\mathrm{st}}_G(-\gamma,f_-).
+\]
+Finally $\gamma\mapsto-\gamma$ is a bijection of the set of
+$G_1(k)$-classes of regular elliptic elements, with $T_{-\gamma}=
+T_\gamma$. Summing~\eqref{eq:pre-stab} over $\gamma$ gives the first
+formula; the sums are finite by Theorem~\ref{thm:coarse}(a). Stability is
+Lemma~\ref{lem:kappa-orbital}(a) at each place.
+\end{proof}
+
+For $SL(2)$ the first formula of~\eqref{eq:pre-stab} is the
+pre-stabilization of~\cite[\S5]{LL}. The second has no analog there, and
+it is the content of the theorem: the unstable half of the elliptic terms
+of $f$ is the stable half of the elliptic terms of $f_-$. In the notation
+of~\cite[Th\'eor\`eme~5.2.6]{Li15}, where the elliptic part of the trace
+formula is $\sum_{(n',n'')}\iota(\tilde G,H)\,ST^H_{\mathrm{ell}}(f^H)$ with
+$\iota=\frac12$ for both pairs when $n=1$, the two summands are the
+contributions of $(1,0)$ and $(0,1)$; Li's theorem identifies each with
+$\frac12$ of the stable elliptic terms of $SO(3)$ for a transfer of $f$,
+which we do not do (Remark~\ref{rem:sec7-status}).
+
+\begin{example}\label{ex:order4-stable}
+Let $k=\Q$ and $\gamma=w$, of order $4$, with $E=\Q(i)$, $D^+(w)=2$ and
+$\eta_w=\prod_v(\cdot,2)_v$. The $G_1(\Q)$-conjugacy class of $w$ is the
+union of the $SL(2,\Q)$-classes of the $\delta_aw\delta_a^{-1}$,
+$a\in\Q^\times/N E^\times$; there are infinitely many, and for a given $f$
+finitely many contribute. The class $a=-1$ is that of
+$w^{-1}=-w$. So $-w$ lies in the $G_1(\Q)$-class of $w$,
+and~\eqref{eq:pre-stab} reads
+\[
+\sum_{\mathcal O\subset G_1(\Q)\cdot w}J_{\mathcal O}(f)=\tfrac12\,
+\mathrm{vol}\bigl(T_w(\Q)\backslash T_w(\A)\bigr)\bigl(
+J^{\mathrm{st}}_G(w,f)+J^{\mathrm{st}}_G(w,f_-)\bigr).
+\]
+At the real place the stable class of a lift of $w$ consists of two
+conjugacy classes, exchanged by $\mathrm{Ad}(\delta_{-1})$
+(Example~\ref{ex:Delta-real}); at a prime $p\equiv3\pmod4$ it consists of
+two classes, of which one meets $K_p^*$; at $p\equiv1\pmod4$ it is one
+class.
+\end{example}
+
+\subsection{The hyperbolic terms}\label{sec:hyperbolic-gl2}
+
+The stable class of a hyperbolic element is its conjugacy class, so the
+orbital integrals $J_G(x,f)$, $x\in\AS$ regular, are stable
+distributions. The invariant distributions $I_A(x,f)$ of
+Section~\ref{sec:IAgamma} are not orbital integrals, and their
+stabilization is a substantial part of~\cite{LL} and of~\cite{Li21}. Here
+we only determine how they transform under the untwisted action of
+$G_1(k_S)$; this is the correct form of the variance formulas that the
+1995 notes state for conjugation by $GL(2)$.
+
+Let $S$, $\GS$, $\AS$ be as in Section~\ref{sec:invariant}, and
+$G_1(k_S)=\prod_{v\in S_k}GL(2,k_v)$, acting on $\GS$ by $\mathrm{Ad}$.
+Extend the height to $G_1$: for $g\in GL(2,k_v)$ put
+\[
+H_{1,v}(g)=-\log\|e_2g\|_v+\tfrac12\log|\det g|_v,
+\]
+so that $H_{1,v}=H_v$ on $SL(2,k_v)$ (Lemma~\ref{lem:height-ineq}(a)),
+$H_{1,v}(zng)=H_{1,v}(g)$ for $z$ scalar and $n\in N$, and
+$H_{1,v}(\diag(t_1,t_2)g)=\frac12\log|t_1/t_2|_v+H_{1,v}(g)$; let
+$H_1=\sum_{v\in S_k}H_{1,v}$. For $\delta\in G_1(k_S)$ define
+$u'_B(\tilde k,\delta)=-H_1(k\delta)$, $k=p(\tilde k)$, and $f_{B,\delta}$
+by~\eqref{eq:fBy} with this weight; as in Lemma~\ref{lem:uprime}(b),
+$f_{B,\delta}\in C_c^\infty(\AS)_-$. For $a\in k_S^\times$ let $\kappa_a$
+be the character $\tilde a\mapsto\prod_{v\in S_k}(a_v,t_v)_v$ of $\AS$,
+$p(\tilde a)=a(t)$; by Lemma~\ref{lem:Ad}(d), $\pi\circ
+\mathrm{Ad}(\delta_a)=\pi\kappa_a$ for $\pi\in\Pi_u(\AS)$. We need one
+more property of the normalizing factors of
+Theorem~\ref{thm:normalization}:
+\begin{enumerate}[label=(N\arabic*),start=5]
+\item\label{N5} for every $v\in S_k$, $a\in k_v^\times$ and $\pi_v$, the
+  quotient $r_v(\pi_v\kappa_a,\lambda)/r_v(\pi_v,\lambda)$ does not depend
+  on $\lambda$.
+\end{enumerate}
+Where $\pi_v$ and $\pi_v\kappa_a$ are both covered by
+Lemma~\ref{lem:explicit-r}, the explicit factors have this property,
+because they depend on $\pi_v=\chi_{\psi,v}\chi_v$ only through
+$\chi_v^2$, up to a constant. In the remaining cases the factors can be
+chosen with~\ref{N5} (Remark~\ref{rem:N5}), and we assume from now on
+that they are.
+
+\begin{lemma}\label{lem:variance-gl2}
+Let $f\in C_c^\infty(\GS)_-$, $a\in k_S^\times$, $\delta=\delta_a$, and
+$\alpha=\mathrm{Ad}(\delta)$.
+\begin{enumerate}[label=(\alph*)]
+\item For $x\in\GS$ with Iwasawa decompositions $x=n\tilde a\tilde k$,
+  $wx=n'\tilde a'\tilde k'$,
+  \[
+  v_A\bigl(\alpha^{-1}(x)\bigr)=v_A(x)-H_1(k\delta)-H_1(k'\delta).
+  \]
+\item For $\gamma\in\AS$ regular,
+  $J_A(\gamma,f^\delta)=J_A(\alpha\gamma,f)+f_{B,\delta}(\alpha\gamma)+
+  f_{B,\delta}(w\,\alpha\gamma\,w^{-1})$, and $J_G(\gamma,f^\delta)=
+  J_G(\alpha\gamma,f)$.
+\item For $\pi\in\Pi_u(\AS)$ and $\lambda\in i\R$, with $\pi'=\pi\circ
+  \alpha^{-1}=\pi\kappa_a$: $\operatorname{tr}I(\pi_\lambda,f^\delta)=
+  \operatorname{tr}I(\pi'_\lambda,f)$, and if~\ref{N5} holds,
+  \[
+  \varphi_A(f^\delta,\pi_\lambda)=\varphi_A(f,\pi'_\lambda)+
+  \widehat{f_{B,\delta}}(\pi'_\lambda)+\widehat{f_{B,\delta}}\bigl(
+  (\pi')^w_{-\lambda}\bigr).
+  \]
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+(a) The image of $\alpha^{-1}(x)$ in $G(\Q_S)$ is $\delta^{-1}g\delta$,
+$g=p(x)$. By the properties of $H_1$, $H(\delta^{-1}g\delta)=H_1(
+\delta^{-1})+H(g)+H_1(k\delta)$. Since $w\delta^{-1}w^{-1}=\diag(1,a^{-1})$,
+$H(w\delta^{-1}g\delta)=H_1(\diag(1,a^{-1}))+H(wg)+H_1(k'\delta)$, and
+$H_1(\diag(1,a^{-1}))=-H_1(\delta^{-1})$. Subtract from
+$v_A=-H(\cdot)-H(w\,\cdot)$.
+
+(b) $x\mapsto\alpha(x)$ preserves the Haar measure of $G(\Q_S)$ and fixes
+$A(\Q_S)$ pointwise, so it preserves the measure on the quotient.
+Substituting $x=\alpha^{-1}(x')$ in~\eqref{eq:JA},
+\[
+J_A(\gamma,f^\delta)=|D(\gamma)|^{1/2}\int f\bigl(x'^{-1}\alpha(\gamma)x'
+\bigr)\,v_A\bigl(\alpha^{-1}(x')\bigr)\,dx' .
+\]
+Insert~(a) and argue as in the proof of
+Lemma~\ref{lem:variance-local}(b), which uses only the form of the
+difference of the weights.
+
+(c) Realize $I(\pi_\lambda)$ on the space of functions $\Phi$ on $\GS$
+with $\Phi(n\tilde ax)=\pi(\tilde a)e^{(\lambda+1)H_S(\tilde a)}\Phi(x)$,
+by right translation, and let $(A(\lambda)\Phi)(x)=\Phi(\alpha^{-1}x)$.
+Since $\alpha$ preserves $N(\Q_S)$ and $H_S$ on $\AS$, $A(\lambda)$ maps
+$I(\pi_\lambda)$ to $I(\pi'_\lambda)$, and $A(\lambda)^{-1}I(\pi'_\lambda,
+y)A(\lambda)=I(\pi_\lambda,\alpha^{-1}y)$; integrating against $f$,
+\begin{equation}\label{eq:A-conj}
+A(\lambda)^{-1}\,I(\pi'_\lambda,f)\,A(\lambda)=I(\pi_\lambda,f^\delta),
+\end{equation}
+which gives the first statement. In the compact picture $A(\lambda)$
+depends on $\lambda$ through $e^{(\lambda+1)H_S(\alpha^{-1}\tilde k)}$, so
+$\frac{d}{d\lambda}A(\lambda)=\tilde HA(\lambda)$, where $\tilde H$ is
+multiplication by $\tilde k\mapsto H_S(\alpha^{-1}\tilde k)=H_1(\delta^{-1})
++H_1(k\delta)$. Next we compare intertwining operators. By
+Lemma~\ref{lem:Ad}(d), $\alpha^{-1}((w,1)^{-1})=(w,1)^{-1}\tilde b$ with
+$\tilde b\in\AS$ over $a(a)$, and $\alpha^{-1}(n(u))=n(a^{-1}u)$. Two
+changes of variable in the integral defining $M(\pi',\lambda)$ give
+\[
+M(\pi',\lambda)\,A(\lambda)=c(\lambda)\,A(-\lambda)\,M(\pi,\lambda),
+\qquad c(\lambda)=\pi^w(\tilde b)\,|a|_S^{-\lambda},
+\]
+where $A(-\lambda)$ is formed with $\pi^w$. Hence, with $R=r^{-1}M$ and
+$\rho(\lambda)=r(\pi',\lambda)\,c(\lambda)^{-1}r(\pi,\lambda)^{-1}$,
+\[
+A(-\lambda)\,R_S(\pi,\lambda)=\rho(\lambda)\,R_S(\pi',\lambda)\,A(\lambda),
+\qquad\frac{\dot\rho}{\rho}=\frac{\dot r}{r}(\pi',\lambda)-\frac{\dot r}{r}
+(\pi,\lambda)+\log|a|_S ,
+\]
+where a dot denotes $d/d\lambda$. Differentiate, and multiply on the left
+by $(\rho R_S(\pi',\lambda))^{-1}=A(\lambda)R_S(\pi,\lambda)^{-1}
+A(-\lambda)^{-1}$. Writing $R$ for $R_S(\pi,\lambda)$ and $R^\natural$ for
+$R_S(\pi',\lambda)$,
+\[
+(R^\natural)^{-1}\dot R^\natural=A(\lambda)\,R^{-1}\dot R\,A(\lambda)^{-1}
+-\frac{\dot\rho}{\rho}-\tilde H-(R^\natural)^{-1}\tilde HR^\natural .
+\]
+The constant $H_1(\delta^{-1})=-\frac12\log|a|_S$ in $\tilde H$
+contributes $+\log|a|_S$, which cancels against the last term of
+$\dot\rho/\rho$; what remains of $\dot\rho/\rho$ vanishes by~\ref{N5}. Take
+the trace against $I(\pi'_\lambda,f)$, use~\eqref{eq:A-conj},
+\ref{N1}, and Lemma~\ref{lem:uprime}(c) for the multiplication operator
+$-H_1(k\delta)=u'_B(\tilde k,\delta)$:
+\[
+\varphi_A(f,\pi'_\lambda)=\varphi_A(f^\delta,\pi_\lambda)-
+\widehat{f_{B,\delta}}(\pi'_\lambda)-\widehat{f_{B,\delta}}\bigl((\pi')^w_{
+-\lambda}\bigr).\qedhere
+\]
+\end{proof}
+
+\begin{proposition}\label{prop:IA-gl2}
+Assume~\ref{N5}. Let $f\in C_c^\infty(\GS)_-$ and $h\in G_1(k_S)$.
+\begin{enumerate}[label=(\alph*)]
+\item $I_A(x,f^h)=I_A(\mathrm{Ad}(h)x,f)$ for $x\in\AS$ regular or
+  central, whenever $\mathrm{Ad}(h)x\in\AS$.
+\item For $h=\delta_a$ and $x$ over $a(t)$:
+  $I_A(x,f^{\delta_a})=(a,t)_S\,I_A(x,f)$, with $(a,t)_S=\prod_{v\in S_k}
+  (a_v,t_v)_v$; for a lift $\tilde z$ of $-1$,
+  $I_A(\tilde z,f^{\delta_a})=(a,-1)_S\,I_A(\tilde z,f)$.
+\item $\operatorname{tr}I(\pi,f^{\delta_a})=\operatorname{tr}I(\pi\kappa_a,
+  f)$, and $\operatorname{tr}I(\pi,f^{[h]})=\operatorname{tr}I(\pi,f)$:
+  the characters of the principal series are stable.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+(a) For $h\in SL(2,k_S)$ this is Theorem~\ref{thm:IA}(b). Let
+$h=\delta=\delta_a$. By Lemma~\ref{lem:variance-gl2}(c) and Fourier
+inversion on $\AS$, substituting $\pi\mapsto\pi'$ and using
+$\pi(\tilde a)=\pi'(\alpha\tilde a)$,
+\[
+\Phi_A(\tilde a,f^\delta)=\Phi_A(\alpha\tilde a,f)+f_{B,\delta}(\alpha
+\tilde a)+f_{B,\delta}(w\,\alpha\tilde a\,w^{-1}).
+\]
+Subtract from Lemma~\ref{lem:variance-gl2}(b). For central $x$ use the
+limit of Lemma~\ref{lem:JA-central}(b), as for
+Lemma~\ref{lem:variance-local}(c). (b) follows from~(a),
+Lemma~\ref{lem:Ad}(d) and the fact that $I_A(\cdot,f)$ is anti-genuine.
+(c) The first statement is Lemma~\ref{lem:variance-gl2}(c). By the proof
+of Theorem~\ref{thm:IA}(a), $\operatorname{tr}I(\pi,f)=\int_{\AS}\pi(\tilde
+a)J_G(\tilde a,f)\,d\tilde a$, an integral of hyperbolic orbital
+integrals, and $J_G(\tilde a,f^{[h]})=J_G(h\star\tilde a,f)=J_G(\tilde
+a,f)$ because $h\star\tilde a$ is conjugate to $\tilde a$.
+\end{proof}
+
+\begin{remarkrev}\label{rem:N5}
+\emph{The condition~\ref{N5}.} Given factors $r_v$ as in
+Theorem~\ref{thm:normalization}, choose a set of representatives $\pi_v$
+for the orbits of $k_v^\times/k_v^{\times2}$ acting on the genuine
+characters of $\overline{A(k_v)}$ by $\pi_v\mapsto\pi_v\kappa_a$, and
+redefine $r_v(\pi_v\kappa_a,\lambda)=c(\lambda)\,r_v(\pi_v,\lambda)$ with
+$c(\lambda)$ as in the proof of Lemma~\ref{lem:variance-gl2}(c). Then
+$R_v(\pi_v\kappa_a,\lambda)=A(-\lambda)R_v(\pi_v,\lambda)A(\lambda)^{-1}$,
+and \ref{N1}--\ref{N3} are transported by the operators $A(\pm\lambda)$,
+which are scalar multiples of unitary operators for $\lambda\in i\R$. We
+have not written out the verification, nor checked that the factors
+of~\cite{LiII} have property~\ref{N5} as they stand. The distributions
+$I_A(x,f)$ depend on the choice (Remark~\ref{rem:bad-places}).
+\end{remarkrev}
+
+So $I_A(x,\cdot)$ transforms under $G_1(k_S)$ by the character
+$h\mapsto(\det h,t)_S=\eta_x(\det h)$, as the orbital integral
+$J_G(x,\cdot)$ does. This does \emph{not} say that $I_A(x,\cdot)$ is
+stable. Stability is invariance under $f\mapsto f^{[h]}$, where the sign
+$\eta_y(\det h)$ varies with the point $y$ of the support of $f$, and
+$I_A(x,f)$ depends on $f$ away from the class of $x$. At a real place, for instance, $\Phi_A(x,f)$ is built from the operators
+$R_v^{-1}R_v'$, whose poles are the points $\lambda=a_i,b_i$ at which
+$I(\pi_\lambda)$ has a single discrete series representation as a
+subquotient (Example~\ref{ex:real-R}), while a stable character involves
+two discrete series representations with different central
+characters~\cite{Ad}. The stabilization of these terms in~\cite{Li21}
+expresses them through stable distributions on the endoscopic groups for
+both endoscopic data; it requires the weighted fundamental
+lemma~\cite{Li12} and is not attempted here.
+
+\subsection{The central terms and the unipotent coefficients}
+\label{sec:unipotent}
+
+The class $\mathcal O_z$ of $z=\pm1$ contributes $J_{\mathrm{unip}}(f_z)$,
+which Proposition~\ref{prop:central} expresses through the zeta integral
+$Z(f,s)$. Its second form in~\eqref{eq:Zf} is a sum over the rational
+unipotent classes $\xi\in k^\times/k^{\times2}$; grouped according to the
+image of $\xi$ in $k_S^\times/k_S^{\times2}$ it diverges at $s=1$, class by
+class; this is the difficulty noted in
+Remark~\ref{rem:sec4-status}. The way out, as in~\cite{LL}, is to expand
+in the characters of the compact group $\A_k^\times/k^\times\A_k^{\times2}$
+instead. This computes the coefficients $a^G(S,u_\xi)$ of
+Theorem~\ref{thm:fine}.
+
+Let $S$ be as in Theorem~\ref{thm:tf}: a finite set of places of $\Q$
+containing $\infty$, $2$ and the places below which $\psi$ is ramified.
+In this subsection we assume in addition that the ring $\OO_S$ of
+elements of $k$ that are integral outside $S_k$ is a principal ideal
+domain, which holds once $S$ is large enough (and always for $k=\Q$).
+Let $\mathfrak X_S$ be the group of quadratic characters $\kappa$ of
+$k^\times\backslash\A_k^\times$ that are unramified outside $S_k$,
+$\kappa_S$ the restriction of $\kappa$ to $k_S^\times$, and
+$L^S(s,\kappa)=\prod_{v\notin S_k}(1-\kappa_v(\varpi_v)q_v^{-s})^{-1}$. For
+$\kappa=1$ this is $\zeta_k^S(s)$; write
+\[
+\zeta_k^S(s)=\frac{\rho_S}{s-1}+c_S+O(s-1).
+\]
+By Lemma~\ref{lem:w-action}(d) and its proof, $\mathfrak X_S=\{\kappa_b
+\mid b\in\OO_S^\times/\OO_S^{\times2}\}$ with $\kappa_b(t)=\prod_v(b,t_v)_v$;
+it has $2^{|S_k|}$ elements, by the unit theorem. For $f_S=\bigotimes_{v
+\in S_k}f_v$, $z\in\{\pm1\}$ and $\Phi_v$ as in
+Lemma~\ref{lem:JA-central}, put
+\[
+Z_v(\Phi_v,\kappa_v,s)=\int_{k_v^\times}\Phi_v(y)\kappa_v(y)|y|_v^s\,d^\times y,
+\qquad Z_S(\Phi_S,\kappa_S,s)=\prod_{v\in S_k}Z_v(\Phi_v,\kappa_v,s),
+\]
+Tate's local zeta integrals~\cite{Ta}, holomorphic for $\mathrm{Re}\,s>0$;
+by linearity $Z_S$ is defined for all $f_S\in\mathcal H(\GS)$. For
+$\xi\in k_S^\times$ let
+\begin{equation}\label{eq:JG-unip}
+J_G(zu_\xi,f_S)=|\xi|_S\int_{\{\pm1\}N(\Q_S)\backslash G(\Q_S)}
+f_S\bigl(x^{-1}z\,n(\xi)\,x\bigr)\,dx
+=\prod_{v\in S_k}\frac{|\xi|_v}2\int_{k_v^\times}\Phi_v(\xi t^2)|t|_v^2\,
+d^\times t,
+\end{equation}
+the second expression by Lemma~\ref{lem:JA-central}(c). The factor
+$|\xi|_S$ makes $J_G(zu_\xi,f_S)$ depend only on the class of $\xi$ in
+$k_S^\times/k_S^{\times2}$; it is the orbital integral for the measure on
+the centralizer of $n(\xi)$ transported from that of $n(1)$.
+
+\begin{proposition}\label{prop:unipotent}
+Let $S$ be as above, $f_S\in\mathcal H(\GS)$, $f=f_S\otimes e^S$ and
+$z\in\{\pm1\}$.
+\begin{enumerate}[label=(\alph*)]
+\item For $\mathrm{Re}\,s>1$,
+  \[
+  Z(f_z,s)=\frac12\sum_{\kappa\in\mathfrak X_S}L^S(s,\kappa)\,
+  Z_S(\Phi_S,\kappa_S,s).
+  \]
+\item For every character $\kappa_S$ of $k_S^\times/k_S^{\times2}$,
+  \[
+  Z_S(\Phi_S,\kappa_S,1)=\sum_{\xi\in k_S^\times/k_S^{\times2}}\kappa_S(\xi)\,
+  J_G(zu_\xi,f_S)=:J^\kappa_{\mathrm{unip}}(z,f_S),
+  \]
+  and $\frac{d}{ds}Z_S(\Phi_S,1,s)\big|_{s=1}=\rho_S^{-1}c_k\,J_A(z,f_S)$.
+\item Consequently
+  \begin{multline*}
+  J_{\mathcal O_z}(f)=\mathrm{vol}\bigl(G(\Q)\backslash\GA\bigr)f_S(z)
+  +\frac{c_k}2\,J_A(z,f_S)\\
+  +\frac{c_S}2\,J^1_{\mathrm{unip}}(z,f_S)
+  +\frac12\sum_{\kappa\in\mathfrak X_S,\ \kappa\ne1}L^S(1,\kappa)\,
+  J^\kappa_{\mathrm{unip}}(z,f_S).
+  \end{multline*}
+  This is Theorem~\ref{thm:fine}(a), with
+  \[
+  a^G(S,u_\xi)=\frac12\Bigl(c_S+\sum_{\kappa\in\mathfrak X_S,\ \kappa\ne1}
+  \kappa_S(\xi)\,L^S(1,\kappa)\Bigr),\qquad\xi\in k_S^\times/k_S^{\times2}.
+  \]
+\item For $a\in k_S^\times$,
+  \[
+  J_G(zu_\xi,f_S^{\delta_a})=(a,z)_S\,J_G(zu_{a\xi},f_S),\qquad
+  J^\kappa_{\mathrm{unip}}(z,f_S^{\delta_a})=\kappa_S(a)\,(a,z)_S\,
+  J^\kappa_{\mathrm{unip}}(z,f_S).
+  \]
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+We may replace $f$ by $f_z$ and take $z=1$; then $\Phi_f=\Phi_S\otimes
+\bigotimes_{v\notin S_k}\mathbf 1_{\OO_v}$.
+
+\emph{A local identity.} For $h$ integrable on $k_v^\times$ and
+$\xi\in k_v^\times$,
+\begin{equation}\label{eq:squares}
+\int_{k_v^\times}h(\xi t^2)\,d^\times t=\frac12\sum_{\kappa_v}\kappa_v(\xi)
+\int_{k_v^\times}h(y)\kappa_v(y)\,d^\times y,
+\end{equation}
+the sum over the characters of $k_v^\times/k_v^{\times2}$. Indeed
+$t\mapsto t^2$ is two-to-one onto the open subgroup $k_v^{\times2}$ and
+multiplies $d^\times t$ by $|2|_v$, so the left side is
+$2|2|_v^{-1}\int_{\xi k_v^{\times2}}h\,d^\times y$; and the characteristic
+function of $\xi k_v^{\times2}$ is $[k_v^\times:k_v^{\times2}]^{-1}
+\sum_{\kappa_v}\kappa_v(\xi)\kappa_v$. The index is $4|2|_v^{-1}$ at every
+place ($4|2|_v^{-1}$ for $v$ finite, $2$ for $v$ real, $1$ for $v$
+complex, with the normalized absolute values).
+
+(a) Let $\Gamma=\OO_S^\times$ and $Y_1=k_S^\times\times\prod_{v\notin S_k}
+\OO_v^\times$. Since $\OO_S$ is principal, $\A_k^\times=k^\times Y_1$ and
+$k^\times\cap Y_1=\Gamma$, so $\A_k^\times$ is the disjoint union of the
+$cY_1$, $c\in k^\times/\Gamma$. For $\eta\in k^\times$ let
+$J(\eta)=\int_{Y_1}\Phi_f(\eta t^2)|t|^{2s}d^\times t$. Then the integral
+in the second form of~\eqref{eq:Zf} is $\sum_{c\in k^\times/\Gamma}J(\xi
+c^2)$, and $(\xi,c)\mapsto\xi c^2$ is a bijection from
+$(k^\times/k^{\times2})\times(k^\times/\Gamma)$ onto $k^\times/\Gamma^2$
+(because $-1\in\Gamma$). So $Z(f,s)=\frac12\sum_{\eta\in k^\times/\Gamma^2}
+J(\eta)$. Now $J(\eta)=0$ unless $\eta\in\OO_S$, and
+by~\eqref{eq:squares} at each $v\in S_k$, applied to $h=\Phi_v|\cdot|_v^s$,
+\[
+J(\eta)=|\eta|_S^{-s}\,2^{-|S_k|}\sum_{\kappa_S}\kappa_S(\eta)\,
+Z_S(\Phi_S,\kappa_S,s)\qquad(\eta\in\OO_S\smallsetminus\{0\}).
+\]
+Summing over $\eta$ modulo $\Gamma^2$: the sum of $\kappa_S$ over
+$\Gamma/\Gamma^2$ is $2^{|S_k|}$ if $\kappa_S$ is trivial on $\Gamma$ and
+$0$ otherwise. The characters $\kappa_S$ trivial on $\Gamma$ are the
+restrictions of the $\kappa\in\mathfrak X_S$, and for such $\kappa$ and
+$\eta\in\OO_S$, $\kappa_S(\eta)=\prod_{v\notin S_k}\kappa_v(\varpi_v)^{
+\ord_v\eta}$ and $|\eta|_S^{-1}=\prod_{v\notin S_k}q_v^{\ord_v\eta}$, by the
+product formula. The sum over $\eta\in(\OO_S\smallsetminus\{0\})/\Gamma$
+runs over the nonzero ideals of $\OO_S$ and gives $L^S(s,\kappa)$.
+
+(b) By~\eqref{eq:squares} with $h=\Phi_v|\cdot|_v$ and~\eqref{eq:JG-unip},
+$J_{G,v}(u_\xi,f_v)=\frac14\sum_{\kappa_v}\kappa_v(\xi)Z_v(\Phi_v,\kappa_v,
+1)$; invert on $k_v^\times/k_v^{\times2}$ and multiply over $v\in S_k$. The
+constant is $\prod_{v\in S_k}4\,[k_v^\times:k_v^{\times2}]^{-1}=\prod_{v\in
+S_k}|2|_v=1$, because $S_k$ contains all places at which $|2|_v\ne1$. For
+the derivative, let $d^\times t=c'_v\,dt/|t|_v$ at $v\in S_k$, $dt$ the
+self-dual measure, and $C'=\prod_{v\in S_k}c'_v$. Then
+$Z_S(\Phi_S,1,1)=C'\prod_v\hat\Phi_v(0)$ and
+\[
+\frac{d}{ds}Z_S(\Phi_S,1,s)\Big|_{s=1}=C'\sum_{v\in S_k}\Bigl(\int_{k_v}
+\Phi_v(y)\log|y|_v\,dy\Bigr)\prod_{w\ne v}\hat\Phi_w(0)=C'\,J_A(1,f_S),
+\]
+by Lemma~\ref{lem:JA-central}(b), since $\sum_{v\in S_k}\log|2|_v=0$.
+Comparing the residue of~(a) at $s=1$, which is $\frac12\rho_SC'
+\prod_v\hat\Phi_v(0)$, with the residue $\frac12c_k\hat\Phi_f(0)$ of
+Proposition~\ref{prop:central} gives $\rho_SC'=c_k$.
+
+(c) By~(a), the finite part of $Z(f,s)$ at $s=1$ is $\frac12\bigl(c_S
+Z_S(\Phi_S,1,1)+\rho_S\frac{d}{ds}Z_S(\Phi_S,1,s)|_{s=1}\bigr)+\frac12
+\sum_{\kappa\ne1}L^S(1,\kappa)Z_S(\Phi_S,\kappa_S,1)$; for $\kappa\ne1$,
+$L^S(s,\kappa)$ is holomorphic at $s=1$. Insert~(b) and
+Proposition~\ref{prop:central}. The coefficient of $J_G(zu_\xi,f_S)$ is
+read off from the definition of $J^\kappa_{\mathrm{unip}}$.
+
+(d) $x\mapsto\delta_ax\delta_a^{-1}$ preserves the Haar measure of
+$G(\Q_S)$ and multiplies that of $N(\Q_S)$ by $|a|_S$; so
+$\int h(\delta_ax\delta_a^{-1})\,dx=|a|_S\int h(x)\,dx$ for the invariant
+measure on the quotient by $\{\pm1\}N(\Q_S)$. With Lemma~\ref{lem:Ad}(d),
+this gives $\int f_S^{\delta_a}(
+x^{-1}zn(\xi)x)\,dx=(a,z)_S\,|a|_S\int f_S(x^{-1}zn(a\xi)x)\,dx$. Multiply
+by $|\xi|_S$, and sum against $\kappa_S(\xi)$.
+\end{proof}
+
+Part~(c) proves the fine expansion at the central classes directly from
+the coarse one, for the sets $S$ considered, and so removes the appeal
+to~\cite{A12,LiI} in Theorem~\ref{thm:fine}(a). The terms with
+$\kappa\ne1$ are the analog of the terms of~\cite[\S5]{LL} that involve
+$L(1,\kappa)$; in the 1995 notes they were written as a sum over the
+rational unipotent classes, which diverges
+(Appendix~\ref{sec:appendix-1995}).
+
+\begin{example}\label{ex:unip-coeff}
+Let $k=\Q$ and $S=\{\infty,2\}$. Then $\OO_S=\Z[\frac12]$,
+$\mathfrak X_S=\{\kappa_b\mid b=\pm1,\pm2\}$, and
+$\zeta^S(s)=(1-2^{-s})\zeta(s)$, so $\rho_S=\frac12$ and
+$c_S=\frac12(\gamma_E+\log2)$, with Euler's constant $\gamma_E$. The
+characters $\kappa_{-1}$, $\kappa_2$, $\kappa_{-2}$ are the Dirichlet
+characters of conductor $4$, $8$, $8$, and
+\[
+L^S(1,\kappa_{-1})=\frac\pi4,\qquad L^S(1,\kappa_2)=\frac{\log(1+\sqrt2)}
+{\sqrt2},\qquad L^S(1,\kappa_{-2})=\frac\pi{2\sqrt2}.
+\]
+For the $16$ classes $\xi\in\Q_S^\times/\Q_S^{\times2}$,
+\[
+a^G(S,u_\xi)=\frac12\Bigl(\frac{\gamma_E+\log2}2+\sum_{b\in\{-1,2,-2\}}
+(b,\xi_\infty)_\infty(b,\xi_2)_2\,L^S(1,\kappa_b)\Bigr);
+\]
+for instance $a^G(S,u_1)\approx1.57726$ and $a^G(S,u_{-1})\approx-0.31886$.
+The coefficients are not positive, and they depend on $\xi$ only through
+the pairings with $b\in\{\pm1,\pm2\}$, the same parameters as those of the
+ramified classes $\chi_{\psi_b}$ in Example~\ref{ex:ramified-Q}. The
+script checks~(a) numerically at $s=3$ for a test function with
+$\Phi_\infty$ not even and $\Phi_2$ the characteristic function of
+$6+16\Z_2$.
+\end{example}
+
+By part~(d), $J^\kappa_{\mathrm{unip}}(1,\cdot)$ transforms under
+$G_1(k_S)$ by $\kappa_S(\det h)$. Near the identity $\eta_x=1$ (because
+$D^+$ is close to $4$), so there the twisted and the untwisted actions
+agree: $J^1_{\mathrm{unip}}(1,\cdot)$, the sum over all unipotent classes,
+is the stable unipotent distribution, and the
+$J^\kappa_{\mathrm{unip}}(1,\cdot)$ with $\kappa\ne1$ are the unstable
+ones. For $SL(2)$ the latter are the limits, as $\gamma\to1$ in the torus
+$T_E$ with $\kappa_E=\kappa$, of the $\kappa$-orbital integrals, up to the
+factor $L(1,\kappa)$~\cite[\S\S2,~5]{LL}. On the cover the same should
+hold near the identity, where the cover is canonically split on the
+topologically unipotent set, and by Lemma~\ref{lem:kappa-orbital}(c) the
+$\kappa$-orbital integrals near $1$ are the stable orbital integrals of
+$f_-$ near $-1$. So the terms $L^S(1,\kappa)J^\kappa_{\mathrm{unip}}(1,
+f_S)$, $\kappa\ne1$, should be counted with $S(f_-)$, and the
+corresponding terms at $z=-1$ with $S(f)$. We have not proved these limit
+formulas for the cover (Remark~\ref{rem:sec7-status}).
+
+\subsection{The spectral side}\label{sec:spectral-gl2}
+
+On the spectral side the group $G_1(k)$ acts on the space of automorphic
+forms, and the pieces of the spectral decomposition are permuted. We
+record this, and then compute the one family of discrete terms whose
+stable structure is visible without endoscopy: the theta functions.
+
+For $h\in G_1(k)$ and a function $\varphi$ on $G(\Q)\backslash\GA$ put
+$(U_h\varphi)(x)=\varphi(\mathrm{Ad}(h)^{-1}x)$; this is well defined by
+Lemma~\ref{lem:Ad}(f). For $a\in k^\times$ let $\kappa_a$ also denote the
+character $\tilde a\mapsto\prod_v(a,t_v)_v$ of $\overline{A(\A)}$.
+
+\begin{lemma}\label{lem:spectrum-gl2}
+Let $h\in G_1(k)$ and $a=\det h$.
+\begin{enumerate}[label=(\alph*)]
+\item $U_h$ is a unitary operator on $L^2_{\mathrm{gen}}$ with
+  $U_hR(y)U_h^{-1}=R(\mathrm{Ad}(h)y)$ and $U_hR(f)U_h^{-1}=R(f^{h^{-1}})$.
+  It preserves $L^2_{\mathrm{cusp}}$, $L^2_{\mathrm{res}}$ and
+  $L^2_{\mathrm{cont}}$.
+\item $U_h$ maps $L^2_\chi$ onto $L^2_{\chi^h}$, where $(G,\pi)^h=
+  (G,\pi\circ\mathrm{Ad}(h)^{-1})$ and $(A,\mu)^h=(A,\mu\kappa_a)$. In
+  particular $m(\pi\circ\mathrm{Ad}(h))=m(\pi)$, $\chi_{\psi_b}\kappa_a=
+  \chi_{\psi_{ab}}$, and $U_hV_b=V_{ab}$.
+\item Let $f=f_S\otimes e^S$ and $h_v\in Z(k_v)GL(2,\OO_v)$ for all
+  $v\notin S_k$. Then $\operatorname{tr}(R(f^h)|_{L^2_{\chi,\mathrm{disc}}})=
+  \operatorname{tr}(R(f)|_{L^2_{\chi^h,\mathrm{disc}}})$ for every $\chi$, and
+  if~\ref{N5} holds, $I_\chi(f^h)=I_{\chi^h}(f)$. Hence
+  $\sum_\chi I_\chi(f^h)=\sum_\chi I_\chi(f)$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+(a) $\mathrm{Ad}(h)$ preserves $G(\Q)$ and the Tamagawa measure, which
+gives unitarity and the two formulas. It preserves $N(\A)$ and its Haar
+measure up to the factor $|a|_{\A_k}=1$, so $(U_h\varphi)_B=U_h(\varphi_B)$
+for the constant term along $B$; hence cusp forms go to cusp forms, and
+the orthogonal complement, the discrete and the continuous parts of it,
+are preserved. (b) By Lemma~\ref{lem:Ad}(d), $\mathrm{Ad}(h)^{-1}$ acts
+on $\overline{A(\A)}$ by the character $\kappa_a$ (for $h=\delta_a$, and
+conjugation by $SL(2,k)$ does not change the class of a cuspidal datum).
+So $U_h$ maps $\mathcal H_B(\mu)$ to $\mathcal H_B(\mu\kappa_a)$ and
+Eisenstein series, their wave packets and their residues to the
+corresponding objects for $\mu\kappa_a$. The formula for
+$\chi_{\psi_b}\kappa_a$ is Lemma~\ref{lem:weil}(d). (c) By
+Lemma~\ref{lem:Ad}(e), $f^h=f_S^{h_S}\otimes e^S$. The first statement
+follows from~(a) and~(b): $\operatorname{tr}(R(f^h)|_{L})=
+\operatorname{tr}(R(f)|_{U_hL})$ for an invariant subspace $L$. This gives
+$I_\chi(f^h)=I_{\chi^h}(f)$ for $\chi\in\mathcal X_G$ and for the residual
+terms. For $\mu\in\Pi_{\mathrm{aut}}(X_A)$, $\operatorname{tr}I(\mu_{it},
+f^h)=\operatorname{tr}I((\mu\kappa_a)_{it},f)$ by
+Lemma~\ref{lem:variance-gl2}(c), and $\frac{m'}m(\mu\kappa_a,\lambda)=
+\frac{m'}m(\mu,\lambda)$: in~\eqref{eq:global-m} the partial $L$-functions
+depend only on $\chi^2$, and the local factors change by constants,
+by~\ref{N5}. So the terms of Theorem~\ref{thm:itf}(e),(f) for $\chi$ and
+$f^h$ are those for $\chi^h$ and $f$.
+\end{proof}
+
+The geometric counterpart of~(c) is Theorem~\ref{thm:stabler}(c) below.
+
+Now fix $b\in k^\times$ and put $\psi'=\psi_{-b}$, as in
+Theorem~\ref{thm:residual}(c). For a pattern of signs
+$\varepsilon=(\varepsilon_v)_v$, with $\varepsilon_v=+$ for almost all
+$v$, let $r^\varepsilon_{\psi'}=\bigotimes'_vr^{\varepsilon_v}_{\psi'_v}$, an
+irreducible genuine unitary representation of $\GA$ on the functions in
+$\mathcal S(\A_k)$ of parity $\varepsilon_v$ at each $v$. Let
+\[
+\Theta_b=\bigl\{\theta^{\psi'}_\phi\ \big|\ \phi\in\mathcal S(\A_k)\bigr\}^{-}
+\subset L^2_{\mathrm{gen}},
+\]
+the closure of the space of all theta functions~\eqref{eq:theta}, even or
+not; and for $f=\bigotimes f_v$ let
+\[
+\Theta^{\mathrm{st}}_b(f)=\prod_v\bigl(\operatorname{tr}r^+_{\psi'_v}(f_v)-
+\operatorname{tr}r^-_{\psi'_v}(f_v)\bigr)=\prod_v\int f_v(x)\,
+\frac{\Delta_{\psi'_v}(x)}{|D^+(x)|_v^{1/2}}\,dx,
+\]
+the second expression by Proposition~\ref{prop:weil-char}. Almost all
+factors are $1$. Both $\Theta_b$ and $\Theta^{\mathrm{st}}_b$ depend only
+on the class of $b$ in $k^\times/k^{\times2}$: the substitution
+$\phi(x)\mapsto\phi(cx)$, $c\in k^\times$, carries $\omega_{\psi'}$ to
+$\omega_{\psi'_{c^{-2}}}$, preserves parities, and does not change
+$\sum_{\xi\in k}$.
+
+\begin{proposition}\label{prop:theta-packet}
+\begin{enumerate}[label=(\alph*)]
+\item $\phi\mapsto\theta^{\psi'}_\phi$ is zero on $r^\varepsilon_{\psi'}$ if
+  $\prod_v\varepsilon_v=-1$ and injective if $\prod_v\varepsilon_v=+1$. So
+  \[
+  \Theta_b\cong\bigoplus_{\prod_v\varepsilon_v=+1}r^\varepsilon_{\psi'},
+  \]
+  a subspace of $L^2_{\mathrm{disc}}$; the summand with all
+  $\varepsilon_v=+$ is $V_b$, and the others are cuspidal.
+\item For $f=\bigotimes_vf_v\in\mathcal H(\GA)$,
+  \[
+  \operatorname{tr}\bigl(R(f)\big|_{\Theta_b}\bigr)=\tfrac12\,
+  \Theta^{\mathrm{st}}_b(f)+\tfrac12\,\Theta^{\mathrm{st}}_b(f_-).
+  \]
+\item $\Theta^{\mathrm{st}}_b$ is a stable distribution:
+  $\Theta^{\mathrm{st}}_b(f^{[h]})=\Theta^{\mathrm{st}}_b(f)$ for
+  $h\in G_1(\A_k)$. Moreover $U_h\Theta_b=\Theta_{ab}$ and
+  $\Theta^{\mathrm{st}}_b(f^h)=\Theta^{\mathrm{st}}_{ab}(f)$ for
+  $h\in G_1(k)$, $a=\det h$.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+(a) $\theta_{\omega(y)\phi}(x)=\theta_\phi(xy)$, so $\phi\mapsto
+\theta_\phi$ intertwines $\omega_{\psi'}$ with $R$. The parity operator
+$P=\bigotimes_vP_v$ satisfies $\theta_{P\phi}=\theta_\phi$ (replace $\xi$
+by $-\xi$ in~\eqref{eq:theta}; $P$ commutes with $\omega$). If
+$\prod\varepsilon_v=-1$, then $P\phi=-\phi$ on $r^\varepsilon$ and
+$\theta_\phi=0$. If $\prod\varepsilon_v=+1$, let $S_0$ be a finite set of places
+containing the archimedean ones and those with $\varepsilon_v=-$, and
+$\xi_0=1$. Put $\phi_v=\mathbf 1_{\OO_v}$ for $v\notin S_0$, and
+$\phi_v=h_v+\varepsilon_vP_vh_v$ for $v\in S_0$, where $h_v$ is supported
+in a neighborhood $U_v$ of $\xi_0$ with $U_v\cap(-U_v)=\emptyset$ and
+$h_v(\xi_0)=1$. Then $\phi=\bigotimes\phi_v\in r^\varepsilon$. Since $k$ is
+discrete in $\A_k$, for $U_v$ small enough the only $\xi\in k$ that are
+integral outside $S_0$ and lie in $U_v\cup(-U_v)$ for every $v\in S_0$ are
+$\pm\xi_0$, and $\theta_\phi(1)=\phi(\xi_0)+\phi(-\xi_0)=1+\prod_{v\in S_0}
+\varepsilon_v=2$. So the map is not zero on the irreducible
+$r^\varepsilon$, hence injective. The constant term of $\theta_\phi$ is
+$x\mapsto(\omega(x)\phi)(0)$ (Section~\ref{sec:eisenstein}), which
+vanishes when some $\phi_v$ is odd; so those $\theta_\phi$ are cuspidal,
+and the even ones span $V_b$ by Theorem~\ref{thm:residual}(c). That theta
+functions are square integrable, and that $\phi\mapsto\theta_\phi$ is
+continuous for the $L^2$ norms on each $r^\varepsilon$, is
+standard~\cite{We64,Ge2,GPS80}: on a Siegel set $\theta_\phi(n\tilde a
+\tilde k)=O(e^{H(\tilde a)/2})$. The representations $r^\varepsilon$ are
+pairwise inequivalent, because $r^+_{\psi'_v}$ and $r^-_{\psi'_v}$ have
+different central characters; so the sum is direct and orthogonal.
+
+(b) By~(a), $\operatorname{tr}(R(f)|_{\Theta_b})=\sum_{\prod\varepsilon_v=1}
+\prod_v\operatorname{tr}r^{\varepsilon_v}_{\psi'_v}(f_v)$, a finite sum
+because $\operatorname{tr}r^-_{\psi'_v}(e_v)=0$ at the unramified places.
+With $t^\pm_v=\operatorname{tr}r^\pm_{\psi'_v}(f_v)$ this is
+$\frac12\prod_v(t^+_v-t^-_v)+\frac12\prod_v(t^+_v+t^-_v)$. The first
+product is $\Theta^{\mathrm{st}}_b(f)$, and the second is
+$\operatorname{tr}\omega_{\psi'}(f)$. By Lemma~\ref{lem:weil-rep},
+$\omega_{\psi'_v}(-1,1)=\gamma'_v(1)^2P_v$, and $\prod_v\gamma'_v(1)=1$
+(Lemma~\ref{lem:weil}(b)); so $\omega_{\psi'}(s(-1))=P$. Therefore
+$\operatorname{tr}\omega_{\psi'}(f)=\operatorname{tr}\bigl(\omega_{\psi'}(
+s(-1))\,\omega_{\psi'}(f)\,P\bigr)=\operatorname{tr}\bigl(\omega_{\psi'}
+(f_-)P\bigr)=\Theta^{\mathrm{st}}_b(f_-)$, since $\omega(z)\omega(f)=
+\omega(f_{z^{-1}})$.
+
+(c) Stability is Proposition~\ref{prop:weil-char} at each place. By
+Lemma~\ref{lem:weil-kernel}, $\omega_{\psi'}\circ\mathrm{Ad}(\delta_a)=
+\omega_{\psi'_a}$ and $\psi'_a=\psi_{-ab}$; for $a\in k^\times$ the
+identity map of $\mathcal S(\A_k)$ therefore carries $\theta^{\psi'}_\phi
+\circ\mathrm{Ad}(\delta_a)$ to $\theta^{\psi'_a}_\phi$, which gives
+both statements (replace $a$ by $a^{-1}$, which is in the same square
+class).
+\end{proof}
+
+Part~(b) has exactly the shape of Theorem~\ref{thm:elliptic-stable}: a
+stable distribution evaluated at $f$ and at $f_-$, each with coefficient
+$\frac12$. The multiplicity of $r^\varepsilon_{\psi'}$ in $\Theta_b$ is
+$\frac12(1+\prod_v\varepsilon_v)$. Waldspurger~\cite{Wa80,Wa91} proved
+that this is its multiplicity in $L^2_{\mathrm{disc}}$, and that the whole
+discrete spectrum has the same structure: it is a multiplicity-free sum
+over the cuspidal automorphic representations $\sigma$ of $PGL(2,\A_k)$
+and the characters $\kappa_b$, each contributing the representations
+$\bigotimes_v\pi_v^{\varepsilon_v}$ of a packet with $\prod_v\varepsilon_v=
+\varepsilon(\frac12,\sigma)$; see~\cite{GI} for the double cover of
+$Sp(2n)$ and~\cite{Li24}. The stable character of the packet is
+$\prod_v(\operatorname{tr}\pi^+_v-\operatorname{tr}\pi^-_v)$, and
+$\Theta_b$ is the packet of the character $\kappa_b$ of $PGL(2)$. We do
+not derive any of this from the trace formula.
+
+By Proposition~\ref{prop:IA-gl2}(c) the terms of
+Corollary~\ref{cor:itf-final} that come from the continuous spectrum,
+$-\frac14\operatorname{tr}I(\chi_{\psi_b,0},f)$ and $-\frac1{4\pi}\int
+\frac{m'}m(\mu,it)\operatorname{tr}I(\mu_{it},f)\,dt$, are stable
+distributions. They are unchanged when $f$ is replaced by $f_-$, because
+$I(\mu_\lambda,s(-1))=\mu(s(-1))=1$ for $\mu\in\Pi_{\mathrm{aut}}(X_A)$.
+
+\subsection{The stable(r) form}\label{sec:stable-form}
+
+We collect the results. For $f=f_S\otimes e^S$ as in
+Theorem~\ref{thm:itf}, with $S$ as in Section~\ref{sec:unipotent}, write
+$I(f)=\sum_{\mathcal O}I_{\mathcal O}(f)=\sum_\chi I_\chi(f)$.
+
+\begin{theorem}\label{thm:stabler}
+Let $S$, $f_S$ and $f=f_S\otimes e^S$ be as above, and assume~\ref{N5}.
+\begin{enumerate}[label=(\alph*)]
+\item (Geometric side.)
+  \begin{multline*}
+  I(f)=S_{\mathrm{ell}}(f)+S_{\mathrm{ell}}(f_-)
+  +c_k\sum_{\{t,t^{-1}\}}I_A\bigl(a(t)_S,f_S\bigr)\\
+  +\sum_{z=\pm1}\Bigl(\mathrm{vol}\bigl(G(\Q)\backslash\GA\bigr)f_S(z)+
+  \frac{c_k}2\,I_A(z,f_S)+\frac12\sum_{\kappa\in\mathfrak X_S}
+  \ell_S(\kappa)\,J^\kappa_{\mathrm{unip}}(z,f_S)\Bigr),
+  \end{multline*}
+  where $S_{\mathrm{ell}}$ is the stable distribution of
+  Theorem~\ref{thm:elliptic-stable}, $t$ runs over $\OO_S^\times
+  \smallsetminus\{\pm1\}$ modulo inversion, $\ell_S(1)=c_S$ and
+  $\ell_S(\kappa)=L^S(1,\kappa)$ for $\kappa\ne1$.
+\item (Spectral side.) $I(f)$ is the right side of
+  Corollary~\ref{cor:itf-final}. The part of the discrete sum carried by
+  the theta functions is $\frac12\sum_b\bigl(\Theta^{\mathrm{st}}_b(f)+
+  \Theta^{\mathrm{st}}_b(f_-)\bigr)$, the sum over the classes $b\in k^\times/
+  k^{\times2}$ with $\Theta_b$ pairwise orthogonal; the terms of the
+  continuous spectrum are stable.
+\item (Equivariance.) Every term of~(a) is an eigendistribution of
+  $G_1(k_S)$ acting by $f_S\mapsto f_S^h$, with the following characters
+  of $\det h=a$: $\eta_\gamma$ for $J^{\mathrm{st}}_G(\gamma,\cdot)$ and
+  $\eta_\gamma\kappa_E$ for $J^\kappa_G(\gamma,\cdot)$; $(\cdot,t)_S$ for
+  $I_A(a(t)_S,\cdot)$; $(\cdot,z)_S$ for $f_S(z)$ and $I_A(z,\cdot)$;
+  $\kappa_S\cdot(\cdot,z)_S$ for $J^\kappa_{\mathrm{unip}}(z,\cdot)$. Both
+  sides are invariant under $h\in G_1(k)\cap\prod_{v\notin S_k}
+  Z(k_v)GL(2,\OO_v)$.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+(a) Theorem~\ref{thm:itf}(a)--(c), with Theorem~\ref{thm:elliptic-stable}
+for the elliptic classes and Proposition~\ref{prop:unipotent}(c) for the
+central ones; in~(c) of Theorem~\ref{thm:itf} the class of $a(t)$
+contributes only if $t$ is a unit outside $S_k$. (b)
+Proposition~\ref{prop:theta-packet} and the remark after it; the spaces
+$\Theta_b$ for inequivalent $b$ are orthogonal because their irreducible
+constituents are pairwise inequivalent (the constituents of
+$\omega_{\psi'_v}$ and $\omega_{\psi''_v}$ are inequivalent when
+$\psi''\ne\psi'_{c^2}$, by their restrictions to $N$). (c)
+Lemma~\ref{lem:kappa-orbital}(b), Proposition~\ref{prop:IA-gl2}(b),
+Lemma~\ref{lem:Ad}(d) and Proposition~\ref{prop:unipotent}(d). For the
+last statement, such an $h$ acts on $f=f_S\otimes e^S$ through its
+component in $G_1(k_S)$, by Lemma~\ref{lem:Ad}(e), and
+Lemma~\ref{lem:spectrum-gl2}(a) applies.
+\end{proof}
+
+\paragraph{What the theorem does not say.} A stable trace formula for the
+cover would be an identity
+\[
+I(f)=S(f)+S(f_-)
+\]
+with $S$ a stable distribution, and then an identification of $S(f)$
+with $\frac12$ of the stable trace formula of $SO(3)$ evaluated at a
+transfer of $f$; this is Li's theorem~\cite{Li21}. Parts~(a) and~(b)
+exhibit this form for the regular elliptic terms and for the theta
+functions. What is missing, in increasing order of difficulty, is:
+\begin{enumerate}[label=(\roman*)]
+\item the limit formulas that attach the terms $J^\kappa_{\mathrm{unip}}
+  (z,\cdot)$, $\kappa\ne1$, to the singular elliptic points of the tori,
+  and so distribute them between $S(f)$ and $S(f_-)$
+  (Section~\ref{sec:unipotent});
+\item the stabilization of the weighted terms $I_A(a(t),\cdot)$ and
+  $I_A(z,\cdot)$, which are equivariant by
+  Proposition~\ref{prop:IA-gl2} but not stable;
+\item the transfer $f\mapsto f'$ to $SO(3)$ and the corresponding
+  fundamental lemma~\cite{Li11,Li12};
+\item on the spectral side, the description of the cuspidal spectrum by
+  packets~\cite{Wa80,Wa91,GI}.
+\end{enumerate}
+The equivariance in~(c) is the property that the 1995 notes called
+``$\kappa$-stable''. It is weaker than stability, and the part of $I(f)$
+that is invariant under all of $G_1(k_S)$, which the 1995 notes took as
+the stable part, is small: by Lemma~\ref{lem:kappa-orbital}(b) and
+Proposition~\ref{prop:IA-gl2}(b), a regular elliptic or hyperbolic
+$\gamma$ contributes to it only if, at each place of $S_k$, $D^+(\gamma)$
+is a square or $\theta$ times a square; for instance if $\gamma$ is a
+square in its torus.
+
+\subsection{Status of the results}\label{sec:status7}
+
+\begin{remarkrev}\label{rem:sec7-status}
+\emph{What rests on citation.} Proved here, given the earlier sections:
+Lemmas~\ref{lem:Ad} and~\ref{lem:eta} (with the cocycle~\eqref{eq:sigma-gl2}
+on $GL(2)$ from~\cite{K2}; part~(c) of Lemma~\ref{lem:Ad} is also checked
+directly); Lemma~\ref{lem:Delta}; Lemma~\ref{lem:weil-kernel};
+Lemma~\ref{lem:kappa-orbital}; Theorem~\ref{thm:elliptic-stable}, with
+the Hasse norm theorem and the index of the global norm group
+from~\cite{CF}; Lemma~\ref{lem:variance-gl2} and
+Proposition~\ref{prop:IA-gl2}, under~\ref{N5};
+Proposition~\ref{prop:unipotent}; Proposition~\ref{prop:theta-packet}(b),
+(c) given~(a). Taken from the literature: the existence of the character
+of the Weil representation as a function and its computation from the
+kernel~\cite{Mak,Th08}, used in Proposition~\ref{prop:weil-char}; our
+derivation of~\eqref{eq:weil-char} from~\eqref{eq:weil-kernel} is formal,
+and we have not compared the result with the formulas of~\cite{Th08}
+beyond the cases in Examples~\ref{ex:Delta-real}
+and~\ref{ex:Delta-finite}. Also from the literature: the convergence and
+square-integrability of theta functions in
+Proposition~\ref{prop:theta-packet}(a), and Tate's local zeta
+integrals~\cite{Ta}.
+
+\emph{What is not done.} We have not verified that the factors
+of~\cite{LiII} satisfy~\ref{N5} (Remark~\ref{rem:N5}). The statements in the text about the relation
+with the endoscopy of~\cite{Li11,Li15,Li21} are comparisons of shape: we
+have not identified $J^{\mathrm{st}}_G$ with Li's stable orbital integral
+beyond Proposition~\ref{prop:weil-char}, nor $\Delta_\psi$ with his
+transfer factor, nor checked the normalizations in
+$\iota(\tilde G,H)=\frac12$. The limit formulas of
+Section~\ref{sec:unipotent} at the singular elliptic points, the
+stabilization of the weighted terms, the transfer to $SO(3)$ and the
+description of the cuspidal spectrum are not treated. An unpublished
+stabilization of the trace formula for covers of $SL(2)$ by Hiraga and
+Ikeda is mentioned in~\cite{Li15}; see also~\cite{HI13}.
+\end{remarkrev}
+
+\begin{remarkrev}\label{rem:verified-sec7}
+The script \texttt{checks/sec7\_n2\_check.py} verifies, in exact
+arithmetic at $v=\infty,2,3,5,7$ on random elements of $SL(2,\Q)$ and
+$GL(2,\Q)$: Lemma~\ref{lem:Ad}(c),(d), both as a homomorphism for
+$\beta_v$ and as conjugation in the cover of $GL(2)$;
+Lemma~\ref{lem:eta} on the tori $T_\theta(\Q)$ and on the split torus,
+and Example~\ref{ex:eta}(d); the conjugation invariance of $\Delta_\psi$,
+Lemma~\ref{lem:Delta}(b),(c), and Example~\ref{ex:Delta-real}; the
+identity between Weil indices behind~\eqref{eq:weil-kernel};
+identity~\eqref{eq:eta-minus}; and Lemma~\ref{lem:variance-gl2}(a).
+Numerically: Example~\ref{ex:Delta-finite} for $q=3,5,7,11$;
+Proposition~\ref{prop:unipotent}(a) for $k=\Q$, $S=\{\infty,2\}$ at
+$s=3$, the local identity~\eqref{eq:squares} at $2$ and $3$, and the
+constants of Example~\ref{ex:unip-coeff}; and the two facts used in the
+proof of Proposition~\ref{prop:theta-packet}(b).
+\end{remarkrev}

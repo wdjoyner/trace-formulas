@@ -7,8 +7,8 @@
 % New in the November 2026 draft, written in response to the second referee
 % report (ChatGPT): overview, literature review, list of what is proved and
 % what is cited, and the running example k = Q, S = {oo, 2}. It replaces the
-% Introduction of ../original-1995/cctrace_new.tex for Sections 2-6; the
-% stable form (the 1995 Section 7) is not yet revised.
+% Introduction of ../original-1995/cctrace_new.tex. Extended to Section 7
+% (the stable(r) form) in stage 6 of ../revision_log.md.
 % =====================================================================
 
 \section{Introduction}\label{sec:intro}
@@ -17,7 +17,7 @@ Let $k$ be a number field, $G=\Res_{k/\Q}SL(2)$, and $\overline{G(\A)}$
 the metaplectic double cover of $G(\A)=SL(2,\A_k)$. This paper writes out
 the Arthur--Selberg trace formula for $\overline{G(\A)}$, first in its
 non-invariant form and then in its invariant form, with every step
-specialized to this group. The general theory exists: Arthur's trace
+specialized to this group, and then begins its stabilization. The general theory exists: Arthur's trace
 formula for connected reductive groups, and its extension to covering
 groups by W.-W.~Li. The aim here is the opposite of generality. The group
 has rank one, its only proper Levi subgroup is the diagonal torus $A$,
@@ -27,7 +27,7 @@ checked numerically, and the terms of the formula can be written down.
 
 \subsection{Overview}\label{sec:overview}
 
-The paper has five parts, each resting on the ones before it.
+The paper has six parts, each resting on the ones before it.
 
 \begin{description}
 \item[The cover (Section~\ref{sec:background}).] The double cover is
@@ -60,6 +60,16 @@ The paper has five parts, each resting on the ones before it.
   conjugation. Both fail in the same way, and subtracting a common
   correction, built from the normalized local intertwining operators by
   Fourier inversion on the cover of $A$, makes both sides invariant.
+\item[The stable(r) form (Section~\ref{sec:stable}).] $GL(2)$ acts on the
+  cover, but conjugation by $GL(2)$ is not stable conjugacy there: it can
+  exchange the two lifts of an element. Stable conjugacy is conjugation
+  by $GL(2)$ twisted by a sign. With it, the regular elliptic terms are
+  the sum of a stable distribution evaluated at $f$ and at the translate
+  $f_-$ of $f$ by the central element $-1$, and the theta functions
+  contribute to the spectral side in the same form. The behavior of the
+  other terms under $GL(2)$ is determined, and the unipotent coefficients
+  are computed. The terms are not transferred to $SO(3)$; that is Li's
+  theorem.
 \end{description}
 
 The result is Theorem~\ref{thm:itf} with Corollary~\ref{cor:itf-final}.
@@ -95,6 +105,23 @@ every one of these characters (Proposition~\ref{prop:Mw0}), whereas for
 $SL(2)$ and a nontrivial quadratic character the corresponding operator
 is not a scalar and is the source of the multiplicity formula of Labesse
 and Langlands~\cite{LL}.
+
+Section~\ref{sec:stable} adds a fourth. For $SL(2)$, conjugation by
+$GL(2)$ is stable conjugacy, and the unstable part of the trace formula
+is carried by the elliptic tori. For the double cover, an element $h$ of
+$GL(2)$ that commutes with $\gamma$ multiplies the lifts of $\gamma$ by
+$(\det h,\det(1+\gamma))_v$ (Lemma~\ref{lem:eta}); stable conjugacy is
+the action $h\star x=(\det h,\det(1+x))_v\,\mathrm{Ad}(h)x$, whose orbits
+are the level sets of the character of $r^+_\psi-r^-_\psi$
+(Proposition~\ref{prop:weil-char}); and the $\kappa$-orbital integral of
+$f$ at $\gamma$ is the stable orbital integral of $f_-$ at $-\gamma$
+(Lemma~\ref{lem:kappa-orbital}). So the elliptic regular terms are
+$S_{\mathrm{ell}}(f)+S_{\mathrm{ell}}(f_-)$
+(Theorem~\ref{thm:elliptic-stable}): both endoscopic groups are $SO(3)$,
+and no tori occur. The unipotent coefficients in the first line of the
+display are
+$a^G(S,u_\xi)=\frac12\bigl(c_S+\sum_{\kappa\ne1}\kappa_S(\xi)L^S(1,\kappa)
+\bigr)$ (Proposition~\ref{prop:unipotent}).
 
 \subsection{Literature}\label{sec:literature}
 
@@ -178,7 +205,13 @@ parameters~\cite{Li24}. For $n=1$ these results apply to the group of
 this paper (Li works with an eight-fold cover that contains the double
 cover). A $p$-adic character lifting between
 the double cover of $SL(2)$ and $SO(1,2)$ is in Schultz's
-thesis~\cite{Sch}.
+thesis~\cite{Sch}, and for $Sp(2n)$ in Howard~\cite{How}. Stable
+conjugacy on these covers is defined through the character of the Weil
+representation, which was computed by Maktouf~\cite{Mak} and
+Thomas~\cite{Th08}. According to~\cite{Li15}, Hiraga and Ikeda have
+considered the stabilization of the trace formula for covers of $SL(2)$
+(unpublished); see~\cite{HI13} for an application of the trace formula
+of the double cover to the Kohnen plus space.
 
 \paragraph{Local harmonic analysis on the double cover of $SL(2)$.} The
 irreducibility of the unitary genuine principal series is due to
@@ -196,9 +229,14 @@ Sections~\ref{sec:background}--\ref{sec:invariant} goes beyond what the
 general theorems of Arthur and Li give. What the paper adds is an
 account in which the group is fixed, the constants are determined, the
 proofs that are short for this group are given in full, and the
-remaining appeals to the literature are listed. We hope that it is
-useful as a worked example of Li's theory and as a companion to the
-classical treatments of half-integral weight.
+remaining appeals to the literature are listed. Section~\ref{sec:stable}
+is likewise a special case of Li's endoscopy for the double cover of
+$Sp(2n)$, reached by a different route: there the elementary description
+of stable conjugacy through $GL(2)$, the identity between
+$\kappa$-orbital integrals and stable orbital integrals of $f_-$, and the
+formula for the unipotent coefficients are worked out directly. We hope
+that the paper is useful as a worked example of Li's theory and as a
+companion to the classical treatments of half-integral weight.
 
 \subsection{What is proved here and what is cited}\label{sec:proved-cited}
 
@@ -220,8 +258,8 @@ Section & Proved in the text & Taken from the literature\\\hline
   index~\cite{We64}\\
 \ref{sec:geometric} & the coarse geometric expansion and the
   polynomials $J^T_{\mathcal O}$; the local distribution $J_A(z,f)$ &
-  the fine expansion at the central classes~\cite{A12,LiI}, whose
-  coefficients $a^G(S,u_\xi)$ are not evaluated\\
+  the fine expansion at the central classes~\cite{A12,LiI} (rederived,
+  with its coefficients, in Section~\ref{sec:unipotent})\\
 \ref{sec:spectral} & cuspidal data and the Weyl action; the unramified
   intertwining operator; the terms $J^T_\chi$ from the Maass--Selberg
   relations; the matching $V_b\cong r^+_{\psi_{-b}}$ &
@@ -232,23 +270,34 @@ Section & Proved in the text & Taken from the literature\\\hline
 \ref{sec:invariant} & the variance formulas; the real normalizing
   factors; the invariance of $I_A$; the invariant trace formula;
   $M(w,0)=-1$ & the existence of normalizing factors~\cite{A11,LiII},
-  which are not explicit at the dyadic and ramified places
+  which are not explicit at the dyadic and ramified places\\
+\ref{sec:stable} & the action of $GL(2)$; stable conjugacy and the
+  function $\Delta_\psi$; the elliptic regular terms as
+  $S_{\mathrm{ell}}(f)+S_{\mathrm{ell}}(f_-)$; the equivariance of the
+  weighted terms; the unipotent coefficients; the trace on the theta
+  functions & the character of the Weil representation~\cite{Mak,Th08};
+  the Hasse norm theorem; everything about the transfer to
+  $SO(3)$~\cite{Li11,Li15,Li21}, which is not used
 \end{tabular}
 \end{center}
 
-Two ingredients of the final formula are therefore defined but not
-evaluated: the unipotent coefficients $a^G(S,u_\xi)$, and the local
-normalizing factors $r_v$ at the places where the additive character or
-the inducing character is ramified, and at the dyadic places. Remarks
+One ingredient of the invariant formula is therefore defined but not
+evaluated: the local normalizing factors $r_v$ at the places where the
+additive character or the inducing character is ramified, and at the
+dyadic places. (The unipotent coefficients $a^G(S,u_\xi)$, a second such
+ingredient in Sections~\ref{sec:geometric}--\ref{sec:invariant}, are
+computed in Proposition~\ref{prop:unipotent}.) Remarks
 numbered ``2026.$n$'' record these and other points that rest on
 citation or on numerical checks only. The explicit formulas are tested
 by the scripts in \texttt{checks/}; they are evidence, not proofs.
 
-The stable form of the trace formula, Section~7 of the 1995 notes, is not
-part of this draft. The 1995 notes define stable conjugacy on the cover
-through conjugation in a cover of $GL(2)$, following~\cite{LL}; its
-relation to Li's endoscopy~\cite{Li11,Li15} has to be worked out when
-that section is revised. Section~\ref{sec:gl2} prepares for it.
+The stable form of the trace formula is only begun. The 1995 notes
+defined stable conjugacy on the cover as conjugation by $GL(2)$,
+following~\cite{LL}; Section~\ref{sec:stable} shows that this has to be
+twisted, relates the twisted notion to that of Adams and
+Li~\cite{Ad,Li11}, and stabilizes the regular elliptic terms. The
+hyperbolic and unipotent terms and the cuspidal spectrum are not
+stabilized; Section~\ref{sec:stable-form} lists what is missing.
 
 \subsection{A running example}\label{sec:running}
 
@@ -275,7 +324,9 @@ $\psi_\infty(x)=e^{-2\pi ix}$.
   $a(t)$, $t=\pm2^j$, $j\ge1$. The unipotent terms are indexed by
   $\Q_S^\times/\Q_S^{\times2}$, which has $2\cdot8=16$ elements. The
   constant term of the unipotent contribution is computed for a Gaussian
-  in Example~\ref{ex:unip-Q}.
+  in Example~\ref{ex:unip-Q}, and the $16$ coefficients in
+  Example~\ref{ex:unip-coeff}: they involve $\gamma_E$, $\log2$,
+  $L(1,\chi_{-4})$, $L(1,\chi_8)$ and $L(1,\chi_{-8})$.
 \item \emph{Spectral side.} The characters fixed by the Weyl group that
   are unramified outside $S$ are the four $\chi_{\psi_b}$,
   $b\in\{\pm1,\pm2\}$ (Example~\ref{ex:ramified-Q}). Each carries a
@@ -294,6 +345,16 @@ $\psi_\infty(x)=e^{-2\pi ix}$.
   normalizing factor is not explicit. The discrete correction is
   $-\frac14\sum_{b=\pm1,\pm2}\operatorname{tr}I(\chi_{\psi_b,0},f)$
   (Example~\ref{ex:itf-Q}).
+\item \emph{Stable(r) form.} At the real place the outer automorphism
+  $\mathrm{Ad}(\diag(-1,1))$ of $Mp(2,\R)$ sends $\tilde k_\theta$ to
+  $\tilde k_{-\theta}$, a stable conjugate, and exchanges the two lifts of
+  $a(t)$, $t<0$; the stable character $\Theta^+-\Theta^-$ is
+  $1/(2\cos\frac\theta2)$ (Examples~\ref{ex:eta} and~\ref{ex:Delta-real}).
+  The classes of the elements of order $4$ are treated in
+  Example~\ref{ex:order4-stable}. The theta functions of $\psi_{-b}$,
+  $b\in\{\pm1,\pm2\}$, span four spaces $\Theta_b\supset V_b$ whose traces
+  are $\frac12\Theta^{\mathrm{st}}_b(f)+\frac12\Theta^{\mathrm{st}}_b(f_-)$
+  (Proposition~\ref{prop:theta-packet}).
 \end{itemize}
 
 \subsection{Conventions}\label{sec:conventions-intro}

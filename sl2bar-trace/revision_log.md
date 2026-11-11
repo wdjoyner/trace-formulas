@@ -18,9 +18,9 @@ This log tracks every item of the 2026 referee report ([Claude Docs](https://cla
 | 3 | §4 and `cctrac3b.tex`: geometric side | Done 2026-11-10: `revised/sec4-geometric.tex`, checked by `revised/checks/sec4_n2_check.py` (see *Stage 3 notes*) |
 | 4 | §5 spectral side: residual (Weil representation) spectrum, ramified χ, M_B^T | Done 2026-11-10: `revised/sec5-spectral.tex`, checked by `revised/checks/sec5_n2_check.py` (see *Stage 4 notes*) |
 | 5 | §6 invariant form | Done 2026-11-11: `revised/sec6-invariant.tex`, checked by `revised/checks/sec6_n2_check.py` (see *Stage 5 notes*) |
-| 6 | §7 stable(r) form | Pending |
+| 6 | §7 stable(r) form | Done 2026-11-11: `revised/sec7-stable.tex`, checked by `revised/checks/sec7_n2_check.py` (see *Stage 6 notes*). Also: Section 1, Appendix A and the Glossary extended to Section 7; the unipotent coefficients of Theorem 4.11(a) computed; two corrections in Sections 4 and 5 |
 | 5R | Response to the second referee report (ChatGPT, on Sections 2–6): topology of the cover and test functions, b′ = −b, Section 1 (overview, literature review), Glossary, Appendix A (comparisons with 1995), acknowledgements | Done 2026-11-11: see *Second referee report* below and `referee-2026-11/` |
-| 7 | Consistency pass after stage 6; Introduction and literature review to be extended to Section 7. (The independent re-referee, the literature review, the title page and the Introduction for Sections 2–6 were done in 5R.) | Pending |
+| 7 | Consistency pass after stage 6. (The independent re-referee, the literature review, the title page and the Introduction for Sections 2–6 were done in 5R; the Introduction, Appendix A and the Glossary were extended to Section 7 in stage 6. Section 7 has not been refereed independently.) | Pending |
 
 ## Items
 
@@ -30,7 +30,7 @@ Status values: open, fixed, moot (n = 2), deferred.
 
 | # | Location | Issue | Status |
 |---|---|---|---|
-| I.1 | Lemma 2.2(b), before Lemma 2.4, Lemma 2.8, §2.1.4, §7.4 | Splitting over K is k ↦ (k, κ(k)), not k ↦ (k,1) | fixed in §2 (Lemma 2.2(b), K*_p, Hecke unit (2.8)); §7.4 in stage 6 |
+| I.1 | Lemma 2.2(b), before Lemma 2.4, Lemma 2.8, §2.1.4, §7.4 | Splitting over K is k ↦ (k, κ(k)), not k ↦ (k,1) | fixed in §2 (Lemma 2.2(b), K*_p, Hecke unit (2.8)); in §7 the identification of K with (K,1) is no longer used, and Lemma 7.1(e) shows that Ad(h) preserves K* for h ∈ Z·GL(2,𝒪) |
 | I.2 | Lemma 2.2(c) | Splitting over K_m needs the correct threshold, not m ≥ n | fixed: β ≡ 1 on K_m once 1+ϖ^m𝒪 ⊂ F^{×2} (proof given); m ≥ 1 non-dyadic, m ≥ 2e+1 dyadic. Remark 2026.1: K₂ ⊂ SL₂(ℤ₂) splits via (c,d)₂ (numerical) |
 | I.3 | §2.2 | Global cocycle ∏ β_v diverges; use β_v·∂κ_v; tie (2.9) to that normalization | fixed: σ_v = β_v·∂κ_v (2.10)–(2.11); splitting γ ↦ (γ, κ_A(γ)) (Lemma 2.6(a)); old (2.9) compared in Remark 2026.2; Example 2.B (Jacobi symbol) |
 | I.4 | §2.2, §3.1 | Global cover is a quotient, not a subgroup, of ∏′ of the local covers | fixed in §2 (also for G(Q_p)) and §3.1 |
@@ -50,7 +50,7 @@ Status values: open, fixed, moot (n = 2), deferred.
 | II.3 | (3.18) | Hasse principle for N-th powers | 2 | moot (n = 2: N = 1); noted in Remark 2026.6 |
 | II.4 | Lemmas 3.3–3.4 | Mackey/Clifford; citation of [GeKn] | 2 | moot (n = 2): the Clifford–Mackey part is removed; the cocycle remark is answered by (3.1) |
 | II.5 | (4.4) | Weight v_O must be 2T − H(x) − H(wx) (book7d has it) | 3 | fixed: Prop. 4.6, J^T_O = c_k ∫ f(y⁻¹μy)(2T + v_A(y)) dy with v_A = −H(y) − H(wy) ≥ 0 (Lemma 4.3(c)) |
-| II.6 | (4.5), §5.4(a) | Unipotent terms in central classes (book7d, book7f have them) | 3, 4 | fixed in §4: Prop. 4.8 (explicit, via the zeta integral Z(f,s)) and Thm 4.11(a) (fine form); in §5: Thm 5.15(a) uses Thm 4.11(a) in full; in §6: Thm 6.11(a) |
+| II.6 | (4.5), §5.4(a) | Unipotent terms in central classes (book7d, book7f have them) | 3, 4 | fixed in §4: Prop. 4.8 (explicit, via the zeta integral Z(f,s)) and Thm 4.11(a) (fine form); in §5: Thm 5.15(a) uses Thm 4.11(a) in full; in §6: Thm 6.11(a); the coefficients a^G(S,u_ξ) are computed in stage 6 (Prop. 7.10) |
 | II.7 | Lemma 4.4, Cor. 4.5–4.7 | Proof incomplete; cite [A2, §7], [A12] | 3 | fixed: Thm 4.5, proved directly for this group class by class (T ≥ 0), with [A2, §§7–8], [A3], [Li I] cited for the general case |
 | II.8 | Prop. 4.8 | Polynomiality claim too strong, unproved | 3 | fixed: J^T_O := ∫ k^T_O = ∫ j^T_O (Thm 4.5(b)); each is linear in T, explicitly (Props. 4.6–4.8) |
 | II.9 | Intro, §5 | Residual spectrum not empty (even Weil representation, [Ge2]) | 4, 7 | fixed in §5: Thm 5.7, one even Weil representation V_b for each b ∈ k^×/k^{×2}, the residue at λ = ½ of the Eisenstein series of χ_{ψ_b}; Example 5.B (θ(z)). The Introduction is rewritten in stage 7 |
@@ -62,12 +62,12 @@ Status values: open, fixed, moot (n = 2), deferred.
 | II.15 | Example 6.1 | u′_B = −H_B(ky) | 5 | fixed: Lemma 6.1(a), Example 6.A; the variance formulas that depend on the sign are proved (Lemmas 6.2–6.4) and checked numerically |
 | II.16 | §6.4(b) | m′/m term missing (book7g/7gnw item (e) has it) | 5 | fixed: Thm 6.11(e)–(f) and Cor. 6.14; the global factor m is identified in Cor. 6.7 (L(2λ,χ²)/L(2λ+1,χ²) outside finitely many places) |
 | II.17 | (6.7) | Circular definition of φ(σ,X) | 5 | fixed: the corrected definition is stated after Thm 6.9; φ_A(f) is shown to lie in the space (Thm 6.9(a)), and the 1995 claim that this space equals the Paley–Wiener space of the cover of A is corrected (Example 6.C) |
-| II.18 | §7.2 | GL(2) action on the cover; non-abelian preimage of T₁ | 1, 6 | partly fixed: cover of GL(2) and its action defined in §2.3 (Lemma 2.10), with the commutator formula (2.14); its use in §7 in stage 6 |
-| II.19 | Prop. 7.1, Lemma 7.3 | T(Q) not discrete in T(A_S); index 2 (Hasse norm theorem) | 6 | open |
-| II.20 | §7.4 | D(A/F): A·Z vs A₁; global index undefined | 6 | open |
-| II.21 | (7.17) | Divergent sum over rational unipotent classes | 6 | open |
-| II.22 | (7.13), book7d | v_A at p-adic places is log max(1,\|n\|) | 3, 6 | fixed in §4 (Lemma 4.9: log max(1,\|y\|) finite, ½log(1+y²) real, log(1+\|y\|²) complex); (7.13) in stage 6 |
-| II.23 | §7 | Results deferred to [J1], [J3]; Lemma 7.18; Remark 7.17 | 6 | open (book3b supplies several proofs) |
+| II.18 | §7.2 | GL(2) action on the cover; non-abelian preimage of T₁ | 1, 6 | fixed: cover of GL(2) and its action defined in §2.3 (Lemma 2.10); Ad(h) made explicit (Lemma 7.1); the sign by which T₁ acts on the lifts of γ is (det h, det(1+γ)) (Lemma 7.2); stable conjugacy is the twisted action h⋆x (§7.2), which removes the ambiguity. The choice between the two covers of GL(2) does not matter (Remark 2026.2) |
+| II.19 | Prop. 7.1, Lemma 7.3 | T(Q) not discrete in T(A_S); index 2 (Hasse norm theorem) | 6 | fixed: Theorem 7.7 is adelic, with the factor ½ from the Hasse norm theorem and class field theory. Poisson summation on T (1995 Prop. 7.2 as compiled) is not used for the cover; see *Stage 6 notes* |
+| II.20 | §7.4 | D(A/F): A·Z vs A₁; global index undefined | 6 | fixed: for a hyperbolic element the stable class is the conjugacy class, so there is no sum over D(A/·); F^×/F^{×2} acts on the two lifts by (a,t), and I_A transforms by that character (Prop. 7.9) |
+| II.21 | (7.17) | Divergent sum over rational unipotent classes | 6 | fixed: Prop. 7.10 expands the zeta integral in the quadratic Hecke characters unramified outside S (a finite sum), which gives a^G(S,u_ξ) = ½(c_S + Σ_{κ≠1} κ_S(ξ) L^S(1,κ)) |
+| II.22 | (7.13), book7d | v_A at p-adic places is log max(1,\|n\|) | 3, 6 | fixed in §4 (Lemma 4.9: log max(1,\|y\|) finite, ½log(1+y²) real, log(1+\|y\|²) complex); §7 uses Lemma 4.9 and has no separate formula |
+| II.23 | §7 | Results deferred to [J1], [J3]; Lemma 7.18; Remark 7.17 | 6 | fixed or marked, statement by statement (see the table in *Stage 6 notes*): the variance lemmas are proved (Lemma 7.8, Prop. 7.9, under the new condition (N5)); the lemmas about characters of tori are dropped (tori are not endoscopic groups of the cover); the germ lemmas at ±1 are not proved and are listed as open in §7.8; Remark 7.19 (as compiled) is false in general; Conjecture 7.24 (as compiled) is false as stated |
 
 ### Appendix: cctrac3b.tex = book7d.tex (stage 3)
 
@@ -85,10 +85,10 @@ Status values: open, fixed, moot (n = 2), deferred.
 
 | # | Issue | Status |
 |---|---|---|
-| C.1 | Matrix identity in the v_A claim is wrong; correct factorization w·n(x) = n(−x⁻¹)·diag(x⁻¹,x)·n̄(x⁻¹) | open |
+| C.1 | Matrix identity in the v_A claim is wrong; correct factorization w·n(x) = n(−x⁻¹)·diag(x⁻¹,x)·n̄(x⁻¹) | fixed: not needed (the weight is Lemma 4.3/4.9; its variance under GL(2) is Lemma 7.8(a)); recorded in Appendix A |
 | C.2 | #L(π) with k_v^×/k_v^{×n} | moot (n = 2) |
-| C.3 | Real Hilbert symbol misdefined | open |
-| C.4 | L-group of the 2-fold cover is SL(2,ℂ), not PGL(2,ℂ) | open |
+| C.3 | Real Hilbert symbol misdefined | fixed: (H3) of §2; recorded in Appendix A |
+| C.4 | L-group of the 2-fold cover is SL(2,ℂ), not PGL(2,ℂ) | fixed: paragraph *The dual group* in §7.2 |
 
 ### Minor issues, cross-references, bibliography (stage 0 unless noted)
 
@@ -391,3 +391,89 @@ An independent referee report on `revised/preview.tex` (Sections 2–6) was writ
 **Still open after this round.** The coefficients a^G(S,u_ξ); explicit r_v at dyadic and ramified places (Szpruch and Goldberg–Szpruch are now cited but not used); T ≥ 0 on the spectral side; Li IV's definitions versus (6.13); stage 0 and stage 6.
 
 **Literature review.** Bibliographic data for the new entries were checked online on 2026-11-11, except [He], [JL], [Sel], [Sh], [Shi], [Mat], [BD], [Wa81], which are standard and were entered from memory, and [J88], [GPS83], which follow `book-1997/book9.tex`. Worth a glance by DJ: the title of [J88].
+
+## Stage 6 notes (2026-11-11)
+
+**Files.** `revised/sec7-stable.tex` is the new Section 7, from `cctrace7.tex` (= `book7h.tex`) and the parts of `book3b.tex` about conjugation by GL(2). `revised/preview.tex` now builds Sections 1–7, with the PDF committed (100 pages); it has four new bibliography entries ([HI13], [How], [Mak], [Th08]). `revised/checks/sec7_n2_check.py` adds 28 checks (about 3 seconds; needs mpmath). Also changed: `sec1-introduction.tex` (overview, literature, table, running example), `appA-comparison.tex` (new subsection on Section 7), `glossary.tex`, and small edits in `sec2`–`sec6` listed below.
+
+**What changed, and why.** The 1995 section follows Labesse–Langlands: stable conjugacy is conjugation by G₁ = GL(2), the endoscopic groups are the elliptic tori, and the κ-orbital integrals are to be handled by Poisson summation on the tori. For the double cover the first step already fails, and the new section is built on what replaces it.
+
+- **Conjugation by GL(2)** (§7.1). Ad(h) is the unique automorphism of the cover over g ↦ hgh⁻¹ (Lemma 7.1). For δ_a = diag(a,1): Ad(δ_a)(g,ζ) = (δ_a g δ_a⁻¹, ζ) if c ≠ 0 and (δ_a g δ_a⁻¹, (a,d)_v ζ) if c = 0. On the cover of A it is multiplication by the character (a,t)_v; on the lifts of −1 it is the sign (a,−1)_v. If h commutes with a semisimple γ ≠ −1, then Ad(h)(γ,ζ) = (γ, (det h, det(1+γ))_v ζ) (Lemma 7.2). The proof: with z = 1+γ, γ·det(z) = z² in the commutative algebra F[γ], and the commutator of a scalar λ with h in the cover of GL(2) is (λ, det h)_v. So GL(2)-conjugation can carry a lift of γ to the other lift (always for a(t) with t not a square; for elements near −1 in the torus of ℚ₃(√3), Example 7.A).
+- **Stable conjugacy** (§7.2). h⋆x = (det h, det(1+x))_v · Ad(h)x is an action of GL(2,F) on the elements of trace ≠ −2. Its orbits are the stable classes. Lemma 7.3: the function Δ_ψ(g,ζ) = ζ (c, D⁺)_v γ_v(D⁺)/γ_v(1), D⁺ = det(1+g), c ≠ 0, extends to a genuine class function on the regular semisimple set, constant on the ⋆-orbits; the proof is algebraic (invariance under n(u), a(s), w, the last by (X, Y²−X)_v = 1). On the cover of A it is the complex conjugate of Weil's character χ_ψ. Proposition 7.5: Δ_ψ·|D⁺|^{−1/2} is the character of r⁺_ψ − r⁻_ψ, so the definition is that of Adams and Li. This uses the kernel of ω(g,1) in Kubota's model (Lemma 7.4), γ(c)⁻¹|c|^{−1/2}ψ((αx²−2xy+dy²)/c), whose constant is confirmed by composing kernels: the Weil indices reproduce Kubota's cocycle exactly.
+- **κ-orbital integrals** (§7.3). In a GL(2)-class there are two combinations of orbital integrals, J^st and J^κ (κ = κ_E). Lemma 7.6(c): J^κ(x, f) = J^st(z̃x, f(z̃⁻¹·)) for a lift z̃ of −1, because det(1+γ)·det(1−γ) = −4θy², so η_γ η_{−γ} = κ_E·(·,−1)_v. This is the elementary form of the relation between Li's two endoscopic data (1,0) and (0,1).
+- **Elliptic regular terms** (§7.4, Theorem 7.7). Rational elements conjugate under GL(2,k) are stably conjugate at every place, by the product formula for η_γ; this is what the twist is for. Then Σ_{O elliptic} J_O(f) = S_ell(f) + S_ell(f₋), with S_ell(f) = ½ Σ_γ vol · J^st(γ, f) stable and f₋(x) = f(s(−1)x). This is the shape of Li's theorem [Li15, Thm 5.2.6] for n = 1 (two data, ι = ½ each).
+- **Hyperbolic terms** (§7.5). Theorem 6.9 extends from conjugation by the cover to Ad(h), h ∈ GL(2,k_S): I_A(x, f∘Ad(h)) = I_A(Ad(h)x, f) (Lemma 7.8, Proposition 7.9). This needs a new condition (N5) on the normalizing factors: r_v(π_v κ_a, λ)/r_v(π_v, λ) is independent of λ. So I_A(a(t), ·) transforms by (det h, t)_S. It is not stable, and the section says so.
+- **Unipotent coefficients** (§7.6, Proposition 7.10). For S ⊃ {∞, 2, ram ψ} with 𝒪_S principal: Z(f,s) = ½ Σ_κ L^S(s,κ) Z_S(Φ_S,κ_S,s) over the 2^{|S_k|} quadratic Hecke characters unramified outside S. Taking the finite part at s = 1 proves Theorem 4.11(a) from Proposition 4.8 and gives a^G(S,u_ξ) = ½(c_S + Σ_{κ≠1} κ_S(ξ) L^S(1,κ)), where ζ_k^S(s) = ρ_S/(s−1) + c_S + …. For k = ℚ, S = {∞,2}: c_S = (γ_E + log 2)/2 and the L-values are π/4, log(1+√2)/√2, π/(2√2) (Example 7.E). This closes the item "coefficients a^G(S,u_ξ)" that was open after stages 3–5 and 5R.
+- **Spectral side** (§7.7). GL(2,k) acts on automorphic forms, with V_b ↦ V_{ab} (Lemma 7.11). The theta functions of ψ_{−b} span Θ_b ≅ ⊕_{Πε_v = 1} ⊗ r^{ε_v}, and tr(R(f)|Θ_b) = ½Θ^st_b(f) + ½Θ^st_b(f₋) with Θ^st_b = Π_v (tr r⁺ − tr r⁻) stable (Proposition 7.12). The terms of the continuous spectrum are stable.
+- **The stable(r) form** (§7.8, Theorem 7.13) collects this, and lists what is missing for I(f) = S(f) + S(f₋): the germ formulas at ±1, the stabilization of the weighted terms, the transfer to SO(3), and the packets of the cuspidal spectrum.
+
+**Numbering map (1995 → 2026).** The 1995 numbers are those of `cctrace_new.tex` as compiled. Equations are now numbered (7.1)–(7.14).
+
+| 1995 (compiled) | 2026 |
+|---|---|
+| Definition of stable conjugacy, Remark 7.1 | §7.2 (replaced by the twisted action), Lemma 7.3, Proposition 7.5 |
+| (7.1), (7.2), (7.25), §7.8 (a)–(i) | Theorem 7.13 and the paragraph after it |
+| §7.2: endoscopic groups, D(T/F), D(T/ℚ), D(T/𝔸) | paragraph *The dual group* in §7.2; F^×/NE^× in §7.3; 𝔸_k^×/N𝔸_E^× in §7.4 |
+| Proposition 7.2 (Poisson summation on T), Remark 7.3, Corollary 7.4 | not used (Lemma 7.6(c) replaces them); Theorem 3.4 remains available for tori |
+| (7.5)–(7.8), Lemma 7.5 | (7.7), (7.10), Lemma 7.6, Theorem 7.7 |
+| §7.4: (7.9)–(7.11), Lemma 7.6 | Proposition 7.9 (equivariance; stability not claimed) |
+| Lemma 7.7 (F^∨ = \|a₁−a₂\| J_G) | proof of Proposition 7.9(c) (and of Theorem 6.9(a)) |
+| Lemmas 7.8, 7.9, 7.23 (the operator N(g); variance under G₁) | Lemma 7.8 |
+| (7.13), (7.14), Remark 7.10 | Lemma 4.9 and (4.12); nothing new |
+| §7.5: (7.15), Lemma 7.11 | Theorem 6.11(a), Proposition 7.10(c) |
+| Definitions 7.12, 7.13 (Φ^{T/κ}) | (7.7); the factor is Δ_ψ (Lemma 7.3) |
+| Lemmas 7.14–7.16, Remark 7.17 (germs at ±1) | not proved; §7.6 (last paragraph) and §7.8 (i) |
+| (7.17) | Proposition 7.10(a)–(c) |
+| (7.18) | (6.11) |
+| Definition 7.18 (L(π)), Remark 7.19 | Lemma 7.11, Proposition 7.9(c), Lemma 7.4; see Appendix A |
+| Lemmas 7.20, 7.21, Remark 7.22, (7.19)–(7.21) | dropped (characters of tori) |
+| (7.22)–(7.24): S₁, S₂, S₃; Conjecture 7.24 | Φ_A, J_A, J^κ_unip; Theorem 7.13(c) and the paragraph after the theorem |
+| — | new: Lemmas 7.1–7.4, Proposition 7.5, Lemma 7.6(c), Proposition 7.10, Lemma 7.11, Proposition 7.12, Examples 7.A–7.E, Remarks 2026.18–2026.20, condition (N5) |
+
+The report's §7 numbers do not match the compiled text (it does not count the remarks): its "Proposition 7.1" is Proposition 7.2, "Lemma 7.3" is Lemma 7.5, "Lemma 7.6" is Lemma 7.7, "Lemma 7.9" is Lemma 7.9, "Def. 7.11" is Definitions 7.12–7.13, "Lemmas 7.11, 7.12" are Lemmas 7.14, 7.15, "Lemma 7.13" is Lemma 7.15 or 7.16, "Remark 7.17" is Remark 7.19, "Lemma 7.18" is Lemma 7.20, "Lemma 7.20" is Lemma 7.23, and "Conjecture 7.21" is Conjecture 7.24.
+
+**Where this revision departs from the report.**
+- *II.18.* The report asks to "resolve the non-abelian preimage of T₁" before (7.5)–(7.7) make sense. The resolution is not a choice of cover: the character by which T₁ acts on the lifts of γ is (det h, det(1+γ)), it is not trivial on the norms in general, and the definition of stable conjugacy has to change. The report's remark that δ ↦ I_O(f^δ) is defined on D(T/F) "only up to a character" is exactly this.
+- *II.19.* The report asks that Proposition 7.1 (Poisson summation on T) be stated over T(𝔸). For the cover it is not needed at all: the κ-orbital integrals are stable orbital integrals of f₋.
+- *II.20.* The report suggests that F^×/F^{×2} in D(A/F) may be deliberate and must be justified. It cannot be: there is nothing to sum over for a hyperbolic class. What is true is the equivariance of Proposition 7.9.
+- *II.21.* The report points to Arthur's coefficients a^G(S,u) and to the zeta regularization of [LL] as two ways out. They are the same computation here, and it gives the coefficients.
+- *II.23.* The report asks that the deferred statements be cited from published versions or marked conditional. [J1] and [J3] were not written. The statements are now proved, dropped or listed as open, as in the table above.
+- *"Present Section 7 explicitly as a program."* Done in §7.8: the theorem states what is proved, and the paragraph after it what is missing. The section does not claim a stabilization.
+- The report recommends [Li11] as "the relevant comparison point". The comparison is made at the level of definitions (stable conjugacy, Proposition 7.5) and of shape (Theorem 7.7 against [Li15, Thm 5.2.6]); the transfer itself is not used.
+
+**Found in this stage, not in the report.**
+- **(5.5) (fixed in `sec5-spectral.tex`).** In Kubota's model ω_{ψ′}(w,1)φ(x) = γ′(1)⁻¹ ∫ φ(y) ψ′(−2xy) dy. The stage-4 text had c·∫ φ(y) ψ′(2xy) dy with an unspecified constant c; the two differ by the reflection x ↦ −x, which is not a scalar. Lemma 5.7 and its proof are not affected (the reflection commutes with multiplication operators), but Lemma 7.4 needs the correct form.
+- **Theorem 4.11(a) (fixed in `sec4-geometric.tex`).** The integral of Lemma 4.10(c) depends on the representative ξ of the class u_ξ, through |c|_S⁻² for ξ ↦ ξc². J_G(zu_ξ, f_S) is now |ξ|_S times that integral, which depends only on the class; with this normalization the coefficients a^G(S,u_ξ) are well defined.
+- **Remark 2026.2 (updated in `sec2-foundations.tex`).** Section 7 uses the cover of GL(2) only through Ad(h), which does not depend on the choice between σ and σ′.
+- The 1995 Conjecture 7.24 (S₁ + S₂ + S₃ is invariant under G₁(𝔸_S)) is false for the cover as stated: the term of a(t) is multiplied by (det h, t)_S.
+- The 1995 Remark 7.19 (#L(π) = Π #(k_v^×/k_v^{×2}) for every genuine π) is false in general: I(π)∘Ad(δ_a) = I(πκ_a) ≅ I(π) when χ_v² = (a,·)_v.
+- `book3b.tex` asserts that the genuine orbital integral at a lift of a(t) vanishes unless t is an N-th power. For n = 2 it does not vanish; its average over the GL(2)-orbit does (Lemma 7.6(b)).
+- The part of the trace formula that is invariant under all of GL(2,k_S), which the 1995 notes take as the stable part, sees only the γ for which det(1+γ) is a square or θ times a square at the places of S.
+
+**Edits to earlier sections.** `sec2`: Remark 2026.2, the sentence after Lemma 2.10, two cross-references. `sec3`: one sentence in the introduction. `sec4`: the normalization of J_G(zu_ξ, f_S) before Theorem 4.11; "not evaluated" replaced by pointers to Proposition 7.10 (roadmap table, Theorem 4.11(a), the paragraph after it, Remark 2026.10). `sec5`: (5.5) and the sentence in the proof of Lemma 5.7; Theorem 5.16(a). `sec6`: the paragraph after Theorem 6.11 and Remark 2026.16 (one unevaluated ingredient instead of two). No numbering changed in Sections 2–6.
+
+**Minor §7 items from the report.** All fixed or moot:
+- "Lemma 7.3(a) is about I^st_O, not SI_O": Theorem 7.7 and (7.11).
+- "The index [D(T/ℚ):D(T/𝔸_S)] should be inverted": it is the factor ½.
+- "Lemma 7.13's statement has a missing '=' and a γ-dependent constant inside a limit": the lemma is not kept.
+- "(7.25) vs (7.1)–(7.2)": one statement, Theorem 7.13.
+- The stale references in `cctrace7.tex` listed in earlier notes: "Example 5.26, (5.28)" (line 876) is Theorems 5.14 and 5.16; "section 2.7" is Section 3; "Proposition 6.20", "Proposition 4.19", "Example 4.14" are Theorem 6.11(a), Theorem 4.11 and Lemma 4.10.
+
+**Still resting on citation and numerics only** (Remarks 2026.18, 2026.19):
+- Proposition 7.5: that the character of the Weil representation is computed by integrating the kernel over the diagonal ([Mak], [Th08]); our derivation of (7.6) from (7.5) is formal. Checked: the real place (Example 7.B), the Weil representation of SL(2,𝔽_p) (Example 7.C), the split torus, and the algebraic properties of Δ_ψ. Not compared with the formulas of [Th08] directly.
+- The condition (N5): shown for the explicit factors; for Li's factors at the bad places it is assumed, with an indication of why it can be arranged (Remark 2026.18).
+- Lemma 7.1(c) through the cocycle (2.13) on GL(2) ([K2], numerics); it is also checked directly as a homomorphism for β.
+- Proposition 7.12(a): convergence and square-integrability of theta functions.
+- All statements about [Li11], [Li15], [Li21] in the text are comparisons, not used in proofs. Bibliographic data for [HI13], [How], [Mak], [Th08] were checked online on 2026-11-11; [Li11] and [Li15] were consulted for the definitions and for Théorème 5.2.6 (first part of each paper only).
+
+**Not done.** The germ formulas for κ-orbital integrals at ±1 on the cover (1995 Lemmas 7.14–7.16); the stabilization of I_A; the transfer to SO(3) and the comparison of Δ_ψ with Li's transfer factor; the cuspidal spectrum; Proposition 7.10 when 𝒪_S is not principal (it should follow from Poisson summation on 𝔸_k^×/k^×𝔸_k^{×2}).
+
+**For later stages.**
+- *Stage 7:*
+  - an independent referee report on Section 7; the points most in need of a second look are Proposition 7.5 (formal step), Lemma 7.8(c) with (N5), and the paragraph on Waldspurger's theorem after Proposition 7.12;
+  - the acknowledgements say that ChatGPT refereed Sections 2–6, which is still accurate;
+  - the title of the paper ("basic theory" in 1995) and of Section 7 ("stable(r) form");
+  - Remark 2026.9 (r(t) against the general definition in [A7]) and Remark 2026.13 (T ≥ 0 on the spectral side) are unchanged.
+- *Stage 0:* the master needs `\input{sec7-stable}` and the four new bibliography entries. No new environments.
+- *Possible follow-up, outside the stages:* identify J^st with Li's stable orbital integral on SO(3) for the unit of the Hecke algebra (a direct fundamental lemma for this group), which with Theorem 7.7 would give the elliptic part of the Shimura–Waldspurger correspondence in trace-formula form.
+

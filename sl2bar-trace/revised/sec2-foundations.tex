@@ -27,7 +27,8 @@ and compact subgroups, the center, and the preimages of tori. These are
 then assembled into the cover of $G(\Q_p)$. Section~\ref{sec:global}
 builds the adelic cover and its splitting over $G(\Q)$, and
 Section~\ref{sec:gl2} fixes a double cover of $GL(2)$ and the resulting
-$GL(2)$-action on the cover of $SL(2)$, which is what Section~7 uses.
+$GL(2)$-action on the cover of $SL(2)$, which is what
+Section~\ref{sec:stable} uses.
 
 One point needs care throughout. The cover is described by an explicit
 cocycle, in coordinates $(g,\zeta)$, but the cocycle is only a Borel
@@ -883,7 +884,7 @@ $\mathrm{vol}(G(\Q)\backslash\overline{G(\A)})=1$.
 
 \subsection{The double cover of \texorpdfstring{$GL(2)$}{GL(2)}}\label{sec:gl2}
 
-Section~7 compares $SL(2)$-conjugacy with $GL(2)$-conjugacy on the cover,
+Section~\ref{sec:stable} compares $SL(2)$-conjugacy with $GL(2)$-conjugacy on the cover,
 so we need a double cover of $GL(2)$ which restricts to the one above.
 There are two natural choices for $n=2$ (Remark~\ref{rem:gl2-twist}); we
 fix one, and compute the conjugation action of $GL(2,F)$ on
@@ -941,19 +942,23 @@ $\gamma=a(t)$: $x(h\gamma)=t^{-1}$ and $x(h)=1$, giving $(t^{-1},y)=
 (y,t)$. This is nontrivial for suitable $y,t$ unless $F=\C$.
 \end{proof}
 
-The consequences for Section~7 (the functions $\delta\mapsto
-I_{\mathcal O}(f^\delta)$ are defined on $D(T/F)$ only up to the
-character~\eqref{eq:gl2-commutator}, and the choice of $D(A/F)$) are
-taken up there.
+The consequences are taken up in Section~\ref{sec:stable}: the sign
+in~\eqref{eq:gl2-commutator} is $(\det h,\det(1+\gamma))_v$
+(Lemma~\ref{lem:eta}), conjugation by $GL(2,F)$ can exchange the two lifts
+of an element, and stable conjugacy on the cover is conjugation by
+$GL(2,F)$ twisted by this sign.
 
 \begin{remarkrev}\label{rem:gl2-twist}
 The cocycle $\sigma'(g_1,g_2)=\sigma(g_1,g_2)\,(\det g_1,\det g_2)_v$ is
 another double cover of $GL(2,F)$ with the same restriction to $SL(2,F)$;
 these are the two Kazhdan--Patterson covers for $n=2$~\cite{KP}. We fix
-$\sigma$. Whether Section~7 needs $\sigma'$ instead has not been checked
-at this stage. The commutator formula~\eqref{eq:gl2-commutator} is the
-same for $\sigma'$: the extra factor $(\det h,\det\gamma)(\det\gamma,\det
-h)$ is $1$ by~\ref{H1}. The
+$\sigma$. Section~\ref{sec:stable} uses the cover of $GL(2,F)$ only
+through the automorphisms $\mathrm{Ad}(h)$ of $\overline{SL(2,F)}$, and
+these are the same for $\sigma$ and $\sigma'$: an automorphism of
+$\overline{SL(2,F)}$ is determined by the automorphism of $SL(2,F)$ that
+it induces (Lemma~\ref{lem:Ad}(a)). In particular the commutator
+formula~\eqref{eq:gl2-commutator} is the same for $\sigma'$: the extra
+factor $(\det h,\det\gamma)(\det\gamma,\det h)$ is $1$ by~\ref{H1}. The
 adelic cover of $GL(2,\A_k)$ is built as in Section~\ref{sec:global},
 with $\kappa'_v$ in place of $\kappa_v$; Hilbert reciprocity for
 $\prod_v\sigma_v$ on $GL(2,k)$ is checked numerically for $k=\Q$.

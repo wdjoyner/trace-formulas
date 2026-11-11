@@ -1,6 +1,6 @@
 % SPDX-License-Identifier: CC-BY-4.0
-% Stand-alone build of the revised paper: Sections 1-6, acknowledgements,
-% Appendix A and the glossary (stages 1-5 of ../revision_log.md and the
+% Stand-alone build of the revised paper: Sections 1-7, acknowledgements,
+% Appendix A and the glossary (stages 1-6 of ../revision_log.md and the
 % November 2026 response to the second referee report). The stage-0 master
 % will \input the same section files with the same macros.
 \documentclass[11pt]{article}
@@ -38,7 +38,7 @@
 
 \begin{document}
 \title{A hitch-hiker's guide to the metaplectic trace formula for $SL(2)$\\[2pt]
-\large Sections 1--6, revised for the double cover (draft)}
+\large Sections 1--7, revised for the double cover (draft)}
 \author{D. Joyner and Claude\thanks{Claude is an AI model made by
 Anthropic. See the Acknowledgements for the division of work.}}
 \date{November 2026}
@@ -47,7 +47,8 @@ Anthropic. See the Acknowledgements for the division of work.}}
 \begin{abstract}
 We write out the Arthur--Selberg trace formula, in its non-invariant and
 in its invariant form, for the metaplectic double cover of
-$G=\Res_{k/\Q}SL(2)$ over a number field $k$. The general theory is due to
+$G=\Res_{k/\Q}SL(2)$ over a number field $k$, and take the first steps
+towards its stable form. The general theory is due to
 Arthur and, for covering groups, to W.-W.~Li; here every step is
 specialized to this group, and the terms are made explicit. The coarse
 geometric expansion is proved directly from one inequality between
@@ -57,12 +58,21 @@ Weil representations $r^+_{\psi_{-b}}$), the normalizing factor
 $L(2\lambda,\chi^2)/L(2\lambda+1,\chi^2)$ of the intertwining operator,
 and the value $M(w,0)=-1$. The invariant distributions are constructed by
 Fourier inversion on the abelian cover of the diagonal torus, without
-appeal to a trace Paley--Wiener theorem. Two ingredients are defined but
-not evaluated: the unipotent coefficients of the fine geometric
-expansion, and the local normalizing factors at the dyadic and ramified
-places. This is a revision, restricted to the double cover, of Sections
-2--6 of notes of the first author from 1995; the explicit formulas are
-checked by accompanying scripts.
+appeal to a trace Paley--Wiener theorem, and the unipotent coefficients
+of the fine geometric expansion are computed in terms of the values at
+$1$ of quadratic Hecke $L$-functions. In the last section we determine
+the action of $GL(2)$ on the cover: conjugation by $GL(2)$ can exchange
+the two lifts of an element, and stable conjugacy in the sense of Adams
+and Li is conjugation by $GL(2)$ twisted by the sign
+$(\det h,\det(1+\gamma))$. The regular elliptic terms of the trace formula
+then take the form $S(f)+S(f_-)$, with $S$ a stable distribution and
+$f_-$ the translate of $f$ by the central element $-1$; the theta
+functions contribute to the spectral side in the same form. The
+stabilization of the remaining terms, which is due to Li, is not
+reproduced. One ingredient is defined but not evaluated: the local
+normalizing factors at the dyadic and ramified places. This is a
+revision, restricted to the double cover, of notes of the first author
+from 1995; the explicit formulas are checked by accompanying scripts.
 \end{abstract}
 
 \tableofcontents
@@ -73,6 +83,7 @@ checked by accompanying scripts.
 \input{sec4-geometric}
 \input{sec5-spectral}
 \input{sec6-invariant}
+\input{sec7-stable}
 
 \section*{Acknowledgements}
 \addcontentsline{toc}{section}{Acknowledgements}
@@ -172,6 +183,12 @@ arithm\'etiques'', S\'eminaire Bourbaki \textbf{8} (1962/63), Exp.~257.
 \bibitem[He]{He} D. A. Hejhal, \emph{The Selberg trace formula for
 $PSL(2,\mathbb{R})$, Vol.~2}, Lecture Notes in Math. \textbf{1001},
 Springer, 1983.
+\bibitem[HI13]{HI13} K. Hiraga and T. Ikeda, ``On the Kohnen plus space for
+Hilbert modular forms of half-integral weight I'', Compos. Math.
+\textbf{149} (2013), 1963--2010.
+\bibitem[How]{How} T. K. Howard, ``Lifting of characters on $p$-adic
+orthogonal and metaplectic groups'', Compos. Math. \textbf{146} (2010),
+795--810.
 \bibitem[JL]{JL} H. Jacquet and R. P. Langlands, \emph{Automorphic forms on
 $GL(2)$}, Lecture Notes in Math. \textbf{114}, Springer, 1970.
 \bibitem[J88]{J88} D. Joyner, ``On the metaplectic analog of Kazhdan's
@@ -220,6 +237,10 @@ preprint, arXiv:2410.13606.
 \bibitem[Ma57]{Ma57} G. W. Mackey, ``Les ensembles bor\'eliens et les
 extensions des groupes'', J. Math. Pures Appl. (9) \textbf{36} (1957),
 171--178.
+\bibitem[Mak]{Mak} K. Maktouf, ``Le caract\`ere de la repr\'esentation
+m\'etaplectique et la formule du caract\`ere pour certaines
+repr\'esentations d'un groupe de Lie presque alg\'ebrique sur un corps
+$p$-adique'', J. Funct. Anal. \textbf{164} (1999), 249--339.
 \bibitem[Mat]{Mat} H. Matsumoto, ``Sur les sous-groupes arithm\'etiques des
 groupes semi-simples d\'eploy\'es'', Ann. Sci. \'Ecole Norm. Sup. (4)
 \textbf{2} (1969), 1--62.
@@ -274,6 +295,8 @@ principal series representations of the metaplectic double cover of
 $SL_2(F)$'', J. Number Theory \textbf{129} (2009), 2180--2213.
 \bibitem[Ta]{Ta} J. Tate, ``Fourier analysis in number fields and Hecke's
 zeta-functions'', in~\cite{CF}, 305--347.
+\bibitem[Th08]{Th08} T. Thomas, ``The character of the Weil
+representation'', J. London Math. Soc. (2) \textbf{77} (2008), 221--239.
 \bibitem[W1]{W1} A. Weil, \emph{Basic number theory}, Springer, 1974.
 \bibitem[W2]{W2} A. Weil, \emph{Adeles and algebraic groups}, Birkh\"auser, 1982.
 \bibitem[Wa80]{Wa80} J.-L. Waldspurger, ``Correspondance de Shimura'', J. Math.

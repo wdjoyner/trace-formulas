@@ -20,8 +20,9 @@ Checks (v runs over oo, 2, 3, 5, 7; random elements of SL(2,Q), GL(2,Q)):
   * Lemma 7.4: the kernels gamma(c)^-1 |c|^(-1/2) psi((a x^2 - 2xy + d y^2)/c)
     compose with Kubota's cocycle: gamma(c3/(c1 c2)) gamma(c3)
     = beta(g1, g2) gamma(c1) gamma(c2);
-  * Proposition 7.5: the truncated Gauss integrals over p^-M Z_p of
-    psi(a x^2) do not depend on M for M large (p = 3, 5); formula (7.6) for
+  * Lemma 7.5' (used for Proposition 7.5): the truncated Gauss integrals over
+    p^-M Z_p of psi(a x^2) do not depend on M beyond the stated bound
+    (p = 2, 3, 5); Example 7.A(e); formula (7.6) for
     the character of r+ - r- equals gamma(1)^-2 times formula (7.7) for
     the character of omega at (-1,1) x; (7.7) agrees with Thomas's
     gamma(1) gamma(det(g-1)) up to sign;
@@ -29,7 +30,7 @@ Checks (v runs over oo, 2, 3, 5, 7; random elements of SL(2,Q), GL(2,Q)):
     for the Weil representation of SL(2, F_p) on functions on F_p
     (p = 3, 5, 7, 11), the trace of omega(g) P, which is the character of
     (even part) - (odd part), is (det(1+g) / p) when det(1+g) != 0;
-  * Lemma 7.6: (a, det(1+gamma)) (a, det(1-gamma)) = (a, -theta) on T_theta;
+  * Lemma 7.5': (a, det(1+gamma)) (a, det(1-gamma)) = (a, -theta) on T_theta;
   * Lemma 7.8: v_A(d^-1 x d) = v_A(x) - H_1(k(x) d) - H_1(k(wx) d);
   * Proposition 7.10 for k = Q, S = {oo, 2}: the local identity
     int h(xi t^2) d*t = (1/2) sum_kappa kappa(xi) int h kappa d*y; the
@@ -300,13 +301,31 @@ def gauss_trunc(a, p, M):
 
 
 ok = True
-for p in (3, 5):
+for p in (2, 3, 5):
+    e = 1 if p == 2 else 0                      # ord(2); psi_p has n_0 = 0
     for a in (1, 2, p, 2 * p, Fr(1, p), Fr(2, p * p)):
-        M0 = -((-vp(Fr(a), p)) // 2)            # smallest M with p^(2M) |a| >= 1
+        va = vp(Fr(a), p)
+        M0 = max(-((-(va + 2 * e)) // 2), -4)   # smallest M with 2(M+1) >= ord(a) + 2 + 2e
         ref = gauss_trunc(a, p, M0)
         ok &= abs(ref) > 1e-6 and all(close(gauss_trunc(a, p, M0 + j), ref) for j in (1, 2))
-        ok &= close(abs(ref), float(Fr(p) ** vp(Fr(a), p)) ** 0.5)          # |a|^(-1/2)
-report("Prop. 7.5: int over p^-M Z_p of psi(a x^2) is independent of M for M >= M_0 (p = 3, 5)", ok)
+        # the shells with 2j >= ord(a) + 2 + 2e contribute 0 (Lemma 7.5')
+        ok &= close(abs(ref) ** 2, float(Fr(p) ** va) * (2 if p == 2 else 1))  # |2a|^(-1) * |2|... = p^ord(a) * 2^e
+report("Lemma 7.5': int over p^-M Z_p of psi(a x^2) is independent of M once 2(M+1) >= ord(a)+2+2 ord(2) (p = 2, 3, 5)", ok)
+ok = close(gauss_trunc(1, 2, 1), 1 + 1j) and close(gauss_trunc(2, 2, 2), 2 ** 0.5 * (1 + 1j))
+ok &= not close(gauss_trunc(1, 2, 0), 1 + 1j) and not close(gauss_trunc(2, 2, 1), 2 ** 0.5 * (1 + 1j))
+report("Lemma 7.5' at 2: the values are 1+i (a = 1, from M = 1) and sqrt2 (1+i) (a = 2, from M = 2), and not earlier", ok)
+
+# Example 7.A(e): the referee's example
+gam = ((Fr(3, 5), Fr(-4, 5)), (Fr(4, 5), Fr(3, 5)))
+hh = ((Fr(1), Fr(-1)), (Fr(1), Fr(1)))
+ok = mul(gam, hh) == mul(hh, gam) and det(hh) == 2 and 2 + tr(gam) == Fr(16, 5)
+ok &= hilbert(2, Fr(16, 5), 2) == -1 and hilbert(2, Fr(16, 5), INF) == 1 and hilbert(2, Fr(16, 5), 5) == -1
+for v in (INF, 2, 5):
+    for z in (1, -1):
+        y = Ad(hh, (gam, z), v)
+        ok &= y == (gam, hilbert(2, Fr(16, 5), v) * z)
+report("Example 7.A(e): h = [[1,-1],[1,1]] commutes with gamma = [[3/5,-4/5],[4/5,3/5]] and "
+       "Ad(h) multiplies its lifts by (2,16/5)_v = -1, +1, -1 at v = 2, oo, 5", ok)
 
 # ------------------------------------------------------------------ Lemma 7.4
 ok = True
@@ -376,7 +395,7 @@ for p in (3, 5, 7, 11):
     report("Example 7.C, finite model p = %d: omega is a representation of SL(2,F_p), and "
            "tr(omega(g)P) = (det(1+g)/p)" % p, hom and good)
 
-# ------------------------------------------------------------------ Lemma 7.6
+# ------------------------------------------------------------------ Lemma 7.5'
 ok = True
 for v in PLACES:
     for _ in range(150):
@@ -389,7 +408,7 @@ for v in PLACES:
             continue
         ok &= (2 + tr(gam)) * (2 - tr(gam)) == -4 * theta * gam[1][0] ** 2
         ok &= hilbert(a, 2 + tr(gam), v) * hilbert(a, 2 - tr(gam), v) == hilbert(a, -theta, v)
-report("Lemma 7.6: det(1+g) det(1-g) = -4 theta y^2, so eta_g eta_{-g} = kappa_E (.,-1)", ok)
+report("Lemma 7.5': det(1+g) det(1-g) = -4 theta y^2, so eta_g eta_{-g} = kappa_E (.,-1)", ok)
 
 # ------------------------------------------------------------------ Lemma 7.8
 
@@ -543,7 +562,10 @@ for (sg, u) in classes:
     for eps in (-1, 2, -2):                    # units of Z[1/2] modulo squares
         ok &= abs(vals[cls(sg * (1 if eps > 0 else -1), u * eps)] - vals[(sg, u)]) < 1e-15
 distinct = sorted({mp.nstr(x, 12) for x in vals.values()})
-report("Example 7.E: a^G(S,u_xi) is invariant under xi -> xi*eps, eps in {-1, 2, -2}; four distinct values",
+table = {(1, 1): 1.57726, (1, 3): 0.16864, (1, 5): -0.15668, (-1, 1): -0.31886}
+ok &= all(abs(float(vals[k]) - x) < 5e-6 for k, x in table.items())
+ok &= abs(sum(float(vals[k]) for k in table) - (float(mp.euler) + math.log(2))) < 1e-12
+report("Example 7.E: a^G(S,u_xi) is invariant under xi -> xi*eps, eps in {-1, 2, -2}; four distinct values (the table)",
        ok and len(distinct) == 4 and abs(vals[cls(-1, -1)] - vals[(1, 1)]) < 1e-15,
        "values: " + ", ".join(mp.nstr(mp.mpf(x), 6) for x in distinct))
 

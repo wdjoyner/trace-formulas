@@ -545,3 +545,17 @@ It builds with `pdflatex` (81 pages, no errors, no warnings, no undefined citati
 
 **Status.** All stages are closed. Open items are those listed at the end of the Stage 7 notes, first of all an independent referee report on Section 7.
 
+## Referee report on Section 7, and response (2026-11-11)
+
+ChatGPT refereed Section 7: `referee-2026-11/report-chatgpt-section7.md`. The answer, item by item, is `referee-2026-11/response-section7.md`. In short:
+
+- **One error of statement:** Theorem 7.13(c) called sums of distributions with different characters eigendistributions. Reworded. (N5) is now assumed only in part (c).
+- **Proposition 7.5:** the two-lattice argument is written out; new Lemma 7.5′ (vanishing of the integrals of ψ(aξ²) over distant shells, with the dyadic case); at the archimedean places a direct proof that the kernel is a Schwartz function replaces the citation; the comparison with [Th08] now says that it does not confirm the sign.
+- **(N5):** still a hypothesis. Remark 2026.18 no longer cites [GS16] in support (that paper assumes the residue characteristic prime to n; checked), and formulates the needed statement as a problem. New reference [Sz16].
+- **Packets after Proposition 7.12:** conventions stated; the general stable-sum statement is marked as expected, not proved; [GS12, §5] and [Ad, §15] cited on the referee's authority.
+- **Exposition:** a paragraph separating equivariance, stability and transfer at the start of the section; the comparison with Li's Théorème 5.2.6 is now of coefficients only; Example 7.A(e) (the referee's); a table in Example 7.E; the PID hypothesis in the statement of Proposition 7.10; a dependency paragraph before Theorem 7.13.
+
+No statement or equation number changed (the new lemma is numbered 7.5′). 105 pages. `sec7_n2_check.py`: 35 checks. Remark 2026.19 and the Acknowledgements now say that Section 7 was refereed.
+
+**Still open:** existence of factors with (N1)–(N5) at the dyadic and ramified places; a reference or proof for the stable-sum statement for all cuspidal packets (not used in proofs); the unverified pinpoint citations listed at the end of the response.
+

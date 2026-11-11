@@ -7,9 +7,12 @@
 % (= ../book-1997/book7b.tex). For n = 2 the cover of a torus is abelian, so
 % the Clifford-Mackey part of the 1995 section (Lemmas 3.3, 3.5, Remarks
 % 3.4, 3.6, 3.7, 3.10) is not needed; the general-n situation is summarized
-% in Remark 2026.7. The map from 1995 numbers to the numbers here is in the
+% in Remark 2026.6. The map from 1995 numbers to the numbers here is in the
 % "Stage 2 notes" of ../revision_log.md. Explicit formulas are checked by
 % checks/sec3_n2_check.py.
+% Revised after the second referee report (ChatGPT, November 2026): test
+% functions are defined on the topological cover, and the proof of
+% Lemma 3.1(c) no longer claims that a continuous character has open kernel.
 % Comments beginning "% [Claude]" are editorial notes by Claude.
 % =====================================================================
 
@@ -53,15 +56,16 @@ and~\ref{lem:global}(e) these groups are abelian. On $A$ the cocycle is
 \sigma_\A(a(t_1),a(t_2))=\prod_v(t_{1,v},t_{2,v})_v,\qquad
 t_1,t_2\in\A_k^\times,
 \end{equation}
-since $\kappa_v\equiv1$ on $A$. (The 1995 formula
-$\beta(g_1,g_2)=(g_1^{-1},g_2^{-1})(-g_1g_2^{-1},g_1^{-1}g_2^{-1})$
-reduces to this for $n=2$.) Exactly as for $G$ in
+since $\kappa_v\equiv1$ on $A$. Exactly as for $G$ in
 Section~\ref{sec:global}, $\overline{T(\A)}$ is the \emph{quotient} of the
 restricted product of the $\overline{T(k_v)}$, taken with respect to the
 subgroups $T(\OO_v)^*=\{(t,\kappa_v(t))\mid t\in T_k(k_v)\cap K_v\}$, by
 $\{(\zeta_v)\mid\prod_v\zeta_v=1\}$; it is not a subgroup of that
 restricted product. Each $\overline{T(k_v)}$ maps injectively into
-$\overline{T(\A)}$. We regard $T(\Q)$ as a subgroup of $\overline{T(\A)^1}$
+$\overline{T(\A)}$. These are closed subgroups of the covers of
+Section~\ref{sec:background}, and they carry the induced topologies; for
+$\overline{T(\A)}$ this is again the quotient topology of the restricted
+product. We regard $T(\Q)$ as a subgroup of $\overline{T(\A)^1}$
 by Lemma~\ref{lem:global}(a), $\gamma\mapsto(\gamma,\kappa_\A(\gamma))$;
 for $T=A$ this is $a(t)\mapsto(a(t),1)$, $t\in k^\times$.
 
@@ -71,8 +75,16 @@ covers is \emph{genuine} if $\pi(1,\zeta)=\zeta$, and a function $f$ is
 \emph{anti-genuine} if $f(x\zeta)=\zeta^{-1}f(x)$ for $\zeta\in\mu_2$.
 For $n=2$ the two conditions on functions coincide. Let
 $C_c^\infty(\overline{T(k_v)})_-$ and $C_c^\infty(\overline{T(\A)^1})_-$
-be the anti-genuine functions whose restriction to $T\times\{1\}$ is
-smooth and compactly supported. At places where $T(\OO_v)^*$ is defined
+be the spaces of anti-genuine functions that are smooth and compactly
+supported on these locally compact groups: locally constant in the
+non-archimedean variables and $C^\infty$ in the archimedean ones. As in
+Section~\ref{sec:functions}, this is a condition on the topological
+group, not on the function $t\mapsto f(t,1)$. For the split torus the two
+agree, because $a\mapsto(a,1)$ is continuous on $A(k_v)$ and the
+cocycle~\eqref{eq:cocycle-A} is locally constant
+(Lemma~\ref{lem:local}(i)); for an anisotropic torus they do not, for
+example for $SO(2)\subset SL(2,\R)$, whose preimage is connected
+(Lemma~\ref{lem:local}(d)). At places where $T(\OO_v)^*$ is defined
 let $e_{T,v}$ be the anti-genuine function equal to $1$ on
 $T(\OO_v)^*$ and supported on $\overline{T(\OO_v)}$. Let
 $\mathcal H(\overline{T(\A)})$ be the span of the products
@@ -114,19 +126,22 @@ extends~\cite{Ro}. The quotient of two genuine characters is trivial on
 $\mu_2$, hence is the pull-back of a character of $T(F)$.
 
 (c) Put $\bar\chi_v=\bar\chi\circ\iota_v$, where $\iota_v$ is the
-inclusion of $\overline{T(k_v)}$. Since $\bar\chi$ is continuous, its
-kernel contains an open subgroup, and hence contains $T(\OO_v)^*$ for all
-$v$ outside a finite set $S$. Every $x\in\overline{T(\A)}$ is the image of
+inclusion of $\overline{T(k_v)}$. Since $\bar\chi$ is continuous, there
+is a neighborhood $W$ of the identity in $\overline{T(\A)}$ with
+$|\bar\chi(x)-1|<1$ for $x\in W$. By the definition of the topology, $W$
+contains the image of $\prod_{v\notin S}T(\OO_v)^*$ for some finite set
+$S$ of places. That image is a subgroup, so its image under $\bar\chi$ is
+a subgroup of $\C^\times$ contained in the disc $\{|z-1|<1\}$, and the
+only such subgroup is $\{1\}$. Hence $\bar\chi_v$ is trivial on
+$T(\OO_v)^*$ for $v\notin S$. (The kernel of $\bar\chi$ need not be open:
+at an archimedean place $\bar\chi_v$ can be nontrivial on every
+neighborhood of the identity.) Every $x\in\overline{T(\A)}$ is the image of
 some $(x_v)$ with $x_v\in T(\OO_v)^*$ for $v\notin S'$, and then
 $\bar\chi(x)=\prod_{v\in S'}\bar\chi_v(x_v)$. Conversely, $\prod_v
 \bar\chi_v$ is a character of the restricted product, and it is trivial
 on $\{(\zeta_v)\mid\prod\zeta_v=1\}$ because each $\bar\chi_v$ is
 genuine. So it descends to $\overline{T(\A)}$.
 \end{proof}
-
-This replaces Lemma~3.1 of the 1995 notes, which cited~\cite{Ge2} for
-factorizability of genuine representations of the restricted product.
-For $n=2$ the statement concerns the quotient and needs no citation.
 
 Let $X_T=T(\Q)\backslash\overline{T(\A)^1}$. It is a compact abelian
 group, an extension of the compact group $T(\Q)\backslash T(\A)^1$ by
@@ -160,12 +175,8 @@ to the closed subgroup $\mu_2$ of $X_T$; the second sentence follows
 as in that lemma. (c) is Lemma~\ref{lem:weil}(c).
 \end{proof}
 
-Theorem~\ref{thm:corr} is the $n=2$ form of Theorem~3.2 of the 1995
-notes, restated as a correspondence of automorphic spectra. The 1995
-statement matches genuine representations with characters $\chi^N$,
-$N=n/\gcd(n,2)$; for $n=2$, $N=1$, and the matching requires the choice
-of $\bar\chi_0$, which the 1995 text did not make. The choice cannot be
-avoided:
+The bijection in~(b) depends on the choice of $\bar\chi_0$, and for a
+general torus there is no canonical one. The choice cannot be avoided:
 
 \begin{example}\label{ex:order4}
 Let $k=\Q$, and let $\varepsilon\in A(\A)^1$ be $a(-1)$ at the real place
@@ -289,10 +300,9 @@ in the orthonormal basis $\mathrm{vol}(X_T)^{-1/2}\bar\chi$ with summable
 eigenvalues $\bar\chi(f)$, it is of trace class with that trace.
 \end{proof}
 
-Theorem~\ref{thm:tf-rank0} replaces Theorems~3.8 and~3.9 of the 1995
-notes. For $n=2$ every conjugacy class in $\overline{T(\A)^1}$ is a
-point and every centralizer is the whole group, so the orbital integrals
-there reduce to the values $f(\delta)$. Here $f(\delta)$ means $f$ at
+Every conjugacy class in $\overline{T(\A)^1}$ is a point and every
+centralizer is the whole group, so the geometric side has no orbital
+integrals, only the values $f(\delta)$. Here $f(\delta)$ means $f$ at
 the image $(\delta,\kappa_\A(\delta))$ of $\delta$; for $T=A$ it is
 $f(a(\delta),1)$.
 
@@ -320,14 +330,19 @@ $\tilde t$ any lift of $t$.
   f(t)\chi(t)\,dt$ for every character $\chi$ of $T(\A)^1$.
 \end{enumerate}
 Consequently~\eqref{eq:tf-rank0} for $\bar f$ is the Poisson summation
-formula $\sum_\chi\hat f(\chi)=\mathrm{vol}(T(\Q)\backslash T(\A)^1)
-\sum_{\delta\in T(\Q)}f(\delta)$ for $f$, $\chi$ running over the
-characters of $T(\Q)\backslash T(\A)^1$.
+formula for $f$,
+\[
+\sum_\chi\hat f(\chi)=\mathrm{vol}\bigl(T(\Q)\backslash T(\A)^1\bigr)
+\sum_{\delta\in T(\Q)}f(\delta),
+\]
+with $\chi$ running over the characters of $T(\Q)\backslash T(\A)^1$.
 \end{lemma}
 
 \begin{proof}
 (a) $\bar f\bar\chi_0$ is $\mu_2$-invariant because $\bar f$ is
-anti-genuine and $\bar\chi_0$ genuine, and the inverse map is
+anti-genuine and $\bar\chi_0$ genuine, and it is smooth because
+$\bar\chi_0$ is a continuous character; so it is the pull-back of a
+smooth function on $T$. The inverse map is
 $f\mapsto(f\circ p)\bar\chi_0^{-1}$. For convolution,
 $(\bar f_1*\bar f_2)(x)\bar\chi_0(x)=\int\bar f_1(y)\bar\chi_0(y)\,
 \bar f_2(y^{-1}x)\bar\chi_0(y^{-1}x)\,dy$, and the integrand is
@@ -337,13 +352,9 @@ $T(\Q)$; the second identity is the definition, the integrand being
 $\mu_2$-invariant.
 \end{proof}
 
-This replaces Lemmas~3.11 and~3.12 and the argument through Claims~1
-and~2 of the 1995 notes. The local maps $\bar f_v\mapsto f_v$ involve no
-sum over $T(\Q_p)_\delta\backslash T(\Q_p)$ and no factor
-$s_\A(\delta)$, because there is no conjugation. Together with
-Theorem~\ref{thm:tf-rank0} they show that the correspondence
-$\chi\leftrightarrow\bar\chi_0\cdot(\chi\circ p)$ of Theorem~\ref{thm:corr}
-matches the two trace formulas term by term.
+Together with Theorem~\ref{thm:tf-rank0}, the lemma shows that the
+correspondence $\chi\leftrightarrow\bar\chi_0\cdot(\chi\circ p)$ of
+Theorem~\ref{thm:corr} matches the two trace formulas term by term.
 
 \subsection{Distributions for Section 6}\label{sec:IA}
 
@@ -374,6 +385,16 @@ characters of $A^N$ requires a splitting over $A^N$, and the global
 argument requires a Hasse principle for $N$-th powers, which holds when
 $\mu_N\subset k$. These are referee items II.1--II.4; none of them arises
 for $n=2$, and this section does not treat $n>2$.
+\end{remarkrev}
+
+\subsection{Status of the results}\label{sec:status3}
+
+\begin{remarkrev}\label{rem:sec3-status}
+\emph{What rests on citation.} Taken from the literature:
+Lemma~\ref{lem:weil}(a)--(b)~\cite{We64}; the compactness of
+$T(\Q)\backslash T(\A)^1$~\cite{PR}; and the extension of characters from
+closed subgroups of locally compact abelian groups~\cite{Ro}. Everything
+else in this section is proved in the text.
 \end{remarkrev}
 
 \begin{remarkrev}\label{rem:verified-rank0}

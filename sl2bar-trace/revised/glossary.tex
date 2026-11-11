@@ -1,0 +1,205 @@
+% SPDX-License-Identifier: CC-BY-4.0
+% =====================================================================
+% Glossary for D. Joyner and Claude, "A hitch-hiker's guide to the
+% metaplectic trace formula for SL(2)" (November 2026).
+% Added in response to the second referee report (ChatGPT). Needs longtable.
+% =====================================================================
+
+\section*{Glossary}\label{sec:glossary}
+\addcontentsline{toc}{section}{Glossary}
+
+\subsection*{Notation}
+
+{\small
+\begin{longtable}{@{}p{0.21\textwidth}p{0.55\textwidth}p{0.18\textwidth}@{}}
+Symbol & Meaning & Defined in\\\hline
+\endhead
+\multicolumn{3}{@{}l}{\emph{Groups}}\\
+$k$, $d$, $\A_k$, $\A$ & number field, its degree $[k:\Q]$, its adeles,
+  the adeles of $\Q$ & \S\ref{sec:background}\\
+$G$ & $\Res_{k/\Q}SL(2)$; $G(\Q)=SL(2,k)$ & \S\ref{sec:background}\\
+$B$, $N$, $A$ & upper triangular Borel subgroup, its unipotent radical,
+  the diagonal torus & \S\ref{sec:local}\\
+$a(t)$, $n(u)$, $w$ & $\diag(t,t^{-1})$, the upper unipotent matrix with
+  entry $u$, the Weyl element $\bigl(\begin{smallmatrix}0&-1\\1&0
+  \end{smallmatrix}\bigr)$ & \S\ref{sec:local}, \S\ref{sec:geometric}\\
+$T_\theta$, $T_\mu$ & anisotropic torus attached to $k(\sqrt\theta)$;
+  centralizer of an elliptic $\mu$ & \S\ref{sec:local}, Lemma~\ref{lem:classes}\\
+$K_v$, $K_m$, $K_0$, $K_f$ & maximal compact subgroup at $v$; principal
+  congruence subgroup of level $\varpi^m$; $\prod_vK_v$; an open compact
+  subgroup of $G(\A_f)$ & \S\ref{sec:local}, \S\ref{sec:global}\\
+$A(\A)^1$, $A_B(\R)^0$ & kernel of $H$ on $A(\A)$; the split component
+  $\{a(u)\mid u>0\}$ & \S\ref{sec:torus-cover}, \S\ref{sec:coarse}\\[4pt]
+\multicolumn{3}{@{}l}{\emph{The cover}}\\
+$\mu_2$ & $\{\pm1\}$, the kernel of the covering & \S\ref{sec:background}\\
+$(a,b)_v$ & quadratic Hilbert symbol of $k_v$ & \S\ref{sec:background}\\
+$\beta_v$ & Kubota's cocycle on $SL(2,k_v)$; Borel, not continuous &
+  \eqref{eq:beta}, Lemma~\ref{lem:kubota}\\
+$\kappa_v$, $\kappa_\A$ & Kubota's correction on $K_v$ ($v$ finite,
+  non-dyadic); its product over $v$, defined on $G(\Q)$ &
+  \eqref{eq:kappa}, \eqref{eq:kappa-A}\\
+$\sigma_v$, $\sigma_\A$ & $\beta_v$ times the coboundary of $\kappa_v$;
+  the adelic cocycle $\prod_v\sigma_v$ & \eqref{eq:sigma-v},
+  \eqref{eq:sigma-A}\\
+$\overline{SL(2,k_v)}$, $\overline{G(\A)}$ & the local and the adelic
+  double cover; $\overline H=p^{-1}(H)$ for a subgroup $H$ &
+  Lemma~\ref{lem:kubota}, \S\ref{sec:global}\\
+$(g,\zeta)$ & Borel coordinates on a cover; $g\mapsto(g,1)$ is not
+  continuous & \eqref{eq:law}, Example~\ref{ex:discontinuous}\\
+$K_v^*$, $K_f^*$ & the image of $K_v$ under $k\mapsto(k,\kappa_v(k))$, a
+  compact open subgroup of the cover; the image of $K_f$ &
+  Lemma~\ref{lem:local}(b), Lemma~\ref{lem:global}(c)\\
+$\overline{G(\Q_S)}$, $\overline{A(\Q_S)}$ & the covers of
+  $\prod_{v\in S_k}SL(2,k_v)$ and of its diagonal torus &
+  \S\ref{sec:local-dist}, \S\ref{sec:invariant}\\[4pt]
+\multicolumn{3}{@{}l}{\emph{Heights, measures, functions}}\\
+$H=H_B$, $H_v$, $H_S$ & the height $\log|t|$ of the $A$-component in
+  $x=nak$ & \eqref{eq:H}, Lemma~\ref{lem:NAK-global}\\
+$\delta_B$ & modulus character, $e^{2H}$ & \S\ref{sec:measures-local}\\
+$\mathfrak a$, $\alpha$, $\alpha^\vee$ & $\Hom(X(A)_\Q,\R)\cong\R$; the
+  simple root $2/d$; the coroot $d$ & \S\ref{sec:chambers},
+  Remark~\ref{rem:alpha}\\
+$\tau_B=\hat\tau_B$ & characteristic function of $(0,\infty)$ &
+  \eqref{eq:tau}\\
+$C_c^\infty(\cdot)_-$ & smooth, compactly supported, anti-genuine
+  functions on a cover & \S\ref{sec:functions}\\
+$e_v$, $e^S$ & unit of the spherical Hecke algebra at $v$;
+  $\bigotimes_{v\notin S}e_v$ & \eqref{eq:unit}, \S\ref{sec:local-dist}\\
+$\mathcal H(\overline{G(\A)})$, $\mathcal H(\overline{G(\Q_S)})$ & Hecke
+  algebras of test functions; $f=f_S\otimes e^S$ & \S\ref{sec:global},
+  \S\ref{sec:local-dist}\\
+$f^y$ & $x\mapsto f(yxy^{-1})$ & \S\ref{sec:invariant}\\
+$c_k$ & $\mathrm{vol}(A(\Q)\backslash A(\A)^1)$ & \S\ref{sec:coarse}\\[4pt]
+\multicolumn{3}{@{}l}{\emph{Rank $0$}}\\
+$\psi$, $\psi_b$ & a nontrivial character of $\A_k/k$; $x\mapsto\psi(bx)$
+  & \S\ref{sec:torus-cover}\\
+$\gamma_v(a)$ & Weil index of $x\mapsto\psi_v(ax^2)$, an eighth root of
+  unity & \eqref{eq:weil-index}\\
+$\chi_\psi$, $\chi_{\psi_b}$ & Weil's genuine character of
+  $\overline{A(\A)}$, $(a(t),\zeta)\mapsto\zeta\prod_v\gamma_v(t_v)/
+  \gamma_v(1)$ & Lemma~\ref{lem:weil}\\
+$X_T$, $\Pi_{\mathrm{aut}}(X_T)$ & $T(\Q)\backslash\overline{T(\A)^1}$;
+  its genuine characters & \S\ref{sec:torus-cover}\\
+$I^A_{\mathcal O}$, $I^A_{\bar\chi}$ & the two kinds of terms in the
+  trace formula for the cover of $A$ & \eqref{eq:IA}\\[4pt]
+\multicolumn{3}{@{}l}{\emph{Geometric side}}\\
+$\mathcal C$, $\mathcal O$, $\mathcal O_z$ & the set of classes in
+  $G(\Q)$; a class; the central class of $z=\pm1$ &
+  Lemma~\ref{lem:classes}\\
+$K_P$, $K_{P,\mathcal O}$, $J_{P,\mathcal O}$ & kernels attached to
+  $P\in\{B,G\}$ & \eqref{eq:KP}, \eqref{eq:JP}\\
+$k^T$, $k^T_{\mathcal O}$, $j^T_{\mathcal O}$ & truncated kernels &
+  \eqref{eq:kT}\\
+$J^T_{\mathcal O}(f)$, $J_{\mathcal O}(f)$ & integral of
+  $k^T_{\mathcal O}$, a polynomial in $T$; its value at $T=0$ &
+  Theorem~\ref{thm:coarse}\\
+$v_A$, $v_{A,v}$ & the weight $-H(x)-H(wx)$ & \eqref{eq:vA},
+  Lemma~\ref{lem:weight-local}\\
+$\Phi_f$, $Z(f,s)$ & the function $y\mapsto\int_Kf(k^{-1}n(y)k)\,dk$ and
+  its zeta integral (not to be confused with $\Phi_A$) & \eqref{eq:Phi},
+  \eqref{eq:Zf}\\
+$J_G(\gamma,f_S)$ & orbital integral on $\overline{G(\Q_S)}$ &
+  \eqref{eq:JG}\\
+$J_A(\gamma,f_S)$ & weighted orbital integral, weight $v_A$; not
+  invariant & \eqref{eq:JA}\\
+$J_A(z,f_S)$ & its regularized value at $z=\pm1$ &
+  Lemma~\ref{lem:JA-central}\\
+$u_\xi$, $a^M(S,\gamma)$ & the unipotent element $n(\xi)$; the global
+  coefficients of the fine expansion & Theorem~\ref{thm:fine}\\[4pt]
+\multicolumn{3}{@{}l}{\emph{Spectral side}}\\
+$\mathcal X$, $\mathcal X_G$, $\mathcal X_A$ & classes of cuspidal data;
+  those of $(G,\pi)$; those of $(A,\mu)$ & \S\ref{sec:decomp}\\
+$\mu$, $\mu^w$, $\mu_\lambda$ & a genuine automorphic character of the
+  cover of $A$; its Weyl conjugate; $\mu\,e^{\lambda H}$ &
+  \S\ref{sec:decomp}\\
+$\chi_b$ & the ramified class of $(A,\chi_{\psi_b})$ &
+  Lemma~\ref{lem:w-action}\\
+$\mathcal H_B(\mu)$, $I(\mu_\lambda)$ & the space of the principal series
+  and the induced representation & \eqref{eq:HBmu}\\
+$E(x,\varphi,\lambda)$ & Eisenstein series & \eqref{eq:Eis}\\
+$M(w,\lambda)$, $M_v$ & global and local intertwining operators &
+  \eqref{eq:Mw}, Lemma~\ref{lem:intertwining}\\
+$m^S(\mu,\lambda)$ & $L^S(2\lambda,\chi^2)/L^S(2\lambda+1,\chi^2)$ &
+  \eqref{eq:mS}\\
+$\omega_{\psi'}$, $r^\pm_{\psi'}$ & Weil representation and its even and
+  odd parts & \eqref{eq:weil-rep}\\
+$V_b$ & residual representation of the class $\chi_b$, isomorphic to
+  $r^+_{\psi_{-b}}$ & Theorem~\ref{thm:residual}\\
+$\Lambda^T$ & truncation operator & \eqref{eq:trunc}\\
+$K_{P,\chi}$, $k^T_\chi$, $J^T_\chi$, $J_\chi$ & spectral kernels, their
+  truncation and its integral & \S\ref{sec:Jchi}\\
+$M_B^T(\mu,\lambda)$ & $2T-M(w,\lambda)^{-1}M'(w,\lambda)$ &
+  \eqref{eq:MT}\\[4pt]
+\multicolumn{3}{@{}l}{\emph{Invariant form}}\\
+$u'_B(k,y)$, $f_{B,y}$ & the weight $-H(ky)$; the function on the cover
+  of $A$ that measures $J(f^y)-J(f)$ & \eqref{eq:uprime}, \eqref{eq:fBy}\\
+$V(\pi)$, $I(\pi_\lambda)$ & local principal series of
+  $\overline{G(\Q_S)}$ & \S\ref{sec:invariant}\\
+$r_v(\pi_v,\lambda)$, $R_v$, $R_S$ & local normalizing factor; normalized
+  operator $r_v^{-1}M_v$; $\bigotimes_{v\in S_k}R_v$ &
+  Theorem~\ref{thm:normalization}\\
+$S_{\mathrm{bad}}(\mu)$ & the places where $r_v$ is not explicit &
+  \S\ref{sec:normalized}\\
+$m(\mu,\lambda)$ & global normalizing factor, $M(w,\lambda)=m\cdot R_S$ &
+  \eqref{eq:global-m}\\
+$\varphi_A(f,\pi)$ & $-\operatorname{tr}(R_S^{-1}R_S'\,I(\pi,f))$, a
+  function of the \emph{character} $\pi$ of $\overline{A(\Q_S)}$ &
+  \eqref{eq:phiA}\\
+$\Phi_A(\tilde a,f)$ & the inverse Fourier transform of
+  $\varphi_A(f,\cdot)$, a function of the \emph{element} $\tilde a$ of
+  $\overline{A(\Q_S)}$ & \eqref{eq:PhiA}\\
+$I_A(\gamma,f)$, $I_A(z,f)$ & $J_A-\Phi_A$, the invariant distributions &
+  \eqref{eq:IAgamma}\\
+$I_{\mathcal O}(f)$, $I_\chi(f)$ & the terms of the invariant trace
+  formula & \eqref{eq:Iochi}\\
+\end{longtable}
+}
+
+\subsection*{Terms}
+
+\begin{description}
+\item[Anti-genuine function.] A function $f$ on a cover with
+  $f(x\zeta)=\zeta^{-1}f(x)$ for $\zeta\in\mu_2$. All test functions are
+  anti-genuine. For the double cover this is the same condition as
+  \emph{genuine}, $f(x\zeta)=\zeta f(x)$.
+\item[Borel coordinates.] The coordinates $(g,\zeta)$ in which a cover is
+  described by a cocycle. They give the group law and the Borel
+  structure, but not the topology (Lemma~\ref{lem:kubota}).
+\item[Class (geometric).] A set of elements of $G(\Q)$ whose semisimple
+  parts are conjugate: central, hyperbolic or elliptic
+  (Lemma~\ref{lem:classes}). A class is \emph{unramified} if it consists
+  of semisimple elements.
+\item[Cuspidal datum.] A pair $(G,\pi)$ with $\pi$ cuspidal, or a pair
+  $(A,\mu)$ with $\mu$ a genuine automorphic character of the cover of
+  $A$; $(A,\mu)$ and $(A,\mu^w)$ are equivalent. A class $\chi$ of data
+  $(A,\mu)$ is \emph{ramified} if $\mu^w=\mu$, and then
+  $\mu=\chi_{\psi_b}$.
+\item[Dyadic place.] A place of $k$ above $2$. The explicit splitting
+  $\kappa_v$ and the explicit normalizing factors are not available
+  there.
+\item[Genuine representation.] A representation of a cover in which
+  $\mu_2$ acts by the identity character.
+\item[$(G,S)$-equivalence.] Arthur's equivalence relation on $G(\Q)$,
+  for a finite set $S$ of places: equal semisimple parts up to
+  conjugacy, and unipotent parts conjugate in the centralizer over
+  $\Q_S$. It indexes the terms of the fine expansion
+  (Theorem~\ref{thm:fine}).
+\item[Invariant distribution.] A linear form $I$ on test functions with
+  $I(f^y)=I(f)$ for all $y$ in the group.
+\item[Normalizing factor.] A scalar function $r_v(\pi_v,\lambda)$ such
+  that $r_v^{-1}M_v$ has the properties \ref{N1}--\ref{N4} of
+  Theorem~\ref{thm:normalization}. Its existence, an explicit formula for
+  it, and its role in the global factor $m$ are three different matters
+  (Section~\ref{sec:normalized}).
+\item[Residual spectrum.] The part of the discrete spectrum that is not
+  cuspidal. For this group it is spanned by the residues of Eisenstein
+  series at $\lambda=\frac12$ and consists of even Weil representations.
+\item[Truncation.] Subtracting from a kernel, or from an automorphic
+  form, its constant term in the cusp $\{H(\delta x)>T\}$.
+\item[Weighted orbital integral.] An orbital integral with the weight
+  $v_A$ inserted, \eqref{eq:JA}. It arises from truncation and is not
+  invariant.
+\item[Weil index.] The eighth root of unity $\gamma_v(a)$ attached to the
+  character of second degree $x\mapsto\psi_v(ax^2)$,
+  \eqref{eq:weil-index}.
+\end{description}

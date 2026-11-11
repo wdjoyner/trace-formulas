@@ -19,7 +19,8 @@ This log tracks every item of the 2026 referee report ([Claude Docs](https://cla
 | 4 | §5 spectral side: residual (Weil representation) spectrum, ramified χ, M_B^T | Done 2026-11-10: `revised/sec5-spectral.tex`, checked by `revised/checks/sec5_n2_check.py` (see *Stage 4 notes*) |
 | 5 | §6 invariant form | Done 2026-11-11: `revised/sec6-invariant.tex`, checked by `revised/checks/sec6_n2_check.py` (see *Stage 5 notes*) |
 | 6 | §7 stable(r) form | Pending |
-| 7 | Consistency pass, independent re-referee, literature review, title page; Introduction (residual spectrum, II.9) | Pending |
+| 5R | Response to the second referee report (ChatGPT, on Sections 2–6): topology of the cover and test functions, b′ = −b, Section 1 (overview, literature review), Glossary, Appendix A (comparisons with 1995), acknowledgements | Done 2026-11-11: see *Second referee report* below and `referee-2026-11/` |
+| 7 | Consistency pass after stage 6; Introduction and literature review to be extended to Section 7. (The independent re-referee, the literature review, the title page and the Introduction for Sections 2–6 were done in 5R.) | Pending |
 
 ## Items
 
@@ -370,3 +371,23 @@ The report's §6 numbers do not match the compiled text: its "Conjectures 6.2–
   - I_A(γ,f) depends on the normalizing factors; the comparison with GL(2)-conjugation in §7 should use the same choice on both sides;
   - Lemma 6.12 (Whittaker coefficients L^S(λ+½,χη_a)/L^S(2λ+1,χ²)) is the SL(2) case of the Shimura correspondence at the level of Eisenstein series and may be useful there.
 - *Stage 7 (or stage 0):* the master needs the bibliography entries added to `preview.tex` in this stage ([A6], [A10], [A11], [GJ], [Li II], [Mo2], [Sa]). The Introduction should say that the invariant formula is unconditional for this group. Making the dyadic normalizing factor explicit would give m = Λ(2λ,χ²)/Λ(2λ+1,χ²) exactly.
+
+## Second referee report (2026-11-11)
+
+An independent referee report on `revised/preview.tex` (Sections 2–6) was written by ChatGPT: `referee-2026-11/report-chatgpt.md`. The point-by-point response is `referee-2026-11/response.md`. Authors are now "D. Joyner and Claude"; ChatGPT is credited in the Acknowledgements.
+
+**Files.** New: `revised/sec1-introduction.tex` (overview, literature review, proved/cited table, running example), `revised/appA-comparison.tex` (all comparisons with the 1995 notes and the 1997 manuscript, moved out of the body), `revised/glossary.tex`. Changed: all five section files, `preview.tex` (abstract, table of contents, acknowledgements, 36 new bibliography entries), `checks/sec2_n2_check.py` (+10 checks), `checks/sec5_n2_check.py` (+5 checks). The PDF is now 75 pages.
+
+**Mathematical changes.**
+- *Topology (report 1.1, 1.3).* Kubota's cocycle is Borel, not continuous: β(a(t), n̄(c)) = (c,t)_v. Lemma 2.1 now fixes the topology of the cover by a base of neighborhoods (V,1), V ⊂ U, where β ≡ 1 on U × U; new Example 2.A; new Lemma 2.2(i) (the continuous sections). C_c^∞ of a cover is defined on the topological group, not through g ↦ f(g,1); the unit e_p is the standard counterexample to the old definition. The adelic cover has the quotient topology of the restricted product. Section 3 follows.
+- *Lemma 3.1(c).* The proof no longer claims that a continuous character has open kernel.
+- *b′ = −b.* New Lemma 5.7: in Kubota's model, with ω_{ψ′}(n(u)) = ψ′(ux²), ω(a(t),ζ)φ(x) = ζ χ_{ψ′₋₁}(a(t),1)|t|^{1/2}φ(tx). Hence V_b ≅ r⁺_{ψ_{−b}} (Theorem 5.8(c)); Example 5.B corrected (Gaussian e^{−2πξ²}). This closes the open item of the Stage 4 notes.
+- *Normalizing factors.* Lemma 6.6(c) treats χ_v = sgn^ε|·|^{iτ} at real places. §6.2 separates existence, explicit formula and global compatibility.
+- *M(w,0) = −1.* Proof of Proposition 6.13 expanded (four steps; bounded elementary generation of SL(2,𝔸)).
+- *Claims.* "Every term explicit" is gone. Theorems 4.11, 5.16, 6.11 say that a^G(S,u_ξ) and the r_v at S_bad(μ) are defined, not evaluated.
+
+**Renumbering.** Section 5: statements from 5.7 on move up by one, equations from (5.5) on by two. Section 2: Examples 2.A, 2.B → 2.B, 2.C. Remarks: old 2026.2 is in Appendix A; 2026.3, 2026.4 → 2026.2, 2026.3; new 2026.4 (status of §2) and 2026.7 (status of §3); from old 2026.7 on, add one. The numbering maps in the stage notes above use the old numbers.
+
+**Still open after this round.** The coefficients a^G(S,u_ξ); explicit r_v at dyadic and ramified places (Szpruch and Goldberg–Szpruch are now cited but not used); T ≥ 0 on the spectral side; Li IV's definitions versus (6.13); stage 0 and stage 6.
+
+**Literature review.** Bibliographic data for the new entries were checked online on 2026-11-11, except [He], [JL], [Sel], [Sh], [Shi], [Mat], [BD], [Wa81], which are standard and were entered from memory, and [J88], [GPS83], which follow `book-1997/book9.tex`. Worth a glance by DJ: the title of [J88].

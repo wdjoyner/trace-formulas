@@ -12,6 +12,9 @@
 % preview.tex. Lemma numbers 2.1-2.9 are those of the 1995 notes;
 % Lemma 2.10 is new. Every explicit formula for n = 2 is checked by
 % checks/sec2_n2_check.py (exact rational arithmetic).
+% Revised after the second referee report (ChatGPT, November 2026): the
+% topology of the cover and the spaces of test functions (Lemma 2.1,
+% Lemma 2.2(i), Sections 2.1.4 and 2.2); see ../referee-2026-11/response.md.
 % Comments beginning "% [Claude]" are editorial notes by Claude.
 % =====================================================================
 
@@ -25,6 +28,16 @@ then assembled into the cover of $G(\Q_p)$. Section~\ref{sec:global}
 builds the adelic cover and its splitting over $G(\Q)$, and
 Section~\ref{sec:gl2} fixes a double cover of $GL(2)$ and the resulting
 $GL(2)$-action on the cover of $SL(2)$, which is what Section~7 uses.
+
+One point needs care throughout. The cover is described by an explicit
+cocycle, in coordinates $(g,\zeta)$, but the cocycle is only a Borel
+function: it is not continuous, and the section $g\mapsto(g,1)$ is not
+continuous either. The topology of the cover is therefore not the
+product topology in these coordinates. It is fixed in
+Lemma~\ref{lem:kubota}(c), smooth functions are defined with respect to
+it (Section~\ref{sec:functions}), and Lemma~\ref{lem:local}(i) lists the
+sections that are continuous. The coordinates are used only for
+algebraic computations and for integration.
 
 From now on $n=2$. The 1995 notes treated the $n$-fold cover; for
 $n=2$ several statements become simpler, and one, the
@@ -84,19 +97,36 @@ $\beta=\beta_v\colon SL(2,F)\times SL(2,F)\to\mu_2$ by
 At a complex place $\beta\equiv1$ by~\ref{H3}.
 
 \begin{lemma}[Kubota~\cite{K1}, Moore~\cite{M}]\label{lem:kubota}
-$\beta$ is a continuous Borel $2$-cocycle, $\mu_2$ carrying the discrete
-topology. Its class in $H^2(SL(2,F),\mu_2)$ defines a topological
-central extension
-\[
-1\to\mu_2\to\overline{SL(2,F)}\xrightarrow{\;p\;}SL(2,F)\to1,
-\]
-which is nontrivial unless $F=\C$.
+\begin{enumerate}[label=(\alph*)]
+\item $\beta$ is a Borel $2$-cocycle on $SL(2,F)$ with values in
+  $\mu_2$. With the group law~\eqref{eq:law} below it defines a central
+  extension of groups
+  \[
+  1\to\mu_2\to\overline{SL(2,F)}\xrightarrow{\;p\;}SL(2,F)\to1,
+  \]
+  which is nontrivial unless $F=\C$.
+\item $\beta$ is not continuous unless $F=\C$
+  (Example~\ref{ex:discontinuous}). There is, however, an open
+  neighborhood $U$ of $1$ in $SL(2,F)$ with $\beta\equiv1$ on $U\times U$:
+  for $F=\R$ one may take $U=\{g\mid a>0,\ d>0\}$, and for $F$
+  non-archimedean $U=K_m$ with $m$ as in Lemma~\ref{lem:local}(c).
+\item There is exactly one topology on $\overline{SL(2,F)}$ for which it
+  is a topological group and the sets $\{(g,1)\mid g\in V\}$, with
+  $V\subset U$ an open neighborhood of $1$ in $SL(2,F)$, form a base of
+  neighborhoods of the identity. With this topology
+  $\overline{SL(2,F)}$ is a locally compact group, $p$ is a two-fold
+  covering map, and $g\mapsto(g,1)$ is a homeomorphism of $U$ onto an open
+  subset. Unless $F=\C$ it is not the product topology of
+  $SL(2,F)\times\mu_2$, but it has the same Borel sets.
+\end{enumerate}
 \end{lemma}
 
-The two expressions in~\eqref{eq:beta} agree, and the cocycle identity
-holds; both are checked on random elements over $\R$, $\Q_2$, $\Q_3$,
-$\Q_5$ and $\Q_7$ in \texttt{checks/sec2\_n2\_check.py}. For $F=\R$ the
-group $\overline{SL(2,\R)}$ is the metaplectic group $Mp(2,\R)$.
+From now on $\overline{SL(2,F)}$ carries the topology of~(c). For $F=\R$
+it is the metaplectic group $Mp(2,\R)$, a connected Lie group. The proof
+is given after Lemma~\ref{lem:local}. The two expressions
+in~\eqref{eq:beta} agree, and the cocycle identity holds; both are also
+checked on random elements over $\R$, $\Q_2$, $\Q_3$, $\Q_5$ and $\Q_7$ in
+\texttt{checks/sec2\_n2\_check.py}.
 
 For a subgroup $H\subset SL(2,F)$ put $\overline H=p^{-1}(H)$. Elements
 of $\overline{SL(2,F)}$ are written $(g,\zeta)$ with $g\in SL(2,F)$,
@@ -110,6 +140,13 @@ Since $\zeta^{-1}=\zeta$, inverses and conjugates are
 (g,\zeta)(h,\zeta')(g,\zeta)^{-1}
 =\bigl(ghg^{-1},\ \beta(g,h)\beta(gh,g^{-1})\beta(g,g^{-1})\zeta'\bigr).
 \end{equation}
+The pairs $(g,\zeta)$ are Borel coordinates on $\overline{SL(2,F)}$, not
+topological ones. A statement about continuity or smoothness on the
+cover always refers to the topology of Lemma~\ref{lem:kubota}(c). A
+function $\phi$ on the cover that is invariant under $\mu_2$ is a
+function on $SL(2,F)$, and for the measures of
+Section~\ref{sec:measures-local} its integral over the cover is
+$\int\phi(g,1)\,dg$.
 
 Let $B\subset SL(2)$ be the upper triangular Borel subgroup, $N$ its
 unipotent radical and $A$ the diagonal torus. Write
@@ -175,6 +212,14 @@ Let $F=k_v$.
   \[
   (g,\zeta)(u,1)(g,\zeta)^{-1}=(gug^{-1},1).
   \]
+\item (Continuity.) The following maps are continuous for the topology
+  of Lemma~\ref{lem:kubota}(c): $n\mapsto(n,1)$ on $N(F)$ and on every
+  conjugate $gN(F)g^{-1}$; $a\mapsto(a,1)$ on $A(F)$; $k\mapsto(k,1)$ on
+  $K_m$, for $m$ as in~(c); and, for $v$ finite and non-dyadic,
+  $k\mapsto(k,\kappa(k))$ on $K$. In particular $K^*$ and the image of
+  $K_m$ are compact open subgroups of $\overline{SL(2,F)}$. The map
+  $g\mapsto(g,1)$ is not continuous on $SL(2,F)$ unless $F=\C$; in general
+  it is not continuous on $K$, nor on an anisotropic torus $T_\theta$.
 \end{enumerate}
 \end{lemma}
 
@@ -237,11 +282,105 @@ entry $-\gamma^2s$. So for $s_1,s_2\ne0$ with $s_1+s_2\ne0$,
 by~\ref{H1} and the Steinberg relation~\ref{H2}. If $s_1+s_2=0$, then
 $x(u_{s_1}u_{s_2})=1$ and $\beta=(1/s_1,-1/s_1)=1$. So $u\mapsto(u,1)$
 is a homomorphism on $U$. Two homomorphic sections differ by a
-continuous homomorphism $U\cong F\to\mu_2$, which is trivial because
+homomorphism $U\cong F\to\mu_2$, which is trivial because
 $F=2F$. Conjugation by $(g,\zeta)$ carries the section $n\mapsto(n,1)$
 of $\overline N$ to a homomorphic section of $\overline{gNg^{-1}}$, which
 is therefore $u\mapsto(u,1)$.
+
+(i) Let $X\subset SL(2,F)$ and $\varepsilon\colon X\to\mu_2$. For
+$g_0\in X$ and $u$ near $1$ with $g_0u\in X$,
+\[
+(g_0u,\varepsilon(g_0u))=(g_0,\varepsilon(g_0))\,(u,1)\cdot
+\beta(g_0,u)\,\varepsilon(g_0)\,\varepsilon(g_0u),
+\]
+and $u\mapsto(u,1)$ is continuous at $1$ by Lemma~\ref{lem:kubota}(c). So
+$g\mapsto(g,\varepsilon(g))$ is continuous at $g_0$ if
+$\varepsilon(g_0u)=\varepsilon(g_0)\beta(g_0,u)$ for all such $u$ close
+enough to $1$. For $X=N(F)$ and $\varepsilon=1$ this holds by~(a), and
+for $gN(F)g^{-1}$ by~(h). For $X=A(F)$ and $\varepsilon=1$:
+$\beta(a(t_0),a(s))=(t_0,s)_v=1$ when $s\in F^{\times2}$, and
+$F^{\times2}$ is a neighborhood of $1$ in $F^\times$. For $X=K_m$ it is
+part of Lemma~\ref{lem:kubota}(c). For $X=K$ and $\varepsilon=\kappa$:
+$k\mapsto(k,\kappa(k))$ is a homomorphism by~(b), and on $K_1$ it is
+$k\mapsto(k,1)$, because $\kappa(k)=(c,d)_v$ with $d\in1+\varpi\OO\subset
+F^{\times2}$; a homomorphism that is continuous at $1$ is continuous.
+The image of $K_m$ is compact, and open by Lemma~\ref{lem:kubota}(c);
+$K^*$ is compact and contains the image of $K_1$, so it is open. If $g\mapsto(g,1)$ were continuous on $SL(2,F)$, then
+$\beta$ would be continuous. For $K$ and $T_\theta$ see
+Example~\ref{ex:discontinuous} and~(d).
 \end{proof}
+
+\begin{proof}[Proof of Lemma~\ref{lem:kubota}]
+(a) is due to Kubota~\cite{K1}; see also~\cite{K2,Ge2}. $\beta$ is a
+Borel function because $x(g)$ is continuous on each of the Borel sets
+$\{c\ne0\}$ and $\{c=0\}$.
+
+(b) For $F$ non-archimedean this is Lemma~\ref{lem:local}(c). Let
+$F=\R$ and $g_1,g_2\in U$, with entries $a_i,b_i,c_i,d_i$, and let
+$g_3=g_1g_2$, so $c_3=c_1a_2+d_1c_2$. By~\ref{H3}, a real Hilbert symbol is
+$1$ as soon as one of its entries is positive. If $c_1c_2c_3\ne0$, then
+$\beta(g_1,g_2)=(c_3/c_1,c_3/c_2)$: when $c_1$ and $c_2$ have the same
+sign, $c_3$ has that sign too, since $a_2,d_1>0$; when they have opposite
+signs, so do the two entries. If $c_3=0\ne c_1c_2$, then
+$c_1a_2=-d_1c_2$, so $c_1$ and $c_2$ have opposite signs, and
+$\beta=(d_3/c_1,d_3/c_2)=1$. If $c_1=0\ne c_2$, then $x(g_1)=d_1$,
+$c_3=d_1c_2$ and $\beta=(c_2,d_1)=1$; if $c_2=0\ne c_1$, then
+$\beta=(a_2,c_1a_2/d_2)=1$. If $c_1=c_2=0$, all three values of $x$ are
+positive.
+
+(c) A group topology is determined by its neighborhoods of the identity,
+so there is at most one such topology. By Kubota~\cite{K1} and
+Moore~\cite{M} there is a topology $\mathcal T$ on $\overline{SL(2,F)}$
+for which it is a locally compact group and $p$ is a covering map. (For
+an arbitrary Borel cocycle on a locally compact second countable group
+this is a theorem of Mackey~\cite{Ma57}.) We show that $\mathcal T$ has
+the stated base of neighborhoods. Since $p$ is a covering, there are a
+$\mathcal T$-open neighborhood $W$ of the identity, with
+$W\cap\mu_2=\{1\}$, and an open neighborhood $V\subset U$ of $1$ such
+that $p$ maps $W$ homeomorphically onto $V$. Write the inverse map as
+$g\mapsto(g,\chi(g))$, $\chi\colon V\to\mu_2$. Let $W'\subset W$ be an open
+neighborhood of the identity with $W'W'\subset W$, and $V'=p(W')$. For
+$g,h\in V'$ the product $(g,\chi(g))(h,\chi(h))$ lies in $W$ and maps to
+$gh$, so it equals $(gh,\chi(gh))$; since $\beta(g,h)=1$ on $U\times U$,
+this gives $\chi(gh)=\chi(g)\chi(h)$. Now every $g$ in a small enough
+neighborhood $V''\subset V'$ of $1$ is a square $g=h^2$ with $h\in V'$:
+take $g=\exp X$ and $h=\exp(X/2)$, for $X$ in a small ball in the Lie
+algebra if $F=\R$, and in a lattice $\varpi^M\mathfrak{sl}_2(\OO)$ with
+$M$ large if $F$ is non-archimedean. Hence $\chi=1$ on $V''$, the set
+$\{(g,1)\mid g\in V''\}$ is $\mathcal T$-open, and $g\mapsto(g,1)$ is a
+homeomorphism of $V''$ onto it. So the sets in~(c) form a base of
+neighborhoods of the identity for $\mathcal T$. For $g_0\in U$ and
+$u\in U$ we have $(g_0u,1)=(g_0,1)(u,1)$ by~(b), so $g\mapsto(g,1)$ is a
+local homeomorphism on $U$; being injective, it is a homeomorphism of $U$
+onto an open subset. The topology is not the product topology, because
+$g\mapsto(g,1)$ is not continuous (Lemma~\ref{lem:local}(i)). The map
+$(g,\zeta)\mapsto(g,\zeta)$ from the product to the cover is a Borel
+isomorphism: on each translate $g_0U$ it is $(g_0u,\zeta)\mapsto
+(g_0,1)(u,1)\cdot\beta(g_0,u)\zeta$, countably many translates cover
+$SL(2,F)$, and $\beta$ is Borel.
+\end{proof}
+
+\begin{example}\label{ex:discontinuous}
+\emph{The cocycle and the section are not continuous.} Let
+$\bar n(c)=\begin{pmatrix}1&0\\c&1\end{pmatrix}$. For $t\in F^\times$ and
+$c\ne0$, formula~\eqref{eq:beta} gives $\beta(a(t),\bar n(c))=(c,t)_v$.
+If $t$ is not a square, there are $c$ arbitrarily close to $0$ with
+$(c,t)_v=-1$, and others with $(c,t)_v=1$; but $\bar n(c)\to1$ and
+$\beta(a(t),1)=1$. For $F=\R$ and $t=-1$ this is $\beta(-1,\bar n(c))=
+\mathrm{sgn}(c)$. So $\beta$ is discontinuous at $(a(t),1)$, and
+\[
+(a(t),1)\,(\bar n(c),1)=\bigl(a(t)\bar n(c),\,(c,t)_v\bigr)
+\]
+shows that $g\mapsto(g,1)$ is discontinuous at $a(t)$.
+
+Now let $v$ be finite and non-dyadic, $d\in\OO^\times$ a non-square, and
+$k_j=\begin{pmatrix}d^{-1}&0\\\varpi^j&d\end{pmatrix}\in K$. Then
+$k_j\to a(d^{-1})$ as $j\to\infty$, while $\kappa(k_j)=(\varpi^j,d)_v=
+(-1)^j$. So $\kappa$ is not continuous on $K$. For $F=\Q_3$ and $d=-1$:
+$k_j=\begin{pmatrix}-1&0\\3^j&-1\end{pmatrix}\to-1$ and
+$\kappa(k_j)=(-1)^j$. Since $k\mapsto(k,\kappa(k))$ is continuous
+(Lemma~\ref{lem:local}(i)), $k\mapsto(k,1)$ is not continuous on $K$.
+\end{example}
 
 \begin{example}\label{ex:real}
 Take $F=\R$. By~(e) and~(f), the element $(a(-1),1)=(-1,1)$ has order
@@ -273,7 +412,7 @@ SL(2,k_v)$ by $\mu_2$ defined by the cocycle
 \]
 It is the \emph{quotient} of $\prod_{v\mid p}\overline{SL(2,k_v)}$ by
 the kernel $\{(\zeta_v)\mid\prod_v\zeta_v=1\}$ of the product map
-$\prod_{v\mid p}\mu_2\to\mu_2$. (The 1995 notes call it a subgroup.)
+$\prod_{v\mid p}\mu_2\to\mu_2$, and it carries the quotient topology.
 For $H\subset G(\Q_p)$ put $\overline H=p^{-1}(H)$. Let $B$, $N$, $A$ be
 the $\Q$-subgroups of $G$ obtained from those of $SL(2)$, and let
 $T=\prod_{v\mid p}T_v$ with each $T_v$ a maximal torus of $SL(2,k_v)$.
@@ -348,8 +487,8 @@ H(g,\zeta)=\log|t|_p=\sum_{v\mid p}\log|t_v|_v,
 where $(g,\zeta)=(n,1)\,\tilde a\,\tilde k$ as in
 Lemma~\ref{lem:NAK-local} and $p(\tilde a)=a(t)$. This is the product
 of the normalized absolute values over $v\mid p$, that is
-$|N_{k\otimes\Q_p/\Q_p}(t)|_p$, and not the maximum used in the 1995
-notes; see Section~\ref{sec:chambers}.
+$|N_{k\otimes\Q_p/\Q_p}(t)|_p$; the reason is given in
+Section~\ref{sec:chambers}.
 
 \begin{lemma}\label{lem:H}
 \begin{enumerate}[label=(\alph*)]
@@ -388,9 +527,9 @@ $\mathfrak a\cong\R$. Let $\alpha^\vee=X_\alpha\in\mathfrak a$ be the
 coroot $s\mapsto a(s)$, so $X_\alpha=\langle\chi_1,\alpha^\vee\rangle=d$
 and $\alpha(\alpha^\vee)=2$, and let $\varpi=\tfrac12\alpha^\vee$ be the
 fundamental coweight, so $\alpha(\varpi)=1$. The modulus character is
-$\delta_B=e^{2H}$. (The 1995 notes call $\varpi$ the dual root.)
+$\delta_B=e^{2H}$.
 % [Claude] Stage 3 correction: the stage-1 text had alpha = 2 chi_1 and
-% X_alpha = 1, which holds only for k = Q. See Remark 2026.8.
+% X_alpha = 1, which holds only for k = Q. See Remark 2026.9.
 
 Let $\mathfrak a^+=\{X\in\mathfrak a\mid\alpha(X)>0\}$ and
 $(\mathfrak a^*)^+=\{\Lambda\in\mathfrak a^*\mid\Lambda(\varpi)>0\}$,
@@ -419,14 +558,28 @@ genuine representations, and it vanishes on representations that are
 trivial on $\mu_2$.
 
 For $n=2$, $\zeta^{-1}=\zeta$, so ``anti-genuine'' and ``genuine''
-define the same functions, and the conventions of the 1995 notes (genuine
-functions in~\S2.1.4, $\pi(g,\zeta)=\zeta^{-1}\pi(g,1)$ in~\S3.1) agree
-with Li's. We keep Li's terminology so that the formulas remain correct
+define the same functions. We keep Li's terminology so that the formulas remain correct
 for general $n$; see Remark~\ref{rem:general-n}.
 
 Let $C_c^\infty(\overline{G(\Q_p)})_-$ be the space of anti-genuine
-$f$ such that $g\mapsto f(g,1)$ lies in $C_c^\infty(G(\Q_p))$. Let $p$
-be odd. The \emph{spherical Hecke algebra}
+functions on $\overline{G(\Q_p)}$ that are smooth and compactly
+supported: locally constant if $p<\infty$, and $C^\infty$ on the Lie
+group $\overline{G(\R)}$ if $p=\infty$, in both cases for the topology of
+Lemma~\ref{lem:kubota}(c). For $p<\infty$ this means that $f$ is
+anti-genuine, that its support has compact image in $G(\Q_p)$, and that
+$f$ is invariant on both sides under the image of $K_{m,p}$ under
+$k\mapsto(k,1)$ for some $m$ as in Lemma~\ref{lem:Qp}(c). The space is
+\emph{not} described by the condition that $g\mapsto f(g,1)$ be smooth
+on $G(\Q_p)$. That function is Borel: on each translate $g_0U$ it is the
+product of the smooth function $u\mapsto f((g_0,1)(u,1))$ and the Borel
+function $u\mapsto\beta_p(g_0,u)$. In general it is not continuous,
+because the section $g\mapsto(g,1)$ is not
+(Example~\ref{ex:discontinuous}); the unit element below is an example.
+Later sections use the coordinates only to integrate (in them $f$ is
+bounded and Borel, with compact support) and to restrict $f$ to the
+continuous sections of Lemma~\ref{lem:local}(i).
+
+Let $p$ be odd. The \emph{spherical Hecke algebra}
 $\mathcal H(\overline{G(\Q_p)},K_p^*)$ consists of the
 $f\in C_c^\infty(\overline{G(\Q_p)})_-$ with
 $f(\tilde k\,x\,\tilde k')=f(x)$ for $\tilde k,\tilde k'\in K_p^*$. Its
@@ -435,9 +588,15 @@ unit element is
 e_p(\tilde k\zeta)=\zeta^{-1}\ (\tilde k\in K_p^*,\ \zeta\in\mu_2),\qquad
 e_p=0\ \text{off}\ \overline{K_p}.
 \end{equation}
-The function $(k,\zeta)\mapsto\zeta^{-1}$ on $\overline{K_p}$, which is
-what the identification $k\mapsto(k,1)$ of the 1995 notes suggests, is
-$\prod_v\kappa_v\cdot e_p$; it is not bi-$K_p^*$-invariant.
+It is locally constant, since $K_p^*$ is an open subgroup
+(Lemma~\ref{lem:local}(i)). In coordinates,
+$e_p(k,\zeta)=\zeta^{-1}\prod_{v\mid p}\kappa_v(k_v)$ for $k\in K_p$. So
+$g\mapsto e_p(g,1)$ is $\prod_v\kappa_v$ on $K_p$, which is not locally
+constant: for $p=3$, $k=\Q$ and $k_j$ as in
+Example~\ref{ex:discontinuous}, $k_j\to-1$ and $e_3(k_j,1)=(-1)^j$. The
+function $(k,\zeta)\mapsto\zeta^{-1}$ on $\overline{K_p}$ is a different
+function, $\prod_v\kappa_v\cdot e_p$; it is neither locally constant nor
+bi-$K_p^*$-invariant.
 
 \subsubsection{Measures}\label{sec:measures-local}
 
@@ -460,9 +619,7 @@ Normalize the Haar measure $dg$ on $G(\Q_p)$ by
 \end{equation}
 The two expressions agree because $dg$ is invariant under
 $g\mapsto g^{-1}$ (as $G$ is unimodular) and $(nak)^{-1}=k^{-1}a^{-1}
-n^{-1}$; see~\cite[Ch.~VIII]{Kn} for the real case. (The 1995 notes
-have $\delta_B(a)^{1/2}$ for $g=kan$; the exponent must be $1$ for
-$g=kan$ and $-1$ for $g=nak$.)
+n^{-1}$; see~\cite[Ch.~VIII]{Kn} for the real case.
 
 On a cover we use $d\tilde g=dg\,d\zeta$, where $d\zeta$ gives
 $\mu_2$ total volume~$1$. Then $\overline{K_p}$ has volume $1$, and
@@ -499,8 +656,9 @@ $v$, the product
 \begin{equation}\label{eq:sigma-A}
 \sigma_\A(g_1,g_2)=\prod_v\sigma_v(g_{1,v},g_{2,v})
 \end{equation}
-has only finitely many factors different from $1$. It is a continuous
-$2$-cocycle on $G(\A)=SL(2,\A_k)$ and defines
+has only finitely many factors different from $1$. It is a Borel
+$2$-cocycle on $G(\A)=SL(2,\A_k)$ (not a continuous one, since its
+factors are not continuous) and defines an extension of groups
 \[
 1\to\mu_2\to\overline{G(\A)}\xrightarrow{\;p\;}G(\A)\to1.
 \]
@@ -513,6 +671,25 @@ $\overline{A(\A)}$ in Section~3) refers to this quotient. Group law,
 inverses and conjugation are given by~\eqref{eq:law}
 and~\eqref{eq:inverse} with $\sigma_\A$ in place of $\beta$. For
 $H\subset G(\A)$ put $\overline H=p^{-1}(H)$.
+
+\paragraph{Topology.} Each $\overline{SL(2,k_v)}$ has the topology of
+Lemma~\ref{lem:kubota}(c), and $K_v^*$ is a compact open subgroup of it
+for every finite non-dyadic $v$ (Lemma~\ref{lem:local}(i)). So the
+restricted product is a locally compact group. The subgroup
+$Z_0=\{(\zeta_v)\mid\prod_v\zeta_v=1\}$ is central and discrete: it meets
+$\prod_{v\in S}W_v\times\prod_{v\notin S}K_v^*$ only in the identity when
+$W_v\cap\mu_2=\{1\}$. We give $\overline{G(\A)}$ the quotient topology.
+Then $\overline{G(\A)}$ is a locally compact group, $p$ is a two-fold
+covering map, and each $\overline{SL(2,k_v)}$ is a closed subgroup with
+its own topology. In the coordinates $(g,\zeta)$ of the cocycle
+$\sigma_\A$, the map $g\mapsto(g,1)$ is a homeomorphism of
+$\prod_{v\mid\infty}U_v\times K_f$ onto an open subset, for $U_v$ as in
+Lemma~\ref{lem:kubota}(b) and $K_f$ as in Lemma~\ref{lem:global}(c) below;
+it is not continuous on $G(\A)$. As in the local case, the coordinates
+are Borel coordinates, and continuity and smoothness on $\overline{G(\A)}$
+refer to this topology. Since $G(\Q)$ is discrete in $G(\A)$ and $p$ is a
+covering, $\overline{G(\Q)}$ is discrete in $\overline{G(\A)}$, and so is
+the image of $G(\Q)$ under the splitting of Lemma~\ref{lem:global}(a).
 
 For $\gamma\in SL(2,k)$ we have $\gamma\in K_v$ and
 $\ord_v(c)\le0$ or $c=0$ for almost all $v$, so
@@ -597,19 +774,6 @@ a Jacobi symbol: the factor behind the theta multiplier on
 $\Gamma_0(4)$~\cite{K2,Ge2}. The script checks this on random elements
 of $SL(2,\Z)$.
 \end{example}
-
-\begin{remarkrev}\label{rem:old-2.9}
-The 1995 notes define the splitting as $\gamma\mapsto(\gamma,
-s_\A(\gamma)^{-1})$, with $s_v(\gamma)^{-1}=(c,d)_v$ when $v$ is finite,
-$cd\ne0$ and $n\nmid\ord_v(c)$, and with the cocycle $\prod_v\beta_v$.
-That cocycle does not converge, and the formula belongs to a different
-normalization. In the normalization~\eqref{eq:sigma-A},
-$\kappa_\A$ of~\eqref{eq:kappa-A} replaces $s_\A^{-1}$. For $n=2$ the two
-agree at every non-dyadic $v$ with $\gamma\in K_v$: if $\ord_v(c)>0$ is
-even, or if $\ord_v(c)=0$, both $(c,d)_v$ and $\kappa_v(\gamma)$ are $1$.
-They differ only at the finitely many places where $\gamma\notin K_v$,
-and at dyadic places.
-\end{remarkrev}
 
 Let $K_0=\prod_vK_v$ be the standard maximal compact subgroup of
 $G(\A)$, with $K_v$ as in Section~\ref{sec:local}; $K_f$ and $K_\infty$
@@ -701,7 +865,9 @@ $e_v$ of~\eqref{eq:unit} (defined with $K_v^*$) for almost all $v$. Such
 a product is a function on the restricted product of the local covers
 which is invariant under $\{(\zeta_v)\mid\prod\zeta_v=1\}$, because each
 $f_v$ is anti-genuine; so it descends to $\overline{G(\A)}$ and is
-anti-genuine there.
+anti-genuine there. It is smooth on $\overline{G(\A)}$: invariant under a
+compact open subgroup of the finite part, and $C^\infty$ in the
+archimedean variables.
 
 \subsubsection{Measures}
 
@@ -804,10 +970,26 @@ $1+\varpi^m\OO\subset F^{\times n}$ (the same proof). Genuine
 convention $R(f)$ vanishes on $L^2_{\mathrm{gen}}$ unless $n\mid2$.
 \end{remarkrev}
 
+\subsection{Status of the results}\label{sec:status2}
+
+\begin{remarkrev}\label{rem:sec2-status}
+\emph{What rests on citation.} Taken from the literature:
+Lemma~\ref{lem:kubota}(a) and the existence of the topological covering
+group in Lemma~\ref{lem:kubota}(c)~\cite{K1,M}; Lemma~\ref{lem:local}(b)
+and the cocycle identity for~\eqref{eq:sigma-gl2}~\cite{K2,Ge2}; the
+statement on $\overline{SO(2)}$ in Lemma~\ref{lem:local}(d);
+Lemma~\ref{lem:H}(c)~\cite{A2}; strong approximation in
+Lemma~\ref{lem:strong}; and the facts about Tamagawa measures in
+Section~\ref{sec:global}. Lemma~\ref{lem:gl2}(b) and
+Remark~\ref{rem:dyadic} are supported by numerical checks only.
+Everything else in this section is proved in the text.
+\end{remarkrev}
+
 \begin{remarkrev}\label{rem:verified}
 The script \texttt{checks/sec2\_n2\_check.py} verifies, in exact rational
 arithmetic at $v=\infty,2,3,5,7$: the cocycle identity and the two forms
-of~\eqref{eq:beta}; Lemma~\ref{lem:local}(a)--(c), (e)--(h);
+of~\eqref{eq:beta}; Lemma~\ref{lem:kubota}(b) at $v=\infty$ and
+Example~\ref{ex:discontinuous}; Lemma~\ref{lem:local}(a)--(c), (e)--(i);
 Remark~\ref{rem:dyadic}; the product formula and the splitting of
 Lemma~\ref{lem:global}(a),~(b),~(d); Example~\ref{ex:jacobi}; and
 Lemma~\ref{lem:gl2}(a)--(c) with Remark~\ref{rem:gl2-twist}. The checks

@@ -12,6 +12,12 @@
 % This file is \input by the master; it compiles on its own through
 % preview.tex. Explicit formulas are checked by checks/sec6_n2_check.py.
 % Comments beginning "% [Claude]" are editorial notes by Claude.
+% Revised after the second referee report (ChatGPT, November 2026): an
+% explanation of the correction term before the formal construction, real
+% normalizing factors for all unitary characters, the three senses of
+% "normalizing factor", a fuller proof of M(w,0) = -1, and an accurate
+% statement of what is explicit; comparisons with the 1995 notes moved to
+% Appendix A.
 % =====================================================================
 
 \providecommand{\GA}{\overline{G(\A)}}
@@ -47,31 +53,72 @@ therefore prove the variance formulas, the invariance of $I_A(\gamma,f)$
 and the invariant trace formula directly; we do so, and cite
 Arthur and Li for the general statements.
 
-Compared with Section~6 of the 1995 notes:
+\paragraph{Why a correction term, and why this one.} The weighted
+orbital integral $J_A(\gamma,f)$ integrates $f(x^{-1}\gamma x)$ against the
+weight $v_A(x)=-H(x)-H(wx)$. The height $H$ is defined through the
+Iwasawa decomposition, so it depends on the choice of the maximal compact
+subgroup: $H(xy)\ne H(x)+H(y)$ in general, but $H(xy)=H(x)+H(\tilde ky)$
+when $x=n\tilde a\tilde k$. Replacing $f$ by $f^y$ replaces $v_A(x)$ by
+$v_A(xy)$, and the difference $-H(\tilde ky)-H(\tilde k'y)$ does not
+vanish. This is the geometric source of the non-invariance
+(Lemma~\ref{lem:variance-local}). Since the difference depends only on the
+$K$-components, the change in $J_A(\gamma,f)$ is not a new kind of
+object: it is the value at $\gamma$ and at $w\gamma w^{-1}$ of one function
+$f_{B,y}$ on the cover of $A$.
+
+On the spectral side the same function appears. The logarithmic
+derivative $\mathcal M^{-1}\mathcal M'$ of an intertwining operator
+between $I(\pi_\lambda)$ and $I(\pi^w_{-\lambda})$ is not an intertwining
+operator, because the two representations depend on $\lambda$ through
+the same height: differentiating $e^{(\lambda+1)H(\tilde ky)}$ brings down
+$H(\tilde ky)$. Conjugating $\mathcal M^{-1}\mathcal M'$ by $I(\pi_\lambda,
+y)$ therefore changes it by multiplication by $H(\tilde ky)$, once
+directly and once through $\mathcal M$ (Lemma~\ref{lem:conj-identity}),
+and the trace against $I(\pi_\lambda,f)$ changes by the Fourier transform
+of $f_{B,y}$ at $\pi_\lambda$ and at $\pi^w_{-\lambda}$.
+
+So the function $\varphi_A(f,\pi)=-\operatorname{tr}(R^{-1}R'\,I(\pi,f))$
+on the unitary dual of the cover of $A$, built from the normalized
+operators $R$, has a variation which is the Fourier transform of the
+variation of $\gamma\mapsto J_A(\gamma,f)$. Its inverse Fourier transform
+$\Phi_A(\gamma,f)$ then varies exactly as $J_A(\gamma,f)$ does, and
+\[
+I_A(\gamma,f)=J_A(\gamma,f)-\Phi_A(\gamma,f)
+\]
+is invariant (Theorem~\ref{thm:IA}). The two functions live on opposite
+sides of Fourier inversion: $\varphi_A(f,\cdot)$ on characters $\pi$ of
+the cover of $A(\Q_S)$, $\Phi_A(\cdot,f)$ on its elements. Globally the
+corrections on the two sides are matched by Poisson summation on the
+cover of $A$, which is the rank-$0$ trace formula of
+Section~\ref{sec:rank0}, so the identity is preserved. The normalized
+operators $R_v$ are used, rather than $M$, because they are holomorphic
+and unitary on $i\R$ and trivial on the unramified vectors, so that
+$\varphi_A$ is given by finitely many local terms. The scalar that
+remains, $m$ in $M=m\cdot R$, contributes $\frac{m'}m\operatorname{tr}
+I(\pi,f)$, which is invariant; this is the term that survives on the
+spectral side.
+
+\paragraph{Results.} The main points of the section are these.
 \begin{itemize}
-\item Conjectures~6.3, 6.4, 6.7, 6.8 and~6.10 there (the trace
-  Paley--Wiener theorems and the normalization of intertwining
-  operators) are no longer hypotheses: 6.10 is a theorem of
-  Li~\cite{LiII}, and the others are not needed for this group
-  (item~II.14).
-\item The weight $u'_B(k,y)$ is $-H(ky)$, not $|H(ky)|$ (item~II.15,
-  Lemma~\ref{lem:uprime}).
+\item The weight in the variance formulas is $u'_B(k,y)=-H(ky)$
+  (Lemma~\ref{lem:uprime}).
+\item The normalization of the intertwining operators is a theorem of
+  Li~\cite{LiII}, and no trace Paley--Wiener theorem is needed for this
+  group.
 \item The invariant spectral terms attached to $\chi\in\mathcal X_A$ do
   not vanish. The logarithmic derivative $m'/m$ of the global normalizing
-  factor survives (item~II.16), and $m$ is identified:
-  $m'/m=2\frac{L'}{L}(2\lambda,\chi^2)-2\frac{L'}{L}(2\lambda+1,\chi^2)$
-  up to finitely many local terms (Corollary~\ref{cor:global-m}).
+  factor survives, and $m$ is identified up to finitely many local
+  factors: $m'/m=2\frac{L'}{L}(2\lambda,\chi^2)-2\frac{L'}{L}(2\lambda+1,
+  \chi^2)$ plus the terms of the places in $S_{\mathrm{bad}}(\mu)$
+  (Corollary~\ref{cor:global-m}).
 \item The residual terms $\operatorname{tr}(R(f)|_{V_b})$ and the ramified
-  terms of Theorem~\ref{thm:Jchi}(c), which the 1995 notes do not have,
-  are already invariant. The ramified term is made explicit: $M(w,0)=-1$
-  on $\mathcal H_B(\chi_{\psi_b})$, so it equals
-  $-\frac14\operatorname{tr}I(\chi_{\psi_b,0},f)$
+  terms of Theorem~\ref{thm:Jchi}(c) are already invariant. The ramified
+  term is evaluated: $M(w,0)=-1$ on $\mathcal H_B(\chi_{\psi_b})$, so it
+  equals $-\frac14\operatorname{tr}I(\chi_{\psi_b,0},f)$
   (Proposition~\ref{prop:Mw0}).
 \item The function $\varphi_A(f)$ that carries the correction is not the
   Fourier transform of a compactly supported function on $\AS$
-  (Example~\ref{ex:Phi-real}); the 1995 definition~(6.7) of the space
-  that contains it is circular (item~II.17), and its claim that this
-  space equals the Paley--Wiener space of $\AS$ is false.
+  (Example~\ref{ex:Phi-real}).
 \end{itemize}
 
 \paragraph{Conventions.} $S$ is a finite set of places of $\Q$ containing
@@ -170,10 +217,9 @@ $\KS$; multiply by $u'_B(\tilde k,y)$ and integrate over the diagonal,
 using $\delta_B^{1/2}=e^{H_S}$.
 \end{proof}
 
-Example~6.1 of the 1995 notes computes $u'_B(k,y)=|H_B(ky)|$
-(item~II.15). The sign matters: $u'_B(\cdot,y)$ is not of constant sign,
-and with $|H|$ the formulas of Lemmas~\ref{lem:variance-global}
-and~\ref{lem:variance-local} fail.
+The sign matters: $u'_B(\cdot,y)$ is not of constant sign
+(Example~\ref{ex:uprime}), and with $|H|$ in place of $-H$ the formulas of
+Lemmas~\ref{lem:variance-global} and~\ref{lem:variance-local} fail.
 
 \begin{example}\label{ex:uprime}
 Let $v$ be a real place, $k_\theta=\begin{pmatrix}\cos\theta&\sin\theta\\
@@ -408,13 +454,28 @@ These are Arthur's conditions $(R_1)$--$(R_8)$ of~\cite[\S2]{A11} for the
 pair $(B,\bar B)$, written with $w$: $M_v(\pi_v,\lambda)$ is the
 composition of the operator $J_{\bar B|B}(\pi_{v,\lambda})$ of~\cite{A11}
 with left translation by $w$, which does not depend on $\lambda$.
-Theorem~\ref{thm:normalization} replaces Conjecture~6.10 of the 1995
-notes; property~(1) there, $R_{P'|P}(\chi)I_P(\chi,x)=I_P(\chi,x)
-R_{P'|P}(\chi)$, should have $I_{P'}$ on the right, as in~\ref{N1}. At
-the real places the 1995 notes refer to Sally~\cite{Sa}, who treats the
-universal cover of $SL(2,\R)$; for the double cover everything is
-explicit (Lemma~\ref{lem:explicit-r}(b)). The factors $r_v$ are not
-unique. At most places there is a natural choice:
+At the real places everything is explicit for the double cover
+(Lemma~\ref{lem:explicit-r}(b),(c)); for the universal cover of
+$SL(2,\R)$ see Sally~\cite{Sa}. The factors $r_v$ are not
+unique. Three statements about them should be kept apart.
+\begin{enumerate}[label=(\roman*)]
+\item \emph{Existence.} At every place there are factors $r_v$ with
+  \ref{N1}--\ref{N4}. This is Theorem~\ref{thm:normalization}, and it is
+  all that the construction of the invariant distributions uses.
+\item \emph{An explicit formula at a given place.} We have one at the
+  finite places covered by~\ref{N4}, at the real places and at the
+  complex places (Lemma~\ref{lem:explicit-r} and the remark after
+  Example~\ref{ex:real-R}). We do not have one at the places of
+  $S_{\mathrm{bad}}(\mu)$ defined below (Remark~\ref{rem:bad-places}).
+\item \emph{Compatibility with the global operator.} For any choice of
+  local factors, the product $m(\mu,\lambda)$ in~\eqref{eq:global-m} is
+  defined, $M(w,\lambda)=m\cdot R_S$, and $m$ has the properties of
+  Corollary~\ref{cor:global-m}(b). So no compatibility condition has to be
+  imposed on the local choices; but $m$, $m'/m$ and the distributions
+  $I_A(\gamma,f)$ depend on them, and $m$ is a known function only up to
+  the unknown factors at $S_{\mathrm{bad}}(\mu)$.
+\end{enumerate}
+At most places there is a natural choice:
 
 \begin{lemma}\label{lem:explicit-r}
 Write $\pi_v=\chi_{\psi,v}\cdot(\chi_v\circ p)$.
@@ -445,6 +506,21 @@ Write $\pi_v=\chi_{\psi,v}\cdot(\chi_v\circ p)$.
   \prod_{i=0}^{|j|-1}\frac{b_i-\lambda}{b_i+\lambda}\quad(j<0,\ b_i=1-m_0+2i).
   \end{equation}
   These operators satisfy~\ref{N1}--\ref{N3}.
+\item Let $v$ be real. Every genuine unitary character of
+  $\overline{A(k_v)}$ is of the form $\pi_{v,i\tau}=\pi_v\,e^{i\tau H_v}$
+  with $\pi_v$ as in~(b) and a unique $\tau\in\R$; that is,
+  $\chi_v=\mathrm{sgn}^\epsilon|\cdot|^{i\tau}$. Then
+  $V(\pi_{v,i\tau})=V(\pi_v)$, $I(\pi_{v,i\tau},\lambda)=I(\pi_v,\lambda+
+  i\tau)$ and $M_v(\pi_{v,i\tau},\lambda)=M_v(\pi_v,\lambda+i\tau)$. With
+  $r_v(\pi_{v,i\tau},\lambda)=r_v(\pi_v,\lambda+i\tau)$, the normalized
+  operator $R_v(\pi_{v,i\tau},\lambda)$ is given by~\eqref{eq:real-R} with
+  $\lambda+i\tau$ in place of $\lambda$, and satisfies~\ref{N1}--\ref{N3}.
+  In terms of $\chi_v$,
+  \[
+  r_v(\pi_{v,i\tau},\lambda)=\sqrt2\,e^{i\pi m_0/2}\,
+  \frac{L_v(2\lambda,\chi_v^2)}{L_v(2\lambda+1,\chi_v^2)},\qquad
+  L_v(s,|\cdot|^{2i\tau})=L_v(s+2i\tau).
+  \]
 \end{enumerate}
 \end{lemma}
 
@@ -456,8 +532,13 @@ set, so $M_v(\pi_v^w,-\lambda)M_v(\pi_v,\lambda)$, which commutes with
 it, is a scalar; on $\varphi_v^0$ it is $r_v(\pi_v^w,-\lambda)
 r_v(\pi_v,\lambda)$ by Lemma~\ref{lem:intertwining}(b). So
 $R_v(\pi^w_v,-\lambda)R_v(\pi_v,\lambda)=1$. For $\lambda\in i\R$ the
-adjoint of $M_v(\pi_v,\lambda)$ is $M_v(\pi_v^w,-\lambda)$~\cite[\S1]{A11}
-(here $(w,1)_v^2=(-1,1)$ acts trivially), and
+adjoint of $M_v(\pi_v,\lambda)$ is $M_v(\pi_v^w,-\lambda)$~\cite[\S1]{A11}. (This
+uses that $(w,1)_v^2$ acts trivially on $I(\pi_{v,\lambda})$. Here it
+does: $(-1,-1)_v=1$ at a non-dyadic finite place, so $(w,1)_v^2=(-1,1)$,
+a central element lying in $A(\OO_v)^*$, and it acts by the scalar
+$\pi_v(-1,1)=1$. At a real place $(-1,1)$ has order $4$ and acts by $\pm
+i$ on a genuine representation, by Lemma~\ref{lem:local}(e); part~(b)
+does not use the adjoint formula.) Moreover
 $\overline{r_v(\pi_v,\lambda)}=r_v(\pi_v^w,-\lambda)$ for $\lambda\in i\R$;
 hence $R_v$ is unitary on $i\R$ wherever it is defined, so it is bounded
 there and has no poles. Rationality is~\cite{LiII}.
@@ -484,6 +565,16 @@ which gives~\eqref{eq:real-R}. Each factor in~\eqref{eq:real-R} has
 absolute value $1$ on $i\R$ and no pole there, because $a_i$ and $b_i$
 are nonzero real numbers; \ref{N2} and~\ref{N3} follow, and~\ref{N1}
 holds for $M_v$.
+
+(c) The unitary characters of $\R^\times$ are the
+$\mathrm{sgn}^\epsilon|\cdot|^{i\tau}$, and $H_v(a(t),\zeta)=\log|t|$. The
+space $V(\pi)$ depends only on the restriction of $\pi$ to
+$\overline{A(k_v)}\cap\overline{K_v}$, on which $e^{i\tau H_v}=1$, and
+$\varphi_\lambda$ formed with $\pi_{v,i\tau}$ is $\varphi_{\lambda+i\tau}$
+formed with $\pi_v$; this gives the first three statements. The factors
+in~\eqref{eq:real-R} with $\lambda+i\tau$ in place of $\lambda$ still have
+absolute value $1$ and no poles for $\lambda\in i\R$. The last formula is
+$L_v(s,|\cdot|^{2i\tau})=\pi^{-(s+2i\tau)/2}\Gamma((s+2i\tau)/2)$.
 \end{proof}
 
 \begin{example}\label{ex:real-R}
@@ -505,7 +596,8 @@ general, by~\eqref{eq:real-R}, on the weight $m_0+2j$ and for $\lambda=it$,
 -R_v^{-1}R_v'(it)=\rho_j(t):=\sum_i\frac{2c_i}{c_i^2+t^2}\;\ge0,
 \end{equation}
 the sum over $c_i=a_i$, $0\le i<j$, if $j>0$, and over $c_i=b_i$,
-$0\le i<|j|$, if $j<0$; and $\rho_0=0$. For $SL(2,\R)$ the weights are
+$0\le i<|j|$, if $j<0$; and $\rho_0=0$. For $\pi_{v,i\tau}$ as in
+Lemma~\ref{lem:explicit-r}(c) the value is $\rho_j(t+\tau)$. For $SL(2,\R)$ the weights are
 integers and the same computation gives the familiar formula with
 $L_v(\lambda)/L_v(\lambda+1)$.
 \end{example}
@@ -525,7 +617,12 @@ S_{\mathrm{bad}}(\mu)=\{v\text{ dyadic}\}\cup\{v\mid\psi_v\text{ ramified}\}
 $\mu=\chi_\psi\cdot(\chi\circ p)\in\Pi_{\mathrm{aut}}(X_A)$, and fix
 factors $r_v(\mu_v,\lambda)$ as in Theorem~\ref{thm:normalization} for
 $v\in S_{\mathrm{bad}}(\mu)$ and as in Lemma~\ref{lem:explicit-r} (and
-the remark on complex places) for all other $v$. For a finite set
+the remark on complex places) for all other $v$. At a real place the
+component $\mu_v$ is $\chi_{\psi,v}\cdot(\chi_v\circ p)$ with
+$\chi_v=\mathrm{sgn}^\epsilon|\cdot|^{i\tau_v}$, and
+Lemma~\ref{lem:explicit-r}(c) applies; for $k=\Q$ one has $\tau_\infty=0$,
+because $\mu$ is trivial on $A_B(\R)^0$, but for other fields the
+$\tau_v$ need not vanish. For a finite set
 $S_1\supset S_{\mathrm{bad}}(\mu)$ of places of $k$ containing the
 archimedean ones, put
 \begin{equation}\label{eq:global-m}
@@ -574,11 +671,6 @@ and of $R_S$ on $i\R$ the second; differentiate. (c) is the logarithmic
 derivative of~\eqref{eq:global-m}.
 \end{proof}
 
-Part~(a) is the relation $M^{-1}M'=m^{-1}m'+R^{-1}R'$ of Sections~6.1.1
-and~6.2 of the 1995 notes, where the factor $m$ of $R_{\bar B|B}(\sigma)=
-m(\sigma)^{-1}M_{\bar B|B}(\sigma)$ is not identified; (c) identifies
-it.
-
 \begin{remarkrev}\label{rem:bad-places}
 \emph{The factors at the bad places.} For $v\in S_{\mathrm{bad}}(\mu)$
 (dyadic places, and places where $\psi_v$ or $\mu_v$ is ramified) we use
@@ -590,7 +682,10 @@ $m(\mu,\lambda)=c\,q^{-\lambda}\Lambda(2\lambda,\chi^2)/\Lambda(2\lambda+1,
 as the Shimura correspondence suggests; we have not verified~\ref{N2}
 for this choice at those places. The distributions $I_A(\gamma,f)$ and the function $m'/m$
 below depend on the choice of the $r_v$; the invariant trace formula
-holds for each choice.
+holds for each choice. For local coefficients and Plancherel measures of
+the genuine principal series of covers of $SL(2,k_v)$ see
+Szpruch~\cite{Sz09} and Goldberg--Szpruch~\cite{GS16}; we have not derived
+the factors $r_v$ from those results.
 \end{remarkrev}
 
 \subsection{The map \texorpdfstring{$\varphi_A$}{phi\_A} and the
@@ -618,8 +713,7 @@ R_S(\pi,\Lambda)$, and, as for~\eqref{eq:MT},
 =-R_S(\pi,0)^{-1}R_S'(\pi,0),
 \]
 with $\theta_B(\Lambda)=\Lambda=-\theta_{\bar B}(\Lambda)$ in the
-normalization of Remark~\ref{rem:alpha}. The 1995 notes have
-$R_A(\pi_\lambda,P_0)=+R^{-1}\frac{d}{d\lambda}R$, without the sign.
+normalization of Remark~\ref{rem:alpha}.
 
 \begin{proposition}\label{prop:phiA}
 Let $f\in C_c^\infty(\GS)_-$ and $y\in\GS$.
@@ -727,11 +821,10 @@ $\mathcal L(A)=\{A,G\}$, the only term is $L=A$, and
 $\hat I_A^A(\gamma,\phi_A(f))$ is the value at $\gamma$ of the function
 with Fourier transform $\phi_A(f)$, which is $\Phi_A(\gamma,f)$. For a
 general group the corresponding step needs the trace Paley--Wiener
-theorem for $L$, and that is where Conjectures~6.3--6.8 of the 1995 notes
-enter; for $L=A$ it is Fourier inversion on an abelian group. Two points
-of the 1995 text need correction.
+theorem for $L$; for $L=A$ it is Fourier inversion on an abelian group.
+Two further remarks.
 
-\emph{The space containing $\varphi_A(f)$} (item~II.17). Arthur's
+\emph{The space containing $\varphi_A(f)$.} Arthur's
 $\phi_M$ maps $\mathcal H(G(F_S))$ to a space $\mathcal I_{\mathrm{ac}}
 (M(F_S))$ of functions $\phi$ on $\Pi_{\mathrm{temp}}(M(F_S))$ for which
 \[
@@ -739,21 +832,20 @@ $\phi_M$ maps $\mathcal H(G(F_S))$ to a space $\mathcal I_{\mathrm{ac}}
 d\Lambda,\qquad X\in\mathfrak a_M,
 \]
 is, for each $X$, a Paley--Wiener function of $\pi$~\cite[\S11]{A11}.
-(The 1995 condition~(6.7) has $\phi(\sigma,X)$ on both sides.) In our
+In our
 case $\phi(\pi,X)$ is the Fourier transform of the restriction of
 $\Phi_A(\cdot,f)$ to $\{H_S=X\}$, and Theorem~\ref{thm:IA}(a) is the
-statement that $\varphi_A(f)\in\mathcal I_{\mathrm{ac}}$. The 1995 notes
-assert that $\mathcal I_{\mathrm{ac}}(\overline{A(\A_S)})=\mathcal I
-(\overline{A(\A_S)})$, the space of Fourier transforms of compactly
-supported functions. This is false, for the reason given after
-Section~\ref{sec:local-dist} for $\mathcal H_{\mathrm{ac}}$:
-$\mathfrak a_A\ne0$.
+statement that $\varphi_A(f)\in\mathcal I_{\mathrm{ac}}$. This space is
+strictly larger than the space $\mathcal I(\overline{A(\A_S)})$ of Fourier
+transforms of compactly supported functions, for the reason given in
+Section~\ref{sec:local-dist} for the spaces of test functions:
+$\mathfrak a_A\ne0$ (Example~\ref{ex:Phi-real}).
 
 \emph{Weighted characters.} The weighted character of~\cite{A9} is
 $J_A(\pi,f)=\operatorname{tr}(\mathcal R_A(\pi,B)I(\pi,f))=\varphi_A(f,
 \pi)$, so the invariant distribution $I_A(\pi,X,f)=J_A(\pi,X,f)-
-\hat I^A_A(\pi,X,\varphi_A(f))$ vanishes for every $\pi\in\Pi_u(\AS)$, as
-in Proposition~6.20 and Example~6.21 of the 1995 notes. This does not
+\hat I^A_A(\pi,X,\varphi_A(f))$ vanishes for every $\pi\in\Pi_u(\AS)$.
+This does not
 make the spectral side of the invariant formula vanish: the terms that
 remain are characters, with the coefficients of Theorem~\ref{thm:itf}.
 
@@ -825,8 +917,8 @@ A(\Q)}\Phi_A(\gamma,f),\qquad
 I_\chi(f)=J_\chi(f)-\frac12\sum_{\mu\in\chi}\frac1{2\pi}\int_\R
 \varphi_A(f,\mu_{it})\,dt,
 \end{equation}
-the second sum being empty for $\chi\in\mathcal X_G$. These are the
-definitions~(6.13)--(6.18) of the 1995 notes, $I=J-J'$ with
+the second sum being empty for $\chi\in\mathcal X_G$. That is, $I=J-J'$
+with
 $J'=|W_G|^{-1}(I^A)^\wedge(\varphi_A(f))$, where $(I^A_{\mathcal O})^\wedge$
 and $(I^A_\chi)^\wedge$ are the distributions~\eqref{eq:JAo} transported
 to the Fourier transform side.
@@ -864,7 +956,10 @@ both sides converging absolutely, and:
   \]
 \end{enumerate}
 Each of the distributions (a)--(f) is the restriction to $\mathcal H(\GS)$
-of an invariant distribution in $f_S\in C_c^\infty(\GS)_-$.
+of an invariant distribution in $f_S\in C_c^\infty(\GS)_-$. Here
+$a^G(S,u_\xi)$ are the coefficients of Theorem~\ref{thm:fine}, and $m$ and
+$I_A$ are formed with the normalizing factors fixed in
+Section~\ref{sec:normalized}.
 \end{theorem}
 
 \begin{proof}
@@ -898,19 +993,16 @@ Theorem~\ref{thm:tf} and Lemma~\ref{lem:poisson-phi}.
 \end{proof}
 
 Theorem~\ref{thm:itf} is the invariant trace formula of~\cite{LiIV} for
-this group, with every term explicit.
-
-In Section~6.4 of the 1995 notes, (a) has $\frac12a^A(S,z)I_A(z,f)$ and the sum
-over $(G,S)$-classes of $a^G(S,\gamma)I_G(\gamma,f)$, as here
-($I_G=J_G$), and (b), (c) agree with ours. The spectral item~(b) there,
-$\frac12\int a^A(\pi)I_A(\pi,f)\,d\pi$ with the remark that $I_A(\pi,f)=0$
-for tempered $\pi$, is identically zero (item~II.16). The book version
-(\texttt{book7g.tex}, item~(e)) has $\int a^G(\pi)\operatorname{tr}\pi(f)\,
-d\pi$ with $a^G(I_A(\sigma))=-m'(\sigma)/m(\sigma)$, which is~(e) above;
-neither has the residual and ramified terms of~(f). Theorem~6.22 there
-(Arthur's~\cite[Cor.~4.5]{A10}; $v_\pi$ should be $\nu_\pi$) is the
-statement that $I_\chi(f)=\int a^G(\pi)I_G(\pi,f)\,d\pi$, the term $M=A$
-being $0$.
+this group. Its terms are explicit with two exceptions, which are
+defined but not evaluated here. The unipotent coefficients
+$a^G(S,u_\xi)$ in~(a) are those of Theorem~\ref{thm:fine}
+(Remark~\ref{rem:sec4-status}). And the normalizing factors $r_v$ at the
+places of $S_{\mathrm{bad}}(\mu)$, which always include the dyadic places,
+are those of Theorem~\ref{thm:normalization}; the function $m'/m$
+in~(e) and~(f) and the distributions $I_A$ in~(a) and~(c) depend on them
+(Remark~\ref{rem:bad-places}). The elliptic terms~(b), the discrete
+terms~(d), the residual term and the ramified term in~(f) do not involve
+either.
 
 It remains to evaluate $M(w,0)$ in~(f). For $a\in k^\times$ let $\eta_a$
 be the quadratic character $t\mapsto\prod_v(-a,t_v)_v$ of
@@ -1000,27 +1092,62 @@ I(\chi_{\psi_b,0},f)$.
 
 \begin{proof}
 Write $\mu=\chi_\psi\cdot(\chi\circ p)$ with $\chi=\prod_v(b,\cdot)_v$
-(Lemma~\ref{lem:weil}(d)), so $\chi^2=1$. By
+(Lemma~\ref{lem:weil}(d)), so $\chi^2=1$. It suffices to treat
+factorizable $\varphi$. By
 Theorem~\ref{thm:eisenstein}(d), $E(x,\varphi,\lambda)$ and
-$M(w,\lambda)$ are holomorphic at $\lambda=0$. In
-Lemma~\ref{lem:whittaker}(d), $L^{S_1}(\lambda+\frac12,\chi\eta_a)$ is
-holomorphic at $\lambda=0$ (the $L$-function of a quadratic Hecke
-character at $s=\frac12$), the local factors are entire, and
-$L^{S_1}(2\lambda+1,\chi^2)^{-1}=\zeta_k^{S_1}(2\lambda+1)^{-1}$ vanishes at
-$\lambda=0$. So $W_a(x,\varphi,0)=0$ for
-every $a\in k^\times$ and every $x$, and by
+$M(w,\lambda)$ are holomorphic at $\lambda=0$.
+
+\emph{Step 1: the Whittaker coefficients vanish at $\lambda=0$.} In
+Lemma~\ref{lem:whittaker}(d) the denominator is
+$L^{S_1}(2\lambda+1,\chi^2)=\zeta_k^{S_1}(2\lambda+1)$, because $\chi^2=1$.
+The Dedekind zeta function has a pole at $s=1$, and removing finitely
+many Euler factors does not remove it; so
+$\zeta_k^{S_1}(2\lambda+1)^{-1}$ has a zero at $\lambda=0$. The numerator
+$L^{S_1}(\lambda+\frac12,\chi\eta_a)$ is the $L$-function of a quadratic
+Hecke character at the center of the critical strip, which is finite
+(for $\chi\eta_a=1$ it is $\zeta_k^{S_1}(\frac12)$), and the local factors
+at $S_1$ are entire. So $W_a(x,\varphi,0)=0$ for every $a\in k^\times$ and
+every $x$. The zero is specific to the cover: the unramified Whittaker
+function has the denominator $L_v(2\lambda+1,\chi_v^2)$, in which the
+character is squared, so every ramified class sees the pole of
+$\zeta_k$.
+
+\emph{Step 2: the Eisenstein series is its constant term.} By
 Lemma~\ref{lem:whittaker}(a) and Theorem~\ref{thm:eisenstein}(b),
 \[
 F(x):=E(x,\varphi,0)=E_B(x,\varphi,0)=\bigl(\varphi+M(w,0)\varphi\bigr)(x)
 \,e^{H(x)}.
 \]
-$F$ is left invariant under $G(\Q)$ and, being equal to its constant
-term, under $N(\A)$; hence also under $wN(\A)w^{-1}$. These two groups
-generate a subgroup of $\GA$ that maps onto $G(\A)$, so $|F|$ is
-constant on $\GA$. But $|F(\tilde ax)|=e^{H(\tilde a)}|F(x)|$ for
-$\tilde a\in\overline{A(\A)}$, because $\mu^w=\mu$. So $F=0$, and
-restricting to $\overline{K_0}$ gives $\varphi+M(w,0)\varphi=0$.
+
+\emph{Step 3: $|F|$ is constant.} $F$ is left invariant under $G(\Q)$.
+Being equal to its constant term $\int_{N(\Q)\backslash N(\A)}F(nx)\,dn$,
+it is left invariant under $N(\A)$. Since $w\in G(\Q)$, it is then left
+invariant under $wN(\A)w^{-1}$ as well: $F(wnw^{-1}x)=F(nw^{-1}x)=
+F(w^{-1}x)=F(x)$. Here $wN(\A)w^{-1}$ is the image of the lower triangular
+unipotent group $\bar N(\A)$ under its canonical section
+(Lemma~\ref{lem:local}(h)). Now $N(\A)$ and $\bar N(\A)$ generate
+$G(\A)$: over a field or a local ring every element of $SL(2)$ is a
+product of a bounded number of elementary matrices, the bound being
+independent of the ring, so the factorization can be carried out at all
+places simultaneously, with integral factors at almost all places. Hence
+the subgroup of $\GA$ generated by the lifts of $N(\A)$ and $\bar N(\A)$
+maps onto $G(\A)$, and $F$ is left invariant under it. Since $F$ is
+genuine, $|F|$ is invariant under $\mu_2$ too. So $|F|$ is left invariant
+under all of $\GA$, that is, constant.
+
+\emph{Step 4: the constant is $0$.} For $\tilde a\in\overline{A(\A)}$ the
+formula of Step~2 gives $|F(\tilde ax)|=e^{H(\tilde a)}|F(x)|$, because
+$\varphi$ and $M(w,0)\varphi$ both lie in $\mathcal H_B(\mu)$ when
+$\mu^w=\mu$. Choosing $H(\tilde a)\ne0$ we get $F=0$, and restricting to
+$\overline{K_0}$ gives $\varphi+M(w,0)\varphi=0$.
 \end{proof}
+
+The statement is about representations, not only about $L$-functions:
+$M(w,0)$ is a self-intertwining operator of the unitary representation
+$I(\mu_0)$ with $M(w,0)^2=1$, and the proposition says that it is the
+scalar $-1$ for every ramified class. The proof finds the sign from a
+global fact: an automorphic function that is equal to its constant term
+and homogeneous of degree one under $A$ must vanish.
 
 For $SL(2)$ the same argument applies to the trivial character, where
 $L^{S_1}(\lambda+1,1)^{-1}$ vanishes at $\lambda=0$: this is the classical
@@ -1063,8 +1190,8 @@ I_G(\pi,f)\,d\pi$: the coefficient $a^G(\pi)$ is $m_{\mathrm{disc}}(\pi)$ on
 the discrete spectrum, $-\frac14$ at $I(\chi_{\psi_b,0})$, and
 $-\frac1{4\pi}\frac{m'}m(\mu,it)\,dt$ on the unitary principal series; the
 first two make up the discrete part $I_{\mathrm{disc}}$. Since
-$V_b\cong r^+_{\psi_{b'}}$ (Theorem~\ref{thm:residual}(c)),
-$\operatorname{tr}(R(f)|_{V_b})=\prod_v\operatorname{tr}r^+_{\psi_{b'},v}
+$V_b\cong r^+_{\psi_{-b}}$ (Theorem~\ref{thm:residual}(c)),
+$\operatorname{tr}(R(f)|_{V_b})=\prod_v\operatorname{tr}r^+_{\psi_{-b},v}
 (f_v)$, the character of the even Weil representation.
 
 \begin{example}\label{ex:itf-Q}
@@ -1086,6 +1213,8 @@ hyperbolic classes that contribute are those of $a(t)$, $t=\pm2^j$,
 $j\ge1$, and their terms are $c_\Q\,I_A(a(t)_S,f_S)$. The archimedean part of the correction $\Phi_A$ is
 given by Example~\ref{ex:Phi-real}.
 \end{example}
+
+\subsection{Status of the results}\label{sec:status6}
 
 \begin{remarkrev}\label{rem:sec6-status}
 \emph{What rests on citation.} Proved here, given

@@ -1,8 +1,9 @@
 % SPDX-License-Identifier: CC-BY-4.0
-% Stand-alone build of the revised paper: Sections 1-7, acknowledgements,
-% Appendix A and the glossary (stages 1-7 of ../revision_log.md and the
-% November 2026 response to the second referee report). A stage-0 master
-% would \input the same section files with the same macros.
+% Master file of the revised paper: Sections 1-7, acknowledgements,
+% Appendix A, the glossary and the bibliography (stages 0-7 of
+% ../revision_log.md and the November 2026 response to the second referee
+% report). Until stage 0 this file was called preview.tex.
+% Build: latexmk -pdf sl2bar-trace-2026.tex
 \documentclass[11pt]{article}
 \usepackage[margin=1.1in]{geometry}
 \usepackage{amsmath,amssymb,amsthm}
@@ -38,13 +39,12 @@
 
 \begin{document}
 \title{A hitch-hiker's guide to the metaplectic trace formula for $SL(2)$:\\[2pt]
-the double cover}
+the double cover\thanks{Revised version, restricted to the double cover,
+of the notes ``A hitch-hiker's guide to the metaplectic trace formula for
+$SL(2)$: basic theory'' (D.~Joyner, 1995).}}
 \author{D. Joyner and Claude\thanks{Claude is an AI model made by
 Anthropic. See the Acknowledgements for the division of work.}}
-\date{Draft of November 2026\\[4pt]
-\normalsize Revised version, restricted to the double cover, of the notes\\
-\normalsize ``A hitch-hiker's guide to the metaplectic trace formula for
-$SL(2)$: basic theory'' (D.~Joyner, 1995)}
+\date{Original draft: 1995, \\ Corrected and expanded draft: 2026}
 \maketitle
 
 \begin{abstract}

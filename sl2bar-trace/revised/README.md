@@ -13,7 +13,7 @@ The 2026 revision of *A hitch-hiker's guide to the metaplectic trace formula for
 | `sec7-stable.tex` | Section 7 (stage 6): the action of GL(2) on the cover (Ad(h), explicit on N, A, the center, K, tori and G(ℚ)); the sign (det h, det(1+γ)) by which the centralizer of γ in GL(2) acts on the lifts of γ; stable conjugacy as the twisted action h⋆x and the function Δ_ψ that is constant on stable classes; the kernel of the Weil representation in Kubota's model and the character of r⁺ − r⁻; stable and κ-orbital integrals, with J^κ(x, f) = J^st(−x, f₋); the regular elliptic terms as S_ell(f) + S_ell(f₋); the behavior of I_A under GL(2); the unipotent coefficients a^G(S,u_ξ) = ½(c_S + Σ_κ κ_S(ξ) L^S(1,κ)); the action of GL(2,k) on the spectrum and the trace on the theta functions; the stable(r) form and what is missing for a stabilization. The statements about the weighted terms are under the condition (N5) on the normalizing factors |
 | `appA-comparison.tex` | Appendix A: comparisons with the 1995 notes and the 1997 manuscript, statement by statement |
 | `glossary.tex` | Glossary of notation and terms |
-| `preview.tex`, `.pdf` | Standalone build of the paper (Sections 1–7, acknowledgements, Appendix A, glossary, bibliography) |
+| `sl2bar-trace-2026.tex`, `.pdf` | Master file of the paper (called `preview.tex` before stage 0) (Sections 1–7, acknowledgements, Appendix A, glossary, bibliography) |
 | `checks/sec2_n2_check.py` | Exact checks of the explicit n = 2 formulas in Section 2 |
 | `checks/sec3_n2_check.py` | Checks of Section 3: the cocycle on A, and Weil indices from Gauss sums (local identity, odd-p closed form, product formula over ℚ) |
 | `checks/sec4_n2_check.py` | Checks of Section 4 for k = ℚ: Iwasawa heights, the height inequality, the weight v_A and its local form, the weight integral, J_A(z,f) at ℝ and ℚ₃ with and without the correction term, and the unipotent constant term of Example 4.A |
@@ -23,4 +23,4 @@ The 2026 revision of *A hitch-hiker's guide to the metaplectic trace formula for
 | `checks/cover_lib.py` | Shared helpers from Section 6 on: the cocycles, the product in the cover, the Weil index and Weil's character, the spherical vector on w⁻¹n(y) (copied from `sec5_n2_check.py`) |
 | `checks/padic_lib.py` | Shared helpers: p-adic valuations and the quadratic Hilbert symbol of rationals |
 
-Build: `latexmk -pdf preview.tex`. Check: `python3 checks/sec2_n2_check.py`, …, `python3 checks/sec7_n2_check.py` (Sections 4 and 5 need SymPy, Sections 6 and 7 need mpmath; Section 6 takes about 20 seconds), or `python3 run_checks.py` from the repository root.
+Build: `latexmk -pdf sl2bar-trace-2026.tex`. Check: `python3 checks/sec2_n2_check.py`, …, `python3 checks/sec7_n2_check.py` (Sections 4 and 5 need SymPy, Sections 6 and 7 need mpmath; Section 6 takes about 20 seconds), or `python3 run_checks.py` from the repository root.

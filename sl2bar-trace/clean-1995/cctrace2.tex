@@ -1,0 +1,704 @@
+\section{The rank 0 case}
+
+It might be appropriate here to discuss the rank 0 case. The metaplectic
+covers of $A(\mathbb{A})$ are not in general abelian but nonetheless, the
+trace formula takes an especially simple form in this case. In this section,
+we shall prove the trace formula for metaplectic covers of $A({\mathbb{A}})$ and
+apply it to prove a ``matching'' between automorphic forms on $A({\mathbb{A}})$
+and on metaplectic covers of $A({\mathbb{A}})$. At the same time, we construct
+invariant distributions $I_{\cal{O}}^A$ and $I_\chi ^A$ which will be
+needed in an inductive definition of certain invariant distributions
+on $\overline{G({\mathbb{A}})}$ in section 6. 
+
+\subsection{Metaplectic lifting over the split torus}
+
+Suppose that $k/{\mathbb{Q}}$ is a number field containing the $n-th$ roots of
+unity. (If $n>2$ then this implies $k$ has no real places, i.e, $k_v=\mathbb{C}$
+for all $v\in \Sigma _k^\infty $.)
+Let $A$ and $A({\mathbb{A}})^1$ be as in the previous section,
+so $A({\mathbb{Q}})=k^\times$.
+\emph{We shall often identify }
+$A({\mathbb{A}})$
+\emph{\ with }
+${\mathbb{A}}_k^{\times }$
+\emph{\ in this section}. Let
+$(..,...)_n:A({\mathbb{A}})\times A({\mathbb{A}})
+\cong {\mathbb{A}}_k^{\times }\times {\mathbb{A}}_k^{\times}\rightarrow \mu _n$
+denote the global Hilbert symbol defined by
+[W1, section XIII.5, proposition 7] as a product of local
+Hilbert symbols $(...,...)_{n,v}$, where
+$\mu _n$ is the group of $n$-th roots of unity. Let $\mu _n$ act on 
+$G({\mathbb{A}})={\mathbb{A}}_k^{\times }$ trivially.
+A 2-cocycle on $A({\mathbb{A}})$ with
+values in $\mu _n$ is a continuous mapping
+$\beta :A({\mathbb{A}})\times A({\mathbb{A}})\rightarrow \mu _n$ satisfying 
+\begin{equation}
+\beta (g_2,g_3)\beta (g_1,g_2g_3)=\beta (g_1,g_2)\beta (g_1g_2,g_3),\;
+\end{equation}
+$g_1,g_2,g_3\in {\mathbb{A}}_k^{\times }$. We also denote by $\beta $ the
+restriction
+$\beta :A({\mathbb{A}})^1\times A({\mathbb{A}})^1\rightarrow \mu _n$. This
+is a product of local 2-cocycles, denoted $\beta _v$. Let
+$\overline{A(\mathbb{A})}^1$ denote the $n$-fold
+metaplectic cover of $A({\mathbb{A}})^1$
+defined by the 2-cocycle $\beta $ given by 
+\begin{equation}
+\beta (g_1,g_2)=(g_1^{-1},g_2^{-1})_n\cdot (-g_1g_2^{-1},g_1^{-1}g_2^{-1})_n.
+\end{equation}
+The fact that this satisfies the condition above may be verified by
+multiplying each term out and using the properties of the Hilbert symbol
+listed in [Sha, Proposition 60, p. 176] (this is long but
+straightforward and in any case well-known).
+By definition of group extension, multiplication
+on $\overline{A({\mathbb{A}})^1}=A({\mathbb{A}})^1\times \mu _n$
+(as \emph{sets}) is given by 
+\begin{equation}
+(g,\varsigma )\cdot (g^{\prime },\varsigma ^{\prime })=(gg^{\prime },\beta
+(g_1,g_2)\varsigma \varsigma ^{\prime }),
+\;\;\;\;g,g^{\prime }\in A({\mathbb{A}}),
+\;\;\varsigma ,\varsigma ^{\prime }\in \mu _n.
+\end{equation}
+This is a central extension of $A({\mathbb{A}})^1$ (i.e.,
+$\mu _n$ belongs to the
+center of the metaplectic cover) which fits into the following exact
+sequence 
+\[
+1\rightarrow \mu _n\rightarrow \overline{A({\mathbb{A}})^1}
+\rightarrow A({\mathbb{A}})^1\rightarrow 1,
+\]
+where $\mu _n\rightarrow \overline{A({\mathbb{A}})^1}$ is the
+inclusion of $\mu _n$ into the second component of
+$\overline{A({\mathbb{A}})}^1$, and the map
+$\overline{A({\mathbb{A}})^1}\rightarrow A({\mathbb{A}})^1$ is the
+projection map.
+
+Note that
+$\overline{A({\mathbb{A}})}^1=\overline{A({\mathbb{A}})^1}$.
+
+Using the local 2-cocycles $\beta _v$, we may in turn define local n-fold
+covers $\overline{k_v^{\times }}$ of $k_v^{\times },\;v\in \Sigma _k$. The
+rule for multiplication on the local covers
+\[
+\overline{A({\mathbb{Q}}_p)}=
+\overline{\prod_{v|p}k_v^{\times }}
+\subset \prod_{v|p}
+\overline{k_v^{\times }}
+\]
+of $\prod_{v|p}k_v^{\times }$ is the same, except one must
+replace $\beta $ by $\prod_{v|p}\beta _v$. The topology on
+$\overline{k_v^{\times }}$
+is defined by stipulating 
+\[
+\{U_v\times 1\;|\;\beta _v(U_v,U_v)=1\;\mathrm{and}\;1\in U_v\subset
+k_v^{\times }\;\mathrm{is\;open}\}
+\]
+to be a basis of open neighborhoods of the identity.
+If $(p,n)=1$ and if $v|p$ then the n-fold covers
+$\overline{A(\mathbb{Z}_p)}$ and
+$\overline{{\cal{O}}_v^{\times }}$ split by
+the properties of the Hilbert symbol listed in [W1,
+section XIII.5].
+
+The global cover $\overline{A({\mathbb{A}})}$ is not the restricted direct
+product of the local covers $\overline{k_v^{\times }}$. However, there is an
+embedding 
+\[
+\overline{A({\mathbb{A}})}\hookrightarrow
+\prod_{v\in \Sigma _k}^{\prime }\overline{k_v^{\times }}.
+\]
+
+We call a representation $\pi $ of $\overline{A({\mathbb{A}})^1}$
+\textbf{genuine} if it satisfies
+
+\begin{equation}
+\pi (g,\varsigma )=\varsigma^{-1} \cdot \pi (g,1).
+\end{equation}
+A {\em function} satisfying this property will sometimes be
+called {\bf anti-genuine}.
+Similarly, we define a representation $\pi $ of
+$\overline{A({\mathbb{A}})}=\overline{{\mathbb{A}}_k^{\times }}$ or
+of $\overline{k_v^{\times }}$ to be 
+\textbf{genuine} if it satisfies (3.4).
+
+If $H<\overline{A({\mathbb{A}})}$ a locally compact totally disconnected group
+of type 1, let $\Pi (H)$ denote
+the set of equivalence classes of admissible genuine
+representations of $H$ and
+let $\Pi_u(H)$ denote the subset of unitary ones.
+Let $\Pi_f (\overline{A({\mathbb{A}})})$
+denote the subset (equivalance classes of) representations in
+$\Pi(\overline{A({\mathbb{A}})})$ which can be written as the
+restriction to $\overline{A({\mathbb{A}})}$
+of a {\em factorizable} representation $\overline{\pi }$
+of the restricted direct product 
+\[
+\Pi (\prod_v\overline{k_v^{\times }})=\prod_v
+\Pi (\overline{k_v^{\times }}).
+\]
+Let $\Pi_f (\overline{A({\mathbb{A}})}^1)$ denote the
+set of equivalence classes of
+representations of $\overline{A({\mathbb{A}})^1}$ which can be written as the
+restriction to $\overline{A({\mathbb{A}})^1}$ of an element of
+$\Pi_f (\overline{A({\mathbb{A}})})$.
+Let $\Pi_{u,f} (\overline{A({\mathbb{A}})})$,
+$\Pi_{u,f} (\overline{A({\mathbb{A}})^1})$
+denote the corresponding subset of factorizable unitary representations.
+
+\begin{lemma} ([Ge2, \S 3])
+\[
+\begin{array}{c}    
+\Pi_f (\overline{A({\mathbb{A}})})=\Pi (\overline{A({\mathbb{A}})}),\\
+\Pi_{u,f} (\overline{A({\mathbb{A}})})=\Pi_u (\overline{A({\mathbb{A}})}),\\
+\Pi_f (\overline{A({\mathbb{A}})^1})=\Pi (\overline{A({\mathbb{A}})^1}),\\
+\Pi_{u,f} (\overline{A({\mathbb{A}})^1})=\Pi_u (\overline{A({\mathbb{A}})^1})
+\end{array}
+\]
+\end{lemma}
+
+See also [Ge1], [F] for the non-metaplectic version.
+
+We shall sketch a proof of the following
+
+\begin{theorem}
+There is a natural 1-1 correspondence between the subset of all genuine
+irreducible representations
+$\overline{\chi }\in \Pi (\overline{A({\mathbb{A}})}^1)$
+of $\overline{A({\mathbb{A}})^1}$ and characters of the form
+$\chi ^{n/2}$ (n even), $\chi ^n$ (n odd),
+for $\chi \in $\ $\Pi (A({\mathbb{A}})^1)$.
+\end{theorem}
+
+First we prove a trace formula for $\overline{A({\mathbb{A}})}^1$.
+
+\subsection{Irreducible representations of $\overline{A({\mathbb{A}})}^1$}
+
+For any group $H$, let
+Let 
+\begin{equation}
+H^m
+=\{x\in H\;|\;x=y^m,\;\;\mathrm{some}
+\;\;y\in H\}.
+\end{equation}
+Let 
+\begin{equation}
+N=
+\left\{
+\begin{array}{c}
+n,\ \ n \mathrm{\ odd},\\
+n/2,\ \ n \mathrm{\ even}.
+\end{array}
+\right.
+\end{equation}
+
+We have, by the properties of the Hilbert
+symbol,
+$\overline{A({{\mathbb{A}}})^{1,n}}=A({{\mathbb{A}}})^{1,n}\times \mu _n$,
+that is to say, the metaplectic cover
+splits over $A({{\mathbb{A}}})^{1,n}$.
+By Lemma 2.6(e) above, the cover
+$\overline{A({{\mathbb{A}}})^{1,N}}$ is abelian (though it
+does not split).
+
+For $\chi \in \Pi (\overline{A({\mathbb{A}})^1})$,
+$h\in \overline{A({\mathbb{A}})}$, define
+$\chi ^h(g)=\chi (h^{-1}gh)$, for $g\in 
+\overline{A({\mathbb{A}})}^1$. We call such a
+$\chi $ \textbf{self-conjugate} if
+there is an $h$ as above such that $\chi =\chi ^h$
+in $\Pi (\overline{A({\mathbb{A}})^1})$.
+If $h=(x,\varsigma ),\;\varsigma \in \mu _n,$ then 
+\[
+\chi ^h(g)=\chi (h^{-1}gh)
+=\chi (x^{\prime },(x,x^{\prime })_n^2\varsigma^{\prime }),
+\;\;\;\;\;\;\;\;\;\;g=(x^{\prime },
+\varsigma ^{\prime })\in \overline{A({\mathbb{A}})^1},
+\]
+
+If $p<\infty$, let $C_p\subset A({\mathbb{Q}}_p)$ denote a subgroup
+of finite index such that
+$\overline{C_p}\subset \overline{A({\mathbb{Q}}_p)}$ is
+an abelian subgroup. (In particular, we may take
+$C_p=A({\mathbb{R}})^N$.) If $p=\infty$ let $C_p=A({\mathbb{R}})$. Let
+\begin{equation}
+C_{{\mathbb{A}}}=\prod_{p\leq \infty }C_p
+\end{equation}
+denote the restricted direct product.
+
+We have the following result (due to Clifford, Mackey,
+...)
+
+\begin{lemma}
+If $\chi \in \Pi (\overline{C_{{\mathbb{A}}}})$ is not self-conjugate then 
+\[
+Ind_{\overline{C_{{\mathbb{A}}}}}^{\overline{A({\mathbb{A}})}}(\chi )
+\cong Ind_{\overline{C_{{\mathbb{A}}}}}^{\overline{A({\mathbb{A}})}}(\chi ^h),
+\;\;\;h\in  \overline{A({\mathbb{A}})},
+\]
+is irreducible and belongs to $\Pi (\overline{A({\mathbb{A}})})$.
+\end{lemma}
+
+\begin{remark} By analogy with Mackey's irreduciblity
+criterion in [Se, \S 7.4], the converse to the avove result also
+holds. The detailed proof of the local result can be found in
+[J3].
+\end{remark}
+
+\textsf{proof}: We must first reduce this down to a statement about local
+representations and then prove the local statement.
+
+Pick a $p\leq \infty $. By Clifford-Mackey theory ([J3], [Se, \S 7.4]),
+if $\chi \in \Pi (\overline{A({\mathbb{Q}}_p)})$ is not self-conjugate then 
+\begin{equation}
+Ind_{\overline{C_p}}^{\overline{A({\mathbb{Q}}_p)}}(\chi )
+\cong Ind_{\overline{C_p}}^{\overline{A({\mathbb{Q}}_p)}}(\chi ^h),
+\;\;\;h\in \overline{A({\mathbb{Q}}_p)},
+\end{equation}
+is irreducible and belongs to $\Pi (\overline{A({\mathbb{Q}}_p)})$. We may take
+the restricted direct product of these local representations to obtain an
+irreducible (by Schur's lemma) factorizable representation on
+the restricted direct product of of these local covers. $\Box $
+
+In our case, it is easy to see that for any
+$\chi \in \Pi (\overline{C_p})$,
+the restriction of
+$Ind_{\overline{C_p}}^{\overline{A({\mathbb{Q}}_p)}}(\chi )$
+to the abelian subgroup
+$\overline{C_p}$ must decompose into a direct sum of
+characters: 
+\begin{equation}
+Ind_{\overline{C_p}}^{\overline{A({\mathbb{Q}}_p)}}(\chi )|_{\overline{A_p}}
+\cong \bigoplus_{i=1}^dm_i\chi _i,
+\;\;\;\chi _i\in \Pi (\overline{C_p}),
+\end{equation}
+where $m_i,d$ is are some integers and
+one of these $\chi _i$ must be $\chi $ itself. By the isomorphism
+(for any $h\in \overline{A({\mathbb{Q}}_p)}$)
+\begin{equation}
+Ind_{\overline{C_p}}^{\overline{A({\mathbb{Q}}_p)}}(\chi )
+\cong Ind_{\overline{C_p}}^{\overline{A({\mathbb{Q}}_p)}}(\chi ^h),
+\;\;\;h\in \overline{A({\mathbb{Q}}_p)},
+\end{equation}
+one of these $\chi _i$ must be equal to $\chi ^h$.
+In fact, we have
+
+\begin{lemma} ([GeKn, Lemma 2.1])
+If $\chi \in \Pi (\overline{C_p})$ then all the $m_i's$ in (3.9) are
+equal (to $m$, say) and
+\[
+Ind_{\overline{C_p}}^{\overline{A({\mathbb{Q}}_p)}}(\chi )|_{\overline{C_p}}
+\cong \bigoplus_{h\in \overline{A({\mathbb{Q}}_p)}
+/\overline{A({\mathbb{Q}}_p)}_{\chi}}
+m\chi ^h,
+\]
+where
+\[
+\overline{A({\mathbb{Q}}_p)}_{\chi}
+=\{a\in\overline{A({\mathbb{Q}}_p)} \ |\ \chi^a=\chi\}.
+\]
+\end{lemma}
+
+\begin{remark} By analogy with [Se, ch 7], one might expect there to
+be a more general form of this result, closely related to
+Frobenius reciprocity.
+\end{remark}
+\begin{remark}
+An aside: Even using the explicit local recipocity law of
+(Sen, Wiles, ...) it does not appear to be
+easy to explicitly determine $C_p$
+such that $A({\mathbb{Q}}_p)/C_p$ is minimal.
+\end{remark}
+
+
+\subsection{The trace formula for \emph{$\overline{A({\mathbb{A}})^1}$}}
+
+There is natural projection
+$pr:\overline{A({\mathbb{A}})}\;\rightarrow \;A({\mathbb{A}}),
+\;(x,\varsigma )\longmapsto x$. Let
+${\cal{S}}(\overline{A({\mathbb{A}})}^1)$
+denote the collection of all genuine functions $f$ on
+$\overline{A({\mathbb{A}})^1}$ such
+that $f\circ pr\in {\cal{S}}(A({\mathbb{A}})^1)$. Let 
+\[
+H=
+L^2(\overline{A({\mathbb{Q}})}\backslash \overline{A({\mathbb{A}})^1)})_{gen},
+\]
+where \emph{$\overline{A({\mathbb{Q}})}$} is regarded as a subgroup
+of $\overline{A({\mathbb{A}})^1}$ via the
+diagonal embedding. Let $R$ denote
+the right regular representation: 
+\[
+R:\overline{A({\mathbb{A}})^1}\rightarrow \;End(H),
+\]
+defined by $(R(y)\varphi )(x)
+=\varphi (xy),\;x,y\in \overline{A({\mathbb{A}})}^1,
+\;\varphi \in H$.
+For $\overline{f}\in {\cal{S}}(\overline{A({\mathbb{A}})}^1)$, let 
+\[
+R(\overline{f})=\int_{\overline{A({\mathbb{A}})}^1}\overline{f}(x)R(x)dx.
+\]
+Since $R(x):H\rightarrow H$ is a unitary operator (in particular bounded),
+this integral converges. This
+operator $R(\overline{f}):H\rightarrow H$ may be written 
+\begin{equation}
+\begin{array}{c}
+(R(\overline{f})\varphi )(x)
+=\int_{\overline{A({\mathbb{A}})}^1}\overline{f}(x)(R(y)\varphi )(x)dy,
+\;\;\;\varphi \in H \\ 
+=\int_{\overline{A({\mathbb{A}})}^1}\overline{f}(x^{-1}y)\varphi (y)dy \\ 
+=\int_{A({\mathbb{Q}})\backslash \overline{A({\mathbb{A}})}^1}
+\sum_{\delta \in A({\mathbb{Q}})}
+\overline{f}(x^{-1}\delta y)\varphi (\delta y)dy \\ 
+=\int_{A({\mathbb{Q}})\backslash \overline{A({\mathbb{A}})^1}}
+\varphi (y)
+\sum_{\delta \in A({\mathbb{Q}})}\overline{f}(x^{-1}\delta y)dy.
+\end{array}
+\end{equation}
+Let 
+\[
+K(x,y)=K_{\overline{f}}(x,y)
+=\sum_{\delta \in A({\mathbb{Q}})}
+\overline{f}(x^{-1}\delta y).
+\]
+
+For each $\overline{\chi }\in \Pi (\overline{A({\mathbb{A}})}^1)$, let 
+\begin{equation}
+\begin{array}{c}
+\overline{\chi }(\overline{f})
+=\int_{\overline{A({\mathbb{A}})}^1}
+\overline{f}(y)\overline{\chi }(y)dy, \\ 
+tr\;\overline{\chi }(\overline{f})
+=\int_{\overline{A({\mathbb{A}})^1}}\overline{f}(y)
+tr\;(\overline{\chi }(y))dy
+=\overline{f}^{\wedge }(\overline{\chi }).
+\end{array}
+\end{equation}
+We call the latter integral the \textbf{Fourier transform}
+of $\overline{f}$ at $\overline{\chi }$, and the
+former integral the \textbf{operator-valued}
+\textbf{Fourier transform} of $\overline{f}$ at
+$\overline{\chi }$. Note that these are
+$0$ if $\overline{f}$ is not genuine.
+
+Finally, for each $h\in $ $\overline{A({\mathbb{A}})^1}$, let
+$\overline{A({\mathbb{A}})}_h^1$ denote the \textbf{centralizer} of $h$
+in $\overline{A({\mathbb{A}})^1}$: 
+\begin{equation}
+\overline{A({\mathbb{A}})}_h^1
+=\{A\in \overline{A({\mathbb{A}})}^1\;|\;ghg^{-1}=h\}.
+\end{equation}
+
+\begin{theorem}
+(a) $tr\;R(\overline{f})
+=\int_{A({\mathbb{Q}})\backslash \overline{A({\mathbb{A}})}^1}
+K_{\overline{f}}(x,x)dx.$
+
+(b) For each $\overline{\chi }\in \Pi (\overline{A({\mathbb{A}})}^1)$, there is
+an integer $m(\overline{\chi })\geq 0$\ such that 
+\[
+R(\overline{f})
+=\bigoplus_{\overline{\chi }\in \Pi_u (\overline{A({\mathbb{A}})}^1)}
+m(\overline{\chi })\overline{\chi }(\overline{f}).
+\]
+\end{theorem}
+
+Thus we have 
+\begin{equation}
+\begin{array}{c}
+tr\;R(\overline{f})
+=\sum_{\overline{\chi }\in \Pi (\overline{A({\mathbb{A}})}^1)}
+m(\overline{\chi })tr(\overline{\chi }(\overline{f})) \\ 
+=\int_{A({\mathbb{Q}})\backslash \overline{A({\mathbb{A}})}^1}
+\sum_{\delta\in A({\mathbb{Q}})}
+\overline{f}(x^{-1}\delta x)dx \\ 
+=\int_{A({\mathbb{Q}})\backslash \overline{A({\mathbb{A}})}^1}
+\sum_{\{\delta \}}
+\sum_{\gamma \in A({\mathbb{Q}})_\delta\backslash A({\mathbb{Q}})}
+\overline{f}(x^{-1}\gamma ^{-1}\delta \gamma x)dx \\ 
+=\sum_{\{\delta \}}
+\int_{A({\mathbb{Q}})\backslash \overline{A({\mathbb{A}})}^1}
+\sum_{\gamma \in A({\mathbb{Q}})_\delta \backslash A({\mathbb{Q}})}
+\overline{f}(x^{-1}\gamma ^{-1}\delta \gamma x)dx \\ 
+=\sum_{\{\delta \}}
+\int_{A({\mathbb{Q}})_\delta \backslash \overline{A({\mathbb{A}})}^1}
+\overline{f}(x^{-1}\delta x)dx \\ 
+=\sum_{\{\delta \}}
+vol(A({\mathbb{Q}})_\delta \backslash \overline{A({\mathbb{A}})}_\delta ^1)
+\sum_{x\in \overline{A({\mathbb{A}})}_\delta ^1
+\backslash \overline{A({\mathbb{A}})}^1}
+\overline{f}(x^{-1}\delta x),
+\end{array}
+\end{equation}
+where $\{\delta \}$ runs over a complete set of representatives of
+$\overline{A({\mathbb{A}})}^1$-conjugacy classes of $A({\mathbb{Q}})$.
+
+This proves the
+
+\begin{theorem}
+(trace formula on $\overline{A({\mathbb{A}})}^1$):
+If $\overline{f}\in {\cal{S}}(\overline{A({\mathbb{A}})}^1)$ then 
+\[
+\sum_{\overline{\chi }\in \Pi_u (\overline{A({\mathbb{A}})}^1)}
+m(\overline{\chi })
+tr(\overline{\chi }(\overline{f}))
+=\sum_{\{\delta \}}
+vol(A({\mathbb{Q}})_\delta \backslash \overline{A({\mathbb{A}})}_\delta ^1)
+\sum_{x\in \overline{A({\mathbb{A}})}_\delta ^1
+\backslash \overline{A({\mathbb{A}})^1}}
+\overline{f}(x^{-1}\delta x),
+\]
+where $\{\delta \}$ runs over a complete set of representatives of
+$\overline{A({\mathbb{A}})}^1$-conjugacy classes of
+$A({\mathbb{Q}})$.
+\end{theorem}
+
+\subsection{proof of the correspondence}
+
+Let $\delta\in A({\mathbb{Q}})$.
+
+We now prove the correspondence theorem mentioned at the beginning of this
+subsection. To do this we need to relate the above twisted trace
+formula on $\overline{A({\mathbb{A}})}^1$ to the ordinary trace
+formula (Poisson summation) on $A({\mathbb{A}})^N$. This boils down to
+relating the metaplectic orbital integrals 
+\[
+\int_{\overline{A({\mathbb{A}})}_\delta ^1
+\backslash \overline{A({\mathbb{A}})^1}}
+\overline{f}(x^{-1}\delta x)dx
+\]
+on $\overline{A({\mathbb{A}})}^1$ to ordinary orbital integrals
+on $A({\mathbb{A}})^N$ (which are ``trivial'' since
+$\overline{A({\mathbb{A}})}$ is abelian).
+
+Let $\overline{f}$ be factorizable: 
+\[
+\overline{f}(x)=\prod_{p\leq \infty}\overline{f}_p(x_p),
+\;\;\;\;\;\overline{f}_p\in {\cal{S}}(\overline{A({\mathbb{Q}}_p)}),
+\]
+so 
+\begin{equation}
+\int_{\overline{A({\mathbb{A}})}_\delta ^1
+\backslash \overline{A({\mathbb{A}})^1}}
+\overline{f}(x^{-1}\delta x)dx
+=\prod_{p\leq \infty}
+\sum_{x_p\in {\mathbb{Q}}_{p,\delta}^\times
+\backslash {\mathbb{Q}}_p^\times}
+\overline{f}_p(\delta ,(\delta,x_p)_n^2s_{\mathbb{A}}(\delta)^{-1} ),
+\end{equation}
+where
+\[
+\begin{array}{c}
+{\mathbb{Q}}_{p,\delta}^\times
+=\{x_p\in {\mathbb{Q}}_p^\times
+\ |\ (x_p,\delta )_n=1\},\\
+(x_p,\delta)_n=\prod_{v|p}(x_v,\delta_v)_{v,n},
+\end{array}
+\]
+for $x_p=\prod_{v|p}x_v,\ \delta=\prod_{v|p}\delta_v$.
+ 
+Let 
+\begin{equation}
+f_p(y)=
+\sum_{x\in {\mathbb{Q}}_{p,y}^\times
+\backslash {\mathbb{Q}}_p^\times}
+\overline{f}_p(y ,(y,x)_n^2s_{\mathbb{A}}(y)^{-1} ),
+\end{equation}
+for $y\in \prod_{v|p}k_v^\times\cong A({\mathbb{Q}}_p)$.
+
+\begin{remark}
+Let $(h(t),1)\in \overline{A({\mathbb{Q}}_p}$ be the element
+such that $h(t)$ is diagonal with diagonal entries $t,t^{-1}$.
+For $y\in {\mathbb{Q}}_p^\times$, we have
+$(h(y),1)^{(h(x),1)}=
+(h(y) ,(y,x)_n^2) $.
+Therefore, if $\overline{f}_p$ is genuine then
+the sum in (3.16) is zero unless
+$y\in (\prod_{v|p}k_v^\times)^N\cong A({\mathbb{Q}}_p)^N$.
+\end{remark}
+
+\begin{lemma}
+One may choose Haar measures so that
+
+(a)\ If $p<\infty $\ then the map $\overline{f}_p\longmapsto f_p$
+defines a map ${{\cal{S}}}(\overline{A({{\mathbb{Q}}}_p)})\rightarrow
+{{\cal{S}}}(A({{\mathbb{Q}}}_p))$.
+
+(b)\ If $p=\infty$ then the map
+$\overline{f}_p\longmapsto f_p$\ defines a map
+${{\cal{S}}}(\overline{A(\mathbb{R})})
+\rightarrow {{\cal{S}}}(A({\mathbb{R}}))$.
+
+(c) If $p<\infty $ and if $\overline{f}_p$
+is a unit in the convolution
+algebra ${\cal{S}}(\overline{A({\mathbb{Q}}_p)})$\ and
+if $\overline{f}_p\longmapsto f_p$ then $f_p$
+is the unit element of
+the convolution algebra ${\cal{S}}(A({\mathbb{Q}}_p)^N)$.
+\end{lemma}
+
+For $\overline{f}\in {\cal{S}}(\overline{A({\mathbb{A}})^1})$
+factorizable, let $\overline{f}\longmapsto f$ denote the map
+obtained by taking the
+product of the maps $\overline{f}_p\longmapsto f_p$.
+By the above lemma, this defines a map 
+\begin{equation}
+{\cal{S}}(\overline{A({\mathbb{A}})}^1)\rightarrow {\cal{S}}(C_{{\mathbb{A}}}).
+\end{equation}
+
+As a corollary to the above lemma, we obtain
+
+\begin{lemma}
+Let\ $\overline{f}\in {\cal{S}}(\overline{A({\mathbb{A}})}^1)$ be a
+factorizable function and define
+$f\in {\cal{S}}(C_{\mathbb{A}})$ as above via
+$\overline{f}\longmapsto f$. Then 
+\[
+\int_{\overline{A({\mathbb{A}})}_\delta ^1
+\backslash \overline{A({\mathbb{A}})^1}}\overline{f}(x^{-1}\delta x)dx
+=f(\delta ),
+\]
+if $\delta\in A({\mathbb{A}})^N$ and
+\[
+\int_{\overline{A({\mathbb{A}})}_\delta ^1
+\backslash \overline{A({\mathbb{A}})^1}}\overline{f}(x^{-1}\delta x)dx
+=0,
+\]
+if $\delta\in A({\mathbb{A}})-A({\mathbb{A}})^N$.
+\end{lemma}
+
+Note that if $\delta\in A({\mathbb{Q}})^N$ then
+$\overline{A({\mathbb{A}})^1}_\delta=\overline{A({\mathbb{A}})^1}$.
+We choose global measures so that
+\[
+vol(A({\mathbb{Q}}) \backslash \overline{A({\mathbb{A}})^1})
+=vol(A({\mathbb{Q}})^N \backslash A({\mathbb{A}})^{1,N}).
+\]
+This and the above lemma imply that 
+\begin{equation}
+\begin{array}{c}
+\sum_{\{\delta \}}
+vol(A({\mathbb{Q}})_\delta \backslash \overline{A({\mathbb{A}})^1}_{\delta })
+\int_{\overline{A({\mathbb{A}})^1}_{\delta }\backslash 
+\overline{A({\mathbb{A}})^1}}
+\overline{f}(x^{-1}\delta x)dx \\ 
+=vol(A({\mathbb{Q}})^N \backslash A({\mathbb{A}})^{1,N})
+\sum_{\gamma \in A({\mathbb{Q}})^N}
+f(\gamma ),
+\end{array}
+\end{equation}
+by equation (3.16) and the remark above.
+
+In this case, we have, by the Poisson summation formula for
+$A({\mathbb{Q}})^N\backslash A({\mathbb{A}})^{1,N}$, we have 
+\begin{equation}
+\sum_{\overline{\chi }\in
+\Pi_u (\overline{A({\mathbb{A}})^1})}m(\overline{\chi })
+tr(\overline{\chi }(\overline{f}))
+=\sum_{\chi \in \Pi (A({\mathbb{A}})^{1,N})}
+f^{\wedge }(\chi ),
+\end{equation}
+for each factorizable
+$\overline{f}\in {\cal{S}}(\overline{A({\mathbb{A}})}^1)$
+which is genuine and $f\in {\cal{S}}(A({\mathbb{A}})^{1,N})$
+is defined as above
+via $\overline{f}\longmapsto f$.
+
+Our correspondence theorem follows immediately from the two claims below:
+
+\textsc{Claim 1}: For each fixed $\overline{\chi }$
+$\in \Pi (\overline{A({\mathbb{A}})}^1)$ there is a sequence of
+functions
+$\overline{f}_m
+=\overline{f}_{\overline{\chi },m}$ such that 
+\[
+\lim_{n\rightarrow \infty }
+tr(\overline{\chi ^{\prime }}(\overline{f}_m))
+=\left\{ 
+\begin{array}{c}
+1,\;\;\overline{\chi ^{\prime }}=\overline{\chi }, \\ 
+0,\;\mathrm{otherwise}.
+\end{array}
+\right. 
+\]
+
+\textsc{Claim 2}: For each fixed
+$\overline{\chi }\in \Pi (\overline{A({\mathbb{A}})}^1)$
+there is a unique $\chi \in \Pi (A({\mathbb{A}})^{1,N})$ such that
+$\overline{f}_m\longmapsto f_n=f_{\chi ,m}$ and 
+\[
+\lim_{m\rightarrow \infty }f_m^{\wedge }(\chi ^{\prime })=\left\{ 
+\begin{array}{c}
+1,\;\;\;\chi ^{\prime }=\chi , \\ 
+0,\;\mathrm{otherwise}.
+\end{array}
+\right. 
+\]
+
+Claim 1 is an exercise in harmonic analysis on $A({\mathbb{A}})^1$ since
+$tr(\overline{\chi ^{\prime }}(\overline{f}_m))
+=\overline{f}_m^{\wedge }(\overline{\chi ^{\prime }})$.
+
+To prove claim 2 we fix a genuine factorizable function $f$ on $A({\mathbb{A}})$
+and work locally. If 
+\[
+\overline{\chi }=
+Ind_{\overline{A({\mathbb{Q}}_p)^{1,N}}}^{\overline{A({\mathbb{Q}}_p)^1}}
+(\chi )\in \Pi_u (\overline{A({\mathbb{A}})}^1)
+\]
+then we have 
+\begin{equation}
+\begin{array}{c}
+\overline{f}^{\wedge }(\overline{\chi })
+=\int_{\overline{A({\mathbb{Q}}_p)}}
+\overline{f}(y)tr(\overline{\chi }(y))dy \\ 
+=\sum_{h\in \overline{A({\mathbb{Q}}_p)^N}
+\backslash \overline{A({\mathbb{Q}}_p)}}
+\int_{\overline{A({\mathbb{Q}}_p)^N}}
+\overline{f}(a)\chi ^h(a)da \\ 
+=\sum_{h\in \overline{A({\mathbb{Q}}_p)^N}
+\backslash \overline{A({\mathbb{Q}}_p)}}
+\int_{\overline{A({\mathbb{Q}}_p)^N}}
+\overline{f}(h^{-1}ah)\chi (a)da \\ 
+=\int_{A({\mathbb{Q}}_p)^N\times 1}
+f(a)\chi (a)da \\ 
+=f^{\wedge }(\chi ).
+\end{array}
+\end{equation}
+
+Claim 2 follows.
+
+The 1-1 correspondence between $\Pi (\overline{A({\mathbb{A}})^1})$ and
+$\Pi (A({\mathbb{A}})^{1,N})=\Pi (\overline{A({\mathbb{A}})^{1,N}})_{gen}$
+is given as follows. The map 
+\[
+\Pi (\overline{A({\mathbb{A}})^{1,N}})
+\rightarrow \Pi (\overline{A({\mathbb{A}})}^1)
+\]
+is the induction map. In fact, the map
+$\Pi (\overline{A({\mathbb{A}})^1})\rightarrow
+\Pi (A({\mathbb{A}})^{1,N})$
+is given locally by the map 
+\[
+\overline{\chi }
+=Ind_{\overline{A({\mathbb{Q}}_p)^N}}^{\overline{A({\mathbb{Q}}_p)}}
+(\chi )\longmapsto \chi 
+\]
+This proves the desired correspondence. $\Box $
+
+Let ${\cal{O}}$ denote a (singleton) conjugacy
+class in $A({\mathbb{Q}})$ and let
+$\chi\in \Pi_u(\overline{A({\mathbb{A}})})$ denote a genuine irreducible
+representation. Define $I^A_{\cal{O}}$ by
+\begin{equation}
+I^A_{\cal{O}}(f)=
+\sum_{\delta\in {\cal{O}}}
+f(\delta)
+\end{equation}
+and $I^A_{\chi}$ by
+\begin{equation}
+I^A_{\chi}(f)=
+{\rm tr}(\chi(f)) 
+\end{equation}
+for $f\in {\cal{H}}(\overline{A({\mathbb{A}})})$, where
+${\cal{H}}(\overline{A({\mathbb{A}})})$ is as in \S 4.3.1 below.
+
+

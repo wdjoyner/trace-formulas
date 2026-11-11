@@ -23,23 +23,23 @@ Checks:
     of y, so the odd shells cancel;
   * for comparison, the same integral for SL(2) itself (no cover, character
     chi of A): L(lambda, chi) / L(lambda + 1, chi);
-  * the limit defining M_B^T (Arthur's formula, Theorem 5.13): with
+  * the limit defining M_B^T (Arthur's formula, Theorem 5.14): with
     vol(a / Z alpha^v) = d and theta(zeta) = zeta(alpha^v) = d zeta,
         d * lim [e^{zeta T} - e^{-zeta T} M(l)^-1 M(l + zeta)] / (d zeta)
           = 2T - M(l)^-1 M'(l)
     for d = 1, 2, 3 (symbolic, M(l) = exp(l X) for a generic matrix X); the
     1995 identification (zeta(T) = 2 zeta T, zeta(alpha^v) = 2 zeta, vol 1)
     gives 2T - (1/2) M^-1 dM/dzeta, not 4T - M^-1 M' (referee item II.11);
-  * the diagonal limit of the Maass-Selberg relation (Lemma 5.12/Thm 5.13) at
+  * the diagonal limit of the Maass-Selberg relation (Lemma 5.13/Thm 5.14) at
     lambda' -> lambda on i R, for a unitary M(it) = exp(i t X), X Hermitian:
     the limit is 2T <phi, phi'> - <phi, M^-1 M' phi'> (numerical);
-  * the cross terms for a ramified class (Theorem 5.13(c)): with
+  * the cross terms for a ramified class (Theorem 5.14(c)): with
     F(t) = exp(-t^2)(1 + t/3), the integral
         (1/2)(1/2 pi) PV int [F(-t) e^{2itT} - F(t) e^{-2itT}] / (2it) dt
     tends to F(0)/4 as T -> oo (numerical);
   * the residue 2/pi^2 at lambda = 1/2 of m^S(lambda) = (1 - 2^-2l) zeta(2l) /
     ((1 - 2^(-1-2l)) zeta(2l+1)) for S = {oo, 2} (Example 5.B);
-  * the two local facts behind Proposition 5.16 (the T-coefficients of the
+  * the two local facts behind Proposition 5.17 (the T-coefficients of the
     two sides agree), at v = R for f = exp(-pi ||g||^2): the Abel transform
     satisfies |t| F(a(t)) = |1/t| F(a(1/t)), and the orbital integral of
     a(t) is |1 - t^-2|^-1 F(a(t)).
@@ -289,7 +289,7 @@ for p in (3, 5, 7):
     report("comparison: SL(2), no cover: L(l,chi)/L(l+1,chi), p=%d" % p, abs(val0 - expect0) < 1e-9)
 
 
-# ---------------------------------------------------------------- Theorem 5.13
+# ---------------------------------------------------------------- Theorem 5.14
 zeta, T, l = sp.symbols("zeta T l")
 # Work with M(l + zeta) = M(l) (1 + zeta Y + O(zeta^2)) where Y = M^-1 M'(l).
 Y = sp.Matrix(2, 2, sp.symbols("y0:4"))
@@ -300,7 +300,7 @@ for d in (1, 2, 3):
     expr = vol * (sp.exp(zeta * T) * sp.eye(2) / theta(zeta)
                   + sp.exp(-zeta * T) * MinvM(zeta) / theta(-zeta))
     lim = expr.applyfunc(lambda e: sp.limit(e, zeta, 0))
-    report("Theorem 5.13: Arthur's limit = 2T - M^-1 M' (vol = d, theta = d zeta), d=%d" % d,
+    report("Theorem 5.14: Arthur's limit = 2T - M^-1 M' (vol = d, theta = d zeta), d=%d" % d,
            sp.simplify(lim - (2 * T * sp.eye(2) - Y)) == sp.zeros(2))
 # 1995 identification: zeta(T) = 2 zeta T, zeta(alpha^v) = 2 zeta, vol(R/Z) = 1;
 # M(l + zeta) with l in the 1995 coordinate, derivative d/dzeta.
@@ -312,7 +312,7 @@ report("item II.11: the 1995 normalization gives 2T - (1/2) M^-1 dM/dzeta",
 report("item II.11: ... and not 4T - M^-1 M'",
        sp.simplify(lim95 - (4 * T * sp.eye(2) - Y)) != sp.zeros(2))
 
-# ---------------------------------------------------------------- Lemma 5.12/Thm 5.13
+# ---------------------------------------------------------------- Lemma 5.13/Thm 5.14
 # Diagonal limit of the Maass-Selberg expression with a unitary M(it) = exp(i t X).
 mp.mp.dps = 30
 Xh = mp.matrix([[0.3, 0.2 - 0.5j], [0.2 + 0.5j, -0.7]])  # Hermitian
@@ -328,7 +328,7 @@ def ip(u, v):
 
 
 def ms(lam, lamp, phi, phip, Tv):
-    """Right-hand side of the Maass-Selberg relation of Lemma 5.12 for a
+    """Right-hand side of the Maass-Selberg relation of Lemma 5.13 for a
     ramified class (mu = mu^w), all four terms; inner products in C^2."""
     Ml, Mlp = Munit(lam), Munit(lamp)
     a = lam + mp.conj(lamp)
@@ -348,10 +348,10 @@ Mder = Xh * Munit(1j * t0)
 diag = 2 * Tv * ip(phi, phip) - ip(phi, Minv * Mder * phip)
 cross = (ip(phi, Munit(1j * t0) * phip) * mp.e ** (2j * t0 * Tv)
          - ip(Munit(1j * t0) * phi, phip) * mp.e ** (-2j * t0 * Tv)) / (2j * t0)
-report("Lemma 5.12/Thm 5.13: diagonal limit = 2T<phi,phi'> - <phi, M^-1 M' phi'> + cross terms",
+report("Lemma 5.13/Thm 5.14: diagonal limit = 2T<phi,phi'> - <phi, M^-1 M' phi'> + cross terms",
        abs(val - (diag + cross)) < 1e-8, mp.nstr(abs(val - (diag + cross)), 3))
 herm = Minv * Mder
-report("Lemma 5.12/Thm 5.13: M(it)^-1 M'(it) is self-adjoint",
+report("Lemma 5.13/Thm 5.14: M(it)^-1 M'(it) is self-adjoint",
        mp.mnorm(herm - herm.transpose_conj(), 1) < 1e-20)
 
 # ---------------------------------------------------------------- cross terms
@@ -368,11 +368,11 @@ def cross_integral(Tv):
 
 
 vals = [cross_integral(mp.mpf(Tv)) for Tv in (2, 4, 8)]
-report("Theorem 5.13(c): cross terms -> F(0)/4 as T -> oo",
+report("Theorem 5.14(c): cross terms -> F(0)/4 as T -> oo",
        abs(vals[-1] - F(0) / 4) < 1e-10 and abs(vals[-1].imag) < 1e-12,
        ", ".join(mp.nstr(v.real, 12) for v in vals))
 
-# ---------------------------------------------------------------- Prop. 5.16
+# ---------------------------------------------------------------- Prop. 5.17
 # Abel transform at R: F(a(t)) = int_K int_N f(k^-1 a(t) n k) dn dk for the
 # bi-K-invariant f(g) = exp(-pi ||g||^2) on SL(2,R) (K-average is trivial).
 # Locally |t| F(a(t)) is w-symmetric; for t in k^x, |t|_A = 1, so globally
@@ -383,11 +383,11 @@ def abel(t):
 
 
 ok = all(abs(mp.mpf(t) * abel(t) - abel(1 / mp.mpf(t)) / mp.mpf(t)) < 1e-20 for t in ("1.7", "0.4", "3.1"))
-report("Prop. 5.16: |t| F(a(t)) = |1/t| F(a(1/t)) (w-symmetry of the Abel transform, v=R)", ok)
+report("Prop. 5.17: |t| F(a(t)) = |1/t| F(a(1/t)) (w-symmetry of the Abel transform, v=R)", ok)
 # and int_{A\G} f(y^-1 mu y) dy = |1 - t^-2|^-1 F(a(t)) locally (product formula globally)
 t = mp.mpf("1.7")
 orb = mp.quad(lambda z: mp.e ** (-mp.pi * (t * t + 1 / (t * t) + ((t - 1 / t) * z) ** 2)), [-mp.inf, mp.inf])
-report("Prop. 5.16: local orbital integral = |1 - t^-2|^-1 F(a(t)) (v=R)",
+report("Prop. 5.17: local orbital integral = |1 - t^-2|^-1 F(a(t)) (v=R)",
        abs(orb - abel(t) / abs(1 - t ** -2)) < 1e-20)
 
 # ---------------------------------------------------------------- Example 5.B
@@ -399,6 +399,53 @@ report("Example 5.B: Res_{l=1/2} m^S(l) = 2/pi^2 for S = {oo,2}", abs(res - 2 / 
 # the formula of Lemma 5.6(c): Res_{s=1} zeta^S(s) / (2 zeta^S(2))
 report("Lemma 5.6(c): residue = Res zeta^S(1) / (2 zeta^S(2)) for S = {oo,2}",
        abs(res - (mp.mpf(1) / 2) / (2 * (1 - mp.mpf(1) / 4) * mp.zeta(2))) < 1e-10)
+
+# ---------------------------------------------------------------- Lemma 5.7 (Weil representation on A)
+# (2026 referee report, table item on b versus b').  In the beta-model, with the unipotent lifts
+# (n,1), (nbar,1): (n(t),1)(nbar(-1/t),1)(n(t),1) = (w(t),1) and (w(t),1)(w(1),1)^{-1} = (a(t),(-1,t)).
+def nbar_(c):
+    return M2(1, 0, c, 1)
+
+
+def bmul(x, y, v):
+    (g, z), (h, e) = x, y
+    return (mul(g, h), beta(g, h, v) * z * e)
+
+
+ok = True
+for v in PLACES:
+    for _ in range(60):
+        t = rand_rat()
+        wt = bmul(bmul((n_(t), 1), (nbar_(-1 / t), 1), v), (n_(t), 1), v)
+        w1 = bmul(bmul((n_(1), 1), (nbar_(-1), 1), v), (n_(1), 1), v)
+        ok &= wt == (M2(0, t, -1 / t, 0), 1) and w1 == (M2(0, 1, -1, 0), 1)
+        w1inv = (inv(w1[0]), beta(w1[0], inv(w1[0]), v))
+        ok &= bmul(w1, w1inv, v) == (I2, 1)
+        ok &= bmul(wt, w1inv, v) == (a_(t), hilbert(-1, t, v))
+report("Lemma 5.7: (w(t),1)(w(1),1)^-1 = (a(t), (-1,t)_v) for the unipotent lifts, all v", ok)
+ok = True
+for v in PLACES:
+    for _ in range(40):
+        t = rand_rat()
+        r = gamma(t, v) / gamma(1, v)
+        ok &= abs(r * r - hilbert(t, -1, v)) < 1e-9
+        # hence (-1,t) gamma(t)/gamma(1) = gamma(1)/gamma(t) = chi_psi(a(t),1)^-1
+        ok &= abs(hilbert(-1, t, v) * r - 1 / r) < 1e-9
+        # and chi_psi^-1 = chi_{psi_{-1}}: gamma(-t)/gamma(-1) = gamma(1)/gamma(t)
+        ok &= abs(gamma(-t, v) / gamma(-1, v) - 1 / r) < 1e-9
+report("Lemma 5.7: (gamma(t)/gamma(1))^2 = (t,-1)_v and chi_psi^-1 = chi_{psi_-1}, all v", ok)
+# the real place: for psi'(x) = exp(2 pi i a x), dω(X - Y) = i(2 pi a x^2 - D^2/(8 pi a)); for a = 1
+# the even ground state exp(-2 pi x^2) has eigenvalue i/2, so the lowest K-type of r^+ is +1/2
+xs = sp.symbols("x", real=True)
+g0 = sp.exp(-2 * sp.pi * xs ** 2)
+op = lambda h, a: sp.I * (2 * sp.pi * a * xs ** 2 * h - sp.diff(h, xs, 2) / (8 * sp.pi * a))
+report("Lemma 5.7 at v = R: exp(-2 pi x^2) has weight +1/2 for psi' = exp(+2 pi i x)",
+       sp.simplify(op(g0, 1) / g0 - sp.I / 2) == 0)
+report("Lemma 5.7 at v = R: and weight -1/2 for psi' = exp(-2 pi i x)",
+       sp.simplify(op(g0, -1) / g0 + sp.I / 2) == 0)
+# with psi_oo = exp(-2 pi i x): chi_psi(a(-1),1) = i = exp(i pi/2), so m_0 = +1/2 goes with b' = -b
+report("Lemma 5.7 at v = R: chi_psi(a(-1),1) = i, i.e. m_0 = 1/2 for psi_oo = exp(-2 pi i x)",
+       abs(chi_psi(-1, 1, INF) - 1j) < 1e-12)
 
 print()
 print("%d check(s) failed" % len(FAILS) if FAILS else "all checks passed")

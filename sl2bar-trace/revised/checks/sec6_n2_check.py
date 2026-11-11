@@ -9,7 +9,7 @@ Checks:
     SL(2, Z), the integral of |Lambda^Y E(z, 1/2 + ir)|^2 over the modular
     surface (computed from the Fourier expansion) equals
         2 log Y - phi'/phi(s) + [conj(phi(s)) Y^{2ir} - phi(s) Y^{-2ir}] / (2ir),
-    i.e. the Maass-Selberg relation (5.9) with the cross terms as stated;
+    i.e. the Maass-Selberg relation (5.11) with the cross terms as stated;
     with the opposite sign of the cross terms the two sides differ by O(1).
     Also phi(1/2) = -1, the classical case of Proposition 6.13;
   * Lemma 6.1(a), u'_B(k, y) = -H(ky) (referee item II.15): the integral over X of
@@ -129,9 +129,9 @@ dlog = mp.diff(phi_scatt, s0) / phi_scatt(s0)
 cross = (mp.conj(phi_scatt(s0)) * mp.mpf(Y0) ** (2j * r0) - phi_scatt(s0) * mp.mpf(Y0) ** (-2j * r0)) / (2j * r0)
 plus = complex(2 * mp.log(Y0) - dlog + cross)
 minus = complex(2 * mp.log(Y0) - dlog - cross)
-report("Thm 5.13(c): Maass-Selberg for SL(2,Z), cross terms with the sign of (5.9)",
+report("Thm 5.14(c): Maass-Selberg for SL(2,Z), cross terms with the sign of (5.11)",
        abs(lhs - plus) < 1e-7, "lhs %.9f, formula %.9f" % (lhs, plus.real))
-report("Thm 5.13(c): ... and the opposite sign fails by O(1)", abs(lhs - minus) > 1,
+report("Thm 5.14(c): ... and the opposite sign fails by O(1)", abs(lhs - minus) > 1,
        "opposite sign gives %.4f" % minus.real)
 report("phi(1/2) = -1 for SL(2,Z) (the classical case of Prop. 6.13)",
        abs(phi_scatt(mp.mpf(1) / 2 + mp.mpf(10) ** (-9)) + 1) < 1e-7)

@@ -1,0 +1,306 @@
+% SPDX-License-Identifier: CC-BY-4.0
+% =====================================================================
+% Section 1 of D. Joyner and Claude, "A hitch-hiker's guide to the
+% metaplectic trace formula for SL(2)", revised for the 2-fold cover
+% (n = 2), November 2026.
+%
+% New in the November 2026 draft, written in response to the second referee
+% report (ChatGPT): overview, literature review, list of what is proved and
+% what is cited, and the running example k = Q, S = {oo, 2}. It replaces the
+% Introduction of ../original-1995/cctrace_new.tex for Sections 2-6; the
+% stable form (the 1995 Section 7) is not yet revised.
+% =====================================================================
+
+\section{Introduction}\label{sec:intro}
+
+Let $k$ be a number field, $G=\Res_{k/\Q}SL(2)$, and $\overline{G(\A)}$
+the metaplectic double cover of $G(\A)=SL(2,\A_k)$. This paper writes out
+the Arthur--Selberg trace formula for $\overline{G(\A)}$, first in its
+non-invariant form and then in its invariant form, with every step
+specialized to this group. The general theory exists: Arthur's trace
+formula for connected reductive groups, and its extension to covering
+groups by W.-W.~Li. The aim here is the opposite of generality. The group
+has rank one, its only proper Levi subgroup is the diagonal torus $A$,
+and the cover of $A$ is abelian. As a result most of the general
+machinery reduces to statements that can be proved in a few lines and
+checked numerically, and the terms of the formula can be written down.
+
+\subsection{Overview}\label{sec:overview}
+
+The paper has five parts, each resting on the ones before it.
+
+\begin{description}
+\item[The cover (Section~\ref{sec:background}).] The double cover is
+  defined by Kubota's cocycle, place by place, and assembled into an
+  adelic group that splits over $G(\Q)$. The cocycle is not continuous,
+  so the topology of the cover and the spaces of test functions are
+  defined intrinsically, and the coordinates $(g,\zeta)$ are used only as
+  Borel coordinates. Test functions are \emph{anti-genuine}: they
+  transform by $\zeta^{-1}$ under $\mu_2$.
+\item[Rank $0$ (Section~\ref{sec:rank0}).] For the cover of a torus the
+  trace formula is Poisson summation, twisted by a genuine automorphic
+  character. For the split torus Weil's character $\chi_\psi$ is a
+  canonical choice. This case is used twice later: to describe the
+  cuspidal data of the Borel subgroup, and to match the correction terms
+  on the two sides of the invariant formula.
+\item[The geometric side (Section~\ref{sec:geometric}).] The kernel of
+  $R(f)$ is truncated, and the integral of the truncated kernel is
+  computed class by class: orbital integrals for the elliptic classes,
+  weighted orbital integrals for the hyperbolic classes, and the finite
+  part of a zeta integral for the two central classes.
+\item[The spectral side (Section~\ref{sec:spectral}).] The same
+  truncated integral is computed from the spectral decomposition. It
+  gives the traces on the cuspidal spectrum and on the residual spectrum
+  (even Weil representations), an integral of the logarithmic derivative
+  of the intertwining operator $M(w,\lambda)$ along the unitary principal
+  series, and one extra term $\frac14\operatorname{tr}(M(w,0)I(\mu_0,f))$
+  for each character $\mu$ fixed by the Weyl group.
+\item[The invariant form (Section~\ref{sec:invariant}).] The weighted
+  orbital integrals and the term with $M^{-1}M'$ are not invariant under
+  conjugation. Both fail in the same way, and subtracting a common
+  correction, built from the normalized local intertwining operators by
+  Fourier inversion on the cover of $A$, makes both sides invariant.
+\end{description}
+
+The result is Theorem~\ref{thm:itf} with Corollary~\ref{cor:itf-final}.
+For $f=f_S\otimes e^S$, with $S$ a large enough finite set of places,
+\begin{align*}
+&\sum_{z=\pm1}\Bigl(\mathrm{vol}\cdot f_S(z)+\sum_{\xi}a^G(S,u_\xi)\,
+J_G(zu_\xi,f_S)+\tfrac12c_k\,I_A(z,f_S)\Bigr)\\
+&\qquad+\sum_{\mathcal O\ \mathrm{elliptic}}\mathrm{vol}(T_\mu)\,J_G(\mu_S,f_S)
++\sum_{\mathcal O\ \mathrm{hyperbolic}}c_k\,I_A(\gamma_S,f_S)\\
+&=\sum_\pi m_{\mathrm{disc}}(\pi)\operatorname{tr}\pi(f)
+-\frac14\sum_{b\in k^\times/k^{\times2}}\operatorname{tr}I(\chi_{\psi_b,0},f)\\
+&\qquad-\frac12\sum_\mu\frac1{2\pi}\int_\R\frac{m'}m(\mu,it)\,\operatorname{tr}
+I(\mu_{it},f)\,dt .
+\end{align*}
+Here $J_G$ are orbital integrals, $I_A$ the invariant distributions that
+replace the weighted orbital integrals, $\pi$ runs over the discrete
+spectrum (cuspidal and residual), $\mu$ over the genuine automorphic
+characters of the cover of $A$, and $m$ is the global normalizing factor
+of the intertwining operator, essentially
+$L(2\lambda,\chi^2)/L(2\lambda+1,\chi^2)$. The notation is collected in
+the Glossary at the end.
+
+Three features distinguish the double cover from $SL(2)$ itself, and they
+are the main mathematical content of Sections~\ref{sec:spectral}
+and~\ref{sec:invariant}. First, the Weyl group does not act on the cover
+of $A$ by inversion; the characters it fixes are the Weil characters
+$\chi_{\psi_b}$, one for each square class $b$
+(Lemma~\ref{lem:w-action}). Second, the residual spectrum is not the
+trivial representation but the sum of the even Weil representations
+$r^+_{\psi_{-b}}$, which come from the pole of $M(w,\lambda)$ at
+$\lambda=\frac12$ (Theorem~\ref{thm:residual}). Third, $M(w,0)=-1$ for
+every one of these characters (Proposition~\ref{prop:Mw0}), whereas for
+$SL(2)$ and a nontrivial quadratic character the corresponding operator
+is not a scalar and is the source of the multiplicity formula of Labesse
+and Langlands~\cite{LL}.
+
+\subsection{Literature}\label{sec:literature}
+
+\paragraph{Covering groups and the Weil representation.} The double
+cover of $SL(2)$ over a local field and over the adeles first appeared in
+Weil's work on the representation that now carries his name~\cite{We64}.
+Kubota gave the explicit cocycle used here, for the $n$-fold cover of
+$SL(2)$ over a local field containing the $n$-th roots of unity, and the
+splitting over the rational points~\cite{K1,K2}. Moore~\cite{M} and
+Matsumoto~\cite{Mat} treated the central extensions of split groups
+over local fields and adele rings in general. Kazhdan and
+Patterson~\cite{KP} studied the covers of $GL(r)$ and their automorphic
+forms, and Brylinski and Deligne~\cite{BD} placed all these covers in one
+algebraic framework, as extensions by $K_2$. Gelbart's lecture
+notes~\cite{Ge2} remain the standard account of the double cover of
+$SL(2)$ and $GL(2)$, the Weil representation and theta functions.
+Covering groups are not algebraic groups, and the Borel cocycles that
+describe them are not continuous; the relevant general theorem on the
+topology of such extensions is Mackey's~\cite{Ma57}. For the Langlands
+program for covering groups, and its history, see Gan, Gao and
+Weissman~\cite{GGW} and Weissman~\cite{We18}.
+
+\paragraph{Half-integral weight and the Shimura correspondence.}
+Shimura~\cite{Sh} attached to a cusp form of weight $k/2$ a form of even
+weight $k-1$. Niwa~\cite{Ni} and Shintani~\cite{Shi} realized the
+correspondence and its inverse by theta series. Gelbart and
+Piatetski-Shapiro~\cite{GPS80,GPS83} and Waldspurger~\cite{Wa80,Wa81,Wa91}
+recast it in terms of automorphic representations of the double cover.
+Waldspurger's description of the discrete spectrum of the double cover of
+$SL(2)$, through the theta correspondence with $PGL(2)$ and its inner
+forms, is the definitive result for the group studied here. The
+identification of the residual spectrum with Weil representations, used
+in Theorem~\ref{thm:residual}, belongs to this circle of
+results~\cite{Ge2,GPS80,Wa80}. Gan and Savin~\cite{GS12}
+obtained the local Langlands correspondence for the double cover of
+$Sp(2n)$ from the theta correspondence, and Gan and Ichino~\cite{GI}
+extended Waldspurger's global description to the generic part of the
+discrete spectrum of the double cover of $Sp(2n)$.
+
+\paragraph{The trace formula.} The trace formula goes back to
+Selberg~\cite{Sel}. For $GL(2)$ it was put in adelic form by Jacquet and
+Langlands~\cite{JL}; the treatment of Gelbart and Jacquet~\cite{GJ} is the
+closest in spirit to the present paper, and we compare signs and
+constants with it in Section~\ref{sec:spectral}. The classical Selberg
+trace formula with multiplier systems and real weight, as in
+Hejhal~\cite{He}, covers forms of half-integral weight on congruence
+subgroups of $SL(2,\Z)$. For a general connected reductive group the
+formula is Arthur's: the coarse expansions~\cite{A2,A3}, the invariant
+form~\cite{A6}, the fine expansions~\cite{A12,A14}, the local theory of
+weighted orbital integrals and normalized intertwining
+operators~\cite{A7,A9,A11}, and the invariant trace
+formula~\cite{A10}; his Clay lectures~\cite{Ar05} are the best
+introduction. The spectral decomposition on which the spectral side
+rests is due to Langlands~\cite{L2}, and M\oe glin and
+Waldspurger~\cite{MW2} wrote it in a form that includes finite central
+covers. For $SL(2)$ the stable trace formula is the subject of Labesse
+and Langlands~\cite{LL}.
+
+\paragraph{The trace formula for covering groups.} Flicker~\cite{Fl} used
+a trace formula for the $n$-fold covers of $GL(2)$ to prove the
+metaplectic correspondence with $GL(2)$, and Flicker and
+Kazhdan~\cite{FK} did the same for $GL(r)$; see also Kazhdan and Patterson~\cite{KP2}. Mezo~\cite{Me1,Me2} prepared
+the comparison of the full invariant trace formulas of $GL(r)$ and its
+covers. The first author studied a metaplectic analog of Kazhdan's
+endoscopic lifting in~\cite{J88}. The 1995 version of the present notes
+wrote out Arthur's formula for the $n$-fold cover of $SL(2)$, with
+several steps conjectural. Those steps are now theorems of
+Li, who extended Arthur's trace formula to covering groups of connected
+reductive groups in the four papers~\cite{LiI,LiII,LiIII,LiIV}: the fine
+geometric expansion, the local harmonic analysis including normalized
+intertwining operators, the fine spectral expansion, and the invariant
+distributions (the invariant formula under a hypothesis at the real
+places, which he verifies for the double cover of $Sp(2n)$). For the double cover of $Sp(2n)$ Li went on to
+develop endoscopy, building on Adams~\cite{Ad} and Renard~\cite{Re} at
+the real place: the transfer of orbital integrals~\cite{Li11}, the
+weighted fundamental lemma~\cite{Li12}, the stabilization of the elliptic
+terms~\cite{Li15}, local character relations~\cite{Li19}, the
+stabilization of the full trace formula~\cite{Li21}, and a multiplicity
+formula for the discrete spectrum in terms of Arthur
+parameters~\cite{Li24}. For $n=1$ these results apply to the group of
+this paper (Li works with an eight-fold cover that contains the double
+cover). A $p$-adic character lifting between
+the double cover of $SL(2)$ and $SO(1,2)$ is in Schultz's
+thesis~\cite{Sch}.
+
+\paragraph{Local harmonic analysis on the double cover of $SL(2)$.} The
+irreducibility of the unitary genuine principal series is due to
+Moen~\cite{Mo2}. Szpruch~\cite{Sz09} computed the local coefficients of
+the genuine principal series of the double cover of $SL(2,F)$, and
+Goldberg and Szpruch~\cite{GS16} the Plancherel measures for the $n$-fold
+covers. These results bear on the normalizing factors at the places where
+our Section~\ref{sec:normalized} is not explicit. The unramified computation
+of the intertwining operator (the Gindikin--Karpelevich formula) for
+general covers is in~\cite{KP,McN,Gao}; see also Savin~\cite{Sav} for the
+Hecke algebra correspondence.
+
+\paragraph{The place of this paper.} Nothing in
+Sections~\ref{sec:background}--\ref{sec:invariant} goes beyond what the
+general theorems of Arthur and Li give. What the paper adds is an
+account in which the group is fixed, the constants are determined, the
+proofs that are short for this group are given in full, and the
+remaining appeals to the literature are listed. We hope that it is
+useful as a worked example of Li's theory and as a companion to the
+classical treatments of half-integral weight.
+
+\subsection{What is proved here and what is cited}\label{sec:proved-cited}
+
+Each section ends with a subsection ``Status of the results'', which
+lists the statements taken from the literature and the statements
+checked numerically. In summary:
+
+\begin{center}
+\begin{tabular}{p{0.11\textwidth}p{0.40\textwidth}p{0.40\textwidth}}
+Section & Proved in the text & Taken from the literature\\\hline
+\ref{sec:background} & the splittings, the center, commutativity of
+  preimages of tori, the local triviality of the cocycle, the adelic
+  cover and its splitting over $G(\Q)$ &
+  Kubota's cocycle and the existence of the topological
+  cover~\cite{K1,M}; the splitting over $K_v$~\cite{K2}; strong
+  approximation\\
+\ref{sec:rank0} & the trace formula for covers of tori and its
+  reduction to Poisson summation & the properties of the Weil
+  index~\cite{We64}\\
+\ref{sec:geometric} & the coarse geometric expansion and the
+  polynomials $J^T_{\mathcal O}$; the local distribution $J_A(z,f)$ &
+  the fine expansion at the central classes~\cite{A12,LiI}, whose
+  coefficients $a^G(S,u_\xi)$ are not evaluated\\
+\ref{sec:spectral} & cuspidal data and the Weyl action; the unramified
+  intertwining operator; the terms $J^T_\chi$ from the Maass--Selberg
+  relations; the matching $V_b\cong r^+_{\psi_{-b}}$ &
+  the spectral decomposition and Eisenstein series~\cite{L2,MW2}; the
+  convergence and polynomiality of the spectral
+  side~\cite{A3,LiIII}; the residual spectrum as theta
+  functions~\cite{Ge2,GPS80,Wa80}\\
+\ref{sec:invariant} & the variance formulas; the real normalizing
+  factors; the invariance of $I_A$; the invariant trace formula;
+  $M(w,0)=-1$ & the existence of normalizing factors~\cite{A11,LiII},
+  which are not explicit at the dyadic and ramified places
+\end{tabular}
+\end{center}
+
+Two ingredients of the final formula are therefore defined but not
+evaluated: the unipotent coefficients $a^G(S,u_\xi)$, and the local
+normalizing factors $r_v$ at the places where the additive character or
+the inducing character is ramified, and at the dyadic places. Remarks
+numbered ``2026.$n$'' record these and other points that rest on
+citation or on numerical checks only. The explicit formulas are tested
+by the scripts in \texttt{checks/}; they are evidence, not proofs.
+
+The stable form of the trace formula, Section~7 of the 1995 notes, is not
+part of this draft. The 1995 notes define stable conjugacy on the cover
+through conjugation in a cover of $GL(2)$, following~\cite{LL}; its
+relation to Li's endoscopy~\cite{Li11,Li15} has to be worked out when
+that section is revised. Section~\ref{sec:gl2} prepares for it.
+
+\subsection{A running example}\label{sec:running}
+
+The case $k=\Q$, $S=\{\infty,2\}$ is the smallest one in which every
+feature of the formula appears, and it is followed through the paper. We
+collect it here; $\psi$ is the character of $\A/\Q$ with
+$\psi_\infty(x)=e^{-2\pi ix}$.
+
+\begin{itemize}
+\item \emph{The cover.} At the real place the cover is $Mp(2,\R)$; its
+  center is cyclic of order $4$, and so is the center at the place $2$
+  (Lemma~\ref{lem:local}(e), Example~\ref{ex:real}). At an odd prime $p$
+  the cover splits over $SL(2,\Z_p)$ by $k\mapsto(k,\kappa_p(k))$, and on
+  $SL(2,\Z)$ the product of the $\kappa_p$ is a Jacobi symbol
+  (Example~\ref{ex:jacobi}). At $2$ we use a splitting over a congruence
+  subgroup (Lemma~\ref{lem:local}(c), Remark~\ref{rem:dyadic}). Test functions are
+  $f=f_\infty\otimes f_2\otimes\bigotimes_{p\ \mathrm{odd}}e_p$.
+\item \emph{Rank $0$.} $\chi_{\psi,\infty}(a(-1),1)=i$ and
+  $\chi_{\psi,p}(a(p),1)\in\{1,i\}$ for odd $p$
+  (Examples~\ref{ex:order4} and~\ref{ex:weil-Q}): a genuine character of
+  the cover of $A$ is not an ordinary character times a sign.
+\item \emph{Geometric side.} $c_\Q=1$. Besides the elliptic classes
+  there are the two central classes $\pm1$ and the hyperbolic classes of
+  $a(t)$, $t=\pm2^j$, $j\ge1$. The unipotent terms are indexed by
+  $\Q_S^\times/\Q_S^{\times2}$, which has $2\cdot8=16$ elements. The
+  constant term of the unipotent contribution is computed for a Gaussian
+  in Example~\ref{ex:unip-Q}.
+\item \emph{Spectral side.} The characters fixed by the Weyl group that
+  are unramified outside $S$ are the four $\chi_{\psi_b}$,
+  $b\in\{\pm1,\pm2\}$ (Example~\ref{ex:ramified-Q}). Each carries a
+  residual representation $V_b\cong r^+_{\psi_{-b}}$; $V_1$ contains the
+  classical theta function $\sum_ne^{2\pi in^2z}$
+  (Example~\ref{ex:theta}). The partial normalizing factor is
+  $(1-2^{-2\lambda})\zeta(2\lambda)/((1-2^{-1-2\lambda})\zeta(2\lambda+1))$,
+  with residue $2/\pi^2$ at $\lambda=\frac12$
+  (Examples~\ref{ex:theta} and~\ref{ex:mprime-Q}).
+\item \emph{Invariant form.} At the real place the normalized
+  intertwining operator is $1$ on the $K$-type of weight $\pm\frac12$ and
+  a product of factors $(c-\lambda)/(c+\lambda)$ on the others
+  (Example~\ref{ex:real-R}), and the correction $\Phi_A$ is an Abel
+  transform smoothed by an exponentially decaying kernel
+  (Example~\ref{ex:Phi-real}). The only bad place is $2$, where the
+  normalizing factor is not explicit. The discrete correction is
+  $-\frac14\sum_{b=\pm1,\pm2}\operatorname{tr}I(\chi_{\psi_b,0},f)$
+  (Example~\ref{ex:itf-Q}).
+\end{itemize}
+
+\subsection{Conventions}\label{sec:conventions-intro}
+
+The revision treats the double cover only; the 1995 notes treated the
+$n$-fold cover, and remarks in Sections~\ref{sec:background}
+and~\ref{sec:rank0} say what changes for $n>2$. Comparisons with the
+1995 notes and with the 1997 book manuscript, including the corrections
+made, are collected in Appendix~\ref{sec:appendix-1995} and are not
+needed to read the paper. Notation and terms are listed in the Glossary.

@@ -340,7 +340,7 @@ report("Lemma 2.6(a), (2.9): gamma -> (gamma, kappa_A(gamma)) splits sigma_A ove
 okB = all(kappa_A(mul(diag(rand_rat()), upper(rand_rat()))) == 1 for _ in range(NS))
 report("Lemma 2.6(b): on B(Q) the rational splitting is b -> (b,1)", okB)
 
-# Example 2.B: for gamma in SL(2,Z) with c != 0, kappa_A(gamma) = (d / c') (Jacobi), c' = odd part of |c|
+# Example 2.C: for gamma in SL(2,Z) with c != 0, kappa_A(gamma) = (d / c') (Jacobi), c' = odd part of |c|
 def jacobi(a, n):
     assert n > 0 and n % 2 == 1
     a %= n
@@ -376,7 +376,7 @@ for _ in range(4 * NS):
         co //= 2
     ok &= kappa_A(g) == jacobi(d, co)
     cnt += 1
-report("Example 2.B: kappa_A(gamma) = (d/c') on SL(2,Z)", ok and cnt > 100, "%d samples" % cnt)
+report("Example 2.C: kappa_A(gamma) = (d/c') on SL(2,Z)", ok and cnt > 100, "%d samples" % cnt)
 
 # Lemma 2.6(d): global center; -1 at the infinite place only
 eps_sq = hilbert(-1, -1, INF)
@@ -419,7 +419,7 @@ for v in PLACES:
 
 for v in PLACES:
     tw = lambda g, h, v: sigma_gl2(g, h, v) * hilbert(det(g), det(h), v)
-    report("Remark 2026.4: the twisted cocycle sigma*(det,det) is also a cocycle, v=%s" % v,
+    report("Remark 2026.2: the twisted cocycle sigma*(det,det) is also a cocycle, v=%s" % v,
            all(cocycle_ok(tw, rgl(), rgl(), rgl(), v) for _ in range(NS // 2)))
 ok = True
 for _ in range(NS):
@@ -443,6 +443,65 @@ for p in [3, 5, 7]:
     pairs = [(rGLK(), rGLK()) for _ in range(NS)]
     ok = all(sigma_gl2(a, b, p) == kap_gl(a) * kap_gl(b) * kap_gl(mul(a, b)) for a, b in pairs)
     report("Lemma 2.10(b): k -> (k, (c, d/det k)_p) splits GL(2,Z_p) when 0<|c|<1, p=%d" % p, ok)
+
+# ===================================================================
+print()
+print("Lemma 2.1 and Section 2.1.4: topology of the cover (2026 referee report, 1.1 and 1.3)")
+# beta is not continuous: beta(-1, lower(c)) = (c,-1)_v, while lower(c) -> 1
+report("Lemma 2.1: beta_R(-1, lower(c)) = sgn(c), so beta_R is discontinuous at (-1, 1)",
+       all(beta(MINUS1, lower(Fr(1, n)), INF) == 1 and beta(MINUS1, lower(Fr(-1, n)), INF) == -1
+           for n in range(1, 40)) and beta(MINUS1, I2, INF) == 1)
+report("Lemma 2.1: beta_3(-1, lower(3^n)) = (-1)^n, so beta_3 is discontinuous at (-1, 1)",
+       all(beta(MINUS1, lower(Fr(3) ** n), 3) == (-1) ** n for n in range(1, 12)))
+# in general beta(a(t), lower(c)) = (c,t)_v; for v = 5 and the non-square t = 2 this is (-1)^n at c = 5^n
+report("Example 2.A: beta_5(a(2), lower(5^n)) = (-1)^n, so beta_5 is discontinuous at (a(2), 1)",
+       all(beta(diag(2), lower(Fr(5) ** n), 5) == (-1) ** n for n in range(1, 12)))
+ok = all(beta(diag(t), lower(c), v) == hilbert(c, t, v)
+         for v in PLACES for t, c in ((rand_rat(), rand_rat()) for _ in range(NS)))
+report("Example 2.A: beta_v(a(t), lower(c)) = (c,t)_v, all v", ok)
+# beta = 1 on U x U, U = {a > 0, d > 0} in SL(2,R)
+def rand_U():
+    while True:
+        g = rand_sl2Q()
+        if g[0][0] > 0 and g[1][1] > 0:
+            return g
+pairs = [(rand_U(), rand_U()) for _ in range(20 * NS)]
+# include pairs with c = 0 and with product lower-left entry 0
+pairs += [(upper(rand_rat()), rand_U()) for _ in range(NS)] + [(rand_U(), upper(rand_rat())) for _ in range(NS)]
+for _ in range(NS):
+    g = rand_U()
+    (a, b), (c, d) = g
+    if c != 0:
+        # h in U with (gh)_{21} = c*a2 + d*c2 = 0
+        a2 = abs(rand_rat())
+        c2 = -c * a2 / d
+        b2 = rand_rat()
+        d2 = (1 + b2 * c2) / a2
+        if d2 > 0:
+            pairs.append((g, M(a2, b2, c2, d2)))
+report("Lemma 2.1: beta_R = 1 on U x U, U = {a > 0, d > 0} (%d pairs)" % len(pairs),
+       all(beta(g, h, INF) == 1 for g, h in pairs))
+# the unit e_p read through g -> (g,1): e_p(k,1) = kappa(k); k_n -> -1 but kappa(k_n) = (-1)^n
+report("Section 2.1.4: kappa_3((-1,0;3^n,-1)) = (-1)^n, so g -> e_3(g,1) is not locally constant",
+       all(kappa(M(-1, 0, Fr(3) ** n, -1), 3) == (-1) ** n for n in range(1, 12)))
+# continuity of the sections actually used: on A the cocycle is the Hilbert symbol, which is
+# locally constant: (t0, s) = 1 for s in 1 + p^m Z_p (m = 1 odd p, m = 3 for p = 2), s > 0 for v = oo
+ok = True
+for v in PLACES:
+    for _ in range(NS):
+        t0 = rand_rat()
+        if v == INF:
+            s = abs(rand_rat())
+        else:
+            s = 1 + Fr(v) ** (3 if v == 2 else 1) * rand_rat(v, 0)
+        ok &= beta(diag(t0), diag(s), v) == 1 and beta(diag(s), diag(t0), v) == 1
+report("Lemma 2.2(i): a -> (a,1) is continuous on A(F): beta(a(t0), a(s)) = 1 for s near 1", ok)
+ok = True
+for p in [3, 5, 7]:
+    for _ in range(NS):
+        k = rand_K(p, 1)
+        ok &= kappa(k, p) == 1
+report("Lemma 2.2(i): kappa = 1 on K_1 (p odd), so k -> (k, kappa(k)) is continuous on K", ok)
 
 print()
 if FAILS:

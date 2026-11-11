@@ -62,3 +62,62 @@ Extend Draft 3 from compact induction at the standard vertex stabilizer
   fundamental lemma.
 - **External refereeing encouraged:** In particular, independently verify
   Lemma 7.3 (mixed splitting) and Theorem 7.5 (cross-orbit identity).
+
+---
+
+# Draft 5 revision log — November 11, 2026
+
+## Aim
+
+Revise Draft 4 in response to the referee report by Claude (Anthropic).
+The revision was prepared by Argon (Gemini); a short list of corrections
+by Claude was applied afterwards as a separate commit.
+
+## Changes made by Argon (commit "draft 5 ... as received")
+
+1. **Splittings are now a proposition, not a hypothesis.** Proposition 1.1:
+   the cover splits uniquely over \(K^{(0)}\) and \(K^{(1)}\), by
+   Hochschild–Serre and the vanishing of
+   \(H^1,H^2(\mathrm{SL}_2(\mathbb F_q),\mu_n)\).
+2. **Unified two-orbit exposition.** \(v_i,K^{(i)},T^{(i)},s_i,\rho_i\) are
+   introduced at the start; the one-orbit theorem and its separate proof
+   are gone. Main results are Theorems 1.2 (direct identity and \(n\)-th
+   power identity) and 1.3 (explicit formulas and packet sum).
+3. **Role of the power map stated plainly** (Remark 1.4): the preimage of
+   \(T^{(i)}\) is abelian, so the \(n\)-th power identity is the direct
+   identity composed with an automorphism; the split torus is named as the
+   first real test.
+4. **\(\mathrm{GL}_2\) interpretation of the packet sum** (Remark 5.1).
+5. **Citations for the Frobenius character formula**, a literature review
+   section, a glossary and symbol index; draft-history language removed
+   from the body.
+
+## Corrections applied by Claude after review (second commit)
+
+- Proof of Prop. 1.1: Schur multiplier statement restricted to odd
+  \(q\ge5\) (it is false at \(q=4\)); noted why the Ext term vanishes.
+- Remark 5.1: \(\sigma_\theta\) must first be extended to a cuspidal
+  representation of \(\mathrm{GL}_2(\mathbb F_q)\); the "index 2" statement
+  replaced by the correct double-coset statement; the intermediate
+  arithmetic in the displayed sum corrected (the total \(-2\theta(zI)\) was
+  already right).
+- Open problem (i): removed the suggestion to use Jacquet modules of
+  supercuspidals (they vanish). Open problem (iii): ramified tori fix an
+  edge, not just its barycenter.
+- Reference [Bl92] corrected to Blondel, Mém. SMF 18 (1985).
+- Introduction: \(zI+\varpi^rA\) changed to \(zI(I+\varpi^rA)\) to match
+  Lemma 4.2; abstract no longer calls elements reducing to \(-I\)
+  "topologically unipotent"; typo "Moveover".
+- Layout: Table 1 and the symbol index no longer overflow the margins;
+  the source now compiles with no overfull boxes (19 pages).
+
+## Not yet verified
+
+- Pinpoint citations: Howard–Weissman Prop. 2.3 and Thm. 3.5;
+  Sally 1988 Thm. 1.9 and Eq. (1.10); Bushnell–Henniart "Appendix A, §A.3,
+  Thm. A.4" and §19; Bonnafé Table 5.4; Digne–Michel §15.9;
+  Cunningham–Gordon §2.3 Eq. (2-6). These should be checked against the
+  sources before the paper is circulated.
+- Remark 5.1's statement that the Sally–Shalika/Aubert–Plymen characters
+  near the identity are \(-1\pm f(t)\) with \(f(t)=(-1)^rq^r\) agrees with
+  Theorem 1.3 but has not been compared line by line with those papers.

@@ -16,7 +16,7 @@ Maintained by David Joyner. Parts of this repository were prepared with the help
 | [`local-trace/examples/pgl3/`](local-trace/examples/pgl3/) | PGL(3) on the Bruhat–Tits building: closed form for I(χ,γ) (γ of depth 0), the spectral identity with no singular part, and Hypothesis (R) failing | Complete, verified (q = 2, 3) |
 | [`local-trace/paper/`](local-trace/paper/) | The revised, corrected and updated paper (PGL(2)/SL(2) examples, PGL(3) appendix, Route B sketch, glossary, literature review before/after 1992) | First complete draft (Nov. 2026) |
 | [`local-trace/arthur/`](local-trace/arthur/) | Short guide: deriving the main identity from Arthur's local trace formula ("Route B") | Sketch in §7 of the paper; standalone guide planned |
-| [`sl2bar-trace/`](sl2bar-trace/) | *A hitch-hiker's guide to the metaplectic trace formula for SL(2)* (D. Joyner, 1995/2002) with chapters of the 1997 book manuscript, and its 2026 revision for the 2-fold cover | Revision in progress: Sections 2–3 (foundations, rank 0) drafted and checked |
+| [`sl2bar-trace/`](sl2bar-trace/) | *A hitch-hiker's guide to the metaplectic trace formula for SL(2)* (D. Joyner, 1995/2002) with chapters of the 1997 book manuscript, and its 2026 revision for the 2-fold cover | Revision in progress: Sections 2–4 (foundations, rank 0, geometric side) drafted and checked |
 | [`finite-trace/`](finite-trace/) | Trace formulas for finite groups: the 1996–2003 notes and their 2026 corrected and expanded version | Notes posted; refereeing of the 2026 corrections pending |
 | [`common/`](common/) | Shared notation, glossary and bibliography | Started |
 

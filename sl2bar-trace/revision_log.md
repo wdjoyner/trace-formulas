@@ -15,7 +15,7 @@ This log tracks every item of the 2026 referee report ([Claude Docs](https://cla
 | 0 | Clean source tree: `cctrac3b.tex` from `book7d.tex`, remove Scientific Word macros, `\numberwithin`, `\label`/`\ref`/`\cite`, bibliography fixes. No mathematical changes. | Pending |
 | 1 | §2 foundations: κ-splitting, global cover, genuine conventions, center, NAK, measures, GL(2) cover | Done 2026-11-10: `revised/sec2-foundations.tex`, checked by `revised/checks/sec2_n2_check.py` (see *Stage 1 notes*). Written before stage 0, as a standalone file for the stage-0 master to `\input`. |
 | 2 | §3 rank 0 (much simpler for n = 2: the cover of A is abelian) | Done 2026-11-10: `revised/sec3-rank0.tex`, checked by `revised/checks/sec3_n2_check.py` (see *Stage 2 notes*) |
-| 3 | §4 and `cctrac3b.tex`: geometric side | Pending |
+| 3 | §4 and `cctrac3b.tex`: geometric side | Done 2026-11-10: `revised/sec4-geometric.tex`, checked by `revised/checks/sec4_n2_check.py` (see *Stage 3 notes*) |
 | 4 | §5 spectral side: residual (Weil representation) spectrum, ramified χ, M_B^T | Pending |
 | 5 | §6 invariant form | Pending |
 | 6 | §7 stable(r) form | Pending |
@@ -38,7 +38,7 @@ Status values: open, fixed, moot (n = 2), deferred.
 | I.7 | Lemmas 2.4, 2.8 | NAK: a is determined modulo A ∩ K; H(g) is what is well defined | fixed (Lemmas 2.4, 2.8). The report says 2.9; the global NAK lemma is 2.8 as compiled |
 | I.8 | Lemma 2.2(g), (h) | Abelian preimage of T needs proof or citation; (h) notation and statement | fixed: (g) proved for every abelian subgroup (symmetry of the quadratic symbol). (h): the report's objection does not hold, see *Stage 1 notes*; statement kept, proof supplied, notation clash removed |
 | I.9 | §2.1.3 | A_G = 1; A_B for Res_{k/Q}; H uses the norm, not the max | fixed (§2.1.3, (2.5), Lemma 2.8) |
-| I.10 | §2.1.5 | Iwasawa measure: δ_B(a) for g = kan, δ_B(a)⁻¹ for g = nak | fixed in §2 (2.9); the Siegel-domain measure in §4.1.1 in stage 3 |
+| I.10 | §2.1.5 | Iwasawa measure: δ_B(a) for g = kan, δ_B(a)⁻¹ for g = nak | fixed in §2 (2.9) and in the Siegel-domain paragraph of §4.2 |
 
 ### Major issues II: the trace formula
 
@@ -48,10 +48,10 @@ Status values: open, fixed, moot (n = 2), deferred.
 | II.2 | Thm 3.2 | Restate as correspondence of automorphic spectra | 2 | fixed: Theorem 3.2 is a bijection χ ↦ χ̄₀·χ onto genuine automorphic characters, after a choice χ̄₀ that cannot be avoided (Example 3.A); for T = A, the canonical choice is Weil's χ_ψ (Lemma 3.3) |
 | II.3 | (3.18) | Hasse principle for N-th powers | 2 | moot (n = 2: N = 1); noted in Remark 2026.6 |
 | II.4 | Lemmas 3.3–3.4 | Mackey/Clifford; citation of [GeKn] | 2 | moot (n = 2): the Clifford–Mackey part is removed; the cocycle remark is answered by (3.1) |
-| II.5 | (4.4) | Weight v_O must be 2T − H(x) − H(wx) (book7d has it) | 3 | open |
-| II.6 | (4.5), §5.4(a) | Unipotent terms in central classes (book7d, book7f have them) | 3 | open |
-| II.7 | Lemma 4.4, Cor. 4.5–4.7 | Proof incomplete; cite [A2, §7], [A12] | 3 | open |
-| II.8 | Prop. 4.8 | Polynomiality claim too strong, unproved | 3 | open |
+| II.5 | (4.4) | Weight v_O must be 2T − H(x) − H(wx) (book7d has it) | 3 | fixed: Prop. 4.6, J^T_O = c_k ∫ f(y⁻¹μy)(2T + v_A(y)) dy with v_A = −H(y) − H(wy) ≥ 0 (Lemma 4.3(c)) |
+| II.6 | (4.5), §5.4(a) | Unipotent terms in central classes (book7d, book7f have them) | 3 | fixed in §4: Prop. 4.8 (explicit, via the zeta integral Z(f,s)) and Thm 4.11(a) (fine form); §5.4(a) in stage 4, §6.4(a) in stage 5 |
+| II.7 | Lemma 4.4, Cor. 4.5–4.7 | Proof incomplete; cite [A2, §7], [A12] | 3 | fixed: Thm 4.5, proved directly for this group class by class (T ≥ 0), with [A2, §§7–8], [A3], [Li I] cited for the general case |
+| II.8 | Prop. 4.8 | Polynomiality claim too strong, unproved | 3 | fixed: J^T_O := ∫ k^T_O = ∫ j^T_O (Thm 4.5(b)); each is linear in T, explicitly (Props. 4.6–4.8) |
 | II.9 | Intro, §5 | Residual spectrum not empty (even Weil representation, [Ge2]) | 4 | open |
 | II.10 | Thm 5.31, §5.4(b) | Ramified χ (μ^w = μ) omitted | 4 | open |
 | II.11 | Example 5.32 | Sign is right; factor 2 wrong: 2T·I − ½M⁻¹M′ | 4 | open |
@@ -65,20 +65,20 @@ Status values: open, fixed, moot (n = 2), deferred.
 | II.19 | Prop. 7.1, Lemma 7.3 | T(Q) not discrete in T(A_S); index 2 (Hasse norm theorem) | 6 | open |
 | II.20 | §7.4 | D(A/F): A·Z vs A₁; global index undefined | 6 | open |
 | II.21 | (7.17) | Divergent sum over rational unipotent classes | 6 | open |
-| II.22 | (7.13), book7d | v_A at p-adic places is log max(1,\|n\|) | 3, 6 | open |
+| II.22 | (7.13), book7d | v_A at p-adic places is log max(1,\|n\|) | 3, 6 | fixed in §4 (Lemma 4.9: log max(1,\|y\|) finite, ½log(1+y²) real, log(1+\|y\|²) complex); (7.13) in stage 6 |
 | II.23 | §7 | Results deferred to [J1], [J3]; Lemma 7.18; Remark 7.17 | 6 | open (book3b supplies several proofs) |
 
 ### Appendix: cctrac3b.tex = book7d.tex (stage 3)
 
 | # | Issue | Status |
 |---|---|---|
-| A.1 | Fine expansion for covers: cite Li I, not only [A12] | open |
-| A.2 | J_A(z,f) needs the r_A^G(z,a) J_G(az,f) correction | open |
-| A.3 | Centralizer list; class of ±1 is not semisimple; centralizers in the cover | open |
-| A.4 | Weight normalization: log δ = 2H | open |
-| A.5 | J_unip must be the polynomial evaluated at T = 0 | open |
-| A.6 | v_A at p-adic places | open (same as II.22) |
-| A.7 | Minor slips | open |
+| A.1 | Fine expansion for covers: cite Li I, not only [A12] | fixed: Thm 4.11 |
+| A.2 | J_A(z,f) needs the r_A^G(z,a) J_G(az,f) correction | fixed: Lemma 4.10, with r(t) = Σ log\|t² − t⁻²\|_v and the explicit limit Σ_v ∫Φ_v(y) log\|2y\|_v dy ∏_{w≠v} Φ̂_w(0); the divergence without r is checked |
+| A.3 | Centralizer list; class of ±1 is not semisimple; centralizers in the cover | fixed: Lemma 4.1 (for n = 2 the centralizer in the cover is the full preimage) |
+| A.4 | Weight normalization: log δ = 2H | fixed: everything is written with H (Prop. 4.6) |
+| A.5 | J_unip must be the polynomial evaluated at T = 0 | fixed: Prop. 4.8; here the integral converges at T = 0, so both definitions agree |
+| A.6 | v_A at p-adic places | fixed (Lemma 4.9; same as II.22) |
+| A.7 | Minor slips | fixed: f_∞ ∈ C_c^∞ (§4.4); \symbol{126} gone; covers marked throughout; fine expansion summed over (G,S)-classes (Thm 4.11) |
 
 ### Also from book3b.tex (local comparisons, for stage 6)
 
@@ -152,3 +152,69 @@ The report's §3 numbers do not match the compiled 1995 text. Its "Theorem 3.6" 
 **Still resting on citation and numerics only** (Remark 2026.7): Lemma 3.3(a)–(b), Weil's identity for γ_v and the product formula. Both are checked numerically for k = ℚ at v = ∞, 2, 3, 5, 7 (product formula on random a ∈ ℚ^×), and the odd-p closed form for p ≤ 31.
 
 **For later stages.** `cctrace4.tex` cites "Π_u as in section 3.2", which is now §3.1 (stage 4). `cctrace6.tex` cites I^A_O and I^A_χ from "section 3.4", which are now (3.4) in §3.3 (stage 5). Proposition 7.1 of `cctrace7.tex` should use Theorem 3.4 for anisotropic T (stage 6).
+
+## Stage 3 notes (2026-11-10)
+
+**Files.** `revised/sec4-geometric.tex` is the new Section 4. It merges the 1995 §4 (`cctrace3.tex` = `book7c.tex`) with the file `cctrac3b.tex` that the 1995 master inputs, which is `book7d.tex` (§§9.3–9.5 of the 1997 book). `revised/preview.tex` now builds Sections 2–4, with the PDF committed. `revised/checks/sec4_n2_check.py` adds 19 checks (about 3 seconds; needs SymPy, which brings mpmath).
+
+**What changed, and why.** Lemma 4.3(b) is the inequality H(x) + H(γx) ≤ 0 for γ ∈ G(ℚ) ∖ B(ℚ). It follows from Hadamard's inequality applied to the bottom rows e₂x and e₂γx, together with the product formula. For T ≥ 0 it gives:
+- at most one δ ∈ B(ℚ)\G(ℚ) with H(δx) > T;
+- Arthur's partition (Lemma 4.4), with T₀ = 0;
+- v_A ≥ 0.
+
+So for this group every step of the coarse expansion can be checked directly, and Theorem 4.5 is proved class by class:
+- **Hyperbolic classes** (Prop. 4.6): J^T_O = c_k ∫ f(y⁻¹μy)(2T + v_A(y)) dy. The equality ∫k^T_O = ∫j^T_O is Arthur's §8 argument, made absolutely convergent by Poisson summation on N(ℚ)\N(𝔸).
+- **Elliptic classes** (Prop. 4.7): independent of T.
+- **Central classes** (Prop. 4.8): J^T = vol·f(1) + c_k Φ̂(0) T + FP_{s=1} Z(f,s), where Z is a zeta integral of the K-averaged unipotent function Φ. It decomposes over ξ ∈ k^×/k^{×2} into products of local unipotent orbital integrals (Lemma 4.10(c)).
+
+The local distribution J_A(z,f) at a central element is Arthur's limit with the r^G_A correction, computed explicitly (Lemma 4.10). The fine expansion (Theorem 4.11) is stated as Arthur's and Li's theorem specialized to SL(2). Parts (b) and (c) are deduced from Propositions 4.6 and 4.7. In part (a) the coefficients a^G(S,u_ξ) are not computed (Remark 2026.9).
+
+**Numbering map (1995 → 2026).** The 1995 numbers are those of `cctrace_new.tex` as compiled. `cctrac3b.tex` was missing, so its items are named by content. Later sections cite them as "Proposition 4.18" (the fine expansion), "Example 4.14" (J_A(z,f)) and "Proposition 4.16/4.19".
+
+| 1995 | 2026 |
+|---|---|
+| §4.1, kernel K_P, Lemma 4.1 | (4.1)–(4.2), Lemma 4.2 |
+| §4.1.1 Siegel domain, Lemma 4.2 | Lemma 4.3 and the Siegel-set paragraph of §4.2 |
+| Lemma 4.3 (partition), (4.2) | Lemma 4.4, (4.5) |
+| Lemma 4.4, Cors. 4.5–4.7, Prop. 4.8, Cor. 4.9 | Theorem 4.5 |
+| (4.3)–(4.4), weight v_O | Prop. 4.6, (4.6)–(4.7) |
+| (4.5), semisimple non-regular classes | Prop. 4.8 |
+| book7d §9.3.1 (spaces ℋ_N(…)_Γ) | §4.4, *Test functions* |
+| book7d §9.4, centralizer display | Lemma 4.1 |
+| book7d §9.4, Theorem (weighted orbital integrals) | Prop. 4.6 |
+| book7d §9.5, J_M(γ,f), r_M, v_M | (4.11)–(4.12), Lemma 4.9, Remark 2026.8 |
+| book7d Example J_A(z,f) ("Example 4.14") | Lemma 4.10 |
+| book7d Definition J_unip and its Example | Prop. 4.8 |
+| book7d Definition a^M(S,γ), Proposition [A12, Thm 8.1] ("Proposition 4.18") | Theorem 4.11 |
+| book7d last Example (1 ∈ O) | Theorem 4.11(a) |
+| — | new: Example 4.A (k = ℚ), Remarks 2026.8–2026.10 |
+
+**Where this revision departs from the report.**
+- *II.7.* The report suggests citing [A2, §7] and [A12] for the per-class estimates. For SL(2) they are proved here instead, so Corollaries 4.5–4.7 (the T^{−C} bounds) are no longer needed and are dropped. Arthur and Li are cited for the general case.
+- *Item II.8 asks which of k^T_O and j^T_O defines J^T_O.* Both integrals converge absolutely for T ≥ 0 and are equal (Theorem 4.5(b)).
+- *Item A.5.* With the normalizations here, the book's definition (truncation at T₀ = 0) is correct. The truncated integral converges at T = 0, by Lemma 4.3. The general definition (evaluate the polynomial) is also stated.
+
+**Found in this stage, not in the report.**
+- **§2 normalization of α (fixed in `sec2-foundations.tex`).** For k ≠ ℚ the simple root of (B, A_B) is α = (2/d)χ₁, so α(X) = 2X/d and α^∨ = d, with d = [k:ℚ]. The stage-1 text had α = 2χ₁ and X_α = 1, which holds only for k = ℚ. δ_B = e^{2H} for every k. Remark 2026.8 compares our Lebesgue measure on 𝔞 (for which 𝔞/ℤα^∨ has volume d) with Arthur's (volume 1). **Stage 4 must use this**: the identification ς(α^∨) in Example 5.32 (item II.11) was derived for k = ℚ.
+- **book7d claims ℋ_ac = ℋ_mod = ℋ for both G and A.** This holds for G (A_G = 1) but not for A, since 𝔞_A ≠ 0.
+- **Weighted orbital integral at complex places.** The weight there is log(1 + |y|²) in the normalization of §2, not √(1+|n|²).
+
+**Minor §4 items from the report:**
+- Lemma 4.1: K_P = Σ K_{P,O}; one kernel convention, f(x⁻¹γy); proof rewritten.
+- §4.1.1: the constants u ≥ ½ and T₀ > √3/2 are dropped; ω no longer means two things; there is a single parameter T ≥ 0 instead of T₀ > T₁; the unused N is gone.
+- Cors. 4.6–4.7: the misplaced absolute value no longer arises, since the corollaries are replaced.
+- §4.2: ς is no longer used for unipotent elements.
+- "(1.10)", "(1.12)": stale references removed.
+
+**Still resting on citation only** (Remark 2026.9):
+- Theorem 4.11(a), including the coefficients a^G(S,u_ξ);
+- the unramified orbital integrals used for 4.11(b)–(c);
+- the comparison of r(t) with the general definition of r^G_A in [A7] (Remark 2026.8).
+
+**For later stages.**
+- *Stage 4:* §5.4(a) must use Theorem 4.11(a) in full. `cctrace5.tex` cites "lemma 4.7" for the partition, which is now Lemma 4.4. The α^∨ normalization above affects M_B^T (II.11).
+- *Stage 5:* §6.4(a) and the "invariant version of Proposition 4.18" must use Theorem 4.11.
+- *Stage 6:*
+  - compute a^G(S,u_ξ) from Prop. 4.8 (the ξ-decomposition of Z(f,s) has infinite fibers over k_S^×/k_S^{×2}; this is item II.21);
+  - replace (7.13) by Lemma 4.9;
+  - use J_A(z,f) of Lemma 4.10 in §7.

@@ -1,0 +1,805 @@
+\documentclass[11pt]{amsart}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb,amsthm,mathtools,mathrsfs}
+\usepackage{microtype}
+\usepackage[margin=1.05in]{geometry}
+\usepackage{xcolor}
+\usepackage[colorlinks=true,linkcolor=blue!50!black,citecolor=blue!50!black,urlcolor=blue!50!black]{hyperref}
+\usepackage{enumitem,booktabs}
+\setlist[enumerate]{leftmargin=2em,itemsep=2pt,topsep=3pt}
+\setlist[itemize]{leftmargin=2em,itemsep=2pt,topsep=3pt}
+\allowdisplaybreaks[2]
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\newcommand{\OO}{\mathcal O_F}
+\newcommand{\kk}{\mathbb F_q}
+\newcommand{\Gbar}{\mathrm{SL}_2(\kk)}
+\newcommand{\G}{\mathrm{SL}_2(F)}
+\newcommand{\wtG}{\widetilde G}
+\newcommand{\wtK}{\widetilde K}
+\newcommand{\cInd}{\operatorname{c\!-\!Ind}}
+\newcommand{\tr}{\operatorname{tr}}
+\newcommand{\vol}{\operatorname{vol}}
+\newcommand{\Ad}{\operatorname{Ad}}
+\newcommand{\Lie}{\operatorname{Lie}}
+\newcommand{\vF}{v_F}
+\title[Two-orbit depth-zero character relations]{Two-orbit unramified elliptic character relations for depth-zero representations of metaplectic covers of $\mathrm{SL}_2$}
+\author{David Joyner}
+\date{Working draft 4 --- November 11, 2026}
+\subjclass[2020]{22E50, 22E35, 20G05}
+\keywords{Metaplectic cover, depth-zero supercuspidal representation, Bruhat--Tits tree, elliptic torus, character identity, fixed subtree}
+\begin{document}
+\begin{abstract}
+Let $F$ be a nonarchimedean local field of odd residue characteristic and let
+$\widetilde G$ be an odd-degree tame central cover of $G=\mathrm{SL}_2(F)$.
+We compare ordinary and genuine generic depth-zero supercuspidal
+representations associated with both $G$-orbits of vertices in the
+Bruhat--Tits tree.  The two-orbit theorem assumes specified homomorphic
+splittings of the cover over representatives of both maximal compact
+vertex stabilizers. Reparameterization of the finite nonsplit torus by
+the inverse of the covering degree yields a pointwise character relation
+on every regular element of either corresponding unramified elliptic
+torus, including elements with central reduction.  A fixed-ball
+calculation gives complementary explicit character formulas for the two
+vertex orbits.  Their sum is simply the negative of the two torus
+character values, with the depth-dependent terms cancelling.
+The proof uses finite-group cuspidal character values, parity of the
+tree, and uniqueness of splittings on pro-$p$ subgroups. Exceptional
+finite types, ramified tori, positive-depth representations, and
+orbital-integral transfer are not treated. No claim of novelty over the
+existing character literature is made without a separate priority analysis.
+\end{abstract}
+\maketitle
+\tableofcontents
+
+\section{Introduction and the strengthened result}\label{sec:intro}
+Let $F$ be a nonarchimedean local field, with ring of integers $\OO$, maximal ideal $\mathfrak p_F=(\varpi)$, residue field $\kk$ of odd cardinality $q$, and residue characteristic $p$.  Put
+\[
+ G=\G,\quad K=\mathrm{SL}_2(\OO),\quad K_1=\ker(K\to\Gbar).
+\]
+Consider a topological central extension
+\begin{equation}\label{eq:cover}
+ 1\longrightarrow\mu_n\longrightarrow\wtG
+ \xrightarrow{\mathbf p}G\longrightarrow1,
+\end{equation}
+where $n\ge3$ is odd, $(n,p)=1$, and $\mu_n\subset F^\times$.  We assume a \emph{fixed continuous homomorphic splitting}
+\begin{equation}\label{eq:splitting}
+ s_K:K\longrightarrow\wtG,\qquad \mathbf p\circ s_K=\mathrm{id}_K.
+\end{equation}
+The argument applies to any central extension with these properties.  For a particular metaplectic cocycle, the existence and normalization of $s_K$ must be verified separately; it is not implicit in the term ``metaplectic.''
+
+Since $\mu_n\subset F^\times$ and $(n,p)=1$, the reduction of roots of unity gives
+\begin{equation}\label{eq:coprime}
+ n\mid(q-1),\qquad \gcd(n,q+1)=1.
+\end{equation}
+Let $E/F$ be the unramified quadratic extension.  Fix an $\OO$-basis of $\mathcal O_E$, and use it to identify $E$ with $F^2$ and $\mathcal O_E$ with $\OO^2$.  Multiplication by elements of $E$ then gives an integral embedding of its norm-one torus into $G$:
+\begin{equation}\label{eq:torus}
+ T=T(F)=\ker(N_{E/F}:E^\times\to F^\times)\subset K.
+\end{equation}
+The embedding is fixed throughout.  Its reduction is the nonsplit torus
+\[
+ \bar T=\ker(N_{\mathbb F_{q^2}/\kk}:\mathbb F_{q^2}^\times\to\kk^\times),
+ \qquad |\bar T|=q+1.
+\]
+We identify the scalar elements $\pm1\in E^\times$ and their reductions with the matrices $\pm I$ in $G$ and $\Gbar$, respectively; both notations will be used for these same elements.  We write $T^{\mathrm{reg}}=T\setminus\{\pm I\}$.  These are regular elliptic elements in $G$; some reduce to $\pm I$.
+
+Let $\theta:\bar T\to\mathbb C^\times$ be a character with $\theta^2\ne1$.  The corresponding finite-group cuspidal representation $\sigma_\theta$ of $\Gbar$ has dimension $q-1$.  If $a$ is an integer satisfying $an\equiv1\pmod{q+1}$, define
+\begin{equation}\label{eq:theta-power}
+ \theta^{\langle n\rangle}(u)=\theta(u^a)\qquad(u\in\bar T).
+\end{equation}
+Since $n$ is odd and $q+1$ is even, every inverse $a$ of $n$ modulo $q+1$ is odd.  Hence
+\begin{equation}\label{eq:central-character}
+ \theta^{\langle n\rangle}(-1)=\theta(-1).
+\end{equation}
+The regularity condition $\theta^2\ne1$ is preserved by this reparameterization.
+
+Inflate $\sigma_\eta$ to $K$, and put
+\[
+ \pi_\eta=\operatorname{c\!-\!Ind}_K^G\sigma_\eta.
+\]
+Set $\wtK=\mathbf p^{-1}(K)=\mu_n s_K(K)$, choose the tautological character $\varepsilon:\mu_n\hookrightarrow\mathbb C^\times$, and define
+\begin{equation}\label{eq:genuine-type}
+ \widetilde\sigma_\eta(\zeta s_K(k))
+ =\varepsilon(\zeta)\sigma_\eta(\bar k),\qquad
+ \widetilde\pi_\eta=\operatorname{c\!-\!Ind}_{\wtK}^{\wtG}\widetilde\sigma_\eta.
+\end{equation}
+The standard compact-induction theorem and its lifted intertwining argument imply that these are irreducible depth-zero supercuspidal representations, with $\widetilde\pi_\eta$ genuine; see Proposition~\ref{prop:types} below.
+
+\begin{theorem}[Unramified elliptic character identity]\label{thm:main}
+With the preceding assumptions, let $\theta^2\ne1$ and $\eta=\theta^{\langle n\rangle}$.  Then for every $t\in T^{\mathrm{reg}}$,
+\begin{equation}\label{eq:main}
+ \boxed{\displaystyle
+ \Theta_{\widetilde\pi_\eta}\bigl(s_K(t^n)\bigr)
+ =\Theta_{\pi_\theta}(t).}
+\end{equation}
+Both sides are Harish--Chandra character functions on the regular set, with compatible normalizations of Haar measure.  The identity also holds after simultaneous conjugation by any element of $K$, using the homomorphism $s_K$ on the conjugated elements.
+\end{theorem}
+
+Theorem~\ref{thm:main} includes the regular-elliptic-reduction region of Draft~1 and, additionally, every element of $T$ congruent to $\pm I$ modulo $\mathfrak p_F$ except $\pm I$ itself. The latter elements have a nontrivial fixed subtree.  The new contribution of this draft is Theorem~\ref{thm:two-orbit}, treating compact induction from the \emph{other} vertex orbit as well.  The new hypothesis is a specified splitting over its stabilizer. The resulting complementary character formulas yield a striking cancellation in Corollary~\ref{cor:two-orbit-sum}. The character relation for all of $G_{\mathrm{reg}}$, ramified or positive-depth representations, and the fundamental lemma are not consequences of these theorems.
+
+\begin{remark}[Why odd-degree covers, and not the double cover?]\label{rem:odd-only}
+The hypothesis that $n$ is odd and prime to $q+1$ is essential to the present elementary construction, not merely convenient notation.  For $n=2$, the square map on the cyclic group $\bar T$ of even order $q+1$ is not bijective; thus the inverse exponent in \eqref{eq:theta-power} does not exist and the uniqueness assertion in Lemma~\ref{lem:power} fails.  Also, our proof that $s_K(-I)$ commutes with all of $\wtG$ uses the odd order of $\mu_n$.  Consequently the proof does not cover the twofold metaplectic group.  That case has its own Weil-representation and Shimura--Waldspurger structures and is related to the older correspondence of \cite{Joyner1999}; no negative claim about the existence of a separate twofold character correspondence is intended.
+\end{remark}
+
+\section{Finite-field character data}\label{sec:finite}
+Write $\chi_\theta=\tr\sigma_\theta$.  We need only three rows of the character table of $\Gbar$.  By the signed Deligne--Lusztig formula and the Green function for the nonsplit torus \cite[\S2.3, Eq.~(2--6)]{CunninghamGordon}, the following standard statement holds.
+\begin{proposition}[Three character values]\label{prop:finite}
+For a regular $\theta$ of $\bar T$:
+\begin{enumerate}[label=(\roman*)]
+ \item If $u\in\bar T\setminus\{\pm1\}$, then
+ \begin{equation}\label{eq:elliptic-finite}
+  \chi_\theta(u)=-\theta(u)-\theta(u^{-1}).
+ \end{equation}
+ \item If $z\in\{\pm1\}$, then
+ \begin{equation}\label{eq:central-finite}
+  \chi_\theta(zI)=(q-1)\theta(z).
+ \end{equation}
+ \item If $z\in\{\pm1\}$ and $U\in\Gbar$ is nontrivial unipotent, then
+ \begin{equation}\label{eq:unipotent-finite}
+  \chi_\theta(zU)=-\theta(z).
+ \end{equation}
+ In particular, the value in (iii) is independent of the rational conjugacy class of $U$ and of $\theta$ except for its central character.
+\end{enumerate}
+\end{proposition}
+\begin{proof}
+For regular $\theta$, $\sigma_\theta=-R_{\bar T}^{\Gbar}(\theta)$.  The usual regular-semisimple formula gives (i).  The central element $zI$ acts by the scalar $\theta(z)$, proving (ii).  The Green function for the nonsplit torus takes value $+1$ on either nonidentity unipotent class; taking the negative of the Deligne--Lusztig character gives (iii) for $z=1$, and (ii)'s central scalar gives the case $z=-1$.  The exceptional quadratic parameter is excluded precisely because its constituents need not have the same values on the two rational unipotent classes.
+\end{proof}
+
+\begin{proposition}[Depth-zero compact induction]\label{prop:types}
+For regular $\eta$, $\pi_\eta$ and $\widetilde\pi_\eta$ of \eqref{eq:genuine-type} are irreducible depth-zero supercuspidal representations of $G$ and $\widetilde G$, respectively.  The second is genuine, with central character $\varepsilon$ on $\mu_n$.
+\end{proposition}
+\begin{proof}
+The classical compact-induction theorem applies to the inflation of the irreducible cuspidal $\sigma_\eta$ from the finite reductive quotient of $K$ \cite{MoyPrasad1996,CunninghamGordon}.  We give the additional intertwining argument for the cover.  Because $\widetilde K=\mu_n s_K(K)$, its quotient by $s_K(K_1)$ is $\mu_n\times\Gbar$ and the inducing type is a genuine twist of the ordinary inflation.
+
+By the Cartan decomposition, every nonidentity double coset $K\backslash G/K$ has a representative
+\[
+ g_m=\begin{pmatrix}\varpi^m&0\\0&\varpi^{-m}\end{pmatrix},\qquad m\ge1.
+\]
+Put $H_m=K\cap g_mK_1g_m^{-1}$.  This is a pro-$p$ subgroup, although the \emph{larger} intersection $K\cap g_mKg_m^{-1}$ is generally not pro-$p$.  A direct matrix computation shows that reduction maps $H_m$ onto the lower unipotent radical
+\[
+ U^-(\kk)=\left\{\begin{pmatrix}1&0\\ c&1\end{pmatrix}:c\in\kk\right\}\subset\Gbar.
+\]
+For $h\in H_m$, let $u=g_m^{-1}hg_m\in K_1$.  Then $u\in K_1\cap g_m^{-1}Kg_m$.  Lemma~\ref{lem:no-phase}, applied with $x=g_m^{-1}$, gives
+\[
+ \widetilde g_m s_K(u)\widetilde g_m^{-1}=s_K(h),
+ \quad\text{hence}\quad
+ \widetilde g_m^{-1}s_K(h)\widetilde g_m=s_K(g_m^{-1}hg_m),
+\]
+for any chosen lift $\widetilde g_m$ of $g_m$.  The conjugated inducing representation is therefore trivial on $s_K(H_m)$, because $u\in K_1$.  If a nonzero intertwiner existed for this double coset, its image would lie in the $H_m$-fixed subspace of $\widetilde\sigma_\eta$.  But
+\[
+ (\widetilde\sigma_\eta)^{s_K(H_m)}
+  =\sigma_\eta^{U^-(\kk)}=0,
+\]
+by cuspidality of $\sigma_\eta$.  Thus the intertwining space vanishes on every nonidentity double coset.  The Mackey irreducibility criterion yields the result for $\widetilde\pi_\eta$.  As $\widetilde K$ is compact modulo the finite center and the inducing type is finite-dimensional, the representation is supercuspidal.  Triviality on $s_K(K_1)$ gives depth zero, and genuineness follows from \eqref{eq:genuine-type}.
+\end{proof}
+
+\section{The torus and its fixed vertices}\label{sec:tree}
+Let $\mathscr B$ be the Bruhat--Tits tree of $\mathrm{PGL}_2(F)$.  Its vertices are homothety classes of rank-two $\OO$-lattices in $F^2$.  Write $v_0=[\OO^2]$, whose stabilizer in $G$ is $K$.  The $G$-orbit $Gv_0$ comprises exactly the vertices at even distance from $v_0$.  The sphere of radius $d\ge1$ has
+\begin{equation}\label{eq:spherecount}
+ N_d=(q+1)q^{d-1}
+\end{equation}
+vertices.  These are elementary facts about the $(q+1)$-regular tree \cite{Casselman}.
+
+\begin{lemma}[Power-map automorphism]\label{lem:power}
+The map $t\mapsto t^n$ is an automorphism of the compact abelian group $T$.  Consequently, if $h\in G$ and $h^n=t^n$ for $t\in T^{\mathrm{reg}}$, then $h=t$.
+\end{lemma}
+\begin{proof}
+The kernel $T_1$ of reduction $T\twoheadrightarrow\bar T$ is a pro-$p$ abelian group; the $n$-th power map is an automorphism on each finite $p$-group quotient because $(n,p)=1$, hence also on $T_1$.  The quotient $\bar T$ is cyclic of order $q+1$, on which the map is an automorphism by \eqref{eq:coprime}.  This proves the first claim.  The element $t^n$ is regular because $t^n=\pm I$ would imply $t=\pm I$, and its centralizer in $G$ is $T$.  Since $h$ commutes with $h^n=t^n$, it belongs to $T$; injectivity of the power map yields $h=t$.
+\end{proof}
+
+\begin{lemma}[Fixed vertex for regular reduction]\label{lem:singlevertex}
+If $t\in T$ reduces to an element of $\bar T\setminus\{\pm1\}$, then its fixed-vertex set in $\mathscr B$ is $\{v_0\}$.  The same is true of $t^n$.
+\end{lemma}
+\begin{proof}
+The reduction is regular elliptic and has no invariant line in $\kk^2$; thus $t$ fixes $v_0$ but no neighboring vertex.  An automorphism fixing two vertices fixes the entire geodesic between them, so it cannot fix any other vertex.  The power-map automorphism of $\bar T$ preserves $\bar T\setminus\{\pm1\}$ because $n$ is odd and prime to $q+1$.
+\end{proof}
+
+The new case begins with $t$ reducing to $zI$, where $z=\pm1$.  The element $z^{-1}t$ belongs to $K_1$.  Define its positive integral depth by
+\begin{equation}\label{eq:r-def}
+ r(t)=\max\{r\ge1: z^{-1}t\equiv I\pmod{\varpi^r}\}.
+\end{equation}
+This is finite for $t\ne zI$.
+
+\begin{lemma}[Anisotropic first nonzero coefficient]\label{lem:anisotropic}
+If $t\in T^{\mathrm{reg}}$ reduces to $zI$, write
+\begin{equation}\label{eq:leading}
+ t=z(I+\varpi^r A),\qquad r=r(t),\quad A\in M_2(\OO).
+\end{equation}
+Then $\bar A$ is a nonzero traceless matrix with irreducible characteristic polynomial over $\kk$.  In particular, for every $k\in K$ both off-diagonal entries of $\overline{k^{-1}Ak}$ are nonzero.
+\end{lemma}
+\begin{proof}
+Choose a basis of the unramified quadratic algebra $\mathcal O_E$ in which $T$ acts by multiplication.  Its reduction is the field $\mathbb F_{q^2}$, and $\bar A\ne0$ because $r$ is maximal.  The determinant-one condition on $z^{-1}t$ implies $\tr\bar A=0$.  In $\mathbb F_{q^2}$, a nonzero trace-zero element has the form $b\sqrt\delta$ for some $b\in\kk^\times$ and a nonsquare $\delta\in\kk^\times$ (as $p\ne2$); its characteristic polynomial is $X^2-b^2\delta$, which is irreducible.  If either off-diagonal entry vanished in some basis over $\kk$, the corresponding coordinate line would be invariant, contradicting irreducibility.
+\end{proof}
+
+\begin{proposition}[Fixed-ball theorem]\label{prop:ball}
+For $t$ as in Lemma~\ref{lem:anisotropic}, the fixed vertices of $t$ form the closed ball
+\begin{equation}\label{eq:ball}
+ \mathscr B^t=B(v_0,r(t))
+  :=\{v\in\mathscr B:d(v,v_0)\le r(t)\}.
+\end{equation}
+Moreover, $r(t^n)=r(t)$ and $\mathscr B^{t^n}=\mathscr B^t$.
+\end{proposition}
+\begin{proof}
+A vertex at distance $d$ from $v_0$ can be represented, after conjugation by a suitable $k\in K$, by the lattice
+$D_d\OO^2$, where $D_d=\operatorname{diag}(\varpi^d,1)\in\mathrm{GL}_2(F)$.  Its stabilizer in $G$ is the intersection with $D_d\mathrm{GL}_2(\OO)D_d^{-1}$.  Writing $A'=k^{-1}Ak$, we have
+\[
+ D_d^{-1}(z^{-1}k^{-1}tk)D_d
+ =I+\varpi^r
+ \begin{pmatrix}
+ a'_{11}&\varpi^{-d}a'_{12}\\
+ \varpi^{d}a'_{21}&a'_{22}
+ \end{pmatrix}.
+\]
+By Lemma~\ref{lem:anisotropic}, $a'_{12}$ is a unit.  The matrix lies in $\mathrm{SL}_2(\OO)$ exactly when $d\le r$, which proves \eqref{eq:ball}.  Since $n$ is prime to $p$ and odd,
+\[
+ t^n=z\bigl(I+n\varpi^r A+O(\varpi^{2r})\bigr),
+\]
+so its first nonzero coefficient modulo $\varpi$ is $n\bar A$, again nonzero and anisotropic.  Thus $r(t^n)=r(t)$ and the same ball description applies.
+\end{proof}
+
+\begin{remark}[Why parity matters]\label{rem:parity}
+Although the fixed ball contains vertices at every distance $d\le r$, the coset space $G/K$ is indexed only by the \emph{even-distance} vertices.  Counting all vertices would produce an incorrect character formula.  In particular, a ball of radius one contributes just its center to the compact induction from $K$.  Concretely, for $d=2j$ the lattice homothety class represented by $D_{2j}=\operatorname{diag}(\varpi^{2j},1)\in\mathrm{GL}_2(F)$ is also represented by
+\[
+ \varpi^{-j}D_{2j}=\operatorname{diag}(\varpi^j,\varpi^{-j})\in G.
+\]
+The scalar factor has no effect on conjugation.  Consequently the calculation in Proposition~\ref{prop:ball} applies without change to the cosets used in the character sum below.
+\end{remark}
+
+\section{The central cover does not add phases on the relevant cosets}\label{sec:lift}
+A splitting over $K$ does not generally commute with conjugation by elements outside $K$.  The next two lemmas explain why it does on the terms needed for Theorem~\ref{thm:main}.
+
+\begin{lemma}[Unique conjugated splitting on a pro-$p$ subgroup]\label{lem:no-phase}
+Let $x\in G$, choose any lift $\widetilde x\in\wtG$, and set
+\[
+ H=K_1\cap xKx^{-1}.
+\]
+For every $u\in H$,
+\begin{equation}\label{eq:no-phase}
+ \widetilde x^{-1}s_K(u)\widetilde x
+  =s_K(x^{-1}ux).
+\end{equation}
+\end{lemma}
+\begin{proof}
+Both sides of \eqref{eq:no-phase}, as functions of $u\in H$, are continuous homomorphisms $H\to\wtG$ lifting the same homomorphism $u\mapsto x^{-1}ux$ into $G$.  Their ratio is therefore a continuous homomorphism $H\to\mu_n$.  Since $H$ is a closed subgroup of the pro-$p$ group $K_1$ and $(n,p)=1$, every such homomorphism is trivial.
+\end{proof}
+
+\begin{lemma}[Lifting the center]\label{lem:center-lift}
+The element $s_K(-I)$ is central in $\wtG$.  Consequently, if $t=z u$ with $z\in\{\pm I\}$ and $u\in K_1$, then for every $x\in G$ such that $x^{-1}tx\in K$,
+\begin{equation}\label{eq:lift-compatible}
+ \widetilde x^{-1}s_K(t)\widetilde x
+  =s_K(x^{-1}tx).
+\end{equation}
+\end{lemma}
+\begin{proof}
+The image of $s_K(-I)$ is central in $G$, so its commutator with any $\widetilde x$ lies in $\mu_n$.  Because $s_K(-I)$ has order two, this central commutator also has order dividing two.  As $n$ is odd, the commutator is trivial.  This proves the first statement.  For the second, $x^{-1}tx\in K$ is equivalent to $x^{-1}ux\in K$; apply Lemma~\ref{lem:no-phase} to $u$, then multiply by the central lift of $z$.
+\end{proof}
+
+\begin{remark}[Anti-genuine test functions]
+The convention $\widetilde\pi(\zeta)=\varepsilon(\zeta)\mathrm{Id}$ requires \emph{anti-genuine} test functions $f(\zeta\widetilde g)=\varepsilon(\zeta)^{-1}f(\widetilde g)$ in the distribution-character pairing.  The pointwise identities here refer to the character function evaluated at specified lifts and use that convention.
+\end{remark}
+
+\section{Compact-induction sums and proof of the main theorem}\label{sec:proof}
+Normalize Haar measure so that $\vol(K)=1$ and independently $\vol(\wtK)=1$.  The standard compact-induction formula at a regular elliptic element $t\in K$ is a finite sum
+\begin{equation}\label{eq:ordinary-sum}
+ \Theta_{\pi_\theta}(t)
+ =\sum_{\substack{xK\in G/K\\ x^{-1}tx\in K}}
+  \chi_\theta(\overline{x^{-1}tx}).
+\end{equation}
+Here right cosets correspond to vertices in $Gv_0$, and the summation is finite because the elliptic regular element has a finite fixed subtree.  For the genuine compact induction, the analogous sum uses the character of $\widetilde\sigma_\eta$ at $\widetilde x^{-1}s_K(t)\widetilde x$.
+
+\begin{lemma}[Comparison at the same group element]\label{lem:cover-ordinary}
+For every regular character $\eta$ of $\bar T$ and every $t\in T^{\mathrm{reg}}$,
+\begin{equation}\label{eq:same-element}
+ \Theta_{\widetilde\pi_\eta}(s_K(t))
+ =\Theta_{\pi_\eta}(t).
+\end{equation}
+\end{lemma}
+\begin{proof}
+If $\bar t\notin\{\pm I\}$, Lemma~\ref{lem:singlevertex} says the unique fixed coset is $K$, and both sides are $\chi_\eta(\bar t)$.  If $\bar t=zI$, then $t=zu$ with $u\in K_1$.  Each fixed coset $xK$ contributes the ordinary trace $\chi_\eta(\overline{x^{-1}tx})$, because the lift of its conjugate is exactly $s_K(x^{-1}tx)$ by Lemma~\ref{lem:center-lift}.  The two finite sums therefore agree term by term.
+\end{proof}
+
+\begin{lemma}[Ordinary inverse-power comparison]\label{lem:ordinary-comparison}
+For every $t\in T^{\mathrm{reg}}$ and $\eta=\theta^{\langle n\rangle}$,
+\begin{equation}\label{eq:ordinary-comparison}
+ \Theta_{\pi_\eta}(t^n)=\Theta_{\pi_\theta}(t).
+\end{equation}
+\end{lemma}
+\begin{proof}
+If $\bar t\notin\{\pm I\}$, Lemma~\ref{lem:singlevertex} reduces both sums to one term.  Equations \eqref{eq:theta-power} and \eqref{eq:elliptic-finite} give
+\[
+ \chi_\eta(\bar t^{\,n})
+ =-\eta(\bar t^{\,n})-\eta(\bar t^{-n})
+ =-\theta(\bar t)-\theta(\bar t^{-1})
+ =\chi_\theta(\bar t).
+\]
+Now suppose $\bar t=zI$.  By Proposition~\ref{prop:ball}, $t$ and $t^n$ fix precisely the same vertices, hence the two sums in \eqref{eq:ordinary-sum} have the same index set.  For every contributing $xK$, set
+\[
+ y=\overline{x^{-1}tx}\in\Gbar.
+\]
+Its characteristic polynomial is $(X-z)^2$, so it is either $zI$ or $zU$ for a nontrivial unipotent $U$.  As $p\nmid n$ and $n$ is odd, $y^n$ is respectively $zI$ or $zU^n$, with $U^n$ again nontrivial unipotent.  By Proposition~\ref{prop:finite} and \eqref{eq:central-character},
+\[
+ \chi_\eta(y^n)=\chi_\theta(y)
+\]
+in either case.  Thus the character sums agree term by term.
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{thm:main}]
+Apply Lemma~\ref{lem:cover-ordinary} to $t^n$ and then Lemma~\ref{lem:ordinary-comparison}:
+\[
+ \Theta_{\widetilde\pi_\eta}(s_K(t^n))
+ =\Theta_{\pi_\eta}(t^n)
+ =\Theta_{\pi_\theta}(t).
+\]
+The compact-induced representations have the asserted properties by Proposition~\ref{prop:types}.  The statement for $K$-conjugates follows because $s_K$ is a group homomorphism and Harish--Chandra characters are conjugation invariant.
+\end{proof}
+
+\section{Closed character formulas near the center}\label{sec:explicit}
+The proof gives more than an equality: it provides an elementary character formula on the entire chosen unramified torus.
+
+\begin{theorem}[Explicit fixed-ball character values]\label{thm:values}
+Suppose $t\in T^{\mathrm{reg}}$ has reduction $zI$, $z\in\{\pm1\}$, and $r=r(t)\ge1$.  For every regular $\theta$,
+\begin{equation}\label{eq:explicit}
+ \boxed{\displaystyle
+ \Theta_{\pi_\theta}(t)
+ =\theta(z)\begin{cases}
+ q^r-1,&r\text{ odd},\\
+ -q^r-1,&r\text{ even}.
+ \end{cases}}
+\end{equation}
+Equivalently, this is the single formula
+\[
+ \Theta_{\pi_\theta}(t)
+ =\theta(z)\bigl((-1)^{r+1}q^r-1\bigr).
+\]
+The same value is obtained for $\Theta_{\widetilde\pi_\theta}(s_K(t))$.  The formula is independent of $\theta$ apart from the central sign $\theta(z)$.
+\end{theorem}
+\begin{proof}
+By Proposition~\ref{prop:ball}, the fixed vertices are the ball of radius $r$, but only even-distance vertices belong to $G/K$.  For a fixed vertex at distance $d<r$, the integral matrix displayed in the proof of Proposition~\ref{prop:ball} reduces to $zI$, so the contributing trace is $(q-1)\theta(z)$ by \eqref{eq:central-finite}.  If $r$ is even, there are also fixed vertices at distance $d=r$; the reduction at each such vertex is $z$ times a nontrivial unipotent matrix, giving contribution $-\theta(z)$ by \eqref{eq:unipotent-finite}.
+
+If $r=2m+1$, every even $d\le r$ satisfies $d<r$, and by \eqref{eq:spherecount}
+\[
+ \Theta_{\pi_\theta}(t)
+ =\theta(z)(q-1)\left[1+\sum_{j=1}^{m}(q+1)q^{2j-1}\right]
+ =\theta(z)(q^{2m+1}-1).
+\]
+If $r=2m$, the boundary sphere contributes negatively:
+\[
+ \begin{aligned}
+ \Theta_{\pi_\theta}(t)
+ &=\theta(z)\left\{(q-1)\left[1+\sum_{j=1}^{m-1}(q+1)q^{2j-1}\right]
+ -(q+1)q^{2m-1}\right\}\\
+ &=\theta(z)(-q^{2m}-1).
+ \end{aligned}
+\]
+The genuine statement follows from Lemma~\ref{lem:cover-ordinary}.
+\end{proof}
+
+\begin{remark}[Comparison with Sally--Shalika]\label{rem:sally}
+The formula at $z=I$ agrees with the Sally--Shalika expression as reproduced in \cite[Thm.~5.2]{AubertPlymen}: near the identity, the ordinary generic depth-zero character is $-1-f(t)$, and for elements in our unramified norm-one torus with $r(t)=r$ the factor is $f(t)=(-1)^r q^r$.  Multiplication by $z=-I$ changes the character by the central sign $\theta(-1)$.  This comparison supplies an external check on both the alternating sign and the constant term $-1$.
+\end{remark}
+
+\begin{remark}[Different roles of the parameter]\label{rem:two-regimes}
+When $\bar t\in\bar T\setminus\{\pm I\}$, the reparameterization
+$\eta=\theta^{\langle n\rangle}$ is used explicitly in the character formula
+$-\eta(\bar t^n)-\eta(\bar t^{-n})$.  By contrast, when $\bar t=zI$, the value depends on $\theta$ only through $\theta(z)$; the comparison in this region needs only $r(t^n)=r(t)$ and $\eta(-1)=\theta(-1)$.
+\end{remark}
+
+\begin{corollary}[Restricted root-sum form]\label{cor:root-sum}
+For $t\in T^{\mathrm{reg}}$ let
+\[
+ \Delta(t)=\left|\det(1-\Ad(t)\mid\mathfrak{sl}_2(F)/\Lie(T))\right|_F^{1/2}.
+\]
+Then $\Delta(t^n)=\Delta(t)$ and
+\begin{equation}\label{eq:root-sum}
+ \Delta(t^n)\Theta_{\widetilde\pi_{\theta^{\langle n\rangle}}}
+  \bigl(s_K(t^n)\bigr)
+ =\sum_{\substack{h\in G\\h^n=t^n}}
+ \Delta(h)\Theta_{\pi_\theta}(h).
+\end{equation}
+The sum has exactly one term, $h=t$.
+\end{corollary}
+\begin{proof}
+The uniqueness of $h$ is Lemma~\ref{lem:power}.  For reduction $\bar t\notin\{\pm1\}$, both discriminants are $1$.  In the central-reduction case $t=z(I+\varpi^r A)$ with anisotropic $\bar A$, the two nontrivial root directions have eigenvalues whose distances from $1$ have valuation $r$.  Thus $\Delta(t)=q^{-r}$, and the same argument for $t^n$ gives $\Delta(t^n)=q^{-r}$, since $(n,p)=1$.  Equation \eqref{eq:root-sum} follows from Theorem~\ref{thm:main}.
+\end{proof}
+
+\begin{remark}[Scope of the root-sum relation]
+The lift in \eqref{eq:root-sum} is specifically $s_K(t^n)$.  Multiplication by $\zeta\in\mu_n$ multiplies the genuine character by $\varepsilon(\zeta)$.  No transfer factor for arbitrary lifts, no equality for ramified elliptic classes, and no matching orbital-integral identity is established.
+\end{remark}
+
+
+\section{The second vertex orbit and two-orbit character identities}\label{sec:two-orbit}
+The compact subgroup $K$ in the preceding sections stabilizes the
+vertex $v_0$.  The action of $G$ on the tree has \emph{two} vertex orbits;
+the other orbit is needed to describe the full generic depth-zero family.
+This section adds it without assuming an automorphism of $\widetilde G$
+extending conjugation by $\mathrm{GL}_2(F)$.
+
+Put
+\begin{equation}\label{eq:second-parahoric}
+ D=\begin{pmatrix}\varpi&0\\0&1\end{pmatrix}\in\mathrm{GL}_2(F),
+ \quad v_1=Dv_0,\quad K^{(0)}=K,\quad K^{(1)}=DKD^{-1}.
+\end{equation}
+For $i\in\{0,1\}$ put
+\[
+ v_i=D^iv_0,\qquad K^{(i)}_+=D^iK_1D^{-i},\qquad
+ T^{(i)}=D^iTD^{-i}.
+\]
+Here $K^{(i)}_+$ denotes the pro-$p$ radical of the \emph{vertex}
+stabilizer, not another maximal compact subgroup.  The groups $K^{(0)}$
+and $K^{(1)}$ are not $G$-conjugate.  Their quotients by the indicated
+pro-$p$ radicals are identified with $\Gbar$ via
+\[
+ \rho_i:K^{(i)}\longrightarrow\Gbar,\qquad
+ \rho_i(k)=\overline{D^{-i}kD^i}.
+\]
+The orbit $Gv_i$ consists of vertices whose distance from $v_0$ has
+parity $i$.  Conjugation by $D$ acts on the tree and interchanges the
+parities, although $D\notin G$.
+
+\begin{definition}[Splittings and types for both orbits]\label{def:two-splits}
+In addition to the splitting $s_0=s_K$ from \eqref{eq:splitting},
+\emph{assume} a continuous homomorphic splitting
+\begin{equation}\label{eq:second-splitting}
+ s_1:K^{(1)}\longrightarrow\widetilde G,
+ \qquad\mathbf p\circ s_1=\mathrm{id}_{K^{(1)}}.
+\end{equation}
+For a regular character $\eta$ of $\bar T$, let $\sigma_\eta^{(i)}$
+be the inflation of $\sigma_\eta$ along $\rho_i$ and put
+\begin{align}\label{eq:two-types}
+ \pi_{i,\eta}&=\cInd_{K^{(i)}}^G\sigma_\eta^{(i)},\\
+ \widetilde\pi_{i,\eta}
+ &=\cInd_{\mathbf p^{-1}(K^{(i)})}^{\widetilde G}
+ \widetilde\sigma_{i,\eta},\qquad
+ \widetilde\sigma_{i,\eta}(\zeta s_i(k))
+ =\varepsilon(\zeta)\sigma_\eta(\rho_i(k)).\nonumber
+\end{align}
+Thus $\pi_{0,\eta}=\pi_\eta$ and
+$\widetilde\pi_{0,\eta}=\widetilde\pi_\eta$ in the notation of
+Sections~\ref{sec:intro}--\ref{sec:explicit}.
+\end{definition}
+
+\begin{remark}[A genuine additional hypothesis]\label{rem:second-split}
+The assumption \eqref{eq:second-splitting} must be checked for the
+chosen cocycle.  Conjugation by $D$ is an automorphism of $G$, but it
+is \emph{not} conjugation by an element of $G$; a lift of this outer
+automorphism to an arbitrary central extension is not automatic.
+We therefore do not manufacture $s_1$ by conjugating $s_0$ in
+$\widetilde G$.  Once both splittings are given, they need not be
+related globally on the intersection of the two maximal compact
+subgroups: the proof requires compatibility only on pro-$p$
+intersections and on $\{\pm I\}$, where it follows from uniqueness.
+This formulation applies, in particular, to any tame metaplectic
+realization for which the two compact splittings have been supplied.
+\end{remark}
+
+The following is the precise generalization of
+Lemmas~\ref{lem:no-phase} and \ref{lem:center-lift} used for the
+second orbit.
+\begin{lemma}[Mixed pro-$p$ compatibility]\label{lem:mixed}
+For $i,j\in\{0,1\}$, $x\in G$, and a lift
+$\widetilde x\in\widetilde G$ of $x$, set
+\[
+ H_{i,j}(x)=K^{(i)}_+\cap xK^{(j)}x^{-1}.
+\]
+For $u\in H_{i,j}(x)$ one has
+\begin{equation}\label{eq:mixed}
+ \widetilde x^{-1}s_i(u)\widetilde x
+ =s_j(x^{-1}ux).
+\end{equation}
+Moreover, $s_0(-I)=s_1(-I)$, and this common lift is central in
+$\widetilde G$.  Consequently \eqref{eq:mixed} also holds with $u$
+replaced by $zu$ for $z\in\{\pm I\}$ whenever $zu\in K^{(i)}$
+and $x^{-1}(zu)x\in K^{(j)}$.
+\end{lemma}
+\begin{proof}
+The group $H_{i,j}(x)$ is a closed subgroup of the pro-$p$ group
+$K^{(i)}_+$.  On it, the two sides of \eqref{eq:mixed} are continuous
+homomorphisms lifting the same map into $G$; their ratio is a
+continuous homomorphism to $\mu_n$ and therefore trivial because
+$(n,p)=1$.  Both $s_i(-I)$ have order two and project to $-I$.
+Their ratio belongs to the odd-order central group $\mu_n$;
+therefore the lifts coincide.  The commutator of this lift with
+any element of $\widetilde G$ belongs to $\mu_n$ and has order
+at most two, so it vanishes. Multiplication by this central lift
+proves the last assertion.
+\end{proof}
+
+\begin{lemma}[Reduction at a fixed vertex]\label{lem:vertex-reduction}
+Let $i\in\{0,1\}$ and $t\in (T^{(i)})^{\mathrm{reg}}$.
+If $\rho_i(t)\notin\{\pm I\}$, the fixed set of $t$ is $\{v_i\}$.
+If $\rho_i(t)=zI$, define $r_i(t)\ge1$ by
+\[
+ D^{-i}tD^i=z(I+\varpi^{r_i(t)} A),\qquad
+ \bar A\ne0.
+\]
+Then $\mathscr B^t=B(v_i,r_i(t))$.  At any fixed vertex $v$ at
+distance $d$ from $v_i$, the reduction of $t$ in the quotient of
+its stabilizer is $zI$ if $d<r_i(t)$ and $zU$ for a nonidentity
+unipotent $U$ if $d=r_i(t)$.  Also $r_i(t^n)=r_i(t)$ and
+$\mathscr B^{t^n}=\mathscr B^t$.
+\end{lemma}
+\begin{proof}
+Conjugation by $D^{-i}$ identifies this problem with
+Lemmas~\ref{lem:singlevertex} and \ref{lem:anisotropic} and
+Proposition~\ref{prop:ball}.  For the reduction statement,
+use the displayed matrix in the proof of Proposition~\ref{prop:ball}.
+When $d<r$, every off-diagonal entry has positive valuation and
+the diagonal entries reduce to $z$.  When $d=r$, precisely the
+upper-right entry may be a unit and is nonzero modulo $\varpi$;
+the reduction is $z$ times a nontrivial unipotent element.
+The resulting conjugacy type is independent of the chosen
+vertex representative.  The final statement follows from
+$p\nmid n$ and the anisotropic leading coefficient.
+\end{proof}
+
+\begin{theorem}[Two vertex orbits]\label{thm:two-orbit}
+Assume both compact splittings \eqref{eq:splitting} and
+\eqref{eq:second-splitting}.  Fix a regular character
+$\theta$ of $\bar T$ and put $\eta=\theta^{\langle n\rangle}$.
+For each pair $i,j\in\{0,1\}$ and every
+$t\in (T^{(i)})^{\mathrm{reg}}$ one has
+\begin{equation}\label{eq:two-orbit-identity}
+ \boxed{\displaystyle
+ \Theta_{\widetilde\pi_{j,\eta}}(s_i(t^n))
+ =\Theta_{\pi_{j,\theta}}(t).}
+\end{equation}
+Thus the identity holds for both inducing vertex orbits when
+evaluated on either of the two associated unramified elliptic
+tori, including the cross-orbit terms.
+\end{theorem}
+\begin{proof}
+The standard depth-zero compact-induction argument proving
+Proposition~\ref{prop:types} applies to $K^{(1)}$ as well:
+conjugation by $D$ identifies the ordinary intertwining
+calculation with that for $K$, while uniqueness of pro-$p$
+splittings handles the genuine intertwining comparison.  Hence
+the four families in \eqref{eq:two-types} are irreducible
+depth-zero supercuspidal representations.
+
+For either $j$, the compact-induction character at
+$t\in T^{(i)}$ is a finite sum indexed by the fixed vertices
+belonging to $Gv_j$.  If $t$ has regular elliptic reduction
+at $v_i$, Lemma~\ref{lem:vertex-reduction} says that only $v_i$
+is fixed.  When $i\ne j$ there are no contributing vertices;
+both sides of \eqref{eq:two-orbit-identity} are zero.  When
+$i=j$, the sum has one term and
+\[
+ \chi_\eta(\rho_i(t)^n)=\chi_\theta(\rho_i(t))
+\]
+by \eqref{eq:elliptic-finite} and the inverse-power
+reparameterization \eqref{eq:theta-power}.  In this single-coset
+case the lift is given by $s_i$ itself.
+
+If $t=z u$ with $u\in K^{(i)}_+$, the fixed balls of $t$
+and $t^n$ agree by Lemma~\ref{lem:vertex-reduction}; thus the
+ordinary character sums for $\pi_{j,\theta}(t)$ and
+$\pi_{j,\eta}(t^n)$ have the same index set.  At each fixed
+vertex the reduction is $zI$ or $zU$ with $U\ne I$
+unipotent.  Its $n$-th power remains of the same kind;
+by Proposition~\ref{prop:finite} and
+$\eta(-1)=\theta(-1)$, the corresponding finite character
+values are equal.  Hence
+\[
+ \Theta_{\pi_{j,\eta}}(t^n)=\Theta_{\pi_{j,\theta}}(t).
+\]
+For a contributing coset $xK^{(j)}$, Lemma~\ref{lem:mixed}
+identifies the conjugate of the chosen lift $s_i(t^n)$
+with $s_j(x^{-1}t^nx)$.  The genuine compact-induction
+sum therefore equals the ordinary sum for
+$\pi_{j,\eta}(t^n)$. Combining these equalities proves
+\eqref{eq:two-orbit-identity}.
+\end{proof}
+
+\begin{theorem}[Complementary fixed-ball formulas]\label{thm:complementary}
+Let $i,j\in\{0,1\}$ and
+$t\in(T^{(i)})^{\mathrm{reg}}$.  Write
+$\bar t_i=\rho_i(t)$.  If $\bar t_i\notin\{\pm I\}$, then
+\begin{equation}\label{eq:two-orbit-far}
+ \Theta_{\pi_{j,\theta}}(t)=
+ \begin{cases}
+ -\theta(\bar t_i)-\theta(\bar t_i^{-1}),&j=i,\\
+ 0,&j\ne i.
+ \end{cases}
+\end{equation}
+If $\bar t_i=zI$ and $r=r_i(t)\ge1$, then
+\begin{equation}\label{eq:two-orbit-near}
+ \boxed{\displaystyle
+ \Theta_{\pi_{j,\theta}}(t)
+ =\theta(z)\left((-1)^{r+1+j-i}q^r-1\right).}
+\end{equation}
+Here only the parity of $j-i$ is relevant.  The corresponding
+genuine character at $s_i(t)$ has the same value for the
+unmodified parameter $\theta$.
+\end{theorem}
+\begin{proof}
+The first assertion follows immediately from the unique-fixed-
+vertex part of Lemma~\ref{lem:vertex-reduction}.  For the second,
+only vertices at distance $d\le r$ from $v_i$ contribute; $Gv_j$
+is precisely the subset of vertices for which
+$d\equiv j-i\pmod 2$.  Each vertex with $d<r$ contributes
+$(q-1)\theta(z)$, while a vertex with $d=r$ contributes
+$-\theta(z)$.  The case $j=i$ is Theorem~\ref{thm:values},
+transferred by conjugation with $D^i$.
+
+For $j\ne i$, only \emph{odd} distances occur.  If $r=2m$,
+all these vertices are interior, and the sphere count
+\eqref{eq:spherecount} gives
+\[
+ \begin{aligned}
+ \Theta_{\pi_{j,\theta}}(t)
+  &=(q-1)\theta(z)\sum_{k=0}^{m-1}(q+1)q^{2k}\\
+  &=\theta(z)(q^{2m}-1).
+ \end{aligned}
+\]
+If $r=2m+1$, the last odd sphere is the boundary, so
+\[
+ \begin{aligned}
+ \Theta_{\pi_{j,\theta}}(t)
+  &=\theta(z)\left((q-1)\sum_{k=0}^{m-1}
+     (q+1)q^{2k}-(q+1)q^{2m}\right)\\
+  &=\theta(z)(-q^{2m+1}-1).
+ \end{aligned}
+\]
+These are the claimed complementary signs.
+The genuine identity at $s_i(t)$ follows from the mixed-splitting
+argument in Theorem~\ref{thm:two-orbit} without taking powers.
+\end{proof}
+
+\begin{corollary}[The two-orbit sum]\label{cor:two-orbit-sum}
+For every $i\in\{0,1\}$ and
+$t\in (T^{(i)})^{\mathrm{reg}}$, put
+$u=\rho_i(t)\in\bar T$.  Then
+\begin{equation}\label{eq:packet-sum}
+ \boxed{\displaystyle
+ \Theta_{\pi_{0,\theta}}(t)+\Theta_{\pi_{1,\theta}}(t)
+ =-\theta(u)-\theta(u^{-1}).}
+\end{equation}
+In particular, when $u=zI$ this sum is simply $-2\theta(z)$,
+\emph{independent of the depth} $r_i(t)$.
+For $\eta=\theta^{\langle n\rangle}$ the matching sum of genuine
+characters satisfies
+\begin{equation}\label{eq:genuine-packet-sum}
+ \sum_{j=0}^1\Theta_{\widetilde\pi_{j,\eta}}(s_i(t^n))
+ =-\theta(u)-\theta(u^{-1}).
+\end{equation}
+\end{corollary}
+\begin{proof}
+For regular elliptic reduction, only the $j=i$ summand is
+nonzero, and it is the first line of
+\eqref{eq:two-orbit-far}.  For central reduction, the
+$q^r$ terms of \eqref{eq:two-orbit-near} cancel, leaving
+$-2\theta(z)=-\theta(z)-\theta(z^{-1})$.  The last assertion
+is the sum of the two identities \eqref{eq:two-orbit-identity}.
+\end{proof}
+
+\begin{remark}[Scope of the sum]
+Formula \eqref{eq:packet-sum} is a concrete sum of two specific
+depth-zero characters.  Although its cancellation resembles the
+stable-sum formulas in the depth-zero $L$-packet literature
+\cite{AubertPlymen}, the statement here does not identify the pair
+with an $L$-packet, establish stability on all regular semisimple
+conjugacy classes, or construct an endoscopic transfer factor.
+The covering-group assertion is likewise confined to the specified
+lifts of the two unramified tori.
+\end{remark}
+
+\section{Example over \texorpdfstring{$\mathbb Q_7$}{Q7}}\label{sec:example}
+Take $F=\mathbb Q_7$, $n=3$, and $E=\mathbb Q_7(\sqrt3)$; $3$ is a nonsquare modulo $7$, so $E/F$ is unramified.  Realize $E$ on the basis $(1,\sqrt3)$ by multiplication:
+\[
+ a+b\sqrt3\longmapsto
+ \begin{pmatrix}a&3b\\b&a\end{pmatrix}.
+\]
+The reduced norm-one torus is cyclic of order $8$.  Choose a generator $u\in\bar T$ and $\theta(u)=e^{2\pi i/8}$.  Since $3^{-1}\equiv3\pmod8$, the parameter associated to the genuine representation is $\eta=\theta^{\langle3\rangle}=\theta^3$.
+
+For a lift $t_0\in T$ of $u$, both $t_0$ and $t_0^3$ have regular elliptic reduction; the character comparison yields
+\[
+ \Theta_{\pi_\theta}(t_0)
+ =-2\cos(\pi/4)=-\sqrt2
+ =\Theta_{\widetilde\pi_\eta}(s_K(t_0^3)).
+\]
+For a new, nontrivial test of the extension, define
+\begin{equation}\label{eq:tr}
+ t_r=\frac{1+7^r\sqrt3}{1-7^r\sqrt3}\in T,\qquad r\ge1.
+\end{equation}
+These elements are regular, reduce to $I$, and satisfy $r(t_r)=r$.  Their $7$-adic matrix coefficients have leading term $2\cdot7^r\sqrt3$, so Proposition~\ref{prop:ball} applies.  The following values follow from Theorem~\ref{thm:values}:
+\begin{center}
+\begin{tabular}{@{}cccc@{}}
+\toprule
+$r$ & even-distance fixed vertices in $G/K$ & $\Theta_{\pi_\theta}(t_r)$ & $\Theta_{\widetilde\pi_\eta}(s_K(t_r^3))$\\
+\midrule
+$1$ & $1$ & $6$ & $6$\\
+$2$ & $1+56=57$ & $-50$ & $-50$\\
+$3$ & $1+56=57$ & $342$ & $342$\\
+\bottomrule
+\end{tabular}
+\end{center}
+For $r=2$, the center vertex contributes $\chi_\theta(I)=6$, whereas the $56$ boundary vertices at distance two contribute $-1$ each, yielding $6-56=-50$.  For $r=3$, those same $56$ vertices lie strictly inside the fixed ball, so each contributes $6$; hence $57\cdot6=342$.  Raising $t_r$ to its third power preserves $r$ and the fixed ball.  This example illustrates exactly what is gained beyond the one-vertex theorem.
+
+For the \emph{other} vertex orbit, the same elements produce new
+values. The two orbits contribute complementary terms:
+\begin{center}
+\begin{tabular}{@{}rrrr@{}}
+\toprule
+$r$ & $\Theta_{\pi_{0,\theta}}(t_r)$
+& $\Theta_{\pi_{1,\theta}}(t_r)$ & sum\\
+\midrule
+$1$ & $6$ & $-8$ & $-2$\\
+$2$ & $-50$ & $48$ & $-2$\\
+$3$ & $342$ & $-344$ & $-2$\\
+\bottomrule
+\end{tabular}
+\end{center}
+For $r=1$ there are eight boundary vertices in the odd orbit,
+each contributing $-1$. For $r=2$ they lie in the interior and
+each contributes $6$. For $r=3$ the eight first-sphere vertices
+contribute $48$, while the $392$ boundary vertices contribute
+$-392$. This gives $48-392=-344$ and verifies the new formula
+in Theorem~\ref{thm:complementary} in three cases. All six
+individual values satisfy the simultaneous metaplectic relation
+in Theorem~\ref{thm:two-orbit}, conditional on the second
+compact splitting.
+
+\section{Relation to the literature and next problems}\label{sec:limits}
+The ordinary depth-zero character calculations in the present paper are elementary specializations of the well-developed theory of characters of $\mathrm{SL}_2(F)$.  Sally--Shalika computed its supercuspidal character tables; Cunningham--Gordon gave motivic formulas for depth-zero characters on topologically unipotent elements; and Aubert--Plymen revisited the Sally--Shalika formulas in the setting of endoscopic character identities \cite{SallyShalika,CunninghamGordon,AubertPlymen}.  The finite Green-function values used here are standard.  The purpose of this reconstruction is to put the covering-group comparison, including the suppression of extra cocycle factors on pro-$p$ intersections and the two vertex orbits, into a direct proof accessible from the earlier manuscript \cite{Joyner1999}. The equalities of two-orbit ordinary characters are consistent with the depth-zero $L$-packet character formulas discussed by Aubert--Plymen; no stronger novelty claim is inferred.
+
+Several issues remain outside this result:
+\begin{enumerate}[label=(\roman*)]
+\item \emph{Verifying compact splittings for specified cocycles.}  Theorem~\ref{thm:two-orbit} assumes a splitting over the second maximal compact.  Existence and normalization should be documented for each intended metaplectic realization.
+\item \emph{Exceptional depth-zero types.}  The constituents associated with the quadratic character of $\bar T$ have different values on the two rational unipotent classes.  The simple termwise power comparison must therefore be reconsidered.
+\item \emph{Ramified elliptic tori and positive depth.}  Their fixed-point geometry and character formulas are different; the present fixed-ball theorem does not apply.
+\item \emph{A full character transfer or fundamental lemma.}  A pointwise identity on a particular elliptic torus and for a restricted family of representations does not establish either a representation-theoretic equivalence for the full genuine category or an orbital-integral transfer.
+\end{enumerate}
+
+\paragraph{Possible next theorem.}
+A useful next target is a carefully normalized comparison of the exceptional depth-zero packet \emph{as a sum of characters}.  Such a formulation may avoid the obstruction from the separate rational unipotent classes. Another natural task is proving, for a concrete Kubota-type cocycle, the existence of both prescribed compact splittings and relating their normalizations.  Only after these tests should one attempt the ramified and positive-depth cases.
+
+\section*{Acknowledgments and provenance}
+This is a corrected and extended reconstruction of ideas in David Joyner's earlier unfinished manuscript \emph{Character relations for supercuspidal representations of $\overline{SL(2)}$}, represented by the surviving files \texttt{CHART.TEX}, \texttt{CHAR0.TEX}, \texttt{CHAR1.TEX}, and \texttt{CHAR2.TEX}.  Draft~1 restricted the identity to elements with regular elliptic reduction; Draft~2 included central-reduction elements and proved an explicit fixed-ball character formula.  Draft~3 clarified the lifted Mackey intertwining argument, the integral torus embedding, the parity convention, and the odd-degree limitation. Draft~4 extends the construction to the second vertex orbit, proves cross-orbit character comparisons under an explicit second-splitting hypothesis, and derives the complementary character formula and depth-independent two-orbit sum. The technical observations in an independent referee report provided by Argon-Gemini informed the earlier corrections.  The mathematical review, revision, and exposition were prepared with assistance from ChatGPT (OpenAI).  No new-priority claim is made without a full comparison with the existing character literature.
+
+\begin{thebibliography}{99}
+\bibitem{AubertPlymen}
+A.-M.~Aubert and R.~Plymen,
+\emph{Endoscopic character identities for depth-zero supercuspidal representations of $\mathrm{SL}_2$},
+arXiv:2410.20183 (2024).
+\url{https://arxiv.org/abs/2410.20183}.
+
+\bibitem{Casselman}
+W.~Casselman, \emph{The Bruhat--Tits tree of $\mathrm{SL}_2$}, notes (2014).
+\url{https://personal.math.ubc.ca/~cass/research/pdf/Tree.pdf}.
+
+\bibitem{CunninghamGordon}
+C.~Cunningham and J.~Gordon,
+\emph{Motivic proof of a character formula for $\mathrm{SL}(2)$},
+Experiment. Math. \textbf{18} (2009), no.~1, 11--44.
+\url{https://doi.org/10.1080/10586458.2009.10128882}.
+
+\bibitem{DeligneLusztig}
+P.~Deligne and G.~Lusztig,
+\emph{Representations of reductive groups over finite fields},
+Ann. of Math. (2) \textbf{103} (1976), 103--161.
+
+\bibitem{Joyner1999}
+D.~Joyner,
+\emph{A correspondence for the supercuspidal representations of the metaplectic cover of $SL(2,F)$, $F$ $p$-adic},
+Arch. Math. (Basel) \textbf{73} (1999), 332--340.
+\url{https://doi.org/10.1007/s000130050406}.
+
+\bibitem{MoyPrasad1996}
+A.~Moy and G.~Prasad,
+\emph{Jacquet functors and unrefined minimal $K$-types},
+Comment. Math. Helv. \textbf{71} (1996), 98--121.
+
+\bibitem{SallyShalika}
+P.~J.~Sally, Jr. and J.~A.~Shalika,
+\emph{Characters of the discrete series of representations of $SL(2)$ over a local field},
+Proc. Nat. Acad. Sci. U.S.A. \textbf{61} (1968), 1231--1237.
+\end{thebibliography}
+\end{document}

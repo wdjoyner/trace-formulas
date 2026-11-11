@@ -12,7 +12,7 @@ The paper works out Arthur's trace formula, in non-invariant and then invariant 
 | `book-1997/` | Chapters of the 1997 book manuscript *An application of Arthur's invariant trace formula for SL(2)* (Scientific Word; needs `tcilatex`). Chapter 9 (`book7a`–`book7h`) is the source of the notes. |
 | `revision_log.md` | Every referee item, with its location, the planned fix, the revision stage, and its status |
 | `referee-2026-11/` | The second referee report (ChatGPT) and the authors' response |
-| `revised/` | The 2026 revision (n = 2), section by section: `sec1-introduction.tex` (overview, literature review), `appA-comparison.tex`, `glossary.tex`, `sec2-foundations.tex` (stage 1), `sec3-rank0.tex` (stage 2), `sec4-geometric.tex` (stage 3), `sec5-spectral.tex` (stage 4), `sec6-invariant.tex` (stage 5), the standalone build `preview.tex`/`.pdf`, and `checks/` (verification scripts) |
+| `revised/` | The 2026 revision (n = 2), section by section: `sec1-introduction.tex` (overview, literature review), `appA-comparison.tex`, `glossary.tex`, `sec2-foundations.tex` (stage 1), `sec3-rank0.tex` (stage 2), `sec4-geometric.tex` (stage 3), `sec5-spectral.tex` (stage 4), `sec6-invariant.tex` (stage 5), `sec7-stable.tex` (stage 6), the standalone build `preview.tex`/`.pdf`, and `checks/` (verification scripts) |
 
 The notes correspond to Chapter 9 of the book file by file:
 
@@ -31,7 +31,8 @@ The notes correspond to Chapter 9 of the book file by file:
 
 - Referee report (2026): [Claude Docs](https://claude.ai/artifact/7MmqhX7GnoJNup9xbb9RNG). Its items are tracked in `revision_log.md`.
 - Second referee report (ChatGPT, 2026-11-11) and the response: [`referee-2026-11/`](referee-2026-11/). The revised draft has authors D. Joyner and Claude, a new Section 1 (overview and literature review), a glossary, and an appendix collecting the comparisons with the 1995 notes.
-- Revision: in stages (see `revision_log.md`). Stages 1–5 (Section 2, foundations of the double cover; Section 3, the rank-0 case; Section 4, the geometric side, which also replaces the missing `cctrac3b.tex`; Section 5, the spectral side, now with the residual Weil representations and the ramified classes; Section 6, the invariant form, proved directly for this group) are drafted in `revised/` and checked by the scripts in `revised/checks/`. Stage 0 (a clean, compiling source tree with no mathematical changes) is still to do; it will `\input` the revised sections.
+- Revision: in stages (see `revision_log.md`). Stages 1–6 (Section 2, foundations of the double cover; Section 3, the rank-0 case; Section 4, the geometric side, which also replaces the missing `cctrac3b.tex`; Section 5, the spectral side, now with the residual Weil representations and the ramified classes; Section 6, the invariant form, proved directly for this group; Section 7, the stable(r) form) are drafted in `revised/` and checked by the scripts in `revised/checks/`. Stage 0 (a clean, compiling source tree with no mathematical changes) and stage 7 (a consistency pass) are still to do.
+- Section 7 (stage 6) does not follow the 1995 section. Conjugation by GL(2) can exchange the two lifts of an element of the cover, so it is not stable conjugacy; stable conjugacy (Adams, Li) is conjugation by GL(2) twisted by the sign (det h, det(1+γ)). With it the regular elliptic terms are S_ell(f) + S_ell(f₋), where f₋ is f translated by the central element −1. The unipotent coefficients a^G(S,u_ξ), left open in Section 4, are computed. The hyperbolic and unipotent terms and the cuspidal spectrum are not stabilized (that is Li's theorem), and the section says what is missing.
 
 ## Building
 

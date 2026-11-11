@@ -151,7 +151,38 @@ $\Phi_A(\tilde a,f)$ & the inverse Fourier transform of
 $I_A(\gamma,f)$, $I_A(z,f)$ & $J_A-\Phi_A$, the invariant distributions &
   \eqref{eq:IAgamma}\\
 $I_{\mathcal O}(f)$, $I_\chi(f)$ & the terms of the invariant trace
-  formula & \eqref{eq:Iochi}\\
+  formula & \eqref{eq:Iochi}\\[3pt]
+\multicolumn{3}{@{}l}{\emph{Section~\ref{sec:stable}}}\\
+$G_1$, $\delta_a$, $\mathrm{Ad}(h)$ & $GL(2)$; $\diag(a,1)$; the
+  automorphism of the cover lifting conjugation by $h\in G_1$ &
+  Lemma~\ref{lem:gl2}, Lemma~\ref{lem:Ad}\\
+$f^h$, $f^{[h]}$, $f_z$, $f_-$ & $f\circ\mathrm{Ad}(h)$; $f(h\star\cdot)$;
+  $f(z\,\cdot)$ for central $z$; $f_{-1}$ & \S\ref{sec:stable},
+  \S\ref{sec:stable-conj}\\
+$D^+(\gamma)$, $\eta_\gamma$ & $\det(1+\gamma)=2+\operatorname{tr}\gamma$;
+  the character $a\mapsto(a,D^+(\gamma))_v$ & \eqref{eq:eta}\\
+$h\star x$ & $\eta_x(\det h)\,\mathrm{Ad}(h)x$, the action whose orbits are
+  the stable classes & \eqref{eq:star}\\
+$\Delta_\psi$ & genuine function with values in $\mu_8$, constant on
+  stable classes; $|D^+|^{1/2}$ times the character of $r^+_\psi-r^-_\psi$ &
+  Lemma~\ref{lem:Delta}, Prop.~\ref{prop:weil-char}\\
+$\kappa_E$, $N E^\times$ & the quadratic character of $E/F$ and its
+  kernel, the norms & \S\ref{sec:stable}\\
+$J^{\mathrm{st}}_G$, $J^\kappa_G$ & stable and $\kappa$-orbital
+  integrals & \eqref{eq:Jst}, \eqref{eq:Jst-global}\\
+$S_{\mathrm{ell}}(f)$ & the stable elliptic regular distribution &
+  Theorem~\ref{thm:elliptic-stable}\\
+$H_1$, $\kappa_a$ & the height on $GL(2)$; the character
+  $a(t)\mapsto(a,t)$ of the cover of $A$ & \S\ref{sec:hyperbolic-gl2}\\
+$\mathfrak X_S$, $L^S(s,\kappa)$, $\rho_S$, $c_S$ & quadratic Hecke
+  characters unramified outside $S$; their partial $L$-functions; the
+  residue and constant term of $\zeta_k^S$ at $1$ & \S\ref{sec:unipotent}\\
+$J_G(zu_\xi,f_S)$, $J^\kappa_{\mathrm{unip}}(z,f_S)$ & normalized unipotent
+  orbital integral; its $\kappa$-sum over $\xi$ & \eqref{eq:JG-unip},
+  Prop.~\ref{prop:unipotent}\\
+$U_h$, $\Theta_b$, $\Theta^{\mathrm{st}}_b$ & the action of $G_1(k)$ on
+  automorphic forms; the span of the theta functions of $\psi_{-b}$; its
+  stable character & \S\ref{sec:spectral-gl2}\\
 \end{longtable}
 }
 
@@ -184,6 +215,10 @@ $I_{\mathcal O}(f)$, $I_\chi(f)$ & the terms of the invariant trace
   conjugacy, and unipotent parts conjugate in the centralizer over
   $\Q_S$. It indexes the terms of the fine expansion
   (Theorem~\ref{thm:fine}).
+\item[Endoscopic group.] For the double cover of $SL(2)$ the elliptic
+  endoscopic groups are two copies of $SO(3)$, attached to the central
+  elements $\pm1$ of the dual group $SL(2,\C)$~\cite{Li11}. They are
+  discussed but not used.
 \item[Invariant distribution.] A linear form $I$ on test functions with
   $I(f^y)=I(f)$ for all $y$ in the group.
 \item[Normalizing factor.] A scalar function $r_v(\pi_v,\lambda)$ such
@@ -194,6 +229,18 @@ $I_{\mathcal O}(f)$, $I_\chi(f)$ & the terms of the invariant trace
 \item[Residual spectrum.] The part of the discrete spectrum that is not
   cuspidal. For this group it is spanned by the residues of Eisenstein
   series at $\lambda=\frac12$ and consists of even Weil representations.
+\item[Stable conjugacy.] On $SL(2,F)$: conjugacy under $GL(2,F)$. On the
+  cover: the relation whose classes are the orbits of $h\star x$; a stable
+  class lies over a stable class of $SL(2,F)$ and contains one of the two
+  lifts of each element (Section~\ref{sec:stable-conj}). Conjugation by
+  $GL(2,F)$ without the twist is coarser.
+\item[Stable distribution.] An invariant distribution given by a class
+  function that is constant on stable classes, or a stable orbital
+  integral $J^{\mathrm{st}}_G$; equivalently, one that is invariant under
+  $f\mapsto f^{[h]}$.
+\item[Stable(r) form.] The trace formula with its terms organized by
+  stable classes, before any transfer to $SO(3)$
+  (Theorem~\ref{thm:stabler}).
 \item[Truncation.] Subtracting from a kernel, or from an automorphic
   form, its constant term in the cusp $\{H(\delta x)>T\}$.
 \item[Weighted orbital integral.] An orbital integral with the weight

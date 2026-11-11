@@ -414,12 +414,16 @@ quadratic form $x^2$~\cite{We64,Ge2} is a genuine representation of
 $\overline{SL(2,k_v)}$ on the Schwartz--Bruhat space $\mathcal S(k_v)$ in
 which
 \begin{equation}\label{eq:weil-rep}
+\begin{gathered}
 \omega_{\psi'}(n(u),1)\phi(x)=\psi'(ux^2)\phi(x),\qquad
-\omega_{\psi'}(w,1)\phi=c\,\mathcal F\phi,\quad
+\omega_{\psi'}(w,1)\phi(x)=c\,(\mathcal F\phi)(-x),\\
 \mathcal F\phi(x)=\int_{k_v}\phi(y)\psi'(2xy)\,dy,
+\end{gathered}
 \end{equation}
 with a constant $c$ of absolute value $1$ and the measure that is
-self-dual for $\psi'(2xy)$. It is the sum of its restrictions
+self-dual for $\psi'(2xy)$. (In Kubota's model $c=\gamma'(1)^{-1}$, with
+$\gamma'$ as in Lemma~\ref{lem:weil-rep}; see Lemma~\ref{lem:weil-kernel}.)
+It is the sum of its restrictions
 $r^+_{\psi'}$ and $r^-_{\psi'}$ to the even and the odd functions, which
 are irreducible. In some references $n(u)$ acts by $\psi'(\frac12ux^2)$;
 that representation is $\omega_{\psi'_{1/2}}$ in the present notation.
@@ -445,8 +449,9 @@ Let $\bar n(u)=w\,n(-u)\,w^{-1}$, the lower triangular unipotent matrix
 with entry $u$. By Lemma~\ref{lem:local}(h),
 $(\bar n(u),1)=(w,1)(n(-u),1)(w,1)^{-1}$, so by~\eqref{eq:weil-rep}
 $\omega(\bar n(u),1)=\mathcal F m(-u)\mathcal F^{-1}$, where $m(u)$ is
-multiplication by $\psi'(ux^2)$; the constant $c$ of~\eqref{eq:weil-rep}
-cancels. Completing the square and using~\eqref{eq:weil-index} for
+multiplication by $\psi'(ux^2)$; the constant $c$ and the reflection
+$x\mapsto-x$ of~\eqref{eq:weil-rep} cancel, because the reflection
+commutes with $m(u)$. Completing the square and using~\eqref{eq:weil-index} for
 $\psi'$ (with $\gamma'(1/t)=\gamma'(t)$; the measure self-dual for
 $\psi'(2xy)$ is $|2|_v^{1/2}$ times the one in~\eqref{eq:weil-index}),
 \[
@@ -914,7 +919,7 @@ sides converge absolutely and:
   a^G(S,u_\xi)\,J_G(zu_\xi,f_S)+\tfrac12\,c_k\,J_A(z,f_S),
   \]
   with the coefficients $a^G(S,u_\xi)$ of Theorem~\ref{thm:fine}, which
-  are not evaluated here;
+  are computed in Proposition~\ref{prop:unipotent};
 \item for $\mathcal O$ elliptic, $J_{\mathcal O}(f)=
   \mathrm{vol}(T_\mu(\Q)\backslash T_\mu(\A))\,J_G(\mu_S,f_S)$;
 \item for $\mathcal O$ hyperbolic, the class of $a(t)$,

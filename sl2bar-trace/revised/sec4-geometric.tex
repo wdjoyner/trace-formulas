@@ -86,7 +86,7 @@ $J_G(\gamma,f_S)$, $J_A(\gamma,f_S)$ & local orbital and weighted orbital
 $J_A(z,f_S)$ & the weighted orbital integral at a central element
   (Lemma~\ref{lem:JA-central})\\
 $a^M(S,\gamma)$ & global coefficients (Theorem~\ref{thm:fine}); the
-  $a^G(S,u_\xi)$ are defined but not evaluated
+  $a^G(S,u_\xi)$ are computed in Proposition~\ref{prop:unipotent}
 \end{tabular}
 \end{center}
 
@@ -719,7 +719,17 @@ it the limit diverges, as~(b) shows.
 For $S$ as above let $\mathcal U_S$ be the set of $(G,S)$-equivalence
 classes of unipotent elements of $G(\Q)$, that is, the classes
 $\{1\}$ and $u_\xi=n(\xi)$, $\xi\in k_S^\times/k_S^{\times2}$ (each
-meets $G(\Q)$, by weak approximation). For $v\notin S_k$ we use Haar
+meets $G(\Q)$, by weak approximation). The integral
+$\int f_S(x^{-1}z\,n(\xi)x)\,dx$ of Lemma~\ref{lem:JA-central}(c) is taken
+with the fixed measure on $N(\Q_S)$, and it changes by $|c|_S^{-2}$ when
+$\xi$ is replaced by $\xi c^2$. For the class $u_\xi$ we therefore put
+\[
+J_G(zu_\xi,f_S)=|\xi|_S\int_{\{\pm1\}N(\Q_S)\backslash G(\Q_S)}
+f_S\bigl(x^{-1}z\,n(\xi)\,x\bigr)\,dx,
+\]
+which depends only on the class of $\xi$ modulo squares; this is the
+orbital integral for the measure on the centralizer of $n(\xi)$
+transported from that of $n(1)$ by conjugation. For $v\notin S_k$ we use Haar
 measures giving $K_v$, $A(\OO_v)$ and $T_\mu(\OO_v)$ volume $1$, and global
 measures that are products of these with the measures at $S_k$; the
 volumes below are taken with respect to them.
@@ -736,8 +746,8 @@ $S$ is large enough (depending on the support of $f_S$), then:
   \]
   with $a^G(S,1)=\mathrm{vol}(G(\Q)\backslash\GA)$, $a^A(S,1)=c_k$, and
   $J_A(z,f_S)$ as in Lemma~\ref{lem:JA-central}(b); the coefficients
-  $a^G(S,u_\xi)$ are those of~\cite{A12,LiI} and are not evaluated in this
-  paper;
+  $a^G(S,u_\xi)$ are those of~\cite{A12,LiI}, and they are computed in
+  Proposition~\ref{prop:unipotent};
 \item for $\mathcal O$ elliptic with $\mu\in\mathcal O$,
   $J_{\mathcal O}(f)=a^G(S,\mu)J_G(\mu_S,f_S)$ with
   $a^G(S,\mu)=\mathrm{vol}(T_\mu(\Q)\backslash T_\mu(\A))$;
@@ -759,9 +769,13 @@ same reason $f(\gamma)=f_S(\gamma_S)$, which is why the lift $\mu_S$
 carries the global factor $\kappa_\A(\mu)$. In~(a) the coefficient of
 $f_S(z)$ and the linear term agree with Proposition~\ref{prop:central}.
 The coefficients $a^G(S,u_\xi)$ exist by the theorem and are determined
-by~(a), but we do not compute them (Remark~\ref{rem:sec4-status}).
-Wherever they occur below, in Theorems~\ref{thm:tf} and~\ref{thm:itf}, they
-are defined, not evaluated.
+by~(a). They are computed in Section~\ref{sec:unipotent}:
+Proposition~\ref{prop:unipotent} derives~(a) from
+Proposition~\ref{prop:central}, for the sets $S$ such that the ring of
+$S_k$-integers of $k$ is principal, and finds
+$a^G(S,u_\xi)=\frac12\bigl(c_S+\sum_{\kappa\ne1}\kappa_S(\xi)L^S(1,\kappa)
+\bigr)$, the sum over the quadratic Hecke characters unramified outside
+$S_k$.
 
 The coefficients are defined with centralizers in the cover, which for
 $n=2$ are the full preimages (Lemma~\ref{lem:classes}), and the sums run
@@ -795,14 +809,14 @@ that the limit in Lemma~\ref{lem:JA-central}(b) exists.
 \begin{remarkrev}\label{rem:sec4-status}
 \emph{What rests on citation.} Theorem~\ref{thm:coarse} and
 Propositions~\ref{prop:hyperbolic}--\ref{prop:central} are proved here.
-Theorem~\ref{thm:fine}(a) is taken from~\cite{A12,LiI}: the coefficients
-$a^G(S,u_\xi)$ are defined by it, and we have not derived~(a) from
-Proposition~\ref{prop:central}. Doing so amounts to computing
-$a^G(S,u_\xi)$ from the Laurent expansion at $s=1$ of the second form
-of~\eqref{eq:Zf}, grouped by the image of $\xi$ in
-$k_S^\times/k_S^{\times2}$. Each fiber is infinite, and its contribution
-is a Dirichlet series in $s$, so a regularization is needed. This is
-left to the revision of Section~7, where the same divergence occurs. The unramified computations used for (b)--(c) of
+Theorem~\ref{thm:fine}(a) is stated here as taken from~\cite{A12,LiI}.
+It is derived from Proposition~\ref{prop:central} in
+Proposition~\ref{prop:unipotent}, which also computes the coefficients
+$a^G(S,u_\xi)$, when the ring of $S_k$-integers is principal. (Grouping
+the second form of~\eqref{eq:Zf} by the image of $\xi$ in
+$k_S^\times/k_S^{\times2}$ does not work directly: each fiber is infinite
+and contributes a Dirichlet series that diverges at $s=1$. One expands in
+quadratic Hecke characters instead.) The unramified computations used for (b)--(c) of
 Theorem~\ref{thm:fine} are standard and not written out. For an
 elliptic $\mu$ they use the uniqueness of the local class meeting $K_v$
 from the proof of Theorem~\ref{thm:coarse}(a).

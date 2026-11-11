@@ -1,5 +1,5 @@
 % SPDX-License-Identifier: CC-BY-4.0
-% Stand-alone build of the revised sections done so far (stages 1-4 of
+% Stand-alone build of the revised sections done so far (stages 1-5 of
 % ../revision_log.md). The stage-0 master will \input the same section files
 % with the same macros.
 \documentclass[11pt]{article}
@@ -36,12 +36,12 @@
 
 \begin{document}
 \title{A hitch-hiker's guide to the metaplectic trace formula for $SL(2)$\\[2pt]
-\large Sections 2--5, revised for the double cover (draft)}
+\large Sections 2--6, revised for the double cover (draft)}
 \author{David Joyner and Claude}
 \date{November 2026}
 \maketitle
 
-\noindent These are the revised Sections~2--5 of the 1995 notes,
+\noindent These are the revised Sections~2--6 of the 1995 notes,
 restricted to $n=2$, compiled on their own. In Section~2, Lemmas~2.1--2.9
 keep the numbers of the 1995 notes and Lemma~2.10 is new. Section~3 is
 shorter than in 1995, because for $n=2$ the cover of a torus is abelian.
@@ -50,15 +50,19 @@ that the 1995 master inputs (it is Chapter~9.3--9.5 of the 1997 book
 manuscript), and proves the coarse geometric expansion directly for this
 group. Section~5 adds the residual spectrum (even Weil representations)
 and the ramified classes to the spectral side, normalizes the
-intertwining operator, and corrects $M_B^T$. The old and new numbers are
-matched in \texttt{revision\_log.md},
-which also lists the changes.
+intertwining operator, and corrects $M_B^T$. Section~6 puts the trace
+formula in invariant form: for this group the invariant distributions
+$I_A(\gamma,f)$ are constructed by Fourier analysis on the abelian cover
+of $A$, the global normalizing factor is identified, and the ramified
+term is evaluated ($M(w,0)=-1$). The old and new numbers are matched in
+\texttt{revision\_log.md}, which also lists the changes.
 
 \setcounter{section}{1}
 \input{sec2-foundations}
 \input{sec3-rank0}
 \input{sec4-geometric}
 \input{sec5-spectral}
+\input{sec6-invariant}
 
 \begin{thebibliography}{99}
 \bibitem[A2]{A2} J. Arthur, ``A trace formula for reductive groups, I: terms
@@ -66,10 +70,16 @@ associated to classes in $G(\mathbb{Q})$'', Duke Math. J. \textbf{45} (1978), 91
 \bibitem[A3]{A3} J. Arthur, ``A trace formula for reductive groups, II:
 applications of a truncation operator'', Compositio Math. \textbf{40}
 (1980), 87--121.
+\bibitem[A6]{A6} J. Arthur, ``The trace formula in invariant form'', Ann.
+of Math. (2) \textbf{114} (1981), 1--74.
 \bibitem[A7]{A7} J. Arthur, ``The local behaviour of weighted orbital
 integrals'', Duke Math. J. \textbf{56} (1988), 223--293.
 \bibitem[A9]{A9} J. Arthur, ``The invariant trace formula, I. Local theory'',
 J. Amer. Math. Soc. \textbf{1} (1988), 323--383.
+\bibitem[A10]{A10} J. Arthur, ``The invariant trace formula, II. Global
+theory'', J. Amer. Math. Soc. \textbf{1} (1988), 501--554.
+\bibitem[A11]{A11} J. Arthur, ``Intertwining operators and residues, I.
+Weighted characters'', J. Funct. Anal. \textbf{84} (1989), 19--84.
 \bibitem[A14]{A14} J. Arthur, ``On a family of distributions obtained from
 Eisenstein series II: explicit formulas'', Amer. J. Math. \textbf{104}
 (1982), 1289--1336.
@@ -84,6 +94,10 @@ number theory}, Academic Press, 1967.
 products'', in \emph{Automorphic forms, representations and
 $L$-functions}, Proc. Sympos. Pure Math. \textbf{33}, Part~1, Amer. Math.
 Soc., 1979, 179--183.
+\bibitem[GJ]{GJ} S. Gelbart and H. Jacquet, ``Forms of $GL(2)$ from the
+analytic point of view'', in \emph{Automorphic forms, representations and
+$L$-functions}, Proc. Sympos. Pure Math. \textbf{33}, Part~1, Amer. Math.
+Soc., 1979, 213--251.
 \bibitem[Ge2]{Ge2} S. Gelbart, \emph{Weil's representation and the spectrum of
 the metaplectic group}, Lecture Notes in Math. \textbf{530}, Springer, 1976.
 \bibitem[GPS80]{GPS80} S. Gelbart and I. Piatetski-Shapiro, ``Distinguished
@@ -106,6 +120,9 @@ by Eisenstein series}, Lecture Notes in Math. \textbf{544}, Springer, 1976.
 \bibitem[Li I]{LiI} W.-W. Li, ``La formule des traces pour les rev\^etements
 de groupes r\'eductifs connexes. I. Le d\'eveloppement g\'eom\'etrique fin'',
 J. reine angew. Math. \textbf{686} (2014), 37--109.
+\bibitem[Li II]{LiII} W.-W. Li, ``La formule des traces pour les rev\^etements
+de groupes r\'eductifs connexes. II. Analyse harmonique locale'', Ann. Sci.
+\'Ec. Norm. Sup\'er. (4) \textbf{45} (2012), 787--859.
 \bibitem[Li III]{LiIII} W.-W. Li, ``La formule des traces pour les
 rev\^etements de groupes r\'eductifs connexes. III. Le d\'eveloppement
 spectral fin'', Math. Ann. \textbf{356} (2013), 1029--1064.
@@ -114,6 +131,9 @@ de groupes r\'eductifs connexes. IV. Distributions invariantes'', Ann. Inst.
 Fourier \textbf{64} (2014), 2379--2448.
 \bibitem[M]{M} C. C. Moore, ``Group extensions of $p$-adic and adelic linear
 groups'', Publ. Math. IHES \textbf{35} (1968), 157--222.
+\bibitem[Mo2]{Mo2} C. Moen, ``Irreducibility of unitary principal series
+for covering groups of $SL(2,k)$'', Pacific J. Math. \textbf{135} (1988),
+89--110.
 \bibitem[MW2]{MW2} C. M\oe glin and J.-L. Waldspurger, \emph{Spectral
 decomposition and Eisenstein series}, Cambridge Tracts in Math.
 \textbf{113}, Cambridge Univ. Press, 1995.
@@ -124,6 +144,9 @@ in three variables}, Ann. of Math. Studies \textbf{123}, Princeton, 1990.
 \bibitem[Ro]{Ro} A. Robert, \emph{Introduction to the representation theory of
 compact and locally compact groups}, London Math. Soc. Lecture Note Ser.
 \textbf{80}, Cambridge, 1983.
+\bibitem[Sa]{Sa} P. J. Sally, Jr., \emph{Analytic continuation of the
+irreducible unitary representations of the universal covering group of
+$SL(2,\mathbb{R})$}, Mem. Amer. Math. Soc. \textbf{69} (1967).
 \bibitem[Se]{Se} J.-P. Serre, \emph{A course in arithmetic}, Graduate Texts in
 Math. \textbf{7}, Springer, 1973.
 \bibitem[Ta]{Ta} J. Tate, ``Fourier analysis in number fields and Hecke's

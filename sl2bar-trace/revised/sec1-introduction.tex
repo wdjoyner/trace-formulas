@@ -220,8 +220,10 @@ irreducibility of the unitary genuine principal series is due to
 Moen~\cite{Mo2}. Szpruch~\cite{Sz09} computed the local coefficients of
 the genuine principal series of the double cover of $SL(2,F)$, and
 Goldberg and Szpruch~\cite{GS16} the Plancherel measures for the $n$-fold
-covers. These results bear on the normalizing factors at the places where
-our Section~\ref{sec:normalized} is not explicit. The unramified computation
+covers; the Plancherel measure of the double cover in all residue
+characteristics is also in~\cite{Sz16}. These results give the
+normalizing factors at the places where our Section~\ref{sec:normalized}
+is not explicit (Proposition~\normref{}). The unramified computation
 of the intertwining operator (the Gindikin--Karpelevich formula) for
 general covers is in~\cite{KP,McN,Gao}; see also Savin~\cite{Sav} for the
 Hecke algebra correspondence.
@@ -276,8 +278,8 @@ Section & Proved in the text & Taken from the literature\\\hline
 \ref{sec:stable} & the action of $GL(2)$; stable conjugacy and the
   function $\Delta_\psi$; the elliptic regular terms as
   $S_{\mathrm{ell}}(f)+S_{\mathrm{ell}}(f_-)$; the equivariance of the
-  weighted terms, under the condition~\ref{N5} on the normalizing
-  factors; the unipotent coefficients; the character of
+  weighted terms, for normalizing factors with the property~\ref{N5},
+  and the existence of such factors; the unipotent coefficients; the character of
   $r^+_\psi-r^-_\psi$ on the regular set; the trace on the theta
   functions & the regularity of the character of the Weil
   representation~\cite{Mak,Th08}; the Hasse norm theorem; everything
@@ -303,9 +305,11 @@ Li~\cite{Ad,Li11}, and stabilizes the regular elliptic terms. The
 hyperbolic and unipotent terms and the cuspidal spectrum are not
 stabilized; Section~\ref{sec:stable-form} lists what is missing. The
 statements of Section~\ref{sec:stable} about the weighted terms and about
-the spectral terms $I_\chi$ assume the condition~\ref{N5}, which holds for
-the explicit normalizing factors and is a hypothesis at the remaining
-places (Remark~\ref{rem:N5}).
+the spectral terms $I_\chi$ use the property~\ref{N5} of the normalizing
+factors. It holds for the explicit factors, and
+Proposition~\normref{} shows that factors with this property exist at
+every place; at the dyadic and ramified places their explicit form is
+taken from Szpruch~\cite{Sz09,Sz16} (Remark~\ref{rem:N5}).
 
 \subsection{A running example}\label{sec:running}
 
@@ -350,7 +354,9 @@ $\psi_\infty(x)=e^{-2\pi ix}$.
   (Example~\ref{ex:real-R}), and the correction $\Phi_A$ is an Abel
   transform smoothed by an exponentially decaying kernel
   (Example~\ref{ex:Phi-real}). The only bad place is $2$, where the
-  normalizing factor is not explicit. The discrete correction is
+  normalizing factor is not computed in Section~\ref{sec:invariant}; by
+  Proposition~\normref{}(c) it is a constant times $L_2(2\lambda,\chi_2^2)/
+  L_2(2\lambda+1,\chi_2^2)$. The discrete correction is
   $-\frac14\sum_{b=\pm1,\pm2}\operatorname{tr}I(\chi_{\psi_b,0},f)$
   (Example~\ref{ex:itf-Q}).
 \item \emph{Stable(r) form.} At the real place the outer automorphism

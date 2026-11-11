@@ -40,6 +40,13 @@ Checks (v runs over oo, 2, 3, 5, 7; random elements of SL(2,Q), GL(2,Q)):
     (Example 7.E), which is invariant under xi -> xi * (unit of Z[1/2]);
   * Proposition 7.12: prod_v gamma_v(b)^2 = 1, so omega(s(-1)) is the
     parity operator, and the count of sign patterns with product +1;
+  * Proposition 7.8' (normalizing factors): for F = Q_2 (all characters of
+    conductor dividing 32) and F = Q_3, Q_5 (tamely ramified characters),
+    the product of the Tate-type integrals that give the inverse local
+    coefficients (Szpruch) for (chi, s) and (chi^-1, -s) is a constant times
+    L(2s,chi^2) L(-2s,chi^-2) / (L(1+2s,chi^2) L(1-2s,chi^-2)); at the real
+    place, the adjoint relation M(pi,it)^* = omega M(pi^w,-it) and the shape
+    r = c(omega) h of the explicit factors;
   * the paragraph after Proposition 7.12: for the discrete series of
     Mp(2,R) with weights m, m+2, ... and -m, -m-2, ..., the sum of the
     characters on k_theta is even in theta and the difference is odd.
@@ -605,6 +612,122 @@ for m in (1.5, 2.5, 4.5):
         ok &= close(d_p, 1j * math.cos((m - 1) * th) / math.sin(th), 1e-5)
 report("after Prop. 7.12: for weights {m+2j} and {-m-2j}, the sum of the characters is "
        "-sin((m-1)t)/sin t (even), the difference i cos((m-1)t)/sin t (odd)", ok)
+
+# ------------------------------------------- Prop. 7.8' (normalizing factors)
+# (c) Szpruch: the inverse local coefficient of I(chi_psi chi, s) is the
+# Tate-type integral  T(chi, s) = int_{F^x} gamma_psi(u)^{-1} chi(u) psi(u) |u|^s d^x u,
+# gamma_psi(u) = gamma(u)/gamma(1).  With chi = chi0 on the units and
+# z = chi(p) p^{-s}, the shell ord(u) = k contributes a_k z^k, a_k the mean of
+# gamma_psi(p^k u)^{-1} chi0(u) psi(p^k u) over the units; a_k = 0 for k << 0,
+# and a_k depends only on the parity of k for k >= 0.  Claim checked:
+#   T(chi, s) T(chi^{-1}, -s) = const * L(2s,chi^2) L(-2s,chi^-2) / (L(1+2s,chi^2) L(1-2s,chi^-2)),
+# i.e. const * (1 - z^2/p)(1 - z^-2/p) / ((1 - z^2)(1 - z^-2)) if chi0^2 = 1, and const otherwise.
+def psi_p(x, p):
+    x = Fr(x)
+    d, k = x.denominator, 0
+    while d % p == 0:
+        d //= p
+        k += 1
+    if k == 0:
+        return 1.0
+    return cmath.exp(2j * cmath.pi * ((x.numerator * pow(d, -1, p ** k)) % p ** k) / p ** k)
+
+
+def tate_coeffs(p, chi0, N, K, inverse=False):
+    U = [u for u in range(1, p ** N) if u % p]
+    gtab = {}
+    out = {}
+    for k in range(-K, 2):
+        tot = 0
+        for u in U:
+            key = (k % 2, u % (8 if p == 2 else p))
+            if key not in gtab:
+                gtab[key] = gamma(Fr(p) ** (k % 2) * u, p) / gamma(1, p)
+            c = chi0(u)
+            tot += (c.conjugate() if inverse else c) * psi_p(Fr(p) ** k * u, p) / gtab[key]
+        out[k] = tot / len(U)
+    return out
+
+
+def tate(z, a, K):
+    return sum(a[k] * z ** k for k in range(-K, 0)) + (a[0] + a[1] * z) / (1 - z * z)
+
+
+def dirichlet(p, N, gens, vals):
+    """Character of (Z/p^N)^x with given values on generators (by brute-force logs)."""
+    mod = p ** N
+    table = {}
+    orders = []
+    for g_ in gens:
+        o, x = 1, g_ % mod
+        while x != 1:
+            x = x * g_ % mod
+            o += 1
+        orders.append(o)
+    for exps in itertools.product(*[range(o) for o in orders]):
+        x, v = 1, 1
+        for g_, e_, val in zip(gens, exps, vals):
+            x = x * pow(g_, e_, mod) % mod
+            v *= val ** e_
+        table[x] = complex(v)
+    return lambda u: table[u % mod]
+
+
+def planch_spread(p, chi0, sq_trivial, N, K):
+    a, b = tate_coeffs(p, chi0, N, K), tate_coeffs(p, chi0, N, K, inverse=True)
+    vals = []
+    for z in (0.3 + 0.4j, 1.7 - 0.2j, cmath.exp(0.7j), cmath.exp(2.1j), -0.6 + 1.1j):
+        L = (1 - z * z / p) * (1 - z ** -2 / p) / ((1 - z * z) * (1 - z ** -2)) if sq_trivial else 1
+        vals.append(tate(z, a, K) * tate(1 / z, b, K) / L)
+    c0 = vals[0]
+    return max(abs(v - c0) for v in vals), c0
+
+
+ok, consts, n_chars = True, [], 0
+for e1 in (1, -1):                               # (Z/32)^x = <-1> x <5>, 5 of order 8
+    for j in range(8):
+        chi0 = dirichlet(2, 5, (31, 5), (e1, cmath.exp(2j * cmath.pi * j / 8)))
+        spread, c0 = planch_spread(2, chi0, j % 4 == 0, 8, 7)
+        ok &= spread < 1e-10 and abs(c0) > 1e-6 and close(c0 ** 4, abs(c0) ** 4)
+        consts.append(c0)
+        n_chars += 1
+report("Prop. 7.8'(c) at v = 2: T(chi,s) T(chi^-1,-s) = const * L-quotient in chi^2, all 16 characters of "
+       "conductor | 32; the constant is a positive number times a 4th root of unity", ok and n_chars == 16,
+       "constants for chi0 = 1, (-1,.): %s, %s" % (mp.nstr(mp.mpc(consts[0]), 4), mp.nstr(mp.mpc(consts[8]), 4)))
+ok = True
+for p in (3, 5):
+    g_ = 2                                       # primitive root mod 3 and mod 5
+    for j in range(p - 1):
+        chi0 = dirichlet(p, 1, (g_,), (cmath.exp(2j * cmath.pi * j / (p - 1)),))
+        spread, c0 = planch_spread(p, chi0, (2 * j) % (p - 1) == 0, 3, 3)
+        ok &= spread < 1e-10 and abs(c0) > 1e-6
+report("Prop. 7.8'(c) at v = 3, 5: the same for all tamely ramified characters", ok)
+
+# (a), (b) at the real place, from (6.x) eq:real-M: on the weight m,
+# M(lam) = e^{i pi m/2} pi 2^{1-lam} Gamma(lam) / (Gamma((lam+1+m)/2) Gamma((lam+1-m)/2)).
+def M_real(m, lam):
+    return mp.e ** (1j * mp.pi * m / 2) * mp.pi * 2 ** (1 - lam) * mp.gamma(lam) / (
+        mp.gamma((lam + 1 + m) / 2) * mp.gamma((lam + 1 - m) / 2))
+
+
+ok = True
+for m0 in (mp.mpf(1) / 2, -mp.mpf(1) / 2):
+    omega = mp.e ** (-1j * mp.pi * m0)           # pi((w,1)^2), since (w,1)^-2 = k_pi
+    Lq = lambda lam: mp.pi ** (-lam) * mp.gamma(lam) / (mp.pi ** (-(2 * lam + 1) / 2) * mp.gamma(lam + mp.mpf(1) / 2))
+    cfac = mp.sqrt(2) * mp.e ** (1j * mp.pi * m0 / 2)
+    ok &= close(complex((cfac / mp.sqrt(2)) ** 2), complex(mp.conj(omega)))
+    for t in (0.37, 1.9):
+        lam = mp.mpc(0, t)
+        for j in (-2, -1, 0, 1, 3):
+            m = m0 + 2 * j
+            # adjoint relation: conj(M(pi, lam)) = omega * M(pi^w, -lam) on each weight
+            ok &= close(complex(mp.conj(M_real(m, lam))), complex(omega * M_real(m, -lam)), 1e-9)
+        rho = M_real(m0, -lam) * M_real(m0, lam)  # the scalar, read on the weight m0
+        r = cfac * Lq(lam)
+        ok &= close(complex(rho), complex(mp.conj(omega) * abs(r) ** 2), 1e-9)
+        ok &= close(complex(cfac * Lq(-lam) * r), complex(rho), 1e-9)
+report("Prop. 7.8' at the real place: M(pi,it)^* = omega M(pi^w,-it); rho = conj(omega)|r|^2 and "
+       "r(pi^w,-it) r(pi,it) = rho for r = sqrt2 e^{i pi m0/2} L(2 lam)/L(2 lam+1), (e^{i pi m0/2})^2 = conj(omega)", ok)
 
 print()
 print("%d check(s) failed" % len(FAILS) if FAILS else "all checks passed")

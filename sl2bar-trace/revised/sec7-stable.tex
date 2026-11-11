@@ -533,9 +533,10 @@ invariant under $\star$ on $\Gb_{\mathrm{reg}}$, it does not vanish there,
 and stable conjugacy as defined above coincides with stable conjugacy in
 the sense of~\cite{Ad,Li11}. The right side of~\eqref{eq:weil-char} is
 locally integrable on $\Gb$, and by the regularity theorem for the
-character of the Weil
-representation~\cite{Mak,Th08} the formula holds for all $f\in
-C_c^\infty(\Gb)$: $\Theta^+_\psi-\Theta^-_\psi$ is a stable character.
+characters of $r^\pm_\psi$ (\cite{Mak} for the Weil representation;
+\cite[\S4]{LiII} for irreducible genuine representations of $p$-adic
+covers; Harish-Chandra's theorem at the real places) the formula holds
+for all $f\in C_c^\infty(\Gb)$: $\Theta^+_\psi-\Theta^-_\psi$ is a stable character.
 \end{proposition}
 
 \begin{proof}
@@ -673,10 +674,18 @@ itself on the set where $D^-=\operatorname{tr}g-2\ne0$:
 Two comparisons. First, $\det(g-1)=-D^-$ and $\gamma_v(1)\gamma_v(-D^-)=
 (-1,D^-)_v\gamma_v(D^-)/\gamma_v(1)$, so~\eqref{eq:weil-char-full} is
 $(-c,D^-)_v\cdot\gamma_v(1)\gamma_v(\det(g-1))|\det(g-1)|_v^{-1/2}$. This is
-the formula of Thomas~\cite[Theorem~1C]{Th08}. That theorem is stated up
+the formula of Thomas~\cite[Theorem~1C]{Th08}, for his additive character
+$x\mapsto\psi(2x)$: in~\cite{Th08} the Weil index $\gamma(a)$ is that of
+$x\mapsto\psi(\frac12ax^2)$ and $n(u)$ acts by $\psi(\frac12ux^2)$. That
+theorem is stated up
 to a sign, so the comparison confirms the absolute value and the Weil
 index and says nothing about the sign $(-c,D^-)_v$, which rests on the
-computation above. Second,
+computation above. (Theorem~2A of~\cite{Th08} gives the character without
+the ambiguity, on a model of the metaplectic group built from the Maslov
+index; we have not carried our section $g\mapsto(g,1)$ over to that
+model. Its proof, in \S12.2 there, shows that $\omega(f)$ is of trace
+class for $f$ smooth of compact support and computes the trace as the
+integral of the kernel over the diagonal, as is done above.) Second,
 $\omega_\psi(-1,1)=\gamma_v(1)^2P$ (Lemma~\ref{lem:weil-rep}), so
 $\Theta^+_\psi(x)-\Theta^-_\psi(x)=\gamma_v(1)^{-2}\,\Theta_{\omega_\psi}
 \bigl((-1,1)x\bigr)$; and indeed~\eqref{eq:weil-char-full} at
@@ -686,8 +695,8 @@ difference in~\cite[Theorem~D]{Th13} stands in the same relation to the
 character of the Weil representation at $-g$; that theorem is written in
 other coordinates on the metaplectic group and with a Weil index of a
 quadratic form, and we have not verified an equality between its factors
-and ours, nor matched the normalizations of the Weil index
-in~\cite{Th08,Th13} with ours. Lemma~\ref{lem:Delta}, on which
+and ours, nor matched the normalization of the Weil index
+in~\cite{Th13} with ours. Lemma~\ref{lem:Delta}, on which
 the rest of the section depends, is algebraic and uses none of this
 (Remark~\ref{rem:sec7-status}).
 
@@ -1045,9 +1054,13 @@ Lemma~\ref{lem:explicit-r} are of this form; so~\ref{N5} holds where
 $\pi_v$ and $\pi_v\kappa_a$ are both covered by that lemma, which is
 always the case at the real and complex places. At the other places
 \ref{N5} is a condition on the choice of the factors, in addition
-to~\ref{N1}--\ref{N4}. We have not proved that it can always be met
-(Remark~\ref{rem:N5}). The statements below say where it is used, and
-Lemma~\ref{lem:variance-gl2}(c) says what happens without it.
+to~\ref{N1}--\ref{N4}. It can always be met:
+Proposition~\normref{} below constructs factors with
+\ref{N1}--\ref{N5} at every finite place, and identifies them with
+$L_v(2\lambda,\chi_v^2)/L_v(2\lambda+1,\chi_v^2)$ up to a constant by
+Szpruch's computation of the local coefficients. The statements below say
+where~\ref{N5} is used, and Lemma~\ref{lem:variance-gl2}(c) says what
+happens for factors without it.
 
 \begin{lemma}\label{lem:variance-gl2}
 Let $f\in C_c^\infty(\GS)_-$, $a\in k_S^\times$, $\delta=\delta_a$, and
@@ -1166,8 +1179,188 @@ w\tilde bw^{-1}\bigr)$, where $\tilde b\,w\tilde bw^{-1}$ lies over $1$, is
 $\pm1$. The argument is local at each $v\in S_k$.
 \end{proof}
 
+The next proposition shows that~\ref{N5} is not a restriction. Let $v$ be
+a finite place, $F=k_v$, $q=q_v$, and for a genuine unitary character
+$\pi$ of $\overline{A(F)}$ let $\rho(\pi,\lambda)$ be the scalar with
+\[
+M_v(\pi^w,-\lambda)\,M_v(\pi,\lambda)=\rho(\pi,\lambda)\cdot1 ;
+\]
+the composition commutes with $I(\pi_\lambda)$, which is irreducible for
+$\lambda$ outside a discrete set (as in the proof of
+Lemma~\ref{lem:explicit-r}(a); for unitary data see~\cite{Mo2}). Up to the normalization of the measure
+$du$, $\rho(\pi,\lambda)^{-1}$ is the Plancherel density of the genuine
+principal series. Let $\omega(\pi)=\pi\bigl((w,1)^2\bigr)$; the element
+$(w,1)^2$ lies over $-1$ and is central, and its square is $1$ or
+$(1,-1)$, so $\omega(\pi)\in\mu_4$.
+
+\begin{propprime}
+Let $v$ be a finite place of $k$, dyadic or not, and let $\psi_v$ be
+arbitrary.
+\begin{enumerate}[label=(\alph*)]
+\item $\rho(\pi,\lambda)$ is a rational function of $z=q^{-\lambda}$, not
+  identically zero, and
+  \[
+  \rho(\pi^w,-\lambda)=\rho(\pi,\lambda),\qquad
+  \rho(\pi_\nu,\lambda)=\rho(\pi,\lambda+\nu)\ \ (\nu\in i\R),\qquad
+  \rho(\pi\kappa_a,\lambda)=\pm\rho(\pi,\lambda)\ \ (a\in F^\times),
+  \]
+  with a sign that does not depend on $\lambda$. For $\lambda\in i\R$ the
+  adjoint of $M_v(\pi,\lambda)$ is $\omega(\pi)M_v(\pi^w,-\lambda)$, so
+  that $\rho(\pi,\lambda)=\overline{\omega(\pi)}\,p(\pi,\lambda)$ with
+  $p(\pi,\lambda)=|\rho(\pi,\lambda)|\ge0$ on $i\R$.
+\item There is a unique rational function $h_\pi$ of $z$, with no zero
+  and no pole in the disc $|z|<1$ and with $h_\pi(0)>0$, such that
+  $|h_\pi(z)|^2=p(\pi,\lambda)$ for $|z|=1$, $z=q^{-\lambda}$. Fix a map
+  $c\colon\mu_4\to\mu_8$ with $c(\zeta)^2=\bar\zeta$ and $c(1)=1$. The
+  factors
+  \[
+  r_v(\pi,\lambda)=c\bigl(\omega(\pi)\bigr)\,h_\pi(q^{-\lambda})
+  \]
+  satisfy~\ref{N1}--\ref{N5}, and $r_v(\pi\kappa_a,\lambda)/r_v(\pi,\lambda)
+  =c(\omega(\pi\kappa_a))/c(\omega(\pi))\in\mu_8$. For $v$, $\psi_v$,
+  $\pi$ as in~\ref{N4} they are the factors of
+  Lemma~\ref{lem:explicit-r}(a).
+\item \emph{(Szpruch~\cite{Sz09,Sz16}.)} Write $\pi=\chi_{\psi,v}\cdot
+  (\chi\circ p)$. Then
+  \[
+  p(\pi,\lambda)=C\,\frac{L_v(2\lambda,\chi^2)\,L_v(-2\lambda,\chi^{-2})}
+  {L_v(1+2\lambda,\chi^2)\,L_v(1-2\lambda,\chi^{-2})}
+  \]
+  with a constant $C=C(\chi,\psi_v)>0$. Hence $h_\pi(q^{-\lambda})=
+  \sqrt C\,L_v(2\lambda,\chi^2)/L_v(2\lambda+1,\chi^2)$, and the factors
+  of~(b) are
+  \[
+  r_v(\pi,\lambda)=c\bigl(\omega(\pi)\bigr)\sqrt{C}\;\frac{L_v(2\lambda,
+  \chi^2)}{L_v(2\lambda+1,\chi^2)}
+  \]
+  at every finite place: they are of the form $C_v(\chi)F_v(\chi^2,
+  \lambda)$, with no exponential factor.
+\end{enumerate}
+\end{propprime}
+
+\begin{proof}
+(a) On each $\overline{K_v}$-type, which is finite-dimensional and
+preserved by the intertwining operators, $M_v(\pi,\lambda)$ is a rational
+function of $z$~\cite{LiII}, and it is invertible for generic $\lambda$;
+so $\rho$ is rational and not zero. If $AB$ is the scalar $\rho$ on a
+finite-dimensional space and $\rho\ne0$, then $BA=\rho$; this is the
+first identity. The second holds because $M_v(\pi_\nu,\lambda)=M_v(\pi,
+\lambda+\nu)$, as in Lemma~\ref{lem:explicit-r}(c). The third is the
+first step of the proof of Lemma~\ref{lem:variance-gl2}(d), which does
+not use normalizing factors: $M((\pi')^w,-\lambda)M(\pi',\lambda)$ is the
+conjugate by $A(\lambda)$ of $\pi(\tilde b)\pi^w(\tilde b)M(\pi^w,
+-\lambda)M(\pi,\lambda)$, and $\pi(\tilde b)\pi^w(\tilde b)=\pm1$. For
+the adjoint, let $\varphi\in V(\pi)$, $\varphi'\in V(\pi^w)$ and
+$\tilde w=(w,1)$. For $\mathrm{Re}\,\lambda>0$ the usual unfolding of the
+pairing $\langle\Phi,\Phi'\rangle=\int_{\overline{K_v}}\Phi\overline{\Phi'}$
+between $V(\pi^w)_{-\lambda}$ and $V(\pi^w)_{\bar\lambda}$ gives
+\[
+\bigl\langle M_v(\pi,\lambda)\varphi,\varphi'\bigr\rangle=
+\int_{\overline{A(F)}\backslash\Gb}\varphi_\lambda(\tilde w^{-1}x)\,
+\overline{\varphi'_{\bar\lambda}(x)}\,dx,
+\]
+the integrand being left invariant under $\overline{A(F)}$. Since
+$\tilde w^2$ is central and lies in $\overline{A(F)}$ with $H_v(\tilde
+w^2)=0$, $\varphi_\lambda(\tilde wx)=\omega(\pi)\varphi_\lambda(\tilde
+w^{-1}x)$; so the substitution $x\mapsto\tilde wx$ turns the integral into
+$\omega(\pi)^{-1}\int\varphi_\lambda(x)\overline{\varphi'_{\bar\lambda}
+(\tilde w^{-1}x)}\,dx=\omega(\pi)^{-1}\langle\varphi,M_v(\pi^w,\bar\lambda)
+\varphi'\rangle$. By continuation, $M_v(\pi,\lambda)^*=\omega(\pi)M_v
+(\pi^w,-\lambda)$ on $i\R$ (this is~\cite[\S1]{A11}, with the scalar by
+which $(w,1)^2$ acts; compare the proof of
+Lemma~\ref{lem:explicit-r}(a), where $\omega=1$). Then
+$M^*M=\omega(\pi)\rho(\pi,\lambda)$ is a nonnegative scalar.
+
+(b) \emph{The function $h_\pi$.} Let $P(z)$ be the rational function
+with $P(q^{-\lambda})=p(\pi,\lambda)$; it is real and nonnegative on
+$|z|=1$ away from its poles. Hence $P(z)=\overline{P(1/\bar z)}$: the
+zeros and poles of $P$ outside the circle come in pairs $\alpha$,
+$1/\bar\alpha$ of equal order $m_\alpha$, those on the circle have even
+order $m_\alpha$, and the orders at $0$ and $\infty$ are equal. Put
+\[
+h(z)=\prod_{1<|\alpha|<\infty}(1-z/\alpha)^{m_\alpha}\prod_{|\alpha|=1}
+(1-z/\alpha)^{m_\alpha/2}.
+\]
+Then $P(z)/\bigl(h(z)\overline{h(1/\bar z)}\bigr)$ has no zero or pole in
+$\C^\times$, so it is $Cz^j$, and it is positive on the circle, so $j=0$
+and $C>0$; $h_\pi=\sqrt C\,h$. If $h_1$ is a second such function,
+$h_1/h_\pi$ has no zero or pole in $|z|<1$ and absolute value $1$ on the
+circle, hence by reflection no zero or pole at all; it is a positive
+constant of absolute value $1$.
+
+\emph{Symmetries.} By uniqueness and~(a): $h_{\pi_\nu}(z)=h_\pi(q^{-\nu}
+z)$; $h_{\pi\kappa_a}=h_\pi$; and, since $p(\pi^w,\lambda)=p(\pi,
+-\lambda)$, $h_{\pi^w}(z)=\overline{h_\pi(\bar z)}$. The last identity
+gives $h_{\pi^w}(z^{-1})=\overline{h_\pi(z)}$ on the circle, hence
+\[
+h_{\pi^w}(z^{-1})\,h_\pi(z)=P(z)
+\]
+on the circle and therefore identically. Also $\omega(\pi^w)=\omega(\pi_\nu)
+=\omega(\pi)$, because $(w,1)^2$ is central and $H_v$ vanishes on it.
+
+\emph{The conditions.} \ref{N1} holds for $M_v$. For~\ref{N2},
+\[
+r_v(\pi^w,-\lambda)\,r_v(\pi,\lambda)=c(\omega(\pi))^2\,h_{\pi^w}(z^{-1})
+h_\pi(z)=\overline{\omega(\pi)}\,p(\pi,\lambda)=\rho(\pi,\lambda),
+\]
+so $R_v(\pi^w,-\lambda)R_v(\pi,\lambda)=1$; and for $\lambda\in i\R$,
+$R_v^*R_v=M_v^*M_v/|h_\pi|^2=1$ wherever $R_v$ is defined, so $R_v$ is
+bounded near every point of $i\R$ and, being rational on each
+$\overline{K_v}$-type, has no pole there. \ref{N3} is the rationality of
+$M_v$ and of $h_\pi$, and $r_v(\pi_\nu,\lambda)=r_v(\pi,\lambda+\nu)$ by
+the symmetries. \ref{N5} holds because $h_{\pi\kappa_a}=h_\pi$. In the
+situation of~\ref{N4}, $\omega(\pi)=1$ and, by Lemma~\ref{lem:explicit-r}(a)
+and its proof, $p(\pi,\lambda)=|g|^2$ on $i\R$ for $g=L_v(2\lambda,
+\chi^2)/L_v(2\lambda+1,\chi^2)=(1-q^{-1}\chi^2(\varpi)z^2)/(1-\chi^2(\varpi)
+z^2)$, which has its zeros on $|z|=q^{1/2}$, its poles on $|z|=1$ and the
+value $1$ at $z=0$; so $h_\pi=g$, and~\ref{N4} holds.
+
+(c) By~\cite{Sz09} (Theorem~8.1 of~\cite{Sz10}) the local coefficient of $I(\pi_\lambda)$ is
+$k_\chi\,q^{d_\chi\lambda}$ times a quotient of $L$-factors of $\chi$ and
+of $\chi^2$, in every residue characteristic, and the product of the
+local coefficients of $\pi_\lambda$ and $\pi^w_{-\lambda}$, which is
+$\rho(\pi,\lambda)^{-1}$ up to a nonzero constant, is a constant times
+$L_v(1+2\lambda,\chi^2)L_v(1-2\lambda,\chi^{-2})/L_v(2\lambda,\chi^2)
+L_v(-2\lambda,\chi^{-2})$; the factors involving $\chi$ and the
+exponential factors cancel. In~\cite[(5.8)]{Sz16} the result is stated
+as a formula for the Plancherel measure of the double cover, with
+the constant $q^{e(\psi_2)-e(\chi^2)}$ for the measure self-dual with
+respect to $\psi$. The quotient $g$ of $L$-factors satisfies
+$\overline{g(\lambda)}=L_v(-2\lambda,\chi^{-2})/L_v(1-2\lambda,\chi^{-2})$
+on $i\R$, it has no zero or pole in $|z|<1$, and $g=1$ at $z=0$; so
+$h_\pi=\sqrt C\,g$ by the uniqueness in~(b).
+\end{proof}
+
+The proof of~(a) and~(b) uses nothing about the place beyond the
+rationality of $M_v$; so the existence of factors with
+\ref{N1}--\ref{N5} does not rest on~(c). Part~(c) rests on the
+computations of Szpruch, which we have not repeated (see
+Remark~\ref{rem:N5} for what was read and what was checked numerically).
+At a real place the factors of Lemma~\ref{lem:explicit-r}(b) have the
+same shape: there $\omega(\pi)=e^{-i\pi m_0}$, the adjoint of
+$M_v(\pi,\lambda)$ on $i\R$ is $\omega(\pi)M_v(\pi^w,-\lambda)$
+by~\eqref{eq:real-M}, and $r_v=\sqrt2\,e^{i\pi m_0/2}L_v(2\lambda)/
+L_v(2\lambda+1)$ with $(e^{i\pi m_0/2})^2=\overline{\omega(\pi)}$.
+\emph{From here on the normalizing factors at the finite places are those
+of Proposition~\normref{}.} With~(c), the global factor
+of~\eqref{eq:global-m} is then
+\[
+m(\mu,\lambda)=c_\mu\,\frac{\Lambda(2\lambda,\chi^2)}{\Lambda(2\lambda+1,
+\chi^2)}
+\]
+with a nonzero constant $c_\mu$ and the completed Hecke $L$-function
+$\Lambda(s,\chi^2)=\prod_vL_v(s,\chi_v^2)$, so that $m'/m$ is the
+logarithmic derivative of $\Lambda(2\lambda,\chi^2)/\Lambda(2\lambda+1,
+\chi^2)$ and the set $S_{\mathrm{bad}}(\mu)$ of
+Section~\ref{sec:normalized} plays no role. (This is consistent with
+$m(\mu^w,-\lambda)m(\mu,\lambda)=1$: by the functional equation the
+product is $c_\mu c_{\mu^w}\varepsilon(2\lambda,\chi^2)\varepsilon(-2
+\lambda,\chi^{-2})$, which does not depend on $\lambda$.)
+
 \begin{proposition}\label{prop:IA-gl2}
-Assume~\ref{N5}. Let $f\in C_c^\infty(\GS)_-$ and $h\in G_1(k_S)$.
+Let the normalizing factors satisfy~\ref{N5}, as those of
+Proposition~\normref{} do. Let $f\in C_c^\infty(\GS)_-$ and $h\in
+G_1(k_S)$.
 \begin{enumerate}[label=(\alph*)]
 \item $I_A(x,f^h)=I_A(\mathrm{Ad}(h)x,f)$ for $x\in\AS$ regular or
   central, whenever $\mathrm{Ad}(h)x\in\AS$.
@@ -1214,38 +1407,52 @@ with a constant $C$; the factor $|a|_v^{-\lambda}$ removes the scalar
 $|a|_v^{\lambda}$ contained in $A(-\lambda)A(\lambda)^{-1}$. It is natural:
 the inducing data $\pi_v$ and $\pi_v\kappa_a$ have the same $\chi_v^2$,
 hence the same parameter on the side of $SO(3)$
-(Section~\ref{sec:stable-conj}, \emph{The dual group}), and factors defined
-through that parameter, as in Lemma~\ref{lem:explicit-r}, satisfy it.
-Lemma~\ref{lem:variance-gl2}(d) removes one possible conflict
-with~\ref{N2}; it is a necessary compatibility and not an existence
-statement. We have not proved that factors with
-\ref{N1}--\ref{N5} exist at the places where no explicit factor is
-available (the places of the sets $S_{\mathrm{bad}}(\mu)$ of
-Section~\ref{sec:normalized}), nor checked
-whether the factors of~\cite{LiII} have property~\ref{N5}. One cannot
-simply transport $r_v$ along the orbits of $k_v^\times/k_v^{\times2}$ on
-the genuine characters: when $\pi_v^w=\pi_v\kappa_{a_0}$ with $a_0$ not a
-square, that is, when $\chi_v^2=(a_0,\cdot)_v\ne1$, the relation~\ref{N2}
-between $r_v(\pi_v,\cdot)$ and $r_v(\pi_v^w,\cdot)$ constrains the factor
-of $\pi_v$ itself. So in this section \ref{N5} is a hypothesis at the
-places where the factors are not explicit. What would remove it is the
-following statement, which we formulate as a problem: \emph{for every
-local field $F$ of characteristic $0$, including the dyadic ones, and
-every $\psi$, there are functions $F_v(\chi^2,\lambda)$ and constants
-$C_v(\chi)$ such that the factors $r_v(\chi_{\psi}\chi,\lambda)=C_v(\chi)
-F_v(\chi^2,\lambda)$ satisfy \ref{N1}--\ref{N4}.} The literature we know
-does not contain it. The local coefficients of~\cite{Sz09} are computed in
-all residue characteristics, but we found no statement there that gives
-\ref{N1}--\ref{N4} for factors of this form. The Plancherel measures
-of~\cite{GS16} are computed under the assumption that the residue
-characteristic is prime to the degree of the cover, which excludes the
-dyadic places for the double cover. The paper~\cite{Sz16} drops that
-assumption when $4\nmid n$; we have not worked out what it gives here.
-Without~\ref{N5}, every formula
-below that is stated under~\ref{N5} holds with the additional term
-coming from $d_a$ in Lemma~\ref{lem:variance-gl2}(c). The distributions
-$I_A(x,f)$ depend on the choice of the factors in any case
-(Remark~\ref{rem:bad-places}).
+(Section~\ref{sec:stable-conj}, \emph{The dual group}). Earlier drafts of
+this section had~\ref{N5} as a hypothesis at the dyadic and ramified
+places and formulated its existence as a problem. Proposition~\normref{}
+settles it, in two steps of different standing.
+
+\emph{Existence} (parts~(a),~(b)) is proved here. The point is that the
+scalar $\rho(\pi,\lambda)$ is the same for $\pi$ and $\pi\kappa_a$ up to a
+sign (Lemma~\ref{lem:variance-gl2}(d)), and that a normalizing factor can
+be read off from $\rho$ alone, as the factor of $|\rho|$ without zeros or
+poles in $\mathrm{Re}\,\lambda>0$. One cannot instead transport an
+arbitrary $r_v$ along the orbits of $k_v^\times/k_v^{\times2}$ on the
+genuine characters: when $\pi_v^w=\pi_v\kappa_{a_0}$ with $a_0$ not a
+square, that is, when $\chi_v^2=(a_0,\cdot)_v\ne1$, the
+relation~\ref{N2} constrains the factor of $\pi_v$ itself. The canonical
+choice meets this constraint because $h_{\pi^w}(z)=\overline{h_\pi(\bar
+z)}$. What is quoted in the proof is the rationality of $M_v$ on the
+$\overline{K_v}$-types and generic irreducibility. We have not checked
+whether the factors of~\cite{LiII} have property~\ref{N5}; nothing here
+depends on it.
+
+\emph{The explicit form} (part~(c)) is quoted. Sources, and how they were
+read (November 2026, in the arXiv versions; the journal version
+of~\cite{Sz09} was not opened): the local coefficient is Theorem~8.1
+of~\cite{Sz10}, which is the main theorem of~\cite{Sz09} and includes the
+$2$-adic fields; the product formula is used in this form in the proof of
+Theorem~10.1 of~\cite{Sz10}; and~\cite[(5.8)]{Sz16} states the Plancherel
+measure for $n=2$ with its constant, deriving it from~\cite{Sz09}. (The
+general theorem of~\cite{Sz16} for covers of degree $n\not\equiv0\bmod4$
+is proved there for odd $n$; we use only the case $n=2$.)
+The Plancherel measures of~\cite{GS16} are computed for residue
+characteristic prime to $n$ and are not needed. As a check that does
+not depend on our reading, the script evaluates the Tate-type integrals
+$\int_{F^\times}\gamma_\psi(u)^{-1}\chi(u)\psi(u)|u|^s\,d^\times u$, which
+by~\cite{Sz09} are the inverse local coefficients, for $F=\Q_2$ and all
+characters $\chi$ of conductor dividing $32$ modulo unramified twists, and
+for $F=\Q_3,\Q_5$ and all tamely ramified $\chi$: the product of the
+integrals for $(\chi,s)$ and $(\chi^{-1},-s)$ is a constant times
+$L(2s,\chi^2)L(-2s,\chi^{-2})/L(1+2s,\chi^2)L(1-2s,\chi^{-2})$ in every
+case. The relation between these integrals and $\rho$ is Szpruch's and
+was not rederived.
+
+For factors without~\ref{N5}, every formula below that is stated
+under~\ref{N5} holds with the additional term coming from $d_a$ in
+Lemma~\ref{lem:variance-gl2}(c). The distributions $I_A(x,f)$ depend on
+the choice of the factors in any case (Remark~\ref{rem:bad-places}); with
+the factors of Proposition~\normref{} they are canonical.
 \end{remarkrev}
 
 So $I_A(x,\cdot)$ transforms under $G_1(k_S)$ by the character
@@ -1672,34 +1879,68 @@ is the packet attached to the character $\kappa_b$ of $PGL(2)$. One
 difference should be noted. For the theta functions the stable
 combination is the difference $\operatorname{tr}r^+-\operatorname{tr}r^-$
 (Proposition~\ref{prop:weil-char}). For the packets of cuspidal $\sigma$
-one expects it to be the sum $\operatorname{tr}\pi^+_v+\operatorname{tr}
-\pi^-_v$, with the difference unstable. We do not know a reference that
-states this for all packets in terms of the action $\star$ used here, and
-we do not prove it; it is the local character identity of the endoscopic
-transfer~\cite{Li19}. Two cases can be checked directly. At a finite
-place, the packet of the Steinberg representation is
-$\{\mathrm{sp},r^-_{\psi'}\}$~\cite[\S5]{GS12},
-where $\mathrm{sp}$ is the other constituent of the principal series
-that has $r^+_{\psi'}$ as a quotient (it is the lift of the trivial
-representation of the anisotropic $SO(3)$, and $r^-_{\psi'}$ is the lift
-of the Steinberg representation); the sum of their characters is the
-character of that principal series minus $\Theta^+_{\psi'}-\Theta^-_{\psi'}$,
-a difference of two stable characters
+it is the sum $\operatorname{tr}\pi^+_v+\operatorname{tr}\pi^-_v$, and the
+difference is unstable. The reason is the character identity of the
+endoscopic transfer from $SO(3)$: on the regular set,
+\begin{equation}\label{eq:packet-lift}
+\Theta_{\pi^+_v}(x)+\Theta_{\pi^-_v}(x)=\bigl(\Theta^+_{\psi'}(x)-
+\Theta^-_{\psi'}(x)\bigr)\cdot\Theta_{\sigma_v}\bigl(t(x)\bigr),
+\end{equation}
+where $t(x)$ is the conjugacy class in $PGL(2,k_v)=SO(2,1)$ whose image
+in $SO(3)$ has the eigenvalues $\lambda,1,\lambda^{-1}$ if $p(x)$ has the
+eigenvalues $\lambda,\lambda^{-1}$, and the left side is
+$\Theta_{\pi^+_v}$ alone when the packet has one element. For $k_v=\R$
+this is the lifting of Adams~\cite{Ad}, whose last section treats the
+pair $(SO(3),\widetilde{SL}(2,\R))$; for $k_v$ non-archimedean it is the
+theorem of Schultz~\cite[Theorem~5.35]{Sch} (see also~\cite{How}); and
+for tempered parameters of $Mp(2n)$ over any local field of characteristic
+$0$ it is the case $s=1$ of the endoscopic character identities of
+Luo~\cite{Luo}, stated there through the transfer of~\cite{Li11} and for
+the packets of~\cite{GS12}. \emph{Given~\eqref{eq:packet-lift}, the sum
+is stable in the sense of this section}: the first factor on the right is
+invariant under $\star$ by Proposition~\ref{prop:weil-char}; the second
+depends only on the eigenvalues of $p(x)$, and $p(h\star x)=hp(x)h^{-1}$;
+and the characters are locally integrable functions~\cite[\S4]{LiII}, so
+that the distribution $\operatorname{tr}\pi^+_v+\operatorname{tr}\pi^-_v$
+is invariant under $f\mapsto f^{[h]}$. We quote~\eqref{eq:packet-lift}
+and do not prove it; we read~\cite{Sch} and~\cite{Luo} in their
+statements only, and did not match their normalizations of the transfer
+factor and of the correspondence $t$ with ours beyond
+Proposition~\ref{prop:weil-char}. (In~\cite{Sch} the identification of
+the packets with Waldspurger's is stated without proof;
+in~\cite{Luo} the packets are those of the theta correspondence by
+definition.) The case $s=-1$ of~\cite{Luo} gives the difference
+$\Theta_{\pi^+_v}-\Theta_{\pi^-_v}$, up to the sign $\varepsilon(\frac12,
+\sigma_v,\psi')$, as the transfer for the other endoscopic datum, whose
+transfer factor is built from $\Theta^+_{\psi'}+\Theta^-_{\psi'}$.
+
+Two cases can be checked directly, without~\eqref{eq:packet-lift}. At a
+finite place, the packet of the Steinberg representation is
+$\{\mathrm{sp},r^-_{\psi'}\}$ (\cite[\S5]{GS12}, the example after
+Theorem~5.2 there), where $\mathrm{sp}$ is the other constituent of the
+principal series that has $r^+_{\psi'}$ as a quotient (it is the lift of
+the trivial representation of the anisotropic $SO(3)$, and $r^-_{\psi'}$
+is the lift of the Steinberg representation); the sum of their characters
+is the character of that principal series minus
+$\Theta^+_{\psi'}-\Theta^-_{\psi'}$, a difference of two stable characters
 (Propositions~\ref{prop:IA-gl2}(c) and~\ref{prop:weil-char}). At a real
 place a packet consists of the discrete series representations with
 weights $m,m+2,\dots$ and $-m,-m-2,\dots$, $m\in\frac12+\Z$, $m>1$
-(see~\cite[\S15]{Ad} for the stable discrete series characters of
-$Mp(2,\R)$ and the central characters of the two members); on
+(see~\cite{Ad} for the stable discrete series characters of
+$Mp(2,\R)$); on
 $\tilde k_\theta$ the sum of their characters is $-\sin((m-1)\theta)/
 \sin\theta$, which is even in $\theta$, and the difference is
 $i\cos((m-1)\theta)/\sin\theta$, which is odd, while $\tilde k_\theta$ and
 $\tilde k_{-\theta}$ are stably conjugate (Example~\ref{ex:Delta-real}).
-In both kinds of packet the two members have opposite central characters,
-so the unstable combination for $f$ is, up to a constant, the stable one
-for $f_-$; this is how the pattern $S(f)+S(f_-)$ arises on the spectral
-side. We do not derive any of this from the trace formula. The
-multiplicity statements are quoted from~\cite{Wa80,Wa91} as recounted
-in~\cite{GS12}; we have not checked them against the original papers.
+In both kinds of packet the two members have opposite central characters
+(\cite[\S5]{GS12} in general), so the unstable combination for $f$ is, up
+to a constant, the stable one for $f_-$; this is how the pattern
+$S(f)+S(f_-)$ arises on the spectral side. We do not derive any of this
+from the trace formula. The local statements above are Theorems~5.1--5.3
+of~\cite{GS12}, where they are attributed to Waldspurger; the global
+multiplicity statement is the case $n=1$ of~\cite[Theorem~1.4]{GI}. We
+have checked these two sources, and not the original
+papers~\cite{Wa80,Wa91}, which we could not obtain.
 
 By Proposition~\ref{prop:IA-gl2}(c) the terms of
 Corollary~\ref{cor:itf-final} that come from the continuous spectrum,
@@ -1721,11 +1962,15 @@ proved without it. It is used for the equivariance of the normalized
 weighted distributions $I_A$ (Proposition~\ref{prop:IA-gl2}(a),~(b)), and
 through it in the statement of part~(c) about $I_A$ and in the invariance
 of the individual $I_{\mathcal O}$ and $I_\chi$ under $G_1(k)$. Parts~(a)
-and~(b) as displayed do not use it.
+and~(b) as displayed do not use it. By Proposition~\normref{} the
+condition is met by a canonical choice of the factors, so part~(c) is not
+conditional; it is a statement about the distributions $I_A$ defined with
+factors of that kind.
 
 \begin{theorem}\label{thm:stabler}
-Let $S$, $f_S$ and $f=f_S\otimes e^S$ be as above. In part~(c)
-assume~\ref{N5}.
+Let $S$, $f_S$ and $f=f_S\otimes e^S$ be as above. In part~(c) let the
+normalizing factors satisfy~\ref{N5} (for instance those of
+Proposition~\normref{}).
 \begin{enumerate}[label=(\alph*)]
 \item (Geometric side.)
   \begin{multline*}
@@ -1820,27 +2065,42 @@ Lemma~\ref{lem:kappa-orbital}; Theorem~\ref{thm:elliptic-stable}, with
 the Hasse norm theorem and the index of the global norm group
 from~\cite{CF}; Lemma~\ref{lem:variance-gl2};
 Proposition~\ref{prop:IA-gl2}, parts~(a) and~(b) under~\ref{N5};
+Proposition~\normref{}(a),~(b), the existence of normalizing factors
+with~\ref{N1}--\ref{N5} (given the rationality of the local intertwining
+operators~\cite{LiII});
 Proposition~\ref{prop:unipotent}; Proposition~\ref{prop:theta-packet}(b),
 (c) given~(a); and Proposition~\ref{prop:weil-char} on the regular set,
 with Lemma~\shellref. Taken from the literature: at the
 archimedean places, the standard fact that an operator with a Schwartz
 kernel is of trace class with trace the integral over the diagonal; and
 at all places, that the character of the Weil representation is a locally
-integrable function on the whole group~\cite{Mak,Th08}, which is used to call $\Theta^+_\psi-\Theta^-_\psi$ a
+integrable function on the whole group~\cite{Mak,LiII}, which is used to call $\Theta^+_\psi-\Theta^-_\psi$ a
 stable character and in the second formula for $\Theta^{\mathrm{st}}_b$ in
 Section~\ref{sec:spectral-gl2}. Formula~\eqref{eq:weil-char-full} agrees
 with~\cite[Theorem~1C]{Th08} up to the sign left open there, so its sign
 rests on our computation alone; we have not compared it with the formulas
-of~\cite{Mak,Th13} in detail. Also from the
-literature: the convergence and square-integrability of theta functions
-in Proposition~\ref{prop:theta-packet}(a), Tate's local zeta
-integrals~\cite{Ta}, and the statements about Waldspurger's packets after
-Proposition~\ref{prop:theta-packet}, which are not used.
+of~\cite{Mak,Th13} or with~\cite[Theorem~2A]{Th08} in detail. Also from
+the literature: the explicit form of the normalizing factors at the
+dyadic and ramified places, Proposition~\normref{}(c), which is Szpruch's
+computation~\cite{Sz09,Sz16}; the convergence and square-integrability of
+theta functions in Proposition~\ref{prop:theta-packet}(a); Tate's local
+zeta integrals~\cite{Ta}; and the statements about Waldspurger's packets
+after Proposition~\ref{prop:theta-packet}, including the character
+identity~\eqref{eq:packet-lift} of~\cite{Ad,Sch,Luo}, which are not
+used in any proof. Which of the cited statements were checked against
+their sources, and which were not, is said where they are cited: checked
+(in the arXiv or publisher versions, at the level of statements)
+are~\cite[\S5]{GS12}, \cite[Theorem~1.4]{GI}, \cite[Theorem~1C, Theorem~2A,
+\S12.2]{Th08}, \cite{Sz10,Sz16}, \cite{Sch}, \cite{Luo}; not opened
+are~\cite{Wa80,Wa91}, the journal version of~\cite{Sz09}, and~\cite{Ad}
+beyond its review and the account of it in~\cite{Sch}.
 
-\emph{What is not done.} The condition~\ref{N5} is a hypothesis at the
-places where the normalizing factors are not explicit: we have not shown
-that factors satisfying it exist there, nor that those of~\cite{LiII} do
-(Remark~\ref{rem:N5}). The statements in the text about the relation
+\emph{What is not done.} The condition~\ref{N5} is no longer a
+hypothesis (Proposition~\normref{}); we have not determined whether the
+factors of~\cite{LiII} satisfy it, nor rederived Szpruch's formula for
+the local coefficients at the dyadic places (Remark~\ref{rem:N5}). The
+character identity~\eqref{eq:packet-lift} is quoted, not proved. The
+statements in the text about the relation
 with the endoscopy of~\cite{Li11,Li15,Li21} are comparisons of shape: we
 have not identified $J^{\mathrm{st}}_G$ with Li's stable orbital integral
 beyond Proposition~\ref{prop:weil-char}, nor $\Delta_\psi$ with his
@@ -1871,7 +2131,11 @@ Numerically: Example~\ref{ex:Delta-finite} for $q=3,5,7,11$;
 Proposition~\ref{prop:unipotent}(a) for $k=\Q$, $S=\{\infty,2\}$ at
 $s=3$, the local identity~\eqref{eq:squares} at $2$ and $3$, and the
 constants of Example~\ref{ex:unip-coeff}, including the invariance of the
-coefficients under $\OO_S^\times$; Lemma~\shellref at $2$, $3$ and $5$; the two facts used in the proof of
+coefficients under $\OO_S^\times$; Lemma~\shellref at $2$, $3$ and $5$;
+for Proposition~\normref{}, the form of the product of the Tate-type
+integrals of Remark~\ref{rem:N5} at $2$, $3$ and $5$, and at the real
+place the adjoint relation and the identity $c^2=\bar\omega$ for the
+factors of Lemma~\ref{lem:explicit-r}(b); the two facts used in the proof of
 Proposition~\ref{prop:theta-packet}(b); and the parity in $\theta$ of the
 sum and the difference of the two discrete series characters in the
 paragraph after that proposition.

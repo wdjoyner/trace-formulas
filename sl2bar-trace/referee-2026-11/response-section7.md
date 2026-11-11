@@ -79,3 +79,12 @@ Two remarks on sources.
 - **Open:** a reference, or a proof, for the stable-sum statement for all cuspidal packets (G4). It is not used in any proof.
 - **Not verified by us:** the pinpoint citations to [GS12] and [Ad] taken from the report; the content of [Th08, §12.2]; the normalizations of [Th08], [Th13] against ours; the original papers [Wa80], [Wa91].
 - The script `checks/sec7_n2_check.py` has 35 checks (33 before): Lemma 7.5′ at 2, 3, 5 with the two dyadic values, and Example 7.A(e); the check of Example 7.E now includes the table.
+
+## Addendum (2026-11-11, later the same day)
+
+The three open or unverified points of §7 above were taken up in a further pass (`revision_log.md`, last section). In short:
+
+- **(N5), G3.** Closed. New Proposition 7.8′ constructs normalizing factors with (N1)–(N5) at every finite place from the scalar M(π^w,−λ)M(π,λ); this part is proved in the paper. By Szpruch's local coefficients ([Sz09], read as Chapter 8 of his thesis; [Sz16, (5.8)]) these factors are a constant times L(2λ,χ²)/L(2λ+1,χ²) also at the dyadic and ramified places; this part is quoted, and checked numerically at 2, 3, 5.
+- **The stable-sum statement, G4.** A reference was found: the character identity of Adams (ℝ), Schultz (p-adic SL̃(2)) and Luo (tempered packets of Mp(2n)). Given that identity the stability of the sum follows from Proposition 7.5; the text now says so and marks the identity as quoted.
+- **Pinpoint citations.** [GS12, §5] and the content of [Th08, §12.2] were opened and confirm the referee's statements. [Ad, §15], [Wa80], [Wa91] could still not be opened; the pinpoint to [Ad] was removed.
+

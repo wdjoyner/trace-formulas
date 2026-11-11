@@ -28,6 +28,9 @@
 \newcommand{\shellref}{\ref{prop:weil-char}$'$}
 \theoremstyle{plain}
 \newtheorem*{lemmaprime}{Lemma \shellref}
+% A proposition added after Lemma 7.8 without renumbering what follows.
+\newcommand{\normref}{\ref{lem:variance-gl2}$'$}
+\newtheorem*{propprime}{Proposition \normref}
 \renewcommand{\theremarkrev}{2026.\arabic{remarkrev}}
 
 \newcommand{\Q}{\mathbb{Q}}
@@ -76,8 +79,9 @@ then take the form $S(f)+S(f_-)$, with $S$ a stable distribution and
 $f_-$ the translate of $f$ by the central element $-1$; the theta
 functions contribute to the spectral side in the same form. The
 stabilization of the remaining terms, which is due to Li, is not
-reproduced. One ingredient is defined but not evaluated: the local
-normalizing factors at the dyadic and ramified places. This is a
+reproduced. One ingredient is not computed here but taken from the work of
+Szpruch: the explicit form of the local normalizing factors at the dyadic
+and ramified places. This is a
 revision, restricted to the double cover, of notes of the first author
 from 1995; the explicit formulas are checked by accompanying scripts.
 \end{abstract}
@@ -250,6 +254,8 @@ I. Local character relations'', J. Inst. Math. Jussieu \textbf{18} (2019),
 metaplectic groups'', preprint, arXiv:2109.06581.
 \bibitem[Li24]{Li24} W.-W. Li, ``Arthur packets for metaplectic groups'',
 preprint, arXiv:2410.13606.
+\bibitem[Luo]{Luo} C. Luo, ``Endoscopic character identities for
+metaplectic groups'', J. Reine Angew. Math. \textbf{768} (2020), 1--37.
 \bibitem[Ma57]{Ma57} G. W. Mackey, ``Les ensembles bor\'eliens et les
 extensions des groupes'', J. Math. Pures Appl. (9) \textbf{36} (1957),
 171--178.
@@ -309,6 +315,9 @@ forms of half integral weight'', Nagoya Math. J. \textbf{58} (1975),
 \bibitem[Sz09]{Sz09} D. Szpruch, ``Computation of the local coefficients for
 principal series representations of the metaplectic double cover of
 $SL_2(F)$'', J. Number Theory \textbf{129} (2009), 2180--2213.
+\bibitem[Sz10]{Sz10} D. Szpruch, \emph{The Langlands--Shahidi method for
+the metaplectic group and applications}, thesis, Tel Aviv University,
+2009, arXiv:1004.3516.
 \bibitem[Sz16]{Sz16} D. Szpruch, ``On Shahidi local coefficients matrix'',
 preprint, arXiv:1609.08122.
 \bibitem[Ta]{Ta} J. Tate, ``Fourier analysis in number fields and Hecke's

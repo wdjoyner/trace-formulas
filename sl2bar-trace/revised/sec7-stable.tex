@@ -61,7 +61,7 @@ is the following.
 \item Stable conjugacy on the cover is $GL(2)$-conjugacy \emph{twisted}
   by that sign: $h\star x=(\det h,\det(1+x))_v\,\mathrm{Ad}(h)x$. Its
   classes are the level sets, over the stable classes of $SL(2,F)$, of an
-  explicit genuine function $\Delta_\psi$ with values in $\mu_8$
+  explicit genuine function $\Delta_\psi$ with values in $\mu_4$
   (Lemma~\ref{lem:Delta}). This function is $|\det(1+x)|^{1/2}$ times the
   character of the difference $r^+_\psi-r^-_\psi$ of the two halves of
   the Weil representation (Proposition~\ref{prop:weil-char}), so the
@@ -119,7 +119,8 @@ $N E^\times=F^\times$ and $\kappa_E=1$.
 \subsection{Conjugation by \texorpdfstring{$GL(2)$}{GL(2)}}\label{sec:Ad}
 
 Conjugation by $h\in G_1(F)$ is an automorphism of $SL(2,F)$, and it
-lifts to the cover in exactly one way. This subsection makes the lift
+lifts to the cover in exactly one way (for the metaplectic cover of
+$Sp(V)$ and the similitude group in general, see~\cite[\S3]{Th13}). This subsection makes the lift
 explicit and computes it on the subgroups that matter: $N$, $A$, the
 center, the maximal compact subgroup, the tori, and globally on $G(\Q)$.
 
@@ -355,7 +356,7 @@ Let $\Gb_{\mathrm{reg}}$ be the set of regular semisimple elements of
 $\Gb$.
 \begin{enumerate}[label=(\alph*)]
 \item There is exactly one function $\Delta_\psi\colon
-  \Gb_{\mathrm{reg}}\to\mu_8$ that is invariant under conjugation by
+  \Gb_{\mathrm{reg}}\to\mu_4$ that is invariant under conjugation by
   $\Gb$ and satisfies
   \begin{equation}\label{eq:Delta}
   \Delta_\psi(g,\zeta)=\zeta\,\bigl(c,D^+(g)\bigr)_v\,
@@ -416,7 +417,7 @@ $0$: otherwise $(w,1)x'(w,1)^{-1}$, hence $yxy^{-1}$, would be upper
 triangular. So the three steps apply in turn. Finally, every regular
 semisimple element is conjugate to an element of $X$ (if $c=0\ne b$,
 conjugate by $w$; if $c=b=0$, first by $n(1)$), which gives existence
-and uniqueness of $\Delta_\psi$. The values lie in $\mu_8$, and
+and uniqueness of $\Delta_\psi$. The values lie in $\mu_4$, because $(\gamma_v(D)/\gamma_v(1))^2=(D,-1)_v$ by Lemma~\ref{lem:weil}(a), and
 genuineness is clear.
 
 (b) For $h\in SL(2,F)$ this is~(a). For $h=\delta_a$ and $x=(g,\zeta)\in
@@ -495,45 +496,104 @@ by Kubota's cocycle, with no further constant.
 
 \begin{proposition}\label{prop:weil-char}
 Let $\Theta^\pm_{\psi}$ be the characters of $r^\pm_{\psi}$. On
-$\Gb_{\mathrm{reg}}$,
+$\Gb_{\mathrm{reg}}$ the distribution $\Theta^+_\psi-\Theta^-_\psi$ is the
+function
 \begin{equation}\label{eq:weil-char}
-\Theta^+_\psi(x)-\Theta^-_\psi(x)=\frac{\Delta_\psi(x)}{|D^+(x)|_v^{1/2}} .
+\Theta^+_\psi(x)-\Theta^-_\psi(x)=\frac{\Delta_\psi(x)}{|D^+(x)|_v^{1/2}} ;
 \end{equation}
-Hence $\Theta^+_\psi-\Theta^-_\psi$ is a stable character, it does not
-vanish on $\Gb_{\mathrm{reg}}$, and stable conjugacy as defined above
-coincides with stable conjugacy in the sense of~\cite{Ad,Li11}.
+that is, $\operatorname{tr}r^+_\psi(f)-\operatorname{tr}r^-_\psi(f)=\int
+f(x)\Delta_\psi(x)|D^+(x)|_v^{-1/2}dx$ for $f\in C_c^\infty(\Gb)$ with
+support in $\Gb_{\mathrm{reg}}$. Hence $\Theta^+_\psi-\Theta^-_\psi$ is
+invariant under $\star$ on $\Gb_{\mathrm{reg}}$, it does not vanish there,
+and stable conjugacy as defined above coincides with stable conjugacy in
+the sense of~\cite{Ad,Li11}. The right side of~\eqref{eq:weil-char} is
+locally integrable on $\Gb$, and by the regularity theorem for the
+character of the Weil
+representation~\cite{Mak,Th08} the formula holds for all $f\in
+C_c^\infty(\Gb)$: $\Theta^+_\psi-\Theta^-_\psi$ is a stable character.
 \end{proposition}
 
 \begin{proof}
-Let $P\phi(x)=\phi(-x)$, so that $\Theta^+_\psi-\Theta^-_\psi$ is the
-character of $x\mapsto\operatorname{tr}(\omega_\psi(x)P)$. By
-Maktouf~\cite{Mak} and Thomas~\cite{Th08} the character of the Weil
-representation is a locally integrable function, smooth on the regular
-set, and it is obtained by integrating the kernel over the diagonal in
-the sense of oscillatory integrals. For $x=(g,1)$ with $c\ne0$ the
-kernel of $\omega(g,1)P$ on the diagonal is, by~\eqref{eq:weil-kernel},
-$\gamma_v(c)^{-1}|c|^{-1/2}\psi((\alpha+d+2)x^2/c)$, and
-by~\eqref{eq:weil-index} (the measure being $|2|_v^{1/2}$ times the one
-there)
+Let $P\phi(x)=\phi(-x)$, so that $\operatorname{tr}r^+_\psi(f)-
+\operatorname{tr}r^-_\psi(f)=\operatorname{tr}(\omega_\psi(f)P)$. Both
+sides of the identity to be proved are unchanged when $f$ is replaced by a
+conjugate $f^y$, and every element of $\Gb_{\mathrm{reg}}$ is conjugate to
+an element of the set $X$ of the proof of Lemma~\ref{lem:Delta}. By a
+partition of unity we may therefore assume that $f$ has compact support
+in $X$. Then $c$ and $D=D^+(g)$ are bounded away from $0$ and $\infty$ on
+the support of $f$.
+
+For $x=(g,\zeta)\in X$ let $k_x(\xi,\eta)$ be $\zeta$ times the kernel
+of~\eqref{eq:weil-kernel}, so that $|k_x|=|c|_v^{-1/2}$ and
 \[
-\gamma_v(c)^{-1}|c|_v^{-1/2}\int_F\psi\Bigl(\frac{D\,x^2}{c}\Bigr)dx
-=\frac{\gamma_v(cD)}{\gamma_v(c)}\,|D|_v^{-1/2}
-=(c,D)_v\,\frac{\gamma_v(D)}{\gamma_v(1)}\,|D|_v^{-1/2},
+k_x(\xi,-\xi)=\zeta\,\gamma_v(c)^{-1}|c|_v^{-1/2}\,\psi\bigl(D\xi^2/c\bigr).
 \]
-with $D=D^+(g)$; the last step is Lemma~\ref{lem:weil}(a). This
-is~\eqref{eq:weil-char} on $X$, and both sides are class functions. The
-rest follows from Lemma~\ref{lem:Delta}(b) and $\Delta_\psi\ne0$.
+By Fubini's theorem $\omega_\psi(f)$ has the kernel $K_f(\xi,\eta)=\int
+f(x)k_x(\xi,\eta)\,dx$, which is continuous and bounded.
+
+\emph{Let $v$ be finite.} Then $f$ is bi-invariant under the image $K'$ of
+some $K_m$, and $\omega_\psi(f)=\omega_\psi(e')\omega_\psi(f)\omega_\psi(e')$
+for the idempotent $e'$ of $K'$. The vectors of $\mathcal S(F)$ fixed by
+$K'$ form a finite-dimensional space: such a function is supported in a
+fixed lattice, because the $(n(u),1)$, $u\in\varpi^m\OO$, act by
+$\psi(u\xi^2)$, and so is its Fourier transform, by~\eqref{eq:weil-rep}.
+So $\omega_\psi(f)$ has finite rank, $K_f\in\mathcal S(F\times F)$, and
+$\operatorname{tr}(\omega_\psi(f)P)=\int_FK_f(\xi,-\xi)\,d\xi$. Hence
+\[
+\operatorname{tr}(\omega_\psi(f)P)=\lim_{M\to\infty}\int f(x)\Bigl(
+\int_{\varpi^{-M}\OO}k_x(\xi,-\xi)\,d\xi\Bigr)dx .
+\]
+For $a\in F^\times$ the integral of $\psi(a\xi^2)$ over the shell
+$|\xi|_v=q^j$ vanishes once $q^{2j}|a|_v$ exceeds a bound that depends only
+on $\psi$ and $|2|_v$ (substitute $\xi\mapsto\xi(1+u)$, $u$ in a small ideal).
+So the inner integral does not depend on $M$ for $M\ge M_0$, with $M_0$
+uniform on the support of $f$, and by~\eqref{eq:weil-index} (the measure
+being $|2|_v^{1/2}$ times the one there) its value is $\zeta$ times
+\[
+\gamma_v(c)^{-1}|c|_v^{-1/2}\int_F\psi\Bigl(\frac{D\,\xi^2}{c}\Bigr)d\xi
+=\frac{\gamma_v(cD)}{\gamma_v(c)}\,|D|_v^{-1/2}
+=(c,D)_v\,\frac{\gamma_v(D)}{\gamma_v(1)}\,|D|_v^{-1/2};
+\]
+the last step is Lemma~\ref{lem:weil}(a). This is~\eqref{eq:weil-char}.
+
+\emph{Let $v$ be archimedean.} Then $\omega_\psi(f)$ is of trace class, its
+kernel $K_f$ is a Schwartz function, and its trace is the integral of the
+kernel over the diagonal (for $f\in C_c^\infty$ the operator maps into the
+smooth vectors, which are the Schwartz functions; see~\cite{Mak,Th08}).
+So $\operatorname{tr}(\omega_\psi(f)P)=\lim_{\epsilon\to0}\int f(x)\bigl(\int
+k_x(\xi,-\xi)e^{-\epsilon|\xi|^2}d\xi\bigr)dx$. The inner integrals are
+Gaussian; they are bounded by a constant times $|D|_v^{-1/2}$, uniformly
+in $\epsilon$, and converge to the value above. Dominated convergence
+gives~\eqref{eq:weil-char}.
+
+The remaining statements follow from Lemma~\ref{lem:Delta}(b) and
+$\Delta_\psi\ne0$. Local integrability: $|D^+|_v^{-1/2}$ is the inverse
+square root of the function $2+\operatorname{tr}$, which vanishes to first
+order on the smooth part of its zero set and is a nondegenerate quadratic
+form in three variables at $-1$.
 \end{proof}
 
 The same computation without $P$ gives the character of $\omega_\psi$
-itself,
-\[
-(c,D^-)_v\,\frac{\gamma_v(D^-)}{\gamma_v(1)}\,|D^-|_v^{-1/2},\qquad
-D^-=\operatorname{tr}g-2 .
-\]
-We use the analytic input from~\cite{Mak,Th08} only for Proposition~\ref{prop:weil-char} and
-Proposition~\ref{prop:theta-packet}; Lemma~\ref{lem:Delta}, on which the
-rest of the section depends, is algebraic
+itself on the set where $D^-=\operatorname{tr}g-2\ne0$:
+\begin{equation}\label{eq:weil-char-full}
+\Theta_{\omega_\psi}(g,\zeta)=\zeta\,(c,D^-)_v\,\frac{\gamma_v(D^-)}
+{\gamma_v(1)}\,|D^-|_v^{-1/2},\qquad c\ne0 .
+\end{equation}
+Two comparisons. First, $\det(g-1)=-D^-$ and $\gamma_v(1)\gamma_v(-D^-)=
+(-1,D^-)_v\gamma_v(D^-)/\gamma_v(1)$, so~\eqref{eq:weil-char-full} is
+$(-c,D^-)_v\cdot\gamma_v(1)\gamma_v(\det(g-1))|\det(g-1)|_v^{-1/2}$. This is
+the formula of Thomas~\cite[Theorem~1C]{Th08}, which is stated up to a
+sign; here the sign is determined, in Kubota's coordinates. Second,
+$\omega_\psi(-1,1)=\gamma_v(1)^2P$ (Lemma~\ref{lem:weil-rep}), so
+$\Theta^+_\psi(x)-\Theta^-_\psi(x)=\gamma_v(1)^{-2}\,\Theta_{\omega_\psi}
+\bigl((-1,1)x\bigr)$, which is the form of the character of the difference
+in~\cite[Theorem~D]{Th13}; and indeed~\eqref{eq:weil-char-full} at
+$(-1,1)(g,1)=(-g,(c,-1)_v)$ gives back~\eqref{eq:weil-char}, by
+Lemma~\ref{lem:weil}(a) and $\gamma_v(1)^4=(-1,-1)_v$. (We have not
+matched the normalizations of the Weil index in~\cite{Th08,Th13} with
+ours; a different normalization changes $\psi$ by a square class and does
+not affect the comparison up to sign.) Lemma~\ref{lem:Delta}, on which
+the rest of the section depends, is algebraic and uses none of this
 (Remark~\ref{rem:sec7-status}).
 
 \begin{example}\label{ex:Delta-real}
@@ -880,12 +940,16 @@ Theorem~\ref{thm:normalization}:
   quotient $r_v(\pi_v\kappa_a,\lambda)/r_v(\pi_v,\lambda)$ does not depend
   on $\lambda$.
 \end{enumerate}
-Where $\pi_v$ and $\pi_v\kappa_a$ are both covered by
-Lemma~\ref{lem:explicit-r}, the explicit factors have this property,
-because they depend on $\pi_v=\chi_{\psi,v}\chi_v$ only through
-$\chi_v^2$, up to a constant. In the remaining cases the factors can be
-chosen with~\ref{N5} (Remark~\ref{rem:N5}), and we assume from now on
-that they are.
+Since $\pi_v\kappa_a=\chi_{\psi,v}\cdot\chi_v(a,\cdot)_v$, the condition
+holds whenever $r_v(\pi_v,\lambda)$ depends on $\pi_v=\chi_{\psi,v}\chi_v$
+only through $\chi_v^2$, up to a constant factor. The explicit factors of
+Lemma~\ref{lem:explicit-r} are of this form; so~\ref{N5} holds where
+$\pi_v$ and $\pi_v\kappa_a$ are both covered by that lemma, which is
+always the case at the real and complex places. At the other places
+\ref{N5} is a condition on the choice of the factors, in addition
+to~\ref{N1}--\ref{N4}. We have not proved that it can always be met
+(Remark~\ref{rem:N5}). The statements below say where it is used, and
+Lemma~\ref{lem:variance-gl2}(c) says what happens without it.
 
 \begin{lemma}\label{lem:variance-gl2}
 Let $f\in C_c^\infty(\GS)_-$, $a\in k_S^\times$, $\delta=\delta_a$, and
@@ -902,12 +966,20 @@ $\alpha=\mathrm{Ad}(\delta)$.
   J_G(\alpha\gamma,f)$.
 \item For $\pi\in\Pi_u(\AS)$ and $\lambda\in i\R$, with $\pi'=\pi\circ
   \alpha^{-1}=\pi\kappa_a$: $\operatorname{tr}I(\pi_\lambda,f^\delta)=
-  \operatorname{tr}I(\pi'_\lambda,f)$, and if~\ref{N5} holds,
+  \operatorname{tr}I(\pi'_\lambda,f)$, and
   \[
   \varphi_A(f^\delta,\pi_\lambda)=\varphi_A(f,\pi'_\lambda)+
   \widehat{f_{B,\delta}}(\pi'_\lambda)+\widehat{f_{B,\delta}}\bigl(
-  (\pi')^w_{-\lambda}\bigr).
+  (\pi')^w_{-\lambda}\bigr)-d_a(\pi,\lambda)\,\operatorname{tr}
+  I(\pi'_\lambda,f),
   \]
+  where $d_a(\pi,\lambda)=\sum_{v\in S_k}\bigl(\frac{r_v'}{r_v}(\pi_v
+  \kappa_a,\lambda)-\frac{r_v'}{r_v}(\pi_v,\lambda)\bigr)$. The
+  condition~\ref{N5} says that $d_a=0$.
+\item The products $r_v(\pi_v,\lambda)r_v(\pi_v^w,-\lambda)$ and
+  $r_v(\pi_v\kappa_a,\lambda)r_v((\pi_v\kappa_a)^w,-\lambda)$ are equal up
+  to a sign that does not depend on $\lambda$. So~\ref{N5} is compatible
+  with~\ref{N2}.
 \end{enumerate}
 \end{lemma}
 
@@ -958,7 +1030,8 @@ A(-\lambda)\,R_S(\pi,\lambda)=\rho(\lambda)\,R_S(\pi',\lambda)\,A(\lambda),
 \qquad\frac{\dot\rho}{\rho}=\frac{\dot r}{r}(\pi',\lambda)-\frac{\dot r}{r}
 (\pi,\lambda)+\log|a|_S ,
 \]
-where a dot denotes $d/d\lambda$. Differentiate, and multiply on the left
+where a dot denotes $d/d\lambda$. (The scalar $r(\pi,\lambda)$ is the product of the
+$r_v(\pi_v,\lambda)$, $v\in S_k$.) Differentiate, and multiply on the left
 by $(\rho R_S(\pi',\lambda))^{-1}=A(\lambda)R_S(\pi,\lambda)^{-1}
 A(-\lambda)^{-1}$. Writing $R$ for $R_S(\pi,\lambda)$ and $R^\natural$ for
 $R_S(\pi',\lambda)$,
@@ -968,15 +1041,25 @@ $R_S(\pi',\lambda)$,
 \]
 The constant $H_1(\delta^{-1})=-\frac12\log|a|_S$ in $\tilde H$
 contributes $+\log|a|_S$, which cancels against the last term of
-$\dot\rho/\rho$; what remains of $\dot\rho/\rho$ vanishes by~\ref{N5}. Take
+$\dot\rho/\rho$; what remains of $\dot\rho/\rho$ is $d_a(\pi,\lambda)$. Take
 the trace against $I(\pi'_\lambda,f)$, use~\eqref{eq:A-conj},
 \ref{N1}, and Lemma~\ref{lem:uprime}(c) for the multiplication operator
 $-H_1(k\delta)=u'_B(\tilde k,\delta)$:
 \[
 \varphi_A(f,\pi'_\lambda)=\varphi_A(f^\delta,\pi_\lambda)-
 \widehat{f_{B,\delta}}(\pi'_\lambda)-\widehat{f_{B,\delta}}\bigl((\pi')^w_{
--\lambda}\bigr).\qedhere
+-\lambda}\bigr)+d_a(\pi,\lambda)\operatorname{tr}I(\pi'_\lambda,f).
 \]
+
+(d) Apply the relation $M(\pi',\lambda)A(\lambda)=c(\lambda)A(-\lambda)
+M(\pi,\lambda)$ to $\pi$ and to $\pi^w$ at $-\lambda$; the second constant
+is $\pi(\tilde b)|a|_S^{\lambda}$. So $M((\pi')^w,-\lambda)M(\pi',\lambda)$
+is the conjugate by $A(\lambda)$ of $\pi(\tilde b)\pi^w(\tilde b)\cdot
+M(\pi^w,-\lambda)M(\pi,\lambda)$. By~\ref{N2} the two compositions are the
+scalars $r(\pi',\lambda)r((\pi')^w,-\lambda)$ and $r(\pi,\lambda)
+r(\pi^w,-\lambda)$, and $\pi(\tilde b)\pi^w(\tilde b)=\pi\bigl(\tilde b\,
+w\tilde bw^{-1}\bigr)$, where $\tilde b\,w\tilde bw^{-1}$ lies over $1$, is
+$\pm1$. The argument is local at each $v\in S_k$.
 \end{proof}
 
 \begin{proposition}\label{prop:IA-gl2}
@@ -990,7 +1073,9 @@ Assume~\ref{N5}. Let $f\in C_c^\infty(\GS)_-$ and $h\in G_1(k_S)$.
   $I_A(\tilde z,f^{\delta_a})=(a,-1)_S\,I_A(\tilde z,f)$.
 \item $\operatorname{tr}I(\pi,f^{\delta_a})=\operatorname{tr}I(\pi\kappa_a,
   f)$, and $\operatorname{tr}I(\pi,f^{[h]})=\operatorname{tr}I(\pi,f)$:
-  the characters of the principal series are stable.
+  the characters of the principal series are stable. (This part does not
+  use~\ref{N5}. The function $f^{[h]}$ need not be smooth; the trace is
+  then defined by the integral of orbital integrals in the proof.)
 \end{enumerate}
 \end{proposition}
 
@@ -1015,18 +1100,35 @@ a,f)$ because $h\star\tilde a$ is conjugate to $\tilde a$.
 \end{proof}
 
 \begin{remarkrev}\label{rem:N5}
-\emph{The condition~\ref{N5}.} Given factors $r_v$ as in
-Theorem~\ref{thm:normalization}, choose a set of representatives $\pi_v$
-for the orbits of $k_v^\times/k_v^{\times2}$ acting on the genuine
-characters of $\overline{A(k_v)}$ by $\pi_v\mapsto\pi_v\kappa_a$, and
-redefine $r_v(\pi_v\kappa_a,\lambda)=c(\lambda)\,r_v(\pi_v,\lambda)$ with
-$c(\lambda)$ as in the proof of Lemma~\ref{lem:variance-gl2}(c). Then
-$R_v(\pi_v\kappa_a,\lambda)=A(-\lambda)R_v(\pi_v,\lambda)A(\lambda)^{-1}$,
-and \ref{N1}--\ref{N3} are transported by the operators $A(\pm\lambda)$,
-which are scalar multiples of unitary operators for $\lambda\in i\R$. We
-have not written out the verification, nor checked that the factors
-of~\cite{LiII} have property~\ref{N5} as they stand. The distributions
-$I_A(x,f)$ depend on the choice (Remark~\ref{rem:bad-places}).
+\emph{The condition~\ref{N5}.} By the proof of
+Lemma~\ref{lem:variance-gl2}(c), \ref{N5} holds at $v$ if and only if
+\[
+R_v(\pi_v\kappa_a,\lambda)=C\,|a|_v^{-\lambda}\,A(-\lambda)\,R_v(\pi_v,
+\lambda)\,A(\lambda)^{-1}
+\]
+with a constant $C$; the factor $|a|_v^{-\lambda}$ removes the scalar
+$|a|_v^{\lambda}$ contained in $A(-\lambda)A(\lambda)^{-1}$. It is natural:
+the inducing data $\pi_v$ and $\pi_v\kappa_a$ have the same $\chi_v^2$,
+hence the same parameter on the side of $SO(3)$
+(Section~\ref{sec:stable-conj}, \emph{The dual group}), and factors defined
+through that parameter, as in Lemma~\ref{lem:explicit-r} and as one
+expects from the local coefficients of~\cite{Sz09,GS16}, satisfy it.
+Lemma~\ref{lem:variance-gl2}(d) shows that there is no obstruction
+from~\ref{N2}. But we have not proved that factors with
+\ref{N1}--\ref{N5} exist at the places where no explicit factor is
+available (the places of the sets $S_{\mathrm{bad}}(\mu)$ of
+Section~\ref{sec:normalized}), nor checked
+whether the factors of~\cite{LiII} have property~\ref{N5}. One cannot
+simply transport $r_v$ along the orbits of $k_v^\times/k_v^{\times2}$ on
+the genuine characters: when $\pi_v^w=\pi_v\kappa_{a_0}$ with $a_0$ not a
+square, that is, when $\chi_v^2=(a_0,\cdot)_v\ne1$, the relation~\ref{N2}
+between $r_v(\pi_v,\cdot)$ and $r_v(\pi_v^w,\cdot)$ constrains the factor
+of $\pi_v$ itself. So in this section \ref{N5} is a hypothesis at the
+places where the factors are not explicit. Without it, every formula
+below that is stated under~\ref{N5} holds with the additional term
+coming from $d_a$ in Lemma~\ref{lem:variance-gl2}(c). The distributions
+$I_A(x,f)$ depend on the choice of the factors in any case
+(Remark~\ref{rem:bad-places}).
 \end{remarkrev}
 
 So $I_A(x,\cdot)$ transforms under $G_1(k_S)$ by the character
@@ -1231,10 +1333,16 @@ For the $16$ classes $\xi\in\Q_S^\times/\Q_S^{\times2}$,
 a^G(S,u_\xi)=\frac12\Bigl(\frac{\gamma_E+\log2}2+\sum_{b\in\{-1,2,-2\}}
 (b,\xi_\infty)_\infty(b,\xi_2)_2\,L^S(1,\kappa_b)\Bigr);
 \]
-for instance $a^G(S,u_1)\approx1.57726$ and $a^G(S,u_{-1})\approx-0.31886$.
-The coefficients are not positive, and they depend on $\xi$ only through
+for instance $a^G(S,u_\xi)\approx1.57726$ for $\xi=1$, and
+$a^G(S,u_\xi)\approx-0.31886$ for the class with $\xi_\infty<0$ and $\xi_2=1$.
+The coefficients are not all positive, and they depend on $\xi$ only through
 the pairings with $b\in\{\pm1,\pm2\}$, the same parameters as those of the
-ramified classes $\chi_{\psi_b}$ in Example~\ref{ex:ramified-Q}. The
+ramified classes $\chi_{\psi_b}$ in Example~\ref{ex:ramified-Q}. In
+particular $a^G(S,u_{\xi\epsilon})=a^G(S,u_\xi)$ for $\epsilon\in\OO_S^\times$,
+since the $\kappa\in\mathfrak X_S$ are trivial on $\OO_S^\times$: the
+classes of the rational elements $\pm1$, $\pm2$ all have the coefficient of
+$\xi=1$, and the $16$ classes carry four distinct values (this holds for
+every $k$ and $S$ as above). The
 script checks~(a) numerically at $s=3$ for a test function with
 $\Phi_\infty$ not even and $\Phi_2$ the characteristic function of
 $6+16\Z_2$.
@@ -1416,16 +1524,37 @@ Part~(b) has exactly the shape of Theorem~\ref{thm:elliptic-stable}: a
 stable distribution evaluated at $f$ and at $f_-$, each with coefficient
 $\frac12$. The multiplicity of $r^\varepsilon_{\psi'}$ in $\Theta_b$ is
 $\frac12(1+\prod_v\varepsilon_v)$. Waldspurger~\cite{Wa80,Wa91} proved
-that this is its multiplicity in $L^2_{\mathrm{disc}}$, and that the whole
-discrete spectrum has the same structure: it is a multiplicity-free sum
-over the cuspidal automorphic representations $\sigma$ of $PGL(2,\A_k)$
-and the characters $\kappa_b$, each contributing the representations
+that this is its multiplicity in $L^2_{\mathrm{disc}}$, and that the rest
+of the discrete spectrum has a similar structure: it is a
+multiplicity-free sum over the cuspidal automorphic representations
+$\sigma$ of $PGL(2,\A_k)$, each contributing the representations
 $\bigotimes_v\pi_v^{\varepsilon_v}$ of a packet with $\prod_v\varepsilon_v=
-\varepsilon(\frac12,\sigma)$; see~\cite{GI} for the double cover of
-$Sp(2n)$ and~\cite{Li24}. The stable character of the packet is
-$\prod_v(\operatorname{tr}\pi^+_v-\operatorname{tr}\pi^-_v)$, and
-$\Theta_b$ is the packet of the character $\kappa_b$ of $PGL(2)$. We do
-not derive any of this from the trace formula.
+\varepsilon(\frac12,\sigma)$, where the local packet is $\{\pi_v^+\}$ or
+$\{\pi_v^+,\pi_v^-\}$ and the labels depend on $\psi$; see~\cite{GI} for
+the double cover of $Sp(2n)$ and~\cite{Li24}. In these terms $\Theta_b$
+is the packet attached to the character $\kappa_b$ of $PGL(2)$. One
+difference should be noted. For the theta functions the stable
+combination is the difference $\operatorname{tr}r^+-\operatorname{tr}r^-$.
+For the packets of cuspidal $\sigma$ it is the sum
+$\operatorname{tr}\pi^+_v+\operatorname{tr}\pi^-_v$, and the difference is
+the unstable one. Two cases can be seen directly. At a finite place, the
+packet of the Steinberg representation is $\{\mathrm{sp},r^-_{\psi'}\}$,
+where $\mathrm{sp}$ is the other constituent of the principal series
+that has $r^+_{\psi'}$ as a quotient; the sum of their characters is the
+character of that principal series minus $\Theta^+_{\psi'}-\Theta^-_{\psi'}$,
+a difference of two stable characters
+(Propositions~\ref{prop:IA-gl2}(c) and~\ref{prop:weil-char}). At a real
+place a packet consists of the discrete series representations with
+weights $m,m+2,\dots$ and $-m,-m-2,\dots$, $m\in\frac12+\Z$, $m>1$; on
+$\tilde k_\theta$ the sum of their characters is $-\sin((m-1)\theta)/
+\sin\theta$, which is even in $\theta$, and the difference is
+$i\cos((m-1)\theta)/\sin\theta$, which is odd, while $\tilde k_\theta$ and
+$\tilde k_{-\theta}$ are stably conjugate (Example~\ref{ex:Delta-real}).
+In both kinds of packet the two members have opposite central characters,
+so the unstable combination for $f$ is, up to a constant, the stable one
+for $f_-$; this is how the pattern $S(f)+S(f_-)$ arises on the spectral
+side. We do not derive any of this from the trace formula, and we have
+not checked the labeling of the packets against~\cite{Wa91}.
 
 By Proposition~\ref{prop:IA-gl2}(c) the terms of
 Corollary~\ref{cor:itf-final} that come from the continuous spectrum,
@@ -1530,22 +1659,28 @@ on $GL(2)$ from~\cite{K2}; part~(c) of Lemma~\ref{lem:Ad} is also checked
 directly); Lemma~\ref{lem:Delta}; Lemma~\ref{lem:weil-kernel};
 Lemma~\ref{lem:kappa-orbital}; Theorem~\ref{thm:elliptic-stable}, with
 the Hasse norm theorem and the index of the global norm group
-from~\cite{CF}; Lemma~\ref{lem:variance-gl2} and
-Proposition~\ref{prop:IA-gl2}, under~\ref{N5};
+from~\cite{CF}; Lemma~\ref{lem:variance-gl2};
+Proposition~\ref{prop:IA-gl2}, parts~(a) and~(b) under~\ref{N5};
 Proposition~\ref{prop:unipotent}; Proposition~\ref{prop:theta-packet}(b),
-(c) given~(a). Taken from the literature: the existence of the character
-of the Weil representation as a function and its computation from the
-kernel~\cite{Mak,Th08}, used in Proposition~\ref{prop:weil-char}; our
-derivation of~\eqref{eq:weil-char} from~\eqref{eq:weil-kernel} is formal,
-and we have not compared the result with the formulas of~\cite{Th08}
-beyond the cases in Examples~\ref{ex:Delta-real}
-and~\ref{ex:Delta-finite}. Also from the literature: the convergence and
-square-integrability of theta functions in
-Proposition~\ref{prop:theta-packet}(a), and Tate's local zeta
-integrals~\cite{Ta}.
+(c) given~(a); and Proposition~\ref{prop:weil-char} on the regular set,
+completely at the finite places. Taken from the literature: at the
+archimedean places, that $\omega_\psi(f)$ is of trace class with a
+Schwartz kernel; and at all places, that the character of the Weil
+representation is a locally integrable function on the whole
+group~\cite{Mak,Th08}, which is used to call $\Theta^+_\psi-\Theta^-_\psi$ a
+stable character and in the second formula for $\Theta^{\mathrm{st}}_b$ in
+Section~\ref{sec:spectral-gl2}. Formula~\eqref{eq:weil-char-full} agrees
+with~\cite[Theorem~1C]{Th08} up to the sign left open there; we have not
+compared it with the formulas of~\cite{Mak,Th13} in detail. Also from the
+literature: the convergence and square-integrability of theta functions
+in Proposition~\ref{prop:theta-packet}(a), Tate's local zeta
+integrals~\cite{Ta}, and the statements about Waldspurger's packets after
+Proposition~\ref{prop:theta-packet}, which are not used.
 
-\emph{What is not done.} We have not verified that the factors
-of~\cite{LiII} satisfy~\ref{N5} (Remark~\ref{rem:N5}). The statements in the text about the relation
+\emph{What is not done.} The condition~\ref{N5} is a hypothesis at the
+places where the normalizing factors are not explicit: we have not shown
+that factors satisfying it exist there, nor that those of~\cite{LiII} do
+(Remark~\ref{rem:N5}). The statements in the text about the relation
 with the endoscopy of~\cite{Li11,Li15,Li21} are comparisons of shape: we
 have not identified $J^{\mathrm{st}}_G$ with Li's stable orbital integral
 beyond Proposition~\ref{prop:weil-char}, nor $\Delta_\psi$ with his
@@ -1553,7 +1688,9 @@ transfer factor, nor checked the normalizations in
 $\iota(\tilde G,H)=\frac12$. The limit formulas of
 Section~\ref{sec:unipotent} at the singular elliptic points, the
 stabilization of the weighted terms, the transfer to $SO(3)$ and the
-description of the cuspidal spectrum are not treated. An unpublished
+description of the cuspidal spectrum are not treated. Sections~\ref{sec:background}--\ref{sec:invariant}
+were refereed independently (see the Acknowledgements); this section has
+not been. An unpublished
 stabilization of the trace formula for covers of $SL(2)$ by Hiraga and
 Ikeda is mentioned in~\cite{Li15}; see also~\cite{HI13}.
 \end{remarkrev}
@@ -1566,11 +1703,19 @@ $\beta_v$ and as conjugation in the cover of $GL(2)$;
 Lemma~\ref{lem:eta} on the tori $T_\theta(\Q)$ and on the split torus,
 and Example~\ref{ex:eta}(d); the conjugation invariance of $\Delta_\psi$,
 Lemma~\ref{lem:Delta}(b),(c), and Example~\ref{ex:Delta-real}; the
-identity between Weil indices behind~\eqref{eq:weil-kernel};
+identity between Weil indices behind~\eqref{eq:weil-kernel}; the
+consistency of~\eqref{eq:weil-char} with~\eqref{eq:weil-char-full} under
+translation by $(-1,1)$, and the agreement of~\eqref{eq:weil-char-full}
+with~\cite[Theorem~1C]{Th08} up to sign;
 identity~\eqref{eq:eta-minus}; and Lemma~\ref{lem:variance-gl2}(a).
 Numerically: Example~\ref{ex:Delta-finite} for $q=3,5,7,11$;
 Proposition~\ref{prop:unipotent}(a) for $k=\Q$, $S=\{\infty,2\}$ at
 $s=3$, the local identity~\eqref{eq:squares} at $2$ and $3$, and the
-constants of Example~\ref{ex:unip-coeff}; and the two facts used in the
-proof of Proposition~\ref{prop:theta-packet}(b).
+constants of Example~\ref{ex:unip-coeff}, including the invariance of the
+coefficients under $\OO_S^\times$; the stabilization of the truncated
+Gauss integrals used in the proof of Proposition~\ref{prop:weil-char}, at
+$3$ and $5$; the two facts used in the proof of
+Proposition~\ref{prop:theta-packet}(b); and the parity in $\theta$ of the
+sum and the difference of the two discrete series characters in the
+paragraph after that proposition.
 \end{remarkrev}

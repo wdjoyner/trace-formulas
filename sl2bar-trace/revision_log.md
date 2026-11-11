@@ -12,7 +12,7 @@ This log tracks every item of the 2026 referee report ([Claude Docs](https://cla
 
 | Stage | Scope | Status |
 |---|---|---|
-| 0 | Clean source tree: `cctrac3b.tex` from `book7d.tex`, remove Scientific Word macros, `\numberwithin`, `\label`/`\ref`/`\cite`, bibliography fixes. No mathematical changes. | Pending |
+| 0 | Clean source tree: `cctrac3b.tex` from `book7d.tex`, remove Scientific Word macros, `\numberwithin`, `\label`/`\ref`/`\cite`, bibliography fixes. No mathematical changes. | Pending, and largely superseded: every section was rewritten in `revised/`, and `revised/preview.tex` is in effect the master. What is left of stage 0 is a decision for DJ (see *Stage 7 notes*, last item) |
 | 1 | §2 foundations: κ-splitting, global cover, genuine conventions, center, NAK, measures, GL(2) cover | Done 2026-11-10: `revised/sec2-foundations.tex`, checked by `revised/checks/sec2_n2_check.py` (see *Stage 1 notes*). Written before stage 0, as a standalone file for the stage-0 master to `\input`. |
 | 2 | §3 rank 0 (much simpler for n = 2: the cover of A is abelian) | Done 2026-11-10: `revised/sec3-rank0.tex`, checked by `revised/checks/sec3_n2_check.py` (see *Stage 2 notes*) |
 | 3 | §4 and `cctrac3b.tex`: geometric side | Done 2026-11-10: `revised/sec4-geometric.tex`, checked by `revised/checks/sec4_n2_check.py` (see *Stage 3 notes*) |
@@ -20,7 +20,7 @@ This log tracks every item of the 2026 referee report ([Claude Docs](https://cla
 | 5 | §6 invariant form | Done 2026-11-11: `revised/sec6-invariant.tex`, checked by `revised/checks/sec6_n2_check.py` (see *Stage 5 notes*) |
 | 6 | §7 stable(r) form | Done 2026-11-11: `revised/sec7-stable.tex`, checked by `revised/checks/sec7_n2_check.py` (see *Stage 6 notes*). Also: Section 1, Appendix A and the Glossary extended to Section 7; the unipotent coefficients of Theorem 4.11(a) computed; two corrections in Sections 4 and 5 |
 | 5R | Response to the second referee report (ChatGPT, on Sections 2–6): topology of the cover and test functions, b′ = −b, Section 1 (overview, literature review), Glossary, Appendix A (comparisons with 1995), acknowledgements | Done 2026-11-11: see *Second referee report* below and `referee-2026-11/` |
-| 7 | Consistency pass after stage 6. (The independent re-referee, the literature review, the title page and the Introduction for Sections 2–6 were done in 5R; the Introduction, Appendix A and the Glossary were extended to Section 7 in stage 6. Section 7 has not been refereed independently.) | Pending |
+| 7 | Consistency pass after stage 6, and a second look at Section 7. (The independent re-referee, the literature review, the title page and the Introduction for Sections 2–6 were done in 5R; the Introduction, Appendix A and the Glossary were extended to Section 7 in stage 6.) | Done 2026-11-11 (see *Stage 7 notes*): cross-references, citations and numbering checked mechanically; three corrections in Section 7 (the condition (N5), the paragraph on Waldspurger's packets, Example 7.E); Proposition 7.5 now proved on the regular set; title page. **Section 7 still has no independent referee report**: none was in `referee-2026-11/` |
 
 ## Items
 
@@ -476,4 +476,54 @@ The report's §7 numbers do not match the compiled text (it does not count the r
   - Remark 2026.9 (r(t) against the general definition in [A7]) and Remark 2026.13 (T ≥ 0 on the spectral side) are unchanged.
 - *Stage 0:* the master needs `\input{sec7-stable}` and the four new bibliography entries. No new environments.
 - *Possible follow-up, outside the stages:* identify J^st with Li's stable orbital integral on SO(3) for the unit of the Hecke algebra (a direct fundamental lemma for this group), which with Theorem 7.7 would give the elliptic part of the Shimura–Waldspurger correspondence in trace-formula form.
+
+## Stage 7 notes (2026-11-11)
+
+**Scope.** A consistency pass over `revised/` (Sections 1–7, Appendix A, Glossary, `preview.tex`, READMEs), and a second reading of Section 7 aimed at the three points listed under "For later stages → Stage 7" and at the list "Still resting on citation and numerics only" in the Stage 6 notes. No referee report on Section 7 was found in `referee-2026-11/` (it holds only `report-chatgpt.md` on Sections 2–6 and `response.md`), so there is nothing to respond to and `response.md` is unchanged. The second reading below was done by Claude in a new session, with the stage-6 text as the only input; it is not an independent report, and the paper says that Section 7 has not been refereed independently (Remark 2026.19).
+
+**Consistency checks (mechanical).** All pass on the stage-6 text, and again after the edits:
+- `preview.tex` builds with no LaTeX warning, no undefined or duplicate label, no overfull box; 102 pages.
+- Every `\cite` key has a `\bibitem` and every `\bibitem` is cited (80 entries with the new [Th13]).
+- No statement number of this paper is typed by hand: every number in the prose that is not a `\ref` refers to the 1995 notes or to another paper (35 lines in Appendix A, 11 elsewhere).
+- No stale "stage", "not yet", "to be written" wording in the body. The three remaining "defined but not evaluated" (abstract, §1.3, §6.4) are about the normalizing factors at the bad places, which is still true.
+- Section 1 against the theorems: the display in §1.1 agrees with Theorem 6.11 and Corollary 6.14 (signs, the factors ½ and ¼, 1/2π); Theorem 7.13(a) agrees with Theorem 6.11(a)–(c) and Proposition 7.10(c); the running example agrees with Examples 7.A, 7.B, 7.D, 7.E.
+- Appendix A and the Glossary cover every statement and symbol of Section 7.
+- All check scripts pass: sec2 114, sec3 35, sec4 19, sec5 50, sec6 33, sec7 33 (28 + 5 new).
+
+**The three points flagged in stage 6.**
+
+1. *Proposition 7.5 (the formal step).* The step is now a proof. For f supported in the regular set one reduces by conjugation to f supported where c ≠ 0. At a finite place ω(f) has finite rank and a Schwartz kernel, so its trace is the integral of the kernel over the diagonal; the integrals of ψ(Dξ²/c) over the lattices ϖ^{−M}𝒪 are independent of M for M ≥ M₀, uniformly on the support of f, which justifies the interchange. At an archimedean place the same is done with a Gaussian cut-off and dominated convergence; there the trace-class property and the Schwartz kernel are cited. What is still cited at every place is the regularity theorem (the character is a locally integrable function on the whole group), which is needed to call Θ⁺ − Θ⁻ a stable character and for the second formula for Θ^st_b in §7.7; the statement of the proposition now separates the two. Two comparisons were added after the proof. (a) The character of ω itself, new equation (7.7), equals (−c, D⁻)·γ(1)γ(det(g−1))|det(g−1)|^{−1/2}, which is Thomas's formula [Th08, Theorem 1C]; that theorem is stated up to sign, so this is agreement up to the sign it leaves open. (b) ω(−1,1) = γ(1)²P gives Θ⁺(x) − Θ⁻(x) = γ(1)^{−2} Θ_ω((−1,1)x), the form of [Th13, Theorem D], and (7.7) at (−1,1)x does give (7.6). Both are in the script. Not done: matching the normalization of the Weil index in [Th08], [Th13] with ours, and a comparison with [Mak].
+
+2. *Lemma 7.8(c) and the condition (N5).* The computation in the proof is correct; it was redone independently (the relation M(π′,λ)A(λ) = c(λ)A(−λ)M(π,λ) with c(λ) = π^w(b̃)|a|^{−λ}, the derivative, the cancellation of log|a|). Two things were wrong around it.
+   - **Remark 2026.18 (corrected).** The recipe "redefine r_v(π_vκ_a, λ) = c(λ) r_v(π_v, λ)" contradicts (N5): c(λ) contains |a|^{−λ}, so the quotient depends on λ, and with that choice the term log|a| in the proof does not cancel. The correct equivalent of (N5) is R_v(π_vκ_a, λ) = C·|a|^{−λ} A(−λ) R_v(π_v, λ) A(λ)^{−1}. The recipe also ignored (N2): when π^w = πκ_{a₀} with a₀ not a square (χ² = (a₀,·) ≠ 1), the factor of π itself is constrained, so transport along the orbits of k_v^×/k_v^{×2} does not by itself produce factors with (N1)–(N5).
+   - **"The factors can be chosen with (N5)" (withdrawn).** This is not proved. (N5) is now stated as a hypothesis at the places where the factors are not explicit. It holds for the explicit factors (always at the real and complex places), and whenever r_v depends on π_v only through χ_v² up to a constant.
+   - New in Lemma 7.8: part (c) is stated without (N5), with the extra term −d_a(π,λ) tr I(π′_λ, f), d_a = Σ_v (r_v′/r_v(π_vκ_a, λ) − r_v′/r_v(π_v, λ)), so that one sees exactly what (N5) removes; new part (d): r(π,λ)r(π^w,−λ) and the same product for πκ_a agree up to a constant sign, so (N5) is compatible with (N2).
+   - Proposition 7.9(c) (stability of the principal series characters) does not use (N5); this is now said. Section 1 (table in §1.3 and the paragraph after it) now says that the statements about the weighted terms and the I_χ are under (N5).
+
+3. *The paragraph on Waldspurger's theorem after Proposition 7.12 (corrected).* It said that the stable character of a packet is Π_v (tr π_v⁺ − tr π_v⁻). That is right for the theta packets and wrong for the packets of cuspidal σ, where the stable combination is the sum. Two cases are verified in the text: the packet {sp, r⁻} of the Steinberg representation (tr sp + tr r⁻ = tr I − (tr r⁺ − tr r⁻), a difference of stable characters), and the real discrete series packets (weights m, m+2, … and −m, −m−2, …: the sum of the characters on k̃_θ is −sin((m−1)θ)/sin θ, even; the difference is i cos((m−1)θ)/sin θ, odd). In both kinds of packet the two members have opposite central characters, so the unstable combination for f is the stable one for f₋ up to a constant. The description of the real packets (which discrete series go together) and the labels π^± were not checked against [Wa91]; the text says so.
+
+**Other corrections in Section 7.**
+- *Example 7.E.* "a^G(S,u_{−1}) ≈ −0.31886" was mislabeled: that value belongs to the class with ξ_∞ < 0 and ξ₂ = 1. The class of the rational number −1 has the coefficient of ξ = 1, because the κ ∈ 𝔛_S are trivial on 𝒪_S^×. Added: a^G(S,u_{ξε}) = a^G(S,u_ξ) for ε ∈ 𝒪_S^×, so the 16 classes carry four values (1.57726, 0.16864, −0.15668, −0.31886).
+- *Lemma 7.3.* Δ_ψ has values in μ₄, not only μ₈ ((γ(D)/γ(1))² = (D,−1)_v). Changed in the lemma, the list of results and the Glossary.
+- New citation [Th13] (T. Thomas, "Weil representation and transfer factor", Algebra Number Theory 7 (2013), 1535–1570; data checked online 2026-11-11, the paper read only through its introduction and statements): the action of the similitude group on the cover (§7.1) and the character of ρ₊ − ρ₋.
+
+**Renumbering.** One new equation, (7.7); the old (7.7)–(7.14) are now (7.8)–(7.15). Lemma 7.8 has a new part (d). No statement number changed. The equation numbers in the Stage 6 notes are the old ones.
+
+**The remaining stage-7 items of the Stage 6 notes.**
+- *Acknowledgements.* Unchanged: ChatGPT refereed Sections 2–6, which is still accurate. Remark 2026.19 now says that Section 7 has not been refereed independently.
+- *Titles.* The working subtitle "Sections 1–7, revised for the double cover (draft)" is replaced by the title "A hitch-hiker's guide to the metaplectic trace formula for SL(2): the double cover", dated "Draft of November 2026", with a line naming the 1995 notes ("… : basic theory") as the source. The title of Section 7, "The trace formula in stable(r) form", is kept; its first paragraph says what the word means and that nothing is transferred. Both are DJ's to change.
+- *Remark 2026.9* (r(t) against the general definition in [A7]). Still not compared with [A7]. A sentence was added: the trace formula here does not depend on the comparison, because Proposition 7.10(c) derives the central terms of Theorem 4.11 from Proposition 4.8 with J_A(z,f) as defined in Lemma 4.10(b), when 𝒪_S is principal.
+- *Remark 2026.13* (T ≥ 0 on the spectral side). Unchanged, and nothing depends on it: J_χ(f) is the value at T = 0 of a polynomial that is identified for large T.
+
+**Still resting on citation and numerics only, after this stage.**
+- Proposition 7.5: the regularity theorem at all places; at the archimedean places the trace-class property and the Schwartz kernel of ω(f).
+- (N5) at the places where the normalizing factors are not explicit: a hypothesis. Everything under it: Proposition 7.9(a),(b), Lemma 7.11(c) for I_χ, Theorem 7.13.
+- Lemma 7.1(c) through the cocycle (2.13) on GL(2) ([K2], numerics), with the direct check as a homomorphism for β.
+- Proposition 7.12(a): convergence and square-integrability of theta functions.
+- The statements about [Li11], [Li15], [Li21] and about Waldspurger's packets: comparisons, not used in proofs.
+
+**Open, for DJ.**
+- An independent referee report on Section 7 (by another model or a person). The places to look first: the new proof of Proposition 7.5; whether (N5) holds for Li's factors, or for factors defined through the local coefficients of Szpruch and Goldberg–Szpruch; the description of the packets after Proposition 7.12.
+- Stage 0. The 1995 source tree was never cleaned, and no longer needs to be for the revision: `revised/preview.tex` builds the whole paper. Either close stage 0 and rename `preview.tex` to a master name, or keep it as is.
+- The mathematical items listed under "Not done" in the Stage 6 notes are unchanged.
 

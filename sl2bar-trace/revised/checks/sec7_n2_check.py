@@ -20,6 +20,11 @@ Checks (v runs over oo, 2, 3, 5, 7; random elements of SL(2,Q), GL(2,Q)):
   * Lemma 7.4: the kernels gamma(c)^-1 |c|^(-1/2) psi((a x^2 - 2xy + d y^2)/c)
     compose with Kubota's cocycle: gamma(c3/(c1 c2)) gamma(c3)
     = beta(g1, g2) gamma(c1) gamma(c2);
+  * Proposition 7.5: the truncated Gauss integrals over p^-M Z_p of
+    psi(a x^2) do not depend on M for M large (p = 3, 5); formula (7.6) for
+    the character of r+ - r- equals gamma(1)^-2 times formula (7.7) for
+    the character of omega at (-1,1) x; (7.7) agrees with Thomas's
+    gamma(1) gamma(det(g-1)) up to sign;
   * Example 7.C (Proposition 7.5 in a model that can be computed exactly):
     for the Weil representation of SL(2, F_p) on functions on F_p
     (p = 3, 5, 7, 11), the trace of omega(g) P, which is the character of
@@ -31,9 +36,12 @@ Checks (v runs over oo, 2, 3, 5, 7; random elements of SL(2,Q), GL(2,Q)):
     identity Z(f, s) = (1/2) sum_b L^S(s, kappa_b) Z_S(Phi_S, kappa_b, s)
     at s = 3 for a test function that is neither even nor unramified; the
     constants rho_S, c_S and L^S(1, kappa_b), and the table of a^G(S, u_xi)
-    (Example 7.E);
+    (Example 7.E), which is invariant under xi -> xi * (unit of Z[1/2]);
   * Proposition 7.12: prod_v gamma_v(b)^2 = 1, so omega(s(-1)) is the
-    parity operator, and the count of sign patterns with product +1.
+    parity operator, and the count of sign patterns with product +1;
+  * the paragraph after Proposition 7.12: for the discrete series of
+    Mp(2,R) with weights m, m+2, ... and -m, -m-2, ..., the sum of the
+    characters on k_theta is even in theta and the difference is odd.
 """
 import cmath
 import itertools
@@ -247,6 +255,58 @@ th = 0.7
 ser = cmath.exp(0.5j * th) / (1 + cmath.exp(1j * th))
 report("Example 7.B: sum e^{i(1/2+2j)theta} - sum e^{i(3/2+2j)theta} = 1/(2 cos(theta/2)) (Abel sum)",
        close(ser, 1 / (2 * math.cos(th / 2))))
+
+# ------------------------------------------------------------------ Prop. 7.5
+def theta_omega_unit(x, v):
+    """Unit part of (7.7): z (c, D-) gamma(D-)/gamma(1), D- = tr g - 2."""
+    (g, z) = x
+    c = g[1][0]
+    Dm = tr(g) - 2
+    assert c != 0 and Dm != 0
+    return z * hilbert(c, Dm, v) * gamma(Dm, v) / gamma(1, v)
+
+
+ok_center = ok_thomas = True
+MINUS1 = (scal(-1, I2), 1)
+for v in PLACES:
+    for _ in range(120):
+        g = rand_sl2()
+        if g[1][0] == 0 or tr(g) in (2, -2):
+            continue
+        x = (g, random.choice([1, -1]))
+        # (7.6) at x  ==  gamma(1)^-2 * (7.7) at (-1,1) x     (|D-(-g)| = |D+(g)|)
+        ok_center &= close(Delta(x, v), theta_omega_unit(bmul(MINUS1, x, v), v) / gamma(1, v) ** 2)
+        # (7.7) = +- gamma(1) gamma(det(g-1)), det(g-1) = 2 - tr g   (Thomas, Thm 1C)
+        th = theta_omega_unit(x, v)
+        ref = gamma(1, v) * gamma(2 - tr(g), v)
+        ok_thomas &= close(th, ref) or close(th, -ref)
+report("Prop. 7.5: (7.6) at x equals gamma(1)^-2 times (7.7) at (-1,1)x", ok_center)
+report("Prop. 7.5: (7.7) = +-gamma(1) gamma(det(g-1)), the formula of Thomas up to sign", ok_thomas)
+
+
+def gauss_trunc(a, p, M):
+    """int over p^-M Z_p of psi_p(a x^2) dx, psi_p(x) = exp(2 pi i {x}_p), dx(Z_p) = 1.
+    With x = p^-M y: a x^2 = u p^val y^2, val = ord(a) - 2M, which modulo Z_p
+    depends on y modulo p^R, R = max(0, -val)."""
+    a = Fr(a)
+    val = vp(a, p) - 2 * M
+    R = max(0, -val)
+    u = a / Fr(p) ** vp(a, p)
+    tot = 0
+    for y in range(p ** R):
+        frac = (u * y * y * Fr(p) ** val) % 1
+        tot += cmath.exp(2j * cmath.pi * float(frac))
+    return p ** M * tot / p ** R
+
+
+ok = True
+for p in (3, 5):
+    for a in (1, 2, p, 2 * p, Fr(1, p), Fr(2, p * p)):
+        M0 = -((-vp(Fr(a), p)) // 2)            # smallest M with p^(2M) |a| >= 1
+        ref = gauss_trunc(a, p, M0)
+        ok &= abs(ref) > 1e-6 and all(close(gauss_trunc(a, p, M0 + j), ref) for j in (1, 2))
+        ok &= close(abs(ref), float(Fr(p) ** vp(Fr(a), p)) ** 0.5)          # |a|^(-1/2)
+report("Prop. 7.5: int over p^-M Z_p of psi(a x^2) is independent of M for M >= M_0 (p = 3, 5)", ok)
 
 # ------------------------------------------------------------------ Lemma 7.4
 ok = True
@@ -469,6 +529,24 @@ report("Example 7.E: the 16 coefficients a^G(S,u_xi) average to c_S/2",
 report("Prop. 7.10: 4^{|S|} = |Q_S^x / Q_S^{x2}| = 16 and [O_S^x : O_S^{x2}] = 2^{|S|} = 4 for S = {oo,2}",
        len(classes) == 16 == 4 ** 2)
 
+
+def cls(sg, u):
+    """Class of (sign, 2-adic number u) in R^x/squares x Q_2^x/squares."""
+    u = Fr(u)
+    e = vp(u, 2) % 2
+    w0 = unit_mod(u / Fr(2) ** vp(u, 2), 2, 3) % 8
+    return (sg, w0 * 2 ** e)
+
+
+ok = True
+for (sg, u) in classes:
+    for eps in (-1, 2, -2):                    # units of Z[1/2] modulo squares
+        ok &= abs(vals[cls(sg * (1 if eps > 0 else -1), u * eps)] - vals[(sg, u)]) < 1e-15
+distinct = sorted({mp.nstr(x, 12) for x in vals.values()})
+report("Example 7.E: a^G(S,u_xi) is invariant under xi -> xi*eps, eps in {-1, 2, -2}; four distinct values",
+       ok and len(distinct) == 4 and abs(vals[cls(-1, -1)] - vals[(1, 1)]) < 1e-15,
+       "values: " + ", ".join(mp.nstr(mp.mpf(x), 6) for x in distinct))
+
 # ------------------------------------------------------------------ Prop. 7.12
 ok = True
 for b in (1, -1, 2, -2, 3, -6, 5, 10, -7):
@@ -487,6 +565,24 @@ direct = sum(math.prod(pv[i] if e == 1 else mv[i] for i, e in enumerate(eps))
 half = (math.prod(p_ + m_ for p_, m_ in zip(pv, mv)) + math.prod(p_ - m_ for p_, m_ in zip(pv, mv))) / 2
 report("Prop. 7.12: sum over sign patterns with product +1 = (prod(tr+ + tr-) + prod(tr+ - tr-))/2",
        cnt == 2 ** (n - 1) and abs(direct - half) < 1e-12)
+
+# ------------------------------------------------- after Prop. 7.12 (real packets)
+ok = True
+r_ = 1 - 1e-7                                  # Abel summation
+for m in (1.5, 2.5, 4.5):
+    for th in (0.4, 1.3, 2.6):
+        def hol(t):
+            return cmath.exp(1j * m * t) / (1 - r_ * cmath.exp(2j * t))
+
+        def anti(t):
+            return cmath.exp(-1j * m * t) / (1 - r_ * cmath.exp(-2j * t))
+        s_p, s_m = hol(th) + anti(th), hol(-th) + anti(-th)
+        d_p, d_m = hol(th) - anti(th), hol(-th) - anti(-th)
+        ok &= close(s_p, s_m, 1e-5) and close(d_p, -d_m, 1e-5)
+        ok &= close(s_p, -math.sin((m - 1) * th) / math.sin(th), 1e-5)
+        ok &= close(d_p, 1j * math.cos((m - 1) * th) / math.sin(th), 1e-5)
+report("after Prop. 7.12: for weights {m+2j} and {-m-2j}, the sum of the characters is "
+       "-sin((m-1)t)/sin t (even), the difference i cos((m-1)t)/sin t (odd)", ok)
 
 print()
 print("%d check(s) failed" % len(FAILS) if FAILS else "all checks passed")

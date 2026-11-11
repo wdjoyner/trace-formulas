@@ -1,0 +1,862 @@
+
+\section{The global trace formula in invariant form}
+
+The global trace formula is an equality of the form 
+\begin{equation}
+\sum_{\chi \in {\cal X}}J_\chi (f) =\sum_{{\cal{O}}\in {\cal C}}
+J_{{\cal{O}}}(f),
+\end{equation}
+where $J_\chi (f)=J_\chi ^T(f)|_{T=0}$,
+$J_{{\cal{O}}}(f)=J_{{\cal{O}}}^T(f)|_{T=0},$ and where
+$J_\chi ^T(f)$ is given in section 5 and
+$J_{{\cal{O}}}^T(f)$ is given in section 4.
+
+We can very crudely index the terms $J_{\cal{O}}$ by the centralizer
+of the semi-simple part $s$ of a $\gamma =su\in {\cal{O}}$. As a
+general principle, the ``smaller'' the centralizer the easier it is
+to deal (analytically) with the term. 
+
+Let ${\cal C}(G)$ denote the subset
+of elliptic regular equivalence classes in ${\cal C}$ and let
+${\cal{X}}(G)$
+denote the subset of $\chi \in {\cal{X}}$ of the form $\chi=(G,\rho )$ for
+some cuspidal
+$\rho \in \Pi _u(\overline{G({\mathbb {A}})})$.
+
+Not all the expressions in the above trace formula (3.1) are invariant in
+the sense that $J(f)=J(f^y)$ for all
+$f\in {\cal{H}}(\overline{G({\mathbb {A}})}) $ and all
+$y\in \overline{G({\mathbb {A}})}$. The terms $J_{{\cal{O}}}(f)$
+with ${\cal{O}}\in {\cal{C}}(G)$ are invariant and the terms
+$J_\chi (f)$ with $\chi \in {\cal{X}}(G)$ are invariant.
+We follow [A6], [A9], [A10], in putting
+the remaining terms in invariant form.
+
+Fix a finite set of places $S$ of ${\mathbb {Q}}$ which
+unless stated otherwise
+will contain the archimedian place and the primes $p|2n$.
+Let ${\mathbb {A}}_S=\Pi _{p\in S}{\mathbb {Q}}_p$ and embed
+${\cal{H}}(\overline{G({\mathbb{A}}_S)})\hookrightarrow {\cal{H}}(G({\mathbb {A}))}$
+in the natural way. We identify $f\in {\cal{H}}(\overline{G({\mathbb{A}}_S)})$
+with the $f_S\in {\cal{H}}(G({\mathbb {A}}))$ which agrees
+with $f$ on $\overline{G({\mathbb{A}}_S)}$ and with the unit
+element of ${\cal{H}}(\overline{G({\mathbb{Q}}_p)},K_p)$
+on $\overline{G({\mathbb{Q}}_p)} $ for $p\notin S$.
+
+Define 
+\begin{equation}
+I_\chi (f)=I_\chi ^S(f)=J_\chi (f),\;\;\;\;\;\;\;\;\chi \in {\cal{X}}(G),
+\end{equation}
+and 
+\begin{equation}
+I_{{\cal{O}}}(f)=I_{{\cal{O}}}^S(f)=J_{{\cal{O}}}(f),
+\;\;\;\;\;\;\;\;{\cal{O}}\in {\cal C}(G),
+\end{equation}
+for $f\in {\cal{H}}(\overline{G({\mathbb{A}}_S)})$. One of the objects to this subsection
+is to define $I_\chi (f)=I_\chi ^S(f)$,
+$\chi \in {\cal{X}}-{\cal{X}}(G), $
+and $I_{{\cal{O}}}(f)=I_{{\cal{O}}}^S(f)$,
+${\cal{O}}\in {\cal C}-{\cal C}(G),\;$%
+following [A6]. Once this is done, we will use the formalism of [A6] to
+deduce the global invariant trace formula in the form 
+\begin{equation}
+\sum_{\chi \in {\cal{X}}}I_\chi (f)=\sum_{{\cal{O}}\in {\cal C}}
+I_{{\cal{O}}}(f).
+\end{equation}
+
+To do this requires, in particular, verifying for each $p\in S$ the local
+assumptions of [A6], of which there are three types:
+
+(1) [A6, Assumption 5.1, p. 30],
+
+(2) [A6, Assumption 5.2, p. 32],
+
+(3) the statements (6.1)-(6.6) regarding normalized intertwining operators.
+(In our case, only the statements (6.1)-(6.4) need proving since
+$SL(2)/k$ is rank one.)
+
+\subsection{Local assumptions}
+
+We shall now make precise three types of statements alluded to
+above which must be verified.
+
+Let $Q=M_Q N_Q$ be a parabolic of $G$ and let $y\in G({\mathbb{A}}_S)$.
+For $m\in M({\mathbb{A}}_S)$, let
+\begin{equation}
+f_{Q,y}(m)=\delta_Q(m)^{1/2}\int_K\int_{N_Q({\mathbb{A}}_S)}
+f(k^{-1}mnk)u'_Q(k,y)dndk,
+\end{equation}
+where
+\[
+u'_Q(k,y)=\int_{{\mathfrak{a}}_Q}
+\sum_{ P ,Q\subset P}
+(-1)^{dim(A_Q/A_G)}
+\tau_Q^P(X)\hat{\tau}_P(X+H_Q(ky))dX ,
+\]
+as in [A6, {3.3}] (modulo a typo).
+(Recall (4.14), (5.16) for $\tau_Q^P,...$.)
+\begin{example} Let $G=SL(2)$. Then
+\[
+\begin{array}{c}
+u'_G(k,y)=\tau_G^G(X)\hat{\tau}_G(X+H_G(ky))=1,\\
+u'_Q(k,y)=\int_{{\mathbb{R}}}
+-\tau_B^B(X)\hat{\tau}_B(X+H_B(ky))
++\tau_B^G(X)\hat{\tau}_G(X+H_B(ky)) dX \\
+=\int_{{\mathbb{R}}}
+-\hat{\tau}_B(X+H_B(ky))+\tau_B(X)dX\\
+=|H_B(ky)|.
+\end{array}
+\]
+\end{example}
+
+\subsubsection{Assumption 5.1}
+
+First, a
+
+\begin{definition}
+Let $\phi :U\rightarrow V$ denote a continuous linear transformation between
+two complete topological vector spaces. Let $U^{\prime }$ denote the space
+of continuous linear functionals on $U$ (similarly for $V^{\prime }$). The 
+{\bf transpose} $\phi ^{\prime }:V^{\prime }\rightarrow U^{\prime }$ is the
+map defined by 
+\[
+\phi ^{\prime }(\lambda ):f\longmapsto \lambda (\phi (f)),\;\;\;\lambda \in
+V^{\prime },\;f\in U. 
+\]
+\end{definition}
+
+Let $C_N^\infty({\mathfrak{a}}_{M,S})$ denote the topological vector space of
+smooth functions on ${\mathfrak{a}}_{M,S}$ which are supported on
+\[
+\{X\in {\mathfrak{a}}_{M,S}\ |\ ||X||\leq N\},
+\]
+where
+\begin{equation}
+{\mathfrak{a}}_{M,S}
+=\{H_M(m)\ |\ m\in \overline{M({\mathbb{A}}_S)}\}.
+\end{equation}
+
+We follow [A11, section 11] (as opposed to [A6, sections 4,5] where
+the assumptions are stated), restricting ourselves to
+$G=SL(2)$ and simplifying whenever possible.
+
+ Let $N,\Gamma$ be as in subsection 5.1.1 and let
+$I_N(\overline{G({\mathbb{A}}_S)})_\Gamma$ denote the vector
+space of complex valued functions $\phi$
+on the tempered dual $\Pi_t(\overline{G({\mathbb{A}}_S)})$ such
+that
+
+(a) if $\pi|_K$ contains no representation in $\Gamma$ then
+$\phi (\pi)=0$,
+
+(b) if $M\subset G$ is an admissible Levi (e.g., $M=A$) and
+$\sigma\in \Pi_t(\overline{M({\mathbb{A}}_S)})$ then
+\begin{equation}
+\phi(\sigma,X)
+=\int_{{\mathfrak{a}}_{M,S}}
+\phi(\sigma,X)e^{-\Lambda (X)}d\Lambda ,\ \ \ \ X\in {\mathfrak{a}}_{M,S},
+\end{equation}
+converges to a function of $X$ which belongs to
+$C_N^\infty({\mathfrak{a}}_{M,S})$.
+
+If we fix a family of semi-norms $||...||_{M,\sigma}$
+on $C_N^\infty({\mathfrak{a}}_{M,S})$ then there are seminorms
+\begin{equation}
+\phi\longmapsto ||\phi(\sigma,*)||_{M,\sigma},\ \ \ \
+\sigma\in \Pi_t(\overline{M({\mathbb{A}}_S)}),
+\end{equation}
+which make $I_N(\overline{G({\mathbb{A}}_S)})_\Gamma$ into a topological vector space.
+By [Ru, ch 1], we may complete
+$I_N(\overline{G({\mathbb{A}}_S)})_\Gamma$ using this family of seminorms to
+obtain a Frech\'et space.
+
+Define
+\begin{equation}
+I(\overline{G({\mathbb{A}}_S)})
+=\lim_{\Gamma}
+I(\overline{G({\mathbb{A}}_S)})_\Gamma
+\end{equation}
+where
+\[
+I(\overline{G({\mathbb{A}}_S)})_\Gamma
+=\lim_N
+I_N(\overline{G({\mathbb{A}}_S)})_\Gamma .
+\]
+
+In [A11], the spaces $I_{ac}(\overline{G({\mathbb{A}}_S)})$ are also
+introduced, as well as the subspace of moderate functions,
+which we denote by $I_{mod}(\overline{G({\mathbb{A}}_S)})$.
+Actually only the non-metaplectic versions of these spaces
+were introduced in [A11], their metaplectic analogs are left
+to the reader.
+Note that for $G=SL(2)$ or $G=A$, the diagonal maximal split torus
+of $SL(2)$, we have
+\[
+I_{ac}(\overline{G({\mathbb{A}}_S)})=I(\overline{G({\mathbb{A}}_S)})
+=I_{mod}(\overline{G({\mathbb{A}}_S)}),
+\ \ \ \ 
+I_{ac}(\overline{A({\mathbb{A}}_S)})
+=I(\overline{A({\mathbb{A}}_S)})
+=I_{mod}(\overline{A({\mathbb{A}}_S)}).
+\]
+
+Let $M\in \{A,G\}$, let ${\cal{H}}_{ac}$ be as in
+[A11] (see also subsection 4.???? above),
+and let 
+\[
+U_M={\cal{H}}_{mod}(\overline{M({\mathbb{Q}}_p)})
+={\cal{H}}(\overline{M({\mathbb{Q}}_p)}) .
+\]
+These are smooth, compactly supported (in our case), $K$-finite
+functions. Let 
+\[
+V_M=I_{mod}(\overline{M({\mathbb{Q}}_p)}) =I(\overline{M({\mathbb{Q}}_p)})
+\]
+denote the space of functions on $\Pi _u(\overline{M({\mathbb{Q}}_p)})$ as
+in [A11] (and as above).
+Note that these function spaces are not the same as those in [A6].
+I will assume that [A6, Assumption 5.1] is intended
+for the spaces in [A11, section 11].
+Then the assumptions are
+
+\begin{conjecture}
+The map $\phi=\phi_M^M :U_M\rightarrow V_M$ given by
+$\phi (f):\pi \longmapsto tr(\pi (f)) $ is surjective.
+\end{conjecture}
+
+The non-metaplectic analog of this
+was proven in [A10, Lemma 6.1] (see also [BDK]).
+For a discussion of the metaplectic conjecture, see [J1].
+
+\begin{conjecture}
+The image of $\phi ^{\prime }:V_M^{\prime }\rightarrow U_M^{\prime }$ is the
+space of all invariant distributions on
+$\overline{M({\mathbb {Q}}_p)}$.
+\end{conjecture}
+
+In [A6, Lemma 8.3, Theorem 12.1], it is shown that these imply
+
+\begin{theorem} Assume the conjectures above.
+There is a map $\phi^G_M :U_G\rightarrow V_M$ satisfying
+
+(a) if $G=M$ then $\phi^G_M$ is as above,
+
+(b) in general, we have
+\[
+\phi_M^G(f^y)=
+\sum_{Q ,M\subset M_Q}
+\phi_M^{M_Q}(f_{Q,y}),\ \ \ \ f\in U_G.
+\]
+In particular, $\phi_G^G(f^y)=\phi_G^G(f)$.
+
+(c) for $f\in U_G$, $\pi\in \Pi_t(\overline{M({\mathbb{A}}_S)})$,
+we have $\phi^G_M(f,\pi)={\rm tr}(I_{P_0}(\pi,f)R_M^G(\pi,P_0))$,
+where $R_M^G(\pi,P_0))$ is defined in [A6, section 7]
+via the $(G,M)$-family
+\[
+R_P(\lambda, \pi,P_0))=
+R_{P|P_0}(\pi)^{-1}R_{P|P_0}(\pi_\lambda),
+\]
+where the $R_{P|P_0}(\pi_\lambda)$ are as in section 6.1.3 below.
+\end{theorem}
+
+\begin{example} Let $G=SL(2)$. In this case,
+\[
+\phi^G_A(f,\pi)={\rm tr}(I_{B}(\pi,f)R_A^G(\pi,B))
+\]
+is a global ``weighted character'' similar to the integrand of
+the expression in Theorem 6.31 above. The term $R_A^G(\pi,B)$
+calculated in a similar fashion to $M_B^T(\pi)_\chi$
+in Example 6.32.
+\end{example}
+
+Let $\sigma\in \Pi(\overline{A({\mathbb{A}}_S)})$ and let
+\[
+R_{\overline{B}|B}(\sigma)
+=m(\sigma)^{-1}M_{\overline{B}|B}(\sigma)
+\]
+Then we rewrite (6.14) as 
+\[
+R_{\overline{B}|B}(\sigma_\lambda)^{-1}
+R'_{\overline{B}|B}(\sigma_\lambda)|_{\lambda =0}
+=-m(\sigma_\lambda)^{-1}m'(\sigma_\lambda)|_{\lambda =0}
++M_{\overline{B}|B}(\sigma_\lambda)^{-1}
+M'_{\overline{B}|B}(\sigma_\lambda)|_{\lambda =0}
+\]
+Eventually we will want to plug this into the terms (6.17),
+(5.27) (using the last equation in Example 5.23). 
+
+\subsubsection{Assumption 5.2}
+
+Let $M\in \{A,G\}$, $S=\{p\}$.
+
+A complex valued function $\phi$ on
+$\Pi(\overline{M({\mathbb{Q}}_p)})$ extends to the
+complex Grothendieck group
+$R(\Pi(\overline{M({\mathbb{Q}}_p)}))\otimes {\mathbb{C}}$ by linearity.
+Thus, if $L$ is any Levi of $M$ then $\phi$ is defined on the image of
+the induction map
+$I_L^M: \Pi(L({\mathbb{Q}}_p))\rightarrow R(\Pi(\overline{M({\mathbb{Q}}_p)}))$.
+In particular, for $\sigma\in \Pi(\overline{M({\mathbb{Q}}_p)})$ and
+$\zeta\in \oplus_{v\in S}i{\mathfrak{a}}^*_v$, $\phi(I_L^M(\sigma_\zeta))$ is
+defined. Let
+\begin{equation}
+D_\sigma \phi(\sigma^M)=
+\left\{
+\begin{array}{c}
+{d\over d\zeta}\phi(I_L^M(\sigma_\zeta))|_{\zeta =0},
+\ \ \ \ {\rm if\ it\ exists},\\
+\infty,\ \ \ \ {\rm otherwise}.
+\end{array}
+\right.
+\end{equation}
+If $p<\infty$ is a prime and
+$\sigma\in \Pi(\overline{M({\mathbb{Q}}_p)})$ then define
+$||\sigma||=0$. If $p=\infty$,
+$\sigma\in \Pi(\overline{M({\mathbb{Q}}_p)})$,
+and $\Delta$
+is a Casimer operator on $\overline{M({\mathbb{Q}}_p)}$
+(which is the same as the Casimer operator on
+$M({\mathbb{Q}}_p)$)
+then define $||\sigma||$ to be the
+smallest (positive) eigenvalue of $\sigma(\Delta)$. For
+$\sigma\in \Pi(\overline{M({\mathbb{Q}}_p)})$, define
+\[
+||\sigma||=\sup_{p\in S}||\sigma_p||.
+\]
+
+If $U_M={\cal{C}}(\overline{M({\mathbb{Q}}_p)})$, let
+$V_M$ be defined as follows.
+Let
+\[
+\begin{array}{c}
+{\cal{I}}(\overline{M({\mathbb{Q}}_p)})_{\overline{K}}
+=\{\phi: \Pi(\overline{M({\mathbb{Q}}_p)})\rightarrow {\mathbb{C}} \ | \\
+(a) \ \phi(\pi)=0\ {\rm \ unless\ }\pi{\rm \ has\ a\ }
+\overline{K\cap M({\mathbb{Q}}_p)}-{\rm \ fixed\ vector},\\
+(b)\ {\rm for \ each\ Levi\ }L{\rm\ of\ }M,\\
+||\phi||_{D,n}=\sup_{\sigma\in \Pi_t(\overline{L({\mathbb{Q}}_p)})}
+(1+||\sigma||)^n|D_\sigma \phi(\sigma^M)|\\
+{\rm is\ finite}\},
+\end{array}
+\]
+topologized by the semi-norm topology. Let
+\begin{equation}
+V_M=
+{\cal{I}}(\overline{M({\mathbb{Q}}_p)})
+=\lim_{K}{\cal{I}}(\overline{M({\mathbb{Q}}_p)})_{\overline{K}},
+\end{equation}
+topologized using the direct limit topology.
+See also [A16, section 3].
+
+Then the assumptions are
+
+\begin{conjecture}
+The map $\phi =\phi_M^M :U_M\rightarrow V_M$ given by
+$\phi (f):\pi \longmapsto tr(\pi (f)) $ is surjective.
+\end{conjecture}
+
+This is proven in [A16, appendix].
+
+\begin{conjecture}
+The image of $\phi ^{\prime }:V_M^{\prime }\rightarrow U_M^{\prime }$ is the
+space of all tempered invariant distributions on
+$\overline{M({\mathbb{Q}}_p)}$.
+\end{conjecture}
+
+When $M=G=SL(2)$ these conjectures are discussed in [J1], where
+they are shown to be a consequence of other conjectures (!).
+
+In [A6], it was shown that these imply
+\begin{theorem} Assume the two conjectures above.
+There is a map
+$\phi^G_M :U_G\rightarrow V_M$ satisfying
+
+(a) if $M=G$ then $\phi_M^G$ is as above.
+
+(b) In general, we have
+\[
+\phi_M^G(f^y)=
+\sum_{ Q , M\subset M_Q}
+\phi_M^{M_Q}(f_{Q,y}),\ \ \ \ f\in U_G.
+\]
+In particular, $\phi_G^G(f^y)=\phi_G^G(f)$.
+
+(c) $\phi_M^G$ is given as in Theorem 6.4(c) above.
+\end{theorem}
+
+\subsubsection{Normalized intertwining operators}
+
+Let $P,P^{\prime },P^{\prime \prime }$ be parabolics of
+$G$ defined over ${\mathbb{Q}}$
+with Levi $A$. Let $\chi \in \Pi _u({\overline{A({\mathbb{Q}}_p)}})$ have
+representation space $V_\chi $ - a finite dimensional complex vector space
+with an ${A({\mathbb {Q}}_p)}$-invariant inner product
+$(...,...)_\chi $ - and let ${\cal{K}}_P(\chi )$ denote the space of all
+genuine $V_\chi $-valued functions $\phi $
+whose norms are square-integrable over
+${K_p}$: 
+\[
+\int_{K_p}(\phi ,\phi )_\chi dk<\infty . 
+\]
+
+\begin{conjecture}
+There are canonically normalized intertwining operators 
+\[
+R_{P^{\prime }|P}(\chi ):{\cal{K}}_P(\chi )\rightarrow
+{\cal{K}}_{P^{\prime}}(\chi ) 
+\]
+such that
+
+(1) for all $x\in \overline{G({\mathbb{Q}}_p)}$, we have 
+\[
+R_{P^{\prime }|P}(\chi )I_P(\chi ,x)
+=I_P(\chi ,x)R_{P^{\prime }|P}(\chi ), 
+\]
+
+(2) $R_{P^{\prime }|P}(\chi )$ is unitary and 
+\[
+R_{P^{\prime \prime }|P}(\chi )
+=R_{P^{\prime \prime }|P^{\prime }}(\chi)R_{P^{\prime }|P}(\chi ), 
+\]
+
+(3) if $\psi \in {\cal K}_P(\chi )$ is such that
+$\psi (k)=\psi (1)$
+for all $k\in \overline{K_p}$ then 
+\[
+R_{P^{\prime }|P}(\chi )\psi =\psi , 
+\]
+
+(4) (for $p=\infty $) if $W\in \Pi (\overline{K_p})$ and 
+\[
+R_{P^{\prime }|P}(\chi )_W=R_{P^{\prime }|P}(\chi )|_{{\cal{K}}_P(\chi )_W}
+\]
+then for all $D\in Diff(i{\mathfrak {a}}_P^{*})$ there is a $C>0,\;N>0$ such
+that 
+\[
+||D_\chi R_{P^{\prime }|P}(\chi )_W||\leq C\cdot (1+||\chi ||)^N\cdot
+(1+||W||)^N,
+\]
+for all $\chi \in \Pi _u(\overline{A({\mathbb{Q}}_p)})$.
+Here $||\chi||,\;||W||$ are as in [A6, section 5]
+(see also section 6.1.2 above).
+\end{conjecture}
+
+If $p=\infty $, $G=SL(2)$ then these follow either from [Sa].
+For $p<\infty$, they are discussed in [J1] (see [A16, section 2]
+for the case $n=1$).
+
+\subsection{The terms in the invariant trace formula}
+
+Recall ${\cal C}$ denotes the set of equivalence classes in $G({\mathbb {Q}})$
+(two elements are equivalent if and only if their semi-simple
+Jordan components are $G({\mathbb{Q}})$-conjugate). Let
+$\sigma \in G({\mathbb{Q}})$ be semi-simple. The
+$(G,S)${\bf -equivalence class of }$\sigma $ is
+the set 
+\[
+G({\mathbb{Q}})\cap (\sigma {\cal{U}})^{G({\mathbb{Q}})}
+=\{\delta ^{-1}\sigma u\delta
+\;|\;\delta \in G({\mathbb{Q}}),\;u\in {\cal{U}}\cap G({\mathbb{Q}})\}, 
+\]
+where ${\cal{U}}$ is a unipotent conjugacy class in
+$\overline{G({\mathbb {A}}_S)}_\sigma$.
+
+\begin{lemma}
+Each ${\cal{O}}\in {\cal{C}}$ breaks up into a finite set of
+$(G,S)$-classes ${\cal{O}}_{(G,S)}$.
+\end{lemma}
+
+More generally, we may define this
+finer notion of equivalence for any Levi $M$. Let
+$\gamma \in M({\mathbb{Q}})$ have semi-simple Jordan
+component $\sigma$. Let $\gamma ^{\prime }\in M({\mathbb{Q}})$.
+We say that $\gamma ^{\prime }$
+is $(M,S)${\bf -equivalent} to $\gamma $ if there is a
+$\delta \in M({\mathbb{Q}})$ such that
+
+(1) $\sigma $ is the semi-simple Jordan component of
+$\delta ^{-1}\gamma^{\prime }\delta $,
+
+(2) $\sigma ^{-1}\gamma $ and $\sigma ^{-1}\delta ^{-1}
+\gamma ^{\prime}\delta $ are
+$\overline{M({\mathbb{A}}_{S})}_\sigma$-conjugate.
+
+\begin{example}
+Let $G=SL(2)$, $\gamma,\gamma^{\prime}\in G({\mathbb{Q}})$
+and let $S$ be non-empty.
+
+Let $M=G$ and $\gamma =1$. $\gamma$ is $(G,S)$-equivalent to
+$\gamma^{\prime}$ if and only if they are equal.
+
+Let $M=A$ and $\gamma =1$. $\gamma$ is $(A,S)$-equivalent to
+$\gamma^{\prime}$ if and only if they are equal.
+
+Let $M=G$ and let $\gamma $ be regular semi-simple.
+$\gamma$ is $(G,S)$-equivalent to
+$\gamma^{\prime}$ if and only if they are $G({\mathbb{Q}})$-conjugate.
+
+Let $M=A$ and $\gamma \in A({\mathbb{Q}})$ be regular.
+$\gamma$ is $(A,S)$-equivalent to
+$\gamma^{\prime}$ if and only if they are equal.
+\end{example}
+
+\begin{lemma}
+If $G=SL(2)$ and $S$ is non-empty then
+$\gamma^{\prime}$ is $(G,S)$-equivalent to $\gamma\in G({\mathbb{Q}})$ only if 
+$\gamma^{\prime}$ is equivalent to $\gamma$.
+\end{lemma}
+
+\begin{example}
+Let $G=SL(2)$ and let ${\cal{O}}\in {\cal C}-{\cal C}(G)$, so
+${\cal{O}}$ is not an elliptic class. If $a$ denotes the Jordan component of
+some $\gamma \in {\cal{O}}$ and $a$ is regular then we have
+${\cal{O}}\cap A({\mathbb{Q}})=\{a,a^w\}$.
+\end{example}
+
+Let $G=SL(2)$. Assume that
+${\cal{O}}\in {\cal{C}}-{\cal{C}}(G)$
+contains a regular element.
+We next define a term $J_{{\cal{O}}}^{\prime }(f)$
+such that 
+\begin{equation}
+I_{{\cal{O}}}(f)=J_{{\cal{O}}}(f)-J_{{\cal{O}}}^{\prime }(f)
+\end{equation}
+is an invariant distribution on ${\cal{H}}(\overline{G({\mathbb{A}}_S)})$.
+To define $J_{\cal{O}}^{\prime }(f)$, let
+$\chi \in \Pi _u(\overline{A({\mathbb{A}}_S)})$, let
+$M(\chi )=M(w,\chi)$ denote the intertwining operator
+\[
+M(w,\chi):I_A(\chi )\rightarrow I_A(\chi ^w),
+\]
+and let $M(\chi ,\eta )$ denote the operator
+$M(w,\eta )=M(w,I_A(\chi ),\eta)$ in [A2, section 4, p. 113],
+where $\eta \in {\mathfrak {a}}_{{\mathbb {C}}}^{*},\;P_1=B,\;P_2=B^w$.
+Let $m(\chi ,\eta )$ denote the scalar factor such that 
+\begin{equation}
+R(\chi ,\eta )=m(\chi ,\eta )^{-1}M(\chi ,\eta ):
+{\cal K}_B(\chi )\rightarrow {\cal K}_B(\chi ^w)
+\end{equation}
+satisfies the normalized intertwining operator satisfying the conditions in
+the section 6.1.3 above. The relation between the logarithmic
+derivatives of the two is given by
+\begin{equation}
+M(\chi ,\eta )^{-1}M'(\chi ,\eta )=
+m(\chi ,\eta )^{-1}m'(\chi ,\eta )+
+R(\chi ,\eta )^{-1}R'(\chi ,\eta ).
+\end{equation}
+
+Let 
+\begin{equation}
+\varphi _A(f,\chi )
+={\rm tr}(R(\chi ,0)^{-1}R(\chi ,0)^{\prime }I_A(\chi ,f)),
+\end{equation}
+where the derivative (the prime on $R$) is with respect to $\eta $ and then
+evaluated at $0$. This makes sense since the range of $R(\chi ,\eta )$ is
+independent of $\eta $.
+Roughly speaking, the correction term $J_{\cal{O}}^{\prime }(f)$ can be
+regarded as an average of the inverse Fourier transform of $\varphi _A(f)$
+over ${\cal{O}}\cap A({\mathbb{Q}})$
+(by analogy with the case of $SL(2)$ or $GL(2)$
+- see the introduction to [A6] and [LL]). This is
+essentially the way
+it works in the formalism here but more work will be required to set things
+up properly.
+
+We now turn to [A6, section 4] and recall from section 3.4 above  the
+definition of the invariant distributions
+$I_{{\cal{O}}}^A,\;I_\chi ^A$ on $\overline{A({\mathbb{A}}_S)}$.
+These will be used to define $I_{{\cal{O}}}^G,\;I_\chi ^G$ on 
+$\overline{G({\mathbb{A}}_S)}$ using the metaplectic analog of
+[A6, Proposition 4.1 and its proof]. In fact, we
+have 
+\begin{equation}
+J_{{\cal{O}}}^{\prime }(f)
+=|W_G|^{-1}(I_{{\cal{O}}}^A)^{\wedge }(\varphi_A(f)),
+\end{equation}
+where $(I_{{\cal{O}}}^A)^{\wedge }$ denotes the distribution on the
+Schwartz space ${\cal{S}}(\Pi _u(A({\mathbb {A}}_S)))$ such that 
+\[
+(\varphi _G^A)^{\prime }((I_{\cal{O}}^A)^{\wedge })=I_{\cal{O}}^G, 
+\]
+where 
+\[
+\varphi_G^A:{\cal{H}}(\overline{G({\mathbb {A}}_S)})\rightarrow
+I(\Pi _u(\overline{A({\mathbb {A}_S)})) }
+\]
+is the Fourier transform map.
+
+\begin{proposition}
+([A6, Introduction and Proposition 4,1]) The distribution
+(6.13) on ${\cal{H}}(\overline{G({\mathbb{A}}_S)})$ is invariant,
+where $J_{\cal{O}}^{\prime }(f)$ is given
+by (6.16).
+\end{proposition}
+
+Assume that ${\chi }\in {\cal{X}}-{\cal{X}}(G)$.
+Next we define a term $J_{{ \chi }}^{\prime }(f)$ such that 
+\begin{equation}
+I_{{\chi }}(f)=J_{{\chi }}(f)-J_{{\chi }}^{\prime }(f)
+\end{equation}
+is an invariant distribution on
+${\cal{H}}(\overline{G({\mathbb{A}}_S)})$.
+As in (6.8), let 
+\begin{equation}
+J_{{\chi }}^{\prime }(f)=|W_G|^{-1}(I_{{\cal \chi }}^A)^{\wedge
+}(\varphi _A(f)),
+\end{equation}
+where $(I_{{\cal \chi }}^A)^{\wedge }$ denotes the distribution on the
+space $I(\Pi _u(\overline{A({\mathbb {A}}_S)}))$ such that 
+\[
+(\varphi _G^A)^{\prime }((I_{{\cal \chi }}^A)^{\wedge })=I_{{\cal \chi }}^G. 
+\]
+
+\begin{proposition}
+([A6, Introduction and Proposition 4.1]) The distribution (6.17)
+on ${\cal{H}}(\overline{G({\mathbb{A}}_S)})$ is invariant,
+where $J_{{\cal \chi }}^{\prime }(f)$ is
+given by (6.18).
+\end{proposition}
+
+The invariant formula is the equality given by (6.4).
+
+\subsection{The terms $I_M(\gamma, f)$ and $I_M(\pi,f)$}
+
+The term $I_M(\gamma,f)$ is defined inductively by
+\begin{equation}
+I_M(\gamma,f)
+=J_M(\gamma,f)-
+\sum_{ L, M\subset L\\ L\not= G}
+\hat{I}_M^L(\gamma,\phi_L(f)),
+\end{equation}
+where $\phi_L$ is as in section 6.1.
+For a general explicit expression, see [A16].
+
+There is an ``invariant version'' of Proposition 4.18, where $J$ is
+replaced by $I$, (substitute (6.12),
+(6.16), and (6.19) into Proposition 4.18):
+
+Let $(M({\mathbb{Q}})\cap {\cal{O}})_{M,S}$ denote the set of
+$(M,S)$-equivalence classes in $M({\mathbb {Q}})\cap {\cal{O}}$.
+
+\begin{proposition}
+([A10, Theorem 3.3]) 
+\[
+I_{{\cal{O}}}(f)
+=\sum_{M\in {\cal{L}}(G)}|W_0^M|\cdot |W_0^G|^{-1}
+\sum_{\gamma \in (M({\mathbb{Q}})\cap {\cal{O}})_{M,S}}
+a^M(S,\gamma )I_M(\gamma ,f),
+\]
+where $S$ is a sufficiently large set of valuations and the
+$a^M(S,\gamma)$ are as in section 5.
+\end{proposition}
+
+In section 6.1 we introduced normalized intertwining operators
+$R_{P^{\prime}|P}(\pi)$, for $P^{\prime},P\in {\cal P}(M)$.
+We will use these to make the distributions
+$I_M(\gamma)$ and $I_M(\pi)$ more explicit.
+For a fixed $P_0\in {\cal P}(M)$,
+$\nu\in i{\mathfrak{a}}_M^*$,
+$\pi\in \Pi_u(\overline{M({\mathbb{A}}_S)})$,
+$\lambda\in {\mathfrak{a}}_{M,{\mathbb{C}}}^*$, let
+\begin{equation}
+R_P(\mu,\pi_\lambda,P_0)
+=R_{P|P_0}(\pi_\lambda)^{-1}R_{P|P_0}(\pi_{\lambda+\mu}) .
+\end{equation}
+This more than likely (the metaplectic analog of) a
+$(G,M)$-family [A11, section 6]. In any case, the quantity
+\[
+R_M(\pi_\lambda,P_0)
+=\lim_{\mu\rightarrow 0}
+\sum_{P\in {\cal P}(M)}
+R_P(\mu,\pi_\lambda,P_0)\theta_P(\mu)^{-1}
+\]
+exists. Here $R_G(\pi_\lambda,P_0)=1$ and
+\[
+R_A(\pi_\lambda,P_0)=
+R_{\overline{P_0}|P_0}(\pi_\lambda)^{-1}
+{d\over d\lambda}
+R_{\overline{P_0}|P_0}(\pi_\lambda)
+\]
+by the computation in Example 5.32 (see also [A11] and [A6, (6.5)]).
+
+\begin{example}
+If $G=SL(2)$ and $M=A$ then
+\[
+I_A(\gamma,f)
+=J_A(\gamma,f)-
+\hat{I}_A^A(\gamma,\phi_A(f)),
+\]
+for $\gamma\in A({\mathbb{Q}})$.
+The term $\hat{I}_A^A(\gamma,\phi_A(f))$
+is the inverse Fourier transform of
+$\phi_A(f)(\chi)=tr(I_A(\chi)R_A(\chi,B))(f)$ evaluated at
+$\gamma$. 
+\end{example}
+
+Let
+\begin{equation}
+J_M(\pi_\lambda,f)=
+{\rm tr}(R_M(\pi_\lambda,P_0)
+I_{P_0}(\pi_\lambda,f)),
+\end{equation}
+where $f\in {\cal{H}}(\overline{G({\mathbb{A}}_S)})$ and where
+$I_{P_0}(\pi)$ denotes the usual induced representation.
+Define
+\begin{equation}
+J_M(\pi,X,f)
+=\int_{i{\mathfrak{a}}^*_{M,S}}
+J_M(\pi_\lambda,f)e^{\lambda(X)}d\lambda,
+\end{equation}
+where $f$ is in the Hecke algebra as above, $X\in {\mathfrak{a}}_{M,S}$
+is as in (6.6), and where
+
+\begin{eqnarray*}
+&&{\mathfrak{a}}^*_{M,S}
+={\mathfrak{a}}^*_{M}/{\mathfrak{a}}^{\vee}_{M,S}\\
+&&{\mathfrak{a}}^{\vee}_{M,S}={\rm Hom}({\mathfrak{a}}_{M,S},2\pi {\mathbb Z}).
+\end{eqnarray*}
+For
+$\pi\in \Pi_u(\overline{M({\mathbb{A}}_S)})$,
+inductively define $I_M(\pi,X,f)=I_M^G(\pi,X,f)$ by
+\begin{equation}
+I_M(\pi,X,f)
+=J_M(\pi,X,f)-
+\sum_{ L, M\subset L\\ L\not= G}
+\hat{I}_M^L(\pi,X,\phi_L(f)),
+\end{equation}
+where $\phi_L$ is as in section 6.1 [A9, section 3].
+In general, define $I_A(\pi,f)=I_A(\pi,0,f)$.
+
+\begin{example}
+If $G=SL(2)$ and $M=A$ then
+\[
+I_A(\pi,X,f)
+=J_A(\pi,X,f)-
+\hat{I}_A^A(\pi,X,\phi_A(f))
+=J_A(\pi,X,f)-(\phi_A(f))(\pi),
+\]
+for $\pi\in \Pi_u(\overline{A({\mathbb{A}}_S)})$.
+\end{example}
+
+The analog of Proposition 4.16 is
+
+\begin{proposition}
+([A9, Lemma 3.1]) If $\pi\in\Pi_t(\overline{M({\mathbb{A}}_S)})$ then
+\[
+I_M(\pi,X,f)=
+\left\{
+\begin{array}{c}
+ f_G(\pi,X),\ \ M=G,\\
+ 0,\ \ M\not= G,
+\end{array}
+\right.
+\]
+where
+\[
+f_G(\pi,X)=
+\int_{i{\mathfrak{a}}^*_{G,S}}
+{\rm tr}(\pi_\lambda(f))e^{\lambda(X)}d\lambda,
+\]
+and $X\in {\mathfrak{a}}_{G,S}$.
+\end{proposition}
+
+(This vanishing result for $I_M,\ M\not=G$ is false in
+general if $\pi$ is not tempered.
+
+\begin{example} If $G=SL(2)$ and
+$\pi\in\Pi_t(\overline{M({\mathbb{A}}_S)})$ then
+\[
+I_M(\pi,X,f)=
+\left\{
+\begin{array}{c}
+ tr(\pi(f)),\ \ M=G,\\
+ 0,\ \ M= A.
+\end{array}
+\right.
+\]
+\end{example}
+
+We assume (as usual) that $S$ contains the archimedian place.
+If $\pi$ is an automorphic representation of $\overline{M({\mathbb{A}}_S)}^1$,
+the infinitesimal character of the archimedian
+component of $I_M(\pi)$, is a $W$-orbit in the set of
+${\mathfrak{a}}_{M,{\mathbb{C}}}^*$-orbits in ${\mathfrak{h}}_{\mathbb{C}}^*$.
+In this double orbit there is a unique
+$W$-orbit in ${\mathfrak{h}}_{\mathbb{C}}^*$ of smallest norm, which we denote by
+$\nu_\pi$. If $\chi\in {\cal{X}}$ is the class of the orbit of
+$(M,\pi)$, $\pi$ an
+irreducible cuspidal representation of $M$ then let
+$\nu_\chi =\nu_\pi$.
+
+\begin{theorem} ([A10, Corollary 4.5]) 
+\[
+I_\chi
+(f)
+=\sum_{M\in L(G)}|W_0^M|\cdot |W_0^G|^{-1}
+\int_{\Pi (M,\chi)}a^M(\pi
+)I_M(\pi ,f)d\pi ,
+\]
+where 
+\[
+\Pi (M,\chi )=
+\{\pi \in \Pi (\overline{M({\mathbb{A}}_S)^1})\;|\;v_\pi =\nu_\chi \},
+\]
+$a^M(\pi )$ satisfies [A10, (4.5)] and $I_\chi$ is
+defined by (6.17).
+\end{theorem}
+
+\subsection{The invariant trace formula}
+
+The geometric side of the trace formula is the sum of the following terms:
+
+(a) the sum over classes ${\cal{O}}\subset G({\mathbb{Q}})$
+such that ${\cal{O}}\cap Z(G({\mathbb{Q}}))\not= \emptyset$ of
+\begin{equation}
+I_{\cal{O}}(f)=\sum_{\gamma\in {\cal{O}}_{(G,S)}}
+a^G(S,\gamma)I_G(\gamma,f)+{1\over 2}a^A(S,z)I_A(z,f),
+\end{equation}
+where $I_M$ and $a^M$ are given in (6.17) and section 4,
+resp., and the $(G,S)$-classes wre described in example 6.11
+above (these include the ``nilpotent terms''),
+
+(b) the sum over elliptic regular classes 
+${\cal{O}}\subset G({\mathbb{Q}})$
+of
+\begin{equation}
+I_{\cal{O}}(f)=
+a^G(S,\gamma)J_G(\gamma,f),
+\end{equation}
+where $\gamma\in {\cal{O}}$ and
+$J_G$ (an orbital integral) and $a^G$ (a volume)
+are given in section 5,
+
+(c) the sum over ``hyperbolic'' regular classes
+${\cal{O}}\subset G({\mathbb{Q}})$
+of
+\begin{equation}
+I_{\cal{O}}(f)=
+a^A(S,\gamma)I_A(\gamma,f),
+\end{equation}
+where $I_A$ and $a^A$ (a volume)
+are given in above and in section 5.
+
+The spectral side of the trace formula is the sum of the following terms:
+
+(a) the sum over classes $\chi\in {\cal{X}}(G)$ of
+\begin{equation}
+I_\chi(f)=
+{\rm tr}(\pi(f)),\ \ \ (\pi,G)\in\chi,
+\end{equation}
+
+(b) the sum over classes $\chi\in {\cal{X}}-{\cal{X}}(G)$ of
+\begin{equation}
+I_\chi(f)=
+{1\over 2}\int_{\Pi_u(A,\chi)}
+a^A(\pi)I_A(\pi,f)d\pi,
+\end{equation}
+where $I_A$ is given above and $\Pi_u(A,\chi)$ is as in Theorem 6.20
+above. (Recall that $I_A(\pi,f)=0$ for $\pi$ {\em tempered}.)
+
+
+

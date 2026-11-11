@@ -12,7 +12,7 @@ This log tracks every item of the 2026 referee report ([Claude Docs](https://cla
 
 | Stage | Scope | Status |
 |---|---|---|
-| 0 | Clean source tree: `cctrac3b.tex` from `book7d.tex`, remove Scientific Word macros, `\numberwithin`, `\label`/`\ref`/`\cite`, bibliography fixes. No mathematical changes. | Pending, and largely superseded: every section was rewritten in `revised/`, and `revised/preview.tex` is in effect the master. What is left of stage 0 is a decision for DJ (see *Stage 7 notes*, last item) |
+| 0 | Clean source tree: `cctrac3b.tex` from `book7d.tex`, remove Scientific Word macros, `\numberwithin`, `\label`/`\ref`/`\cite`, bibliography fixes. No mathematical changes. | Done 2026-11-11 (see *Stage 0 notes*): `clean-1995/` compiles; the master of the revised paper is `revised/sl2bar-trace-2026.tex` (was `preview.tex`). The conversion of the hand-typed 1995 cross-references to `\label`/`\ref` was dropped as superseded |
 | 1 | §2 foundations: κ-splitting, global cover, genuine conventions, center, NAK, measures, GL(2) cover | Done 2026-11-10: `revised/sec2-foundations.tex`, checked by `revised/checks/sec2_n2_check.py` (see *Stage 1 notes*). Written before stage 0, as a standalone file for the stage-0 master to `\input`. |
 | 2 | §3 rank 0 (much simpler for n = 2: the cover of A is abelian) | Done 2026-11-10: `revised/sec3-rank0.tex`, checked by `revised/checks/sec3_n2_check.py` (see *Stage 2 notes*) |
 | 3 | §4 and `cctrac3b.tex`: geometric side | Done 2026-11-10: `revised/sec4-geometric.tex`, checked by `revised/checks/sec4_n2_check.py` (see *Stage 3 notes*) |
@@ -524,6 +524,24 @@ The report's §7 numbers do not match the compiled text (it does not count the r
 
 **Open, for DJ.**
 - An independent referee report on Section 7 (by another model or a person). The places to look first: the new proof of Proposition 7.5; whether (N5) holds for Li's factors, or for factors defined through the local coefficients of Szpruch and Goldberg–Szpruch; the description of the packets after Proposition 7.12.
-- Stage 0. The 1995 source tree was never cleaned, and no longer needs to be for the revision: `revised/preview.tex` builds the whole paper. Either close stage 0 and rename `preview.tex` to a master name, or keep it as is.
+- Stage 0: done after this stage, see *Stage 0 notes*.
 - The mathematical items listed under "Not done" in the Stage 6 notes are unchanged.
+
+## Stage 0 notes (2026-11-11)
+
+Stage 0 was planned as the first stage and done last. By then every section had been rewritten in `revised/`, so it has two parts.
+
+**The 1995 notes, compiling: `clean-1995/`.** Copies of `cctrace_new.tex`, `cctrace2`–`7.tex`, `cctracer.tex` from `original-1995/` (which stays as received), with:
+- `cctrac3b.tex` supplied as a copy of `book-1997/book7d.tex` (`\symbol{126}` → `\sim`);
+- `\Bbb` → `\mathbb` (845), `\frak` → `\mathfrak` (108);
+- equations numbered by section; as received they compile as (1)–(127);
+- the duplicate bibliography entry [Sh] removed; the unused class option `amsfonts` removed.
+
+It builds with `pdflatex` (81 pages, no errors, no warnings, no undefined citations). No mathematical change was made. There were no Scientific Word macros to remove in these files; only `cctrace1.tex`, the older master, needs `tcilatex`, and it is not copied.
+
+**Not done, deliberately.** The 1995 text has no `\label`/`\ref`; its cross-references are typed by hand with the Scientific Word numbers, which do not all agree with the compiled ones (Section 7 compiles with equations (7.1)–(7.30)). Converting them, and correcting the 1995 bibliography entry by entry, would be work on a text that the revision replaces. The numbering maps in the stage notes above remain the bridge. With `cctrac3b.tex` present Section 4 gains statements 4.10–4.16 at its end; the numbers in Sections 5–7 do not change.
+
+**The master of the revised paper.** `revised/preview.tex` is renamed `revised/sl2bar-trace-2026.tex` (PDF likewise) and is the master. Earlier notes in this log say `preview.tex`. Title page, at DJ's request: the sentence naming the 1995 notes is a `\thanks` footnote to the title, and the date line reads "Original draft: 1995, Corrected and expanded draft: 2026".
+
+**Status.** All stages are closed. Open items are those listed at the end of the Stage 7 notes, first of all an independent referee report on Section 7.
 

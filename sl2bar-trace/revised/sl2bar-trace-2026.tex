@@ -24,6 +24,10 @@
 \renewcommand{\theexample}{\thesection.\Alph{example}}
 \theoremstyle{remark}
 \newtheorem{remarkrev}{Remark}
+% A lemma added after Proposition 7.5 without renumbering what follows.
+\newcommand{\shellref}{\ref{prop:weil-char}$'$}
+\theoremstyle{plain}
+\newtheorem*{lemmaprime}{Lemma \shellref}
 \renewcommand{\theremarkrev}{2026.\arabic{remarkrev}}
 
 \newcommand{\Q}{\mathbb{Q}}
@@ -110,6 +114,15 @@ Theorem~\ref{thm:residual}(c), and for the treatment of general unitary
 characters in Lemma~\ref{lem:explicit-r}(c). The introduction, the
 roadmaps, the glossary and Appendix~\ref{sec:appendix-1995} follow its
 suggestions. The errors that remain are the authors'.
+
+ChatGPT also refereed Section~\ref{sec:stable} in a second report. It
+found that Theorem~\ref{thm:stabler}(c) called sums of distributions with
+different characters eigendistributions; asked for
+Lemma~\shellref and for the two-lattice and kernel arguments in the
+proof of Proposition~\ref{prop:weil-char}; pointed out that~\cite{GS16}
+does not cover the dyadic places, so that it cannot support the
+condition~\ref{N5} there; and supplied Example~\ref{ex:eta}(e) and the
+references for the packets after Proposition~\ref{prop:theta-packet}.
 
 \appendix
 \input{appA-comparison}
@@ -296,6 +309,8 @@ forms of half integral weight'', Nagoya Math. J. \textbf{58} (1975),
 \bibitem[Sz09]{Sz09} D. Szpruch, ``Computation of the local coefficients for
 principal series representations of the metaplectic double cover of
 $SL_2(F)$'', J. Number Theory \textbf{129} (2009), 2180--2213.
+\bibitem[Sz16]{Sz16} D. Szpruch, ``On Shahidi local coefficients matrix'',
+preprint, arXiv:1609.08122.
 \bibitem[Ta]{Ta} J. Tate, ``Fourier analysis in number fields and Hecke's
 zeta-functions'', in~\cite{CF}, 305--347.
 \bibitem[Th08]{Th08} T. Thomas, ``The character of the Weil

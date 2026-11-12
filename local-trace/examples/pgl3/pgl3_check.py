@@ -2,7 +2,7 @@
 # Copyright (c) 2026 David Joyner
 """
 Rank-two test of Hypothesis (R): PGL(3), an unramified elliptic element of depth 0.
-See README.md and Appendix B of the revised paper.  Prepared by Claude (Anthropic), 2026.
+See README.md and Appendix A of the revised paper.  Prepared by Claude (Anthropic), 2026.
 
 Checks
   1. Building: the displacement table N(lambda, mu) = #{v : d(v0,v)=lambda, d(v,gamma v)=mu}

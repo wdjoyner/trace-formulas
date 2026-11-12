@@ -23,8 +23,9 @@ where f^∨ is the Satake transform and dμ the spherical Plancherel measure. Th
 | `examples/pgl2/` | PGL(2) worked example + verification script |
 | `examples/sl2/` | SL(2) check: the atom at the quadratic unramified character |
 | `examples/rank2/` | Exact rank-two check of the Brion vertex decomposition (SL(3), PGL(3)) |
-| `examples/pgl3/` | PGL(3) on the Bruhat–Tits building: rank-two test of Hypothesis (R) (Appendix B of the paper) |
-| `paper/` | Revised paper (2026), `CHANGES.md`, second referee report and response |
+| `examples/pgl3/` | PGL(3) on the Bruhat–Tits building: rank-two test of Hypothesis (R) (Appendix A of the paper) |
+| `paper/` | Revised paper (2026, Draft 2), `CHANGES.md` (Draft 1), second referee report and response |
+| `revision_log.md` | Revision log: drafts, AI usage, original vs. new results, concordance, former Appendix C of the paper |
 | `arthur/` | Route B: a sketch is §7 of the revised paper; a standalone guide is planned |
 
 ## Plan for the revision ("Route A") and its status
@@ -35,6 +36,6 @@ Repair the original argument rather than replace it:
 2. Replace Lemma 3.5 by the vertex (Brion) decomposition. **Done** (Lemma 3.5A).
 3. Restate Prop. 3.6 as "cone terms + T-independent remainder", for vectors of fixed level. **Done**, with a new direct proof.
 4. Prove Theorem 4.5. **Done** under Hypothesis (R): rapid decay of the oscillatory terms (exact vanishing in rank one).
-5. Regularity in rank ≥ 2. **Partly done.** (R) is false in general: SL(2) has an atom (Conjecture 4.6). It also fails for PGL(3), where nevertheless there is no singular part (Appendix B). The weaker (R′) (Remark 2026.20) is proposed. Open: a proof of (R′).
+5. Regularity in rank ≥ 2. **Partly done.** (R) is false in general: SL(2) has an atom (Conjecture 4.6). It also fails for PGL(3), where nevertheless there is no singular part (Appendix A). The weaker (R′) (Remark 2026.20) is proposed. Open: a proof of (R′).
 6. Update §5 (the fundamental lemma is now a theorem). **Done.**
 7. Add a glossary, a literature review (before and after 1997), the PGL(2) example, and a short section on Route B. **Done**, plus an SL(2) example.

@@ -35,7 +35,7 @@ When Z(G) is connected the singular part vanishes. For SL(n) it is given by κ-o
    - Proposition 4.2: the T-independent part I(χ,φ).
    - Theorem 4.5(b): the full identity, under (R).
    - §6: the PGL(2) and SL(2) examples (no singular part, and an atom, respectively).
-   - Appendix B: PGL(3), where (R) fails but there is no singular part.
+   - Appendix A: PGL(3), where (R) fails but there is no singular part.
 3. **What Route B adds.** An existence theorem for dI_φ that needs no regularity hypothesis, with a representation-theoretic description of both parts.
 4. **Statements.** These are targets; the status of each is in §11.
    - **Theorem A** (existence). dI_φ is a finite complex measure on Θ̂ᵘ/W (Conjecture 4.6(a)).
@@ -110,7 +110,7 @@ When Z(G) is connected the singular part vanishes. For SL(n) it is given by κ-o
    - Limitation: Lemma 2.8 gives the dictionary only when the coroot lattice is saturated (Remark 2026.4).
 2. **Proof of Theorem B.** Show that the T-independent part I(χ,φ) of Proposition 4.2 equals c_G J_{M₀}(χ⁻¹, φ)/ρ(χ).
    - Plan: compute both as constant terms of exponential polynomials in T. In rank one, the constant term of Σ_Q e^{λ(T_Q)} c_Q(λ)/θ_Q(λ) at λ = 0 is a logarithmic derivative of an intertwining operator, which is visible in (6.5) of the companion paper.
-3. **What Hypothesis (R) means in Arthur's terms.** (R) asks each oscillatory term to be regular. This is stronger than "no singular part". In PGL(3) (Appendix B), the oscillatory coefficients have poles on the non-root subtori z_i³ = 1, but these poles cancel in pairs. This is consistent with Theorem C, because the R-groups of PGL(3) are trivial. Explain the weaker condition (R′) of Remark 2026.20 from this point of view.
+3. **What Hypothesis (R) means in Arthur's terms.** (R) asks each oscillatory term to be regular. This is stronger than "no singular part". In PGL(3) (Appendix A), the oscillatory coefficients have poles on the non-root subtori z_i³ = 1, but these poles cancel in pairs. This is consistent with Theorem C, because the R-groups of PGL(3) are trivial. Explain the weaker condition (R′) of Remark 2026.20 from this point of view.
 
 ## 8. Endoscopy: SL(n)
 
@@ -128,7 +128,7 @@ When Z(G) is connected the singular part vanishes. For SL(n) it is given by κ-o
    - Compare with Theorem 6.1 of the companion paper: verify Theorem B in rank one, with constants.
    - Check: `examples/pgl2/pgl2_check.py`, extended.
 2. **SL(2).** There is one virtual character τ = π⁺ − π⁻ at χ₀ in T_ell(G). Verify that tr τ(f) = f^∨(χ₀) and that J_G(τ^∨, φ) is the κ-orbital integral, giving the atom ½ f^∨(χ₀) of Proposition 6.4.
-3. **PGL(3).** The R-groups are trivial, so Theorem C predicts no singular part, as found numerically in Appendix B. Compute the weighted character for the depth-0 element γ and compare it with the closed form (B.4).
+3. **PGL(3).** The R-groups are trivial, so Theorem C predicts no singular part, as found numerically in Appendix A. Compute the weighted character for the depth-0 element γ and compare it with the closed form (B.4).
 4. **SL(3)** (new). Take an elliptic γ from the norm-one torus of the unramified cubic extension.
    - The R-groups are non-trivial at the isolated characters χ = (1, ζ, ζ²), with ζ a primitive cube root of unity. At these points a 3-cycle in W fixes χ and acts on 𝔞₀ without fixed vectors, so it is elliptic.
    - Theorem C predicts atoms there, of total mass given by the κ-orbital integral for κ of order 3 (Proposition 5.1).

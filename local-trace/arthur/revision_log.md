@@ -11,6 +11,7 @@ Files in the git history track the drafts. File names carry no draft number (sty
 | 0 | 2026-11-10 | Outline of the companion paper | `OUTLINE.md` |
 | 1 | 2026-11-10 | First draft: background, Arthur's formula, the two specializations, main theorem in outline, comparison with Route A, examples, literature review, status list, glossary | git history of `route-b-draft.tex` |
 | 2 | 2026-11-12 | Style-guide pass: preamble, title page, AI disclosure, acknowledgments, citation keys, the [Ar91] citations, section order, orienting paragraphs, rank-one examples, notation table, summary of results | *Draft 2: style-guide pass* (below) |
+| 5 | 2026-11-12 | The rank ≥ 2 correction computed: new §6.4 with the density for Arthur's unnormalized operators, explicit in rank two. Theorem B, Theorem 7.1 and Conjecture 8.1 restated for all ranks | *Draft 5: the correction in rank ≥ 2* (below); `sbeta_check.py` |
 | 4 | 2026-11-12 | Response to the referee report of Gemini ("Argon") on Draft 3: Remark 4.1 made precise, Lemma 6.3 proved, Lemma 8.4 (W-invariance) added, scope paragraph on rank one in the Introduction | *Draft 4: response to the referee* (below); `referee-report-argon-draft3.md` |
 | 3 | 2026-11-12 | Mathematical revision: Section 4 restated to match [Ar91], with a remark on normalized and unnormalized weighted characters; "Why it should hold" in §8 replaced by a lemma, a proposition and a corollary; §9 expanded with the R-groups, elliptic data and κ-supports of SL(n) | *Draft 3: mathematical revision* (below) |
 
@@ -40,6 +41,67 @@ This is a new paper of 2026. Every statement in it is new in 2026 or is quoted w
 - **[Ar81], [Ar89a], [Ar89b], [Ar93], [Ar94], [Ar96], [Ar98], [Ar99]** and every other entry of the bibliography were not consulted in this pass. Section and lemma numbers quoted from them ([Ar81, §§6–7, Lemma 6.2], [Ca80, Thm. 3.1], [Ka86, §4]) are unverified.
 - The bibliographic data were not checked against publisher records. Status 2.1 of the paper says the same. One entry to look at first: [Ar98] is given as pp. 35–52, and this was not confirmed.
 - The citations of [JC26] were checked against the source of its Draft 2 (see step 4 below).
+
+## Draft 5: the correction in rank ≥ 2 (2026-11-12)
+
+Draft 4 left open the terms that relate Arthur's unnormalized weighted characters to the normalized ones in rank ≥ 2 (Remark 4.1, item (N1)). Draft 5 computes them for the term M = M₀, at DJ's request. **This draft changes the statements of Theorem B, Theorem 7.1 and Conjecture 8.1.** Nothing in it has been refereed.
+
+**Compiling.** 39 pages, no errors, no warnings, no undefined references, no overfull or underfull boxes. `run_checks.py` passes, with the new `sbeta_check.py` (12 scripts).
+
+**Title page.** Subtitle "Draft 5". Date line "First draft: November 10, 2026. Draft 5: November 12, 2026".
+
+### The result
+
+For the test function f ⊗ φ and the representation ψ⁻¹ ⊗ ψ of M₀(F) × M₀(F), Arthur's unnormalized weighted character is
+
+  J_{M₀}(π, f ⊗ φ) = f^∨(ψ⁻¹) · J̃_{M₀}(ψ, φ),  J̃_{M₀}(ψ, φ) = Σ_{L ∈ ℒ} s^L_{M₀}(ψ) J_L(ψ, φ),
+
+where the J_L are normalized weighted characters and the s^L_{M₀} are explicit scalars with s^{M₀}_{M₀} = 1 (Proposition 6.8). For cuspidal φ the term L = G vanishes.
+
+- **Rank one:** J̃_{M₀} = J_{M₀}. Nothing changes.
+- **Rank two:** one extra term for each positive root β, with coefficient −v_β (log q)(1 − q⁻²)/|1 − q⁻¹ψ_β(π)|², a Poisson kernel (Lemma 6.7, equation (6.2)). It is smooth and has no zeros, so the extra terms are really there.
+- **PGL(3):** three extra terms. The product of their denominators is the denominator of Route A's closed form [JC26, (A.4)]. This agrees in shape with Conjecture 8.1 and is not a proof.
+
+So Theorem B as stated in Drafts 1–3 (density = c_G J_{M₀}) was correct only in rank one, as Draft 4 said. Draft 5 restates it for all ranks.
+
+### Changes to statements (rule 4.2)
+
+1. **Theorem B.** "I_B ρ = c_G J_{M₀}(χ⁻¹, φ)" became "I_B ρ = c_G J̃_{M₀}(χ⁻¹, φ)", with J̃_{M₀} defined in the statement as the sum over L ≠ G, and the sentence "In rank one, J̃_{M₀} = J_{M₀}". The two sentences that Draft 4 added ("asserted in rank one…") were removed.
+2. **Theorem 7.1.** The first term has J̃_{M₀} in place of J_{M₀}. The terms with M₀ ⊊ M ⊊ G are unchanged and are now flagged as provisional (Status 7.2): they need a correction of the same kind, which has not been computed. The terms with M = G carry no weight and need none.
+3. **Conjecture 8.1.** The displayed form has J̃_{M₀}. The sentence after it now says that this is J_{M₀} in rank one and (6.2) in rank two.
+4. **§6.3, first item of the list.** Now labeled "written with normalized operators", with a sentence pointing to Proposition 6.8.
+5. **§10.3 (PGL(3)).** "Conjecture 8.1 predicts that this is c_G J_{M₀}(χ⁻¹, φ)" became "c_G J̃_{M₀}(χ⁻¹, φ)", with a sentence on the three extra terms.
+6. **Remark 4.1,** last paragraph: "have not been computed" became a pointer to §6.4.
+7. **Abstract, the Results and Scope paragraphs of the Introduction, Status 7.2, the Summary table, item (N1), the notation table, the opening of §6, and the proof outline of Theorem 7.1** were updated to match.
+
+**Status.** Theorem B is no longer restricted to rank one. Its new form rests on Proposition 6.8, which is proved here from Arthur's definition and from the product formula of [Ar81], cited from memory. The qualifier "modulo the normalizations of §12" is unchanged.
+
+### New mathematical text, for refereeing (all in the new §6.4)
+
+1. **Equation (6.1)** (`e:sQ`): s_Q(Λ, ψ) = Π_{β ∈ Σ_Q} c_β(ψ_Λ⁻¹)/c_β(ψ⁻¹), a product over the roots positive for Q.
+2. **Lemma 6.6** (`l:sfam`): (a) these form a (G, M₀)-family; (b) on vectors Φ_K ⊗ u, Arthur's operator J_{Q|P}(π)⁻¹ J_{Q|P}(π_Λ) is s_Q(Λ, ψ) times the normalized ℛ_Q(Λ, ψ, P) in the second factor. The proof uses (3.1), (3.2), Arthur's (4.3), and c_α(ψ) = c_{−α}(ψ⁻¹). It shows that the family (4.4) of Draft 4 does not depend on P.
+3. **Lemma 6.7** (`l:sbeta`): the limit for a Levi subgroup with roots ±β is −v_β (log q)(1 − q⁻²)/|1 − q⁻¹ψ_β(π)|². The identity ℓ(y) + ℓ(1/y) = −(1 − q⁻²)/|1 − q⁻¹y|² is checked exactly by `sbeta_check.py` (SymPy), which also checks that it is the derivative in the proof. **The sign depends on the conventions for χ_Λ and θ_Q.** The magnitude does not.
+4. **Proposition 6.8** (`p:density`): the formula above. The proof has three steps. (i) The first tensor factor is f^∨(ψ⁻¹) times the projection on Φ_K, so only Lemma 6.6(b) is needed. (ii) The product formula [Ar81, Lemma 6.3]. (iii) s^Q_{M₀} depends only on the Levi component of Q, so that [Ar81, Cor. 6.5] gives a sum over L.
+5. **Equation (6.2)** (`e:rank2`): the rank-two form.
+6. **Example 6.9** (`ex:unnorm`): PGL(3).
+7. **Status 6.10.**
+
+### What was not done, and not verified
+
+- **[Ar81] was not consulted.** "Lemma 6.3" is cited on the authority of [Ar91, p. 92]. "Cor. 6.5" is from memory (level 3). Step (iii) of the proof of Proposition 6.8 depends on it.
+- **The coefficient a^{M₀}_disc** of ψ⁻¹ ⊗ ψ in Arthur's (12.10) is taken to be 1, as in earlier drafts (item (N2)).
+- **The terms with M₀ ⊊ M ⊊ G** have not been corrected. This affects the densities on tori of positive dimension, for example T₂ for SL(4).
+- **s^L_{M₀} for L of semisimple rank ≥ 2** is not written out. It is needed from rank three on.
+- **No numerical test of (6.2).** The comparison with Route A for PGL(3) is by the shape of the denominators only. A real test would compute the weighted characters J_{M₀} and J_{L_β} for a function φ of level one on PGL(3).
+- **§3.4, §4.3, Theorems A, C, D and §9** are unchanged.
+
+### Semicolons
+
+The new text has none. Drafts 4 and 5 both have 20.
+
+### Numbering: Draft 4 → Draft 5
+
+No number of Draft 4 changes. New: §6.4, equations (6.1) and (6.2), Lemmas 6.6 and 6.7, Proposition 6.8, Example 6.9, Status 6.10. The remark after Lemma 3.4 has a label (`l:sphvanish:rem`).
 
 ## Draft 4: response to the referee (2026-11-12)
 

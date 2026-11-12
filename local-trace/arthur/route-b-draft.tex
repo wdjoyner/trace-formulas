@@ -1,5 +1,5 @@
 % SPDX-License-Identifier: CC-BY-4.0
-% Route B companion paper, Draft 4 (November 12, 2026).
+% Route B companion paper, Draft 5 (November 12, 2026).
 % See OUTLINE.md for the plan and revision_log.md for the history.
 \documentclass[12pt,letterpaper]{article}
 \usepackage[T1]{fontenc}
@@ -51,16 +51,16 @@
 \newcommand{\Tdisc}{T_{\mathrm{disc}}}
 
 \title{The spectral measure of an elliptic orbital integral,\\ via Arthur's local trace formula\thanks{This is a working draft. Statements are labeled as proved here, quoted (with a reference), or expected; every ``Status'' paragraph says which, and what remains to be checked.}\\[1ex]
-\large Draft 4}
+\large Draft 5}
 \author{David Joyner\thanks{\texttt{wdjoyner@gmail.com}} \and
 Claude\thanks{Claude is an AI model made by Anthropic. See the Acknowledgments for the division of work.}}
-\date{First draft: November 10, 2026. Draft 4: November 12, 2026}
+\date{First draft: November 10, 2026. Draft 5: November 12, 2026}
 
 \begin{document}
 \maketitle
 
 \begin{abstract}
-This paper was written with the help of AI systems: Claude (Anthropic) suggested the approach and drafted the paper as a co-author, and Gemini (Google) refereed the third draft. See the Acknowledgments for details. The paper revises and updates the first author's earlier paper \cite{Jo92}, using a method different from the one used in the analogous paper \cite{JC26}. Let $G$ be an unramified semisimple group over a $p$-adic field, $K$ a hyperspecial maximal compact subgroup, and $\gamma$ a regular elliptic element. Taking one test function spherical and the other supported on the elliptic set, we specialize Arthur's local trace formula. On the geometric side only the orbital integrals of $G$ survive. On the spectral side only two kinds of terms survive: the unramified principal series of $G$, weighted by a weighted character of the elliptic test function, and Arthur's elliptic tempered virtual characters with $K$-fixed vectors. We deduce that the spherical orbital integrals of $\gamma$ are given by a finite measure on the unitary unramified characters. In rank one, that is for $SL(2)$ and $PGL(2)$, its absolutely continuous part has density a normalized weighted character. In higher rank the density comes from Arthur's unnormalized weighted character, and its relation to the normalized one has not yet been computed. Its singular part is supported on subtori where the $R$-groups of the unramified principal series are non-trivial, and it vanishes when the center of $G$ is connected. For $SL(n)$ the singular part is given by $\kappa$-orbital integrals. In that case we determine the elliptic data explicitly, and we show that they have the same index set and the same supports as the $\kappa$-orbital integrals. We compare the result with the truncation method of the companion paper \cite{JC26}, and work out $PGL(2)$, $SL(2)$, $PGL(3)$ and $SL(3)$.
+This paper was written with the help of AI systems: Claude (Anthropic) suggested the approach and drafted the paper as a co-author, and Gemini (Google) refereed the third draft. See the Acknowledgments for details. The paper revises and updates the first author's earlier paper \cite{Jo92}, using a method different from the one used in the analogous paper \cite{JC26}. Let $G$ be an unramified semisimple group over a $p$-adic field, $K$ a hyperspecial maximal compact subgroup, and $\gamma$ a regular elliptic element. Taking one test function spherical and the other supported on the elliptic set, we specialize Arthur's local trace formula. On the geometric side only the orbital integrals of $G$ survive. On the spectral side only two kinds of terms survive: the unramified principal series of $G$, weighted by a weighted character of the elliptic test function, and Arthur's elliptic tempered virtual characters with $K$-fixed vectors. We deduce that the spherical orbital integrals of $\gamma$ are given by a finite measure on the unitary unramified characters. Its absolutely continuous part has an explicit density. In rank one, that is for $SL(2)$ and $PGL(2)$, the density is a normalized weighted character. In higher rank it has one further term for each Levi subgroup strictly between the minimal one and $G$, with an explicit coefficient. Its singular part is supported on subtori where the $R$-groups of the unramified principal series are non-trivial, and it vanishes when the center of $G$ is connected. For $SL(n)$ the singular part is given by $\kappa$-orbital integrals. In that case we determine the elliptic data explicitly, and we show that they have the same index set and the same supports as the $\kappa$-orbital integrals. We compare the result with the truncation method of the companion paper \cite{JC26}, and work out $PGL(2)$, $SL(2)$, $PGL(3)$ and $SL(3)$.
 
 This is a working draft. The results are proved modulo normalizations in Arthur's formula that have not yet been checked. The main theorem is proved in outline. For $SL(n)$ the identification of the densities is given in outline only. The section ``Status and what remains'' lists what is missing.
 \end{abstract}
@@ -90,7 +90,7 @@ with weighted orbital integrals on the left and weighted characters on the right
 \item On the spectral side, a weighted character of the spherical function $f$ vanishes unless its weight is trivial (Lemma~\ref{l:sphvanish}). This rests on the fact that the canonically normalized unramified intertwining operators fix the spherical vector. A character of $\phi$ vanishes on properly induced representations. What remains is a sum over the unitary unramified characters $\chi$ and over the finitely many elliptic tempered virtual characters with $K$-fixed vectors (\S\ref{s:spec}).
 \end{itemize}
 
-\paragraph{Results.} The statements below are proved here modulo the normalizations listed in \S\ref{s:status}, which are being checked. In rank $\ge2$ the formula of Theorem~\ref{t:B} is also subject to the correction discussed in Remark~\ref{r:norm}.
+\paragraph{Results.} The statements below are proved here modulo the normalizations listed in \S\ref{s:status}, which are being checked. In rank $\ge2$ the density in Theorem~\ref{t:B} contains the further terms computed in \S\ref{s:unnorm}.
 
 \begin{introtheorem}[existence]\label{t:A}
 For every $\phi\in C_c^\infty(G_{\ellr})$ the linear form $f^\vee\mapsto I(f,\phi)$ is given by a finite complex measure $dI_\phi$ on $\Thu/W$.
@@ -99,9 +99,9 @@ For every $\phi\in C_c^\infty(G_{\ellr})$ the linear form $f^\vee\mapsto I(f,\ph
 \begin{introtheorem}[the absolutely continuous part]\label{t:B}
 $dI_\phi=I_B(\chi,\phi)\,d\mu(\chi)+dI^{\mathrm{sing}}_\phi$, where
 \[
-I_B(\chi,\phi)\,\rho(\chi)=c_G\,J_{M_0}(\chi^{-1},\phi),\qquad c_G=(-1)^{\dim\fa_0^G}|W|^{-1},
+I_B(\chi,\phi)\,\rho(\chi)=c_G\,\widetilde J_{M_0}(\chi^{-1},\phi),\qquad c_G=(-1)^{\dim\fa_0^G}|W|^{-1},
 \]
-$\rho$ is the Plancherel density, and $J_{M_0}$ is Arthur's weighted character for the canonically normalized unramified intertwining operators (\S\ref{s:wchar}). In particular $I_B\rho$ is a smooth function on $\Thu$. The formula for $I_B\rho$ is asserted in rank one. In rank $\ge2$ the function $J_{M_0}(\chi^{-1},\phi)$ has to be replaced by the one that comes from Arthur's unnormalized weighted character (Remark~\ref{r:norm}).
+$\rho$ is the Plancherel density, and $\widetilde J_{M_0}(\psi,\phi)=\sum_{L\in\cL,\,L\ne G}s^L_{M_0}(\psi)\,J_L(\psi,\phi)$ (Proposition~\ref{p:density}). Here the $J_L$ are Arthur's weighted characters for the canonically normalized unramified intertwining operators (\S\ref{s:wchar}), and the $s^L_{M_0}$ are explicit scalar functions with $s^{M_0}_{M_0}=1$. In rank one, $\widetilde J_{M_0}=J_{M_0}$. In particular $I_B\rho$ is a smooth function on $\Thu$.
 \end{introtheorem}
 
 \begin{introtheorem}[the singular part]\label{t:C}
@@ -117,7 +117,7 @@ The comparison with Route A is Conjecture~\ref{c:AB}: the function $I_B$ of Theo
 \paragraph{Scope: rank one and higher rank.} Some statements of this paper are complete only in rank one, that is, for $SL(2)$ and $PGL(2)$. The division is as follows.
 \begin{itemize}
 \item \emph{All ranks.} The specialization of the geometric side (Proposition~\ref{p:geom}), the existence of the spectral measure (Theorem~\ref{t:A}), the smoothness of the density, and the supports of the singular part (Theorem~\ref{t:C}) are stated for all $G$, modulo the items of \S\ref{s:status}. So are the $R$-groups, the elliptic data and the dictionary for $SL(n)$ (\S\S\ref{s:slnR}--\ref{s:slnkappa}), for every $n$.
-\item \emph{Rank one only.} The formula of Theorem~\ref{t:B} for the density as a normalized weighted character is established, modulo the same items, only in rank one. Arthur's formula uses unnormalized weighted characters. In rank one the difference does not matter for our test functions. In rank $\ge2$ it produces further terms that have not been computed (Remark~\ref{r:norm}). The first term of Theorem~\ref{t:main}, the displayed form of Conjecture~\ref{c:AB}, and the statements about the density in \S\S\ref{s:pgl3}--\ref{s:sl3} are therefore provisional in rank $\ge2$.
+\item \emph{Rank one and higher rank.} In rank one the density of Theorem~\ref{t:B} is the normalized weighted character $J_{M_0}(\chi^{-1},\phi)$. Arthur's formula uses unnormalized weighted characters. In rank $\ge2$ this produces one further term for each Levi subgroup strictly between $M_0$ and $G$. These terms are computed in \S\ref{s:unnorm}, and they are explicit in rank two (\ref{e:rank2}). The corresponding correction to the singular terms on tori of positive dimension has not been computed, so the densities on those tori are provisional in rank $\ge2$.
 \item \emph{$PGL(2)$ and $SL(2)$.} Corollary~\ref{c:pgl2}, which deduces Conjecture~\ref{c:AB} from Theorem~\ref{t:main}, is for $PGL(2)$. The examples that are worked out completely are \S\S\ref{s:pgl2}--\ref{s:sl2}. All examples in \S\S\ref{s:bg}--\ref{s:compare} are in rank one.
 \item \emph{$SL(n)$ with $n$ prime.} The explicit form (\ref{e:Dprime}) of Theorem~\ref{t:D} is for prime $n$, and its normalizations have been checked only for $n=2$.
 \end{itemize}
@@ -210,6 +210,7 @@ $d\mu$, $\rho$, $d\chi$ & The Plancherel measure on $\Thu/W$, its density, and H
 $I_P(\chi)$, $\Phi_K$ & The normalized induced representation in the compact picture, and its spherical vector.\\
 $J_{P'|P}$, $r_{P'|P}$, $R_{P'|P}$, $c_\alpha$ & The standard intertwining operator, the normalizing factor, the normalized operator, and the rank-one $c$-function (\S\ref{s:norm}).\\
 $\theta_Q(\Lambda)$ & The product of the $\Lambda(\alpha^\vee)$ over the simple roots $\alpha$ of $Q$, divided by a covolume \cite[\S6]{Ar81}, \cite[(2.16)]{JC26}.\\
+$s_Q(\Lambda,\psi)$, $s^L_{M_0}(\psi)$, $\widetilde J_{M_0}(\psi,\phi)$ & The scalar family that relates Arthur's unnormalized operators to the normalized ones, its limit for a Levi subgroup $L$, and the resulting density (\S\ref{s:unnorm}).\\
 $\mathcal R_M(\chi,P)$, $J_M(\chi,f)$, $J^L_M$ & The limit of the $(G,M)$-family of normalized operators, the weighted character, and its analogue for a Levi subgroup $L\supseteq M$ (\S\ref{s:wchar}).\\
 $G_{\ellr}$, $O_\gamma$, $I(f,\phi)$ & The regular elliptic set, the orbital integral, and the distribution of Proposition~\ref{p:geom}.\\
 $D(\gamma)$ & The Weyl discriminant $\det(1-\Ad(\gamma))$ on $\mathfrak g/\mathfrak g_\gamma$.\\
@@ -283,7 +284,7 @@ Let $f\in\Hc(G,K)$, let $\chi$ be unramified, and let $M\subsetneq L$ be Levi su
 Since $f$ is bi-$K$-invariant, $I_P(\chi,f)$ maps $I_P(\chi)$ into the line $\mathbb{C}\Phi_K$ and kills the $K$-invariant complement of that line. So $I_P(\chi,f)=f^\vee(\chi)\,e_K$, with $e_K$ the projection onto $\mathbb{C}\Phi_K$, and $J^L_M(\chi,f)=f^\vee(\chi)\ip{\mathcal R^L_M(\chi,P)\Phi_K,\Phi_K^\vee}$. By (\ref{e:fix}), $\mathcal R_Q(\Lambda,\chi,P)\Phi_K=\Phi_K$ for every $Q$ and $\Lambda$. So on $\Phi_K$ the family is the constant $(L,M)$-family $1$. The limit attached to a constant $(L,M)$-family is $0$ when $M\ne L$, because $\sum_{Q\in\cP^L(M)}\theta_Q(\Lambda)^{-1}=0$ \cite[Lemma~6.2]{Ar81}. Hence $\mathcal R^L_M(\chi,P)\Phi_K=0$.
 \end{proof}
 
-\begin{remark}
+\begin{remark}\label{l:sphvanish:rem}
 Lemma~\ref{l:sphvanish} depends on the normalization. With unnormalized operators, the weighted characters of spherical functions would carry the logarithmic derivatives of the $c$-functions. These are exactly the terms that appear in the $T$-independent part of the truncated kernel of Route~A; compare \S\ref{s:compare}.
 \end{remark}
 
@@ -384,7 +385,7 @@ The product formula writes the unnormalized weighted character as a sum over $L\
 
 In rank one, $\cL(A)=\{A,G\}$. The extra term $L=G$ is $r_A^G(\pi)$ times the ordinary character $\tr I_P(\pi,f)$. For the test function $f\otimes\phi$ of this paper, with $\phi$ supported on the elliptic set, this character vanishes by Lemma~\ref{l:cusp}. So in rank one the two kinds of weighted characters agree on our test functions, and nothing in the rank-one statements of this paper changes.
 
-In rank $\ge2$ the terms with $M\subsetneq L\subsetneq G$ need not vanish, and they have not been computed. By (\ref{e:rQ}) the scalars $r_{M_0}^L(\chi)$ are explicit, so this computation is elementary. Until they are, the density in Theorem~\ref{t:B} and the first term of Theorem~\ref{t:main} should be read as follows in rank $\ge2$: they are $c_G$ times Arthur's unnormalized weighted character of $f\otimes\phi$, which is $f^\vee(\chi)J_{M_0}(\chi^{-1},\phi)$ plus possible terms from the Levi subgroups strictly between $M_0$ and $G$. The same applies to the terms with $M\supsetneq M_0$. The smoothness of the total is not affected, since the matrix coefficients of $\mathcal J_M(\pi_\lambda,P)$ are smooth in $\lambda$ \cite[Lemma~12.1]{Ar91}. See item~\ref{n:1} of \S\ref{s:status}.
+In rank $\ge2$ the terms with $M\subsetneq L\subsetneq G$ do not vanish. For $M=M_0$ they are computed in \S\ref{s:unnorm}, where (\ref{e:rQ}) is first simplified to a product over the roots that are positive for $Q$. For $M_0\subsetneq M\subsetneq G$ they have not been computed. The smoothness of the total is not affected, since the matrix coefficients of $\mathcal J_M(\pi_\lambda,P)$ are smooth in $\lambda$ \cite[Lemma~12.1]{Ar91}. See item~\ref{n:1} of \S\ref{s:status}.
 \end{remark}
 
 \begin{example}[rank one]\label{ex:ltf}
@@ -449,7 +450,7 @@ Let $G=SL(2)$ or $PGL(2)$, and consider the term $M=A$ of Example~\ref{ex:ltf}. 
 % =====================================================================
 \section{The spectral side}\label{s:spec}
 
-This section specializes the spectral expansion to the same test function $f\otimes\phi$. There are three steps. Splitting removes the weight from the spherical factor (\S\ref{s:specsplit}). Cuspidality of $\phi$ removes the properly induced data (\S\ref{s:cusp}). A classification then lists the virtual characters that survive (\S\ref{s:class}).
+This section specializes the spectral expansion to the same test function $f\otimes\phi$. There are three steps, carried out with normalized operators, and a fourth that returns to Arthur's unnormalized operators (\S\ref{s:unnorm}). Splitting removes the weight from the spherical factor (\S\ref{s:specsplit}). Cuspidality of $\phi$ removes the properly induced data (\S\ref{s:cusp}). A classification then lists the virtual characters that survive (\S\ref{s:class}).
 
 \subsection{Splitting with a spherical and an elliptic function}\label{s:specsplit}
 
@@ -505,10 +506,11 @@ The proof uses Macdonald's Plancherel theorem for the reductive group $L(F)$ wit
 
 By Lemma~\ref{l:noDS}, in a triple $\tau=(L,\sigma,r)$ with a $K$-fixed vector we must have $L=M_0$ and $\sigma=\chi$ a unitary unramified character. So:
 \begin{itemize}
-\item $M=M_0$: $\Tdisc(M_0)=\Thu$, and the contribution is
+\item $M=M_0$: $\Tdisc(M_0)=\Thu$, and the contribution, written with normalized operators, is
 \[
 \frac{(-1)^{\dim\fa_0^G}}{|W|}\int_{\Thu}f^\vee(\chi)\,J_{M_0}(\chi^{-1},\phi)\,d\chi.
 \]
+With Arthur's unnormalized operators, $J_{M_0}$ is replaced by $\widetilde J_{M_0}$ (Proposition~\ref{p:density}). The two agree in rank one.
 \item $M\supsetneq M_0$: $\tau=(M_0,\chi,r)$ with $r\in R^M_\chi$ elliptic in $M$, i.e.\ represented by $w\in W^M_\chi$ without non-zero fixed vector in $\fa_0^M$. Unramified twists by $i\fa_M^*$ act on such $\tau$, so each orbit is a torus of dimension $\dim\fa_M^G$ in $\Thu/W$. The contribution is an integral of $f^\vee(\chi_\tau)J_M(\tau^\vee,\phi)$ over these tori, with the constant of \cite{Ar93}.
 \item $M=G$: $\tau=(M_0,\chi,r)$ with $r\in R_\chi$ elliptic in $G$. These $\tau$ form a finite set, and contribute point masses $f^\vee(\chi_\tau)\tr\tau^\vee(\phi)$, with constants.
 \end{itemize}
@@ -521,6 +523,105 @@ Let $G=PGL(2)$. All $R$-groups are trivial (Example~\ref{ex:R}), so only the fir
 Let $G=SL(2)$. The same term occurs, and the third item contributes as well. By Example~\ref{ex:R} the only $\tau=(A,\chi,r)$ with $r$ elliptic is the one at $\chi=\chi_0$, and it gives a point mass at $\chi_0$ (\S\ref{s:sl2}). In rank one there is no Levi subgroup strictly between $A$ and $G$, so no tori of positive dimension occur.
 \end{example}
 
+\subsection{The term \texorpdfstring{$M=M_0$}{M=M0} with Arthur's unnormalized operators}\label{s:unnorm}
+
+This subsection computes the term $M=M_0$ of the spectral side directly from Arthur's definition, with his unnormalized operators. The result is Proposition~\ref{p:density}. In rank one it agrees with the first item of the list in \S\ref{s:class}. In higher rank it has one further term for each Levi subgroup strictly between $M_0$ and $G$. The computation does not use the splitting formula.
+
+Throughout, $\psi$ is a unitary unramified character that is regular, which means that $\psi_\beta\ne1$ for every root $\beta$. We consider the representation $\pi=\psi^{-1}\otimes\psi$ of $M_0(F)\times M_0(F)$, that is, $\pi_1=\pi_2=\psi$ in the notation of \S\ref{s:expansions}. For $Q\in\cP(M_0)$ let $\Sigma_Q$ be the set of roots that are positive for $Q$, and put
+\begin{equation}\label{e:sQ}
+s_Q(\Lambda,\psi)=\prod_{\beta\in\Sigma_Q}\frac{c_\beta(\psi_\Lambda^{-1})}{c_\beta(\psi^{-1})}\qquad(\Lambda\in i\fa_0^*).
+\end{equation}
+Note that $c_\beta(\psi^{-1})=c_{-\beta}(\psi)$, because $(\psi^{-1})_\beta=\psi_{-\beta}$.
+
+\begin{lemma}\label{l:sfam}
+Let $\psi$ be regular.
+\begin{enumerate}[label=(\alph*)]
+\item The functions $s_Q(\Lambda,\psi)$, $Q\in\cP(M_0)$, form a $(G,M_0)$-family.
+\item For $P,Q\in\cP(M_0)$ and $u\in I_P(\psi)$, Arthur's operator (\ref{e:JQP}) satisfies
+\[
+J_{Q|P}(\pi)^{-1}J_{Q|P}(\pi_\Lambda)\,(\Phi_K\otimes u)=s_Q(\Lambda,\psi)\ \Phi_K\otimes\mathcal R_Q(\Lambda,\psi,P)u .
+\]
+\end{enumerate}
+In particular $s_Q$ is the family (\ref{e:rQ}), and it does not depend on $P$.
+\end{lemma}
+
+\begin{proof}
+(b) Since $\pi_1=\pi_2=\psi$ and $(\psi^{-1})_{-\Lambda}=(\psi_\Lambda)^{-1}$, the operator (\ref{e:JQP}) is $J_{\bar Q|P}((\psi_\Lambda)^{-1})\otimes J_{Q|P}(\psi_\Lambda)$. The roots that are positive for $P$ and negative for $\bar Q$ are those in $\Sigma_P\cap\Sigma_Q$. So by (\ref{e:GK}) the first factor multiplies $\Phi_K$ by $\prod_{\alpha\in\Sigma_P\cap\Sigma_Q}c_\alpha(\psi_\Lambda^{-1})$. By (\ref{e:rnorm}) the second factor is $r_{Q|P}(\psi_\Lambda)R_{Q|P}(\psi_\Lambda)$, with
+\[
+r_{Q|P}(\psi_\Lambda)=\prod_{\alpha\in\Sigma_P\cap\Sigma_{\bar Q}}c_\alpha(\psi_\Lambda)=\prod_{\beta\in\Sigma_Q\cap\Sigma_{\bar P}}c_\beta(\psi_\Lambda^{-1}).
+\]
+Every root in $\Sigma_Q$ lies in exactly one of $\Sigma_P$ and $\Sigma_{\bar P}$. Dividing by the values at $\Lambda=0$ gives the scalar $s_Q(\Lambda,\psi)$, and the remaining operator in the second factor is $R_{Q|P}(\psi)^{-1}R_{Q|P}(\psi_\Lambda)=\mathcal R_Q(\Lambda,\psi,P)$.
+
+(a) Each factor of (\ref{e:sQ}) is smooth, because $\psi$ is regular. It depends on $\Lambda$ only through $\Lambda(\beta^\vee)$, and it equals $1$ when $\Lambda(\beta^\vee)=0$. Two adjacent parabolic subgroups $Q$ and $Q'$ have the same positive roots except for one root $\beta_0$, which is replaced by $-\beta_0$, and their common wall is $\Lambda(\beta_0^\vee)=0$. So $s_Q=s_{Q'}$ on the common wall.
+\end{proof}
+
+For a Levi subgroup $L\in\cL$, the same definition with the roots of $L$ gives an $(L,M_0)$-family. We write $s^L_{M_0}(\psi)$ for its limit at $\Lambda=0$, as in \S\ref{s:wchar}. Thus $s^{M_0}_{M_0}=1$.
+
+\begin{lemma}\label{l:sbeta}
+Let $\beta$ be a root, and let $L_\beta\in\cL$ be the Levi subgroup whose roots are $\pm\beta$. Let $v_\beta$ be the volume of $\fa_0^{L_\beta}/\mathbb{Z}\beta^\vee$, with the conventions of \cite[Example~2.5]{JC26}. Then
+\[
+s^{L_\beta}_{M_0}(\psi)=-\,v_\beta\,(\log q)\,\frac{1-q^{-2}}{|1-q^{-1}\psi_\beta(\pi)|^2}.
+\]
+The right side is a smooth function of $\psi\in\Thu$ without zeros, also at the characters that are not regular.
+\end{lemma}
+
+\begin{proof}
+The family of $L_\beta$ has two members. For the parabolic subgroup with $\beta$ positive it is $u_+(\Lambda)=c_\beta(\psi_\Lambda^{-1})/c_\beta(\psi^{-1})$. For the other one it is $u_-(\Lambda)=c_{-\beta}(\psi_\Lambda^{-1})/c_{-\beta}(\psi^{-1})=c_\beta(\psi_\Lambda)/c_\beta(\psi)$. Write $\xi=\Lambda(\beta^\vee)$. As in Example~\ref{ex:wchar},
+\[
+s^{L_\beta}_{M_0}(\psi)=\lim_{\xi\to0}v_\beta\,\frac{u_+(\Lambda)-u_-(\Lambda)}{\xi}=v_\beta\,\frac{d}{d\xi}\Big(\log c_\beta(\psi_\Lambda^{-1})-\log c_\beta(\psi_\Lambda)\Big)\Big|_{\xi=0}.
+\]
+Put $y=\psi_\beta(\pi)$, so that $|y|=1$. Since $|\lambda(\beta^\vee(\pi))|=q^{-\lambda(\beta^\vee)}$, we have $(\psi_\Lambda)_\beta(\pi)=yq^{-\xi}$. Let $c(y)=(1-q^{-1}y)/(1-y)$ and
+\[
+\ell(y)=y\,\frac{c'(y)}{c(y)}=\frac{y}{1-y}-\frac{q^{-1}y}{1-q^{-1}y}.
+\]
+Then the derivative above is $(\log q)\big(\ell(y^{-1})+\ell(y)\big)$. Now
+\[
+\frac{y}{1-y}+\frac{y^{-1}}{1-y^{-1}}=-1,\qquad \frac{q^{-1}y}{1-q^{-1}y}+\frac{q^{-1}y^{-1}}{1-q^{-1}y^{-1}}=\frac{2q^{-1}\operatorname{Re}(y)-2q^{-2}}{|1-q^{-1}y|^2},
+\]
+and $|1-q^{-1}y|^2=1-2q^{-1}\operatorname{Re}(y)+q^{-2}$. Hence $\ell(y)+\ell(y^{-1})=-(1-q^{-2})/|1-q^{-1}y|^2$.
+\end{proof}
+
+The poles of the two logarithmic derivatives at $y=1$ cancel, which is why the result is smooth. The function in Lemma~\ref{l:sbeta} is a Poisson kernel on the unit circle.
+
+\begin{proposition}\label{p:density}
+Let $f\in\Hc(G,K)$ and $\phi\in C_c^\infty(G(F))$, let $\psi$ be a regular unitary unramified character, and let $\pi=\psi^{-1}\otimes\psi$. Then Arthur's weighted character in (\ref{e:spec}) is
+\[
+J_{M_0}(\pi,f\otimes\phi)=f^\vee(\psi^{-1})\,\widetilde J_{M_0}(\psi,\phi),\qquad\widetilde J_{M_0}(\psi,\phi)=\sum_{L\in\cL}s^L_{M_0}(\psi)\,J_L(\psi,\phi),
+\]
+where $J_L(\psi,\phi)=\tr\big(\mathcal R_L(\psi,P)I_P(\psi,\phi)\big)$ is the normalized weighted character of \S\ref{s:wchar}. If $\phi$ is supported on $G_{\ellr}$, the term $L=G$ vanishes.
+\end{proposition}
+
+\begin{proof}
+As in the proof of Lemma~\ref{l:sphvanish}, the first factor of $I_P(\pi,f\otimes\phi)$ is $I_P(\psi^{-1},f)=f^\vee(\psi^{-1})e_K$, with $e_K$ the projection onto $\mathbb{C}\Phi_K$. So only the action of Arthur's family on the vectors $\Phi_K\otimes u$ matters, and by Lemma~\ref{l:sfam}(b) it is the action of the product family $s_Q(\Lambda,\psi)\mathcal R_Q(\Lambda,\psi,P)$ on $u$. Hence
+\[
+J_{M_0}(\pi,f\otimes\phi)=f^\vee(\psi^{-1})\tr\big((s\mathcal R)_{M_0}\,I_P(\psi,\phi)\big),
+\]
+where $(s\mathcal R)_{M_0}$ is the limit attached to the product family.
+
+By the product formula \cite[Lemma~6.3]{Ar81}, $(s\mathcal R)_{M_0}$ is a sum over the parabolic subgroups $Q\supseteq M_0$ of $s^Q_{M_0}\mathcal R'_Q$. Here $s^Q_{M_0}$ is formed from the functions $s_{Q_1}$ with $Q_1\subseteq Q$. Let $L$ be the Levi component of $Q$. For $Q_1\subseteq Q$ the product (\ref{e:sQ}) splits into the product over the roots of $L$ that are positive for $Q_1\cap L$, and the product over the roots of the unipotent radical of $Q$. The second product is the same for all $Q_1\subseteq Q$ and equals $1$ at $\Lambda=0$. So $s^Q_{M_0}=s^L_{M_0}$ depends only on $L$. In this situation the sum of the $\mathcal R'_Q$ over $Q\in\cP(L)$ is $\mathcal R_L$ \cite[Cor.~6.5]{Ar81}, and $(s\mathcal R)_{M_0}=\sum_{L\in\cL}s^L_{M_0}\mathcal R_L$. Taking the trace against $I_P(\psi,\phi)$ gives the formula.
+
+For $L=G$ the weighted character is $\tr I_P(\psi,\phi)$, which vanishes for $\phi$ supported on $G_{\ellr}$ by Lemma~\ref{l:cusp}.
+\end{proof}
+
+So the term $M=M_0$ of the spectral side $J_{\mathrm{spec}}(f\otimes\phi)$ is
+\[
+c_G\int_{\Thu}f^\vee(\chi)\,\widetilde J_{M_0}(\chi^{-1},\phi)\,d\chi,
+\]
+with the same constant as in the first item of the list in \S\ref{s:class}. In rank one, $\cL=\{M_0,G\}$ and $\widetilde J_{M_0}=J_{M_0}$. In rank two the Levi subgroups strictly between $M_0$ and $G$ are the $L_\beta$, one for each positive root $\beta$, and Lemma~\ref{l:sbeta} gives
+\begin{equation}\label{e:rank2}
+\widetilde J_{M_0}(\psi,\phi)=J_{M_0}(\psi,\phi)-(\log q)(1-q^{-2})\sum_{\beta>0}\frac{v_\beta\,J_{L_\beta}(\psi,\phi)}{|1-q^{-1}\psi_\beta(\pi)|^2}\qquad(\phi\text{ supported on }G_{\ellr}).
+\end{equation}
+
+\begin{example}[$PGL(3)$]\label{ex:unnorm}
+For $G=PGL(3)$ there are three positive roots, so (\ref{e:rank2}) has three terms besides $J_{M_0}$. Each $L_\beta$ is isomorphic to $GL(2)$, and $J_{L_\beta}(\psi,\phi)$ is the weighted character of $\phi$, relative to this maximal Levi subgroup, on the representation induced from $\psi$. The three coefficients have the denominators $|1-q^{-1}\psi_\beta(\pi)|^2$. Their product is the denominator of the closed form of Route~A that is displayed in \S\ref{s:pgl3}. This agrees in shape with Conjecture~\ref{c:AB}. It is not a proof of it.
+\end{example}
+
+The new terms are logarithmic derivatives of $c$-functions, as Remark~\ref{l:sphvanish:rem} anticipated.
+
+\begin{status}
+Lemmas~\ref{l:sfam} and~\ref{l:sbeta} are proved here from (\ref{e:GK}), (\ref{e:rnorm}) and (\ref{e:JQP}). Proposition~\ref{p:density} uses the product formula of \cite{Ar81}, which we have not consulted. The sign in Lemma~\ref{l:sbeta} depends on the conventions for $\chi_\Lambda$ and for $\theta_Q$. For $L$ of semisimple rank $\ge2$ the scalar $s^L_{M_0}$ has not been written out. The corresponding computation for the terms with $M_0\subsetneq M\subsetneq G$ has not been done. See item~\ref{n:1} of \S\ref{s:status}.
+\end{status}
+
 % =====================================================================
 \section{The main theorem}\label{s:main}
 
@@ -529,7 +630,7 @@ This section equates the geometric side of \S\ref{s:geom} with the spectral side
 \begin{theorem}\label{t:main}
 Let $\phi\in C_c^\infty(G_{\ellr})$. With the normalizations of \S\ref{s:status} assumed, for all $f\in\Hc(G,K)$,
 \[
-I(f,\phi)=c_G\int_{\Thu}f^\vee(\chi)\,J_{M_0}(\chi^{-1},\phi)\,d\chi+\sum_{M\supsetneq M_0}\sum_{[\tau]}c_{M,\tau}\int_{i\fa_M^*/L_M^\vee}f^\vee(\chi_{\tau,\Lambda})\,J_M(\tau_\Lambda^\vee,\phi)\,d\Lambda,
+I(f,\phi)=c_G\int_{\Thu}f^\vee(\chi)\,\widetilde J_{M_0}(\chi^{-1},\phi)\,d\chi+\sum_{M\supsetneq M_0}\sum_{[\tau]}c_{M,\tau}\int_{i\fa_M^*/L_M^\vee}f^\vee(\chi_{\tau,\Lambda})\,J_M(\tau_\Lambda^\vee,\phi)\,d\Lambda,
 \]
 where $[\tau]$ runs over the finitely many twist-orbits of $\tau=(M_0,\chi,r)$ with $r$ elliptic in $M$, and the $c_{M,\tau}$ are constants from \cite{Ar93}. Theorems~\ref{t:A}, \ref{t:B} and \ref{t:C} follow.
 \end{theorem}
@@ -539,14 +640,14 @@ The sum over $M\supsetneq M_0$ includes $M=G$. There $i\fa_G^*=0$, so the integr
 \begin{proof}[Proof outline]
 Equate Proposition~\ref{p:geom} with the spectral side of \S\ref{s:class}.
 \begin{itemize}
-\item Theorem~\ref{t:B}: the normalized intertwining operators are holomorphic and unitary on the unitary axis, so $\chi\mapsto\mathcal R_{M_0}(\chi,P)$ is smooth on $\Thu$. Since $I_P(\chi,\phi)$ has finite rank and depends smoothly on $\chi$ in the compact picture, $J_{M_0}(\chi^{-1},\phi)$ is smooth. Divide by $\rho$ to get $I_B$.
+\item Theorem~\ref{t:B}: the normalized intertwining operators are holomorphic and unitary on the unitary axis, so $\chi\mapsto\mathcal R_{M_0}(\chi,P)$ is smooth on $\Thu$. Since $I_P(\chi,\phi)$ has finite rank and depends smoothly on $\chi$ in the compact picture, $J_{M_0}(\chi^{-1},\phi)$ is smooth. Divide by $\rho$ to get $I_B$. The same argument applies to each $J_L$, and the coefficients $s^L_{M_0}$ are smooth (Lemma~\ref{l:sbeta} for $L$ of semisimple rank one).
 \item Theorem~\ref{t:C}: the same argument on each torus gives smooth densities. The list of \S\ref{s:class} gives the supports.
 \item Theorem~\ref{t:A}: there are finitely many components, each with a smooth density on a compact torus, so the total variation is finite.
 \end{itemize}
 \end{proof}
 
 \begin{status}\label{st:main}
-The first term of Theorem~\ref{t:main} is written with the normalized weighted character $J_{M_0}$. By Remark~\ref{r:norm} this is correct in rank one. In rank $\ge2$ further terms from the Levi subgroups strictly between $M_0$ and $G$ may have to be added, and the same holds for Theorem~\ref{t:B}. The existence statement (Theorem~\ref{t:A}), the smoothness of the density, and the description of the supports in Theorem~\ref{t:C} do not depend on this.
+The first term of Theorem~\ref{t:main} is $c_G$ times $\widetilde J_{M_0}$, by Proposition~\ref{p:density}. In rank one this is the normalized weighted character $J_{M_0}$. The terms with $M_0\subsetneq M\subsetneq G$ are still written with the normalized weighted characters $J_M(\tau_\Lambda^\vee,\phi)$. They are subject to a correction of the same kind, which has not been computed. The terms with $M=G$ carry no weight and need no correction. The existence statement (Theorem~\ref{t:A}), the smoothness of the density \cite[Lemma~12.1]{Ar91}, and the description of the supports in Theorem~\ref{t:C} do not depend on this.
 \end{status}
 
 \begin{remark}
@@ -569,11 +670,11 @@ This section compares the density $I_B$ of Theorem~\ref{t:B} with the $T$-indepe
 \begin{conjecture}\label{c:AB}
 For regular unitary $\chi$, the $T$-independent part $I(\chi,\phi)$ of the truncated kernel of \cite[Prop.~4.2]{JC26} equals $I_B(\chi,\phi)$. Equivalently,
 \[
-I(\chi,\phi)\,\rho(\chi)=c_G\,J_{M_0}(\chi^{-1},\phi).
+I(\chi,\phi)\,\rho(\chi)=c_G\,\widetilde J_{M_0}(\chi^{-1},\phi).
 \]
 \end{conjecture}
 
-The displayed form uses Theorem~\ref{t:B}. In rank $\ge2$ it is subject to Remark~\ref{r:norm}, and the conjecture is then the first statement, $I=I_B$.
+The displayed form uses Theorem~\ref{t:B}. In rank one, $\widetilde J_{M_0}=J_{M_0}$. In rank two the right side is given by (\ref{e:rank2}).
 
 \paragraph{Why it should hold.} Both $I$ and $I_B$ describe the same linear functional, $f^\vee\mapsto I(f,\phi)$. A measure on $\Thu$ that is invariant under $W$ is determined by its integrals against Satake transforms. So whenever each of the two routes produces a measure, the two measures are equal, and so are their absolutely continuous parts. Lemma~\ref{l:dense} and Proposition~\ref{p:AB} make this precise. The two hypotheses of the proposition are the conclusions of the two routes.
 
@@ -875,7 +976,7 @@ All $R$-groups are trivial, so Theorem~\ref{t:C} predicts no singular part, in a
 \[
 I(\chi,\gamma)\rho(\chi)=\frac{(q-1)^2(q^2+q+1)}{2q^6}\cdot\frac{2(q^2+q+1)-q\sum_{\alpha\in\Phi}z^\alpha}{\prod_{\alpha\in\Phi}(1-q^{-1}z^\alpha)}.
 \]
-Conjecture~\ref{c:AB} predicts that this is $c_GJ_{M_0}(\chi^{-1},\phi)$ for $\phi$ concentrated near $\gamma$.
+Conjecture~\ref{c:AB} predicts that this is $c_G\widetilde J_{M_0}(\chi^{-1},\phi)$ for $\phi$ concentrated near $\gamma$. By (\ref{e:rank2}) the prediction is the sum of a normalized weighted character and three terms with the denominators $|1-q^{-1}z^\beta|^2$, $\beta>0$ (Example~\ref{ex:unnorm}).
 
 \subsection{\texorpdfstring{$SL(3)$}{SL(3)}: a prediction}\label{s:sl3}
 
@@ -908,7 +1009,8 @@ Proposition~\ref{p:geom} & The geometric side reduces to $I(f,\phi)$. & Proved h
 Proposition~\ref{p:split} & The spherical factor contributes only $f^\vee(\chi)$. & Proved here from (\ref{e:split}), whose form in the local setting is being checked. See item~\ref{n:2}.\\[0.5ex]
 Lemma~\ref{l:cusp} & Functions supported on $G_{\ellr}$ are cuspidal. & Proved here from van Dijk's formula \cite{vD72}.\\[0.5ex]
 Lemma~\ref{l:noDS} & Square-integrable representations of Levi subgroups $L\ne M_0$ have no hyperspecial-fixed vectors. & Proved here from Macdonald's Plancherel theorem \cite{Ma71}, in a form that has not been checked. See item~\ref{n:3}.\\[0.5ex]
-Theorem~\ref{t:main} and Theorems~\ref{t:A}, \ref{t:B}, \ref{t:C} & The spectral measure exists. Its absolutely continuous part is a weighted character, and its singular part comes from elliptic virtual characters. & Proof in outline, with the normalizations of \S\ref{s:status} assumed. In rank $\ge2$ the formula for the density may need further terms (Remark~\ref{r:norm}, Status~\ref{st:main}). See items~\ref{n:1}, \ref{n:2} and \ref{n:4}.\\[0.5ex]
+Theorem~\ref{t:main} and Theorems~\ref{t:A}, \ref{t:B}, \ref{t:C} & The spectral measure exists. Its absolutely continuous part is a weighted character, and its singular part comes from elliptic virtual characters. & Proof in outline, with the normalizations of \S\ref{s:status} assumed. In rank $\ge2$ the density has the further terms of Proposition~\ref{p:density}, and the singular terms on tori of positive dimension are provisional (Status~\ref{st:main}). See items~\ref{n:1}, \ref{n:2} and \ref{n:4}.\\[0.5ex]
+Lemmas~\ref{l:sfam}, \ref{l:sbeta}, Proposition~\ref{p:density} & The term $M=M_0$ with Arthur's unnormalized operators, and its explicit form in rank two. & Proved here from (\ref{e:GK}), (\ref{e:JQP}) and the product formula of \cite{Ar81}, which was not consulted.\\[0.5ex]
 Theorem~\ref{t:D} & For $SL(n)$ the singular part is given by endoscopy. & Outline only. See \S\ref{s:slnD} and item~\ref{n:8}.\\[0.5ex]
 Lemma~\ref{l:slnR}, Proposition~\ref{p:slnell} & The $R$-groups and the elliptic data of $SL(n)$. & Proved here.\\[0.5ex]
 Corollary~\ref{c:slnindex}, Proposition~\ref{p:dictionary} & For $SL(n)$ the singular terms and the $\kappa$-orbital integrals have the same index set and the same supports. & Proved here from the list of \S\ref{s:class} and from Lemma~\ref{l:iota}, which is sketched.\\[0.5ex]
@@ -930,7 +1032,7 @@ The examples of \S\ref{s:ex} for $PGL(2)$, $SL(2)$ and $PGL(3)$ compare Theorem~
 This section lists the steps that remain before the results of the paper are fully proved. The items are cited by number throughout the paper. They also serve as the list of open questions.
 
 \begin{enumerate}[label=(N\arabic*)]
-\item\label{n:1} \emph{Normalizing factors.} Check that (\ref{e:rnorm}) satisfies Arthur's conditions for normalizing factors and agrees with \cite{Ar98} in the unramified case (non-split groups included). Compute, from (\ref{e:rQ}), the terms that relate Arthur's unnormalized weighted characters to the normalized ones in rank $\ge2$ (Remark~\ref{r:norm}), starting with $PGL(3)$, and correct Theorem~\ref{t:B} and Theorem~\ref{t:main} accordingly.
+\item\label{n:1} \emph{Normalizing factors.} Check that (\ref{e:rnorm}) satisfies Arthur's conditions for normalizing factors and agrees with \cite{Ar98} in the unramified case (non-split groups included). Check Proposition~\ref{p:density} against \cite{Ar81}, and test (\ref{e:rank2}) against the closed form of Route~A for $PGL(3)$. Compute the corresponding correction for the terms with $M_0\subsetneq M\subsetneq G$.
 \item\label{n:2} \emph{Arthur's formula.} The statements of (\ref{e:geo}) and (\ref{e:spec}) now follow \cite[Thm.~12.2]{Ar91}. Fix the elliptic form from \cite{Ar93}, including the relation between $\Pi_{\mathrm{disc}}(M)$ with its coefficients and $\Tdisc(M)$, the constants and measures, and the splitting formula (\ref{e:split}) in the local setting.
 \item\label{n:3} \emph{Lemma~\ref{l:noDS}.} Check the form of Macdonald's Plancherel theorem that the proof uses.
 \item\label{n:4} \emph{Theorem~\ref{t:main}.} Write the proof in full, including the smoothness of $\chi\mapsto J_{M_0}(\chi,\phi)$ in the compact picture.
@@ -975,7 +1077,7 @@ This glossary gives short definitions of the terms used in this paper, with poin
 \addcontentsline{toc}{section}{Acknowledgments}
 This paper began with a suggestion of Claude (Anthropic), an AI model. During the 2026 revision of the first author's paper \cite{Jo92}, Claude suggested reproving the results of the 1997 version of that paper from Arthur's later work on the local trace formula \cite{Ar91,Ar93}. The first author decided to pursue the suggestion, directed the work and reviewed the drafts.
 
-Claude took part as a co-author. It wrote the outline (\texttt{OUTLINE.md}, in the directory of the source), which the plan of the paper follows. It drafted the text, the examples, the literature review, the summary and the glossary, and it made the style revision of Draft~2 and the mathematical revisions of Drafts~3 and~4. Gemini (Google), an AI model, acted as a referee of Draft~3, at the first author's request. The proof of Lemma~\ref{l:noDS}, Lemma~\ref{l:Winv} and several clarifications follow its report. The paper has not been refereed by a person.
+Claude took part as a co-author. It wrote the outline (\texttt{OUTLINE.md}, in the directory of the source), which the plan of the paper follows. It drafted the text, the examples, the literature review, the summary and the glossary, and it made the style revision of Draft~2 and the mathematical revisions of Drafts~3 to~5. Gemini (Google), an AI model, acted as a referee of Draft~3, at the first author's request. The proof of Lemma~\ref{l:noDS}, Lemma~\ref{l:Winv} and several clarifications follow its report. The paper has not been refereed by a person.
 
 Review by AI systems is not an independent certification of the results. The errors that remain are the authors'. Further details on the AI usage, and a list of every change between drafts, can be found in the revision log (\texttt{revision\_log.md}) that accompanies the source.
 

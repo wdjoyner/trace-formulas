@@ -26,7 +26,7 @@ where f^∨ is the Satake transform and dμ the spherical Plancherel measure. Th
 | `examples/pgl3/` | PGL(3) on the Bruhat–Tits building: rank-two test of Hypothesis (R) (Appendix A of the paper) |
 | `paper/` | Revised paper (2026, Draft 2), `CHANGES.md` (Draft 1), second referee report and response |
 | `revision_log.md` | Revision log: drafts, AI usage, original vs. new results, concordance, former Appendix C of the paper |
-| `arthur/` | Route B: companion paper `route-b-draft.tex` (Draft 4, a working draft) with its own `revision_log.md`; a sketch is §7 of the revised paper |
+| `arthur/` | Route B: companion paper `route-b-draft.tex` (Draft 5, a working draft) with its own `revision_log.md`; a sketch is §7 of the revised paper |
 
 ## Plan for the revision ("Route A") and its status
 

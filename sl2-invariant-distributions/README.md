@@ -12,7 +12,7 @@ This is the ordinary-group companion to the metaplectic material in
 
 ```
 sl2-invariant-distributions/
-├── original-1994/   source snapshot of the pre-revision notes (see its README)
+├── original-1994/   the 1994 notes and their Argon–Gemini revision, as received
 ├── revised/         2026 revised drafts and referee reports
 └── README.md
 ```
@@ -23,7 +23,8 @@ sl2-invariant-distributions/
 | --- | --- |
 | `revised/sl2-invariant-distributions-revised-draft1.tex` | Draft 1 (November 2026): AI-assisted expository rewrite prepared with ChatGPT, responding to the referee report below. `amsart`, about 12 pages. |
 | `revised/referee-report_argon-gemini-revision.md` | Referee report on the earlier Argon–Gemini LaTeX revision of the 1994 notes. Verdict: major revision. Draft 1 is the response to it. |
-| `original-1994/` | Reserved for the Argon–Gemini LaTeX revision that Draft 1 was built from. Not yet added. |
+| `original-1994/hitchhiker-sl2-repns.tex` | The 1994 notes as written (LaTeX 2.09), unchanged. |
+| `original-1994/hitchhikers-guide-to-invariant-distributions-on-sl2-over-p-adic-field2.tex` | The Argon–Gemini LaTeX revision of the 1994 notes: the version the referee reviewed and Draft 1 was rewritten from. |
 
 ## Status
 

@@ -1,0 +1,2055 @@
+\documentclass[11pt, a4paper]{article}
+\usepackage[a4paper, margin=2.5cm]{geometry}
+\usepackage{fontspec}
+\usepackage[english, bidi=basic, provide=*]{babel}
+\babelprovide[import, onchar=ids fonts]{english}
+\babelfont{rm}{Noto Sans}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{hyperref}
+
+\title{A hitch-hiker's guide to invariant distributions on $SL(2)$ over a $p$-adic field}
+\author{David Joyner}
+\date{November 2, 1994 (Revised)}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+In this expository article, we write down the admissible, unitary, and
+tempered duals on $SL(2)$, using the explicit parameterization of
+Gelfand-Graev (and results of Sally-Shalika). This allows us to determine
+the Tadi\'c decompositions and natural Borel structures on the dual spaces.
+Then we classify the image of the Schwartz space (resp., the Hecke algebra)
+under the Fourier transform and define the Fourier transform of any tempered
+(resp., admissible) distribution on $SL(2)$. The Fourier transform of a
+tempered distribution can be made considerably more explicit than that of an
+admissible distribution. In any case, these results are then applied to an
+understanding of supertempered distributions on $SL(2)$.
+\end{abstract}
+
+\tableofcontents
+
+
+\section{Introduction}
+
+This paper is essentially an expository article. It is not by any means a
+complete survey nor a guide to the literature. It is written to work out the
+ideas in \cite{J} in a special case. Proofs and pointers to the literature are
+often omitted, although everything should be in one of the references listed
+at the end of the paper. In order to make this paper appeal to a broader
+audience (and to make it a more useful reference for myself and hopefully
+others), lots of definitions are included and I've tried my best to (a) be
+precise, (b) be as non-technical as possible, and (c) preserve the intrinsic
+beauty of the subject (which is largely due to Harish-Chandra). To be
+honest, some of the definitions and examples in \S\S 7--9 seem to be
+unpublished, so this article is not entirely expository. I hope what little
+new there is in those sections does not remind anyone of the old joke about
+the PhD thesis (it was both interesting and new, but the interesting parts
+were not new and the original parts were not interesting).
+
+\subsection{Basic notation}
+
+Let $G=SL(2,F)$, where $F$ is a $p$-adic field with uniformizer $\pi =\pi _F$,
+ring of integers $O_F$, residual characteristic $p=\mathrm{char}(O_F/\pi O_F)$,
+$q=\#(O_F/\pi O_F)$, and normalized valuation $|...| = |...|_F$. We always
+assume $p>2$. Let $\varepsilon $ denote a fixed non-square unit so that
+$1,\varepsilon ,\pi ,\varepsilon \pi $ form a complete set of representatives
+of $F^{\times }/(F^{\times })^2$. The subgroups
+\[
+U_0=O_F^{\times },\;U_n=1+\pi ^nO_F,\;\;\;\;n>0,
+\]
+form a basis of open neighborhoods of the identity in $F^{\times }$,
+generating the topology on $F^{\times }$. The subgroups
+\[
+K_0=SL(2,O_F),\;K_n=\left\{ \left[ 
+\begin{array}{cc}
+a & b \\ 
+c & d
+\end{array}
+\right] \;\middle|\;\;a,d\in 1+\pi ^nO_F,\;b,c\in \pi ^nO_F\right\}
+,\;\;\;\;n>0,
+\]
+form a basis of open neighborhoods of the identity in $G$, generating the
+topology on $G$. A {\bf character} or {\bf representation} of $F^{\times }$
+or of $G$ will always mean a continuous multiplicative (not necessarily
+unitary) homomorphism into the automorphisms of a complex vector space,
+where the domain gets the ``compact-open'' topology above and the range gets
+the discrete topology.
+
+Occasionally we use {\bf Vinogradov's notation}: given two functions $f(x)$,
+complex-valued and perhaps depending on some parameter $\lambda $, and
+$g(x)>0$, we write
+\[
+f(x)<<_\lambda g(x),
+\]
+if there is a constant $c>0$, which may implicitly depend on $\lambda $,
+such that $|f(x)|\leq cg(x)$ for all $x$ in some range which depends on the
+context.
+
+\section{Background on the unitary dual and the admissible dual}
+
+\subsection{Definitions}
+
+Let $V$ denote a complex vector space. A representation $\pi :G\rightarrow
+\mathrm{Aut}(V)$ is called {\bf admissible} if
+
+(1) every $v\in V$ belongs to $V^K=\mathrm{stab}_V(K)$, for some compact open
+$K\subset \subset G$ (i.e., $\pi $ is {\bf smooth}),
+
+(2) for every compact open $K\subset \subset G$, $\dim (V^K)<\infty $.
+
+Let $V^{\prime }$ denote the dual space of all complex-valued linear
+functionals on $V$ and let $\langle v,v^{\prime }\rangle =v^{\prime }(v)$ denote the
+evaluation pairing on $V\times V^{\prime }$. Let $V_\infty ^{\prime }$
+denote the subspace of $V^{\prime }$ of vectors fixed by some compact open
+subgroup. Define the {\bf contragredient} representation of a smooth
+$\pi :G\rightarrow \mathrm{Aut}(V)$ to be the representation $\pi ^{\prime }:G\rightarrow
+\mathrm{Aut}(V_\infty ^{\prime })$ satisfying $\langle v,v^{\prime }\rangle =\langle \pi (g)v,\pi ^{\prime }(g)v^{\prime }\rangle $,
+for all $v\in V,v^{\prime }\in V_\infty ^{\prime }$, and
+$g\in G$. It is known that if a representation $\pi :G\rightarrow \mathrm{Aut}(V)$ is
+admissible then its contragredient representation $\pi ^{\prime
+}:G\rightarrow \mathrm{Aut}(V_\infty ^{\prime })$ is admissible. A {\bf matrix
+coefficient} of a representation $\pi :G\rightarrow \mathrm{Aut}(V)$ is a function on
+$G$ of the form $g\longmapsto \langle \pi (g)v,v^{\prime }\rangle $, for some
+$v\in V,v^{\prime }\in V_\infty ^{\prime }$. The {\bf space of matrix coefficients}
+of $\pi $ is denoted by ${\cal A}(\pi )$.
+
+An admissible representation $\pi :G\rightarrow \mathrm{Aut}(V)$ is called {\bf %
+square-integrable} or {\bf in the discrete series} if ${\cal A}(\pi )\subset
+L^2(G)$. It is called {\bf cuspidal} if every function $f\in {\cal A}(\pi )$
+has compact support modulo the center and satisfies, for each nilpotent
+radical $N$ of a proper parabolic subgroup of $G$, $\int_Nf(xn)dn=0$, for
+all $x\in G$. Clearly, a cuspidal representation is square-integrable. A
+representation $\pi :G\rightarrow \mathrm{Aut}(V)$ is called {\bf unitarizable} if $V$
+has a positive-definite $G$-invariant inner product $(*,*)$ (that is, $(\pi
+(g)v,\pi (g)v^{\prime })=(v,v^{\prime })$ for all $v,v^{\prime }\in V$). The
+completion of $V$ with respect to this inner product is of course a $G$%
+-invariant Hilbert space $H$. Any representation $\pi :G\rightarrow \mathrm{Aut}(H)$,
+for some Hilbert space $H$ whose inner product is $G$-invariant, is called 
+{\bf unitary}. It is known that every square-integrable representation is
+unitarizable.
+
+The following theorem was proven by Harish-Chandra subject to one of two
+statements, one of which was later proven by Bernstein, and the other was
+later proven by Clozel.
+
+{\bf Theorem} (Harish-Chandra, Bernstein, Clozel) {\em Any unitary
+representation }$\pi :G\rightarrow \mathrm{Aut}(H)${\em \ has the property that there
+is a dense }$G${\em -invariant subspace }$V=H_\infty ${\em \ such that }$%
+(\pi ,V)${\em \ is admissible.}
+
+We say that a representation $\pi _1:G\rightarrow \mathrm{Aut}(V_1)$ is {\bf %
+equivalent} to a representation $\pi _2:G\rightarrow \mathrm{Aut}(V_2)$ if there is a
+bijective linear transformation $A:V_1\rightarrow V_2$ (or a unitary isomorphism in the Hilbert space setting) such that $A\pi
+_1(g)v=\pi _2(g)Av$ for all $g\in G$, $v\in V_1$. A linear map $A$ satisfying this relation is called an 
+{\bf intertwining map}. The {\bf unitary dual} of $G$ is the set $\hat G_u$
+of all equivalence classes of irreducible unitary representations of $G$ and
+the {\bf admissible dual} of $G$ is the set $\hat G_{ad}$ of all equivalence
+classes of irreducible admissible representations of $G$. The only finite
+dimensional irreducible admissible representation of $G$ is the trivial
+representation. As a corollary to the above theorem, we have a natural
+inclusion $\hat G_u\subset \hat G_{ad}$.
+
+Each admissible representation $\pi :G\rightarrow \mathrm{Aut}(V)$ gives rise to a
+representation $\pi :C_c^\infty (G)\rightarrow \mathrm{End}(V)$ of the
+Hecke algebra $C_c^\infty (G)$ of all locally constant functions with
+compact support on $G$:
+\[
+\pi (f)v=\int_Gf(g)\pi (g)v\;dg,\;\;\;v\in V,\;\;f\in C_c^\infty (G),
+\]
+where $dg$ denotes a Haar measure on $G$. The linear transformation $\pi (f)$
+is sometimes called the {\bf operator-valued Fourier transform} of $f$ at $%
+\pi $. For admissible $\pi $ it is known that $\pi (f)$ is of finite rank as an
+element of $\mathrm{End}(V)$. Let $||\pi (f)||$ denote its operator norm and let
+\[
+||f||_{*}=\sup_{\pi \in \hat G_u}||\pi (f)||.
+\]
+The completion of $C_c^\infty (G)$ with respect to this norm $||...||_{*}$
+is a $C^{*}$-algebra denoted by $C^{*}(G)$.
+
+Let $A$ denote a $C^{*}$-algebra. A primitive ideal of $A$ is the kernel of
+an irreducible representation of $A$. Put the Jacobson topology on the set $%
+\Pr (A)$ of all primitive ideals of $A$. Let $A^{\wedge }$ denote the set of
+equivalence classes of irreducible representations of $A$ on the bounded
+operators on a Hilbert space. There is a canonical surjection $A^{\wedge
+}\twoheadrightarrow \Pr (A)$ induced by $\pi \longmapsto \ker (\pi )$. Give $%
+A^{\wedge }$ the smallest topology such that this surjection is continuous.
+Call this the {\bf Jacobson} topology. This topology is $T_0$.
+
+We define a topology on $\hat G_u$ using the following:
+
+{\bf Theorem} (Dixmier): {\em There is a canonical bijection between the set 
+}$\hat G_u${\em \ and the set }$C^{*}(G)^{\wedge }${\em \ of equivalence
+classes of irreducible representations of }$C^{*}(G)$.
+
+We give $\hat G_u$ the smallest topology such that this bijection is
+continuous. Call this the {\bf Jacobson topology} on $\hat G_u$.
+
+A {\bf CCR algebra} is a $C^{*}$-algebra $A$ such that every irreducible
+representation $\pi :A\rightarrow \mathrm{End}(H)$ is completely continuous (i.e.,
+compact). It is known, by a result of Fell, that if $A$ is a CCR algebra and
+if we topologize $A^{\wedge }$ using the Jacobson topology as above then the
+dual space $A^{\wedge }$ is a $T_1$ topological space.
+
+{\bf Theorem} (Bernstein) $C^{*}(G)${\em \ is a CCR algebra.}
+
+Following Mackey, we say that the dual space $A^{\wedge }$ is {\bf smooth}
+if there is a Borel structure on it which is Borel isomorphic to the Borel
+structure on the real line.
+
+{\bf Theorem} (Fell, Mackey) {\em If }$A${\em \ is a separable CCR algebra
+then }$A^{\wedge }${\em \ has a smooth dual. Moreover, the Borel structure
+may be taken to be that generated by the Jacobson topology on }$A^{\wedge }$.
+
+{\sc Question}: Is there a natural topology on $\hat G_{ad}$ which generates
+a smooth Borel structure and which, in turn, induces the Borel structure on $%
+\hat G_u$ via the inclusion $\hat G_u\subset \hat G_{ad}$?
+
+We shall see that the answer is yes for $SL(2)$.
+
+\subsection{The Tadi\'c decomposition}
+
+Let $A$ denote the diagonal subgroup of $G$, and let ${\cal L}(G)$ denote
+the set of all standard Levis (with respect to $A$), up to associates.
+Therefore, ${\cal L}(G)=\{A,G\}$. For $M\in {\cal L}(G)$, we call a
+representation $\sigma :M\rightarrow \mathrm{Aut}(V)$ for which ${\cal A}(\sigma )\subset
+C_c^\infty (M)$ a {\bf cuspidal} representation of $M$. For $M\in {\cal L}%
+(G)$, let $M_c^{\wedge }$ denote the set of equivalence classes of cuspidal
+representations $\sigma :M\rightarrow \mathrm{Aut}(V)$, and let $M_{u,c}^{\wedge }$
+denote the set of equivalence classes of cuspidal representations $\sigma
+:M\rightarrow \mathrm{Aut}(W)$ which have unitary central character $\omega _\sigma $
+(i.e., $|\omega _\sigma (z)|=1$ for all $z$ belonging to the center of $M$).
+For example, if $M=A$ then
+\[
+\begin{array}{c}
+A_{u,c}^{\wedge }=\left\{\chi :A\rightarrow {\bf C}^{\times }\;\middle|\; 
+\begin{array}{c}
+\chi \left( 
+\begin{array}{cc}
+a & 0 \\ 
+0 & a^{-1}
+\end{array}
+\right)=\chi ^{\prime }(a),\;\mathrm{where}\;\chi ^{\prime }(a)=\chi _0\left(\frac a{|a|}\right)\cdot
+|a|^{i\theta }, \\ 
+\chi _0\in (O_F^{\times })^{\wedge },\;-\frac \pi {\log (q)}\leq \theta
+<\frac \pi {\log (q)}
+\end{array}\right\}
+\\ 
+\cong (F^{\times })_u^{\wedge }, \\[10pt]
+A_c^{\wedge }=\left\{\chi :A\rightarrow {\bf C}^{\times }\;\middle|\; 
+\begin{array}{c}
+\chi \left( 
+\begin{array}{cc}
+a & 0 \\ 
+0 & a^{-1}
+\end{array}
+\right)=\chi ^{\prime }(a),\;\mathrm{where}\;\chi ^{\prime }(a)=\chi _0\left(\frac a{|a|}\right)\cdot
+|a|^{t+i\theta }, \\ 
+\chi _0\in (O_F^{\times })^{\wedge },\;t\in {\bf R},\;-\frac \pi {\log
+(q)}\leq \theta <\frac \pi {\log (q)}
+\end{array}\right\}
+\\ 
+\cong (F^{\times })^{\wedge },
+\end{array}
+\]
+where, for any commutative topological group $H$, $H^{\wedge }$ denotes the
+set of continuous complex-valued (not necessarily unitary) characters of $H$.
+
+Let $X_{un}(M)$ denote the group of all unramified characters of $M$. For
+example, if $M=A\cong F^{\times }$ then an unramified character is trivial on $O_F^{\times }$, so we may either write $\chi \in X_{un}(A)$ as
+\[
+\chi (x)=|x|^{t+i\theta },
+\]
+with $t\in {\bf R}$, $\chi |_{O_F^{\times }}=1$, and $-\frac \pi {\log (q)}\leq \theta <\frac \pi {\log (q)}$%
+, {\em or} as
+\[
+\chi (x)=z^{\nu _F(x)},
+\]
+where $z\in {\bf C}^{\times }$ and $\nu _F$ denotes the usual valuation map
+(i.e., for all $x\in F^{\times }$, $|x|=q^{-\nu _F(x)}$). Therefore, we may
+either identify $X_{un}(A)$ as the cylinder ${\bf C}/{%
+\frac{2\pi i}{\log (q)}{\bf Z}}$ {\em or} as ${\bf C}^{\times }$.
+
+Let $(\sigma ,W)\in M_c^{\wedge }$ and let $I_M(\sigma ):G\rightarrow \mathrm{Aut}(V)$
+denote the {\bf unitarily induced representation}: the representation of $G$
+by right translation on
+\[
+V=\left\{f:G\rightarrow W\;\middle|\; 
+\begin{array}{c}
+(1)\;\;f(mng)=\delta _M(m)^{1/2}\sigma (m)f(g),\;\; \\ 
+\forall g\in G,\;m\in M,\;n\in N \\ 
+(2)\;\;{\rm for\;some\;open\;subgroup}\;K\subset \subset G,\;f(gk)=f(g),\;\; \\ 
+\forall k\in K,\;g\in G
+\end{array}
+\right\}.
+\]
+Here $\delta _M(m)=|\det (\mathrm{Ad}(m)_{{\frak n}})|$ where ${\frak n}$ denotes the
+Lie algebra of
+\[
+N=\left\{ 
+\begin{array}{ll}
+\{1\}, & M=G, \\ 
+\left\{\left[ 
+\begin{array}{cc}
+1 & x \\ 
+0 & 1
+\end{array}
+\right] \;\middle|\;x\in F\right\}, & M=A,
+\end{array}
+\right.
+\]
+so $\delta _A\left( 
+\begin{array}{cc}
+a & 0 \\ 
+0 & a^{-1}
+\end{array}
+\right)=|a|^2$. Following Tadi\'c, we let
+\[
+\begin{array}{c}
+\begin{array}{c}
+G_{u,\sigma }^{\wedge }=\{{\rm all\;inequivalent\;irreducible\;unitarizable\;%
+} \\ 
+{\rm constituents\;of\;}I_M(\chi \sigma )\;\;|\;\;\chi \in X_{un}(M)\},
+\end{array}
+\\ 
+\\ 
+\begin{array}{c}
+G_\sigma ^{\wedge }=\{{\rm all\;inequivalent\;irreducible\;constituents\;}
+\\ 
+{\rm of\;}I_M(\chi \sigma )\;\;|\;\;\chi \in X_{un}(M)\}.
+\end{array}
+\end{array}
+\]
+
+{\bf Theorem} (Tadi\'c) {\em (a) }$G_u^{\wedge }=\bigcup_{M\in {\cal L}%
+(G)}\bigcup_{\sigma \in M_{u,c}^{\wedge }}G_{u,\sigma }^{\wedge }$,
+
+{\em (b) Each }$G_{u,\sigma }^{\wedge }${\em \ is both open and closed in }$%
+G_u^{\wedge }$.
+
+Each ``component'' $G_{u,\sigma }^{\wedge }$ is not necessarily connected.
+We can choose a subset $\tilde{M}$ of $M_{u,c}^{\wedge }$ such that
+we have a disjoint union:
+\[
+G_u^{\wedge }=\coprod_{M\in {\cal L}(G)}
+\coprod_{\sigma \in \tilde{M}}G_{u,\sigma }^{\wedge }.
+\]
+
+We shall see that for the admissible dual there is an analogous
+``decomposition'' (this is due to several people, Jacquet in particular \cite{Ca},
+and pre-dates the decomposition above):
+\[
+G_{ad}^{\wedge }=\bigcup_{M\in {\cal L}(G)}
+\bigcup_{\sigma \in M_c^{\wedge}}G_\sigma ^{\wedge }.
+\]
+We will see that we may impose a Borel structure on the admissible dual as
+well.
+
+\section{Borel structure on the Tadi\'c components}
+
+For $\chi \in (F^{\times })^{\wedge }$, let $V=V_\chi $ denote the induced model space of locally constant
+complex-valued functions $f$ on $F$ such that $x\longmapsto \chi (x)|x|^{-1}f(1/x)$ extends to a locally constant function near $x=0$.
+
+\subsection{Principal series, reducible principal series}
+
+For $\chi \in (F^{\times })^{\wedge }$, define $T_\chi :G\rightarrow \mathrm{Aut}(V_\chi )$
+by
+\[
+(T_\chi (g)f)(x)=f\left(\frac{dx+b}{cx+a}\right)\chi
+(cx+a)|cx+a|^{-1},\;\;\;\;\;g=\left[ 
+\begin{array}{cc}
+a & b \\ 
+c & d
+\end{array}
+\right] \in G.
+\]
+
+Note that this representation is smooth.
+
+{\bf Lemma} (Gelfand-Graev):{\em \ Let }$\chi ,\chi _1,\chi _2\in (F^{\times
+})^{\wedge }$.
+
+{\em (1) If }$\chi _1\neq \chi _2^{-1},\chi _2${\em \ then }$T_{\chi _1}$%
+{\em \ is not equivalent to }$T_{\chi _2}$,
+
+{\em (2) }$T_\chi \cong T_{\chi ^{-1}}$,
+
+{\em (3) }$T_\chi ${\em \ is unitary if }$\chi ${\em \ is},
+
+{\em (4) }$T_\chi ${\em \ is irreducible if and only if }$\chi \neq
+\mathrm{sign}_\tau ${\em \ for each }$\tau =\varepsilon ,\pi ,\varepsilon \pi ${\em %
+, where }$\mathrm{sign}_\tau ${\em \ denotes the non-trivial quadratic character on }$%
+F^{\times }${\em \ for which }$\mathrm{sign}_\tau (\tau )=1$,
+
+{\em (5) if }$\chi =\mathrm{sign}_\tau ${\em \ for some }$\tau =\varepsilon ,\pi
+,\varepsilon \pi ${\em , then }$T_\chi ${\em \ decomposes into a direct sum
+of two irreducible inequivalent unitary subrepresentations }$T_\chi
+^{+},\;T_\chi ^{-}$.
+
+The irreducible representations in (4) are called {\bf principal series
+representations}. The irreducible representations in (5) are called {\bf %
+reducible principal series representations}. They, along with the special
+representation, are called {\bf limits of discrete series}.
+
+For $\chi \in (F^{\times })_u^{\wedge }$ ramified, let
+\[
+\begin{array}{c}
+G_{u,\chi }^{\wedge }=\left\{ 
+\begin{array}{c}
+T_{\chi ^{\prime }}\;,\; {\rm \;if\;}\chi ^{\prime }\neq \mathrm{sign}_\tau ,\;{\rm %
+for\;each}\;\tau =\pi ,\varepsilon \pi \\ 
+\{T_{\chi ^{\prime }}^{+}\;,\;T_{\chi ^{\prime }}^{-}\},\;\;{\rm \;if\;}\chi
+^{\prime }=\mathrm{sign}_\tau ,\;{\rm for\;some}\;\tau =\pi ,\varepsilon \pi
+\end{array}
+\right. \\ 
+\left.\;\middle|\;\;\;\chi ^{\prime }(x)=\chi (x)z^{\nu _F(x)},\;\;|z|=1,\;\;z\in {\bf C}%
+^{\times }/\sim\right\},
+\end{array}
+\]
+where $z_1\sim z_2$ if and only if $\chi (x)z_1^{\nu _F(x)}=\chi
+(x)^{-1}z_2^{-\nu _F(x)}$, $\forall x\in F^{\times }$. Note that if $\chi |_{O_F^{\times }}^2\neq 1$, then $\chi $ and $\chi ^{-1}$ lie in disjoint $X_{un}(A)$-orbits, so the relation $\sim $ on $z$ is trivial within the orbit of $\chi $ and $G_{u,\chi }^{\wedge }$ is isomorphic to a circle (while $G_{u,\chi }^{\wedge }=G_{u,\chi ^{-1}}^{\wedge }$ identifies the $\chi $-orbit with the $\chi ^{-1}$-orbit). If $\chi |_{O_F^{\times }}^2=1$ (so the ramified characters of order two $\mathrm{sign}_\pi $ and $\mathrm{sign}_{\varepsilon \pi }$ occur in the orbit of $\chi $ under $X_{un}(A)$), then $z_1\sim z_1^{-1}$ and $G_{u,\chi }^{\wedge }$ is isomorphic to a half-circle union two doubleton sets, where $\{\pm 1\}$ acts via the inversion map. All the $T_{\chi ^{\prime }}$ occurring in the above set are irreducible and inequivalent. For example, if $\chi =\mathrm{sign}_\pi $ (resp., $\chi =\mathrm{sign}_{\varepsilon \pi }$) then $\chi ^{\prime }=\mathrm{sign}_{\pi \varepsilon }$ (resp., $\chi ^{\prime }=\mathrm{sign}_\pi $) is also in its orbit under the action of the unramified characters of $A$.
+
+Note that the set $G_{u,\chi }^{\wedge }$ and the set $G_{u,\chi
+^{-1}}^{\wedge }$ contain equivalent representations. We write $(F^{\times
+})_u^{\wedge }/\sim$ for the set of unitary characters modulo the
+equivalence relation: $\chi \sim \chi ^{\prime }$ if and only if $\chi
+^{\prime }=\chi ^{-1}$.
+
+For $\chi \in (F^{\times })^{\wedge }$ ramified, let
+\[
+\begin{array}{c}
+G_{ad,\chi }^{\wedge }=\left\{ 
+\begin{array}{c}
+T_{\chi ^{\prime }}\;,\; {\rm \;if\;}\chi ^{\prime }\neq \mathrm{sign}_\tau ,\;{\rm %
+for\;each}\;\tau =\pi ,\varepsilon \pi \\ 
+\{T_{\chi ^{\prime }}^{+}\;,\;T_{\chi ^{\prime }}^{-}\},\;\;{\rm \;if\;}\chi
+^{\prime }=\mathrm{sign}_\tau ,\;{\rm for\;some}\;\tau =\pi ,\varepsilon \pi
+\end{array}
+\right. \\ 
+\left.\;\middle|\;\;\;\chi ^{\prime }(x)=\chi (x)z^{\nu _F(x)},\;\;z\in {\bf C}^{\times }/%
+\sim\right\},
+\end{array}
+\]
+where the equivalence relation is as above. Parameterizing $z=q^{-(t+i\theta )}$, we can also write this as
+\[
+\begin{array}{c}
+G_{ad,\chi }^{\wedge }=\left\{ 
+\begin{array}{c}
+T_{\chi ^{\prime }}\;,\; {\rm \;if\;}\chi ^{\prime }\neq \mathrm{sign}_\tau ,\;{\rm %
+for\;each}\;\tau =\pi ,\varepsilon \pi \\ 
+\{T_{\chi ^{\prime }}^{+}\;,\;T_{\chi ^{\prime }}^{-}\},\;\;{\rm \;if\;}\chi
+^{\prime }=\mathrm{sign}_\tau ,\;{\rm for\;some}\;\tau =\pi ,\varepsilon \pi
+\end{array}
+\right. \\ 
+\left.\;\middle|\;\;\;\chi ^{\prime }(x)=\chi (x)|x|^{t+i\theta
+},\;\; {\rm some}\;(t,\theta )\in \left({\bf R}\times \left[-\frac \pi {\log (q)},\frac \pi {\log
+(q)}\right)\right)/\sim\right\},
+\end{array}
+\]
+where $(t,\theta )\sim (-t,-\theta )$ when $\chi $ is chosen to be one of the quadratic characters $\mathrm{sign}_\pi ,\mathrm{sign}_{\varepsilon \pi }$, and the relation is trivial within a single orbit when $\chi |_{O_F^{\times }}^2\neq 1$ (with the $\chi $-orbit and $\chi ^{-1}$-orbit identified externally). All the $T_{\chi ^{\prime }}$
+occurring in the above set are irreducible and inequivalent. This is either
+isomorphic to ${\bf C}^{\times }/\{\pm 1\}$ with two double points (if the
+ramified characters of order two occur in the orbit of $\chi $ under $%
+X_{un}(A)$) or to ${\bf C}^{\times }$ (if the ramified characters of order two don't occur in the orbit of $\chi $ under $X_{un}(A)$).
+
+Note that the set $G_{ad,\chi }^{\wedge }$ and the set $G_{ad,\chi
+^{-1}}^{\wedge }$ contain equivalent representations. We write $(F^{\times
+})^{\wedge }/\sim$ for the set of characters modulo the equivalence
+relation: $\chi \sim \chi ^{\prime }$ if and only if $\chi ^{\prime }=\chi
+^{-1}$.
+
+The unramified case contains the complementary series and special
+representation as well, so will be handled later.
+
+\subsubsection{Borel structure on $G_{u,\chi }^{\wedge },\;\chi \in
+A_u^{\wedge }\;{\rm ramified}$}
+
+The Borel structure on $G_{u,\chi }^{\wedge }$, when $\chi $ does not belong
+to the orbit of some $\mathrm{sign}_\tau $ under $X_{un}(A)$, is Borel isomorphic to
+the Borel structure on the circle. The Borel structure on $G_{u,\chi
+}^{\wedge }$, when $\chi $ {\em does} belong to the orbit of some $\mathrm{sign}_\tau 
+$ under $X_{un}(A)$, is Borel isomorphic to the Borel structure on the
+half-circle union that on the set consisting of two (closed) points.
+
+\subsubsection{Borel structure on $G_{ad,\chi }^{\wedge },\;\chi \in
+A^{\wedge }\;{\rm ramified}$}
+
+The Borel structure on $G_{ad,\chi }^{\wedge }$, when $\chi $ does not
+belong to the orbit of some $\mathrm{sign}_\tau $ under $X_{un}(A)$, is Borel
+isomorphic to the Borel structure on ${\bf C}^{\times }$.
+The Borel structure on $G_{ad,\chi }^{\wedge }$, when $\chi $ {\em does}
+belong to the orbit of some $\mathrm{sign}_\tau $ under $X_{un}(A)$, is Borel
+isomorphic to the Borel structure on ${\bf C}^{\times }/\{\pm 1\}$ with two
+double points.
+
+\subsection{Complementary series}
+
+This is sometimes called the supplementary series. For $V$ as above, $%
+-1<\rho <1,\;\rho \neq 0$, define $T_\rho :G\rightarrow \mathrm{Aut}(V)$ by $T_\rho
+=T_\chi $, where $\chi (x)=|x|^{-\rho }$, for $x\in F^{\times }$.
+
+{\bf Lemma} (Gelfand-Graev):{\em \ Let }$-1<\rho <1,\;\rho \neq 0$.
+
+{\em (1) If }$\rho _1\neq \pm \rho _2${\em \ then }$T_{\rho _1}${\em \ is
+not equivalent to }$T_{\rho _2}$,
+
+{\em (2) }$T_\rho \cong T_{-\rho }$,
+
+{\em (3) }$T_\rho ${\em \ is unitarizable},
+
+{\em (4) for }$0<\rho <1,\;T_\rho ${\em \ is irreducible}.
+
+The irreducible representations in (4) are called {\bf complementary series
+representations}. We shall see later that these representations are
+``non-tempered''.
+
+\subsection{The special representation and the trivial representation}
+
+For $V$ and $T_\chi $ as above, we have:
+
+{\bf Lemma} (Gelfand-Graev):{\em \ Let }$\chi (x)=|x|^{-1}$, {\em for} $x\in
+F^{\times }$.
+
+{\em (1)} $T_\chi $ {\em is reducible},
+
+{\em (2) there is an irreducible, infinite-dimensional, unitarizable,
+square-integrable subrepresentation} $T_{sp}$ {\em of} $T_\chi $,
+
+{\em (3) the quotient of} $T_\chi $ {\em by} $T_{sp}$ {\em is 1-dimensional and unitary.}
+
+The representation in (2) is called the {\bf special representation}. The
+representation in (3) is called the {\bf trivial representation}. We will
+see later that the special representation is ``tempered'' but the trivial
+representation is not.
+
+\subsection{The $G_\sigma ^{\wedge }$ in the unramified case}
+
+We define
+\[
+G_{u,\chi }^{\wedge }=\left\{T_\rho ,\;T_{\chi ^{\prime }},\;T_{\mathrm{sign}_\varepsilon
+}^{+},\;T_{\mathrm{sign}_\varepsilon }^{-}\;,1,T_{sp}\;\middle|\; 
+\begin{array}{c}
+\chi ^{\prime }(x)=z^{\nu _F(x)},\; \\ 
+z=e^{i\theta },\;\;0\leq \theta <\pi , \\ 
+0<\rho <1
+\end{array}
+\right\},
+\]
+if $\chi $ is an unramified unitary character of $A$, and, if $\chi $ is
+unramified on $A$,
+\[
+G_{ad,\chi }^{\wedge }=\left\{T_{\chi ^{\prime }},\;T_{\mathrm{sign}_\varepsilon
+}^{+},\;T_{\mathrm{sign}_\varepsilon }^{-},1,T_{sp}\;\middle|\; 
+\begin{array}{c}
+\chi ^{\prime }(x)=z^{\nu _F(x)}\neq |...|^{\pm 1},\;\mathrm{sign}_\varepsilon , \\ 
+z\in {\bf C}^{\times }/\{\pm 1\}
+\end{array}
+\right\},
+\]
+where $\{\pm 1\}$ acts on ${\bf C}^{\times }$ by means of inversion. Note
+that the set $G_{u,\chi }^{\wedge }$ and the set $G_{u,\chi ^{-1}}^{\wedge }$
+(resp., the sets $G_{ad,\chi }^{\wedge }$ and $G_{ad,\chi ^{-1}}^{\wedge }$)
+contain equivalent representations.
+
+\subsubsection{Borel structure on $G_{u,\chi }^{\wedge }$, $\chi \in
+A_u^{\wedge }$\ unramified}
+
+This part of the dual consists of a circle, with opposing points identified
+(except the point $z=1$ is not identified with $z=-1$, since $z=-1$
+corresponds to the double point), union a set of four points, union the
+line segment $(0,1)$. On each connected component, the Borel structure can
+be taken to be that inherited from the half-circle, the segment $(0,1)$, or
+the singleton set.
+
+\subsubsection{Borel structure on $G_{ad,\chi }^{\wedge },\;\chi \in
+A^{\wedge }$ unramified}
+
+This part of the dual consists of ${\bf C}^{\times }/\{\pm 1\}$ with
+one double point, union a set of two (closed) points. On each connected
+component, the Borel structure can be taken to be that inherited from
+${\bf C}^{\times }/\{\pm 1\}$ or the singleton set.
+
+\subsection{Cuspidal representations}
+
+For each quadratic extension $E/F$ there is an infinite series of
+irreducible cuspidal representations.
+
+Let $\chi \in (E^{\times 1})^{\wedge }$, where $E^{\times 1}$ denotes the
+kernel of the norm map, and define $T_\chi :G\rightarrow \mathrm{Aut}(L^2(F^{\times }))$ by
+\[
+(T_\chi (g)f)(x)=\int_FK_\chi (g\;|\;x,y)f(y)dy,
+\]
+where $K_\chi (g\;|\;x,y)$ is a certain distribution-valued kernel function
+\cite{GG}. Let $\chi _0$ denote the unique character of $E^{\times 1}$ of order $%
+2$.
+
+{\bf Lemma} (Gelfand-Graev, Sally-Shalika) {\em Let }$\chi ,\chi _1,\chi
+_2\in (E^{\times 1})^{\wedge }$.
+
+{\em (1) For }$\chi \neq \chi _0$, $T_\chi ${\em \ decomposes into a
+direct sum of 2 irreducible, inequivalent subrepresentations }$T_\chi
+^{+},\;T_\chi ^{-}$,
+
+{\em (2) For }$\chi =\chi _0$, $T_\chi ${\em \ decomposes into a
+direct sum of 4 irreducible, inequivalent subrepresentations }$T_\chi
+^1,\;T_\chi ^2,\;T_\chi ^3,\;T_\chi ^4$,
+
+{\em (3) For }$\chi \neq \chi _0$, {\em we have }$T_\chi ^{+}\cong T_{\chi
+^{-1}}^{+},\;T_\chi ^{-}\cong T_{\chi ^{-1}}^{-}$,
+
+{\em (4) If }$\chi _1,\chi _2\neq \chi _0${\em \ and }$\chi _1\neq \chi _2,\chi
+_2^{-1}${\em \ then }$T_{\chi _1}^{+}${\em \ is not equivalent to }$T_{\chi
+_2}^{+}${\em \ and }$T_{\chi _1}^{-}${\em \ is not equivalent to }$T_{\chi
+_2}^{-}$,
+
+{\em (5) If }$\chi _1,\chi _2\neq \chi _0${\em \ then }$T_{\chi _1}^{+}${\em %
+\ is not equivalent to }$T_{\chi _2}^{-}$,
+
+{\em (6) For each cuspidal representation }$\sigma ${\em \ of }$G$, {\em %
+there is a quadratic extension }$E/F${\em \ and a character }$\chi \in
+(E^{\times 1})^{\wedge }${\em \ such that }$\sigma =T_\chi ^\alpha $, {\em %
+for some }$\alpha \in \{+,-,1,2,3,4\}$.
+
+The treatment of the subrepresentations $T_\chi ^1,\;T_\chi ^2,\;T_\chi
+^3,\;T_\chi ^4$ given in \cite{GG} was not correct but was rectified in \cite{SS1}.
+
+If $\sigma \in G_c^{\wedge }=G_{u,c}^{\wedge }$ then $G_{ad,\sigma }^{\wedge
+}=G_{u,\sigma }^{\wedge }=\{\sigma \}$. The set of course gets the discrete
+topology.
+
+\subsection{Summary}
+
+The admissible dual $G_{ad}^{\wedge }$ is a countable union of copies of $%
+{\bf C}^{\times }$ (for non-quadratic ramified orbits), union a ${\bf C}^{\times }/\{\pm 1\}$ with two
+double points, union a ${\bf C}^{\times }/\{\pm 1\}$ with one double point
+and two (closed) points, union a countable number of singleton sets.
+
+The unitary dual $G_u^{\wedge }$ is a countable union of circles, union a
+``half-circle'' with two double points, union a ``half-circle'' with one
+double point and two (closed) points, union the open line segment $(0,1)$,
+union a countable number of singleton sets.
+
+
+\section{The Fourier transform}
+
+For $f\in C_c^\infty (G)$ and $\pi \in \Pi \in G_{ad}^{\wedge }$, we define
+the {\bf operator-valued Fourier transform} of $f$ at $\pi $ by
+\[
+\pi (f)=\int_Gf(x)\pi (x)\;dx,\;\;\;f\in C_c^\infty (G).
+\]
+
+{\bf Lemma}: {\em If }$f,g\in C_c^\infty (G)${\em \ then }$\pi (f*g)=\pi
+(f)\pi (g)$.
+
+Let $G^{\prime }=\{g\in G\;|\;g\;{\rm has\;distinct\;eigenvalues}\}$, called
+the {\bf regular set} of $G$. In particular, every element in the regular
+set is semi-simple (i.e., diagonalizable).
+
+Harish-Chandra showed that there exists a locally constant function, denoted 
+$\Theta _\pi $ and called the {\bf character} of $\pi $, on the regular set $%
+G^{\prime }$ which represents the trace of $\pi $:
+\[
+\mathrm{trace}(\pi (f))=\int_G\Theta _\pi (x)f(x)dx,
+\]
+for all $f\in C_c^\infty (G)$. This trace, which we sometimes denote simply
+by $\Theta _\pi (f)$, is called the {\bf Fourier transform} of $f$ at $\pi $.
+
+\subsection{The Schwartz space and the tempered dual}
+
+Let $||g||=\max (|a|,|b|,|c|,|d|)$, where $g=\left[ 
+\begin{array}{cc}
+a & b \\ 
+c & d
+\end{array}
+\right] \in G$, and let $\sigma (g)=\log ||g||$. For each compact open
+subgroup $K\subset \subset G$, let
+\[
+{\cal C}_K(G)=\left\{f\in C(G//K)\;\middle|\; 
+\begin{array}{c}
+|f(x)|<<_{r,f}\frac{\Xi (x)}{(1+\sigma (x))^r},\;\;\forall x\in G, \\ 
+{\rm for\;each}\;r>0
+\end{array}
+\right\},
+\]
+where $C(G//K)$ denotes the space of locally constant functions which
+are bi-$K$-invariant, and
+\[
+\Xi (x)=\int_{K_0}\delta _B(xk)^{-1/2}dk.
+\]
+Here, for $x\in G^{\prime }$, we have $\delta _B(x)=|\det (\mathrm{Ad}(x_d))_{{\frak n%
+}}|$, where $x_d$ denotes a diagonalization of $x$ in $SL(2,\overline{F})$,
+where $\overline{F}$ denotes a separable algebraic closure of $F$ and the
+valuation $|...|$ has been extended to $\overline{F}$. It is known that there
+are constants $c_1>0,\;c_2>0,\;N>0$ such that
+\[
+c_1\delta _B(a)^{-1/2}\leq \Xi (a)\leq c_2\delta _B(a)^{-1/2}(1+\sigma (a))^N,
+\]
+for all $a\in A^{+}=\left\{a\in A\;\middle|\;a=\left[ 
+\begin{array}{cc}
+u\pi ^{-n} & 0 \\ 
+0 & u^{-1}\pi ^{n}
+\end{array}
+\right] ,\;u\in O_F^{\times },\;n\geq 0\right\}$. We topologize ${\cal C}_K(G)$
+via the semi-norms
+\[
+\nu _n(f)=\sup_{x\in G}|f(x)|\frac{(1+\sigma (x))^n}{\Xi (x)}.
+\]
+Let
+\[
+{\cal C}(G)=\bigcup_K{\cal C}_K(G),
+\]
+where $K$ runs over all compact open subgroups of $G$. This is the {\bf %
+Schwartz space} of $G$. Let $S$ denote the collection of all semi-norms on $%
+{\cal C}(G)$ whose restriction to each ${\cal C}_K(G)$ is continuous. In the
+semi-norm topology induced by $S$, the Schwartz space is a complete locally
+convex topological vector space.
+
+{\bf Lemma} {\em (1) }${\cal C}(G)\subset L^2(G)$,
+
+{\em (2) }${\cal C}(G)${\em \ is an algebra under convolution.}
+
+We call a distribution $D$ on $C_c^\infty (G)$ {\bf tempered} if it extends
+continuously to ${\cal C}(G)$. We call an admissible representation $\pi $ 
+{\bf tempered} if the distribution $f\longmapsto \Theta _\pi (f)$ extends
+continuously to ${\cal C}(G)$. Let $G_t^{\wedge }$ denote the set of
+equivalence classes of irreducible tempered representations of $G$, the {\bf %
+tempered dual}.
+
+{\bf Theorem} (Harish-Chandra): $G_t^{\wedge }\subset G_u^{\wedge }$.
+
+In fact, for our case of $SL(2)$, we have
+\[
+G_t^{\wedge }=G_u^{\wedge }-\{1,T_\rho \;|\;0<\rho <1\}.
+\]
+
+Let
+\[
+G_{t,\sigma }^{\wedge }=\{{\rm all\;irreducible\;inequivalent\;tempered\;%
+constituents\;of\;}I_M(\chi \sigma )\;\;|\;\;\chi \in X_{un}(M)\}.
+\]
+
+We shall see that the following holds:
+
+{\bf Theorem:} $G_t^{\wedge }=\bigcup_{M\in {\cal L}(G)}\bigcup_{\sigma \in
+M_{u,c}^{\wedge }}G_{t,\sigma }^{\wedge }$.
+
+We will see that $G_{t,\sigma }^{\wedge }=G_{u,\sigma }^{\wedge }$ if $%
+\sigma\in\hat{A}_u$ is ramified. If $\sigma$ is unramified then $G_{t,\sigma
+}^{\wedge }$ is the same as $G_{u,\sigma }^{\wedge }$, except that it doesn't
+contain the $T_\rho$ or the trivial representation. In other words, the only
+non-tempered unitary representations are the trivial representation and the
+complementary series. This will follow from the character identities
+discussed next.
+
+\subsection{Character calculations}
+
+Let $S$ denote a complete set of representatives of conjugacy classes of
+Cartan subgroups of $G$. We may and do assume that $A\in S$. For each $T\in
+S$, let $W_T=N_G(T)/T$ denote the Weyl group of $T$.
+
+We begin with the
+
+{\bf Lemma} (Weyl integration formula \cite[p.~198]{S}) {\em For each }$f\in
+C_c^\infty (G)$,
+\[
+\int_Gf(g)dg=\sum_{T\in S}\frac 1{\#[W_T]}\int_T|D(t)|^{1/2}F_f^T(t)dt,
+\]
+{\em where}
+\[
+F_f^T(t)=|D(t)|^{1/2}\int_{T\backslash G}f(x^{-1}tx)\frac{dx}{dt},
+\]
+{\em and where }$D(t)=D_{G/T}(t)=\det (1-\mathrm{Ad}(t))_{{\frak g}/{\frak t}%
+}$. {\em Here }${\frak g},\;{\frak t}$ {\em denote the Lie algebras of }$G,\;T$.
+
+Note that $F_f^T(t)=F_f^T(t^w)$, where $w\in W_T$, so that $%
+F_f^A(a)=F_f^A(a^{-1})$, since $a^w=a^{-1}$, where $w=\left[ 
+\begin{array}{cc}
+0 & -1 \\ 
+1 & 0
+\end{array}
+\right] $.
+
+\subsubsection{Principal series}
+
+Note that
+\[
+\begin{array}{c}
+D_{G/A}\left(\left[ 
+\begin{array}{cc}
+a & 0 \\ 
+0 & a^{-1}
+\end{array}
+\right] \right)=\det \left(1-\mathrm{Ad}\left(\left[ 
+\begin{array}{cc}
+a & 0 \\ 
+0 & a^{-1}
+\end{array}
+\right] \right)\right)_{{\frak g}/{\frak a}} \\ 
+=(1-a^2)(1-a^{-2})=-(a-a^{-1})^2.
+\end{array}
+\]
+
+{\bf Lemma} {\em (1) The map }$f\longmapsto F_f^A${\em \ defines a
+surjection from }$C_c^\infty (G)${\em \ onto the space }$C_c^\infty (A)_0^{W_A}${\em \ of Weyl-invariant functions in }$C_c^\infty (A)${\em \ vanishing at the singular elements }$a=\pm 1${\em \ (and onto }$C_c^\infty (A^{\prime })^{W_A}${\em \ on the regular set).}
+
+{\em (2) The map }$f\longmapsto F_f^A${\em \ defines a continuous surjection from }%
+${\cal C}(G)${\em \ onto the space }${\cal C}(A)_0^{W_A}${\em \ of Weyl-invariant Schwartz functions on }$A${\em \ vanishing at }$a=\pm 1$.
+
+{\bf Proof:} (1) For $f\in C_c^\infty (G)$ and $a\in A^{\prime }=A\cap
+G^{\prime }$, the function $x\longmapsto f(x^{-1}ax)$ is compactly supported
+on $A\backslash G$ and
+\[
+\begin{array}{c}
+F_f^A(a)=|D(a)|^{1/2}\int_{A\backslash G}f(x^{-1}ax) \frac{dx}{da} \\ 
+=\delta _B(a)^{1/2}\int_N\int_{K_0}f(kank^{-1})dkdn \\ 
+=\delta _B(a)^{1/2}\int_N\overline{f}(an)dn,
+\end{array}
+\]
+where
+\[
+\overline{f}(x)=\int_{K_0}f(kxk^{-1})dk.
+\]
+
+Since the function $x\longmapsto f(x^{-1}ax)$ is compactly supported on $%
+A\backslash G$, the function $x\longmapsto \overline{f}(x^{-1}ax)$ is
+compactly supported on $A\backslash G/K_0$. We claim that given any compact
+set $C\subset \subset G$, there is an $a\in A$ with sufficiently large $%
+\sigma (a)$ such that $an\notin C$, for all $n\in N$. Indeed, we may map $C$
+onto $\overline{C}\subset G/K_0$ via $G\rightarrow G/K_0$ and $aN$ onto $%
+\overline{aN}$. Since $G/K_0$ is non-compact but $\overline{C}$ is compact
+in $G/K_0$, the Iwasawa decomposition implies that we may find an $a\in A$
+such that $\overline{aN}\cap \overline{C}=\emptyset $. From the claim it
+follows that $F_f^A(a)$ is compactly supported on $A^{\prime }=A\cap
+G^{\prime }$.
+
+Moreover, since $f$ is locally constant so is $\overline{f}$. Since $%
+\overline{f}$ is compactly supported, $\int_N\overline{f}(an)dn$ is a
+locally constant function on $A^{\prime }$.
+
+It remains to show that $F_f^A(a)$ extends to a locally constant function on
+all of $A$ (vanishing at $a=\pm 1$ due to the factor $|D(a)|^{1/2}=|a-a^{-1}|$). This follows from the Shalika germ expansion. It is also
+an immediate corollary of part (2), which we turn to next.
+
+(2) The existence of the orbital integral $F_f^A(a)$ follows from Clozel \cite{C}. By
+Harish-Chandra, the map $f\longmapsto f^B$ defines a continuous map ${\cal C}%
+(G)\rightarrow {\cal C}(A)$, where
+\[
+f^B(a)=\delta _B(a)^{1/2}\int_Nf(an)dn.
+\]
+
+Note that both $\Xi $ and $\sigma $ are bi-$K_0$-invariant, so the map $%
+f\longmapsto \overline{f}$ defines a continuous map ${\cal C}(G)\rightarrow 
+{\cal C}(G)$. Consequently, the composition $f\longmapsto \overline{f}%
+\longmapsto F_{\overline{f}}^A$ defines a continuous map ${\cal C}%
+(G)\rightarrow {\cal C}(A)$. This completes the proof. $\Box $
+
+Let $\chi \in (F^{\times })^{\wedge }$ and suppose that $\chi \neq \chi
+^{-1}$.
+
+{\bf Theorem} (Gelfand-Graev) {\em The character of the irreducible
+representation }$\pi =T_\chi ${\em \ is given on the regular set by}
+\[
+\Theta _\pi (x)=\left\{ 
+\begin{array}{ll}
+\frac{\chi (a)+\chi (a)^{-1}}{|a-a^{-1}|}, & x=\left[ 
+\begin{array}{cc}
+a & 0 \\ 
+0 & a^{-1}
+\end{array}
+\right] ^g,\; {\rm for\;some}\;g\in G,\;a\neq \pm 1, \\ 
+0, & {\rm if}\;x\in G^{\prime }-A^G,
+\end{array}
+\right.
+\]
+{\em where }$A^G=\{a^g\;|\;a\in A,\;g\in G\}$.
+
+This and the Weyl integration formula imply that
+\[
+\begin{array}{c}
+\Theta _\pi (f)=\int_G\Theta _\pi (x)f(x)dx \\ 
+=\frac 12\int_{F^{\times }}(\chi (a)+\chi (a)^{-1})F_f^A\left( 
+\begin{array}{cc}
+a & 0 \\ 
+0 & a^{-1}
+\end{array}
+\right)d^{\times }a \\ 
+=(F_f^A)^{\wedge }(\chi ),
+\end{array}
+\]
+where
+\[
+\begin{array}{c}
+\varphi ^{\wedge }(\omega )=\int_{F^{\times }}\omega (x)\varphi (x)d^{\times
+}x \\ 
+=\sum_{n=-\infty }^\infty \omega (\pi )^n\int_{O_F^{\times }}\omega
+(u)\varphi (\pi ^nu)du,\ \ \ \ \ \ \omega \in (F^{\times })_u^{\wedge },
+\end{array}
+\]
+denotes the Multiplicative Fourier transform on $F^{\times }$. Note that this formula for
+the character extends to the Schwartz space provided $\chi $ is unitary. In
+fact, we have:
+
+{\bf Lemma}: {\em A principal series representation }$T_\chi ${\em \ is
+tempered if and only if }$\chi ${\em \ is unitary.}
+
+The above formulas allow us to classify the image of the Fourier transforms
+of a {\em unitary} principal series representation on either $C_c^\infty (G)$
+or the Schwartz space.
+
+First, suppose $f\in C_c^\infty (G)$, so $F_f^A\in C_c^\infty (A)$.
+
+{\bf Lemma}:{\em \ For }$\varphi \in C_c^\infty (F^{\times })$,{\em \ the
+image }$C_c^\infty (F^{\times })^{\wedge }${\em \ of the Fourier transform }$%
+\varphi \longmapsto \varphi ^{\wedge }(\omega )${\em \ is given by}
+\[
+C_c^\infty (F^{\times })^{\wedge }=\left\{h\in C_c((F^{\times })_u^{\wedge
+})\;\middle|\; 
+\begin{array}{c}
+h\;{\rm is\;a\;trigonometric\;polynomial\;on} \\ 
+{\rm each\;circle\;in}\;(F^{\times })_u^{\wedge }
+\end{array}
+\right\}.
+\]
+
+We omit the proof. (This lemma, and its Schwartz space analog below, is
+proven using the inverse Fourier transform and the inversion formula, which
+may be found in \cite[pp.~43--44]{Ta}, \cite[ch.~12]{Ba}.) As a consequence of the above
+lemma, since $F_f^A(a)=F_f^A(a^{-1})$ is Weyl-invariant, it follows that the space of all
+functions of $\chi $ of the form $(F_f^A)^{\wedge }(\chi )$ is given by the Weyl-invariant trigonometric polynomials:
+
+{\bf Lemma}:{\em \ For }$f\in C_c^\infty (G)$,{\em \ the image }$C_c^\infty
+(G)_{ps}^{\wedge }${\em \ of the Fourier transform }$f\longmapsto \Theta
+_\pi (f),\;\pi =T_\chi ,\;\chi \in A_u^{\wedge }$,{\em \ is given by}
+\[
+C_c^\infty (G)_{ps}^{\wedge }=\left\{h\in C_c(A_{u,c}^{\wedge })\;\middle|\; 
+\begin{array}{c}
+h(\chi )=h(\chi ^{-1})\;{\rm and}\;h\;{\rm is\;a\;trigonometric\;polynomial} \\ 
+{\rm on\;each\;circle\;in}\;A_{u,c}^{\wedge }
+\end{array}
+\right\}.
+\]
+
+Next, suppose $f\in {\cal C}(G)$, so $F_f^A\in {\cal C}(A)$.
+
+{\bf Lemma}: {\em For }$\varphi \in {\cal C}(F^{\times })$,{\em \ the image }%
+${\cal C}(F^{\times })^{\wedge }${\em \ of the Fourier transform }$\varphi
+\longmapsto \varphi ^{\wedge }(\omega )${\em \ is given by}
+\[
+{\cal C}(F^{\times })^{\wedge }=\left\{h\in C_c((F^{\times })_u^{\wedge })\;\middle|\; 
+\begin{array}{c}
+h\;{\rm is\;a\;trigonometric\;series\;on\;each\;circle} \\ 
+{\rm in}\;(F^{\times })_u^{\wedge }\;{\rm which\;converges\;absolutely} \\ 
+{\rm along\;with\;all\;of\;its\;derivatives}
+\end{array}
+\right\}.
+\]
+Consequently, taking Weyl invariance into account, the same description holds for the space of all
+functions of $\chi $ of the form $(F_f^A)^{\wedge }(\chi )$:
+
+{\bf Lemma}: {\em For }$f\in {\cal C}(G)$,{\em \ the image }${\cal C}%
+(G)_{ps}^{\wedge }${\em \ of the Fourier transform }$f\longmapsto \Theta
+_\pi (f),\;\pi =T_\chi $,{\em \ is given by}
+\[
+{\cal C}(G)_{ps}^{\wedge }=\left\{h\in C_c(A_{u,c}^{\wedge })\;\middle|\; 
+\begin{array}{c}
+h(\chi )=h(\chi ^{-1})\;{\rm and}\;h\;{\rm is\;a\;trigonometric\;series\;on\;each\;circle} \\ 
+{\rm in}\;A_{u,c}^{\wedge }\;{\rm which\;converges\;absolutely} \\ 
+{\rm along\;with\;all\;of\;its\;derivatives}
+\end{array}
+\right\}.
+\]
+
+\subsubsection{Reducible principal series}
+
+Let $\chi \in (F^{\times })^{\wedge }$ and suppose that $\chi =\mathrm{sign}_\tau $,
+for some $\tau =\varepsilon ,\pi ,\varepsilon \pi $. Let $\pi =T_\chi ^{+}$%
+{\em \ or }$\pi =T_\chi ^{-}$. Following \cite{SS1,SS2} or \cite{Fr} (see also \cite{A}), the
+character $\Theta _\pi $ of a reducible principal series representation is
+given on the regular set by
+\[
+\Theta _\pi (x)=\left\{ 
+\begin{array}{ll}
+\frac{\mathrm{sign}_\tau (a)}{|a-a^{-1}|}, & x=\left[ 
+\begin{array}{cc}
+a & 0 \\ 
+0 & a^{-1}
+\end{array}
+\right] ^g,\;{\rm for\;some}\;g\in G,\;a\neq \pm 1, \\ 
+e_{\pi ,\tau }(t)|D_T(t)|^{-1/2}, & x\;{\rm conjugate\;to}\;t\in (T_\tau
+\cup T_\tau ^{\#})\cap G^{\prime }, \\ 
+0, & {\rm otherwise},
+\end{array}
+\right.
+\]
+where $T_\tau ,T_\tau ^{\#}$ are two non-split Cartans (which are not
+conjugate if $-1\in (F^{\times })^2$ or if $\tau =\varepsilon $) and where $%
+e_{\pi ,\tau }(t)$ is a bounded locally constant function on $G^{\prime
+}-A^G$. Using this, the Weyl integration formula, and the reasoning above,
+it can be shown that:
+
+{\bf Lemma} {\em If }$\pi =T_\chi ^{+}${\em \ or }$\pi =T_\chi ^{-}${\em \
+then }$\pi ${\em \ is tempered.}
+
+\subsubsection{Complementary series}
+
+Let $\chi =|...|^{-\rho }$ for some $0<\rho <1$. As in the case of the
+principal series, we see that $T_\rho $ is not tempered because $\chi $ is
+not a unitary character.
+
+{\bf Lemma} {\em If }$\pi =T_\rho ${\em \ then }$\pi ${\em \ is non-tempered.%
+}
+
+The character $\Theta _\pi $ of a complementary series representation
+is given by the same formula as in the case of the principal series. This
+and the Weyl integration formula imply that
+\[
+\begin{array}{c}
+\Theta _\pi (f)=\int_G\Theta _\pi (x)f(x)dx \\ 
+=\frac 12\int_{F^{\times }}(|a|^{-\rho }+|a|^\rho )F_f^A\left( 
+\begin{array}{cc}
+a & 0 \\ 
+0 & a^{-1}
+\end{array}
+\right)d^{\times }a \\ 
+=M(F_f^A)(\rho ),
+\end{array}
+\]
+where $M$ denotes the {\bf Mellin transform}
+\[
+\begin{array}{c}
+M\varphi (\rho )=\int_{F^{\times }}|x|^{-\rho }\varphi (x)d^{\times }x \\ 
+=\sum_{n=-\infty }^\infty q^{\rho n}\int_{O_F^{\times }}\varphi (\pi
+^nu)du.
+\end{array}
+\]
+
+{\bf Lemma}:{\em \ For }$\varphi \in C_c^\infty (F^{\times })$,{\em \ the
+image }$MC_c^\infty (F^{\times })${\em \ of the Mellin transform }$\varphi
+\longmapsto M\varphi (\rho )${\em \ is given by}
+\[
+MC_c^\infty (F^{\times })=\{h\in C^\infty
+(0,1)\;|\;h\;{\rm is\;a\;finite\;Laurent\;series\;in}\;q^\rho \}.
+\]
+
+Consequently, since $F_f^A(a)=F_f^A(a^{-1})$, the space of all
+functions of $\rho $ of the form $M(F_f^A)(\rho )$ consists of the Weyl-symmetric finite Laurent series:
+
+{\bf Lemma}:{\em \ For }$f\in C_c^\infty (G)$,{\em \ the image }$MC_c^\infty
+(G)${\em \ of the Mellin transform }$f\longmapsto M(F_f^A)(\rho )=\Theta _{T_\rho }(f)${\em \ is
+given by}
+\[
+MC_c^\infty (G)=\{h\in C^\infty
+(0,1)\;|\;h\;{\rm is\;a\;finite\;Laurent\;series\;in}\;q^\rho \;{\rm symmetric\;under}\;\rho \longmapsto -\rho \}.
+\]
+
+\subsubsection{The special representation}
+
+Let $\pi =T_{sp}$. Then
+\[
+\Theta _\pi (x)=\left\{ 
+\begin{array}{ll}
+\frac{|a|+|a|^{-1}}{|a-a^{-1}|}-1, & x=\left[ 
+\begin{array}{cc}
+a & 0 \\ 
+0 & a^{-1}
+\end{array}
+\right] ^g,\;{\rm for\;some}\;g\in G,\;a\neq \pm 1, \\ 
+-1, & x\in G^{\prime }-A^G.
+\end{array}
+\right.
+\]
+It follows from this and the Weyl integration formula that
+\[
+\begin{array}{c}
+\Theta _\pi (f)=\int_G\Theta _\pi (x)f(x)dx \\ 
+=\frac 12\int_{F^{\times }}(|a|+|a|^{-1}-|a-a^{-1}|)F_f^A\left( 
+\begin{array}{cc}
+a & 0 \\ 
+0 & a^{-1}
+\end{array}
+\right)d^{\times }a \\ 
+-\sum_{T\in S-\{A\}}\frac 12\int_T|D(t)|^{1/2}F_f^T(t)dt.
+\end{array}
+\]
+This converges even for $f$ in the Schwartz space, so we have:
+
+{\bf Lemma}: {\em If }$\pi =T_{sp}${\em \ then }$\pi ${\em \ is tempered.}
+
+\subsubsection{The trivial representation}
+
+Let $\pi =1$ so
+\[
+\Theta _\pi (x)=1.
+\]
+To see that
+\[
+\Theta _\pi (f)=\int_Gf(x)dx
+\]
+diverges in general on the Schwartz space, we use \cite[Lemma~4.2.5]{S} to
+compute
+\[
+\begin{array}{c}
+\int_G \frac{\Xi (x)}{(1+\sigma (x))^r}dx=\sum_{a\in A^{+}/A^0}\mu (K_0aK_0)%
+\frac{\Xi (a)}{(1+\sigma (a))^r} \\ 
+\approx \sum_{a\in A^{+}/A^0}\mu (K_0aK_0)\delta _B(a)^{1/2} \frac{\delta
+_B(a)^{-1/2}\Xi (a)}{(1+\sigma (a))^r} \\ 
+\approx \sum_{a\in A^{+}/A^0}\delta _B(a)^{1/2}\frac 1{(1+\sigma
+(a))^{r-r_0}},
+\end{array}
+\]
+for some constant $r_0$ and all $r>0$. (Here $\mu $ denotes the volume.)
+This diverges for all $r$, so the trivial representation is not tempered.
+(Here $f(a)\approx g(a)$ means $f(a)<<g(a)<<f(a)$.)
+
+{\bf Lemma} {\em If }$\pi =1${\em \ then }$\pi ${\em \ is non-tempered.}
+
+\subsubsection{The cuspidal representations}
+
+The characters of the cuspidal representations will not be given here---we
+refer to \cite{SS2}. They are all of the form
+\[
+\Theta _\pi (x)=\left\{ 
+\begin{array}{ll}
+\alpha (x)+ \frac{\beta (x)}{|D(x)|^{1/2}}, & x\in G^{\prime }-A^G, \\ 
+0, & x\notin G^{\prime }-A^G,
+\end{array}
+\right.
+\]
+where $\alpha ,\beta $ are uniformly bounded locally constant functions on $%
+G^{\prime }-A^G$. From this and our previous estimates, it is not hard to
+see that the cuspidal representations are tempered (see also \cite[Theorem~4.5.1, Theorem~4.5.10]{S}).
+
+{\bf Lemma}: {\em If }$\pi \in G_c^{\wedge }${\em \ then }$\pi ${\em \ is
+tempered.}
+
+\section{The image of the Fourier transform}
+
+\subsection{Admissible Paley-Wiener Theorem for smooth functions}
+
+The following result classifies the image of $C_c^\infty (G)$ under the
+Fourier transform:
+
+{\bf Theorem} (Bernstein-Deligne-Kazhdan \cite{BDK}) {\em The image of the Fourier
+transform }$\pi \longmapsto \Theta _\pi (f)$,{\em \ for }$f\in C_c^\infty
+(G)${\em \ and }$\pi \in \Pi \in G_{ad}^{\wedge }${\em , consists of the
+space of functions }$h${\em \ on }$G_{ad}^{\wedge }${\em \ such that}
+
+{\em (1) }$h${\em \ is supported on finitely many connected components of }$%
+G_{ad}^{\wedge }${\em ,}
+
+{\em (2) }$h${\em \ is regular (and Weyl-invariant) on each }${\bf C}^{\times }/\{\pm 1\}${\em \ (or }${\bf C}^{\times }${\em \ modulo identification with the inverse component) in }$G_{ad}^{\wedge }${\em , regarded as a complex algebraic variety (and satisfies the standard compatibility relations at reducible points).}
+
+Let $C_c^\infty (G)_{ad}^{\wedge }$ denote the space of functions described
+in the above theorem. We call it the {\bf admissible Paley-Wiener space}.
+
+\subsection{Unitary Paley-Wiener Theorem for smooth functions}
+
+We use the information above to prove the following:
+
+{\bf Theorem} {\em The image of the Fourier transform }$\pi \longmapsto
+\Theta _\pi (f)$,{\em \ for }$f\in C_c^\infty (G)${\em \ and }$\pi \in \Pi
+\in G_u^{\wedge }${\em , consists of the space of functions }$h${\em \ on }$%
+G_u^{\wedge }${\em \ such that}
+
+{\em (1) }$h${\em \ is supported on finitely many connected components of }$%
+G_u^{\wedge }${\em ,}
+
+{\em (2) }$h${\em \ is a Weyl-invariant trigonometric polynomial on each circle (or
+half-circle) in }$G_u^{\wedge }${\em \ on which it is supported,}
+
+{\em (3) if }$h${\em \ is supported on the complementary series then }$h$%
+{\em \ is a finite Laurent series in }$x=q^\rho ${\em \ symmetric under }$\rho \longmapsto -\rho ${\em \ (and compatible with the unramified principal series and special/trivial characters).}
+
+{\bf Proof}: (1) follows from the admissible Paley-Wiener theorem.
+
+(2) follows from the section on characters of principal series
+representations.
+
+(3) follows from the section on characters of complementary series
+representations.
+
+This completes the proof since $h$ can be arbitrary on the discrete part of
+the unitary dual. $\Box $
+
+Let $C_c^\infty (G)_u^{\wedge }$ denote the space of functions described in
+the above theorem. We call it the {\bf unitary Paley-Wiener space}.
+
+\subsection{Tempered Paley-Wiener Theorem for Schwartz functions}
+
+We also have the following:
+
+{\bf Theorem} {\em The image of the Fourier transform }$\pi \longmapsto
+\Theta _\pi (f)$,{\em \ for }$f\in {\cal C}(G)${\em \ and }$\pi \in \Pi \in
+G_t^{\wedge }${\em , consists of the space of functions }$h${\em \ on }$%
+G_t^{\wedge }${\em \ such that}
+
+{\em (1) }$h${\em \ is supported on finitely many connected components of }$%
+G_t^{\wedge }${\em ,}
+
+{\em (2) }$h${\em \ is a Weyl-invariant trigonometric series on each circle (or
+half-circle, ignoring the double point if it occurs) in }$G_t^{\wedge }${\em %
+\ on which it is supported, converging absolutely along with all of its
+derivatives.}
+
+{\bf Proof}: (1) follows from the admissible Paley-Wiener theorem.
+
+(2) follows from the section on characters of principal series
+representations.
+
+This completes the proof since $h$ can be arbitrary on the discrete part of
+the tempered dual. $\Box $
+
+Let ${\cal C}(G)^{\wedge }$ denote the space of functions described in the
+above theorem. We call it the {\bf tempered Paley-Wiener space}.
+
+\section{Linear functionals on the tempered Paley-Wiener space}
+
+\subsection{A result of L. Schwartz}
+
+The space of linear functionals on the tempered Paley-Wiener space can be
+successfully described using the theory of distributions on the real line:
+
+{\bf Theorem} (L. Schwartz \cite[ch.~III, Th\'eor\`eme~XXI]{Sch}) {\em Let }$S^1$%
+{\em \ denote the unit circle. If }$T\in C^\infty (S^1)^{\prime }${\em \
+then there is a continuous function }$u${\em \ on }$S^1${\em \ and an
+integer }$n\geq 0${\em \ such that }$T=\frac{d^n}{d\theta ^n}u${\em \ (as
+distributions).}
+
+As a corollary of this and the above Paley-Wiener theorem, we have the
+following:
+
+{\bf Proposition}: {\em The dual space of the tempered Paley-Wiener space } $%
+{\cal C}(G)^{\wedge }$ {\em \ is isomorphic to the direct product}
+\[
+\prod_{d\in \pi _0(A_{u,c}^{\wedge }/\sim )}\bigcup_{n\geq
+0}C(S_d)^{(n)}\times \prod_{\sigma \in \pi _0(G_{lds}^{\wedge })}{\bf %
+C}\delta _\sigma ,
+\]
+{\em where }$\pi _0(X)${\em \ denotes the set of connected components of a
+topological space }$X$, {\em where} $G_{lds}^{\wedge }$ {\em denotes the
+union of the reducible principal series, the special representation, and the
+cuspidal representations, and where }$\delta _\sigma $ {\em denotes
+the evaluation functional on the space of (constant) functions on the
+(singleton) elements of }$\pi _0(G_{lds}^{\wedge })$, {\em and, if we write
+the unitary dual }$A_u^{\wedge }=A_{u,c}^{\wedge }${\em \ as a union of
+circles }$S_d\cong {\bf R}/\frac{2\pi }{\log (q)}{\bf Z}$, {\em where}
+\[
+C(S_d)^{(n)}=\left\{\frac{d^n}{d\theta ^n}u\;\middle|\;u\;{\rm continuous\;on\;}S_d\right\}\;({\rm modulo\;Weyl\;symmetry}).
+\]
+
+\subsection{The Fourier transform of a tempered distribution}
+
+As a consequence of this, we can ``completely describe'' the Fourier
+transform of a tempered distribution:
+
+{\bf Theorem}: {\em If }$T${\em \ is a tempered distribution on }$G${\em \
+then there is a}
+\[
+T^{\wedge }\in \prod_{d\in \pi _0(A_{u,c}^{\wedge }/\sim )}\bigcup_{n\geq
+0}C(S_d)^{(n)}\times \prod_{\sigma \in \pi _0(G_{lds}^{\wedge })}{\bf %
+C}\delta _\sigma
+\]
+{\em such that}
+\[
+T(f)=T^{\wedge }(f^{\wedge }),
+\]
+{\em for all }$f\in {\cal C}(G)${\em , where }$f^{\wedge }(\pi )=\Theta _\pi
+(f)${\em \ denotes the Fourier transform of }$f${\em \ at }$\pi \in \Pi \in
+G_t^{\wedge }$.
+
+\section{Linear functionals on the admissible Paley-Wiener space}
+
+\subsection{Analytic functionals}
+
+A large part of the space of linear functionals on the admissible
+Paley-Wiener space can be described using the theory of analytic functionals
+(see H\"ormander \cite[ch.~IV]{H1}, \cite[ch.~IX]{H2}). Our description of the Fourier
+transform of an admissible distribution is unfortunately much less explicit
+than in the tempered case treated in the previous section. However, if the
+admissible distribution has ``exponential growth'' then, as we will see,
+more precise results can be given.
+
+In spite of what we have seen already in the previous section, the following
+may still be of interest:
+
+{\sc Question}: Is there an analogous description for the linear
+functionals on the unitary Paley-Wiener space using the theory of (Sato)
+hyperfunctions?
+
+(This question is inspired by the relationship between analytic functionals
+and hyperfunctions discussed in \cite[\S 9.2]{H2}.)
+
+We begin with some definitions:
+
+Let $\Omega \subset G_\sigma ^{\wedge }\hookrightarrow X_{un}(M)\cong ({\bf C%
+}^{\times })^n,\;\sigma \in M_c^{\wedge }$, some $n\geq 1$, denote a
+connected component of $G_{ad}^{\wedge }$, which we may regard as a complex
+algebraic variety or as a complex analytic manifold. Let $R(X_{un}(M))$
+denote the space of regular functions on $X_{un}(M)$, regarded as a variety,
+and $A(X_{un}(M))$ denote the space of analytic functions on $X_{un}(M)$,
+regarded as a manifold. We give $A(X_{un}(M))$ the topology of uniform
+convergence on compacta, so that $R(X_{un}(M))\subset A(X_{un}(M))$ is
+dense. Following H\"ormander (\cite[ch.~IV]{H1}), an {\bf analytic functional} on 
+$X_{un}(M)$ is an element of the topological dual of $A(X_{un}(M))$, denoted 
+$A(X_{un}(M))^{\prime }$, where $A(X_{un}(M))$ is given the topology of
+uniform convergence. We say that an analytic functional $\lambda $ is {\bf %
+carried on} a compact set $K\subset \subset X_{un}(M)$ if for every
+neighborhood $U\supset K$, there is a constant $C_U>0$ such that
+\[
+|\lambda (f)|\leq C_U\sup _{z\in U}|f(z)|.
+\]
+It follows from the definitions that for any $\lambda \in A(\Omega )^{\prime
+}$, there exists a compact $K$ such that $\lambda $ is carried on $K$. The
+analytic functionals carried on $K$ are in one-to-one correspondence, via
+the Laplace transform, with those entire functions with exponential growth
+(a result due to P\'olya-Ehrenpreis-Martineau, see \cite[Theorem~4.5.3]{H1}).
+
+Let $PW(G)=C_c^\infty (G)_{ad}^{\wedge }$ denote the Paley-Wiener space and
+let $PW(G)^{\prime }$ denote its algebraic dual space (as a vector space).
+From the bijection $f\longmapsto f^{\wedge },\;C_c^\infty (G)\rightarrow
+PW(G)$, we define the {\bf Fourier transform} of an invariant distribution $%
+D$ on $C_c^\infty (G)$ to be the linear functional $D^{\wedge }\in
+PW(G)^{\prime }$ such that
+\[
+D(f)=D^{\wedge }(f^{\wedge }),
+\]
+for all $f\in C_c^\infty (G)$. We say that the distribution $D$ is 
+{\bf analytic} if the linear functional $D^{\wedge }$ restricted to $%
+R(X_{un}(M))\subset PW(G)$ extends continuously to an analytic functional on $%
+A(\Omega )$.
+
+{\bf Lemma}: {\em If }$D${\em \ is analytic then there is a compact }
+$K\subset \subset \Omega ${\em \ such that }$D^{\wedge }${\em \ is carried on 
+}$K$.
+
+Define a function $E_{M,a}$ on $X_{un}(M)$ by $E_{M,a}(I_M(\chi \sigma
+))=\chi (a)+\chi (a)^{-1}$ (or $\chi (a)$ before Weyl symmetrization) for each $\chi \in X_{un}(M)$, $a\in A_M$, where $A_M$
+denotes the split component of the center of $M$ (in $M$). Let
+\[
+H_K(a)=\max_{\chi\in K}\log (||a||^{|\mathrm{Re}(s_\chi )|}),\;\;\;\;\forall a\in A_M,
+\]
+where $s_\chi \in {\bf C}^n$ is an element representing $\chi \in X_{un}(M)$.
+
+{\bf Lemma} {\em The vector space span of all linear combinations of the
+functions }$E_{M,a}${\em , }$a\in A_M${\em , is dense in the Weyl-invariant subspace of }$A(X_{un}(M))$.
+
+{\bf Proof}: The only cases we need to prove this are $M=G$ and $M=A$. The
+statement is trivial if $M=G$ so assume $M=A$.
+
+The trace Paley-Wiener theorem of Bernstein-Deligne-Kazhdan mentioned above
+implies that each Weyl-invariant regular function $h$ on $X_{un}(A)$ may be realized as the
+trace: there is an $f\in C_c^\infty (G)$ such that $h(\chi )=\Theta
+_{I_A(\chi )}(f)$ for all $\chi \in X_{un}(A)$ such that the induced
+representation $I_A(\chi )$ is irreducible. In this case, the character
+formulas in the principal series case imply that
+\[
+\begin{array}{c}
+h(\chi )=\int_G\Theta _{I_A(\chi )}(g)f(g)dg=(F_f^A)^{\wedge }(\chi ) \\ 
+=\int_AF_f^A(a)\chi (a)da=\sum_{a\in A,\ {\rm finite}} c_a(\chi(a)+\chi(a)^{-1}),
+\end{array}
+\]
+for all $\chi \in X_{un}(A)$, where the sum over $a\in A$ runs over a finite
+set (since $F_f^A(a)$ is compactly supported and locally constant). From this the result easily
+follows. $\Box $
+
+Therefore to verify that an analytic functional is carried on $K\subset \subset
+X_{un}(M)$ it suffices to check that the condition $|\lambda (f)|\leq
+C_U\sup _{z\in U}|f(z)|$ holds for all $f$ belonging to this span. Since
+\[
+|E_{M,a}(\chi)|\leq 2||a||^{|\mathrm{Re}(s_\chi)|},
+\]
+this implies the following:
+
+{\bf Proposition}: {\em If }$D${\em \ is analytic and }$D^{\wedge }${\em \
+is carried on a compact }$K\subset \subset X_{un}(M)${\em \ then for each }$%
+\varepsilon >0${\em \ there is a constant }$C_\varepsilon >0${\em \ such that%
+}
+\[
+|D^{\wedge }(E_{M,a})|\leq C_\varepsilon \exp ((1+\varepsilon
+)H_K(a)),\;\;\;\;\;\;\;\forall a\in A_M.
+\]
+
+\subsection{The Fourier transform of an analytic distribution}
+
+The result below describes the Fourier transform of an analytic distribution
+on $G$. Note that since $\sigma (a)=\log ||a||$, $H_K(a)$ is bounded by $C_M\sigma (a)$ for some constant $C_M>0$.
+
+{\bf Theorem}: {\em If }$D${\em \ is an analytic distribution then there is
+a linear functional }$D^{\wedge }\in PW(G)^{\prime }${\em \ such that }%
+$D(f)=D^{\wedge }(f^{\wedge })$ {\em for all }$f\in C_c^\infty (G)${\em ,
+and, for each Levi }$M${\em \ of }$G${\em \ and each }$\varepsilon >0${\em ,
+there are constants }$C_\varepsilon >0,\ C_M>0$ {\em such that}
+\[
+|D^{\wedge }(E_{M,a})|\leq C_\varepsilon \exp ((1+\varepsilon )C_M\sigma
+(a)),\;\;\;\;\;\;\;\forall a\in A_M.
+\]
+{\em Conversely, let }$D${\em \ be an invariant distribution such that its
+Fourier transform }$D^{\wedge }\in PW(G)^{\prime }${\em \ satisfies the
+following property: for each Levi }$M${\em \ of }$G${\em \ and each }%
+$\varepsilon >0${\em , there are constants }$C_\varepsilon >0,\ C_M>0$ {\em such
+that}
+\[
+|D^{\wedge }(E_{M,a})|\leq C_\varepsilon \exp ((1+\varepsilon )C_M\sigma
+(a)),\;\;\;\;\;\;\;\forall a\in A_M.
+\]
+{\em Then }$D${\em \ is analytic.}
+
+\subsection{``Nice'' admissible distributions are analytic}
+
+We shall define admissible distributions, which appear in the result below,
+in the next section. Roughly speaking, the theorem below says that
+admissible distributions of ``exponential growth'' (i.e., polynomial growth in $||a||=\exp (\sigma (a))$) on $SL(2)$, which are
+very common but not well classified, are analytic.
+
+{\bf Theorem}: {\em If }$D${\em \ is admissible and if there is a constant }$%
+C>0$ {\em such that }$|D(a)|^{1/2}|F_D(a)|<<||a||^C${\em , for all }$a\in A${\em ,
+then }$D${\em \ is analytic.}
+
+{\bf Proof}: We need only check the condition of analyticity for the Levi
+component $M=A$ since the case $M=G$ is essentially trivial due to the fact
+that $A_M=\{\pm 1\}$ in that case. Furthermore, we need only prove the
+estimate
+\[
+|D^{\wedge }(E_{A,a})|\leq C_\varepsilon \exp ((1+\varepsilon )C_A\sigma
+(a)),\;\;\;\;\;\;\;\forall a\in A,
+\]
+for ``sufficiently large'' $a\in A$ (that is, $a\in A$ for which $\sigma (a)$
+is sufficiently large).
+
+Fix a connected component $G_\sigma ^{\wedge }$ (fixing the restriction of $\chi $ to $O_F^{\times }$), fix a regular $a\in A$ with $\sigma (a)$ large, and pick $f=f_a\in C_c^\infty (G)$ such that
+
+(1) $f$ is supported in a neighborhood of the conjugacy class of $a$ in $G$,
+and
+
+(2) $F_f^A\in C_c^\infty (A)$ is supported in a small Weyl-invariant neighborhood $U$ of $\{a,a^{-1}\}$ in $%
+A$ (matching the fixed character on $O_F^{\times }$) such that on $G_\sigma ^{\wedge }$,
+\[
+\begin{array}{c}
+(F_f^A)^{\wedge }(\chi )=\chi (a)+\chi (a)^{-1}, \\ 
+|F_f^A(x)|<<|a|+|a|^{-1},\;\;\;\;\forall x\in U.
+\end{array}
+\]
+Since $D$ is admissible there is (by a result of Harish-Chandra stated
+below) a function $F_D$ such that
+\[
+D(f)=\int_GF_D(g)f(g)dg.
+\]
+Therefore, by definition of $f=f_a$, the definition of $E_{A,a}$, and the
+Weyl integration formula, we have the estimate
+\[
+\begin{array}{c}
+|D^{\wedge }(E_{A,a})|=2|D^{\wedge }(f^{\wedge })|=2|D(f)| \\ 
+\leq 2\int_G|F_D(g)f(g)|dg \\ 
+<<\sum_{T\in S,\ T\neq A } \frac
+1{\#[W_T]}\int_T|D(t)|^{1/2}|F_D(t)F_f^T(t)|dt+%
+\int_A|D(x)|^{1/2}|F_D(x)F_f^A(x)|dx \\ 
+<<1+\int_A|D(x)|^{1/2}|F_D(x)F_f^A(x)|dx \\ 
+<<1+(|a|+|a|^{-1})\max _{x\in U}\left(|D(x)|^{1/2}|F_D(x)|\right)<<||a||^{3+C}=\exp ((3+C)\sigma (a)).
+\end{array}
+\]
+(The fact that
+\[
+\sum_{ T\in S, \ T\neq A }\frac
+1{\#[W_T]}\int_T|D(t)|^{1/2}|F_D(t)F_f^T(t)|dt<<1
+\]
+follows from the fact that the $T\neq A$ are compact, bounded in number, and 
+$f$ is supported in a neighborhood of the conjugacy class of $a$ in $G$. If
+we take $a$ ``sufficiently large'' in the sense above then $F_f^T=0$ for $T\neq A$ and this estimate
+follows immediately.)
+
+This implies that $D$ is analytic by the previous theorem. $\Box $
+
+{\bf Corollary}: {\em The space of all analytic distributions on }$G$ {\em %
+includes the characters }$\Theta _\pi $, {\em for }$\pi \in \hat G_{ad}$.
+
+{\bf Proof}: There is a result of Harish-Chandra and Howe which implies that
+the character of every irreducible admissible representation is an
+admissible distribution. The bound $|D(a)|^{1/2}|F_D(a)|<<||a||^C$, for some 
+$C=C(D)>0$, follows from the explicit character formulas above. $\Box $
+
+\section{Admissible distributions}
+
+\subsection{Definitions}
+
+Let $K\subset \subset G$ be a compact open subgroup and for each irreducible
+representation $\sigma $ of $K$, let $\chi _\sigma $ denote its character.
+
+An invariant distribution $D$ on $G$ (not to be confused with the Weyl
+discriminant function $D(x)$ on $G$) is called $(G,K)$-{\bf admissible at $%
+\gamma \in G$} if for any compact open subgroup $K^{\prime }\subset K$ and
+any irreducible representation $\sigma $ of $K^{\prime }$, we have $D*\chi
+_\sigma =0$ on $\gamma K$ unless $G$ intertwines the trivial representation
+on $K$ with $\sigma $. In other words, for each $f\in C_c^\infty (G)$ with $%
+\mathrm{supp}(f)\subset \gamma K$, we have $D(f*\chi _\sigma ^0)=0$ on $\gamma K$,
+unless $G$ intertwines the trivial representation on $K$ with $\sigma $.
+Here $\chi _\sigma ^0(x)$ denotes the extended character of $\sigma $: $\chi
+_\sigma ^0(x)=\chi _\sigma (x)$ if $x\in K^{\prime }$ and $\chi _\sigma
+^0(x)=0$ if $x\in G-K^{\prime }$. If $U$ is a $G$-invariant open set in $G$
+then we say that $D$ is {\bf admissible on }$U$ if it is $(G,K)$-admissible
+at each $\gamma \in U$ in $G$ for some sufficiently small $K$ (which may
+depend on $\gamma $). Note that it suffices to verify this for each regular $%
+\gamma \in U\cap G^{\prime }$.
+
+According to Harish-Chandra, if $D$ is admissible then there is a function $%
+F_D$ on $G$ which is locally constant on the regular set $G^{\prime }$ such
+that
+
+(1) $|D(x)|^{1/2}F_D(x)$ is locally bounded,
+
+(2) for each $f\in C_c^\infty (G)$,
+\[
+D(f)=\int_GF_D(x)f(x)dx.
+\]
+In general, if $D$ is a distribution on $G$ which is given by an integral as
+above, we say that $D$ is {\bf representable}. For representable
+distributions, the $(G,K)$-admissibility condition at $\gamma $ becomes: for
+each $f\in C_c^\infty (G)$ with $\mathrm{supp}(f)\subset \gamma K$, we have
+\[
+\begin{array}{c}
+\int_GF_D(x)(f*\chi _\sigma ^0)(x)dx=\int_GF_D(x)\int_{K^{\prime
+}}f(xk^{-1})\chi _\sigma ^0(k)dkdx \\ 
+=\int_G(F_D*\chi _\sigma ^0)(x)f(x)dx=0,
+\end{array}
+\]
+unless $G$ intertwines the trivial representation on $K$ with $\sigma $.
+Therefore, the $(G,K)$-admissibility condition for representable distributions
+is: $(F_D*\chi _\sigma ^0)(x)=0$ on $\gamma K$, unless $G$ intertwines the
+trivial representation on $K$ with $\sigma $.
+
+\subsection{A descent to the Levis}
+
+By the Weyl integration formula, we may write
+\[
+D(f)=\sum_{T\in S}{\frac 1{\#[W_T]}}\int_T|D(t)|^{1/2}F_D(t)F_f^{G/T}(t)dt=%
+\sum_{M\in {\cal L}(G)}D_M(F_{\overline{f}^P}^{M/T}).
+\]
+Moreover, here
+\[
+D_M(h)=\sum_{T,\ M\mathrm{-elliptic}} {\frac 1{\#[W_T]}}%
+\int_T|D(t)|^{1/2}F_D(t)h(t)dt,
+\]
+for all $h\in C_c^\infty (M)$, where the sum runs over all Cartans $T$ in $G$
+which are $G$-conjugate to a Cartan of $M$ but not to any smaller $M^{\prime
+}\in {\cal L}(G)$.
+
+In the case of $SL(2)$ this amounts to saying that
+\[
+D_G(f)=\int_GF_D(x)f(x)\mathrm{ch}_{G-A^G}(x)dx,
+\]
+and
+\[
+D_A(f)=\int_GF_D(x)f(x)\mathrm{ch}_{A^G}(x)dx=\frac
+12\int_A|D(a)|^{1/2}F_D(a)F_f^A(a)da,
+\]
+where $\mathrm{ch}_S$ denotes the characteristic function of the set $S\subset G$.
+
+{\bf Lemma}: {\em If }$D${\em \ is }$G${\em -admissible and if }$M\in 
+{\cal L}(G),\;M\neq G$,{\em \ then }$D_M${\em \ is }$M${\em -admissible.}
+
+{\sc Remark}: $D_G$ is admissible at $\gamma $ provided
+\[
+\begin{array}{c}
+(\mathrm{ch}_{G-A^G}\cdot F_D*\chi _\sigma ^0)(x)=0,\; {\rm on\;}\gamma K\;{\rm %
+unless\;}G\;{\rm intertwines} \\ 
+{\rm the\;trivial\;representation\;on\;}K\;{\rm with}\;\sigma .
+\end{array}
+\]
+In this case, since $G-A^G$ is open in $G$, we see that for each $\gamma \in
+G-A^G$ there is a compact open $K\subset \subset G$ such that $\gamma
+K\subset G-A^G$. Since $\mathrm{ch}_{G-A^G}=1$ on $\gamma K$, this condition is a
+consequence of the condition for $D$ itself. It follows that $D_G$ is
+admissible on $G-A^G$.
+
+{\bf Proof}: The result follows for $D_A$ provided for each $a\in A$ and for
+some sufficiently small compact open subgroup $U_m\subset \subset A$, and
+each non-trivial character $\chi $ of $U_m$, we have
+\[
+\begin{array}{c}
+\int_{U_m}|D(ka)|^{1/2}F_D(ka)\chi (k)dk \\ 
+=q^{-m}\int_{O_F}|D((1+\pi ^mu)a)|^{1/2}F_D((1+\pi ^mu)a)\chi (1+\pi ^mu)du
+\\ 
+=\sum_{n\geq m}d_nq^{-n}\int_{O_F^{\times }}F_D((1+\pi ^nu)a)\chi (1+\pi
+^nu)du=0,
+\end{array}
+\]
+where $d_n$ denotes the common value of $|D((1+\pi ^nu)a)|^{1/2}$. (These
+integrals exist since $|D(ka)|^{1/2}F_D(ka)$ is locally constant on the
+regular set and bounded on $U_m a$.) If $a\neq \pm 1$ then this follows for sufficiently large $m$ from
+the fact that $F_D$ is locally constant on the regular set $A^{\prime }$. At the singular points $a=\pm 1$, the Shalika germ / constant term expansion of an admissible distribution $F_D$ near $\pm 1$ implies that $|D(ka)|^{1/2}F_D(ka)$ is locally constant on $U_m\backslash \{1\}$ for sufficiently large $m$, so the integral against a non-trivial character $\chi $ of $U_m$ vanishes there as well.
+
+This completes the proof. $\Box $
+
+\subsection{Questions and an example}
+
+{\sc Question}: Is it possible to classify the admissible distributions $D$
+in terms of the functions $F_D$? In other words, what conditions on $F_D$
+guarantee that $D$ is admissible?
+
+This question is related to the characterization of the algebraic dual of
+the admissible Paley-Wiener space so would appear to be rather difficult.
+
+{\sc Question}: Is it possible to classify which representable {\em tempered}
+distributions are admissible? In other words, what conditions on the {\em %
+tempered} functions $F_D$ guarantee that $D$ is admissible?
+
+This question is related to the characterization of the algebraic dual of
+the tempered Paley-Wiener space and so seems to be more tractable. In fact,
+we will explore this question further in the case of $SL(2)$ below. As a
+start, we prove the following:
+
+{\bf Lemma} {\em Let }$C\subset G_\sigma ^{\wedge }\subset
+G_t^{\wedge }${\em \ denote a compact Borel measurable set, where }$\sigma
+\in M_c^{\wedge }${\em \ and }$M${\em \ is a Levi component of }$G$,{\em \
+and let }$d\lambda ${\em \ denote a bounded Borel measure on }$C${\em . The
+distribution defined by}
+\[
+D(f)=\int_C\Theta _\pi (f)d\lambda (\pi ),\;\;\;\;\;f\in C_c^\infty (G),
+\]
+{\em exists and is admissible.}
+
+{\bf Proof}: By Harish-Chandra, each distribution $f\longmapsto \Theta _\pi
+(f)$ is admissible. This implies that
+\[
+(\Theta _\pi *\chi _\sigma ^0)(x)=0,\;{\rm on}\;\gamma K\;{\rm unless\;}G\;{\rm %
+intertwines\;the\;trivial\;representation\;on\;}K\;{\rm with}\;\sigma ,
+\]
+for $\sigma ,\;K,\;\gamma $ as above. Since $C$ is compact we may apply Fubini's
+theorem to verify this admissibility condition for
+\[
+F_D(x)=\int_C\Theta _\pi (x)d\lambda (\pi ).
+\]
+This completes the proof. $\Box $
+
+\subsection{Distributions on the tempered Paley-Wiener space, revisited}
+
+Let $d\mu $ denote the Plancherel measure on the tempered dual $G_t^{\wedge
+}$ and let $m(\pi )d\mu (\pi )$ denote a distribution on the tempered
+Paley-Wiener space ${\cal C}(G)^{\wedge }$ such that
+
+(1) $m(\pi )$ is supported on finitely many components of $G_t^{\wedge }$,
+
+(2) there is a continuous function $h$ on $G_t^{\wedge }$ such that on each
+component $G_\sigma ^{\wedge }$, with $\sigma \in M_c^{\wedge }$ being a
+cuspidal representation of some Levi $M$ of $G$, there is a function $%
+h_\sigma $ on $X_{un}(M)$ such that $h(I_M(\omega \sigma ))$ is the
+restriction of $h_\sigma (\omega )$ on the set
+\[
+\{\omega \in X_{un}(M)\;|\;I_M(\omega \sigma )\in G_t^{\wedge }\},
+\]
+such that, as distributions on $\{\omega \in X_{un}(M)\;|\;I_M(\omega \sigma
+)\in G_t^{\wedge }\}$, we have
+\[
+m(I_M(\omega \sigma ))=\frac{\partial ^I}{\partial \omega ^I}h_\sigma
+(\omega ),
+\]
+where $I=(i_1,...,i_r)$ denotes a multi-index, $r$ being the real dimension
+of the unitary part of $X_{un}(M)$, and $\frac{\partial ^I}{\partial \omega ^I}$ denotes partial
+differentiation on the real manifold. Note that by (1) the
+function $h$ in (2) is compactly supported. We call such a distribution a 
+{\bf distribution of finite type} on $G_t^{\wedge }$. A distribution
+satisfying (2) but not (1) will be called a {\bf distribution of
+quasi-finite type} on $G_t^{\wedge }$. The maximum of the integers $%
+|I|=i_1+...+i_r$, where $I$ runs over all multi-indices occurring in (2), is
+called the {\bf order} of the distribution.
+
+The theorem of Section 6 implies the following:
+
+{\bf Theorem}: {\em If }$D${\em \ is a tempered distribution on }$G${\em \
+then there is a distribution of quasi-finite type }$m(\pi )d\mu (\pi )${\em %
+\ on the tempered Paley-Wiener space }${\cal C}(G)^{\wedge }${\em \ such that%
+}
+\[
+D(f)=\int_{G_t^{\wedge }}\Theta _\pi (f)m(\pi )d\mu (\pi ),\;\;\;\;\;f\in 
+{\cal C}(G).
+\]
+
+{\sc Question}: Is any such distribution admissible?
+
+By the previous lemma, the answer is yes for distributions of order $0$.
+
+\subsection{Quasi-finite distributions and the Schwartz space}
+
+We shall end this section with a proof, using a completely different
+argument, of a similar statement for $H=GL(2,F)$. (We use $GL(2)$ rather
+than $SL(2)$ since the presence of a non-compact center introduces a key
+idea which will be expanded on and generalized in \cite{J}.) Let $Z$ denote the
+center of $H$ for the remainder of this section.
+
+{\bf Theorem}: {\em If }$D${\em \ is a tempered distribution on the space }$%
+{\cal C}(H)${\em \ then there is a distribution of quasi-finite type }$%
+m(\pi )d\mu (\pi )${\em \ on the tempered Paley-Wiener space }${\cal C}%
+(H)^{\wedge }${\em \ such that}
+\[
+D(f)=\int_{H_t^{\wedge }}\Theta _\pi (f)m(\pi )d\mu (\pi ),\;\;\;\;\;f\in 
+{\cal C}(H).
+\]
+
+{\bf Proof} (Really, more of a sketch since some details are left out.): For
+each character $\omega \in Z_u^{\wedge }$, consider the map ${\cal C}%
+(H)\rightarrow {\cal C}_{*}(H,\omega )$ defined by $f\longmapsto f_\omega $,
+where
+\[
+f_\omega (x)=\int_Zf(xz)\omega (z)^{-1}dz,
+\]
+and where
+\[
+{\cal C}_{*}(H,\omega )=\{f\in {\cal C}_{*}(H)\;|\;f(xz)=\omega
+(z)f(x),\;\;\;x\in H,\;z\in Z\}.
+\]
+We have ${\cal C}(H)=\int_{\omega \in Z_u^{\wedge }}{\cal C}_{*}(H,\omega )$%
+, so $D$ has a Fourier expansion
+\[
+D(f)=\int_{\omega \in Z_u^{\wedge }}D_\omega (f_\omega )d\omega ,
+\]
+each $D_\omega $ being a distribution on ${\cal C}_{*}(H,\omega )$.
+Following Kazhdan, let $W(\omega )$ denote the space of all invariant
+tempered distributions on ${\cal C}_{*}(H,\omega )$ and, for each compact
+open subgroup $K\subset \subset H$, let ${\cal C}_{*}(H,\omega )_K$ denote
+the space of all linear combinations of translates of bi-$K$-invariant
+functions in ${\cal C}_{*}(H//K,\omega )$, and let
+\[
+{\cal C}_{*}(H,\omega )_K^{\perp }=\left\{f\in {\cal C}_{*}(H,\omega
+)\;\middle|\;\int_Kf(k_1kk_2)dk=0,\;\;k_1,k_2\in K\right\}.
+\]
+By analogy with \cite[\S 4]{K} (where it is assumed that the center is
+compact), we have a direct sum decomposition ${\cal C}_{*}(H,\omega )={\cal C%
+}_{*}(H,\omega )_K\bigoplus {\cal C}_{*}(H,\omega )_K^{\perp }$ and a corresponding
+decomposition of the space of invariant distributions: $W(\omega )=W(\omega
+)_K\bigoplus W(\omega )_K^{\perp }$. We {\em claim} that $W(\omega
+)=\bigcup_KW(\omega )_K$, but we shall not prove this here. (Argue by
+contradiction...) By analogy with \cite[\S 4, Lemma~5]{K}, there is a
+decomposition
+\[
+D_\omega =\int_{H_{c,\omega }^{\wedge }}\Theta _\pi m_H(\pi )d\mu _\omega
+(\pi )+D_\omega ^0,
+\]
+where $D_\omega ^0$ is supported off the elliptic set, the distribution $m_H$
+is a finite linear combination of Dirac delta functions, and the dual $%
+H_{c,\omega }^{\wedge }$ is the set of equivalence classes of cuspidal
+representations with unitary central character $\omega $. By the Weyl
+integration formula, $D_\omega ^0$ must be supported on $A^H$ where $A$
+denotes the diagonal subgroup of $H$. In the decomposition
+\[
+D_\omega (f)=(D_\omega )_H(f)+(D_\omega )_A(F_f^A),
+\]
+discussed in the Lemma of Section 8.2 above (where $B$ here denotes the
+upper triangular subgroup of $H$), we may identify $D_\omega ^0(f)$ with $%
+(D_\omega )_A(F_f^A)$. The distribution $(D_\omega )_A$ is (tempered and)
+admissible on $A$ by (analogy with) the Lemma in Section 8.2. By the
+Plancherel formula in the abelian case, $(D_\omega )_A$ may be represented
+by a distribution of finite type on the tempered dual of $A$:
+\[
+D_\omega ^0(f)=(D_\omega )_A(F_f^A)=\int_{A_t^{\wedge }}(F_f^A)^{\wedge
+}(\chi )m_{A,\omega }(\chi )d\mu _A(\chi ).
+\]
+On the other hand, by the character formulas for the principal series, $%
+(F_f^A)^{\wedge }(\chi )=\Theta _{I_A(\chi )}(f)$, so
+\[
+D_\omega ^0(f)=(D_\omega )_A(F_f^A)=\int_{A_t^{\wedge }}\Theta _{I_A(\chi
+)}(f)m_{A,\omega }(\chi )d\mu _A(\chi ).
+\]
+Therefore,
+\[
+D=\int_{\omega \in Z_u^{\wedge }}D_\omega =\int_{\omega \in Z_u^{\wedge
+}}\int_{H_{c,\omega }^{\wedge }}\Theta _\pi m_{H,\omega }(\pi )d\mu _\omega
+(\pi )+\int_{\omega \in Z_u^{\wedge }}\int_{A_t^{\wedge }}\Theta _{I_A(\chi
+)}m_{A,\omega }(\chi )d\mu _A(\chi ),
+\]
+as desired.
+
+This finishes the proof/sketch. $\Box $
+
+\section{Supertempered distributions}
+
+We close by discussing the supertempered distributions on $SL(2)$. The
+definition of a supertempered distribution requires some preliminaries which
+we present first.
+
+\subsection{The constant term}
+
+Let $P=MN$ denote the Levi decomposition and let $\overline{P}=M\overline{N}$
+denote the Levi decomposition of the opposite parabolic. We shall consider
+the maps ${\cal A}(G)\rightarrow {\cal A}(M)$, defined by $f\longmapsto
+f_P$, and $_w{\cal A}(G)\rightarrow \;_w{\cal A}(M)$, defined by $f\longmapsto
+\;_wf_P$. We say that a locally constant function $h$ on $G$ satisfies the 
+{\bf weak inequality} if
+\[
+|h(x)|<<\Xi (x)(1+\sigma (x))^r,
+\]
+for some $r>0$. Here $_w{\cal A}(G)$ denotes the space of matrix
+coefficients satisfying the weak inequality.
+
+For $t>0$, define $A^{+}(t)=\{a\in A\;|\;|\alpha (a)|\geq t\}$, where $%
+\alpha \left( 
+\begin{array}{cc}
+a & 0 \\ 
+0 & a^{-1}
+\end{array}
+\right) =a^2$, and let $A^{+}=A^{+}(1)$. Let $S\subset G$ be a set such that 
+$S\cdot A^{+}(t_0)\subset S$, for some $t_0>0$, and let $f:S\rightarrow V$
+be a vector-valued function, where $V$ is some complex vector space. We say
+that $f$ is {\bf negligible along} $P$, written $f\approx _P0$, if for every
+compact subset $C\subset \subset G$ there is a $t\geq t_0$ such that $%
+f(xa)=0$ for all $x\in C\cap S,\;a\in A^{+}(t)$. Given two vector-valued
+functions $f_i:S\rightarrow V,\;i=1,2$, we write $f_1\approx _Pf_2$ if $%
+f_1-f_2\approx _P0$. Let $V$ be a normed vector space with norm $||...||_V$.
+For a fixed $x\in S$ and $L\in V$, we write
+\[
+f(xa)\rightarrow _PL,\;a\rightarrow _P\infty ,\;\;\;\;\;{\rm or}\;\;\;\;\;\;\lim
+_{a\rightarrow _P\infty }f(xa)=L,
+\]
+if for every $\varepsilon >0$ there is a $t_\varepsilon >0$ such that $%
+||f(xa)-L||_V<\varepsilon $ for all $a\in A^{+}(t_\varepsilon )$.
+
+For each $f\in {\cal A}(G)$, define $f_{(B)}(a)=\delta _B(a)^{1/2}f(a)$, $%
+a\in A$.
+
+{\bf Theorem} (Harish-Chandra) {\em For each }$f\in {\cal A}(G)${\em , there
+is a unique }$f_B\in {\cal A}(A)${\em \ such that }$f_B\approx _Pf_{(B)}$%
+{\em \ with }$S=A$.
+
+The function $f_B$ in this theorem is called the {\bf constant term of }$f$%
+{\bf \ along }$B$. The construction of the constant term is in \cite[\S 2.6]{S}.
+
+{\bf Theorem} (Harish-Chandra) {\em For each }$f\in \;_w{\cal A}(G)${\em ,
+there is a unique }$_wf_B\in {\cal A}(A)${\em \ such that }$\lim
+_{a\rightarrow _P\infty }|_wf_B(aa^{\prime })-f_{(B)}(aa^{\prime })|=0${\em %
+\ for all }$a^{\prime }\in A$.
+
+Following \cite[\S 1.10]{S}, we call a function $f$ (right) {\bf Hecke finite%
+} if, for each compact open subgroup $K\subset \subset G$, the vector space
+spanned by $f*g$, with $g\in C_c(G//K)$ (i.e., $g$ is compactly supported
+and bi-$K$-invariant), is finite dimensional. We call an invariant
+distribution $D$ on $G$ {\bf Hecke finite} if, for each $f\in C_c^\infty (G)$%
+, the function $D_f(x):=D(r(x^{-1})f)$ is right Hecke finite as a function
+of $x\in G$. Here $r$ denotes right translation: $(r(x)f)(g)=f(gx^{-1})$.
+Examples of Hecke finite distributions are characters of admissible
+representations of finite length (this is implicit in \cite[\S 1.11]{S}). In
+fact, a Hecke finite distribution is a virtual character (\cite[\S 3]{J}),
+hence automatically admissible.
+
+{\bf Lemma}: {\em If }$D${\em \ is Hecke finite then }$D_f\in {\cal A}(G)$.%
+{\em \ If moreover }$D${\em \ is tempered then }$D_f\in \;_w{\cal A}(G)$.
+
+For each $f\in C_c^\infty (G)$, define $h_f\in C_c^\infty (M)$ by
+\[
+h_f(m)=\delta _P(m)^{1/2}\int_N\int_{\overline{N}}f(\overline{n}mn)\delta _P(%
+\overline{n})^{-1}d\overline{n}dn.
+\]
+
+{\bf Proposition}: (1) {\em Let }$D${\em \ be a Hecke finite distribution.
+For each parabolic }$P$, {\em there is an admissible distribution }$D_P${\em %
+\ on }$M${\em \ such that }$(D_f)_P(1)=D_P(h_f)$ {\em for all }$f\in
+C_c^\infty (G)$.
+
+(2) {\em Let }$D${\em \ be a Hecke finite tempered distribution. For each
+parabolic }$P${\em , there is an admissible tempered distribution }$D_P${\em %
+\ on }$M${\em \ such that }$_w(D_f)_P(1)=D_P(h_f)${\em \ for all }$f\in
+C_c^\infty (G)$.
+
+We will prove this in \cite{J}. The distribution $D_P$ on $M$ will be called the 
+{\bf constant term of }$D${\bf \ along }$P$. This is not to be confused with
+the $D_M$ introduced in Section 8 above.
+
+\subsection{Definition of a supertempered distribution}
+
+Following Harish-Chandra in the real case, we say that a Hecke finite
+admissible distribution $D$ is {\bf supertempered} if $D_P=0$ for all proper
+parabolics $P$ of $G$. Examples of supertempered distributions are
+characters of square-integrable representations (see \cite[Corollary~4.4.7]{S}).
+Let $G_e$ denote the set of {\bf elliptic elements}: elements which are not
+conjugate to an element in some proper parabolic subgroup of $G$. Other
+examples of supertempered distributions arise from the lemma below:
+
+{\bf Lemma}:{\em \ If }$D${\em \ is a Hecke finite distribution and }$\mathrm{supp}(F_D)\subset G_e${\em \ then }$D${\em \ is supertempered and tempered.}
+
+One proof of this, which is omitted, is to use the construction of the
+constant term to verify directly that $(D_f)_P(1)=0$, for all proper
+parabolics $P$ (see \cite[\S 2]{J}). The temperedness is an immediate
+consequence of a result of Kazhdan \cite[\S 5, Lemma~3]{K}.
+
+{\sc Question}: If $D$ is supertempered and $F_D|_{G_e}=0$ then does it
+necessarily follow that $D=0$?
+
+{\sc Question}: Does supertempered imply tempered?
+
+{\bf Lemma}: {\em If }$D${\em \ is a Hecke finite distribution on }$G${\em \
+then }$D${\em \ is a virtual character.}
+
+This is not especially hard to prove (see \cite[\S 3]{J}).
+
+{\bf Corollary}: {\em If }$D${\em \ is a supertempered distribution then }$D$%
+{\em \ is a virtual character.}
+
+{\sc Remark}: Because any supertempered distribution $D$ is a virtual character, Casselman's theorem identifying the constant term of a character along $B$ with the character of its Jacquet module implies that both questions above have affirmative answers on $SL(2,F)$: any non-tempered constituents ($1$ or $T_\rho $ or non-unitary principal series) contribute non-unitary exponents to the constant term along $B$ that cannot cancel against tempered constituents, forcing $D$ to be tempered and supported on $G_e$.
+
+\subsection{An example}
+
+Let $\chi =\mathrm{sign}_\tau $, for some $\tau =\varepsilon ,\pi ,\pi \varepsilon $%
+, and let $\pi =T_\chi ^{+}$, $\pi ^{\prime }=T_\chi ^{-}$.
+
+{\bf Proposition}: {\em The distribution}
+\[
+D=\Theta _\pi -\Theta _{\pi ^{\prime }}
+\]
+{\em is supertempered.}
+
+{\bf Proof}: The character computation of Section 4.2.2 above shows that $D$
+is supported in the elliptic set, so by the above lemma it must be
+supertempered. It is instructive to give a second proof directly from the
+definition.
+
+Consider the matrix coefficients
+\[
+f_1(x)=\int_G\Theta _\pi (g)h(gx^{-1})dg,\;\;f_2(x)=\int_G\Theta _{\pi
+^{\prime }}(g)h(gx^{-1})dg,\;\;\;h\in C_c^\infty (G),
+\]
+and let
+\[
+\begin{array}{c}
+f_{1,(B)}(a)=\delta _B(a)^{1/2}f_1(a)=\delta _B(a)^{1/2}\int_G\Theta _\pi
+(g)h(ga^{-1})dg, \\ 
+f_{2,(B)}(a)=\delta _B(a)^{1/2}f_2(a)=\delta _B(a)^{1/2}\int_G\Theta _{\pi
+^{\prime }}(g)h(ga^{-1})dg.
+\end{array}
+\]
+The character formulas above imply that
+\[
+\begin{array}{c}
+f_{1,(B)}(a)-f_{2,(B)}(a)=\delta _B(a)^{1/2}\int_G(\Theta _\pi (g)-\Theta
+_{\pi ^{\prime }}(g))h(ga^{-1})dg \\ 
+=\delta _B(a)^{1/2}\sum_{T\neq A}\frac 12\int_T|D(t)|^{1/2}(\Theta _\pi
+(t)-\Theta _{\pi ^{\prime }}(t))h(ta^{-1})dt.
+\end{array}
+\]
+In fact, the sum over the non-split Cartans $T$ runs only over one or two
+Cartans. To finish the proof of this proposition, we use the following:
+
+{\bf Lemma}: {\em If }$h${\em \ is supported on }$C\subset \subset G${\em ,
+there exists an }$r=r_C>0${\em \ such that, for all Cartans }$T${\em \ in
+the above sum and all }$a\in A^{+}(r)${\em , we have }$C\cap Ta^{-1}=\emptyset $.
+
+{\bf Proof}: To see this, note that there is an $N>0$ such that $\sigma
+(x)<N$ for all
+\[
+x\in C\cup \bigcup_{T\neq A}T.
+\]
+This is because $C$ is compact and each $T\neq A$ is compact. On the other
+hand, for each Cartan $T\neq A$, from the explicit description of $T$ as a
+matrix group (\cite{SS2}) and the definition of $\sigma (x)$, it follows that
+there is an $r>0$ (depending on $N,\;T$) such that $\sigma (ta^{-1})>N$ for all
+$a\in A^{+}(r),\;t\in T$. From this the lemma follows. $\Box\;(\text{Lemma})$
+
+From the lemma and the definition of negligible, it follows that
+$f_{1,(B)}(a)-f_{2,(B)}(a)\approx _B0$ along $A$. This implies that $D_B=0$.
+$\Box\;(\text{Proposition})$
+
+Combining a special case of a result in \cite{H} along with the above corollary
+in Section 9.2, we find:
+
+{\bf Theorem} (Herb): {\em A tempered, supertempered distribution of $SL(2,F)$ is
+a finite linear combination of discrete series characters and the
+distributions in the previous proposition.}
+
+\begin{thebibliography}{99}
+
+\bibitem[A]{A}
+  M. Assem, ``The Fourier transform and some character formulae for $p$-adic 
+$SL(\ell )$, $\ell $ a prime'', preprint.
+
+\bibitem[Ba]{Ba}
+  G. Bachman, {\bf Elements of abstract harmonic analysis},
+  Academic Press, New York, 1964.
+
+\bibitem[B]{B}
+  J. Bernstein, ``All reductive $p$-adic groups are tame'', Funct. Anal.
+Appl. 8 (1974), 91--93.
+
+\bibitem[BDK]{BDK}
+  J. Bernstein, P. Deligne, D. Kazhdan, ``Trace Paley-Wiener theorem for
+reductive $p$-adic groups'', J. d'Anal. Math. 47 (1986), 180--192.
+
+\bibitem[Ca]{Ca}
+  W. Casselman, ``Introduction to the theory of admissible
+representations on reductive $p$-adic groups'', preprint.
+
+\bibitem[C]{C}
+  L. Clozel, ``Invariant harmonic analysis on the Schwartz space of a
+reductive $p$-adic group'', in {\bf Harmonic analysis on reductive groups}, ed. W. Barker, P.
+Sally, Birkh\"auser, Boston, 1991.
+
+\bibitem[D]{D}
+  J. Dixmier, {\bf $C^{*}$-algebras}, North-Holland, Amsterdam, 1977.
+
+\bibitem[F]{F}
+  J. Fell, ``$C^*$-algebras with smooth dual'', Ill. J. Math.
+4 (1960), 221--230.
+
+\bibitem[Fr]{Fr}
+  S. Franklin, ``The reducible principal series of $SL(2)$ over a $p$-adic
+field'', Thesis, Univ. Chicago, 1971.
+
+\bibitem[GG]{GG}
+  I. M. Gelfand, M. I. Graev, ``Representations of a group of the second
+order with elements from a locally compact field'', Russian Math. Surveys
+18 (1963), 29--100.
+
+\bibitem[H]{H}
+  R. Herb, ``Virtual supertempered characters'', preprint.
+
+\bibitem[H1]{H1}
+  L. H\"ormander, {\bf An introduction to complex analysis in several
+    complex variables}, 2nd edition, North-Holland,
+Amsterdam, 1973.
+
+\bibitem[H2]{H2}
+  L. H\"ormander, {\bf The analysis of linear partial differential operators, I},
+  Springer-Verlag, New York, 1983.
+
+\bibitem[J]{J}
+  D. Joyner, ``Some results concerning invariant distributions on a
+reductive group over a $p$-adic field'', preprint, 1994.
+
+\bibitem[K]{K}
+  D. Kazhdan, ``Cuspidal geometry of $p$-adic groups'', J. d'Anal. Math.
+47 (1986), 1--36.
+
+\bibitem[M]{M}
+  G. Mackey, ``Borel structure in groups and their duals'', Trans. AMS
+85 (1957), 134--165.
+
+\bibitem[S]{S}
+  A. Silberger, {\bf Introduction to harmonic analysis on reductive
+    $p$-adic groups}, Princeton Univ. Press, Princeton, 1979.
+
+\bibitem[Sch]{Sch}
+  L. Schwartz, {\bf Th\'eorie des distributions, vol. I},
+  Hermann, Paris, 1950.
+
+\bibitem[SS1]{SS1}
+  P. Sally, J. Shalika, ``Characters of the discrete series of
+representations of $SL(2)$ over a $p$-adic field'', Proc. Nat. Acad. Sci. USA
+61 (1968), 1231--1237.
+
+\bibitem[SS2]{SS2}
+  P. Sally, J. Shalika, ``The Fourier transform of orbital integrals on $SL(2)$ over a
+  $p$-adic field'', in {\bf Lie group representations, II},
+  ed. R. Herb et al., Lecture Notes in Math. vol. 1041,
+Springer-Verlag, New York, 1984.
+
+\bibitem[T]{T}
+  M. Tadi\'c, ``The topology of the dual space of a reductive group over a
+local field'', Glasnik Matem. 18 (1983), 259--279.
+
+\bibitem[Ta]{Ta}
+  M. Taibleson, {\bf Fourier analysis on local fields},
+  Princeton Univ. Press, Princeton, 1975.
+
+\end{thebibliography}
+
+\noindent D. Joyner, Math Dept, USNA, Annapolis, MD
+
+\end{document}

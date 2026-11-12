@@ -1,0 +1,111 @@
+% SPDX-License-Identifier: CC-BY-4.0
+% =====================================================================
+% Section 8 of D. Joyner and Claude, "A hitch-hiker's guide to the
+% metaplectic trace formula for SL(2): basic theory" (November 2026).
+% New in the style-guide pass (style guide, Section 2.7). It restates
+% results of Sections 2-7 with the status given there and lists only open
+% questions that Sections 1-7 already name. It is new text and is listed
+% for refereeing in ../revision_log.md (Stage 8).
+% =====================================================================
+
+\section{Summary of results and open questions}\label{sec:summary}
+
+This section collects the main results of the paper, with the status
+that the text gives them, and the questions that the paper leaves open.
+The status of each statement in detail is in the subsections ``Status of
+the results'' at the end of Sections~\ref{sec:background}--\ref{sec:stable}.
+
+\subsection*{Results}
+
+\begin{enumerate}[label=\arabic*.]
+\item \emph{The cover} (Section~\ref{sec:background}). The double cover
+  of $G(\A)$ is built from Kubota's cocycle, with its topology fixed
+  intrinsically, and it splits over $G(\Q)$ (Lemmas~\ref{lem:kubota}
+  and~\ref{lem:global}). The cocycle and the existence of the topological
+  cover are taken from~\cite{Ku67,Mo68}. The rest is proved in the text.
+\item \emph{Rank $0$} (Section~\ref{sec:rank0}). For the cover of a torus
+  the trace formula is Poisson summation, twisted by a genuine
+  automorphic character (Theorem~\ref{thm:tf-rank0} and
+  Lemma~\ref{lem:transfer}). For the split torus Weil's character
+  $\chi_\psi$ gives a canonical choice (Lemma~\ref{lem:weil}, whose
+  parts~(a) and~(b) are Weil's).
+\item \emph{The geometric side} (Section~\ref{sec:geometric}). The coarse
+  geometric expansion is proved directly from the height inequality, with
+  truncation parameter $T\ge0$ (Lemma~\ref{lem:height-ineq} and
+  Theorem~\ref{thm:coarse}). Each class contributes a polynomial in $T$ of
+  degree at most one, written down in
+  Propositions~\ref{prop:hyperbolic}, \ref{prop:elliptic}
+  and~\ref{prop:central}. The fine expansion, Theorem~\ref{thm:fine}, is
+  quoted from~\cite{Ar86,Li14a}. Its part~(a) is derived again in
+  Proposition~\ref{prop:unipotent} when the ring of $S_k$-integers is
+  principal.
+\item \emph{The spectral side} (Section~\ref{sec:spectral}). The
+  characters fixed by the Weyl group are the Weil characters
+  $\chi_{\psi_b}$ (Lemma~\ref{lem:w-action}). The normalizing factor of the
+  intertwining operator is $L^S(2\lambda,\chi^2)/L^S(2\lambda+1,\chi^2)$
+  (Lemma~\ref{lem:intertwining}). The residual spectrum is the sum of the
+  even Weil representations $r^+_{\psi_{-b}}$ (Theorem~\ref{thm:residual}).
+  Parts~(a) and~(b) of that theorem, and the matching of parameters
+  in~(c), are proved here. The rest of~(c) is taken
+  from~\cite{Ge76,GPS80,Wa80}. The trace formula is
+  Theorem~\ref{thm:tf}. The spectral decomposition, the Eisenstein series
+  and the polynomial behavior of the spectral terms are taken
+  from~\cite{La76,MW95,Ar80,Li13}.
+\item \emph{The invariant form} (Section~\ref{sec:invariant}). The
+  invariant distributions are built by Fourier inversion on the abelian
+  cover of $A$ (Theorem~\ref{thm:IA}). The invariant trace formula is
+  Theorem~\ref{thm:itf}, with Corollary~\ref{cor:itf-final}, and
+  $M(w,0)=-1$ for every character fixed by the Weyl group
+  (Proposition~\ref{prop:Mw0}). These are proved here, given the
+  existence of normalizing factors, Theorem~\ref{thm:normalization}, which
+  is taken from~\cite{Ar89,Li12a}.
+\item \emph{The stable(r) form} (Section~\ref{sec:stable}). Conjugation
+  by $GL(2)$ can exchange the two lifts of an element
+  (Lemma~\ref{lem:eta}). Stable conjugacy is conjugation by $GL(2)$
+  twisted by the sign $(\det h,\det(1+\gamma))_v$, and its classes are
+  described by the function $\Delta_\psi$ (Lemma~\ref{lem:Delta}). The
+  character of $r^+_\psi-r^-_\psi$ is computed on the regular set
+  (Proposition~\ref{prop:weil-char}). The regular elliptic terms take the
+  form $S_{\mathrm{ell}}(f)+S_{\mathrm{ell}}(f_-)$
+  (Theorem~\ref{thm:elliptic-stable}). The unipotent coefficients are
+  $a^G(S,u_\xi)=\frac12\bigl(c_S+\sum_{\kappa\ne1}\kappa_S(\xi)
+  L^S(1,\kappa)\bigr)$ (Proposition~\ref{prop:unipotent}). The theta
+  functions contribute to the spectral side in the same form as the
+  elliptic terms (Proposition~\ref{prop:theta-packet}). The results are
+  collected in Theorem~\ref{thm:stabler}. Its statements about the
+  weighted terms use the property~\ref{N5} of the normalizing factors.
+  Factors with this property exist at every place
+  (Proposition~\normref{}(a),~(b)). Their explicit form at the dyadic and
+  ramified places, Proposition~\normref{}(c), is taken from
+  Szpruch~\cite{Sz09,Sz16}.
+\end{enumerate}
+
+\subsection*{Open questions}
+
+The following questions are named as open in Sections~\ref{sec:intro}
+and~\ref{sec:stable}. They are not answered here.
+
+\begin{enumerate}[label=\arabic*.]
+\item The stabilization of the weighted terms $I_A(a(t),\cdot)$ and
+  $I_A(z,\cdot)$, which are equivariant under $GL(2)$ but not stable
+  (Proposition~\ref{prop:IA-gl2} and Section~\ref{sec:stable-form}).
+\item The transfer $f\mapsto f'$ to $SO(3)$ and the corresponding
+  fundamental lemma~\cite{Li11,Li12b}, and with them the identification
+  of $\Delta_\psi$ with Li's transfer factor and of $J^{\mathrm{st}}_G$
+  with his stable orbital integral (Remark~\ref{rem:sec7-status}).
+\item The description of the cuspidal spectrum by
+  packets~\cite{Wa80,Wa91,GI18}. The character
+  identity~\eqref{eq:packet-lift} used for the packets is quoted, not
+  proved.
+\item Whether the normalizing factors of~\cite{Li12a} have the
+  property~\ref{N5}, and an independent derivation of Szpruch's formula
+  for the local coefficients at the dyadic places
+  (Remark~\ref{rem:N5}).
+\item Whether $T\ge0$ suffices in Theorem~\ref{thm:Jchi-poly}, as it does
+  on the geometric side (Remark~\ref{rem:sec5-status}).
+\item The limit formulas of Section~\ref{sec:unipotent} at the singular
+  elliptic points.
+\item The $n$-fold cover for $n>2$, which the 1995 notes treated and
+  this revision does not (Remarks~\ref{rem:general-n}
+  and~\ref{rem:general-n-rank0}).
+\end{enumerate}

@@ -29,13 +29,18 @@ bijection between genuine automorphic characters and Hecke characters
 (Theorem~\ref{thm:corr}). For the split torus, Weil's character
 $\chi_\psi$ (Lemma~\ref{lem:weil}) makes the bijection canonical once
 $\psi$ is fixed. We also define the distributions $I^A_{\mathcal O}$ and
-$I^A_{\bar\chi}$ used in Section~6. We work with an arbitrary maximal
+$I^A_{\bar\chi}$ used in Section~\ref{sec:invariant}. We work with an arbitrary maximal
 torus because the same formula holds for anisotropic tori; for $SL(2)$
 it is what Labesse and Langlands apply to the $\kappa$-orbital integrals,
 and Section~\ref{sec:kappa} explains why the double cover does not need
 it there.
 
 \subsection{The cover of a torus}\label{sec:torus-cover}
+
+This subsection describes the cover of a maximal torus and its genuine
+characters. For the split torus, Weil's character gives a canonical
+choice among them.
+
 
 Let $T$ be a maximal torus of $G$ defined over $\Q$. Then
 $T=\Res_{k/\Q}T_k$ for a maximal torus $T_k$ of $SL(2)$ over $k$, which
@@ -49,7 +54,7 @@ For $T=A$ this is $A(\A)^1=\{a(t)\mid |t|_{\A_k}=1\}$, the kernel of
 $H$ of Lemma~\ref{lem:NAK-global}; for $T_k=T_\theta$ the torus $T$ is
 anisotropic over $\Q$ and $T(\A)^1=T(\A)$. In both cases
 $T(\Q)\subset T(\A)^1$ and $T(\Q)\backslash T(\A)^1$ is
-compact~\cite{PR}.
+compact~\cite{PR94}.
 
 Let $\overline{T(\A)}$ and $\overline{T(\A)^1}$ be the preimages in
 $\overline{G(\A)}$, and $\overline{T(k_v)}$ the preimage of $T_k(k_v)$
@@ -125,7 +130,7 @@ genuine.
 
 (b) $\mu_2$ is a closed subgroup of the locally compact abelian group
 $\overline{T(F)}$, so the character $\zeta\mapsto\zeta$ of $\mu_2$
-extends~\cite{Ro}. The quotient of two genuine characters is trivial on
+extends~\cite{Ro83}. The quotient of two genuine characters is trivial on
 $\mu_2$, hence is the pull-back of a character of $T(F)$.
 
 (c) Put $\bar\chi_v=\bar\chi\circ\iota_v$, where $\iota_v$ is the
@@ -187,7 +192,7 @@ and $1$ at every finite place. By Lemma~\ref{lem:local}(e) any lift
 $\tilde\varepsilon$ satisfies $\tilde\varepsilon^2=(1,(-1,-1)_\infty)
 =(1,-1)$. So every genuine character $\bar\chi$ of $\overline{A(\A)^1}$
 has $\bar\chi(\tilde\varepsilon)=\pm i$, and no genuine character is of
-the form $(\chi\circ p)\cdot\mathrm{sgn}$ for a splitting $A(\A)^1\to
+the form $(\chi\circ p)\cdot\sgn$ for a splitting $A(\A)^1\to
 \overline{A(\A)^1}$; indeed no such splitting exists.
 \end{example}
 
@@ -235,7 +240,7 @@ $\gamma_{\psi_b,v}(t)/\gamma_{\psi_b,v}(1)=\gamma_v(bt)/\gamma_v(b)=
 \begin{example}\label{ex:weil-Q}
 Let $k=\Q$, $\psi_p(x)=e^{2\pi i\{x\}_p}$ and $\psi_\infty(x)=
 e^{-2\pi ix}$, so $\psi$ is trivial on $\Q$. Then
-$\gamma_\infty(a)=e^{-\pi i\,\mathrm{sgn}(a)/4}$, and for odd $p$,
+$\gamma_\infty(a)=e^{-\pi i\,\sgn(a)/4}$, and for odd $p$,
 $\gamma_p(u)=1$ and $\gamma_p(pu)=\bigl(\tfrac up\bigr)\epsilon_p$ for
 $u\in\Z_p^\times$, where $\epsilon_p=1$ if $p\equiv1\pmod4$ and
 $\epsilon_p=i$ if $p\equiv3\pmod4$. So
@@ -248,6 +253,11 @@ formula on random $a\in\Q^\times$.
 \end{example}
 
 \subsection{The trace formula}\label{sec:tf-rank0}
+
+This subsection proves the trace formula for the cover of a torus and
+shows that it is Poisson summation, twisted by a genuine automorphic
+character.
+
 
 Let $R$ be the right regular representation of $\overline{T(\A)^1}$ on
 $L^2(X_T)_{\mathrm{gen}}$, and for $f\in C_c^\infty(\overline{T(\A)^1})_-$
@@ -274,7 +284,7 @@ Let $f\in C_c^\infty(\overline{T(\A)^1})_-$.
   \begin{equation}\label{eq:tf-rank0}
   \sum_{\bar\chi\in\Pi_{\mathrm{aut}}(X_T)}\bar\chi(f)
   =\operatorname{tr}R(f)=\int_{X_T}K_f(x,x)\,dx
-  =\mathrm{vol}\bigl(T(\Q)\backslash T(\A)^1\bigr)\sum_{\delta\in T(\Q)}f(\delta),
+  =\vol\bigl(T(\Q)\backslash T(\A)^1\bigr)\sum_{\delta\in T(\Q)}f(\delta),
   \end{equation}
   the sum on the left converging absolutely.
 \end{enumerate}
@@ -291,15 +301,15 @@ because $\varphi(\delta y)=\varphi(y)$. For $\varphi=\bar\chi$ the first
 expression is $\bar\chi(x)\bar\chi(f)$.
 
 (b) The group is abelian, so $f(x^{-1}\delta x)=f(\delta)$, and
-$\int_{X_T}K_f(x,x)\,dx=\mathrm{vol}(X_T)\sum_\delta f(\delta)$ with
-$\mathrm{vol}(X_T)=\mathrm{vol}(T(\Q)\backslash T(\A)^1)$ since $\mu_2$
+$\int_{X_T}K_f(x,x)\,dx=\vol(X_T)\sum_\delta f(\delta)$ with
+$\vol(X_T)=\vol(T(\Q)\backslash T(\A)^1)$ since $\mu_2$
 has volume $1$. The function $F(x)=\sum_{\delta}f(\delta x)$ is smooth on
 $X_T$ (the sum is locally finite, $T(\Q)$ being discrete), so its Fourier
 series converges absolutely; its Fourier coefficient at $\bar\chi$ is
 $\int_{X_T}F\bar\chi=\bar\chi(f)$, which vanishes unless $\bar\chi$ is
 genuine. Evaluating the Fourier series at $x=1$ gives the outer equality
 of~\eqref{eq:tf-rank0}, i.e.\ Poisson summation. Since $R(f)$ is diagonal
-in the orthonormal basis $\mathrm{vol}(X_T)^{-1/2}\bar\chi$ with summable
+in the orthonormal basis $\vol(X_T)^{-1/2}\bar\chi$ with summable
 eigenvalues $\bar\chi(f)$, it is of trace class with that trace.
 \end{proof}
 
@@ -335,7 +345,7 @@ $\tilde t$ any lift of $t$.
 Consequently~\eqref{eq:tf-rank0} for $\bar f$ is the Poisson summation
 formula for $f$,
 \[
-\sum_\chi\hat f(\chi)=\mathrm{vol}\bigl(T(\Q)\backslash T(\A)^1\bigr)
+\sum_\chi\hat f(\chi)=\vol\bigl(T(\Q)\backslash T(\A)^1\bigr)
 \sum_{\delta\in T(\Q)}f(\delta),
 \]
 with $\chi$ running over the characters of $T(\Q)\backslash T(\A)^1$.
@@ -359,7 +369,11 @@ Together with Theorem~\ref{thm:tf-rank0}, the lemma shows that the
 correspondence $\chi\leftrightarrow\bar\chi_0\cdot(\chi\circ p)$ of
 Theorem~\ref{thm:corr} matches the two trace formulas term by term.
 
-\subsection{Distributions for Section 6}\label{sec:IA}
+\subsection{Distributions for the invariant form}\label{sec:IA}
+
+This subsection defines the rank-$0$ distributions that appear as
+correction terms in Section~\ref{sec:invariant}.
+
 
 Let $S$ be a finite set of places of $\Q$ and let $\overline{A(\A_S)}$ be
 the cover of $A(\A_S)=\prod_{p\in S}A(\Q_p)$ defined by
@@ -386,17 +400,21 @@ representations are then parametrized by genuine characters of its
 center, the preimage of $A^N$ with $N=n/\gcd(n,2)$. Matching them with
 characters of $A^N$ requires a splitting over $A^N$, and the global
 argument requires a Hasse principle for $N$-th powers, which holds when
-$\mu_N\subset k$. These are referee items II.1--II.4; none of them arises
+$\mu_N\subset k$. These questions do not arise
 for $n=2$, and this section does not treat $n>2$.
 \end{remarkrev}
 
 \subsection{Status of the results}\label{sec:status3}
 
+This subsection lists the statements of Section~\ref{sec:rank0} that
+rest on citation or on numerical checks.
+
+
 \begin{remarkrev}\label{rem:sec3-status}
 \emph{What rests on citation.} Taken from the literature:
 Lemma~\ref{lem:weil}(a)--(b)~\cite{We64}; the compactness of
-$T(\Q)\backslash T(\A)^1$~\cite{PR}; and the extension of characters from
-closed subgroups of locally compact abelian groups~\cite{Ro}. Everything
+$T(\Q)\backslash T(\A)^1$~\cite{PR94}; and the extension of characters from
+closed subgroups of locally compact abelian groups~\cite{Ro83}. Everything
 else in this section is proved in the text.
 \end{remarkrev}
 

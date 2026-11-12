@@ -21,6 +21,7 @@ This log tracks every item of the 2026 referee report ([Claude Docs](https://cla
 | 6 | §7 stable(r) form | Done 2026-11-11: `revised/sec7-stable.tex`, checked by `revised/checks/sec7_n2_check.py` (see *Stage 6 notes*). Also: Section 1, Appendix A and the Glossary extended to Section 7; the unipotent coefficients of Theorem 4.11(a) computed; two corrections in Sections 4 and 5 |
 | 5R | Response to the second referee report (ChatGPT, on Sections 2–6): topology of the cover and test functions, b′ = −b, Section 1 (overview, literature review), Glossary, Appendix A (comparisons with 1995), acknowledgements | Done 2026-11-11: see *Second referee report* below and `referee-2026-11/` |
 | 7 | Consistency pass after stage 6, and a second look at Section 7. (The independent re-referee, the literature review, the title page and the Introduction for Sections 2–6 were done in 5R; the Introduction, Appendix A and the Glossary were extended to Section 7 in stage 6.) | Done 2026-11-11 (see *Stage 7 notes*): cross-references, citations and numbering checked mechanically; three corrections in Section 7 (the condition (N5), the paragraph on Waldspurger's packets, Example 7.E); Proposition 7.5 now proved on the regular set; title page. **Section 7 still has no independent referee report**: none was in `referee-2026-11/` |
+| 8 | Style-guide pass: preamble, title page, AI disclosure, citation keys, literature review, Section 8, examples, Appendix A moved to this log | Done 2026-11-12 (see *Stage 8* below) |
 
 ## Items
 
@@ -586,3 +587,422 @@ The three items listed under "Still open" above. Branch `sl2bar-sec7-open-items`
 - Rewriting Section 6 with the explicit global factor (item 1).
 - Matching the normalizations of [Li11], [Luo], [Sch] with ours, i.e. identifying Δ_ψ with Li's transfer factor on the nose; and the mathematical items under "Not done" in the Stage 6 notes.
 
+## Stage 8: style-guide pass (2026-11-12)
+
+The paper was brought into line with `../joyner-math-paper-style-guide.md` (Draft 2, November 11, 2026), following the audit of November 11 and DJ's instructions of November 12. No statement, proof, hypothesis or status label was changed. Draft number 1.
+
+**Compiling.** Before the pass: 108 pages, no errors, no LaTeX warnings, no undefined references, 3 overfull boxes and 16 underfull boxes. After it: 110 pages, no errors, warnings or undefined references, **no overfull boxes**, and 43 underfull boxes (badness only, most of them in the narrow columns of the glossary tables; the guide does not ask for these to be removed). All 11 scripts of `run_checks.py` pass, including the new `examples_n2_check.py` (13 checks).
+
+### Decisions (DJ, 2026-11-12) and defaults used
+
+- Title: the original title, *A hitch-hiker's guide to the metaplectic trace formula for SL(2): basic theory*, is restored (rule 6.2). The restriction to the double cover is stated in the `\thanks` note and in the abstract.
+- The literature review is an unnumbered section after Section 1, so that no theorem or equation number changes.
+- Appendix A moved into this log (below). Its `\label{sec:appendix-1995}` is the one label that could not be kept. The four references to it now point to the revision log or were removed with the sentences they ended.
+- Rule 3.4: five new examples, for the most complex definitions without one, not an example for every definition.
+- Rule 3.2 applied to subsubsections as well.
+- Notation near the beginning: the Notation subsection at the start of Section 2. The glossary keeps its notation table.
+- American spelling is not applied to published titles: [Ar88a] keeps "behaviour".
+- [DECIDE] defaults: document class `article` (kept). Fonts: newtx preferred, but newtx is not installed in the build environment and could not be downloaded, so the fallback `mathptmx` is used. The newtx line is in the preamble as a comment. Glossary placement: at the end, before the Acknowledgments. Author line: the prompt said nothing, so "D. Joyner and Claude" is kept. A version for arXiv or a journal would need Claude moved to the acknowledgments.
+
+### Changes, by step
+
+1. **Preamble.** `12pt,letterpaper`, `fontenc` T1, `mathptmx`, `geometry` with one-inch margins (was 11pt, 1.1in, Computer Modern). New operators `\Ad`, `\vol`, `\sgn`, `\Ind`, `\Resid` (`\DeclareMathOperator`), replacing about 130 occurrences of `\mathrm{Ad}`, `\mathrm{vol}`, `\mathrm{sgn}`, `\mathrm{Ind}`, `\mathrm{Res}` (rule 1.8). `\Resid` is the residue, because `\Res` is restriction of scalars.
+2. **Title page, abstract, acknowledgments.** Title as above, subtitle "Draft 1. Corrected and expanded version", date line "Original draft: 1995. Corrected and expanded draft: 2026" (rules 6.2, 6.3). The `\thanks` note names the 1995 notes (January 1995, slightly revised June 2002), the date of the revision (November 2026) and the restriction to n = 2. Author line with `wdjoyner@gmail.com` (rule 5.1). New first sentences of the abstract: the AI disclosure, with a pointer to the Acknowledgments (rule 5.2). The Acknowledgments were rewritten (rules 5.3–5.5): they name Claude (referee of the 1995 notes, co-author and reviser, author of the scripts) and ChatGPT (independent referee of Sections 2–6 and of Section 7), state that AI review is not an independent certification, and point to this log. "Acknowledgements" is now "Acknowledgments" everywhere (rule 1.4). The item-by-item account of the ChatGPT reports that stood in the Acknowledgments moved here (*Moved from the Acknowledgments* below).
+3. **Citation keys** (rule 1.7). 61 of the 83 keys changed, to author initials plus two-digit year. Where two works by the same authors share a year, both get a letter, in the order of the old bibliography: Ar88a = [A7], Ar88b = [A9], Ar88c = [A10]; Li12a = [Li II], Li12b = [Li12]; Li14a = [Li I], Li14b = [Li IV]. The key Li12 (the fundamental lemma) changed for that reason. Every `\cite` was updated (one split across two lines, in the former Appendix A, was found by hand), and the bibliography is now sorted by key, chronologically within an author. Keys in the earlier sections of this log, in `../referee-2026-11/` and in the READMEs are records and were left unchanged; the table below translates.
+4. **Structure and revision history** (Section 2 of the guide, rule 6.4).
+   - The former §1.2 *Literature* is now the unnumbered *Literature review*, after Section 1, in two parts: *Work up to 1995* and *Work since 1995*, then *The place of this paper*. The sentences are those of §1.2, sorted by date. Sentences that mixed the two periods were split ([KP84]/[BD01]; [GS12], [GI18]; [Ar05]; [Me01, Me02]; [KP84]/[Mc12], [Ga14]), with minimal connecting words. Work of 1995 ([MW95]) is counted as "up to 1995". New: a two-sentence opening paragraph.
+   - New Section 8, *Summary of results and open questions* (`sec8-summary.tex`).
+   - Order at the end: Section 8, Glossary, Acknowledgments, References.
+   - Appendix A removed from the paper (the file `appA-comparison.tex` is deleted; it is in git history), and reproduced below.
+   - Comparisons with the 1995 notes and attributions to the referee removed from the body. They are recorded under *Removed from the body* below.
+   - Hand-typed section numbers replaced by `\ref` (rule 1.5): §2.2 ("Section 3"), §2.2 ("Sections 4 and 5"), §4 opening ("Sections 5–7"), §3 opening ("Section 6"), §5.2 ("Section 6"), and the title of §3.3, "Distributions for Section 6", now "Distributions for the invariant form".
+   - §1.4 *Conventions*: the sentence pointing to Appendix A now points to the revision log, and two sentences point to the literature review, Section 8 and the Glossary.
+5. **Orienting paragraphs** (rule 3.2), one or two sentences each, at the start of: Section 2's Notation subsection; §§2.1.1–2.1.5 and 2.2.1–2.2.4; §§3.1, 3.2, 3.3; §§4.1–4.5; §§5.1–5.4; §6.4; §7.4; §1.4; and the six "Status of the results" subsections. Also one sentence added to the first paragraph of §1.1. These describe content only.
+6. **Script references.** Remarks 2026.11 (verification for Section 4) and 2026.20 (verification for Section 7) now name `checks/examples_n2_check.py` and say that Example 7.D has no numerical check.
+
+### New mathematical text, for refereeing (ground rule 2)
+
+These are the only additions with mathematical content. Each needs an independent check.
+
+1. **Example 4.A** (`ex:trunc-Q`, §4.2). k = ℚ, the upper half plane: H(x) = ½ log Im z, H(γx) = ½ log Im γz for γ ∈ SL(2,ℤ), the height inequality as Im z · Im γz ≤ 1, disjoint horoballs for T ≥ 0, and F^G(·,T) as the cutoff of the fundamental domain at height e^{2T}. *Checked numerically* (random points, cosets up to |c|,|d| ≤ 40).
+2. **Example 4.C** (`ex:JA-hyp-p`, §4.4). p odd, f_p = e_p, γ = (a(t),1) with t a unit: J_G(γ,e_p) = 1 and J_A(γ,e_p) = (m − (1−p^{−m})/(p−1)) log p, with p^{−m} = |1−t^{−2}|_p. Includes the conjugation (n(y),1)⁻¹(a(t),1)(n(y),1) = (a(t)n((1−t^{−2})y),1) in the cover. *Checked* (the conjugation exactly in the cover at p = 3, 5, 7; the integral by a sum over cosets of ℤ_p).
+3. **Example 4.D** (`ex:JA-central-p`, §4.4). p odd, f_p = e_p: Φ_p = 1_{ℤ_p}, and the p-term of J_A(z,f_S) in Lemma 4.10(b) is −(log p)/(p−1) times ∏_{w≠p} Φ̂_w(0). *Checked* (the membership in K* exactly, the series numerically).
+4. **Example 7.D** (`ex:kappa-unram`, §7.3). Unramified elliptic γ at a non-dyadic place: the two terms of J^st and J^κ for e_v, the vanishing of the second, and an illustration of Lemma 7.6(c) with z̃ = (−1,1). Derived from Lemma 7.6(d) and its proof. *Not checked numerically.*
+5. **Example 7.F** (`ex:uprime-gl2`, §7.5). δ = diag(p,1) at an odd p: u′_B(k̃,δ) = −H_1(kδ) = ±½ log p according as d is a unit or not, the measure 1/(p+1) of the second set, and a consistency check of Lemma 7.8(a) at x = 1. *Checked* (exactly, at p = 3, 5, 7).
+6. **Section 8** (`sec8-summary.tex`). A restatement of the main results with the status the text gives them (taken from the "Status of the results" remarks), and seven open questions, each already named in Section 1, Section 7 or a status remark. The referee should check that no status is stated more strongly than in the body.
+7. **Literature review, opening paragraph**, and the sentence that work of 1995 counts as "up to 1995". Not mathematical, but new.
+8. **Orienting paragraphs** (step 5 above): new prose. Two claim a fact: §5.2 ("identifies the residual spectrum") and §4.3 ("Each class contributes a polynomial in T of degree at most one"). Both repeat statements of the section.
+
+### Semicolons
+
+Rule 3.8 was applied to new text only. Three existing sentences lost a semicolon because the clause after it was revision history and was removed: Remark 2026.6 (§3.3, "These are referee items II.1–II.4; none of them arises…"), the first paragraph of §7.5, and the paragraph after the proof of Proposition 7.10.
+
+### Removed from the body (rule 6.4)
+
+The mathematics in each of these places is unchanged. Only the comparison or attribution was removed.
+
+- §1.2 (formerly §1.3), paragraph on the stable form: "The 1995 notes defined stable conjugacy on the cover as conjugation by GL(2), following [LL79]; Section 7 shows that this has to be twisted, …". It now says "Section 7 shows that stable conjugacy on the cover is conjugation by GL(2) twisted by a sign, …".
+- §5 opening: "Three things are new compared with the 1995 notes" became "Three features of the double cover stand out", and "…with μ^w = μ, which the 1995 notes omit" lost the relative clause.
+- Remark 2026.6 (§3.3): "These are referee items II.1–II.4; none of them arises for n = 2" became "These questions do not arise for n = 2".
+- Example 7.A(e): "(This example is due to the referee.)" removed. The example was supplied by ChatGPT in its report on Section 7.
+- After Lemma 7.6: "Part (b) explains a statement of the 1995 notes: … (Appendix A)" became "By part (b), …".
+- §7.5, first paragraph: "; this is the correct form of the variance formulas that the 1995 notes state for conjugation by GL(2)" removed.
+- After Proposition 7.10: "; in the 1995 notes they were written as a sum over the rational unipotent classes, which diverges (Appendix A)" removed. The divergence is stated at the start of §7.6.
+- After Theorem 7.13: "is the property that the 1995 notes called 'κ-stable'" and "which the 1995 notes took as the stable part" removed.
+
+**Left in place on purpose:** statements of scope that name the 1995 notes (Section 2 opening and Notation, Remark 2026.3, §1.4, the literature review); Remark 2026.9, which says a comparison was checked only against `book7d.tex` (a verification status); Remark 2026.8, which lists that a script checks the 1995 cocycle on A; and the `% [Claude]` comments in the source.
+
+### Numbering concordance (ground rule 5)
+
+No theorem, lemma, proposition, corollary, remark or equation number changed. Every `\label` except `sec:appendix-1995` is kept. Changes:
+
+| Object | Old | New |
+|---|---|---|
+| §1.2 Literature | 1.2 | unnumbered *Literature review*, after Section 1 |
+| What is proved here and what is cited | 1.3 | 1.2 |
+| A running example | 1.4 | 1.3 |
+| Conventions | 1.5 | 1.4 |
+| Example (`ex:unip-Q`), unipotent constant term | 4.A | 4.B |
+| Example (`ex:order4-stable`), elements of order 4 | 7.D | 7.E |
+| Example (`ex:unip-coeff`), the 16 coefficients | 7.E | 7.G |
+| Appendix A | A | removed (below) |
+| Summary of results and open questions | — | 8 |
+| New examples | — | 4.A, 4.C, 4.D, 7.D, 7.F |
+
+### Citation keys (old → new)
+
+| Old key | New key | Old key | New key | Old key | New key |
+|---|---|---|---|---|---|
+| Ad | Ad98 | How | Ho10 | Mo2 | Mo88 |
+| Ar05 | Ar05 | JL | JL70 | MW2 | MW95 |
+| A2 | Ar78 | J88 | Jo88 | Ni | Ni75 |
+| A3 | Ar80 | Kn | Kn02 | PR | PR94 |
+| A6 | Ar81 | KP | KP84 | Re | Re99 |
+| A14 | Ar82 | KP2 | KP86 | Ro | Ro83 |
+| A12 | Ar86 | K1 | Ku67 | R | Ro90 |
+| A7 | Ar88a | K2 | Ku69 | Sa | Sa67 |
+| A9 | Ar88b | L2 | La76 | Sav | Sa88 |
+| A10 | Ar88c | Li11 | Li11 | Sch | Sc98 |
+| A11 | Ar89 | LiII | Li12a | Sel | Se56 |
+| BD | BD01 | Li12 | Li12b | Se | Se73 |
+| CF | CF67 | LiIII | Li13 | Sh | Sh73 |
+| FK | FK86 | LiI | Li14a | Shi | Sh75 |
+| F | Fl79 | LiIV | Li14b | Sz09 | Sz09 |
+| Fl | Fl80 | Li15 | Li15 | Sz10 | Sz10 |
+| Gao | Ga14 | Li19 | Li19 | Sz16 | Sz16 |
+| Ge2 | Ge76 | Li21 | Li21 | Ta | Ta67 |
+| GGW | GGW18 | Li24 | Li24 | Th08 | Th08 |
+| GI | GI18 | LL | LL79 | Th13 | Th13 |
+| GJ | GJ79 | Luo | Lu20 | Wa80 | Wa80 |
+| Go | Go62 | Ma57 | Ma57 | Wa81 | Wa81 |
+| GPS80 | GPS80 | Mat | Ma69 | Wa91 | Wa91 |
+| GPS83 | GPS83 | Mak | Ma99 | We18 | We18 |
+| GS12 | GS12 | McN | Mc12 | We64 | We64 |
+| GS16 | GS16 | Me2 | Me01 | W1 | We74 |
+| He | He83 | Me1 | Me02 | W2 | We82 |
+| HI13 | HI13 | M | Mo68 |  |  |
+
+### Moved from the Acknowledgments
+
+The Acknowledgments of the previous draft described the ChatGPT reports item by item. That text follows, with the numbers of this draft written out.
+
+We thank ChatGPT (OpenAI) for refereeing the November 2026 draft of
+Sections 2–6. Its report showed that the earlier draft treated Kubota's
+cocycle as continuous and defined test functions through the section
+$g\mapsto(g,1)$, which is not continuous; Lemma 2.1,
+Example 2.A, Lemma 2.2(i) and the
+definitions in Sections 2.1.4, 2.2
+and 3.1 are the result. It also found the gap in the
+proof of Lemma 3.1(c), asked for the matching of
+parameters now proved in Lemma 5.7 and
+Theorem 5.8(c), and for the treatment of general unitary
+characters in Lemma 6.6(c). The introduction, the
+roadmaps, the glossary and Appendix A (now *Comparison with the 1995 notes* below) follow its
+suggestions. The errors that remain are the authors'.
+
+ChatGPT also refereed Section 7 in a second report. It
+found that Theorem 7.13(c) called sums of distributions with
+different characters eigendistributions; asked for
+Lemma 7.5′ and for the two-lattice and kernel arguments in the
+proof of Proposition 7.5; pointed out that [GS16]
+does not cover the dyadic places, so that it cannot support the
+condition (N5) there; and supplied Example 7.A(e) and the
+references for the packets after Proposition 7.12.
+
+### Comparison with the 1995 notes (former Appendix A)
+
+Sections 2–7 revise Sections 2–7
+of the 1995 notes *A hitch-hiker's guide to the metaplectic trace
+formula for $SL(2)$: basic theory* (D. Joyner, January 1995, revised June
+2002), and the parts of Chapter 9 of the 1997 book manuscript *An
+application of Arthur's invariant trace formula for $SL(2)$* from which
+they came. This section, formerly Appendix A of the paper, records, statement by statement, what the
+revision replaces and what it corrects. File names such as
+`book7d.tex` refer to that manuscript. Item numbers such as
+“II.5” or “A.2” refer to the first referee report on the 1995 notes
+(Claude, November 2026); the list of items, and the tables matching the
+1995 numbers with the present ones, are in the file
+`revision_log.md` that accompanies the source. Nothing in it is used in the body of the paper.
+
+##### Section 2: the cover
+
+- **Section 2.1, the cover of $G(\mathbb{Q}_p)$.** The 1995 notes call $\overline{G(\mathbb{Q}_p)}$ a subgroup of $\prod_{v\mid p}\overline{SL(2,k_v)}$; it is a quotient.
+
+- **The height $H$, (2.5).** The 1995 notes define $H$ with the maximum of the $|t_v|_v$, $v\mid p$, in place of their product. The product is forced by $\langle H(x),\chi_1\rangle=\log|\chi_1(\tilde a)|$ (Section 2.1.3).
+
+- **Section 2.1.3.** The 1995 notes call the fundamental coweight $\varpi$ the dual root. An earlier draft of this revision had $\alpha=2\chi_1$ and $X_\alpha=1$, which is correct only for $k=\mathbb{Q}$ (Remark 2026.9).
+
+- **Section 2.1.4, genuine and anti-genuine.** The 1995 notes use genuine functions in §2.1.4 and $\pi(g,\zeta)=\zeta^{-1}\pi(g,1)$ in §3.1. For $n=2$ both conventions agree with Li's; for general $n$ they do not (Remark 2026.3).
+
+- **Section 2.1.4, the unit element.** The 1995 notes identify $K_p$ with $\{(k,1)\}$, which suggests the function $(k,\zeta)\mapsto\zeta^{-1}$ as the unit of the Hecke algebra; the unit is $e_p$ of (2.8). An earlier draft of this revision defined $C_c^\infty(\overline{G(\mathbb{Q}_p)})_-$ by requiring $g\mapsto f(g,1)$ to be smooth; that definition excludes $e_p$ and was replaced after the 2026 referee report by ChatGPT.
+
+- **The integration formula (2.9).** The 1995 notes have $\delta_B(a)^{1/2}$ for $g=kan$; the exponent must be $1$ for $g=kan$ and $-1$ for $g=nak$. In Section 4 they have $\delta(a)$ for $x=nak$.
+
+- **Lemma 2.6(a), the splitting over $G(\mathbb{Q})$.** The 1995 notes define the splitting as $\gamma\mapsto(\gamma,
+s_\mathbb{A}(\gamma)^{-1})$, with $s_v(\gamma)^{-1}=(c,d)_v$ when $v$ is finite,
+$cd\ne0$ and $n\nmid\operatorname{ord}_v(c)$, and with the cocycle $\prod_v\beta_v$.
+That product does not converge, and the formula belongs to a different
+normalization. In the normalization (2.11),
+$\kappa_\mathbb{A}$ of (2.12) replaces $s_\mathbb{A}^{-1}$. For $n=2$ the two
+agree at every non-dyadic $v$ with $\gamma\in K_v$: if $\operatorname{ord}_v(c)>0$ is
+even, or if $\operatorname{ord}_v(c)=0$, both $(c,d)_v$ and $\kappa_v(\gamma)$ are $1$.
+They differ only at the finitely many places where $\gamma\notin K_v$,
+and at dyadic places.
+
+##### Section 3: rank 0
+
+- **The cocycle on $A$, (3.1).** The 1995 formula $\beta(g_1,g_2)=(g_1^{-1},g_2^{-1})(-g_1g_2^{-1},g_1^{-1}g_2^{-1})$ on $A$ reduces to (3.1) for $n=2$.
+
+- **Lemma 3.1.** This replaces Lemma 3.1 of the 1995 notes, which cited [Ge76] for factorizability of genuine representations of the restricted product. For $n=2$ the statement concerns the quotient and needs no citation.
+
+- **Theorem 3.2.** This is the $n=2$ form of Theorem 3.2 of the 1995 notes, restated as a correspondence of automorphic spectra. The 1995 statement matches genuine representations with characters $\chi^N$, $N=n/\gcd(n,2)$; for $n=2$, $N=1$, and the matching requires the choice of $\bar\chi_0$, which the 1995 text did not make.
+
+- **Theorem 3.4.** This replaces Theorems 3.8 and 3.9 of the 1995 notes, whose orbital integrals reduce to the values $f(\delta)$ for $n=2$.
+
+- **Lemma 3.5.** This replaces Lemmas 3.11 and 3.12 and the argument through Claims 1 and 2 of the 1995 notes. The local maps $\bar f_v\mapsto f_v$ involve no sum over $T(\mathbb{Q}_p)_\delta\backslash T(\mathbb{Q}_p)$ and no factor $s_\mathbb{A}(\delta)$, because there is no conjugation.
+
+##### Section 4: the geometric side
+
+- **Lemma 4.1.** The 1995 text lists the centralizer $G$ for $\gamma=\pm1$ among the centralizers of semisimple classes that are “anisotropic modulo the center” and calls all such classes unramified. Neither holds for $\pm1$: $G$ is isotropic, and $\mathcal O_{\pm1}$ contains $\pm$(unipotent) elements. The vanishing of genuine orbital integrals for general $n$ is `book3b.tex`, Lemma 5.2.
+
+- **Lemma 4.2.** This is Lemma 4.1 of the 1995 notes with $K_P=\sum_{\mathcal O}
+K_{P,\mathcal O}$ (not $\sum K_{\mathcal O}$) and with one kernel
+convention, $f(x^{-1}\gamma y)$, throughout; no passage to the
+archimedean place is needed for the convergence.
+
+- **Lemma 4.3.** Part (b) replaces Lemma 4.2 of the 1995 notes, which has an unused $N$ and only the bound $\le1$, cited from [Ar78]. The constants $u\ge1/2$ and $T_0>\sqrt3/2$ of the 1995 text are the classical ones for $SL(2,\mathbb{Z})$ over $\mathbb{Q}$ and are not used.
+
+- **Lemma 4.4.** This is Lemma 4.3 and (4.2) of the 1995 notes, there with two parameters $T_0>T_1$ in reversed roles and with a function $F^B$ that is identically $1$ for $SL(2)$.
+
+- **Theorem 4.5.** The theorem replaces Lemma 4.4, Corollaries 4.5–4.7, Proposition 4.8 and Corollary 4.9 of the 1995 notes. Their proof of Lemma 4.4 omits the terms $\gamma\notin B(\mathbb{Q})$ and the sum over $\mu\in A(\mathbb{Q})$, and the per-class bounds in Corollaries 4.5–4.7 are not established there. Proposition 4.8 claims polynomiality for $K^T_{\mathcal O}$ and $J^T_{\mathcal O}$ separately, without a proof. Part (b) of the theorem shows that for this group both integrals exist and coincide, and part (d) gives the polynomials.
+
+- **Proposition 4.6.** The 1995 weight $v_{\mathcal O}(x,T)=2(T-H(x))$ (item II.5 of the first referee report) is not left $A(\mathbb{A})$-invariant; the $w$-term was lost in passing from the sum over $\delta$ in (4.3) to $\hat\tau_B(H(\eta x)-T)$ in (4.4). The weight $2T-\log\delta(x)-\log\delta(wx)$ of `book7d.tex` has the right shape but the wrong normalization, since $\log\delta_B=2H$ (item A.4).
+
+- **Proposition 4.8.** The 1995 formula (4.5) keeps only the $f(\mu)$-term of a central class (item II.6). In `book7d.tex`, $J_{\mathrm{unip}}$ is defined by truncating at $T_0=0$, which is correct here only because the integral converges at $T=0$; in general it must be the polynomial evaluated at $0$ (item A.5).
+
+- **Section 4.4, test functions.** `book7d.tex` takes $f_\infty$ in $C^\infty$ rather than $C_c^\infty$, and asserts that Arthur's spaces of almost compactly supported and moderate functions coincide with $\mathcal H$ for both $G$ and $A$; for $A$ this fails.
+
+- **Lemma 4.9.** At a $p$-adic place the weight is $\log\max(1,|y|_p)$, not
+$\log\sqrt{|1+y^2|_p}$ as in `book7d.tex` and (7.13) of the 1995
+notes (items II.22, A.6); the latter is the real formula.
+
+- **Lemma 4.10.** The Example in `book7d.tex` sets $r_A=1$ and takes the plain limit of $J_A(az,f)$, which diverges (item A.2).
+
+- **Theorem 4.11.** This is the corrected form of the Proposition of `book7d.tex` (cited in the 1995 Section 6 as “Proposition 4.18”), which credits the result for covers to [Ar86, Thm. 8.1]; Arthur proves it for connected reductive groups, and for covers it is Li's theorem [Li14a] (item A.1). The sums there run over the rational class $\mathcal O$ instead of the $(G,S)$-classes (item A.7). In the 1995 text, 5.4(a) has only $a^G(S,z)f(z)+\tfrac12a^A(S,z)J_A(z,f)$; Theorems 5.16(a) and 6.11(a) use Theorem 4.11(a) in full.
+
+##### Section 5: the spectral side
+
+- **Lemma 5.1.** Lemma 5.1 of the 1995 notes asserts that the right regular representation
+on $L^2(\Gamma\backslash G)$ decomposes into irreducibles “each occurring
+with finite multiplicity” for every discrete $\Gamma$ in a unimodular
+$G$. That is false in general (take $\Gamma=1$); what holds is a direct
+integral decomposition for $G$ of type I, and finite multiplicities in
+the discrete part for lattices in reductive groups, as above.
+
+- **Lemma 5.2.** This corrects Example 5.2 of the 1995 notes, which says that all genuine
+unitary representations are factorizable (it should say irreducible),
+that $\pi_v$ is unramified when it has a $\overline{K_v}$-fixed vector
+(genuine representations have none; the condition is a $K_v^*$-fixed
+vector), and which treats $\overline{G(\mathbb{A})}$ as a restricted product rather than a
+quotient of one (item I.4).
+
+- **Cuspidal data.** This replaces Example 5.4 of the 1995 notes, which says that two
+parabolics with Levi $A$ are associate only if they are opposite (but $B$
+is associate to itself), and that $(A,\rho)\sim(A,\rho')$ only if
+$\rho=\rho'^w$; the correct condition is $\rho=\rho'$ or $\rho=\rho'^w$
+(item II.13).
+
+- **Proposition 5.4.** The proposition replaces (5.2)–(5.4), Corollary 5.5 and Proposition 5.6 of the 1995 notes. The 1995 description of $L^2(M(\mathbb{Q})\backslash\overline{M(\mathbb{A})^1})_\chi$ through the spaces $\Psi(P_1,P,\chi)$ is Langlands' original one; for $SL(2)$ the description in Proposition 5.4 is all that is used.
+
+- **The space $\mathcal H_B(\mu)$, (5.1).** In Example 5.18 of the 1995 notes the condition $\varphi(ag)=\pi(a)\varphi(g)$ is imposed for all $a\in\overline{A(\mathbb{A})}$, so that the parameter $\lambda$ is part of $\pi$ and the factor $\delta_B^{1/2}$ is missing.
+
+- **Theorem 5.5.** This is Theorem 5.8 of the 1995 notes, specialized to $P=B$, with three corrections. The measure on $i\mathfrak a^*$ is $dt/2\pi$ (the 1995 text has $(1/2\pi i)^{\dim A}$ in (b) and $(1/2\pi)^{\dim A}$ in the norm of $L^\wedge_{\mathcal P}$). The number $n(A_B)$ of chambers in $\mathfrak a$ is $2$, not $1$. And the theorem is stated for one $\mu$, the spectral decomposition being Proposition 5.4.
+
+- **Lemma 5.6.** The 1995 notes leave $M(s,\pi)$ unnormalized (item II.16).
+
+- **Theorem 5.8.** The theorem corrects the Introduction of the 1995 notes, which says that the formula has no term corresponding to the residual term [LL79, (5.5)] (item II.9).
+
+- **Proposition 5.9.** This replaces Lemma 5.9, Theorem 5.11 and Examples 5.17–5.22 of the 1995
+notes. Examples 5.21–5.22 there put the term
+$I_B(\pi,f)\phi(x)\delta_B(x)\overline{\phi(y)}$ into $K_{G,\chi}$; it
+belongs to $K_{B,\chi}$, and for $\chi$ cuspidal there is no Eisenstein
+series in $K_{G,\chi}$ (item II.13). Example 5.20 omits $\lambda$ and the
+measure. The 1995 definition of $k^T_\chi$ has $K_{P,\chi}(x,x)$ where
+$K_{P,\chi}(\delta x,\delta x)$ is meant (as in `book7f.tex`).
+
+- **Lemma 5.10.** This replaces Lemma 5.13 of the 1995 notes (proved there by reference to
+the non-metaplectic case) and makes the range of $T$ explicit.
+Lemma 5.14 and Example 5.12 there are the case $P=G$ of \cite[Lemma 1.5]
+{Ar80}; for $SL(2)$ that identity is (5.9) itself, since
+$\hat\tau_B=\tau_B$, and we do not repeat it.
+
+- **Lemma 5.11.** This is Lemma 5.15 and Example 5.16 of the 1995 notes; their reference
+“lemma 4.7” for the partition is Lemma 4.4.
+
+- **Theorem 5.12.** The theorem replaces Lemmas 5.23, 5.25 and 5.26 of the 1995 notes, whose proofs are incomplete (item II.12). The proof of Lemma 5.23 asserts that $\Lambda^T_2K_\chi(x,x)$ is compactly supported; it is only rapidly decreasing (Lemma 5.10(c)). The proof of Lemma 5.25 (“$K_P$ is continuous, hence integrable”) does not give integrability. And the equality $K^T_\chi=J^T_\chi$ claimed there, of $\int\Lambda^T_2K_\chi$ and $\int\sum E\,\overline{\Lambda^TE}$, is a consequence of Lemma 5.10(b), not the content of Arthur's [Ar80, Lemma 2.4]; what is needed is (c), which compares them with $\int k^T_\chi$.
+
+- **Theorem 5.14.** Theorem 5.14 replaces Theorem 5.27 and Example 5.28 of the
+1995 notes. Three things change.
+
+- *The factor of $T$* (item II.11). Arthur's formula
+  \[
+  M_B^T=\operatorname{vol}(\mathfrak a/\mathbb{Z}\alpha^\vee)\lim_{\zeta\to0}
+  \sum_{s\in\{1,w\}}\frac{e^{(s\zeta)(T)}M(s,\lambda)^{-1}
+  M(s,\lambda+\zeta)}{\theta(s\zeta)},
+  \]
+  with $\theta(\zeta)=\zeta(\alpha^\vee)=d\zeta$
+  and $\operatorname{vol}(\mathfrak a/\mathbb{Z}\alpha^\vee)=d$ for our $dX$
+  (Remark 2026.9), gives (5.12) for every $k$; the factor
+  $d$ cancels, so the correction $\alpha^\vee=d$ (Remark 2026.9) does not change
+  $M_B^T$ once the volume is taken with the same measure. The 1995
+  computation identifies $\varsigma(T)=2\varsigma T$ and
+  $\varsigma(\alpha^\vee)=2\varsigma$ (correct for $k=\mathbb{Q}$, where
+  $\lambda=2\varsigma$), takes the volume to be $1$, and then omits the
+  division by $\varsigma(\alpha^\vee)$; the limit is
+  $2T-\frac12M^{-1}\frac{dM}{d\varsigma}$, which is (5.12), not
+  $4T-M^{-1}M'$. The sign is right, as the 1995 text suspected and as
+  in [LL79]; Proposition 5.17 confirms the factor.
+- *Ramified classes* (item II.10). The 1995 Theorem 5.27 assumes
+  $\chi$ unramified, and its Example 5.28 says correctly that $(A,\mu)$
+  is unramified if and only if $\mu^w\ne\mu$, but the classes with
+  $\mu^w=\mu$ never appear. By Lemma 5.3(d) they are the
+  $\chi_b$, and they carry the residual spectrum and the term
+  $\frac14\operatorname{tr}(M(w,0)I(\mu_0,f))$. In Arthur's fine
+  expansion [Ar82, Thm. 8.2], [Li13] this is the term
+  $|W^A_0||W^G_0|^{-1}|\det(w-1)_{\mathfrak a}|^{-1}
+  \operatorname{tr}(M(w,0)I(\mu_0,f))$, with $|W^A_0||W^G_0|^{-1}=\frac12$
+  and $|\det(w-1)_{\mathfrak a}|=2$. In the trace formula for $GL(2)$
+  of [GJ79, §6] the same term is written $-\frac14\operatorname{tr}
+  (M(0)\pi_0(f))$, next to $+\frac1{4\pi}\int\operatorname{tr}(M(-iy)M'(iy)
+  \pi_{iy}(f))\,dy$: that formula has the trace of $R(f)$ on the discrete
+  spectrum alone on one side, and moving both terms to the spectral side
+  gives the signs of Theorem 5.16(e). The sign of the cross terms
+  in (5.11), from which it comes, is also checked numerically on
+  the Eisenstein series of $SL(2,\mathbb{Z})$ (Remark 2026.17),
+  and $M(w,0)$ is computed in Proposition 6.13.
+- The lines “$M_G^T(\pi)_\chi=1$” and “($P=B$, $\chi=(G,\rho)$)
+  $M_B^T(\pi)_\chi=1$” of Example 5.28 are dropped: for cuspidal $\chi$
+  there is no $B$-term.
+
+- **Theorem 5.16.** In the 1995 notes, Section 5.4 lists (a) as
+$a^G(S,z)f(z)+\frac12a^A(S,z)J_A(z,f)$, without the unipotent terms
+$a^G(S,u_\xi)J_G(zu_\xi,f_S)$; `book7f.tex` has them in the form
+$\sum_{\gamma\in\mathcal O}a^G(S,\gamma)J_G(\gamma,f)$, a sum over the
+rational class instead of the $(G,S)$-classes (items II.6, A.7).
+Item (e) there is $\frac12\int\operatorname{tr}(M_A(\pi)_\chi I_B(\pi,f)_
+\chi)\,d\pi$ over $\chi\in\mathcal X\smallsetminus\mathcal X_G$ with
+$M_A=M_A^T|_{T=0}$, without the residual and ramified terms. Section 5.4
+also uses $S$ and $\mathbb{A}_S$ before Section 6 defines them; they are now
+defined in Section 4.4, and “given in section 5”
+refers to Section 4.
+
+##### Section 6: the invariant form
+
+- **The introduction of Section 6.** Compared with Section 6 of the 1995 notes:
+
+- Conjectures 6.3, 6.4, 6.7, 6.8 and 6.10 there (the trace
+  Paley–Wiener theorems and the normalization of intertwining
+  operators) are no longer hypotheses: 6.10 is a theorem of
+  Li [Li12a], and the others are not needed for this group
+  (item II.14).
+- The weight $u'_B(k,y)$ is $-H(ky)$, not $|H(ky)|$ (item II.15,
+  Lemma 6.1).
+- The invariant spectral terms attached to $\chi\in\mathcal X_A$ do
+  not vanish. The logarithmic derivative $m'/m$ of the global normalizing
+  factor survives (item II.16), and $m$ is identified:
+  $m'/m=2\frac{L'}{L}(2\lambda,\chi^2)-2\frac{L'}{L}(2\lambda+1,\chi^2)$
+  up to finitely many local terms (Corollary 6.7).
+- The residual terms $\operatorname{tr}(R(f)|_{V_b})$ and the ramified
+  terms of Theorem 5.14(c), which the 1995 notes do not have,
+  are already invariant. The ramified term is made explicit: $M(w,0)=-1$
+  on $\mathcal H_B(\chi_{\psi_b})$, so it equals
+  $-\frac14\operatorname{tr}I(\chi_{\psi_b,0},f)$
+  (Proposition 6.13).
+- The function $\varphi_A(f)$ that carries the correction is not the
+  Fourier transform of a compactly supported function on $\overline{A(\mathbb{Q}_S)}$
+  (Example 6.C); the 1995 definition (6.7) of the space
+  that contains it is circular (item II.17), and its claim that this
+  space equals the Paley–Wiener space of $\overline{A(\mathbb{Q}_S)}$ is false.
+
+- **Lemma 6.1.** Example 6.1 of the 1995 notes computes $u'_B(k,y)=|H_B(ky)|$ (item II.15); the correct value is $-H(ky)$.
+
+- **Theorem 6.5.** The theorem replaces Conjecture 6.10 of the 1995 notes; property (1) there, $R_{P'|P}(\chi)I_P(\chi,x)=I_P(\chi,x)R_{P'|P}(\chi)$, should have $I_{P'}$ on the right, as in (N1). At the real places the 1995 notes refer to Sally [Sa67], who treats the universal cover of $SL(2,\mathbb{R})$.
+
+- **Corollary 6.7.** Part (a) is the relation $M^{-1}M'=m^{-1}m'+R^{-1}R'$ of Sections 6.1.1
+and 6.2 of the 1995 notes, where the factor $m$ of $R_{\bar B|B}(\sigma)=
+m(\sigma)^{-1}M_{\bar B|B}(\sigma)$ is not identified; (c) identifies
+it.
+
+- **The map $\varphi_A$, (6.11).** The 1995 notes have $R_A(\pi_\lambda,P_0)=+R^{-1}\frac{d}{d\lambda}R$, without the minus sign.
+
+- **Theorem 6.9.** The step that needs the trace Paley–Wiener theorem for a Levi subgroup $L$ is where Conjectures 6.3–6.8 of the 1995 notes enter; for $L=A$ they are not needed. The 1995 condition (6.7) defining the space that contains $\varphi_A(f)$ is circular: it has $\phi(\sigma,X)$ on both sides (item II.17). The 1995 notes assert that $\mathcal I_{\mathrm{ac}}(\overline{A(\mathbb{A}_S)})=\mathcal I(\overline{A(\mathbb{A}_S)})$, the space of Fourier transforms of compactly supported functions; this is false, because $\mathfrak a_A\ne0$ (Example 6.C). The vanishing of $I_A(\pi,X,f)$ is Proposition 6.20 and Example 6.21 there.
+
+- **Theorem 6.11.** In Section 6.4 of the 1995 notes, (a) has $\frac12a^A(S,z)I_A(z,f)$ and the sum
+over $(G,S)$-classes of $a^G(S,\gamma)I_G(\gamma,f)$, as here
+($I_G=J_G$), and (b), (c) agree with ours. The spectral item (b) there,
+$\frac12\int a^A(\pi)I_A(\pi,f)\,d\pi$ with the remark that $I_A(\pi,f)=0$
+for tempered $\pi$, is identically zero (item II.16). The book version
+(`book7g.tex`, item (e)) has $\int a^G(\pi)\operatorname{tr}\pi(f)\,
+d\pi$ with $a^G(I_A(\sigma))=-m'(\sigma)/m(\sigma)$, which is (e) above;
+neither has the residual and ramified terms of (f). Theorem 6.22 there
+(Arthur's [Ar88c, Cor. 4.5]; $v_\pi$ should be $\nu_\pi$) is the
+statement that $I_\chi(f)=\int a^G(\pi)I_G(\pi,f)\,d\pi$, the term $M=A$
+being $0$.
+
+##### Section 7: the stable(r) form
+
+Section 7 replaces Section 7 of the 1995 notes
+(`cctrace7.tex`, which is `book7h.tex`) and uses the parts
+of `book3b.tex` (“Local comparisons on the groups”) that concern
+conjugation by $GL(2)$. The 1995 section was a program modeled
+on [LL79], with most proofs referred to preprints that were not
+written; the items below say what became of each part.
+
+- **Stable conjugacy (Section 7.2).** The 1995 notes call two elements of the cover stably conjugate if they are conjugate by an element of $G_1(F)=GL(2,F)$, and a distribution stably invariant if $T(f^y)=T(f)$ for all $y\in G_1(\mathbb{A}_S)$. The cover of $G_1(F)$ is said there to be “defined using the cocycle $\beta$”, which is defined only on $SL(2)$ (item II.18); Section 2.3 fixes one. With that definition the two lifts of $\gamma$ are stably conjugate whenever $\eta_\gamma$ is not trivial on the norms (Lemma 7.2), every stably invariant distribution vanishes on genuine functions supported near such elements, and the functions $\delta\mapsto I_{\mathcal O}(f^\delta)$ of (7.5)–(7.8) are defined on $D(T/F)=T_1(F)\backslash G_1(F)/G(F)$ only up to the character $\eta_\gamma$. The action $\star$ of (7.3) removes the ambiguity.
+
+- **Endoscopic groups.** Section 7.2 of the 1995 notes takes the Cartan subgroups of $SL(2)$ as the endoscopic groups of the cover, as for $SL(2)$ in [LL79], and writes the “endoscopic terms” (7.2) as $\frac14\sum_H\sum_\theta\langle\theta,f^H\rangle$ over characters $\theta$ of the elliptic tori $H$. For the double cover the elliptic endoscopic groups are two copies of $SO(3)$ [Li11], and the $\kappa$-orbital integrals are not functions to which Poisson summation on the torus is applied: they are stable orbital integrals of $f_-$ (Lemma 7.6(c)). Accordingly Proposition 7.2 (Poisson summation on $T$), Corollary 7.4, Lemma 7.20, Lemma 7.21 and the sums (7.20)–(7.21) over characters $\theta$ of tori have no counterpart here. In `book3b.tex` the $L$-group of the cover is said to be $PGL(2,\mathbb{C})$ (item C.4); it is $SL(2,\mathbb{C})$ (Section 7.2).
+
+- **Theorem 7.7.** This replaces (7.3)–(7.8), Lemma 7.5 and the elliptic part of (7.20). Three corrections (item II.19): $T(\mathbb{Q})$ is not discrete in $T(\mathbb{A}_S)$, so the statement is adelic; the index $[D(T/\mathbb{Q}):D(T/\mathbb{A}_S)]^{-1}$ is the factor $\frac12$, by the Hasse norm theorem and class field theory; and Lemma 7.5(a), as stated, is about $I^{\mathrm{st}}_{\mathcal O}$, not $SI_{\mathcal O}$. The local sets $D(T/F)$ are $F^\times/N E^\times$.
+
+- **Proposition 7.9 and Lemma 7.8.** Section 7.4 of the 1995 notes forms $D(A/F)$ with $A\cdot Z$ in place of the centralizer of $A$ in $G_1$, which gives $F^\times/F^{\times2}$, and sums over it with an index $[D(A/\mathbb{Q}):D(A/\mathbb{A}_S)]$ that is not defined, since $\mathbb{Q}^\times/\mathbb{Q}^{\times2}$ does not embed in a finite group (item II.20). For a hyperbolic element the stable class is the conjugacy class; the group $F^\times/F^{\times2}$ acts on its two lifts through $(a,t)_v$ (Lemma 7.1(d)), and Proposition 7.9(b) is what remains of (7.9)–(7.10). Lemma 7.6 there (stability of $SI_{\mathcal O}$ for these classes) is not proved and is not claimed here (see the remark after Remark 2026.18). Lemma 7.7 is the identity $\operatorname{tr}I(\pi,f)=\int\pi(\tilde a)J_G(\tilde a,f)\,d\tilde a$ used in Proposition 7.9(c). Lemmas 7.8, 7.9 and 7.23, on the operator $N(g)$ of multiplication by $\log\delta(kg)$ and the variance of $J_A$ and of $\operatorname{tr}(R^{-1}R'I_A(\sigma,f))$ under $g\in G_1(F)$, are Lemma 7.8; the 1995 statements omit the change $\gamma\mapsto\operatorname{Ad}(\delta)\gamma$, $\sigma\mapsto\sigma\kappa_a$ and the condition (N5). In the proof sketched in `book3b.tex` the matrix identity for $wn(x)$ is wrong (item C.1); the correct factorization is $wn(x)=n(-x^{-1})\,a(x^{-1})\,\bar n(x^{-1})$, and the weight is $v_A=-H(x)-H(wx)$ (Lemma 4.3). The identification of $K$ with the subset $(K,1)$ of the cover in Section 7.4 (item I.1) is not used.
+- **Proposition 7.8′.** New. The 1995 notes take normalizing factors from Arthur's general theorem and do not ask how they behave under $\pi\mapsto\pi\kappa_a$; the variance formulas of their Section 7.4 need the property (N5). The proposition constructs factors with (N1)–(N5) from the scalar $M_v(\pi^w,-\lambda)M_v(\pi,\lambda)$, and identifies them with $L_v(2\lambda,\chi_v^2)/L_v(2\lambda+1,\chi_v^2)$ up to a constant by the computations of Szpruch [Sz09; Sz16], which postdate the notes.
+
+- **The weight (7.13).** The formula $v_A=\sum_v\log\sqrt{|1+n_v^2|_v}$ holds only at real places (item II.22); see Lemma 4.9.
+
+- **Proposition 7.10.** This replaces Section 7.5 of the 1995 notes. Equation (7.17) there sums over the rational unipotent classes $a\in\mathbb{Q}^\times/\mathbb{Q}^{\times2}$ and diverges, and its middle equality is wrong (item II.21); the correct expansion is over the finitely many quadratic Hecke characters unramified outside $S$, with the coefficients $L^S(1,\kappa)$. Definitions 7.12 and 7.13 use the transfer factor $\lambda(E/F,\psi)\kappa\bigl((\gamma_1-\gamma_2)/(\gamma_1^0-\gamma_2^0)\bigr)$ of [LL79] for $SL(2)$; for the cover the corresponding function is $\Delta_\psi$ of Lemma 7.3. Lemmas 7.14–7.16 (smoothness of the normalized $\kappa$-orbital integrals on the torus and their limits at $\pm1$) are not proved, here or there; the statement of Lemma 7.15 lacks an equality sign and has a constant depending on $\gamma$ inside a limit.
+
+- **Proposition 7.12 and Lemma 7.11.** Definition 7.18 of the 1995 notes introduces the set $L(\pi)$ of the $\pi\circ\operatorname{Ad}(g)$, $g\in G_1(F)$, and Remark 7.19 asserts that it has $\prod_{v\mid p}\#(k_v^\times/k_v^{\times2})$ elements for every genuine $\pi$ (item II.23; item C.2). This is not so in general: $I(\pi)\circ\operatorname{Ad}(\delta_a)=I(\pi\kappa_a)$ (Proposition 7.9(c)), which is equivalent to $I(\pi)$ when $\pi\kappa_a=\pi^w$, that is, when $\chi_v^2=(a,\cdot)_v$; and $r^\pm_{\psi}\circ\operatorname{Ad}(\delta_a)=r^\pm_{\psi_a}$ (Lemma 7.4). The sets $L(\pi)$ are not the packets of the cover; those are Waldspurger's, of which Proposition 7.12 treats one family. Lemma 7.20 states no assertion.
+
+- **Theorem 7.13.** This replaces (7.1), (7.25) and the list (a)–(i) of Section 7.8. The distributions $S_1$, $S_2$, $S_3$ of (7.22)–(7.24) are, in the present notation, the correction $\Phi_A$, the weighted orbital integrals $J_A$ (the two together are the terms $I_A$) and the unipotent terms $J^\kappa_{\mathrm{unip}}$. Conjecture 7.24, that $S_1+S_2+S_3$ is invariant under $G_1(\mathbb{A}_S)$, does not hold for the cover as stated: by Proposition 7.9(b) the term of $a(t)$ is multiplied by $(\det h,t)_S$. What replaces it is the equivariance in Theorem 7.13(c), and Li's stabilization [Li21]. The term (g) of Section 7.8, with $m'/m$, is Theorem 6.11(e)–(f).
+
+- **`book3b.tex`.** Its first lemmas assert that the orbital integral of a genuine function at a lift of $a\in A(F)$ vanishes unless $a$ is an $N$-th power. For $n=2$ the centralizer of the lift is the full preimage of $A$ (Lemma 4.1) and the orbital integral does not vanish; what vanishes for non-squares is its average over the $G_1(F)$-orbit (Lemma 7.6(b)). The correspondence $\chi\leftrightarrow\bar\chi$ between characters of $A(F)$ and genuine characters of its cover, defined there by cases, is multiplication by Weil's character $\chi_\psi$ (Lemma 3.5), whose inverse is the restriction of $\Delta_\psi$ to the cover of $A$ (Lemma 7.3(c)). The real Hilbert symbol is misdefined there as the sign of the first argument (item C.3); see (H3).
+
+
+### What was not done, and what could not be verified
+
+- Rule 3.4 for every definition: about 40 further definitions have no example of their own (§§2.1.3–2.1.5, 2.2, 3.2–3.3, 4.2 (kernels), 4.4 (D(γ)), 4.5, 5.3, 6.3, 7.5 (H_1) and others).
+- Rules 3.5–3.7 (symbols defined at first use, hypotheses before theorems, no skipped steps) and Section 4 of the guide were not re-checked. That would be a referee pass, and this pass makes no mathematical changes.
+- Rule 8.4 (scripts cited by commit hash): not done. The paper names the scripts by path.
+- The fonts: built with `mathptmx`, not newtx. Under newtx the line breaks will differ, and the build should be rechecked for overfull boxes.
+- The Markdown above, from the former Appendix A, writes the paper's LaTeX math as `$…$`, which GitHub renders. It was converted by script. The `\ref`s were resolved from the compiled draft. It has not been proofread against the PDF of the previous draft.
+- Layout. Five overfull boxes in the 12pt build were removed without manual line breaks and without changing wording: equation (2.3) uses `\quad` instead of `\qquad`; the local integral Z_v after (4.9) and the kernel K_{G,χ} in Proposition 5.9(a) became displays; the proof of Lemma 6.3 has its parts (a), (b), (c) as separate paragraphs; the three identities in Proposition 7.8′(a) are set on two lines (`gather*`). Underfull boxes were left.

@@ -1,11 +1,18 @@
 % SPDX-License-Identifier: CC-BY-4.0
-% Master file of the revised paper: Sections 1-7, acknowledgements,
-% Appendix A, the glossary and the bibliography (stages 0-7 of
-% ../revision_log.md and the November 2026 response to the second referee
-% report). Until stage 0 this file was called preview.tex.
+% Master file of the revised paper: Sections 1-7, the literature review,
+% Section 8 (summary), the glossary, the acknowledgments and the
+% bibliography (stages 0-8 of ../revision_log.md). Until stage 0 this file
+% was called preview.tex. Stage 8 (November 12, 2026) brought it into line
+% with ../../joyner-math-paper-style-guide.md; the former Appendix A
+% (comparison with the 1995 notes) is now in ../revision_log.md.
 % Build: latexmk -pdf sl2bar-trace-2026.tex
-\documentclass[11pt]{article}
-\usepackage[margin=1.1in]{geometry}
+\documentclass[12pt,letterpaper]{article}
+\usepackage[T1]{fontenc}
+% Times for text and math. The style guide prefers newtx; it was not
+% installed where this draft was built, so the fallback mathptmx is used.
+% To switch, replace the next line by \usepackage{newtxtext,newtxmath}.
+\usepackage{mathptmx}
+\usepackage[letterpaper,margin=1in]{geometry}
 \usepackage{amsmath,amssymb,amsthm}
 \usepackage[inline]{enumitem}
 \usepackage{longtable}
@@ -43,19 +50,30 @@
 \DeclareMathOperator{\ord}{ord}
 \DeclareMathOperator{\diag}{diag}
 \DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\Ad}{Ad}
+\DeclareMathOperator{\vol}{vol}
+\DeclareMathOperator{\sgn}{sgn}
+\DeclareMathOperator{\Ind}{Ind}
+\DeclareMathOperator{\Resid}{Res}
 
 \begin{document}
-\title{A hitch-hiker's guide to the metaplectic trace formula for $SL(2)$:\\[2pt]
-the double cover\thanks{Revised version, restricted to the double cover,
-of the notes ``A hitch-hiker's guide to the metaplectic trace formula for
-$SL(2)$: basic theory'' (D.~Joyner, 1995).}}
-\author{D. Joyner and Claude\thanks{Claude is an AI model made by
-Anthropic. See the Acknowledgements for the division of work.}}
-\date{Original draft: 1995, \\ Corrected and expanded draft: 2026}
+\title{A hitch-hiker's guide to the metaplectic trace formula for $SL(2)$:
+basic theory\thanks{This is a revision of the unpublished notes of the
+same title by D.~Joyner (January 1995, slightly revised June 2002). The
+revision was made in November 2026. It is restricted to the double cover
+of $SL(2)$, while the 1995 notes treated the $n$-fold cover.}\\[6pt]
+\large Draft 1. Corrected and expanded version}
+\author{D. Joyner\thanks{\texttt{wdjoyner@gmail.com}} \and
+Claude\thanks{Claude is an AI model made by Anthropic. See the
+Acknowledgments for the division of work.}}
+\date{Original draft: 1995. Corrected and expanded draft: 2026}
 \maketitle
 
 \begin{abstract}
-We write out the Arthur--Selberg trace formula, in its non-invariant and
+This revision was written with the help of AI systems: Claude (Anthropic)
+refereed the 1995 notes and drafted the revision as a co-author, and
+ChatGPT (OpenAI) refereed the revised draft. See the Acknowledgments for
+details. We write out the Arthur--Selberg trace formula, in its non-invariant and
 in its invariant form, for the metaplectic double cover of
 $G=\Res_{k/\Q}SL(2)$ over a number field $k$, and take the first steps
 towards its stable form. The general theory is due to
@@ -96,154 +114,144 @@ from 1995; the explicit formulas are checked by accompanying scripts.
 \input{sec6-invariant}
 \input{sec7-stable}
 
-\section*{Acknowledgements}
-\addcontentsline{toc}{section}{Acknowledgements}
-
-The 1995 notes and the 1997 book manuscript from which they came are by
-the first author. The revision of November 2026 was carried out by the
-two authors together: Claude, an AI model made by Anthropic, refereed the
-1995 notes, drafted the revised sections and wrote the verification
-scripts, and the first author directed the work and reviewed it.
-
-We thank ChatGPT (OpenAI) for refereeing the November 2026 draft of
-Sections~2--6. Its report showed that the earlier draft treated Kubota's
-cocycle as continuous and defined test functions through the section
-$g\mapsto(g,1)$, which is not continuous; Lemma~\ref{lem:kubota},
-Example~\ref{ex:discontinuous}, Lemma~\ref{lem:local}(i) and the
-definitions in Sections~\ref{sec:functions}, \ref{sec:global}
-and~\ref{sec:torus-cover} are the result. It also found the gap in the
-proof of Lemma~\ref{lem:genuine-chars}(c), asked for the matching of
-parameters now proved in Lemma~\ref{lem:weil-rep} and
-Theorem~\ref{thm:residual}(c), and for the treatment of general unitary
-characters in Lemma~\ref{lem:explicit-r}(c). The introduction, the
-roadmaps, the glossary and Appendix~\ref{sec:appendix-1995} follow its
-suggestions. The errors that remain are the authors'.
-
-ChatGPT also refereed Section~\ref{sec:stable} in a second report. It
-found that Theorem~\ref{thm:stabler}(c) called sums of distributions with
-different characters eigendistributions; asked for
-Lemma~\shellref and for the two-lattice and kernel arguments in the
-proof of Proposition~\ref{prop:weil-char}; pointed out that~\cite{GS16}
-does not cover the dyadic places, so that it cannot support the
-condition~\ref{N5} there; and supplied Example~\ref{ex:eta}(e) and the
-references for the packets after Proposition~\ref{prop:theta-packet}.
-
-\appendix
-\input{appA-comparison}
+\input{sec8-summary}
 
 \input{glossary}
 
-\begin{thebibliography}{99}
-\bibitem[A2]{A2} J. Arthur, ``A trace formula for reductive groups, I: terms
+\section*{Acknowledgments}
+\addcontentsline{toc}{section}{Acknowledgments}
+
+The 1995 notes and the 1997 book manuscript from which they came are by
+the first author. The revision of November 2026 was carried out by the
+two authors together. The first author directed the work and reviewed
+it. Claude (Anthropic), an AI model, took part in three roles. As a
+referee, it wrote the first referee report on the 1995 notes. As a
+co-author and reviser, it drafted the revised sections, the
+introduction, the glossary and the summary. It also wrote the
+verification scripts in \texttt{checks/}.
+
+ChatGPT (OpenAI), an AI model, acted as an independent referee. It
+refereed the November 2026 draft of
+Sections~\ref{sec:background}--\ref{sec:invariant} in one report and
+Section~\ref{sec:stable} in a second report. Several definitions, proofs
+and examples of the present draft were added or corrected in response
+to these reports.
+
+Review by AI systems is not an independent certification of the
+results. The errors that remain are the authors'. Further details on the
+AI usage, including the referee reports, the responses to them and a
+list of every change, can be found in the revision log
+(\texttt{revision\_log.md}) that accompanies the source.
+
+\begin{thebibliography}{GGW18}
+\bibitem[Ad98]{Ad98} J. Adams, ``Lifting of characters on orthogonal and
+metaplectic groups'', Duke Math. J. \textbf{92} (1998), 129--178.
+\bibitem[Ar78]{Ar78} J. Arthur, ``A trace formula for reductive groups, I: terms
 associated to classes in $G(\mathbb{Q})$'', Duke Math. J. \textbf{45} (1978), 911--952.
-\bibitem[A3]{A3} J. Arthur, ``A trace formula for reductive groups, II:
+\bibitem[Ar80]{Ar80} J. Arthur, ``A trace formula for reductive groups, II:
 applications of a truncation operator'', Compositio Math. \textbf{40}
 (1980), 87--121.
-\bibitem[A6]{A6} J. Arthur, ``The trace formula in invariant form'', Ann.
+\bibitem[Ar81]{Ar81} J. Arthur, ``The trace formula in invariant form'', Ann.
 of Math. (2) \textbf{114} (1981), 1--74.
-\bibitem[A7]{A7} J. Arthur, ``The local behaviour of weighted orbital
-integrals'', Duke Math. J. \textbf{56} (1988), 223--293.
-\bibitem[A9]{A9} J. Arthur, ``The invariant trace formula, I. Local theory'',
-J. Amer. Math. Soc. \textbf{1} (1988), 323--383.
-\bibitem[A10]{A10} J. Arthur, ``The invariant trace formula, II. Global
-theory'', J. Amer. Math. Soc. \textbf{1} (1988), 501--554.
-\bibitem[A11]{A11} J. Arthur, ``Intertwining operators and residues, I.
-Weighted characters'', J. Funct. Anal. \textbf{84} (1989), 19--84.
-\bibitem[A14]{A14} J. Arthur, ``On a family of distributions obtained from
+\bibitem[Ar82]{Ar82} J. Arthur, ``On a family of distributions obtained from
 Eisenstein series II: explicit formulas'', Amer. J. Math. \textbf{104}
 (1982), 1289--1336.
-\bibitem[A12]{A12} J. Arthur, ``On a family of distributions obtained from
+\bibitem[Ar86]{Ar86} J. Arthur, ``On a family of distributions obtained from
 orbits'', Canad. J. Math. \textbf{38} (1986), 179--214.
+\bibitem[Ar88a]{Ar88a} J. Arthur, ``The local behaviour of weighted orbital
+integrals'', Duke Math. J. \textbf{56} (1988), 223--293.
+\bibitem[Ar88b]{Ar88b} J. Arthur, ``The invariant trace formula, I. Local theory'',
+J. Amer. Math. Soc. \textbf{1} (1988), 323--383.
+\bibitem[Ar88c]{Ar88c} J. Arthur, ``The invariant trace formula, II. Global
+theory'', J. Amer. Math. Soc. \textbf{1} (1988), 501--554.
+\bibitem[Ar89]{Ar89} J. Arthur, ``Intertwining operators and residues, I.
+Weighted characters'', J. Funct. Anal. \textbf{84} (1989), 19--84.
 \bibitem[Ar05]{Ar05} J. Arthur, ``An introduction to the trace formula'', in
 \emph{Harmonic analysis, the trace formula, and Shimura varieties}, Clay
 Math. Proc. \textbf{4}, Amer. Math. Soc., 2005, 1--263.
-\bibitem[Ad]{Ad} J. Adams, ``Lifting of characters on orthogonal and
-metaplectic groups'', Duke Math. J. \textbf{92} (1998), 129--178.
-\bibitem[BD]{BD} J.-L. Brylinski and P. Deligne, ``Central extensions of
+\bibitem[BD01]{BD01} J.-L. Brylinski and P. Deligne, ``Central extensions of
 reductive groups by $K_2$'', Publ. Math. IHES \textbf{94} (2001), 5--85.
-\bibitem[CF]{CF} J. W. S. Cassels and A. Fr\"ohlich (eds.), \emph{Algebraic
+\bibitem[CF67]{CF67} J. W. S. Cassels and A. Fr\"ohlich (eds.), \emph{Algebraic
 number theory}, Academic Press, 1967.
-\bibitem[Fla]{F} D. Flath, ``Decomposition of representations into tensor
+\bibitem[FK86]{FK86} Y. Z. Flicker and D. A. Kazhdan, ``Metaplectic
+correspondence'', Publ. Math. IHES \textbf{64} (1986), 53--110.
+\bibitem[Fl79]{Fl79} D. Flath, ``Decomposition of representations into tensor
 products'', in \emph{Automorphic forms, representations and
 $L$-functions}, Proc. Sympos. Pure Math. \textbf{33}, Part~1, Amer. Math.
 Soc., 1979, 179--183.
-\bibitem[Fl]{Fl} Y. Z. Flicker, ``Automorphic forms on covering groups of
+\bibitem[Fl80]{Fl80} Y. Z. Flicker, ``Automorphic forms on covering groups of
 $GL(2)$'', Invent. Math. \textbf{57} (1980), 119--182.
-\bibitem[FK]{FK} Y. Z. Flicker and D. A. Kazhdan, ``Metaplectic
-correspondence'', Publ. Math. IHES \textbf{64} (1986), 53--110.
-\bibitem[GGW]{GGW} W. T. Gan, F. Gao and M. H. Weissman, ``L-groups and the
-Langlands program for covering groups: a historical introduction'',
-Ast\'erisque \textbf{398} (2018), 1--31.
-\bibitem[GI]{GI} W. T. Gan and A. Ichino, ``The Shimura--Waldspurger
-correspondence for $\mathrm{Mp}_{2n}$'', Ann. of Math. (2) \textbf{188}
-(2018), 965--1016.
-\bibitem[GS12]{GS12} W. T. Gan and G. Savin, ``Representations of
-metaplectic groups I: epsilon dichotomy and local Langlands
-correspondence'', Compos. Math. \textbf{148} (2012), 1655--1694.
-\bibitem[Gao]{Gao} F. Gao, ``The Gindikin--Karpelevich formula and constant
+\bibitem[Ga14]{Ga14} F. Gao, ``The Gindikin--Karpelevich formula and constant
 terms of Eisenstein series for Brylinski--Deligne extensions'', preprint,
 arXiv:1410.7624.
-\bibitem[GJ]{GJ} S. Gelbart and H. Jacquet, ``Forms of $GL(2)$ from the
+\bibitem[Ge76]{Ge76} S. Gelbart, \emph{Weil's representation and the spectrum of
+the metaplectic group}, Lecture Notes in Math. \textbf{530}, Springer, 1976.
+\bibitem[GGW18]{GGW18} W. T. Gan, F. Gao and M. H. Weissman, ``L-groups and the
+Langlands program for covering groups: a historical introduction'',
+Ast\'erisque \textbf{398} (2018), 1--31.
+\bibitem[GI18]{GI18} W. T. Gan and A. Ichino, ``The Shimura--Waldspurger
+correspondence for $\mathrm{Mp}_{2n}$'', Ann. of Math. (2) \textbf{188}
+(2018), 965--1016.
+\bibitem[GJ79]{GJ79} S. Gelbart and H. Jacquet, ``Forms of $GL(2)$ from the
 analytic point of view'', in \emph{Automorphic forms, representations and
 $L$-functions}, Proc. Sympos. Pure Math. \textbf{33}, Part~1, Amer. Math.
 Soc., 1979, 213--251.
-\bibitem[Ge2]{Ge2} S. Gelbart, \emph{Weil's representation and the spectrum of
-the metaplectic group}, Lecture Notes in Math. \textbf{530}, Springer, 1976.
+\bibitem[Go62]{Go62} R. Godement, ``Domaines fondamentaux des groupes
+arithm\'etiques'', S\'eminaire Bourbaki \textbf{8} (1962/63), Exp.~257.
 \bibitem[GPS80]{GPS80} S. Gelbart and I. Piatetski-Shapiro, ``Distinguished
 representations and modular forms of half-integral weight'', Invent.
 Math. \textbf{59} (1980), 145--188.
 \bibitem[GPS83]{GPS83} S. Gelbart and I. Piatetski-Shapiro, ``Some remarks on
 metaplectic cusp forms and the correspondences of Shimura and
 Waldspurger'', Israel J. Math. \textbf{44} (1983), 97--126.
+\bibitem[GS12]{GS12} W. T. Gan and G. Savin, ``Representations of
+metaplectic groups I: epsilon dichotomy and local Langlands
+correspondence'', Compos. Math. \textbf{148} (2012), 1655--1694.
 \bibitem[GS16]{GS16} D. Goldberg and D. Szpruch, ``Plancherel measures for
 coverings of $p$-adic $SL_2(F)$'', Int. J. Number Theory \textbf{12} (2016),
 1907--1936.
-\bibitem[Go]{Go} R. Godement, ``Domaines fondamentaux des groupes
-arithm\'etiques'', S\'eminaire Bourbaki \textbf{8} (1962/63), Exp.~257.
-\bibitem[He]{He} D. A. Hejhal, \emph{The Selberg trace formula for
+\bibitem[He83]{He83} D. A. Hejhal, \emph{The Selberg trace formula for
 $PSL(2,\mathbb{R})$, Vol.~2}, Lecture Notes in Math. \textbf{1001},
 Springer, 1983.
 \bibitem[HI13]{HI13} K. Hiraga and T. Ikeda, ``On the Kohnen plus space for
 Hilbert modular forms of half-integral weight I'', Compos. Math.
 \textbf{149} (2013), 1963--2010.
-\bibitem[How]{How} T. K. Howard, ``Lifting of characters on $p$-adic
+\bibitem[Ho10]{Ho10} T. K. Howard, ``Lifting of characters on $p$-adic
 orthogonal and metaplectic groups'', Compos. Math. \textbf{146} (2010),
 795--810.
-\bibitem[JL]{JL} H. Jacquet and R. P. Langlands, \emph{Automorphic forms on
+\bibitem[JL70]{JL70} H. Jacquet and R. P. Langlands, \emph{Automorphic forms on
 $GL(2)$}, Lecture Notes in Math. \textbf{114}, Springer, 1970.
-\bibitem[J88]{J88} D. Joyner, ``On the metaplectic analog of Kazhdan's
+\bibitem[Jo88]{Jo88} D. Joyner, ``On the metaplectic analog of Kazhdan's
 `endoscopic' lifting'', Israel J. Math. \textbf{66} (1988), 113--154.
-\bibitem[KP]{KP} D. Kazhdan and S. J. Patterson, ``Metaplectic forms'', Publ.
+\bibitem[Kn02]{Kn02} A. W. Knapp, \emph{Lie groups beyond an introduction}, 2nd ed.,
+Birkh\"auser, 2002.
+\bibitem[KP84]{KP84} D. Kazhdan and S. J. Patterson, ``Metaplectic forms'', Publ.
 Math. IHES \textbf{59} (1984), 35--142.
-\bibitem[KP2]{KP2} D. A. Kazhdan and S. J. Patterson, ``Towards a
+\bibitem[KP86]{KP86} D. A. Kazhdan and S. J. Patterson, ``Towards a
 generalized Shimura correspondence'', Adv. Math. \textbf{60} (1986),
 161--234.
-\bibitem[Kn]{Kn} A. W. Knapp, \emph{Lie groups beyond an introduction}, 2nd ed.,
-Birkh\"auser, 2002.
-\bibitem[K1]{K1} T. Kubota, ``Topological covering of $SL(2)$ over a local
+\bibitem[Ku67]{Ku67} T. Kubota, ``Topological covering of $SL(2)$ over a local
 field'', J. Math. Soc. Japan \textbf{19} (1967), 114--121.
-\bibitem[K2]{K2} T. Kubota, \emph{On automorphic functions and the reciprocity
+\bibitem[Ku69]{Ku69} T. Kubota, \emph{On automorphic functions and the reciprocity
 law in a number field}, Lectures in Math. \textbf{2}, Kinokuniya, Tokyo, 1969.
-\bibitem[LL]{LL} J.-P. Labesse and R. P. Langlands, ``L-indistinguishability
-for $SL(2)$'', Canad. J. Math. \textbf{31} (1979), 726--785.
-\bibitem[L2]{L2} R. P. Langlands, \emph{On the functional equations satisfied
+\bibitem[La76]{La76} R. P. Langlands, \emph{On the functional equations satisfied
 by Eisenstein series}, Lecture Notes in Math. \textbf{544}, Springer, 1976.
-\bibitem[Li I]{LiI} W.-W. Li, ``La formule des traces pour les rev\^etements
-de groupes r\'eductifs connexes. I. Le d\'eveloppement g\'eom\'etrique fin'',
-J. reine angew. Math. \textbf{686} (2014), 37--109.
-\bibitem[Li II]{LiII} W.-W. Li, ``La formule des traces pour les rev\^etements
-de groupes r\'eductifs connexes. II. Analyse harmonique locale'', Ann. Sci.
-\'Ec. Norm. Sup\'er. (4) \textbf{45} (2012), 787--859.
-\bibitem[Li III]{LiIII} W.-W. Li, ``La formule des traces pour les
-rev\^etements de groupes r\'eductifs connexes. III. Le d\'eveloppement
-spectral fin'', Math. Ann. \textbf{356} (2013), 1029--1064.
-\bibitem[Li IV]{LiIV} W.-W. Li, ``La formule des traces pour les rev\^etements
-de groupes r\'eductifs connexes. IV. Distributions invariantes'', Ann. Inst.
-Fourier \textbf{64} (2014), 2379--2448.
 \bibitem[Li11]{Li11} W.-W. Li, ``Transfert d'int\'egrales orbitales pour le
 groupe m\'etaplectique'', Compos. Math. \textbf{147} (2011), 524--590.
-\bibitem[Li12]{Li12} W.-W. Li, ``Le lemme fondamental pond\'er\'e pour le
+\bibitem[Li12a]{Li12a} W.-W. Li, ``La formule des traces pour les rev\^etements
+de groupes r\'eductifs connexes. II. Analyse harmonique locale'', Ann. Sci.
+\'Ec. Norm. Sup\'er. (4) \textbf{45} (2012), 787--859.
+\bibitem[Li12b]{Li12b} W.-W. Li, ``Le lemme fondamental pond\'er\'e pour le
 groupe m\'etaplectique'', Canad. J. Math. \textbf{64} (2012), 497--543.
+\bibitem[Li13]{Li13} W.-W. Li, ``La formule des traces pour les
+rev\^etements de groupes r\'eductifs connexes. III. Le d\'eveloppement
+spectral fin'', Math. Ann. \textbf{356} (2013), 1029--1064.
+\bibitem[Li14a]{Li14a} W.-W. Li, ``La formule des traces pour les rev\^etements
+de groupes r\'eductifs connexes. I. Le d\'eveloppement g\'eom\'etrique fin'',
+J. reine angew. Math. \textbf{686} (2014), 37--109.
+\bibitem[Li14b]{Li14b} W.-W. Li, ``La formule des traces pour les rev\^etements
+de groupes r\'eductifs connexes. IV. Distributions invariantes'', Ann. Inst.
+Fourier \textbf{64} (2014), 2379--2448.
 \bibitem[Li15]{Li15} W.-W. Li, ``La formule des traces stable pour le groupe
 m\'etaplectique: les termes elliptiques'', Invent. Math. \textbf{202}
 (2015), 743--838.
@@ -254,62 +262,64 @@ I. Local character relations'', J. Inst. Math. Jussieu \textbf{18} (2019),
 metaplectic groups'', preprint, arXiv:2109.06581.
 \bibitem[Li24]{Li24} W.-W. Li, ``Arthur packets for metaplectic groups'',
 preprint, arXiv:2410.13606.
-\bibitem[Luo]{Luo} C. Luo, ``Endoscopic character identities for
+\bibitem[LL79]{LL79} J.-P. Labesse and R. P. Langlands, ``L-indistinguishability
+for $SL(2)$'', Canad. J. Math. \textbf{31} (1979), 726--785.
+\bibitem[Lu20]{Lu20} C. Luo, ``Endoscopic character identities for
 metaplectic groups'', J. Reine Angew. Math. \textbf{768} (2020), 1--37.
 \bibitem[Ma57]{Ma57} G. W. Mackey, ``Les ensembles bor\'eliens et les
 extensions des groupes'', J. Math. Pures Appl. (9) \textbf{36} (1957),
 171--178.
-\bibitem[Mak]{Mak} K. Maktouf, ``Le caract\`ere de la repr\'esentation
+\bibitem[Ma69]{Ma69} H. Matsumoto, ``Sur les sous-groupes arithm\'etiques des
+groupes semi-simples d\'eploy\'es'', Ann. Sci. \'Ecole Norm. Sup. (4)
+\textbf{2} (1969), 1--62.
+\bibitem[Ma99]{Ma99} K. Maktouf, ``Le caract\`ere de la repr\'esentation
 m\'etaplectique et la formule du caract\`ere pour certaines
 repr\'esentations d'un groupe de Lie presque alg\'ebrique sur un corps
 $p$-adique'', J. Funct. Anal. \textbf{164} (1999), 249--339.
-\bibitem[Mat]{Mat} H. Matsumoto, ``Sur les sous-groupes arithm\'etiques des
-groupes semi-simples d\'eploy\'es'', Ann. Sci. \'Ecole Norm. Sup. (4)
-\textbf{2} (1969), 1--62.
-\bibitem[McN]{McN} P. J. McNamara, ``Principal series representations of
+\bibitem[Mc12]{Mc12} P. J. McNamara, ``Principal series representations of
 metaplectic groups over local fields'', in \emph{Multiple Dirichlet series,
 L-functions and automorphic forms}, Progr. Math. \textbf{300},
 Birkh\"auser, 2012, 299--327.
-\bibitem[Me1]{Me1} P. Mezo, ``Comparisons of general linear groups and their
-metaplectic coverings I'', Canad. J. Math. \textbf{54} (2002), 92--137.
-\bibitem[Me2]{Me2} P. Mezo, ``Comparisons of general linear groups and their
+\bibitem[Me01]{Me01} P. Mezo, ``Comparisons of general linear groups and their
 metaplectic coverings II'', Represent. Theory \textbf{5} (2001), 524--580.
-\bibitem[M]{M} C. C. Moore, ``Group extensions of $p$-adic and adelic linear
+\bibitem[Me02]{Me02} P. Mezo, ``Comparisons of general linear groups and their
+metaplectic coverings I'', Canad. J. Math. \textbf{54} (2002), 92--137.
+\bibitem[Mo68]{Mo68} C. C. Moore, ``Group extensions of $p$-adic and adelic linear
 groups'', Publ. Math. IHES \textbf{35} (1968), 157--222.
-\bibitem[Mo2]{Mo2} C. Moen, ``Irreducibility of unitary principal series
+\bibitem[Mo88]{Mo88} C. Moen, ``Irreducibility of unitary principal series
 for covering groups of $SL(2,k)$'', Pacific J. Math. \textbf{135} (1988),
 89--110.
-\bibitem[MW2]{MW2} C. M\oe glin and J.-L. Waldspurger, \emph{Spectral
+\bibitem[MW95]{MW95} C. M\oe glin and J.-L. Waldspurger, \emph{Spectral
 decomposition and Eisenstein series}, Cambridge Tracts in Math.
 \textbf{113}, Cambridge Univ. Press, 1995.
-\bibitem[Ni]{Ni} S. Niwa, ``Modular forms of half integral weight and the
+\bibitem[Ni75]{Ni75} S. Niwa, ``Modular forms of half integral weight and the
 integral of certain theta-functions'', Nagoya Math. J. \textbf{56} (1975),
 147--161.
-\bibitem[PR]{PR} V. Platonov and A. Rapinchuk, \emph{Algebraic groups and
+\bibitem[PR94]{PR94} V. Platonov and A. Rapinchuk, \emph{Algebraic groups and
 number theory}, Academic Press, 1994.
-\bibitem[R]{R} J. Rogawski, \emph{Automorphic representations of unitary groups
-in three variables}, Ann. of Math. Studies \textbf{123}, Princeton, 1990.
-\bibitem[Re]{Re} D. Renard, ``Endoscopy for $Mp(2n,\mathbb{R})$'', Amer. J.
+\bibitem[Re99]{Re99} D. Renard, ``Endoscopy for $Mp(2n,\mathbb{R})$'', Amer. J.
 Math. \textbf{121} (1999), 1215--1244.
-\bibitem[Ro]{Ro} A. Robert, \emph{Introduction to the representation theory of
+\bibitem[Ro83]{Ro83} A. Robert, \emph{Introduction to the representation theory of
 compact and locally compact groups}, London Math. Soc. Lecture Note Ser.
 \textbf{80}, Cambridge, 1983.
-\bibitem[Sa]{Sa} P. J. Sally, Jr., \emph{Analytic continuation of the
+\bibitem[Ro90]{Ro90} J. Rogawski, \emph{Automorphic representations of unitary groups
+in three variables}, Ann. of Math. Studies \textbf{123}, Princeton, 1990.
+\bibitem[Sa67]{Sa67} P. J. Sally, Jr., \emph{Analytic continuation of the
 irreducible unitary representations of the universal covering group of
 $SL(2,\mathbb{R})$}, Mem. Amer. Math. Soc. \textbf{69} (1967).
-\bibitem[Sav]{Sav} G. Savin, ``Local Shimura correspondence'', Math. Ann.
+\bibitem[Sa88]{Sa88} G. Savin, ``Local Shimura correspondence'', Math. Ann.
 \textbf{280} (1988), 185--190.
-\bibitem[Sch]{Sch} J. P. Schultz, \emph{Lifting of characters of
+\bibitem[Sc98]{Sc98} J. P. Schultz, \emph{Lifting of characters of
 $\widetilde{SL}_2(F)$ and $SO_{1,2}(F)$ for $F$ a nonarchimedean local
 field}, Ph.D. thesis, University of Maryland, 1998.
-\bibitem[Sel]{Sel} A. Selberg, ``Harmonic analysis and discontinuous groups
+\bibitem[Se56]{Se56} A. Selberg, ``Harmonic analysis and discontinuous groups
 in weakly symmetric Riemannian spaces with applications to Dirichlet
 series'', J. Indian Math. Soc. \textbf{20} (1956), 47--87.
-\bibitem[Se]{Se} J.-P. Serre, \emph{A course in arithmetic}, Graduate Texts in
+\bibitem[Se73]{Se73} J.-P. Serre, \emph{A course in arithmetic}, Graduate Texts in
 Math. \textbf{7}, Springer, 1973.
-\bibitem[Sh]{Sh} G. Shimura, ``On modular forms of half integral weight'',
+\bibitem[Sh73]{Sh73} G. Shimura, ``On modular forms of half integral weight'',
 Ann. of Math. (2) \textbf{97} (1973), 440--481.
-\bibitem[Shi]{Shi} T. Shintani, ``On the construction of holomorphic cusp
+\bibitem[Sh75]{Sh75} T. Shintani, ``On the construction of holomorphic cusp
 forms of half integral weight'', Nagoya Math. J. \textbf{58} (1975),
 83--126.
 \bibitem[Sz09]{Sz09} D. Szpruch, ``Computation of the local coefficients for
@@ -320,14 +330,12 @@ the metaplectic group and applications}, thesis, Tel Aviv University,
 2009, arXiv:1004.3516.
 \bibitem[Sz16]{Sz16} D. Szpruch, ``On Shahidi local coefficients matrix'',
 preprint, arXiv:1609.08122.
-\bibitem[Ta]{Ta} J. Tate, ``Fourier analysis in number fields and Hecke's
-zeta-functions'', in~\cite{CF}, 305--347.
+\bibitem[Ta67]{Ta67} J. Tate, ``Fourier analysis in number fields and Hecke's
+zeta-functions'', in~\cite{CF67}, 305--347.
 \bibitem[Th08]{Th08} T. Thomas, ``The character of the Weil
 representation'', J. London Math. Soc. (2) \textbf{77} (2008), 221--239.
 \bibitem[Th13]{Th13} T. Thomas, ``Weil representation and transfer
 factor'', Algebra Number Theory \textbf{7} (2013), 1535--1570.
-\bibitem[W1]{W1} A. Weil, \emph{Basic number theory}, Springer, 1974.
-\bibitem[W2]{W2} A. Weil, \emph{Adeles and algebraic groups}, Birkh\"auser, 1982.
 \bibitem[Wa80]{Wa80} J.-L. Waldspurger, ``Correspondance de Shimura'', J. Math.
 Pures Appl. (9) \textbf{59} (1980), 1--132.
 \bibitem[Wa81]{Wa81} J.-L. Waldspurger, ``Sur les coefficients de Fourier
@@ -335,9 +343,11 @@ des formes modulaires de poids demi-entier'', J. Math. Pures Appl. (9)
 \textbf{60} (1981), 375--484.
 \bibitem[Wa91]{Wa91} J.-L. Waldspurger, ``Correspondances de Shimura et
 quaternions'', Forum Math. \textbf{3} (1991), 219--307.
-\bibitem[We18]{We18} M. H. Weissman, ``L-groups and parameters for covering
-groups'', Ast\'erisque \textbf{398} (2018), 33--186.
 \bibitem[We64]{We64} A. Weil, ``Sur certains groupes d'op\'erateurs
 unitaires'', Acta Math. \textbf{111} (1964), 143--211.
+\bibitem[We74]{We74} A. Weil, \emph{Basic number theory}, Springer, 1974.
+\bibitem[We82]{We82} A. Weil, \emph{Adeles and algebraic groups}, Birkh\"auser, 1982.
+\bibitem[We18]{We18} M. H. Weissman, ``L-groups and parameters for covering
+groups'', Ast\'erisque \textbf{398} (2018), 33--186.
 \end{thebibliography}
 \end{document}

@@ -23,8 +23,8 @@
 
 This section computes the geometric side of the trace formula for
 $\GA$, class by class. The general theory is due to
-Arthur~\cite{A2,A3,A12} for connected reductive groups and to
-Li~\cite{LiI} for covering groups; we specialize it to the double cover of
+Arthur~\cite{Ar78,Ar80,Ar86} for connected reductive groups and to
+Li~\cite{Li14a} for covering groups; we specialize it to the double cover of
 $G=\Res_{k/\Q}SL(2)$. For this group one inequality between heights
 (Lemma~\ref{lem:height-ineq}) makes the reduction theory explicit, with
 truncation parameter $T_0=0$. With it, every step of Arthur's coarse
@@ -36,7 +36,7 @@ corrected weight $2T+v_A$ for hyperbolic classes, the unipotent
 contribution of the central classes, given as the finite part of a zeta
 integral, and the local distribution $J_A(z,f)$ at a central element
 (Lemma~\ref{lem:JA-central}). Section~\ref{sec:fine} states the fine
-expansion~\cite{A12,LiI} in the form that Sections~5--7 use.
+expansion~\cite{Ar86,Li14a} in the form that Sections~\ref{sec:spectral}--\ref{sec:stable} use.
 
 \paragraph{Roadmap.} The argument has four steps.
 \begin{enumerate}[label=\arabic*.]
@@ -99,10 +99,14 @@ the two identifications agree, and $b\mapsto(b,1)$
 
 \subsection{Equivalence classes}\label{sec:classes}
 
-Following~\cite[\S2]{A2}, call $\gamma,\gamma'\in G(\Q)$
+The geometric side is a sum over classes of rational elements. This
+subsection sorts $G(\Q)$ into these classes.
+
+
+Following~\cite[\S2]{Ar78}, call $\gamma,\gamma'\in G(\Q)$
 \emph{equivalent} if their semisimple parts are $G(\Q)$-conjugate, and let
 $\mathcal C$ be the set of equivalence classes. A class is
-\emph{unramified}~\cite[p.~949]{A2} if it consists of semisimple elements.
+\emph{unramified}~\cite[p.~949]{Ar78} if it consists of semisimple elements.
 
 \begin{lemma}\label{lem:classes}
 The classes $\mathcal O\in\mathcal C$ are of three kinds.
@@ -141,6 +145,12 @@ vanishes. For $n=2$ this does not happen, by the last sentence of the
 lemma.
 
 \subsection{Kernels, heights and truncation}\label{sec:kernels}
+
+This subsection defines the kernels of $R(f)$ and of its analog for the
+Borel subgroup, and the truncated kernel whose integral is the geometric
+side. The key tool is the height inequality of
+Lemma~\ref{lem:height-ineq}.
+
 
 Let $f\in\mathcal H(\GA)$. We use Arthur's convention: $R$ is the right
 regular representation on $L^2(G(\Q)\backslash\GA)_{\mathrm{gen}}$, the
@@ -239,8 +249,8 @@ $K_0$-invariance is Lemma~\ref{lem:H}(b), and $v_A\ge0$ is~(b) with
 $\gamma=w$.
 \end{proof}
 
-For Lemma~\ref{lem:height-ineq}(b) compare~\cite[Lemma~5.1]{A2}.
-Reduction theory~\cite{Go} gives a Siegel set
+For Lemma~\ref{lem:height-ineq}(b) compare~\cite[Lemma~5.1]{Ar78}.
+Reduction theory~\cite{Go62} gives a Siegel set
 $\mathfrak S=\{(n,1)\,\tilde a\,\tilde k\mid n\in\omega,\ H(\tilde a)>-c,\
 p(\tilde a)\in\Omega\,A_B(\R)^0,\ \tilde k\in\overline{K_0}\}$, with
 $\omega\subset N(\A)$ and $\Omega\subset A(\A)^1$ compact and $c\ge0$, such
@@ -261,7 +271,7 @@ $K_P$. By Lemma~\ref{lem:height-ineq}(b), for $T\ge0$ the sum over
 $\delta$ has at most one nonzero term. Let $F^G(x,T)$ be the
 characteristic function of $\{x\mid H(\delta x)\le T\ \text{for all}\
 \delta\in G(\Q)\}$; its support is compact modulo $G(\Q)$ by reduction
-theory~\cite{Go}.
+theory~\cite{Go62}.
 
 \begin{lemma}\label{lem:partition}
 Let $T\ge0$. Then $F^G(x,T)+\sum_{\delta\in B(\Q)\backslash G(\Q)}
@@ -279,10 +289,42 @@ Lemma~\ref{lem:height-ineq}(b). Multiply it by $K_G(x,x)=
 K_G(\delta x,\delta x)$ and subtract the $\delta$-sum of~\eqref{eq:kT}.
 \end{proof}
 
-In general~\cite[\S6]{A2}, \cite[\S8]{Ar05}, the
+In general~\cite[\S6]{Ar78}, \cite[\S8]{Ar05}, the
 partition holds for $T$ sufficiently regular; here $T\ge0$ suffices.
 
+% [Claude] Example added in the style-guide pass (November 2026); see
+% Stage 8 of ../revision_log.md. Checked by checks/examples_n2_check.py.
+\begin{example}\label{ex:trunc-Q}
+Let $k=\Q$, take $x\in G(\R)$, viewed in $\GA$ with trivial finite
+components, and write $x=n(u)a(y^{1/2})k_\infty$ with $y>0$ and
+$k_\infty\in SO(2)$. Let $z=u+iy$ be the corresponding point of the upper
+half plane. By Lemma~\ref{lem:height-ineq}(a),
+$H(x)=-\log\|(0,y^{-1/2})\|=\frac12\log y$. Every coset in
+$B(\Q)\backslash G(\Q)$ has a representative
+$\gamma=\begin{pmatrix}a&b\\c&d\end{pmatrix}\in SL(2,\Z)$. The finite
+components of $\gamma x$ then lie in $K_p$, so only the real place
+contributes, and $e_2\gamma x=(c y^{1/2},(cu+d)y^{-1/2})k_\infty$ gives
+\[
+H(\gamma x)=-\log|cz+d|+\tfrac12\log y=\tfrac12\log\operatorname{Im}(\gamma z).
+\]
+So the height of $x$ is half the logarithm of the imaginary part of $z$.
+For $c\ne0$ the height inequality of Lemma~\ref{lem:height-ineq}(b)
+becomes $\operatorname{Im}(z)\operatorname{Im}(\gamma z)\le1$. It holds
+because $|cz+d|\ge|c|\,y\ge y$. The truncation~\eqref{eq:kT} subtracts the
+constant term on the horoballs $\{\operatorname{Im}(\delta z)>e^{2T}\}$,
+and for $T\ge0$ these horoballs are disjoint. On the standard fundamental
+domain $\{|u|\le\frac12,\ |z|\ge1\}$ the largest of the
+$\operatorname{Im}(\delta z)$ is $y$ itself. So there $F^G(x,T)=1$
+exactly when $y\le e^{2T}$, and $F^G(\cdot,T)$ cuts off the cusp at
+height $e^{2T}$.
+\end{example}
+
+
 \subsection{The coarse geometric expansion}\label{sec:coarse}
+
+This subsection integrates the truncated kernel class by class. Each
+class contributes a polynomial in $T$ of degree at most one.
+
 
 Let $dx$ be a Haar measure on $G(\A)$ with $dx=\delta_B(a)^{-1}dn\,da\,dk$
 for $x=nak$ as in~\eqref{eq:iwasawa}, where $dk$ gives $K_0$ volume $1$,
@@ -294,8 +336,8 @@ $k\otimes\R$), let $dX$ be Lebesgue measure on $\R\cong\mathfrak a$
 transported to $A_B(\R)^0$ by $H$, and let $da^1$ be the Haar measure on
 $A(\A)^1$ with $da=da^1\,dX$. Put
 \[
-c_k=\mathrm{vol}\bigl(A(\Q)\backslash A(\A)^1\bigr)
-=\mathrm{vol}\bigl(k^\times\backslash\A_k^1\bigr).
+c_k=\vol\bigl(A(\Q)\backslash A(\A)^1\bigr)
+=\vol\bigl(k^\times\backslash\A_k^1\bigr).
 \]
 
 \begin{theorem}\label{thm:coarse}
@@ -322,11 +364,11 @@ Let $f\in\mathcal H(\GA)$ and $T\ge0$.
 We put $J_{\mathcal O}(f)=J^0_{\mathcal O}(f)$ and $J(f)=J^0(f)=
 \sum_{\mathcal O}J_{\mathcal O}(f)$. In general one defines $J_{\mathcal
 O}$ as the value at $T=0$ of the polynomial $J^T_{\mathcal O}$, which is
-known only for $T$ sufficiently regular~\cite{A3,Ar05}. Here the integral
+known only for $T$ sufficiently regular~\cite{Ar80,Ar05}. Here the integral
 itself converges at $T=0$, so the two definitions agree.
 Theorem~\ref{thm:coarse} is the case of $\GA$ of Arthur's coarse
-expansion~\cite[\S\S7--8]{A2}, \cite{A3}, extended to covers by
-Li~\cite{LiI}; for this group we prove it directly.
+expansion~\cite[\S\S7--8]{Ar78}, \cite{Ar80}, extended to covers by
+Li~\cite{Li14a}; for this group we prove it directly.
 
 \begin{proposition}[Hyperbolic classes]\label{prop:hyperbolic}
 Let $\mathcal O$ be the class of $\mu=a(t)$, $t\in k^\times
@@ -394,7 +436,7 @@ $g_{\mu'}(z)=f(\tilde k^{-1}\mu'(n(z),1)\tilde k)$ and $c=(1-t'^{-2})u_0$,
 (J_{B,\mathcal O}-K_{B,\mathcal O})(x,x)=\sum_{\mu'}\Bigl(\sum_{\nu\in k}
 g_{\mu'}(s^{-2}(\nu+c))-\int_{\A_k}g_{\mu'}(s^{-2}(z+c))\,dz\Bigr).
 \]
-By Poisson summation over $k\subset\A_k$~\cite{Ta}, this is
+By Poisson summation over $k\subset\A_k$~\cite{Ta67}, this is
 $|s|^2\sum_{\mu'}\sum_{\nu\in k^\times}\hat g_{\mu'}(s^2\nu)\psi(\nu c)$,
 which is $O(|s|^{2-M})$ for every $M$, uniformly for $\tilde k\in
 \overline{K_0}$ and $s$ in $\Omega\times\R_{\ge1}$, $\Omega\subset
@@ -418,7 +460,7 @@ Then
 $k^T_{\mathcal O}=j^T_{\mathcal O}=K_{G,\mathcal O}(x,x)$ for every $T$,
 and
 \[
-J_{\mathcal O}(f)=J^T_{\mathcal O}(f)=\mathrm{vol}\bigl(T_\mu(\Q)\backslash
+J_{\mathcal O}(f)=J^T_{\mathcal O}(f)=\vol\bigl(T_\mu(\Q)\backslash
 T_\mu(\A)\bigr)\int_{\overline{T_\mu(\A)}\backslash\GA}f(y^{-1}\mu y)\,dy,
 \]
 the integral converging absolutely.
@@ -452,15 +494,19 @@ Z(f,s)=\int_{k^\times\backslash\A_k^\times}|t|^{-2s}\sum_{\nu\in k^\times}
 \Phi_f(\xi t^2)\,|t|^{2s}\,d^\times t .
 \end{equation}
 For $f=\bigotimes_vf_v$ the last integral is the product of the local
-integrals $Z_v(\Phi_{f,v},\xi,s)=\int_{k_v^\times}\Phi_{f,v}(\xi t^2)
-|t|_v^{2s}d^\times t$, which are, at $s=1$, twice the local unipotent orbital
+integrals
+\[
+Z_v(\Phi_{f,v},\xi,s)=\int_{k_v^\times}\Phi_{f,v}(\xi t^2)
+|t|_v^{2s}d^\times t,
+\]
+which are, at $s=1$, twice the local unipotent orbital
 integrals of $f_v$ at $n(\xi)$ (Lemma~\ref{lem:JA-central}(c)).
 
 \begin{proposition}[Central classes]\label{prop:central}
 Let $z\in\{\pm1\}$. Then $k^T_{\mathcal O_z}=j^T_{\mathcal O_z}$, and
 $J^T_{\mathcal O_z}(f)=J^T_{\mathrm{unip}}(f_z)$, where for every $T\in\R$
 \begin{equation}\label{eq:Junip}
-J^T_{\mathrm{unip}}(f)=\mathrm{vol}\bigl(G(\Q)\backslash\GA\bigr)f(1)
+J^T_{\mathrm{unip}}(f)=\vol\bigl(G(\Q)\backslash\GA\bigr)f(1)
 +c_k\,\hat\Phi_f(0)\,T+\mathop{\mathrm{FP}}_{s=1}Z(f,s).
 \end{equation}
 Here $Z(f,s)$, absolutely convergent for $\mathrm{Re}\,s>1$, extends to a
@@ -470,7 +516,7 @@ $\mathrm{FP}_{s=1}$ denotes the constant term of the Laurent expansion.
 In particular
 \[
 J_{\mathcal O_z}(f)=J_{\mathrm{unip}}(f_z),\qquad
-J_{\mathrm{unip}}(f)=\mathrm{vol}\bigl(G(\Q)\backslash\GA\bigr)f(1)
+J_{\mathrm{unip}}(f)=\vol\bigl(G(\Q)\backslash\GA\bigr)f(1)
 +\mathop{\mathrm{FP}}_{s=1}Z(f,s).
 \]
 \end{proposition}
@@ -507,7 +553,7 @@ N(\A)\times A(\Q)\backslash A(\A)\times\overline{K_0}$ gives, with
 $G(t)=|t|^{-2}\sum_{\nu\in k^\times}\Phi_f(t^{-2}\nu)$ and
 $\delta_B(a)^{-1}C=\hat\Phi_f(0)$ after the $\tilde k$-integration,
 \[
-J^T_{\mathrm{unip}}(f)=\mathrm{vol}\bigl(G(\Q)\backslash\GA\bigr)f(1)
+J^T_{\mathrm{unip}}(f)=\vol\bigl(G(\Q)\backslash\GA\bigr)f(1)
 +\int_{|t|\le e^T}G(t)\,d^\times t+\int_{|t|>e^T}\bigl(G(t)-\hat\Phi_f(0)
 \bigr)\,d^\times t.
 \]
@@ -537,7 +583,7 @@ $\hat\Phi_f(0)$ (Lemma~\ref{lem:JA-central}).
 \begin{example}\label{ex:unip-Q}
 Let $k=\Q$ and $\Phi=\Phi_\infty\otimes\mathbf 1_{\hat\Z}$ with
 $\Phi_\infty(y)=e^{-\pi y^2}$, so $\hat\Phi(0)=1$, and take $d^\times t$
-with $\mathrm{vol}(\hat\Z^\times)=1$, so $c_\Q=1$. Representing
+with $\vol(\hat\Z^\times)=1$, so $c_\Q=1$. Representing
 $\Q^\times\backslash\A^\times$ by $\R_{>0}\times\hat\Z^\times$,
 $Z(s)=\int_0^\infty u^{-2s}\sum_{\nu\ne0}e^{-\pi\nu^2/u^4}\,du/u=
 \zeta(s)M(s)$ with $M(s)=\int_0^\infty e^{-\pi w^2}w^{s-1}dw=
@@ -552,7 +598,7 @@ squarefree, each contributing $m^{-s}M(s)\zeta(2s)$, and
 $\sum_m m^{-s}=\zeta(s)/\zeta(2s)$. The check script computes the
 truncated integrals of the proof of Proposition~\ref{prop:central} at
 $T=-0.3,0,0.5,1.2$ and finds that
-$J^T_{\mathrm{unip}}-\mathrm{vol}\cdot f(1)-T$ equals this constant to
+$J^T_{\mathrm{unip}}-\vol\cdot f(1)-T$ equals this constant to
 $14$ digits.
 \end{example}
 
@@ -567,7 +613,7 @@ classes with finitely many characteristic polynomials. The
 $SL(2,k)$-classes with a given regular elliptic characteristic polynomial,
 splitting field $E$, form a torsor under $k^\times/N_{E/k}E^\times$,
 which injects into $\bigoplus_vk_v^\times/N E_v^\times$ by the Hasse
-norm theorem~\cite{CF}. Let $v$ be a finite place outside a finite set,
+norm theorem~\cite{CF67}. Let $v$ be a finite place outside a finite set,
 where $f_v=e_v$, $E_v/k_v$ is unramified and $\mu$ is a unit with
 $|D(\mu)|_v=1$. If $v$ splits in $E$, the local class is unique. If $v$
 is inert, an element $\gamma\in K_v$ with the characteristic polynomial
@@ -585,6 +631,10 @@ and~\ref{prop:central}. (c) follows from (a) and (b).
 \end{proof}
 
 \subsection{Local distributions}\label{sec:local-dist}
+
+The global terms are now rewritten as local distributions on a finite
+product of local covers. This subsection defines these distributions.
+
 
 \paragraph{Test functions.} Let $S$ be a finite set of places of $\Q$
 containing $\infty$ and $2$, and let $S_k$ be the set of places of $k$
@@ -610,7 +660,7 @@ $e_v((k,\zeta)_\sigma)=\zeta$ for $k\in K_v$, $f(\gamma)=f_S(\gamma_S)$
 when $\gamma\in K_v$ for all $v\notin S_k$.
 
 Arthur's spaces of almost compactly supported and moderate
-functions~\cite{A9} coincide with $\mathcal H$ for $G$, because $A_G=1$.
+functions~\cite{Ar88b} coincide with $\mathcal H$ for $G$, because $A_G=1$.
 For $A$ they do not: $\mathfrak a_A=\mathfrak a\ne0$, and a function that
 is compactly supported on each fiber of $H$ need not be compactly
 supported. This matters in Section~\ref{sec:IAgamma}.
@@ -653,6 +703,33 @@ As for Lemma~\ref{lem:height-ineq}, at one place: $|\det(e_2x;e_2wx)|_v
 =|-1|_v=1$ gives $v_{A,v}\ge0$, and $H_v(n(y))=0$, $e_2wn(y)=(1,y)$. The
 global identity is $H=\sum_vH_v$.
 \end{proof}
+
+% [Claude] Example added in the style-guide pass (November 2026); see
+% Stage 8 of ../revision_log.md. Checked by checks/examples_n2_check.py.
+\begin{example}\label{ex:JA-hyp-p}
+Let $k=\Q$, let $p$ be an odd prime in $S$ with $\psi_p$ unramified, and
+let $f_p=e_p$. Take $\gamma=(a(t),1)$ with $t\in\Z_p^\times$ and
+$t^2\ne1$, and put $p^{-m}=|1-t^{-2}|_p$. For $x=n(y)k$ with $k\in K_p$
+the element $x^{-1}\gamma x$ is conjugate under $K_p^*$ to
+\[
+(n(y),1)^{-1}(a(t),1)(n(y),1)=\bigl(a(t)\,n((1-t^{-2})y),1\bigr).
+\]
+This element lies in $K_p^*$ when $|y|_p\le p^m$, and outside
+$\overline{K_p}$ otherwise. Since $|D(\gamma)|_p^{1/2}=|t-t^{-1}|_p=
+p^{-m}$ and $\Z_p$ has volume $1$,
+\[
+J_G(\gamma,e_p)=p^{-m}\cdot p^m=1.
+\]
+By Lemma~\ref{lem:weight-local}, $v_{A,p}(n(y)k)=\log\max(1,|y|_p)$, so
+\[
+J_A(\gamma,e_p)=p^{-m}\int_{|y|_p\le p^m}\log\max(1,|y|_p)\,dy
+=\Bigl(m-\frac{1-p^{-m}}{p-1}\Bigr)\log p .
+\]
+If $t^2\not\equiv1\pmod p$, then $m=0$ and $J_A(\gamma,e_p)=0$. This is
+the vanishing of the weight on the support of the integrand that is used
+after Theorem~\ref{thm:fine}. For $p=3$ and $t=2$, $1-t^{-2}=\frac34$, so
+$m=1$ and $J_A(\gamma,e_3)=\frac23\log3$.
+\end{example}
 
 \begin{lemma}\label{lem:JA-central}
 Let $f_S=\bigotimes_{v\in S_k}f_v$, $z\in\{\pm1\}$, and let
@@ -706,7 +783,7 @@ A(k_v)\times K_v$ with measure $\tfrac12\delta_B(a)^{-1}da\,dk$, and
 $a(t)^{-1}n(\xi)a(t)=n(t^{-2}\xi)$; substitute $t\mapsto t^{-1}$.
 \end{proof}
 
-Lemma~\ref{lem:JA-central}(b) is Arthur's definition~\cite[(8.1)]{A7} of
+Lemma~\ref{lem:JA-central}(b) is Arthur's definition~\cite[(8.1)]{Ar88a} of
 $J_M(\gamma,f)$ at a non-regular point, as the limit of
 $\sum_{L\in\mathcal L(M)}r_M^L(\gamma,a)J_L(a\gamma,f)$, specialized to
 $M=A$, $\gamma=z$: $r^A_A=1$, and $r^G_A(1,a)$ is the function $r(t)$
@@ -714,7 +791,32 @@ above (Remark~\ref{rem:alpha}). The term $L=G$ is present because the
 class induced from $1\in A$ to $G$ is the regular unipotent class; without
 it the limit diverges, as~(b) shows.
 
+% [Claude] Example added in the style-guide pass (November 2026); see
+% Stage 8 of ../revision_log.md. Checked by checks/examples_n2_check.py.
+\begin{example}\label{ex:JA-central-p}
+Let $k=\Q$, let $p$ be an odd prime in $S$ with $\psi_p$ unramified, and
+let $f_p=e_p$. For $z=\pm1$ the element $z\,(n(y),1)$ lies in $K_p^*$
+exactly when $y\in\Z_p$, and conjugation by $\overline{K_p}$ preserves
+$K_p^*$. Hence $\Phi_p=\mathbf 1_{\Z_p}$ and $\hat\Phi_p(0)=1$. In the
+formula of Lemma~\ref{lem:JA-central}(b) the term of $v=p$ is
+\[
+\int_{\Z_p}\log|2y|_p\,dy=-\log p\sum_{j\ge1}j\,(p^{-j}-p^{-j-1})
+=-\frac{\log p}{p-1},
+\]
+multiplied by $\prod_{w\ne p}\hat\Phi_w(0)$. For $p=3$ it is
+$-\frac12\log3$. So at a central element the unit element contributes a
+nonzero term, while at a regular element $a(t)$ with
+$t^2\not\equiv1\pmod p$ it contributes nothing
+(Example~\ref{ex:JA-hyp-p}).
+\end{example}
+
+
 \subsection{The fine expansion}\label{sec:fine}
+
+This subsection states the fine geometric expansion. It writes each
+term of the coarse expansion through local distributions with global
+coefficients.
+
 
 For $S$ as above let $\mathcal U_S$ be the set of $(G,S)$-equivalence
 classes of unipotent elements of $G(\Q)$, that is, the classes
@@ -734,7 +836,7 @@ measures giving $K_v$, $A(\OO_v)$ and $T_\mu(\OO_v)$ volume $1$, and global
 measures that are products of these with the measures at $S_k$; the
 volumes below are taken with respect to them.
 
-\begin{theorem}[Arthur~{\cite[Thm.~8.1]{A12}}; Li~\cite{LiI} for
+\begin{theorem}[Arthur~{\cite[Thm.~8.1]{Ar86}}; Li~\cite{Li14a} for
 covers]\label{thm:fine}
 Let $f_S\in\mathcal H(\overline{G(\Q_S)})$ and $f=f_S\otimes e^S$. If
 $S$ is large enough (depending on the support of $f_S$), then:
@@ -744,13 +846,13 @@ $S$ is large enough (depending on the support of $f_S$), then:
   J_{\mathcal O_z}(f)=a^G(S,1)f_S(z)+\sum_{\xi\in k_S^\times/k_S^{\times2}}
   a^G(S,u_\xi)\,J_G(z\,u_\xi,f_S)+\tfrac12\,a^A(S,1)\,J_A(z,f_S),
   \]
-  with $a^G(S,1)=\mathrm{vol}(G(\Q)\backslash\GA)$, $a^A(S,1)=c_k$, and
+  with $a^G(S,1)=\vol(G(\Q)\backslash\GA)$, $a^A(S,1)=c_k$, and
   $J_A(z,f_S)$ as in Lemma~\ref{lem:JA-central}(b); the coefficients
-  $a^G(S,u_\xi)$ are those of~\cite{A12,LiI}, and they are computed in
+  $a^G(S,u_\xi)$ are those of~\cite{Ar86,Li14a}, and they are computed in
   Proposition~\ref{prop:unipotent};
 \item for $\mathcal O$ elliptic with $\mu\in\mathcal O$,
   $J_{\mathcal O}(f)=a^G(S,\mu)J_G(\mu_S,f_S)$ with
-  $a^G(S,\mu)=\mathrm{vol}(T_\mu(\Q)\backslash T_\mu(\A))$;
+  $a^G(S,\mu)=\vol(T_\mu(\Q)\backslash T_\mu(\A))$;
 \item for $\mathcal O$ hyperbolic with $\mu=a(t)\in\mathcal O$,
   $J_{\mathcal O}(f)=a^A(S,\mu)J_A(\mu_S,f_S)$ with $a^A(S,\mu)=c_k$.
 \end{enumerate}
@@ -792,14 +894,14 @@ Lebesgue measure $dX$ on $\mathfrak a$, for which $\mathfrak
 a/\Z\alpha^\vee$ has volume $d$; Arthur normalizes it to volume $1$. With
 Arthur's normalization, $\theta_B(\lambda)=\lambda(\alpha^\vee)$, the
 weight $v_A$ and the function $r_A^G$ are divided by $d$, and
-$\mathrm{vol}(A(\Q)\backslash A(\A)^1)$ is multiplied by $d$; the products
+$\vol(A(\Q)\backslash A(\A)^1)$ is multiplied by $d$; the products
 in~\eqref{eq:JT-hyp} and Theorem~\ref{thm:fine} do not change. With
 $\theta_P(\lambda)$ in our normalization, Arthur's
 $r^G_A(1,a)=\lim_{\lambda\to0}\sum_{P\in\mathcal P(A)}r_P(\lambda,1,a)
-\theta_P(\lambda)^{-1}$~\cite[\S3]{A7} with $r_P(\lambda,1,a)=
+\theta_P(\lambda)^{-1}$~\cite[\S3]{Ar88a} with $r_P(\lambda,1,a)=
 |a^\beta-a^{-\beta}|^{\lambda(\beta^\vee)/2}$ evaluates to $r(t)$ for
 $a=a(t)$, $t\in\Q_S^\times$. We have checked this only for the formula
-of~\cite{A7} as quoted in \texttt{book7d.tex}, not against the general
+of~\cite{Ar88a} as quoted in \texttt{book7d.tex}, not against the general
 definition of the exponents $\rho(\beta,u)$ there. The independent check is
 that the limit in Lemma~\ref{lem:JA-central}(b) exists. The trace formula
 of this paper does not depend on the comparison:
@@ -811,10 +913,14 @@ $S_k$-integers is principal.
 
 \subsection{Status of the results}\label{sec:status4}
 
+This subsection lists the statements of Section~\ref{sec:geometric}
+that rest on citation or on numerical checks.
+
+
 \begin{remarkrev}\label{rem:sec4-status}
 \emph{What rests on citation.} Theorem~\ref{thm:coarse} and
 Propositions~\ref{prop:hyperbolic}--\ref{prop:central} are proved here.
-Theorem~\ref{thm:fine}(a) is stated here as taken from~\cite{A12,LiI}.
+Theorem~\ref{thm:fine}(a) is stated here as taken from~\cite{Ar86,Li14a}.
 It is derived from Proposition~\ref{prop:central} in
 Proposition~\ref{prop:unipotent}, which also computes the coefficients
 $a^G(S,u_\xi)$, when the ring of $S_k$-integers is principal. (Grouping
@@ -839,4 +945,6 @@ the conjugation identities used there (symbolically);
 Lemma~\ref{lem:JA-central}(b) at $v=\R$ (quadrature) and $v=\Q_3$
 (exactly), including the divergence without $r(t)$; the symmetry
 $J_A(\mu^{-1})=J_A(\mu)$ at $\R$; and Example~\ref{ex:unip-Q}.
+The script \texttt{checks/examples\_n2\_check.py} checks
+Examples~\ref{ex:trunc-Q}, \ref{ex:JA-hyp-p} and~\ref{ex:JA-central-p}.
 \end{remarkrev}

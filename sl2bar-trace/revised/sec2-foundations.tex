@@ -48,6 +48,10 @@ for general $n$ is listed in Remark~\ref{rem:general-n}.
 
 \subsection*{Notation}
 
+This subsection fixes the notation for number fields, places and the
+quadratic Hilbert symbol that is used throughout the paper.
+
+
 Let $k$ be a number field. (For $n=2$ the hypothesis
 $\mu_n\subset k$ of the 1995 notes always holds, and $k$ may have real
 places.) Let $\Sigma_k$ be the set of places of $k$, $\Sigma_k^\infty$
@@ -61,7 +65,7 @@ valuation, so $\ord(\varpi)=1$ and $|\varpi|=q^{-1}$. We call $v$
 are normalized; at a complex place $|z|_v=z\bar z$.
 
 Let $(a,b)=(a,b)_v$ be the quadratic Hilbert symbol of
-$F=k_v$~\cite{W1,Se}. We use only the following properties:
+$F=k_v$~\cite{We74,Se73}. We use only the following properties:
 \begin{enumerate}[label=(H\arabic*)]
 \item\label{H1} $(\cdot,\cdot)$ is bimultiplicative and symmetric,
   with values $\pm1$; hence $(a^{-1},b)=(a,b)$.
@@ -97,7 +101,7 @@ $\beta=\beta_v\colon SL(2,F)\times SL(2,F)\to\mu_2$ by
 \end{equation}
 At a complex place $\beta\equiv1$ by~\ref{H3}.
 
-\begin{lemma}[Kubota~\cite{K1}, Moore~\cite{M}]\label{lem:kubota}
+\begin{lemma}[Kubota~\cite{Ku67}, Moore~\cite{Mo68}]\label{lem:kubota}
 \begin{enumerate}[label=(\alph*)]
 \item $\beta$ is a Borel $2$-cocycle on $SL(2,F)$ with values in
   $\mu_2$. With the group law~\eqref{eq:law} below it defines a central
@@ -137,7 +141,7 @@ $\zeta\in\mu_2$, and multiplied by
 \end{equation}
 Since $\zeta^{-1}=\zeta$, inverses and conjugates are
 \begin{equation}\label{eq:inverse}
-(g,\zeta)^{-1}=(g^{-1},\beta(g,g^{-1})\zeta),\qquad
+(g,\zeta)^{-1}=(g^{-1},\beta(g,g^{-1})\zeta),\quad
 (g,\zeta)(h,\zeta')(g,\zeta)^{-1}
 =\bigl(ghg^{-1},\ \beta(g,h)\beta(gh,g^{-1})\beta(g,g^{-1})\zeta'\bigr).
 \end{equation}
@@ -195,7 +199,7 @@ Let $F=k_v$.
   $\overline{SL(2,F)}=SL(2,F)\times\mu_2$. If $v$ is real, $\beta\equiv1$
   on $A(\R)^0\times A(\R)^0$, so $\overline{A(\R)^0}=A(\R)^0\times\mu_2$,
   while $\overline{SO(2)}$ is connected, the nontrivial double cover of
-  the circle~\cite{Ge2}.
+  the circle~\cite{Ge76}.
 \item The center of $\overline{SL(2,F)}$ is $\overline{\{\pm1\}}$, a
   group of order $4$ in which $(-1,\zeta)^2=(1,(-1,-1)_v)$. It is cyclic
   when $(-1,-1)_v=-1$ (for example $F=\R$ or $F=\Q_2$) and is
@@ -227,7 +231,7 @@ Let $F=k_v$.
 \begin{proof}
 (a) For $n_1,n_2\in N(F)$ all three values of $x$ equal $1$.
 
-(b) This is Kubota's computation~\cite{K2}; see also~\cite{Ge2}. The
+(b) This is Kubota's computation~\cite{Ku69}; see also~\cite{Ge76}. The
 identity is also checked numerically for $F=\Q_3,\Q_5,\Q_7$, together
 with the existence of pairs in $K\times K$ with $\beta=-1$.
 
@@ -253,7 +257,7 @@ binomial series for $(1+4\varpi y)^{1/2}$; and $4\varpi\OO=
 
 (d) At a complex place $\beta\equiv1$ by~\ref{H3}. For $t_1,t_2>0$,
 $(t_1,t_2)_\R=1$ by~\ref{H3} and~(f). The statement about $SO(2)$ is
-standard~\cite{Ge2}.
+standard~\cite{Ge76}.
 
 (e) Commuting elements give commuting lifts by~(g), so
 $\overline{\{\pm1\}}$ is central; conversely, the image of a central
@@ -312,7 +316,7 @@ Example~\ref{ex:discontinuous} and~(d).
 \end{proof}
 
 \begin{proof}[Proof of Lemma~\ref{lem:kubota}]
-(a) is due to Kubota~\cite{K1}; see also~\cite{K2,Ge2}. $\beta$ is a
+(a) is due to Kubota~\cite{Ku67}; see also~\cite{Ku69,Ge76}. $\beta$ is a
 Borel function because $x(g)$ is continuous on each of the Borel sets
 $\{c\ne0\}$ and $\{c=0\}$.
 
@@ -330,8 +334,8 @@ $\beta=(a_2,c_1a_2/d_2)=1$. If $c_1=c_2=0$, all three values of $x$ are
 positive.
 
 (c) A group topology is determined by its neighborhoods of the identity,
-so there is at most one such topology. By Kubota~\cite{K1} and
-Moore~\cite{M} there is a topology $\mathcal T$ on $\overline{SL(2,F)}$
+so there is at most one such topology. By Kubota~\cite{Ku67} and
+Moore~\cite{Mo68} there is a topology $\mathcal T$ on $\overline{SL(2,F)}$
 for which it is a locally compact group and $p$ is a covering map. (For
 an arbitrary Borel cocycle on a locally compact second countable group
 this is a theorem of Mackey~\cite{Ma57}.) We show that $\mathcal T$ has
@@ -368,7 +372,7 @@ $c\ne0$, formula~\eqref{eq:beta} gives $\beta(a(t),\bar n(c))=(c,t)_v$.
 If $t$ is not a square, there are $c$ arbitrarily close to $0$ with
 $(c,t)_v=-1$, and others with $(c,t)_v=1$; but $\bar n(c)\to1$ and
 $\beta(a(t),1)=1$. For $F=\R$ and $t=-1$ this is $\beta(-1,\bar n(c))=
-\mathrm{sgn}(c)$. So $\beta$ is discontinuous at $(a(t),1)$, and
+\sgn(c)$. So $\beta$ is discontinuous at $(a(t),1)$, and
 \[
 (a(t),1)\,(\bar n(c),1)=\bigl(a(t)\bar n(c),\,(c,t)_v\bigr)
 \]
@@ -399,7 +403,7 @@ For $F=\Q_2$, Lemma~\ref{lem:local}(c) gives the splitting $k\mapsto
 (k,1)$ over $K_3$, and $\beta$ is not identically $1$ on $K_2\times K_2$.
 The cover nevertheless splits over $K_2$, by $k\mapsto(k,(c,d)_2)$ for
 $c\ne0$ and $k\mapsto(k,1)$ for $c=0$. This is the local form at $2$ of
-the classical splitting over $\Gamma_1(4)$~\cite{K2,Ge2}. We have
+the classical splitting over $\Gamma_1(4)$~\cite{Ku69,Ge76}. We have
 verified it numerically only (\texttt{checks/sec2\_n2\_check.py}), and
 the same section fails on $K_1$. Nothing below depends on it: the rest
 of the paper uses only that some $K_m$ splits at each dyadic place.
@@ -449,6 +453,11 @@ quotient map is compatible with all of them.
 
 \subsubsection{\texorpdfstring{$NAK$}{NAK} decompositions}
 
+Every element of the local cover factors as a unipotent element, a lift
+of a diagonal element and a lift of an element of the maximal compact
+subgroup. This factorization defines the height in the next subsection.
+
+
 \begin{lemma}\label{lem:NAK-local}
 $\overline{G(\Q_p)}=N(\Q_p)\cdot\overline{A(\Q_p)}\cdot\overline{K_p}$,
 with $N(\Q_p)$ embedded by $n\mapsto(n,1)$. If
@@ -475,6 +484,10 @@ is trivial on $A(\Q_p)\cap K_p$.
 
 \subsubsection{Heights}
 
+Heights measure how far an element lies from the maximal compact
+subgroup. They are used to truncate kernels in Section~\ref{sec:kernels}.
+
+
 For $g=(g_v)\in G(\Q_p)$ put $\|g\|_p=\prod_{v\mid p}\|g_v\|_v$, where
 $\|g_v\|_v=\max(|a|_v,|b|_v,|c|_v,|d|_v)$ for $v$ finite and
 $\|g_v\|_v=(|a|^2+|b|^2+|c|^2+|d|^2)^{1/2}$, raised to the power
@@ -497,7 +510,7 @@ Section~\ref{sec:chambers}.
   $\tilde a,\tilde a'\in\overline{A(\Q_p)}$.
 \item $H(\tilde n\,x\,\tilde k)=H(x)$ for $\tilde n\in\overline{N(\Q_p)}$,
   $x\in\overline{G(\Q_p)}$ and $\tilde k\in\overline{K_p}$.
-\item $|H(x)|\ll1+\log\|x\|_p$ for $x\in\overline{G(\Q_p)}$~\cite{A2}.
+\item $|H(x)|\ll1+\log\|x\|_p$ for $x\in\overline{G(\Q_p)}$~\cite{Ar78}.
 \end{enumerate}
 \end{lemma}
 
@@ -508,6 +521,11 @@ Lemma~\ref{lem:NAK-global}.
 % N-invariant and right K-invariant.
 
 \subsubsection{Characteristic functions of Weyl chambers}\label{sec:chambers}
+
+This subsection identifies the space $\mathfrak a$ with $\R$ and
+records the characteristic functions of Arthur that enter the truncation.
+In rank one they are elementary.
+
 
 Let $P_0=B$; the standard parabolic subgroups are $B$ and $G$. For a
 standard $P=MN_P$ let $A_P$ be the split component of the center of $M$
@@ -536,7 +554,7 @@ Let $\mathfrak a^+=\{X\in\mathfrak a\mid\alpha(X)>0\}$ and
 $(\mathfrak a^*)^+=\{\Lambda\in\mathfrak a^*\mid\Lambda(\varpi)>0\}$,
 with characteristic functions $\tau_B$ and $\hat\tau_B$, and set
 $\tau_G=\hat\tau_G=1$. For standard $P_1\subset P_2$ let
-$\tau_1^2$, $\hat\tau_1^2$ and $\sigma_1^2$ be as in~\cite{A2}. With
+$\tau_1^2$, $\hat\tau_1^2$ and $\sigma_1^2$ be as in~\cite{Ar78}. With
 $\mathfrak a\cong\R$:
 \begin{gather}
 \tau_B=\tau_B^G=\hat\tau_B=\hat\tau_B^G
@@ -549,7 +567,12 @@ $\mathfrak a\cong\R$:
 
 \subsubsection{Algebras of functions}\label{sec:functions}
 
-We follow Li~\cite{LiI,LiIV}. A representation $\pi$ of a cover is
+This subsection defines the test functions on the local cover. The
+definition uses the topology of Lemma~\ref{lem:kubota}(c), not the
+coordinates $(g,\zeta)$.
+
+
+We follow Li~\cite{Li14a,Li14b}. A representation $\pi$ of a cover is
 \emph{genuine} if $\pi(1,\zeta)=\zeta$ for $\zeta\in\mu_2$, and a
 function $f$ on the cover is \emph{anti-genuine} if
 $f(g,\zeta)=\zeta^{-1}f(g,1)$. Test functions are anti-genuine. Then
@@ -601,14 +624,18 @@ bi-$K_p^*$-invariant.
 
 \subsubsection{Measures}\label{sec:measures-local}
 
+This subsection fixes the Haar measures on the local groups and on their
+covers.
+
+
 Let $dk$ be the Haar measure on $K_p$ of total volume $1$. Fix a
 nontrivial additive character $\psi_v$ of $k_v$ for each $v$, and let
 $dn$ be the measure on $N(\Q_p)\cong\bigoplus_{v\mid p}k_v$ that is the
 product of the self-dual measures for the $\psi_v$. Let $da$ be a Haar
 measure on $A(\Q_p)$. If $T$ is a maximal torus of $G$ over $\Q_p$, and
 $h\in G(\overline{\Q}_p)$ conjugates $T$ to $A$, let $dt$ be the
-pull-back of $da$ as in~\cite{R}; stably conjugate tori get compatible
-measures as in~\cite{R}. Put
+pull-back of $da$ as in~\cite{Ro90}; stably conjugate tori get compatible
+measures as in~\cite{Ro90}. Put
 \[
 \delta_B(a(t))=|\alpha(a(t))|_p=|t|_p^2.
 \]
@@ -620,7 +647,7 @@ Normalize the Haar measure $dg$ on $G(\Q_p)$ by
 \end{equation}
 The two expressions agree because $dg$ is invariant under
 $g\mapsto g^{-1}$ (as $G$ is unimodular) and $(nak)^{-1}=k^{-1}a^{-1}
-n^{-1}$; see~\cite[Ch.~VIII]{Kn} for the real case.
+n^{-1}$; see~\cite[Ch.~VIII]{Kn02} for the real case.
 
 On a cover we use $d\tilde g=dg\,d\zeta$, where $d\zeta$ gives
 $\mu_2$ total volume~$1$. Then $\overline{K_p}$ has volume $1$, and
@@ -635,7 +662,7 @@ $e_p$ of~\eqref{eq:unit} is idempotent: for $x=\tilde k\in K_p^*$,
 The adelic cover is not the cover defined by $\prod_v\beta_v$: that
 product does not converge, because $\beta_v$ is not trivial on
 $K_v\times K_v$ (Lemma~\ref{lem:local}(b)). The standard
-remedy~\cite{K2,Ge2,KP}, used here, is to correct $\beta_v$ by the
+remedy~\cite{Ku69,Ge76,KP84}, used here, is to correct $\beta_v$ by the
 coboundary of $\kappa_v$. This choice also fixes the splitting over
 $G(\Q)$.
 
@@ -668,7 +695,7 @@ $\overline{SL(2,k_v)}$ with respect to the subgroups $K_v^*$, divided by
 $\{(\zeta_v)\in\bigoplus_v\mu_2\mid\prod_v\zeta_v=1\}$. It is a
 \emph{quotient} of the restricted product, not a subgroup. Factorization
 of genuine representations of $\overline{G(\A)}$ (and of
-$\overline{A(\A)}$ in Section~3) refers to this quotient. Group law,
+$\overline{A(\A)}$ in Section~\ref{sec:rank0}) refers to this quotient. Group law,
 inverses and conjugation are given by~\eqref{eq:law}
 and~\eqref{eq:inverse} with $\sigma_\A$ in place of $\beta$. For
 $H\subset G(\A)$ put $\overline H=p^{-1}(H)$.
@@ -761,7 +788,7 @@ From now on we identify $G(\Q)$ with its image under
 Lemma~\ref{lem:global}(a), and $N(\A)$ with $N(\A)\times1$. By~(b), the
 two identifications agree on $N(\Q)$. The splitting over $B(\Q)$ by
 $b\mapsto(b,1)$ is what the constant terms, Eisenstein series and the
-truncation operator of Sections~4 and~5 use.
+truncation operator of Sections~\ref{sec:geometric} and~\ref{sec:spectral} use.
 
 \begin{example}\label{ex:jacobi}
 Let $k=\Q$ and $\gamma=\begin{pmatrix}a&b\\c&d\end{pmatrix}\in SL(2,\Z)$
@@ -772,7 +799,7 @@ $p\mid c$, $(c,d)_p=\bigl(\tfrac dp\bigr)^{\ord_p(c)}$ by~\ref{H3}. So
 c'=\text{the odd part of }|c|,
 \]
 a Jacobi symbol: the factor behind the theta multiplier on
-$\Gamma_0(4)$~\cite{K2,Ge2}. The script checks this on random elements
+$\Gamma_0(4)$~\cite{Ku69,Ge76}. The script checks this on random elements
 of $SL(2,\Z)$.
 \end{example}
 
@@ -780,8 +807,8 @@ Let $K_0=\prod_vK_v$ be the standard maximal compact subgroup of
 $G(\A)$, with $K_v$ as in Section~\ref{sec:local}; $K_f$ and $K_\infty$
 denote its finite and archimedean parts.
 
-\begin{lemma}[Strong approximation; compare~{\cite[Prop.~5]{K2}},
-\cite{Ge2}]\label{lem:strong}
+\begin{lemma}[Strong approximation; compare~{\cite[Prop.~5]{Ku69}},
+\cite{Ge76}]\label{lem:strong}
 Let $K_f$ and $K_f^*$ be as in Lemma~\ref{lem:global}(c), and put
 $\Gamma=G(\Q)\cap K_f$, a congruence subgroup of $SL(2,\OO_k)$, viewed in
 $G(\R)=SL(2,k\otimes\R)$. For $\gamma\in\Gamma$ let $\tilde k_\gamma\in K_f^*$ be the lift of
@@ -812,6 +839,10 @@ of $G(\A)$ with disjoint supports commute: $\sigma_v(1,h)=\sigma_v(h,1)=1$.
 
 \subsubsection{\texorpdfstring{$NAK$}{NAK} decompositions}
 
+The local decompositions of Section~\ref{sec:local} assemble into an
+adelic one, which defines the global height.
+
+
 % [Claude] Part (a) follows the corrected global lemma of book1.tex.
 \begin{lemma}\label{lem:NAK-global}
 \begin{enumerate}[label=(\alph*)]
@@ -837,6 +868,10 @@ $H(\gamma x)=\log|s|_{\A_k}+H(x)=H(x)$ by the product formula.
 
 \subsubsection{Heights}
 
+The global norm is the product of the local norms. Its elementary
+properties are recorded here for later use.
+
+
 For $g=(g_v)\in G(\A)$ put $\|g\|=\prod_v\|g_v\|_v$ and
 $\|(g,\zeta)\|=\|g\|$.
 
@@ -858,6 +893,10 @@ order and sign. The cover does not change $\|\cdot\|$.
 
 \subsubsection{Algebras of functions}
 
+The global test functions are products of local ones, almost all of
+them equal to the unit element.
+
+
 A function on $\overline{G(\A)}$ is \emph{anti-genuine} if
 $f(g,\zeta)=\zeta^{-1}f(g,1)$. Let $\mathcal H(\overline{G(\A)})$ be the
 span of the functions $f=\bigotimes_vf_v$, $f_v\in
@@ -872,15 +911,19 @@ archimedean variables.
 
 \subsubsection{Measures}
 
+This subsection fixes the global measures. With them the quotient
+$G(\Q)\backslash\overline{G(\A)}$ has volume $1$.
+
+
 Let $dk=\prod_vdk_v$ on $K_0$. Let $dg=\prod_vdg_v$ be the Tamagawa
-measure on $G(\A)$~\cite{W2}, with $dg_v$ built from the self-dual
+measure on $G(\A)$~\cite{We82}, with $dg_v$ built from the self-dual
 measures of a fixed nontrivial character $\psi=\prod\psi_v$ of
-$\A_k/k$; then $\mathrm{vol}(G(\Q)\backslash G(\A))=1$. For a maximal
+$\A_k/k$; then $\vol(G(\Q)\backslash G(\A))=1$. For a maximal
 torus $T$ of $G$ over $\Q$ let $dt$ be the Tamagawa measure on $T(\A)$,
 written $da$ for $T=A$, and let $dn$ be the product measure on $N(\A)$,
-for which $\mathrm{vol}(N(\Q)\backslash N(\A))=1$. On the cover put
-$d\tilde g=dg\,d\zeta$ with $\mathrm{vol}(\mu_2)=1$, so
-$\mathrm{vol}(G(\Q)\backslash\overline{G(\A)})=1$.
+for which $\vol(N(\Q)\backslash N(\A))=1$. On the cover put
+$d\tilde g=dg\,d\zeta$ with $\vol(\mu_2)=1$, so
+$\vol(G(\Q)\backslash\overline{G(\A)})=1$.
 
 \subsection{The double cover of \texorpdfstring{$GL(2)$}{GL(2)}}\label{sec:gl2}
 
@@ -895,7 +938,7 @@ For $g_1,g_2\in GL(2,F)$, with $x(g)$ defined as before, put
 \sigma(g_1,g_2)=\Bigl(\frac{x(g_1g_2)}{x(g_1)},\
 \frac{x(g_1g_2)}{x(g_2)\det g_1}\Bigr)_v,
 \end{equation}
-the $n=2$ case of Kubota's cocycle on $GL(2)$~\cite{K2,Ge2}. Let
+the $n=2$ case of Kubota's cocycle on $GL(2)$~\cite{Ku69,Ge76}. Let
 $\overline{GL(2,F)}$ be the corresponding extension by $\mu_2$.
 
 \begin{lemma}\label{lem:gl2}
@@ -908,14 +951,14 @@ $\overline{GL(2,F)}$ be the corresponding extension by $\mu_2$.
   $0<|c|_v<1$ and $\kappa'(k)=1$ otherwise. On $SL(2,\OO)$,
   $\kappa'=\kappa$.
 \item Conjugation by any lift of $h\in GL(2,F)$ defines an automorphism
-  $\mathrm{Ad}(h)$ of $\overline{SL(2,F)}$ lifting conjugation by $h$, and
-  $h\mapsto\mathrm{Ad}(h)$ is an action of $GL(2,F)$. If $h$ commutes with
+  $\Ad(h)$ of $\overline{SL(2,F)}$ lifting conjugation by $h$, and
+  $h\mapsto\Ad(h)$ is an action of $GL(2,F)$. If $h$ commutes with
   $\gamma\in SL(2,F)$, then
   \begin{equation}\label{eq:gl2-commutator}
-  \mathrm{Ad}(h)(\gamma,\zeta)
+  \Ad(h)(\gamma,\zeta)
   =\Bigl(\gamma,\ \Bigl(\frac{x(h\gamma)}{x(h)},\ \det h\Bigr)_v\,\zeta\Bigr).
   \end{equation}
-  In particular $\mathrm{Ad}(\diag(y,1))(a(t),\zeta)=(a(t),(y,t)_v\zeta)$,
+  In particular $\Ad(\diag(y,1))(a(t),\zeta)=(a(t),(y,t)_v\zeta)$,
   so the preimage of the diagonal torus of $GL(2,F)$ is not abelian
   unless $F=\C$. Likewise $E^\times\supset T_\theta$ (embedded as
   $\{\begin{pmatrix}a&b\theta\\b&a\end{pmatrix}\}$) acts on
@@ -926,14 +969,14 @@ $\overline{GL(2,F)}$ be the corresponding extension by $\mu_2$.
 \begin{proof}
 (a) On $SL(2)$, $\det g_1=1$ and~\eqref{eq:sigma-gl2}
 becomes~\eqref{eq:beta}. The cocycle identity is due to
-Kubota~\cite{K2}; we have also checked it numerically.
+Kubota~\cite{Ku69}; we have also checked it numerically.
 
 (b) We have checked this numerically for $F=\Q_3,\Q_5,\Q_7$; see
 Remark~\ref{rem:verified}.
 
 (c) Since $\mu_2$ is central, conjugation by $(h,\zeta)$ does not depend
 on $\zeta$, and it preserves $p^{-1}(SL(2,F))$. If $h\gamma=\gamma h$,
-then $\mathrm{Ad}(h)(\gamma,\zeta)=(\gamma,\zeta\,\sigma(h,\gamma)
+then $\Ad(h)(\gamma,\zeta)=(\gamma,\zeta\,\sigma(h,\gamma)
 \sigma(\gamma,h))$. With $x_3=x(h\gamma)$, bimultiplicativity gives
 $\sigma(h,\gamma)=(x_3/x(h),x_3/x(\gamma))\,(x_3/x(h),\det h)$, and
 $\sigma(\gamma,h)=(x_3/x(\gamma),x_3/x(h))$ since $\det\gamma=1$. By
@@ -951,9 +994,9 @@ $GL(2,F)$ twisted by this sign.
 \begin{remarkrev}\label{rem:gl2-twist}
 The cocycle $\sigma'(g_1,g_2)=\sigma(g_1,g_2)\,(\det g_1,\det g_2)_v$ is
 another double cover of $GL(2,F)$ with the same restriction to $SL(2,F)$;
-these are the two Kazhdan--Patterson covers for $n=2$~\cite{KP}. We fix
+these are the two Kazhdan--Patterson covers for $n=2$~\cite{KP84}. We fix
 $\sigma$. Section~\ref{sec:stable} uses the cover of $GL(2,F)$ only
-through the automorphisms $\mathrm{Ad}(h)$ of $\overline{SL(2,F)}$, and
+through the automorphisms $\Ad(h)$ of $\overline{SL(2,F)}$, and
 these are the same for $\sigma$ and $\sigma'$: an automorphism of
 $\overline{SL(2,F)}$ is determined by the automorphism of $SL(2,F)$ that
 it induces (Lemma~\ref{lem:Ad}(a)). In particular the commutator
@@ -977,13 +1020,17 @@ convention $R(f)$ vanishes on $L^2_{\mathrm{gen}}$ unless $n\mid2$.
 
 \subsection{Status of the results}\label{sec:status2}
 
+This subsection lists the statements of Section~\ref{sec:background}
+that rest on citation or on numerical checks.
+
+
 \begin{remarkrev}\label{rem:sec2-status}
 \emph{What rests on citation.} Taken from the literature:
 Lemma~\ref{lem:kubota}(a) and the existence of the topological covering
-group in Lemma~\ref{lem:kubota}(c)~\cite{K1,M}; Lemma~\ref{lem:local}(b)
-and the cocycle identity for~\eqref{eq:sigma-gl2}~\cite{K2,Ge2}; the
+group in Lemma~\ref{lem:kubota}(c)~\cite{Ku67,Mo68}; Lemma~\ref{lem:local}(b)
+and the cocycle identity for~\eqref{eq:sigma-gl2}~\cite{Ku69,Ge76}; the
 statement on $\overline{SO(2)}$ in Lemma~\ref{lem:local}(d);
-Lemma~\ref{lem:H}(c)~\cite{A2}; strong approximation in
+Lemma~\ref{lem:H}(c)~\cite{Ar78}; strong approximation in
 Lemma~\ref{lem:strong}; and the facts about Tamagawa measures in
 Section~\ref{sec:global}. Lemma~\ref{lem:gl2}(b) and
 Remark~\ref{rem:dyadic} are supported by numerical checks only.

@@ -25,15 +25,15 @@
 
 This section computes the spectral side of the trace formula for $\GA$,
 class by class, and assembles the trace formula. The general theory is
-due to Langlands~\cite{L2} and Arthur~\cite{A3,A14} for connected
-reductive groups, and to M\oe glin--Waldspurger~\cite{MW2} and
-Li~\cite{LiIII} for covering groups; as in Section~\ref{sec:geometric},
+due to Langlands~\cite{La76} and Arthur~\cite{Ar80,Ar82} for connected
+reductive groups, and to M\oe glin--Waldspurger~\cite{MW95} and
+Li~\cite{Li13} for covering groups; as in Section~\ref{sec:geometric},
 we state it for the double cover of $G=\Res_{k/\Q}SL(2)$ and make the
-terms explicit. Three things are new compared with the 1995 notes. The
+terms explicit. Three features of the double cover stand out. The
 residual spectrum is not empty: it consists of one even Weil
 representation for each class in $k^\times/k^{\times2}$
 (Theorem~\ref{thm:residual}). These classes are exactly the cuspidal
-data $(A,\mu)$ with $\mu^w=\mu$, which the 1995 notes omit
+data $(A,\mu)$ with $\mu^w=\mu$
 (Lemma~\ref{lem:w-action}, Theorem~\ref{thm:Jchi}(c)). And the operator
 $M_B^T$ is $2T-M^{-1}M'$ (Theorem~\ref{thm:Jchi}), whose $T$-term we check
 against the geometric side (Proposition~\ref{prop:Tcoef}). The
@@ -48,7 +48,7 @@ character $\mu$ of the cover of $A$ are related as follows.
  & \xrightarrow{\ \text{sum over }B(\Q)\backslash G(\Q)\ }
  & E(x,\varphi,\lambda)\\[6pt]
  & & \Big\downarrow{\scriptstyle\ \text{constant term}}\\[6pt]
-\theta_\varphi=\mathrm{Res}_{\lambda=1/2}E(x,\varphi,\lambda)\in V_b
+\theta_\varphi=\Resid_{\lambda=1/2}E(x,\varphi,\lambda)\in V_b
  & \xleftarrow{\ \text{pole at }\lambda=\frac12\ (\mu^w=\mu)\ }
  & \varphi_\lambda+(M(w,\lambda)\varphi)_{-\lambda}
 \end{array}
@@ -87,12 +87,16 @@ since $\delta_B=e^{2H}$, and $\lambda\in i\R$ is written $\lambda=it$ with
 the measure $dt/2\pi$, dual to $dX$. For $k=\Q$ and $x=n(u)a(t)k$ the
 point $x\cdot i$ of the upper half plane has imaginary part $y=t^2$, so
 $e^{(\lambda+1)H(x)}=y^{s}$ with $s=(\lambda+1)/2$. We write $c_k=
-\mathrm{vol}(A(\Q)\backslash A(\A)^1)$ as in Section~\ref{sec:coarse}, and
+\vol(A(\Q)\backslash A(\A)^1)$ as in Section~\ref{sec:coarse}, and
 $X_A=A(\Q)\backslash\overline{A(\A)^1}$ and $\Pi_{\mathrm{aut}}(X_A)$ as
 in Section~\ref{sec:torus-cover}; $\Pi_u(H)$ is the set of irreducible
 unitary genuine representations of $H$, as there.
 
 \subsection{The spectral decomposition and cuspidal data}\label{sec:decomp}
+
+This subsection decomposes the space of genuine square-integrable
+functions and sorts it by cuspidal data.
+
 
 \begin{lemma}\label{lem:spec-decomp}
 $L^2_{\mathrm{gen}}=L^2_{\mathrm{disc}}\oplus L^2_{\mathrm{cont}}$, where
@@ -111,9 +115,9 @@ $L^2_{\mathrm{disc}}$.
 \begin{proof}
 By Lemma~\ref{lem:strong}, $G(\Q)\backslash\GA/K_f^*\cong
 \widetilde\Gamma\backslash\overline{G(\R)}$ with $\widetilde\Gamma$ a
-lattice, so this is Langlands' theory~\cite{L2} for
+lattice, so this is Langlands' theory~\cite{La76} for
 $\widetilde\Gamma\backslash\overline{G(\R)}$; in adelic form,
-see~\cite{MW2}, whose setting includes finite central covers. The finiteness of multiplicities in
+see~\cite{MW95}, whose setting includes finite central covers. The finiteness of multiplicities in
 $L^2_{\mathrm{disc}}$ is Harish-Chandra's finiteness theorem for
 automorphic forms.
 \end{proof}
@@ -130,7 +134,7 @@ Conversely every such family defines an element of $\Pi_u(\GA)$.
 A representation of $\GA$ is a representation of the restricted product
 of the $\overline{SL(2,k_v)}$ (with respect to the $K_v^*$) that is
 trivial on $Z_0=\{(\zeta_v)\mid\prod_v\zeta_v=1\}$
-(Section~\ref{sec:global}). Flath's theorem~\cite{F} applies to the
+(Section~\ref{sec:global}). Flath's theorem~\cite{Fl79} applies to the
 restricted product and gives $\pi\cong\bigotimes'\pi_v$. Each $\mu_2$ at
 $v$ acts by a sign $\varepsilon_v$; triviality on $Z_0$ forces all
 $\varepsilon_v$ to be equal, and genuineness forces them to be the
@@ -153,7 +157,7 @@ set of classes, $\mathcal X_G$ the classes of the $(G,\pi)$ and
 $\mathcal X_A$ those of the $(A,\mu)$; for $\chi\in\mathcal X_A$ we write
 $\mu\in\chi$ for the members of the set $\{\mu,\mu^w\}$, which has one or
 two elements. A class $\chi\in\mathcal X_A$ is \emph{unramified} if
-$\mu^w\ne\mu$, and \emph{ramified} if $\mu^w=\mu$~\cite[\S4]{A3}.
+$\mu^w\ne\mu$, and \emph{ramified} if $\mu^w=\mu$~\cite[\S4]{Ar80}.
 
 \begin{lemma}\label{lem:w-action}
 \begin{enumerate}[label=(\alph*)]
@@ -210,7 +214,7 @@ Lemma~\ref{lem:weil}(d), $\chi_\psi\cdot(b,\cdot)=\chi_{\psi_b}$.
 \end{proof}
 
 For $SL(2)$ itself the ramified classes are $(A,\mu)$ with $\mu^2=1$,
-because there $w$ acts on $A$ by inversion~\cite{LL}. For the cover,
+because there $w$ acts on $A$ by inversion~\cite{LL79}. For the cover,
 inversion is twisted by $(t,-1)$, and Weil's character absorbs the twist.
 
 \begin{example}\label{ex:ramified-Q}
@@ -243,12 +247,17 @@ orthogonal decomposition into invariant subspaces, where:
 \end{enumerate}
 \end{proposition}
 
-This is Langlands' decomposition~\cite[Ch.~7]{L2} along cuspidal
-data~\cite[Ch.~II, V]{MW2}. By Lemma~\ref{lem:w-action}(d) and
+This is Langlands' decomposition~\cite[Ch.~7]{La76} along cuspidal
+data~\cite[Ch.~II, V]{MW95}. By Lemma~\ref{lem:w-action}(d) and
 Lemma~\ref{lem:intertwining}(c) below, $L^2_{\chi,\mathrm{res}}=0$ unless
 $\chi$ is ramified.
 
 \subsection{Eisenstein series and intertwining operators}\label{sec:eisenstein}
+
+This subsection constructs the Eisenstein series and the intertwining
+operator, computes the operator at the unramified places, and identifies
+the residual spectrum.
+
 
 For $\mu\in\Pi_{\mathrm{aut}}(X_A)$ let $\mathcal H_B(\mu)$ be the space of
 genuine functions $\varphi$ on $N(\A)A(\Q)A_B(\R)^0\backslash\GA$ that are
@@ -268,7 +277,7 @@ $\varphi_\lambda(x)=\varphi(x)e^{(\lambda+1)H(x)}$, and let
 $I(\mu_\lambda)$ be the representation on $\mathcal H_B(\mu)$ given by
 $(I(\mu_\lambda,y)\varphi)_\lambda(x)=\varphi_\lambda(xy)$, and
 $I(\mu_\lambda,f)=\int_{\GA}f(y)I(\mu_\lambda,y)\,dy$. It is the induced
-representation $\mathrm{Ind}_{\overline{B(\A)}}^{\GA}(\mu\,e^{\lambda H})$
+representation $\Ind_{\overline{B(\A)}}^{\GA}(\mu\,e^{\lambda H})$
 (normalized induction), unitary for $\lambda\in i\R$. Note that
 $\varphi$ is $A_B(\R)^0$-invariant and that $\lambda$ enters only through
 $\varphi_\lambda$.
@@ -288,7 +297,7 @@ $I(\mu_\lambda)$ with $I(\mu^w_{-\lambda})$. The constant term of a
 function $\phi$ on $G(\Q)\backslash\GA$ is $\phi_B(x)=\int_{N(\Q)
 \backslash N(\A)}\phi(nx)\,dn$.
 
-\begin{theorem}[Langlands~\cite{L2}; M\oe glin--Waldspurger~\cite{MW2}
+\begin{theorem}[Langlands~\cite{La76}; M\oe glin--Waldspurger~\cite{MW95}
 for covers]\label{thm:eisenstein}
 Let $\mu\in\Pi_{\mathrm{aut}}(X_A)$ and $\varphi\in\mathcal H_B(\mu)$.
 \begin{enumerate}[label=(\alph*)]
@@ -346,7 +355,7 @@ measure.
 \item In $\mathrm{Re}\,\lambda>0$, $M(w,\lambda)$ is holomorphic unless
   $\chi^2=1$ ($\chi$ extended to $k^\times\backslash\A_k^\times$ trivially
   on $\R_{>0}$). If $\chi^2=1$, its only pole there is a simple pole at
-  $\lambda=\frac12$, with residue $\mathrm{Res}_{s=1}\zeta_k^S(s)\,
+  $\lambda=\frac12$, with residue $\Resid_{s=1}\zeta_k^S(s)\,
   \bigl(2\zeta_k^S(2)\bigr)^{-1}M_S(\tfrac12)\otimes1$, which is not $0$.
 \end{enumerate}
 \end{lemma}
@@ -402,15 +411,15 @@ For $SL(2)$ itself the same computation gives
 $L_v(\lambda,\chi_v)/L_v(\lambda+1,\chi_v)$, with the pole at
 $\lambda=1=\rho$ for $\chi=1$ (the script checks this too). On the double
 cover the variable is doubled and the character squared; this is the
-Gindikin--Karpelevich formula for the double cover~\cite{KP}; for
-general covering groups see~\cite{McN,Gao}. The factor~\eqref{eq:mS} is
-what produces the logarithmic derivative $m'/m$ in Section~6.
+Gindikin--Karpelevich formula for the double cover~\cite{KP84}; for
+general covering groups see~\cite{Mc12,Ga14}. The factor~\eqref{eq:mS} is
+what produces the logarithmic derivative $m'/m$ in Section~\ref{sec:invariant}.
 
 \paragraph{The Weil representation.} The residual spectrum consists of
 Weil representations, and to say which ones we fix a normalization. Let
 $v$ be a place of $k$ and $\psi'$ a nontrivial character of $k_v$. The
 \emph{Weil representation} $\omega_{\psi'}$ attached to $\psi'$ and the
-quadratic form $x^2$~\cite{We64,Ge2} is a genuine representation of
+quadratic form $x^2$~\cite{We64,Ge76} is a genuine representation of
 $\overline{SL(2,k_v)}$ on the Schwartz--Bruhat space $\mathcal S(k_v)$ in
 which
 \begin{equation}\label{eq:weil-rep}
@@ -513,9 +522,9 @@ $x\mapsto(\omega_{\psi'}(x)\phi)(0)$, because $\int_{k\backslash\A_k}
 \item $L^2_{\chi,\mathrm{res}}=0$ for every $\chi\in\mathcal X_A$ that is
   unramified.
 \item For $b\in k^\times$, $V_b:=L^2_{\chi_b,\mathrm{res}}$ is the closed
-  span of the residues $\theta_\varphi(x)=\mathrm{Res}_{\lambda=1/2}
+  span of the residues $\theta_\varphi(x)=\Resid_{\lambda=1/2}
   E(x,\varphi,\lambda)$, $\varphi\in\mathcal H_B(\chi_{\psi_b})$; it is
-  not $0$, and $\theta_{\varphi,B}(x)=(\mathrm{Res}_{\lambda=1/2}
+  not $0$, and $\theta_{\varphi,B}(x)=(\Resid_{\lambda=1/2}
   M(w,\lambda)\varphi)_{-1/2}(x)$, of order $e^{H(x)/2}$.
 \item $L^2_{\mathrm{res}}=\widehat\bigoplus_{b\in k^\times/k^{\times2}}V_b$,
   and each $V_b$ is irreducible. With the
@@ -544,7 +553,7 @@ for the measure $\delta_B^{-1}=e^{-2X}$, $\theta_\varphi$ is square
 integrable (its difference with the constant term is rapidly decreasing
 on a Siegel set).
 
-(c) By Gelbart~\cite{Ge2}, Gelbart and
+(c) By Gelbart~\cite{Ge76}, Gelbart and
 Piatetski-Shapiro~\cite{GPS80} and Waldspurger~\cite{Wa80},
 $L^2_{\mathrm{res}}$ is the orthogonal sum, over the classes $b'\in
 k^\times/k^{\times2}$, of the spaces $\Theta_{b'}$ of theta functions
@@ -582,13 +591,17 @@ $m^S(\mu,\lambda)=(1-2^{-2\lambda})\zeta(2\lambda)/\bigl((1-2^{-1-2\lambda})
 \end{example}
 
 The residual term is the analog for the cover of the
-term~\cite[(5.5)]{LL} for $SL(2)$. The odd Weil representations, the
+term~\cite[(5.5)]{LL79} for $SL(2)$. The odd Weil representations, the
 products $\bigotimes'_vr^{\varepsilon_v}_{\psi_{b,v}}$ with some
 $\varepsilon_v=-$, are not residual: those that are automorphic occur in
 $L^2_{\mathrm{cusp}}$~\cite{GPS80,Wa80}, and they are counted among the
 $(G,\pi)$.
 
 \subsection{Kernels, truncation and the terms \texorpdfstring{$J_\chi$}{J\_chi}}\label{sec:Jchi}
+
+This subsection truncates the spectral kernels as on the geometric side
+and computes the integral $J^T_\chi$ of each truncated kernel.
+
 
 For $\chi\in\mathcal X$ let $K_{G,\chi}(x,y)$ be the kernel of $R(f)$ on
 $L^2_\chi$, and $K_{B,\chi}(x,y)$ the kernel of $R_B(f)$
@@ -603,8 +616,10 @@ $\overline{K_0}$-finite vectors.
 \begin{proposition}\label{prop:kernels-spec}
 \begin{enumerate}[label=(\alph*)]
 \item If $\chi$ is the class of $(G,\pi)$, then $K_{B,\chi}=0$ and
-  $K_{G,\chi}(x,y)=\sum_\phi(R(f)\phi)(x)\overline{\phi(y)}$, $\phi$
-  running over an orthonormal basis of $L^2_\chi$ of
+  \[
+  K_{G,\chi}(x,y)=\sum_\phi(R(f)\phi)(x)\overline{\phi(y)},
+  \]
+  $\phi$ running over an orthonormal basis of $L^2_\chi$ of
   $\overline{K_0}$-finite vectors.
 \item If $\chi\in\mathcal X_A$, then
   \begin{align}
@@ -642,14 +657,14 @@ $\sum_\mu\frac1{2\pi}\int\varphi_{\mu,t,it}\,dt$ with $\varphi_{\mu,t}\in
 $R_B(f)$ is the direct integral of the $I(\mu_{it},f)$, which
 gives~\eqref{eq:KBchi}. Formula~\eqref{eq:KGchi} is Langlands' spectral
 decomposition of $L^2_{\chi,\mathrm{cont}}$ by wave packets of
-Eisenstein series~\cite[Ch.~7]{L2}, \cite[Ch.~V]{MW2}, written as
-in~\cite[\S4]{A3}; the factor $\frac12=n(A_B)^{-1}$ is the reciprocal of
-the number of chambers $\pm\mathfrak a^+$ in $\mathfrak a$~\cite[p.~927]{A2}.
+Eisenstein series~\cite[Ch.~7]{La76}, \cite[Ch.~V]{MW95}, written as
+in~\cite[\S4]{Ar80}; the factor $\frac12=n(A_B)^{-1}$ is the reciprocal of
+the number of chambers $\pm\mathfrak a^+$ in $\mathfrak a$~\cite[p.~927]{Ar78}.
 (Proposition~\ref{prop:Tcoef} checks this factor against the geometric
 side.) The equality of the two terms is Theorem~\ref{thm:eisenstein}(c),(e)
 and the unitarity of $M(w,it)$. (c) Both sides are kernels of the same
-operator; the absolute convergence is~\cite[\S3]{A3}, \cite{MW2},
-\cite{LiIII}.
+operator; the absolute convergence is~\cite[\S3]{Ar80}, \cite{MW95},
+\cite{Li13}.
 \end{proof}
 
 \paragraph{Truncation.} For a continuous function $\phi$ on
@@ -685,7 +700,7 @@ $\langle\phi-\Lambda^T\phi,\phi'\rangle=\int_{B(\Q)\backslash\GA}
 \hat\tau_B(H(x)-T)\phi_B(x)\overline{\phi'(x)}\,dx=\int_{N(\A)B(\Q)
 \backslash\GA}\hat\tau_B(H(x)-T)\phi_B(x)\overline{\phi'_B(x)}\,dx$, because
 $\hat\tau_B(H(x)-T)\phi_B(x)$ is left $N(\A)$-invariant; this is symmetric.
-(c) is in~\cite[\S1]{A3}; the cover splits over $N(\A)$
+(c) is in~\cite[\S1]{Ar80}; the cover splits over $N(\A)$
 (Lemma~\ref{lem:global}(b)), so the proof applies verbatim.
 \end{proof}
 
@@ -706,7 +721,7 @@ As for Lemma~\ref{lem:partition}, whose first identity is used; the sum
 over $\chi$ is Proposition~\ref{prop:kernels-spec}(c) and~\eqref{eq:kT}.
 \end{proof}
 
-\begin{theorem}[Arthur~{\cite[\S\S2--4]{A3}}; Li~\cite{LiIII} for
+\begin{theorem}[Arthur~{\cite[\S\S2--4]{Ar80}}; Li~\cite{Li13} for
 covers]\label{thm:Jchi-poly}
 Let $f\in\mathcal H(\GA)$.
 \begin{enumerate}[label=(\alph*)]
@@ -771,7 +786,7 @@ $\int_{-\infty}^Te^{\nu X}dX=e^{\nu T}/\nu$, $\int_T^\infty e^{\nu X}dX=
 -e^{\nu T}/\nu$ in the appropriate half planes. The integral over
 $X_A\times\overline{K_0}$ gives the inner products~\eqref{eq:HBmu}. The
 general case follows by analytic continuation. In general the relations
-are due to Langlands; see~\cite[\S4]{A3}, \cite{MW2}, \cite{LiIII}.
+are due to Langlands; see~\cite[\S4]{Ar80}, \cite{MW95}, \cite{Li13}.
 \end{proof}
 
 \begin{theorem}\label{thm:Jchi}
@@ -811,7 +826,7 @@ E(I(\mu_{it},f)\varphi,it),\Lambda^TE(\varphi,it)\bigr\rangle\,dt
 \]
 in cases~(b)--(c), the inner product on $i\R$ being the value at
 $\lambda'=\lambda$ of~\eqref{eq:MS}, which is regular there; the
-interchange of the integrals is justified as in~\cite[\S4]{A3}. (a) Cusp
+interchange of the integrals is justified as in~\cite[\S4]{Ar80}. (a) Cusp
 forms satisfy $\Lambda^T\phi=\phi$. For the residual part,
 $\Lambda^T\theta\to\theta$ in $L^2$, so the first sum tends to
 $\operatorname{tr}(R(f)|_{V_b})$.
@@ -848,20 +863,20 @@ polynomial part of these limits, which is~(c).
 Two remarks on the constants. First, $M_B^T$ is the case of
 $SL(2)$ of Arthur's formula
 \[
-M_B^T=\mathrm{vol}(\mathfrak a/\Z\alpha^\vee)\lim_{\zeta\to0}
+M_B^T=\vol(\mathfrak a/\Z\alpha^\vee)\lim_{\zeta\to0}
 \sum_{s\in\{1,w\}}\frac{e^{(s\zeta)(T)}M(s,\lambda)^{-1}
 M(s,\lambda+\zeta)}{\theta(s\zeta)},
 \]
 in which $\theta(\zeta)=\zeta(\alpha^\vee)=d\zeta$ and
-$\mathrm{vol}(\mathfrak a/\Z\alpha^\vee)=d$ for our $dX$
+$\vol(\mathfrak a/\Z\alpha^\vee)=d$ for our $dX$
 (Remark~\ref{rem:alpha}); the factor $d$ cancels and the limit
 is~\eqref{eq:MT} for every $k$. Proposition~\ref{prop:Tcoef} confirms the
 coefficient of $T$ against the geometric side. Second, in Arthur's fine
-expansion~\cite[Thm.~8.2]{A14}, \cite{LiIII} the last term of~(c) is
+expansion~\cite[Thm.~8.2]{Ar82}, \cite{Li13} the last term of~(c) is
 $|W^A_0||W^G_0|^{-1}|\det(w-1)_{\mathfrak a}|^{-1}
 \operatorname{tr}(M(w,0)I(\mu_0,f))$, with $|W^A_0||W^G_0|^{-1}=\frac12$
 and $|\det(w-1)_{\mathfrak a}|=2$. In the trace formula for $GL(2)$
-of~\cite[\S6]{GJ} the same term is written $-\frac14\operatorname{tr}
+of~\cite[\S6]{GJ79} the same term is written $-\frac14\operatorname{tr}
 (M(0)\pi_0(f))$, next to $+\frac1{4\pi}\int\operatorname{tr}(M(-iy)M'(iy)
 \pi_{iy}(f))\,dy$: that formula has the trace of $R(f)$ on the discrete
 spectrum alone on one side, and moving both terms to the spectral side
@@ -905,6 +920,10 @@ $2$-adic terms.
 
 \subsection{The trace formula}\label{sec:tf}
 
+This subsection equates the geometric side of
+Section~\ref{sec:geometric} with the spectral side computed above.
+
+
 \begin{theorem}\label{thm:tf}
 Let $S$ be a finite set of places of $\Q$ as in
 Section~\ref{sec:local-dist}, large enough for Theorem~\ref{thm:fine} and
@@ -921,7 +940,7 @@ sides converge absolutely and:
   with the coefficients $a^G(S,u_\xi)$ of Theorem~\ref{thm:fine}, which
   are computed in Proposition~\ref{prop:unipotent};
 \item for $\mathcal O$ elliptic, $J_{\mathcal O}(f)=
-  \mathrm{vol}(T_\mu(\Q)\backslash T_\mu(\A))\,J_G(\mu_S,f_S)$;
+  \vol(T_\mu(\Q)\backslash T_\mu(\A))\,J_G(\mu_S,f_S)$;
 \item for $\mathcal O$ hyperbolic, the class of $a(t)$,
   $J_{\mathcal O}(f)=c_k\,J_A(a(t)_S,f_S)$;
 \item for $\chi$ the class of $(G,\pi)$, $J_\chi(f)=m(\pi)
@@ -949,7 +968,7 @@ Theorem~\ref{thm:Jchi-poly}(b) give $J(f)=\sum_{\mathcal O}J_{\mathcal O}(f)
 Theorem~\ref{thm:Jchi} at $T=0$: in~(b) of that theorem, write the
 integral as half the sum over the two members of $\chi$; in~(c) the class
 has one member. The absolute convergence of the spectral side
-is~\cite{A3}, \cite{LiIII}.
+is~\cite{Ar80}, \cite{Li13}.
 \end{proof}
 
 \begin{proposition}\label{prop:Tcoef}
@@ -999,7 +1018,7 @@ $\mathfrak a\cong\R$, Lebesgue $dX$ and $dt/2\pi$ on $i\R$, and the inner
 product~\eqref{eq:HBmu}, which includes $c_k$. Arthur normalizes the
 measure on $\mathfrak a$ so that $\mathfrak a/\Z\alpha^\vee$ has volume
 $1$, i.e.\ $dX/d$, and takes the dual measure on $i\mathfrak a^*$; the
-operator $M_B^T$ then carries the factor $\mathrm{vol}(\mathfrak a/
+operator $M_B^T$ then carries the factor $\vol(\mathfrak a/
 \Z\alpha^\vee)\theta(\zeta)^{-1}$, and the products in
 Theorem~\ref{thm:Jchi} do not change (Remark~\ref{rem:alpha}). In the
 classical variable $s=(\lambda+1)/2$ of the Conventions above, for
@@ -1008,6 +1027,10 @@ $y_T=e^{2T}$ is the height at which $\Lambda^T$ truncates.
 \end{remarkrev}
 
 \subsection{Status of the results}\label{sec:status5}
+
+This subsection lists the statements of Section~\ref{sec:spectral} that
+rest on citation or on numerical checks.
+
 
 \begin{remarkrev}\label{rem:sec5-status}
 \emph{What rests on citation.} Proved here: Lemma~\ref{lem:factor} (given Flath's
@@ -1018,12 +1041,11 @@ Theorem~\ref{thm:residual}(a)--(b), the computations in the proofs of
 Lemma~\ref{lem:MS} and Theorem~\ref{thm:Jchi} from~\eqref{eq:MS}, and
 Proposition~\ref{prop:Tcoef}. Taken from the literature:
 Lemma~\ref{lem:spec-decomp}, Proposition~\ref{prop:Lchi},
-Theorem~\ref{thm:eisenstein}~\cite{L2,MW2}; the wave-packet formula~\eqref{eq:KGchi} and the
+Theorem~\ref{thm:eisenstein}~\cite{La76,MW95}; the wave-packet formula~\eqref{eq:KGchi} and the
 absolute convergence in Proposition~\ref{prop:kernels-spec};
-Lemma~\ref{lem:truncation}(c); Theorem~\ref{thm:Jchi-poly}~\cite{A3,
-LiIII}, including the interchange of integrals used for
+Lemma~\ref{lem:truncation}(c); Theorem~\ref{thm:Jchi-poly}~\cite{Ar80,Li13}, including the interchange of integrals used for
 Theorem~\ref{thm:Jchi}; the analytic continuation in Lemma~\ref{lem:MS};
-and Theorem~\ref{thm:residual}(c)~\cite{Ge2,GPS80,Wa80}, except for
+and Theorem~\ref{thm:residual}(c)~\cite{Ge76,GPS80,Wa80}, except for
 the matching $V_b\cong r^+_{\psi_{-b}}$ of the parameters, which is proved
 here from Lemma~\ref{lem:weil-rep}. The matching depends on the
 normalization~\eqref{eq:weil-rep}: if $n(u)$ acts by $\psi'(\frac12ux^2)$,

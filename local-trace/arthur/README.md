@@ -6,13 +6,14 @@ Status (November 2026): a sketch is §7 of the revised paper (`../paper/`), incl
 
 **Outline of a companion paper:** [`OUTLINE.md`](OUTLINE.md) (November 2026). It covers the target theorems (existence of the spectral measure, the absolutely continuous part as a weighted character, the singular part from elliptic tempered characters with K-fixed vectors, and endoscopy for SL(n)), the specialization of Arthur's local trace formula, the comparison with Route A, the examples PGL(2), SL(2), PGL(3) and SL(3), and a work plan.
 
-**Draft paper:** [`route-b-draft.tex`](route-b-draft.tex) / [`route-b-draft.pdf`](route-b-draft.pdf), started 10 November 2026. Written so far:
+**Draft paper:** [`route-b-draft.tex`](route-b-draft.tex) / [`route-b-draft.pdf`](route-b-draft.pdf), started 10 November 2026. Draft 2 (12 November 2026) brings it into line with the style guide; see [`revision_log.md`](revision_log.md), which also lists differences from Arthur's paper found while filling in citations. Section numbers below are those of Draft 2. Written so far:
 - the unramified background, including the lemma that weighted characters of spherical functions vanish for the canonical normalization;
 - the statement of Arthur's local trace formula;
 - the geometric and spectral specializations;
 - the main theorem in outline;
 - the comparison with Route A;
 - the examples PGL(2), SL(2) and PGL(3), plus a new prediction for SL(3) (a point mass at the characters (1, ζ, ζ²));
-- a literature review before and after 1997 (§10);
-- §11, the list of what remains to be checked;
+- a literature review before and after 1997 (§2);
+- rank-one examples in each section, a notation table (§3.1) and a summary of results (§11);
+- §12, the list of what remains to be checked;
 - a glossary (Appendix A).

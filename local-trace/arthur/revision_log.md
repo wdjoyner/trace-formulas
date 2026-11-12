@@ -11,6 +11,7 @@ Files in the git history track the drafts. File names carry no draft number (sty
 | 0 | 2026-11-10 | Outline of the companion paper | `OUTLINE.md` |
 | 1 | 2026-11-10 | First draft: background, Arthur's formula, the two specializations, main theorem in outline, comparison with Route A, examples, literature review, status list, glossary | git history of `route-b-draft.tex` |
 | 2 | 2026-11-12 | Style-guide pass: preamble, title page, AI disclosure, acknowledgments, citation keys, the [Ar91] citations, section order, orienting paragraphs, rank-one examples, notation table, summary of results | *Draft 2: style-guide pass* (below) |
+| 4 | 2026-11-12 | Response to the referee report of Gemini ("Argon") on Draft 3: Remark 4.1 made precise, Lemma 6.3 proved, Lemma 8.4 (W-invariance) added, scope paragraph on rank one in the Introduction | *Draft 4: response to the referee* (below); `referee-report-argon-draft3.md` |
 | 3 | 2026-11-12 | Mathematical revision: Section 4 restated to match [Ar91], with a remark on normalized and unnormalized weighted characters; "Why it should hold" in §8 replaced by a lemma, a proposition and a corollary; §9 expanded with the R-groups, elliptic data and κ-supports of SL(n) | *Draft 3: mathematical revision* (below) |
 
 ## AI usage
@@ -20,7 +21,8 @@ Files in the git history track the drafts. File names carry no draft number (sty
   - It wrote the outline and Draft 1 (text, examples, literature review, glossary).
   - It made the Draft 2 style-guide pass recorded here, including all the new text listed below.
   - It made the Draft 3 mathematical revision recorded here, at DJ's request. All the new statements and proofs of Draft 3 are Claude's and are unrefereed.
-- **No other AI system** has contributed. The paper has not been refereed, by a person or by an AI system.
+- **Gemini (Google)**, called Argon by DJ, independent referee. At DJ's request it wrote a referee report on Draft 3 (`referee-report-argon-draft3.md`). Claude checked each of its points independently. The verdicts and the resulting changes are in *Draft 4: response to the referee* below.
+- The paper has not been refereed by a person.
 - **D. Joyner** decided to pursue the suggestion, directed the work, made the rulings recorded below, and reviews the drafts.
 
 Review by AI systems is not an independent certification of the results.
@@ -38,6 +40,94 @@ This is a new paper of 2026. Every statement in it is new in 2026 or is quoted w
 - **[Ar81], [Ar89a], [Ar89b], [Ar93], [Ar94], [Ar96], [Ar98], [Ar99]** and every other entry of the bibliography were not consulted in this pass. Section and lemma numbers quoted from them ([Ar81, §§6–7, Lemma 6.2], [Ca80, Thm. 3.1], [Ka86, §4]) are unverified.
 - The bibliographic data were not checked against publisher records. Status 2.1 of the paper says the same. One entry to look at first: [Ar98] is given as pp. 35–52, and this was not confirmed.
 - The citations of [JC26] were checked against the source of its Draft 2 (see step 4 below).
+
+## Draft 4: response to the referee (2026-11-12)
+
+Gemini ("Argon") refereed Draft 3. Its report is `referee-report-argon-draft3.md`. Claude checked every point independently before accepting or rejecting it (style guide, rules 4.5 and 7.4). DJ also asked that restrictions to rank one be made clear in the Introduction, and in the abstract where the result is significant.
+
+**Compiling.** 37 pages, no errors, no warnings, no undefined references, no overfull or underfull boxes.
+
+**Title page.** Subtitle "Draft 4". Date line "First draft: November 10, 2026. Draft 4: November 12, 2026".
+
+### Response to the referee, point by point
+
+Verification levels follow rule 7.3: level 1 is an independent derivation, level 2 a check against a source actually consulted, level 3 memory. The report's own numbering is off in places (it writes Lemma 3.2, Example 3.5, Corollary 8.3, Proposition 9.5, Lemma 9.4 for Lemma 3.4, Example 3.6, Corollary 8.4, Proposition 9.6, Lemma 9.5). The Draft 3 numbers are used here.
+
+| Report | Claim | Verdict | Level | Action in Draft 4 |
+|---|---|---|---|---|
+| 2.1 | The open point of Remark 4.1 disappears: the normalizing factors of the two tensor factors cancel, so Arthur's unnormalized family equals the product of the normalized ones, and Theorem B holds in all ranks. | **False.** See below. | 1 and 2 | Not adopted. Remark 4.1 made precise. |
+| 2.2 | The sign question in §4.4 is moot, because only L₁ = M survives and no limit is taken in that factor. | Correct. | 1 | §4.4 rewritten accordingly. |
+| 2.3, Proof 1 | Lemma 6.3 follows from Macdonald's Plancherel theorem: a spherical square-integrable representation would give an atom. | Correct after one fix. The report's sentence "then σ has Satake parameter in the unitary torus" is unjustified, and it is not needed. | 1 | Adopted as the proof of Lemma 6.3, rewritten with a central character. |
+| 2.3, Proof 2 | Lemma 6.3 follows from Casselman's criterion. | Fixable gap: it assumes that the Satake parameter is unitary. The theorem number in Casselman's notes was not checked. | 1 / 3 | Mentioned in Status 6.4 as an alternative. |
+| 2.4 | The weighted character is W-invariant in χ. | Correct. The citation "[Ar89b, Prop. 4.3]" was not checked and is not used. The report's "direct rank-one check" is not a proof. | 1 | New Lemma 8.4 with a full proof. Corollary 8.5 simplified. |
+| 2.5 (1–4) | (9.2) has the wrong power of vol(S(F)). | **Not an error.** (9.2) is in the convention of [JC26], with orbital integrals over S∖G, as its text says. The value of the character comes out the same in either convention. But §9 did not say that O_γ changes meaning there. The report's remark that Arthur integrates over G_γ∖G is wrong: [Ar91, (12.2)] has A_M∖G. | 1 and 2 | A sentence at (9.1) states the convention. (9.2) unchanged. |
+| 2.5 (5) | Say what Δ_κ is. | Fair. [JC26, §5.2] says these have absolute value 1. | 2 | Sentence added at (9.1). |
+| 2.6 | In Proposition 9.2, w is unique and W^{M_m,∘}_χ = 1 for every χ ∈ T_m. | Correct. | 1 | Added to the statement and the proof. |
+| 3.1 | π means different things in §4.2 and §4.4. | Fair. | — | Sentence added in §4.4. |
+| 3.2 | Say how M = G fits into the sum in Theorem 7.1. | Fair. | — | Paragraph added after the theorem. |
+| 3.3 | The page ranges of [Ar01], [Ar02], [Ar03], [MW16], [Wa10] are "already exact". | Not accepted as verification: the report names no source (level 3). | 3 | Status 2.1 unchanged. |
+| 3.4 | Punctuation in Proposition 9.2; H_n is the norm-one torus; remind the reader what y is in §10.1. | Fair. | — | Done. Items (b) and (c) are capitalized, with no semicolons. |
+
+**Why 2.1 is false.**
+1. *The definition.* [Ar91, p. 90] defines J_{Q|P}(π_λ) = J_{Q̄|P}(π₁^∨{}_{,−λ}) ⊗ J_{Q|P}(π_{2,λ}), with Q̄|P in the first factor. The report says Q̄|P̄. (This page was re-read as an image for Draft 4.)
+2. *The identity.* The report claims r_{Q̄|P̄}(σ_Λ) r_{Q|P}(σ̃_Λ) = 1. By (3.2) each unramified normalizing factor is a product of terms (1 − q⁻¹u)/(1 − u), and a product of such terms is never identically 1. With Arthur's definition, in rank one, the scalar family is r_B(Λ) = c_α(χ_Λ⁻¹)/c_α(χ⁻¹) and r_B̄(Λ) = c_α(χ_Λ)/c_α(χ), which is not constant.
+3. *The citation.* The report cites "[Ar91, p. 80, Remark 1]". There is no remark on p. 80. Remark 1 of §12 (pp. 94–95) says that J_M(π,f) "has been defined in terms of unnormalized intertwining operators, whereas its global counterpart … was defined in terms of normalized operators".
+
+So the open point stands. Draft 4 states the scalar family exactly, as the new equation (4.4). Since it is an explicit product over roots, the missing terms can be computed by hand, starting with PGL(3). That is the next step (item (N1)).
+
+**Not examined by the referee.** Proposition 8.3, the sketch of Lemma 9.5, the claim 𝔇(S) ≅ F^×/N E^×, and the rank-one part of Remark 4.1. These remain unrefereed.
+
+### Rank one made explicit (DJ's instruction)
+
+- **Abstract.** "Its absolutely continuous part has density a weighted character." became: "In rank one, that is for SL(2) and PGL(2), its absolutely continuous part has density a normalized weighted character. In higher rank the density comes from Arthur's unnormalized weighted character, and its relation to the normalized one has not yet been computed." The later sentence on the rank ≥ 2 correction was removed as a repetition. The AI-disclosure sentence now names Gemini as referee of the third draft.
+- **Introduction.** New paragraph *Scope: rank one and higher rank*, with four items: what holds in all ranks, what is established only in rank one, what is for PGL(2) and SL(2), and what is for SL(n) with n prime.
+- **Theorem B.** Two sentences were added to the statement: the formula for I_B ρ is asserted in rank one, and in rank ≥ 2 the function J_{M₀}(χ⁻¹, φ) has to be replaced by the one that comes from Arthur's unnormalized weighted character. **This is the first edit to the statement of one of Theorems A–D.** It narrows the claim.
+
+### Changes to existing mathematical text
+
+1. **§4.2.** Π_disc(M) consists of representations π = π₁^∨ ⊗ π₂ (Draft 3 wrote π₁ ⊗ π₂). The twist is π_Λ = π₁^∨{}_{,−Λ} ⊗ π_{2,Λ}. New equation (4.3) gives Arthur's operator for the product group.
+2. **Remark 4.1.** The generic scalar family of Draft 3 is replaced by the exact one, and by its unramified form (4.4). Two sentences were added: the family is not constant, and the normalized family is constant on the spherical vector of the first factor, which is what Lemma 3.4 uses.
+3. **§4.4.** A sentence says what π means in (4.5), formerly (4.3). The sentence "The signs … have not been checked" is replaced by the argument of the report's 2.2.
+4. **Lemma 6.3.** "Proof (Sketch)" by a lower bound from Macdonald's formula is replaced by a proof from Macdonald's Plancherel theorem. **Status change:** from "sketched, to be completed" to "proved here, using a form of Macdonald's theorem for L(F) with a central character that has not been checked in [Ma71]". Status 6.4, the Summary and item (N3) say this.
+5. **Theorem 7.1.** A paragraph after the statement explains the terms with M = G.
+6. **§8.** New Lemma 8.4 (`l:Winv`). Corollary 8.5 (`c:pgl2`, formerly 8.4) now reads I(χ,φ)ρ(χ) = −½ J_A(χ⁻¹,φ), without the average over W. **Status change:** the corollary is now Conjecture 8.1 for PGL(2) itself, still assuming Theorem 7.1. The paragraph "If the weighted character is W-invariant … we have not checked it" was removed.
+7. **Proposition 9.2.** Uniqueness of w added to (c) and to the proof.
+8. **§9.3.** Convention sentence at (9.1). Note that H_n is the norm-one torus.
+9. **§10.1.** "(y = e^{iθ})" became "(y = χ_α(π) = e^{iθ})".
+10. **Acknowledgments, Summary table, items (N1) and (N3).** Updated to match.
+
+### New mathematical text, for refereeing
+
+1. **Equations (4.3) and (4.4)** and the rewritten second and third paragraphs of Remark 4.1. (4.3) is from [Ar91, p. 90]. (4.4) is derived from it and (3.2).
+2. **Proof of Lemma 6.3.** It uses: the Hecke algebra of L is commutative; Macdonald's Plancherel theorem for bi-K_L-invariant functions on L(F) with central character ω, as an isometry onto L²(X_ω, ρ_L dχ)^{W^L}; and the separation of orbits from the proof of Lemma 8.2.
+3. **Lemma 8.4** and its proof: transport by left translation by a representative of w in K, the identity r_{wQ|wP}(wχ) = r_{Q|P}(χ), and the independence of the weighted character from P, which §3.3 quotes from Arthur.
+4. **The uniqueness argument** in the proof of Proposition 9.2.
+5. **The scope paragraph** of the Introduction. The referee should check that it classifies each result correctly.
+
+### Semicolons
+
+The new text has none. Drafts 3 and 4 both have 20.
+
+### Numbering concordance: Draft 3 → Draft 4
+
+Every `\label` of Draft 3 is kept.
+
+| Object | Draft 3 | Draft 4 |
+|---|---|---|
+| Arthur's operator for the product group (`e:JQP`) | — | (4.3) |
+| The unramified scalar family (`e:rQ`) | — | (4.4) |
+| Splitting formula (`e:split`) | (4.3) | (4.5) |
+| Lemma `l:Winv` | — | Lemma 8.4 |
+| Corollary `c:pgl2` | Corollary 8.4 | Corollary 8.5 |
+| Example `ex:compare` | Example 8.5 | Example 8.6 |
+
+All other numbers are unchanged.
+
+### What was left alone, and not verified
+
+- **Item 5 of the plan, the rank ≥ 2 correction terms**, is not done. Theorem B is narrowed to rank one instead.
+- **Theorems A, C, D, Theorem 7.1, Conjecture 8.1, §3.4 and §§10.3–10.4** are unchanged. The scope paragraph says which of them are provisional in rank ≥ 2.
+- **Not verified:** the form of Macdonald's theorem used in Lemma 6.3; the independence of the weighted character from P (quoted); everything listed as unverified under Draft 3 that the referee did not examine.
 
 ## Draft 3: mathematical revision (2026-11-12)
 

@@ -1,0 +1,37 @@
+name: Commit depth-zero Draft 2 PDF once
+on:
+  push:
+    branches: [main]
+    paths:
+      - .github/workflows/commit-depth-zero-pdf-once.yml
+
+permissions:
+  contents: write
+
+jobs:
+  build-and-commit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out main
+        uses: actions/checkout@v4
+      - name: Compile source with pdflatex
+        uses: xu-cheng/latex-action@v4
+        with:
+          working_directory: sl2bar-characters
+          root_file: character_relations_depth_zero.tex
+          texlive_version: 2026
+          os: debian
+      - name: Validate and commit PDF, remove one-time workflow
+        shell: bash
+        run: |
+          set -euo pipefail
+          pdf=sl2bar-characters/character_relations_depth_zero.pdf
+          log=sl2bar-characters/character_relations_depth_zero.log
+          test -s "$pdf"
+          grep -q 'Output written on character_relations_depth_zero.pdf (21 pages' "$log"
+          git rm -- .github/workflows/commit-depth-zero-pdf-once.yml
+          git add -f -- "$pdf"
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git commit -m 'Commit compiled Draft 2 character relations PDF'
+          git push origin HEAD:main

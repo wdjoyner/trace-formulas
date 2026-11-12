@@ -14,6 +14,7 @@ This is the ordinary-group companion to the metaplectic material in
 sl2-invariant-distributions/
 ├── original-1994/   the 1994 notes and their Argon–Gemini revision, as received
 ├── revised/         2026 revised drafts and referee reports
+├── revision_log.md   every change, stage by stage, and the AI usage
 └── README.md
 ```
 
@@ -21,43 +22,22 @@ sl2-invariant-distributions/
 
 | File | What it is |
 | --- | --- |
-| `revised/sl2-invariant-distributions-revised-draft1.tex` | Draft 1 (November 2026): AI-assisted expository rewrite prepared with ChatGPT, responding to the referee report below. `amsart`, about 12 pages. |
-| `revised/referee-report_argon-gemini-revision.md` | Referee report on the earlier Argon–Gemini LaTeX revision of the 1994 notes. Verdict: major revision. Draft 1 is the response to it. |
+| `revised/sl2-invariant-distributions-2026.tex`, `.pdf` | The revised paper, currently Draft 2 (November 12, 2026). File names carry no draft number, and git history tracks the drafts. `amsart`, 14 pages. |
+| `revised/referee-report_argon-gemini-revision.md` | Referee report by ChatGPT on the Argon–Gemini revision of the 1994 notes. Verdict: major revision. Draft 1 is the response to it. |
+| `revision_log.md` | Stages, AI usage, original and new results, every Draft 2 change, the new text that still needs refereeing, citation checks, and the concordance. |
 | `original-1994/hitchhiker-sl2-repns.tex` | The 1994 notes as written (LaTeX 2.09), unchanged. |
 | `original-1994/hitchhikers-guide-to-invariant-distributions-on-sl2-over-p-adic-field2.tex` | The Argon–Gemini LaTeX revision of the 1994 notes: the version the referee reviewed and Draft 1 was rewritten from. |
 
 ## Status
 
-Draft 1 restricts itself to an expository survey of established theory.
-Its main changes relative to the refereed version:
-
-- the asserted bijection from the Hecke algebra to a Paley–Wiener space is
-  replaced by the trace map on the invariant quotient (cocenter);
-- the principal-series reducibility criterion includes the points
-  `|.|^{±1}` as well as the nontrivial quadratic characters;
-- a counterexample shows normalized orbital integrals need not vanish at
-  singular elements;
-- the trace Paley–Wiener theorem is stated in its Grothendieck-group
-  (Bernstein–Deligne–Kazhdan) form;
-- a Laurent-coefficient criterion for analytic functionals is proved;
-- weak constant terms are distinguished from elliptic support in the
-  section on supertempered virtual characters.
-
-Three topics from the 1994 notes are explicitly not claimed in Draft 1
-and remain open for a later draft:
-
-1. an explicit Schwartz-space trace Paley–Wiener theorem;
-2. an admissibility-preserving descent theorem;
-3. a global analyticity criterion for invariant distributions.
-
-Draft 1 has not yet been independently refereed.
+- **Draft 1** (ChatGPT, November 2026) is an expository rewrite responding to the referee report. It restricts itself to a survey of established theory. Its main changes: the trace map on the cocenter replaces the asserted bijection onto a Paley–Wiener space; the reducibility criterion includes `|.|^{±1}`; a counterexample shows normalized orbital integrals need not vanish at singular elements; the trace Paley–Wiener theorem is stated in Grothendieck-group form; a Laurent-coefficient criterion for analytic functionals is proved; weak constant terms are distinguished from elliptic support.
+- **Draft 2** (Claude, November 12, 2026) is a style-guide pass with no mathematical changes: title page, AI disclosure, a literature review split at 1994, orienting paragraphs, six unnumbered examples, the glossary moved before the new Acknowledgments, and the revision record moved to `revision_log.md`. No theorem or equation number changed.
+- Three topics from the 1994 notes are not claimed and remain open: an explicit Schwartz-space trace Paley–Wiener theorem, an admissibility-preserving descent theorem, and a global analyticity criterion for invariant distributions.
+- **Not yet done:** an independent referee report on Draft 1 (the referee and the reviser were the same system), and refereeing of the text added in Draft 2, which is listed in `revision_log.md`.
 
 ## Building
 
-`pdflatex sl2-invariant-distributions-revised-draft1.tex` (twice) in
-`revised/`. The bibliography is inline, so no BibTeX run is needed. The
-draft uses the `newtx` fonts (`newtxtext`, `newtxmath`). The compiled PDF
-has not been committed yet.
+`pdflatex sl2-invariant-distributions-2026.tex` (three passes) in `revised/`. The bibliography is inline, so no BibTeX run is needed. The paper uses the `newtx` fonts (`newtxtext`, `newtxmath`). The compiled PDF is committed beside the source.
 
 ## License
 

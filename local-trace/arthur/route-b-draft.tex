@@ -1,5 +1,5 @@
 % SPDX-License-Identifier: CC-BY-4.0
-% Route B companion paper, Draft 2 (November 12, 2026).
+% Route B companion paper, Draft 3 (November 12, 2026).
 % See OUTLINE.md for the plan and revision_log.md for the history.
 \documentclass[12pt,letterpaper]{article}
 \usepackage[T1]{fontenc}
@@ -51,18 +51,18 @@
 \newcommand{\Tdisc}{T_{\mathrm{disc}}}
 
 \title{The spectral measure of an elliptic orbital integral,\\ via Arthur's local trace formula\thanks{This is a working draft. Statements are labeled as proved here, quoted (with a reference), or expected; every ``Status'' paragraph says which, and what remains to be checked.}\\[1ex]
-\large Draft 2}
+\large Draft 3}
 \author{David Joyner\thanks{\texttt{wdjoyner@gmail.com}} \and
 Claude\thanks{Claude is an AI model made by Anthropic. See the Acknowledgments for the division of work.}}
-\date{First draft: November 10, 2026. Draft 2: November 12, 2026}
+\date{First draft: November 10, 2026. Draft 3: November 12, 2026}
 
 \begin{document}
 \maketitle
 
 \begin{abstract}
-This paper was written with the help of an AI system: Claude (Anthropic) suggested the approach and drafted the paper as a co-author. See the Acknowledgments for details. The paper revises and updates the first author's earlier paper \cite{Jo92}, using a method different from the one used in the analogous paper \cite{JC26}. Let $G$ be an unramified semisimple group over a $p$-adic field, $K$ a hyperspecial maximal compact subgroup, and $\gamma$ a regular elliptic element. Taking one test function spherical and the other supported on the elliptic set, we specialize Arthur's local trace formula. On the geometric side only the orbital integrals of $G$ survive. On the spectral side only two kinds of terms survive: the unramified principal series of $G$, weighted by a weighted character of the elliptic test function, and Arthur's elliptic tempered virtual characters with $K$-fixed vectors. We deduce that the spherical orbital integrals of $\gamma$ are given by a finite measure on the unitary unramified characters. Its absolutely continuous part has density a weighted character. Its singular part is supported on subtori where the $R$-groups of the unramified principal series are non-trivial, and it vanishes when the center of $G$ is connected. For $SL(n)$ the singular part is given by $\kappa$-orbital integrals. We compare the result with the truncation method of the companion paper \cite{JC26}, and work out $PGL(2)$, $SL(2)$, $PGL(3)$ and $SL(3)$.
+This paper was written with the help of an AI system: Claude (Anthropic) suggested the approach and drafted the paper as a co-author. See the Acknowledgments for details. The paper revises and updates the first author's earlier paper \cite{Jo92}, using a method different from the one used in the analogous paper \cite{JC26}. Let $G$ be an unramified semisimple group over a $p$-adic field, $K$ a hyperspecial maximal compact subgroup, and $\gamma$ a regular elliptic element. Taking one test function spherical and the other supported on the elliptic set, we specialize Arthur's local trace formula. On the geometric side only the orbital integrals of $G$ survive. On the spectral side only two kinds of terms survive: the unramified principal series of $G$, weighted by a weighted character of the elliptic test function, and Arthur's elliptic tempered virtual characters with $K$-fixed vectors. We deduce that the spherical orbital integrals of $\gamma$ are given by a finite measure on the unitary unramified characters. Its absolutely continuous part has density a weighted character. Its singular part is supported on subtori where the $R$-groups of the unramified principal series are non-trivial, and it vanishes when the center of $G$ is connected. For $SL(n)$ the singular part is given by $\kappa$-orbital integrals. In that case we determine the elliptic data explicitly, and we show that they have the same index set and the same supports as the $\kappa$-orbital integrals. We compare the result with the truncation method of the companion paper \cite{JC26}, and work out $PGL(2)$, $SL(2)$, $PGL(3)$ and $SL(3)$.
 
-This is a working draft. The results are proved modulo normalizations in Arthur's formula that have not yet been checked. The main theorem is proved in outline, and the statement for $SL(n)$ is given in outline only. The section ``Status and what remains'' lists what is missing.
+This is a working draft. The results are proved modulo normalizations in Arthur's formula that have not yet been checked. In rank at least two, the formula for the density is subject to a correction that has not been computed. The main theorem is proved in outline. For $SL(n)$ the identification of the densities is given in outline only. The section ``Status and what remains'' lists what is missing.
 \end{abstract}
 
 \tableofcontents
@@ -80,7 +80,7 @@ with $dI_\gamma$ a measure, and if so which measure.
 
 \paragraph{Route A.} The companion paper \cite{JC26} (a revision of \cite{Jo92}) attacks (\ref{e:main}) directly. It truncates the integral over $g$ to a finite union $G(T)$ of double cosets, and expands the spherical function in matrix coefficients. It then uses Casselman's asymptotics and Brion's theorem to write the truncated kernel $I^T(\chi,\gamma)$ as an exponential polynomial in $T$. The $T$-independent part $I(\chi,\gamma)$ is an explicit rational function of $\chi$. Under a regularity hypothesis (R) on the oscillating terms, \cite[Thm.~4.5]{JC26} proves $dI_\gamma=I(\chi,\gamma)\,d\mu$. The hypothesis holds for $PGL(2)$. It fails for $SL(2)$, where $dI_\gamma$ has an atom at the unramified quadratic character. It also fails for $PGL(3)$, where nevertheless $dI_\gamma$ is absolutely continuous \cite[App.~A]{JC26}. So (R) is not the right condition, and \cite[Conj.~4.6]{JC26} predicts the general shape of $dI_\gamma$.
 
-\paragraph{Route B.} Here we derive (\ref{e:main}) from Arthur's local trace formula \cite{Ar89a,Ar91}, in the form given by his theory of elliptic tempered characters \cite{Ar93}. Arthur's formula is an identity of two expansions of one distribution on $G(F)\times G(F)$. For $f=f_1\otimes f_2$ it reads, schematically,
+\paragraph{Route B.} Here we derive (\ref{e:main}) from Arthur's local trace formula \cite{Ar89a,Ar91}, in the form given by his theory of elliptic tempered characters \cite{Ar93}. Arthur's formula is an identity between a geometric and a spectral expression, both of them distributions on $G(F)\times G(F)$. For $f=f_1\otimes f_2$ it reads, schematically,
 \[
 \sum_M c_M\int_{\Gamma_{\ellr}(M)}J_M(\gamma,f)\,d\gamma=\sum_M c_M\int_{\Pi(M)}J_M(\pi,f)\,d\pi,
 \]
@@ -90,7 +90,7 @@ with weighted orbital integrals on the left and weighted characters on the right
 \item On the spectral side, a weighted character of the spherical function $f$ vanishes unless its weight is trivial (Lemma~\ref{l:sphvanish}). This rests on the fact that the canonically normalized unramified intertwining operators fix the spherical vector. A character of $\phi$ vanishes on properly induced representations. What remains is a sum over the unitary unramified characters $\chi$ and over the finitely many elliptic tempered virtual characters with $K$-fixed vectors (\S\ref{s:spec}).
 \end{itemize}
 
-\paragraph{Results.} The statements below are proved here modulo the normalizations listed in \S\ref{s:status}, which are being checked.
+\paragraph{Results.} The statements below are proved here modulo the normalizations listed in \S\ref{s:status}, which are being checked. In rank $\ge2$ the formula of Theorem~\ref{t:B} is also subject to the correction discussed in Remark~\ref{r:norm}.
 
 \begin{introtheorem}[existence]\label{t:A}
 For every $\phi\in C_c^\infty(G_{\ellr})$ the linear form $f^\vee\mapsto I(f,\phi)$ is given by a finite complex measure $dI_\phi$ on $\Thu/W$.
@@ -112,7 +112,7 @@ $dI^{\mathrm{sing}}_\phi$ is a finite sum of smooth measures on subtori of $\Thu
 For $G=SL(n)$, $dI^{\mathrm{sing}}_\gamma$ is the sum over the non-trivial unramified $\kappa$ of the push-forwards of the stable spectral measures of the elliptic endoscopic groups, as in \cite[Conj.~4.6(c)]{JC26}.
 \end{introtheorem}
 
-The comparison with Route A is Conjecture~\ref{c:AB}: the function $I_B$ of Theorem~\ref{t:B} equals the $T$-independent part $I$ of the truncated kernel of \cite{JC26}. If it holds, Route A gives closed formulas for the density, and Route B explains why it is smooth and what replaces it where (R) fails.
+The comparison with Route A is Conjecture~\ref{c:AB}: the function $I_B$ of Theorem~\ref{t:B} equals the $T$-independent part $I$ of the truncated kernel of \cite{JC26}. If it holds, Route A gives closed formulas for the density, and Route B explains why it is smooth and what replaces it where (R) fails. Proposition~\ref{p:AB} shows that the two densities agree whenever both routes are known to produce a measure, and Corollary~\ref{c:pgl2} deduces the conjecture for $PGL(2)$ from Theorem~\ref{t:main}. For $SL(n)$, Proposition~\ref{p:dictionary} matches the index sets and the supports of the two descriptions of the singular part, and Proposition~\ref{p:Dreduction} reduces Theorem~\ref{t:D} to Theorem~\ref{t:main} and to statements of Route~A.
 
 \paragraph{Why this is useful.} Arthur's local trace formula is one of the deepest tools of local harmonic analysis, and most of its terms are hard to compute. In the case treated here every surviving term can be made explicit. The paper is meant both as an independent proof of (\ref{e:main}) and as an introduction to Arthur's local theory through a concrete case.
 
@@ -206,8 +206,10 @@ $\mathcal R_M(\chi,P)$, $J_M(\chi,f)$, $J^L_M$ & The limit of the $(G,M)$-family
 $G_{\ellr}$, $O_\gamma$, $I(f,\phi)$ & The regular elliptic set, the orbital integral, and the distribution of Proposition~\ref{p:geom}.\\
 $D(\gamma)$ & The Weyl discriminant $\det(1-\Ad(\gamma))$ on $\mathfrak g/\mathfrak g_\gamma$.\\
 $K_f$, $u(x,T)$, $J^T(f)$, $J(f)$ & The kernel, Arthur's truncation function, the truncated integral and its constant term (\S\ref{s:trunc}).\\
-$J_M(\gamma,f)$, $v_M$, $\Gamma_{\ellr}(M)$ & The weighted orbital integral, its weight, and the elliptic regular classes of $M(F)$ (\S\ref{s:expansions}).\\
-$\Pi_{\mathrm{temp}}(M)$, $\Tdisc(M)$, $\Tell(M)$ & The tempered representations of $M(F)$, and Arthur's sets of virtual characters (\S\ref{s:ellform}).\\
+$J_M(\gamma,f)$, $v_M$, $\Gamma_{\ellr}(M)$ & The weighted orbital integral, its weight, and the elliptic classes of $M(F)$ (\S\ref{s:expansions}).\\
+$J_{\mathrm{geom}}(f)$, $J_{\mathrm{spec}}(f)$ & The two sides of Arthur's local trace formula, (\ref{e:geo}) and (\ref{e:spec}).\\
+$\Pi_{\mathrm{disc}}(M)$, $a^M_{\mathrm{disc}}(\pi)$ & Arthur's set of representations of $M(F)\times M(F)$ on the spectral side, and their coefficients \cite[\S12]{Ar91}.\\
+$\Tdisc(M)$, $\Tell(M)$ & Arthur's sets of virtual characters (\S\ref{s:ellform}).\\
 $d_M^G(L_1,L_2)$ & The constants of the splitting formula (\ref{e:split}) \cite{Ar88}.\\
 $W_\chi$, $W^\circ_\chi$, $R_\chi$, $R^M_\chi$ & The stabilizer of $\chi$ in $W$, its reflection subgroup, the $R$-group, and the $R$-group relative to $M$ (\S\ref{s:R}).\\
 $\chi_0$ & The unramified quadratic character of $SL(2)$, the point $z=-1$ of Example~\ref{ex:notation}.\\
@@ -217,7 +219,8 @@ $L_M^\vee$ & A lattice in $i\fa_M^*$ such that the twist $\tau_\Lambda$ depends 
 $G(T)$, $I^T$, $I(\chi,\gamma)$, (R), (R$'$) & Route~A: the truncation set, the truncated kernel, its $T$-independent part, and the regularity hypotheses \cite[\S\S3--4, Rem.~2026.20]{JC26}.\\
 $\delta_B$, $Q_a$, $\Gamma_\chi$ & The modulus character of $B$, the constant in the volume formula for $KaK$ \cite[\S3.2]{JC26}, and the spherical function.\\
 $Q$, (U$_r$), $B_r$, $K_1$ & Rank-one notation of \cite[\S6]{JC26}: $Q=1+q^{-1}$, the type of an unramified elliptic element of depth $r$, the ball of vertices that it fixes, and the first principal congruence subgroup.\\
-$\kappa$, $H_m$, $\Delta_\kappa$, $c_S$ & For $SL(n)$: an unramified character of $PGL(n,F)$, the elliptic endoscopic group, the transfer factor and a constant \cite[\S5]{JC26}.\\
+$\kappa$, $H_m$, $\Delta_\kappa$, $c_S$, $\mathfrak D(S)$ & For $SL(n)$: an unramified character of $PGL(n,F)$, the elliptic endoscopic group, the transfer factor, a constant, and the finite group that indexes the conjugacy classes in a stable class \cite[\S5]{JC26}.\\
+$\mu_n$, $\mu(\chi)$, $T_m$, $\chi_n$, $M_m$ & For $SL(n)$: the $n$-th roots of unity, the roots of unity that preserve the parameter of $\chi$, the set of $\chi$ whose parameter is a union of cosets of $\mu_m$, the point $T_n$, and the Levi subgroup with $n/m$ blocks of size $m$ (\S\S\ref{s:slnR}--\ref{s:slnell}).\\
 \end{longtable}
 }
 
@@ -313,7 +316,7 @@ Let $G=PGL(2)$. For $z=\pm1$ we have $\chi_\alpha(\pi)=z^2=1$, so $\chi_\alpha=1
 % =====================================================================
 \section{Arthur's local trace formula}\label{s:ltf}
 
-This section states the parts of Arthur's local trace formula that we use. We quote; nothing here is new.
+This section states the parts of Arthur's local trace formula that we use. We quote; nothing here is new. In Draft~3 the statements of \S\S\ref{s:trunc}--\ref{s:expansions} were compared with \cite{Ar91} and corrected.
 
 \subsection{The truncated kernel}\label{s:trunc}
 
@@ -323,29 +326,51 @@ The group $G(F)\times G(F)$ acts on $L^2(G(F))$ by $(R(x_1,x_2)\psi)(y)=\psi(x_1
 \[
 K_f(x,y)=\int_{G(F)}f_1(u)f_2(x^{-1}uy)\,du.
 \]
-Its restriction to the diagonal is not integrable in general. Arthur multiplies it by the characteristic function $u(x,T)$ of a large compact subset of $G(F)$, defined by a point $T$ in the positive chamber through the convex hull of $W\cdot T$. He shows that $J^T(f)=\int_{G(F)}K_f(x,x)u(x,T)\,dx$ is asymptotic to a polynomial in $T$ \cite{Ar89a,Ar91}. Its constant term $J(f)$ is a distribution on $G(F)\times G(F)$.
+Its restriction to the diagonal is not integrable in general. Arthur multiplies it by the characteristic function $u(x,T)$ of a large compact subset of $G(F)$, defined by a point $T$ in the positive chamber through the convex hull of $W\cdot T$. Put $K^T(f)=\int_{G(F)}K_f(x,x)u(x,T)\,dx$. Arthur shows that, as $T$ goes to infinity while staying away from the walls, $K^T(f)$ differs from another function $J^T(f)$ by an exponentially small amount \cite[Prop.~4.5]{Ar91}. For $p$-adic $F$ and $T$ in a lattice, $J^T(f)$ is a finite sum of terms $p_\xi(T,f)e^{\xi(T)}$, in which each $p_\xi$ is a polynomial in $T$ and each $e^{\xi(T)}$ is a root of unity \cite[Prop.~6.1]{Ar91}. The constant term $J(f)=p_0(0,f)$ is a distribution on $G(F)\times G(F)$.
 
 \subsection{The geometric and spectral expansions}\label{s:expansions}
 
-This subsection states the two expansions of $J(f)$. Their equality is the local trace formula. The geometric expansion is a sum of weighted orbital integrals, and the spectral expansion is a sum of weighted characters.
+This subsection states the local trace formula. It is an identity between a geometric expression, which is a sum of weighted orbital integrals, and a spectral expression, which is a sum of weighted characters. It also records how Arthur's weighted characters differ from those of \S\ref{s:wchar}.
 
-Arthur proves two expansions of $J(f)$ \cite[Props.~6.1 and~11.3, Thm.~12.2]{Ar91}:
-\begin{align}
-J(f)&=\sum_{M\in\cL}\frac{|W_0^M|}{|W_0^G|}(-1)^{\dim\fa_M^G}\int_{\Gamma_{\ellr}(M)}J_M(\gamma,f)\,d\gamma,\label{e:geo}\\
-J(f)&=\sum_{M\in\cL}\frac{|W_0^M|}{|W_0^G|}(-1)^{\dim\fa_M^G}\int_{\Pi_{\mathrm{temp}}(M)}J_M(\pi,f)\,d\pi.\label{e:spec}
-\end{align}
-Here $\cL$ is the set of Levi subgroups containing $M_0$, and $\Gamma_{\ellr}(M)$ is the set of elliptic regular conjugacy classes of $M(F)$. The weighted orbital integral $J_M(\gamma,f)$ is
+Arthur obtains a geometric and a spectral expansion of the constant term $J(f)$ \cite[Props.~6.1 and~11.3]{Ar91}. From them he deduces the local trace formula \cite[Thm.~12.2]{Ar91}. It is the identity
 \[
-J_M(\gamma,f)=|D(\gamma)|\int_{M_\gamma\backslash G}\int_{M_\gamma\backslash G}f_1(x_1^{-1}\gamma x_1)f_2(x_2^{-1}\gamma x_2)\,v_M(x_1,x_2)\,dx_1\,dx_2,
+J_{\mathrm{geom}}(f)=J_{\mathrm{spec}}(f)
 \]
-with $v_M$ the weight of the $(G,M)$-family $e^{-\Lambda(H_P(x_1)-H_{\bar P}(x_2))}$. In (\ref{e:spec}), $J_M(\pi,f)$ is a weighted character of $G(F)\times G(F)$ attached to $\pi\otimes\pi^\vee$. The measure $d\pi$ and the precise domain of integration are as in \cite{Ar91}.
+of the two expressions
+\begin{align}
+J_{\mathrm{geom}}(f)&=\sum_{M\in\cL}\frac{|W_0^M|}{|W_0^G|}(-1)^{\dim\fa_M^G}\int_{\Gamma_{\ellr}(M)}J_M(\gamma,f)\,d\gamma,\label{e:geo}\\
+J_{\mathrm{spec}}(f)&=\sum_{M\in\cL}\frac{|W_0^M|}{|W_0^G|}(-1)^{\dim\fa_M^G}\int_{\Pi_{\mathrm{disc}}(M)}a^M_{\mathrm{disc}}(\pi)\,J_M(\pi,f)\,d\pi.\label{e:spec}
+\end{align}
+Neither expression is an expansion of $J(f)$ itself. By \cite[(12.13)]{Ar91}, $J(f)$ is a sum over parabolic subgroups $Q$ of geometric expressions of this kind for the Levi components $M_Q$, and $J_{\mathrm{geom}}(f)$ is the term $Q=G$. The proof of the formula is an induction on such sums.
+
+Here $\cL$ is the set of Levi subgroups containing $M_0$. $\Gamma_{\ellr}(M)$ is the set of conjugacy classes of $M(F)$ whose centralizer in $M(F)$ is compact modulo $A_M(F)$, with the measure of \cite[\S2]{Ar91}. That measure is carried by the $G$-regular classes, and it uses the Haar measure of total mass $1$ on $T(F)/A_M(F)$ for each elliptic maximal torus $T$ of $M$. The weighted orbital integral $J_M(\gamma,f)$ is
+\[
+J_M(\gamma,f)=|D(\gamma)|\int_{A_M(F)\backslash G(F)}\int_{A_M(F)\backslash G(F)}f_1(x_1^{-1}\gamma x_1)f_2(x_2^{-1}\gamma x_2)\,v_M(x_1,x_2)\,dx_1\,dx_2,
+\]
+with $v_M$ the weight of the $(G,M)$-family $e^{-\Lambda(H_P(x_2)-H_{\bar P}(x_1))}$ \cite[(12.1), (12.2)]{Ar91}. For $M=G$ the weight is $1$.
+
+On the spectral side, $\Pi_{\mathrm{disc}}(M)$ is a set of irreducible representations $\pi=\pi_1\otimes\pi_2$ of $M(F)\times M(F)$. They are the constituents of the representations induced from $\sigma^\vee\otimes\sigma$, where $\sigma$ is a square-integrable representation of a Levi subgroup $M'$ of $M$ that is fixed by an element of the Weyl group of $(M,A_{M'})$ without non-zero fixed vector in $\fa_{M'}^M$. The coefficients $a^M_{\mathrm{disc}}(\pi)$ and the measure $d\pi$ are defined in \cite[(12.4)--(12.6)]{Ar91}. The weighted character is
+\[
+J_M(\pi,f)=\tr\big(\mathcal J_M(\pi,P)\,I_P(\pi,f)\big),
+\]
+where $\mathcal J_M(\pi,P)$ is the limit of the $(G,M)$-family $\mathcal J_Q(\Lambda,\pi,P)=J_{Q|P}(\pi)^{-1}J_{Q|P}(\pi_\Lambda)$ of \emph{unnormalized} intertwining operators, and $\pi_\Lambda=\pi_{1,-\Lambda}\otimes\pi_{2,\Lambda}$ \cite[(12.7), (12.8)]{Ar91}.
+
+\begin{remark}[normalized and unnormalized weighted characters]\label{r:norm}
+The weighted characters of \S\ref{s:wchar} are formed with the normalized operators $R_{Q|P}$, and Lemma~\ref{l:sphvanish} needs this. Arthur's $J_M(\pi,f)$ in (\ref{e:spec}) are formed with the unnormalized operators \cite[\S12, Remark~1]{Ar91}. The two are different, and this remark records what is known about the difference. It is an open point of the paper. The formulas in this remark were derived for Draft~3 from the product formula for $(G,M)$-families \cite[Lemma~6.3]{Ar81}, and they have not been compared with the literature.
+
+Write $J_{Q|P}(\pi)=r_{Q|P}(\pi)R_{Q|P}(\pi)$. Then the unnormalized family is the product of the normalized family and the scalar $(G,M)$-family $r_Q(\Lambda,\pi)=r_{Q|P}(\pi)^{-1}r_{Q|P}(\pi_\Lambda)$. The product formula then writes the unnormalized weighted character as a sum over $L\in\cL(M)$. The term for $L$ is a scalar $r_M^L(\pi)$, built from logarithmic derivatives of the normalizing factors, times a normalized weighted character $J_L$ of the representation induced from $\pi$ to $L$. The term $L=M$ has $r_M^M=1$, and it is the normalized weighted character $J_M(\pi,f)$.
+
+In rank one, $\cL(A)=\{A,G\}$. The extra term $L=G$ is $r_A^G(\pi)$ times the ordinary character $\tr I_P(\pi,f)$. For the test function $f\otimes\phi$ of this paper, with $\phi$ supported on the elliptic set, this character vanishes by Lemma~\ref{l:cusp}. So in rank one the two kinds of weighted characters agree on our test functions, and nothing in the rank-one statements of this paper changes.
+
+In rank $\ge2$ the terms with $M\subsetneq L\subsetneq G$ need not vanish, and they have not been computed. Until they are, the density in Theorem~\ref{t:B} and the first term of Theorem~\ref{t:main} should be read as follows in rank $\ge2$: they are $c_G$ times Arthur's unnormalized weighted character of $f\otimes\phi$, which is $f^\vee(\chi)J_{M_0}(\chi^{-1},\phi)$ plus possible terms from the Levi subgroups strictly between $M_0$ and $G$. The same applies to the terms with $M\supsetneq M_0$. The smoothness of the total is not affected, since the matrix coefficients of $\mathcal J_M(\pi_\lambda,P)$ are smooth in $\lambda$ \cite[Lemma~12.1]{Ar91}. See item~\ref{n:1} of \S\ref{s:status}.
+\end{remark}
 
 \begin{example}[rank one]\label{ex:ltf}
-Let $G=SL(2)$ or $PGL(2)$. Then $\cL=\{A,G\}$. For $M=G$ the coefficient in (\ref{e:geo}) and (\ref{e:spec}) is $1$. For $M=A$ we have $|W_0^A|=1$, $|W_0^G|=2$ and $\dim\fa_A^G=1$, so the coefficient is $-\frac12$. The geometric expansion (\ref{e:geo}) therefore reads
+Let $G=SL(2)$ or $PGL(2)$. Then $\cL=\{A,G\}$. For $M=G$ the coefficient in (\ref{e:geo}) and (\ref{e:spec}) is $1$. For $M=A$ we have $|W_0^A|=1$, $|W_0^G|=2$ and $\dim\fa_A^G=1$, so the coefficient is $-\frac12$. The geometric side (\ref{e:geo}) therefore reads
 \[
-J(f)=\int_{\Gamma_{\ellr}(G)}J_G(\gamma,f)\,d\gamma-\frac12\int_{\Gamma_{\ellr}(A)}J_A(\gamma,f)\,d\gamma.
+J_{\mathrm{geom}}(f)=\int_{\Gamma_{\ellr}(G)}J_G(\gamma,f)\,d\gamma-\frac12\int_{\Gamma_{\ellr}(A)}J_A(\gamma,f)\,d\gamma.
 \]
-The first term contains ordinary orbital integrals over the elliptic classes of $G(F)$. The second contains weighted orbital integrals over elements of the split torus $A(F)$, since every element of a torus is elliptic in that torus. The spectral expansion (\ref{e:spec}) has the same two coefficients. The coefficient $-\frac12$ is the constant $c_G$ of Theorem~\ref{t:B} in rank one.
+The first term contains ordinary orbital integrals over the elliptic classes of $G(F)$. The second contains weighted orbital integrals over elements of the split torus $A(F)$, since every element of a torus is elliptic in that torus. The spectral side (\ref{e:spec}) has the same two coefficients. The coefficient $-\frac12$ is the constant $c_G$ of Theorem~\ref{t:B} in rank one.
 \end{example}
 
 \subsection{The elliptic form}\label{s:ellform}
@@ -364,37 +389,39 @@ J_M(\pi,f_1\otimes f_2)=\sum_{L_1,L_2\in\cL(M)}d_M^G(L_1,L_2)\,J^{L_1}_M(\pi,f_{
 \end{equation}
 Here $d_M^G(L_1,L_2)$ is non-zero only if $\fa_M^{L_1}\oplus\fa_M^{L_2}=\fa_M^G$, $d_M^G(M,G)=1$, $f_{i,Q_i}$ are constant terms, and the $Q_i\in\cP(L_i)$ are fixed by a choice of a generic point. The same holds for weighted orbital integrals.
 
+The formula is a consequence of the splitting formula for a product of two $(G,M)$-families \cite[Cor.~7.4]{Ar88}. The family attached to $\pi_1\otimes\pi_2$ is such a product, because its operators act on the two tensor factors separately. Arthur uses the splitting formula in this way in \cite[\S10]{Ar91}. The argument applies to the normalized operators as well as to the unnormalized ones, and we use (\ref{e:split}) for the normalized ones. The signs that come from the twist by $-\Lambda$ in the first factor have not been checked.
+
 \begin{status}
-The constants in (\ref{e:geo})--(\ref{e:spec}), the exact domain and measure on the spectral side, and the form of (\ref{e:split}) in the local trace formula (as opposed to the invariant trace formula of \cite{Ar88}) are being checked against \cite{Ar91,Ar93}; see \S\ref{s:status}, item~\ref{n:2}.
+The statements (\ref{e:geo}) and (\ref{e:spec}) were compared with \cite[Thm.~12.2]{Ar91} for Draft~3. The elliptic form of \S\ref{s:ellform}, the form of (\ref{e:split}) for weighted characters, and the passage from unnormalized to normalized operators (Remark~\ref{r:norm}) have not been checked against \cite{Ar88,Ar93}. See \S\ref{s:status}, items~\ref{n:1} and~\ref{n:2}.
 \end{status}
 
 % =====================================================================
 \section{The geometric side}\label{s:geom}
 
-This section specializes the geometric expansion (\ref{e:geo}) to the product of a spherical function and a function supported on the elliptic set. Proposition~\ref{p:geom} shows that only the term $M=G$ survives, and that it is the distribution $I(f,\phi)$ studied in the companion paper.
+This section specializes the geometric side (\ref{e:geo}) to the product of a spherical function and a function supported on the elliptic set. Proposition~\ref{p:geom} shows that only the term $M=G$ survives, and that it is the distribution $I(f,\phi)$ studied in the companion paper.
 
 Let $f_1=f\in\Hc(G,K)$, and let $f_2=\phi\in C_c^\infty(G(F))$ be supported in the regular elliptic set $G_{\ellr}$.
 
 \begin{proposition}\label{p:geom}
 With $\mathbf f=f\otimes\phi$:
 \begin{enumerate}[label=(\alph*)]
-\item $x\mapsto K_{\mathbf f}(x,x)$ has compact support, so $J^T(\mathbf f)$ is constant for $T$ large, and
+\item $x\mapsto K_{\mathbf f}(x,x)$ has compact support, so the truncated integral $K^T(\mathbf f)$ is constant for $T$ large, and
 \[
-J(\mathbf f)=\int_{G(F)}\int_{G(F)}f(u)\phi(x^{-1}ux)\,du\,dx=I(f,\phi),
+K^T(\mathbf f)=\int_{G(F)}\int_{G(F)}f(u)\phi(x^{-1}ux)\,du\,dx=I(f,\phi),
 \]
 the distribution of \cite[(1.1), (4.8)]{JC26};
-\item in (\ref{e:geo}) the terms with $M\ne G$ vanish, and the term $M=G$ is the Weyl integration formula for $I(f,\phi)$.
+\item in (\ref{e:geo}) the terms with $M\ne G$ vanish, and the term $M=G$ is the Weyl integration formula for $I(f,\phi)$. So $J_{\mathrm{geom}}(\mathbf f)=I(f,\phi)$.
 \end{enumerate}
 \end{proposition}
 
 \begin{proof}
 (a) For $\phi$ supported on $G_{\ellr}$, the set of $x$ with $\phi(x^{-1}ux)\ne0$ for some $u$ in the support of $f$ is compact, because centralizers of elliptic elements are compact (Kazhdan \cite[\S4]{Ka86}; \cite[Lemma~4.4]{JC26}). So $K_{\mathbf f}(x,x)$ has compact support, and $u(x,T)=1$ on it for $T$ large.
 
-(b) Let $M\ne G$ and $\gamma\in\Gamma_{\ellr}(M)$. If $\gamma$ is regular in $G$, its centralizer in $G$ is a maximal torus of $M$, which contains the non-trivial split torus $A_M$; so $\gamma$ is not elliptic in $G$. Hence $\phi(x^{-1}\gamma x)=0$ for all $x$, and $J_M(\gamma,\mathbf f)=0$. The $\gamma$ that are singular in $G$ form a set of measure zero in $\Gamma_{\ellr}(M)$. For $M=G$ the weight is $1$, and $J_G(\gamma,\mathbf f)=|D(\gamma)|O_\gamma(f)O_\gamma(\phi)$ with the measures of \cite[(4.10)]{JC26}.
+(b) Let $M\ne G$ and $\gamma\in\Gamma_{\ellr}(M)$. If $\gamma$ is regular in $G$, its centralizer in $G$ is a maximal torus of $M$, which contains the non-trivial split torus $A_M$; so $\gamma$ is not elliptic in $G$. Hence $\phi(x^{-1}\gamma x)=0$ for all $x$, and $J_M(\gamma,\mathbf f)=0$. The $\gamma$ that are singular in $G$ form a set of measure zero in $\Gamma_{\ellr}(M)$. For $M=G$ the weight is $1$, and $J_G(\gamma,\mathbf f)=|D(\gamma)|O_\gamma(f)O_\gamma(\phi)$ with the measures of \cite[(4.10)]{JC26}. Here $O_\gamma$ denotes the integral over $G(F)$, as in \S\ref{s:intro}. Put $\Phi_\phi(u)=\int_{G(F)}\phi(x^{-1}ux)\,dx$, so that $I(f,\phi)=\int_{G(F)}f(u)\Phi_\phi(u)\,du$. Arthur's form of the Weyl integration formula \cite[(2.2)]{Ar91}, applied to $h=f\Phi_\phi$, gives $I(f,\phi)=\int_{\Gamma_{\ellr}(G)}|D(\gamma)|O_\gamma(f)O_\gamma(\phi)\,d\gamma$, because $\Phi_\phi$ vanishes on the classes that come from $M\ne G$. This is the term $M=G$ of (\ref{e:geo}).
 \end{proof}
 
 \begin{example}[rank one]\label{ex:geom}
-Let $G=SL(2)$ or $PGL(2)$, and consider the term $M=A$ of Example~\ref{ex:ltf}. A regular element $\gamma$ of $A(F)$ has centralizer $A$, which is split. So $\gamma$ is not elliptic in $G$, and neither is any conjugate of it. Since $\phi$ is supported on $G_{\ellr}$, the factor $\phi(x_2^{-1}\gamma x_2)$ in $J_A(\gamma,f\otimes\phi)$ is zero for all $x_2$. The term with coefficient $-\frac12$ therefore vanishes. What remains is the term $M=G$, an integral of $|D(\gamma)|O_\gamma(f)O_\gamma(\phi)$ over the elliptic classes of $G(F)$, and it equals $I(f,\phi)$. This is Proposition~\ref{p:geom} in rank one.
+Let $G=SL(2)$ or $PGL(2)$, and consider the term $M=A$ of Example~\ref{ex:ltf}. A regular element $\gamma$ of $A(F)$ has centralizer $A$, which is split. So $\gamma$ is not elliptic in $G$, and neither is any conjugate of it. Since $\phi$ is supported on $G_{\ellr}$, the factor $\phi(x_2^{-1}\gamma x_2)$ in $J_A(\gamma,f\otimes\phi)$ is zero for all $x_2$. The term with coefficient $-\frac12$ therefore vanishes. What remains is the term $M=G$, an integral of $|D(\gamma)|O_\gamma(f)O_\gamma(\phi)$ over the elliptic classes of $G(F)$, and it equals $I(f,\phi)$. So $J_{\mathrm{geom}}(f\otimes\phi)=I(f,\phi)$. This is Proposition~\ref{p:geom} in rank one.
 \end{example}
 
 % =====================================================================
@@ -434,7 +461,7 @@ So $\phi$ is cuspidal, and in the elliptic form of the spectral side only ellipt
 
 \subsection{Which virtual characters survive}\label{s:class}
 
-Combining Proposition~\ref{p:split} and Lemma~\ref{l:cusp} with Arthur's elliptic form, the spectral side of $J(f\otimes\phi)$ is a sum over $M\in\cL$ of integrals, over the virtual characters $\tau\in\Tdisc(M)$ with $K\cap M$-fixed vectors, of $f^\vee(\chi_\tau)J_M(\tau^\vee,\phi)$, where $\chi_\tau$ is the unramified character underlying $\tau$. We now list these $\tau$.
+Combining Proposition~\ref{p:split} and Lemma~\ref{l:cusp} with Arthur's elliptic form, and passing to normalized operators as in Remark~\ref{r:norm}, the spectral side $J_{\mathrm{spec}}(f\otimes\phi)$ is a sum over $M\in\cL$ of integrals, over the virtual characters $\tau\in\Tdisc(M)$ with $K\cap M$-fixed vectors, of $f^\vee(\chi_\tau)J_M(\tau^\vee,\phi)$, where $\chi_\tau$ is the unramified character underlying $\tau$. We now list these $\tau$.
 
 \begin{lemma}\label{l:noDS}
 A square-integrable representation of $L(F)$, $L$ a Levi subgroup of $G$ with $\dim\fa_{M_0}^L>0$, has no vector fixed by the hyperspecial subgroup $K\cap L(F)$.
@@ -459,7 +486,7 @@ By Lemma~\ref{l:noDS}, in a triple $\tau=(L,\sigma,r)$ with a $K$-fixed vector w
 \end{itemize}
 
 \begin{example}[rank one]\label{ex:spec}
-Let $G=PGL(2)$. All $R$-groups are trivial (Example~\ref{ex:R}), so only the first item of the list occurs. The spectral side of $J(f\otimes\phi)$ is
+Let $G=PGL(2)$. All $R$-groups are trivial (Example~\ref{ex:R}), so only the first item of the list occurs. The spectral side $J_{\mathrm{spec}}(f\otimes\phi)$ is
 \[
 -\frac12\int_{\Thu}f^\vee(\chi)\,J_A(\chi^{-1},\phi)\,d\chi.
 \]
@@ -488,6 +515,10 @@ Equate Proposition~\ref{p:geom} with the spectral side of \S\ref{s:class}.
 \end{itemize}
 \end{proof}
 
+\begin{status}\label{st:main}
+The first term of Theorem~\ref{t:main} is written with the normalized weighted character $J_{M_0}$. By Remark~\ref{r:norm} this is correct in rank one. In rank $\ge2$ further terms from the Levi subgroups strictly between $M_0$ and $G$ may have to be added, and the same holds for Theorem~\ref{t:B}. The existence statement (Theorem~\ref{t:A}), the smoothness of the density, and the description of the supports in Theorem~\ref{t:C} do not depend on this.
+\end{status}
+
 \begin{remark}
 Theorem~\ref{t:B} shows that $I_B\rho$ is always smooth. In Route~A, the $T$-independent part $I$ has double poles on the root walls, canceled by the double zeros of $\rho$ \cite[Rem.~6.2, (A.4)]{JC26}. Route B explains this cancellation: it is the smoothness of a weighted character.
 \end{remark}
@@ -503,7 +534,7 @@ There is no singular part, and $I_B\rho=-\frac12J_A(\chi^{-1},\phi)$. For $G=SL(
 % =====================================================================
 \section{Comparison with Route A}\label{s:compare}
 
-This section compares the density $I_B$ of Theorem~\ref{t:B} with the $T$-independent part of the truncated kernel of Route~A. The comparison is Conjecture~\ref{c:AB}. We explain why it should hold, how the two truncations are related, and what Hypothesis (R) of the companion paper means from the present point of view.
+This section compares the density $I_B$ of Theorem~\ref{t:B} with the $T$-independent part of the truncated kernel of Route~A. The comparison is Conjecture~\ref{c:AB}. Proposition~\ref{p:AB} shows that the two densities agree whenever each route is known to produce a measure, and Corollary~\ref{c:pgl2} applies this to $PGL(2)$. We then reformulate the conjecture as a comparison of two operators, explain how the two truncations are related, and say what Hypothesis (R) of the companion paper means from the present point of view.
 
 \begin{conjecture}\label{c:AB}
 For regular unitary $\chi$, the $T$-independent part $I(\chi,\phi)$ of the truncated kernel of \cite[Prop.~4.2]{JC26} equals $I_B(\chi,\phi)$. Equivalently,
@@ -512,7 +543,78 @@ I(\chi,\phi)\,\rho(\chi)=c_G\,J_{M_0}(\chi^{-1},\phi).
 \]
 \end{conjecture}
 
-\paragraph{Why it should hold.} Both sides are linear in $\phi$ and determined by their pairings with all $f^\vee$, and Theorem~4.5(a) of \cite{JC26} gives $I(f,\phi)$ as $\int f^\vee I^T\,d\mu$ for $T$ large. If the oscillatory part of $I^T$ pairs to zero in the limit, which happens for $PGL(2)$ and, numerically, for $PGL(3)$ (\cite[App.~A]{JC26}), then $\int f^\vee I\,d\mu=I(f,\phi)$. Comparing with Theorem~\ref{t:main} for all $f$ then gives Conjecture~\ref{c:AB} when there is no singular part, because the $f^\vee$ are dense in $C(\Thu/W)$. So the conjecture is already a consequence of the PGL(2) results of \cite{JC26} and Theorem~\ref{t:main}, and of the PGL(3) computation, once the normalizations are fixed. The real content is a direct proof that identifies the two constructions.
+The displayed form uses Theorem~\ref{t:B}. In rank $\ge2$ it is subject to Remark~\ref{r:norm}, and the conjecture is then the first statement, $I=I_B$.
+
+\paragraph{Why it should hold.} Both $I$ and $I_B$ describe the same linear functional, $f^\vee\mapsto I(f,\phi)$. A measure on $\Thu$ that is invariant under $W$ is determined by its integrals against Satake transforms. So whenever each of the two routes produces a measure, the two measures are equal, and so are their absolutely continuous parts. Lemma~\ref{l:dense} and Proposition~\ref{p:AB} make this precise. The two hypotheses of the proposition are the conclusions of the two routes.
+
+\begin{lemma}\label{l:dense}
+The Satake transforms $f^\vee$, $f\in\Hc(G,K)$, are dense in the space of continuous $W$-invariant functions on $\Thu$, for the uniform norm. Consequently a finite complex $W$-invariant measure $\nu$ on $\Thu$ is determined by the numbers $\int f^\vee\,d\nu$, $f\in\Hc(G,K)$.
+\end{lemma}
+
+\begin{proof}
+By the Satake isomorphism \cite{Sa63}, the functions $f^\vee$ are exactly the $W$-invariant finite linear combinations of the characters $\chi\mapsto\chi(\lambda)$ of the compact group $\Thu$, where $\lambda$ runs over $X_*(A)$. They form an algebra that contains the constants. It is closed under complex conjugation, because the conjugate of $\chi(\lambda)$ is $\chi(-\lambda)$.
+
+This algebra separates the $W$-orbits. Indeed, let $O_1\ne O_2$ be two orbits. The characters $\chi\mapsto\chi(\lambda)$ separate the points of $\Thu$, so by the Stone--Weierstrass theorem there is a finite linear combination $p$ of them that is within $\frac14$ of $1$ on the finite set $O_1$ and within $\frac14$ of $0$ on $O_2$. The average of $p$ over $W$ is $W$-invariant, and it takes different values on $O_1$ and on $O_2$.
+
+By the Stone--Weierstrass theorem on the compact space $\Thu/W$, the algebra is dense. The last statement follows from the Riesz representation theorem, since a $W$-invariant measure on $\Thu$ is the same thing as a measure on $\Thu/W$.
+\end{proof}
+
+\begin{proposition}\label{p:AB}
+Let $\phi\in C_c^\infty(G_{\ellr})$. Suppose that the following two statements hold.
+\begin{enumerate}[label=(\Alph*)]
+\item\label{h:A} There are a $W$-invariant function $I(\cdot,\phi)$ on $\Thu$ with $I(\cdot,\phi)\rho\in L^1(\Thu)$, and a finite complex $W$-invariant measure $\nu_A$ on $\Thu$ that is singular with respect to Haar measure, such that
+\[
+I(f,\phi)=\int_{\Thu}f^\vee(\chi)\,I(\chi,\phi)\,\rho(\chi)\,d\chi+\int_{\Thu}f^\vee\,d\nu_A\qquad\text{for all }f\in\Hc(G,K).
+\]
+\item\label{h:B} The same holds with a function $I_B(\cdot,\phi)$ and a measure $\nu_B$.
+\end{enumerate}
+Then $I(\chi,\phi)\rho(\chi)=I_B(\chi,\phi)\rho(\chi)$ for almost every $\chi\in\Thu$, and $\nu_A=\nu_B$.
+\end{proposition}
+
+\begin{proof}
+The measures $I(\cdot,\phi)\rho\,d\chi+\nu_A$ and $I_B(\cdot,\phi)\rho\,d\chi+\nu_B$ are finite, complex and $W$-invariant, and they have the same integral against every $f^\vee$. By Lemma~\ref{l:dense} they are equal. The decomposition of a finite complex measure into a part that is absolutely continuous with respect to Haar measure and a part that is singular is unique. So the two absolutely continuous parts are equal, which gives the first statement, and the two singular parts are equal.
+\end{proof}
+
+\paragraph{When the hypotheses hold.} Hypothesis~\ref{h:B} is the conclusion of Theorem~\ref{t:main}. There $\nu_B$ is the sum of the terms with $M\supsetneq M_0$. Each of them is carried by a torus of dimension smaller than that of $\Thu$, so $\nu_B$ is singular. The function $I_B\rho$ is the density of the first term, made $W$-invariant by averaging over $W$ if necessary. The average does not change the first term of Theorem~\ref{t:main}, because $f^\vee$ is $W$-invariant.
+
+Hypothesis~\ref{h:A} is the conclusion of Route~A in the following cases.
+\begin{itemize}
+\item Under the hypotheses (C) and (R) of \cite{JC26} for $G$ and for the level $n$ of $\phi$, with $\nu_A=0$ \cite[Thm.~4.5(b)]{JC26}. The weaker (R$'$) of \cite[Rem.~2026.20]{JC26} suffices. Here $I(\cdot,\phi)$ is the $T$-independent part of the truncated kernel. It is $W$-invariant, because the truncated kernel $I^T(\chi,\phi)$ depends on $\chi$ only through the spherical function, and the expansion of \cite[Prop.~4.2(c)]{JC26} is unique.
+\item For $G=PGL(2)$ and every level, with $\nu_A=0$. In rank one (C) is automatic, and (R) holds by \cite[Lemma~6.1A]{JC26}.
+\item For $G=SL(2)$ and the orbital integral of an unramified elliptic $\gamma$ of depth $0$, with $\nu_A=\frac12\delta_{\chi_0}$ \cite[Prop.~6.4]{JC26}.
+\end{itemize}
+In general, Hypothesis~\ref{h:A} is \cite[Conj.~4.6(a)]{JC26}. For $PGL(3)$ it is supported by the numerical results of \cite[App.~A]{JC26}, with $\nu_A=0$.
+
+\begin{corollary}\label{c:pgl2}
+Let $G=PGL(2)$, and assume Theorem~\ref{t:main} for $G$. Then Conjecture~\ref{c:AB} holds for $G$. More precisely, for every $\phi\in C_c^\infty(G_{\ellr})$ that is bi-invariant under a principal congruence subgroup,
+\[
+I(\chi,\phi)\,\rho(\chi)=-\tfrac14\big(J_A(\chi^{-1},\phi)+J_A(\chi,\phi)\big)\qquad\text{for almost every }\chi\in\Thu .
+\]
+\end{corollary}
+
+\begin{proof}
+All $R$-groups of $PGL(2)$ are trivial (Example~\ref{ex:R}), so Theorem~\ref{t:main} has no term with $M\supsetneq M_0$ and $\nu_B=0$. In rank one the density of the first term is $c_GJ_A(\chi^{-1},\phi)=-\frac12J_A(\chi^{-1},\phi)$ (Remark~\ref{r:norm} and Example~\ref{ex:main}). Its average over $W=\{1,w\}$ is the right side of the display, because $w\chi=\chi^{-1}$. Hypothesis~\ref{h:A} holds with $\nu_A=0$, by the second case above. Now apply Proposition~\ref{p:AB}.
+\end{proof}
+
+If the weighted character is $W$-invariant, that is, if $J_A(\chi,\phi)=J_A(\chi^{-1},\phi)$, then the right side is $-\frac12J_A(\chi^{-1},\phi)$, as in Conjecture~\ref{c:AB}. We expect this invariance, but we have not checked it.
+
+For $SL(2)$ and $\gamma$ as in the third case, the same argument gives more. If Theorem~\ref{t:main} holds, then the two densities agree, and the two point masses at $\chi_0$ agree as well. This is how \S\ref{s:sl2} fixes the constant $c_\tau$.
+
+\paragraph{What the argument does not show.} Proposition~\ref{p:AB} does not prove Conjecture~\ref{c:AB}, for two reasons. First, Hypothesis~\ref{h:A} is known only in the cases listed. Second, the argument is indirect even where both hypotheses hold. It identifies the two densities because they represent the same functional. It does not explain why the constant term of a truncated kernel should be a weighted character. A direct proof would compare the two constructions (item~\ref{n:6} of \S\ref{s:status}).
+
+\paragraph{A reformulation.} The two sides of Conjecture~\ref{c:AB} have the same shape, and this suggests how a direct proof could go. Let $\phi$ be bi-invariant under the principal congruence subgroup $K_n$, and let $\chi$ be regular. By \cite[Prop.~4.2(a)]{JC26},
+\[
+I^T(\chi,\phi)=\sum_{i,j}J^T(\chi,\chi^{-1},u_i^*,u_j)\,\ip{\pi_\chi(\phi)u_i,u_j^*},
+\]
+where $\{u_i\}$ is a basis of the $K_n$-fixed vectors of the principal series $\pi_\chi$, $\{u_i^*\}$ is the dual basis, and the $J^T$ are truncated inner products of matrix coefficients. The coefficients $J^T(\chi,\chi^{-1},u_i^*,u_j)$ do not involve $\phi$. Under (C) each of them is a finite sum of polynomials in $T$ times characters of $T$ \cite[Prop.~3.6]{JC26}. Let $\mathcal J_{ij}(\chi)$ be the constant coefficient of the trivial character. Then, by the definition in \cite[Prop.~4.2(c)]{JC26},
+\[
+I(\chi,\phi)=\sum_{i,j}\mathcal J_{ij}(\chi)\,\ip{\pi_\chi(\phi)u_i,u_j^*}=\tr\big(\mathcal J(\chi)\,\pi_\chi(\phi)\big)
+\]
+for an operator $\mathcal J(\chi)$ on the $K_n$-fixed vectors. On the other side, at least in rank one,
+\[
+I_B(\chi,\phi)\,\rho(\chi)=c_G\tr\big(\mathcal R_{M_0}(\chi^{-1},P)\,I_P(\chi^{-1},\phi)\big).
+\]
+So the conjecture compares two operators on the vectors of level $n$ in an unramified principal series, through their traces against the operators $\pi_\chi(\phi)$ with $\phi$ supported on the elliptic set. Both operators are constant terms. The first is the constant term of a truncated inner product, and the second is the limit of a $(G,M)$-family. The rank-one test of item~\ref{n:5} is a comparison of these two operators on the $(q+1)$-dimensional space of vectors of level one.
 
 \paragraph{The two truncations.} Arthur's $u(x,T)$ and the set $G(T)$ of Route~A are both defined by the convex hull of $W\cdot T$. Route~A's vertex terms $\psi(T_Q)R_Q$ \cite[Lemma~3.5A]{JC26} are periodic versions of Arthur's $e^{\Lambda(T_Q)}c_Q(\Lambda)/\theta_Q(\Lambda)$. In rank one, the constant term at $\Lambda=0$ of $\sum_Qe^{\Lambda(T_Q)}c_Q(\Lambda)\theta_Q(\Lambda)^{-1}$ is a logarithmic derivative of an intertwining operator. This is the mechanism that produces a weighted character, and it is visible in \cite[(6.5)]{JC26}.
 
@@ -525,12 +627,171 @@ For $G=PGL(2)$ and $\gamma$ of type (U$_r$), Route~A gives $I(\chi,\gamma)\rho(\
 % =====================================================================
 \section{\texorpdfstring{$SL(n)$}{SL(n)} and endoscopy}\label{s:endo}
 
-This section outlines how, for $G=SL(n)$, the singular part of the spectral measure should be expressed by $\kappa$-orbital integrals and endoscopic groups. It is an outline and not a proof.
+This section studies $G=SL(n)$, where the singular part of the spectral measure should be expressed by $\kappa$-orbital integrals and endoscopic groups. We first make both descriptions explicit. On the side of Route~B we compute the $R$-groups (\S\ref{s:slnR}) and the elliptic data (\S\ref{s:slnell}). On the side of Route~A we compute the supports of the $\kappa$-orbital integrals (\S\ref{s:slnkappa}). The two index sets and the two families of supports turn out to be the same (Proposition~\ref{p:dictionary}). We then say what Theorem~\ref{t:D} asserts and what is missing (\S\ref{s:slnD}). The identification of the densities remains an outline and not a proof.
 
 For $G=SL(n)$ and $\kappa$ an unramified character of $PGL(n,F)$ of order $m\mid n$, the $\kappa$-orbital integrals and the elliptic endoscopic groups $H_m$ are as in \cite[\S5]{JC26}. Arthur's local character relations \cite{Ar96} and his transfer of weighted orbital integrals \cite{Ar99} relate the elliptic virtual characters $\tau=(M_0,\chi,r)$ of \S\ref{s:class} to the stable characters of the $H_m$: the elliptic element $r\in R_\chi$ corresponds to a $\kappa$ of order equal to that of $r$. Combined with Theorem~\ref{t:main}, this would prove Theorem~\ref{t:D} and remove the hypothesis of \cite[Prop.~5.2]{JC26}. The stabilization of the local trace formula (Arthur's stable trace formula papers; see also Peng's explicit stable local trace formula \cite{Pe16}) is the natural framework.
 
+\subsection{Unramified characters and \texorpdfstring{$R$}{R}-groups of \texorpdfstring{$SL(n)$}{SL(n)}}\label{s:slnR}
+
+This subsection makes the $R$-groups of \S\ref{s:R} explicit for $SL(n)$. The result is Lemma~\ref{l:slnR}: the $R$-group of $\chi$ is the group of roots of unity that preserve the parameter of $\chi$.
+
+Let $G=SL(n)$, with $A$ the diagonal torus and $W=S_n$. The dual group is $PGL(n,\mathbb{C})$. A unitary unramified character $\chi$ of $A(F)$ is given by a parameter $z=(z_1,\dots,z_n)$ with $|z_i|=1$, taken up to a common scalar factor:
+\[
+\chi\big(\diag(\pi^{k_1},\dots,\pi^{k_n})\big)=\prod_iz_i^{k_i}\qquad\Big(\sum_ik_i=0\Big).
+\]
+For the root $\alpha=e_i-e_j$ we have $\chi_\alpha(\pi)=z_i/z_j$. The Weyl group permutes the coordinates, $(w\cdot z)_i=z_{w^{-1}(i)}$. For $n=2$ the coordinate of Example~\ref{ex:notation} is $z_1/z_2$. Write $\mu_n$ for the group of $n$-th roots of unity, and put
+\[
+\mu(\chi)=\{\zeta\in\mathbb{C}^\times:\ (\zeta z_1,\dots,\zeta z_n)\text{ is a permutation of }(z_1,\dots,z_n)\}.
+\]
+This set does not change when $z$ is multiplied by a scalar.
+
+\begin{lemma}\label{l:slnR}
+Let $\chi$ be a unitary unramified character of $SL(n)$, with parameter $z$.
+\begin{enumerate}[label=(\alph*)]
+\item $\mu(\chi)$ is a subgroup of $\mu_n$.
+\item For $w\in W_\chi$ there is a unique $c(w)\in\mathbb{C}^\times$ with $w\cdot z=c(w)z$. The map $c:W_\chi\to\mu(\chi)$ is a surjective homomorphism with kernel $W^\circ_\chi$. So $R_\chi\cong\mu(\chi)$, a cyclic group of order dividing $n$.
+\item For $m\mid n$, the group $R_\chi$ contains $\mu_m$ if and only if the multiset $\{z_1,\dots,z_n\}$ is a union of cosets of $\mu_m$ in the unit circle.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+(a) If $\zeta z$ is a permutation of $z$, then the product of the coordinates gives $\zeta^n\prod z_i=\prod z_i$, so $\zeta^n=1$. The set $\mu(\chi)$ is closed under products and inverses.
+
+(b) The character $w\chi$ has parameter $w\cdot z$, and two parameters give the same character exactly when they differ by a scalar. So $w\in W_\chi$ means $w\cdot z=c\,z$ for a scalar $c$, which is unique and lies in $\mu(\chi)$. Every $\zeta\in\mu(\chi)$ arises, by the definition of $\mu(\chi)$. If $w\cdot z=cz$ and $w'\cdot z=c'z$ then $(ww')\cdot z=w\cdot(c'z)=cc'z$, so $c$ is a homomorphism. Its kernel is the stabilizer of the vector $z$ in $S_n$. This is the group of permutations that preserve each set of equal coordinates, and it is generated by the transpositions $(i\,j)$ with $z_i=z_j$. These are the reflections $s_\alpha$ with $\chi_\alpha=1$, so the kernel is $W^\circ_\chi$.
+
+(c) By (b), $R_\chi\supseteq\mu_m$ means that multiplication by each $\zeta\in\mu_m$ preserves the multiset $\{z_i\}$. This holds exactly when the multiset is a union of cosets of $\mu_m$, counted with multiplicity.
+\end{proof}
+
+For $m\mid n$ with $m>1$, put $d=n/m$ and let $T_m\subset\Thu/W$ be the set of $\chi$ whose parameter is a union of $d$ cosets $w_1\mu_m,\dots,w_d\mu_m$. It is the image of a torus of dimension $d-1$, with coordinates $(w_1,\dots,w_d)$ up to a scalar. If $m'$ divides $m$ then $T_m\subseteq T_{m'}$. By Lemma~\ref{l:slnR}(c), $R_\chi\ne1$ exactly on the union of the $T_m$. The set $T_n$ is a single point $\chi_n$, with parameter $(1,\zeta_n,\dots,\zeta_n^{n-1})$ for a primitive $n$-th root of unity $\zeta_n$, and $R_{\chi_n}=\mu_n$. For $n=2$ it is $\chi_0$, and for $n=3$ it is the point $\chi_\zeta$ of \S\ref{s:sl3}. This proves, for $SL(n)$, the statements quoted from \cite{Ke82} in \S\ref{s:R}.
+
+\subsection{The elliptic data}\label{s:slnell}
+
+This subsection determines, for $SL(n)$, the virtual characters that occur in the singular part of Theorem~\ref{t:main}. They are the triples $(M_0,\chi,r)$ with $r$ elliptic in a Levi subgroup $M\supsetneq M_0$.
+
+\paragraph{A convention.} An element $r$ of $R^M_\chi$ is a coset of $W^{M,\circ}_\chi$ in $W^M_\chi$. Following Arthur, we represent it by the unique element of the coset that preserves the set of positive roots $\alpha$ of $M$ with $\chi_\alpha=1$ \cite[\S12, Remark~3]{Ar91}. Ellipticity of $r$ in $M$ refers to this representative. When $W^{M,\circ}_\chi=1$ there is nothing to choose. The definition in \S\ref{s:R} does not say which representative is meant, and the choice matters. For $SL(4)$ and $z=(1,1,-1,-1)$, the class with $c=-1$ contains the $4$-cycle $(1\,3\,2\,4)$, which has no non-zero fixed vector in $\fa_0$. Its representative in the sense above is $(1\,3)(2\,4)$, which has one, so this class is not elliptic in $G$.
+
+Up to conjugation by $W$, a Levi subgroup $M\supseteq M_0$ of $SL(n)$ consists of the block-diagonal matrices of determinant $1$ with blocks of sizes $n_1,\dots,n_k$. Then $W^M=S_{n_1}\times\dots\times S_{n_k}$, and $\fa_0^M$ is the space of vectors in $\mathbb{R}^n$ whose coordinates add up to zero on each block. For $m\mid n$ and $d=n/m$, let $M_m$ be the Levi subgroup with $d$ blocks of size $m$. For $m=n$ it is $G$.
+
+\begin{proposition}\label{p:slnell}
+Let $G=SL(n)$, let $M\supsetneq M_0$ be a block-diagonal Levi subgroup, let $\chi$ be a unitary unramified character with parameter $z$, and let $r\in R^M_\chi$ be elliptic in $M$. Then there are a divisor $m>1$ of $n$ and a primitive $m$-th root of unity $\zeta$ such that:
+\begin{enumerate}[label=(\alph*)]
+\item $M=M_m$.
+\item on each block, the coordinates of $z$ form one coset of $\mu_m$, so $\chi\in T_m$.
+\item $r$ is the class of a permutation $w$ that is a single $m$-cycle on each block, and $c(w)=\zeta$.
+\end{enumerate}
+Conversely, every triple $(M_m,\chi,r)$ as in (a)--(c) has $r$ elliptic in $M_m$. The twists of such a $\chi$ by $i\fa_{M_m}^*$ fill out $T_m$, and $\dim T_m=n/m-1=\dim\fa_{M_m}^G$.
+\end{proposition}
+
+\begin{proof}
+Let $w\in W^M$ be the representative of $r$ fixed by the convention, and let $\zeta=c(w)$, so that $z_{w^{-1}(i)}=\zeta z_i$ for all $i$. The space of vectors in $\fa_0^M$ fixed by $w$ has dimension $\sum_i(c_i-1)$, where $c_i$ is the number of cycles of $w$ in the $i$-th block. So $r$ is elliptic in $M$ exactly when $w$ is a single $n_i$-cycle on each block.
+
+Assume this. Going once around the cycle of the $i$-th block gives $\zeta^{n_i}=1$. Let $m$ be the order of $\zeta$. Then $m$ divides every $n_i$.
+
+If $m=1$ then $w$ fixes $z$, so $w\in W^{M,\circ}_\chi$ and $r$ is the trivial class. Its representative is the identity, which is a single cycle on each block only if all $n_i=1$. This is excluded by $M\ne M_0$. So $m>1$.
+
+Suppose that $n_i>m$ for some $i$, and let $j$ be an index in the $i$-th block. Then $w^{-m}(j)\ne j$ and $z_{w^{-m}(j)}=\zeta^mz_j=z_j$. So $\beta=e_j-e_{w^{-m}(j)}$ is a root of $M$ with $\chi_\beta=1$. Replacing $\beta$ by $-\beta$ if necessary, we may assume that $\beta$ is positive. For every $k$, the root $w^k\beta=e_{w^k(j)}-e_{w^{k-m}(j)}$ again satisfies $\chi_{w^k\beta}=1$, because $z_{w^k(j)}=\zeta^{-k}z_j=z_{w^{k-m}(j)}$. It is positive, because $w$ preserves the positive roots $\alpha$ of $M$ with $\chi_\alpha=1$. But
+\[
+\sum_{k=0}^{n_i-1}w^k\beta=\sum_{k=0}^{n_i-1}e_{w^k(j)}-\sum_{k=0}^{n_i-1}e_{w^{k-m}(j)}=0,
+\]
+since both sums run over the whole block. A sum of positive roots is not zero. This contradiction shows that $n_i=m$ for all $i$, which is (a). On each block the coordinates are then $z_j,\zeta z_j,\dots,\zeta^{m-1}z_j$ in the order of the cycle, a coset of $\mu_m$. This gives (b) and (c).
+
+Conversely, let $(M_m,\chi,r)$ be as in (a)--(c). The coordinates of $z$ in a block are distinct, so $W^{M_m,\circ}_\chi=1$ and $w$ is the representative of $r$. It is a single cycle on each block, so $r$ is elliptic in $M_m$. A twist by $i\fa_{M_m}^*$ multiplies the coordinates of the $j$-th block by a common scalar $u_j$ of absolute value $1$. So the twists move the cosets $w_j\mu_m$ independently, and they fill out $T_m$. Finally $\fa_{M_m}^G$ is the space of vectors that are constant on each of the $d$ blocks and have sum zero, of dimension $d-1$.
+\end{proof}
+
+\begin{corollary}\label{c:slnindex}
+For $G=SL(n)$, the terms with $M\supsetneq M_0$ in Theorem~\ref{t:main} are indexed, up to conjugation by $W$, by the pairs $(m,\zeta)$ with $m\mid n$, $m>1$ and $\zeta$ a primitive $m$-th root of unity. Equivalently, they are indexed by the elements $\zeta\ne1$ of $\mu_n$. The term for $(m,\zeta)$ is carried by $T_m$. The terms with $M=G$ are those with $m=n$. They are the $\varphi(n)$ virtual characters $\tau_\zeta=(M_0,\chi_n,r_\zeta)$, $\zeta$ a primitive $n$-th root of unity, and they all sit at the one point $\chi_n$.
+\end{corollary}
+
+\begin{proof}
+This is Proposition~\ref{p:slnell} applied to the list of \S\ref{s:class}.
+\end{proof}
+
+In particular, if $n$ is prime then the singular part consists of point masses at $\chi_n$ only.
+
+\begin{example}[$n=4$]\label{ex:sl4}
+For $SL(4)$ there are three elements $\zeta\ne1$ of $\mu_4$. For $\zeta=-1$ we have $m=2$ and $M_2=S(GL(2)\times GL(2))$. The set $T_2$ consists of the parameters $(a,-a,b,-b)$, and it has dimension $1=\dim\fa_{M_2}^G$. The permutation $w=(1\,2)(3\,4)$ multiplies such a parameter by $-1$, and it is elliptic in $M_2$. For $\zeta=\pm i$ we have $m=4$ and $M_4=G$, and both terms sit at the point $\chi_4$ with parameter $(1,i,-1,-i)$. Here $R_{\chi_4}=\mu_4$. Its two elements of order $4$ are elliptic in $G$. Its element $-1$ is not elliptic in $G$, but $\chi_4$ lies on $T_2$, and there $-1$ is elliptic in a conjugate of $M_2$.
+\end{example}
+
+\subsection{The side of Route A: \texorpdfstring{$\kappa$}{kappa}-orbital integrals}\label{s:slnkappa}
+
+This subsection recalls from \cite[\S5]{JC26} how an orbital integral on $SL(n)$ decomposes into $\kappa$-orbital integrals. It then determines where each piece is supported on the spectral side.
+
+The unramified characters $\kappa$ of $PGL(n,F)$ that are trivial on the image of $SL(n,F)$ are the characters $\kappa_\zeta=\eta\circ\det$, where $\eta$ is the unramified character of $F^\times$ with $\eta(\pi)=\zeta$ and $\zeta\in\mu_n$ \cite[\S5.1]{JC26}. The order of $\kappa_\zeta$ is the order $m$ of $\zeta$, and its endoscopic group is $H_m$. So the non-trivial $\kappa$ are indexed by the elements $\zeta\ne1$ of $\mu_n$.
+
+Let $\gamma$ be regular elliptic with centralizer $S$, and let $f\in\Hc(G,K)$. In the notation and with the normalizations of \cite[\S5]{JC26}, the formulas (5.4A) and (5.11) and Lemma~5.0 of that paper give
+\begin{equation}\label{e:kappadecomp}
+O_\gamma(f)=\frac{1}{c_S|\mathfrak D(S)|}\,\Phi^1_f(\gamma)+\frac{1}{|\mathfrak D(S)|}\sum_{\kappa\ne1}\Delta_\kappa(\gamma_H,\gamma)^{-1}\,S\Phi^{H}_{\iota^*f}(\gamma_H).
+\end{equation}
+The sum is over the non-trivial unramified characters $\kappa$ of $\mathfrak D(S)$ such that $\gamma$ comes from an element $\gamma_H$ of $H=H_m$, with $m$ the order of $\kappa$. The first term is the stable part. Note that the constant $c_S$ cancels in the terms with $\kappa\ne1$. Since $(\iota^*f)^\vee=f^\vee\circ\iota$, the term for $\kappa$ depends on $f$ only through the restriction of $f^\vee$ to the image of $\iota$.
+
+\begin{lemma}\label{l:iota}
+Let $m\mid n$, $m>1$ and $d=n/m$. Let $\iota:{}^LH_m\to{}^LG$ be the $L$-embedding that is block-diagonal on the dual group of $H_m$ and sends the Frobenius element to the cyclic permutation of the $m$ blocks. Then the image of $\Thu_{H_m}/W_{H_m}$ under $\iota$ is $T_m$.
+\end{lemma}
+
+\begin{proof}[Proof sketch]
+The group $H_m$ is the kernel of $N_{E/F}\circ\det$ on $\operatorname{Res}_{E/F}GL(d)$, with $E/F$ unramified of degree $m$. Its dual group is $GL(d,\mathbb{C})^m$ modulo the scalars embedded diagonally, and the Frobenius element $\sigma$ permutes the $m$ factors cyclically. The unramified characters of $H_m(F)$, up to $W_{H_m}$, correspond to the semisimple classes of elements $(g_1,\dots,g_m)\rtimes\sigma$ under conjugation by the dual group. Such a class is determined by the conjugacy class of the product $g_1g_2\cdots g_m$ in $GL(d,\mathbb{C})$, up to multiplication by the $m$-th power of a scalar. Let $u_1,\dots,u_d$ be the eigenvalues of this product. The image under $\iota$ is the class in $PGL(n,\mathbb{C})$ of a block-cyclic matrix whose $m$-th power is block-diagonal, with blocks conjugate to the product. Its eigenvalues are therefore all the $m$-th roots of $u_1,\dots,u_d$. This multiset is a union of $d$ cosets of $\mu_m$, and every such union arises. The unitary characters correspond to $|u_j|=1$.
+\end{proof}
+
+For $m=n$ the lemma gives the point $\chi_n$, which is the $\chi_\kappa$ of \cite[Prop.~5.1]{JC26}. The paper \cite{JC26} fixes an $L$-embedding without specifying it. We assume that it is the one of the lemma.
+
+\begin{proposition}[the dictionary]\label{p:dictionary}
+Let $G=SL(n)$.
+\begin{enumerate}[label=(\alph*)]
+\item The non-trivial unramified characters $\kappa_\zeta$ and the terms with $M\supsetneq M_0$ of Theorem~\ref{t:main} have the same index set, the elements $\zeta\ne1$ of $\mu_n$.
+\item Let $\zeta$ have order $m$. The term for $\kappa_\zeta$ in (\ref{e:kappadecomp}) depends only on the restriction of $f^\vee$ to $T_m$. The term for $(m,\zeta)$ in Theorem~\ref{t:main} is carried by the same set $T_m$.
+\item $T_m$ is the set of $\chi$ whose $R$-group contains $\mu_m$.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+(a) and the second statement of (b) are Corollary~\ref{c:slnindex}. The first statement of (b) is Lemma~\ref{l:iota}. (c) is Lemma~\ref{l:slnR}(c).
+\end{proof}
+
+This makes precise the statement, at the beginning of this section, that the elliptic element $r$ corresponds to a $\kappa$ of the same order.
+
+\subsection{What Theorem D asserts, and what remains}\label{s:slnD}
+
+This subsection states Theorem~\ref{t:D} in terms of the dictionary. It shows that a summed form of the theorem follows from Theorem~\ref{t:main} and from statements of Route~A, writes out the case of prime $n$, and lists the missing steps.
+
+By (\ref{e:kappadecomp}), integrated against $\phi$ as in \cite[(4.11)]{JC26}, Route~A writes the functional $f^\vee\mapsto I(f,\phi)$ as a stable term, which comes from $\kappa=1$, plus one term for each $\zeta\ne1$ in $\mu_n$. The term for $\zeta$ is a functional of the restriction of $f^\vee$ to $T_m$. Route~B writes the singular part of the same functional as a sum over the same $\zeta$ of measures on the sets $T_m$. Theorem~\ref{t:D} asserts that the two sums agree. The uniqueness argument of \S\ref{s:compare} reduces this to statements about each route separately.
+
+\begin{proposition}\label{p:Dreduction}
+Let $G=SL(n)$ and $\phi\in C_c^\infty(G_{\ellr})$. Assume the following.
+\begin{enumerate}[label=(\roman*)]
+\item Theorem~\ref{t:main} holds for $G$ and $\phi$.
+\item The stable term of Route~A is given by an absolutely continuous measure on $\Thu$.
+\item For each $\zeta\ne1$ in $\mu_n$, the term of Route~A for $\kappa_\zeta$ is given by a finite complex measure $\nu_\zeta$ on $\Thu/W$ carried by $T_m$.
+\end{enumerate}
+Then the singular part of the spectral measure in Theorem~\ref{t:main} is $\sum_{\zeta\ne1}\nu_\zeta$. In particular it is a sum of push-forwards from the endoscopic groups whenever each $\nu_\zeta$ is, as in \cite[Prop.~5.2]{JC26}.
+\end{proposition}
+
+\begin{proof}
+Each $T_m$ is the image of a torus of dimension smaller than that of $\Thu$, so $\sum_\zeta\nu_\zeta$ is singular with respect to Haar measure. By (ii) and (iii), Hypothesis~\ref{h:A} of Proposition~\ref{p:AB} holds with $\nu_A=\sum_\zeta\nu_\zeta$. By (i), Hypothesis~\ref{h:B} holds, with $\nu_B$ the singular part of Theorem~\ref{t:main}. Proposition~\ref{p:AB} gives $\nu_B=\nu_A$.
+\end{proof}
+
+Assumption (iii) holds without further hypothesis for $\zeta$ of order $n$, where $\nu_\zeta$ is a point mass at $\chi_n$ \cite[Prop.~5.1]{JC26}. For $\zeta$ of order $m<n$ it follows from a stable form of the spectral identity for $H_m$ \cite[Prop.~5.2]{JC26}, which is not known. Assumption (ii) is not known either.
+
+Proposition~\ref{p:Dreduction} identifies the sum of the singular terms and not the individual terms. Different $\zeta$ of the same order share the set $T_m$, and $T_m\subseteq T_{m'}$ when $m'$ divides $m$. So the supports alone do not separate the terms. A term-by-term statement needs the character identities of \cite{Ar96}.
+
+\paragraph{Prime $n$.} Let $n$ be prime. Then every $\zeta\ne1$ has order $n$, and both descriptions of the singular part are point masses at $\chi_n$. Let $S_n$ be the norm-one torus of the unramified extension $E$ of degree $n$. For a torus $S$ stably conjugate to $S_n$ the group $\mathfrak D(S)$ is isomorphic to $F^\times/N_{E/F}E^\times$, which is cyclic of order $n$, and all its characters are unramified. For such $S$ and regular $\gamma\in S(F)$, the formula (\ref{e:kappadecomp}) and \cite[Prop.~5.1]{JC26} give
+\[
+O_\gamma(f)=\frac{1}{nc_S}\,\Phi^1_f(\gamma)+\Big(\frac1n\sum_{\kappa\ne1}\Delta_\kappa(\gamma_H,\gamma)^{-1}\Big)f^\vee(\chi_n).
+\]
+For elliptic $\gamma$ in other tori no term with $\kappa\ne1$ occurs, by \cite[(5.11)]{JC26}. If all transfer factors are $1$, the weight of the point mass is $\frac{n-1}{n}$. This is $\frac12$ for $SL(2)$ and $\frac23$ for $SL(3)$, as in \S\S\ref{s:sl2}--\ref{s:sl3}. On the side of Route~B, the terms with $M=G$ of Theorem~\ref{t:main} are $\sum_{\zeta\ne1}c_{\tau_\zeta}f^\vee(\chi_n)\tr\tau_\zeta^\vee(\phi)$. Comparing the coefficients of $f^\vee(\chi_n)$, and integrating over $\gamma$ with \cite[(4.11)]{JC26}, we find that for prime $n$ the conclusion of Proposition~\ref{p:Dreduction} is the identity
+\begin{equation}\label{e:Dprime}
+\sum_{\zeta\ne1}c_{\tau_\zeta}\tr\tau_\zeta^\vee(\phi)=\sum_{S}\frac{\vol(S(F))}{|W(G,S)|}\int_{S(F)}|D(s)|\Big(\frac1n\sum_{\kappa\ne1}\Delta_\kappa(s_H,s)^{-1}\Big)O_s(\phi)\,ds .
+\end{equation}
+Here $S$ runs over the conjugacy classes of tori that are stably conjugate to $S_n$, and the measures and orbital integrals on the right are those of \cite[\S\S4--5]{JC26}. By the Weyl integration formula, (\ref{e:Dprime}) is a statement about characters. It says that, on the regular elliptic set, the virtual character $\sum_{\zeta\ne1}c_{\tau_\zeta}\Theta_{\tau_\zeta^\vee}$ vanishes off the tori stably conjugate to $S_n$, and that on such a torus it equals $\vol(S(F))\,\frac1n\sum_{\kappa\ne1}\Delta_\kappa(s_H,s)^{-1}$. For $n=2$ this is the behavior of the character of $\pi^+-\pi^-$ that enters \S\ref{s:sl2}. The identity (\ref{e:Dprime}) has not been proved here. Its constants depend on the normalizations of \cite[\S5]{JC26}, which have been checked only for $SL(2)$.
+
+\paragraph{What remains.} Three steps are missing for Theorem~\ref{t:D}.
+\begin{enumerate}[label=(\roman*)]
+\item Theorem~\ref{t:main} itself, with its constants $c_{M,\tau}$ (items~\ref{n:1}, \ref{n:2} and~\ref{n:4} of \S\ref{s:status}).
+\item Assumptions (ii) and (iii) of Proposition~\ref{p:Dreduction} for $\zeta$ of order less than $n$. They are stable spectral identities for $G$ and for the groups $H_m$.
+\item The term-by-term identification of the densities, from the local character relations of \cite{Ar96}.
+\end{enumerate}
+
 \begin{status}
-This section is an outline. For $\kappa$ of order $n$ the endoscopic group is a torus and the result is \cite[Prop.~5.1]{JC26}.
+Lemma~\ref{l:slnR} and Proposition~\ref{p:slnell} are proved here. Corollary~\ref{c:slnindex} and Proposition~\ref{p:dictionary} are proved here from the list of \S\ref{s:class}, which depends on the unchecked statements of \S\ref{s:ltf}. Lemma~\ref{l:iota} is sketched. Proposition~\ref{p:Dreduction} is proved under its three assumptions. Theorem~\ref{t:D} remains an outline. For $\kappa$ of order $n$ the endoscopic group is a torus and the result on the side of Route~A is \cite[Prop.~5.1]{JC26}.
 \end{status}
 
 \begin{example}[$n=2$]\label{ex:endo}
@@ -582,7 +843,7 @@ Let $G=SL(3)$, and let $\gamma$ be regular elliptic in the norm-one torus of the
 \]
 in coordinates where $\chi$ is a triple modulo scalars (as for the dual group $PGL(3,\mathbb{C})$). At $\chi_\zeta$ a $3$-cycle in $W$ fixes $\chi$ and acts on $\fa_0$ without fixed vectors. Here $R_{\chi_\zeta}\cong\mathbb{Z}/3$, $I(\chi_\zeta)$ has three constituents, and there are two elliptic virtual characters, attached to the two non-trivial elements of $R$. The Satake parameter of $\chi_\zeta$ is $\diag(1,\zeta,\zeta^2)$, which is also the parameter $\chi_\kappa$ attached to the characters $\kappa$ of order $3$ in \cite[Prop.~5.1]{JC26}.
 
-\emph{Prediction.} The spectral measure of $O_\gamma$ on $SL(3)$ is $I\,d\mu$ plus a point mass at $\chi_\zeta$. Its weight is the sum of the two $\kappa$-contributions, $\frac13(\Delta_\kappa^{-1}+\Delta_{\kappa^2}^{-1})c_S$ in the notation of \cite[(5.4A), Prop.~5.1]{JC26}, which is $\frac23$ if all transfer factors and $c_S$ equal $1$. There are no singular contributions on one-dimensional subtori: those would require an elliptic element of an $R$-group for $M\cong GL(2)$, and the $R$-groups of unramified principal series of $GL(2)$ are trivial.
+\emph{Prediction.} The spectral measure of $O_\gamma$ on $SL(3)$ is $I\,d\mu$ plus a point mass at $\chi_\zeta$. Its weight is the sum of the two $\kappa$-contributions, $\frac13(\Delta_\kappa^{-1}+\Delta_{\kappa^2}^{-1})$ in the notation of \cite[(5.4A), Prop.~5.1]{JC26}, which is $\frac23$ if both transfer factors equal $1$. The constant $c_S$ cancels, as in (\ref{e:kappadecomp}). There are no singular contributions on one-dimensional subtori: those would require an elliptic element of an $R$-group for $M\cong GL(2)$, and the $R$-groups of unramified principal series of $GL(2)$ are trivial.
 
 \begin{status}
 To be tested numerically on the building of $SL(3)$, by adapting the $PGL(3)$ code of \cite[App.~A]{JC26} (\texttt{examples/pgl3/}) to vertices of one type and to the cubic norm-one torus. The predicted mass $\frac23$ depends on normalizations that have not been checked.
@@ -598,13 +859,18 @@ This section collects the results of the paper, with the status of each as it is
 \toprule
 Result & Content & Status\\
 \midrule
-Lemma~\ref{l:sphvanish} & Weighted characters of spherical functions vanish for $M\ne L$. & Proved here from (\ref{e:fix}). The comparison of the normalization with Arthur's conditions is item~\ref{n:1}.\\[0.5ex]
-Proposition~\ref{p:geom} & The geometric side reduces to $I(f,\phi)$. & Proved here. The constants in (\ref{e:geo}) are being checked. See item~\ref{n:2}.\\[0.5ex]
+Lemma~\ref{l:sphvanish} & Normalized weighted characters of spherical functions vanish for $M\ne L$. & Proved here from (\ref{e:fix}). Arthur's formula uses unnormalized weighted characters (Remark~\ref{r:norm}). See item~\ref{n:1}.\\[0.5ex]
+Proposition~\ref{p:geom} & The geometric side reduces to $I(f,\phi)$. & Proved here, from the statement of \cite[Thm.~12.2]{Ar91} and its measures.\\[0.5ex]
 Proposition~\ref{p:split} & The spherical factor contributes only $f^\vee(\chi)$. & Proved here from (\ref{e:split}), whose form in the local setting is being checked. See item~\ref{n:2}.\\[0.5ex]
 Lemma~\ref{l:cusp} & Functions supported on $G_{\ellr}$ are cuspidal. & Proved here from van Dijk's formula \cite{vD72}.\\[0.5ex]
 Lemma~\ref{l:noDS} & Square-integrable representations of Levi subgroups $L\ne M_0$ have no hyperspecial-fixed vectors. & Proof sketched. A reference or a complete proof is to be supplied. See item~\ref{n:3}.\\[0.5ex]
-Theorem~\ref{t:main} and Theorems~\ref{t:A}, \ref{t:B}, \ref{t:C} & The spectral measure exists. Its absolutely continuous part is a weighted character, and its singular part comes from elliptic virtual characters. & Proof in outline, with the normalizations of \S\ref{s:status} assumed. See items~\ref{n:1}, \ref{n:2} and \ref{n:4}.\\[0.5ex]
-Theorem~\ref{t:D} & For $SL(n)$ the singular part is given by endoscopy. & Outline only. See \S\ref{s:endo} and item~\ref{n:8}.\\[0.5ex]
+Theorem~\ref{t:main} and Theorems~\ref{t:A}, \ref{t:B}, \ref{t:C} & The spectral measure exists. Its absolutely continuous part is a weighted character, and its singular part comes from elliptic virtual characters. & Proof in outline, with the normalizations of \S\ref{s:status} assumed. In rank $\ge2$ the formula for the density may need further terms (Remark~\ref{r:norm}, Status~\ref{st:main}). See items~\ref{n:1}, \ref{n:2} and \ref{n:4}.\\[0.5ex]
+Theorem~\ref{t:D} & For $SL(n)$ the singular part is given by endoscopy. & Outline only. See \S\ref{s:slnD} and item~\ref{n:8}.\\[0.5ex]
+Lemma~\ref{l:slnR}, Proposition~\ref{p:slnell} & The $R$-groups and the elliptic data of $SL(n)$. & Proved here.\\[0.5ex]
+Corollary~\ref{c:slnindex}, Proposition~\ref{p:dictionary} & For $SL(n)$ the singular terms and the $\kappa$-orbital integrals have the same index set and the same supports. & Proved here from the list of \S\ref{s:class} and from Lemma~\ref{l:iota}, which is sketched.\\[0.5ex]
+Proposition~\ref{p:Dreduction} & A summed form of Theorem~\ref{t:D}. & Proved here under its three assumptions, of which two are not known.\\[0.5ex]
+Lemma~\ref{l:dense}, Proposition~\ref{p:AB} & If both routes give a measure, the densities and the singular parts agree. & Proved here. Conditional on the two hypotheses stated.\\[0.5ex]
+Corollary~\ref{c:pgl2} & Conjecture~\ref{c:AB} for $PGL(2)$, up to an average over $W$. & Proved here, assuming Theorem~\ref{t:main} for $PGL(2)$.\\[0.5ex]
 Conjecture~\ref{c:AB} & The density $I_B$ equals the $T$-independent part of the kernel of Route~A. & Conjectural. See item~\ref{n:6}.\\[0.5ex]
 \S\ref{s:sl3} & A point mass at $\chi_\zeta$ for $SL(3)$. & A prediction. It has not been tested numerically, and it depends on normalizations that have not been checked. See item~\ref{n:7}.\\
 \bottomrule
@@ -619,14 +885,14 @@ The examples of \S\ref{s:ex} for $PGL(2)$, $SL(2)$ and $PGL(3)$ compare Theorem~
 This section lists the steps that remain before the results of the paper are fully proved. The items are cited by number throughout the paper. They also serve as the list of open questions.
 
 \begin{enumerate}[label=(N\arabic*)]
-\item\label{n:1} \emph{Normalizing factors.} Check that (\ref{e:rnorm}) satisfies Arthur's conditions for normalizing factors and agrees with \cite{Ar98} in the unramified case (non-split groups included).
-\item\label{n:2} \emph{Arthur's formula.} Fix the precise statements, constants and measures of the geometric and spectral expansions and of the elliptic form from \cite{Ar91,Ar93}, and the splitting formula (\ref{e:split}) in the local setting.
+\item\label{n:1} \emph{Normalizing factors.} Check that (\ref{e:rnorm}) satisfies Arthur's conditions for normalizing factors and agrees with \cite{Ar98} in the unramified case (non-split groups included). Compute the terms that relate Arthur's unnormalized weighted characters to the normalized ones in rank $\ge2$ (Remark~\ref{r:norm}), and correct Theorem~\ref{t:B} and Theorem~\ref{t:main} accordingly.
+\item\label{n:2} \emph{Arthur's formula.} The statements of (\ref{e:geo}) and (\ref{e:spec}) now follow \cite[Thm.~12.2]{Ar91}. Fix the elliptic form from \cite{Ar93}, including the relation between $\Pi_{\mathrm{disc}}(M)$ with its coefficients and $\Tdisc(M)$, the constants and measures, and the splitting formula (\ref{e:split}) in the local setting.
 \item\label{n:3} \emph{Lemma~\ref{l:noDS}.} Supply a reference or a complete proof.
 \item\label{n:4} \emph{Theorem~\ref{t:main}.} Write the proof in full, including the smoothness of $\chi\mapsto J_{M_0}(\chi,\phi)$ in the compact picture.
 \item\label{n:5} \emph{Rank one.} Compute $J_A(\chi,\phi)$ for $PGL(2)$ and $SL(2)$ numerically, and compare with \cite[Thm.~6.1, Prop.~6.4]{JC26}. This fixes $c_G$ and $c_\tau$.
 \item\label{n:6} \emph{Conjecture~\ref{c:AB}.} Give a direct proof, at least in rank one.
 \item\label{n:7} \emph{$SL(3)$.} Run the numerical test of the prediction.
-\item\label{n:8} \emph{Theorem~\ref{t:D}.} Write \S\ref{s:endo} in full.
+\item\label{n:8} \emph{Theorem~\ref{t:D}.} Carry out the three steps listed at the end of \S\ref{s:slnD}, and prove (\ref{e:Dprime}) for prime $n$.
 \end{enumerate}
 
 % =====================================================================
@@ -646,7 +912,7 @@ This glossary gives short definitions of the terms used in this paper, with poin
 \item[Weighted orbital integral $J_M(\gamma,f)$] An orbital integral against the weight function $v_M$ attached to a $(G,M)$-family. It is not invariant unless $M=G$. These are the terms of the geometric side of Arthur's trace formulas.
 \item[Weighted character $J_M(\pi,f)$] $\tr(\mathcal R_M(\pi,P)I_P(\pi,f))$, with $\mathcal R_M$ the limit of the $(G,M)$-family of normalized intertwining operators (\S\ref{s:wchar}). These are the terms of the spectral side. They depend on the normalization.
 \item[Splitting formula] The expression (\ref{e:split}) of a weighted character of $f_1\otimes f_2$ through weighted characters of $f_1$ and of $f_2$ on Levi subgroups, with coefficients $d_M^G(L_1,L_2)$.
-\item[Local trace formula] Arthur's identity between the geometric expansion (\ref{e:geo}) and the spectral expansion (\ref{e:spec}) of the constant term $J(f)$ of a truncated integral of the kernel of $R(f)$ on $L^2(G(F))$, for $f\in C_c^\infty(G(F)\times G(F))$ \cite{Ar91}.
+\item[Local trace formula] Arthur's identity between the geometric expression (\ref{e:geo}) and the spectral expression (\ref{e:spec}), for $f\in C_c^\infty(G(F)\times G(F))$. It is deduced from two expansions of the constant term $J(f)$ of a truncated integral of the kernel of $R(f)$ on $L^2(G(F))$ \cite{Ar91}.
 \item[Truncation $u(x,T)$] The characteristic function of the compact set of $x\in G(F)$ whose Cartan component lies in the convex hull of $W\cdot T$. It is the analogue of the set $G(T)$ of Route~A.
 \item[Regular elliptic element; $G_{\ellr}$] A regular semisimple element whose centralizer is an anisotropic torus (modulo the center).
 \item[Cuspidal function] $\phi\in C_c^\infty(G(F))$ whose orbital integrals vanish on non-elliptic regular elements; equivalently, $\tr\sigma(\phi)=0$ for properly induced $\sigma$. Functions supported on $G_{\ellr}$ are cuspidal (Lemma~\ref{l:cusp}).
@@ -664,7 +930,7 @@ This glossary gives short definitions of the terms used in this paper, with poin
 \addcontentsline{toc}{section}{Acknowledgments}
 This paper began with a suggestion of Claude (Anthropic), an AI model. During the 2026 revision of the first author's paper \cite{Jo92}, Claude suggested reproving the results of the 1997 version of that paper from Arthur's later work on the local trace formula \cite{Ar91,Ar93}. The first author decided to pursue the suggestion, directed the work and reviewed the drafts.
 
-Claude took part as a co-author. It wrote the outline (\texttt{OUTLINE.md}, in the directory of the source), which the plan of the paper follows. It drafted the text, the examples, the literature review, the summary and the glossary, and it made the style revision of Draft~2. No other AI system contributed, and the paper has not yet been refereed.
+Claude took part as a co-author. It wrote the outline (\texttt{OUTLINE.md}, in the directory of the source), which the plan of the paper follows. It drafted the text, the examples, the literature review, the summary and the glossary, and it made the style revision of Draft~2 and the mathematical revision of Draft~3. No other AI system contributed, and the paper has not yet been refereed.
 
 Review by AI systems is not an independent certification of the results. The errors that remain are the authors'. Further details on the AI usage, and a list of every change between drafts, can be found in the revision log (\texttt{revision\_log.md}) that accompanies the source.
 

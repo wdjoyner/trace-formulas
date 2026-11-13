@@ -1,5 +1,3 @@
-# SPDX-License-Identifier: MIT
-# Copyright (c) 2026 David Joyner
 """Check the patch formulas of Section 3 and the Igusa forms of Section 4 (and (8.1), (8.4), (8.5)).
 
 Coordinates on Z: lam w(rho) = x(rho) z(a)^{m_a} z(b)^{m_b}, w(simple) = 1.
@@ -91,3 +89,17 @@ print("omega_E coefficient (in dz_a dw_g dw_d dw_e dw_z dx_z):", omegaE)
 # (8.4): omega_O3 = d x(a) d x(g) d x(d) / lam^2 in the variables z_a, w_g, w_d (others fixed)
 J = sp.Matrix([[sp.diff(s[x[r]], v) for v in (za, w['g'], w['d'])] for r in 'agd'])
 print("(8.4) coefficient dx_a dx_g dx_d / lam^2 =", sp.factor(J.det() / s[lam]**2))
+
+
+print("\n==== Section 7 checks (patch Z_(0,a,d), branch z_a = 0) ====")
+za_, zb_, wg_, wd_, xd_, xe_, xz_ = sp.symbols('z_a z_b w_g w_d x_d x_e x_z', positive=True)
+g7 = [za_, zb_, wg_, wd_, xd_, xe_, xz_]
+lam7 = xd_ * za_**2 * zb_ / wd_
+F7 = [lam7 / zb_, lam7 * wg_ / (za_ * zb_), xd_, xe_]  # x(b), x(g), x(d), x(e)
+J7 = sp.Matrix([[sp.diff(f, g) for g in g7] for f in F7])
+cols = [g7.index(c) for c in (wg_, wd_, xd_, xe_)]
+c73 = sp.simplify(J7[:, cols].det() / lam7**sp.Rational(3, 2))
+print("(7.3) coefficient of dw_g dw_d dx_d dx_e in dx(b)dx(g)dx(d)dx(e)/lam^(3/2):", c73)
+omegaE7 = sp.factor(xd_**4 * za_**5 * zb_ / wd_**5 / lam7**3 * za_)
+print("omega_E on E_(0,a,d) (in dz_b dw_g dw_d dx_d dx_e dx_z):", omegaE7)
+print("(7.4) fiber form coefficient (in dz_b dx_z):", sp.simplify(omegaE7 / c73))

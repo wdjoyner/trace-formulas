@@ -1,0 +1,1723 @@
+
+\documentclass[twocolumn,10pt]{article}
+%\usepackage{times}
+%\documentclass[12pt,thmsa]{article}
+\usepackage{amsfonts}
+%%%%%
+\newtheorem{theorem}{Theorem}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{axiom}{Axiom}
+\newtheorem{remark}{Remark}
+\newtheorem{exercise}{Exercise}[section]
+\def\qqq{\bf{Q}}
+\def\ccc{\bf{C}}
+\def\zzz{\bf{Z}}
+\def\rrr{\bf{R}}
+\def\aaa{\bf{A}}
+\def\nnn{\bf{N}}
+
+\begin{document}
+\author{D. Joyner}
+
+\title{On the unitary dual of 
+$\overline{SL(2,F)}$, $F$ p-adic}
+
+\date{7-21-99}
+\maketitle
+
+%\begin{abstract}
+\begin{quotation}
+{\bf Abstract}: This paper describes the genuine irreducible unitary
+representations of the $n$-fold metaplectic cover
+$\overline{SL(2,F)}$, $F$ p-adic, 
+with the exception of the reducible principal series. 
+The image of the metaplectic Harish-Chandra
+transform is determined and then a transfer of 
+smooth (resp., spherical)  genuine functions
+on $\overline{SL(2,F)}$ with their
+analogs on $SL(2,F)$ is given such that their
+associated orbital integrals are equal.
+Finally, it is noted that the corresponding
+principal series representations on $SL(2,F)$ and on
+$\overline{SL(2,F)}$ satisfy a simple character relation.
+%\end{abstract}
+\end{quotation}
+
+\tableofcontents
+\vskip .4in
+
+\section{Introduction}
+Some of the results found in this paper:
+\begin{itemize}
+\item
+Using the theory of germs of orbital integrals on a metaplectic group
+\cite{V}, one can classify the image of the metaplectic Harish-Chandra
+transform (see Proposition \ref{prop:main1}
+and Corollary \ref{cor:main1}).
+Moreover, it is not
+hard to describe a transfer (or ``matching'') of 
+smooth (resp., spherical)  genuine functions
+on $\overline{SL(2,F)}$ with their
+analogs on $SL(2,F)$ such that the
+associated orbital integrals are equal.
+
+\item
+Based on the work of Moen \cite{Mo1}, \cite{Mo2},
+Ariturk \cite{Ar}, Kazhdan-Patterson \cite{KP},
+and Flicker-Kazhdan \cite{FK},
+one can describe the genuine irreducible unitary
+representations of the $n$-fold metaplectic cover
+$\overline{SL(2,F)}$,
+with the exception of the reducible principal series, 
+where $F$ is a p-adic field (see for example
+Propositions \ref{prop:moen} and \ref{prop:fk}).
+In particular, some of the main results of Moen and 
+Ariturk can be extended to the case where 
+$n\geq 1$ is arbitrary. We describe
+the special representation of $\overline{SL(2,F)}$
+in \S \ref{subsec:special}. The supercuspidal representations
+have already been described - see, 
+for example, \cite{J3} (also \cite{M1}, \cite{M2}, \cite{J2}).
+
+\item
+Finally, assuming $gcd(p,n)=1$, we note that the 
+corresponding principal
+series representations on $SL(2,F)$ and its $n$-fold cover
+(see Theorems \ref{thrm:main1} and \ref{thrm:main2})
+satisfy simple character relations of the usual sort.
+Under this correspondence, unitary (resp., spherical) representations match
+with unitary (resp., spherical) representations. 
+\end{itemize}
+
+Y. Flicker \cite{F} described a comparison of smooth functions
+on $G=GL(2,F)$ and an $n$-fold metaplectic
+cover $\overline{G}$ by matching orbital integrals.
+Flicker-Kazhdan \cite{FK} (resp., the author \cite{J1})
+determined a comparison of smooth functions
+on $G=GL(n,F)$ and on $\overline{G}$ 
+(resp., on Cartans $T$ of $\overline{SL(n,F)}$ 
+and on $\overline{SL(n,F)}$ itself) using the matching of
+orbital integrals. In each of these papers, the authors then
+obtained an analogous correspondence of
+certain representations using character theory.
+The idea here is similar but to instead compare orbital
+integrals, and principal series representations,
+on $G=SL(2,F)$ with those on $\overline{G}$.
+
+These results, in the case $n=2$, form a 
+necessary step in what will hopefully be a
+proof of Labesse's multiplicity one conjecture for
+$SL(2,{\Bbb{A}})$ (in preparation). 
+
+{\bf Acknowledgements}:
+ I am grateful to Courtney Moen for his helpful criticisms
+on this paper. Also, I thank an anonymous referee for
+several useful suggestions and corrections.
+
+\section{Background notation}
+
+Let $F$ be a p-adic field of characteristic 0, 
+with uniformizer $\pi$, ring of integers ${\cal O}={\cal O}_F$, and let 
+$q$ denote the cardinality of the residue field.
+Let ${\Bbb{C}}$ denote the field of complex numbers and
+${\Bbb{Z}}$ the ring of integers.
+Let $\mu_n(F)$ denote the group of $n^{th}$ roots of unity
+in $F$ and assume $|\mu_n(F)|=n$. We 
+will identify $\mu_n(F)$ with a subgroup 
+of ${\Bbb{C}}^\times$ (via some fixed isomorphism 
+$\theta:\mu_n(F)\rightarrow \mu_n({\Bbb{C}})$).
+Write $\mu_n=\mu_n(F)$.
+Let $G=SL(2,F)$. Let $\overline{G}=\overline{SL(2,F)}$ 
+denote the $n$-fold metaplectic cover defined by the cocycle
+\begin{equation}
+\beta_0(g_1,g_2)=({x(g_1g_2)\over x(g_1)},{x(g_1g_2)\over x(g_2)}),
+\label{eqn:1}
+\end{equation}
+for $g_1,g_2\in G$, where
+\[
+x(
+\begin{array}{cc}
+a & b\\
+c & d
+\end{array}
+)=
+\left\{
+\begin{array}{cc}
+c,& {\rm if}\ c\not= 0,\\
+d,& {\rm otherwise},
+\end{array}
+\right.
+\]
+and where $(\ ,\ )=(\ ,\ )_n$ is the $n^{th}$ power Hilbert symbol. 
+By \S 1 of Kubota \cite{K}, $\beta_0$ is a 2-cocycle 
+(called a ``factor set'' in \cite{K}) which is trivial
+near the identity in $G\times G$, so $\overline{G}$ is a 
+topological covering group of $G$. We denote
+elements of $\overline{G}$ by $\overline{x}=(x,\zeta)$,
+$x\in G,\ \zeta\in \mu_n$, and multiplication by
+\[
+\overline{x}_1\overline{x}_2=(x_1,\zeta_1)(x_2,\zeta_2)
+=(x_1x_2,\beta_0(x_1,x_2)\zeta_1\zeta_2).
+\]
+Let $\rho:\overline{G}\rightarrow G$ denote
+the natural surjection. If $H$ is any subset
+of $G$ then we define $\overline{H}=\rho^{-1}(H)$.
+Let $K_0=SL(2,{\cal O})$. If $p$ is
+relatively prime to $2n$ then it is known
+(see \cite{K}) that $\overline{K_0}$ splits,
+i.e., that there is an isomorphism
+$\overline{K_0}\cong K_0\times \mu_n$, which we
+fix once and for all. In this case, we sometimes
+identify $K_0$ with a subgroup of $\overline{K_0}$
+via this isomorphism.
+
+We choose a Haar measure on $G$, to be normalized
+below, and a Haar measure on $\mu_n$ normalized so that 
+$vol(\mu_n)=1$. Let the Haar measure on $\overline{G}$ be
+the product measure.
+
+For any subset $H\subset G$, let $H_{reg}$
+denote the collection of elements of
+$H$ which have distinct eigenvalues (in
+some algebraic extension of $F$).
+
+Let $A_0$ denote the diagonal subgroup of
+$G$, let $W=N_G(A_0)/A_0$ denote the Weyl
+group, represented by the matrices
+\[
+I=
+\left(
+\begin{array}{cc}
+1 & 0 \\
+0 & 1
+\end{array}
+\right),\ \ \ \ 
+w_0=
+\left(
+\begin{array}{cc}
+0 & 1 \\
+-1 & 0
+\end{array}
+\right).
+\]
+Here $N_G$ denotes the normalizer in $G$ as usual.
+
+Let $N_0$ denote the subgroup of 
+$G$ consisting of upper triangular unipotent matrices 
+and let $B=A_0N_0=N_0 A_0$ denote the upper
+triangular (standard) Borel subgroup.
+It is easy to verify that $\overline{N_0}$ splits.
+We often identify $N_0$ with the
+subgroup $(N_0,1)$ of $\overline{N_0}$.
+
+\begin{definition}
+Recall that a complex representation of $\overline{G}$
+on a vector space $V$,
+$\overline{\pi}:\overline{G}\rightarrow {\rm Aut}(V)$,
+is called {\bf genuine} if $\overline{\pi}(g,\zeta)
+=\theta(\zeta)\overline{\pi}(g,1)$, for
+$g\in G$ and $\zeta\in \mu_n$.
+
+Recall that a complex-valued function on $\overline{G}$
+$f:\overline{G}\rightarrow {\Bbb{C}}$,
+is called {\bf genuine} if $f(g,\zeta)
+=\theta(\zeta)^{-1}f(g,1)$, for
+$g\in G$ and $\zeta\in \mu_n$.
+\end{definition}
+
+We shall omit the use of $\theta$ and simply
+identify $\mu_n$ with $\mu_n({\Bbb{C}})$.
+
+Here we call an irreducible 
+admissible represention of $G$ (or $\overline{G}$ 
+{\bf supercuspidal}
+if all its matrix coefficients are compactly supported.
+
+\section{Orbital integrals}
+
+
+Let
+$C_c^\infty(\overline{G})_{gen}$
+denote the algebra of compactly supported
+locally constant genuine 
+(i.e., ``smooth'')
+functions on $\overline{G}$ and let
+${\cal H}(\overline{G}//K_0)_{gen}$
+denote the algebra of compactly supported
+locally constant genuine bi-$K_0$-invariant
+(i.e., ``spherical'')
+functions on $\overline{G}$.
+Let $M$ denote a Levi subgroup of a parabolic
+subgroup $P=MN$, let
+\[
+\Delta(\overline{m})=\Delta_M(\overline{m})
+=|\det(Ad_{\frak{n}}(m)-1_{\frak{n}})|,
+\]
+and let
+\[
+\delta(\overline{m})=\delta_M(\overline{m})
+=|\det\ Ad_{\frak{n}}(m)|,
+\]
+where $\overline{m}\in \overline{M},\ 
+\overline{m}=(m,\zeta)$, and where
+$\frak{n}$ denotes the Lie algebra of $N$.
+If 
+$m=\left( \begin{array}{cc}
+a & 0 \\
+0 & a^{-1} \end{array}
+\right)$ and $M$ is the diagonal subgroup of $G$ then
+$\Delta(\overline{m})=|1-a^{-2}|$ and
+$\delta(\overline{m})=|a^2|$.
+
+Let $A=A_0$ from this point on, unless stated otherwise.
+Let $S^{\overline{A}}$ denote the orbital integral
+(restricted to a certain subset of 
+$\overline{A}$),
+\[
+\begin{array}{c}
+S^{\overline{A}}f(\overline{m})=\Delta(m)\delta(m)^{-1/2}
+\int_{\overline{G}/\overline{A}}
+f(g\overline{m}g^{-1})\ dg \\
+=\delta(m)^{1/2}\int_{N}f(n\overline{m})\ dn,
+\end{array}
+\]
+provided $Cent(\overline{m},\overline{G})=\overline{A}$.
+We will show that $S$ defines algebra homomorphisms
+\[
+C_c^\infty(\overline{G})_{gen}
+\rightarrow 
+C_c^\infty(\overline{A}^{n_0})^W_{gen}
+\]
+and 
+\[
+{\cal H}(\overline{G}//K_0)_{gen}
+\rightarrow 
+{\cal H}(\overline{A}^{n_0}//K_0\cap A^{n_0})^W_{gen}.
+\]
+{\it Here, and throughout the rest of this paper, let}
+\[
+n_0=n/gcd(n,2).
+\]
+Moreover, the subalgebra of $W$-invariants,
+\[
+C_c^\infty(\overline{A})^W_{gen}
+=\{f\in C_c^\infty(\overline{A}^{n_0})_{gen} \ |\ 
+f((w,1)^{-1}a(w,1))=f(a),\ \forall a\in 
+\overline{A}^{n_0} \},
+\]
+is well-defined and non-zero by a cocycle calculation
+(and similarly for
+${\cal H}(\overline{A}^{n_0}//K_0\cap A^{n_0})^W_{gen}$).
+
+Define $D=D_{G/A}$ on $A$ by
+\[
+\begin{array}{c}
+D_{G/A}(\left[ 
+\begin{array}{cc}
+a & 0 \\ 
+0 & a^{-1}
+\end{array}
+\right] )=\det (1-Ad(\left[ 
+\begin{array}{cc}
+a & 0 \\ 
+0 & a^{-1}
+\end{array}
+\right] ))_{{\frak g}/{\frak a}} \\ 
+=(1-a^2)(1-a^{-2})=-(a-a^{-1})^2,
+\end{array}
+\]
+for $a\in F^{\times}$. Here ${\frak g},{\frak a}$
+denote the Lie algebras of $G,A$. 
+This may be pulled back to $\overline{A}$
+and we have $D(\overline{a})=\Delta(\overline{a})
+\delta(\overline{a})^{-1/2}$, for regular
+$\overline{a}\in \overline{A}$.
+Define the {\bf orbital integral of $f\in
+C_c^\infty (\overline{G})_{gen}$ on $\overline{A}_{reg}$}
+by 
+\begin{equation}
+F_f^{\overline{A^{n_0}}}(a)=|D(a)|^{1/2}\int_{\overline{A^{n_0}}\backslash 
+\overline{G}}f(x^{-1}ax)\frac{dx}{da},
+\label{eqn:2}
+\end{equation}
+if $a\in \overline{A}$ is regular.
+The Haar measure $da$ on $\overline{A^{n_0}}$ will
+be choosen later.
+Define the {\bf orbital integral of $f\in
+C_c^\infty (\overline{G})_{gen}$ on $\overline{A}^{n_0}_{reg}$}
+by
+\begin{equation}
+F_f^{\overline{A}}(a)=n_0|D(a)|^{1/2}
+\int_{\overline{A}\backslash \overline{G}}
+f(x^{-1}ax)\frac{dx}{da},
+\end{equation}
+for $a\in \overline{A^{n_0}}\cap \overline{G}_{reg}$.
+Since $Cent(a,\overline{G})=\overline{A}$, this is well-defined. 
+Here $da$ is the usual product measure on $\overline{A}
+=A\times \mu_n$. (The $n_0$ factor is to make Definitions
+\ref{defn:transfer} and (\ref{eqn:character}) below
+consistent.)
+
+We will show that $f\longmapsto F_f^{\overline{A^{n_0}}}$ defines a 
+surjection
+\[
+C_c^\infty(\overline{G})_{gen}
+\rightarrow 
+C_c^\infty(\overline{A}^{n_0})^W_{gen}.
+\]
+
+\subsection{Dependence on the cocycle}
+
+Let $\beta$ be a cocycle of $G$ having values in $\mu_n$
+and let $\overline{G}=\overline{G}_\beta$ denote the
+associated covering group.
+Note that the metaplectic algebras 
+$C_c^\infty(\overline{G})_{gen}$
+and ${\cal H}(\overline{G}//K_0)_{gen}$
+depend on the cocycle $\beta$
+so let us denote this dependence temporarily by
+$C_c^\infty(\overline{G})_{gen,\beta}$
+and ${\cal H}(\overline{G}//K_0)_{gen,\beta}$,
+resp..
+If the cocycle is changed to an equivalent one,
+say to $\beta'$, where 
+\[
+\beta(g,h)=\beta'(g,h)s(g)s(h)s(gh)^{-1}
+\]
+is the cocycle modified by $s$ 
+and $s:G\rightarrow \mu_n$ is any function
+satisfying $s(1)=1$
+(for example, the Kubota splitting
+\cite{KP}), then the two algebras are 
+isomorphic.
+
+\begin{lemma} 
+\label{lemma:isomorphic}
+Let $\beta,\beta'$ be as above, let $R$ denote one of 
+the algebras $C_c^\infty(\overline{G})_{gen}$ or
+${\cal H}(\overline{G}//K_0)_{gen}$,
+and let $s:G\rightarrow \mu_n$ satisfy $s(1)=1$.
+There is a canonical isomorphism
+\[
+\phi:R_\beta\cong R_{\beta'},
+\]
+as algebras, defined by sending 
+$f(g,\zeta)=\zeta f(g,1)$ to
+$\phi(f)(g,\zeta)=\zeta s(g) f(g,1)$. In other words,
+under this mapping, we have
+\[
+\phi(f_1*_{\beta'} f_2)(g,\zeta)
+=(\phi(f_1)*_{\beta}\phi(f_2))(g,\zeta),
+\]
+where $*_\beta$ denotes the convolution
+with respect to the $\beta$ cocycle
+\[
+(\phi_1*_\beta \phi_2)(g,\zeta)
+=\zeta \int_{G}\phi_1(x,1)\phi_2((x^{-1}g,1))
+\beta(x,x^{-1}g)^{-1} dx
+\]
+and, similarly, $*_{\beta'}$ denotes the convolution
+with respect to the $\beta'$ cocycle.
+\end{lemma}
+
+{\bf proof}: The verification of this
+is straightforward.      $\#$
+
+\subsection{The Harish-Chandra transform of a smooth 
+function}
+
+The verification of the following lemma, another cocycle 
+calculation, is left to the reader.
+
+\begin{lemma}
+The centralizer 
+$C_{\overline{G}}(\overline{A})$ of $\overline{A}$
+in $\overline{G}$ is $\overline{A}^{n_0}$,
+where $n_0=n/gcd(2,n)$.
+\end{lemma}
+
+\begin{lemma}
+(Weyl integration formula \cite{S}, p. 198) For each
+$f\in C_c^\infty (G)$
+\[
+\int_{G}f(g)dg=\sum_{T\in S}\frac
+1{|W_T|}\int_T|D(t)|^{1/2}F_f^T(t)dt,
+\]
+where 
+\[
+F_f^T(t)=|D(t)|^{1/2}\int_{T\backslash G}f(x^{-1}tx)\frac{dx}{dt},
+\]
+and where $D(t)=D_{G/T}(t)=\det (1-Ad(t))_{{\frak g}/{\frak t}}$.
+Here ${\frak g},\;{\frak t}$ denote the Lie algebras of $G,T$, resp..
+\label{lemma:weylint}
+\end{lemma}
+
+The following result might be compared with
+Flicker's Lemma 1.1 in \cite{F}.
+
+\begin{lemma} (``Vanishing lemma'')
+For $f\in C_c^\infty (\overline{G})_{gen}$,
+$a\in \overline{A}_{reg}-\overline{A^{n_0}}$,
+we have $F_f^{\overline{A^{n_0}}}(a)=0$.
+\label{lemma:141}
+\end{lemma}
+
+{\bf proof}: Since $dx$ is a Haar measure, we may replace 
+$x$ by $a_1x$, where 
+$a_1=(\left( 
+\begin{array}{cc}
+t_1 & 0 \\ 
+0 & t_1^{-1}
+\end{array}
+\right) ,\varsigma _1)\in \overline{A}$ in the integral
+(\ref{eqn:2}) defining $F_f^{\overline{A^{n_0}}}(a)$ without
+changing its value. Let 
+$a=(\left( 
+\begin{array}{cc}
+t & 0 \\ 
+0 & t^{-1}
+\end{array}
+\right) ,\varsigma )$. Then 
+\[
+F_f^{\overline{A^{n_0}}}(a)=(t,t_1)_n^2\cdot F_f^{\overline{A^{n_0}}}(a). 
+\]
+It follows that $F_f^{\overline{A^{n_0}}}(a)=0$ or $(t,t_1)_n^2=1$. 
+By the properties of
+the Hilbert symbol \cite{N}, if $(t,t_1)_n^2=1$ for all $t_1$ then
+$t\in (F^{\times })^{n_0}$. $\# $
+
+\begin{proposition}
+ The map $f\longmapsto F_f^{\overline{A^{n_0}}}$\ defines a surjection
+$C_c^\infty (\overline{G})_{gen}\rightarrow
+C_c^\infty (\overline{A}^{n_0})_{gen}^W$.
+\label{prop:main1}
+\end{proposition}
+
+\begin{remark}
+\begin{itemize}
+\item
+There's an analogous result for the Schwartz space ${\cal C}$
+of ``rapidly decreasing'' functions: 
+ The map $f\longmapsto F_f^{\overline{A^{n_0}}}$ 
+defines a continuous
+surjection ${\cal C}(\overline{G})\rightarrow
+{\cal C}(\overline{A^{n_0}})^W$.
+Since it shall not be needed, we omit the proof.
+\item
+The map $f\longmapsto F_f^{\overline{A^{n_0}}}$
+is {\it a priori} only defined as a map to functions on
+$\overline{A}_{reg}$. The proposition asserts (as we shall
+prove below) that this function extends uniquely to
+a smooth function on $\overline{A}$.
+\end{itemize}
+\end{remark}
+
+{\bf proof:} We shall merely sketch the idea.
+
+Define the map $\Phi$ by $\Phi(f)=F_f^{\overline{A^{n_0}}}$.
+
+We first verify surjectivity.
+
+Let $H=L^2(\overline{A}^{n_0})^W$ and let 
+$V$ denote the closure in the $L^2$-topology of $H$
+of the image of $\Phi:f\longmapsto F_f^{\overline{A^{n_0}}}$ in $H$.
+
+{\bf Claim}: 
+If $\Phi$ is not surjective then $V\not= H$.
+
+The proof of claim is straightforward and left to the reader.
+
+If $V\not= H$, we let 
+\[
+V^\perp =
+\{ \phi\in H\ |\ \int_{\overline{A}^{n_0}}
+\phi(a)\overline{g(x)}dx=0, \forall g\in V
+\}. 
+\]
+
+{\bf Claim}: $H=V\oplus V^\perp$.
+
+The proof of claim is straightforward and left to the reader.
+
+Now we complete the proof of surjectivity. 
+Let $\phi \in V^{\perp }$. We
+must show that $\phi =0$. For any $F\in V$, 
+we have 
+\[
+\int_{\overline{A}^{n_0}}\phi (a)F(a)da=0.
+\]
+Let 
+\[
+\tilde \phi (g)=\left\{ 
+\begin{array}{cc}
+\phi (a),& {\rm \ if\ }g^x=
+a\in \overline{A}^{n_0}_{reg}{\rm \ some\ }x\in \overline{G}, \\ 
+0,& {\rm otherwise}.
+\end{array}
+\right. 
+\]
+Since $\phi$ is $W$-invariant, $\tilde{\phi}$ is well-defined.
+Pick $\epsilon >0$ and approximate 
+$F$ by $F_f^{\overline{A^{n_0}}}$, for some 
+$f\in C_c^\infty (\overline{G})$
+such that 
+\begin{equation}
+\ \ \ \int_{\overline{A}^{n_0}}
+|\phi (a)(F(a)-F_f^{\overline{A^{n_0}}}(a))|da<\epsilon .  
+\label{eqn:eps}
+\end{equation}
+By Lemma \ref{lemma:weylint} and 
+(\ref{eqn:eps}), we have 
+\[
+|\int_{\overline{G}}\tilde \phi (g)f(g)dg|<\epsilon /2.
+\]
+Since $f\in C_c^\infty (\overline{G})$ 
+and $\epsilon >0$ were choosen arbitrarily, we
+have that $\tilde \phi =0$ a.e. on $\overline{G}$. 
+Thus $\phi =0$ a.e. on $A$.
+This proves that $V^{\perp }=0$, hence 
+$V=H$, hence $\Phi $ is surjective.
+
+For $f\in C_c^\infty (\overline{G})_{gen}$ and
+$a\in \overline{A^{n_0}}_{reg}
+=\overline{A^{n_0}}\cap \overline{G}_{reg}$, the
+function $x\longmapsto f(x^{-1}ax)$ is compactly supported on
+$\overline{A}\backslash \overline{G}$ and 
+\[
+\begin{array}{c}
+F_f^{\overline{A^{n_0}}}(a)=|D(a)|^{1/2}
+\int_{\overline{A}\backslash \overline{G}}
+f(x^{-1}ax)\frac{dx}{da} \\ 
+=\delta (a)^{1/2}\int_N\int_{K_0}f(kank^{-1})dkdn \\ 
+=\delta (a)^{1/2}\int_Nf^{K_0}(an)dn,
+\end{array}
+\]
+where 
+\[
+f^{K_0}(x)=\int_{K_0}f(kxk^{-1})dk.
+\]
+
+From the claim it 
+follows that $F_f^{\overline{A^{n_0}}}(a)$ is
+compactly supported on $\overline{A}_{reg}.$
+
+Moreover, since $f$ is locally constant so is $f^{K_0}$. 
+Since $f^{K_0}$ is
+compactly supported, $\int_Nf^{K_0}(an)dn$ is a locally 
+constant function on 
+$\overline{A}_{reg}$.
+
+It remains to show that $F_f^{\overline{A^{n_0}}}(a)$ 
+extends to a locally constant
+function on all of $\overline{A}$. This follows from 
+the Shalika germ expansion for covering groups \cite{V}.
+ $\# $
+
+The Proposition above implies the following result.
+
+\begin{corollary}
+Assume that the cocycle $\beta$ is trivial on $K_0$.
+The map $S$ defines an algebra homomorphism
+\[
+{\cal H}(\overline{G}//K_0)_{gen}
+\rightarrow 
+{\cal H}(\overline{A}^{n_0}//K_0\cap A^{n_0})^W_{gen}.
+\]
+\label{cor:main1}
+\end{corollary}
+
+\begin{definition} 
+Define $N:A\rightarrow \overline{A}$
+by $N(a)=(a^{n_0},1)$. We say that
+$\overline{f}\in C_c^\infty (\overline{G})_{gen}$
+{\bf transfers}\footnote{In other words, the Harish-Chandra
+transform of $f$ corresponds with that of $\overline{f}$.}
+ to $f\in C_c^\infty(G)$ if
+they satisfy
+\[
+F_{\overline{f}}^{\overline{A}}(N(a))=F_{f}^{A}(a),
+\]
+for all $a\in A$ such that $N(a)\in \overline{A}_{reg}$,
+where the measures have been normalized as above.
+
+A similar definition, for 
+$\overline{f}\in {\cal H}(\overline{G}//K_0)_{gen}$
+and $f\in {\cal H}(G//K_0)$, is left to the reader.
+\label{defn:transfer}
+\end{definition}
+
+\section{Representations}
+
+The goal of this section is to describe
+the unitary dual of $\overline{G}$.
+The general idea in the case of the non-algebraic
+group $\overline{G}$ is basically the same as
+for the group $G$: using Jacquet functors, one may
+show that an irreducible admissible representation 
+is either a constituent of some 
+representation induced from 
+(a supercuspidal representation
+of a Levi component of) a proper parabolic subgroup
+or else is supercuspidal. As indicted above, the supercuspidal
+representations have been described elsewhere.
+To capture those irreducible representations 
+which are unitary, one using results in
+\cite{FK} (for $\overline{GL(2,F)}$), \cite{Mo1},
+\cite{Mo2}, and \cite{Ar}. The only cases not falling
+into this net are the non-tempered representations
+and, if any, the reducible principal series.
+
+For a reductive p-adic group $H$, let
+$\Pi (H)$ denote the set of equivalence classes of irreducible
+admissible representations of $H$ and let
+$\Pi_u(H)$ denote the unitary ones. If $H\subset G$
+is a subgroup, let $\Pi_{gen}(\overline{H})$
+denote the set of equivalence classes of irreducible
+admissible genuine representations $\overline{H}$.
+
+Let $M=A_0$ and $N=N_0$. Each $(\sigma ,W)\in \Pi (\overline{M})$
+expends trivially to a representation of
+$\overline{B}=\overline{M}N$. Let
+$I_{\overline{M}}(\sigma ):\overline{G}\rightarrow Aut(V)$ denote
+the {\bf unitarily induced representation}: the representation of
+$\overline{G}$ by right translation on 
+\begin{eqnarray*}
+V &=&\{f:\overline{G}\rightarrow W\;\;{\rm smooth,\ genuine}\;|\; \\
+&& 
+\begin{array}{c}
+(1)\;\;f(bg)=\delta _M(b)^{1/2}\sigma (b)f(g),\;\; 
+\;\forall g\in \overline{G},\;b\in \overline{B} \\ 
+(2)\;\;{\rm for\;some\; compact\;open\;subgroup}\;K\subset 
+\overline{G},\\
+\ \ \ f(gk)=f(g),\; \forall k\in K,\;g\in \overline{G}\; \}.
+\end{array}
+\end{eqnarray*}
+Of course, if $\sigma$ is genuine, so is
+$I_{\overline{M}}(\sigma )$.
+
+
+\subsection{Maximal abelian subgroups of $\overline{A}$}
+
+\label{subsec:4.1}
+For the purposes of explicitly computing the representations
+of $\overline{A}$, we want to determine, as best as we
+can, a maximal abelian subgroup of the $n$-fold cover of
+$\overline{A}$. This turns out to be hard if $p|n$.
+Since the (incomplete) results in the
+case $p|n$ will not needed for our final results,
+we merely state the result in the case $p$ and
+$n$ are relatively prime.
+
+Let
+\[
+h(x)=\left(
+\begin{array}{cc}
+x & 0\\
+0 & x^{-1}
+\end{array}
+\right),\ \ \ \ 
+x\in F^\times .
+\]
+
+\begin{lemma}
+A subgroup $\overline{C}\subset \overline{A}$\ is abelian 
+if and only
+if $(a,a^{\prime })_n^2=1$\ for all $h(a),h(a^{\prime })\in C$.
+\end{lemma}
+
+The (easy) proof of this is omitted.
+
+For any $p$-adic field, we have
+\[
+F^{\times }=\pi ^{{\Bbb Z}}\cdot \mu _{q-1}\cdot U_1, 
+\]
+a direct product (as abelian groups - see
+for example \cite{N}, Proposition 1.1). Here 
+\[
+U_k=\{x\in {\cal O}_F\ |\ x\equiv 1\  ({\rm mod}\ \pi^k )\}.
+\]
+If $gcd(p,2n)=1$ then $\mu _n\subset F^{\times }$ implies
+$q\equiv 1\;({\rm mod}\;n)$.
+
+\begin{lemma}
+\begin{enumerate}
+\item[(a)] If $gcd(p,n_0)=1$\ then 
+$C=h(\pi ^{{\Bbb Z}}{\cal O}_F^{\times n_0})=
+h(\pi ^{{\Bbb Z}}\mu_{q-1}^{n_0}(1+\pi {\cal O}_F))$
+and $C=h(\pi ^{{n_0\Bbb Z}}{\cal O}_F^\times )$
+are maximal subgroups of 
+$F^{\times }$ for which 
+$\overline{C}\subset \overline{A}$\ is abelian.
+
+\item[(b)]
+If $gcd(p,n)=1$
+then $C=h(\pi ^{{\Bbb Z}}(1+\pi {\cal O}_F)\mu _{q-1}^{n_0})$ 
+(resp. $C=h(\pi ^{{n_0\Bbb Z}}{\cal O}_F^\times )$)
+has index $n_0$ in $F^{\times }$.
+\end{enumerate}
+\end{lemma}
+
+\begin{remark}
+If $n=1$ or $n=2$ then $n_0=1$ and $C=A$.
+\end{remark}
+
+The proofs are omitted.
+
+\subsection{Irreducible representations of $\overline{A}$}
+
+\label{subsubsec:4.2.1}
+
+We assume $gcd(p,2n)=1$ throughout this subsection unless otherwise
+stated. 
+
+Let $C=h(\pi ^{{n_0\Bbb Z}}{\cal O}_F^\times )$ and 
+$A_n=h(\pi ^{{n\Bbb Z}}{\cal O}_F^\times )$. We know that
+$\overline{A_n}$ splits, so we may identify
+$\overline{A_n}$ with $A_n\times \mu_n$. Moreover,
+Clifford-Mackey theory implies that
+\[
+\begin{array}{ccc}
+\Pi(\overline{C})_{gen} &\rightarrow &\Pi(\overline{A})_{gen}\\
+\chi & \longmapsto & Ind_{\overline{C}}^{\overline{A}}(\chi)
+\end{array}
+\]
+is a surjection \cite{Mo1}. The conjugates $\chi^{g}$, for 
+$g\in \overline{A}/\overline{C}$, are distinct,
+and $A/C$ is order $n_0$, so the dimension of each 
+$Ind_{\overline{C}}^{\overline{A}}(\chi)$ is $n_0$.
+
+\begin{lemma}
+(\cite{Mo2}, \S 1.2)
+There is a 2-1 correspondence
+\[
+\Pi(A_n)\rightarrow \Pi(\overline{A})_{gen}
+\]
+given by
+$\eta_j :\Pi(A_n)\rightarrow \Pi(\overline{C})_{gen}$,
+$\iota :\Pi(\overline{C})_{gen}\rightarrow \Pi(\overline{A})_{gen}$,
+where 
+\[
+\iota(\chi)=
+Ind_{\overline{C}}^{\overline{A}}(\chi),
+\]
+and 
+\[
+\eta_j(\chi)(a,\zeta)=
+\left\{
+\begin{array}{cc}
+\zeta \chi(a), &a\in A_n,\\
+\zeta (x,\pi)_n^{n_0}(\pi,\pi)_n^{n_0}\alpha_j\chi(a), 
+&a=h(x)\in C-A_n
+\end{array},
+\right.
+\]
+where $\alpha_1,\alpha_2$ are the two roots of 
+$\alpha^2 =(\pi,\pi)_n^{n_0^2}$.
+\end{lemma}
+
+\begin{lemma}
+Let $\mu\in \Pi(\overline{C})_{gen}$ and let
+$\chi=\chi_\mu =Ind_{\overline{C}}^{\overline{A}}\mu$.
+Then 
+\begin{equation}
+\begin{array}{c}
+{\rm tr}\,\chi (a)=\sum_{h\in \overline{A}/\overline{C}}\mu ^h(a)\\
+=\left\{
+\begin{array}{cc}
+n_0\chi(a),& a\in \overline{A^{n_0}},\\
+0& a\in \overline{A}-\overline{A^{n_0}}.
+\end{array}
+\right.
+\end{array}
+\end{equation}
+\label{lemma:chi}
+\end{lemma}
+
+{\bf proof}: The first part of this lemma is a special case of the 
+more general
+Frobenius formula for the trace of an induced representation.
+The second part is true, by the orthogonality
+of characters, since the character $x\longmapsto (a,x)_n^2$ is non-trivial
+if and only if $a\in F^{\times}-F^{\times n_0}$. $\#$
+
+
+\subsubsection{Corresponding functions on $\overline{A}_{reg}$}
+
+\label{subsubsec:4.2.2}
+
+Define the Fourier transform on 
+$\overline{A}$ by
+\[
+\phi ^{\wedge }(\chi )=\int_{\overline{A}}
+{\rm tr}\,\chi (x)\phi (x)dx \\ 
+\ \ \ \ \ \ \chi \in \Pi (\overline{A}),
+\ \phi\in C_c^\infty(\overline{A}).
+\]
+If $H$ is an abelian subgroup of $G$ or
+of $\overline{G}$ then we define the {\bf Fourier transform}
+by
+\[
+\phi ^{\wedge }(\mu )=\int_{H}
+\mu (x)\phi (x)dx \\ 
+\ \ \ \ \ \ \mu \in \Pi (H),
+\ \phi\in C_c^\infty(H).
+\]
+
+We investigate the conditions on $\phi \in C_c^\infty(A)$,
+$\overline{\phi}
+\in C_c^\infty(\overline{A})_{gen}$
+under which
+\[
+\phi^{\wedge}(\chi)=
+\overline{\phi}^{\wedge}(\overline{\chi}),
+\]
+if $\chi \in \Pi(A)$ and $\overline{\chi}$ are
+corresponding representations (in a sense made 
+precise below).
+
+\begin{definition} We say that
+$\phi \in C_c^\infty(A)$ {\bf corresponds} to
+$\overline{\phi}
+\in C_c^\infty(\overline{A})_{gen}$
+if
+\[
+\phi^{\wedge}(\chi)=
+\overline{\phi}^{\wedge}(\overline{\chi}),
+\]
+for all $\chi \in \Pi(A_n)$, regarded as an element of
+$\Pi(A)$ trivial on $A/A_n$, where $\overline{\chi}=
+\iota(\eta_j(\chi))$, for some $j=1,2$.
+\end{definition}
+
+\begin{definition} We say that
+$f \in C_c^\infty(G)$ {\bf corresponds 
+on the hyperbolic set} to
+$\overline{f}\in C_c^\infty(\overline{G})_{gen}$
+if $F^A\in C_c^\infty(A)$ corresponds to
+$F^{\overline{A}}_{\overline{f}}\in C_c^\infty(\overline{A}^{n_0})_{gen}$
+in the sense above.
+\end{definition}
+
+
+\subsection{Jacquet functors}
+
+It is remarked in \cite{BD}, \S 2.2
+that the arguments of \cite{BZ1}, chapter 2 carry
+over to finite central extensions of reductive groups 
+over a $p$-adic field (see also \cite{KP}, \S 1.2).
+The arguments of \cite{BZ2}, section 2 and
+the corresponding sections of \cite{Ca} also
+carry over to finite central extensions
+of split reductive groups over a $p$-adic field. 
+Such results reduce
+the determination of the unitary dual of $\overline{G}$
+down to classifying the supercuspidal representations (done in \cite{M1}, 
+\cite{M2}, \cite{J3} when $gcd(p,n)=1$ and
+\cite{J2} for any $p,n$) and the constituents of the
+induced representations (see below). 
+
+If $(\pi ,V)$ denotes a $\overline{G}$-module and if 
+$P=MN$ denotes a standard parabolic of $G$, let $V_{\overline{N}}$ 
+denote the Jacquet module 
+\[
+V_{\overline{N}}=V/\{\pi (n)v-v\ |\ v\in V,\ n\in \overline{N}\}. 
+\]
+This sends admissible representations to admissible 
+representations (this is
+due to Jacquet, see \cite{BZ1}, sections 3.16-3.17
+for the $GL(r)$ case).
+
+\begin{lemma}
+(Jacquet \cite{Ca}, Theorem 5.2.1)
+If $V_{\overline{N}}=0$ for all proper
+standard parabolics $P$ of $G$ then $(\pi ,V)$ is supercuspidal.
+\end{lemma}
+
+Let ${\cal L}(G)$ denote the set of all standard Levi's 
+(with respect to
+$A$), up to associates. Therefore, ${\cal L}(G)=\{A,G\}$.
+
+\begin{proposition}
+(Jacquet \cite{BZ1}, section 3.19)
+If $\pi \in \Pi (\overline{G})$ then
+there is a Levi $M\in {\cal L}(G)$ and a supercuspidal
+$\sigma \in \Pi (\overline{M})$
+such that $\pi $ is a constituent of 
+$I_{\overline{M}}(\sigma )$.
+\end{proposition}
+
+In particular, every $\pi \in \Pi (\overline{G})$ which is not a
+constituent of an induced representation of a supercuspidal 
+representation of a
+proper Levi occurs discretely in the decomposition 
+of the right regular
+representation of $\overline{G}$ on $L^2(\overline{G})$.
+
+\subsection{Principal series}
+
+We can investigate whether or not two induced representations 
+are equivalent
+by using the Jacquet functor. 
+
+Let $\chi ,\chi ^{\prime }\in \Pi (\overline{A})$ and let
+$\overline{w}=(w,1)$, for $w\in W$. 
+If $\chi ^{\overline{w}}\not
+=\chi $ for all $w\in W-\{1\}$ then we call $\chi $ 
+{\bf regular}. We say
+that $\chi ,\chi ^{\prime }$ are {\bf $W$-conjugate} 
+if $\chi ^{\prime}
+=\chi ^{\overline{w}}$ for some $w\in W$. The following two 
+results were proven for
+metaplectic covers of $GL(r,F)$ in \cite{KP}, however they hold in the
+present case as well.
+
+\begin{lemma}
+(\cite{BZ2}, Corollary 2.13, Theorem 2.9(b))
+\label{lemma:bz2}
+\begin{enumerate}
+\item[(a)]
+ Let $\chi \in \Pi (\overline{A})$. The
+Jordan-Holder series of 
+$I_{\overline{A}}(\chi )_{\overline{N}_0}$ has as its
+composition factors 
+\[
+Ind_{\overline{C}}^{\overline{A}}(\chi ^{\overline{w}}\cdot
+\delta _{A}^{1/2}),\ \
+w\in W.
+\]
+If $\chi $ is regular then 
+\[
+I_{\overline{A}}(\chi )_{\overline{N}_0}=
+\oplus _{w\in W}Ind_{\overline{C}}^{\overline{A}}
+(\chi^{\overline{w}}\cdot \delta _{A}^{1/2}).
+\]
+
+\item[(b)] 
+Let $\chi ,\chi ^{\prime }\in \Pi (\overline{A})$.
+If $\chi $ is regular then 
+\[
+dim\ Hom_{\overline{G}}(I_{\overline{A}}(\chi ),
+I_{\overline{A}}(\chi ^{\prime }))\leq 1,
+\]
+with equality if and only if $\chi ^{\prime },\chi $ 
+are $W$-conjugate.
+\end{enumerate}
+\end{lemma}
+
+In other words, distinct $W$-conjugacy classes of
+$\chi \in \Pi (\overline{A})$ yield
+inequivalent representations.
+
+Suppose that $\pi \in \Pi _u(\overline{G})$. We call 
+$\pi $ a (unitary) 
+{\bf principal series} representation if $\pi =
+I_{\overline{A}}(\chi )$ for some $\chi \in \Pi _u(\overline{A})$. 
+These representations are tempered. In case $I_{\overline{A}}(\chi )$
+is reducible and $\chi \in \Pi _u(\overline{A})$, we call the
+irreducible constituents {\bf reducible principal series}
+(or, more precisely, {\bf reducible principal series constituents}).
+
+Let $\chi \in \Pi (\overline{A})$. The induced representation
+$I_{\overline{A}}(\chi )$ is in general not irreducible. 
+However, we do have the
+following
+
+\begin{proposition}
+(Moen \cite{Mo2}) 
+\begin{enumerate}
+\item[(a)]
+If $n$ is even and $gcd(p,n)=1$ then 
+$I_{\overline{A}}(\chi )$ is
+irreducible and unitary for all $\chi \in \Pi _u(\overline{A})$.
+\item[(b)]
+If $n$ is odd and $gcd(p,n)=1$ then $I_{\overline{A}}(\chi )$ is
+irreducible and unitary for all $\chi \in \Pi _u(\overline{A})$ such that 
+(a) $\chi =1$ or (b) 
+$\chi^{\overline{w_0}}\neq \chi $ where $\overline{w_0}=(w_0 ,1)$. 
+If $\chi^{\overline{w_0}}=\chi $ and $\chi\not= 1$ 
+then $I_{\overline{A}}(\chi )$ is 
+reducible and has two irreducible constituents.
+\end{enumerate}
+\end{proposition}
+
+In fact, C. Moen \cite{Mo1}
+explicitly computes the intertwining operators as
+matrices using the Kirillov model when $gcd(p,n)=1$. 
+
+\begin{proposition}
+$I_{\overline{A}}(\chi )$ is
+irreducible and unitary for all $\chi \in \Pi _u(\overline{A})$
+such that 
+$\chi^{\overline{w_0}}\neq \chi $ where $\overline{w_0}=(w_0 ,1)$. 
+\label{prop:moen}
+\end{proposition}
+
+The above result has a direct proof, based on Bruhat theory,
+but the following argument deduces the this result from
+results in \cite{FK}. 
+
+{\bf proof}: The ``irreducibility if and only if
+$\chi^{\overline{w_0}}\neq \chi $'' follows from the
+above Lemma \ref{lemma:bz2}(b).
+
+We claim that each representation
+$I_{\overline{A}}(\mu )$ as in the proposition
+extends to a representation $I'_{\overline{A}}(\mu )$
+of $\overline{GL(2,F)}$ (where
+$\overline{GL(2,F)}$ is defined by any cocycle of
+$GL(2,F)$ extending that of $\overline{SL(2,F)}$
+used above). This claim follows from ``Clifford-Mackey theory''
+and its proof is omitted (but see Schultz \cite{Sch} and
+Gelbart and Piatetski-Shapiro \cite{GPS}
+for a special case).
+
+We claim that each such representation
+$I'_{\overline{A}}(\mu )$ of $\overline{GL(2,F)}$
+is unitary. This claim follows from
+\cite{FK}, \S\S 26-27 (which does not assume that
+$p$ and $n$ are relatively prime). Let $V_\mu$ denote the
+vector space (having a positive-definite Hermitian inner product)
+on which the representation $I'_{\overline{A}}(\mu )$ 
+of $\overline{GL(2,F)}$ acts.
+
+It follows from these claims that 
+$I_{\overline{A}}(\mu )$ acts on a vector space (namely, $V_\mu$)
+having a positive-definite Hermitian inner product on it.
+$\#$
+
+\subsection{Complementary series}
+
+In this subsection, we shall briefly
+review some of the results of Ariturk \cite{Ar}
+and use some results of Flicker and Kazhdan \cite{FK}
+to generalize them to the $n$-fold cover (\cite{Ar}
+assumed $n=3$ and $p>3$).
+
+We call an irreducible unitary representation
+$\pi $ a {\bf complementary series} representation if 
+$\pi =I_{\overline{A}}(\chi )$ 
+for some 
+$\chi \in \Pi (\overline{A})-\Pi _u(\overline{A})$. 
+These representations are not
+tempered.
+
+Let $\mu \in \Pi (\overline{C})$,
+$\chi=\chi_\mu =Ind_{\overline{C}}^{\overline{A}}\mu \in
+\Pi (\overline{A})$. If $\mu (x)=\mu _0(x)|x|^s$, for some
+character $\mu _0$ of finite order and some 
+$s\in {\Bbb C}$ then
+we write $s=s(\mu )=s(\chi )$.
+
+Let $K(\mu )$ denote the space of locally constant 
+functions $f:F\times 
+\overline{A}\rightarrow {\Bbb C}$ such that
+
+(i) $f(x,a_1a_2)=\mu (a_1)f(x,a_2)$, 
+$a_1\in \overline{C}$, $a_2\in 
+\overline{A}$,
+
+(ii) $|x|\chi (\left[ 
+\begin{array}{cc}
+x & 0 \\ 
+0 & x^{-1}
+\end{array}
+\right] ,1)f(x,a)$ is constant for $|x|$ large.
+
+\noindent
+Let $R\subset \overline{A}$ denote a complete set of 
+representatives of 
+$\overline{A}/\overline{C}$, and let $r$ denote the 
+cardinality of $R$.
+The elements $f\in K(\mu )$ may be identified with 
+the $r$-tuple $%
+(f(x,a))_{a\in R}$.
+
+Let $V(\mu )$ denote the space of all locally constant 
+functions 
+$\varphi :\overline{G}\times \overline{A}\rightarrow 
+{\Bbb C}$ such that
+
+(i) $\varphi (g,a_1a_2)=\mu (a_1)\varphi (g,a_2)$, 
+$a_1\in \overline{C}$, $a_2\in \overline{A}$,
+
+(ii) $\varphi (a_1ng,a_2)=\delta (a_1)\varphi (g,a_2a_1)$, 
+where $a_1\in 
+\overline{A}$, $a_2\in \overline{A}$, $n\in N_0$.
+\noindent
+Here $\delta $ denotes the usual modulus function 
+(extended to $\overline{A}$ via the obvious 
+pull-back). For $\varphi \in V(\mu )$, define
+the map $T$ by
+\[
+T\varphi (g,a)=\int_F\varphi (w\cdot \left[ 
+\begin{array}{cc}
+1 & x \\ 
+0 & 1
+\end{array}
+\right] \cdot g,waw^{-1})dx,\;\;Re(s(\mu ))>0\ . 
+\]
+
+\begin{lemma} 
+(Ariturk)
+$T$ intertwines $I_{\overline{A}}(\mu )$ and 
+$I_{\overline{A}}(\mu ^w)$.
+\end{lemma}
+
+This lemma does not require us to assume $gcd(p,n)=1$.
+
+Let $L(\overline{G},\overline{B})$ denote the space 
+of all locally
+constant functions $\varphi $ on $\overline{G}$ 
+such that 
+\[
+\varphi ((\left[ 
+\begin{array}{cc}
+a & * \\ 
+0 & a^{-1}
+\end{array}
+\right] ,\varsigma )\cdot g)=|a|^2\varphi (g)\ .
+\]
+For $\varphi _1\in V(\mu )$, $\varphi _2\in V(\mu ^w)$, 
+the function 
+\[
+g\longmapsto \int_{\overline{A}/\overline{C}}
+\varphi _1(g,a)\varphi
+_2(g,a)da 
+\]
+belongs to $L(\overline{G},\overline{B})$. Therefore, 
+\begin{eqnarray*}
+&<&\varphi _1,\varphi _2>=\int_{\overline{B}\backslash 
+\overline{G}}
+\int_{\overline{A}/\overline{C}}
+\varphi _1(g,a)\varphi _2(g,a)dadg \\
+&=&\int_F\int_{\overline{A}/\overline{C}}
+\varphi _1(w^{-1}\cdot \left[ 
+\begin{array}{cc}
+1 & x \\ 
+0 & 1
+\end{array}
+\right] ,a)\varphi _2(w^{-1}\cdot \left[ 
+\begin{array}{cc}
+1 & x \\ 
+0 & 1
+\end{array}
+\right] ,a)dad^{\times }x
+\end{eqnarray*}
+gives a non-degenerate bilinear form on 
+$V(\mu )\times V(\mu ^{\overline{w}})$.
+
+\begin{lemma}
+(Ariturk)
+$I_{\overline{A}}(\mu ^{\overline{w}})$ is the contragredient of 
+$I_{\overline{A}}(\mu )$.
+\end{lemma}
+
+This lemma does not require us to assume $gcd(p,n)=1$.
+
+For $f\in K(\mu)$, define the Fourier transform of
+$f$ by
+\[
+f^{\wedge }(x,a)
+=\int_{F^\times}
+f(y,a)\psi(xy)dy,
+\]
+where $\psi$ is a fixed additive character of $F$.
+
+\begin{lemma}
+(Ariturk)
+Assume $gcd(p,n)=1$.
+For $\varphi _1,$ $\varphi _2\in V(\mu )$, 
+$\mu (x)=|x|^s$, we have 
+\[
+<\varphi _1,T\varphi _2>=
+\int_F\int_{\overline{A}/\overline{C}}
+f_1^{\wedge }(x,a)\overline{(Jf_2^{\wedge })(x,a)}dadx,
+\]
+where $J=J_\mu $ is a linear transformation on 
+$K(\mu )^{\wedge }$ and 
+\[
+f_i(x,a)=\varphi _i(w^{-1}\cdot \left[ 
+\begin{array}{cc}
+1 & x \\ 
+0 & 1
+\end{array}
+\right] ,a),\;\;i=1,2.
+\]
+\label{lemma:Jdef}
+\end{lemma}
+
+We may identify the map $J=J_\mu$ defined in the above lemma
+with an $r\times r$ matrix which we still denote by $J$.
+
+\begin{lemma}
+(Langlands, Ariturk) Assume $gcd(p,2n)=1$.
+If $0\leq Re(s(\mu ))\leq 1/n$ and $|Im(s(\mu ))|\leq
+\pi /n\ln (q)$ then the image of $J_\mu $ is an 
+irreducible representation of $\overline{G}$.
+\end{lemma}
+
+\begin{proposition}
+\label{prop:fk}
+(Flicker-Kazhdan)
+If $0< s(\mu )< 1/n$ then $I_{\overline{A}}(\mu )$ is a 
+unitarizable representation of $\overline{G}$.
+\end{proposition}
+
+{\bf proof}: 
+Each such representation
+$I_{\overline{A}}(\mu )$ extends to a
+representation $I'_{\overline{A}}(\mu )$
+of $\overline{GL(2,F)}$ (where
+$\overline{GL(2,F)}$ is defined by any cocycle of
+$GL(2,F)$ extending that of $\overline{SL(2,F)}$
+used above).
+We claim that each such representation
+$I'_{\overline{A}}(\mu )$ of $\overline{GL(2,F)}$
+is unitary. This claim follows from
+\cite{FK}, \S\S 26-27 (which does not assume that
+$p$ and $n$ are relatively prime). Let $V_\mu$ denote the
+vector space (having a positive-definite Hermitian inner product)
+on which the representation $I'_{\overline{A}}(\mu )$ 
+of $\overline{GL(2,F)}$ acts.
+
+It follows from these claims that 
+$I_{\overline{A}}(\mu )$ acts on a vector space (namely, $V_\mu$)
+having a positive-definite Hermitian inner product on it.
+$\#$
+
+\begin{corollary} 
+If $0<s<1/n$ and $\mu (x)=|x|^s$ then 
+$<\varphi _1,T\varphi _2>$ is a positive 
+definite form. In
+particular, $I_{\overline{A}}(\mu )$ is unitary in this range.
+If, in addition, $gcd(p,2n)=1$ then $J_\mu $ is 
+a positive definite matrix.
+\end{corollary}
+
+\begin{remark}
+In the case $n=2$, this follows from \cite{GS}, 
+Proposition 1 following the argument of \cite{Ar}. 
+See also \cite{Mo1} if $p>2$ and \cite{G}, \S 5.4.
+In the case $n=3$, $p >3 $, this was proven in \cite{Ar}. 
+
+Though this corollary is not needed for the
+character relations in \S 5, it does indicate that some of
+the results of
+Ariturk \cite{Ar} generalize to the $n$-fold cover case
+without any condition on the prime $p$.
+\end{remark}
+
+{\bf proof}: First, recall the following form 
+due to Jacquet, but see \cite{C}, page 118) of 
+Schur's lemma holds: If $(\pi,V)$ is an irreducible smooth 
+representation of $\overline{G}$ then every
+intertwining map $T:V\rightarrow V$ is a scalar.
+
+Now we claim: If $(\pi,V)$ is an irreducible smooth 
+representation of $\overline{G}$ then every
+there is at most one $\overline{G}$-invariant
+inner product on $V$. This is a well-known (and not hard to prove)
+consequence of Schur's lemma.
+
+The previous proposition says that 
+the representation space of $I_{\overline{A}}(\mu )$ 
+has a $\overline{G}$-invariant, positive-definite,
+Hermitian inner product. It follows
+$<\varphi _1,T\varphi _2>$ is positive-definite.
+This implies $J_\mu$ is also positive-definite, as claimed
+$0<s<1/n$ and $\mu (x)=|x|^s$.
+$\#$
+
+\subsection{The special and the ``trash'' representations}
+\label{subsec:special}
+
+For the origin of the term ``trash'' representation,
+see \cite{G}. 
+
+In the notation above, we have the following
+
+\begin{proposition} 
+Let  $s=1/n$ and $\mu (x)=|x|^s$.
+\begin{itemize}
+\item[(a)]
+The irreducible subrepresentation
+of $I_{\overline{A}}(\mu)$
+(if $gcd(p,2n)=1$, the kernel of $J_\mu $)
+is ``the special representation'' $\pi _{sp}$. 
+It is tempered and square-integrable
+(hence unitary). If $gcd(p,n)=1$ then it
+also contains an Iwahori fixed vector. 
+\item [(b)]
+If $n>1$ then the irreducible quotient
+of $I_{\overline{A}}(\mu)$
+(if $gcd(p,2n)=1$, image of $J_\mu $) is 
+an infinite-dimensional, non-tempered representation $\pi _{nt}$.
+If $gcd(p,n)=1$ then it is also spherical.
+\end{itemize}
+\end{proposition}
+
+\begin{remark}
+In the case $n=3$ and $p>3$, this 
+proposition follows from \cite{Ar}. 
+In case $n=2$, most of the statements
+are proven in \cite{GS}. 
+
+\end{remark}
+
+{\bf proof}: These statements follow easily from results of Flicker
+\cite{F} and Flicker-Kazhdan \cite{FK}, using an
+inversion formula relating the character of a representation
+of $\overline{G}$ to values of the character of
+$\overline{GL(2,F)}$ which it extends to (see page 39 of \cite{Sch}).
+$\#$
+
+\begin{proposition} (Kazhdan-Patterson)
+$\pi _{nt}$ is unitary.
+\end{proposition}
+
+\begin{remark}
+This is true if $n=2$ (\cite{GS}, Theorem 2) or
+if $n=3,\ p\not= 3$ (\cite{Ar}, Theorem 5.4).
+\end{remark}
+
+{\bf proof}\footnote{I thank the referee for this proof.}:
+This follows from Kazhdan-Patterson
+\cite{KP}, Theorem II.2.1. $\#$
+
+\section{Character relations}
+
+In this section, we use the above results to determine
+a ``natural'' correspondence between the (unramified)
+principal series of $\overline{G}$ and (unramified)
+principal series of $G$. We assume throughout this section 
+that $gcd(p,2n)=1$, since we shall require
+some of the results in \S \ref{subsec:4.1} above.
+
+We show in this section that if
+
+\begin{itemize}
+\item
+the image of $\overline{f}$ under
+the Harish-Chandra transform
+\[
+C_c^\infty(\overline{G})_{gen}
+\rightarrow 
+C_c^\infty(\overline{A}^{n_0})^W_{gen}
+\]
+``matches up with'' (in a way we will make explicit below)
+the image of $f$ under the Harish-Chandra transform
+\[
+C_c^\infty(G) \rightarrow C_c^\infty(A)^W,
+\]
+and 
+
+\item 
+the principal series representation 
+$\overline{\pi}=I_{\overline{A}}(\chi)$
+``corresponds with'' (in a way we will make explicit below)
+ the principal series representation $\pi=I_{A}(\mu)$,
+\end{itemize}
+then we have a character relation of the form
+\[
+{\rm tr}\,\pi(f)={\rm tr}\,\overline{\pi}(\overline{f}).
+\]
+
+We also give an analog of this result for spherical functions.
+
+\subsection{Character calculations for principal series}
+
+Let $A$ denote the diagonal subgroup of $G$.
+Recall $W=N_{G}(A)/A$ denotes the Weyl group of $A$. 
+If $x\in \overline{G}$ is regular then let
+$\overline{G}_t=Cent(t,\overline{G})$.
+
+\begin{lemma}
+Let $h$ denote an ``anti-genuine'' class function on $\overline{G}$
+and suppose that $h$ satisfies the property that, for all
+$f\in C_c^\infty(\overline{G})_{gen}$, we have
+\[
+\int_{\overline{G}}
+h(g)f(g)dg=
+c\int_{\overline{A}}\Delta(a)^{1/2}h(a)
+\int_{\overline{G}_a\backslash \overline{G}}
+f(g^{-1}ag){dg\over da}da,
+\]
+for some constant $c$. Then the following holds:
+
+(1) $c={1\over |W_A|}$,
+
+(2) if $g\in \overline{G}$ is regular then
+$h(g)=0$ unless $g$ is conjugate to an element of 
+$\overline{A}$.
+\label{lemma:Weyl}
+\end{lemma}
+
+{\bf proof}: First, note that the integral
+$\int_{\overline{G}_a\backslash \overline{G}}
+f(g^{-1}ag){dg\over da}da$ is zero unless
+$a\in \overline{A^{n_0}}$, in which case
+it is equal to $\int_{\overline{A}\backslash \overline{G}}
+f(g^{-1}ag){dg\over da}da$. Lemma \ref{lemma:Weyl}
+above is now a corollary of the non-metaplectic version, 
+which is equivalent to Lemma
+\ref{lemma:weylint}. $\#$
+
+
+\begin{proposition}
+Assume $gcd(p,2n)=1$. Assume $\chi =\chi_\mu=
+Ind_{\overline{C}}^{\overline{A}}\mu \in 
+\Pi (\overline{A})$ and suppose that $\chi \neq \chi ^w$. 
+The character of the
+irreducible representation $\pi =I_{\overline{A}}(\chi )$
+is given on the regular set by 
+\[
+\Theta _\pi (x)=\left\{ 
+\begin{array}{c}
+\frac{{\rm tr}\,\chi (a)+{\rm tr}\,(\chi (a)^{-1})}{|a-a^{-1}|},\;\;
+x=a^g,\;%{\rm some}
+\;g\in \overline{G},\;a\in \overline{A}_{reg}^{n_0}, \\ 
+0,\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;
+{\rm \;if\;}\;
+x\in \overline{G}_{reg}-(\overline{A}^{n_0})^{\overline{G}},
+\end{array}
+\right. 
+\]
+where 
+\[
+(\overline{A}^{n_0})^{\overline{G}}=\{a^g\;|\;
+a\in \overline{A}^{n_0},\;g\in 
+\overline{G}\}.\ 
+\]
+Moreover, ${\rm tr}\,\chi(a)=0$ unless 
+$a\in \overline{A}^{n_0}$.
+\label{prop:trace}
+\end{proposition}
+
+{\bf proof}: The proof, which follows Theorem 5.14
+in \cite{G}, is omitted. $\#$
+
+Proposition \ref{prop:trace}, Lemma \ref{lemma:chi}, and 
+Lemma \ref{lemma:141}
+imply that, for $f\in C_c^\infty (\overline{G})_{gen}$, 
+\begin{equation}
+\begin{array}{c}
+{\rm tr}\,\pi (f)=\int_{\overline{G}}\Theta _\pi (x)f(x)dx \\ 
+=\frac 12\int_{A^{n_0}}({\rm tr}\,\chi (a,1)+{\rm tr}\,(\chi
+(a,1)^{-1}))F_f^{\overline{A}}(a,1)da \\ 
+={1\over 2}\sum_{h\in \overline{A}/\overline{C}}
+(F_f^{\overline{A}})^{\wedge }(\mu ^h)
++(F_f^{\overline{A}})^{\wedge }((\mu^{\overline{w_0}}) ^h)\\
+={1\over 2}|A/C|[(F_f^{\overline{A}})^{\wedge }(\mu )
++(F_f^{\overline{A}})^{\wedge }(\mu^{\overline{w_0}})].
+\end{array}
+\label{eqn:character}
+\end{equation}
+
+\subsection{Matching principal series characters}
+
+Note that since $F^{\overline{A}}_f$ (for
+$f\in C_c^\infty(\overline{G})_{gen}$)
+vanishes off $\overline{A}^{n_0}$,
+the last Fourier transform in (\ref{eqn:character}),
+ {\it a priori} an integral over $\overline{C}$,
+is in fact an integral over $\overline{A^{n_0}}$.
+This, with Definition \ref{defn:transfer},
+proves the following consequence of the above proposition.
+
+\begin{theorem}
+Assume $gcd(p,2n)=1$.
+If $\chi=\chi_\mu=Ind_{\overline{C}}^{\overline{A}}\mu \in 
+\Pi (\overline{A})$, $\chi \neq \chi ^{\overline{w_0}}$, and if 
+$\overline{\pi} =I_{\overline{A}}(\chi)$
+then the character of $\overline{\pi}$ is related to that of
+$\pi =I_{A}(\mu^{n_0} )$ by
+\[
+{\rm tr}\,\overline{\pi}(\overline{f})
+={\rm tr}\,\pi(f),
+\]
+provided $\overline{f}\in C_c^\infty(\overline{G})_{gen}$ 
+transfers to $f\in C_c^\infty(G)$.
+\label{thrm:main1}
+\end{theorem}
+ 
+We now give an analogous result for the 
+spherical functions and the unramified principal series.
+
+\begin{theorem}
+Assume $gcd(p,2n)=1$.
+Assume that the cocycle $\beta$ defining $\overline{G}$
+is trivial on $K_0$. If $\chi=\chi_\mu=
+Ind_{\overline{A}^{n_0}}^{\overline{A}}\mu \in 
+\Pi (\overline{A})$ is unramified, $\chi \neq \chi ^{\overline{w_0}}$, and if 
+$\overline{\pi} =I_{\overline{A}}(\chi)$
+then the character of $\overline{\pi}$ is related to that of
+$\pi =I_{A}(\mu^{n_0} )$ by
+\[
+{\rm tr}\,\overline{\pi}(\overline{f})
+={\rm tr}\,\pi(f),
+\]
+provided $\overline{f}\in 
+{\cal H}(\overline{G}//K_0)_{gen}$
+transfers to $f\in {\cal H}(G//K_0)$.
+\label{thrm:main2}
+\end{theorem}
+
+{\bf proof}: Since $I_{\overline{A}}(\chi_\mu)$ is unramified
+if and only if $\mu$ is, this is a corollary of the previous theorem. 
+$\#$
+
+
+
+\begin{thebibliography}{99}
+
+\bibitem[Ar]{Ar} Ariturk, ``On the composition series of principal series
+representations of a three-fold covering group of $SL(2,K)$'', Nagoya Math
+J. \underline{77}(1980)177-196
+
+\bibitem[BD]{BD} J. Bernstein, ``Le centre de Bernstein'', 
+(notes by P. Deligne), 
+in {\bf Repr\'esentations des groupes r\'eductifs 
+sur un corp local}, Hermann, Paris, 1984
+
+\bibitem[BZ1]{BZ1} J. Bernstein and A. Zelevinski, ``Representations of 
+the group $GL(n,F)$,
+where $F$ is a non-archimedian local field'', Russian Math Surveys
+\underline{31}(1976)1-68
+
+\bibitem[BZ2]{BZ2} ----, ``Induced representations of reductive p-adic 
+groups, I'', Ann.
+scient. \'Ec. norm. Sup. \underline{10}(1977)441-472
+
+%\bibitem[Bl]{Bl} C. Blondel, ``Les repr\'esentations supercuspidales 
+%des groupes
+%m\'etaplectiques sur GL(2) et leurs caract\'eres'',
+%Bull de la Soc. Math. France, Memoir 18, 1985
+
+%\bibitem[Bo]{Bo} A. Borel, et al, \underline{Seminar in 
+%algebraic groups and
+%related finite groups}, Springer LNM \underline{131}, 1970
+
+%\bibitem[BH]{BH} D. Bump and J. Hoffstein, ``On Shimura's 
+%correspondence'', 
+%Duke Math. J. \underline{55}(1987)661-691
+
+\bibitem[C]{C} P. Cartier, ``Representations of p-adic groups: a survey'',
+in {\bf Automorphic forms, representations, and L-functions},
+vol I, ed. A. Borel, W. Casselman, AMS, Providence, RI, 1979
+
+\bibitem[Ca]{Ca} W. Casselman, ``Introduction to the theory of admissible
+representations on reductive p-adic groups'', preprint
+
+\bibitem[F]{F} Y. Flicker, ``Automorphic forms on covering groups of 
+$GL(2)$'', Inv. Math. \underline{57}(1980)119-182
+
+\bibitem[FK]{FK} ------ and D. Kazhdan, ``Metaplectic 
+correspondence'', Publ. Math. IHES \underline{64}(1986)53-110
+
+\bibitem[G]{G} S. Gelbart, {\bf Weil's representation and the 
+spectrum of the metaplectic group},
+SLN Math \underline{530}, 1976
+
+%\bibitem[GK]{GK} ------ and T. Knapp, ``L-indistinguishability and R 
+%groups for the special linear group'', Adv. Math. 43(1982)101-121
+
+\bibitem[GPS]{GPS} ------ and I. Piatetski-Shapiro, ``Some remarks 
+on metaplectic cusp
+forms and the correspondences of Shimura and Waldspurger'', Israel 
+J. Math.
+\underline{44}(1983)97-126
+
+\bibitem[GS]{GS} ------ and P. Sally, ``Intertwining operators and 
+automorphic
+froms on the metaplectic group'', Proc. Nat. Acad. Sci.
+\underline{72}(1975)1406-1410
+
+\bibitem[J1]{J1} D. Joyner, ``The metaplectic analog of 
+Kazhdan's endoscopic lift'',
+Israel J. Math. \underline{66}(1988)113-154
+
+\bibitem[J2]{J2} ------, ``A correspondence for the generalized 
+Hecke algebra of
+the metaplectic cover $\overline{SL(2,F)}$, $F$ p-adic,'' 
+New York J. of Math. \underline{4}(1998) 223-235.
+
+\bibitem[J3]{J3} ------, ``A correspondence for the supercuspidal
+representations of $\overline{SL_2(F)}$, $F$ p-adic'', 
+to appear in Archiv der Math.
+
+\bibitem[KP]{KP} D. Kazhdan and  S. Patterson, 
+``Metaplectic forms'', 
+Publ. Math. IHES \underline{59}(1984)35-142
+
+\bibitem[K]{K} T. Kubota, ``Topological covering of $SL(2)$ over a 
+local field'', J.
+Math. Soc. Japan \underline{19} (1967)114-121
+
+%\bibitem[K]{K} P. Kutzko,
+%``Character formulas for supercuspidal representations of
+%$GL(\ell)$, $\ell$ a prime'', Amer J Math 
+%\underline{109}(1987)201-222
+
+%\bibitem[L]{L} R. Langlands, \underline{Base} \underline{change} 
+%\underline{for $GL(2)$},
+%Annals of Math. Studies, Princeton
+
+\bibitem[M1]{M1} D. Manderscheid, ``On the supercuspidal 
+representations of
+$SL(2)$ and its 2-fold cover, I'', Math. Ann. 
+\underbar{266}(1987)287-295
+
+\bibitem[M2]{M2} ------, ``On the supercuspidal representations of
+$SL(2)$ and its 2-fold cover, II'', Math. Ann.
+\underbar{266}(1987)297-305
+
+%\bibitem[M3]{M3} ------, ``Supercuspidal representations and the
+%theta correspondence'',  J. Algebra \underbar{151}(1992), 
+%no. 2, 375--407
+
+\bibitem[Mo1]{Mo1} C. Moen, ``Intertwining operators for covering groups 
+of $SL(2)$ over
+a local field'', preprint
+
+\bibitem[Mo2]{Mo2} ------, ``Irreducibiliy of unitary principal series 
+representations
+for covering groups of $SL(2)$'', Pac. J. Math. 135(1988)89-110
+
+\bibitem[N]{N} J. Neukirch, {\bf Class field theory},
+Springer-Verlag, 1986
+
+\bibitem[Sch]{Sch} J. Schultz, ``Lifting of characters of 
+$\overline{SL_2(F)}$ and
+$SO_{2,1}(F)$, for $F$ nonarchimedean'',
+PhD thesis (supervised by J. Adams),
+Univ. Maryland at College Park, 1998
+
+\bibitem[S]{S} A. Silberger, {\bf Introduction to
+harmonic analysis on reductive p-adic groups}, 
+Princeton Univ. Press, Princeton, 1979
+
+\bibitem[V]{V} M.-F. Vign\'eras, ``Caract\'erisation des integrales 
+orbitales sur un
+groupe r\'eductif p-adique'', J. Fac. Sci. Univ. Tokyo 
+\underline{28}(1981)945-961
+
+\end{thebibliography}
+
+\vskip 1in
+\noindent
+Mathematics Dept.\\
+Chauvenet Hall\\
+572C Holloway Road\\
+U.S. Naval Academy\\
+Annapolis, MD 21402\\
+\verb+wdj@gwmail.usna.edu+
+\end{document}
+
+
+
+

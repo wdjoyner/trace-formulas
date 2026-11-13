@@ -1,0 +1,1002 @@
+\documentclass[12pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{booktabs,tabularx,array,enumitem}
+\usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
+\usepackage{microtype}
+\setcounter{tocdepth}{2}
+\numberwithin{equation}{section}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{warning}[theorem]{Caution}
+\newcommand{\G}{G}
+\newcommand{\Gt}{\widetilde G}
+\newcommand{\At}{\widetilde A}
+\newcommand{\Bt}{\widetilde B}
+\newcommand{\Cc}{\mathbb C}
+\newcommand{\Of}{\mathcal O_F}
+\newcommand{\Rad}{Z(\At)}
+\newcommand{\Ff}{\mathcal F}
+\newcommand{\PI}{\operatorname{I}}
+\newcommand{\Ind}{\operatorname{Ind}}
+\newcommand{\tr}{\operatorname{tr}}
+\newcommand{\Hom}{\operatorname{Hom}}
+\newcommand{\vol}{\operatorname{vol}}
+\newcommand{\supp}{\operatorname{supp}}
+\newcommand{\GL}{\mathrm{GL}}
+\newcommand{\SL}{\mathrm{SL}}
+\newcommand{\reg}{\mathrm{reg}}
+\title{On the unitary dual of the metaplectic cover of $\mathrm{SL}(2,F)$, $F$ $p$-adic\\[4pt]
+\large A corrected and annotated revision of the 1999 manuscript}
+\author{D. Joyner (with {\tt Argon-Gemini} and {\tt Sol-ChatGPT})}
+\date{Original manuscript: July 21, 1999\\Corrected revision: November 9, 2026}
+\begin{document}
+\maketitle
+\begin{abstract}
+  This AI-aided paper is a corrected version of a
+paper originally written in 1999. Argon-Gemini was used to referee,
+suggest corrections, and add a glossary of terms.
+Sol-ChatGPT was used as a second referee.
+See the acknowledgments at the end of the paper for details.
+
+This revision revisits a 20-something year old
+unpublished manuscript of mine concerning the
+$n$-fold metaplectic cover of $\mathrm{SL}(2,F)$.  It gives an explicit
+and corrected description of the genuine representations of the covering
+diagonal torus, establishes the vanishing and image statements for
+normalized split orbital integrals, and states the principal-series
+character formula in terms of genuine Weyl conjugation, rather than
+inversion in the covering group.  For $\gcd(p,2n)=1$ and
+$n$ odd or $4\mid n$, the resulting formula yields a precisely normalized
+split-torus character transfer to $\mathrm{SL}(2,F)$.
+The remaining discussion surveys principal series and known
+complementary-series examples, distinguishing results established here
+from additional assertions requiring separate references or proof.
+
+\end{abstract}
+\tableofcontents
+
+\section*{Table of notation}
+\addcontentsline{toc}{section}{Table of notation}
+The principal notation is collected here for reference.  Definitions
+and normalization conventions are given in Section~\ref{sec:notation}.
+\begin{center}
+\begingroup
+\footnotesize
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.18}
+\begin{tabularx}{\linewidth}{@{}>{\raggedright\arraybackslash}p{0.29\linewidth}>{\raggedright\arraybackslash}X@{}}
+\toprule
+Symbol & Meaning\\
+\midrule
+$F,\Of,\varpi,q$ & The local field; its ring of integers; a uniformizer; and the residue-field cardinality.\\
+$n,\ d=n/\gcd(n,2)$ & Covering degree $n$ and the dimension $d$ of a genuine irreducible representation of the covering torus.\\
+$G,\Gt$ & $\SL(2,F)$ and its $n$-fold Kubota cover.\\
+$A,\At$ & The diagonal torus and its full inverse image under the covering map.\\
+$Z_A$ & Center of the covering torus $\At$; explicitly $\rho^{-1}(h((F^\times)^d))$.\\
+$\widetilde C$ & A maximal abelian subgroup of $\At$, lying above $h(\varpi^{d\mathbb Z}\Of^\times)$.\\
+$\lambda,\chi_\lambda$ & A genuine central character of $Z_A$, and the associated degree-$d$ representation of $\At$.\\
+$W,\tilde w$ & Weyl group and the chosen lift of its nontrivial element.\\
+$\Phi_f,\ \mathcal O_f^{Z_A}$ & Normalized split orbital integrals, respectively with quotient by $\At$ on $Z_A$ and by $Z_A$ on $\At$.\\
+$D,\delta_B$ & Weyl discriminant and modulus character of the Borel subgroup $B$.\\
+$\PI(\chi)$ & Normalized principal series induced from $\chi\delta_B^{1/2}$.\\
+$\nu,\eta_\lambda$ & Power-section homomorphism (for the permitted degrees) and the associated pulled-back character.\\
+\bottomrule
+\end{tabularx}
+\endgroup
+\end{center}
+
+
+\section{Introduction}\label{sec:intro}
+Let $F$ be a nonarchimedean local field of characteristic zero and
+residue characteristic $p$, and let
+\[
+  1\longrightarrow\mu_n\longrightarrow \Gt
+       \stackrel{\rho}{\longrightarrow}G=\SL(2,F)
+       \longrightarrow 1
+\]
+be Kubota's $n$-fold covering group.  We work with representations on
+which $\mu_n$ acts by a fixed faithful character.  In the metaplectic
+setting, even the preimage of the diagonal torus $A$ need not be
+abelian.  This simple phenomenon is responsible both for the higher
+dimension of its genuine irreducible representations and for the
+vanishing of their characters away from the radical of the commutator
+pairing.
+
+The main objectives of this corrected note are:
+\begin{enumerate}[label=(\roman*),leftmargin=*]
+\item to describe the genuine representation theory of $\At$ by a
+      finite Heisenberg-group argument (Theorem~\ref{thm:torus});
+\item to formulate normalized split orbital integrals using an
+      actual centralizing subgroup and to identify their image
+      (Theorem~\ref{thm:orbital});
+\item to give the principal-series character on the split regular set
+      with its correct central equivariance
+      (Theorem~\ref{thm:character});
+\item to deduce a character comparison for the degrees in which the
+      naive power-section map is genuinely multiplicative
+      (Theorem~\ref{thm:transfer}).
+\end{enumerate}
+The last result is a \emph{split-torus/principal-series} comparison;
+no comparison of elliptic orbital integrals or all genuine admissible
+representations is asserted.
+
+The historical antecedents, relevant representation-theoretic results,
+and subsequent developments are described in the literature review in
+Section~\ref{sec:literature}.  A principal distinction is between
+results about individual principal series representations and results
+that classify the entire genuine unitary dual.
+
+\paragraph{Assumptions.}
+The statements about the radical and Stone--von Neumann theory below
+hold whenever $|\mu_n(F)|=n$.  We explicitly assume
+$\gcd(p,2n)=1$ when using a maximal compact splitting, the tame
+parametrization of $\At$, or the image theorem.  The power-map
+transfer in Section~\ref{sec:transfer} has the additional restriction
+$n$ odd or $4\mid n$; the omitted congruence class is discussed in
+Remark~\ref{rem:weil}.
+
+\section{Literature review}\label{sec:literature}
+This review is selective.  It emphasizes the results directly used or
+compared with the covering-torus calculations, orbital-integral theory,
+principal series, and representation-theoretic transfers in this note.
+In particular, a result for an $n$-fold cover of $\GL(2,F)$ need not
+immediately imply an analogous statement for the cover of $\SL(2,F)$.
+
+\paragraph{The covering cocycle and the metaplectic representation.}
+Kubota \cite{K} constructs the covering group of $\SL(2,F)$ by an
+explicit two-cocycle expressed in terms of the Hilbert symbol; this is
+the starting point for the commutator calculation in
+Section~\ref{sec:torus}.  Gelbart and Sally \cite{GS} investigate
+intertwining operators and the Weil representation for the metaplectic
+group; Gelbart's monograph \cite{G} develops its representation and
+spectral theory.  These works explain why exceptional constituents
+of induced representations must be considered separately from generic
+principal series.
+
+\paragraph{Principal series, intertwining operators, and reducibility.}
+Moen's 1979 thesis \cite{Mo1} studies intertwining operators for
+covering groups of $\SL(2)$, while her later article \cite{Mo2}
+proves reducibility and irreducibility results for the \emph{unitary}
+principal series (under its stated hypotheses, including odd residue
+characteristic).  In particular, the behavior depends on the parity
+of $n$.  Arit\"urk \cite{Ar} determines the composition series at
+the exceptional parameters in a family of genuine principal series
+of the \emph{threefold} cover; the special parameters are not a
+classification of complementary series in arbitrary degree.
+The general theory of parabolic induction and Jacquet modules for
+linear reductive $p$-adic groups is developed in
+Bernstein--Zelevinsky \cite{BZ1,BZ2}; applying these techniques to a
+cover requires attention to genuine inducing data.
+
+\paragraph{Correspondence and the larger metaplectic setting.}
+Flicker \cite{F} studies automorphic forms on covering groups of
+$\GL(2)$.  Kazhdan and Patterson \cite{KP} develop metaplectic forms
+for higher-rank general linear groups, while Flicker--Kazhdan
+\cite{FK} provides a metaplectic correspondence framework.
+These papers supply a broader context for character identities but
+do not, by themselves, establish the complete local transfer asserted
+in some earlier versions of this manuscript.
+
+\paragraph{Supercuspidal representations and the author's related work.}
+Manderscheid \cite{M1,M2} treats supercuspidal representations of
+$\SL(2)$ and its double cover.  Joyner \cite{J1} establishes a
+metaplectic analogue of a Kazhdan-style lifting, including local
+orbital-integral identities in a different setting.  The generalized
+Hecke-algebra correspondence of \cite{J2} applies to admissible
+representations of \emph{sufficiently large level}, rather than giving
+an unrestricted classification.  In \cite{J3}, Joyner studies
+supercuspidal representations of the $n$-fold cover in the tame
+setting and gives a character comparison for the double cover.
+The later paper \cite{J4} discusses invariant distributions and the
+tempered dual, and explicitly cites the unpublished 1999 manuscript.
+The split orbital-integral statements revisited here are closely
+related to that later work.
+
+\paragraph{Plancherel measures and more recent local coefficients.}
+Goldberg and Szpruch \cite{GoldSz} compute Plancherel measures and a
+matrix-valued analogue of Shahidi local coefficients for genuine
+principal series of covers of $\SL(2,F)$, obtaining irreducibility
+results.  Szpruch \cite{Szpruch19} studies the associated local
+coefficients matrix and derives further Plancherel formulas, without
+assuming the residue characteristic is prime to $n$ but with a
+restriction that $4\nmid n$.  Tang \cite{Tang} studies principal series
+of metaplectic groups more generally, including constructions of
+genuine central characters for the covering torus.  These later
+results offer checks on reducibility and on the use of intertwining
+operators; they should not be conflated with the limited
+split-character comparison established in Section~\ref{sec:transfer}.
+
+\section{Covering groups and conventions}\label{sec:notation}
+Write $\Of$ for the ring of integers, $\varpi$ for a uniformizer,
+$q=|\Of/\varpi\Of|$, $|\varpi|=q^{-1}$, and
+$K=\SL(2,\Of)$.  We suppose that $F$ contains $\mu_n$ of order $n$
+and identify it with a subgroup of $\Cc^\times$.  All representations
+and functions called \emph{genuine} use this fixed central character.
+Let
+\[
+ h(a)=\begin{pmatrix}a&0\\0&a^{-1}\end{pmatrix},\qquad
+ u(x)=\begin{pmatrix}1&x\\0&1\end{pmatrix},\qquad
+ w=\begin{pmatrix}0&1\\-1&0\end{pmatrix}.
+\]
+Thus $A=h(F^\times)$, $N=u(F)$, $B=AN$, and
+$W=N_G(A)/A=\{1,w\}$.  Write $\At=\rho^{-1}(A)$,
+$\Bt=\rho^{-1}(B)$, and use tildes for elements of the cover.
+The cover splits canonically over $N$.  When $\gcd(p,2n)=1$ we also fix
+a splitting of $K$ (chosen consistently with the cocycle); in the
+spherical case $K$ henceforth denotes its image in $\Gt$.
+
+For $g=\left(\begin{smallmatrix}a&b\\c&d\end{smallmatrix}\right)$ put
+$x(g)=c$ if $c\ne0$ and $x(g)=d$ otherwise.  We use Kubota's cocycle
+\begin{equation}\label{eq:kubota}
+ \beta(g_1,g_2)=
+  \left(\frac{x(g_1g_2)}{x(g_1)},
+             \frac{x(g_1g_2)}{x(g_2)}\right)_n,
+\end{equation}
+where $(\ ,\ )_n$ is the $n$th Hilbert symbol.
+The law on $G\times\mu_n$ is
+$(g,\zeta)(g',\zeta')=(gg',\zeta\zeta'\beta(g,g'))$.
+We will write $\tilde h(a)=(h(a),1)$, and $\tilde w=(w,1)$.
+A representation $\pi$ is genuine if $\pi(\zeta g)=\zeta\pi(g)$;
+a test function $f$ is genuine if
+\begin{equation}\label{eq:genuine}
+ f(\zeta g)=\zeta^{-1}f(g).
+\end{equation}
+Hence the Harish--Chandra character of a genuine admissible
+representation satisfies
+$\Theta_\pi(\zeta g)=\zeta\Theta_\pi(g)$ on the regular set.
+This opposite convention for test functions is essential in trace
+integrals.
+
+For $a=h(t)\in A_{\reg}$, where $t^2\ne1$, let
+\begin{align}
+ D(a)&=\det\bigl(1-\operatorname{Ad}(a)\mid_{\mathfrak g/\mathfrak a}\bigr)
+       =(1-t^2)(1-t^{-2})=-(t-t^{-1})^2,\\
+ \delta_B(a)&=|t|^2,\qquad
+ |D(a)|^{1/2}=|t-t^{-1}|.
+\end{align}
+These quantities pull back through $\rho$.  Set
+\begin{equation}\label{eq:d}
+ d=n_0=\frac{n}{\gcd(n,2)}.
+\end{equation}
+We give $\mu_n$ Haar mass one and normalize Haar measures by
+$\vol(A\cap K)=\vol(N\cap K)=\vol(K)=1$.  Haar measure on
+$G$ and $\Gt$ is chosen compatibly with the Iwasawa decomposition
+$G=ANK$ and the chosen splitting of $K$ (when it exists), and quotient
+measures are induced from these choices.  We use the
+\emph{restriction} of Haar measure on $A$ to its open subgroups;
+we do not silently replace it by a pushforward measure.  All
+orbital-integral and character identities below use this common
+normalization.
+
+\section{The covering torus}\label{sec:torus}
+\subsection{The commutator and its radical}
+For $a,b\in F^\times$ an immediate calculation from
+\eqref{eq:kubota} gives, up to inversion according to the
+commutator convention,
+\begin{equation}\label{eq:commutator}
+ [\tilde h(a),\tilde h(b)]=(a,b)_n^{\pm 2}.
+\end{equation}
+The sign has no effect on the following radical calculation.
+Define
+\begin{equation}\label{eq:Z}
+ Z_A=Z(\At)=\rho^{-1}\!\bigl(h((F^\times)^d)\bigr).
+\end{equation}
+\emph{This is the group-theoretic center of $\At$, not the set of
+$d$th powers of elements of $\At$.}  The latter notation can be
+misleading for even $n$.
+
+\begin{lemma}\label{lem:radical}
+The formula \eqref{eq:Z} holds for every $F$ containing $\mu_n$.
+If $\gcd(p,n)=1$, then
+\begin{equation}\label{eq:indices}
+ [\At:Z_A]=d^2.
+\end{equation}
+The commutator induces a nondegenerate alternating pairing on the
+finite quotient $\At/Z_A$.
+\end{lemma}
+\begin{proof}
+The Hilbert symbol is nondegenerate on
+$F^\times/(F^\times)^n$.  Its square is trivial against every
+$b$ precisely when $a^2\in(F^\times)^n$, equivalently when
+$a\in(F^\times)^d$.  This proves the center assertion.
+When $p\nmid n$, the $d$th-power map is an automorphism of
+$1+\varpi\Of$, while
+$F^\times\simeq\varpi^{\mathbb Z}\times\mu_{q-1}
+\times(1+\varpi\Of)$ and $d\mid q-1$.  Consequently
+$|F^\times/(F^\times)^d|=d^2$.  Nondegeneracy on the
+quotient is exactly the definition of its radical.
+\end{proof}
+
+\begin{remark}
+The centralizer of the \emph{whole} torus $\At$ in $\Gt$ is $Z_A$.
+For an individual regular element $a\in\At$, however,
+$C_{\Gt}(a)$ can be strictly larger than $Z_A$ and strictly smaller
+than $\At$.  This distinction matters in the definition of orbital
+integrals.  In particular, one must not integrate over
+$\At\backslash\Gt$ unless $a$ actually commutes with $\At$.
+\end{remark}
+
+\subsection{The Stone--von Neumann parametrization}
+Assume $\gcd(p,n)=1$.  Put
+\[
+ C=h(\varpi^{d\mathbb Z}\Of^\times).
+\]
+The preimage $\widetilde C\subset\At$ is a maximal abelian subgroup
+containing $Z_A$ and $[\At:\widetilde C]=d$.
+Indeed the Hilbert symbol of two units is trivial in the tame case,
+and \eqref{eq:commutator} makes
+$\widetilde C$ abelian.  The index is $d$, which is the square root
+of the index in \eqref{eq:indices}; maximality follows from the
+nondegeneracy of the commutator pairing.
+
+\begin{theorem}[Genuine representations of the covering torus]
+\label{thm:torus}
+Let $\gcd(p,n)=1$.  For each smooth genuine character
+$\lambda:Z_A\to\Cc^\times$, choose an extension
+$\widetilde\lambda$ to $\widetilde C$.  Then
+\begin{equation}\label{eq:stone}
+ \chi_\lambda=\Ind_{\widetilde C}^{\At}\widetilde\lambda
+\end{equation}
+is irreducible of dimension $d$.  Its isomorphism class is independent
+of the extension, and
+$\lambda\mapsto\chi_\lambda$ is a bijection between genuine
+characters of $Z_A$ and irreducible smooth genuine representations of
+$\At$.  Their traces satisfy
+\begin{equation}\label{eq:torus-trace}
+ \tr\chi_\lambda(a)=
+ \begin{cases}
+ d\lambda(a),&a\in Z_A,\\
+ 0,&a\in\At\setminus Z_A.
+ \end{cases}
+\end{equation}
+\end{theorem}
+\begin{proof}
+The quotient $\At/Z_A$ is a finite abelian group with a
+nondegenerate commutator pairing.  Given a genuine central character
+$\lambda$, its extension to the maximal abelian $\widetilde C$
+exists because $\widetilde C/Z_A$ is finite and $\Cc^\times$ is
+divisible.  The stabilizer of an extension under conjugation by
+$\At$ is exactly $\widetilde C$, by nondegeneracy; Mackey's
+irreducibility criterion then gives an irreducible induction of degree
+$[\At:\widetilde C]=d$.  Two extensions of the same $\lambda$
+are conjugate by $\At$, since the pairing identifies
+$\At/\widetilde C$ with the character group of
+$\widetilde C/Z_A$.  Conversely, any smooth irreducible genuine
+representation has a genuine central character and is equivalent to
+this induction (the finite Stone--von Neumann theorem).
+For $a\in Z_A$, Schur's lemma gives
+$\chi_\lambda(a)=\lambda(a)\operatorname{id}$, hence the first
+case of \eqref{eq:torus-trace}.  If $a\notin Z_A$, choose
+$b\in\At$ with $bab^{-1}=\zeta a$, $\zeta\ne1$.  Conjugation
+preserves trace, whereas genuineness multiplies it by $\zeta$;
+thus the trace vanishes.
+\end{proof}
+
+\begin{example}[The double and triple covers]\label{ex:two-three}
+For $n=2$, $d=1$.  The covering torus is abelian, $Z_A=\At$,
+and genuine irreducible torus representations have dimension one.
+This does \emph{not} imply that the double cover splits over $A$.
+For $n=3$, $d=3$ and $[\At:Z_A]=9$.  Each genuine torus
+representation is three-dimensional, induced from a maximal abelian
+subgroup of index three.  Its trace is supported on $Z_A$ and equals
+three times its central character there.
+These are the two smallest tests of every proposed formula for
+principal-series characters.
+\end{example}
+
+\begin{example}[Degrees four and six]
+For $n=4$ one has $d=2$ and $[\At:Z_A]=4$.  A genuine
+irreducible representation of $\At$ has dimension two, and the
+power-section $\nu(t)=(h(t^2),1)$ is multiplicative since
+$(a^2,b^2)_4=(a,b)_4^4=1$.  Theorem~\ref{thm:transfer}
+therefore applies in degree four.
+
+For $n=6$ one has $d=3$ and $[\At:Z_A]=9$, but
+$(a^3,b^3)_6=(a,b)_6^9$ need not be one.  The torus
+character formula remains valid, whereas the same proposed
+power-section map need not be a homomorphism.  This illustrates why
+the restriction on $n$ in the transfer theorem is substantive.
+\end{example}
+
+\begin{remark}[Correction of an earlier multiplicity claim]
+The two-to-one map from characters of
+$A_n=h(\varpi^{n\mathbb Z}\Of^\times)$ to genuine torus
+representations asserted in the preceding version of this manuscript
+cannot hold uniformly.  For odd $n$, $A_n=C$, so the displayed
+construction of two extensions collapses.  The correct invariant is
+the genuine character of $Z_A$; this avoids artificial parity-dependent
+multiplicity claims.
+\end{remark}
+
+\section{Split orbital integrals and their image}\label{sec:orbital}
+\subsection{The correct quotient}
+Let $C_c^\infty(\Gt)_{\mathrm{gen}}$ consist of genuine compactly
+supported locally constant test functions.  Since $Z_A$ centralizes
+all of $\At$, for every $a\in\At_{\reg}$ the expression
+\begin{equation}\label{eq:OZ}
+ \mathcal O_f^{Z_A}(a)=|D(a)|^{1/2}
+     \int_{Z_A\backslash\Gt}f(x^{-1}ax)\,d\dot x
+\end{equation}
+is well-defined.  Its quotient differs from the full centralizer of
+an individual $a$ in general, but this causes no ambiguity because
+every element of $Z_A$ centralizes $a$.
+
+For $z\in (Z_A)_{\reg}$ the centralizer of $z$ in $\Gt$
+is $\At$.  We therefore also set
+\begin{equation}\label{eq:Phi}
+ \Phi_f(z)=|D(z)|^{1/2}
+       \int_{\At\backslash\Gt} f(x^{-1}zx)\,d\dot x.
+\end{equation}
+With quotient measures induced from the fixed Haar measures,
+\begin{equation}\label{eq:index-phi}
+ \mathcal O_f^{Z_A}(z)=d^2\Phi_f(z)
+ \qquad(z\in(Z_A)_{\reg}),
+\end{equation}
+because $[\At:Z_A]=d^2$.
+This finite-index factor must not be confused with $d$, the dimension
+of an irreducible torus representation.
+
+\begin{lemma}[Vanishing]\label{lem:vanishing}
+For $a\in\At_{\reg}\setminus Z_A$ one has
+$\mathcal O_f^{Z_A}(a)=0$.
+\end{lemma}
+\begin{proof}
+Choose $b\in\At$ with $b^{-1}ab=\zeta a$ for some
+$\zeta\ne1$.  Since $Z_A$ is normal in $\At$, left translation
+$x\mapsto bx$ preserves the measure on $Z_A\backslash\Gt$.
+The transformed integrand equals
+$f(x^{-1}b^{-1}abx)=\zeta^{-1}f(x^{-1}ax)$.
+Thus $\mathcal O_f^{Z_A}(a)=\zeta^{-1}
+\mathcal O_f^{Z_A}(a)$, proving the assertion.
+\end{proof}
+
+\subsection{Iwasawa's formula and surjectivity}
+Here assume $\gcd(p,2n)=1$ and use the chosen splitting of $K$.
+For $g\in\Gt$ put
+\[
+ f^K(g)=\int_K f(k^{-1}gk)\,dk,\qquad\vol(K)=1.
+\]
+Using $\Gt=\At NK$ and the change of unipotent variable
+for $z\in (Z_A)_{\reg}$ gives
+\begin{equation}\label{eq:Abel}
+ \Phi_f(z)=\delta_B(z)^{1/2}
+      \int_N f^K(zu)\,du.
+\end{equation}
+The right-hand side makes sense on all $Z_A$ and is compactly
+supported and locally constant.  We use it to define $\Phi_f$ at
+singular elements.  On the regular set $\Phi_f$ is invariant under
+Weyl conjugation, hence its extension is also Weyl invariant.
+
+\begin{theorem}[Image of the split orbital-integral transform]
+\label{thm:orbital}
+If $\gcd(p,2n)=1$, the map
+\begin{equation}\label{eq:orb-surj}
+ C_c^\infty(\Gt)_{\mathrm{gen}}\longrightarrow
+ C_c^\infty(Z_A)_{\mathrm{gen}}^W,\qquad
+ f\longmapsto\Phi_f
+\end{equation}
+is surjective.  Equivalently, the $Z_A$-quotient integral
+\eqref{eq:OZ} restricts to the same space, with the factor $d^2$
+from \eqref{eq:index-phi}.  The superscript $W$ denotes invariance
+under conjugation by a lift of $w$, not naive inversion in $\At$.
+\end{theorem}
+\begin{proof}
+Formula \eqref{eq:Abel} proves that the map lands in the indicated
+space.  For surjectivity, first take $\phi\in
+C_c^\infty((Z_A)_{\reg})^W_{\mathrm{gen}}$.  On the open split
+regular locus, conjugation gives a finite Weyl covering of the
+corresponding conjugacy-saturated set; the usual submersion argument,
+with compactly supported local cutoffs along the conjugacy fibers,
+constructs $f$ such that $\Phi_f=\phi$.  The two Weyl charts give
+the same function precisely because $\phi$ is $W$-invariant.
+
+For a general $\phi$, only neighborhoods of the singular fibers
+remain.  These fibers lie above $I$ and $-I$.  Choose a sufficiently
+small normal principal congruence subgroup $K_m\triangleleft K$ on
+which the cover is split.  A genuine characteristic function of a
+central coset $zK_m$ (extended equivariantly under $\mu_n$)
+ is invariant under $K$-conjugation.  By \eqref{eq:Abel}, its transform
+is a nonzero constant on a sufficiently small neighborhood of $z$
+in $Z_A$ and vanishes outside that neighborhood; rescaling gives a
+local characteristic function.  The $\mu_n$-equivariance and
+$W$-invariance are automatic for the resulting central fibers.
+Subtract a finite linear combination of these functions from $\phi$;
+the remainder is compactly supported away from the singular set,
+where the first paragraph applies.  This proves surjectivity.
+The same assertion is recorded, with a different quotient
+normalization, in \cite[Lemma~2.2]{J4}.
+\end{proof}
+
+\begin{remark}[Satake and the image theorem]
+Equation \eqref{eq:Abel} is a normalized constant-term expression
+for the \emph{conjugation average} of a test function.  It should not
+be confused without further argument with the spherical Satake
+isomorphism of convolution algebras.  In particular, surjectivity
+of \eqref{eq:orb-surj} for all test functions does not by itself
+prove a spherical Satake isomorphism.
+\end{remark}
+
+\section{Parabolic induction and known unitary representations}
+\label{sec:unitary}
+Let $\chi$ be a genuine irreducible smooth representation of
+$\At$, extended trivially to $\Bt=\At N$.  The \emph{normalized}
+principal series $\PI(\chi)=\Ind_{\Bt}^{\Gt}(\chi\otimes
+\delta_B^{1/2})$ is realized on locally constant vector-valued
+functions satisfying
+\begin{equation}\label{eq:induction}
+ f(b g)=\delta_B(b)^{1/2}\chi(b)f(g),
+ \qquad b\in\Bt,\ g\in\Gt.
+\end{equation}
+The action is by right translation.  This is often called
+\emph{normalized parabolic induction}; it is unitary if $\chi$ is
+unitary, but it need not be unitary for nonunitary $\chi$.
+
+\subsection{Jacquet modules and ordinary principal series}
+The geometric lemma and the Jacquet functor carry over to finite
+central extensions split over the unipotent radical
+\cite{BZ1,BZ2,KP}.  In rank one, the semisimplification of the
+normalized Jacquet module of $\PI(\chi)$ has the two terms
+$\chi$ and $\chi^{\tilde w}$, with
+\begin{equation}\label{eq:weyl-action}
+ \chi^{\tilde w}(a)=\chi(\tilde w^{-1}a\tilde w).
+\end{equation}
+The twist in \eqref{eq:weyl-action} is \emph{not} generally
+$\chi(a^{-1})$: the inverse of a lift includes its cocycle and
+its central component behaves differently under inversion.
+
+\begin{proposition}\label{prop:tempered}
+If $\chi$ is unitary, $\PI(\chi)$ is a unitary,
+tempered representation (possibly reducible).  Its irreducible
+constituents are unitary and tempered.  If $\chi$ is Weyl-regular,
+$\chi^{\tilde w}\not\simeq\chi$, then $\PI(\chi)$ is
+irreducible in the standard rank-one unitary principal-series
+setting; in particular this assertion holds under Moen's tame
+hypotheses.
+\end{proposition}
+\begin{proof}
+The compact picture of normalized induction supplies a positive
+$\Gt$-invariant Hermitian form when $\chi$ is unitary; temperedness
+follows from tempered parabolic induction.  For the stated
+irreducibility criterion in the tame rank-one setting, see
+\cite{Mo2} and the standard geometric-lemma/intertwining argument.
+No extension of $\chi$ to a torus of a cover of $\GL(2,F)$ is
+needed or asserted here.
+\end{proof}
+
+\begin{remark}[Reducibility]
+In the tame cases studied by Moen, the exceptional reducible unitary
+principal series depend on parity and self-association of the inducing
+data \cite{Mo2}.  These constituents must be included in any complete
+unitary-dual account.  The present note does not restate a universal
+``two constituents for every Weyl-fixed character'' assertion;
+Goldberg--Szpruch \cite{GoldSz} gives a useful later analysis of
+Plancherel measures and reducibility.
+\end{remark}
+
+\subsection{Complementary series and endpoints: literature and limits}
+A \emph{complementary-series representation} is a non-tempered
+unitarizable irreducible normalized principal series whose inducing
+representation is not unitary.  Fix a unitary genuine central
+character $\lambda_0$ of $Z_A$, and consider suitable Weyl-self-dual
+families $\chi_{\lambda_s}$ with unramified real parameter $s$.
+An invariant positive form, when it exists, is constructed from a
+suitably normalized standard intertwining operator
+\[
+ M(s):\PI(\chi_{\lambda_s})\longrightarrow
+        \PI(\chi_{\lambda_{-s}}^{\tilde w}).
+\]
+Its positivity is a substantive assertion, not a consequence of
+formal uniqueness of invariant Hermitian forms.  One must also
+establish the correct self-duality, nonzero intertwining operator,
+normalization and absence of reducibility in the claimed interval.
+
+For the genuine double cover in odd residual characteristic, the
+classical Weil-representation and intertwining theory treats the
+complementary-series behavior and the endpoint at $s=1/2$
+\cite{G,GS}.  Arit\"urk treats the analogous threefold problem
+with $p>3$ and parameter $s=1/3$ at the endpoint \cite{Ar}.
+The familiar square-integrable (special) constituent and the
+non-tempered constituent at these endpoints should be understood
+\emph{within the hypotheses of the cited sources}.  In particular,
+it is not justified to assert from the $\GL(2,F)$ literature alone
+that for every $n$, including $p\mid n$, the whole interval
+$0<s<1/n$ is unitarizable or that the endpoint has the same
+composition series.
+
+\subsection{Why the intertwining-operator argument needs care}
+\label{subsec:intertwining}
+The earlier draft introduced a family of intertwiners by
+\[
+ (T_s\varphi)(g,a)=\int_F
+     \varphi\bigl(\tilde w\,u(x)g,
+                      \tilde w a\tilde w^{-1}\bigr)\,dx,
+\]
+initially in a region of absolute convergence, and represented its
+Fourier-transformed action by a matrix $J_s$ of size $d\times d$.
+This is a useful computational approach and closely follows
+Arit\"urk's treatment of the cubic cover \cite{Ar}.  However,
+three logically distinct steps are involved:
+\begin{enumerate}[label=(\roman*),leftmargin=*]
+\item meromorphic continuation and the correct normalization of
+      $T_s$, including the Weyl-conjugate inducing datum;
+\item construction of a nondegenerate invariant Hermitian form from
+      $T_s$, for a family that is genuinely Hermitian self-dual;
+\item positivity of that form, equivalently positivity of the
+      relevant normalized operator or matrix $J_s$, throughout the
+      proposed interval.
+\end{enumerate}
+None of these implications follows merely because an analogous
+representation of a cover of $\GL(2,F)$ is known: extension of an
+irreducible $\SL(2,F)$ representation to the larger cover must first
+be proved.  Nor does Schur's lemma alone establish positivity; it
+only controls the scalar ambiguity between forms when the
+representation is already irreducible.  In higher covering degree,
+$J_s$ is matrix-valued, making the positivity step especially
+significant.  The results of \cite{GoldSz} provide additional tools
+for analyzing the Plancherel measure and reducibility.
+
+The original integral and its matrix interpretation are therefore
+retained here as motivation, but without converting them into an
+unproved arbitrary-degree complementary-series theorem.
+
+\subsection{Supercuspidal representations and completeness}
+An irreducible admissible genuine representation is supercuspidal
+if its Jacquet module for $N$ vanishes, equivalently if its matrix
+coefficients are compactly supported modulo the center.  The
+general rank-one subquotient theorem says that every irreducible
+admissible genuine representation is either supercuspidal or a
+subquotient of some $\PI(\chi)$.  The problem of identifying the
+\emph{unitary} subquotients is additional.  Manderscheid's work
+\cite{M1,M2} treats the double cover; the author's earlier
+contributions \cite{J2,J3} concern specified supercuspidal
+correspondences and Hecke-algebra contexts.  These citations are
+not, by themselves, a proof of an exhaustive unitary-dual theorem
+for arbitrary $n$ and wild residual characteristic.
+
+\section{Principal-series characters}\label{sec:characters}
+\begin{theorem}[Corrected principal-series character]\label{thm:character}
+Assume $\gcd(p,n)=1$.  Let $\lambda$ be a genuine smooth central
+character of $Z_A$, $\chi=\chi_\lambda$ as in
+Theorem~\ref{thm:torus}, and $\Pi=\PI(\chi)$, not
+necessarily irreducible.  Its distribution character is represented
+on the regular semisimple set by a locally integrable function whose
+values on the split part are
+\begin{equation}\label{eq:char-formula}
+ \Theta_\Pi(a)=
+ \frac{\tr\chi(a)+\tr\chi^{\tilde w}(a)}{|D(a)|^{1/2}}
+ \quad(a\in\At_{\reg}),
+\end{equation}
+and which vanishes on elliptic regular semisimple classes.
+In particular, the split regular formula is zero off $Z_A$ and,
+for $z\in(Z_A)_{\reg}$, is
+\begin{equation}\label{eq:char-Z}
+ \Theta_\Pi(z)=
+ \frac{d\bigl(\lambda(z)+\lambda(\tilde w^{-1}z\tilde w)\bigr)}
+ {|D(z)|^{1/2}}.
+\end{equation}
+Both formulas have the correct transformation law
+$\Theta_\Pi(\zeta a)=\zeta\Theta_\Pi(a)$.
+\end{theorem}
+\begin{proof}
+The rank-one induced-character formula is obtained by restricting the
+character of normalized parabolic induction to the regular
+semisimple locus.  A split regular element has two fixed points on
+$G/B$, represented by the two Weyl elements; their contributions
+are the inducing character evaluated at $a$ and at the Weyl
+\emph{conjugate} of $a$, divided by the square root of the Weyl
+discriminant.  An elliptic regular element has no $F$-rational fixed
+point on $G/B$ and contributes zero.  The proof carries over to the
+finite central extension because it splits over $N$; compare the
+induced-character arguments in \cite{G,F,FK}.  Formula
+\eqref{eq:char-Z} follows from \eqref{eq:torus-trace}.
+The central-equivariance claim is immediate because both
+$\chi(\zeta a)$ and $\chi^{\tilde w}(\zeta a)$ are $\zeta$
+times their respective values at $a$.
+\end{proof}
+
+\begin{warning}[Why inversion cannot replace Weyl conjugation]
+For $n>2$, the expression
+$\tr\chi(a)+\tr\chi(a^{-1})$ transforms under
+$a\mapsto\zeta a$ with factors $\zeta$ and $\zeta^{-1}$,
+respectively, so its quotient by $|D(a)|^{1/2}$ is generally not
+a genuine representation character.  In particular it cannot be
+used to prove a matching theorem.  The correction in
+\eqref{eq:char-formula} is essential even when a particular
+cocycle section makes Weyl conjugation look like ordinary
+inversion on the underlying \emph{matrix}.
+\end{warning}
+
+\begin{corollary}[Trace in terms of normalized orbital integrals]
+\label{cor:trace-integral}
+Assume $\gcd(p,2n)=1$ and the measures of
+Section~\ref{sec:notation}.  For
+$f\in C_c^\infty(\Gt)_{\mathrm{gen}}$,
+\begin{align}
+ \tr\Pi(f)&=\frac12\int_{(Z_A)_{\reg}}
+    \bigl(\tr\chi(z)+\tr\chi^{\tilde w}(z)\bigr)
+    \Phi_f(z)\,dz \label{eq:trace-first}\\
+ &=d\int_{Z_A}\lambda(z)\Phi_f(z)\,dz.
+ \label{eq:trace-second}
+\end{align}
+The integral on the second line uses the locally constant
+extension of $\Phi_f$ and the singular set has Haar measure zero.
+\end{corollary}
+\begin{proof}
+Apply the Weyl integration formula to the ordinary
+central-invariant product $\Theta_\Pi f$.  Since the character
+vanishes on elliptic regular elements and on split regular
+$\At\setminus Z_A$, only $Z_A$ contributes; its elements have
+centralizer $\At$.  The Weyl factor is $1/2$, giving the first
+identity by \eqref{eq:char-formula} and \eqref{eq:Phi}.
+The second follows from \eqref{eq:torus-trace} and Weyl invariance
+of $\Phi_f$.  Note that the genuine $\lambda$ cancels the inverse
+central character of $\Phi_f$, so the integrand is well-defined on
+$Z_A$.
+\end{proof}
+
+\section{A restricted and normalized split-torus transfer}
+\label{sec:transfer}
+In this section assume $\gcd(p,2n)=1$ \emph{and}
+\begin{equation}\label{eq:restriction}
+ n\ \text{is odd}\qquad\text{or}\qquad4\mid n.
+\end{equation}
+These restrictions imply $n\mid d^2$.  For $t\in F^\times$ define
+\begin{equation}\label{eq:nu}
+ \nu(h(t))=(h(t^d),1)\in Z_A.
+\end{equation}
+\begin{lemma}\label{lem:norm}
+Under \eqref{eq:restriction}, $\nu:A\to Z_A$ is a continuous
+homomorphism with kernel of order $d$.  Its image is
+$Z_A^0=\{(h(u),1):u\in(F^\times)^d\}$, and
+$Z_A=\mu_n\,Z_A^0$ as a direct product.
+The map is Weyl-equivariant:
+\begin{equation}\label{eq:nu-w}
+ \tilde w^{-1}\nu(h(t))\tilde w=\nu(h(t^{-1})).
+\end{equation}
+If $dt$ is the chosen Haar measure on $A$ and $dz$ its restriction
+to $Z_A^0$, then
+\begin{equation}\label{eq:haar-push}
+ \int_{Z_A^0}H(z)\,dz
+   =\frac1d\int_A H(\nu(t))\,dt
+\end{equation}
+for every compactly supported $H$ on $Z_A^0$.
+\end{lemma}
+\begin{proof}
+On the diagonal torus, \eqref{eq:kubota} gives
+$\beta(h(a),h(b))=(b,a)_n$.  On $d$th powers this equals
+$(b,a)_n^{d^2}=1$ by \eqref{eq:restriction}; hence $\nu$
+is multiplicative and its image splits the central extension
+above $h((F^\times)^d)$.  The kernel consists of $d$th roots
+of unity, of which there are $d$ since $d\mid n$ and
+$\mu_n\subset F$.  A direct substitution in \eqref{eq:kubota}
+shows $\tilde w^{-1}(h(u),1)\tilde w=(h(u^{-1}),1)$;
+one uses $(u,u)_n^2=1$.  This proves \eqref{eq:nu-w}.
+
+For the measure assertion, normalize $dt$ temporarily by
+$\vol(\Of^\times)=1$.  In the tame case the subgroup
+$(\Of^\times)^d$ has index $d$, and the $d$th-power map
+sends $\Of^\times$ onto it.  Thus the pushforward of $dt$
+has $d$ times the Haar measure restricted from $A$.
+The same factor holds on each valuation coset, proving
+\eqref{eq:haar-push}.
+\end{proof}
+
+Let $F_f^A$ be the ordinary normalized split orbital integral,
+with the same Haar convention and its locally constant extension
+over $A$,
+\[
+ F_f^A(t)=|D(t)|^{1/2}
+    \int_{A\backslash G}f(x^{-1}tx)\,d\dot x
+ \quad(t\in A_{\reg}).
+\]
+
+\begin{definition}[Matching on the split torus]\label{def:match}
+For $\bar f\in C_c^\infty(\Gt)_{\mathrm{gen}}$ and
+$f\in C_c^\infty(G)$ we say that they are \emph{split-matching}
+if
+\begin{equation}\label{eq:match}
+ F_f^A(t)=\Phi_{\bar f}(\nu(t))
+ \qquad(t\in A),
+\end{equation}
+where both sides use their locally constant extensions at the
+singular points.  This notion concerns split orbital integrals only.
+\end{definition}
+
+\begin{theorem}[Restricted principal-series transfer]
+\label{thm:transfer}
+Assume $\gcd(p,2n)=1$ and \eqref{eq:restriction}.
+For every genuine irreducible $\chi_\lambda$ of $\At$, let
+\begin{equation}\label{eq:eta}
+ \eta_\lambda(t)=\lambda(\nu(t)),\qquad t\in A,
+\end{equation}
+which is an ordinary smooth character of $A$.
+If $\bar f$ and $f$ are split-matching, then
+\begin{equation}\label{eq:transfer-identity}
+ \boxed{\quad
+  \tr\PI(\chi_\lambda)(\bar f)
+    =\tr\Ind_B^G(\eta_\lambda\,\delta_B^{1/2})(f).
+ \quad}
+\end{equation}
+Every $\bar f\in C_c^\infty(\Gt)_{\mathrm{gen}}$
+has at least one split-matching $f\in C_c^\infty(G)$.
+If $\lambda$ is unitary then $\eta_\lambda$ is unitary.
+No assertion about irreducibility of the two induced
+representations is needed.
+\end{theorem}
+\begin{proof}
+By Lemma~\ref{lem:norm}, $\eta_\lambda$ is a character,
+and \eqref{eq:nu-w} identifies the two Weyl terms in the ordinary
+principal-series character formula.  For a genuine integrand
+$\lambda(z)\Phi_{\bar f}(z)$, integration over
+$Z_A=\mu_n Z_A^0$ is the same as integration over $Z_A^0$;
+the central factors cancel.  Using Corollary~\ref{cor:trace-integral}
+and \eqref{eq:haar-push} gives
+\begin{align*}
+ \tr\PI(\chi_\lambda)(\bar f)
+  &=d\int_{Z_A}\lambda(z)\Phi_{\bar f}(z)\,dz\\
+  &=d\int_{Z_A^0}\lambda(z)\Phi_{\bar f}(z)\,dz\\
+  &=\int_A\eta_\lambda(t)
+                 \Phi_{\bar f}(\nu(t))\,dt\\
+  &=\int_A\eta_\lambda(t)F_f^A(t)\,dt.
+\end{align*}
+The ordinary rank-one induced-character formula, together with
+Weyl integration, gives
+\[
+ \tr\Ind_B^G(\eta_\lambda\delta_B^{1/2})(f)
+ =\int_A\eta_\lambda(t)F_f^A(t)\,dt,
+\]
+since $F_f^A$ is Weyl invariant.  This proves the equality.
+
+For existence, Theorem~\ref{thm:orbital} shows that
+$\Phi_{\bar f}\in C_c^\infty(Z_A)_{\mathrm{gen}}^W$.
+The pullback $\Phi_{\bar f}\circ\nu$ is compactly supported,
+locally constant and Weyl invariant on $A$.  The usual (linear)
+$\SL(2,F)$ split orbital-integral image theorem, the $n=1$
+instance of Theorem~\ref{thm:orbital}, produces a test function
+$f$ whose transform is that pullback.  Finally unitary characters
+remain unitary upon pullback.
+\end{proof}
+
+\begin{example}[Checking the normalization in degree three]
+Suppose $n=3$, $p\ne2,3$, and $\lambda$ is a genuine central
+character trivial on the chosen split units.  Let $\bar f_0$ be the
+genuine idempotent of the split maximal compact $K$, normalized so
+that $\vol(K)=1$.  On $Z_A$, its normalized constant term is one on
+the unit subgroup (with the required central equivariance) and
+zero off it.  Since
+$[\Of^\times:(\Of^\times)^3]=3$, we obtain
+\[
+ \tr\PI(\chi_\lambda)(\bar f_0)
+   =3\int_{Z_A}\lambda(z)\Phi_{\bar f_0}(z)\,dz
+   =3\cdot\frac13=1.
+\]
+This agrees with the expected dimension of the spherical fixed
+space and explains the factor $d$ in
+\eqref{eq:trace-second}.  It also shows why replacing the subgroup
+index $d^2$ by $d$ inside \eqref{eq:index-phi} would be incorrect.
+\end{example}
+
+\begin{remark}[The omitted parity case]\label{rem:weil}
+If $n\equiv2\pmod4$, then $n\nmid d^2$, so the map
+$t\mapsto(h(t^d),1)$ is generally \emph{not} multiplicative.
+A bare phrase such as ``twist by the Weil factor'' does not define a
+$\mu_n$-valued group homomorphism in the present cover.  Weil indices
+may naturally take values in $\mu_4$ and require a compatible
+normalization or an enlarged central group.  The comparison
+\eqref{eq:transfer-identity} is therefore \emph{not claimed here}
+for $n\equiv2\pmod4$ (including $n=2$).  The double-cover
+correspondence is meaningful and well studied, but must be written
+using its own correctly normalized genuine character and transfer
+factor \cite{G,GS,F,Sch}.
+\end{remark}
+
+\begin{remark}[Spherical restriction]
+With a fixed splitting of $K$, the identity
+\eqref{eq:transfer-identity} also applies \emph{whenever}
+$\bar f$ and $f$ happen to be spherical and satisfy
+\eqref{eq:match}.  The existence of a spherical partner for every
+spherical $\bar f$ is a separate assertion about metaplectic
+Satake transforms; it is not a consequence of the smooth matching
+theorem above and is not asserted without an additional argument.
+\end{remark}
+
+\section{Conclusions and limits of the correction}\label{sec:limitations}
+The structural content established in this version is the
+parametrization and character theory of the tame covering torus,
+the corrected image theorem for split orbital integrals, the
+Weyl-conjugate principal-series character formula, and the
+restricted split character comparison of Theorem~\ref{thm:transfer}.
+The calculations distinguish three integers that should not be
+confused:
+\[
+ \dim\chi_\lambda=d,\qquad
+ [\At:Z_A]=d^2,\qquad
+ |\ker\nu|=d
+ \quad\text{(in the allowed transfer degrees)}.
+\]
+
+The following are not consequences of the present proofs:
+(i) a full description of the unitary dual for arbitrary covering
+degree and wild residue characteristic;
+(ii) a uniform complementary-series theorem with endpoint $1/n$;
+(iii) spherical matching for arbitrary spherical test functions;
+(iv) the power-map transfer in degree $n\equiv2\pmod4$;
+(v) elliptic orbital-integral or full Jacquet--Langlands matching.
+Each is a possible subject for additional research, rather than a
+result silently inherited from the 1999 preprint.
+
+\section{Glossary}\label{sec:glossary}
+
+\begin{description}[leftmargin=3.7cm,style=nextline]
+\item[Genuine] A representation with central action $\zeta\mapsto\zeta$;
+a trace test function transforms by $\zeta^{-1}$.
+\item[Covering-torus radical] The group-theoretic center of $\At$;
+it is the radical of the Hilbert-symbol commutator pairing.
+\item[Weyl conjugate] The representation
+$\chi^{\tilde w}(a)=\chi(\tilde w^{-1}a\tilde w)$,
+which must be distinguished from composition with group inversion.
+\item[Normalized orbital integral] An orbital integral multiplied by
+$|D|^{1/2}$; its quotient group must centralize the element.
+\item[Stone--von Neumann theory] Parametrization of irreducible genuine
+representations of a two-step nilpotent covering torus by their central
+characters.
+\item[Complementary series] Non-tempered, unitarizable induced
+representations obtained for certain real, nonunitary parameters.
+\item[Supercuspidal] An irreducible admissible representation with
+vanishing proper Jacquet modules.
+\item[Spherical] Invariant under the image of a chosen splitting
+$K\hookrightarrow\Gt$; existence of the splitting is an extra hypothesis.
+\item[Split-matching] Equality \eqref{eq:match} of normalized split
+torus orbital integrals, not a full endoscopic or stable orbital
+integral transfer.
+\end{description}
+
+\section*{Acknowledgments and revision history}
+\addcontentsline{toc}{section}{Acknowledgments and revision history}
+The 2026 revision began with an Argon-Gemini manuscript and an
+independent referee report by ChatGPT (OpenAI).  A subsequent attempt
+to revise the manuscript using Argon-Gemini was not completed; the
+reason for that difficulty is not established.  ChatGPT prepared a
+corrected LaTeX edition with revised proofs, examples, literature
+context, and explicit limits on assertions not justified by the
+preceding version.  The present editorial revision reorganizes the
+notation, adds a separate literature review, and revises the typesetting
+of the notation table.  Computational and typesetting checks do not
+substitute for independent mathematical refereeing.
+
+I thank Courtney Moen for helpful criticisms of the earlier manuscript
+and an anonymous referee for useful suggestions.
+
+\begin{thebibliography}{99}
+\bibitem[Ar]{Ar} H. Arit\"urk, ``On the composition series of principal series representations of a three-fold covering group of $SL(2,K)$'', \emph{Nagoya Math. J.} \textbf{77} (1980), 177--196.
+\bibitem[BZ1]{BZ1} I. N. Bernstein and A. V. Zelevinsky, ``Representations of the group $GL(n,F)$, where $F$ is a non-archimedean local field'', \emph{Russian Math. Surveys} \textbf{31} (1976), 1--68.
+\bibitem[BZ2]{BZ2} I. N. Bernstein and A. V. Zelevinsky, ``Induced representations of reductive $p$-adic groups. I'', \emph{Ann. Sci. \`Ec. Norm. Sup.} \textbf{10} (1977), 441--472.
+\bibitem[F]{F} Y. Flicker, ``Automorphic forms on covering groups of $GL(2)$'', \emph{Invent. Math.} \textbf{57} (1980), 119--182.
+\bibitem[FK]{FK} Y. Flicker and D. Kazhdan, ``Metaplectic correspondence'', \emph{Publ. Math. IH\'ES} \textbf{64} (1986), 53--110.
+\bibitem[G]{G} S. Gelbart, \emph{Weil's Representation and the Spectrum of the Metaplectic Group}, Lecture Notes in Mathematics 530, Springer, 1976.
+\bibitem[GS]{GS} S. Gelbart and P. Sally, ``Intertwining operators and automorphic forms on the metaplectic group'', \emph{Proc. Natl. Acad. Sci. USA} \textbf{72} (1975), 1406--1410.
+\bibitem[GoldSz]{GoldSz} D. Goldberg and D. Szpruch, ``Plancherel measures for coverings of $p$-adic $SL_2(F)$'', \emph{Int. J. Number Theory} \textbf{12} (2016), 1907--1936.
+\bibitem[J1]{J1} D. Joyner, ``On the metaplectic analog of Kazhdan's "endoscopic" lifting'', \emph{Israel J. Math.} \textbf{61} (1988), 113--154.
+\bibitem[J2]{J2} D. Joyner, ``A correspondence for the generalized Hecke algebra of the metaplectic cover $\overline{SL(2,F)}$, $F$ $p$-adic'', \emph{New York J. Math.} \textbf{4} (1998), 223--235.
+\bibitem[J3]{J3} D. Joyner, ``A correspondence for the supercuspidal representations of $\overline{SL_2(F)}$, $F$ $p$-adic'', \emph{Arch. Math.} \textbf{73} (1999), 332--340.
+\bibitem[J4]{J4} D. Joyner, ``Invariant distributions on the $n$-fold metaplectic covers of $GL(r,F)$, $F$ $p$-adic'', \emph{J. Fourier Anal. Appl.} \textbf{7} (2001), no. 4, 343--358.
+\bibitem[KP]{KP} D. Kazhdan and S. Patterson, ``Metaplectic forms'', \emph{Publ. Math. IH\'ES} \textbf{59} (1984), 35--142.
+\bibitem[K]{K} T. Kubota, ``Topological covering of $SL(2)$ over a local field'', \emph{J. Math. Soc. Japan} \textbf{19} (1967), 114--121.
+\bibitem[M1]{M1} D. Manderscheid, ``On the supercuspidal representations of $SL(2)$ and its 2-fold cover. I'', \emph{Math. Ann.} \textbf{266} (1987), 287--295.
+\bibitem[M2]{M2} D. Manderscheid, ``On the supercuspidal representations of $SL(2)$ and its 2-fold cover. II'', \emph{Math. Ann.} \textbf{266} (1987), 297--305.
+\bibitem[Mo1]{Mo1} C. Moen, \emph{Intertwining Operators for Covering Groups of $SL(2)$ over a Local Field}, Ph.D. thesis, University of Chicago, 1979.
+\bibitem[Mo2]{Mo2} C. Moen, ``Irreducibility of unitary principal series representations for covering groups of $SL(2)$'', \emph{Pacific J. Math.} \textbf{135} (1988), 89--110.
+\bibitem[Sch]{Sch} J. Schultz, \emph{Lifting of Characters of $\overline{SL_2(F)}$ and $SO_{2,1}(F)$, for $F$ Nonarchimedean}, Ph.D. thesis, University of Maryland, 1998.
+\bibitem[Szpruch19]{Szpruch19} D. Szpruch, ``On Shahidi local coefficients matrix, \emph{Manuscripta Math.} 	extbf{159} (2019), nos. 1--2, 117--159.
+\bibitem[Tang]{Tang} S. Tang, ``Principal series representations of metaplectic groups'', arXiv:1706.05145 (2017).
+\end{thebibliography}
+\end{document}

@@ -1,0 +1,877 @@
+\input amstex
+\documentstyle{amsppt}
+\magnification 1200
+\pageno 53
+\hsize 6.5 true in
+\vsize 8.7 true in
+\define\zzz{\Bbb Z}
+\define\qqq{\Bbb Q}
+\define\ccc{\Bbb C} 
+\define\aaa{\Bbb A} 
+\define\rrr{\Bbb R}
+\define\eps{\epsilon}
+\define\okk{{\Cal O}_K}
+\baselineskip 16pt
+\document
+\heading
+{\bf Appendix: Background on $G_2$}
+\endheading
+\par
+\smallskip
+The first four sections of this appendix have been taken from an 
+unpublished joint paper with D. Bump. 
+\par
+The purpose of this appendix is to collect some foundational material on
+the exceptional group $G_2$, then to use this material to 
+compute the cuspidal endoscopic groups of 
+$G_2$, the groups $H^1(\Gamma, T)$, and the $F$-classes in the
+stable 2- and 3-regular unipotent orbit.
+\par
+In the first few sections, we shall be concerned with the phenomenon 
+known as ``triality'',
+which yields an embedding of $G_2$ into the double cover Spin(8) of
+the split form of SO(8). We shall
+determine the triality map explicitly at the root level, and also use it to 
+give an explicit Chevalley basis for the Lie algebra ${\frak g}_2$, 
+which should be useful in other calculations.
+\newline
+Acknowledgement: We thank Becci Davies for coding the root diagrams 
+(in AMS--TEX).
+\vskip .3in
+\subheading{\bf Background on G$_2$ and SO(8)}
+\vskip .1in
+\subheading{A.1. SO(8)}
+\vskip .1in
+Let J denote the $8\times 8$ matrix with 1's on the skew--diagonal and 
+0's elsewhere:
+$$
+J := \pmatrix 0_{\quad} &&{}_{_{\dsize\cdot}\quad}1 \\
+   \hfil&{}^{\dsize\cdot}&\\
+   1^{\quad^{\dsize\cdot}}& &{}_{_{\quad}}0
+   \endpmatrix.
+$$
+Define the $8\times 8$ {\bf special orthogonal group} 
+by
+$$
+SO(8) := \{A \in GL(8) \ |\ A\cdot J\cdot ^{t}A = J\}^o,
+$$
+so that $SO(8)$ is semi--simple, connected, neither simply connected
+nor adjoint, non--compact, and split over $\qqq$. Its maximal $\qqq$-split
+torus consists of all matrices of the form
+$$
+\pmatrix A&0\\0&B \endpmatrix,\ \text{with }
+A:=\tsize{\pmatrix a_1&\hfil&\hfil&\\
+\hfil&a_2&\hfil&\\
+\hfil&\hfil&a_3&\\
+\hfil&\hfil&\hfil&a_4 \endpmatrix},\ 
+B:= \tsize{\pmatrix a_4^{-1}&\hfil&\hfil&\\
+\hfil&a_3^{-1}&\hfil&\\
+\hfil&\hfil&a_2^{-1}&\\
+\hfil&\hfil&\hfil&a_1^{-1} \endpmatrix}.\tag A.1
+$$
+The compact real form of $SO(8)$ is obtained, of course, by replacing
+J by the $8\times 8$ identity matrix. 
+\par
+The simply--connected covering group of $SO(8)$ is
+$SO(8)_{sc} =$ Spin(8), which has center $\zzz /2\zzz \times \zzz /2\zzz$,
+and since $SO(8)$ has center $\zzz /2\zzz$, Spin(8) is a 2-fold cover
+of $SO(8)$ and a 4-fold cover of $PSO(8)$. The outer automorphisms
+of Spin(8) are in one--to--one correspondence with the automorphisms
+of the Dynkin diagram for $SO(8)$:
+$$
+\matrix
+\hfil&\hfil&\hfil&\quad\bullet \\
+\hfil&\hfil&\hfil\\ 
+\hfil&\hfil&\hfil\\ 
+\bullet\quad\quad&\hfil&\bullet
+\ &\hfil \\
+\hfil&\hfil&\hfil\\ 
+\hfil&\hfil&\hfil\\ 
+\hfil&\hfil&\hfil&\quad\bullet\endmatrix
+$$
+The Lie algebra
+$$
+so(8) := \{A \in M_8\ |\ AJ + J^{t}A = 0\}
+$$
+may be expressed as the Lie algebra of $8\times 8$ matrices of the
+form
+$$
+A =  {\pmatrix t_{1}&a_{12}&a_{13}&a_{14}&a_{15}&a_{16}&a_{17}&0\\
+a_{21}&t_2&a_{23}&a_{24}&a_{25}&a_{26}&0&-a_{17}\\
+a_{31}&a_{32}&t_3&a_{34}&a_{35}&0&-a_{26}&-a_{16}\\
+\vdots&\vdots &\vdots &\vdots &\vdots &\vdots &\vdots &\vdots\\
+0&-a_{71}&-a_{61}&-a_{51}&-a_{41}&-a_{31}&-a_{21}&-t_1\\
+\endpmatrix}.\tag A.2
+$$
+If $i \not= j$ then define $E_{ij}$ to be the matrix A as above with
+$a_{ij} = 1$ and all other entries = 0. Define $E_{ii}$ to be the
+matrix A as above with $t_i = 1$ and all other entries = 0. Then
+$$
+\split
+&\big\{ E_{11},\,  E_{22},\, E_{33},\, E_{44},\\
+&\quad E_{12},\, E_{13},\dots ,E_{17},
+       E_{23},\dots ,E_{26},
+       E_{34},\, E_{35},\\
+&\quad {^{t}E_{12}},\, {^{t}E_{13}},\dots ,{^{t}E_{17}},
+       {^{t}E_{23}},\dots ,{^{t}E_{26}},
+       {^{t}E_{34}},{^{t}E_{35}} \big\}
+\endsplit\tag A.3
+$$
+forms a basis
+for the 28-dimensional vector space $so(8)$. 
+\vskip .3in
+\subheading{A.2. The Cayley algebra and $G_2$}
+\vskip .1in
+The {\bf split Cayley algebra} is the $2\times 2$ matrix algebra
+$$
+C:=\Big\{\tsize{\pmatrix \alpha&a\\b&\beta \endpmatrix}\ | \ 
+\alpha ,\beta \in \qqq,\ a,b \in V \Big\},\tag A.4
+$$
+where $V \cong \qqq^3$ is the cross product algebra
+$$
+\split
+V:= \{ xi+yj+zk\ | \ x,y,z \in \qqq,
+&\ i\times i = j\times j = k\times k = 0,\\
+&\quad\quad
+\ i\times j = k,\ j\times k = i,\ k\times j = i,\ j\times i = -k,
+\ \text{etc.}\}.
+\endsplit
+$$
+Define 
+$$
+G_2(F) :=\text{Aut}_F(C\otimes F),\tag A.5
+$$
+where F is any field containing $\qqq$. Since Der(C) $\cong$ Lie(Aut C),
+it follows that the Lie algebra ${\frak g}_2$ may be 
+identified with Der(C). For $G_2$, there are 2 real forms:  one
+being the non-compact $\qqq$--split from above, the other being a
+compact form associated to a division algebra (see\cite{Jac, pp. 142-147}
+or \cite{T}). We have
+$$
+\text{dim}_{_{\qqq}}C = 8,\ \text{dim}_{_{\qqq}}{\frak g}_2 = 14,
+$$
+and there is a trace bilinear form which induces an embedding
+$$
+G_2 = \text{Aut}(C) \hookrightarrow SO(8).
+$$
+Here SO(8) is regarded as the special orthogonal group associated to
+the trace form $trace(\beta)$ on C, where
+$$
+\beta(x,y)={1\over 2}(x\cdot y^*+y^*\cdot x),
+\ \ \ \ \beta(x,x)=N(x),
+$$
+and where $N$ denotes the norm on $C$. Regarding $G_2$ as a subgroup of
+$SO(8)$, we have the following 
+\proclaim{Triality theorem A.6(\cite{Jac})} Given any orthogonal map
+$$
+A_0 : C \rightarrow C,
+$$
+there are orthogonal maps $A_1,\ A_2$ such that, for all $x,\,y \in C$,
+$$
+A_0(xy) = A_1(x)A_2(y).
+$$
+Moreover, the only other orthogonal maps satisfying this property are
+$-A_1,\ -A_2$, so 
+$$
+A_0 \longmapsto (A_1,A_2)
+$$
+is well--defined, up to signs.
+\endproclaim
+\demo{proof} We will verify that our form of triality is the global 
+equivalent of Jacobson's form \cite{Jac, p. 8}. Let
+$$
+\split
+&A_0 = 1+\delta B_0,\\
+&A_1 = 1+\delta B_1,\\
+&A_2 = 1+\delta B_2,
+\endsplit
+$$
+in $SO(8,\qqq )$ (regarded as a group of orthogonal maps with respect to the
+trace form on C), where $\delta^2 = 0$ and $B_i \in so(8,\qqq )$. Thus 
+$A_0,\ A_1,\ A_2$ may be regarded as lying in the tangent space to SO(8)
+at the identity (cf. \cite{Bor, chapter 0}). Then
+$A_0(xy) = A_1(x)A_2(y)$ is equivalent to 
+$$
+B_0(xy) = B_1(x)y+ xB_2(y).
+$$
+This is Jacobson's expression.
+\enddemo
+\vskip .1in\noindent
+\proclaim{Corollary A.7} The map
+$$
+\split
+SO(8,F) &\rightarrow PSO(8,F),\\
+\quad A_0 &\longmapsto \quad \pm A_1,
+\endsplit
+$$
+defines a projective representation of SO(8), i.e., belongs to
+PSO(8). In particular, it induces an outer automorphism of degree 3
+(the ``triality'' automorphism)
+corresponding to a rotation of the Dynkin diagram of $PSO(8,F)$.
+\endproclaim
+\demo{Remarks}(A.8) If $A_0 \in G_2 = \text{Aut}(C)$ then triality sends 
+$A_0 \longmapsto A_0$. Conversely, if triality sends $A_0 \longmapsto A_0$
+then $A_0 \in G_2$, so $G_2$ is the subgroup fixed by triality. In
+general, triality sends (up to signs)
+$$
+A_0 \longmapsto A_1,\ A_1 \longmapsto A_2,\ A_2 \longmapsto A_0.
+$$
+This way we can explicitly construct an outer automorphism of $SO(8)$. 
+\par 
+(A.9) Triality can be described explicitly on the standard Borel
+subgroup B of PSO(8): triality cyclically permutes the ``root groups''
+$U_{\alpha}$, defined below, in the same way as it permutes the simple roots 
+via its action on the Dynkin diagram; it also permutes the embeddings
+$PSL(2) \hookrightarrow PSO(8)$ associated to the simple roots. The
+images of the maximal split torus $T \subset PSL(2)$ embedded in $PSO(8)$
+generate the maximal split torus in $PSO(8)$ and, of course, the simple
+root groups generate the unipotent radical of B. Putting these all together
+explicitly gives the action of triality on B.
+\enddemo
+\vskip .3in
+\subheading{A.3. Root systems for $G_2$ and $SO(8)$}
+\vskip .1in
+Since the symmetric group $S_3$ acts on the Dynkin diagram of $SO(8)$ 
+by triality,
+it acts on its 24 roots. Of these, 6 roots remain fixed under 
+this action, and 18 are permuted cyclically in groups of three. In
+particular, the roots corresponding to
+$$
+\{E_{17}\},\ \ \{E_{16}\},\ \ \{E_{23}\},
+$$
+are fixed and the triples of roots corresponding to
+$$
+\{E_{14},\ E_{15},\ E_{26}\},\ \{E_{13},\ E_{24},\ E_{25}\},
+\ \{E_{12},\ E_{34},\ E_{35}\},
+$$
+are each permuted by the action of $S_3$. More explicitly, let us 
+represent a basis of $so(8)$ by
+$$
+\eps_1 - \eps_2,\  \eps_2 - \eps_3,\ \eps_3 - \eps_4,\ \eps_3 + \eps_4,
+$$
+where 
+$$
+\eps_i : \tsize{\pmatrix A&0\\0&B\endpmatrix}
+\longmapsto a_i, \tag A.10
+$$
+in the notation of (A.1), $1 \leq i \leq 4$.
+Here $E_{12}$ corresponds to $\eps_1 - \eps_2,\ E_{13}$ to
+$\eps_1 - \eps_2 + \eps_2 - \eps_3 = \eps_1 - \eps_3$, etc. Since
+$\eps_2 - \eps_3$ is connected to the others (since its Killing form inner
+product with them is non--zero), it corresponds to the center of the
+Dynkin diagram
+$$
+\matrix
+\hfil&\hfil&\hfil&\quad\bullet\text{$\eps_1-\eps_2$} \\
+\hfil&\hfil&\hfil\\ 
+\hfil&\hfil&\hfil\\ 
+\eps_3-\eps_4\ \bullet\quad\quad&\hfil&\bullet
+\ \text{$\eps_2-\eps_3$}&\hfil \\
+\hfil&\hfil&\hfil\\ 
+\hfil&\hfil&\hfil\\ 
+\hfil&\hfil&\hfil&\quad\bullet\text{$\eps_3+\eps_4$}
+\endmatrix
+$$
+Therefore, under the action of $S_3$, the triality automorphism of
+so(8) induces a linear map $\phi$ on the roots such that
+$$
+\phi (\eps_1 - \eps_2) = \eps_3 - \eps_4,
+\ \phi (\eps_3 - \eps_4) = \eps_3 + \eps_4,
+\ \phi (\eps_3 + \eps_4) = \eps_1 - \eps_2,
+\ \phi (\eps_2 - \eps_3) = \eps_2 - \eps_3.\tag A.11
+$$
+Thus
+$$
+\split
+&\phi (\eps_1) = {1\over{2}}(\eps_1 + \eps_2 + \eps_3 - \eps_4),\\
+&\phi (\eps_2) = {1\over{2}}(\eps_1 + \eps_2 - \eps_3 + \eps_4),\\
+&\phi (\eps_3) = {1\over{2}}(\eps_1 - \eps_2 + \eps_3 + \eps_4),\\
+&\phi (\eps_4) = {1\over{2}}(\eps_1 - \eps_2 - \eps_3 - \eps_4).
+\endsplit
+$$
+Call the induced automorphism on the Lie algebra so(8), $\phi^*$. As
+we've already observed, the Lie subalgebra
+$$
+\{X \in so(8)\ |\ \phi^*(X) = X\}
+$$
+is the Lie algebra ${\frak g}_2$. Identifying its Lie
+group with a subgroup of $SO(8)$, we find that its maximal
+$\qqq-$split torus is of the form
+$$
+\split
+T':= \Big\{\pmatrix A&0\\0&B \endpmatrix,\ |\ 
+&A:={\left(\smallmatrix a_1&\hfil&\hfil&\\
+\hfil&a_2&\hfil&\\
+\hfil&\hfil&a_3&\\
+\hfil&\hfil&\hfil&1 \endsmallmatrix\right)},\ 
+B:= {\left(\smallmatrix 1&\hfil&\hfil&\\
+\hfil&a_3^{-1}&\hfil&\\
+\hfil&\hfil&a_2^{-1}&\\
+\hfil&\hfil&\hfil&a_1^{-1} \endsmallmatrix\right)}\\
+&\quad\quad\quad\quad\text{and } a_1 = a_2a_3\Big\}.
+\endsplit\tag A.12
+$$ 
+We will identify $T'$ with the maximal split torus of 
+$SL(3)$ by means of the map
+$$
+\pmatrix A&0\\0&B \endpmatrix \in T' \longmapsto
+\text{diag}(a_2,a_3,a_1^{-1}),
+$$                    
+with the maximal split torus of 
+$PGL(3)$ by means of the map
+$$
+\pmatrix A&0\\0&B \endpmatrix \in T' \longmapsto
+\text{diag}(a_1a_2,a_1a_3,1),\tag A.13
+$$                    
+with the maximal split torus of 
+$PGL(2)\times SL(2)$ by means of the map
+$$
+\pmatrix A&0\\0&B \endpmatrix \in T' \longmapsto
+\text{diag}(a_3,1)\times diag(a_1a_2,1/a_1a_2),
+\tag A.13'
+$$                    
+and with the maximal split torus of 
+$(SL(2)\times SL(2))/\{\pm 1\}$ by means of the map
+$$
+\pmatrix A&0\\0&B \endpmatrix \in T' \longmapsto
+\text{diag}(a_1,1/a_1)\times diag(a_2,1/a_2).
+\tag A.13''
+$$                    
+\vskip .3in
+\subheading{\bf A.4. The Chevalley basis}
+\vskip .1in
+The embedding of ${\frak g}_2$ into so(8) gives a convenient framework 
+for doing calculations with explicit matrices. We now write down
+the Chevalley basis of $G_2$. The notation for the root system is given
+by the following diagram:
+$$
+\tsize{\matrix \hfil &\hfil&\hfil&\hfil &\overset\text{3$\alpha + 2\beta$}\to\bullet&\hfil&\hfil\\
+\hfil&\hfil&\hfil&\hfil&\hfil\\
+\hfil&\hfil&\hfil&\hfil&\hfil\\
+\hfil&\hfil&\hfil&\hfil&\hfil\\
+\overset\text{\ \ \ \ $\beta$\ \ \ \ 
+}\to\bullet&\hfil&\hfil&\overset\text{$\alpha +\beta\ \ 
+\quad$}\to\bullet&\hfil
+    &\overset\text{$\ \ \quad2\alpha + 
+\beta$}\to\bullet&\hfil&\hfil&\overset\text{$3\alpha 
++\beta$}\to\bullet\\
+\hfil&\hfil&\hfil&\hfil&\hfil\\
+\hfil&\hfil&\hfil&\hfil&\hfil\\
+\hfil&\hfil&\hfil&\hfil&\hfil\\
+\hfil&\hfil&\hfil&\hfil&\hfil\\
+\hfil&\hfil&\hfil&\hfil&\hfil\\
+\hfil&\hfil&\hfil&\hfil&\hfil\\
+  \hfil&\bullet&\hfil&\hfil&\cdot&\hfil&\hfil&\overset\text{$\alpha$}\to\bullet\\
+\hfil&\hfil&\hfil&\hfil&\hfil\\
+\hfil&\hfil&\hfil&\hfil&\hfil\\
+\hfil&\hfil&\hfil&\hfil&\hfil\\
+\hfil&\hfil&\hfil&\hfil&\hfil\\
+\hfil&\hfil&\hfil&\hfil&\hfil\\
+\hfil&\hfil&\hfil&\hfil&\hfil\\
+    \bullet&\hfil&\hfil&\bullet\ \ \quad&\hfil&\ \ \quad\bullet&\hfil&\hfil&\bullet\\
+\hfil&\hfil&\hfil&\hfil&\hfil\\
+\hfil&\hfil&\hfil&\hfil&\hfil\\
+\hfil&\hfil&\hfil&\hfil&\hfil\\
+    \hfil&\hfil&\hfil&\hfil&\bullet&\hfil&\hfil&\hfil&\hfil
+    \endmatrix}
+$$
+\centerline{the root system for $G_2$}
+\vskip .2in
+$$
+X_{\alpha} :=
+\pmatrix 0&1&\ &\ &\ &\ &\ &\ \\
+         \ &0&\ &\ &\ &\ &\ &\ \\
+         \ &\ &0&1&1&\ &\ &\ \\
+         \ &\ &\ &0&0&-1&\ &\ \\
+         \ &\ &\ &\ &0&-1&\ &\ \\
+         \ &\ &\ &\ &\ &0&\ &\ \\
+         \ &\ &\ &\ &\ &\ &0&-1\\
+         \ &\ &\ &\ &\ &\ &\ &0
+         \endpmatrix,\ \ 
+h_{\alpha} := \pmatrix 1&\ &\ &\ &\ &\ &\ &\ \\
+                         \ &-1&\ &\ &\ &\ &\ &\ \\
+                         \ &\ &2&\ &\ &\ &\ &\ \\
+                         \ &\ &\ &0&\ &\ &\ &\ \\
+                         \ &\ &\ &\ &0&\ &\ &\ \\
+                         \ &\ &\ &\ &\ &-2&\ &\ \\
+                         \ &\ &\ &\ &\ &\ &1&\ \\
+                         \ &\ &\ &\ &\ &\ &\ &-1
+                         \endpmatrix.
+$$
+(Note that $X_{\alpha} = E_{12} + E_{34} + E_{35}$ and 
+$\alpha\pmatrix A&\ \\ \ &B\endpmatrix =a_3$, where $A,B$ are as
+in (A.12).)
+$$
+X_{\beta} :=
+\pmatrix 0&\ &\ &\ &\ &\ &\ &\ \\
+         \ &0&1&\ &\ &\ &\ &\ \\
+         \ &\ &0&\ &\ &\ &\ &\ \\
+         \ &\ &\ &0&\ &\ &\ &\ \\
+         \ &\ &\ &\ &0&\ &\ &\ \\
+         \ &\ &\ &\ &\ &0&-1&\ \\
+         \ &\ &\ &\ &\ &\ &0&\\
+         \ &\ &\ &\ &\ &\ &\ &0
+         \endpmatrix,\ \ 
+h_{\beta} := \pmatrix 0&\ &\ &\ &\ &\ &\ &\ \\
+                         \ &1&\ &\ &\ &\ &\ &\ \\
+                         \ &\ &-1&\ &\ &\ &\ &\ \\
+                         \ &\ &\ &0&\ &\ &\ &\ \\
+                         \ &\ &\ &\ &0&\ &\ &\ \\
+                         \ &\ &\ &\ &\ &1&\ &\ \\
+                         \ &\ &\ &\ &\ &\ &-1&\ \\
+                         \ &\ &\ &\ &\ &\ &\ &0
+                         \endpmatrix.
+$$
+(Note that $X_{\beta} = E_{23}$ and 
+$\beta\pmatrix A&\ \\ \ &B\endpmatrix =a_2a_3^{-1}$, where $A,B$ are as
+in (A.12).) For $\sigma = \alpha+\beta$:
+$$
+X_{\sigma} :=
+\pmatrix 0&\ &-1&\ &\ &\ &\ &\ \\
+         \ &0&\ &1&1&\ &\ &\ \\
+         \ &\ &0&\ &\ &\ &\ &\ \\
+         \ &\ &\ &0&\ &\ &-1&\ \\
+         \ &\ &\ &\ &0&\ &-1&\ \\
+         \ &\ &\ &\ &\ &0&\ &1\\
+         \ &\ &\ &\ &\ &\ &0&\ \\
+         \ &\ &\ &\ &\ &\ &\ &0
+         \endpmatrix,\ \ 
+h_{\sigma} := \pmatrix 1&\ &\ &\ &\ &\ &\ &\ \\
+                         \ &2&\ &\ &\ &\ &\ &\ \\
+                         \ &\ &-1&\ &\ &\ &\ &\ \\
+                         \ &\ &\ &0&\ &\ &\ &\ \\
+                         \ &\ &\ &\ &0&\ &\ &\ \\
+                         \ &\ &\ &\ &\ &1&\ &\ \\
+                         \ &\ &\ &\ &\ &\ &-2&\ \\
+                         \ &\ &\ &\ &\ &\ &\ &-1
+                         \endpmatrix.
+$$
+(Note that $X_{\alpha+\beta} = E_{13}+E_{24}+E_{25}.$) For
+$\sigma = 2\alpha+\beta$:
+$$
+X_{\sigma} :=
+\pmatrix 0&\ &\ &1&1&\ &\ &\ \\
+         \ &0&\ &\ &\ &1&\ &\ \\
+         \ &\ &0&\ &\ &\ &-1&\ \\
+         \ &\ &\ &0&\ &\ &\ &-1\\
+         \ &\ &\ &\ &0&\ &\ &-1\\
+         \ &\ &\ &\ &\ &0&\ &\ \\
+         \ &\ &\ &\ &\ &\ &0&\ \\
+         \ &\ &\ &\ &\ &\ &\ &0
+         \endpmatrix,\ \ 
+h_{\sigma} := \pmatrix 2&\ &\ &\ &\ &\ &\ &\ \\
+                         \ &1&\ &\ &\ &\ &\ &\ \\
+                         \ &\ &1&\ &\ &\ &\ &\ \\
+                         \ &\ &\ &0&\ &\ &\ &\ \\
+                         \ &\ &\ &\ &0&\ &\ &\ \\
+                         \ &\ &\ &\ &\ &-1&\ &\ \\
+                         \ &\ &\ &\ &\ &\ &-1&\ \\
+                         \ &\ &\ &\ &\ &\ &\ &-2
+                         \endpmatrix.
+$$
+(Note that $X_{2\alpha + \beta} = E_{14}+E_{15}+E_{26}$.) For
+$\sigma = 3\alpha+\beta$:
+$$
+X_{\sigma} :=
+\pmatrix 0&\ &\ &\ &\ &1&\ &\ \\
+         \ &0&\ &\ &\ &0&\ &\ \\
+         \ &\ &0&\ &\ &0&0&-1\\
+         \ &\ &\ &0&\ &\ &\ &\ \\
+         \ &\ &\ &\ &0&\ &\ &\ \\
+         \ &\ &\ &\ &\ &0&\ &\ \\
+         \ &\ &\ &\ &\ &\ &0&\ \\
+         \ &\ &\ &\ &\ &\ &\ &0
+         \endpmatrix,\ \ 
+h_{\sigma} := \pmatrix 1&\ &\ &\ &\ &\ &\ &\ \\
+                         \ &0&\ &\ &\ &\ &\ &\ \\
+                         \ &\ &1&\ &\ &\ &\ &\ \\
+                         \ &\ &\ &0&\ &\ &\ &\ \\
+                         \ &\ &\ &\ &0&\ &\ &\ \\
+                         \ &\ &\ &\ &\ &-1&\ &\ \\
+                         \ &\ &\ &\ &\ &\ &0&\ \\
+                         \ &\ &\ &\ &\ &\ &\ &-1
+                         \endpmatrix.
+$$
+(Note that $X_{3\alpha + \beta} = E_{16}$.) For $\sigma =
+3\alpha+2\beta$:
+$$
+X_{\sigma} :=
+\pmatrix 0&\ &\ &\ &\ &\ &1&\ \\
+         \ &0&\ &\ &\ &\ &0&-1\\
+         \ &\ &0&\ &\ &\ &\ &\ \\
+         \ &\ &\ &0&\ &\ &\ &\ \\
+         \ &\ &\ &\ &0&\ &\ &\ \\
+         \ &\ &\ &\ &\ &0&\ &\ \\
+         \ &\ &\ &\ &\ &\ &0&\ \\
+         \ &\ &\ &\ &\ &\ &\ &0
+         \endpmatrix,\ \ 
+h_{\sigma} := \pmatrix 1&\ &\ &\ &\ &\ &\ &\ \\
+                         \ &1&\ &\ &\ &\ &\ &\ \\
+                         \ &\ &0&\ &\ &\ &\ &\ \\
+                         \ &\ &\ &0&\ &\ &\ &\ \\
+                         \ &\ &\ &\ &0&\ &\ &\ \\
+                         \ &\ &\ &\ &\ &0&\ &\ \\
+                         \ &\ &\ &\ &\ &\ &-1&\ \\
+                         \ &\ &\ &\ &\ &\ &\ &-1
+                         \endpmatrix.
+$$                                   
+(Note that $X_{3\alpha+2\beta} = E_{17}$.)
+\par
+There is a canonical embedding $G_2 \hookrightarrow SO(8)$, given by
+the natural faithful representation associated to the Cayley algebra.
+In fact, each one--parameter unipotent subgroup $U_{\sigma}$ associated to a
+short root $\sigma$ of $G_2$ is contained in a three dimensional unipotent 
+subgroup of SO(8) generated by three (uniquely determined) roots of 
+$D_4$ which are permuted by $S_3$. 
+The possibilities for this embedding of unipotents can be tabulated
+as follows:
+$$
+\split
+&U_{\alpha} \subset G_2 \longleftrightarrow 
+U := \exp[E_{12}F+E_{34}F+E_{35}F],\\
+&U_{2\alpha +\beta} \subset G_2 \longleftrightarrow 
+U := \exp[E_{14}F+ E_{15}F+E_{26}F],\\
+&U_{\alpha+\beta} \subset G_2 \longleftrightarrow 
+U := \exp[E_{13}F+E_{24}F+E_{25}F].
+\endsplit\tag A.14
+$$
+For the long roots of $G_2$, we have
+$$
+\split
+&U_{\beta} \subset G_2 \longleftrightarrow 
+U := \exp[E_{23}F],\\
+&U_{3\alpha +2\beta} \subset G_2 \longleftrightarrow 
+U := \exp[E_{17}F],\\
+&U_{3\alpha+\beta} \subset G_2 \longleftrightarrow 
+U := \exp[E_{16}F].
+\endsplit\tag A.15
+$$
+In other words, under the action of $S_3$ on the roots of 
+$D_4$, the six stable roots correspond to the long roots of $G_2$ 
+and the other 18, permuted in orbits of 3, correspond to the short 
+roots of $ G_2$.
+\vskip .1in
+\subheading{A.5. Endoscopic groups of $G_2$}
+\vskip .1in
+The calculation of the cuspidal endoscopic groups of $G_2$ is as
+follows. Motivated by facts
+about root systems of centralizers of semi-simple elements
+\cite{Spal, Ch III, \S 12}, let $\Delta:=\{\alpha,\beta\}$,
+$\Delta_1:=\{\alpha,3\alpha+2\beta\}$,
+$\Delta_2:=\{\beta,3\alpha+\beta\}$,
+$\Delta^{\vee}:=\{\alpha^{\vee},\beta^{\vee}\}$,
+$\Delta_1^{\vee}:=\{\alpha^{\vee},(3\alpha+2\beta)^{\vee}\}$,
+and $\Delta_2^{\vee}:=\{\beta^{\vee},(3\alpha+\beta)^{\vee}\}$,
+where $\sigma^{\vee}=2\sigma/(\sigma,\sigma)$.
+Representing the root $\alpha$ by the vector
+$(1,0)$ and $\beta$ by $(-{3\over 2},{\sqrt{3}\over 2})$,
+we find that the root lattice $Q$ is given by
+$$
+Q={\Bbb Z}[\Delta]={\Bbb Z}[(1,0),(-{3\over 2},{\sqrt{3}\over 2})].
+$$
+We have $\alpha^{\vee}=(2,0)$ and $\beta^{\vee}=(-1,{1\over \sqrt{3}})$.
+Since $G_2$ is adjoint, its character lattice $X$ is equal to its
+root lattice: $X=Q$. $G_2$ is also simply connected, so the weight lattice
+$$
+\split
+P
+&=\{x\in {\Bbb R}^2\ |\ (x,\Sigma^{\vee})\subset {\Bbb Z}\}\\
+&=\{(a,b)\ |\ (a,b)\cdot (2,0)\in {\Bbb Z},\  
+(a,b)\cdot (-1,{1\over \sqrt{3}})\in {\Bbb Z}\}\\
+&={\Bbb Z}[(1/2,0),(0,{\sqrt{3}\over 2})]
+\endsplit
+$$ 
+is also equal to the character lattice. Similarly,
+$Q^{\vee}={\Bbb Z}[(2,0),(-1,{1\over \sqrt{3}})]=P^{\vee}$.
+We have $Q_1={\Bbb Z}[(1,0),(0,\sqrt{3})]$,
+$P_1={\Bbb Z}[(1/2,0),(0,\sqrt{3}/2)]$,
+$Q_1^{\vee}={\Bbb Z}[(2,0),(0,2/\sqrt{3})]$,
+and $P_1^{\vee}={\Bbb Z}[(1,0),(0,1/\sqrt{3})]$.
+Fix a maximal split torus $^LT^o$ of $^LG_2^o$ shared by $^LH^o$
+and identify $X$ with the lattice of characters of $^LT^o$. Take
+$^LH^o$ to be of type $A_1\times A_1$, with root system generated by
+$\beta^{\vee}$ (which is now short) and $(3\alpha+2\beta)^{\vee}$
+(which is not equal to $3\beta^{\vee}+2\alpha^{\vee}$). 
+The character lattice is equal to $X_1^{\vee}=X^{\vee}=Q^{\vee}$ 
+but its root lattice $Q_1^{\vee}$ is strictly contained in $Q^{\vee}$ and
+$Q^{\vee}=X_1^{\vee}$ strictly contains $P^{\vee}$. Therefore, $^LH^0$
+is neither
+simply connected nor adjoint if $^LH^o$ is of type $A_1\times A_1$.
+This forces either $H=PGL(2)\times SL(2)$ or
+$H=(SL(2)\times SL(2))/\{\pm 1\}$. Following a suggestion of T. Hales, we now 
+show that the former possibility may be discarded. The center
+$Z_{^LH^o}$ is of order two: let $z\in Z_{^LH^o}$ and note that
+$\alpha^{\vee}(z)=\zeta^{\vee}(z)=1$ (the dual roots acting on the maximal 
+split torus of the dual group); these imply that 
+$\beta^{\vee}(z)=\pm 1$, which means that
+$$
+Z_{^LH^o}({\Bbb C})=\{diag(\epsilon,\epsilon,1,1,1,1,\epsilon,\epsilon)\ |\ 
+\text{ where }\epsilon =\pm 1\}.
+$$
+The image of this in $PGL(2)\times SL(2)$, under the embedding in
+(A.13) is trivial, so $H=(SL(2)\times SL(2))/\{\pm 1\}$.
+Similarly, using $\Delta_2$ in place of $\Delta_1$, 
+one finds that $^LH^o\ \subset\ ^LG_2^o$ 
+is simply connected if $^LH^o$ is of type $A_2$. (This fact
+can also be found in \cite{SpSt, ch II, 5.3-5.5}.)
+Therefore $H=PGL(3)$ and $H=(SL(2)\times SL(2))/\{\pm 1\}$, as desired.
+\vskip .1in
+\subheading{A.6. Tori of $G_2$}
+\vskip .1in
+The stable conjugacy classes of Cartans in a quasi-split group $G$
+are in 1-1 correspondence with the cohomology classes in 
+$H^1(\Gamma, W)$, where $W$ denotes the absolute Weyl group of
+a fixed Cartan $T$ of $G$ defined over $F$ \cite{Ro, \S 4, Lemma 3}.
+One may also determine the Cartans from the $\Gamma$-module
+structure on their lattice of characters \cite{Sat}.
+\par
+Let $T$ be a Cartan of $G_2$ defined over $F$ which splits over a Galois
+extension $K$. The Galois
+group $\Gamma_K:=Gal(K/F)$ acts on the character lattice 
+$X=X(T)$, as does the Weyl group $W$. Recall 
+that $T$ is determined (up to $F$-isomorphism)
+from the $\Gamma_K$-module $X$. The $\Gamma_K$-invariant submodules
+$$
+X^{\Gamma_K}:=\{\chi\in X\ |\ \chi^\sigma =\chi,\ \forall\sigma\in\Gamma_K\},
+$$
+and
+$$
+X_{\Gamma_K}:=\{\chi\in X\ |\ \sum_{\sigma\in\Gamma_K}\chi^\sigma =0\},
+$$
+satisfy the property that $X/X^{\Gamma_K}$ and $X/X_{\Gamma_K}$ are
+torsion free. Let $T_0$ denote the annihilator of
+$X^{\Gamma_K}$ in $T$ and let $A$ denote the annihilator of 
+$X_{\Gamma_K}$ in $T$.
+Then $T_0\cap A$ is finite, $T=T_0A$, $A$ is the largest $F$-split
+subtorus of $T$, and $T_0$ is the largest $F$-anisotropic subtorus of $T$. 
+Let $\Sigma_{\Gamma_K}\subset \Sigma$ denote the closed
+subsystem defined by $\Sigma_{\Gamma_K}:=X_{\Gamma_K}\cap \Sigma$, let
+$\pi:X\rightarrow X/X_{\Gamma_K} \cong X(A)$, and let $\overline{\Sigma}:=
+\pi( \Sigma-\Sigma_{\Gamma_K})$ denote the set of restricted roots 
+relative to $A$. By Tate-Nakayama \cite{L', p. 702},
+the character $\kappa$ of ${\frak D}(T/F)\subset H^1(\Gamma_K,T)$
+may be regarded as a character of the ``cocycle sublattice'' 
+$X_{\Gamma_K}^{\vee}$, trivial on the ``coboundary sublattice'',
+$$
+\partial X^{\vee}:=\{\chi^{\vee}\in X^{\vee}\ |\ 
+\chi^{\vee}=\sum_{\sigma\in\Gamma_K}\mu_\sigma^\sigma-\mu_\sigma,
+\text{ for some }\mu_\sigma\in X^{\vee}\}.
+$$
+\par
+Can the action of $\Gamma$ on $T$ be realized as
+an inner automorphism (defined over $\overline{F}$)? By a theorem of
+Chevalley, any automorphism
+$\sigma\in\Gamma$ may be factored into an inner automorphism and 
+an outer automorphism of $G_2$ contained in
+$Aut(X,\Delta)$, where $\Delta$ denotes the set of simple positive
+roots of $G_2$ with respect to $T/\overline{F}$. Since $G_2$ has no outer
+automorphisms, it follows that the answer to our question is yes.
+\par
+By the previous paragraph, the action of $\Gamma$ on $T$ must factor
+through the absolute Weyl group $W$. The only Cartan which had
+a $\kappa$-stable germ which did not vanish identically when restricted
+to $T$ was the following case:
+\newline
+Suppose that the non-trivial action of $\Gamma$ on $T$ is realized
+by (a) simple reflections $<s_\alpha,s_\zeta>$, (b) the cyclic group
+of order $6$, $<s_\beta s_\alpha>$, or (c) the cyclic group
+of order $3$, $<(s_\beta s_\alpha)^2>$. 
+In the first case, $T$ splits over a
+biquadratic extension $E/F$ and $Gal(E/F)$ acts on the character lattice 
+by $<s_\alpha,s_\zeta>$. Moreover, $T=T_G$ is isomorphic over $F$
+to $T_H=(T_1\times T_2)/\{\pm 1\}
+\hookrightarrow (SL(2,F)\times SL(2,F))/\{\pm 1\}$.
+In this case, 
+$$
+H^1(\Gamma,T)=(H^1(\Gamma,T_1)\times H^1(\Gamma,T_2))/\{\pm 1\}
+\cong {\Bbb Z}/2{\Bbb Z},
+$$
+so the character $\kappa$ must be quadratic. 
+\par
+In the second case, note $s_\beta s_\alpha$ acts by a counterclockwise
+rotation on the lattice $X_\Gamma^{\vee}$:
+$$
+s_\beta s_\alpha (m\alpha^{\vee}+n\beta^{\vee})=
+(2m-n)\alpha^{\vee}+(m-n)\beta^{\vee}.
+$$
+Since
+$$
+\sum_{i=0}^5(s_\beta s_\alpha)^i (m\alpha^{\vee}+n\beta^{\vee})=0,
+$$
+we have $X_\Gamma^{\vee}=X^{\vee}$ (this also remains true if we replace
+$s_\beta s_\alpha$ by $(s_\beta s_\alpha)^2$). Since
+$$
+s_\beta s_\alpha (-2\alpha^{\vee}-\beta^{\vee})-(-2\alpha^{\vee}-\beta^{\vee})
+=\alpha^{\vee},
+$$
+$$
+s_\beta s_\alpha (-3\alpha^{\vee}-2\beta^{\vee})-
+(-3\alpha^{\vee}-2\beta^{\vee})=
+\beta^{\vee},
+$$
+we have $\partial X^{\vee}=X^{\vee}$. Therefore, $H^1(\Gamma,T)$ is trivial by
+Tate-Nakayama duality. 
+\par
+In the cubic case,
+$$
+s_\beta s_\alpha (m\alpha^{\vee}+n\beta^{\vee})=
+(-3n)\alpha^{\vee}+(m-3n)\beta^{\vee}.
+$$
+Therefore, in this case,
+$$
+H^1(\Gamma,T)\cong {\Bbb Z}/3{\Bbb Z},
+$$
+and $\kappa$ must be a character of order $3$.
+\par
+All other non-split Cartans of $G_2$ do not contribute to the support
+of the $2$-regular and $3$-regular $\kappa$-stable germs of $G_2$.
+\vskip .1in
+\subheading{A.7. The stability of the $2$-regular and $3$-regular
+unipotent orbits for $G_2$}
+\vskip .1in
+I thank M. Assem for explaining to me the technique of this section.
+\par
+Using the appendices above, we find that
+$$
+{\frak m}:=cent_{{\frak g}_2}(h_{\alpha +\beta})
+={\frak t}+F\cdot X_{3\alpha +\beta}+F\cdot X_{-3\alpha -\beta},
+$$
+where ${\frak t}$ denotes the Cartan of ${\frak g}_2$. Let
+$M:=Cent_{G_2}(h_{\alpha +\beta})$ and let
+$$
+{\frak g}_2(i):=\{X\in{\frak g}_2\ |\ [h_{\alpha +\beta},X]=iX\}.
+$$
+We compute
+$$
+{\frak g}_2(2)=F\cdot X_{\alpha +\beta}.
+$$
+The map $m\longmapsto Ad(m)X_{\alpha +\beta}$ defines a submersion
+$M\rightarrow {\frak g}_2(2)$ \cite{SpSt, ch III, \S 4.14}. By a lemma of
+Rao \cite{R}, the $G(F)$-orbit of $X_{\alpha +\beta}$ is
+$Ad(K(V(X_{\alpha +\beta})+{\frak n}(2)))$, where
+$$
+V(X_{\alpha +\beta})=\{ad(X)X_{\alpha +\beta}\ |\ X\in {\frak m}\},
+$$
+$K$ is a maximal compact subgroup of $G_2(F)$, and 
+$$
+{\frak n}(2):=\sum_{i >2}{\frak g}_2(i).
+$$
+The fact that $dim\ {\frak g}_2(2)=1$ gives us that orbit 
+of $M$ in ${\frak g}_2(2)$ is onto,
+so by Rao's result the $2$-regular unipotent orbit is stable.
+\par
+A similar calculation shows that the $3$-regular orbit is stable.
+(In fact, replacing $h_{\alpha +\beta}$ and $X_{\alpha +\beta}$
+by $h_{\beta}$ and $X_{\beta}$, we compute
+$$
+{\frak g}_2(2)=F\cdot X_{\beta},
+$$
+and the identical argument holds.)
+\par
+A Lie triple for the subregular orbit is
+$$
+X_+=X_\beta+X_{2\alpha +\beta},
+X_-=X_{-\beta}+X_{-2\alpha -\beta},
+H=h_{\beta}+h_{2\alpha +\beta},
+$$
+and 
+$$
+{\frak g}_2(2)=
+F\cdot X_{\alpha +\beta}+F\cdot X_{2\alpha +\beta}
++F\cdot X_{3\alpha +\beta}+F\cdot X_{\beta}.
+$$
+Direct matrix calculations show that the subregular orbit is
+not stable. M. Assem has shown that there are 7 $F$-classes in
+the stable class, $p\not= 2,3$.
+
+\enddocument
+\subheading{A.6. Weighted Dynkin diagrams for $G_2$}
+\vskip .1in
+Let $e_+,\ e_-, \ f$ be elements of ${\frak g}_2$ satisfying
+$[e_+,e_-]=f,[f,e_-]=-2e_-$, and $[f,e_+]=2e_+$. Of course,
+this triple gives rise to a 3-dimensional subalgebra ${\frak g}$
+of ${\frak g}_2$. Call two such subalgebras ${\frak g}$,
+${\frak g}'$ {\bf equivalent} if there is an automorphism
+$\phi\in Aut({\frak g}_2)$ for which ${\frak g}'=\phi({\frak g})$.
+Following \cite{D, \S 8}, we may attach to
+such a subalgebra ${\frak g}$ a weighted diagram depending only on the 
+equivalence class of ${\frak g}$. They are constructed as follows:
+let
+$$
+f:= \pmatrix 5/3&\ &\ &\ &\ &\ &\ &\ \\
+                         \ &4/3&\ &\ &\ &\ &\ &\ \\
+                         \ &\ &1/3&\ &\ &\ &\ &\ \\
+                         \ &\ &\ &0&\ &\ &\ &\ \\
+                         \ &\ &\ &\ &0&\ &\ &\ \\
+                         \ &\ &\ &\ &\ &-1/3&\ &\ \\
+                         \ &\ &\ &\ &\ &\ &-4/3&\ \\
+                         \ &\ &\ &\ &\ &\ &\ &-5/3
+                         \endpmatrix.
+$$                                   
+Then $f={5\over 3}h_\alpha +3h_\beta$. In general, if
+$e_+=c_\alpha X_\alpha +c_\beta X_\beta$ then 
+$e_-=c_\alpha X_{-\alpha} +c_\beta X_{-\beta}$ and
+$f=2c_\alpha^2 h_\alpha +2c_\beta^2 h_\beta$. From this one can compute 
+$e_+$ and $e_-$. The weighted diagram has two nodes connected by
+a triple bond, the $\alpha$ node having weight $(f,h_\alpha)=2$ and the 
+$\beta$ node having weight $(f,h_\beta)=2$. 
+It corresponds to the regular unipotent class.
+\par
+Let
+$$
+f:= \pmatrix 2/3&\ &\ &\ &\ &\ &\ &\ \\
+                         \ &1/3&\ &\ &\ &\ &\ &\ \\
+                         \ &\ &1/3&\ &\ &\ &\ &\ \\
+                         \ &\ &\ &0&\ &\ &\ &\ \\
+                         \ &\ &\ &\ &0&\ &\ &\ \\
+                         \ &\ &\ &\ &\ &-1/3&\ &\ \\
+                         \ &\ &\ &\ &\ &\ &-1/3&\ \\
+                         \ &\ &\ &\ &\ &\ &\ &-2/3
+                         \endpmatrix.
+$$                                   
+Then $f={2\over 3}h_\alpha +h_\beta$. From this one can compute 
+$e_+$ and $e_-$. The weighted diagram has two nodes connected by
+a triple bond, the $\alpha$ node having weight $2$ and the 
+$\beta$ node having weight $0$. It corresponds to the subregular unipotent
+class.
+\par
+Let
+$$
+f:= \pmatrix 1/2&\ &\ &\ &\ &\ &\ &\ \\
+                         \ &1/2&\ &\ &\ &\ &\ &\ \\
+                         \ &\ &0&\ &\ &\ &\ &\ \\
+                         \ &\ &\ &0&\ &\ &\ &\ \\
+                         \ &\ &\ &\ &0&\ &\ &\ \\
+                         \ &\ &\ &\ &\ &0&\ &\ \\
+                         \ &\ &\ &\ &\ &\ &-1/2&\ \\
+                         \ &\ &\ &\ &\ &\ &\ &-1/2
+                         \endpmatrix.
+$$                                   
+Then $f={1\over 2}h_\alpha +h_\beta$. From this one can compute 
+$e_+$ and $e_-$. The weighted diagram has two nodes connected by
+a triple bond, the $\alpha$ node having weight $0$ and the 
+$\beta$ node having weight $1$. It corresponds to the 2-regular unipotent
+class.
+\par
+Let
+$$
+f:= \pmatrix 1/3&\ &\ &\ &\ &\ &\ &\ \\
+                         \ &1/6&\ &\ &\ &\ &\ &\ \\
+                         \ &\ &1/6&\ &\ &\ &\ &\ \\
+                         \ &\ &\ &0&\ &\ &\ &\ \\
+                         \ &\ &\ &\ &0&\ &\ &\ \\
+                         \ &\ &\ &\ &\ &-1/6&\ &\ \\
+                         \ &\ &\ &\ &\ &\ &-1/6&\ \\
+                         \ &\ &\ &\ &\ &\ &\ &-1/3
+                         \endpmatrix.
+$$                                   
+Then $f={1\over 3}h_\alpha +{1\over 2}h_\beta$. From this one can compute 
+$e_+$ and $e_-$. The weighted diagram has two nodes connected by
+a triple bond, the $\alpha$ node having weight $1$ and the 
+$\beta$ node having weight $0$. It corresponds to the 3-regular unipotent
+class.
+\vskip .1in
+
+
+
+\enddocument

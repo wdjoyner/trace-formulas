@@ -1,0 +1,409 @@
+\input amstex
+\documentstyle{amsppt}
+\magnification 1200
+\pageno 30
+\define\ogf{{G(F)}}
+\define\ozf{Z_G(F)}
+\define\oglf{{GL(2,E)}}
+\define\oa{{A_G(F)}}
+\define\oslf{{H(E)}}
+\define\slf{{H(F)}}
+\define\eps{\epsilon}
+\define\ooo{{\Cal O}}
+\define\off{{\Cal O}_F}
+\define\offp{{\Cal O}_{F'}}
+\define\qqq{\Bbb Q}
+\define\ppp{\Bbb P}
+\define\ccc{\Bbb C}
+\define\rrr{\Bbb R}
+\define\aaa{\Bbb A}
+\define\nnn{\Bbb N}
+\define\unt{\underline{T}}
+\define\unx{\underline{x}}
+\define\oga{{G(\aaa )}}
+\define\oba{{B_G(\aaa )}}
+\define\oza{{Z_G(\aaa )}}
+\define\ogla{{GL(2,\aaa_L )}}
+\define\osla{{H(\aaa_L )}}
+\define\sla{H(\aaa )}
+\define\oee{{\Cal O}_{E}}
+\define\oeep{{\Cal O}_{E'}}
+\define\VV{\Cal V}
+\define\HH{\Cal H}
+\hsize 6.5 true in
+\vsize 8.7 true in
+\vskip .2in
+\subheading{\S 4 Regularity of patches for $G=G_2$}
+\vskip .1in
+It is not difficult to write all these patches of \S 3
+down and show that they are
+regular for $G_2$. Recall $\Sigma_G^+=\{\alpha,\beta,
+\gamma:=\alpha+\beta,\delta:=2\alpha +\beta,
+\epsilon:=3\alpha +\beta,\zeta:=3\alpha +2\beta\}$, with
+$\alpha$ short and $\beta$ long, so $p=6$ and dim $Z=7$. We have variables
+$$
+\split
+&x(\alpha),x(\beta),
+x(\gamma),x(\delta),x(\epsilon),x(\zeta)\\
+&z(\alpha),z(\beta),
+w(\gamma),w(\delta),w(\epsilon),w(\zeta)\\
+&\lambda,
+\endsplit
+\tag 4.1
+$$
+subject to the usual relations (3.1).
+\par
+With $B_+$ choosen as in \S 3, we define $\omega_{Y''(B_+)}$ to be the
+$G$-invariant form
+$$
+\omega_{Y''(B_+)}=d\lambda \wedge
+\wedge
+dx(\alpha)\wedge dx(\beta)
+\wedge dx(\gamma)\wedge dx(\delta)\wedge dx(\epsilon)\wedge dx(\zeta)
+\wedge dv,
+$$
+where $dv$ is a form on $N_+$. We use this to compute the Igusa constants
+$\beta$ in this section as in \cite{H2}.
+\par
+As we know (from lemma 3.5), the Richardson patches $Z_{S_1}$ are regular.
+Now let us consider the remaining patches. Since $S_1\cup S_2\not= \Delta$
+if $S_2\not= \emptyset$, it is easy to list
+them all: $S_1=\emptyset$, $S_2=\{\alpha\}$, where
+$\sigma(\alpha)=\alpha,\gamma,\delta,\epsilon,\zeta$, or
+$S_1=\emptyset$, $S_2=\{\beta\}$, where
+$\sigma(\beta)=\beta,\gamma,\delta,\epsilon,\zeta$.
+This may be deduced from the discussion above. We next list the generators of
+the local coordinate ring in each case:
+\newline
+$S_2=\{\alpha\}, \sigma(\alpha)=\alpha$: Same as $Z_{\{\alpha\}}$. The divisor
+$\lambda =0$ occurs with multiplicity one.
+\newline
+$S_2=\{\alpha\}, \sigma(\alpha)=\gamma$: Generators: $z(\alpha), z(\beta),
+x(\gamma), w(\gamma), x(\delta), x(\epsilon),
+x(\zeta)$. Regular at $\lambda =0$. The divisor $\lambda =0$
+occurs with multiplicity one (represented by $z(\alpha)=0$).
+\newline
+$S_2=\{\alpha\}, \sigma(\alpha)=\delta$: Generators: $z(\alpha), z(\beta),
+w(\gamma), x(\delta),w(\delta), x(\epsilon),
+x(\zeta)$. Regular at $\lambda =0$. The divisor $\lambda =0$
+occurs (as $z(\alpha)=0$) with multiplicity two.
+\newline
+$S_2=\{\alpha\}, \sigma(\alpha)=\epsilon$: Generators: $z(\alpha), z(\beta),
+w(\gamma), w(\delta),w(\epsilon),x(\epsilon),x(\zeta)$.
+Regular at $\lambda =0$. The divisor $\lambda =0$
+occurs (as $z(\alpha)=0$) with multiplicity three.
+\newline
+$S_2=\{\alpha\}, \sigma(\alpha)=\zeta$: Generators: $z(\alpha), z(\beta),
+w(\gamma), w(\delta),w(\epsilon), w(\zeta),
+x(\zeta)$. Regular at $\lambda =0$. The divisor $\lambda =0$
+occurs (as $z(\alpha)=0$) with multiplicity three.
+\newline
+$S_2=\{\beta\}, \sigma(\beta)=\beta$: Same as $Z_{\{\beta\}}$.
+The divisor $\lambda =0$
+occurs with multiplicity one.
+\newline
+$S_2=\{\beta\}, \sigma(\beta)=\gamma$: Generators: $z(\alpha), z(\beta),
+x(\gamma), w(\gamma), x(\delta), x(\epsilon),
+x(\zeta)$. Regular at $\lambda =0$. The divisor $\lambda =0$
+occurs with multiplicity one (represented by $z(\beta)=0$).
+\newline
+$S_2=\{\beta\}, \sigma(\beta)=\delta$: Generators: $z(\alpha), z(\beta),
+w(\gamma), x(\delta),w(\delta), x(\epsilon),
+x(\zeta)$. Regular at $\lambda =0$. The divisor $\lambda =0$
+occurs (as $z(\beta)=0$) with multiplicity one.
+\newline
+$S_2=\{\beta\}, \sigma(\beta)=\epsilon$: Generators: $z(\alpha), z(\beta),
+w(\gamma), w(\delta),w(\epsilon),x(\epsilon),x(\zeta)$.
+Regular at $\lambda =0$. The divisor $\lambda =0$
+occurs (as $z(\beta)=0$) with multiplicity one.
+\newline
+$S_2=\{\beta\}, \sigma(\beta)=\zeta$: Generators: $z(\alpha), z(\beta),
+w(\gamma), w(\delta),w(\epsilon), w(\zeta),
+x(\zeta)$. Regular at $\lambda =0$. The divisor $\lambda =0$
+occurs (as $z(\beta)=0$) with multiplicity two.
+\par
+There is some redundancy here since $E_{\emptyset,\{\beta\},\sigma}=
+E_{\{\beta\}}$ if $\sigma(\beta)=\beta,\gamma,\delta,\epsilon$.
+\par
+We denote the (irreducible) branch of $\{\lambda =0\}\subset Z$
+occuring in $Z_{S_1,S_2,\sigma}$ by $E_{S_1,S_2,\sigma}$. The same notation
+will be used for the corresponding branch in $Y_U$ and for its Zariski closure
+in $Y_1$. To determine which of the $\kappa$-stable germs, if any,
+the divisor $E_{S_1,S_2,\sigma}$
+contributes to by formula 0.6,
+we must compute the Igusa constant
+$$
+\beta(\tilde{E}_{S_1,S_2,\sigma})=
+{b(\tilde{E}_{S_1,S_2,\sigma})\over a(\tilde{E}_{S_1,S_2,\sigma})}
+\tag 4.2
+$$
+where $\tilde{E}$ denotes the preimage of $E$ in the
+desingularized variety $Y_C$. 
+
+We record two observations regarding the Igusa constants $\beta(E)$.
+\newline
+(I)
+First, if $\phi:V\rightarrow W$ is an isomorphism of smooth varieties
+which sends a divisor $E\subset V$ to a divisor $F=\phi(E)\subset W$
+then $\beta(E)=\beta(F)$.
+\newline
+(II)
+Secondly, let $V'$ denote a blow up of a variety
+$V$ with exceptional divisor $E_{V'}$.
+Recall that for each irreducible branch $E$ on $V$,
+the pull-back ${\xi'}^*$ of the blow down map $\xi':V'\rightarrow V$
+satisfies ${\xi'}^*(E)=\tilde{E}+\delta E_{V'}$, where $\tilde{E}$
+is the strict transform
+of $E$, and
+$$
+\delta:=
+\cases 1, &\text{ if $E$ contains the center of the blow up},\\
+0, &\text{ otherwise}.
+\endcases
+$$
+A repeated use of this global identity can be used to obtain
+local information about the
+Igusa constants on $Z$.
+
+For example, if $E$ denotes a branch of $\{\lambda =0\}\subset Z$ and
+$\tilde{E}$ its strict transform in a desingularization $\tilde{Z}$,
+we have
+$$
+\beta(\tilde{E})=\beta(E),
+$$
+provided $E$ does not contain any of the images of the centers of
+the blow ups used to create $\tilde{Z}$. The only other divisors
+in $\{\lambda =0\}\subset \tilde{Z}$ other than the strict
+transforms $\tilde{E}$ above are the exceptional divisors.
+To compute all the $\beta$-values of the
+branches of $\phi^{-1}(1)$ in $Y_C$ we need only compute the $\beta$-values
+of the divisors $E_{S_1,S_2,\sigma}$ on $Z$ and the branches of
+the exceptional divisors of the blow-up.
+
+We digress to
+compute $\beta({E}_{S_1,S_2,\sigma})$ on $Z_{S_1,S_2,\sigma}$. We
+need not compute the $\beta$-values for the exceptional divisors
+because of lemma 0.8 and the fact that all the needed $F$-rational
+${\Cal O}$-divisors can be accounted for among the $E_{S_1,S_2,\sigma}$.
+
+If $S_2=\emptyset$ then $\beta({E}_{S_1,S_2,\sigma})$
+has been computed in \cite{H1, ch II, Proposition 9.1}
+so some of our calculations are covered by Hales' general
+calculations. For completeness, we list everything anyway.
+\vskip .1in
+{\bf Igusa forms on the fundamental patches of $Y''$}
+\vskip .2in
+We pull-back the patch $Z_{S_1,S_2,\sigma}$ 
+to $Y''(B_+,B_-)$ via the open immersion
+$Y''(B_+,B_-)\rightarrow Z$. Call this inverse image $Y''_{S_1,S_2,\sigma}$.
+The Igusa form $\omega_U$ on $U=Y''_{S_1,S_2,\sigma}$ is related to the
+Igusa form $\omega_{Z,U}$ on $Z_{S_1,S_2,\sigma}$ by 
+$\omega_U=\omega_{Z,U}\wedge dv$,
+where $dv$ is regular. We compute $\omega_{Z,U}$below.
+
+$Z_{\{\alpha,\beta\}}$: Here the multiplicity $a(E_{\{\alpha,\beta\}})=1$
+and $b(E_{\{\alpha,\beta\}})=1$ since
+$$
+\omega_{Z,U}
+=d\lambda\wedge dx(\alpha)\wedge dx(\beta)\wedge dx(\gamma)
+\wedge dx(\delta)\wedge dx(\epsilon)\wedge dx(\zeta) .
+$$
+Therefore, $\beta(E_{\{\alpha,\beta\}})=1$.
+\vskip .1in
+$Z_{\alpha}$: Here the multiplicity $a(E_{\alpha})=1$
+and $b(E_{\alpha})=2$ since
+$$
+\split
+\omega_{Z,U}
+&=d\lambda\wedge dx(\alpha)\wedge dx(\beta)\wedge dx(\gamma)
+\wedge dx(\delta)\wedge dx(\epsilon)\wedge dx(\zeta)\\
+&=-{\lambda\over z(\beta)^2}
+d\lambda\wedge dx(\alpha)\wedge dz(\beta)\wedge dx(\gamma)
+\wedge dx(\delta)\wedge dx(\epsilon)\wedge dx(\zeta).
+\endsplit
+$$
+Therefore, $\beta(E_{\alpha})=2$.
+\vskip .1in
+$Z_{\beta}$: Here the multiplicity $a(E_{\beta})=1$
+and $b(E_{\beta})=2$ since
+$$
+\split
+\omega_{Z,U}
+&=d\lambda\wedge dx(\alpha)\wedge dx(\beta)\wedge dx(\gamma)
+\wedge dx(\delta)\wedge dx(\epsilon)\wedge dx(\zeta)\\
+&=-{\lambda\over z(\alpha)^2}
+d\lambda\wedge dz(\alpha)\wedge dx(\beta)\wedge dx(\gamma)
+\wedge dx(\delta)\wedge dx(\epsilon)\wedge dx(\zeta).
+\endsplit
+$$
+Therefore, $\beta(E_{\beta})=2$.
+\vskip .1in
+$Z_{\emptyset,\alpha,\sigma}, \ \sigma(\alpha)=\gamma$:
+Here the multiplicity $a(E_{\emptyset,\alpha,\sigma})=1$, by the
+above list. Also, $b(E_{\emptyset,\alpha,\sigma})=2$ since
+$$
+\split
+\omega_{Z,U}
+&=d\lambda\wedge dx(\alpha)\wedge dx(\beta)\wedge dx(\gamma)
+\wedge dx(\delta)\wedge dx(\epsilon)\wedge dx(\zeta)\\
+&=c{x(\gamma)^3z(\beta)z(\alpha)\over w(\gamma)^4}
+dz(\alpha)\wedge dz(\beta)\wedge dw(\gamma)\wedge dx(\gamma)
+\wedge dx(\delta)\wedge dx(\epsilon)\wedge dx(\zeta).
+\endsplit
+$$
+Therefore, $\beta(E_{\emptyset,\alpha,\sigma})=2$.
+\vskip .1in
+$Z_{\emptyset,\alpha,\sigma}, \ \sigma(\alpha)=\delta$:
+Here the multiplicity $a(E_{\emptyset,\alpha,\sigma})=2$, by the
+above list. Also, $b(E_{\emptyset,\alpha,\sigma})=6$ since
+$$
+\split
+\omega_{Z,U}
+&=d\lambda\wedge dx(\alpha)\wedge dx(\beta)\wedge dx(\gamma)
+\wedge dx(\delta)\wedge dx(\epsilon)\wedge dx(\zeta)\\
+&=c{x(\delta)^4z(\beta)z(\alpha)^5\over w(\delta)^5}
+dz(\alpha)\wedge dz(\beta)\wedge dw(\gamma)\wedge dw(\delta)
+\wedge dx(\delta)\wedge dx(\epsilon)\wedge dx(\zeta).
+\endsplit
+$$
+Therefore, $\beta(E_{\emptyset,\alpha,\sigma})=3$.
+\vskip .1in
+$Z_{\emptyset,\alpha,\sigma}, \ \sigma(\alpha)=\epsilon$:
+Here the multiplicity $a(E_{\emptyset,\alpha,\sigma})=3$, by the
+above list. Also, $b(E_{\emptyset,\alpha,\sigma})=10$ since
+$$
+\split
+\omega_{Z,U}
+&=d\lambda\wedge dx(\alpha)\wedge dx(\beta)\wedge dx(\gamma)
+\wedge dx(\delta)\wedge dx(\epsilon)\wedge dx(\zeta)\\
+&=c{x(\epsilon)^5z(\beta)z(\alpha)^9\over w(\delta)^6}
+dz(\alpha)\wedge dz(\beta)\wedge dw(\gamma)\wedge dw(\delta)
+\wedge dw(\epsilon)\wedge dx(\epsilon)\wedge dx(\zeta).
+\endsplit
+$$
+Therefore, $\beta(E_{\emptyset,\alpha,\sigma})=10/3$.
+\vskip .1in
+$Z_{\emptyset,\alpha,\sigma}, \ \sigma(\alpha)=\zeta$:
+Here the multiplicity $a(E_{\emptyset,\alpha,\sigma})=3$, by the
+above list. Also, $b(E_{\emptyset,\alpha,\sigma})=11$ since
+$$
+\split
+\omega_{Z,U}
+&=d\lambda\wedge dx(\alpha)\wedge dx(\beta)\wedge dx(\gamma)
+\wedge dx(\delta)\wedge dx(\epsilon)\wedge dx(\zeta)\\
+&=c{x(\zeta)^6z(\beta)^7z(\alpha)^{10}\over w(\delta)^7}
+dz(\alpha)\wedge dz(\beta)\wedge dw(\gamma)\wedge dw(\delta)
+\wedge dw(\epsilon)\wedge dw(\zeta)\wedge dx(\zeta).
+\endsplit
+$$
+Therefore, $\beta(E_{\emptyset,\alpha,\sigma})=11/3$.
+\vskip .1in
+$Z_{\emptyset,\beta,\sigma}, \ \sigma(\beta)=\zeta$:
+Here the multiplicity $a(E_{\emptyset,\beta,\sigma})=2$, by the
+above list. Also, $b(E_{\emptyset,\beta,\sigma})=8$ since
+$$
+\split
+\omega_{Z,U}
+&=d\lambda\wedge dx(\alpha)\wedge dx(\beta)\wedge dx(\gamma)
+\wedge dx(\delta)\wedge dx(\epsilon)\wedge dx(\zeta)\\
+&=c{x(\zeta)^6z(\beta)^7z(\alpha)^{10}\over w(\delta)^7}
+dz(\alpha)\wedge dz(\beta)\wedge dw(\gamma)\wedge dw(\delta)
+\wedge dw(\epsilon)\wedge dw(\zeta)\wedge dx(\zeta).
+\endsplit
+$$
+Therefore, $\beta(E_{\emptyset,\beta,\sigma})=4$.
+\vskip .1in
+We summarize this in the following table:
+$$
+\matrix
+S_1&S_2&\sigma&\beta(E_{S_1,S_2,\sigma})-1\\
+ & & &\\
+\alpha,\beta&\emptyset&------&0\\
+\alpha&\emptyset&------&1\\
+\beta&\emptyset&------&1\\
+\emptyset&\emptyset&------&\text{trivial}\\
+\emptyset&\alpha&\alpha&1\\
+\emptyset&\alpha&\gamma&1\\
+\emptyset&\alpha&\delta&2\\
+\emptyset&\alpha&\epsilon&7/3\\
+\emptyset&\alpha&\zeta&8/3\\
+\emptyset&\beta&\beta&1\\
+\emptyset&\beta&\gamma&1\\
+\emptyset&\beta&\delta&1\\
+\emptyset&\beta&\epsilon&1\\
+\emptyset&\beta&\zeta&3.
+\endmatrix
+\tag 4.3
+$$
+As was remarked above, there is some redundancy here... . 
+
+Let $H_1=PGL(3)$
+and $H_2=(SL(2)\times SL(2))/(\pm 1)$.
+\proclaim{Lemma 4.4} In the notation of Lemmas 3.5 and 3.6, we have
+$$
+\beta(E_S)={b(E_S)\over a(E_S)}=1+|\Sigma_S^+|=1+{ dim(Cent_G(u))-2\over 2},
+$$
+where $u$ is an element of the Richardson orbit $\ooo_S$ associated to the 
+parabolic $P_S$ and the divisor $E_S$ is the
+Richardson divisor contained in the patch $Z_S$.
+The Igusa constants for 
+$$
+E_{\ooo}=
+\cases
+E_{\emptyset,\alpha,\delta}, & \ooo \text{ is $2$-regular},\\
+E_{\emptyset,\beta,\zeta}, &  \ooo \text{ is $3$-regular},
+\endcases
+$$
+are given by
+$$
+\beta(E_{\ooo})=
+{b(E_{\ooo})\over a(E_{\ooo})}
+=1+|\Sigma_{H_i}^+|=1+{ dim(Cent_G(u))-2\over 2},
+$$
+where $i=1,2$ is determined by the orbit as indicated below and
+$u$ is an element of the induced orbit 
+$$
+\ooo=
+\cases
+Ind_{H_2}^G(1), &\ooo \text{ is $2$-regular},\\
+Ind_{H_1}^G(1), &\ooo \text{ is $2$-regular},
+\endcases
+$$
+associated to the endoscopic $H_i$ and the divisor $E_{\ooo}$.
+\endproclaim
+\demo{proof} The first part of the lemma is a special case of 
+\cite{H1,ch II, Proposition 9.1} (it also follows
+from our case-by-case calculations).
+The second part is verified 
+by the calculations above. (For various 
+facts about unipotent orbits, including the definition of
+induction used here, see \cite{Spal}.) \qed
+\enddemo
+\enddocument
+
+\vskip .1in
+{\bf Igusa forms on $Y_1$}
+\vskip .2in
+Each of the Igusa forms $\omega_U$ on $Y''(B_+,B_-)$ can be pulled-back to 
+$Y_1(B_+,B_-)$ via the coordinate relations (1.22). 
+This allows us to compute the dependence of $\omega_U$ on $X$. 
+The result of this computation is essentially
+independent of the patch as we will see.
+
+On the preimage $U=Y_{1,S_1,S_2,\sigma}$ of $Z_{S_1,S_2,\sigma}$ under 
+the open immersion $Y_{1,S_1,S_2,\sigma}\rightarrow Z$, we have
+$\omega_{U}=\omega_{Z,U}\wedge dv$, where $dv$ is regular and
+$$
+\omega_{Z,U}=h(t_0,\lambda)d\lambda\wedge dn_\alpha\wedge dn_\beta\wedge
+...\wedge dn_\zeta ,
+$$
+where $t_0$ is as in (1.17), $t_0=exp(\lambda X)$, and
+$$
+\split
+h(t_0,\lambda)
+&=(1-\alpha(t_0)^{-1})...(1-\zeta(t_0)^{-1})+
+\text{ higher order terms in }\lambda \\
+&=\lambda^6 \alpha(X)...\zeta(X)+ \text{ higher order terms in }\lambda.
+\endsplit
+$$
+\enddocument

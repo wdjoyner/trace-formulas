@@ -1,0 +1,634 @@
+\input amstex
+\documentstyle{amsppt}
+\magnification 1200
+\pageno 10
+\define\eps{\epsilon}
+\define\okk{{\Cal O}_K}
+\define\off{\overline{F}}
+\define\ovf{\overline{F}}
+\define\unb{\underline{B}}
+\define\unt{\underline{T}}
+\define\unx{\underline{x}}
+\define\qqq{\Bbb Q}
+\define\ccc{\Bbb C}
+\define\zzz{\Bbb Z}
+\define\rrr{\Bbb R}
+\define\aaa{\Bbb A}
+\define\nnn{\Bbb N}
+\define\gga{\Bbb G}
+\define\oee{{\Cal O}_E}
+\define\VV{\Cal V}
+\define\HH{\Cal H}
+\hsize 6.5 true in
+\vsize 8.7 true in
+\vskip .3in
+\subheading{\S 1 Some Background}
+\vskip .1in
+Let $G$ denote a connected semi-simple
+quasi-split algebraic group defined over 
+$F$ and let $T_G$ denote a maximal torus of $G$ defined
+over $F$. 
+In fact, we will assume that $T_G$ is an elliptic Cartan
+but we will not make use of this immediately.
+We shall work over a separable closure $\overline{F}$
+most of this section.
+A {\bf root} is a character
+$\rho\in X^*(T)$ of a torus $T$ such that there exists an isomorphism
+$\theta_\rho :\gga_a\rightarrow U_\rho$, $U_\rho\subset G$
+a closed subgroup, for which $t^{-1}\theta_\rho(\xi)t=
+\theta_\rho(\rho(t)\xi)$, for $t\in T$ and $\xi\in\gga_a$.
+Here $\gga_a$ denotes the 1-dimensional additive affine group.
+Let $B_G$ denote a Borel containing $T_G$,
+$\Sigma_G$ a set of roots of $T_G$, $\Sigma_G^+$ the set of
+positive roots with respect to $B_G$,
+and $\Delta$ the set of simple roots in $\Sigma_G^+$.
+When $G=G_2$, we usually write
+$\Delta=\{\alpha,\beta\}$ and
+$$
+\Sigma_G^+=\{\alpha,\beta,\gamma=\alpha+\beta,
+\delta=2\alpha+\beta,\epsilon=3\alpha+\beta,
+\zeta=3\alpha+2\beta\}.
+$$
+\par
+Fix a Borel $\underline{B}$ of $G$ defined over ${F}$, a Cartan 
+$\underline{T}$ defined over $F$ contained in $\underline{B}$,
+and a positive Weyl chamber $W_0$ of $T_G$ with respect to 
+$\Sigma_G^+$.
+
+Let $\Omega$ denote the absolute Weyl group of $T_G$.
+We may occasionally identify the roots of $G$ with respect to $T_G$
+with those of $G$ with respect to $\underline{T}$ by means of
+a fixed isomorphism $T_G\rightarrow \underline{T}$, and, thus, identify
+the absolute Weyl group of $\underline{T}$ with that of $T_G$.
+Representing $\omega\in \Omega$ by
+$w\in N_{G(\overline{F})}({T}_G(\overline{F}))$,
+define
+$$
+{B}_G(W):=w^{-1}{B}_Gw={B}_G^w,
+$$
+for $W=\omega^{-1}W_0$. 
+The Borels
+$\{{B}_G(W))\ |\ W\in {\Cal W}\}$ are precisely the Borel
+subgroups of $G$ which contain ${T}_G$, where ${\Cal W}$ denotes
+the set of Weyl chambers of $T_G$.
+\par
+Recall that a {\bf regular star} is a $|\Omega|$-tuple of Borels
+$(B(W))_{W\in {\Cal W}}$ such that, for all $W\in {\Cal W}$,
+$B(W)={B}_G(W)^h=h^{-1}{B}_G(W)h$, for some
+$h\in G(\overline{F})$ (independent of $W$).
+The variety of regular stars is denoted by $S_0$.
+There is a natural bijection between $T_G(\ovf)\setminus G(\ovf)$
+and $S_0(\ovf)$ given by $g\longmapsto (B(W)^g)_{W\in {\Cal W}}$.
+\par
+Let
+$$
+X_0:=\{(g,(B(W))_{W\in {\Cal W}})\in G\times S_0\ |\  
+g\in\cap_{W\in {\Cal W}}B(W)\text{ is regular}\}, 
+\tag 1.1
+$$
+so that we have an $\overline{F}$-isomorphism
+$$
+T_G'\times T_G\setminus G
+\rightarrow X_0
+\tag 1.2
+$$
+$$
+(t,gT_G)\longmapsto (g^{-1}tg,{B}_G(W)^g).
+$$
+\par
+\proclaim{Definition} Let
+$\phi:X_0\rightarrow T_G$ be the map which sends 
+$(g,s)\in {\Cal C}(T_G)\times S_0$ to the point in $T_G$ which meets the
+conjugacy class of $g$, where ${\Cal C}(T_G)$ denotes the 
+union of the conjugates of $T_G$. 
+Let $\pi :X_0\rightarrow G$ denote the projection map onto
+the ``$G$-coordinate''.
+\endproclaim
+The map $\pi$ restricts to an isomorphism onto the
+conjugacy class of $\gamma$,
+$$
+\pi:\phi^{-1}(\gamma)\rightarrow \{g\gamma g^{-1}\ |\ g\in G/T_G\}.
+$$
+\vskip .3in
+\subheading{Construction of $Y_1$}
+\vskip .1in
+Let $C\subset T_G$ be a one-parameter subgroup of $G$
+containing $\{1\}$ but no other singular point.
+Let $C':=C-\{1\}$
+and let $Y_0:=\phi^{-1}(C')\subset X_0$. The isomorphism
+(1.2) restricts to an $\overline{F}$-isomorphism
+$$
+C'\times T_G\setminus G\rightarrow Y_0.
+\tag 1.4
+$$
+It can be shown that $Y_0$ is a regular algebraic subvariety of $G\times S$
+\cite{L, p. 480} but is not complete. 
+Let $Y$ denote the closure of $Y_0$ in $G\times S$. $Y$ is
+singular in general.
+\par
+Let ${\Cal B}\cong B_G\setminus G$ denote the Borel variety.
+It will be helpful
+later to record here local coordinates for ${\Cal B}$.
+First we recall the following 
+well-known result \cite{Bor, ch IV, Corollary 14.13}:
+\proclaim{Lemma 1.5} If $B,B',B''\in {\Cal B}$ and $B', B''$ are opposite
+to $B$ then they are conjugate by an element of $B$.
+\endproclaim
+ As a consequence of the Levi decomposition, 
+it follows that, for $B, B',B''$ as in the lemma,
+$B'$ and $B''$ are conjugate by an element of $N$, the unipotent radical of 
+$B$. Let ${\Cal B}(B)\subset {\Cal B}$
+denote the open subvariety of all Borels
+opposite to $B$.
+\proclaim{Corollary 1.6} For each $B\in {\Cal B}$, ${\Cal B}(B)$
+is isomorphic
+as an affine variety to $N$ and the coordinates on $N$ (i.e., the matrix
+coefficients) serve as coordinates on ${\Cal B}(B)$.
+\endproclaim
+A point
+$(B(W))_{W\in{\Cal W}}\in {\Cal B}^{|\Omega|}$ is called a {\bf star}
+if for every $\omega\in\Omega$ and every simple root $\alpha$
+of $T_G$ in $B_G$ there is an $h\in G(\overline{F})$
+such that
+$$
+B(\omega^{-1}W_0)=h^{-1}B_Gh
+$$
+and
+$$
+B((s_\alpha\omega)^{-1}W_0)\subset h^{-1}P_{G,\alpha} h
+$$
+where ${P}_{G,\alpha}$ is the smallest parabolic subgroup 
+of $G$ containing $B_G$ and $B_G^{s_\alpha}$.
+Here $s_\alpha$ denotes the reflection associated to
+the simple root $\alpha$ of $T_G$ in $B_G$. The variety of stars,
+denoted $S$, is closed in ${\Cal B}^{|\Omega |}$, projective,
+but not in general regular as a variety.
+It is relatively easy to see that a regular star is a star.
+In fact, the variety of stars is the Zariski closure of $S_0$
+in ${\Cal B}^{|\Omega|}$. (One way to see this is by means of
+a more explicit realization of $S_0$ as a subset of $S$ using
+coordinate patches (Lemma 1.2 below). That $S_0$ is 
+open in its Zariski closure is a
+well-known result in group theory, e.g.,
+\cite{Sp3, ch.4, Lemma 4.3.1}, \cite{Bor, II.6, Prop. 6.7}.)
+\par
+We now define some open patches on $S$ and regular
+coordinates on these patches.
+Fix a Borel $B_+$ of $G$ and another Borel $B_-$ which is 
+opposite to $B_+$; let $T_+:=B_+\cap B_-$. Let
+$$
+S(B_+):=\{(B(W))_{W\in{\Cal W}}\in S\ |\ \forall W\in{\Cal W},\ 
+B(W) \text{ is opposite to }B_+\}
+$$
+and let
+$$
+S(B_+,B_-):=\{(B(W))_{W\in{\Cal W}}\in S(B_+)\ 
+|\ B(W_0)=B_-\}.
+$$
+Let $N_+$ denote the unipotent radical of $B_+$. The map
+$$
+((B(W))_{W\in{\Cal W}},n)\longmapsto (B(W)^n)_{W\in{\Cal W}}
+$$
+defines an isomorphism
+$$
+S(B_+,B_-)\times N_+ \rightarrow S(B_+).
+\tag 1.7
+$$
+This is because for $B_-$ and $B_+$ as above, the map
+$n\longmapsto B_-^n$, $n\in N_+$, defines an isomorphism from
+$N_+$ to the open subvariety ${\Cal B}(B_+)\subset {\Cal B}$
+of all Borels opposite to $B_+$.
+\par
+Following \cite{L}, we now describe local coordinates for 
+$S(B_+,B_-)$.
+\par
+We identify the absolute Weyl group of $T_G$ with the absolute
+Weyl group of
+$T_+$.
+We identify the set of Weyl chambers of $T_G$ with those of $T_+$.
+If $(W,\rho)$ denotes a Weyl chamber and a 
+root defining a wall
+of it (which we refer to below as a {\bf wall-chamber pair}
+or often simply as a {\bf pair}), 
+we may find a $\omega\in\Omega$ for which
+$W=\omega^{-1}W_0$ and $\rho=\omega \alpha$, for some 
+simple root $\alpha$ of $T_+$ in $B_-$;
+we sometimes write $\alpha(W,\rho)$ for
+the $\alpha$ obtained in this way.
+\par
+Given a star $(B(W))_{W\in{\Cal W}}\in S(B_+,B_-)$,
+to each pair $(W,\rho)$ one defines
+the value at $(B(W))_{W\in{\Cal W}}$ of the coordinate
+function $z(W,\rho)$ as follows. Let $ker(\rho)
+\subset X^*(T_G)\otimes {\rrr}$
+denote the wall separating two adjacent Weyl chambers
+$W$, $W'$ and let $h\in N_+(\ovf)$ denote the unique element
+satisfying 
+$$
+B(W)=h^{-1}B_-h
+$$
+and
+$$
+B(W')\subset h^{-1}P_{-,\alpha} h
+$$
+where $P_{-,\alpha}$ is the smallest parabolic subgroup 
+of $G$ containing $B_-$ and $B_-^{s_\alpha}$, $\alpha 
+=\alpha (W,\rho)$.
+Recall that
+$$
+\gga_a\cong U_{-\alpha}\cong P_{-,\alpha}/B_-,
+$$
+via $z\longmapsto u=exp(X_{-\alpha})\longmapsto B_-^u$, which we may
+regard as an element of $P_{-,\alpha}/B_-\hookrightarrow G/B_-\cong {\Cal B}$.
+Let ${\Bbb A}$ denote the affine line.
+There is a coordinate function $z(W,\rho)$,
+$$
+z(W,\rho):S(B_+,B_-)\rightarrow \aaa,
+$$
+such that
+$$
+hB(W')h^{-1}=\theta_{-\alpha} (z(W,\rho))B_-\theta_{-\alpha} (-z(W,\rho)),
+\ \ \alpha=\alpha(W,\rho),
+\tag 1.8
+$$
+where $X_\alpha$, $X_{-\alpha}$ are root vectors satisfying
+$$
+[X_\alpha, X_{-\alpha}]=H_\alpha,\ \  
+\beta(H_{\alpha})=2{(\beta,\alpha)\over (\alpha,\alpha)},\ \ 
+\theta_{-\alpha}(z)=\exp(zX_{-\alpha})\in U_{-\alpha}.
+$$
+The local coordinate $z(W_0,\alpha)$ on $S(B_+,B_-)$ is
+a local coordinate on a line of type $\alpha$ in the sense
+of \cite{St}. This observation will be useful when dealing with the
+comparison of the subregular germ.
+
+We have
+
+(a) $z(W,\rho)=0$ if and only if $B(W)=B(W')$ and 
+
+(b) the collection of the $z(W,\rho)$, for all pairs $(W,\rho)$,
+uniquely determines the star $(B(W))_{W\in{\Cal W}}\in S(B_+,B_-)$,
+
+(c) the coordinate functions $z(W,\rho)$ are regular and generate
+the coordinate ring of $S(B_+,B_-)$.
+
+The coordinates $z(W,\rho)$ are not algebraically independent.
+The coordinate relations they satisfy can be most naturally
+described using the notion of a gallery in the spherical building 
+associated to the Weyl group $\Omega$ of $T_G$. We may identify the
+spherical building of $T_G$ with that of $T_+$.
+Recall that a {\bf gallery} is a sequence $W_0,W_1,\cdots, W_r$
+of Weyl chambers such that $W_i$, $W_{i+1}$ are distinct but share a wall
+$ker(\rho_{i+1})$. We always take $W_0$ to be the positive Weyl chamber of
+$T_+$ with respect to $B_+$ and define
+$\omega_i\in\Omega$ to be that element for which
+$W_i=\omega_i^{-1}W_0$. Let $\alpha_{i+1}:=\omega_i\rho_{i+1}$,
+so $\alpha_{i+1}=\alpha(W_i,\rho_{i+1})$. If $z_i:=z(W_{i-1},\rho_i)$
+for $1\leq i\leq r$,
+then
+$$
+B(W_{i-1})=h^{-1}B_-h,\ \ \ 
+B(W_i)=h^{-1}\theta_{-\alpha_i}(-z_i)
+B_-\theta_{-\alpha_i}(z_i)h,
+\tag 1.9
+$$
+for some $h\in N_+(\overline{F})$ possibly depending on $i$. We
+define $n,n_{W_j}$, for $1\leq j\leq r$, by
+$B(W_j)=B_-^{n_{W_j}n}$, where $n,n_{W_j}\in N_+(\overline{F})$
+and
+$$
+n_{W_j}=\exp (z_jX_{-\alpha_j})
+\exp (z_{j-1}X_{-\alpha_{j-1}})\cdots \exp (z_1X_{-\alpha_1}).
+\tag 1.10
+$$
+In particular, if $W_r=W_0$ (so that the gallery is closed),
+then
+$$
+\exp (z_rX_{-\alpha_r})
+\exp (z_{r-1}X_{-\alpha_{r-1}})\cdots \exp (z_1X_{-\alpha_1})=1.
+\tag 1.11
+$$
+In particular, if $W$, $W'$ are adjacent and share a wall
+$ker(\rho)$ then $z(W,\rho)=-z(W',\rho)$.
+\par
+We now state an observation of Langlands \cite{L, pp.483-484}
+\proclaim{Lemma 1.12} TFAE:
+\newline
+(a) A star $(B(W))_{W\in{\Cal W}}\in S(B_+,B_-)$ is regular.
+\newline
+(b) $B(W)\not= B(W')$ for all adjacent $W$, $W'$.
+\newline
+(c) $z(W,\rho)\not= 0$ for all pairs $(W,\rho)$.
+ \endproclaim
+
+\par
+We define coordinate patches on a resolution $S_1$ of $S$ (\cite{H1}).
+\par
+Recall that all the short (resp. long) roots lie in the same orbit
+under the Weyl group. With this fact and the above lemma in mind, define
+$$
+S'(B_+,B_-):=\{(B(W))_{W\in{\Cal W}}\in S(B_+,B_-)
+\ |\ \forall \alpha\in\Delta ,\exists \omega\in\Omega
+\text{ s.t. }z(\omega^{-1}W_0,\omega\alpha)\not= 0\}.
+$$
+Suppose $(B(W))_{W\in{\Cal W}}\in S(B_+,B_-)$ is not in
+$S'(B_+,B_-)$. Then $z(\omega^{-1}W_0,\omega\alpha)=0$
+for all $\alpha\in\Delta$ and $\omega\in\Omega$. By the lemma,
+this implies $B(W)=B(W')$ for all adjacent Weyl chambers. This is 
+the diagonal in ${\Cal B}^{|\Omega|}$ and the diagonal contains no
+regular stars.
+\par
+Let $\aaa^\Delta$ denote the $|\Delta|$-fold Cartesian product
+of affine spaces and let $T_+$ act on $\aaa^\Delta$ by
+$$
+t:(z(\alpha))_{\alpha\in\Delta}\longmapsto
+(\alpha(t)^{-1}z(\alpha))_{\alpha\in\Delta},
+$$
+and on $S'(B_+,B_-)$ by
+$$
+t:(z(W,\rho))_{(W,\rho)\text{ a pair}}\longmapsto 
+(\alpha(t)z(W,\rho))_{(W,\rho)\text{ a pair}},\ \ \ \alpha=\alpha(W,\rho).
+$$
+Let
+$$
+S_1(B_+,B_-):=S'(B_+,B_-)\times_{T_+}\aaa^\Delta:=
+(S'(B_+,B_-)\times\aaa^\Delta)/T_+.
+\tag 1.13
+$$
+Observe that there is a ``blow-down'' map
+$$
+S_1(B_+,B_-)\rightarrow S(B_+,B_-),
+\tag 1.14
+$$
+given by $(s',z)T_+\longmapsto s$, where 
+$s'=(z_1(W,\rho))_{(W,\rho)\text{ a pair}}$, 
+$z=(z(\alpha))_{\alpha\in\Delta}$ (note $z(\alpha)$ is only defined up to
+multiplication by $\alpha(t)^{-1}$), and
+$$
+s=(z(W,\rho))_{(W,\rho)\text{ a pair}}
+=(z(\alpha(W,\rho))z_1(W,\rho))_{(W,\rho)\text{ a pair}}.
+$$
+This is clearly well-defined (i.e., independent of the chosen
+representative
+$z=(z(\alpha))_{\alpha\in\Delta}$ of the $T_+$-orbit in $\aaa^\Delta$).
+The subscript 1 on $z_1(W,\rho)$ has been added to distinguish it
+from its image 
+$z(W,\rho):=z(\alpha(W,\rho))z_1(W,\rho)$ in $S(B_+,B_-)$.
+Later we shall fix a canonical choice of a generic representative
+$(z(\alpha))_{\alpha\in\Delta}$ of the $T_+$-orbit in $\aaa^\Delta$:
+$z(\alpha)$ is chosen to be that multiple of $\alpha(t)^{-1}$
+such that $z(\alpha)=\lambda /x(\alpha)$, where $x(\alpha)$ is as in
+(1.17) below (equivalently: $z(\alpha)$ is chosen to be that multiple
+which makes $w(\alpha)=1$ for $\alpha >0$ simple \cite{H1, ch II, \S 2}).
+\par
+Let $S'(B_+)\subset S(B_+)$ be the image of
+$S'(B_+,B_-)\times N_+$ in $S(B_+)$ under the map
+$$
+((B(W))_{W\in{\Cal W}},n)\longmapsto (B(W)^n)_{W\in{\Cal W}},
+$$
+and let $S_1(B_+)\subset S'(B_+)\times_{T_+}\aaa^\Delta$ 
+be the image of $S_1(B_+,B_-)\times N_+$ under
+$$
+((B(W))_{W\in{\Cal W}},(z(\alpha))_{\alpha\in\Delta},n)
+\longmapsto ((B(W)^n)_{W\in{\Cal W}},(z(\alpha))_{\alpha\in\Delta}).
+$$
+Therefore,
+$$
+S'(B_+)\cong S'(B_+,B_-)\times N_+,
+\tag 1.15a
+$$
+and 
+$$
+S_1(B_+)\cong S_1(B_+,B_-)\times N_+.
+\tag 1.15b
+$$
+The apparent dependence of $S_1(B_+)$ on $B_-$ is not serious:
+by \cite{L, Lemma 3.6}, if we replace $B_-$ by another
+Borel $B'_-$ opposite
+to $B_+$ then the corresponding variety is canonically isomorphic
+to $S_1(B_+)$.
+Let $B'_+$ be another Borel and let $B_-$ be a Borel opposite to both
+$B_+$ and $B'_+$. There is a birational morphism from
+$S_1(B_+)$ to $S_1(B'_+)$ as defined in \cite{L}. Using this birational map
+to paste $S_1(B_+)$ and $S_1(B'_+)$ together, we obtain
+a variety $S_1$.
+\par
+Observe that the ``obvious'' map $S_0(B_+)\rightarrow S_1(B_+)$
+extends to a morphism $S_0\rightarrow S_1$. This map yields a map
+$X_0\rightarrow G\times S_1$.
+\proclaim{Definition 1.16}
+Let $X$ be the Zariski closure of $X_0$ in $G\times S$.
+Let $X_1$ be the closure of $X_0$ in $G\times S_1$ and let $Y_1$
+be the closure of $Y_0$ in $X_1$. Let $X_1(B_+)$ denote the
+intersection of $X_1$ with $G\times S_1(B_+)$ and similarly for
+$Y_1(B_+)$. Similarly, we define $X''$, $Y''$, $X''(B_+)$,
+$Y''(B_+)$, replacing $G\times S_1(B_+)$
+by $G\times S''$ or $G\times S''(B_+)$ in the definition of
+$X_1$ and $Y_1$, where $S''$ is the image of $S_0$ in $Y_1$.
+\endproclaim
+In particular, the first coordinate of a point
+$p\in Y''(B_+,B_-)\subset G\times S''$ is an element
+$b$ of $\cap_W B_-^{n_W} \subset B_-$, which we may write as
+an ordered product
+$$
+b=t_0\prod_{\rho\in\Sigma_G^+}\exp (x(\rho)X_\rho),
+\tag 1.17
+$$
+where $\Sigma_G^+$ denotes the set of roots of $T_+$
+which are positive with respect to the Borel $B_-$, on which
+we fix an ordering once and for all.
+\vskip .3in
+\subheading{Coordinates on $Y''$}
+\vskip .1in
+Consider a point $x\in X_1\subset G\times S_1$.
+On the patch of $X_1$ meeting
+$G\times S_1(B_+,B_-)\times N_+\cong
+G\times S_1(B_+)$, we write $x$ as 
+$(b,(B(W))_{W\in{\Cal W}},(z(\alpha))_{\alpha\in\Delta},n)$,
+where $b\in\cap_{W\in{\Cal W}}B(W)\subset B_-$ and
+$B(W_0)=B_-$ (the condition that $b\in\cap_{W\in{\Cal W}}B(W)$
+is inherited from the definition of $X_0$).
+\par
+Other coordinates on $X''(B_+)$ may be defined in terms of a point
+$(t^g,(B(W)^g)_{W\in{\Cal W}})$ in 
+\newline
+$G\times S(B_+,B_-)$, where $t\in T_G(\ovf )$ is regular. We may write
+$$
+g=g_0t_+n_-n_+,
+$$
+where $T_G^{g_0}=T_+$, $t_+\in T_+(\ovf)$, $n_-\in N_-(\ovf)$,
+and $n_+\in N_+(\ovf)$. Let $t^{g_0}=t'_+$, for some
+$t'_+\in T_+(\ovf)$, and write $t^g=(t'_+n'_-)^{n_+}$,
+for some $n'_-\in N_-(\ovf)$. Therefore,
+$$
+(t^g,(B(W)^g)_{W\in{\Cal W}})=(t'_+n'_-,B_-^{n_W})^{n_+},
+$$
+where $n_W\in N_+(\ovf)$. We write
+$$
+n'_-=\prod_{\rho\in\Sigma_G^+}\exp (x(\rho)X_\rho),
+$$
+$$
+n_+=\prod_{\rho\in\Sigma_G^+}\exp (v(\rho)X_{-\rho}),
+$$
+where, by (1.10),
+$$
+n_W=\exp (z(W_r,\rho_r)X_{-\alpha_r})
+\exp (z(W_{r-1},\rho_{r-1})X_{-\alpha_{r-1}})\cdots 
+\exp (z(W_1,\rho_1)X_{-\alpha_1}),
+\tag 1.18
+$$
+where $W=\omega^{-1}W_0$, $\omega=s_{\alpha_r}\cdots s_{\alpha_1}$,
+and $W_0$, ..., $W_r$ being chambers in a path from the positive Weyl chamber
+$W_0$
+to $W_r=W$. Recall we defined $z_1(W,\rho)$, for any pair $(W,\rho)$, by
+$$
+z(W,\rho)=z(\alpha(W,\rho))z_1(W,\rho).
+\tag 1.19
+$$
+\par
+Define the coordinate function $w(\rho)$, $\rho >0$, by
+$w(\alpha)=1$, if $\alpha >0$ is simple, and otherwise by
+$$
+(t'_+)^{-1}(t'_+)^{n_-}=
+\prod_{\rho\in\Sigma_G^+}
+\exp ({w(\rho)\lambda\over
+\prod_{\alpha\in\Delta}z(\alpha)^{m(\alpha)}}X_\rho),
+\tag 1.20
+$$
+where $\rho=\sum_{\alpha\in\Delta}m(\alpha)\alpha$. This describes a point
+in the image
+$$
+C'\times G/T_G\hookrightarrow Y_1(B_+,B_-)
+\subset X_1(B_+,B_-)\subset G\times S_1(B_+,B_-),
+$$
+where $C'=C\cap T_G'=C-\{1\}$. 
+\vskip .3in
+{\bf Coordinates on $Y_1$}
+\vskip .1in
+We begin with the following
+\proclaim{Lemma 1.21}(\cite{H1,ch II, Lemma 3.3}) If $t\in T_+$ and
+$$
+n=\prod_{\rho >0}\theta_\rho(n_\rho)\in N_+
+\ \ \ \ \ (\text{ordered product}),
+$$
+then
+$$
+t^n=t\prod_{\rho >0}\theta_\rho(y(\rho)),
+$$
+where
+$$
+y(\rho)=\sum_{\rho_1,...,\rho_m} c_{\rho_1,...,\rho_m}(t)
+n_{\rho_1}...n_{\rho_m},
+$$
+the sum ranging over all roots $\rho_i>0$ such that
+$\rho=\rho_1+...+\rho_m$ and
+$$
+c_{\rho_1,...,\rho_m}(t)=
+\sum_{\sigma_1,\sigma_2}(1-\sigma_1(t)^{-1})\sigma_2(t),
+$$
+where the sum over $\sigma_1,\sigma_2$ such that $\sigma_1$ is a root
+and $\sigma_2$ is a sum of roots. Moreover, $c_\rho(t)=(1-\rho(t)^{-1})$.
+\endproclaim
+We want to apply this lemma to obtain coordinates of a point
+$$
+(t^g,(B(W))_{W\in{\Cal W}},(z(\alpha))_{\alpha\in\Delta})^n\in
+\chi^{-1}(C)\times S_1(B_+,B_-)\times N_+.
+$$
+For the case $G=G_2$, we
+give coordinate relations between the coordinates in (1.20) and
+the $n_\rho$'s and the $z(W,\alpha)$'s (see \cite{H1,chap II}):
+$$
+x(\alpha)=(1-\alpha^{-1})n_\alpha = (1-\alpha^{-1})/z(W_0,\alpha),
+\tag 1.22
+$$
+$$
+x(\beta)=(1-\beta^{-1})n_\beta = (1-\beta^{-1})/z(W_0,\beta),
+$$
+$$
+x(\gamma)=(1-\gamma^{-1})n_\gamma +
+c_1\cdot {(1-\alpha^{-1})
+\over{z(W_0,\alpha)z(W_0,\beta)z(\sigma_\beta^{-1}W_0,\alpha)}}
++\text{ higher order terms in }\lambda,
+$$
+$$
+x(\delta)=(1-\delta^{-1})n_\delta +
+c_2\cdot {(1-\alpha^{-1})
+\over{z(W_0,\alpha)z(W_0,\beta)z(\sigma_\beta^{-1}W_0,\alpha)}}
++\text{ higher order terms in }\lambda,
+$$
+$$
+x(\epsilon)=(1-\epsilon^{-1})n_\epsilon +
+c_3\cdot {(1-\alpha^{-1})n_\delta
+\over{z(W_0,\alpha)}}
++\text{ higher order terms in }\lambda,
+$$
+$$
+\split
+x(\zeta)
+&=(1-\zeta^{-1})n_\zeta +
+c_4\cdot {(1-\alpha^{-1})n_\gamma^2
+\over{z(W_0,\alpha)}}+
+c_5\cdot {(1-\alpha^{-1})n_\delta
+\over{z(W_0,\alpha)z(W_0,\beta)}}+\\
+&+c_6\cdot {(1-\beta^{-1})n_\epsilon
+\over{z(W_0,\beta)}}+
+c_7\cdot {(1-\gamma^{-1})n_\delta
+\over{z(W_0,\beta)z(\sigma_\beta^{-1}W_0,\alpha)}}
++\text{ higher order terms in }\lambda,
+\endsplit
+$$
+$$
+\split
+w(\gamma)
+&={x(\gamma)z(\beta)z(\alpha)\over \lambda}\\
+&=(\gamma(X)n_\gamma + c_1{\alpha(X)\over{z(W_0,\alpha)z(W_0,\beta)}})
+\alpha(X)^{-1}\beta(X)^{-1}z(W_0,\alpha)z(W_0,\beta)+\\
+&\quad\quad +\text{ higher order terms in }\lambda,
+\endsplit
+$$
+$$
+\split
+w(\delta)
+&={x(\delta)z(\beta)z(\alpha)^2\over \lambda}\\
+&=(\delta(X)n_\delta +
+c_2{\alpha(X)\over{z(W_0,\alpha)z(W_0,\beta)z(\sigma_\beta^{-1}W_0,\alpha)}})
+\alpha(X)^{-2}\beta(X)^{-1}z(W_0,\alpha)^2z(W_0,\beta)+\\
+&\quad\quad +\text{ higher order terms in }\lambda,
+\endsplit
+$$
+$$
+\split
+w(\epsilon)
+&={x(\epsilon)z(\beta)z(\alpha)^3\over \lambda}\\
+&=(\epsilon(X)n_\epsilon + c_3{\alpha(X)n_\delta\over{z(W_0,\alpha)}})
+\alpha(X)^{-3}\beta(X)^{-1}z(W_0,\alpha)^3z(W_0,\beta)+\\
+&\quad\quad +\text{ higher order terms in }\lambda,
+\endsplit
+$$
+$$
+\split
+w(\zeta)
+&={x(\zeta)z(\beta)^2z(\alpha)^3\over \lambda}\\
+&=(\zeta(X)n_\zeta + c_4{\alpha(X)n_\gamma^2\over{z(W_0,\alpha)}}
++c_5{\alpha(X)n_\delta\over{z(W_0,\alpha)z(W_0,\beta)}}
++c_6{\beta(X)n_\epsilon\over{z(W_0,\beta)}}+\\
+&\quad +{\gamma(X)n_\zeta\over{z(\sigma_\beta^{-1}W_0,\alpha)z(W_0,\beta)}})
+\alpha(X)^{-3}\beta(X)^{-2}z(W_0,\alpha)^3z(W_0,\beta)^2+\\
+&\quad\quad +\text{ higher order terms in }\lambda,
+\endsplit
+$$
+Because of (1.22), on $Y_1(B_+,B_-)$, we may
+use the algebraically independent coordinates
+$$
+z(W_0,\alpha),\ z(W_0,\beta),\ z(\sigma_\beta^{-1}W_0,\alpha),\
+n_\gamma,\ n_\delta,\ n_\epsilon,\ n_\zeta,
+$$
+in place of the coordinates
+$$
+z(\alpha),\ z(\beta),\ x(\alpha),\ x(\beta),\ x(\gamma),\
+x(\delta),\ x(\epsilon),\ x(\zeta),\
+w(\gamma),\ w(\delta),\ w(\epsilon),\ w(\zeta),
+$$
+on $Y''(B_+,B_-)$ appearing in (1.17) and (1.20).
+
+\enddocument

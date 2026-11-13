@@ -1,0 +1,659 @@
+\input amstex
+\documentstyle{amsppt}
+\magnification 1200
+\hsize 6.5 true in
+\vsize 8.7 true in
+\define\eps{\epsilon}
+\define\ooo{{\Cal O}}
+\define\ovo{\overline{\Cal O}}
+\define\off{\overline{F}}
+\define\oee{{\Cal O}_E}
+\define\VV{\Cal V}
+\define\HH{\Cal H}
+\define\slf{G'(F)}
+\baselineskip 16pt
+\document
+\def\leaderfill{\leaders\hbox to 1em{\hss.\hss}\hfill}
+\def\eleaderfill{\hfill \hbox to 1em{\hss.\hss}\hfill}
+\centerline{{\bf On the transfer of Shalika germs for $G_2$}}
+\vskip.1in
+\centerline{by David Joyner}
+\vskip.1in
+\centerline{summer, 1994}
+\vskip .7in
+{\bf \S 0 Introduction}
+\vskip .1in
+{\bf Motivation and rough outline}
+\vskip .2in
+To apply the trace formula to the transfer of automorphic representations
+of two reductive groups $G$, $H$ over a number field $K$, one must,
+among other things, have a comparison of local orbital integrals, for each 
+local completion $F$ of $K$. The comparison in the real and complex case 
+was solved by Shelstad \cite{S1}. 
+In the $p$-adic case, such a local comparison - the smooth matching conjecture
+stated below - 
+boils down, thanks to the work of R. Langlands and D. Shelstad
+(\cite{LS1}, \cite{LS2}), to a certain matching of Shalika germs
+conjecture, also stated below. 
+Shalika germs are mysteriously behaving functions
+associated to a semisimple element $s\in G(F)$ and a unipotent
+conjugacy class ${\Cal O}$ of $M=Cent_{G(F)}(s)$, defined in a punctured 
+compact-open neighborhood of $s$ in the regular set \cite{Sh}. They play a 
+role in the analysis of $p$-adic orbital integrals on reductive groups
+roughly analogous to the role that the power functions play in the Taylor 
+series of a function on the real line. By a well-known reduction known
+as Harish-Chandra descent, it usually suffices to assume that $s$ is central
+and $M=G$. 
+Langlands \cite{L} introduced a geometric approach to the computation,
+or at least comparison, of Shalika germs. 
+The comparison of Shalika germs associated to the
+$0$-regular unipotent orbit was solved by Shelstad \cite{S2},
+using results from \cite{LS1}, \cite{LS2}.
+Langland's technique was further developed by
+T. Hales in his thesis \cite{H1}. Hales concentrated on the comparison of 
+$1$-regular germs, matching the stable subregular germs in general and
+matching the $\kappa$-stable subregular germs for even rank unitary
+groups. He also worked out a number of the computations necessary
+to deal with the rank two case. This technique of Langlands goes by
+the name Igusa theory since it was Igusa \cite{I} who developed a crucial
+asymptotic formula for an integral over fibers of a morphism
+$Y_C\rightarrow C$, where $C$ is a curve and $Y_C$ is a non-singular
+variety. This technique also relies on a formula for the coefficients
+of this expansion, involving principal value integrals over $p$-adic 
+analytic manifolds, worked out in \cite{I}, \cite{L} (see also
+\cite{LS0}). In \cite{L}, \cite{LS3}, Langlands and Shelstad
+matched all the germs for groups of absolute type $A_2$
+(see also \cite{H3}, where a descent argument is used instead of
+the direct comparison in \cite{LS3}).
+In \cite{H2}, Hales worked out the comparison of germs for the forms of 
+$B_2=C_2$ using Igusa theory and a reduction/descent argument. 
+In the present article, we verify the matching of Shalika germs conjecture
+mentioned above for the $1$-, $2$- and $3$-regular germs for the 
+exceptional group $G_2$,
+which, together with the result of \cite{S2}, proves the smooth 
+matching theorem for $G_2$. In other words, our main result
+is the proof of the following
+\proclaim{Smooth Matching Conjecture for $G_2$}
+Let $T_G$ denote an elliptic Cartan of $G=G_2$ 
+which has an $F$-embedding into $H$ and let $\kappa$ denote
+a character of $H^1(Gal(\off/F),T_G)$ associated to a
+cuspidal endoscopic group $H=H(T_G,\kappa)$
+\cite{L} (thus $H$ is either $PGL(3)$ or $(SL(2)\times SL(2))/\{\pm 1\}$).
+Let $T_H$ denote the image of an $F$-embedding of $T_G$ into $H$.
+For each $f\in C_c^\infty(G(F))$ there is an $f^H\in C_c^\infty(H(F))$
+for which
+$$
+\Delta_{G/H}^{T_G,\kappa}(\gamma_H,\gamma_\lambda)
+\Phi^{T_G,\kappa}(\gamma_G,f)
+=\Phi^{T_H,st}(\gamma_H,f^H),
+$$
+whenever $\gamma_G$ is the image of a regular $\gamma_H\in T_H(F)$.
+(The notation is explained further below.) 
+\endproclaim
+\vskip .1in
+Before sketching the ideas in the paper, we describe what is new
+or different from \cite{H2}, \cite{H3}, which this paper
+is comparable to. The notation will be explained later.
+\par
+In \S 1, we carefully recall
+in detail the construction of the Igusa variety and the
+determination of local coordinates \cite{L}, \cite{H1}, \cite{H2}.
+
+Section 2 gives the calculations for determining the action of the Galois
+group on the local coordinates on the
+Igusa variety for $G_2$ as in \cite{H2}. 
+
+Section 3 describes some new results: for any reductive group $G$, 
+we produce specific patches generalizing those used in \cite{H2} 
+and show for $G_2$
+that they cover the base Igusa variety $Y''$ (described below) at least up to 
+codimension two. These specific patches are needed for doing certain 
+local calculations. 
+It is likely that these patches are regular under more
+general conditions, which would imply $Y''$ is regular in codimension one 
+(conjectured in \cite{H1}), but this is only proven in our
+special case. Anyway, by another method
+we show that, as a consequence of the theory of toroidal embeddings \cite{K},
+$Y''$ is normal and Cohen-Macauley (see Lemma 3.7 below).
+This implies Hales' conjecture that 
+$Y''$ is regular in codimension one in general. 
+
+In section 4 we compute the Igusa constants of all
+the base divisors on $Y''$ by an easy direct calculation
+and give an ``endoscopic interpretation'' of some of the
+calculations.
+We also compute the Igusa forms using local coordinates of $Y_1$.
+
+In section 5, we first record some basic facts about
+the Igusa expansion over $Y_C$. Then we
+prove the geometric ``no spurious divisors lemma'' for $G_2$
+which is basically an inequality $e(\theta,\beta)\leq 1$,
+where $e(\theta,\beta)$ is as in \cite{L}, which allows one to work
+on $Y''$ rather than its desingularization $Y_C$.
+Finally, we recall the statement of Hales' important ``reduction lemma''.
+
+In sections 6, 7, and 8
+we (a) compute coordinates
+on the $1$-, $2$- and $3$-regular unipotent orbits (the latter two
+are not Richardson which is something new, though they are what I call
+``endoscopically Richardson''), (b) compute
+coordinates on the fiber $\phi^{-1}(\gamma_\lambda)^\Gamma$
+(explained below), and (c) compute the Igusa form
+on the fiber and its explicit dependence on a tangent vector $X$
+of $C$. Not much in these 
+sections is substantially different from \cite{H2}, \cite{H3}. One
+new idea is that, roughly speaking, the subgroup generated by the
+one-parameter root-groups associated to roots ``outside $H$'' 
+may be used to determine local coordinates for the
+``endoscopically Richardson'' orbit $\ooo=Ind_H^G(1)$.
+
+The last section presents a conjecture which our method of proof
+seems to support. It seems to be the ``ultimate'' theorem which one
+might prove by this method without introducing any new ideas.
+
+For the most part, the appendices collect explicit 
+group-theoretic computations 
+needed to justify a number of claims made in the main body of the paper. 
+For example, we verify that the cuspidal endoscopic groups of $G_2$ are
+$PGL(3)$ and $(SL(2)\times SL(2))/\{\pm 1\}$. 
+\par
+Turning now to a brief discussion of the constructions we use,
+here is a rough sketch of Langlands' idea in its simplest form: 
+Let $\gamma\in G(F)$ be an elliptic regular element and let
+$T_G=Cent_G(\gamma)^o$. The goal is to compute,
+or at least find some manageable expression for, the stable orbital
+integral $\int_{(T_G\setminus G)(F)}f(g\gamma g^{-1})dg$. 
+(More generally, one can and does consider $\kappa$-stable orbital 
+integrals.) The variety $T_G\setminus G$
+may be identified, over the algebraic closure
+$\overline{F}$, with the variety of regular stars: let
+$\Omega$ denote the absolute Weyl group of $T_G$, 
+$B_G$ a Borel subgroup of $G$
+containing $T_G$, and $S_0$ denote the $G(\off)$-orbit of the
+$|\Omega|$-tuple $(B_G^\omega)_{\omega\in \Omega}$, where
+$G$ acts by conjugation on each coordinate. This orbit is called the
+variety of regular stars and since 
+$\cap_{\omega\in \Omega}N_G(B_G^\omega)=T_G$,
+we have $S_0\cong T_G\setminus G$ over $\off$. Let
+${\Cal B}\cong B_G\setminus G$
+denote the Borel variety. Although ${\Cal B}$ is complete,
+$S_0$ is not but
+conjugation induces a principal $N_G$-bundle structure on
+$S_0\rightarrow {\Cal B}$, where $N_G$ denotes 
+the unipotent radical of $B_G$, 
+so $S_0$ may be roughly regarded as 
+the base space ${\Cal B}$ with fibers at each point isomorphic to
+$N_G$. The Zariski closure of
+$S_0$ in ${\Cal B}^{|\Omega|}$ is denoted $S$ and is called the variety of 
+stars. It is projective, complete, but contains singularities.
+It turns out that $S_0$ is Zariski open in $S$. 
+Roughly speaking, the idea is to regard the above stable orbital integral
+as an integral over $S_0(F)\subset S(\off)$. Let $T_G'$
+denote the subvariety of regular elements of $T_G$. We 
+restrict $\gamma$ to a regular curve $C$ in $T'_G\cap \{1\}$
+in a neighborhood of the identity and then construct a smooth variety $Y_C$
+with a fibering $\phi:Y_C\rightarrow C$, ``the''
+smooth Igusa variety, whose fibers
+$\phi^{-1}(\gamma)$, $\gamma\in C,\ \gamma\not= 1$,
+are isomorphic to $T_G\setminus G$. In fact, the above stable orbital integral
+may be regarded now as a fiber integral parameterized by a 
+local coordinate $\lambda$ in a neighborhood of the singular point $1\in C$. 
+Taking the limit as $\lambda$ tends to this singular point,
+one may then use techniques of Igusa \cite{I}, as developed
+by Langlands \cite{L}, to express the stable orbital integral
+as a sum involving principal value integrals over certain divisors
+contained in $\phi^{-1}(1) \subset Y_C$. By the homogeneity
+of the Shalika germs and the
+homogeneity of the coefficients in the Igusa expansion, only certain
+divisors can contribute to a given Shalika germ.
+\par
+Here is a rough sketch of Igusa theory \cite{L}, \cite{H1}: 
+Assume $G$ is $F$-quasisplit. Let $C$ denote a $1$-parameter subgroup of $G$
+in $T_G$, defined over $F$, containing the identity
+and no other singular point and whose tangent over $\off$ is not
+contained in any root hyperplane. Let $C'=C-\{1\}$. We sketch the 
+construction of a non-singular algebraic variety $Y_C$, defined over $F$,
+for which
+$$
+\CD
+C'\times T_G\setminus G @> i >> Y_C @> \pi >> G\\
+@. @VV \phi V @. \\
+@. C, @. 
+\endCD
+$$
+with the following properties:
+\newline
+(a) if $T_G$ and $C$ are defined over $F$ then so are
+$Y_C$, $\phi$, $\pi$, and $i$;
+\newline
+(b) $\pi : Y_C\rightarrow G$ is proper and $G$-equivariant;
+\newline
+(c) $\phi : Y_C\rightarrow C$ is proper;
+\newline
+(d) $\pi(\phi^{-1}(1))=V$, the unipotent variety of $G$;
+\newline
+(e) if ${\Cal O}\subset G$ denotes a 
+unipotent orbit and if $E=\pi^{-1}(u)$, 
+for some $u\in \pi(Y_C)\cap {\Cal O}$,
+then $\pi|_{E}:E\cap \pi^{-1}({\Cal O})\rightarrow {\Cal O}$
+is faithfully flat 
+\cite{DG, Ch II, Proposition 3.1} and, in particular, surjective; 
+\newline
+(f) $i(C'\times T_G\setminus G
+)\subset Y_C$ is open;
+\newline
+(g) $\pi\circ i(\gamma,g)=\gamma^g$ and $\phi\circ i(\gamma,g)=\gamma$.
+\newline
+(h)  $Y_C$ is $2p+1$-dimensional, where $p=|\Sigma^+|$ 
+denotes the number of positive roots.
+\newline
+A divisor $E\subset Y_C$ for which $\pi(E)=\ovo$ is called an
+{\bf $\ooo$-divisor}. In general, although $E$ is smooth,
+$\ovo$ need not even be normal \cite{KP, \S 0}.
+\newline
+Step 1: Let $X$ denote the Zariski closure of $T'\times T_G\setminus G$
+in $G\times S$ and let $Y$ denote the Zariski closure of
+$C'\times T_G\setminus G$
+in $X$. Let $\chi :G\rightarrow T_G/\Omega$ denote the adjoint
+quotient \cite{Slo}, where $\Omega$ denotes the Weyl group of $T_G$.
+We will see below that $X$ is covered by patches 
+$X(B_+ ,B_{-})\subset
+B_{-}\times S\times N_+$ and $Y$ is covered by patches 
+$Y(B_+ ,B_-)\times N_+\hookrightarrow \chi^{-1}(C) N_-\times S\times N_+$,
+where $N_-,N_+$ denotes the unipotent radical of $B_-,B_+$, resp..
+Here $B_+,B_-$ are opposite Borels for which
+$T_+=B_+\cap B_-$ is defined over $F$. The completeness
+of $S$ implies that the projections $Y\rightarrow G$
+and $X\rightarrow G$ are proper.     
+\newline
+Step 2: We construct below a resolution $S_1$ of $S$ with a proper
+morphism $S_1\rightarrow S$ and an injective morphism
+$S_0\rightarrow S_1$. The image of $S_0$ in $S_1$ is denoted $S''$.
+Both $S$ and $S_1$ are complete but $S''$ is not.
+Let $X''$, $X_1$ denote the Zariski closure of $T'\times T_G\setminus G$
+in $G\times S''$, $G\times S_1$, respectively. 
+Let $Y''$, $Y_1$ denote the Zariski closure of $C'\times T_G\setminus G$
+in $X''$, $X_1$, respectively. Again, we have proper maps
+$Y_1\rightarrow G$ and $X_1\rightarrow G$. Though $Y''\rightarrow G$
+may not be proper, it is especially useful because
+of its relatively simple local coordinate relations. We can explicitly
+desingularize $Y''$ for $G=G_2$ by blowing up four
+times in succession. 
+(The derivation of this is lengthy and not really needed for the
+proof of our main result so is omitted.)
+Recall that the blow down morphisms
+are proper and defined over $F$. They are also $G$-equivariant
+by the universal property of blowing up \cite{Har}.
+\newline
+Step 3: Resolve the singularities of $Y_1$ contained in
+$Y_1-Y''$ by using Mumford's semi-stable reduction theorem \cite{K}.
+This yields a variety $\tilde{Y_1}$ and a blow down
+$\xi:\tilde{Y_1}\rightarrow Y_1$ such that all the singularities 
+of $\tilde{Y_1}$ map down to $Y_1- Y''$ under $\xi$. Now
+perform an embedded resolution of singularities on  
+$Y''\hookrightarrow \tilde{Y_1}$ as in step 2. The resulting
+resolution of $\tilde{Y_1}$
+is denoted $Y_C$. The blow down map $Y_C\rightarrow Y_1$
+is proper, so $\pi$ and $\phi$ are proper. 
+\par
+We remark that the properness of $\pi$ and
+$\phi$ are needed to guarantee that the appropriate
+principal value integrals make sense. Properness implies that 
+the principal value integral of the
+pull-back of the function $f_\kappa$ is well-defined
+and that some of the hypotheses to Lemma 5.7 below hold.
+
+\vskip .1in
+{\bf Notation and detailed outline}
+\vskip .1in
+Let $\gamma_\lambda=exp(\lambda X)\in C'(F)\subset T_G(F)$ be the image of
+$\gamma_{\lambda,H}\in T_H(F)\subset H(F)$ in the sense of \cite{LS2}.
+After some general background, we will examine the $1$-, $2$-, 
+and $3$-regular germs for $G_2$ using the formula (\cite{Sh}, \cite{LS2})
+$$
+\split
+\Delta_{G/H}^{T_G,\kappa}(\gamma_{\lambda,H},\gamma_{\lambda})
+\Phi^{T_G,\kappa}(\gamma_{\lambda},f)
+&=\kappa(inv(\gamma^0_{G},\gamma_{\lambda}))
+D_H(\gamma_{\lambda,H})^{-1}
+\int_{\phi^{-1}(\gamma_{\lambda})^\Gamma}\pi^*(f)
+\kappa(t_*){|\omega|\over |\phi^*(d\lambda)|}\\
+&=\sum_{{\Cal O}}\mu_{\Cal O}(f)
+\Gamma_{{\Cal O}}^{T_G,\kappa}(\gamma_{\lambda}),
+\ \ \ f\in C_c^\infty(G),
+\endsplit
+\tag 0.1
+$$
+where $\Delta_{G/H}^{T_G,\kappa}$ is the local transfer factor given in a
+neighborhood of the identity by 
+$$
+\Delta_{G/H}^{T_G,\kappa}(\gamma_{\lambda,H},\gamma_G)
+=\kappa(inv(\gamma^0_G,\gamma_G))D_G(\gamma_G)/D_H(\gamma_H)
+$$
+as in \cite{LS2}, $\gamma_G^0$ being a fixed regular element of $T_G(F)$.
+The sum over ${\Cal O}$ in (0.1) runs over all stable unipotent orbits
+${\Cal O}^{st}$ in $G(F)$, ${\Cal O}\subset {\Cal O}^{st}$
+denoting an arbitrarily chosen $G(F)$-orbit within ${\Cal O}^{st}$.
+Also, in (0.1),
+$\gamma_\lambda=\gamma_{\lambda,G}\in C\cap V_f\subset T_G$ 
+has parameter $\lambda$,
+so that $\gamma_0=1$, where $V_f\subset G_{reg}$
+is a punctured neighborhood of $1$,
+$t_*$ is a cocycle-valued function which will be defined following
+0.6 below, and
+$\phi^{-1}(\gamma_\lambda)^\Gamma$ denotes the fixed points of the fiber 
+under the action of $\Gamma:=Gal(\overline{F}/F)$ on $Y_C$ determined
+by $T_G$ as described in \S 2 below.
+The measure
+${|\omega|\over |\phi^*(d\lambda)|}$ incorporates the factor
+$D_G(\gamma_{\lambda,G})$.
+If $\gamma_G'\in G(F)$ is stably conjugate to $\gamma_G$ then
+$\Delta_{G/H}^{T_G,\kappa}(\gamma_H,\gamma'_G)
+=\kappa(inv(\gamma_G,\gamma'_G))
+\Delta_{G/H}^{T_G,\kappa}(\gamma_H,\gamma_G)$.
+We will normalize
+the measures and use the same notation as in \cite{LS3}. In particular,
+$$
+\Gamma_{{\Cal O}}^{T,\kappa}(\gamma)=
+\Delta_{G/H}^{T,\kappa}(\gamma_H,\gamma)\sum_\delta \kappa(\delta)
+\Gamma_{\Cal O}(\gamma^\delta),
+$$
+if $\gamma$ is an image of some $\gamma_H$. Here $\delta$ runs over 
+classes in $H^1(\Gamma,T_G)$ associated to the distinct stable 
+conjugacy classes $\{\gamma^\delta\}$ of $\gamma$. These germs
+$\Gamma_{\Cal O}(\gamma)$ are slightly different from those in \cite{Sh}
+since the germs here do not include the discriminant factor
+in their definition. By a result of Harish-Chandra, if
+${\Cal O}$ is $r$-regular then $\Gamma_{\Cal O}$ satisfies
+$$
+\Gamma_{\Cal O}(exp(\lambda^2 X))=|\lambda|^{-dim\ {\Cal O}}
+\Gamma_{\Cal O}(exp( X)),
+$$
+where for any $u\in {\Cal O}$, 
+$dim\ {\Cal O}=dim\ G_u\setminus G=dim\ G -rk(G)-2r=2|\Sigma^+_G|-2r$ with
+$G_u$ denoting the centralizer of $u$ in $G$, 
+$r=dim\ {\Cal B}_u$, ${\Cal B}$ denoting the Borel variety,
+${\Cal B}_u$ its subvariety fixed by the conjugation action of $u$
+and $\Sigma^+_G$ denoting the positive roots with respect to some Borel.
+Note that since
+$$
+D_G(exp(\lambda X))=\prod_{\sigma >0}(1-\sigma(exp(\lambda X))^{-1})
+=\lambda^{|\Sigma^+_G|}\prod_{\sigma >0}\sigma(X)+\text{ higher order terms},
+$$
+the normalized germ $\Gamma^*_{\Cal O}(\gamma)
+:=|D_G(\gamma)|\Gamma_{\Cal O}(\gamma)$ satisfies
+$\Gamma^*_{\Cal O}(exp(\lambda^2 X))
+=|\lambda|^{2r}\Gamma^*_{\Cal O}(exp( X))$.
+
+The ultimate object of our desires is the following
+\proclaim{Matching of Germs Conjecture \cite{LS3}} 
+Let $H$ be an endoscopic group 
+associated to $T,\kappa$. Given an $r$-regular
+unipotent orbit ${\Cal O}$ in $G(F)$ there is a finite collection 
+of $r$-regular unipotent classes ${\Cal O}_i$ in $H(F)$ and complex
+numbers $a_i$ such that, for every Cartan $T_H$ of $H$ over $F$ and every
+regular ray $\{\lambda X|\lambda\not=0\}$ in the Lie algebra ${\frak t}_H$,
+we have
+$$
+\Gamma_{{\Cal O}}^{T,\kappa}(\gamma_\lambda)=
+\sum_i a_i\Gamma_{{\Cal O}_i}^{T_H,st}(\gamma_\lambda ),
+$$
+for $\lambda$ sufficiently small.
+\endproclaim
+Our goal is to try to verify this for $G=G_2$ and $r=1,2,3$.
+\par
+The expression in (0.1) may also be written in
+the form $1/D_H(\gamma_{\lambda,H})$
+times
+$$
+F(\lambda)=\int_{\phi^{-1}(\lambda)(F)}f_\kappa(y)|\omega_\lambda|,
+\tag 0.2
+$$
+where $f_\kappa$, as defined by (0.1) and (0.2),
+satisfies the conditions of being an Igusa integrand
+in the sense of \cite{L}. Igusa's expansion
+\cite{L} is an asymptotic expression of the form
+$$
+F(\lambda) =\sum_{\theta,\beta}\theta(\lambda)|\lambda|^{\beta -1}
+\sum_{r=1}^{e(\theta,\beta)}(-\log_q|\lambda|)^{r-1}F_r(\theta,\beta,f_\kappa),
+\tag 0.3
+$$
+where $\theta$ is a unitary character of $F^{\times}$ and $\beta >0$
+is a rational number for which ${\Cal E}(\theta,\beta)\not= \emptyset$.
+Here ${\Cal E}(\theta,\beta)$ denotes the set of irreducible components
+(called {\bf branches}) in $\phi^{-1}(1)\subset Y_C$ such that
+$\theta^{a(E)}=\kappa_E$ and $\beta=b(E)/a(E)$, where $a(E)$, $b(E)$, 
+$\kappa_E$, and $e(\theta,\beta)$ are as in \cite{L}. As T. Hales
+has observed, since there are no logarithmic terms in the
+Shalika germ expansion, we have 
+\proclaim{Lemma 0.4} If $f_\kappa$ is as in (0.2) then
+$F_r(\theta,\beta,f_\kappa)=0$
+for all $r>1$. 
+\endproclaim
+By Howe, Harish-Chandra, and
+Rogawski \cite{Ro}, the trivial germ is a non-zero constant $c_H$.
+We describe how we will be investigating the other
+terms in (0.1) associated to the 
+$1$-regular, $2$-regular,
+and $3$-regular orbits ${\Cal O}$.
+These will match with the trivial orbit in the germ expansion on $H$,
+$$
+\Phi^{T_H,st}(\gamma_{\lambda,H},f^H)
+=\int_{\phi_H^{-1}(\gamma_{\lambda,H})^\Gamma}\pi^*(f^H)
+{|\omega|\over |\phi^*(d\lambda)|}
+=\sum_{{\Cal O}}\mu_{\Cal O}(f^H)
+\Gamma_{{\Cal O}}^{T_H,st}(\gamma_{\lambda,H}),
+\tag 0.5
+$$
+where $H=(SL(2)\times SL(2))/\{\pm 1\}$ or $H=PGL(3)$, and where
+$f^H\in C_c^\infty(H)$ exists and
+$\Delta^{T_G,\kappa}_{G/H}$-matches with $f$.
+These terms are the $\beta =2,3,4$ terms in the Igusa expansions
+for $G_2$, $H_1=PGL(3)$ and $H_2=(SL(2)\times SL(2)))/\{\pm 1\}$.
+It ultimately turns out that, in these expansions, we have
+$e(\theta,\beta)\leq 1$ (this is proved in \S\S 4-5 below).
+Therefore, formula 0.6 below applies to our situation.
+\par
+Putting together results of \cite{L}, \cite{H2, \S 2},
+using the Shalika germ expansion, we
+have the following 
+\proclaim{Formula 0.6(a)} Assume that we have a Cartan $T_G$, a character 
+$\kappa$ of $H^1(\Gamma,T_G)$, and
+a $(\beta-1)$-regular
+stable unipotent class ${\Cal O}^{st}$ for which there is only
+one $F$-rational irreducible branch $E_\beta$ of $\{\lambda =0\}$ in
+$Y_C$ with $\pi(E_\beta)=\overline{{\Cal O}}^{st}$ and 
+$\beta(E_\beta)=\beta$. Then we have
+$$
+D_H(\gamma_{H,\lambda})
+\sum_{{\Cal O}\subset {\Cal O}^{st}}
+\mu_{{\Cal O}}(f)\Gamma_{{\Cal O}}^{T_G,\kappa}(\gamma_\lambda)
+=\kappa(inv(\gamma_G^0,\gamma_\lambda))
+|\lambda|^{\beta -1}\sum_{\theta}\theta(\lambda)
+\int_{E_\beta(F)} \pi^*(f)\kappa_\theta(t_*)|\omega_{E_\beta}|,
+$$
+for $\gamma_\lambda\in C\cap V_f$. Here $\kappa_\theta(t_*)$
+is an extension of $\kappa(t_*)/\theta(\lambda)$ to
+$E_\beta$ and $\overline{{\Cal O}}^{st}$ denotes the $F$-Zariski closure
+of the stable orbit and $t_*$ is a cocycle-valued function 
+described more below, and the sum on the left runs over all
+unipotent $G(F)$-orbits ${\Cal O}$ contained in the
+stable orbit ${\Cal O}^{st}$.
+\newline
+0.6(b): Same assumptions. Then for each $\overline{\Cal O}^{st}$
+there is a measure $\omega_{\overline{\Cal O}^{st}}$ and for each
+$F$-rational fiber
+$E_\beta(u)=E_\beta(F)\cap \pi^{-1}(u)$,
+$u\in \overline{\Cal O}(\overline{F})$,
+there is a measure
+$\omega_{E_\beta(u)}$ such that
+$$
+\int_{E_\beta(F)} \pi^*(f)\kappa_\theta(t_*)|\omega_{E_\beta}|
+=\int_{\overline{\Cal O}^{st}}f\int_{E_\beta(u)} \kappa_\theta(t_*)
+|\omega_{\overline{\Cal O}^{st}}||\omega_{E_\beta(u)}|,
+$$
+for each $\theta$ occuring above.
+\endproclaim
+
+This will follow from the results of section 5 below.
+By \cite{H1, ch 6, \S 2}, only the $\theta =1$ 
+term on the left side of formula 0.6(a) contributes a non-zero
+term to the sum.
+It turns out that either $\kappa$ is 
+quadratic (and $H=(SL(2)\times SL(2))/\{\pm 1\}$)
+or $\kappa$ is a cubic character (and $H=PGL(3)$).
+
+Now we turn to recalling some of the properties of $t_*$ \cite{L},
+\cite{H1}. Recall $\Gamma=Gal(\overline{F}/F)$.
+The cocycle-valued function $t_*$ is a map
+$Y_C\rightarrow Z^1(\Gamma, T_G(\overline{F}))$ given by
+$P\longmapsto (\sigma\longmapsto t_\sigma(P))$
+which has the following properties:
+\newline
+(a) it is locally constant on the $p$-adic manifold $Y_C(F)$ \cite{L};
+\newline
+(b) it factors through $Z^1(Gal(E/F), T_G(E))$,
+where $E$ denotes the Galois closure of the splitting
+field of $T_G$;
+\newline
+(c) for fixed $\sigma\in \Gamma$, $t_\sigma$ is a regular on the variety
+$Y_C$;
+\newline
+(d) for $y=i(\gamma_\lambda ,g)\in Y_C$, such that for all
+$\sigma\in \Gamma$,  
+$\sigma(g)g^{-1}$ belongs to $T_G(\overline{F})$, we have
+$\kappa (t_*(y))=\kappa(\sigma(g)g^{-1})$, where
+$\sigma(g)g^{-1}$ represents
+the cocycle $\sigma\longmapsto \sigma(g)g^{-1}$. 
+\par
+After $Y_C$ has been constructed, the idea is to determine the sets
+${\Cal E}(\theta, \beta)$ with $\beta =2,3,4$. First,
+one determines the $\off$-branches in $\phi^{-1}(1)\subset Y_C(\off)$ which
+map down to $Y''$ under $Y_C\rightarrow Y_1$ which have
+$\beta =2,3,4$. These are called {\bf fundamental divisors}.
+In fact, in the case of $G=G_2$, we can construct on $Y''$ itself
+divisors occurring in $\phi^{-1}(1)\subset Y''$.
+Such divisors will be called {\bf base divisors}.
+Of course, a base divisor is fundamental. 
+We sometimes identify a base divisor with its closure in $Y_C$.
+Then one determines which of these fundamental divisors
+has $F$-rational
+coordinates with respect to the Galois action determined by $T_G$.
+These branches will contribute to Igusa's
+expansion. Next, one must consider the $\off$-branches in 
+$\phi^{-1}(1)\subset Y_C(\off)$ which do not
+map down to $Y''$ under $Y_C\rightarrow Y_1$. These are 
+called {\bf spurious divisors} and are relatively complicated to deal with. 
+It turns
+out that the computations in \cite{H1, Ch III} show that there are 
+no $F$-rational spurious divisors contributing to the subregular germ
+for $G_2$. For other reasons, the spurious divisors can be avoided
+altogether for the $2$-regular and $3$-regular germs.
+In fact, we have the following result, proven in \S\S 4-5 below.
+\proclaim{Lemma 0.8} Let $E$ be an $F$-rational 
+base ${\Cal O}$-divisor of the 
+variety $Y''$ and let $\tilde{E}$ denote its strict transform
+in $Y_C$. The principal
+value integrals $\int_{{E}(F)}\pi^*(f)\kappa_1(t_*) |\omega_{{E}}|$ and
+$\int_{\tilde{E}(F)}\tilde{\pi}^*(f)\kappa_1(\tilde{t}_*) |\omega_{\tilde{E}}|$
+exist. Here $\kappa_1$ is as in formula 0.6(a), $t_*$ is the
+cocycle function on $Y''$, and $\tilde{t}_*$ is the cocycle function
+on $Y_C$. Moreover $e(1,\beta_E)=1$ and
+$F_1(1,\beta_E,f_\kappa)$ is given 
+by $\kappa(inv(\gamma_G^0,\gamma_G))$ times
+$$
+\split
+PV\int_{{E}(F)}\pi^*(f)\kappa_1(t_*) |\omega_{{E}}|
+&=PV\int_{\tilde{E}(F)}\tilde{\pi}^*(f)
+\kappa_1(\tilde{t}_*) |\omega_{\tilde{E}}|\\
+&=\int_{\overline{\Cal O}^{st}(F)}
+f\int_{{E}_u(F)}\kappa_1(t_*)|\omega_{{E}_u}|
+|\omega_{\overline{\Cal O}^{st}}|,
+\endsplit
+$$
+where the measures are as in (0.6).
+\endproclaim
+As a consequence of this, it will follow that
+spurious divisors do not contribute to the Igusa
+expansion of (0.1) or (0.2).
+
+The proof that $e(\theta,\beta)\leq 1$ in the case of
+$G_2$ will now be sketched. From (0.1) we know that the
+germs associated to the
+$(\beta -1)$-regular unipotent orbits ${\Cal O}$ get
+``matched'' with the terms in the Igusa expansion of
+homogeniety degree $\beta -1$ in $\lambda$. Since both sides depend
+on $X$ and $\lambda$ we might write such a comparison briefly
+as
+$
+\Gamma_\beta (\lambda,X,f)=I_\beta(\lambda,X,f),
+$
+the left side denoting the sum of the normalized $\kappa$-stable
+germs of homogeniety degree $\beta -1$ and the right side
+denoting the corresponding term in the Igusa expansion
+(0.2), (0.3). If we replace $X$ in both sides by $cX$ then both sides
+should have the same degree of homogeniety in $c$ as well. However,
+by computing explicitly the dependence of the term $I_\beta(\lambda,X,f)$
+in the Igusa expansion on $X$ we will see, using the case-by-case
+computation in \S 5, that $e(\theta,\beta)\geq 2$ implies that the two sides
+have different degrees of homogeniety in $c$, a contradiction.
+
+It remains then to analyze the integrals
+over the fundamental divisors. We cannot compute these integrals
+but, in most cases, we can determine their dependence on $\lambda$ 
+and the tangent direction of $C$, and this is enough for our purposes.
+On the right-hand side of
+formula 0.6(a) we find what is essentially the factor
+$$
+\Delta_{0}(X)=\lim_{\lambda\rightarrow 0}
+{{\Delta_{loc}(\gamma_{\lambda,G},\gamma_{\lambda,H})}\over
+D_{G/H}(\gamma_{\lambda,G},\gamma_{\lambda,H})},
+$$
+in the notation of \cite{H3, \S 2}.
+The local translation invariance property in the hypotheses to
+Hales' reduction lemma 5.19 below holds for
+$\kappa(t_*)\Delta_0(X)$ as we will see (this is carried out in \S\S6-8
+below, which we compute a quantity which is essentially
+$\Delta_0(X)$).
+Therefore, we leave the $\kappa$-stable ${\Cal O}$-germ
+unchanged if we replace $X$ by $X+Y$, where $Y$ is sufficiently small
+and as in lemma 5.19.
+We may now apply lemma 5.18 to obtain the matching for functions
+whose support meets the stable orbit ${\Cal O}^{st}(F)$ but no
+other unipotent orbit.
+(This is where \cite{LS2} is implicitly used.)
+This descent argument, remarkably, allows us to
+avoid doing the difficult, more detailed calculations necessary for a 
+direct determination of the dependence of 
+$\Delta_{0}(X)\kappa(t_\sigma)$ on $X$.
+\par
+As we've already mentioned, the $0$-regular orbit has already been matched
+\cite{S2}.
+The $1$-regular $\kappa$-stable germ of $G_2$ matches with the 
+$1$-regular stable germ of $PGL(3)$ on cubic Cartans and with the
+$1$-regular stable germ of $(SL(2)\times SL(2))/\{\pm 1\}$ 
+on biquadratic Cartans.
+The stable germ associated to the 
+trivial unipotent orbit of $(SL(2)\times SL(2))/\{\pm 1\}$ 
+matches with the 2-regular $\kappa$-stable
+germ of $G_2$ on $T$, where $T$ and $\kappa$ determine
+$H_{T,\kappa}=(SL(2)\times SL(2))/\{\pm 1\}$. The stable germ associated to the 
+trivial unipotent orbit of $PGL(3)$ matches with the 3-regular $\kappa$-stable
+germ of $G_2$ on $T$, where $T$ and $\kappa$ determine $H_{T,\kappa}=PGL(3)$.
+These matchings are in accordance with the fact that the $2-$regular
+and $3-$regular unipotent orbits of $G_2(\overline{F})$ 
+are endoscopically induced from the trivial orbits of $A_1\times A_1$
+and $A_2$, respectively \cite{Spal, ch. III, table on page 221}.
+Finally, the matching for the  trivial orbit follows from the work
+of Rogawski, Howe, and Harish-Chandra \cite{Ro}.
+\par
+Though I've tried to make this paper self-contained (outside of
+the usual background in group theory \cite{Bor} and 
+algebraic geometry \cite{M}), familiarity
+with the ideas in \cite{L}, \cite{LS3}, \cite{H1}, and \cite{H3} is assumed.
+\vskip .1in 
+Acknowledgement: I'd like to thank Magdy Assem, Dan Bump,
+Caroline Grant, Roland Martin, and especially Tom Hales for many 
+enlightening conversations on the subject of this paper.
+\enddocument
+

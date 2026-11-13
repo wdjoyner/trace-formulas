@@ -1,0 +1,427 @@
+\documentclass[12pt,letterpaper]{article}
+\usepackage[T1]{fontenc}
+\IfFileExists{newtxmath.sty}%
+  {\usepackage{newtxtext,newtxmath}}%
+  {\usepackage{mathptmx}\usepackage{amssymb}}
+\usepackage[letterpaper,margin=1in]{geometry}
+\usepackage{amsmath,mathtools}
+\usepackage{booktabs,longtable,array,enumitem}
+\usepackage{microtype}
+\usepackage[hidelinks]{hyperref}
+\newcommand{\Gt}{\widetilde G}
+\newcommand{\At}{\widetilde A}
+\newcommand{\hl}{\tilde h}
+\newcommand{\wt}{\tilde w}
+\newcommand{\ZA}{Z_A}
+\newcommand{\Of}{\mathcal O}
+\DeclareMathOperator{\tr}{tr}
+
+\title{Revision log for\\ ``On the unitary dual of $\overline{SL(2,F)}$,
+$F$ $p$-adic''\\[4pt]\large Draft 1 (November 9, 2026) to Draft 2
+(November 13, 2026)}
+\author{Prepared by Claude (Anthropic) for D. Joyner}
+\date{November 13, 2026}
+
+\begin{document}
+\maketitle
+\tableofcontents
+
+\section{Files}
+
+\begin{itemize}[leftmargin=*]
+\item \texttt{sl2bar-unitary-dual-2026.tex}: Draft~2 of the paper.
+\item \texttt{revision-log.tex}: this log.
+\item \texttt{scripts/kubota\_torus\_check.py}: exact-arithmetic checks
+  of the cocycle computations (Section~\ref{sec:script}).
+\item Inputs:
+  \begin{itemize}
+  \item the 1999 manuscript \texttt{sph\_corr5b.tex}, dated 7-21-99,
+  \item Draft~1, in a file whose name ends in
+    \texttt{metaplectic\_cover\_2026c.tex},
+  \item the style guide, Draft~2 of November 11, 2026, in
+    \texttt{joyner-math-paper-style-guide.md}.
+  \end{itemize}
+\end{itemize}
+
+Draft~2 compiles with \texttt{pdflatex} with no errors, no undefined
+references and no overfull boxes. It was compiled here with
+\texttt{mathptmx}, because \texttt{newtx} is not installed in the
+sandbox. The preamble loads \texttt{newtxtext} and \texttt{newtxmath}
+when they are installed, so a local build will use them. It has not
+been test-compiled with \texttt{newtx}.
+
+\section{AI usage}
+
+\begin{itemize}[leftmargin=*]
+\item \textbf{Argon-Gemini.} Refereed the 1999 manuscript, suggested
+  corrections, added a glossary and produced a first revised
+  manuscript. A later revision attempt was not completed. (Source: the
+  abstract and acknowledgments of Draft~1.)
+\item \textbf{Sol-ChatGPT (OpenAI).} Wrote an independent referee
+  report and prepared Draft~1, the corrected LaTeX edition. (Source:
+  Draft~1.)
+\item \textbf{Claude (Anthropic), this draft.} Rewrote Draft~1 to
+  follow the style guide. Checked every mathematical claim of Draft~1
+  independently (Section~\ref{sec:levels}). Supplied complete proofs
+  where Draft~1 gave sketches. Wrote the Background section, all new
+  examples, and the expanded literature review. Checked bibliographic
+  data by web search. Wrote the verification script and this log.
+\end{itemize}
+Claude did not see the Argon-Gemini manuscript or either referee
+report. Claude's knowledge of them comes only from Draft~1.
+
+\section{Original results and results new in the revision}
+
+Rule~6.5 asks for this separation.
+
+\subsection{Results of the 1999 manuscript}
+\begin{enumerate}[leftmargin=*]
+\item Vanishing lemma for orbital integrals off the $d$th powers. Kept
+  (Lemma~6.1), with the correct quotient.
+\item Surjectivity of the split orbital-integral map (sketched in 1999,
+  with the final step referred to Shalika germs). Kept and now fully
+  proved (Theorem~6.4).
+\item Description of maximal abelian subgroups and genuine
+  representations of $\At$. The 1999 ``2-1 correspondence''
+  $\Pi(A_n)\to\Pi(\At)_{\mathrm{gen}}$ is wrong as stated, see
+  Section~\ref{subsec:removed}. Replaced by Theorem~5.6.
+\item Character formula for principal series, stated with
+  $\tr\chi(a)+\tr(\chi(a)^{-1})$ and with proof omitted. Corrected to
+  Weyl conjugation and proved (Theorem~8.3).
+\item Character identity $\tr\overline\pi(\bar f)=\tr\pi(f)$ for
+  $\gcd(p,2n)=1$ and all $n$. Correct only for $n$ odd or $4\mid n$,
+  with the normalization of Theorem~9.4.
+\item Unitarity of principal series, complementary series for
+  $0<s<1/n$, the special representation and the ``trash''
+  representation at $s=1/n$. Not proved. Recorded as cited material in
+  Remarks~2026.2--2026.5.
+\end{enumerate}
+
+\subsection{New in Draft 1 (Sol-ChatGPT)}
+The correct center $\ZA$ and the index $d^2$. The Stone--von Neumann
+parametrization by genuine characters of $\ZA$. The distinction between
+Weyl conjugation and inversion. The restriction to $n$ odd or $4\mid n$
+and the power map $\nu$ (Lemma~9.1). Explicit Haar normalizations and
+the $d$ versus $d^2$ distinction. Removal or demotion of the unproved
+unitary-dual claims.
+
+\subsection{New in Draft 2 (Claude)}
+\begin{itemize}[leftmargin=*]
+\item Lemma~3.2 (cocycle values, uniqueness of the splitting of $N$,
+  centrality of the preimage of $\pm I$). New, with proof.
+\item Lemma~5.1 (exact commutator $(a,b)_n^{-2}$). Draft~1 had
+  $(a,b)_n^{\pm2}$.
+\item Lemma~5.4 (Weyl conjugation on $\At$). Draft~1 stated (b) inside
+  the proof of Lemma~8.1. Parts (a), (c), (d) are new.
+\item Lemma~6.3 (constant term). Draft~1 stated the formula without
+  proof.
+\item Theorem~6.4. Draft~1 gave a sketch. Step~1 (submersion argument,
+  fiber description, explicit preimage) and Step~2 (explicit functions
+  near $\pm I$ and their transforms) are written out.
+\item Proposition~7.1. Draft~1 cited Moen for irreducibility. Draft~2
+  proves (a) directly and (b) from Frobenius reciprocity and the
+  geometric lemma, which are cited (Remark~2026.2).
+\item Lemma~7.2 (spherical vectors). New.
+\item Lemma~8.1 (trace of an induced representation by the kernel
+  method). New. Corollary~8.2 now follows from it directly.
+\item Theorem~8.3. Draft~1 gave a sketch citing [G, F, FK]. Draft~2
+  proves well-definedness, the trace identity via the Weyl integration
+  formula, and local integrability.
+\item Section~3 (Background) and Examples 3.1, 3.3--3.7, 5.5, 6.2, 6.6,
+  7.3, 8.5, 9.3. New. Examples 5.7, 5.8, 9.5 are from Draft~1, revised.
+\end{itemize}
+
+\section{Changes from Draft 1 to Draft 2}
+
+\subsection{Style-guide conformance}
+\begin{itemize}[leftmargin=*]
+\item \textbf{1.1.} Twelve-point Times (\texttt{newtx}, with
+  \texttt{mathptmx} fallback), US Letter, one-inch margins. Draft~1 used
+  Latin Modern.
+\item \textbf{1.2, 1.3.} Compiles cleanly. Two overfull boxes were
+  removed by rewording.
+\item \textbf{1.5.} All cross-references use \verb|\ref| and all
+  citations use \verb|\cite|. Section titles with math use
+  \verb|\texorpdfstring|.
+\item \textbf{1.7.} Citation keys changed to author letters plus year
+  (table in Section~\ref{subsec:keys}). Exception: Moen's undated
+  preprint has key \texttt{Mo}, because its year is unknown.
+\item \textbf{1.8.} Operators declared with \verb|\DeclareMathOperator|.
+\item \textbf{1.9.} Every Draft~1 label is kept, except
+  \texttt{eq:d}, which was a duplicate definition of $d$. The macro
+  \verb|\ht| was renamed \verb|\hl|, since \verb|\ht| is a \TeX\
+  primitive.
+\item \textbf{2.} Order: abstract, introduction, literature review,
+  background, notation, body, summary and open questions, glossary,
+  acknowledgments, references. Draft~1 had the notation table before
+  the introduction and no background section.
+\item \textbf{2.3.} Literature review split at 1999. Works added:
+  [Mc09], [Li12], [Lu20], [Sz24], [Ne86], [Si79].
+\item \textbf{2.4, 3.3.} Each background subsection and each section
+  has at least one example.
+\item \textbf{3.2.} Every section and subsection opens with an
+  orienting paragraph.
+\item \textbf{3.8.} Prose has no semicolons. Sentences were shortened.
+\item \textbf{5.1--5.5.} Abstract opens with the AI disclosure. Email
+  added to the author line. Acknowledgments name each AI and its role,
+  say that AI review is not certification, and point to this log.
+\item \textbf{6.2.} Title restored to the 1999 title. Draft~1 had
+  ``On the unitary dual of the metaplectic cover of $\mathrm{SL}(2,F)$,
+  $F$ $p$-adic''. Subtitle ``Draft 2. Corrected and expanded version''.
+  Date line ``Original draft: 1999. Corrected and expanded draft:
+  2026.''
+\item \textbf{6.3.} Note on the original manuscript in a
+  \verb|\thanks| footnote.
+\item \textbf{6.4.} Revision history removed from the body (the
+  Draft~1 acknowledgments paragraph on revision history, Draft~1
+  Remark~4.6, and the phrase ``the earlier draft'' in Section~6.3 of
+  Draft~1).
+\item \textbf{6.6.} Statements not fully verified are labeled
+  Remark~2026.1--2026.5.
+\end{itemize}
+
+\paragraph{[DECIDE] items, defaults used.} Document class: kept
+\texttt{article} from Draft~1. Times package: \texttt{newtx} with
+fallback. Glossary at the end, before the acknowledgments. Author
+line: Draft~1 listed Argon-Gemini and Sol-ChatGPT after ``with''.
+Claude was added to that list because it supplied new proofs. Remove
+it if you prefer.
+
+\subsection{Mathematical changes and corrections}
+\begin{enumerate}[leftmargin=*]
+\item \textbf{Example 5.7 (double cover).} Draft~1 said ``This does not
+  imply that the double cover splits over $A$.'' That is true as a
+  statement of logic, but it suggests that the cover does not split
+  over $A$. In the tame case it does split as an abstract group:
+  $\varpi^ku\mapsto\hl(\varpi)^k\hl(u)$ is a homomorphism when $n=2$,
+  since $\At$ is abelian and the cocycle is trivial on units. The
+  splitting is not canonical. Replaced by the true statement that
+  $t\mapsto\hl(t)$ is not a homomorphism.
+\item \textbf{Theorem 8.3 hypothesis.} Draft~1 assumed $\gcd(p,n)=1$.
+  Draft~2 assumes $\gcd(p,2n)=1$, because the proof uses the splitting
+  of $K$ through Corollary~8.2. The formula itself is expected to hold
+  for $p\nmid n$, but that is not proved here.
+\item \textbf{Intertwining operator (Section 7.4).} Draft~1 wrote
+  $T_s\varphi(g,a)$ in a model with an extra variable $a$ that was
+  never defined. Replaced by the standard operator
+  $\varphi\mapsto\int_F\varphi(\wt^{-1}(u(x),1)g)\,dx$, with the
+  matrix $J_s$ described in words.
+\item \textbf{Example 9.5 (degree three).} Draft~1 asserted the value
+  of the constant term of $e_K$. Draft~2 derives it (Example~6.6) and
+  checks the answer against Lemma~7.2 and the linear side
+  (Examples~3.7, 9.3).
+\item \textbf{Proposition 7.1.} Draft~1 also asserted temperedness.
+  That is now in Remark~2026.2 as unverified for covers.
+\item \textbf{Remark 2026.4.} Records exactly what the 1999 manuscript
+  asserted about complementary series and the representations at
+  $s=1/n$, and why it is not proved.
+\end{enumerate}
+
+\subsection{Removed material}\label{subsec:removed}
+Draft~1 Remark~4.6 (``Correction of an earlier multiplicity claim'')
+compared with the 1999 text, so it moved here. Its content: the 1999
+lemma claimed a 2-1 map $\Pi(A_n)\to\Pi(\At)_{\mathrm{gen}}$ through
+characters $\eta_j$ that differ on $C\setminus A_n$. For odd $n$,
+$A_n=C$, so the two choices coincide and the claim fails. The correct
+invariant is the genuine central character on $\ZA$.
+
+\subsection{Bibliography corrections}
+\begin{itemize}[leftmargin=*]
+\item [Ma84a, Ma84b]: year 1987 corrected to 1984, and the pages of
+  part~II corrected from 297--305 to 297--306.
+\item [Mo88]: title corrected to ``Irreducibility of unitary principal
+  series for covering groups of $SL(2,k)$''. Author C.~H.~Moen.
+\item [Mo]: Draft~1 described it as a 1979 University of Chicago
+  Ph.D. thesis. We could not confirm this, so the entry reverts to the
+  1999 description, ``preprint''. Draft~1 also referred to Moen as
+  ``her''. The pronoun was removed.
+\item [Ta17]: author's name S.~Tang (Shiang Tang). The Draft~1
+  summary was corrected. The paper computes Plancherel measures by a
+  comparison method and constructs genuine central characters of the
+  torus in the simply laced case.
+\item [GS75]: title ``\dots for the metaplectic group'' (Draft~1 had
+  ``on'').
+\item [Jo99]: volume and pages 73 (1999) 332--340 confirmed. Older
+  citations give ``273, 1--9'', which is wrong.
+\end{itemize}
+
+\subsection{Citation keys}\label{subsec:keys}
+\begin{center}
+\begin{tabular}{@{}ll@{\qquad}ll@{}}
+\toprule
+Draft 1 & Draft 2 & Draft 1 & Draft 2\\
+\midrule
+Ar & Ar80 & K & Ku67\\
+BZ1, BZ2 & BZ76, BZ77 & KP & KP84\\
+F & Fl80 & M1, M2 & Ma84a, Ma84b\\
+FK & FK86 & Mo1, Mo2 & Mo, Mo88\\
+G & Ge76 & Sch & Sc98\\
+GS & GS75 & Szpruch19 & Sz19\\
+GoldSz & GS16 & Tang & Ta17\\
+J1, J2, J3, J4 & Jo88, Jo98, Jo99, Jo01 & (new) & BD84, Li12, Lu20,
+Mc09,\\
+ & & & Ne86, Si79, Sz24\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\section{Sources consulted and not consulted}
+
+Rule~4.3. Level~2 means checked against a source actually consulted.
+Here that source was usually an abstract, a publisher page or an arXiv
+listing, found by web search on November 13, 2026. No full text was
+read in this revision.
+
+\begin{longtable}{@{}>{\raggedright\arraybackslash}p{0.15\linewidth}>{\raggedright\arraybackslash}p{0.80\linewidth}@{}}
+\toprule
+Key & What was checked\\
+\midrule
+\endhead
+Ar80 & Level 2: bibliographic data and the introduction (irreducible
+off $\operatorname{Re}s=0$ except at $s=\pm1/3$).\\
+BD84 & Not consulted. The claim that the arguments extend to finite
+central extensions comes from the 1999 manuscript.\\
+BZ76, BZ77 & Not consulted. Precise theorem numbers for the geometric
+lemma not given.\\
+Fl80, FK86, KP84 & Bibliographic data only (FK86 and KP84 confirmed in
+another paper's reference list).\\
+Ge76, GS75 & Bibliographic data only. The endpoint $s=1/2$ statement in
+Remark~2026.4 is from memory (Level 3).\\
+GS16 & Level 2: journal data, the assumption $p\nmid n$, and
+Theorem~5.2 (reducible genuine principal series from unitary data),
+from the arXiv introduction.\\
+Jo88 & Not re-checked. Volume 61 agrees with Draft~1 and with the
+October 2026 corrected edition of Jo01. The 1999 manuscript has 66.\\
+Jo98, Jo01, Jo99 & Level 2: journal data. Jo01's reference list
+includes the 1999 manuscript as a preprint.\\
+Ku67 & Not consulted. Formula (3.2) for the splitting of $K$ was
+spot-checked by script (Remark~2026.1).\\
+Li12 & Theorem numbers 2.6.4, 5.6.3, 5.8.10 are taken from the October
+2026 review of Jo01, when the PDF was read. Not re-checked here.\\
+Lu20 & Level 2: abstract.\\
+Mc09 & Level 2: arXiv abstract and introduction (Stone--von Neumann
+for the torus, Satake isomorphism). The published version (believed to
+be in Progress in Math.~300) was not confirmed, so the arXiv version is
+cited.\\
+Mo & Not found. See above.\\
+Mo88 & Level 2: publisher page and abstract ($p$ odd).\\
+Ne86 & Not consulted. Standard properties of the Hilbert symbol.\\
+Sc98 & Level 2: title page of the thesis.\\
+Si79 & Not consulted. The 1999 manuscript cites p.~198 for the Weyl
+integration formula. The page was not checked, so no page is given.\\
+Sz19 & Level 2: journal data and abstract ($p\mid n$ allowed,
+$4\nmid n$ assumed).\\
+Sz24 & Level 2: arXiv abstract and introduction (reducible unitary
+genuine principal series parametrized by nontrivial quadratic
+characters, odd $n$, two summands).\\
+Ta17 & Level 2: arXiv abstract.\\
+\bottomrule
+\end{longtable}
+
+\section{Verification of the mathematics}\label{sec:levels}
+
+Level~1 means an independent derivation by Claude in this revision.
+
+\begin{itemize}[leftmargin=*]
+\item Level 1: Lemmas 3.2, 5.1, 5.2, 5.4, 6.1, 6.3, 7.2, 8.1, 9.1,
+  Theorems 5.6, 6.4, 8.3, 9.4, Corollary 8.2, Proposition 7.1(a), and
+  all examples. The proofs in the paper are the derivations.
+\item Level 1 modulo citations: Proposition 7.1(b) (Frobenius
+  reciprocity and the geometric lemma for covers). Theorem 8.3 (Weyl
+  integration formula for $SL(2,F)$). Theorem 6.4 Step~1 ($p$-adic
+  inverse function theorem). Section 3.2 (formula (3.2) for the
+  splitting of $K$).
+\item Level 3 or cited only: Remarks 2026.2--2026.5.
+\end{itemize}
+
+\paragraph{Points a human referee should check first.}
+\begin{enumerate}[leftmargin=*]
+\item Formula (3.2) for the splitting of $K$, and that $\kappa=1$ on
+  upper triangular matrices. Lemma~7.2 and Examples 6.6 and 9.5 depend
+  on it.
+\item The Haar normalization (3.4), and that the quotient measure on
+  $\At\backslash\Gt$ is $du\,dk$.
+\item Step~2 of the proof of Theorem~6.4.
+\item The kernel argument in Lemma~8.1.
+\end{enumerate}
+
+\section{The verification script}\label{sec:script}
+
+\texttt{scripts/kubota\_torus\_check.py} models $F=\mathbb Q_p$ with
+$n\mid p-1$. It represents elements of $F^\times$ by rationals and uses
+the tame formula (H5). All checks are exact. For
+\[
+(p,n)\in\{(7,3),(13,3),(5,4),(13,4),(7,6),(13,6),(3,2),(7,2)\}
+\]
+it checks:
+\begin{enumerate}[leftmargin=*]
+\item the cocycle identity for $\beta$ on random elements of
+  $SL(2,\mathbb Q)$, which validates the implementation;
+\item $\beta(h(a),h(b))=(b,a)_n$ (Lemma~3.2(a));
+\item the commutator $(a,b)_n^{-2}$ (Lemma~5.1);
+\item $\beta(w,w^{-1})=1$ and $\wt^{-1}\hl(t)\wt=\hl(t^{-1})$
+  (Lemma~5.4(a), (b));
+\item $\hl(t)^{-1}=(t,-1)_n\hl(t^{-1})$ (Lemma~5.4(c));
+\item the center is $(F^\times)^d$ with index $d^2$ (Lemma~5.2);
+\item $\nu$ is a homomorphism exactly when $n\mid d^2$ (Lemma~9.1 and
+  Remark~9.6). It fails for $n=2$ and $n=6$, as expected;
+\item $u\mapsto(\varpi,u)_n^2$ has order $d$ on units (Lemma~7.2);
+\item the splitting identity for $\kappa$ on random elements of
+  $SL(2,\mathbb Z_p)$ (Remark~2026.1).
+\end{enumerate}
+It also checks $(5,-1)_4=-1$ (Example~3.1). All checks pass, and the
+script exits with status~0. Run time is about one second. The name ends
+in \texttt{\_check.py}, so the repository's \texttt{run\_checks.py}
+runs it with the other checks.
+
+\section{Concordance of numbering}
+
+Draft~1 numbers on the left, Draft~2 numbers on the right. Unlabeled
+Draft~1 items are matched by content.
+
+\begin{longtable}{@{}lll@{}}
+\toprule
+Item & Draft 1 & Draft 2\\
+\midrule
+\endhead
+Sections: intro, literature & 1, 2 & 1, 2\\
+Covering groups and conventions & 3 & 3.2--3.4 (Background)\\
+Table of notation & unnumbered, before \S1 & 4\\
+Covering torus, orbital integrals & 4, 5 & 5, 6\\
+Parabolic induction & 6 & 7\\
+Characters, transfer & 7, 8 & 8, 9\\
+Conclusions, glossary & 9, 10 & 10, 11\\
+Lemma radical & 4.1 & 5.2\\
+Remark on centralizers & 4.2 & 5.3\\
+Theorem torus & 4.3 & 5.6\\
+Example 2 and 3 & 4.4 & 5.7\\
+Example 4 and 6 & 4.5 & 5.8\\
+Remark on multiplicity claim & 4.6 & removed (this log, \S\ref{subsec:removed})\\
+Lemma vanishing & 5.1 & 6.1\\
+Theorem orbital & 5.2 & 6.4\\
+Remark Satake & 5.3 & 6.7\\
+Proposition tempered & 6.1 & 7.1\\
+Remark reducibility & 6.2 & Remark 2026.3\\
+Theorem character & 7.1 & 8.3\\
+Caution & 7.2 & 8.4\\
+Corollary trace & 7.3 & 8.2\\
+Lemma norm & 8.1 & 9.1\\
+Definition matching & 8.2 & 9.2\\
+Theorem transfer & 8.3 & 9.4\\
+Example degree three & 8.4 & 9.5\\
+Remark Weil & 8.5 & 9.6\\
+Remark spherical & 8.6 & 9.7\\
+Equations (3.1), (3.2) & kubota, genuine & (3.1), (3.3)\\
+Equations (3.3), (3.4) & $D$, $\delta_B$ & (3.5), (3.6)\\
+Equation (3.5) & $d$ & removed (defined in (5.2))\\
+Equations (4.1)--(4.5) & & (5.1)--(5.5)\\
+Equations (5.1)--(5.5) & OZ, Phi, index, Abel, surj & (6.1), (6.2),
+(6.3), (6.5), (6.6)\\
+Equations (6.1), (6.2) & & (7.1), (7.2)\\
+Equations (7.1)--(7.4) & char, char-Z, trace & (8.3), (8.4), (8.1),
+(8.2)\\
+Equations (8.1)--(8.7) & & (9.1)--(9.7)\\
+\bottomrule
+\end{longtable}
+
+\end{document}

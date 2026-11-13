@@ -18,6 +18,7 @@ Maintained by David Joyner. Parts of this repository were prepared with the help
 | [`local-trace/arthur/`](local-trace/arthur/) | Short guide: deriving the main identity from Arthur's local trace formula ("Route B") | Companion paper, Draft 5 (Nov. 2026): a working draft, normalizations not yet checked |
 | [`sl2bar-trace/`](sl2bar-trace/) | *A hitch-hiker's guide to the metaplectic trace formula for SL(2)* (D. Joyner, 1995/2002) with chapters of the 1997 book manuscript, and its 2026 revision for the 2-fold cover | Revision in progress: Sections 1–7 (introduction, foundations, rank 0, geometric side, spectral side, invariant form, stable(r) form) drafted and checked |
 | [`sl2bar-characters/`](sl2bar-characters/) | *Two-orbit unramified elliptic character relations for depth-zero representations of metaplectic covers of SL(2)*: odd-degree tame covers (not the 2-fold cover of `sl2bar-trace/`), reconstructed in 2026 from unfinished notes of about 2000 | Working draft 5 (Nov. 2026); refereed once, pinpoint citations still to be checked |
+| [`sl2bar-unitary-dual/`](sl2bar-unitary-dual/) | *On the unitary dual of SL(2,F)-bar, F p-adic* (D. Joyner, unpublished manuscript, 1999): genuine representations of the covering torus, split orbital integrals, principal-series characters, and a split-torus character identity for n odd or 4 \| n | Draft 2 (Nov. 2026): Sol-ChatGPT's corrected edition, rewritten to the style guide by Claude; not independently refereed (see `revised/revision-log.pdf`) |
 | [`sl2-invariant-distributions/`](sl2-invariant-distributions/) | *A hitch-hiker's guide to invariant distributions on SL(2) over a p-adic field* (D. Joyner, notes of 1994): the ordinary-group companion to the two metaplectic directories, with the 1994 source, its Argon–Gemini revision, the referee report on that revision, and the 2026 expository rewrite | Draft 2 (Nov. 2026): ChatGPT's rewrite with a style-guide pass by Claude; not independently refereed (see its `revision_log.md`) |
 | [`finite-trace/`](finite-trace/) | Trace formulas for finite groups: the 1996–2003 notes and their 2026 corrected and expanded version | Notes posted; refereeing of the 2026 corrections pending |
 | [`common/`](common/) | Shared notation, glossary and bibliography | Started |
@@ -40,7 +41,7 @@ Requires Python 3 with NumPy and SymPy (also runs under SageMath's Python).
 python3 run_checks.py
 ```
 
-This runs every verification script in the repository (currently PGL(2), SL(2), a rank-two lattice-point check for SL(3)/PGL(3), the PGL(3) building computation, and the checks of Sections 2–7 of the metaplectic double cover of SL(2) in `sl2bar-trace/revised/checks/`; under a minute; the PGL(3) and `sl2bar-trace` checks also need SymPy and mpmath).
+This runs every verification script in the repository (currently PGL(2), SL(2), a rank-two lattice-point check for SL(3)/PGL(3), the PGL(3) building computation, the checks of Sections 2–7 of the metaplectic double cover of SL(2) in `sl2bar-trace/revised/checks/`, and the Kubota-cocycle checks in `sl2bar-unitary-dual/scripts/`; under a minute; the PGL(3) and `sl2bar-trace` checks also need SymPy and mpmath).
 
 ## Building the documents
 

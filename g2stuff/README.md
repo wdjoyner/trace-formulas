@@ -16,7 +16,9 @@ g2stuff/
 ├── original-1994/   the 1994 AMS-TeX source files, unchanged
 ├── transcription/   literal single-file amsart transcription (no corrections)
 ├── referee/         referee report on the 1994 manuscript
-├── scripts/         exact computations used in the referee report
+├── scripts/         exact computations used in the referee report and Draft 1
+├── revised/         the corrected edition (Draft 1) and CHANGES.md
+├── revision_log.md  drafts, AI usage, verification levels, sources not consulted
 └── README.md
 ```
 
@@ -28,9 +30,12 @@ g2stuff/
 | `original-1994/g2new5d.tex`, `g2new9d.tex` | Variant versions of §5 and §9. It is not known which version is later. |
 | `transcription/g2_shalika_germs_transcription.tex`, `.pdf` | All sections in one amsart file, 12pt Times, letter paper, 49 pages. It is literal, as in §6.7 of the style guide: errors are kept, and Claude's notes appear only as `% Claude:` comments. The variant passages and the text that follows `\enddocument` in four source files are kept in `\iffalse` blocks, all of which compile when switched on. |
 | `referee/g2_referee_report.tex`, `.pdf` | Referee report by Claude (15 pages): eleven major issues, a table of minor issues and misprints, the results verified as correct, readability, a bibliography check, compliance with the style guide, and notes on the transcription. Every point has a verdict and a verification level (L1–L3). It also serves as the errata log for the transcription. |
+| `revised/g2-shalika-germs-2026.tex`, `.pdf` | **Draft 1. Corrected and expanded version** (57 pages), by David Joyner and Claude. Original numbering kept; new items lettered; every change or gap flagged in a Remark 2026.n (44 of them). |
+| `revised/CHANGES.md` | What Draft 1 does with each item of the referee report, and a table of the Remarks 2026.n. |
+| `revision_log.md` | Drafts, AI usage, verification levels (L1–L3), original vs. new results, sources not consulted, next steps. |
 | `scripts/g2_toric_divisors.py` | Toric structure of the monomial variety Z of §3: every branch of λ = 0 with its Igusa constants a, b, β, and which patches meet which divisors (about 75 s). |
 | `scripts/g2_saturation_full.py` | A complete proof that the semigroup of Z is saturated, so Z is normal for G₂. |
-| `scripts/g2_patch_jacobians.py`, `g2_patch_regularity.py` | The patch formulas of §3, the Igusa forms of §4, and the forms (8.1) and (8.4). |
+| `scripts/g2_patch_jacobians.py`, `g2_patch_regularity.py` | The patch formulas of §3, the Igusa forms of §4, the forms (7.3), (7.4), (8.1), (8.4), and the regularity of the twelve patches. |
 | `scripts/g2_exceptional_divisors.py` | The singular torus orbits of Z and candidate exceptional divisors of a toric resolution. |
 | `scripts/g2_tori_endoscopy.py` | H¹(F,T) for every elliptic torus of split G₂, and the root system of the endoscopic group for each κ. |
 
@@ -40,57 +45,26 @@ Run them one at a time, for example `python3 g2_tori_endoscopy.py`.
 
 ## Status
 
-**The original 1994 manuscript: refereed once (Claude, November 2026).** The
-verdict is major revision.
+**Draft 1 of the corrected edition (Claude and D. Joyner, November 2026).**
+Not yet independently refereed.
 
-- **Confirmed.** The geometric core is largely right. Z is normal for G₂, the
-  essential patches are regular and cover Z up to codimension two (so
-  Conjecture 3.4 holds for G₂), and the 1-, 2- and 3-regular base divisors
-  have Igusa constants 2, 3 and 4.
-- **Not established.** Theorems 6.1, 7.2 and 8.3 are not proved as written.
-  - Hales' reduction lemma (5.19) cannot be applied, because the cuspidal
-    endoscopic groups of G₂ have trivial connected center.
-  - The hypotheses on the support of f can never be satisfied.
-  - The roots of the endoscopic PGL(3) are the *short* roots of G₂, not the
-    long ones used in §8.
-  - The quadratic tori and one class of S₃ tori are missing, although both
-    carry nontrivial κ.
-  - E_{∅,α,ε} has β = 11/3, not 10/3, and is the same divisor as E_{∅,α,ζ}.
-    Exceptional divisors are dismissed without an argument.
+- **Proved for G₂ (with exact computations in `scripts/`).** Z is a normal,
+  Cohen–Macaulay toric variety (Proposition 3.7), covered up to codimension
+  two by twelve regular patches (Proposition 3.4A). λ = 0 has exactly seven
+  branches, with the Igusa constants of Table 4.3A. Table A.6 lists all
+  elliptic endoscopic data; the roots of PGL(3) are the short roots.
+- **Conditional.** Theorems 6.1, 7.2 and 8.3 are now germ identities, proved
+  on Hypotheses (X_r) (Remark 2026.29) about how explicit fiber integrals
+  depend on the tangent direction X, plus Lemma 5.14 and the proviso of
+  Lemma 0.8 (exceptional and spurious divisors). Corollary 8.8 notes that
+  (X_r) hold a posteriori, given Gordon–Hales.
+- **Open.** A direct proof of (X_r); the exceptional divisors of a toric
+  resolution (one candidate has β = 2); the vanishing of the β = 11/3 term;
+  the quadratic and short-reflection S₃ tori; the count of F-classes in the
+  subregular class (6 or 8, not 7). See "Summary of results and open
+  problems" in the paper and "Next steps" in `revision_log.md`.
 
-## Can it be repaired?
-
-The matchings asserted in Theorems 6.1, 7.2 and 8.3 are true. Local transfer
-for p-adic groups is now a theorem: Waldspurger showed that the fundamental
-lemma implies transfer, and Ngô proved the fundamental lemma. Gordon and Hales
-(Amer. J. Math. 138 (2016)) derive the matching of κ-Shalika germs from
-Waldspurger's transfer. What fails is the 1994 proof.
-
-- **Straightforward.**
-  - Restate the theorems as germ identities.
-  - Correct the PGL(3) roots and the §1–§4 slips (S″, Lemmas 3.5 and 4.4, the
-    "regular branch", the patch misprints).
-  - Correct the divisor table.
-  - State Lemma 3.7 for G₂ (normal by the saturation script, Cohen–Macaulay by
-    Hochster's theorem) and leave the general case as a conjecture.
-  - Add the quadratic and S₃ tori, which use the same divisors.
-- **Mechanical but real work.** Compute an explicit toric resolution of Z (for
-  example with Sage's `ToricVariety.resolve()`), then the β and image orbit of
-  each exceptional divisor. Show that the β = 11/3 divisor contributes nothing.
-- **Hard.** Replace Lemma 5.19 by an explicit computation of how
-  κ(t_*)·|ω_{E(u)}| depends on the tangent direction X, as Hales did for SO(4)
-  in GSp(4).
-  - 2-regular case: looks feasible, since the Galois image lies in W(H₂) and
-    the fiber is 4-dimensional.
-  - 3-regular case: closer in difficulty to Langlands–Shelstad's A₂.
-  - 1-regular case: needs redoing, since the untypeset notes after §6 record an
-    unresolved discrepancy.
-
-**Planned route (§6.1 of the style guide).** A corrected edition that keeps
-the Igusa approach and fixes everything in the first two groups. It would label
-Theorems 6.1, 7.2 and 8.3 conditional on the X-dependence computation, state
-the gap precisely in a Remark 2026.n, and note that the matching itself now
-follows from Waldspurger and Gordon–Hales. The explicit computation, which
-would determine the actual matching constants, can be a separate project.
+**The original 1994 manuscript** was refereed once (Claude, November 2026),
+with the verdict major revision; see `referee/`.
 
 AI review is not an independent certification of the results.

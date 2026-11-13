@@ -1,0 +1,226 @@
+\documentclass[12pt,letterpaper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{newtxtext,newtxmath}
+\usepackage[letterpaper,margin=1in]{geometry}
+\usepackage{microtype}
+\usepackage{booktabs,tabularx,array,enumitem}
+\usepackage[hidelinks]{hyperref}
+\setlength{\parskip}{0.25em}
+\setlength{\parindent}{1.2em}
+\setlist[enumerate]{leftmargin=*,itemsep=2pt,topsep=3pt}
+\setlist[itemize]{leftmargin=*,itemsep=2pt,topsep=3pt}
+\newcommand{\Gt}{\widetilde G}
+\newcommand{\At}{\widetilde A}
+\newcommand{\ZA}{Z_A}
+\newcommand{\Oh}{\mathcal O}
+\newcommand{\Ff}{F_f^A}
+\DeclareMathOperator{\Ind}{Ind}
+\DeclareMathOperator{\tr}{tr}
+\DeclareMathOperator{\vol}{vol}
+\newcommand{\SL}{\mathrm{SL}}
+\newcommand{\C}{\mathbb C}
+\newcommand{\eps}{\varepsilon}
+\title{Referee Report on \emph{On the Unitary Dual of\\ $\overline{SL(2,F)}$, $F$ $p$-adic}\\[5pt]
+\large Draft 2 (13 November 2026)}
+\author{Independent mathematical and editorial assessment}
+\date{13 November 2026}
+\begin{document}
+\maketitle
+
+\section*{Recommendation: major revision, with a sound core}
+
+The manuscript is substantially clearer than a typical reconstruction of an older preprint: it specifies a Kubota cocycle, distinguishes genuine representations from anti-genuine test functions, pays attention to quotient measures, and explicitly excludes the problematic degrees $n\equiv2\pmod4$ from its stated transfer.  The principal calculations in the covering torus, the factor $d$ in the trace integral, and the conditional split-torus character comparison survived the checks described below.  I did \emph{not} find a demonstrated counterexample to the main new formulas.
+
+\emph{Major revision} is nevertheless appropriate, for three reasons. First, the relation between the purportedly unfinished classification of the unitary dual and the author's own 2001 paper needs a careful reconciliation. Second, one heavily cited modern reference uses a stronger roots-of-unity hypothesis than this manuscript. Third, the uploaded \texttt{.tex} file does \emph{not} compile under the installed \texttt{pdflatex} setup; this is a confirmed, easily repaired error.  There are additional proof-presentation and bibliographic improvements, but no reason at present to discard the central results.
+
+\paragraph{Scope of this report.}
+The object reviewed is the supplied 1,803-line file \texttt{sl2bar-unitary-\allowbreak dual-2026.tex}, specifically its Draft~2, not the original 1999 manuscript.  I read the statements and proofs of all the named results and compared selected claims with Moen~\cite{Mo88}, the online manuscript underlying Joyner~\cite{Jo01}, Goldberg--Szpruch~\cite{GS16}, and McNamara~\cite{Mc12}.  ``Verified directly'' below means an algebraic or measure-theoretic check against the supplied definitions; ``source checked'' means consultation of the indicated work; and ``not fully certified'' means precisely that.  Exact finite-field computations are described in Section~\ref{sec:checks}; they are independent spot checks, not proofs.
+
+\section{Mathematical correctness: substantive comments}
+
+\subsection{Clarify what was already established about the unitary dual}
+\label{item:prior}
+\textbf{Priority: high (positioning and completeness, not a demonstrated false theorem).}
+
+The introduction and the final open-question list say that classifying the genuine unitary dual remains unfinished for general $n$, while the 2001 paper \cite{Jo01}, cited in the manuscript, has an abstract explicitly claiming a description of the unitary and tempered dual in the tame setting $\gcd(p,2n)=1$. Its Section~3 is headed ``Unitary and tempered dual'', and its Theorems~3.13--3.14 give lists of representation types, drawing on its preceding propositions about complementary series and reducible principal series. These assertions are in the online manuscript consulted for this report.
+
+This is \emph{not} proof that the 2001 account is a complete, correct parameter-by-parameter classification: a necessary list of types is weaker than a verified exhaustive classification, and some of the old arguments are explicitly questioned in Draft~2. But it creates an important historiographic and mathematical obligation. The revised paper should identify \emph{which precise claims} of \cite{Jo01} are being retained, withdrawn, regarded as conditional, or left unverified. In particular, separate the following: (a) classification by broad representation type; (b) determination of all complementary intervals and endpoint constituents; (c) proofs of unitarizability; and (d) extension beyond $\gcd(p,2n)=1$.
+
+\emph{Suggested repair.} Add a paragraph in the introduction entitled ``Relation to the 2001 unitary-dual account'' and a short comparison table (1999 claim / 2001 claim / status in 2026). Replace an unqualified ``classify the genuine unitary dual for general $n$'' by a specific open problem, such as \emph{``independently establish and reconcile all claimed complementary-series and endpoint unitarity statements, and extend the account to excluded ramified settings.''} If the intended result is solely a new proof of a restricted trace identity, consider a more accurate title, for example \emph{``The covering torus and split principal-series characters for Kubota covers of $\SL_2$''}.
+
+\subsection{The McNamara citation has a stronger field hypothesis}
+\label{item:mc}
+\textbf{Priority: high for the referenced general theory; moderate for the elementary calculations already proved.}
+
+The standing assumptions generally require only $\mu_n\subset F$ and $p\nmid2n$. However, the version of McNamara's \emph{Principal Series Representations of Metaplectic Groups over Local Fields} checked here assumes $\mu_{2n}\subset F$ (indeed $2n\mid q-1$), not merely $\mu_n\subset F$; see its introduction and Section~2 \cite{Mc12}. In particular, $F=\mathbb Q_5$, $n=4$, used in the manuscript, contains $\mu_4$ but not $\mu_8$, and therefore does \emph{not} satisfy the hypotheses of the cited McNamara presentation.
+
+Accordingly, an unqualified appeal to \cite{Mc12} is not enough to justify a theorem \emph{for every field admitted by Draft~2}. This matters most where Section~7 invokes the geometric lemma, normalized Jacquet modules, and representation-theoretic finiteness. The covering-torus classification is largely safe from this difficulty because its proof is explicit, but the dependency should still be stated.
+
+\emph{Suggested repair.} Cite a proof of the geometric lemma and second adjointness for the specific Kubota cover under $p\nmid2n$, or write the needed rank-one argument. If using McNamara to motivate rather than justify a step, say so explicitly. Update its bibliography entry to the published 2012 chapter; see \cite{Mc12}.
+
+\subsection{The \texorpdfstring{$K$}{K}-splitting needs an authoritative proof or reference}
+\textbf{Priority: medium.}
+
+The display labeled \texttt{eq:kappa} in Section~3 defines
+\[
+\kappa\!\begin{pmatrix}a&b\\c&d\end{pmatrix}
+ =\begin{cases}(c,d)_n,&0<|c|<1,\\1,&\text{otherwise.}\end{cases}
+\]
+The manuscript labels this formula as unverified and appeals in part to a repository script.  It is central to the construction of $e_K$, the spherical-vector lemma, the singular-support part of the orbital-image proof, and the numerical unit tests.  Random tests cannot replace the homomorphism identity
+\[
+\kappa(k_1k_2)=\kappa(k_1)\kappa(k_2)\beta(k_1,k_2)
+\quad (k_1,k_2\in\SL_2(\mathcal O)).
+\]
+There is related explicit formulae in the literature for the double cover, but the $n$-fold formula should be cited in exactly the present cocycle convention. I performed a separate exact modular spot check (Section~\ref{sec:checks}) with no failures; this increases confidence but does not remove the need for a proof or authoritative reference.
+
+A short appendix proving the identity from the Bruhat/Iwahori generators would make the manuscript substantially more self-contained, and would justify deleting the ``not checked'' notice when appropriate.
+
+\subsection{The orbital-integral image theorem is plausible; tighten two steps}
+\textbf{Priority: medium (proof exposition).}
+
+Theorem \texttt{thm:orbital} (Section~6) deserves to remain a centerpiece. Its use of the quotient $\At\backslash\Gt$ on central elements is appropriate. The argument on the regular set uses a finite Weyl covering of the regular conjugacy locus; the singular-set correction uses functions supported in $\mu_n z_{\eps}s(K_m)$. I found no algebraic mismatch in the factors $2$ or $q^{-m}$.
+
+Two details should be supplied rather than left implicit:
+\begin{enumerate}
+\item When defining $f$ by the formula involving
+$\alpha(\At x)+\alpha(\At\widetilde w x)$ on the image of the conjugation map and zero elsewhere, explain why \emph{extension by zero remains locally constant at the boundary}. The argument should name the compact, open-in-the-regular-locus support supplied by $\operatorname{supp}\phi$ and $\operatorname{supp}\alpha$, rather than asserting local constancy solely from the local inverse-function theorem.
+\item In the $z_{\eps}$ construction, state explicitly that $m$ is taken sufficiently large that the two singular neighborhoods are disjoint and contained in $\ZA$, and verify that the displayed characteristic function is understood \emph{on the whole center}, not merely near $z_{\eps}$. The claim is credible because the support of $f_{\eps,m}$ is in $\mu_n z_{\eps}s(K_m)$; a two-sentence support argument would close the presentation.
+\end{enumerate}
+
+The assertion that the image is exactly $C_c^\infty(\ZA)_{\rm gen}^W$ should also be compared explicitly with the normalization of Lemma~2.2 of \cite{Jo01}; the older paper uses a different quotient and a maximal abelian subgroup, so the statements should not be identified without a conversion formula.
+
+\subsection{The principal-series trace and character formulae}
+\textbf{Priority: low to medium.}
+
+The resulting formulas
+\begin{align}
+\tr\Pi(\chi_\lambda)(f)
+ &=d\int_{\ZA}\lambda(z)\Phi_f(z)\,dz,\label{eq:report-trace}\\
+\Theta_{\Pi(\chi_\lambda)}(z)
+ &=\frac{d\{\lambda(z)+\lambda(\widetilde w^{-1}z\widetilde w)\}}
+ {|D(z)|^{1/2}},\qquad z\in(\ZA)_{\rm reg},\label{eq:report-character}
+\end{align}
+are compatible with the earlier definitions and with the required genuine central equivariance. The appearance of Weyl conjugation \emph{rather than} group inversion is important and correct: an inversion term would transform incorrectly under $\zeta\in\mu_n$ when $n>2$.
+
+The proof of the induced-trace lemma is efficient but condensed. Spell out why the integral kernel on $K\times K$ defines a finite-rank operator on the \emph{full} $L^2(K,V_\chi)$, why its image lies in the equivariant induced model, and why its trace there agrees with the trace of $\Pi(f)$. In the character proof, note explicitly that the singular semisimple set has Haar measure zero; this justifies working on regular elements. These are requested proof completions, not objections to the formulas.
+
+A further distinction should be kept prominent: $\Theta_{\Pi(\chi_\lambda)}$ is the character of the \emph{possibly reducible induced representation}. At reducibility points it is the \emph{sum} of constituent characters; the paper does not produce the individual constituent identities.
+
+\subsection{The restricted transfer is a trace identity, not a full correspondence}
+\textbf{Priority: medium (scope and terminology).}
+
+For $d=n/\gcd(n,2)$ the calculation
+\[
+\beta(h(s^d),h(t^d))=(t,s)_n^{d^2}
+\]
+shows that $\nu(h(t))=(h(t^d),1)$ is a homomorphism if $n$ is odd or $4\mid n$. The formula for the Haar pushforward (and hence the cancellation of the factor $d$ in \eqref{eq:report-trace}) is correct under the stated tame assumptions. The exclusion of $n\equiv2\pmod4$ is appropriate to this \emph{particular} power-map construction; it should not be interpreted as a no-go theorem for all transfers in those degrees.
+
+Theorem \texttt{thm:transfer} (Section~9) supplies an equality of traces for \emph{split-matching test functions}. It does not supply a unique transfer operator, elliptic orbital matching, a correspondence between all irreducibles, or identities for the two constituents of a reducible principal series. This is stated, but it merits a one-sentence caveat immediately after the boxed identity. The phrase ``restricted split-torus trace matching'' is more precise than unqualified ``metaplectic correspondence.''
+
+\subsection{Unitary and complementary series: normalization and verification status}
+\textbf{Priority: medium to high if any claims are promoted to theorems.}
+
+The manuscript commendably segregates unverified statements into numbered remarks. Maintain this policy. But add an explicit \emph{parameter conversion} before comparing endpoint values such as $s=1/n$. The manuscript defines
+\[
+\lambda_s\bigl(\zeta\widetilde h(u)\bigr)
+ =\lambda_0\bigl(\zeta\widetilde h(u)\bigr)|u|^{s/d}
+ \qquad (u\in(F^\times)^d),
+\]
+so $\lambda_s(\widetilde h(t^d))$ varies as $|t|^s$. In \cite[\S3.2]{Jo01}, the inducing character on a maximal abelian subgroup is instead written using $|x|^{s_{\rm old}}$. If $x=t^d$ on the common central subgroup and the normalizations are otherwise identical, then \emph{formally} $s=d\,s_{\rm old}$. This is a comparison to check, not an asserted identity between the complete parametrizations, because the two papers choose different maximal abelian subgroups and section conventions. Without displaying the exact translation, the numerical endpoints cannot safely be copied between sources.
+
+Source checks support the qualitative reducibility claim: Moen \cite{Mo88} states that even-degree unitary principal series are irreducible and that the odd-degree reducible cases arise from nontrivial quadratic data; Goldberg--Szpruch \cite[Thm.~5.2]{GS16} gives a corresponding modern criterion under tame assumptions. The literature review could state these sharper results, with conditions, instead of saying only ``certain'' cases.
+
+\section{Independent checks and limits of verification}
+\label{sec:checks}
+
+\begin{enumerate}[label=\textbf{C\arabic*.}]
+\item \textbf{Commutator and radical (verified directly).} From $\widetilde h(a)\widetilde h(b)=(h(ab),(b,a)_n)$, swapping $a,b$ yields $[\widetilde h(a),\widetilde h(b)]=(a,b)_n^{-2}$. Nondegeneracy of the Hilbert symbol then identifies the central radical by $a^2\in(F^\times)^n$. Given $\mu_n\subset F$, this equals $(F^\times)^d$. In the tame case, $F^\times/(F^\times)^d\simeq(\mathbb Z/d\mathbb Z)^2$, so $[\At:\ZA]=d^2$. These calculations check out.
+\item \textbf{Finite-dimensional torus representations (proof inspected).} The maximal abelian subgroup $\widetilde C$ has index $d$; the finite Heisenberg/Mackey argument produces a $d$-dimensional representation with trace $d\lambda$ on $\ZA$ and zero off it. The central-character calculation and conjugacy vanishing are consistent. The existence of a \emph{smooth} extension of $\lambda$ to $\widetilde C$ is routine because $\widetilde C/\ZA$ is finite; stating that point explicitly would help.
+\item \textbf{Haar factor (verified directly).} In the tame case the power map on $\mathcal O^\times$ has kernel $\mu_d$, image of index $d$, and the restricted volume of $(\mathcal O^\times)^d$ is $1/d$. Consequently $\tr\Pi(\chi_\lambda)(e_K)=d\cdot(1/d)=1$ for unramified $\lambda$, agreeing with the spherical-vector calculation. Replacing $d$ by $d^2$ would be wrong.
+\item \textbf{Compact splitting spot check (computed independently).} I implemented the tame Hilbert-symbol formula using exact rational arithmetic and modular residues, constructed random products of elementary integral matrices in $\SL_2(\mathbb Z)$, and checked the stated $\kappa$-cocycle identity on 1,000 pairs for each of $(p,n)=(7,3),(5,4),(13,6),(7,2),(13,4)$. All 5,000 checks passed. This does not certify the universal identity or the wild case and does not rely on the repository's test program.
+\item \textbf{Character and transfer (conditional verification).} Direct substitution into the Weyl formula and the identity for the restricted Haar measure produces the manuscript's trace and transfer factors, \emph{provided} the stated Iwasawa and induced-kernel normalizations hold. I did not independently reconstruct the entire harmonic-analysis apparatus for finite central covers or prove a full character theorem from external sources. No counterexample was found in these deductions.
+\end{enumerate}
+
+\section{Readability, organization, and editorial suggestions}
+
+\begin{enumerate}[label=\textbf{E\arabic*.}]
+\item \textbf{Correct the title and contribution statement.} The abstract states accurately that the article does not classify the unitary dual; the title should not suggest otherwise. State three novel contributions in the first page: an explicit covering-torus treatment, the normalized image theorem, and the restricted split character identity.
+\item \textbf{Add a dependency map.} After the introduction, show the logical chain
+\[
+\begin{gathered}
+\text{Kubota cocycle}\longrightarrow\text{torus center}\longrightarrow\text{torus trace},\\[2pt]
+\text{Iwasawa and Abel transform}\longrightarrow\text{orbital image},\\[2pt]
+\text{orbital image + torus trace}\longrightarrow\text{induced trace}\longrightarrow\text{matching}.
+\end{gathered}
+\]
+This will orient readers who know ordinary $\SL_2$ but not metaplectic covers.
+\item \textbf{Compress repetitive subsection openers.} Many subsections begin with ``This subsection...''. Retain roadmap sentences where essential, but replace the routine ones by substantive mathematical transitions.
+\item \textbf{Distinguish quotient names visually.} At first use, set a small comparison display for $\ZA\backslash\Gt$, $\At\backslash\Gt$, $\widetilde C\backslash\At$, and the corresponding normalization factors. These quotients are the conceptual heart of the paper and easy to confuse.
+\item \textbf{Explain what the threefold example proves.} The $n=3$, $F=\mathbb Q_7$ calculations are useful. Put the commutator, center index, spherical dimension, and transfer trace together in one cross-referenced worked example or table, rather than making readers collect them from five sections.
+\item \textbf{Separate bibliographic uncertainty from proof uncertainty.} A numbered ``Remark 2026.$k$'' currently covers several different statuses: an unverified citation, a theorem invoked under potentially different hypotheses, and a known result not reproved. A uniform annotation system (\emph{proved here}, \emph{source checked}, \emph{cited only}, \emph{conjectural}) would be clearer.
+\item \textbf{Update references.} Szpruch's cited 2024 preprint was published in \emph{Proceedings of the American Mathematical Society} \textbf{153} (2025), 1933--1945 \cite{Sz25}. McNamara's cited preprint appeared as a 2012 book chapter \cite{Mc12}. Where possible cite journal/book versions and retain arXiv identifiers as supplementary links.
+\item \textbf{Tighten the open questions.} Explicitly distinguish wild primes $p\mid n$, the $n\equiv2\pmod4$ failure of the chosen power section, spherical Satake matching, and elliptic matching; these are logically different issues.
+\end{enumerate}
+
+\section{Confirmed \texttt{pdflatex} defect and exact remedy}
+
+The \emph{uploaded source as written} fails to compile in TeX Live 2025 with
+\begin{quote}\ttfamily\small
+! LaTeX Error: Command \textbackslash openbox already defined.
+\end{quote}
+The problem is loading \texttt{newtxmath} before \texttt{amsthm}. In the tested installation, \texttt{newtxmath} establishes \verb|\openbox|, after which \texttt{amsthm} attempts to define it again. Moving \texttt{amsmath,amsthm,mathtools} \emph{before} the Times math package resolves the failure. The following preamble fragment was successfully tested:
+\begin{verbatim}
+\documentclass[12pt,letterpaper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amsthm,mathtools}
+\IfFileExists{newtxmath.sty}%
+  {\usepackage{newtxtext,newtxmath}}%
+  {\usepackage{mathptmx}\usepackage{amssymb}}
+\usepackage[letterpaper,margin=1in]{geometry}
+\end{verbatim}
+With this single package-order correction, the manuscript compiled successfully to a US-letter PDF in this environment. It does \emph{not} address the editorial issues above. The present referee report itself uses 12-point Times-style text/math, US letter, and compiles with \texttt{pdflatex}.
+
+\section{Recommended revision sequence}
+
+First, make the one-line package-order repair and freeze a compilable baseline. Second, reconcile the precise claims of \cite{Jo01} with the restricted aims and remove any unintentionally misleading ``open classification'' statement. Third, certify or cite the $K$ splitting and close the small topological-support details of the orbital-image theorem. Fourth, align the geometric-lemma citation with the manuscript's weaker assumptions. Fifth, add the parameter conversion for the complementary-series literature and update the two bibliographic records. At that point, the paper should be in good shape for a second, narrower refereeing pass focused on the character proof and the image theorem.
+
+\paragraph{Bottom line.}
+The manuscript has a credible mathematical core and a much improved conceptual account of the nonabelian covering torus. It needs \emph{targeted strengthening and more exact claims of scope}, rather than wholesale reconstruction. This recommendation is limited by the verification scope stated above; it is not a certification of every assertion in the paper.
+
+\begin{thebibliography}{GS16}
+\bibitem[GS16]{GS16}
+D. Goldberg and D. Szpruch,
+``Plancherel measures for coverings of $p$-adic $SL_2(F)$,''
+\emph{International Journal of Number Theory} \textbf{12} (2016), 1907--1936.
+\url{https://doi.org/10.1142/S1793042116501189}.
+
+\bibitem[Jo01]{Jo01}
+D. Joyner,
+``Invariant distributions on the $n$-fold metaplectic covers of $GL(r,F)$, $F$ $p$-adic,''
+\emph{Journal of Fourier Analysis and Applications} \textbf{7} (2001), 343--358.
+Online 2000 manuscript consulted for Sections~2--3:
+\url{https://yetanothermathblog.com/wp-content/uploads/2016/07/invar15_jfaa.pdf}.
+
+\bibitem[Mc12]{Mc12}
+P. J. McNamara,
+``Principal series representations of metaplectic groups over local fields,''
+in \emph{Multiple Dirichlet Series, L-functions and Automorphic Forms},
+Birkh\"auser (2012), 299--327.
+\url{https://doi.org/10.1007/978-0-8176-8334-4_13}.
+The author's 2010 manuscript consulted for the exact assumptions:
+\url{https://petermc.net/maths/papers/pcrepssep10.pdf}.
+
+\bibitem[Mo88]{Mo88}
+C. H. Moen,
+``Irreducibility of unitary principal series for covering groups of $SL(2,k)$,''
+\emph{Pacific Journal of Mathematics} \textbf{135} (1988), 89--110.
+\url{https://msp.org/pjm/1988/135-1/pjm-v135-n1-p07-s.pdf}.
+
+\bibitem[Sz25]{Sz25}
+D. Szpruch,
+``Whittaker spaces for reducible unitary principal series representations of $\widetilde{SL_2(F)}$,''
+\emph{Proceedings of the American Mathematical Society} \textbf{153} (2025), 1933--1945.
+\url{https://doi.org/10.1090/proc/17143}.
+\end{thebibliography}
+\end{document}

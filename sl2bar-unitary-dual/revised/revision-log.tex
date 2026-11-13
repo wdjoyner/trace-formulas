@@ -1,12 +1,14 @@
 \documentclass[12pt,letterpaper]{article}
 \usepackage[T1]{fontenc}
+% amsmath must come before newtxmath.
+\usepackage{amsmath,mathtools}
 \IfFileExists{newtxmath.sty}%
   {\usepackage{newtxtext,newtxmath}}%
   {\usepackage{mathptmx}\usepackage{amssymb}}
 \usepackage[letterpaper,margin=1in]{geometry}
-\usepackage{amsmath,mathtools}
 \usepackage{booktabs,longtable,array,enumitem}
 \usepackage{microtype}
+\usepackage{url}
 \usepackage[hidelinks]{hyperref}
 \newcommand{\Gt}{\widetilde G}
 \newcommand{\At}{\widetilde A}
@@ -14,10 +16,11 @@
 \newcommand{\wt}{\tilde w}
 \newcommand{\ZA}{Z_A}
 \newcommand{\Of}{\mathcal O}
+\newcommand{\SL}{\mathrm{SL}}
 \DeclareMathOperator{\tr}{tr}
 
 \title{Revision log for\\ ``On the unitary dual of $\overline{SL(2,F)}$,
-$F$ $p$-adic''\\[4pt]\large Draft 1 (November 9, 2026) to Draft 2
+$F$ $p$-adic''\\[4pt]\large Draft 1 (November 9, 2026) to Draft 3
 (November 13, 2026)}
 \author{Prepared by Claude (Anthropic) for D. Joyner}
 \date{November 13, 2026}
@@ -26,10 +29,159 @@ $F$ $p$-adic''\\[4pt]\large Draft 1 (November 9, 2026) to Draft 2
 \maketitle
 \tableofcontents
 
-\section{Files}
+\section{Draft 2 to Draft 3: response to the referee report}
+\label{sec:draft3}
+
+Sol-ChatGPT refereed Draft~2 on November 13, 2026, in a referee
+report written in \LaTeX. Its
+recommendation was ``major revision, with a sound core''. It found no
+counterexample to the main formulas. This section answers each point.
+Theorem numbers in this section refer to Draft~3. Sections
+\ref{sec:files}--\ref{sec:concordance} below are the Draft~1 to Draft~2
+log, and their numbers refer to Draft~2. The concordance at the end of
+this section converts between the two.
+
+Verdicts follow the style guide: correct, misprint, fixable gap, or
+false. Verification levels: Level~1 is an independent derivation,
+Level~2 a check against a source consulted for this draft, and Level~3
+reliance on memory or an earlier session.
+
+\subsection{Mathematical points}
+
+\begin{longtable}{@{}>{\raggedright\arraybackslash}p{0.27\linewidth}>{\raggedright\arraybackslash}p{0.68\linewidth}@{}}
+\toprule
+Referee point & Verdict, level and action\\
+\midrule
+\endhead
+1.1 Relation to the 2001 unitary-dual account. & \emph{Correct}
+(positioning, not an error). Level~2 for the 1999 manuscript, which was
+reread (its \S4 is the source of the 2001 \S3 claims). Level~3 for the
+2001 paper: its \S3 contents are known from the October 2026 review,
+and the theorem numbers 3.13--3.14 cited by the referee were not
+checked, because the online PDF could not be fetched from this
+session. Action: new ``Contributions'' paragraph, Table~1 (claims (a)
+to (h) with their status), and open question~(1). The title is kept
+by style-guide rule~6.2. The introduction gives the more accurate
+description that the referee suggests.\\
+1.2 McNamara assumes $\mu_{2n}\subset F$. & \emph{Correct}. Level~2:
+McNamara's introduction and Section~2 assume that $F^\times$ contains
+the $2n$th roots of unity, that $2n\mid q-1$, and that $p\nmid2n$.
+Action: the literature review states these hypotheses and the example
+$F=\mathbb Q_5$, $n=4$. No proof now depends on \cite{Mc12}. The
+Jacquet module is computed directly (Lemma~7.1).\\
+1.3 The $K$-splitting needs a proof or reference. & \emph{Fixable gap},
+closed. Level~1: new Lemma~3.3 proves
+$\kappa(k_1k_2)=\kappa(k_1)\kappa(k_2)\beta(k_1,k_2)$ for $p\nmid n$,
+using the generators $u(x)$ and $w$ of $\SL(2,\mathcal O)$ and four
+cases for $w$. Former Remark~2026.1 is deleted. Goldberg--Szpruch was
+checked (Level~2) and does not give the formula.\\
+1.4 Image theorem: extension by zero, and the singular step. &
+\emph{Fixable gap}, closed. Level~1. Step~1 now proves local constancy
+on all of $\Gt$ from the compact supports of $\alpha$ and $\phi$.
+Step~2 computes $\Phi_{f_{\varepsilon,m}}$ on all of $\ZA$, proves
+$z_\varepsilon\in\ZA$, and shows the two neighborhoods are disjoint for
+$m\ge1$. The comparison with other normalizations is the new display
+(6.4) and Remark~6.5. The 2001 Lemma~2.2 itself was not consulted.\\
+1.5 Trace and character proofs. & \emph{Fixable gap} (exposition),
+closed. Level~1. The proof of Lemma~8.1 now shows that the kernel is a
+finite sum, that $T$ has finite rank on all of $L^2(K,V_\chi)$ with
+image in $H$, and that $\tr T=\tr\Pi(f)$. The proof of Theorem~8.3 notes
+that the singular set has measure zero. New Remark~8.4 says that
+$\Theta_\Pi$ is the character of a possibly reducible representation.\\
+1.6 Transfer is a trace identity, not a correspondence. & \emph{Correct}.
+Theorem~9.4 is renamed ``Restricted split-torus trace matching'', a
+paragraph after it lists what it does not give, and Remark~9.6 says the
+exclusion of $n\equiv2\pmod4$ concerns this power map only.\\
+1.7 Parameter conversion. & \emph{Correct}. Level~1 from the 1999 text
+(\S4.3 induces from $\mu(x)=\mu_0(x)|x|^{s}$ on $\widetilde C$): on
+$\ZA$, $s=d\,s_{\mathrm{old}}$. New display (7.3), with the referee's
+caveat. Remark~2026.2 now states the reducibility criterion of
+Goldberg--Szpruch, Theorem~5.2 (Level~2, arXiv text). Moen's paper was
+consulted only through its abstract.\\
+C1--C5. & Agreed. The referee's independent spot check of $\kappa$ (C4)
+agrees with ours and is now superseded by Lemma~3.3.\\
+\bottomrule
+\end{longtable}
+
+\subsection{Editorial points}
+
+\begin{longtable}{@{}>{\raggedright\arraybackslash}p{0.27\linewidth}>{\raggedright\arraybackslash}p{0.68\linewidth}@{}}
+\toprule
+Referee point & Action\\
+\midrule
+\endhead
+E1 Title and contributions. & Contributions (A)--(C) are stated on the
+first pages. The title is \emph{not} changed, by rule~6.2. Change it if
+you prefer.\\
+E2 Dependency map. & Added to the introduction.\\
+E3 Repetitive openers. & Every ``This section\dots'' and ``This
+subsection\dots'' opener was rewritten as a mathematical statement.\\
+E4 Quotients. & New display (6.4) comparing the quotients by $\ZA$,
+$\widetilde C$ and $\At$.\\
+E5 Threefold example. & New Table~2 in Section~10 for $\mathbb Q_7$,
+$n=3$.\\
+E6 Status annotations. & Four status labels are defined in the
+introduction. Each Remark~2026.$n$ opens with its status.\\
+E7 References. & \cite{Sz25}: Proc. Amer. Math. Soc. 153 (2025), no.~5,
+1933--1945, confirmed on the author's publications page (Level~2).
+\cite{Mc12}: Progr. Math.~300, Birkh\"auser/Springer, 2012, confirmed
+in other papers' reference lists. The pages 299--327 come from the
+referee and were not independently confirmed.\\
+E8 Open questions. & Rewritten as five independent questions.\\
+\S4 \texttt{pdflatex} failure with \texttt{newtx}. & \emph{Correct}.
+\texttt{amsmath}, \texttt{amsthm} and \texttt{mathtools} are now loaded
+before \texttt{newtxmath}, in the paper and in this log. We could not
+reproduce the failure here, because \texttt{newtx} is not installed.
+The fix follows the referee's tested preamble.\\
+\bottomrule
+\end{longtable}
+
+\subsection{New mathematics that needs refereeing}
+
+The next referee should check these first.
+\begin{enumerate}[leftmargin=*]
+\item Lemma~3.3 (Kubota's splitting), especially cases (ii) and (iv),
+  which use the tame formula with nonunit arguments.
+\item Lemma~7.1 (Jacquet module), the action of $\At$ on the open-cell
+  part.
+\item Proposition~7.2(b), the new argument by orthogonal complements.
+\item Lemma~8.1, the finite-rank and trace argument.
+\item Theorem~6.4, the revised Steps~1 and~2.
+\end{enumerate}
+
+\subsection{Other changes}
+Draft number~3 in the subtitle and footnote. Acknowledgments now
+mention the referee report and Claude's Draft~3 changes. Hypotheses
+paragraph: the splitting needs only $p\nmid n$, and $\mu_{2n}\subset F$
+is not assumed. One semicolon in the notation table was replaced by a
+comma. No result changed its statement, apart from the renaming of
+Theorem~9.4 and the hypothesis of the splitting.
+
+\subsection{Concordance, Draft 2 to Draft 3}
+\begin{center}
+\small
+\begin{tabular}{@{}lll@{\qquad}lll@{}}
+\toprule
+Item & D2 & D3 & Item & D2 & D3\\
+\midrule
+Kubota's splitting & -- & Lemma 3.3 & Remark 2026.1 ($\kappa$) & 2026.1 & deleted\\
+Examples 3.3--3.7 & 3.3--3.7 & 3.4--3.8 & Remark (cited facts) & 2026.2 & 2026.1\\
+Quotient display & -- & (6.4) & Remark (reducibility) & 2026.3 & 2026.2\\
+Equations (6.4)--(6.6) & (6.4)--(6.6) & (6.5)--(6.7) & Remark (complementary) & 2026.4 & 2026.3\\
+Jacquet module & -- & Lemma 7.1 & Remark (subquotients) & 2026.5 & 2026.4\\
+Proposition (unitarity) & 7.1 & 7.2 & Remark (reducible character) & -- & 8.4\\
+Lemma (spherical) & 7.2 & 7.3 & Caution & 8.4 & 8.5\\
+Example (threefold) & 7.3 & 7.4 & Example (character) & 8.5 & 8.6\\
+Parameter conversion & -- & (7.3) & Tables & -- & 1, 2\\
+\bottomrule
+\end{tabular}
+\end{center}
+All other numbers are unchanged.
+
+\section{Files (Draft 2)}\label{sec:files}
 
 \begin{itemize}[leftmargin=*]
-\item \texttt{sl2bar-unitary-dual-2026.tex}: Draft~2 of the paper.
+\item \texttt{sl2bar-unitary-dual-2026.tex}: the paper (Draft~3 since November 13, 2026).
 \item \texttt{revision-log.tex}: this log.
 \item \texttt{scripts/kubota\_torus\_check.py}: exact-arithmetic checks
   of the cocycle computations (Section~\ref{sec:script}).
@@ -374,7 +526,7 @@ script exits with status~0. Run time is about one second. The name ends
 in \texttt{\_check.py}, so the repository's \texttt{run\_checks.py}
 runs it with the other checks.
 
-\section{Concordance of numbering}
+\section{Concordance of numbering, Draft 1 to Draft 2}\label{sec:concordance}
 
 Draft~1 numbers on the left, Draft~2 numbers on the right. Unlabeled
 Draft~1 items are matched by content.
@@ -424,4 +576,11 @@ Equations (8.1)--(8.7) & & (9.1)--(9.7)\\
 \bottomrule
 \end{longtable}
 
+\begin{thebibliography}{Mc12}
+\bibitem[Mc12]{Mc12} P.~J.~McNamara, Principal series representations
+of metaplectic groups over local fields, Progr. Math.~300, 2012.
+\bibitem[Sz25]{Sz25} D.~Szpruch, Whittaker spaces for reducible unitary
+principal series representations of coverings of $SL(2,F)$, Proc.
+Amer. Math. Soc. 153 (2025).
+\end{thebibliography}
 \end{document}

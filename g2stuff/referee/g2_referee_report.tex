@@ -1,0 +1,802 @@
+% Referee report on D. Joyner, "On the transfer of Shalika germs for G_2" (1994).
+% Written by Claude (Anthropic), November 13, 2026.
+% newtx is not installed in the build environment, so Times is provided by
+% mathptmx, the fallback allowed by the house style guide.
+\documentclass[12pt,letterpaper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{mathptmx}
+\usepackage{courier}
+\usepackage[scaled=0.92]{helvet}
+\usepackage[letterpaper,margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{longtable,booktabs,array}
+\usepackage{enumitem}
+\usepackage{microtype}
+\usepackage[hidelinks]{hyperref}
+\setlength{\emergencystretch}{3em}
+\setlist{itemsep=2pt,topsep=4pt}
+
+\newcommand{\OF}{\mathcal{O}_F}
+\newcommand{\ovF}{\overline{F}}
+\newcommand{\cO}{\mathcal{O}}
+\DeclareMathOperator{\Ind}{Ind}
+\newcommand{\Lv}[1]{\textsf{L#1}}
+\newcommand{\verdict}[1]{\textbf{Verdict:} \emph{#1}.}
+\newcommand{\level}[1]{\textbf{Level:} #1.}
+\newcommand{\loc}[1]{\textbf{Where:} #1.}
+\newcommand{\fix}[1]{\textbf{Suggested repair:} #1}
+
+\theoremstyle{definition}
+\newtheorem{issue}{Issue}[section]
+
+\title{Referee report on\\
+``On the transfer of Shalika germs for $G_2$''\\
+by David Joyner (manuscript, summer 1994)}
+\author{Referee: Claude (Anthropic), an AI system}
+\date{November 13, 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+This report was written by an AI system (Claude, made by Anthropic) at the
+author's request. It is not an independent certification of the results. The
+manuscript proposes to prove the matching of the $1$-, $2$- and $3$-regular
+Shalika germs of the split exceptional group $G_2$ with germs on its cuspidal
+endoscopic groups, and hence local transfer for $G_2$. The geometric part of the
+paper is largely sound. I verified by computer that the variety $Z$ of
+\S3 is normal, that the essential patches of \S4 are regular and cover $Z$ up
+to codimension two, and that the Igusa constants of the $1$-, $2$- and
+$3$-regular base divisors are $2$, $3$ and $4$, as claimed. However, the proofs
+of the main theorems (Theorems 6.1, 7.2 and 8.3) are not complete. They rest on
+Hales' reduction lemma (Lemma 5.19), whose hypothesis cannot be met for the
+cuspidal endoscopic groups of $G_2$. The hypotheses on the support of $f$ in
+those theorems can never be satisfied. The endoscopic group $PGL(3)$ is given
+the wrong roots. Several elliptic tori that carry nontrivial $\kappa$ are
+missing. There are also many misprints, notational clashes and unproved
+assertions. I recommend a major revision before the manuscript is circulated
+as a proof of transfer for $G_2$.
+\end{abstract}
+
+\tableofcontents
+
+\section{What I read, and how I checked it}
+
+\paragraph{Files read.} I read all fifteen uploaded files completely:
+\texttt{g2new0.tex} through \texttt{g2new9.tex}, the variants
+\texttt{g2new5d.tex} and \texttt{g2new9d.tex}, \texttt{g2newapp.tex},
+\texttt{g2newref.tex}, and the house style guide
+\texttt{joyner-math-paper-style-guide.md}. I also read the text that follows
+\verb|\enddocument| in \texttt{g2new2}, \texttt{g2new4}, \texttt{g2new6} and
+\texttt{g2newapp}. That text was never typeset, but it bears on some issues
+below. I refer to it as ``untypeset text''.
+
+\paragraph{Sources consulted.} I could not consult Hales' thesis [H1], Hales'
+$U(3)$ paper [H3], Langlands [L], Langlands--Shelstad [LS0]--[LS3],
+Kempf et al.\ [K], Spaltenstein [Spal] or any other cited source in full.
+I checked bibliographic data against online records (EuDML, Numdam, the IAS
+archive of Langlands' papers, and a reference list in an AMS journal). I
+consulted Hales' paper [H2] (Ast\'erisque 171--172) only through a
+machine-generated summary of its Numdam PDF. Where I rely on that summary I say
+so.
+
+\paragraph{Verification levels.} Following \S7 of the style guide, every
+point carries a level.
+\Lv{1}: an independent derivation by me, by hand or by an exact computation
+whose script is attached.
+\Lv{2}: a check against a source I actually consulted.
+\Lv{3}: reliance on memory of the literature.
+Every issue also carries a verdict: \emph{correct}, \emph{misprint},
+\emph{fixable gap} or \emph{false}.
+
+\paragraph{Computations.} The following Python scripts accompany this report.
+They use exact integer and symbolic arithmetic (SymPy), and they run in a few
+minutes.
+\begin{itemize}
+\item \texttt{g2\_toric\_divisors.py}: the toric structure of $Z$, its facets,
+all branches of $\lambda=0$ with $a(E)$, $b(E)$, $\beta(E)$, and which patches
+meet which divisors.
+\item \texttt{g2\_saturation\_full.py}: a complete proof that the semigroup of
+$Z$ is saturated, so that $Z$ is normal.
+\item \texttt{g2\_patch\_jacobians.py} and \texttt{g2\_patch\_regularity.py}:
+the patch formulas of \S3, the Igusa forms of \S4, and the forms (8.1) and
+(8.4).
+\item \texttt{g2\_exceptional\_divisors.py}: the singular torus orbits of $Z$
+and candidate exceptional divisors of a resolution.
+\item \texttt{g2\_tori\_endoscopy.py}: $H^1(F,T)$ for every elliptic torus of
+split $G_2$, and the root system of the endoscopic group for every $\kappa$.
+\end{itemize}
+
+\section{Summary of the manuscript}
+
+Section 0 states the goal. The goal is to prove the matching of Shalika germs
+for the $r$-regular unipotent orbits of $G_2$, $r=1,2,3$, by Langlands' Igusa
+method. Together with Shelstad's result for $r=0$ and Rogawski's for the
+trivial orbit, this is said to give the smooth matching (local transfer)
+theorem for $G_2$. Section 1 recalls the variety of stars, Langlands'
+coordinates $z(W,\rho)$, the partial resolution $S_1$ and the varieties $Y''$,
+$Y_1$ and $Y_C$. Section 2 computes the Galois action on coordinates.
+Section 3 introduces the monomial variety $Z$ and the ``fundamental'' and
+``essential'' patches, and claims that $Z$ is normal and Cohen--Macaulay.
+Section 4 lists the patches for $G_2$ and computes Igusa constants. Section 5
+recalls Igusa's expansion, proves a ``no spurious divisors'' lemma and states
+Hales' reduction lemma. Sections 6, 7 and 8 treat the $1$-, $2$- and
+$3$-regular germs, with endoscopic groups $PGL(3)$ and
+$(SL(2)\times SL(2))/\{\pm1\}$. Section 9 states a general conjecture. The
+appendix computes a Chevalley basis via triality, the cuspidal endoscopic
+groups, $H^1(\Gamma,T)$ for some tori, and the stability of the $2$- and
+$3$-regular orbits.
+
+The strategy has three steps. First, identify the unique base divisor that
+contributes to each germ. Second, show that its Igusa coefficient depends on
+the tangent direction $X$ only through a product of roots of $H$. Third, apply
+Hales' reduction lemma to avoid computing that dependence exactly. The third
+step does not work for $G_2$ (Issue~\ref{iss:reduction}), and the second is
+asserted rather than computed (Issue~\ref{iss:pX}).
+
+\section{Overall assessment}
+
+The manuscript contains real and useful work. In particular, it gives an
+explicit treatment of the Igusa variety of $G_2$, the essential patches, and
+the identification of the base divisors $E_{\emptyset,\alpha,\delta}$ and
+$E_{\emptyset,\beta,\zeta}$ that carry the $2$- and $3$-regular germs. My
+independent computations confirm the core geometric numbers (Section~\ref{sec:correct}).
+
+The main theorems are not established, for four independent reasons.
+\begin{enumerate}
+\item The descent step, Lemma 5.19, cannot be applied to the cuspidal
+endoscopic groups of $G_2$ (Issue~\ref{iss:reduction}).
+\item The hypotheses of Theorems 6.1, 7.2 and 8.3 are never satisfied
+(Issue~\ref{iss:support}).
+\item The roots of the endoscopic group $PGL(3)$ are misidentified
+(Issue~\ref{iss:roots}).
+\item Some elliptic endoscopic data are missing, so the smooth matching
+theorem would not follow even if the three theorems were proved
+(Issue~\ref{iss:tori}).
+\end{enumerate}
+The claim in \S0 that the paper ``proves the smooth matching theorem for
+$G_2$'' should be withdrawn or made conditional.
+
+For context in a revision (\Lv{3}): local transfer for $p$-adic groups is now
+known in general. Waldspurger showed that the fundamental lemma implies
+transfer (``Le lemme fondamental implique le transfert'', Compositio Math.\
+105 (1997)), and Ng\^o proved the fundamental lemma (Publ.\ Math.\ IH\'ES 111
+(2010)). A revision should therefore present the paper as an explicit
+Igusa-theoretic computation of the $G_2$ germs, not as the only route to
+transfer.
+
+\section{Major issues}
+
+\begin{issue}[Hales' reduction lemma does not apply]\label{iss:reduction}
+\loc{\S0 (the paragraph on $\Delta_0(X)$), Lemma 5.19, and the ends of the
+proofs of Theorems 6.1, 7.2 and 8.3}
+Lemma 5.19 needs $Y$ in the Lie algebra of the center of the endoscopic group
+$H$ with $\operatorname{Cent}(Y,G)=H$. Both cuspidal endoscopic groups of
+$G_2$, namely $PGL(3)$ and $(SL(2)\times SL(2))/\{\pm1\}$, are semisimple of
+rank two, the rank of $G_2$. So $\operatorname{Lie}(Z(H))=0$. Moreover, the
+centralizer of a semisimple element $Y$ of $\mathfrak t$ is a Levi subgroup.
+The Levi subgroups of $G_2$ are $T$, the two $GL(2)$'s and $G_2$. None of them
+is $SL(3)$ or $SO(4)$, which are the subgroups of $G_2$ the paper uses as
+``$H\subset G$''. So no admissible $Y$ exists. Read literally, the hypothesis
+is vacuous, and the lemma would give transfer with no information about the
+germs at all. That cannot be the intended statement.
+
+The machine summary of [H2] that I consulted supports this reading. Hales'
+quasi-split reduction (Prop.\ 2.11 of [H2]) descends to elements $s$ of the
+connected center torus $S$ of $H$ close to the identity. For the cuspidal
+$SO(4)$ case of $GSp(4)$, Hales instead computes the dependence on the tangent
+direction explicitly: the germ is $|T_1-T_2|\,c(T,\kappa)$ (\S6 of [H2]).
+The $G_2$ case needs the same kind of explicit computation, which \S0 says the
+descent ``remarkably'' avoids.
+
+\verdict{false as applied; the proofs of Theorems 6.1, 7.2 and 8.3 are
+incomplete}
+\level{\Lv{1} for the Lie-theoretic facts; \Lv{2} (machine summary only) for
+[H2]; \Lv{3} for [H3, Lemma 6.1], which I could not consult}
+
+\fix{Compute the $X$-dependence of the full coefficient
+$\kappa(t_*)\,|\omega_{E(u)}|$, including the $\kappa$-factor, as in [H2,
+\S6]. Then compare it with the $H$-side directly.}
+\end{issue}
+
+\begin{issue}[The support hypotheses are never satisfied]\label{iss:support}
+\loc{Theorems 6.1, 7.2 and 8.3; the decomposition $f=f_1+f_2$ before Lemma
+5.19; the conclusion of Lemma 5.19; Conjecture 9.1; the text of \S\S6--8}
+Each theorem assumes that the support of $f$ meets the $r$-regular orbit
+$\cO_r$ and no other unipotent orbit. The support of $f\in C_c^\infty(G(F))$
+is open. Every unipotent $u\in G(F)$ lies in the unipotent radical $N$ of an
+$F$-Borel subgroup (Borel--Tits, $G_2$ being split). Regular unipotents form
+a Zariski-dense open subset of $N\cong\mathbb A^6$, so they are $p$-adically
+dense in $N(F)$. Hence every neighborhood of $u$ meets the regular orbits. An
+$f$ whose support meets $\cO_r$ also meets $\cO_0$ and every orbit between
+them. The hypotheses are therefore never satisfied, and the theorems are
+vacuous as stated. The same objection applies to $f_2$ in the decomposition
+before Lemma 5.19. The phrase ``orbits outside the Zariski closure of $\cO$''
+names the \emph{larger} orbits, which $f_2$ cannot avoid.
+
+\verdict{false as stated; fixable}
+\level{\Lv{1}}
+
+\fix{State the theorems as germ identities. Alternatively, use test functions
+with $\mu_{\cO'}(f)=0$ for every unipotent class $\cO'\neq\cO$. Such functions
+exist because the unipotent orbital integrals are linearly independent.}
+\end{issue}
+
+\begin{issue}[The roots of the endoscopic group $PGL(3)$]\label{iss:roots}
+\loc{\S8 (the definition of $\Sigma_{H_1}^+$, (8.4) and (8.7)); \S4, Lemma
+4.4; Appendix A.5; untypeset text after \S6, (6.8)}
+The paper takes $\Sigma_{H_1}^+=\{\beta,\epsilon,\zeta\}$, the long roots.
+That is the root system of the \emph{pseudo-Levi subgroup} $SL(3)\subset G_2$.
+The \emph{endoscopic group} $H_1=PGL(3)$ is different. Its roots, transported
+to $T_G$, are the roots $a$ of $G$ with $\kappa(a^\vee)=1$. For the cubic
+torus (Galois image $\langle(s_\beta s_\alpha)^2\rangle$) we have
+$H^1(F,T)=X_*/(\sigma-1)X_*\cong\mathbb Z/3$. In the coroot basis
+$(\alpha^\vee,\beta^\vee)$, $(\sigma-1)X_*$ is spanned by $(1,0)$ and $(0,3)$.
+A nontrivial $\kappa$ is trivial exactly on the coroots
+$\alpha^\vee=(1,0)$, $\gamma^\vee=(1,3)$ and $\delta^\vee=(2,3)$. So
+\[
+\Sigma_{H_1}^+=\{\alpha,\ \alpha+\beta,\ 2\alpha+\beta\},
+\]
+the \emph{short} roots. Equivalently, $\widehat H_1=SL(3)$ is generated by the
+long roots of $\widehat G=G_2(\mathbb C)$, which are the coroots of the short
+roots of $G$. The set $\Delta_2^\vee=\{\beta^\vee,(3\alpha+\beta)^\vee\}$ used
+in A.5 consists of short roots of $\widehat G$, and they do not span a closed
+subsystem: $\beta^\vee+\zeta^\vee=\gamma^\vee$ is a root.
+
+For $H_2$ the paper's $\Sigma_{H_2}^+=\{\alpha,\zeta\}$ is correct, because
+there the pseudo-Levi and the endoscopic root systems agree.
+
+A short root system can still parametrize $\cO_3$ through the long-root
+pseudo-Levi, so the coordinates in \S8 need not change. But (8.7), and the
+claim after it that $p_{\cO_3,T}$ is a product over roots ``in $H$'', must use
+the short roots, because $D_{H_1}$ and the transfer factor do.
+
+\verdict{false; fixable}
+\level{\Lv{1} (script \texttt{g2\_tori\_endoscopy.py})}
+\end{issue}
+
+\begin{issue}[Missing elliptic endoscopic data]\label{iss:tori}
+\loc{Appendix A.6 (``All other non-split Cartans \dots do not contribute''),
+Theorems 6.1, 7.2 and 8.3, the proof of Lemma 5.17, and \S0}
+I computed $H^1(F,T)=\hat H^{-1}(\Gamma,X_*)$ for every elliptic Galois image
+$\Gamma\subset W(G_2)$:
+
+\smallskip
+\begin{center}
+\begin{tabular}{lll}
+\toprule
+Galois image in $W$ & $H^1(F,T)$ & roots of $H$ for $\kappa\neq1$\\
+\midrule
+$\{\pm1\}$ (quadratic $T$) & $(\mathbb Z/2)^2$ & $\{\alpha,\zeta\}$, $\{\beta,\delta\}$, $\{\gamma,\epsilon\}$\\
+$\langle s_\alpha,s_\zeta\rangle$ and conjugates (biquadratic) & $\mathbb Z/2$ & one orthogonal pair\\
+cyclic of order $3$ & $\mathbb Z/3$ & $\{\alpha,\gamma,\delta\}$\\
+$S_3$ containing the short reflections & $\mathbb Z/3$ & $\{\alpha,\gamma,\delta\}$\\
+cyclic of order $6$; $S_3$ with long reflections; $W$ & $0$ & --- \\
+\bottomrule
+\end{tabular}
+\end{center}
+\smallskip
+
+The quadratic tori and the short-reflection $S_3$ tori carry nontrivial
+$\kappa$ and are omitted. The proof of Lemma 5.17 also asserts that
+$H^1(\Gamma,T_G)$ is cyclic of order $m\in\{2,3\}$, which fails for quadratic
+tori.
+
+The conclusions $H^1=\mathbb Z/2$, $0$ and $\mathbb Z/3$ in A.6 are right, but
+the computations given for them are not.
+\begin{itemize}
+\item The displayed formula
+$s_\beta s_\alpha(m\alpha^\vee+n\beta^\vee)=(2m-n)\alpha^\vee+(m-n)\beta^\vee$
+has determinant $-1$, so it cannot be a rotation. The correct formula is
+$(n-m)\alpha^\vee+(2n-3m)\beta^\vee$.
+\item The ``cubic'' formula has determinant $3$.
+\item The two coboundary identities are wrong.
+\item The biquadratic computation takes a quotient of $H^1$ groups, which is
+not valid. The correct computation is $(s_\alpha-1)X_*+(s_\zeta-1)X_*=\mathbb Z\alpha^\vee+\mathbb Z\zeta^\vee$, of index $2$.
+\end{itemize}
+
+\verdict{false (the claim of completeness); misprints in the computations}
+\level{\Lv{1} (script)}
+\end{issue}
+
+\begin{issue}[Which divisors contribute]\label{iss:divisors}
+\loc{\S4 (the table (4.3) and the dismissal of exceptional divisors), \S6
+(``three base divisors with $\beta=2$''), Lemma 0.8, Lemma 5.14, \S\S7--8}
+The toric computation lists every branch of $\lambda=0$ on $Z$:
+
+\smallskip
+\begin{center}
+\begin{tabular}{lccccl}
+\toprule
+branch & $a$ & $b$ & $\beta$ & image & patches meeting it\\
+\midrule
+$E_{\{\alpha,\beta\}}$ & 1 & 1 & 1 & regular & $Z_{\{\alpha,\beta\}}$\\
+$E_{\alpha}=E_{\emptyset,\alpha,\gamma}$ & 1 & 2 & 2 & subregular & $Z_\alpha$, $Z_{\emptyset,\alpha,\gamma}$\\
+$E_{\beta}=E_{\emptyset,\beta,\gamma}=E_{\emptyset,\beta,\delta}=E_{\emptyset,\beta,\epsilon}$ & 1 & 2 & 2 & subregular & $Z_\beta$, $Z_{\emptyset,\beta,\gamma/\delta/\epsilon}$\\
+$E_{\emptyset,\alpha,\delta}$ & 2 & 6 & 3 & $2$-regular & $Z_{\emptyset,\alpha,\delta}$\\
+$E_{\emptyset,\alpha,\epsilon}=E_{\emptyset,\alpha,\zeta}$ & 3 & 11 & $11/3$ & --- & $Z_{\emptyset,\alpha,\epsilon}$, $Z_{\emptyset,\alpha,\zeta}$\\
+$E_{\emptyset,\beta,\zeta}$ & 2 & 8 & 4 & $3$-regular & $Z_{\emptyset,\beta,\zeta}$\\
+$E_{\emptyset}$ & 1 & 7 & 7 & trivial & $Z_\emptyset$\\
+\bottomrule
+\end{tabular}
+\end{center}
+\smallskip
+
+\noindent Four points follow.
+\begin{enumerate}[label=(\alph*)]
+\item $E_{\emptyset,\alpha,\gamma}$ is the same divisor as $E_\alpha$. So
+there are two base divisors with $\beta=2$, not three. The redundancy remark
+in \S4 covers $\beta$ but not $\alpha$.
+\item On $Z_{\emptyset,\alpha,\epsilon}$ the form is
+$-x(\epsilon)^5z(\beta)z(\alpha)^{10}w(\epsilon)^{-6}$, not
+$x(\epsilon)^5z(\beta)z(\alpha)^9w(\delta)^{-6}$. So $b=11$ and
+$\beta=11/3$, not $10/3$, and the table entry $7/3$ should be $8/3$.
+$E_{\emptyset,\alpha,\epsilon}$ and $E_{\emptyset,\alpha,\zeta}$ are one
+divisor.
+\item A divisor with $\beta=11/3$ would contribute $\theta(\lambda)|\lambda|^{8/3}$,
+a term that cannot occur in the germ expansion. Its coefficient must therefore
+vanish, and the paper should show this, for example by a ramification argument
+for $\theta$ with $\theta^3=\kappa_E$. The manuscript never mentions this
+divisor's contribution.
+\item The dismissal of exceptional divisors (``because of lemma 0.8'') is
+circular, since Lemma 0.8 concerns strict transforms only. $Z$ is singular
+along five torus-orbit closures (listed in the output of
+\texttt{g2\_exceptional\_divisors.py}). Any resolution adds rays $u$ in the
+cone $\sigma$, and their Igusa constant is $\langle m_\omega,u\rangle/\langle\lambda,u\rangle$.
+Integral values cannot be excluded in advance. For example,
+$u=(3,2,2,2,3,5,7)$ lies in a singular face and has $\beta=2$. Whether the
+$\beta=2,3,4$ coefficients receive extra contributions therefore depends on
+the resolution chosen, and on the $F$-points and images of its exceptional
+divisors. The spurious divisors over $Y_1\setminus Y''$ are likewise not
+treated for $r=2,3$.
+\end{enumerate}
+
+The proof of Lemma 5.14 also has gaps. The homogeneity degrees ``by (1.22)''
+are asserted, not computed. Only the stratum $D=E\cap E'$ is considered,
+whereas Lemma 5.7 gives $F_1$ as a sum over strata. The contradiction requires
+the $D$-term to be nonzero. And $e=1$ alone does not show that spurious
+divisors fail to contribute.
+
+\verdict{fixable gaps; the value $\beta=10/3$ is false}
+\level{\Lv{1} (scripts)}
+\end{issue}
+
+\begin{issue}[The $X$-dependence and the measures on orbits and fibers]\label{iss:pX}
+\loc{(6.5a), (6.5b), (7.3)--(7.5), (8.1)--(8.7)}
+The decisive quantities $p_{\cO,T}(X)$ in (7.5) and (8.7) are asserted to be
+products over roots of $H$ ``using (1.22)''. The exponents are never computed,
+and neither is the $X$-dependence of $\kappa(t_*)$. In addition:
+\begin{itemize}
+\item (7.3) uses $dz(\alpha)$, but $z(\alpha)=0$ on $E_{\emptyset,\alpha,\delta}$.
+It lists six differentials for the $8$-dimensional orbit $\cO_2$, and it
+includes $dv(\alpha)$ although $\alpha\in\Sigma_{H_2}$. The $Z$-coordinates
+available on $\cO_2$ are $w(\gamma)$, $w(\delta)$, $x(\delta)$ and
+$x(\epsilon)$, and they should be paired with $v(\beta)$, $v(\gamma)$,
+$v(\delta)$ and $v(\epsilon)$. ``$\Sigma_{\cO_3}$'' in (7.3) should read
+$\Sigma_{\cO_2}$.
+\item In (8.1) and (8.5), $w(\delta)$ should read $w(\zeta)$. With that
+correction, (8.1) agrees with my computation:
+$\omega_E=x(\zeta)^2w(\zeta)^{-3}z(\alpha)^{-2}$. The display after (8.2)
+shows $\omega_{Z}$, mislabeled as $\omega_E$.
+\item For (8.4) I find
+$dx(\alpha)\,dx(\gamma)\,dx(\delta)/\lambda^2=2x(\zeta)w(\zeta)^{-1}z(\alpha)^{-2}\,dz(\alpha)\,dw(\gamma)\,dw(\delta)$,
+not $z(\alpha)^{-1}$. More fundamentally, defining a measure on $\cO$ as a
+$\lambda\to0$ limit of ratios is not justified. It is better to use the
+invariant measure on $\cO$, which is unique up to a constant [R], and to
+compute $\omega_{E(u)}$ from the fibration.
+\item In \S6, $E_\alpha$ yields the factor $|\beta(X)|$. For $H_2$, $\beta$ is
+not a root of $H$. The untypeset text after \S6 records an unresolved
+discrepancy of this kind.
+\item The translation invariance of $\kappa(t_*)$ ``by continuity'' needs a
+bound uniform in $X$, which is not given.
+\item Transfer needs one $f^H$ for all $(T,\kappa)$ attached to $H$. The
+theorems fix $T_G$ before choosing $f^H$.
+\end{itemize}
+
+\verdict{fixable gaps (substantial)}
+\level{\Lv{1}}
+\end{issue}
+
+\begin{issue}[Lemma 3.5, Lemma 4.4 and the ``regular branch'']\label{iss:richardson}
+\loc{Lemma 3.5; \S3 (the regular branch $E_\emptyset$); Lemma 4.4}
+The convention ``Hales' $E_S$ is my $E_{\Delta-S}$'' has not been carried
+through. Three statements are affected.
+\begin{itemize}
+\item As printed, Lemma 3.5 gives for $S_1=\Delta$ the generators $\lambda$,
+$x(\alpha)$, $x(\beta)$, $w(\gamma),\dots,w(\zeta)$. Then
+$x(\gamma)=w(\gamma)x(\alpha)x(\beta)/\lambda$ is not regular. The correct
+generators are $\lambda$, $z(\alpha)$ for $\alpha\in\Delta-S_1$, $x(\alpha)$
+for $\alpha\in S_1$, $x(\rho)$ for $\rho\notin\Sigma^+_{\Delta-S_1}$, and
+$w(\rho)$ for $\rho\in\Sigma^+_{\Delta-S_1}-\Delta$. The generator count then
+equals $p+1$.
+\item Lemma 4.4 should read $\beta(E_S)=1+|\Sigma^+_{\Delta-S}|$, with the
+parabolic $P_{\Delta-S}$. As printed, it gives $\beta(E_\Delta)=7$, against
+the value $1$ in the table.
+\item ``The regular branch $E_\emptyset$ satisfies $\pi(E_\emptyset)=V$'' is
+wrong in the paper's own convention. $E_\emptyset$ is the trivial-orbit branch
+($\beta=7$), and the regular branch is $E_\Delta$.
+\end{itemize}
+The lists of generators in \S4 are correct. I checked all twelve patches.
+
+\verdict{false as printed; misprint-level repair}
+\level{\Lv{1}}
+\end{issue}
+
+\begin{issue}[The definition of $S''$ and $Y''$]\label{iss:Spp}
+\loc{\S0, Step 2; Definition 1.16}
+$S''$ is defined as ``the image of $S_0$ in $S_1$'' (and in Definition 1.16
+as the image ``in $Y_1$''). A point of $S_0$ is a regular star, so every
+$z(W,\rho)\neq0$ there, and over $\lambda=0$ the only element of
+$\bigcap_W B(W)$ that is unipotent is $1$. The base divisors, on which
+$z(\alpha)=0$, would then not lie in $Y''$. Presumably $S''$ is meant to be the
+open subset of $S_1$ on which all $z_1(W,\rho)\neq0$, with $z(\alpha)$
+arbitrary, as in Hales' thesis.
+
+\verdict{fixable gap}
+\level{\Lv{1} for the inconsistency; \Lv{3} for the intended definition}
+\end{issue}
+
+\begin{issue}[Lemma 3.7 and the singular locus]\label{iss:normal}
+\loc{Lemma 3.7; \S3 (the claim that the singular locus lies in $K\cup K_0$);
+Conjecture 3.4}
+The proof of normality asserts saturation without checking it.
+\begin{itemize}
+\item For $G_2$ I proved saturation by an exhaustive exact computation, which
+covers every lattice point of the fundamental parallelepipeds (degree at most
+$6$). So $Z$ is normal for $G_2$. It is Cohen--Macaulay by Hochster's theorem
+[Ho], which is in the bibliography but never cited. For general $G$ the claim
+is unproved.
+\item ``Set-theoretic complete intersection'' is not proved. The six equations
+(3.1) also vanish on the $10$-dimensional set $\lambda=z(\alpha)=z(\beta)=0$,
+so they do not cut out $Z$.
+\item The singular-locus claim is correct, but the fifth patch is redundant.
+On $Z$ one has $x(\epsilon)z(\alpha)^3=x(\beta)w(\epsilon)$, so that patch lies
+inside $\{x(\beta)\ne0\}$.
+\item $K$ contains the divisor $E_{\emptyset,\alpha,\delta}$, so ``beginning
+with $K$ as the center of the first blow-up'' needs rewording.
+\item ``The branches of $E_{Y''}$ are reduced'' contradicts the multiplicities
+$2$ and $3$ found in \S4.
+\end{itemize}
+Conjecture 3.4 does hold for $G_2$: all essential patches are regular, and
+every torus-invariant divisor of $Z$ meets one of them. The text proves only
+the weaker statement about $K\cup K_0$.
+
+\verdict{fixable gaps; the claims are true for $G_2$}
+\level{\Lv{1} (scripts)}
+\end{issue}
+
+\begin{issue}[Section 1 foundations]\label{iss:sec1}
+The following points concern \S1.
+\begin{itemize}
+\item \emph{The map $\phi$ is not well-defined.} A regular conjugacy class
+meets $T_G$ in a full Weyl orbit, so ``the point in $T_G$ which meets the
+conjugacy class of $g$'' is defined only in $T_G/\Omega$. The star must be used
+to choose the point. (\Lv{1}; fixable.)
+\item \emph{Negation error.} Not lying in $S'(B_+,B_-)$ means that for
+\emph{some} $\alpha\in\Delta$, $z=0$ for \emph{all} $\omega$. The text says
+``for all $\alpha$ and $\omega$'' and concludes that the star lies on the
+diagonal. The intended conclusion, that such stars are not regular, still
+follows from Lemma 1.12. (\Lv{1}; fixable.)
+\item $\rho=\omega\alpha$ (in the definition of a pair and of $S'$)
+contradicts $\alpha_{i+1}=\omega_i\rho_{i+1}$; it should read
+$\rho=\omega^{-1}\alpha$. The sign in (1.8) is opposite to that in (1.9) and
+(1.10). In the definition of a root, $t^{-1}\theta_\rho(\xi)t$ should be
+$t\theta_\rho(\xi)t^{-1}$. ``$\ker\rho\subset X^*(T)\otimes\mathbb R$'' should
+be the hyperplane $\rho^\perp$. (\Lv{1}; misprints.)
+\item \emph{Equation (1.22).}
+\begin{itemize}
+\item The $c_1$-term of $w(\gamma)$ lacks the factor
+$z(\sigma_\beta^{-1}W_0,\alpha)$ that appears in $x(\gamma)$.
+\item The last term of $w(\zeta)$ lacks $c_7$ and has $n_\zeta$ for $n_\delta$.
+\item The constants $c_1,\dots,c_7$ and the meaning of ``higher order terms in
+$\lambda$'' are never specified.
+\item The final list gives seven ``algebraically independent'' coordinates.
+Together with $\lambda$ that makes eight functions on the $7$-dimensional
+patch $Y_1(B_+,B_-)$, since $z(W_0,\alpha)=1/n_\alpha$ and
+$z(W_0,\beta)=1/n_\beta$ already account for the star. The list needs
+correcting.
+\end{itemize}
+(\Lv{1}; fixable.)
+\end{itemize}
+\end{issue}
+
+\begin{issue}[Section 2 computations]\label{iss:sec2}
+The following points concern \S2.
+\begin{itemize}
+\item The requirement $g^{-1}\sigma(g)\in T_G(\ovF)$ for all $\sigma$ would
+make $B_G$ defined over $F$, which is impossible for elliptic $T_G$. It should
+be $g^{-1}\sigma(g)\in N(T_G)(\ovF)$, and this gives $\sigma_T$. ``Factors
+through $Gal(\ovF/E)$'' should read ``through $Gal(E/F)$''. (\Lv{1}.)
+\item In (2.8) and (2.9), $b'$ should be
+$c_\sigma\sigma(n_{\sigma_T^{-1}W_0})\,\sigma(b)\,\sigma(n_{\sigma_T^{-1}W_0})^{-1}c_\sigma^{-1}$.
+The printed formula has $b$ for $\sigma(b)$, $c_\sigma$ in place of
+$c_\sigma^{-1}$, and a double inverse. (\Lv{1}; misprint.)
+\item In $SL(2)$, $\theta_\alpha(x)^{\theta_{-\alpha}(z)}=\theta_{-\alpha}\!\big(\tfrac{-xz^2}{1+xz}\big)\,\alpha^\vee(1+xz)\,\theta_\alpha\!\big(\tfrac{x}{1+xz}\big)$.
+So $\phi^\alpha_\alpha=x(\alpha)/(1+x(\alpha)z)$, not $x(\alpha)$. The
+analogous $y_\beta$ is $-xz^2/(1+xz)$. The torus factor also rescales the
+other coordinates. (\Lv{1}.)
+\item In $\theta_\beta(r)\theta_\alpha(s)$ the exponents are swapped. The
+correct terms are $\theta_\delta(rs^2)\theta_\epsilon(rs^3)\theta_\zeta(r^2s^3)$,
+because $i\alpha+j\beta$ carries $s^ir^j$. In $\phi^\alpha_\delta$, $c_2$
+should be $c_1$. In the sentence after Lemma 2.10, $\theta_\rho(z)$ should be
+$\theta_{-\rho}(z)$. In (2.17) the subscripts $\eta_{\alpha,\cdot}$ should be
+$\eta_{\beta,\cdot}$. (\Lv{1}; misprints.)
+\item The figure of the Dynkin curve is missing: the source has empty displays.
+\end{itemize}
+\end{issue}
+
+\begin{issue}[The appendix]\label{iss:app}
+The following points concern the appendix.
+\begin{itemize}
+\item \emph{A.2.}
+\begin{itemize}
+\item $k\times j=i$ should be $k\times j=-i$.
+\item The form $\tfrac12(xy^*+y^*x)$ is not scalar-valued: for quaternions with
+$x=1$ and $y=i$ it equals $-i$. The correct form is $\tfrac12(xy^*+yx^*)$.
+\item The triality theorem holds for proper orthogonal maps (rotations), not
+for arbitrary ones.
+\item The ``proof'' checks only the infinitesimal identity, which does not
+imply the global statement. A reference such as Springer--Veldkamp would
+serve.
+\end{itemize}
+(\Lv{1}; \Lv{3} for the reference.)
+\item \emph{A.4.} The matrix of $X_{\alpha+\beta}$ has entry $-1$ at position
+$(1,3)$, while the note says $E_{13}+E_{24}+E_{25}$. All other matrices check
+out (see Section~\ref{sec:correct}). (\Lv{1}.)
+\item \emph{A.5.}
+\begin{itemize}
+\item The displayed basis of $P$ is wrong: $(1/2,0)\cdot\beta^\vee=-1/2$. The
+correct basis is $(1/2,\sqrt3/2)$, $(0,\sqrt3)$. The conclusion $P=Q$ is right.
+\item The $A_1\times A_1$ subsystem should be generated by $\alpha^\vee$ and
+$\zeta^\vee$, not $\beta^\vee$ and $\zeta^\vee$, which are not orthogonal.
+\item ``$Q^\vee$ strictly contains $P^\vee$'' should read ``is strictly
+contained in $P_1^\vee$''.
+\item The argument identifying $H_2$ is hard to follow, though the answer is
+right: the character lattice $Q$ is the index-$2$ sublattice of $P_1$
+containing $(\alpha+\zeta)/2$.
+\item For $H_1$, see Issue~\ref{iss:roots}.
+\end{itemize}
+(\Lv{1}.)
+\item \emph{A.7.} The stability arguments for $\cO_2$ and $\cO_3$ are
+plausible. I confirmed $\mathfrak g_2(2)=F X_{\alpha+\beta}$ and
+$\mathfrak g_2(2)=F X_\beta$ and the subregular grading. Two points need
+attention.
+\begin{itemize}
+\item For $\cO_2$ the grading is odd, so the use of Rao's lemma should be
+justified.
+\item The claim ``$7$ $F$-classes'' in the stable subregular class conflicts
+with my count. The component group is $A(u)=S_3$ and $H^1(F,G_2)=1$, so the
+classes correspond to étale cubic $F$-algebras. There are $8$ of these when
+$q\equiv1\pmod 3$ and $6$ when $q\equiv2\pmod 3$ ($p\neq2,3$). Please check
+Assem's statement.
+\end{itemize}
+(\Lv{1} with \Lv{3} inputs.)
+\item \emph{Untypeset weighted Dynkin diagrams.} The labels for the $2$- and
+$3$-regular classes are swapped. The long-root class $A_1$ ($3$-regular) has
+weights $(\alpha,\beta)=(0,1)$, and the short-root class $\tilde A_1$
+($2$-regular) has $(1,0)$. (\Lv{1}.)
+\end{itemize}
+\end{issue}
+
+\section{Minor issues, misprints and inconsistencies}
+
+All entries are \Lv{1} unless marked otherwise.
+
+\begin{longtable}{p{0.16\textwidth}p{0.56\textwidth}p{0.18\textwidth}}
+\toprule
+Location & Issue & Verdict\\
+\midrule
+\endhead
+\S0 & ``$T'_G\cap\{1\}$'' should be $T'_G\cup\{1\}$. & misprint\\
+\S0 & Property (e) sets $E=\pi^{-1}(u)$, a fiber. It should concern a divisor $E$ with $\pi(E)=\overline\cO$. & misprint\\
+\S0 & The conjecture mixes $\Delta(\gamma_H,\gamma_\lambda)$ with $\Phi(\gamma_G,f)$. & misprint\\
+\S0 & ``apply lemma 5.18'' should read ``lemma 5.19''. (5.18) is an equation. & misprint\\
+\S0 & $D_H$ is used without absolute values in (0.1) and in Formula 0.6. & misprint\\
+\S0 & ``Langland's'' should be ``Langlands's''. & spelling\\
+\S0, \S3 & ``Cohen-Macauley'' should be ``Cohen--Macaulay'', here and in [Ho]. & spelling\\
+\S0 & Lemma 0.8 says it is ``proven in \S\S4--5''. The equality of the principal values over $E$ and $\tilde E$ is never proved there. & fixable gap\\
+\S0 & ``desingularize $Y''$ by blowing up four times'': the derivation is omitted, so the claim cannot be checked. & unverified\\
+\S1 & ``Lemma 1.2 below'' does not exist. Tag (1.3) is missing. & misprint\\
+\S1 & [Sp3] is cited but missing from the bibliography. & misprint\\
+\S1 & Lemma 1.21: the formula for $c_{\rho_1,\dots,\rho_m}$ is not a precise statement. & readability\\
+\S2 & ``the projection map $\pi$ of \S1.1'': there is no \S1.1. $X^0$ should be $X_0$. & misprint\\
+\S3 & In g2new3 the macro \verb|\off| means $\OF$, so the first line prints ``over $\OF$''. $\ovF$ was probably intended. & misprint\\
+\S3 & $x(\beta)\neq0$ patch: $w(\zeta)=x(\alpha)x(\zeta)z(\alpha)^4/x(\beta)^2$. & misprint\\
+\S3 & $x(\gamma)\neq0$ patch: the exponent of $x(\gamma)$ in $w(\zeta)$ is $4$. & misprint\\
+\S3 & $z(\alpha)\neq0$ patch: $w(\zeta)=x(\zeta)w(\epsilon)z(\beta)/x(\epsilon)$, with no $z(\alpha)^{-3}$. & misprint\\
+\S3 & Lemma 3.6: the statement has $\rho>\sigma$, the proof uses $\rho\ge\sigma$. In general $G$, roots incomparable with $\sigma$ are not covered. & misprint / gap\\
+\S3 & ``known \dots for $C_n$ [H1], [H2]'': [H2] treats only $GSp(4)$. ``False for $D_n$'' is unsupported. & \Lv{2}/\Lv{3}\\
+\S3 & [Sp] is not a bibliography label. & misprint\\
+\S4 & In $\omega_{Y''(B_+)}$ there is a doubled $\wedge$. & misprint\\
+\S4 & $\sigma=\epsilon,\zeta$ forms: the denominator should be $w(\epsilon)$, $w(\zeta)$, not $w(\delta)$. & misprint\\
+\S4 & Lemma 4.4: the second case of $\Ind$ should read ``$3$-regular''. & misprint\\
+\S4 & Observation (II): for strict transforms, $\beta$ is unchanged whether or not $E$ contains a center, because $Z$ is normal. & readability\\
+\S5 & Lemma 5.10(c): the chain $\overline\cO=\cO\cup\cO_m$ is garbled. & misprint\\
+\S5 & In the proof of Lemma 5.7, $\sum_{1\le i\le p}c_j/(j-1)!$ has the wrong index and a spurious $(j-1)!$. & misprint\\
+\S5 & In the proof of Lemma 5.17, ``(5.10)'' refers to a lemma, and ``$\xi$ satisfies (5.2)'' is unexplained. & fixable gap\\
+\S5 & Lemma 5.19: with $\Gamma^{T,\kappa}$ normalized by $\Delta$, the homogeneity exponent is $2(r-|\Sigma_H^+|)$, not $2r$. & misprint\\
+\S6 & $E_{\emptyset,\alpha,\gamma}=E_\alpha$; see Issue~\ref{iss:divisors}. & false\\
+\S6 & (6.5b) drops the prefactor $|\lambda|\kappa(\cdot)D_H^{-1}$. & misprint\\
+\S6 & ``$E$ is $E_\alpha$ or $E_\beta$, depending on $T_G$'' is unexplained, since both are $\beta=2$ divisors. & fixable gap\\
+\S6 & In g2new6 \verb|\off| means $\ovF$, so the text prints $\exp(\ovF X)$. $\OF$ may have been intended. & misprint\\
+\S7 & ``$\Sigma_{\cO_3}$'' in (7.3) should read $\Sigma_{\cO_2}$. The exponent $3/2$ of $|\lambda|$ is unexplained. & misprint\\
+\S7 & $F$-rationality of $E_{\emptyset,\alpha,\delta}$ via observation (I) needs the uniqueness argument spelled out. & readability\\
+\S8 & (8.6) should have $|\lambda|^3$, not $|\lambda|^2$; compare the display before (8.2). & misprint\\
+\S8 & ``conjecture 3.4 (which we proved in \S3)'': \S3 does not prove it. & false (but true)\\
+\S9 & Variant g2new9d: \verb|\off| means $\OF$, so (5) and (6) print $G(\OF)$, $H(\OF)$. [A] and [H4] are not in the bibliography. & misprint\\
+App.\ A.6 & ``(a) simple reflections $\langle s_\alpha,s_\zeta\rangle$'': $s_\zeta$ is not simple. & misprint\\
+Untypeset & The ``Lemma 9.1'' in the text after \S6 belongs to no section. ``Lemma 1.21'' in the text after \S2 duplicates Lemma 6.4. & housekeeping\\
+Throughout & ``homogeniety'', ``throughtout'', ``neighborhoood'', ``occuring'', ``patched'' (for patches), ``Automomorphic'', ``Represenattions'', ``Birkhauser''. & spelling\\
+\bottomrule
+\end{longtable}
+
+\section{Results I verified as correct}\label{sec:correct}
+
+\begin{itemize}
+\item \emph{Normality.} $Z$ is normal for $G_2$. The essential patches listed
+in \S4 are all regular and cover $Z$ up to codimension two, so Conjecture 3.4
+holds for $G_2$. (\Lv{1}.)
+\item \emph{Igusa constants.} $\beta=1$ ($E_{\{\alpha,\beta\}}$), $2$ ($E_\alpha$,
+$E_\beta$), $3$ with $a=2$, $b=6$ ($E_{\emptyset,\alpha,\delta}$), $4$ with
+$a=2$, $b=8$ ($E_{\emptyset,\beta,\zeta}$), and $7$ (trivial orbit). The forms
+on $Z_\alpha$, $Z_\beta$, $Z_{\emptyset,\alpha,\gamma}$,
+$Z_{\emptyset,\alpha,\delta}$ and $Z_{\emptyset,\alpha,\zeta}$ agree with mine
+up to the misprinted denominators. (\Lv{1}.)
+\item \emph{Patch formulas.} The patch formulas of \S3 are correct apart from
+the three misprints listed. (\Lv{1}.)
+\item \emph{Orbit bookkeeping.} The orbit dimensions $12-2r$, the homogeneity
+of the normalized germs ($|\lambda|^{2r}$), the relation $\beta-1=r$, and the
+dimension counts $\dim\cO_2=8=14-\dim SO(4)$ and $\dim\cO_3=6=14-\dim SL(3)$
+are correct. (\Lv{1}.)
+\item \emph{Lemma 5.6} is correct. (\Lv{1}.)
+\item \emph{Triality.} The root bookkeeping of A.3 and (A.11) is correct: the
+fixed and permuted roots of $D_4$ and the formulas for $\phi(\epsilon_i)$. So
+are all Chevalley matrices $X_\sigma$, $h_\sigma$ in A.4 apart from the sign
+noted, and the torus $T'$ with $\alpha=a_3$, $\beta=a_2a_3^{-1}$. (\Lv{1}.)
+\item \emph{$H_2$.} The endoscopic group $H_2=(SL(2)\times SL(2))/\{\pm1\}$
+with $\Sigma_{H_2}^+=\{\alpha,\zeta\}$ is correct, and $H_1\cong PGL(3)$ as an
+abstract group is correct. (\Lv{1}.)
+\item \emph{Rational orbits.} The weighted gradings in A.7 are right, as is
+the conclusion that $\cO_2$ and $\cO_3$ each consist of a single rational
+orbit. (\Lv{1} for the gradings.)
+\end{itemize}
+
+\section{Readability}
+
+\begin{enumerate}
+\item \emph{Notation clashes.}
+\begin{itemize}
+\item $\beta$ is both the long simple root and the Igusa exponent $b/a$. For
+example, ``$\beta(E_{\emptyset,\beta,\zeta})=4$''.
+\item $\gamma$ is a root, a group element and a constant in (5.2).
+\item $\delta$ is a root, a cohomology class, and the blow-up indicator in
+(II).
+\item $\epsilon$ is a root and the Mellin cutoff. $p$ is the prime, $|\Sigma^+|$
+and an index in Lemma 5.7. $\pi$ is the projection and the uniformizer.
+\item $\sigma$ is a Galois element, a root and the map $S_2\to\Sigma^+$.
+$\alpha$ is also the unit in (5.1).
+\item $E$ is a divisor and the splitting field. $S_1$ is a subset of $\Delta$
+and the variety $S_1$. $K$ is a subvariety and a maximal compact subgroup.
+\end{itemize}
+I suggest renaming the Igusa exponent (for example $\nu(E)$) and the roots
+$\gamma,\dots,\zeta$ (for example $\rho_3,\dots,\rho_6$).
+\item The macro \verb|\off| means $\ovF$ in some files and $\OF$ in others.
+This produces at least four printed errors.
+\item Conventions are never fixed in one place: $B^g=g^{-1}Bg$, the meaning
+of $\sigma_T$, which Borel contains the positive roots, the sign of $z$, and
+the Chevalley normalization. The reader has to infer them from formulas, some
+of which conflict (Issue~\ref{iss:sec1}).
+\item The constants $c_i$, $d_i$, $e$, $f_i$ are ``computable'' but never
+computed. The phrase ``higher order terms in $\lambda$'' is used for
+expressions whose other coordinates also depend on $\lambda$.
+\item Several key steps are ``left to the reader'', ``omitted'' or
+``similar'': Lemma 5.6, the case $e=3$ in Lemma 5.14, the four-step blow-up,
+and the details of (1.22).
+\item The Dynkin curve figure is missing.
+\end{enumerate}
+
+\section{Bibliography check}
+
+\begin{longtable}{p{0.12\textwidth}p{0.62\textwidth}p{0.16\textwidth}}
+\toprule
+Label & Finding & Level\\
+\midrule
+\endhead
+{[Ro]} & Published as J. Rogawski, ``An application of the building to orbital integrals'', Compositio Math.\ 42 (1980) 417--423. The thesis title in the manuscript differs. & \Lv{2} (EuDML, Numdam)\\
+{[S2]} & The title is ``A formula for regular unipotent germs'', Ast\'erisque 171--172 (1989) 275--277. & \Lv{2} (Numdam)\\
+{[H2]} & The pages are 195--256. & \Lv{2} (Numdam)\\
+{[H3]} & The pages are 303--333 (Univ.\ Montr\'eal, 1992). & \Lv{2} (AMS reference list)\\
+{[L]} & The pages are 465--506. & \Lv{2} (IAS archive)\\
+{[LS0]} & LNM 1041, pp.\ 250--279. The volume is dated 1984 (copyright 1983). & \Lv{2}\\
+{[LS3]} & Correct as listed. & \Lv{2}\\
+{[K]} & LNM 339 is dated 1973. The authors are Kempf, Knudsen, Mumford and Saint-Donat. & \Lv{3}\\
+{[R]} & The pages should be checked: I recall 505--510. & \Lv{3}\\
+{[SpSt]} & LNM 131 is from 1970. ``1986 (2nd ed.)'' should be checked. & \Lv{3}\\
+{[Har]} & The year (1977) is missing. & \Lv{3}\\
+{[Rep]} & This is part II (subregular term). Shelstad [S2] cites part I, PJM 113 (1984) 165--172. & \Lv{2}/\Lv{3}\\
+missing & [Sp3], [Sp], [A], [H4], [D] are cited but have no entry. & \Lv{1}\\
+uncited & [Ho], [Rep$'$], [Sp1] are never cited. [Ho] is the natural reference for Lemma 3.7. & \Lv{1}\\
+\bottomrule
+\end{longtable}
+
+\section{Compliance with the house style guide}
+
+The manuscript is a 1994 draft, so these items describe what a revision under
+\S\S1--6 of the style guide will need. They are not criticisms of the
+original.
+\begin{itemize}
+\item \emph{\S2 (structure).} The paper has no abstract, AI-disclosure
+sentence, literature review, background section with examples, notation
+table, summary of results or glossary.
+\item \emph{\S1 (typesetting).} The source is AMS-TeX split over separate
+files with hand-typed numbers and hand-typed cross-references. A revision needs
+one amsart file, \verb|\label|/\verb|\ref|, theorem numbering within sections,
+and citation keys of the form \texttt{Ha89}. The transcription delivered with
+this report takes the first steps (single file, house-style keys, 12pt Times,
+letter paper, a clean pdflatex build) but keeps the hand-typed numbering on
+purpose.
+\item \emph{\S4 (status of results).} Theorems 6.1, 7.2 and 8.3 should be
+labeled conditional or conjectural until Issues~\ref{iss:reduction}--\ref{iss:pX}
+are resolved. The same applies to Lemma 3.7 for general $G$, to Lemma 0.8, and
+to Lemma 5.14.
+\item \emph{\S5 (authorship).} The author line should give
+\texttt{wdjoyner@gmail.com} in place of the USNA address. The acknowledgments
+need the AI-usage statement.
+\item \emph{\S6 (revisions).} The title, the subtitle ``Draft $n$ --- Corrected
+and expanded version'' and the dates need to be added. A revision log is
+needed, with a list of ``Remark 2026.$n$'' items for unverified claims.
+\end{itemize}
+
+\section{Notes on the transcription}
+
+The single-file transcription follows \S6.7 of the style guide: it is a
+literal transcription with no corrections. All errors listed above are kept.
+Additions by me appear only as comments beginning ``Claude:''. Specific
+choices:
+\begin{enumerate}
+\item The body follows \texttt{g2new5.tex} and \texttt{g2new9.tex}. Every
+difference in the variants \texttt{g2new5d.tex} and \texttt{g2new9d.tex} is
+transcribed in a comment or an \verb|\iffalse| block marked ``VARIANT''. I
+could not tell which version is later. The ``d'' files align \S5 with the
+wording of \S8 and extend Conjecture 9.1. They also cite [A] and [H4], which
+are missing from the bibliography.
+\item The text after \verb|\enddocument| is transcribed in \verb|\iffalse|
+blocks marked ``UNTYPESET''. All of these blocks compile when switched to
+\verb|\iftrue|.
+\item The macro \verb|\off| is rendered as each file printed it, and doubtful
+cases are flagged.
+\item Missing citation labels are typeset literally.
+\item Underlined bibliography titles are set in italics.
+\item Long inline formulas were allowed to break after commas. This avoids
+overfull boxes and changes no content.
+\end{enumerate}
+
+\section{Recommendation}
+
+Major revision. The geometric core is worth preserving, and with the
+corrections above it is largely right. A revised version should do five
+things.
+\begin{enumerate}
+\item Replace the appeal to Lemma 5.19 by an explicit computation of the
+$X$-dependence, including the $\kappa$-factor, in the style of [H2, \S6].
+\item Restate the theorems as germ identities, or with orbital-integral
+conditions on $f$.
+\item Use the correct root system for $PGL(3)$, and treat the quadratic and
+$S_3$ tori.
+\item Account for the divisor with $\beta=11/3$ and for the exceptional and
+spurious divisors.
+\item Fix the misprints and the notation clashes.
+\end{enumerate}
+Until then, the main results should carry the label ``conditional'' (style
+guide \S4.1).
+
+\section*{Acknowledgments and AI disclosure}
+
+This report was written by Claude (Opus 5.5, Anthropic) acting as referee at
+the request of the author. The computations were run by Claude in Python with
+SymPy and SciPy, and the scripts accompany the report. AI review is not an
+independent certification of the results, and statements at level \Lv{3}
+should be checked against the sources. Further details on the AI usage belong
+in the revision log.
+
+\end{document}

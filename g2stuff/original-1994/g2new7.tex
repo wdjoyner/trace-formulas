@@ -1,0 +1,185 @@
+\input amstex
+\documentstyle{amsppt}
+\magnification 1200
+\pageno 47
+\define\ogf{{G(F)}}
+\define\ozf{Z_G(F)}
+\define\oglf{{GL(2,E)}}
+\define\oa{{A_G(F)}}
+\define\oslf{{H(E)}}
+\define\slf{{H(F)}}
+\define\eps{\epsilon}
+\define\okk{{\Cal O}_K}
+\define\off{{\Cal O}_F}
+\define\offp{{\Cal O}_{F'}}
+\define\qqq{\Bbb Q}
+\define\ppp{\Bbb P}
+\define\ccc{\Bbb C}
+\define\rrr{\Bbb R}
+\define\aaa{\Bbb A}
+\define\nnn{\Bbb N}
+\define\unt{\underline{T}}
+\define\unx{\underline{x}}
+\define\oga{{G(\aaa )}}
+\define\oba{{B_G(\aaa )}}
+\define\oza{{Z_G(\aaa )}}
+\define\ogla{{GL(2,\aaa_L )}}
+\define\osla{{H(\aaa_L )}}
+\define\sla{H(\aaa )}
+\define\oee{{\Cal O}_{E}}
+\define\oeep{{\Cal O}_{E'}}
+\define\VV{\Cal V}
+\define\HH{\Cal H}
+\hsize 6.5 true in
+\vsize 8.7 true in
+\vskip .3in
+\subheading{\S 7 On the 2-regular germ for $G_2$}
+\vskip .1in
+Let $G=G_2$ throughtout this section.
+
+The only essential base divisor which can contribute to the 2-regular
+germ for $G_2$ via Igusa theory is $E_{\emptyset,\alpha,\delta}
+$,
+which has $\beta(E_{\emptyset,\alpha,\delta})=3$.
+It must be $F$-rational since for every $\sigma\in\Gamma$
+$\sigma(E_{\emptyset,\alpha,\delta})$
+is also a 2-regular base divisor (see observation (I) in \S 4),
+so $\sigma(E_{\emptyset,\alpha,\delta})=E_{\emptyset,\alpha,\delta}$.
+Recall that the action of the Galois
+group $\Gamma$ on $T_G$ and on $Z$ factors through a finite group
+$\Gamma_T$, say.
+To satisfy the hypotheses (5.1-4), one may use
+the calculations of \S 2 to ``average'' the coordinates of
+$Z_{\emptyset,\alpha,\delta}$
+over the Galois group $\Gamma_T$
+to get $F$-rational coordinates on this divisor if needed.
+\par
+The branch $E_{\emptyset,\alpha,\delta}$ is defined by
+$\lambda =0$ on the regular subset $Z_{\emptyset,\alpha,\delta}$:
+$\{x(\delta)\not= 0,w(\delta)\not= 0,z(\beta)\not= 0\}\subset Z$.
+The patch $Z_{\emptyset,\alpha,\delta}$ is regular with generators
+$z(\alpha)$, $z(\beta)$, $w(\gamma)$, $w(\delta)$, $x(\delta)$,
+$x(\epsilon)$, and $x(\zeta)$. The divisor $\lambda =0$ occurs
+on this patch as $z(\alpha)=0$ with multiplicity 2. 
+The local coordinate relations yield that on $E_{\emptyset,\alpha,\delta}$,
+we have $\lambda=x(\alpha)=x(\beta)=z(\alpha)=x(\gamma)=w(\eps)=w(\zeta)=0$.
+
+By \cite{H1, ch 6, \S 2}, only the term $\theta=1$
+contributes to the sum over $\theta$ in formula 0.6(a).
+The contribution of the 2-regular germ to the $\kappa$-orbital
+integral is then
+\newline
+$\kappa(inv(\gamma_G^0,\gamma_{G,\lambda}))
+D_H(\gamma_{H,\lambda})^{-1}$ times
+$$
+|\lambda|^2
+PV\int_{E_{\emptyset,\alpha,\delta}(F)}\pi^*(f)
+\kappa_1(t_*)
+|\omega_{E_{\emptyset,\alpha,\delta}}|
+=|\lambda|^2
+PV\int_{{\Cal O}_2}f\int_{E_{\emptyset,\alpha,\delta}(u)(F)}
+\kappa_1(t_*)
+|\omega_{E_{\emptyset,\alpha,\delta}(u)}|
+.
+\tag 7.1
+$$
+\proclaim{Theorem 7.2} Suppose $T_G$ is a non-split Cartan subgroup
+of $G_2$ which splits over a
+Galois extension for which the Galois group action on $T_G$
+is a direct product of two cyclic groups of order $2$.
+Assume that $f\in C_c^\infty(G(F))$ satisfies $supp(f)\cap {\Cal O}_2
+\not= \emptyset$, where ${\Cal O}_2$ is a fixed $2$-regular
+$G(F)$-orbit,
+and the support of $f$ does not meet unipotent orbit
+of $G(F)$ which is not $2$-regular. Then there is an $f^H$, smooth on
+$H(F)$, for which, for all regular $\gamma_G\in T_G(F)$
+in a sufficiently small neighborhood of $1$, we have
+$$
+\Delta_{G/H}^{T_G,\kappa}(\gamma_G)
+\Phi^{T_G,\kappa}(\gamma_G,f)=
+\Phi^{T_H,st}(\gamma_H,f^H),
+$$
+where $\kappa$, $T_G$ satisfy
+$H_{T_G,\kappa}=(SL(2)\times SL(2))/\{\pm 1\}$. 
+(In particular, $\kappa$ is quadratic and $T_G$ is biquadratic.)
+\endproclaim                                                         
+This will be proven below. 
+\vskip .2in 
+{\bf Proof of Theorem 7.2}
+\vskip .1in
+By \cite{Sh} or \cite{Ro} the germ on the
+right-hand side is a non-zero constant. The theorem will follow provided
+we can show that both sides are equal, as a function of the tangent
+direction $X$, up to a constant factor. Indeed, such a constant
+factor can be absorbed into
+$f^H$ provided we choose $f$ in the beginning so that its support meets the
+2-regular orbit and no other unipotent orbit. We fix such a choice 
+for the remainder of this section.
+
+We explicitly construct
+local coordinates for the unipotent orbit ${\Cal O}_2^{st}$.
+Let $u=\theta_{\alpha+\beta }(1)\in G_2$, and compute
+the orbit $ad({\frak g}_2)(X_{\alpha+\beta })$.
+From this, we conclude that $u^{G_2}$
+is 8-dimensional, so ${\Cal O}_2^{st}=u^{G_2}$. 
+Analogously to Hales' lemma 6.4,
+we find that the coordinates of the subvariety
+$\prod_{\sigma\in \Sigma_G-\Sigma_{H_2}}U_\sigma$
+of $G_2$ yields local coordinates for the $2$-regular orbit.
+Here $\Sigma_{H_2}^+=\{\alpha,\zeta\}$.
+There is only one $F$-orbit of $u$ contained in the stable orbit of $u$
+(see the appendix), so the $2$-regular orbit of $G_2$ is stable.  
+Local coordinates for the fiber $E_{\emptyset,\alpha,\delta}(u)$
+may be choosen from the remaining coordinates on
+$E_{\emptyset,\alpha,\delta}$:  $z(\beta)$, $x(\zeta)$,
+$v(\alpha)$, and $v(\zeta)$. 
+\par
+We use the form on ${\Cal O}_2$,
+$$
+\split
+\omega_{{\Cal O}_2}
+&:={|\bigwedge_{\sigma\in \Sigma_{{\Cal O}_2}}dx(\sigma)\wedge dv(\sigma)|
+\over |\lambda|^{3/2}}\\
+&={|x(\delta)|^{1/2}\over |w(\delta)|^{3/2}|z(\beta)|^{3/2}}
+dz(\alpha)dw(\gamma)dw(\delta)dv(\alpha)dv(\gamma)dv(\delta),
+\endsplit
+\tag 7.3
+$$
+where $\Sigma_{{\Cal O}_3}=\Sigma_{G}^+ -\Sigma_{H_2}^+$.
+On $E_{\emptyset,\alpha,\delta}(u)$,
+$$
+\omega_{E_{\emptyset,\alpha,\delta}(u)}:=
+{{|x(\delta)|^{5/2}}|w(\delta)|^{7/2}\over{|z(\beta)|^{1/2}}}
+dz(\beta)dx(\zeta)dv(\alpha)dv(\zeta).
+\tag 7.4
+$$
+We need to rewrite this last form as an expression
+$$
+\omega_{E_{\emptyset,\alpha,\delta}(u)}=
+|p_{{\Cal O}_2,T_G}(X)|\omega'_{E_{\emptyset,\alpha,\delta}(u)},
+$$
+where $p_{{\Cal O}_2,T_G}(X)$ is a homogeneous polynomial in the coordinates
+of tangent vector $X$ (expressed in a basis of the Lie algebra 
+${\frak t}$ of $T_G$) and $\omega'_{E_{\emptyset,\alpha,\delta}(u)}$
+is independent of the tangent direction. 
+Using (1.22), we find that $p_{{\Cal O}_2,T_G}(X)$ is a product of the form
+$$
+p_{{\Cal O}_2,T_G}(X)=\prod_{\sigma \in \Sigma_{H_2}^+}\sigma(X)^{f_\sigma},
+\tag 7.5
+$$
+where (by homogeneity of germs)
+$\sum_{\sigma >0}f_\sigma =2$. To verify the hypotheses to Hales'
+lemma 5.19 one must verify the translation invariance property
+of (7.1). The translation invariance of this factor (7.5)
+follows from the above expression for
+$|p_{{\Cal O}_2,T_G}(X)|$ as a product over roots in $H_2$. 
+\par
+By continuity, $\kappa(t_*)$ satisfies the 
+local translation invariance property as well for sufficiently small $Y$.
+Therefore, the hypotheses to Hales' reduction lemma hold and the 
+theorem follows in this case from lemma 5.19.
+
+\enddocument
+
+
+

@@ -1,0 +1,594 @@
+\input amstex
+\documentstyle{amsppt}
+\magnification 1200
+\pageno 35
+\define\ogf{{G(F)}}
+\define\ozf{Z_G(F)}
+\define\oglf{{GL(2,E)}}
+\define\oa{{A_G(F)}}
+\define\oslf{{H(E)}}
+\define\slf{{H(F)}}
+\define\eps{\epsilon}
+\define\ooo{{\Cal O}}
+\define\ovo{\overline{\ooo}}
+\define\off{{\Cal O}_F}
+\define\offp{{\Cal O}_{F'}}
+\define\qqq{\Bbb Q}
+\define\ppp{\Bbb P}
+\define\ccc{\Bbb C}
+\define\rrr{\Bbb R}
+\define\aaa{\Bbb A}
+\define\nnn{\Bbb N}
+\define\zzz{\Bbb Z}
+\define\unt{\underline{T}}
+\define\unx{\underline{x}}
+\define\oga{{G(\aaa )}}
+\define\oba{{B_G(\aaa )}}
+\define\oza{{Z_G(\aaa )}}
+\define\ogla{{GL(2,\aaa_L )}}
+\define\osla{{H(\aaa_L )}}
+\define\sla{H(\aaa )}
+\define\oee{{\Cal O}_{E}}
+\define\oeep{{\Cal O}_{E'}}
+\define\VV{\Cal V}
+\define\HH{\Cal H}
+\hsize 6.5 true in
+\vsize 8.7 true in
+\vskip .2in
+\subheading{\S 5 The Igusa expansion for $G_2$}
+\vskip .1in
+{\bf Notes on the derivation of the Igusa expansion}
+\vskip .2in
+Consider an $F$-morphism 
+$$
+\phi:Y\rightarrow {\Bbb A},
+$$
+smooth outside the ``special fiber'' $\phi^{-1}(0)$,
+from a smooth $F$-manifold $Y$ to the affine line over $F$.
+When we regard $Y(F)$ and ${\Bbb A}(F)=F$ as $F$-manifolds
+in the p-adic topology it will be explicitly stated.
+The ``default'' topology (to use the computer terminology)
+on $Y$ is the Zariski topology. Let $f\in C_c^\infty(Y(F))$,
+considering $Y(F)$ as a p-adic manifold, and consider
+$$
+F(\lambda):=
+\int_{\phi^{-1}(\lambda)(F)}f(y)|\omega_\lambda|,
+$$
+for $\lambda\in F-\{0\}$. If $f$ is locally a product of 
+quasi-characters on a suitable local coordinate system of
+a neighborhoood of $\phi^{-1}(0)$ in the manifold $Y(F)$ then Igusa 
+has given an ``asymptotic expansion'' for $F(\lambda)$
+as $\lambda\rightarrow 0$. Actually, since the topology on 
+$Y(F)$ is totally disconnected, this ``asymptotic expansion''
+is actually an equality valid for all $\lambda$ in a neighborhood
+of $0$. We explain this next.
+\par
+Assume that $Y(F)$ may be covered by patched
+$U$ on which there exist coordinates $\mu_1,...,\mu_n$
+such that 
+\newline
+(5.1) $\phi^{-1}(0)$ has normal crossings; more specifically,
+the irreducible components $E_i$ of $\phi^{-1}(0)\cap U$ 
+are of the form $\{\mu_i =0\}$ on $U$ and
+$$
+\lambda=\alpha\prod_i\mu_i^{a_i},
+$$
+for some integral $a_i>0$, where $\alpha$ is a non-vanishing 
+function in a p-adic neighborhood of $0$ and 
+$|\alpha|=q^{-m(\alpha)}$ is constant for all sufficiently
+small $\lambda$.
+\newline
+(5.2) On $U$, $f(y)$ is of the form
+$$
+f(\mu_1,...,\mu_n)=\gamma \prod_i\kappa_i(\mu_i),
+$$
+where $\gamma$ is constant for sufficiently small $\lambda$.
+\newline
+(5.3) the form $\omega$ is given on $U$ by
+$$
+\omega=\prod_i\mu_i^{b_i-1}d\mu_1...d\mu_n.
+$$
+(5.4) We {\bf assume} that $f$ vanishes off $U$ and that if $b_i=0$ then
+$\kappa_i\not= 1$, $1\leq i\leq n$.
+\par
+Let $F(\lambda)$ be given by (0.2) above. 
+We will sketch the derivation of an equality of the form
+$$
+F(\lambda) =\sum_{\theta,\beta}\theta(\lambda)|\lambda|^{\beta -1}
+\sum_{r=1}^{e(\theta,\beta)}(-\log_q|\lambda|)^{r-
+1}F_r(\theta,\beta,f).
+\tag 5.5
+$$
+The following lemma helps us to compute $F_1$:
+\proclaim{Lemma 5.6} Let
+$$
+G(\lambda) =\sum_{\theta,\beta}\sum_{r=1}^{e(\theta,\beta)}
+a(\theta,\beta,r)(-\log_q|\lambda|)^{r-1}\theta(\lambda)|\lambda|^{\beta -1},
+$$
+where the $a(\theta,\beta,r)$ are constants. If 
+$a(\theta,\beta,r)=0$ for $r>1$ then
+the coefficients $b_n$ in the power series of the 
+truncated Mellin transform
+$$
+M_\epsilon G(s):=\int_{|\lambda|\leq \epsilon}
+G(\lambda)|\lambda|^sd\lambda =\sum_{n\geq 0}b_nq^{-ns},
+\ \ \ \ \ \epsilon=q^{-M},
+$$
+are given by
+$$
+b_n=
+\cases
+vol({\Cal O}_F^\times,d\lambda)
+\sum_{\Sb \theta,\beta\\ \theta\text{ unramified}\endSb}
+a(\theta,\beta,1)(\theta(\pi)q^{-\beta})^n,&n\geq M,\\
+0,& n<M.
+\endcases
+$$
+\endproclaim
+The proof of this is left to the reader.
+\par
+Now, to verify the formula (5.5) for $F(\lambda)$ we may 
+verify it for its truncated Mellin transform
+and use the lemma above to check the coefficients of
+both sides of the resulting power series in
+$q^{-s}$. The formula we have in mind for $F_1$ is stated below.
+First, we need some notation: in the notation of the assumptions
+(5.1-4) above, let $c_j=c_j(a_1,...,a_n)$ denote
+the coefficients for which the principal part of
+$\prod_i{1\over 1-t^{a_i}}$ at $t=1$ is
+$$
+\sum_j{c_j\over (1-t)^j}.
+$$
+Let
+$$
+A(x)=\sum_j {c_j\over (j-1)!}(x+1)...(x+j-1),
+$$
+and define $A_i(x)$ by $A(x-y)=\sum_j x^{j-1}A_j(y)$,
+so $A_1(y)$ is the ``constant term'' of this polynomial in $x$.
+(The function $A(x)$ arises via the undergraduate calculus equality
+$$
+{(j-1)!\over (1-t)^j}
+=\sum_{n\geq 0}(n+1)(n+2)...(n+j-1)t^n.)
+$$
+\proclaim{Lemma 5.7} Suppose that $Y(F)$, $f$, $\omega$, and 
+$\lambda$ satisfy the conditions of (5.1-4). Suppose furthermore 
+that the support of $f$ is contained in one such patch
+$U$, where
+$$
+U=\{(\mu_1,...,\mu_n)\in F^n\ |\ |\mu_i|\leq q^{-M_i}\}.
+$$
+Finally, suppose that we reindexed the $\mu_i$, if 
+necessary, so that 
+$$
+\theta^{a_i}=\kappa_i,\ \ \ \ \beta=b_i/a_i,\ \ \ \ 
+1\leq i\leq p,
+$$
+and for each $i>p$ at least one of these equalities fails to hold.
+(This $p$ is of course different from the fixed prime $p$.)
+Then $F(\lambda)$ satisfies the formula (5.5)
+where $F_1(\theta,\beta,f)$ is given by the value of
+$$
+\int_{D_p\cap U}A_1(M)h_p\prod_{i=p+1}^n|\mu_i|^{z_i}|\nu_p|,
+$$
+at $z_{p+1}=...=z_n=0$, where
+$$
+M=m(\alpha)+\sum_{i\leq p}a_iM_i +\sum_{i>p}a_i(-\log_q|\mu_i|),
+$$
+$$
+h_p={\gamma\over \theta(\alpha)}
+\prod_{i=p+1}^n\kappa_i(\mu_i)\theta(\mu_i)^{-a_i},
+$$
+and 
+$$
+\nu_p={1\over |\alpha|^\beta}
+\prod_{i=p+1}^n|\mu_i|^{b_i-\beta a_i-1}d\mu_{p+1}...d\mu_n.
+$$
+Moreover, if, in addition, any one of the characters $\kappa_i\theta^{-a_i}$
+is ramified then $F_1(\theta,\beta,f)=0$.
+\endproclaim
+We now sketch the proof of this lemma following \cite{L}.
+By our assumptions,
+$$
+\split
+M_\epsilon (F\theta^{-1})(s)
+&={|\alpha|^s\over \theta(\alpha)}
+\int_Uf(y)\prod_i\theta(\mu_i)^{-a_i}|\mu_i|^{a_is+b_i-1}
+d\mu_1...d\mu_n\\
+&={|\alpha|^s\over \theta(\alpha)}\gamma
+\prod_i\int_{|\mu|\leq q^{-M_i}}
+\kappa_i(\mu)\theta(\mu)^{-a_i}|\mu|^{a_is+b_i-1}d\mu,
+\endsplit
+\tag 5.8
+$$
+since $|\omega_\lambda ||d\lambda |
+=\prod_{i=1}^n|\mu_i|^{b_i-1}d\mu_1...d\mu_n$.
+Recall that 
+$$
+\int_{|\mu|\leq q^{-M_i}}
+\kappa'(\mu)|\mu|^zd\mu =0
+$$
+if $\kappa'$ is a ramified character. Therefore we may assume 
+from now on that every character $\kappa_i(\mu)\theta(\mu)^{-a_i}$
+is unramified and we let
+$$
+\epsilon_i:=\kappa_i(\pi)\theta(\pi)^{-a_i},\ \ \ \ 
+1\leq i\leq n,
+$$
+where $\pi$ denotes a fixed generator of the maximal ideal
+of the local ring of integers ${\Cal O}_F$. We may write
+$$
+M_\epsilon (F\theta^{-1})(s)
+=\gamma{|\alpha|^s\over \theta(\alpha)}
+(1-q^{-1})^n\prod_i
+{(\epsilon_iq^{-a_is-b_i})^{M_i}\over 
+1-\epsilon_iq^{-a_is-b_i}}.
+$$
+Recall that we have reindexed the $\mu_i$ so that 
+$$
+\theta^{a_i}=\kappa_i,\ \ \ \ \beta=b_i/a_i,\ \ \ \ 
+1\leq i\leq p,
+$$
+and for each $i>p$ at least one of these equalities fails to hold.
+Then
+$$
+M_\epsilon (F\theta^{-1})(s)
+=M(s,z_{p+1},...,z_n),
+$$
+at $z_{p+1}=...=z_n=0$, where
+$$
+\split
+&M(s,z_{p+1},...,z_n)\\
+&\quad\quad =(1-q^{-1})^p
+[\prod_{1\leq i\leq p}
+{(q^{-a_is-b_i})^{M_i}\over 
+1-q^{-a_is-b_i}}]|\alpha|^{s+\beta}
+\int_{\Sb |\mu_i|\leq q^{-M_j}\\ p+1\leq i\leq n\endSb}
+\times\\
+&\quad\quad\quad\quad \times
+h_p|\alpha|^{-\beta}
+\prod_{p+1\leq i\leq n}|\mu_i|^{z_i+a_is+b_i-1}
+d\mu_{p+1}...d\mu_n\\
+&\quad\quad
+=(1-q^{-1})^p|\alpha|^{s+\beta}{\gamma\over \theta(\alpha)}
+[\prod_{1\leq i\leq p}
+{(q^{-a_is-b_i})^{M_i}\over 
+1-q^{-a_is-b_i}}]\times \\
+&\quad\quad \quad\quad \times
+\int_{\Sb |\mu_i|\leq q^{-M_j}\\ p+1\leq j\leq n\endSb}
+\prod_{p+1\leq i\leq n}|\mu_i|^{a_i(s+\beta)}
+\kappa_i(\mu_i)\theta(\mu_i)^{-a_i}|\mu_i|^{z_i-a_i\beta+b_i-1}
+d\mu_{p+1}...d\mu_n\\
+&\quad\quad
+=(1-q^{-1})^p|\alpha|^{s+\beta}[\prod_{1\leq i\leq p}
+{(q^{-a_is-b_i})^{M_i}\over 
+1-q^{-a_is-b_i}}]\times \\
+&\quad\quad \quad\quad \times
+\int_{\Sb |\mu_i|\leq q^{-M_j}\\ p+1\leq i\leq n\endSb}
+\prod_{p+1\leq i\leq n}|\mu_i|^{z_i+a_i(s+\beta)}h_p|\nu_p|.
+\endsplit
+\tag 5.9
+$$
+The last integral may be interpreted as a principal-value
+integral of a function on $Y(F)$ over a variety of the form
+$D_p=\cap_{1\leq i\leq p}E_i$, where $E_i$ is an irreducible 
+component of $\phi^{-1}(0)$ which satisfies
+$E_i\cap U=\{(\mu_1,...,\mu_n)\ |\ \mu_i=0\}$. Moreover, this 
+multiple integral is a rational function of $q^{-s}$.
+\par
+To see what this rational function is, let for the moment
+$t=q^{-s-\beta}$ and recall that we have defined the $c_j$ in 
+such a way that the principal part of
+$$
+\prod_{1\leq i\leq p}
+{(q^{-a_i(s+\beta)})^{M_i}\over 
+1-q^{-a_i(s+\beta)}}=
+\prod_{1\leq i\leq p}
+{t^{a_iM_i}\over 
+1-t^{a_i}}
+$$
+at $t=1$ is
+$$
+t^{\sum_{1\leq i\leq p}a_iM_i}
+\sum_{1\leq i\leq p}{c_j\over (j-1)!}(1-t)^{-j}
+=\prod_{p+1\leq i\leq n}|\mu_i|^{a_i(s+\beta)}|\alpha|^{-s-\beta}
+t^M\sum_{n\geq 0}A(n)t^{n},
+$$
+where $M$ is as in the statement of the lemma.
+(Here we have multiplied and divided by
+$\prod_{p+1\leq i\leq n}|\mu_i|^{a_i(s+\beta)}
+|\alpha|^{-s-\beta}$ to account for all of $M$.)
+The coefficient of $t^n$ in the latter expression is,
+for $n\geq M$,
+$$
+A(n-M)\prod_{p+1\leq i\leq n}|\mu_i|^{a_i(s+\beta)}|\alpha|^{-s-\beta}
+=\prod_{p+1\leq i\leq n}|\mu_i|^{a_i(s+\beta)}|\alpha|^{-s-\beta}
+\sum_rn^{r-1}A_r(M),
+$$
+and, for $n<M$, the coefficient of $t^n$ is $0$. From this the 
+lemma follows. 
+\vskip .2in
+{\bf Geometry of the Igusa expansion}
+\vskip .1in
+Let $E$ be an irreducible divisor in $Y''\subset G\times S''$, 
+which we know is regular in 
+codimension one, for which the image of $E$ under $\pi$ is contained in the
+Zariski closure of a unipotent orbit ${\Cal O}$ in $G$. Such a divisor is 
+called an {\bf ${\Cal O}$-divisor} if ${\Cal O}$ is minimal (with respect to 
+the partial ordering given by inclusion of Zariski closures) with this 
+property. It will be called an {\bf ${\Cal O}(F)$-divisor} if $E$
+is defined over $F$ and
+$\pi(E(F))$ meets ${\Cal O}(F)$ in a dense subset of $\ooo(F)$ 
+as p-adic manifolds.
+Let $E$ be an ${\Cal O}(F)$-divisor.
+\par
+First, we record an observation about
+the fibration $\pi:E\rightarrow \overline{\ooo}$.
+As a corollary to \cite{DG, ch II, Prop. 3.1}, we have
+\proclaim{Lemma 5.10} 
+(a) The morphism $\pi:E\cap Z_S \rightarrow \overline{\ooo}$ is 
+smooth of relative 
+dimension $2r$, provided $\ooo$ is $r$-regular. 
+
+(b) $\pi(E\cap Z_S)\subset \ooo$.
+
+
+(c) Let 
+$$
+\{1\}\subset \overline{\Cal O}_1={\Cal O}_1\cup \{1\}
+\subset ...\subset \overline{\Cal O}={\Cal O}\cup {\Cal O}_m,
+$$
+where each ${\Cal O}_i$ is a unipotent orbit of $G$,
+and let $E_i=\pi^{-1}({\Cal O}_i)\cap E$. Then $\pi|_{E}:E_i
+\rightarrow {\Cal O}_i$ is faithfully flat. 
+\endproclaim
+We may apply Igusa's expansion to
+$$
+F(\lambda)=
+\int_{\phi^{-1}(\lambda)(F)}f(y)|\omega_\lambda|,
+\tag 5.11
+$$
+where $f$ is any function on $Y_C(F)$ for which (a) $f$ is compactly
+supported on the p-adic manifold $Y_C(F)$ and (b) $\phi$, $|\omega_\lambda|$,
+$Y_C$, and $f$ satisfy the conditions of Igusa data in \cite{LS0}. 
+Since $f$ is compactly supported, so is $f|_{\ooo}$. On each fiber 
+$\tilde{E}(u)$ the pull-back $\pi^*(f)$ takes a constant value $f(u)$.
+By \cite{H1, Ch I}, the regular function $\kappa(t_*)$ extends
+from $E(u)$ to a regular function on $\tilde{E}(u)$. By the lemma
+above, we have
+$$
+\int_{\overline{\ooo}(F)}f \cdot
+PV\int_{\tilde{E}(u)(F)}\kappa(\tilde{t}_*)
+|\omega_{\tilde{E}(u)}||\omega_{\ovo}|=
+PV\int_{\tilde{E}(F)}\tilde{\pi}^*(f) \kappa(\tilde{t}_*)
+|\omega_{\tilde{E}}|,
+\tag 5.12
+$$
+provided everything in sight satisfies the conditions (5.1-4).
+Recall that, by definition, there are disjoint patches 
+$U_i\subset \tilde{Y}_1(F)$,
+each analytically isomorphic to a finite box in affine space, such that
+$$
+PV\int_{\tilde{E}(F)}\tilde{\pi}^*(f) \kappa(\tilde{t}_*)
+|\omega_{\tilde{E}}|=
+\sum_iPV\int_{\tilde{E}(F)\cap U_i}\tilde{\pi}^*(f) \kappa(\tilde{t}_*)
+|\omega_{\tilde{E}}|,
+\tag 5.13
+$$
+provided that the conditions (5.1-4) hold.
+(By the way, the computations in \S 4 show that in all
+the cases looked at in this paper,
+$b_{{E}(F)}>0$. In particular, $b_{{E}(F)}\not= 0$.)
+
+\proclaim{Lemma 5.14}
+Let $G=G_2$.
+Let $E$ be a base ${\Cal O}(F)$-divisor of the 
+variety $Y_C=\tilde{Y}_1$. If $E$ is $F$-rational, $E(F)\not= \emptyset$,
+then $e(\theta_E,\beta_E)=1$. In particular, spurious divisors
+do not contribute to the Igusa expansion.
+\endproclaim
+\demo{proof} The proof is case-by-case using local coordinates in each case.
+Assume $e(\theta_E,\beta_E)\geq 2$. By \cite{L}, the
+principal value integral contributing to 
+$F_1(\theta_E,\beta_E,f_\kappa)$ is
+$$
+\int_{\ooo(F)}f\int_{D_u(F)}\kappa(\tilde{t}_*)
+|\omega_{D_u}||\omega_{\ooo}|,
+$$
+where $D=\cap_{i=1}^{e(\theta_E,\beta_E)}E_i$, 
+where $\theta_E=\theta_i$ and $\beta_E=\beta_i$,
+and $D$ is $F$-rational (though the $E_i$ themselves need not be
+$F$-rational). 
+
+Claim: The homogeneity degree of $|\omega_{D_u}|$, as a function
+of the tangent direction $X$, is $dim(D)-dim(\ooo)<dim(E)-dim(\ooo)=2r$.
+
+To prove this, we look at each divisor in the inverse image of
+$\{\lambda =0\}$. 
+
+We may omit the regular and 1-regular cases since they were already
+dealt with in \cite{H1}, \cite{LS2}.
+
+Let ${\Cal O}={\Cal O}_2$ denote a 2-regular orbit and let 
+$E=E_{\emptyset, \alpha,\delta}$. 
+First suppose $e(\theta_E,\beta_E)=2$.
+From \S 7 below, the form on the $F$-rational fiber
+$E_{\emptyset,\alpha,\delta}(u)$, $u\in {\Cal O}$, is given 
+on $Y''_{\emptyset,\alpha,\delta}$ by
+$$
+\omega_{E_{\emptyset,\alpha,\delta}(u)}
+=gdz(\beta)dx(\zeta)dv(\alpha)dv(\zeta),
+\tag 5.15
+$$
+where $g$ is a regular function.
+(Though these coordinates may not be $F$-rational, we
+may ``average'' them (or a suitable ${\Bbb Z}$-linear combination of them)
+over the Galois group using the calculations of \S 2
+and then we make a change
+of variables in the form to get a form in $F$-rational coordinates.)
+By (1.22), this form is homogeneous
+of degree 2 as a function of $X$. Let $E'$ denote another 
+$F$-rational ${\Cal O}_2$-rational divisor with
+$\theta_E=\theta_{E'}$, $\beta_E =\beta_{E'}$. By Hironaka's theorem,
+$E$ intersects $E'$ normally in $Y_C$. The intersection $D=E\cap E'$
+maps onto ${\Cal O}$ under $\pi$ by \cite{DG, chap II, Prop 3.1}. 
+The variety $D$ must have codimension 1 in $E$ and will have
+an Igusa form on 
+a fiber $D(u)$ which satisfies
+$$
+\omega_{D(u)}=g_Ddx dv_1dv_2,
+$$
+where $x$ is a coordinate on $Z$, $v_1,v_2$ are coordinates on the
+$N_+$ components, and $g_D$ is regular. Therefore, $\omega_{D(u)}$
+is homogeneous of degree $<2$ as a function of $X$. 
+
+Now suppose $e(\theta_E,\beta_E)=3$. The argument is similar,
+hence omitted, in this case. The claim follows in the
+2-regular case.
+
+Let ${\Cal O}={\Cal O}_3$ denote a 3-regular orbit and let 
+$E=E_{\emptyset, \beta,\zeta}$. 
+First suppose $e(\theta_E,\beta_E)=2$.
+From \S 8, the form on the $F$-rational fiber
+$E_{\emptyset,\beta,\zeta}(u)$, $u\in {\Cal O}$, is given 
+on $Y''_{\emptyset,\beta,\zeta}$ by
+$$
+\omega_{E_{\emptyset,\beta,\zeta}(u)}
+=h dw(\epsilon)dw(\zeta)dx(\zeta)dv(\beta)dv(\epsilon)dv(\zeta),
+\tag 5.16
+$$
+where $h$ is a regular function.
+(Again, these coordinates may be ``averaged to obtain $F$-rational
+coordinates as in the 2-regular case.)
+By (1.22), this form is homogeneous
+of degree 3 as a function of $X$. Let $E'$ denote another 
+$F$-rational ${\Cal O}_3$-rational divisor with
+$\theta_E=\theta_{E'}$, $\beta_E =\beta_{E'}$. By Hironaka's theorem,
+$E$ intersects $E'$ normally in $Y_C$. The intersection $D=E\cap E'$
+maps onto ${\Cal O}$ under $\pi$ by \cite{DG, chap II, Prop 3.1}. 
+The variety $D$ must have codimension 1 in $E$ and will have Igusa form on 
+a fiber $D(u)$ which satisfies
+$$
+\omega_{D(u)}=h_Ddx dy dv_1dv_2dv_3,
+$$
+where $x,y$ are coordinates on $Z$, $v_1,v_2,v_3$ are coordinates on the
+$N_+$ components, and $h_D$ is regular. Therefore, $\omega_{D(u)}$
+is homogeneous of degree $<3$ as a function of $X$. 
+
+Now suppose $e(\theta_E,\beta_E)=3$. The argument is similar,
+hence omitted, in this case. The claim follows in the
+3-regular case.
+This proves the claim for all the orbits. 
+
+However, the claim 
+contradicts the degree of homogeneity of the $\ooo$-germ. \qed
+\enddemo
+\proclaim{Lemma 5.17} Let $G=G_2$.
+Let $E$ be a base ${\Cal O}(F)$-divisor of the 
+variety $Y_1$, $\tilde{E}$ its preimage under 
+$Y_C\rightarrow Y_1$.
+In this case $F_1(\theta_E,\beta_E,f_\kappa)$ is given 
+(up to a constant) by 
+$$
+PV\int_{\tilde{E}(F)}\tilde{\pi}^*(f_\kappa) |\omega_{\tilde{E}}|
+=\int_{\ovo(F)_{st}}f
+\int_{\tilde{E}_u(F)}\kappa(\tilde{t}_*)
+|\omega_{\tilde{E}_u}||\omega_{\ovo}|,
+$$
+where $\omega_{\ovo_{st}}$ 
+is a sum of forms of maximal degree on the 
+equidimensional pieces ${\Cal O}_i$ in Lemma 5.10 of the stable
+orbit $\ovo(F)_{st}=\cup_i{\Cal O}_i(F)$.
+\endproclaim
+\demo{proof} Because of the previous lemma, (0.1), and formula 0.6,
+it suffices to check that the conditions of \cite{LS0} are met. This
+has essentially already been done in \cite{L},
+\cite{H1, ch I, proof of Prop. 5.2},
+but we fill in some details regarding the function $\kappa(\tilde{t}_*)$ 
+and the cocycle-valued function $t_*$.
+\par
+Some information about $t_*$ is given following formula 0.6 in \S 0.
+More explicit information about
+$t_\sigma :Y_1(B_+,B_-)\rightarrow T_G(\overline{F})$, where
+$Y_1(B_+,B_-)$ is defined in \S 1, is given in
+\cite{H1, ch I, Corollary 5.4}. Since the
+only $F$-form of $G_2$ over a p-adic field is the split form \cite{T},
+we have $G=G_2=G_{in}=G_{qs}$, $T_G=T_{in}, \ \underline{T}=T_{qs}$, and
+$\underline{B}=B_{qs}$, the notation being as in \cite{H1}. Let 
+$\alpha\in \Delta$ denote a simple root,
+If $\sigma=\sigma_\alpha\in \Gamma$ acts on
+$T_G(\overline{F})$ by conjugation by the
+reflection $s_\alpha\in \Omega$, then
+we choose $g$, $h$ as in 
+\cite{H1, ch I, \S 5}. Taking
+$A_\sigma=w_\sigma^{-1}=s_\alpha \in N_G(T_G)$.
+in \cite{H1, ch I, Corollary 5.7}, we find there is a ``constant''
+$t_1\in T_G(\overline{F})$ independent of the star such that at a point
+$$
+(t^g,((B(W))_{W\in{\Cal W}},(z(\alpha))_{\alpha\in\Delta},n)
+\in\chi^{-1}(C)\times S_1(B_+,B_-)\times N_+,
+$$
+the value $t_\sigma$ is determined by
+$$
+s_\alpha \epsilon_{-\alpha}(-\xi)n^{-1}w_\sigma^{-1}s_\alpha^{-1}\in 
+N_+^- N_+ (t_1t_\sigma)^{w_\sigma^{-1}s_\alpha^{-1}}.
+\tag 5.18
+$$
+Take the transpose of both sides of Equation 5.5 in
+\cite{H1, ch I}. The resulting equation,
+along with (5.10) implies that 
+$$
+t_1t_\sigma = \alpha^\vee(\xi),
+$$
+where $\alpha^{\vee}$ is its coroot, and $\xi$ satisfies (5.2)
+as a function of the coordinates of $Y''(B_+,B_-)\times N_+$. Choose
+$B_-, B_+$ such that these coordinates are $F$-rational.
+From the appendix, we know that there is a natural bijection
+$$
+H^1(\Gamma,T_G)\rightarrow \zzz/ m\zzz,
+$$
+where $m\in \{2,3\}$. Since each such $H^1(\Gamma,T_G)$ is cyclic,
+$\kappa(\tilde{t}_*)$ is determined by its value on a generator. This,
+in turn, determines a character of $\zzz/m\zzz$ and
+hence by local class field theory a
+character $\theta$ of $F^\times/NE_{T_G}^\times$ (where $E_{T_G}$
+denotes the Galois closure of the splitting field of $T_G$. One may
+construct a (non-canonical) map
+$\phi:H^1(\Gamma,T_G) \rightarrow F^\times$
+such that $\kappa(\tilde{t}_*)=\theta(\phi(\tilde{t}_*))$
+is a monomial in the coordinates of $Y''(B_+,B_-)\times N_+$.
+This allows us to conclude that the
+conditions of (5.1-4) have been met.  \qed
+\enddemo
+
+We close this section by recalling an important reduction lemma
+due to T. Hales. First, observe that for each $r$-regular
+orbit ${\Cal O}$, $r>0$,
+every function $f\in C_c^\infty(G(F))$ may be written in the form $f=f_1+f_2$
+with $f_1$ supported off the Zariski closure of ${\Cal O}$ in $G$
+and $f_2$ whose support does not meet the orbits outside the 
+Zariski closure of ${\Cal O}$ in $G$.
+\proclaim{Reduction Lemma 5.19 (Hales)} Suppose that for each $(T,\kappa)$ 
+associated to $H$ 
+the germs $\Gamma_{{\Cal O}}^{(T,\kappa)}(\gamma)$ have the form
+$$
+\Gamma_{{\Cal O}}^{(T,\kappa)}(exp(\lambda^2 X))=
+|\lambda|^{2r}m_{{\Cal O}}^{(T,\kappa)}(X),
+$$
+for $\lambda$ small, where $m_{{\Cal O}}^{(T,\kappa)}(X)$ satisfies
+$$
+m_{{\Cal O}}^{(T,\kappa)}(X)=m_{{\Cal O}}^{(T,\kappa)}(X+Y),
+$$
+for $X,Y\in {\frak t}_G$ sufficiently small, $X$ regular,
+$X+Y$ regular, and $Y$ belonging to the Lie algebra of the center
+of an endoscopic group $H\subset G$ satisfying $Cent(Y,G)=H$. 
+Then $(G,H)$ admits local
+$\Delta$-transfer at the identity for all functions $f\in C_c^\infty(G(F))$
+whose support does not meet the orbits outside the 
+Zariski closure of ${\Cal O}$ in $G$. 
+\endproclaim
+\demo{proof} Follows \cite{H3, Lemma 6.1}. (See also \cite{H2, Proposition 
+2.11}.)  \qed
+\enddemo
+
+This lemma implicitly uses \cite{LS2}.
+\enddocument

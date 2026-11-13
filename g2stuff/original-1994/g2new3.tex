@@ -1,0 +1,340 @@
+\input amstex
+\documentstyle{amsppt}
+\magnification 1200
+\pageno 26
+\define\ogf{{G(F)}}
+\define\ozf{Z_G(F)}
+\define\oglf{{GL(2,E)}}
+\define\oa{{A_G(F)}}
+\define\oslf{{H(E)}}
+\define\slf{{H(F)}}
+\define\eps{\epsilon}
+\define\ooo{{\Cal O}}
+\define\off{{\Cal O}_F}
+\define\offp{{\Cal O}_{F'}}
+\define\qqq{\Bbb Q}
+\define\ppp{\Bbb P}
+\define\ccc{\Bbb C}
+\define\rrr{\Bbb R}
+\define\aaa{\Bbb A}
+\define\nnn{\Bbb N}
+\define\unt{\underline{T}}
+\define\unx{\underline{x}}
+\define\oga{{G(\aaa )}}
+\define\oba{{B_G(\aaa )}}
+\define\oza{{Z_G(\aaa )}}
+\define\ogla{{GL(2,\aaa_L )}}
+\define\osla{{H(\aaa_L )}}
+\define\sla{H(\aaa )}
+\define\oee{{\Cal O}_{E}}
+\define\oeep{{\Cal O}_{E'}}
+\define\VV{\Cal V}
+\define\HH{\Cal H}
+\hsize 6.5 true in
+\vsize 8.7 true in
+\vskip .2in
+\subheading{\S 3 Construction of regular patches}
+\vskip .1in
+This section is a preliminary step to constructing the regular
+variety $Y_C$ for $G_2$.
+\par
+Let $G$ denote an arbitrary connected semisimple group over $\off$.
+Let $\chi:G\rightarrow T_G/\Omega$ denote the adjoint quotient \cite{Slo}.
+There is an open patch
+$$
+Y''(B_+,B_-)\times N_+\subset
+\chi^{-1}(C)\times S''(B_+,B_-)\times N_+
+\subset G\times S''(B_+,B_-)\times N_+
+$$
+of $Y''$ which is isomorphic to an open set of the product
+$\aaa^p\times Z$, where $Z\subset \aaa^{2p+1}$ is a 
+``monomial'' $p+1$ dimensional
+affine variety having coordinates
+$$
+w(\rho),\quad (\rho\in \Sigma_G^+ -\Delta),\quad
+z(\alpha)\quad (\alpha\in\Delta),\quad x(\rho)
+\quad (\rho\in\Sigma_G^+),\quad \lambda,
+$$
+(we set $w(\alpha)=1,\ \alpha\in\Delta$), defined by the relations:
+for $\lambda\not= 0$, $\rho\in\Sigma_G^+$, we have
+$$
+\lambda w(\rho )=x(\rho)\prod_{\alpha\in\Delta }z(\alpha )^{m(\alpha)},
+\tag 3.1
+$$
+where $m(\alpha)=m_\rho(\alpha)\geq 0$ is the integral coefficient in
+$\rho = \sum_{\alpha\in\Delta }m(\alpha)\alpha $.
+Here $\Delta\subset \Sigma_G$ denotes a basis of simple roots
+of $T_+$ in $B_-$.
+There is a surjection $Y''(B_+)\rightarrow Z$
+which allows us to pull-back open subvarieties $Z_U\subset Z$ to open 
+subvarieties $Y''_U\subset Y''$.
+Moreover,
+if $\rho =\alpha$ is simple then $\lambda =x(\alpha)z(\alpha)$. This variety
+$Z$ is regular except possibly for a singularity contained
+in the hypersurface $\lambda =0$.
+\par
+We first claim that, for the case $G=G_2$,
+the singularities of $Y''(B_+,B_-)$, if any, lie in
+$$
+K:\ \ \ x(\alpha)=x(\beta)=x(\gamma)=z(\alpha)=w(\zeta)=0
+$$
+or in
+$$
+K_0:\ \ \ x(\alpha)=x(\beta)=x(\gamma)=x(\delta)=x(\epsilon)=x(\zeta)=w(\zeta)=0.
+$$
+The points in $Y''(B_+,B_-)$ with coordinates in the latter set all map to the
+identity in $G$ under $\pi$, hence correspond to the trivial unipotent orbit.
+Therefore, blowing up $Z$ along $K_0$ creates exceptional divisors 
+associated with the trivial orbit, which do not concern us here.
+\par
+To prove this claim, we exhibit 5 regular patches, give generators of the local coordinate ring, and express the remaining coordinates as regular functions of the generators on that patch.
+\vskip .1in
+$x(\alpha)\not= 0$: Generators: $x(\alpha),x(\beta),z(\beta),x(\gamma), x(\delta),x(\epsilon),x(\zeta)$. Remaining coordinates: $\lambda=x(\beta)z(\beta)$, $z(\alpha)=x(\beta)z(\beta)/x(\alpha)$, $w(\gamma)=x(\gamma)z(\beta)/x(\alpha)$,
+$w(\delta)=x(\delta)z(\alpha)z(\beta)/x(\alpha)$,
+\newline
+$w(\epsilon)=x(\epsilon)z(\alpha)^2 z(\beta)/x(\alpha)$, 
+$w(\zeta)=x(\zeta)z(\alpha)^2 z(\beta)^2 /x(\alpha)$.
+\vskip .1in
+$x(\beta)\not= 0$: Generators: $x(\alpha),x(\beta),z(\alpha),x(\gamma),
+x(\delta),x(\epsilon),x(\zeta)$. Remaining coordinates:
+$\lambda=x(\alpha)z(\alpha)$, $z(\beta)=x(\alpha)z(\alpha)/x(\beta)$,
+$w(\gamma)=x(\gamma)z(\alpha)/x(\beta)$,
+$w(\delta)=x(\delta)z(\alpha)^2 /x(\beta)$,
+\newline
+$w(\epsilon)=x(\epsilon)z(\alpha)^3 /x(\beta)$, $w(\zeta)=x(\zeta)z(\alpha)^5 x(\alpha)^2 /x(\beta)^3$.
+\vskip .1in
+$x(\gamma)\not= 0$: Generators: $x(\alpha),x(\beta),x(\gamma),w(\gamma),
+x(\delta),x(\epsilon),x(\zeta)$. Remaining coordinates:
+\newline
+$\lambda=x(\alpha)x(\beta)w(\gamma)/x(\gamma)$,
+$z(\alpha)=x(\beta)w(\gamma)/x(\gamma)$, $z(\beta)=x(\alpha)w(\gamma)/x(\gamma)$,
+\newline
+$w(\delta)=x(\delta)w(\gamma)^2 x(\beta)/x(\gamma)^2$,
+$w(\epsilon)=x(\epsilon)w(\gamma)^3 x(\beta)^2 /x(\gamma)^3$,
+\newline
+$w(\zeta)=x(\zeta)x(\alpha) x(\beta)^2 w(\gamma)^4 /x(\gamma)$.
+\vskip .1in
+$w(\zeta)\not= 0$: Generators: $z(\alpha),z(\beta),w(\gamma),
+w(\delta),w(\epsilon),w(\zeta),x(\zeta)$. Remaining coordinates:
+$\lambda=x(\zeta)z(\alpha)^3 z(\beta)^2 /w(\zeta)$,
+$x(\alpha)=x(\zeta)z(\alpha)^2 z(\beta)^2 /w(\zeta)$,
+$x(\beta)=x(\zeta)z(\alpha)^3 z(\beta) /w(\zeta)$,
+$x(\gamma)=w(\gamma)x(\zeta) z(\alpha)^2 z(\beta) /w(\zeta)$,
+$x(\delta)=w(\delta)x(\zeta) z(\alpha) z(\beta) /w(\zeta)$,
+\newline
+$x(\epsilon)=w(\epsilon)x(\zeta)z(\beta) /w(\zeta)$.
+\vskip .1in
+$z(\alpha)\not= 0$ (assuming $x(\epsilon)\not=0$):
+Generators: $z(\alpha),z(\beta),x(\beta),w(\gamma),
+w(\delta),w(\epsilon),x(\zeta)$. Remaining coordinates:
+$\lambda=x(\beta)z(\beta)$, $x(\alpha)=x(\beta)z(\beta)/z(\alpha)$,
+$x(\gamma)=w(\gamma)x(\beta)/z(\alpha)$,
+$x(\delta)=w(\delta)x(\beta)/z(\alpha)^2$,
+$x(\epsilon)=w(\epsilon)x(\beta)/z(\alpha)^3$,
+$w(\zeta)={x(\zeta)\over x(\epsilon)} w(\epsilon)z(\beta) /z(\alpha)^3$.
+We remark that the assumption $x(\epsilon)\not=0$ may be
+replaced by $x(\delta)\not= 0$ or $x(\zeta)\not= 0$ 
+without affecting regularity (though
+of course the generators, etc., will change). 
+\par
+The above claim follows.
+\par
+As remarked above, the ``interesting'' singularities of $Z$ 
+lie in the subvariety $K$ above, not in $K_0$ since the exceptional 
+divisor associated to the blow-up along $K_0$ corresponds to the trivial orbit,
+whose matching has be deduced from the 
+work of Rogawski, Howe, and Harish-Chandra \cite{Ro}.
+
+By Hironaka's embedded resolution of
+singularities theorem (see also Mumford's semi-stable reduction theorem 
+\cite{K}), we may obtain a smooth variety
+$\tilde{Z}\rightarrow Z$, proper over $Z$, by blowing
+up a finite number of times, beginning with $K$
+as the center of the first blow up. Moreover, the exceptional
+divisor $E_Z$ describing $\lambda =0$ in 
+$\tilde{Z}$ will have normal crossings.
+Let $\tilde{Y''}\rightarrow Y''$ be the
+corresponding resolution of $Y''$ with exceptional divisor
+$E_{Y''}\subset \tilde{Y''}$; the branches of $E_{Y''}$ are reduced and
+cross normally. This can (and has) been done explicitly. 
+However, as the details need not concern us here they will be omitted.
+\par
+Let $G$ be an arbitrary connected semisimple
+group over an algebraically closed field again.
+Let $\Delta=\{\alpha_1,...,\alpha_\ell\}$, which we sometimes identify
+with $\{1,...,\ell\}$, $\ell :=rk\, G$. Let $S_1,S_2\subset \{1,...,\ell\}$
+be disjoint sets, and if they are
+non-empty then let $i_{min}:=min_{i\in S_1}i$,
+$j_{min}:=min_{j\in S_2}j$, and similarly for $i_{max},\ j_{max}$. If
+$S_1,S_2$ are non-empty, not only do we assume
+they are disjoint but also that
+(i) $i_{max}<j_{min}$ or $j_{max}<i_{min}$
+and (ii) if $S_2\not=\emptyset$ then
+$S_1\cup S_2\not=\Delta$.
+\par
+For each map $\sigma :S_2 \rightarrow \Sigma_G^+ -\Delta$,
+define the subset $Z_{S_1,S_2,\sigma}\subset Z$ by
+\newline
+(3.2a) $z(\alpha)\not= 0$, for all 
+$\alpha\notin S_1\cup S_2$,
+\newline
+(3.2b) $x(\alpha)\not= 0$, for all $\alpha\in S_1$,
+\newline
+(3.2c) $x(\sigma(j))\not= 0$, for all $j\in S_2$,
+\newline
+(3.2d) $w(\sigma(j))\not= 0$, for all $j\in S_2$.
+\newline
+These are {\bf fundamental patches} of $Z$ in the sense of \cite{H1}. 
+This collection of patches depends, a priori, on the
+identification of $\Delta$ with $\{1,...,\ell\}$ above.
+For $G=G_2$, they will turn out to have the
+nice property that the divisor $\lambda =0$ on $Z$ will only meet
+$Z_{S_1,S_2,\sigma}$ along a single irreducible branch which we will denote
+by $E_{S_1,S_2,\sigma}$, possibly
+occurring with some multiplicity $a(E_{S_1,S_2,\sigma})$.
+The $E_{S_1,S_2,\sigma}$ are called the {\bf fundamental branches} of
+$\lambda =0$ on $Z$. If $S_2=\{\rho\}$ is a singleton and 
+$\tau=\sigma(\rho)$ then for brevity
+we write $E_{S_1,\rho,\tau}$ in place of $E_{S_1,S_2,\sigma}$.
+If $S_2 =\emptyset$ the we abbreviate this patch by
+$Z_{S_1}$ and call it a {\bf Richardson patch}.
+Similarly for $E_{S_1}$, which we call a {\bf Richardson branch}.
+(I call the $Z_{S_1}$
+``Richardson patches'', since by Proposition 9.1 of Ch II of \cite{H1}
+they will lead to divisors $E$ of $Y$ for which
+$\pi(E)$ is the Zariski closure of a Richardson orbit.) Notice that the
+{\bf regular branch} $E_\emptyset$ ($S_1=S_2=\emptyset$) satisfies
+$\pi(E_\emptyset)=\overline{\Cal O}_{reg}=V$ where $V$ denotes the unipotent
+variety of $G$ and ${\Cal O}_{reg}$ denotes the regular orbit of
+$G$. Since $E_\emptyset\subset Y_C$ is regular,
+the map $\pi:E_\emptyset \rightarrow V$ yields a resolution of singularities
+similar to the Springer resolution \cite{Slo}, \cite{Sp}, \cite{St}. 
+\par
+Fix a map $\sigma :S_2 \rightarrow \Sigma_G^+ -\Delta$ satisfying
+\newline
+(3.3a) for $j,j'\in S_2$, the simple root expansion of $\sigma(j)$ and
+$\sigma(j')$ contain no common simple roots unless $j=j'$ or
+$j,j'$ are consecutive. 
+\newline
+(3.3b) If $j,j'$ are consecutive in $S_2$ then
+$$
+\sigma(j)=\sum_{k=j}^{j'}m_{jk}\alpha_k,
+$$
+for some integers $m_{jk}\geq 0$.
+\newline
+(3.3c) There is an $a\geq 1$ for which $\sigma(j_{max})
+=a\alpha_{j_{max}}+\sum_{\alpha\notin S_1\cup S_2}m(\alpha)\alpha$,
+for some integers $m(\alpha)\geq 0$.
+\par
+Such a map will be called {\bf essential} (in the sense that there
+are lots of other possible patches $Z_{S_1,S_2,\sigma}$ but the
+patches which are not essential are expected to be
+redundant in the covering of $Z$ by patches up to a set of codimension $2$). 
+The corresponding fundamental patches are called {\bf essential}.
+This terminology is admittedly a bit optimistic: there are, in general,
+many extraneous essential patches. Therefore this definition is
+only provisional. In any case, these patches generalize the
+sequences $\gamma(i,j),...$ of roots used in the paper \cite{H2}.
+\par
+\proclaim{Notation} The notation for these divisors is not
+exactly the same as that of \cite{H1}, \cite{H2}, ... , though the notation 
+for the patches seems to agree. Hales' $E_S$ is usually my $E_{\Delta -S}$.
+\endproclaim
+Rather than discuss these patches in greater generality
+than is necessary for 
+our purposes here, we merely state the following
+\proclaim{Conjecture 3.4} If $G$ is not of type $D_n$, $E_n$, $F_4$ then
+$Z$ is covered by the $Z_{S_1,S_2,\sigma}$, except for
+a subset of codimension $\geq 2$. Moreover, the $Z_{S_1,S_2,\sigma}$
+are all regular and $Z$ is regular in codimension one.
+\endproclaim
+In the case of $G_2$ this follows from the next two lemmas.
+The conjecture is known to be true in the case of $A_n$ and
+$C_n$ \cite{H1}, \cite{H2}, and false in the case of $D_n$.
+
+\proclaim{Lemma 3.5 (Hales \cite{H1})}
+For $S_1\subset \Delta$ non-empty, $Z_{S_1}$ is regular, with
+generators $\lambda,\  z(\alpha)\ (\alpha\in\Delta -S_1),
+\  x(\alpha)\ (\alpha\in S_1),\ x(\rho)\
+(\rho\in\Sigma_G^+-\Sigma_{S_1}^+),
+\ w(\rho)\ (\rho\in \Sigma_{S_1}^+)$, where $\Sigma_{S_1}^+$ denotes the
+subroot system generated by $S_1\subset \Delta$.
+It is therefore $p+1$ dimensional and the divisor $\lambda =0$ occurs with
+multiplicity one.
+\endproclaim
+It is also easy to prove the conjecture when $S_1$ is empty and $S_2$ is
+a singleton.
+For brevity, let $m_\alpha$ denote the multiplicity with
+which $z(\alpha)=0$ occurs in $\lambda =0$ and let
+$\Delta_{\lambda =0}:=\{\beta\in\Delta\ |\ m_{\beta}\not= 0\}$.
+\proclaim{Lemma 3.6} For any connected semi-simple group $G$, any
+simple root $\alpha\in\Delta$, and any non-simple positive root
+$\sigma\in\Sigma_G^+ -\Delta$, if
+$Z_{\emptyset,\alpha,\sigma}$ is an essential patch then
+$Z_{\emptyset,\alpha,\sigma}$ is regular and its coordinate ring has generators
+$$
+\split
+&z(\beta )\ \ (\beta\in\Delta ),\\
+&x(\rho) \ \ \ \ \text{ if }
+\rho >\sigma, \\
+&w(\rho) \ \ \ \ 
+\text{ if }
+\rho \leq \sigma
+\text{ and }\rho\notin\Delta.
+\endsplit
+$$
+Moreover, the divisor $\lambda =0$ occurs as $z(\alpha)=0$
+with multiplicity $m$, where $m\geq 1$ is the integral coefficient of
+$\alpha$ in the simple root expansion of $\sigma$.
+\endproclaim
+\demo{proof} Let $\sigma=m\alpha +\sum_{\beta\not= \alpha}m_\beta\beta$
+and notice that we may assume that
+$\sigma\notin \Delta$ for otherwise the patch is Richardson.
+\par
+Recall the definition of $Z_{\emptyset,S_2,\sigma}$: $z(\beta)\not= 0$
+for $\beta\not=\alpha$ simple, $x(\sigma)\not= 0$, and
+$w(\sigma)\not= 0$. By (3.3c) and our hypothesis,
+$\lambda w(\sigma)
+=x(\sigma)z(\alpha)^m\prod_{\beta\not= \alpha}z(\beta)^{m_\beta}$,
+it is clear that
+$\lambda=0$ occurs as $z(\alpha)=0$
+with multiplicity $m_\alpha$. Along $\lambda=0$ the other $z(\beta)'s$
+are non-zero, 
+and the $\{z(\beta)\ |\ \beta\in\Delta\}$
+give us $\ell$ independent coordinates. We need
+$p+1-\ell$ more having the property that the remaining coordinates
+are regular functions of these along $\lambda =0$. Suppose
+$\rho \leq\sigma$, so $\sigma=\rho +\sum_\beta m(\beta)\beta$.
+We have
+$$
+x(\rho)={x(\sigma)w(\rho)\over w(\sigma)}
+\prod_\beta z(\beta)^{m(\beta)},
+$$
+and therefore we want to choose the $w(\rho)$ with $\rho \leq\sigma$,
+$\rho\notin \Delta$,
+as generators. Likewise, we want to choose the $x(\rho)$ with
+$\rho \geq\sigma$ as generators since a similar line of reasoning applied
+to the quotients
+$$
+{w(\rho)\over w(\sigma)}={x(\rho)\over x(\sigma)}\prod_\beta
+z(\beta)^{m_\rho(\beta)-m_{\sigma}(\beta)}.
+$$
+This yields the claim. \qed
+\enddemo
+\proclaim{Lemma 3.7} For any connected semisimple group,
+the variety $Z$ is normal and Cohen-Macauley.
+Moreover, $Z$ is a set-theoretic complete intersection.
+\endproclaim
+\demo{proof} $Z$ is ``monomial'' and hence has a toroidal
+embedding \cite{K, Ch I}. From the definition of saturated
+\cite{K, Ch I, Definition 2} and the equations (3.1)
+defining $Z$, we see that any toroidal embedding 
+$T\hookrightarrow Z$ corresponds to a saturated sub-semigroup of 
+$X^*(T)=Hom_{alg.-grps.}(T,{\Bbb G}_m)$. $Z$ is therefore
+normal by \cite{K, Ch I, Theorem 1} and Cohen-Macauley
+by \cite{K, Ch I, Theorem 14}.
+The fact that $Z$ is a set-theoretic 
+complete intersection follows from the definition
+and counting the number of relations defined by (3.1).\qed
+\enddemo
+\enddocument

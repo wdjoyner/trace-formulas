@@ -1,0 +1,379 @@
+\input amstex
+\documentstyle{amsppt}
+\magnification 1200
+\pageno 43
+\define\eps{\epsilon}
+\define\okk{{\Cal O}_K}
+\define\off{\overline{F}}
+\define\ovf{\overline{F}}
+\define\unb{\underline{B}}
+\define\unt{\underline{T}}
+\define\unx{\underline{x}}
+\define\qqq{\Bbb Q}
+\define\ccc{\Bbb C}
+\define\zzz{\Bbb Z}
+\define\rrr{\Bbb R}
+\define\aaa{\Bbb A}
+\define\nnn{\Bbb N}
+\define\gga{\Bbb G}
+\define\oee{{\Cal O}_E}
+\define\VV{\Cal V}
+\define\HH{\Cal H}
+\hsize 6.5 true in
+\vsize 8.7 true in
+\vskip .3in
+\subheading{\S 6 The matching for the $1$-regular germ}
+\vskip .1in
+Let $G=G_2$ throughout this section.
+
+The $\kappa$-stable subregular germ for $G_2$ should match with the 
+stable subregular germ of $PGL(3)$ or $(SL(2)\times SL(2))/\{\pm 1\}$, 
+for homogeniety reasons. The idea to verify this is simply to write down
+the Igusa expansions of the two orbital integrals and match the $\beta =2$ 
+terms. Furthermore, for the 1-regular comparisons, we can and do
+assume that $f$ is supported off the 0-regular orbit.
+\par
+Let $u=exp(X_\alpha+X_{\alpha+\beta})$. Then the subregular orbit
+is given by ${\Cal O}_1=u^{G_2}$. This is not a stable orbit,
+but it is Richardson.
+See the appendix for more on its $F$-classes.
+It will turn out that both the biquadratic and the cubic Cartans
+can have non-zero 1-regular $\kappa$-stable germs.
+\par
+From \S\S 4,5, there are three base divisors with $\beta =2$,
+and from \cite{H1, ch. VI, \S 2}, we know that all fundamental divisors
+of $G_2$ have $\theta =1$.
+They are described as follows: 
+\par
+$E_\alpha$ is given locally as $\{\lambda =0\}$ 
+(with multiplicity one) on $Z_\alpha$
+and $Z_\alpha$ is regular with generators of its local coordinate ring
+being $\lambda$, $x(\alpha)$, $z(\beta)$, $x(\gamma)$,
+$x(\delta)$, $x(\epsilon)$, $x(\zeta)$.
+\par
+$E_\beta$ is given locally as $\{\lambda =0\}$ (with multiplicity one) 
+on $Z_\beta$
+and $Z_\beta$ is regular with generators of its local coordinate ring
+being $\lambda$, $z(\alpha)$, $x(\beta)$, $x(\gamma)$,
+$x(\delta)$, $x(\epsilon)$, $x(\zeta)$.
+\par
+$E_{\emptyset,\alpha,\gamma}$ is given locally
+by $\{z(\alpha) =0\}$ (with multiplicity one) 
+on $Z_{\emptyset,\alpha,\gamma}$ and $Z_{\emptyset,\alpha,\gamma}$
+is regular with generators of its local coordinate ring
+being $z(\alpha)$, $z(\beta)$, $x(\gamma)$, $w(\gamma)$,
+$x(\delta)$, $x(\epsilon)$, $x(\zeta)$. This divisor may be eliminated
+from consideration by \cite{H1, Ch V, Lemma 1.1}.
+
+As a corollary to \cite{H1, ch 6, Lemma 1.1}, we know that
+$E_\alpha$ and $E_\beta$ are $F$-rational. Note that the action of the Galois
+group $\Gamma$ on $T_G$ and on $Z$ factors through a finite group
+$\Gamma_{T}\subset \Omega$.
+To satisfy the hypotheses (5.1-4), one may use
+the calculations of \S 2 to ``average'' the coordinates of $Z_\alpha$ or
+$Z_\beta$ over the Galois group $\Gamma_T$
+to get $F$-rational coordinates on these divisors.
+\par
+Moreover, if we choose the Cartan $T_G$ such that $\Gamma$ acts
+on $T_G$ via a product of two cyclic subgroups of order two of the Weyl group
+$\Omega$ then the $\kappa$-stable subregular germ 
+of $G_2$ should match with the stable subregular germ of
+$(SL(2)\times SL(2))/\{\pm 1\}$ 
+(and by the appendix, $\kappa$ is quadratic)
+if we choose the Cartan $T_G$ such that $\Gamma$ acts on $T_G$
+via a cyclic subgroup of $\Omega$ of order three
+then the $\kappa$-stable subregular germ 
+of $G_2$ should match with the stable subregular germ of
+$PGL(3)$ (and by the appendix, $\kappa$ is a cubic character).
+\proclaim{Theorem 6.1} Suppose $T_G$ is a non-split Cartan subgroup
+of $G_2$ which splits over a
+Galois extension for which the Galois group action on $T_G$
+is either a direct product of two cyclic subgroups of $\Omega$ order $2$
+or a cyclic subgroup of order $3$.
+Assume that $f\in C_c^\infty(G(F))$ satisfies $supp(f)\cap {\Cal O}_1
+\not= \emptyset$, where ${\Cal O}_1$ denotes a fixed $1$-regular
+$G(F)$-orbit, and the support of $f$ does not meet any unipotent orbit
+of $G(F)$ which is not $1$-regular. Then there is an $f^H$, smooth on
+$H(F)$, for which, for all regular $\gamma_G\in T_G(F)$
+in a sufficiently small neighborhood of $1$, we have
+$$
+\Delta_{G/H}^{T_G,\kappa}(\gamma_H,\gamma_G)
+\Phi^{T_G,\kappa}(\gamma_G,f)=
+\Phi^{T_H,st}(\gamma_H,f^H),
+$$
+where $\kappa$, $T_G$ satisfy
+$H_{T_G,\kappa}=H_i$. Here $i=1$, so $H=PGL(3)$, if
+the Galois group action on $T_G$
+is a cyclic subgroup of order $3$, and
+$i=2$, so $H=(SL(2)\times SL(2))/\{\pm 1\}$, if
+the Galois group action on $T_G$ is
+a direct product of two cyclic subgroups of $\Omega$ order $2$.
+\endproclaim
+This will be proven below.
+\vskip .1in 
+{\bf Proof of Theorem 6.1}
+\vskip .1in
+By the work of Langlands and Shelstad, \cite{LS1}, \cite{LS2}, we need only
+prove the corresponding matching of germs conjecture stated in
+\S 0 above.
+
+We discuss the Igusa expansion of the $G_2$ side more carefully:
+Since only the $\theta=1$ term of formula 0.6(a)
+contributes by \cite{H1, ch 6, \S 2}, 
+the $\beta=2$ term of the Igusa expansion takes the form, 
+$|\lambda|\kappa(inv(\gamma_G^0,\gamma_{G,\lambda}))
+D_H(\gamma_{H,\lambda})^{-1}$ 
+times
+$$
+F_1(1,2,f_\kappa)=
+PV\int_{U\cap E(F)}A_1(M)h_1|\nu_1|=
+PV\int_{E(F)\cap U}\pi^*(f)\kappa_1(t_*)|\omega_E|
+\tag 6.2
+$$
+where $E$ is $E_\alpha$ or $E_\beta$, depending on $T_G$, and
+where $A_1(M)$, $h_1$, $\nu_1$, ..., are as in \cite{L},
+and $f_\kappa$ includes the $\kappa$-factor. The factor 
+$m_\kappa(e)/\kappa_1(\lambda)|_{E(u)}$ is given by
+\cite{H1, Ch VI, \S 2 and Proposition 3.2}, provided $E$ is the divisor
+associated to a line of the Dynkin curve associated to the long root
+of $G_2$ which is fixed by the Galois action. 
+By the homogeniety of germs, formula 0.6 and lemma 0.8,
+this factor is equal to a multiple of
+$$
+\sum_{{\Cal O}\subset {\Cal O}_1^{st}}
+\mu_{\Cal O} (f)\Gamma^{T_G,\kappa}_{\Cal O}(\gamma_\lambda),
+$$
+where ${\Cal O}_1^{st}$ denotes the stable 1-regular unipotent orbit.
+M. Assem has computed the number of $F$-rational classes in the
+stable subregular class when $p\not= 2,3$ (see the appendix below).
+\par
+We discussed the geometry of the fibering $E_\alpha\rightarrow 
+\overline{{\Cal O}}_1$, where $\overline{{\Cal O}}_1$ denotes the
+Zariski closure, in \S 5. 
+We assume that the function $f$ meets ${\Cal O}_1^{st}$ and no other 
+unipotent orbit.
+By formula 0.6 and (6.2), we have 
+$$
+PV\int_{U\cap E(F)}A_1(M)h_1|\nu_1|
+=\int_{\pi(U)\cap {\Cal O}_1(F)}f\int_{E_u(F)}
+\kappa_1(t_*)|\omega_{E_\alpha(u)}||\omega_{{\Cal O}_1}|,
+\tag 6.3
+$$
+where $E$ denotes either $E_\alpha$ or $E_\beta$.
+We may restrict ourselves to 
+the case where $T_G$ is either biquadratic or cubic
+as in Theorem 6.1. The dependence of (6.3) on 
+$C\subset exp(\off\cdot X)$, where $X\in {\frak t}$ is a tangent vector
+for $C$, is via the dependence of $\kappa(t_*)$ and $\omega_{E_\alpha(u)}$
+on $X$, where ${\frak t}$ denotes the Lie algebra of $T_G$.
+\par
+Recall \cite{L, Lemma 2.12} that the measure $\omega_Y$ already incorporates 
+the Weyl discriminant $\prod_{\sigma >0}(1-\sigma(\gamma)^{-1})$.
+Also, from \S 4, recall 
+$$
+|\omega_{Z_\alpha}|=
+{\lambda\over z(\beta)^2}d\lambda dx(\alpha) dz(\beta)dx(\gamma)
+dx(\delta)dx(\epsilon)dx(\zeta),
+$$
+and
+$$
+|\omega_{Z_\beta}|=
+{\lambda\over z(\alpha)^2}d\lambda dz(\alpha) dx(\beta)dx(\gamma)
+dx(\delta)dx(\epsilon)dx(\zeta).
+$$
+Note that these coordinates are not all $F$-rational if $c_\sigma$ is a
+simple reflection by (2.16), (2.17).
+
+On ${\Cal O}_1$ the roots ``outside $P_\alpha$'' (or the
+roots ``outside $P_\beta$'') may be used to
+parameterize the orbit - see the lemma below.
+
+The digression below is motivated by \cite{H1, Remark V.2.2}.
+\par
+Let ${\Cal O}$ be the Richardson orbit associated to a parabolic $P$
+as in \cite{St, Theorem 2,\S 3.9}. Write $P=MN_P$, so that $N_P^G$
+contains ${\Cal O}$ as a dense subset, ${\Cal O}\cap N_P$ is dense in
+$N_P$ and ${\Cal O}\cap N_P$ forms a single class under $P$. We have
+dim${\Cal O}$ = dim$G$ - dim$M$. Let $u\in {\Cal O}\cap N_P$ and recall
+$N_P^- P$ is dense in $G$ by the Bruhat decomposition. The $P$-orbit
+$\{u^p\ |\ p\in P\}$ is equal to ${\Cal O}\cap N_P$ and is dense in $N_P$.
+Therefore, the coordinates of $N_P$ yield coordinates for the $P$-orbit
+of $u\in {\Cal O}\cap N_P$. The $G$-orbit of this $u$, that is
+${\Cal O}$ itself, contains the $N_P^- P$-orbit of $u$ as an open
+subvariety. We may regard the $N_P^- P$-orbit of $u$ as the
+$N_P^-$-orbit of ${\Cal O}\cap N_P$. By Corollary 1.6, for each
+$\overline{n}\in N_P^-$, $B^{\overline{n}}$ is opposite to
+$B^-$ and $B^{\overline{n}}\not= B$ unless $\overline{n}=1$.
+Therefore, for our $u$ as above, $u^{\overline{n}}\notin {\Cal O}\cap N_P$.
+From this it follows that the $N_P^-$-orbit of ${\Cal O}\cap N_P$
+is isomorphic to $N_P^-$.
+\proclaim{Lemma 6.4 (Hales)}
+If ${\Cal O}$ is the Richardson orbit associated to a
+parabolic $P$ then the coordinates on $N_P^- \times N_P$ serve as local
+coordinates on ${\Cal O}$.
+\endproclaim
+
+Returning to the proof of Theorem 6.1,
+associated to the roots outside $P_\alpha$, we have the invariant measure
+$$
+\omega_{{\Cal O}_1}=
+\lim_{\lambda\rightarrow 0}
+{dx(\beta)...dx(\zeta)dv(\beta)...dv(\zeta)\over \lambda},
+$$
+Recall that the invariant measure $\omega_{{\Cal O}_1}$ is
+unique up to a constant \cite{R}. On the fiber $E_\beta(u)$, we use
+$$
+\omega_{E_\beta(u)}={1\over z(\alpha)^2}dv(\alpha)dz(\alpha),
+$$
+by
+\S 4 above, \cite{L, Lemma 2.12}. We have then
+$$
+\omega_{E_\beta(u)}=
+{(1-\alpha (\gamma_\lambda)^{-1})\over \lambda}|_{\lambda=0}
+dv(\alpha){dz_\alpha\over z_\alpha^2}
+={\alpha(X)}dv(\alpha){dz_\alpha\over z_\alpha^2},
+$$
+where $\alpha(X):={1-\alpha^{-1}(\gamma_\lambda)\over\lambda}|_{\lambda=0}$ 
+denotes the inner product of $\alpha$ with the tangent vector $X$ of $C$.
+Similarly, associated to the roots outside $P_\beta$, we have
+$$
+\omega_{E_\alpha(u)}={1\over z(\beta)^2}dv(\beta)dz(\beta)
+={\beta(X)}dv(\beta){dz_\beta\over z_\beta^2}.
+$$
+Therefore, the $\beta =2$ term is equal to
+$$
+\split
+&|\lambda|\kappa(inv(\gamma_G^0,\gamma_{G,\lambda}))
+D_H(\gamma_{H,\lambda})^{-1} 
+PV\int_{U\cap (E_\alpha)(F)}A_1(M)h_1|\nu_1|\\
+&=
+|\lambda|\kappa(inv(\gamma_G^0,\gamma_{G,\lambda}))
+D_H(\gamma_{H,\lambda})^{-1} 
+|\beta(X)|\int_{{\Cal O}_1}f\int_{E_\alpha(u)\cap (U\cap \pi^{-1}(u))}
+\kappa(t_*)|dv'(\beta)
+{dz_\beta\over z_\beta^2}||\omega_{{\Cal O}_1}|,
+\endsplit
+\tag 6.5a
+$$
+or
+$$
+\split
+&|\lambda|\kappa(inv(\gamma_G^0,\gamma_{G,\lambda}))
+D_H(\gamma_{H,\lambda})^{-1} 
+PV\int_{U\cap (E_\beta)(F)}A_1(M)h_1|\nu_1|\\
+&=|\alpha(X)|\int_{{\Cal O}_1}f\int_{E_\beta(u)\cap (U\cap \pi^{-1}(u))}
+\kappa(t_*)|dv'(\alpha)
+{dz_\alpha\over z_\alpha^2}||\omega_{{\Cal O}_1}|,
+\endsplit
+\tag 6.5b
+$$
+From these expressions and the remarks in \S 0 above, 
+one may verify the local translation invariance 
+property of Hales' lemma 5.19.
+From this, the transfer follows in the $1$-regular case,
+for compactly supported functions whose support meets the 1-regular
+orbit and no other orbit.
+\enddocument
+\par
+For the sake of comparison, we look at
+the corresponding expression for the subregular 
+term for $PGL(3)$, $(SL(2)\times SL(2))/\{\pm 1\}$. 
+\par
+The stable subregular germ of $(SL(2)\times SL(2))/\{\pm 1\}$: 
+The stable subregular
+unipotent orbit of $(SL(2)\times SL(2))/\{\pm 1\}$ is the union of
+${\Cal O}_{tr}\times {\Cal O}_{reg}^{st}$ and
+${\Cal O}_{reg}\times {\Cal O}_{tr}$. The stable regular germ on $SL(2)$
+may be identified with the regular germ of $PGL(2)$ (they differ
+at most by some non-zero constant of normalization -
+here one may use another result of Repka or the fact that
+$\sum_{{\Cal O}\subset {\Cal O}_H^{st}}C_{\Cal O}(\gamma_\lambda)$
+is a constant, in the notation of \cite{SS, Lemma 2.4}, 
+where $p\not= 2$ is used) and
+can be found, for example, in \cite{SS}; to get the stable 
+subregular germ of $(SL(2)\times SL(2))/\{\pm 1\}$ we take the product of
+the regular germ of $PGL(2)$ with the stable trivial germ of $SL(2)$. 
+On each fixed 
+elliptic Cartan of $PGL(2)$ the regular germ is a non-zero constant
+times $|D(\gamma_\lambda)|^{-1/2}$, where $D$ is the usual Jacobian.
+Denoting the simple positive roots on $(SL(2)\times SL(2))/\{\pm 1\}$
+by $\alpha_1$, $\alpha_2$, we find that
+$$
+|D_{H_0}(\gamma_{\lambda,H})|^{1/2}=
+|\lambda||\alpha_1(X_{H_0})|, H_0=SL(2),
+\tag 6.6
+$$
+for $\gamma_{\lambda,H}=exp(\lambda X_H)\in T^H(F)\rightarrow
+SL(2,F)\times SL(2,F)$ elliptic regular. We want this function of $X_H$
+to be equal, up to a constant factor, to the function of $X$ occuring
+in $c_{\kappa, T,C}$. Recall that $\alpha_1$ corresponds to $\alpha$ and
+$\alpha_2$ corresponds to $3\alpha +2\beta$.
+\par
+The stable subregular germ of $PGL(3)$: The stable subregular
+unipotent orbit of 
+\newline
+$PGL(3)$ consists of only one $F$-class. The subregular germ on $GL(3)$
+can be found in \cite{Rep}. On  regular elements of an
+elliptic Cartan $E^{\times}$ of $GL(3)$, it is a non-zero constant
+times $|\lambda (3\alpha +2\beta)(X)||D_H(\gamma_\lambda)|^{-1/2}$
+(at least for $p\not= 3$). The matching of the Igusa transfer factor
+$p_{{\Cal O},T}$ with the LS transfer factor predicts something slightly 
+different: a non-zero constant times
+$|\lambda \beta(X)||D_H(\gamma_\lambda)|^{-1/2}$. However, these are 
+actually the same quantity, the discrepancy being accounted for by 
+the fact that for such elliptic Cartans of $PGL(3)$,
+$|1-\beta(\gamma_G)|=|1-(3\alpha +2\beta)(\gamma_G)|$ 
+for all regular $\gamma_H\in T_H(F)$.
+(I have also used that
+$dist(t,F)=|t-{1\over 3}tr(t)|_E$, in the notation of \cite{Rep},
+which may not be valid if $p=3$. The modification needed for 
+$p=3$ is minor and does not affect the final form of our results.)
+\par
+Under the isomorphism between $T_G$ and $T_H$ (see \S A.3 of the appendix),
+on the $H=(SL(2)\times SL(2))/\{\pm 1\},PGL(3)$ side,
+the subregular term has the form, up to a factor of $|\lambda|^{-1}$,    
+$$
+\cases
+(|(3\alpha+2\beta)(X)|)^{-1}d_{T_H}\cdot 
+\mu_{{\Cal O}_1(F)}(f^H),&\text{ for }
+H=A_1\times A_1,\\
+|(3\alpha+\beta)(X)(3\alpha+2\beta)(X)|^{-1}d'_{T_H}
+\cdot \mu'_{{\Cal O}_1(F)}(f^H),&\text{ for }H=A_2,\\
+\endcases
+\tag 6.8
+$$
+provided $T$ is either biquadratic or cubic (respectively) and
+$X$ is regular. 
+Observe that, as a function of $X$, the $G_2$-side differs 
+from the $H$-side by $c_{\kappa, T_G,\alpha(X)}$ times 
+$D_H(\gamma_{\lambda,H})$,
+in the cubic case, and by $c_{\kappa, T_G,\beta(X)}$ 
+times $D_H(\gamma_{\lambda,H})$,
+in the biquadratic case. 
+
+\enddocument
+
+
+
+
+
+\proclaim{Lemma 9.1} Let $s:=\sigma_\alpha$ and 
+$r:=\sigma_\alpha\sigma_\beta$.
+On $E_\alpha$, $E_{\beta}$, the generators
+of the (respective) local coordinates rings on
+$Z_\alpha$, $Z_\beta$ are all $\sigma$-invariant, where
+$\sigma=s$ or $\sigma=r^2$.
+The local coordinate $x(\delta)$, restricted to either of these
+divisors, is not $\sigma$-invariant if
+$$
+\sigma=\sigma_\beta, \sigma_\alpha\sigma_\beta,
+\sigma_\beta\sigma_\alpha, \sigma_\beta\sigma_\alpha\sigma_\beta .
+$$
+(This last statement does not appear to be consistent 
+with \cite{H1, Lemma 1.1, \S 1} but is not needed anyway.)
+\endproclaim
+
+
+
+
+

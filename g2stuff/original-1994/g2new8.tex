@@ -1,0 +1,237 @@
+\input amstex
+\documentstyle{amsppt}
+\magnification 1200
+\pageno 49
+\define\ogf{{G(F)}}
+\define\ozf{Z_G(F)}
+\define\oglf{{GL(2,E)}}
+\define\oa{{A_G(F)}}
+\define\oslf{{H(E)}}
+\define\slf{{H(F)}}
+\define\eps{\epsilon}
+\define\okk{{\Cal O}_K}
+\define\off{{\Cal O}_F}
+\define\offp{{\Cal O}_{F'}}
+\define\qqq{\Bbb Q}
+\define\ppp{\Bbb P}
+\define\ccc{\Bbb C}
+\define\rrr{\Bbb R}
+\define\aaa{\Bbb A}
+\define\nnn{\Bbb N}
+\define\unt{\underline{T}}
+\define\unx{\underline{x}}
+\define\oga{{G(\aaa )}}
+\define\oba{{B_G(\aaa )}}
+\define\oza{{Z_G(\aaa )}}
+\define\ogla{{GL(2,\aaa_L )}}
+\define\osla{{H(\aaa_L )}}
+\define\sla{H(\aaa )}
+\define\oee{{\Cal O}_{E}}
+\define\oeep{{\Cal O}_{E'}}
+\define\VV{\Cal V}
+\define\HH{\Cal H}
+\hsize 6.5 true in
+\vsize 8.7 true in
+\vskip .3in
+\subheading{\S 8 On the 3-regular germ for $G_2$}
+\vskip .1in
+Let $G=G_2$ throughtout this section.
+
+The only essential
+base divisor which can contribute to the 3-regular
+germ for $G_2$ via Igusa theory is $E_{\emptyset,\beta,\zeta}$,
+which has $\beta(E_{\emptyset,\beta,\zeta})=4$.
+It must be $F$-rational since $\sigma(E_{\emptyset,\beta,\zeta})$
+is also a $3$-regular base divisor, by the observation (I) of \S 4
+and the case $G=G_2$ of conjecture 3.4 (which we proved in \S 3
+above).
+Recall that the action of the Galois
+group $\Gamma$ on $T_G$ and on $Z$ factors through a finite group
+$\Gamma_T$.
+To satisfy the hypotheses (5.1-4), one may use
+the calculations of \S 2 to ``average'' the coordinates of
+$Z_{\emptyset,\beta,\zeta}$
+(or a suitable ${\Bbb Z}$-linear combination of them)
+over $\Gamma_T$ to get $F$-rational coordinates on this divisor.
+\par
+The branch $E_{\emptyset,\beta,\zeta}$ is defined by
+$\lambda =0$ on the regular subset $Z_{\emptyset,\beta,\zeta}$:
+$\{x(\zeta)\not= 0,w(\zeta)\not= 0,z(\alpha)\not= 0\}\subset Z$.
+If we use the local coordinates
+$z(\alpha)$, $z(\beta)$, $w(\gamma)$, $w(\delta)$,
+$w(\eps)$, $w(\zeta)$, and $x(\zeta)$ on
+$Z_{\emptyset,\beta,\zeta}$ to compute the form
+$\omega_{E}$ on $E=E_{\emptyset,\beta,\zeta}$, we get
+$$
+\split
+\omega_{E_{\emptyset,\beta,\zeta}}
+&={\omega_{{Z}_1}\over \lambda^\beta {dz(\beta)\over z(\beta)}}\\
+&={{d\lambda \wedge dx(\alpha) \wedge ...\wedge dx(\zeta)}
+\over \lambda^4 {dz(\beta)\over z(\beta)}}\\
+&= {{x(\zeta)^2w(\zeta)^4}\over w(\delta)^7z(\alpha)^2}
+dz(\alpha)\wedge dw(\gamma)\wedge ...\wedge dw(\zeta)\wedge dx(\zeta).
+\endsplit
+\tag 8.1
+$$
+The divisor $\lambda =0$ occurs on
+$Z_{\emptyset,\beta,\zeta}$ as $z(\beta)=0$ with multiplicity 2.
+On $E_{\emptyset,\beta,\zeta}$, $\lambda =z(\beta)=x(\epsilon)=x(\delta)=
+x(\gamma)=x(\beta)=x(\alpha)=0$. 
+
+By \S\S 4-5 and formula 0.6, the contribution of the 
+3-regular germ to the $\kappa$-orbital
+integral is therefore, 
+$\kappa(inv(\gamma_G^0,\gamma_{G,\lambda}))D_H(\gamma_{H,\lambda})^{-1}$ times
+$$
+|\lambda|^3\sum_{\theta}\theta(\lambda)
+F_1(\theta,4,\pi^*(f)\kappa_\theta(t_*))=
+|\lambda|^3\sum_{\theta}\theta(\lambda)
+\int_{E_{\emptyset,\beta,\zeta}(F)}\pi^*(f)\kappa_\theta(t_*)
+|\omega_{E_{\emptyset,\beta,\zeta}}|.
+$$
+Note that only $\theta =1$ contributes to the sum by \cite{H1, ch 6, \S 2}.
+Recall that, on $Z_{\emptyset,\beta,\zeta}$,
+$$
+|\omega_{E_{\emptyset,\beta,\zeta}}|
+={|x(\zeta)|^6|z(\alpha)|^{10}\over{|w(\delta)|^7}}
+dz(\alpha)dw(\gamma)dw(\delta)dw(\eps)dw(\zeta)dx(\zeta)
+dv(\alpha)...dv(\zeta).
+$$
+We may assume that the support of $f$ meets ${\Cal O}_3^{st}$ and no other
+unipotent orbit. In this case, by Formula 0.6(b), we have
+$$
+\int_{E_{\emptyset,\beta,\zeta}(F)}\pi^*(f)\kappa_\theta(t_*)
+|\omega_{E_{\emptyset,\beta,\zeta}}|
+=\int_{{\Cal O}_3(F)}f
+\int_{E_{\emptyset,\beta,\zeta}(u)}\kappa_1(t_*)
+|\omega_{E_{\emptyset,\beta,\zeta}(u)}||\omega_{{\Cal O}_3}|,
+\tag 8.2
+$$
+which is a multiple of the $\kappa$-stable unipotent
+orbital integral of $f$ associated to the $3-$regular orbit
+of $G_2$. It is shown in the appendix that the $3$-regular orbit is stable.
+\proclaim{Theorem 8.3} Suppose $T_G$ is a non-split Cartan subgroup
+of $G_2$ which splits over a
+Galois extension for which the Galois group action on $T_G$ 
+is realized by a cyclic subgroup of $\Omega$ of order three. 
+Assume that $f\in C_c^\infty(G(F))$ satisfies $supp(f)\cap {\Cal O}_3
+\not= \emptyset$ and the support of $f$ does not meet other unipotent orbit
+of $G(F)$. Then there is an $f^H$, smooth on
+$H(F)$, for which, for all regular $\gamma_G\in T_G(F)$
+in a sufficiently small neighborhood of $1$, we have 
+$$
+\Delta_{G/H}^{T_G,\kappa}(\gamma_H,\gamma_G)
+\Phi^{T_G,\kappa}(\gamma_G,f)=
+\Phi^{T_H,st}(\gamma_H,f^H),
+$$
+where $\kappa$, $T_G$ satisfy $H_{T_G,\kappa}=PGL(3)$. 
+(In particular, $\kappa$ is a cubic character and $T_G$ is a cyclic
+``cubic'' elliptic Cartan.)
+\endproclaim
+This will be proven below. 
+\vskip .2in
+{\bf Proof of Theorem 8.3}
+\vskip .1in
+Note that by \cite{Ro}, the germ on the
+right-hand side, $\Gamma_{{\Cal O}_H^{st}}^{T_H,st}(\gamma_H)$, is a 
+non-zero constant. Therefore, the theorem will follow if we can show that,
+as a function of the tangent vector $X$ of $C$,
+the two sides are equal up to a constant.
+
+Let $u=\theta_{\beta}(1)\in G_2$.
+One may explicitly compute the orbit $ad({\frak g}_2)(X_\beta)$.
+From this, we conclude that $u^{G_2}$
+is 6-dimensional. Therefore ${\Cal O}_3^{st}=u^{G_2}$. 
+There is only one $F$-orbit of $u$ contained in the stable orbit of $u$
+(as is verified in the appendix), so the $3$-regular orbit
+of $G_2$ is stable.
+\par
+To get the local coordinates on the fiber 
+$E_{\emptyset,\beta,\zeta}(u)\subset E_{\emptyset,\beta,\zeta}$ over
+$u$ in the 3-regular orbit ${\Cal O}_3$ take the local
+coordinates in the ``right'' divisor $E_{\emptyset,\beta,\zeta}$, 
+then divide $\omega_{E_{\emptyset,\beta,\zeta}}$ by a Haar measure
+$\omega_{{\Cal O}_3}$ on ${\Cal O}_3$.
+Analogously to Hales' lemma 6.4,
+the subvariety $\prod_{\sigma\in \Sigma_G-\Sigma_{H_1}}U_\sigma$
+of $G_2$ yields local coordinates for the $3$-regular orbit,
+where $\Sigma_{H_1}^+=\{\beta,\epsilon,\zeta\}$.
+We use the form on ${\Cal O}_3$,
+$$
+\split
+|\omega_{{\Cal O}_3}|
+&:={|\bigwedge_{\sigma\in \Sigma_{{\Cal O}_3}}dx(\sigma)\wedge dv(\sigma)|
+\over |\lambda|^2}\\
+&={|x(\zeta)|\over |w(\zeta)||z(\alpha)|}
+dz(\alpha)dw(\gamma)dw(\delta)dv(\alpha)dv(\gamma)dv(\delta),
+\endsplit
+\tag 8.4
+$$
+where $\Sigma_{{\Cal O}_3}=\Sigma_{G}^+ -\Sigma_{H_1}^+$.
+On the generic fiber $E_{\emptyset,\beta,\zeta}(u)$, $u\in {\Cal O}_3$,
+$$
+|\omega_{E_{\emptyset,\beta,\zeta}(u)}|=
+{{|x(\zeta)||w(\zeta)|^5}\over{|z(\alpha)||w(\delta)|^7}}
+dw(\epsilon)dw(\zeta)dx(\zeta)dv(\beta)dv(\epsilon)dv(\zeta). 
+\tag 8.5
+$$
+We need to rewrite this last form as an expression
+$$
+\omega_{E_{\emptyset,\beta,\zeta}(u)}=
+|p_{{\Cal O}_3,T_G}(X)|\omega'_{E_{\emptyset,\beta,\zeta}(u)},
+$$
+where $p_{{\Cal O}_3,T_G}(X)$ is a homogeneous polynomial in the coordinates
+of tangent vector $X$ to be computed below
+and $\omega'_{E_{\emptyset,\beta,\zeta}(u)}$
+is independent of the tangent direction. 
+\par
+By an easy calculation given in the appendix,
+our assumption on $T_G$ implies that $\kappa$ is a character
+of order $3$.
+\par
+Once we do this it will follow that
+$$
+\split
+&D_H(\gamma_{\lambda,H})\sum_{{\Cal O}\subset {\Cal O}_3^{st}}
+\mu_{\Cal O}(f)\Gamma_{\Cal O}^{T_G,\kappa}(\gamma_\lambda)
+=|\lambda|^2\kappa(inv(\gamma_G^0,\gamma_\lambda))
+\int_{E_{\emptyset,\beta,\zeta}}
+\pi^*(f)\kappa_1(t_*)|\omega_{{\Cal E}_{\emptyset,\beta,\zeta}(F)}|\\
+&=|\lambda|^2\kappa(inv(\gamma_G^0,\gamma_\lambda))
+|p_{{\Cal O}_3,T_G}(X)|
+\sum_{{\Cal O}\subset {\Cal O}_3^{st}}\int_{{\Cal O}_3(F)}f
+\int_{E_{\emptyset,\beta,\zeta}(u)(F)}\kappa(t_*)
+|\omega'_{E_{\emptyset,\beta,\zeta}(u)}||\omega_{\Cal O}|,
+\endsplit
+\tag 8.6
+$$
+where we normalize $\omega_{{\Cal O}}$ consistent with the
+Langlands-Shelstad transfer factor as in \cite{H2}. 
+
+To determine the general form of
+$p_{{\Cal O}_3,T_G}(X)$ we use the coordinate relations in (1.22).
+We find that $p_{{\Cal O}_3,T_G}(X)$ is a product of the form
+$$
+p_{{\Cal O}_3,T_G}(X)=\prod_{\sigma \in\Sigma_H^+}\sigma(X)^{e_\sigma},
+\tag 8.7
+$$
+where $\sum_{\sigma \in\Sigma_H^+}e_\sigma=3$.
+One interesting thing to note is that the product runs over roots
+``in $H$''. 
+\par
+To complete the matching, it remains only to 
+verify the local translation invariance property in the hypothesis
+to Hales' lemma 5.19 which allows us to apply the
+descent argument. 
+By continuity, we see that the factor
+$\kappa(inv(\gamma_G^0,\gamma_{G,\lambda}))\kappa(t_*)$ satisfies the
+local translation invariance property of lemma 5.19 above, for 
+sufficiently small $Y$. One checks that the factor (8.7)
+satisfies the translation invariance property using that
+it is a product over roots in $H$. The theorem now follows from
+lemma 5.19.
+
+\enddocument
+
+
+

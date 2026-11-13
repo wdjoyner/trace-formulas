@@ -1,0 +1,546 @@
+\input amstex
+\documentstyle{amsppt}
+\magnification 1200
+\pageno 19
+\define\eps{\epsilon}
+\define\okk{{\Cal O}_K}
+\define\off{\overline{F}}
+\define\ovf{\overline{F}}
+\define\unb{\underline{B}}
+\define\unt{\underline{T}}
+\define\unx{\underline{x}}
+\define\qqq{\Bbb Q}
+\define\ccc{\Bbb C}
+\define\zzz{\Bbb Z}
+\define\rrr{\Bbb R}
+\define\aaa{\Bbb A}
+\define\nnn{\Bbb N}
+\define\gga{\Bbb G}
+\define\oee{{\Cal O}_E}
+\define\VV{\Cal V}
+\define\HH{\Cal H}
+\hsize 6.5 true in
+\vsize 8.7 true in
+\vskip .3in
+\subheading{\S 2 Galois action on the coordinates:
+explicit computations for $G_2$}
+\vskip .1in
+Let $G$ denote a connected semisimple $F$-quasi-split
+group with no outer automorphisms.
+
+If $T$ is a Cartan of $G$ defined over $F$ then
+$\Gamma=Gal(\overline{F}/F)$ preserves
+$T$ and the set $\Sigma$ of roots of $G$ with respect to $T$,
+$\sigma\in \Gamma$ sending $U_\rho$ to $U_{\sigma\rho}$, where
+$U_\rho$ is a root group as in \S1. Generally
+speaking, $\Gamma$ will not preserve the set $\Delta$ of positive
+simple roots with respect to a Borel $B$ containing $T$, unless
+$B$ is defined over $F$. The character lattice 
+$X:=X^*(T)=X^*(T/\overline{F})$ is a $\zzz[\Gamma]$-module and the action
+of $\Gamma$ on $X_{\rrr}:=X^*(T)\otimes \rrr$ preserves the
+set of root hyperplanes. Consequently, $\Gamma$ acts on the
+set of Weyl chambers in $X_{\rrr}$ and preserves the positive 
+Weyl chamber if $B$ is defined over $F$.
+The action of $\sigma\in\Gamma$ on the set
+${\Cal W}$ of Weyl chambers in $X^*(T_G)\otimes \rrr$
+will be denoted $\sigma_T$.
+\par
+As in section 1, we fix a Borel $\underline{B}$ of $G$ 
+defined over ${F}$, a Cartan 
+$\underline{T}$ defined over $F$ contained in $\underline{B}$,
+and a positive Weyl chamber $W_0$ with respect to the linear order 
+on $\Sigma_G^+$ which makes all the roots occuring in $\underline{B}$
+positive. Let $T_G$ denote our fixed Cartan of $G$ defined over $F$ 
+and let $B_G$ denote a Borel containing
+$T_G$. Note that, for any $\sigma\in\Gamma$ both $B_G$ and
+$B_G^\sigma$ are Borels containing $T_G$, since $T_G$ is
+defined over $F$. 
+The Galois action on $\underline{T}$ induces a homomorphism 
+$$
+\rho:\Gamma\rightarrow Aut(X,\Delta,X^{\vee},\Delta^{\vee}),
+\tag 2.1a
+$$
+where $X=X^*(\underline{T})$ denotes the root lattice, 
+$X^{\vee}=X_*(\underline{T})$ denotes the cocharacter lattice,
+$\Delta=\Delta(\underline{T},\underline{B})$ the simple roots of
+$\underline{T}$ with respect to $\underline{B}$,
+and $\Delta^{\vee}=\Delta^\vee(\underline{T},\underline{B})$
+denotes the simple coroots.
+This induces (\cite{Sp2}) a homomorphism
+$$
+\tilde{\rho}:\Gamma\rightarrow 
+Aut(G,B,T,\{X_{\alpha}\}_{\alpha\in\Delta}\}),
+\tag 2.1b
+$$
+where $X_\alpha$ denotes a root vector associated to $\alpha$
+in the Lie algebra of $G$.
+\par
+The Borels
+$\{{B}_G(W))\ |\ W\in {\Cal W}\}$ are precisely the Borel
+subgroups of $G$ which contain ${T}_G$ and, hence, are preserved by the
+Galois action since ${T}_G$ is defined over $F$. Define
+a map $\sigma_T:{\Cal W}\rightarrow {\Cal W}$ by
+$$
+\sigma {B}_G(W)={B}_G(\sigma_T W),
+$$
+for $\sigma\in\Gamma$. This defines a continuous homomorphism
+$\Gamma\rightarrow \Omega$,
+$\sigma\longmapsto \sigma_T$, which factors through $Gal(\overline{F}/E)$
+where $E/F$ denotes the splitting field of $T_G$.
+We may write $B_G=\underline{B}^g$,
+for some $g\in G(\overline{F})$ such that
+$g^{-1}\cdot \sigma g\in T_G(\overline{F})$ for all $\sigma\in \Gamma$.
+This action $\sigma_T$ on the chambers $W\in {\Cal W}$ induces an action,
+also denoted $\sigma_T$, on the positive roots $\Sigma_G^+$ and hence on
+the walls $ker(\rho)$ of $W$ to the walls
+$ker(\sigma_T(\rho))$ of
+$\sigma_TW$.
+
+\par
+We define an action of
+$\Gamma$ on the set of regular stars, denoted $S_0$, by
+$$
+\sigma (B(W)):={B}_G(W)^{\sigma h}
+=\sigma{B}(\sigma_T^{-1}W),
+\tag 2.2
+$$
+where $B(W)=B_G(W)^h$.
+The set of $F$-rational points of $S_0(\overline{F})$ 
+under this $\Gamma$-action is the set
+of regular stars $(B(W))_{W\in {\Cal W}}$ such that
+$B(W)=B_G(W)^h$, with $\sigma(h)h^{-1}\in T_G(\overline{F})$
+for all $\sigma\in\Gamma$.
+\par
+
+For $\gamma\in T_G(F)$, let
+$$
+\phi_\gamma^{-1}(F):=\phi^{-1}(\gamma)^\Gamma=
+\{x\in X^0(F)\ |\ \phi(x)=\gamma\},
+$$
+where $\phi$ is defined following (1.2) above.
+In fact, the projection map $\pi$ of \S 1.1
+yields a set-theoretic bijection
+$$
+\phi_\gamma^{-1}(F)
+\rightarrow \{g^{-1}\gamma g\ |\ g\in (T_G\setminus G)(F)\}
+\cong (T_G\setminus G)(F),
+\tag 2.3
+$$
+onto the stable conjugacy class of $\gamma$.
+
+
+\par
+The action of $\sigma\in\Gamma$ on a point 
+$((B_-^{n_Wn})_{W\in{\Cal W}})\in
+S(B_+)$, for some
+$n,n_W\in N_+$, which we identify with the point
+$((B(W))_{W\in{\Cal W}},n)\in S(B_+,B_-)\times N_+$,
+is given by
+$$
+\sigma: S(B_+,B_-)\times N_+ \rightarrow S(B_+,B_-)\times N_+,
+$$
+$$
+((B(W))_{W\in{\Cal W}},n)\longmapsto
+((B'(W))_{W\in{\Cal W}},n'),
+\tag 2.4a
+$$
+where $\sigma B_-=B_-^{c_\sigma}$,
+$c_\sigma\in N_{Aut\ G}(T_+)(\off)=N_G(T_+)(\off)$, and
+$$
+B'(W)^{n'}=\sigma(B(\sigma_T^{-1}(W))^n)=
+(\sigma B_-)^{\sigma(n_{\sigma_T^{-1}(W)}n)},
+\tag 2.4b
+$$
+and
+$$
+n'=c_\sigma\sigma(n_{\sigma_T^{-1}(W_0)}n),\ \ B'(W_0)= B_- \ .
+\tag 2.4c
+$$
+\par
+How does the action of $\Gamma$ on $Y_1(B_+)$ affect the
+point determined by $(b,(B_-^{n_W})_{W\in{\Cal W}})^{n}$?
+Here $b\in B_-$, $n_W,n\in N_+(\ovf)$. 
+Let $\alpha(W,\rho)\in\Delta$ denote the simple root associated to
+a pair $(W,\rho)$ as above.
+To be consistent with (2.4a), define an action of $\sigma\in\Gamma$
+on $\Delta$, denoted by $\sigma_T^*$, as follows:
+$$
+(\sigma_T^*)^{-1}(\alpha(W,\rho))
+=\alpha(\sigma_T^{-1}(W),\sigma_T^{-1}(\rho)).
+\tag 2.5
+$$
+The action of $\Gamma$ on 
+$S_1(B_+)\cong (S'(B_+,B_-)\times_{T_+}\aaa^\Delta)\times N_+$,
+is given by
+$$
+\sigma:((B(W))_{W\in{\Cal W}},(z(\alpha))_{\alpha\in \Delta},n)\longmapsto
+((B'(W))_{W\in{\Cal W}},(z'(\alpha))_{\alpha\in \Delta},n'),
+$$
+where $B'(W)$ and $n'$ are as above, and
+$$
+z'(\alpha)=\sigma(z((\sigma_T^*)^{-1}(\alpha))).
+$$
+By the formulas
+for the Galois action on $S(B_+)$, we have
+$$
+\sigma:(b,(B_-^{n_W})_{W\in{\Cal W}})^{n}\longmapsto
+(\sigma b,(\sigma B_-^{\sigma (n_{\sigma^{-1}_T (W)})}
+)_{W\in{\Cal W}})^{\sigma(n_{\sigma^{-1}_T (W_0)}n)}.
+\tag 2.6
+$$
+Here $b$ is as in (1.17) and
+$$
+n_W=\exp (z(W_r,\rho_r)X_{-\alpha_r})
+\exp (z(W_{r-1},\rho_{r-1})X_{-\alpha_{r-1}})\cdots 
+\exp (z(W_1,\rho_1)X_{-\alpha_1}),
+$$
+where $W_0,...,W_r=W$ is a gallery as in (1.9-10).
+How does the action of $\Gamma$ on $S(B_+)$ affect the coordinates
+$z(W,\rho)$? A point of $S(B_+,B_-)$ is determined by
+$(z(W,\rho))_{(W,\rho)\ a \ pair}$, so by (2.2) and (2.6),
+$$
+\sigma:(z(W,\rho))_{(W,\rho)\ a\ pair}\longmapsto 
+(z'(W,\rho))_{(W,\rho)\ a\ pair},
+$$
+where 
+$$
+z'(W,\rho)=\sigma(z(\sigma_T^{-1}(W),\sigma_T^{-1}(\rho)).
+\tag 2.7
+$$
+Suppose now that we are on a patch $S(B_+,B_-)$ with
+$T_+=B_+\cap B_-$ defined over $F$.
+There is an $c_\sigma\in N_{Aut\ G}(T_+)(\off)=
+N_G(T_+)(\off)$ such that
+$\sigma B_-=c_\sigma B_-c_\sigma^{-1}$. We may then write
+$$
+\sigma:(b,(B_-^{n_W})_{W\in{\Cal W}})^{n}\longmapsto
+(b',(B_-^{n'_W})_{W\in{\Cal W}})^{n'},
+\tag 2.8
+$$
+where
+$$
+b'= \sigma({n_{\sigma^{-1}_T (W_0)}})c_\sigma b
+c_\sigma\sigma({n^{-1}_{\sigma^{-1}_T (W_0)}})^{-1},
+$$
+$$
+n'_W=c_\sigma
+\sigma(n_{\sigma^{-1}_T (W)}n^{-1}_{\sigma^{-1}_T (W_0)})c_\sigma^{-1},
+$$
+$$
+n'= c_\sigma \sigma(n_{\sigma^{-1}_T (W_0)}n).
+$$
+The action of $c_\sigma$ by conjugation commutes with the action of
+$\sigma_T$ by permutation of the Borels in a star.
+If $B_-$ is defined over $F$ then the
+$W_0$-component of $(B_-^{n'_W})_{W\in{\Cal W}}$ is
+$\sigma B_-=B_-$. In particular, if the point in $Y_1(B_+)$
+determined by $(b,(B_-^{n_W})_{W\in{\Cal W}},
+(z(\alpha))_{\alpha\in\Delta},{n_+})$ has the
+coordinates $\{x(\rho)\ |\ \rho >0\}$ then the image of this point
+under $\sigma$ has the coordinates $\{x'(\rho)\ |\ \rho >0\}$,
+where $x'(\rho)$ is determined by
+$$
+\sigma({n_{\sigma^{-1}_T (W_0)}})c_\sigma b
+c_\sigma\sigma({n^{-1}_{\sigma^{-1}_T (W_0)}})^{-1}
+=b'=n_0t_0\prod_{\rho\in\Sigma^+}\exp (x'(\rho)X_\rho),
+\tag 2.9
+$$
+for some $n_0\in N_+=<U_\rho\ |\ \rho>0>$,
+where $\Sigma^+$ denotes the set of roots of $T_+$
+which are positive with respect to $B_-$.
+Using Chevalley's commutator formula, this formula for
+$x'(\rho)$ will be used for explicit calculations below.
+\proclaim{Lemma 2.10 \cite{H2, pf of Lemma 5.3}}
+(a) Let $\alpha$ denote an 
+arbitrary simple positive root of $G$, an arbitrary quasi-split group. If
+$(u,(B(W))_{W\in {\Cal W}})\in E_{\Delta-\alpha}$ 
+then every such Borel subgroup $B(W)$ lies in the same line $\ell_\beta$
+in the Dynkin curve for $G$. Here
+$E_{\Delta-\alpha}$ is a $1$-regular Richardson branch
+of $\phi^{-1}(1)$ on $Y_C$ as in \S 3 below.
+
+(b) The action of Galois on the points of $E_{\Delta-\alpha}$ 
+is determined by the action on the lines in the Dynkin curve.
+\endproclaim
+\par
+Now we restrict to the case $G=G_2$.
+
+Recall the Dynkin curve for $G_2$ \cite{St}:
+$$
+$$
+$$
+$$
+$$
+$$
+$$
+$$
+$$
+$$
+\vskip .4in
+\noindent
+Possible Galois actions on this diagram include:
+\newline
+(i) exchanging $\ell_\beta'$ with $\ell_\beta'''$, leaving 
+$\ell_\beta''$ fixed, and flipping $\ell_\alpha$;
+\newline
+(ii) flipping $\ell_\beta'$, $\ell_\beta'''$, $\ell_\beta''$
+and fixing $\ell_\alpha$;
+\newline
+(iii) cyclically permuting the lines $\ell_\beta'$, 
+$\ell_\beta'''$, $\ell_\beta''$
+and ``rotating'' $\ell_\alpha$.
+\newline
+
+Label and order the positive roots of the maximal torus 
+$T_+\subset B_-$ of $G_2$ as
+$$
+\alpha \text{  (short) },\beta \text{  (long) },
+\gamma=\alpha +\beta, \delta =2\alpha +\beta,
+\epsilon =3\alpha +\beta,  \zeta=3\alpha +2\beta .
+$$
+We have
+$$
+\theta_\delta(r)\theta_\gamma(s)=\theta_\gamma(s)\theta_\delta(r)\theta_{\zeta}(3rs),
+$$
+so
+$$
+\split
+\theta_{\eps}(x)^{\theta_{-\alpha}(z)}
+&=\theta_{\eps}(x)\theta_\delta(c_1xz)\theta_\gamma(c_2xz^2)
+\theta_\beta(c_3xz^3)\\
+&=\theta_{\eps}(x)\theta_\beta(c_3xz^3)\theta_\delta(c_1xz)\theta_\gamma(c_2xz^2)\\
+&=\theta_\beta(c_3xz^3)\theta_\gamma(c_2xz^2)\theta_\delta(c_1xz)\theta_{\eps}(x)
+\theta_\zeta(c_4x^2z^3),
+\endsplit
+$$
+where the $c_i$'s are computable constants. Likewise,
+$$
+\split
+\theta_{\delta}(x)^{\theta_{-\alpha}(z)}
+&=\theta_{\delta}(x)\theta_\gamma(d_1xz)\theta_\beta(d_2xz^2)\\
+&=\theta_\beta(d_2xz^2)\theta_\gamma(d_1xz)\theta_{\delta}(x)\theta_\zeta(d_3x^2z),
+\endsplit
+$$
+$$
+\theta_{\gamma}(x)^{\theta_{-\alpha}(z)}
+=\theta_{\gamma}(x)\theta_\beta(exz)=\theta_\beta(exz)\theta_{\gamma}(x),
+$$
+$$
+\theta_{\beta}(x)^{\theta_{-\alpha}(z)}=\theta_{\beta}(x),
+$$
+and $\theta_{\alpha}(x)^{\theta_{-\alpha}(z)}=
+\theta_{-\alpha}(y_\alpha)t\theta_{\alpha}(x)$, for some $y_\alpha$ depending on $x$, 
+$z$, and some $t$ belonging to a
+maximal torus.
+\par
+In general, if $\sigma\in\Gamma$ acts on 
+$T_G(\overline{F})$ pointwise as as simple
+reflection
+$s_\rho$, some $\rho\in\Delta$, then we write $\sigma=\sigma_\rho$.
+This amounts to taking $\sigma(n_{\sigma_T^{-1}(W_0)})=\theta_\rho (z)$, 
+where $z=\sigma(z(\rho)z_1(W_0,\rho))$ \cite{H2, \S 3}. We will
+compute the Galois action on the coordinate of a point $P$ in
+$Y''(B_+,B_-)$, where we assume that $B_+\cap B_-=T_+$ is defined over
+$F$ and $c_\sigma =1$ in (2.9). (We will allow $c_\sigma$ to
+be a reflection below, see (2.16-17).)
+\par
+Taking $\sigma=\sigma_\alpha$, we have
+$$
+\prod_{\rho >0}\theta_\rho(x(\rho))^{\theta_{-\alpha}(z)}
+=\theta_{-\alpha}(y_\alpha)
+t\prod_{\rho >0}\theta_\rho(\phi_\rho^\alpha(\unx,z)),
+\tag 2.11
+$$
+where $\unx =(x(\alpha),\cdots, x(\zeta))$,
+$$
+\split
+\phi_\alpha^\alpha(\unx,z)
+&=x(\alpha),\\
+\phi_\beta^\alpha(\unx,z)
+&=x(\beta)+ezx(\gamma)+d_2z^2x(\delta)+c_3z^3x(\eps),\\
+\phi_\gamma^\alpha(\unx,z)
+&=x(\gamma)+d_1zx(\delta)+c_2z^2x(\eps),\\
+\phi_\delta^\alpha(\unx,z)
+&=x(\delta)+c_2zx(\eps),\\
+\phi_{\eps}^\alpha(\unx,z)
+&=x(\eps),\\
+\phi_\zeta^\alpha(\unx,z)
+&=x(\zeta)+d_3zx(\delta)^2+c_4z^3x(\eps)^2+3c_2z^2x(\delta)x(\eps).
+\endsplit
+$$
+Therefore, if $c_{\sigma_\alpha}=1$, we have
+$$
+\sigma_\alpha :x(\rho)\longmapsto \phi_\rho^\alpha(\unx,z),
+\tag 2.12
+$$
+where $z=\sigma_\alpha(z(\alpha)z_1(W_0,\alpha))$.
+\par
+Take $\sigma =\sigma_\beta$ and note
+$$
+\theta_\gamma(r)\theta_\alpha (s)=\theta_\alpha (s)\theta_\gamma(r)
+\theta_\delta(2rs)\theta_\epsilon(3rs^2)\theta_\zeta(3r^2s),
+$$
+$$
+\theta_\beta(r)\theta_\alpha (s)=\theta_\alpha (s)\theta_\beta(r)
+\theta_\gamma(rs)
+\theta_\delta(r^2s)\theta_\epsilon(r^3s)\theta_\zeta(r^3s^2).
+$$
+We have, by Chevalley's commutator formula,
+$$
+\theta_\alpha(x)^{\theta_{-\beta}(z)}=\theta_\alpha(x),
+$$
+$$
+\theta_\beta(x)^{\theta_{-\beta}(z)}=
+\theta_{-\beta}(y_\beta)
+t\theta_\beta(x),\ \ \ (t\in T_G ,\ 
+\alpha(t)=1+xz,\  y_\beta:={-x^2z\over 1+xz}),
+$$
+$$
+\split
+\theta_\gamma(x)^{\theta_{-\beta}(z)}
+&=\theta_\gamma(x)\theta_\alpha(czx)\\
+&=\theta_\alpha(czx)\theta_\gamma(x)\theta_\delta(2czx^2)
+\theta_\epsilon(3c^2z^2x^3)\theta_\zeta(3czx^3),
+\endsplit
+$$
+$$
+\theta_\delta(x)^{\theta_{-\beta}(z)}=\theta_\delta(x),
+$$
+$$
+\theta_\epsilon(x)^{\theta_{-\beta}(z)}=\theta_\epsilon(x),
+$$
+$$
+\theta_\zeta(x)^{\theta_{-\beta}(z)}=\theta_\zeta(x)\theta_\epsilon(dzx)
+=\theta_\epsilon(dzx)\theta_\zeta(x).
+$$
+Therefore, 
+$$
+\prod_{\rho >0}\theta_\rho(x(\rho))^{\theta_{-\beta}(z)}
+=t\prod_{\rho >0}\theta_\rho(\phi_\rho^\beta(\unx,z)),
+\tag 2.13
+$$
+where
+$$
+\split
+\phi_\alpha^\beta(\unx,z)
+&=x(\alpha)(1+x(\beta)z)+cx(\gamma)z,\\
+\phi_\beta^\beta(\unx,z)
+&=x(\beta),\\
+\phi_\gamma^\beta(\unx,z)
+&=x(\gamma)+czx(\beta)x(\gamma),\\
+\phi_\delta^\beta(\unx,z)
+&=x(\delta)+2czx(\gamma)^2+c^2x(\beta)x(\gamma)^2z^2,\\
+\phi_{\eps}^\beta(\unx,z)
+&=x(\eps)+dzx(\zeta)+3c^2x(\gamma)^3z^2+c^3x(\beta)x(\gamma)^3z^3,\\
+\phi_\zeta^\beta(\unx,z)
+&=x(\zeta)+3zx(\gamma)x(\delta)+9czx(\gamma)^3+c^3z^3x(\beta)^2x(\gamma)^3.
+\endsplit
+$$
+Therefore, if $c_{\sigma_\beta}=1$, we have
+$$
+\sigma_\beta :x(\rho)\longmapsto \phi_\rho^\beta(\unx,z),
+\tag 2.14
+$$
+where $z=\sigma_\beta(z(\beta)z_1(W_0,\beta))$.
+\par
+Formulas (2.12) and (2.14) help to determine the set of $F$-rational
+points of $Y_C$. We also need to compute the effect of conjugating $b$ by
+$c_\sigma$. For this we recall a basic lemma \cite{Car}:
+
+\proclaim{Lemma 2.15}
+Let $\phi_\rho:SL(2)\rightarrow G$ be the
+homomorphism associated to the root
+$\rho$ and let $\theta_\rho:\gga_a\rightarrow U_\rho$ denote the root
+group embedding, so 
+$\theta_\rho(x)=\phi_\rho(\pmatrix 1&x\\ 0&1\endpmatrix)$. Let
+$s_\rho:=s_\rho(1)$ where 
+$$
+s_\rho(x)=\theta_\rho(x)\theta_{-\rho}(-x^{-1})\theta_\rho(x)
+=\phi_\rho(\pmatrix 0&x\\ -1/x&0\endpmatrix).
+$$
+Then 
+$$
+s_\rho \theta_\sigma (x)s_\rho^{-1}
+=\theta_{w_\rho(\sigma)}(\eta_{\rho,\sigma}x),
+$$
+where $\eta_{\rho,\sigma}$ is as in \cite{Car, pp 94-96} and $w_\rho$ is 
+the reflection of the Weyl group associated to $\rho$.
+\endproclaim 
+
+As a consequence of this, we may write
+$$
+\split
+&s_\alpha\cdot \prod_{\rho>0}\theta_{\rho}(x(\rho))\cdot s_\alpha^{-1}\\
+&=\theta_{-\alpha}(x'(\alpha))
+\prod_{\rho>0, \rho\not=\alpha}\theta_{\rho}(x'(\rho)),
+\endsplit
+\tag 2.16
+$$
+where $x'(\alpha)=\eta_{\alpha,\alpha}x(\alpha)$,
+$x'(\beta)=\eta_{\alpha,\epsilon}x(\epsilon)$,
+$x'(\gamma)=\eta_{\alpha,\delta}x(\delta)$,
+$x'(\delta)=\eta_{\alpha,\gamma}x(\gamma)$,
+$x'(\epsilon)=\eta_{\alpha,\beta}x(\beta)$,
+and
+$$
+x'(\zeta)=\eta_{\alpha,\zeta}x(\zeta)+
+f_1x(\delta)x(\gamma)+f_2x(\beta)x(\epsilon),
+$$
+where $f_1,f_2$ are constants. Likewise, we may write
+$$
+\split
+&s_\beta\cdot \prod_{\rho>0}\theta_{\rho}(x(\rho))\cdot s_\beta^{-1}\\
+&=\theta_{-\beta}(x'(\beta))
+\prod_{\rho>0, \rho\not=\beta}\theta_{\rho}(x'(\rho)),
+\endsplit
+\tag 2.17
+$$
+where 
+$$
+x'(\alpha)=\eta_{\alpha,\gamma}x(\gamma)+f_3x(\alpha)x(\beta)
+$$
+$x'(\beta)=\eta_{\alpha,\beta}x(\beta)$,
+$x'(\gamma)=\eta_{\alpha,\alpha}x(\alpha)$,
+$$
+x'(\delta)=\eta_{\alpha,\delta}x(\delta)+f_4x'(\alpha)x'(\gamma),
+$$
+$x'(\epsilon)=\eta_{\alpha,\zeta}x(\zeta)$,
+and
+$$
+x'(\zeta)=\eta_{\alpha,\epsilon}x(\epsilon).
+$$
+\enddocument
+How do these coordinates relate to the coordinates on a unipotent orbit
+of $G$? In general this does not appear to be an easy question, but if the
+orbit is a Richardson orbit then the answer is quite simple. The discussion
+below is motivated by \cite{H1, Remark V.2.2}.
+\par
+Let ${\Cal O}$ be the Richardson orbit associated to a parabolic $P$
+as in \cite{St, Theorem 2,\S 3.9}. Write $P=MN_P$, so that $N_P^G$
+contains ${\Cal O}$ as a dense subset, ${\Cal O}\cap N_P$ is dense in
+$N_P$ and ${\Cal O}\cap N_P$ forms a single class under $P$. We have
+dim${\Cal O}$ = dim$G$ - dim$M$. Let $u\in {\Cal O}\cap N_P$ and recall
+$N_P^- P$ is dense in $G$ by the Bruhat decomposition. The $P$-orbit
+$\{u^p\ |\ p\in P\}$ is equal to ${\Cal O}\cap N_P$ and is dense in $N_P$.
+Therefore, the coordinates of $N_P$ yield coordinates for the $P$-orbit
+of $u\in {\Cal O}\cap N_P$. The $G$-orbit of this $u$, that is
+${\Cal O}$ itself, contains the $N_P^- P$-orbit of $u$ as an open 
+subvariety. We may regard the $N_P^- P$-orbit of $u$ as the
+$N_P^-$-orbit of ${\Cal O}\cap N_P$. By Corollary 1.6, for each
+$\overline{n}\in N_P^-$, $B^{\overline{n}}$ is opposite to
+$B^-$ and $B^{\overline{n}}\not= B$ unless $\overline{n}=1$.
+Therefore, for our $u$ as above, $u^{\overline{n}}\notin {\Cal O}\cap N_P$.
+From this it follows that the $N_P^-$-orbit of ${\Cal O}\cap N_P$
+is isomorphic to $N_P^-$.
+\proclaim{Lemma 1.21} If ${\Cal O}$ is the Richardson orbit associated to a 
+parabolic $P$ then the coordinates on $N_P^- \times N_P$ serve as local
+coordinates on ${\Cal O}$.
+\endproclaim
+
+
+
+
+
+
+
+

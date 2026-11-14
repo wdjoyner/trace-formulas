@@ -16,7 +16,7 @@ g2stuff/
 ├── transcription/   literal single-file amsart transcription (no corrections)
 ├── referee/         referee reports on the 1994 manuscript and later drafts
 ├── scripts/         computational checks accompanying the revised drafts
-├── revised/         corrected edition (currently Draft 5) and CHANGES.md
+├── revised/         corrected edition (currently Draft 6) and CHANGES.md
 ├── revision_log.md  drafts, AI usage, verification levels, sources not consulted
 └── README.md
 ```
@@ -29,11 +29,13 @@ g2stuff/
 | `original-1994/g2new5d.tex`, `g2new9d.tex` | Variant versions of §5 and §9. It is not known which version is later. |
 | `transcription/g2_shalika_germs_transcription.tex`, `.pdf` | All sections in one amsart file, 12pt Times, letter paper, 49 pages. It is literal, as in §6.7 of the style guide: errors are kept, and Claude's notes appear only as `% Claude:` comments. The variant passages and the text that follows `\enddocument` in four source files are kept in `\iffalse` blocks, all of which compile when switched on. |
 | `referee/g2_referee_report.tex`, `.pdf` | Referee report by Claude (15 pages): eleven major issues, a table of minor issues and misprints, the results verified as correct, readability, a bibliography check, compliance with the style guide, and notes on the transcription. Every point has a verdict and a verification level (L1–L3). It also serves as the errata log for the transcription. |
-| `revised/g2-shalika-germs-2026.tex`, `.pdf` | **Draft 5** corrected and expanded edition, by David Joyner, Claude, and Gemini (Carbon), with explicit biquadratic 2-regular computations subject to the manuscript's remaining hypotheses. The source and supplied 69-page PDF are both included. |
+| `revised/g2-shalika-germs-2026.tex`, `.pdf` | **Draft 6** corrected and expanded edition (73 pages), by David Joyner, Claude, and Gemini (Carbon). It proves (X₂) for the biquadratic tori, subject to the manuscript's remaining hypotheses, and sketches (X₃) for the cyclic cubic tori. The PDF is built from the committed source. |
 | `referee/g2_shalika_germs_draft3_referee_report.tex`, `.pdf` | Report on Draft 3 by Carbon (5 pages), the author of Drafts 2–3, so not independent. Recommends release as a preprint. Claude's check of Draft 3 is in `revision_log.md`. |
-| `revised/CHANGES.md` | Consolidated history of Drafts 1–5 and the 1994 errata; preexisting detailed entries preserved. |
+| `revised/CHANGES.md` | Consolidated history of Drafts 1–6 and the 1994 errata, including Claude's edits when committing Draft 6. |
 | `referee/g2_shalika_germs_draft5_referee_report.tex` | Carbon's 3-page Draft 5 referee / verification report (author of this revision; not an independent referee). |
-| `scripts/verify_g2_open_problem_1.py` | Draft 5 SymPy suite: five checks for §6 Pfaffians, §7 identities and birational map, p-adic constants and §8 cocycle / cover. |
+| `referee/g2_shalika_germs_draft6_referee_report.tex`, `.pdf` | Carbon's 3-page Draft 6 report (by the author of the revision; not an independent referee). Committed unchanged; it predates the corrections below. |
+| `referee/g2_draft6_referee_report_claude.tex`, `.pdf` | Claude's 4-page referee report on Draft 6: the failed residue check (the residue is −2/9, not ±2/27), the incomplete proof of 8.3H, the overstated abstract, and how each point was handled on commit. |
+| `scripts/verify_g2_open_problem_1.py` | SymPy suite for Drafts 5–6, six suites: §6 Pfaffians; §7 identities, birational map and the product giving C′(q); §8 cocycle and cover; Propositions 8.3F–8.3G, the residue at t_* (exact), and the arithmetic of the C₃(q) shell formulas. About 20 s. |
 | `revision_log.md` | Drafts, AI usage, verification levels (L1–L3), original vs. new results, sources not consulted, next steps. |
 | `scripts/g2_toric_divisors.py` | Toric structure of the monomial variety Z of §3: every branch of λ = 0 with its Igusa constants a, b, β, and which patches meet which divisors (about 75 s). |
 | `scripts/g2_saturation_full.py` | A complete proof that the semigroup of Z is saturated, so Z is normal for G₂. |
@@ -52,12 +54,20 @@ Run them one at a time, for example `python3 g2_tori_endoscopy.py`.
 
 ## Status
 
-**Draft 5 of the corrected edition (November 14, 2026).** The editable source and its supplied PDF are in `revised/g2-shalika-germs-2026.tex` and `revised/g2-shalika-germs-2026.pdf`.
+**Draft 6 of the corrected edition (November 14, 2026).** The editable source and the PDF built from it are in `revised/g2-shalika-germs-2026.tex` and `revised/g2-shalika-germs-2026.pdf`.
 
-- **Established in the revision, subject to the paper's stated assumptions:** the normal and Cohen–Macaulay toric model, codimension-one patches, special-fiber constants, and the explicit 2-regular biquadratic calculation. Draft 5 constructs a birational map of the 4-dimensional fiber to `(P¹)^4`, evaluates `C'(q)`, and gives a direct argument for `(X₂)` for the biquadratic tori under the remaining hypotheses involving Lemmas 5.14 and 0.8.
-- **Still conditional or open:** the direct `(X₁)` and `(X₃)` calculations, exceptional and spurious divisors, the β = 11/3 contribution, and remaining torus cases. The §8 cubic cocycle and hexagon double cover do not themselves prove `(X₃)`.
-- **Computational check:** the added `verify_g2_open_problem_1.py` passed all five symbolic suites when run on November 14, 2026. This checks the supplied identities but is not an independent mathematical certification.
+- **Established in the revision, subject to the paper's stated assumptions (Lemma 5.14 and the proviso of Lemma 0.8):**
+  - the normal, Cohen–Macaulay toric model, its codimension-one patches, and the special-fiber constants;
+  - for the biquadratic tori, a birational map of the 4-dimensional fiber to `(P¹)^4` and a direct proof of `(X₂)` (Theorem 7.6H);
+  - for the cyclic cubic tori, the fibration of the 6-dimensional fiber onto a split quadric cone (Propositions 8.3F–8.3G).
+- **Sketched only:** the evaluation of the cubic fiber integral `J₃(X)` that would prove `(X₃)`, with constants `C₃(q)` (Claim 8.3H). Open Problem (1)(b) and Remark 2026.40 list what is missing. The main gap is that the Mellin regularization used has not been shown to compute the Langlands–Shelstad principal value.
+- **Still conditional or open:**
+  - the direct `(X₁)` and `(X₃)` calculations;
+  - an independent check of the hand-evaluated factors of `C′(q)`;
+  - the exceptional and spurious divisors, and the β = 11/3 contribution;
+  - the remaining torus cases.
+- **Computational check:** `verify_g2_open_problem_1.py` passes all six suites under SymPy 1.14.0. Draft 6 as delivered failed Suite 6 (its residue check); Claude replaced that check with an exact Laurent expansion, which gives −2/9. The suites check identities, not the analytic steps.
 
-The original 1994 manuscript and earlier drafts remain in Git history and their existing directories. Draft 5's referee / verification report was written by Carbon, which also revised the manuscript. No human referee is represented here.
+The original 1994 manuscript and earlier drafts remain in Git history and in their existing directories. No human referee is represented here.
 
 AI review is not an independent certification of the results.

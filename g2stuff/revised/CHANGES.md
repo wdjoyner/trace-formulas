@@ -2,10 +2,10 @@
 
 **Manuscript:** D. Joyner, Claude, and Gemini, *"On the transfer of Shalika germs for $G_2$"*  
 **Repository Directory:** `g2stuff/` in `wdjoyner/trace-formulas`  
-**Current Revision:** Draft 5 (November 14, 2026)  
-**Prepared by:** Claude for Drafts 1 and 4; Gemini ("Carbon") for Drafts 2, 3 and 5. The verification status is recorded in `../revision_log.md`.
+**Current Revision:** Draft 6 (November 14, 2026)  
+**Prepared by:** Claude for Drafts 1 and 4; Gemini ("Carbon") for Drafts 2, 3, 5 and 6, with Claude's edits when committing Draft 6. The verification status is recorded in `../revision_log.md`.
 
-This document records the mathematical corrections, closed-form derivations, structural additions, and typesetting updates made across the 2026 revisions (Drafts 1–5) relative to the summer 1994 AMS-TeX sources (`g2new0.tex`–`g2new9.tex`, variants `g2new5d.tex` and `g2new9d.tex`, and `g2newapp.tex`).
+This document records the mathematical corrections, closed-form derivations, structural additions, and typesetting updates made across the 2026 revisions (Drafts 1–6) relative to the summer 1994 AMS-TeX sources (`g2new0.tex`–`g2new9.tex`, variants `g2new5d.tex` and `g2new9d.tex`, and `g2newapp.tex`).
 
 ## Overview of Revision Passes
 
@@ -13,9 +13,47 @@ This document records the mathematical corrections, closed-form derivations, str
 | :--- | :--- | :--- |
 | **Draft 1** | Nov 2026 | Transcription of 1994 AMS-TeX to `amsart` 12pt; proof of toric normality, Cohen–Macaulayness, and codimension-one patch regularity of $Z$ (Propositions 3.4A, 3.7); Table 4.3A of Igusa constants; diagnosis of why Hales's center-descent reduction lemma fails for $G_2$; biquadratic transfer factor $\Delta_0(Y)$ (Proposition 7.6); complete Smith-normal-form table of elliptic tori (Table A.6); literature review, summary, and glossary. |
 | **Draft 2** | Nov 14, 2026 | Second referee pass: repaired misidentified base vs. fiber coordinates in §§5, 7, 8 via Kirillov–Kostant symplectic Pfaffians and rational Leray fiber forms ($X$-degrees $+2$ and $+3$); corrected subregular representative in §6; fixed endoscopic torus embeddings (A.13)–(A.13') in §A.3; proved Lemma 4.4 orbit images, subregular Dynkin curve line types (§2), dual cone $f$-vector `(1,11,43,82,84,46,12,1)`, and $H^1(F,S_3)$ subregular class counts; ensured portable `pdflatex` and `lualatex` compilation without `enumitem`. |
+| **Draft 3** | Nov 14, 2026 | Third pass: computed exact all-order Lemma 1.21 polynomials `(1.21a)`, exact star gallery identities `(1.21b)`, and exact constants $(c_1,\dots,c_7)=(-1,2,3,-3,-3,1,3)$ in `(1.22)` (resolving the 8-vs.-7 coordinate count of Remark 2026.8); computed exact Chevalley commutators, parabolic conjugations `(2.11)` and `(2.13)`, Galois actions `(2.12)` and `(2.14)` (with $n_0=1$ identically), Weyl conjugations `(2.16)`–`(2.17)`, and special-fiber Galois involutions (Proposition 2.14A), proving $D_6$-Galois invariance of both Leray fiber volume forms `(7.4)` and `(8.5)`. |
 | **Draft 4** | Nov 14, 2026 | Fourth pass (Claude), using Hales' memoir: Lemma 5.17 proof corrected (Cor. I.5.4, trivial inner twist); explicit κ(t_*) for the biquadratic tori (Propositions 7.6D–7.6E), showing the predicted Hilbert symbol (P(X), d_α)_F is a factor of κ₁(t_*) on the 2-regular divisor; (X₂) reduced to Corollary 7.6F. |
 | **Draft 5** | Nov 14, 2026 | Fifth pass (Open Problem 1): proved `Prop. 7.6E` symbolically from `(1.21a)` and repaired an inverted exponent in `(7.10)` ($\Phi_E = \frac{x(\delta)^2}{w(\delta)^2}F_1 F_2 \in L^\times$); computed the exact $\Omega(G_2)$ action on $E_{\emptyset,\alpha,\delta}(u_0)$ (`Prop. 7.6G`); constructed an explicit birational map $E_{\emptyset,\alpha,\delta}(u_0) \dashrightarrow (\mathbb{P}^1)^4$ after [Hales 1989](https://www.numdam.org/article/AST_1989__171-172__195_0.pdf) (§6), proving `Corollary 7.6F` and Hypothesis $(\mathrm{X}_2)$ directly and evaluating the exact $p$-adic constant $C'(q)$ (`Theorem 7.6H`); verified subregular Kirillov–Kostant Pfaffians and fixed double-counted tangent factors in `(6.5a)`–`(6.5b)`; proved $\Delta_0(Y)=\text{const}$, computed $\kappa_1(t_*)$, and constructed an $\Omega(G_2)$-equivariant degree-$2$ hexagon cover over $(\mathbb{P}^1)^6$ for the cubic tori in §8 (`Props. 8.3A`–`8.3E`). |
-| **Draft 3** | Nov 14, 2026 | Third pass: computed exact all-order Lemma 1.21 polynomials `(1.21a)`, exact star gallery identities `(1.21b)`, and exact constants $(c_1,\dots,c_7)=(-1,2,3,-3,-3,1,3)$ in `(1.22)` (resolving the 8-vs.-7 coordinate count of Remark 2026.8); computed exact Chevalley commutators, parabolic conjugations `(2.11)` and `(2.13)`, Galois actions `(2.12)` and `(2.14)` (with $n_0=1$ identically), Weyl conjugations `(2.16)`–`(2.17)`, and special-fiber Galois involutions (Proposition 2.14A), proving $D_6$-Galois invariance of both Leray fiber volume forms `(7.4)` and `(8.5)`. |
+| **Draft 6** | Nov 14, 2026 | Sixth pass (Open Problem 1, the 6-dimensional cubic integral $J_3(X)$): intrinsic $X$-free fiber coordinates `(8.7d)` and an $\mathrm{SL}_2(\alpha)$-fibration onto $\mathbb{P}^1(K)\times\mathcal{Q}_3$ (`Prop. 8.3F`); $\mathcal{Q}_3(F)$ identified with a smooth split quadric cone $\mathcal{C}_K(F)$, with a Hilbert 90 reduction of $\kappa_1(t_*)$ and $\omega_{\mathcal{Q}_3}$ (`Prop. 8.3G`); a sketched evaluation of $J_3(X)$ with constants $\lvert C_3(q)\rvert$ (`Claim 8.3H`, `Eq. (8.8)`). Carbon presented 8.3H as a theorem proving $(\mathrm{X}_3)$; when committing, Claude marked it a claim with a sketched proof, corrected its residue to $-2/9$, kept `Theorem 8.3` conditional on $(\mathrm{X}_3)$, and recorded what remains in Open Problem (1). |
+
+## Draft 6 Changes (by Carbon, as delivered; see the next section for what was changed on commit)
+
+1. **Section 8 — Intrinsic $X$-Free Coordinates and $\mathrm{SL}_2(\alpha)$-Fibration (`Proposition 8.3F`, `Eqs. (8.7d)`–`(8.7f)`):**
+   * Introduced the invertible triangular change of variables `(8.7d)` to $(z_a, r_\gamma, \tilde n_\delta, \tilde n_\epsilon, \tilde n_\zeta, \eta)$ on $E_{\emptyset,\beta,\zeta}(u_0)$ ($u_0 = \theta_\zeta(1)$), making the full geometric $\Omega(G_2)$-action completely independent of $X$ while $s_\alpha^*(L_X) = -L_X/D_{s_\alpha}^2$ and $s_\beta^*(L_X) = L_X/r_\gamma^3$ prove that both $E_{\emptyset,\beta,\zeta}(u_0)(F)$ and $\kappa_1(t_*)$ are pointwise independent of regular $X \in \mathfrak{t}(F)$.
+   * Showed that the root subgroup $\mathrm{SL}_2(\alpha) = \langle U_\alpha, U_{-\alpha}\rangle \subset \mathrm{Cent}_{G_2}(u_0)$ commutes elementwise with $u_0$ and $\Omega(G_2)$, preserves $\lambda$ on $Y_C$, acts simply transitively on $\mathbb{P}^1(K)\setminus\mathbb{P}^1(F)$ via $(\eta_0,\eta_2,\eta_4)$, has invariant ring generated by $(j_2, j_3', j_3'')$ in `(8.7e)`, and splits the Leray $6$-form `(8.5)` as
+     $$\omega_{E_{\emptyset,\beta,\zeta}(u_0)} = \pm\alpha(X)\gamma(X)\delta(X)\,\frac{d\eta_0\wedge d\eta_2\wedge d\eta_4}{(\eta_0-\eta_2)(\eta_2-\eta_4)(\eta_4-\eta_0)}\wedge\omega_{\mathcal{Q}_3}.$$
+
+2. **Section 8 — Smooth Split Quadric Cone $\mathcal{C}_K(F)$ and Hilbert 90 Reduction (`Proposition 8.3G`, `Eqs. (8.7g)`–`(8.7h)`):**
+   * Set $u_0 := 1 + 2(j_3' + j_3'')/j_2^2$, $u_1 := \tau^*(u_0)$, $u_2 := \tau^{2*}(u_0)$, identifying $\mathcal{Q}_3(F)$ birationally over $F$ with the smooth quadric cone $\mathcal{C}_K(F) = \{(u_0, Y) \in K\times F : Y^2 + u_0\tau(u_0) + \tau(u_0)\tau^2(u_0) + \tau^2(u_0)u_0 = 0\}$ (`Eq. (8.7g)`) via $j_2 = \frac{(1-u_2)(u_0+u_1)}{(Y+1)(Y+u_0)}$, with $(-1)^*(Y+1) = 4/(Y+1)$. Since $K/F$ is cyclic cubic, $\mathcal{C}_K$ has square discriminant $\frac{1}{4}D_{K/F} \in (F^\times)^2$ and smooth $F$-points, so $\mathbb{P}(\mathcal{C}_K) \cong \mathbb{P}^1_F\times\mathbb{P}^1_F$.
+   * Constructed the explicit Hilbert 90 factor $W_0 = -Q_0/A_{\mathrm{num}}$ ($Q_0 = Y^2 + Y(u_0 - u_1) + u_0^2 + u_0 u_1 + u_1^2$, $A_{\mathrm{num}} = (Y - u_1)(Y + u_0)(u_0 + u_1)$) satisfying $\tau^*(W_0)/W_0 = -(u_0 + u_1)/(Y + u_1)$, proving $S_F := Q_0^3/A_{\mathrm{num}}^2 \in \delta_K\cdot N_{K/F}(K^\times)(F^\times)^3$ and $\Lambda_F := \mathrm{tr}_{K/F}(\alpha(X)W_\alpha) \in F(\mathcal{C}_K)$, and reducing `(8.7h)` to $\kappa_1(t_*) = c'''\cdot\omega_{K/F}(Y + 1)$ and $\omega_{\mathcal{Q}_3} = \pm 2\frac{\beta(X)\epsilon(X)\zeta(X)}{S_F\,\Lambda_F^3}\frac{du_0\wedge du_1\wedge dY}{u_0+u_1}$ (verified by an exact $6\times 6$ $\mathrm{Dual}(K)$ Jacobian audit with ratio $1$).
+
+3. **Section 8 — Closed-Form Evaluation of $J_3(X)$, Direct Proof of $(\mathrm{X}_3)$, and Explicit Constant $C_3(q)$ (`Theorem 8.3H`, `Eq. (8.8)`, `Theorem 8.3`):**
+   * Evaluated $I_{\mathbb{P}^1(K)} = -2(q+1)q^{-2}$ for both unramified and tamely ramified cyclic cubic extensions $K/F$ ($p \ge 5$).
+   * Decoupled the radial-ruling cone coordinates $(r, s, t)$ via $r L_1 + L_0 = -L_0 z$ and $Y + 1 = 1 + U(1 + z)$ (compare [Langlands & Shelstad 1989](https://publications.ias.edu/sites/default/files/orbital-integrals-ii_rpl.pdf), §7 and Appendix I), proving in both rational cyclic cubic and Kummer ($K = F(\sqrt[3]{\alpha})$) parameterizations that at the unique root $t = t_*(X)$ of $\ell_1(t; X) = 0$, the pole of $s(U, t)$ coalesces at $U = -3$ with algebraic residue $\pm\frac{2}{27}$, canceling $\beta(X)\epsilon(X)\zeta(X)$ and $\delta_K$ identically.
+   * Under the Igusa Mellin regulator $R_{\mathrm{cone}}^{\sigma/3}$ ($S = q^\sigma \to 1$), factored the limiting $(z, U)$-integral via $V = 1 + U(1 + z)$ into $B_1(S)B_2(S)$ with $B_1(1) = 0$ (canceling the $1/\sigma$ pole and any $X$-dependent regulator derivative) and obtained `Eq. (8.8)`: $|C_3| = 6\,q^{-3}$ for $K/F$ unramified and $|C_3| = 2(q^2+q+1)\,q^{-4}$ for $K/F$ tamely ramified ($q \equiv 1 \pmod 3$).
+   * Removed Hypothesis $(\mathrm{X}_3)$ from the assumptions of `Theorem 8.3`, and updated the Abstract, Summary of Results, §5 status remarks, §8 remarks, and Acknowledgments accordingly; embedded clickable hyperlinks in the bibliography for [Gordon & Hales 2016](https://muse.jhu.edu/article/609681/summary), [Hales 1989](https://www.numdam.org/article/AST_1989__171-172__195_0.pdf), [Hales 1992a](https://iacobus.usc.gal/nde/fulldisplay/alma991013513907807712/34CISUG_USC:NDE/gl), [Hales 1994](https://publicationsthomashales.wordpress.com/wp-content/uploads/2016/03/hyperelliptic-curves-harmonic-analysis-scan.pdf), and [Langlands & Shelstad 1989](https://publications.ias.edu/sites/default/files/orbital-integrals-ii_rpl.pdf).
+
+## Edits made by Claude when committing Draft 6 (Nov 14, 2026)
+
+Claude refereed Draft 6 (`../referee/g2_draft6_referee_report_claude.tex`). At David Joyner's request, it fixed what it could and recorded what remains in Open Problem (1).
+
+- **Residue at $t_*(X)$.** The script's check of it failed under SymPy 1.14.0. It substituted $t=t_*$ into $c(t)(t-t_*)$, and SymPy set the factor $t-t_*$ to zero before reducing the denominator modulo $w^2+w+1$, so it returned 0. The script now computes the residue as an exact Laurent expansion over $\mathbb{Q}(w)$. This confirms a simple pole with residue exactly $-2/9$ for all $X$, not $\pm 2/27$. The paper now says $-2/9$; the argument needs only that the residue is independent of $X$ and that $\lvert 2/9\rvert_F=1$ for $p\ge 5$.
+- **Theorem 8.3H → Claim 8.3H (proof sketched only).**
+  - The proof uses $P_0$, $\ell_1$, $L_0$, $L_1$, $N_K$, $s(U,t)$, $C(X)$, $c_{\mathrm{alg}}$ and $R_{\mathrm{cone}}$ without defining them. A note before the proof now says so.
+  - It removes the $X$-dependence by a Mellin regularization whose agreement with the Langlands–Shelstad principal value is not shown, and $B_1(S)$ does not converge absolutely at $S=1$. Both points are now stated in the proof.
+  - The valuation-shell sums giving $\lvert C_3(q)\rvert$ were done by hand, and the script checks only the algebra of the typed-in formulas.
+  - Remark 2026.40 now lists the missing steps (a)–(c).
+- **Theorem 8.3** is again conditional on $(\mathrm{X}_3)$, as in Draft 5, and the closing sentence of its proof was restored.
+- **Theorem 7.6H.** It is kept, and Remark 2026.36 now says that the constants in `(7.13)` are evaluated by hand in the proof, with the script checking only the product of the factors. The independence of $X$, which is what proves $(\mathrm{X}_2)$, is verified by Suites 2–3.
+- **Open problems.** Item (1) now lists what remains as of Draft 6:
+  - (a) the $r=1$ comparison;
+  - (b) completing Claim 8.3H;
+  - (c) an independent check of the regularized factors of $C'(q)$.
+- **Matching edits.** The abstract, the introduction (§0), the subsection title in §8, the summary of results, the acknowledgments and the header comment were changed to match. The abstract now says that all three matching statements remain conditional on Lemma 5.14 and the proviso of Lemma 0.8.
+- **Script messages.** `verify_g2_open_problem_1.py`'s docstring and messages now say which checks are exact identities and which only check the arithmetic of hand-derived factors. The claim that the suites "passed 100% symbolically" was removed.
+- **Numbering.** The new Remark 2026.40 (status of $(\mathrm{X}_3)$) shifts the former Remarks 2026.40–45 to 2026.41–46. The paper now has 73 pages.
 
 ## Draft 5 Changes (Direct Proof of $(\mathrm{X}_2)$, $p$-adic Matching Constant $C'(q)$, and Cubic Torus Cocycle)
 
@@ -127,7 +165,9 @@ All computations in Draft 3 use the fixed positive root ordering $\Sigma_G^+ = (
 | `verify_g2_toric_and_forms.py` | `sympy`, `numpy`, `scipy` | Cone facets, §3–§4 regular patches (`Prop. 3.4A`), Igusa constants (`Table 4.3A`); LP enumeration of dual cone $\sigma$ $f$-vector `(1,11,43,82,84,46,12,1)` (`268` faces of $\dim\ge 2$, `38` singular, `5` minimal); `Lemma 4.4` orbit ranks; Kirillov–Kostant Pfaffians & Leray fiber forms `(7.3)`–`(7.4)` and `(8.4)`–`(8.5)`. |
 | `verify_g2_coordinates_and_galois.py` | `sympy` | Exact all-order Lemma 1.21 (`(1.21a)`), gallery relations (`(1.21b)` & `Remark 2026.8`), constants in `(1.22)` & $w(\rho)|_{\lambda=0}$; exact $8\times 8$ rational-matrix verification of `(2.11)`–`(2.14)` ($n_0=1$) and `(2.16)`–`(2.17)`; `Proposition 2.14A` involutions & pullback invariance of `(7.4)` and `(8.5)`. |
 
-New for Draft 5: `../scripts/verify_g2_open_problem_1.py` checks the algebraic formulas, biquadratic birational map and p-adic constants, and the cubic-torus cocycle. On 2026-11-14 all five supplied test suites passed under SymPy 1.14.0 (execution of the supplied assertions, not an independent mathematical referee).
+| `verify_g2_open_problem_1.py` | `sympy` | Suites 1–5 (Draft 5): §6 subregular Pfaffians (288, 864); §7 Bruhat minors, symbolic proof of `Prop. 7.6E`, repaired $\Phi_E$ in `(7.10)`, $D_6$ fiber action (`Prop. 7.6G`), birational map $\Psi_X$ to $(\mathbb{P}^1)^4$, the 4-form, the Cayley norm (`Theorem 7.6H`), and the product of the hand-evaluated factors of $C'(q)$; §8 cubic cocycle and hexagon double cover (`Props. 8.3C`–`8.3E`). Suite 6 (Draft 6): `Props. 8.3F`–`8.3G` and the $6\times6$ Jacobian audit over $K$; the residue $-2/9$ at $t_*(X)$ (exact Laurent expansion); arithmetic of the hand-derived shell formulas for $\lvert C_3(q)\rvert$. |
+
+On 2026-11-14 all six suites passed under SymPy 1.14.0 (about 20 s), after Claude's fix to the residue check in Suite 6. Running these assertions is not an independent mathematical review.
 
 ## Small edits made by Claude when committing Draft 3 (Nov 14, 2026)
 
@@ -199,12 +239,13 @@ Numbering of sections, equations and results is the 1994 numbering. Items added 
 | 37 | §8 | Theorem 8.3, conditional on (X₃); short-reflection S₃ tori not treated | conditional |
 | 38 | §8 | The roots of H₁ = PGL(3) are the short roots | correction |
 | 39 | §8 | (8.1), (8.4), (8.5), (8.6) | correction, verified by script |
-| 40 | §8 | Corollary 8.8: (X_r) hold a posteriori, given Gordon–Hales | new; level 3 |
-| 41 | §9 | Conjecture 9.1 restated; variant g2new9d | correction |
-| 42 | A.2 | k×j = −i; the bilinear form; triality for rotations | correction |
-| 43 | A.5 | Endoscopic groups: new argument | correction |
-| 44 | A.6 | All elliptic tori (Table A.6); the 1994 computations | correction, verified by script |
-| 45 | A.7 | Rao's lemma for an odd grading; 6 or 8 classes, not 7 | gap stated |
+| 40 | §8 | Status of (X₃): Propositions 8.3A–8.3G (new); Claim 8.3H sketched; missing steps (a)–(c) (Draft 6) | new; partly unverified |
+| 41 | §8 | Corollary 8.8: (X_r) hold a posteriori, given Gordon–Hales | new; level 3 |
+| 42 | §9 | Conjecture 9.1 restated; variant g2new9d | correction |
+| 43 | A.2 | k×j = −i; the bilinear form; triality for rotations | correction |
+| 44 | A.5 | Endoscopic groups: new argument | correction |
+| 45 | A.6 | All elliptic tori (Table A.6); the 1994 computations | correction, verified by script |
+| 46 | A.7 | Rao's lemma for an odd grading; 6 or 8 classes, not 7 | gap stated |
 
 ## Major issues of the referee report
 

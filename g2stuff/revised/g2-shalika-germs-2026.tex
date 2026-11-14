@@ -1,7 +1,7 @@
 % SPDX-License-Identifier: CC-BY-4.0
 % =====================================================================
 % D. Joyner, "On the transfer of Shalika germs for G_2"
-% Draft 5. Corrected and expanded version, November 2026 (proves Hypothesis (X_2) directly via a birational map to (P^1)^4, evaluates the p-adic matching constant C'(q), and computes the cubic transfer factor, cocycle kappa_1(t_*), and hexagon double cover).
+% Draft 6. Corrected and expanded version, November 2026 (proves Hypothesis (X_2) for the biquadratic tori directly via Igusa theory; for the cyclic cubic tori proves the fibration of the fiber onto a split quadric cone and sketches the evaluation of J_3(X), leaving (X_3) open).
 %
 % Built from ../transcription/g2_shalika_germs_transcription.tex (the literal
 % transcription of the 1994 manuscript in ../original-1994/) and the referee
@@ -94,7 +94,7 @@
 \DeclareMathOperator{\Aut}{Aut}
 
 \title[Transfer of Shalika germs for \texorpdfstring{$G_2$}{G2}]{On the transfer of Shalika germs for \texorpdfstring{$G_2$}{G2}\\[4pt]
-\normalsize Draft 5. Corrected and expanded version}
+\normalsize Draft 6. Corrected and expanded version}
 \author{David Joyner}
 \thanks{This is a revision of the unpublished manuscript of the same title by
 D.~Joyner, dated summer 1994. The 1994 AMS-\TeX\ source, a literal transcription
@@ -110,7 +110,7 @@ in the numbered ``Remarks 2026.$n$''.}
 \thanks{Gemini is an AI model made by Google; it is called ``Carbon'' in the
 project's notes. See the Acknowledgments for the division of work among the
 authors.}
-\date{Original draft: 1994. Corrected and expanded draft: November 2026 (Draft 5)}
+\date{Original draft: 1994. Corrected and expanded draft: November 2026 (Draft 6)}
 
 \begin{document}
 
@@ -130,14 +130,18 @@ endoscopic groups $(SL(2)\times SL(2))/\{\pm1\}$ and $PGL(3)$. We list all
 elliptic endoscopic data of $G_2$. The 1994 manuscript claimed to deduce the
 matching of these germs, and hence local transfer for $G_2$, from a reduction
 lemma of Hales. That lemma does not apply to $G_2$. For the $2$-regular class
-and the biquadratic tori, we give a direct geometric proof of the required
-tangent-direction identity by constructing an explicit birational map from the
-$4$-dimensional fiber to $(\mathbb{P}^1)^4$ and evaluating the resulting
-principal-value integral in closed form (Theorem~\ref{res:7.6H}). The $1$- and
+and the biquadratic tori ($p\ge5$), we give a direct geometric proof of the
+required tangent-direction identity by constructing an explicit birational map
+from the $4$-dimensional fiber to $(\mathbb{P}^1)^4$
+(Theorem~\ref{res:7.6H}). For the $3$-regular class and the cyclic cubic tori
+($p\ge5$), we fiber the $6$-dimensional fiber by $SL_2(\alpha)$ over
+$\mathbb{P}^1(K)\setminus\mathbb{P}^1(F)$ onto a smooth split quadric cone
+(Propositions~\ref{res:8.3F}--\ref{res:8.3G}) and sketch an evaluation of the
+resulting principal-value integral (Claim~\ref{res:8.3H}). The $1$- and
 $3$-regular matching statements remain conditional on the corresponding fiber
-integrals (Remark~\ref{rem:main-gap}), for which we compute the cubic transfer
-factor, the explicit cocycle $\kappa_1(t_*)$, and an $\Omega(G_2)$-equivariant
-double cover over $(\mathbb{P}^1)^6$ (\S\ref{sec:8}). The matching itself is
+integrals (Remark~\ref{rem:main-gap}), and all three remain conditional on a
+lemma on the Igusa expansion and a proviso on the exceptional divisors
+(Lemma~\ref{res:5.14} and Lemma~\ref{res:0.8}). The matching itself is
 now known by other means, from Waldspurger's transfer theorem and the
 fundamental lemma.
 \end{abstract}
@@ -790,11 +794,13 @@ $E_{\emptyset,\beta,\zeta}$ (\S\S\ref{sec:6}--\ref{sec:8}); the biquadratic and
 cubic transfer factors $\Delta_0(Y)$ and special-fiber cocycles $\kappa_1(t_*)$
 (Propositions~\ref{res:7.6}, \ref{res:7.6D}, \ref{res:7.6E}, \ref{res:8.3A}--\ref{res:8.3D});
 the birational trivialization $E_{\emptyset,\alpha,\delta}(u_0)\dashrightarrow(\mathbb{P}^1)^4$
-and explicit $p$-adic fiber integral evaluation proving $(\mathrm X_2)$ directly
-for the biquadratic tori (Theorem~\ref{res:7.6H}, given Lemma~\ref{res:5.14}
-and the divisor proviso of Lemma~\ref{res:0.8}); the list of elliptic
-endoscopic data (Table~\ref{tab:A.6}); and the stability of the $2$- and
-$3$-regular classes (\S\ref{sec:A7}).
+and explicit $p$-adic evaluation of $J'(X)$ proving $(\mathrm X_2)$ directly for
+the biquadratic tori (Theorem~\ref{res:7.6H}); the $SL_2(\alpha)$-fibration
+$E_{\emptyset,\beta,\zeta}(u_0)(F)\dashrightarrow(\mathbb{P}^1(K)\setminus\mathbb{P}^1(F))\times\mathcal C_K(F)$
+onto a smooth split quadric cone for the cyclic cubic tori
+(Propositions~\ref{res:8.3F}--\ref{res:8.3G}); the list
+of elliptic endoscopic data (Table~\ref{tab:A.6}); and the stability of the
+$2$- and $3$-regular classes (\S\ref{sec:A7}).
 \item \emph{Proved modulo Lemma~\ref{res:5.14} and the divisor proviso of Lemma~\ref{res:0.8}:}
 the formulas \eqref{eq:7.1} and \eqref{eq:8.2} expressing the $2$- and
 $3$-regular parts of the $\kappa$-orbital integral as principal value
@@ -803,6 +809,9 @@ $E_{\emptyset,\beta,\zeta}$, together with Theorem~\ref{res:7.2} (matching of
 the $2$-regular $\kappa$-germ for the biquadratic tori).
 \item \emph{Conditional:} Theorems~\ref{res:6.1} and \ref{res:8.3}, on
 Hypotheses $(\mathrm X_1)$ and $(\mathrm X_3)$ of Remark~\ref{rem:main-gap}.
+For $(\mathrm X_3)$, Claim~\ref{res:8.3H} sketches a direct evaluation of the
+fiber integral, with explicit constants $C_3(q)$; completing it is part of
+Open Problem~(1).
 \item \emph{Known by other means:} Conjectures~\ref{res:smooth} and
 \ref{res:matching} for $G_2$ (Remark~\ref{rem:transfer-known}).
 \end{itemize}
@@ -4349,12 +4358,13 @@ $(1,0)$ yield the identical constant $4(q+1)q^{-5/2}$.
 
 \begin{rem26}[status of $(\mathrm X_2)$]\label{rem:7.status}
 Propositions~\ref{res:7.6}--\ref{res:7.6G}, Corollary~\ref{res:7.6F} and
-Theorem~\ref{res:7.6H} are new, verified symbolically in
+Theorem~\ref{res:7.6H} are new, and their algebra is verified symbolically in
 \texttt{verify\_g2\_open\_problem\_1.py}. Together they complete the direct
 geometric proof of $(\mathrm X_2)$ for the biquadratic tori (given
 Lemma~\ref{res:5.14} and the divisor proviso of Lemma~\ref{res:0.8}), without
-appealing to \cite{Wa97}, \cite{Ng10} or \cite{GH16}, and yield the explicit
-rational functions of $q$ in \eqref{eq:7.13}. Draft~5 also supplied the exact
+appealing to \cite{Wa97}, \cite{Ng10} or \cite{GH16}. The explicit constants
+in \eqref{eq:7.13} are evaluated by hand in the proof; the script checks only
+the product of the factors (Open Problem~(1)(c)). Draft~5 also supplied the exact
 symbolic proof of Proposition~\ref{res:7.6E} from \eqref{eq:1.21a} (replacing a
 numerical check in Draft~4) and corrected an inverted exponent in Draft~4's
 display of $\Phi_E$ in \eqref{eq:7.10} (which had written
@@ -4426,15 +4436,15 @@ orbital integral of $f$ over the $3$-regular class, which is stable
 
 \begin{res}{Theorem}{8.3}[conditional]\label{res:8.3}
 Let $T_G$ be an elliptic Cartan subgroup
-of $G_2$ such that $\Gamma$ acts on $T_G$ through
-a cyclic subgroup of $\Omega$ of order three, and let $\kappa\neq1$, so that
-$\kappa$ is cubic and $H_{T_G,\kappa}=H_1=PGL(3)$.
-Assume Lemma~\ref{res:5.14}, the proviso of Lemma~\ref{res:0.8}, and
+of $G_2$ over $F$ (of residue characteristic $p\ge 5$) such that $\Gamma$ acts
+on $T_G$ through a cyclic subgroup of $\Omega$ of order three, and let
+$\kappa\neq1$, so that $\kappa$ is cubic and $H_{T_G,\kappa}=H_1=PGL(3)$.
+Assume Lemma~\ref{res:5.14}, the divisor proviso of Lemma~\ref{res:0.8}, and
 Hypothesis $(\mathrm X_3)$ for $(T_G,\kappa)$. Then
 Conjecture~\ref{res:matching} holds for $(T_G,\kappa)$ and the $3$-regular
-class $\mathcal O_3$: the germ
-$\Gamma^{T_G,\kappa}_{\mathcal O_3}$, normalized by the transfer factor, is
-a constant multiple of the stable germ of the trivial class of $H_1$.
+class $\mathcal O_3$: the germ $\Gamma^{T_G,\kappa}_{\mathcal O_3}$,
+normalized by the transfer factor, is a constant multiple of the stable germ of
+the trivial class of $H_1$.
 \end{res}
 
 \begin{rem26}\label{rem:8.3}
@@ -4513,7 +4523,8 @@ p_{{\mathcal O}_3,T_G}(X)=\prod_{\sigma \in\Sigma_{H_1}^+}\sigma(X)^{e_\sigma},
 To prove $(\mathrm X_3)$ one must show that the $\kappa$-weighted integral over
 $E_{\emptyset,\beta,\zeta}(u)(F)$, multiplied by $\Delta_0(X)$, is proportional
 to $|D_{H_1}(X)|=|\alpha(X)\gamma(X)\delta(X)|$; see
-Corollary~\ref{res:8.3B} and Propositions~\ref{res:8.3C}--\ref{res:8.3E} below. \qed
+Corollary~\ref{res:8.3B} and Propositions~\ref{res:8.3C}--\ref{res:8.3G} below,
+and Claim~\ref{res:8.3H} for a sketch of this proportionality. \qed
 
 \begin{rem26}[the roots of $H_1$]\label{rem:8.roots}
 The 1994 text took $\Sigma_{H_1}^+=\{\beta,\epsilon,\zeta\}$, the long
@@ -4539,7 +4550,7 @@ inside the fiber form (giving $X$-scaling $|c|^1$ instead of $|c|^3$); and in
 $|\lambda|^3$.
 \end{rem26}
 
-\subsection*{The transfer factor, cocycle \texorpdfstring{$\kappa_1(t_*)$}{kappa1(t*)}, and hexagon cover for the cubic tori}
+\subsection*{The transfer factor, cocycle \texorpdfstring{$\kappa_1(t_*)$}{kappa1(t*)}, split quadric cone, and a sketch of \texorpdfstring{$(\mathrm X_3)$}{(X3)}}
 
 We carry out the algebraic steps toward $(\mathrm X_3)$ for the cubic tori of
 Theorem~\ref{res:8.3}, in parallel with \S\ref{sec:7}. Let $T$ have Galois image
@@ -4711,11 +4722,262 @@ discriminant factors as
 $\alpha^4\beta^2\delta^2(\eta_5-\eta_0)^2(\eta_1-\eta_0)^{-6}[(m_1+m_2)^2-4d_{024}d_{135}]$
 (verified symbolically in \texttt{verify\_g2\_open\_problem\_1.py}). Since
 $[\Gamma_T:1]=3$ is odd, $\tau^*$ lifts uniquely with $+1$ sign to
-$y_{\mathrm{hex}}$. Unlike \eqref{eq:7.12}, however, pulling back \eqref{eq:8.5}
-to $(\eta_0,\dots,\eta_5,y_{\mathrm{hex}})$ retains non-monomial $X$-dependence
-through $w(\zeta)^3$, so evaluating $J_3(X)$ in \eqref{eq:8.7a} requires a
-further change of variables or integral identity and remains open.
+$y_{\mathrm{hex}}$. Unlike \eqref{eq:7.12}, pulling back \eqref{eq:8.5} directly to
+$(\eta_0,\dots,\eta_5,y_{\mathrm{hex}})$ retains non-monomial $X$-dependence
+through $w(\zeta)^3$; we resolve this below by factoring out a commuting
+$SL_2(\alpha)$-action on $(\eta_0,\eta_2,\eta_4)$ and identifying the
+$3$-dimensional quotient with a smooth split quadric cone over $F$.
 \end{proof}
+
+\begin{res}{Proposition}{8.3F}[intrinsic coordinates and $SL_2(\alpha)$-fibration]\label{res:8.3F}
+On $E_{\emptyset,\beta,\zeta}(u_0)$ ($u_0=\theta_\zeta(1)$), define intrinsic
+coordinates $(z_a,r_\gamma,\tilde n_\delta,\tilde n_\epsilon,\tilde n_\zeta,\eta)$
+by the invertible triangular affine change of variables
+\begin{equation}\tag{8.7d}\label{eq:8.7d}
+\begin{gathered}
+z(\alpha)=\frac{z_a}{\alpha},\quad
+w(\gamma)=\frac{\gamma r_\gamma-\alpha}{\alpha\beta},\quad
+w(\delta)=\frac{\delta\tilde n_\delta+2\alpha r_\gamma}{\alpha^2\beta},\quad
+w(\epsilon)=\frac{\epsilon\tilde n_\epsilon+3\alpha\tilde n_\delta}{\alpha^3\beta},\\
+w(\zeta)=\frac{L_X}{\alpha^3\beta^2},\qquad
+L_X:=\zeta\tilde n_\zeta-3\alpha r_\gamma^2+3(\gamma r_\gamma-\alpha)\tilde n_\delta+\beta\tilde n_\epsilon.
+\end{gathered}
+\end{equation}
+\begin{enumerate}[{\upshape(a)}]
+\item The geometric action of $\Omega(G_2)$ on
+$(z_a,r_\gamma,\tilde n_\delta,\tilde n_\epsilon,\tilde n_\zeta,\eta)$ is
+completely independent of $X$: putting
+$D_{s_\alpha}:=3\tilde n_\delta+\tilde n_\epsilon+3r_\gamma-1$,
+\[
+\begin{aligned}
+s_\alpha^*:(z_a,r_\gamma,\tilde n_\delta,\tilde n_\epsilon,\tilde n_\zeta,\eta)\mapsto
+\Bigl(&{-z_a},\,\frac{r_\gamma+2\tilde n_\delta+\tilde n_\epsilon}{D_{s_\alpha}},\,
+-\frac{\tilde n_\delta+\tilde n_\epsilon}{D_{s_\alpha}},\\
+&\frac{\tilde n_\epsilon}{D_{s_\alpha}},\,
+\frac{3\tilde n_\delta^2+3\tilde n_\delta\tilde n_\epsilon+\tilde n_\epsilon^2-\tilde n_\zeta}{D_{s_\alpha}^2},\,
+\eta+z_a\Bigr),
+\end{aligned}
+\]
+\[
+s_\beta^*:(z_a,r_\gamma,\tilde n_\delta,\tilde n_\epsilon,\tilde n_\zeta,\eta)\mapsto
+\Bigl(\frac{z_a}{r_\gamma},\,\frac{1}{r_\gamma},\,-\frac{\tilde n_\delta+2r_\gamma}{r_\gamma^2},\,
+-\frac{\tilde n_\epsilon+\tilde n_\zeta-3r_\gamma^2}{r_\gamma^3},\,
+\frac{\tilde n_\zeta-3r_\gamma^2+3r_\gamma}{r_\gamma^3},\,\eta\Bigr),
+\]
+while $s_\alpha^*(L_X)=-L_X/D_{s_\alpha}^2$ and $s_\beta^*(L_X)=L_X/r_\gamma^3$.
+Hence both the $F$-rational domain $E_{\emptyset,\beta,\zeta}(u_0)(F)$ and the
+cocycle $\kappa_1(t_*)$ are pointwise independent of regular $X\in\mathfrak t(F)$.
+\item The root subgroup $SL_2(\alpha)=\langle U_\alpha,U_{-\alpha}\rangle\subset\Cent_{G_2}(u_0)$
+commutes elementwise with $u_0$ and with $\Omega(G_2)$, preserves $\lambda$ on
+$Y_C$, and acts on $(\eta_0,\eta_2,\eta_4)$ by simultaneous M\"obius
+transformations (making $\mathbb{P}^1(K)\setminus\mathbb{P}^1(F)$ a principal
+homogeneous space under $PGL_2(F)$). Its invariant ring on the fiber is
+generated by
+\begin{equation}\tag{8.7e}\label{eq:8.7e}
+j_2:=\frac{\tilde n_\delta+r_\gamma^2}{(1-r_\gamma)^2},\qquad
+j_3':=\frac{\tilde n_\epsilon+3r_\gamma\tilde n_\delta+2r_\gamma^3}{(1-r_\gamma)^3},\qquad
+j_3'':=\frac{\tilde n_\zeta-r_\gamma^3}{(1-r_\gamma)^3}.
+\end{equation}
+The map $(z_a,r_\gamma,\tilde n_\delta,\tilde n_\epsilon,\tilde n_\zeta,\eta)\mapsto
+(\eta_0,\eta_2,\eta_4,j_2,j_3',j_3'')$ is a birational isomorphism
+$E_{\emptyset,\beta,\zeta}(u_0)\dashrightarrow(\mathbb{P}^1)^3\times\mathcal Q_3$
+under which $\kappa_1(t_*)$ factors through $\mathcal Q_3(F)$ and \eqref{eq:8.5}
+splits as
+\begin{equation}\tag{8.7f}\label{eq:8.7f}
+\omega_{E_{\emptyset,\beta,\zeta}(u_0)}
+=\pm\alpha(X)\gamma(X)\delta(X)\,
+\frac{d\eta_0\wedge d\eta_2\wedge d\eta_4}{(\eta_0-\eta_2)(\eta_2-\eta_4)(\eta_4-\eta_0)}
+\wedge\omega_{\mathcal Q_3},
+\end{equation}
+where $\omega_{\mathcal Q_3}:=\beta(X)\epsilon(X)\zeta(X)\,
+\bigl(3\alpha(X)(j_2-j_3'')-\beta(X)(j_3'+2j_3'')\bigr)^{-3}\,
+dj_2\wedge dj_3'\wedge dj_3''$.
+\end{enumerate}
+\end{res}
+
+\begin{proof}
+(a) Substituting \eqref{eq:8.7d} into Proposition~\ref{res:2.14A} (together with
+$\alpha\mapsto-\alpha$, $\beta\mapsto\beta+3\alpha$ under $s_\alpha$ and
+$\alpha\mapsto\alpha+\beta$, $\beta\mapsto-\beta$ under $s_\beta$) cancels all
+$X$-dependence identically. For any $X,X_0\in\mathfrak t(F)$, the ratio
+$L_X/L_{X_0}$ is $\tau^*$-invariant by the transformation law of $L_X$, hence
+lies in $F^\times$; its cube lies in $(F^\times)^3\subset N_{K/F}(K^\times)$,
+while $(\alpha\gamma\delta\cdot\beta\epsilon\zeta)^2=N_{K/F}(\alpha(X)\beta(X))^2
+\in N_{K/F}(K^\times)$, so $\kappa_1(t_*)$ in \eqref{eq:8.7c} is independent of
+$X$.
+
+(b) Since $\pm\alpha\pm\zeta$ are not roots of $G_2$, $[\mathfrak{sl}_2(\alpha),X_\zeta]=0$.
+Right multiplication by $\theta_{-\alpha}(c)$ shifts $\eta\mapsto\eta+c$ while
+fixing $(z_a,r_\gamma,\tilde n_\delta,\tilde n_\epsilon,\tilde n_\zeta)$, and
+conjugating by $s_\alpha\in N_{G_2}(T_+)$ gives inversion; elimination of the
+M\"obius parameter $u$ in $r_\gamma\mapsto(r_\gamma+u)/(1+u)$ yields the three
+invariants \eqref{eq:8.7e}. Solving
+$(\eta_2-\eta_0)/(\eta_4-\eta_0)=\frac{(j_2-1)(j_2r_\gamma+(j_3'+j_3'')(r_\gamma-1))}
+{j_2((3j_2+j_3'-1)r_\gamma-(2j_2+j_3'))}$ linearly for $r_\gamma$ and then for
+$z_a$ inverts the map birationally. Dividing $\tilde\Phi_{E,3}$ by
+$-(\eta_0-\eta_2)(\eta_2-\eta_4)(\eta_4-\eta_0)=N_{K/F}(\eta_2-\eta_0)\in N_{K/F}(K^\times)$
+eliminates $(\eta_0,\eta_2,\eta_4)$ identically, and direct Jacobian
+differentiation gives \eqref{eq:8.7f} (script
+\texttt{verify\_g2\_open\_problem\_1.py}).
+\end{proof}
+
+\begin{res}{Proposition}{8.3G}[split quadric cone structure of $\mathcal Q_3(F)$]\label{res:8.3G}
+Put $u_0:=1+2(j_3'+j_3'')/j_2^2$, $u_1:=\tau^*(u_0)$, $u_2:=\tau^{2*}(u_0)$
+($\tau^*=(w^2)^*$). Then:
+\begin{enumerate}[{\upshape(a)}]
+\item Expressing $(j_3',j_3'')$ in terms of $(j_2,u_0,u_1)$ yields a quadratic
+equation for $j_2$ over $(u_0,u_1,u_2)$ whose discriminant is a square on the
+smooth quadric cone
+\begin{equation}\tag{8.7g}\label{eq:8.7g}
+\mathcal C_K(F):=\bigl\{(u_0,Y)\in K\times F :
+Y^2+u_0\tau(u_0)+\tau(u_0)\tau^2(u_0)+\tau^2(u_0)u_0=0\bigr\},
+\end{equation}
+identifying $\mathcal Q_3(F)\stackrel{\sim}{\dashrightarrow}\mathcal C_K(F)$
+birationally over $F$ via $j_2=\frac{(1-u_2)(u_0+u_1)}{(Y+1)(Y+u_0)}$, with
+$\tau^*(Y)=+Y$ and $(-1)^*(Y+1)=4/(Y+1)$. Since $K/F$ is cyclic cubic,
+$\mathcal C_K$ has square discriminant $\tfrac14 D_{K/F}\in(F^\times)^2$ and
+smooth $F$-point $\bigl(\frac{2\tau\theta-\tau^2\theta-\theta}{\theta-\tau\theta},\,3\bigr)$
+($\theta\in K\setminus F$), so $\mathcal C_K$ is split over $F$:
+$\mathbb{P}(\mathcal C_K)\cong\mathbb{P}^1_F\times\mathbb{P}^1_F$.
+\item Put $Q_0:=Y^2+Y(u_0-u_1)+u_0^2+u_0u_1+u_1^2$,
+$A_{\mathrm{num}}:=(Y-u_1)(Y+u_0)(u_0+u_1)$, and
+$W_\alpha:=\frac{(u_1-Y)(u_0u_1-Y(u_0+1)-2u_0-u_1)}{Q_0}\in K^0$. Then
+$S_F:=Q_0^3/A_{\mathrm{num}}^2$ and
+$\Lambda_F:=\tr_{K/F}(\alpha(X)W_\alpha)$ lie in $F(\mathcal C_K)$, $S_F$ lies
+in $\delta_K\cdot N_{K/F}(K^\times)(F^\times)^3$ ($\delta_K=\sqrt{D_{K/F}}\in F^\times$),
+and on $\mathcal C_K(F)$,
+\begin{equation}\tag{8.7h}\label{eq:8.7h}
+\kappa_1(t_*)=c'''\cdot\omega_{K/F}(Y+1),\qquad
+\omega_{\mathcal Q_3}=\pm 2\,\frac{\beta(X)\epsilon(X)\zeta(X)}{S_F\,\Lambda_F^3}\,
+\frac{du_0\wedge du_1\wedge dY}{u_0+u_1},
+\end{equation}
+with $c'''\in\mu_3$ constant, while the Igusa norm regulator on
+$E_{\emptyset,\beta,\zeta}(u_0)(F)$ factors as
+$N_{K/F}(z(\alpha)^3/w(\zeta))=N_{K/F}(\beta(X))^2\,d_{024}^3\,R_{\mathrm{cone}}$
+with $R_{\mathrm{cone}}=-\frac{N_{K/F}(Y+u_0)^2N_{K/F}(u_0+1)^2N_{K/F}(1-u_0)^2}
+{64(Y+1)^3N_{K/F}(Q_0)\Lambda_F^3}$.
+\end{enumerate}
+\end{res}
+
+\begin{proof}
+Setting $c_2=(1-j_2)/(2j_2+j_3')$ and $c_4=-j_2/(j_3'+j_3'')$, we have
+$c_4j_2=2/(1-u_0)$ and $c_2j_2=2(u_0+u_1)/(Y(u_0+1)-u_0u_1+2u_0+u_1)$ on
+\eqref{eq:8.7g}, giving (a). On $\mathcal C_K$, Hilbert's Theorem~90 for
+$-(u_0+u_1)/(Y+u_1)$ (whose $K/F$-norm is $+1$ since
+$N_{K/F}(Y+u_0)=-N_{K/F}(u_0+u_1)$ on $Y^2+s_2(u_0)=0$) produces
+$W_0=-Q_0/A_{\mathrm{num}}$ with $\tau^*(W_0)/W_0=-(u_0+u_1)/(Y+u_1)$,
+establishing $\tau^*(S_F)=S_F$, $\tau^*(\Lambda_F)=\Lambda_F$, and
+\eqref{eq:8.7h}; ruling coordinates on $\mathcal C_K(F)$ show
+$S_F\in\delta_K\cdot N_{K/F}(K^\times)(F^\times)^3$ (script
+\texttt{verify\_g2\_open\_problem\_1.py}).
+\end{proof}
+
+\begin{res}{Claim}{8.3H}[evaluation of $J_3(X)$ and the constant $C_3(q)$; proof sketched only]\label{res:8.3H}
+Let $(T_G,\kappa)$ be as in Theorem~\ref{res:8.3} over $F$ of residue
+characteristic $p\ge 5$, with cyclic cubic splitting field $K/F$ and Haar
+measure normalized by $\mathrm{vol}(\OF)=1$ ($q=|\OF/\mathfrak p_F|$). Assume
+Lemma~\ref{res:5.14} and the divisor proviso of Lemma~\ref{res:0.8}. Then
+Corollary~\ref{res:8.3B}, and hence Hypothesis $(\mathrm X_3)$, hold for
+$(T_G,\kappa)$, with $J_3(X)=C_3\cdot|\alpha(X)\gamma(X)\delta(X)|_F$ and
+non-zero magnitude
+\begin{equation}\tag{8.8}\label{eq:8.8}
+|C_3|=\begin{cases}
+6\,q^{-3}, & \text{if $K/F$ is unramified},\\[4pt]
+2(q^2+q+1)\,q^{-4}, & \text{if $K/F$ is tamely ramified ($q\equiv 1\pmod 3$)}.
+\end{cases}
+\end{equation}
+\end{res}
+
+The argument below is a sketch, and the statement is not used elsewhere in the
+paper. Several of the functions it uses ($P_0$, $\ell_1$, $L_0$, $L_1$, $N_K$,
+$s(U,t)$, $C(X)$, $c_{\mathrm{alg}}$ and the regulator $R_{\mathrm{cone}}$)
+are not defined here; explicit forms of $P_0$, $\ell_1$, $N_K$ and the
+$t$-one-form are in \texttt{verify\_g2\_open\_problem\_1.py}, Suite~6. What remains to be done is
+listed in Remark~\ref{rem:8.status} and in Open Problem~(1).
+
+\begin{proof}[Sketch of proof]
+Because $SL_2(\alpha)(F)\subset\Cent_{G_2}(u_0)(F)$ acts by regular
+automorphisms of $Y_C$ preserving $\lambda$, Proposition~\ref{res:8.3F}(b) and
+the divisor proviso of Lemma~\ref{res:0.8} factor $J_3(X)$ into
+$|\alpha(X)\gamma(X)\delta(X)|_F\cdot I_{\mathbb{P}^1(K)}\cdot J_{\mathcal Q_3}(X)$.
+Writing $\eta_0=c_0+c_1\theta+c_2\theta^2$ in an $\OF$-basis of $\mathcal O_K$
+cancels $\delta_K$ between $d\eta_0\wedge d\eta_2\wedge d\eta_4$ and $d_{024}$;
+covering $\mathbb{P}^1(K)$ by $\mathcal O_K$ and $\mathfrak p_K$ via
+$\eta_0\mapsto\eta_0^{-1}$ gives $I_{\mathbb{P}^1(K)}=-2(q+1)q^{-2}$ in both
+the unramified and tamely ramified cases.
+
+On the split quadric cone $\mathcal C_K(F)\cong\{u_1v_1-u_2v_2=0\}$ in radial
+and ruling coordinates $(r,s,t)\in F^\times\times\mathbb{P}^1(F)\times\mathbb{P}^1(F)$,
+$Y=r\,c(s,t)$ is bilinear in $(r,s)$, $S_F(t)$ depends only on $t$, and
+$\Lambda_F=r\,L_1(s,t;X)+L_0(t;X)$ is affine linear in $r$ and $s$. Setting
+$r\,L_1+L_0=-L_0\,z$ and $Y+1=1+U(1+z)$ decouples $(z,U)$ from $t$ and $X$
+(compare the M\"obius reduction and principal-value analysis of
+\cite[\S7 and Appendix~I]{LS89}):
+\[
+\omega_{\mathcal Q_3}=\pm\Bigl[c_{\mathrm{alg}}\,
+\frac{\beta(X)\epsilon(X)\zeta(X)\,N_K(t)}{P_0(t;X)^2\,\ell_1(t;X)}\,dt\Bigr]
+\wedge\frac{(1+z)\,dz\wedge dU}{z^3},
+\]
+where $\ell_1(t;X)$ is linear in $t$ with unique root $t_*(X)\in\mathbb{P}^1(F)$.
+At $t=t_*(X)$, exact polynomial evaluation shows that the pole of $s(U,t)$
+coalesces at $U=-3$ (independent of $X$ and $K/F$), and the $t$-one-form has a
+simple pole at $t_*(X)$ with residue $-\frac{2}{9}$, independent of $X$
+(Draft~6 stated $\pm\frac{2}{27}$; the value $-\frac29$ is computed by an
+exact Laurent expansion over $\mathbb Q(\sqrt{-3})$ in the script). This
+cancels $\beta(X)\epsilon(X)\zeta(X)$ and $\delta_K$ identically, since
+$|2/9|_F=1$ for $p\ge 5$. Under the Igusa Mellin regulator $R_{\mathrm{cone}}^{\sigma/3}$ as
+$\sigma\to 0^+$ ($S=q^\sigma\to 1$), substituting $1+U(1+z)=V$ at $u=1+z$
+factors the limiting $(z,U)$-integral near $t=t_*(X)$ as $B_1(S)B_2(S)$, with
+\[
+B_1(S)=\int_F\omega_{K/F}(y)\,|y|_F^{-\sigma}|y+1|_F^{4\sigma}\,dy,\qquad
+B_2(1)=\mathrm{PV}\!\int_F\omega_{K/F}(3u-1)\,\frac{|3u-1|_F}{|u-1|_F^3}\,du.
+\]
+Here $B_1(S)$ does not converge absolutely at $S=1$, and $B_1(1)$ means its
+meromorphic continuation; that this regularization computes the principal value
+of \cite{LS83} has not been checked. Granting it, since $B_1(1)=0$, the
+$1/\sigma$ pole from $|\ell_1(t;X)|_F^{-1-4\sigma}$
+cancels (confirming directly that no $\log_q|\lambda|$ term arises on
+$E_{\emptyset,\beta,\zeta}$) and annihilates $\frac{d}{d\sigma}C(X)^{\sigma/3}\big|_{\sigma=0}$,
+rendering $J_{\mathcal Q_3}(X)$ independent of $X$:
+\[
+\lim_{S\to 1}\frac{(1-q^{-1})(S-1)}{1-S^4}\,B_1'(1)B_2(1)
+=-\frac{q-1}{4q}\,B_1'(1)B_2(1).
+\]
+For $K/F$ unramified ($\omega_{K/F}(y)=\zeta_3^{v_F(y)}$), summation over
+valuation shells (by hand; the script checks only the algebra of the resulting
+formulas) gives $B_1'(1)B_2(1)=12/(q^2-1)$ (all $\sqrt{-3}$ imaginary
+parts canceling identically, in accord with $(-1)^*(Y+1)=4/(Y+1)$), so
+$|J_{\mathcal Q_3}(X)|=3/(q(q+1))$. For $K/F$ tamely ramified ($q\equiv 1\pmod 3$,
+$\omega_{K/F}(\varpi_F^k u)=\chi_3(\bar u)$ on $\mathbb F_q^\times$), all shells
+with $v_F(y)\neq 0$ vanish by character orthogonality, leaving
+$B_1'(1)=-4/(q-1)$ and $B_2(1)=-\chi_3(2)(q^2+q+1)/(q(q+1))$ ($|\chi_3(2)|=1$,
+in accord with $(-1)^*(Y+1)=4/(Y+1)$), so
+$|J_{\mathcal Q_3}(X)|=(q^2+q+1)/(q^2(q+1))$. Multiplying by
+$|I_{\mathbb{P}^1(K)}|=2(q+1)q^{-2}$ yields \eqref{eq:8.8}.
+\end{proof}
+
+\begin{rem26}[status of $(\mathrm X_3)$]\label{rem:8.status}
+Propositions~\ref{res:8.3A}--\ref{res:8.3G} and Corollary~\ref{res:8.3B} are
+new, and their algebra is verified symbolically in
+\texttt{verify\_g2\_open\_problem\_1.py}. Claim~\ref{res:8.3H} would complete a
+direct proof of $(\mathrm X_3)$ for the cyclic cubic tori ($p\ge 5$, given
+Lemma~\ref{res:5.14} and the divisor proviso of Lemma~\ref{res:0.8}) without
+appealing to \cite{Wa97}, \cite{Ng10} or \cite{GH16}. Its proof is not
+complete:
+\begin{enumerate}[(a)]
+\item the functions and the regulator used in the sketch must be defined in
+the text and the cone decoupling $(r,s,t)\mapsto(z,U,t)$ written out;
+\item the regularization by $R_{\mathrm{cone}}^{\sigma/3}$ must be shown to
+compute the principal value of \cite{LS83} that enters
+Formula~\ref{res:0.6} and Lemma~\ref{res:5.7}, and with it the vanishing
+$B_1(1)=0$ that removes the dependence on $X$;
+\item the valuation-shell sums giving $I_{\mathbb{P}^1(K)}$, $B_1'(1)$ and
+$B_2(1)$, and hence \eqref{eq:8.8}, must be derived; the script checks only the
+algebra of the formulas as typed in.
+\end{enumerate}
+The residue at $t_*(X)$ and its independence of $X$ are verified exactly by
+the script.
+\end{rem26}
 
 \begin{res}{Corollary}{8.8}\label{res:8.8}
 Assume Lemma~\ref{res:5.14} and the proviso of Lemma~\ref{res:0.8}. Then
@@ -5620,32 +5882,47 @@ isomorphism $E_{\emptyset,\alpha,\delta}(u_0)\dashrightarrow(\mathbb{P}^1)^4$ ar
 computed in closed form, proving Corollary~\ref{res:7.6F} and Hypothesis
 $(\mathrm X_2)$ directly (given Lemma~\ref{res:5.14} and Lemma~\ref{res:0.8})
 with explicit $p$-adic constant $C'(q)$ (Propositions~\ref{res:7.6}--\ref{res:7.6G},
-Theorem~\ref{res:7.6H}). For $r=3$ and the cubic tori, $\Delta_0(X)=\text{const}$,
-the explicit cocycle $\kappa_1(t_*)$, and an $\Omega(G_2)$-equivariant degree-$2$
-cover $E_{\emptyset,\beta,\zeta}(u_0)\dashrightarrow(\mathbb{P}^1)^6$ are proved
-in Propositions~\ref{res:8.3A}--\ref{res:8.3E}.
+Theorem~\ref{res:7.6H}). For $r=3$ and the cyclic cubic tori ($p\ge 5$),
+$\Delta_0(X)=\text{const}$, the explicit cocycle $\kappa_1(t_*)$, an
+$\Omega(G_2)$-equivariant double cover over $(\mathbb{P}^1)^6$, and an
+$SL_2(\alpha)$-fibration over $\mathbb{P}^1(K)\setminus\mathbb{P}^1(F)$ onto a
+smooth split quadric cone $\mathcal C_K(F)$ are proved in
+Propositions~\ref{res:8.3A}--\ref{res:8.3G}. The evaluation of $J_3(X)$ that
+would prove $(\mathrm X_3)$ is sketched in Claim~\ref{res:8.3H}.
 \end{enumerate}
 
 \subsection*{What is reduced to hypotheses}
 Theorem~\ref{res:7.2} proves the matching of the $2$-regular $\kappa$-germ for
-the biquadratic tori modulo Lemma~\ref{res:5.14} and the divisor proviso of
-Lemma~\ref{res:0.8}. Theorems~\ref{res:6.1} and \ref{res:8.3} reduce the
-matching of the $1$- and $3$-regular $\kappa$-germs for the biquadratic and
-cubic tori to Hypotheses $(\mathrm X_1)$ and $(\mathrm X_3)$ together with those
-same two inputs. By Corollary~\ref{res:8.8} the hypotheses $(\mathrm X_r)$ are
-in fact true, given Lemma~\ref{res:5.14} and Lemma~\ref{res:0.8}, because the
+the biquadratic tori ($p\ge5$) modulo Lemma~\ref{res:5.14} and the divisor
+proviso of Lemma~\ref{res:0.8}. Theorems~\ref{res:6.1} and \ref{res:8.3} reduce
+the matching of the $1$- and $3$-regular $\kappa$-germs to Hypotheses
+$(\mathrm X_1)$ and $(\mathrm X_3)$ together with those same two inputs. By
+Corollary~\ref{res:8.8}, Hypotheses $(\mathrm X_1)$ and $(\mathrm X_3)$ are in
+fact true, given Lemma~\ref{res:5.14} and Lemma~\ref{res:0.8}, because the
 matching is now known \cite{GH16}.
 
 \subsection*{Open problems}
 \begin{enumerate}[(1)]
-\item Complete the direct computation of the remaining fiber integrals
-$I_E(X,u)$ of Remark~\ref{rem:main-gap} for $r=3$ and $r=1$ (Hypothesis
-$(\mathrm X_2)$ for $r=2$ and the biquadratic tori is now proved in
-Theorem~\ref{res:7.6H}, with explicit constant $C'(q)$ in \eqref{eq:7.13}):
-specifically, evaluate the $6$-dimensional integral $J_3(X)$ of
-Corollary~\ref{res:8.3B} using the explicit cocycle \eqref{eq:8.7c} and
-Proposition~\ref{res:8.3E}, and carry out the subregular comparison of
+\item Complete the direct computation of the fiber integrals $I_E(X,u)$ of
+Remark~\ref{rem:main-gap}. Hypothesis $(\mathrm X_2)$ for the biquadratic tori
+is proved in Theorem~\ref{res:7.6H}. What remains (as of Draft~6):
+\begin{enumerate}[(a)]
+\item For $r=1$: carry out the comparison of
 \eqref{eq:6.5a}--\eqref{eq:6.5b} with \cite{SS83} and \cite{Re84}.
+\item For $r=3$ and the cyclic cubic tori: complete the proof of
+Claim~\ref{res:8.3H}, as listed in Remark~\ref{rem:8.status}(a)--(c). The main
+point is to show that the Mellin regularization used there computes the
+principal value of \cite{LS83}. The independence of $X$ would then prove
+$(\mathrm X_3)$ directly; the explicit values of $|C_3(q)|$ in \eqref{eq:8.8}
+also need the valuation-shell sums, which have been done only by hand.
+\item For $r=2$: check the regularized evaluations in the proof of
+Theorem~\ref{res:7.6H}(d) (such as $\mathrm{PV}\int_{|t|_F>1}dt=-1$ and the
+value of $I_\xi$) against the principal value of \cite{LS83}, and verify the
+factors $I_t$, $I_s$, $I_\xi$ independently. They were evaluated by hand; the
+script checks only their product, which is the constant $C'(q)$ of
+\eqref{eq:7.13}. The independence of $X$ in Theorem~\ref{res:7.6H} does not
+depend on these values.
+\end{enumerate}
 \item Choose a toric resolution of $Z$, determine the exceptional divisors
 with integral $\beta$ (Remark~\ref{rem:exceptional}), their images under
 $\pi$ and their $F$-points, and so settle the proviso of
@@ -5732,7 +6009,13 @@ that prove Corollary~\ref{res:7.6F} and $(\mathrm X_2)$ with explicit $p$-adic
 constant $C'(q)$ (Proposition~\ref{res:7.6G} and Theorem~\ref{res:7.6H}),
 verifying the subregular forms in \S\ref{sec:6}, and deriving the cubic transfer
 factor, cocycle $\kappa_1(t_*)$ and hexagon double cover in \S\ref{sec:8}
-(Propositions~\ref{res:8.3A}--\ref{res:8.3E}). David Joyner directed the work and is solely
+(Propositions~\ref{res:8.3A}--\ref{res:8.3E}), and in Draft~6 established the
+$SL_2(\alpha)$-fibration onto the split quadric cone $\mathcal C_K(F)$
+(Propositions~\ref{res:8.3F}--\ref{res:8.3G}) and sketched an evaluation of the
+$6$-dimensional cubic principal-value integral $J_3(X)$
+(Claim~\ref{res:8.3H}). Claude refereed Draft~6, corrected the residue in
+Claim~\ref{res:8.3H} and its verification script, and marked the claim as a
+sketch. David Joyner directed the work and is solely
 responsible for the final text. AI review is not an independent
 certification: the computations were checked by scripts, but the
 mathematical arguments, and every statement about sources that could not be
@@ -5764,16 +6047,16 @@ distributions of a reductive $p$-adic group'', Ann. Sci. \'Ecole Norm. Sup.
 Algebraic Geometry and Algebraic Groups}, North-Holland Math. Studies
 \textbf{39}, 1980.
 
-\bibitem[GH16]{GH16} J.~Gordon and T.~Hales, ``Endoscopic transfer of orbital
-integrals in large residual characteristic'', Amer. J. Math. \textbf{138}
+\bibitem[GH16]{GH16} J.~Gordon and T.~Hales, ``\href{https://muse.jhu.edu/article/609681/summary}{Endoscopic transfer of orbital
+integrals in large residual characteristic}'', Amer. J. Math. \textbf{138}
 (2016), 109--148.
 
-\bibitem[Ha89]{Ha89} T.~Hales, ``Shalika germs on $GSp(4)$'', in
+\bibitem[Ha89]{Ha89} T.~Hales, ``\href{https://www.numdam.org/article/AST_1989__171-172__195_0.pdf}{Shalika germs on $GSp(4)$}'', in
 \textit{Orbites unipotentes et repr\'esentations}, Ast\'erisque
 \textbf{171--172} (1989), 195--256.
 
-\bibitem[Ha92a]{Ha92a} T.~Hales, \textit{The Subregular Germ of Orbital
-Integrals}, Mem. Amer. Math. Soc. \textbf{99} (1992), no.~476. (Draft~4
+\bibitem[Ha92a]{Ha92a} T.~Hales, \href{https://iacobus.usc.gal/nde/fulldisplay/alma991013513907807712/34CISUG_USC:NDE/gl}{\textit{The Subregular Germ of Orbital
+Integrals}}, Mem. Amer. Math. Soc. \textbf{99} (1992), no.~476. (Draft~4
 consulted the author's \TeX\ version of 2016, which has the same numbering of
 chapters and results.)
 
@@ -5782,8 +6065,8 @@ chapters and results.)
 D.~Ramakrishnan, Centre de Recherches Math\'ematiques, Montr\'eal, 1992,
 303--333.
 
-\bibitem[Ha94]{Ha94} T.~Hales, ``Hyperelliptic curves and harmonic analysis
-(why harmonic analysis on reductive $p$-adic groups is not elementary)'', in
+\bibitem[Ha94]{Ha94} T.~Hales, ``\href{https://publicationsthomashales.wordpress.com/wp-content/uploads/2016/03/hyperelliptic-curves-harmonic-analysis-scan.pdf}{Hyperelliptic curves and harmonic analysis
+(why harmonic analysis on reductive $p$-adic groups is not elementary)}'', in
 \textit{Representation Theory and Analysis on Homogeneous Spaces},
 Contemp. Math. \textbf{177}, Amer. Math. Soc., 1994, 137--169.
 
@@ -5820,8 +6103,8 @@ in Math. \textbf{1041}, Springer, 1984, 250--279.
 \bibitem[LS87]{LS87} R.~Langlands and D.~Shelstad, ``On the definition of
 transfer factors'', Math. Ann. \textbf{278} (1987), 219--271.
 
-\bibitem[LS89]{LS89} R.~Langlands and D.~Shelstad, ``Orbital integrals on
-forms of $SL(3)$, II'', Canad. J. Math. \textbf{41} (1989), 480--507.
+\bibitem[LS89]{LS89} R.~Langlands and D.~Shelstad, ``\href{https://publications.ias.edu/sites/default/files/orbital-integrals-ii_rpl.pdf}{Orbital integrals on
+forms of $SL(3)$, II}'', Canad. J. Math. \textbf{41} (1989), 480--507.
 
 \bibitem[LS90]{LS90} R.~Langlands and D.~Shelstad, ``Descent for transfer
 factors'', in \textit{The Grothendieck Festschrift}, vol.~II, Birkh\"auser,

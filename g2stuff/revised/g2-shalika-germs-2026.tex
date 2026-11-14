@@ -437,6 +437,9 @@ neighborhood of the identity by
 =\kappa(\inv(\gamma^0_G,\gamma_G))|D_G(\gamma_G)|/|D_H(\gamma_H)|
 \]
 as in \cite{LS90}, $\gamma_G^0$ being a fixed regular element of $T_G(F)$.
+This is only the part $\Delta_{III_1}\Delta_{IV}$ of the transfer factor
+of \cite{LS87}; the remaining factors form the term $\Delta_0(X)$ below,
+which is computed for the biquadratic tori in Proposition~\ref{res:7.6}.
 The sum over ${\mathcal O}$ in \eqref{eq:0.1} runs over all stable unipotent
 classes ${\mathcal O}^{st}$ in $G(F)$, ${\mathcal O}\subset {\mathcal O}^{st}$
 denoting an arbitrarily chosen $G(F)$-orbit within ${\mathcal O}^{st}$.
@@ -3248,7 +3251,9 @@ For $r=1$, $(\mathrm X_1)$ asks that the $X$-dependence of $I_E$ be that of
 the stable subregular germ of $H$, given for $SL(2)$ in \cite{SS83} and for
 $GL(3)$ in \cite{Re84}. Verifying $(\mathrm X_r)$ requires computing
 $\Delta_0(X)$ and the fiber integrals as functions of $X$, as in
-\cite[\S6]{Ha89}; this is the main open step of this revision.
+\cite[\S6]{Ha89}; this is the main open step of this revision. For $r=2$ and the biquadratic
+tori, $\Delta_0$ is computed in Proposition~\ref{res:7.6}, and $(\mathrm X_2)$
+is reduced to the explicit identity \eqref{eq:7.7} (Corollary~\ref{res:7.8}).
 \end{rem26}
 % =====================================================================
 % Sections 6-8. Sources: g2new6.tex, g2new7.tex, g2new8.tex.
@@ -3644,6 +3649,182 @@ invariance property as well \dots\ the theorem follows \dots\ from lemma
 non-zero $Y$, since those roots span $\mathfrak t^*$; and the lemma does not
 apply (Remark~\ref{rem:main-gap}).
 \end{rem26}
+
+\subsection*{The transfer factor for the biquadratic tori}
+
+The 1994 formula \eqref{eq:0.1} uses only two of the factors of the
+Langlands--Shelstad transfer factor \cite[\S\S2--3]{LS87},
+$\Delta=\Delta_I\Delta_{II}\Delta_{III_1}\Delta_{III_2}\Delta_{IV}$: namely
+$\Delta_{III_1}$, which gives $\kappa(\inv(\gamma^0_G,\gamma_G))$, and
+$\Delta_{IV}=|D_G(\gamma_G)|/|D_H(\gamma_H)|$ (in the notation of \S\ref{sec:0},
+where $D_G$ is a product over positive roots). Near the identity the remaining
+factors make up the term $\Delta_0(X)$ of \S\ref{sec:0} and of
+Hypothesis $(\mathrm X_r)$. We compute it for the tori of
+Theorem~\ref{res:7.2}.
+
+Let $T$ be as in Theorem~\ref{res:7.2}, with
+$\Gamma_T=\{1,s_\alpha,s_\zeta,-1\}$ (note $s_\alpha s_\zeta=-1$, since
+$\alpha\perp\zeta$). Let $K=F(\sqrt{d_\alpha},\sqrt{d_\zeta})$ be its splitting
+field, where $F(\sqrt{d_\alpha})$ is the fixed field of the element acting by
+$s_\zeta$ and $F(\sqrt{d_\zeta})$ that of the element acting by $s_\alpha$, and
+let $L=F(\sqrt{d_\alpha d_\zeta})$ be the fixed field of the element acting by
+$-1$. For $Y\in\mathfrak t(F)$ the Galois group acts on root values by
+$\sigma(\rho(Y))=(w_\sigma\rho)(Y)$, so
+\[
+\alpha(Y)=\sqrt{d_\alpha}\,u,\qquad \zeta(Y)=\sqrt{d_\zeta}\,v,\qquad u,v\in F,
+\]
+and every $(u,v)\in F^2$ occurs. Since $\beta=(\zeta-3\alpha)/2$,
+\[
+\beta(Y)=\tfrac12(\zeta-3\alpha)(Y),\quad
+\gamma(Y)=\tfrac12(\zeta-\alpha)(Y),\quad
+\delta(Y)=\tfrac12(\zeta+\alpha)(Y),\quad
+\epsilon(Y)=\tfrac12(\zeta+3\alpha)(Y),
+\]
+and we put
+\begin{equation}\tag{7.6}\label{eq:7.6}
+P(Y):=\beta(Y)\gamma(Y)\delta(Y)\epsilon(Y)
+=\tfrac1{16}(d_\zeta v^2-d_\alpha u^2)(d_\zeta v^2-9d_\alpha u^2)\in F.
+\end{equation}
+For $Y$ regular, $P(Y)\neq0$, and $P(cY)=c^4P(Y)$ for $c\in F^\times$.
+
+\begin{res}{Proposition}{7.6}\label{res:7.6}
+Suppose the residue characteristic of $F$ is at least $5$. For regular $Y\in\mathfrak t(F)$ sufficiently close to $0$:
+\begin{enumerate}[label=(\alph*)]
+\item $\Delta_I$ is a constant, and $\Delta_{III_2}(\exp Y)=1$;
+\item $\Delta_{II}(\exp Y)=c\cdot(P(Y),d_\alpha)_F$, where $(\ ,\ )_F$ is the
+quadratic Hilbert symbol and $c=\pm1$ depends only on the $a$-data.
+\end{enumerate}
+Hence $\Delta_0(Y)=\Delta_I\Delta_{II}\Delta_{III_2}(\exp Y)=c'\cdot(P(Y),d_\alpha)_F$
+with $c'$ independent of $Y$. It is homogeneous of degree $0$.
+\end{res}
+
+\begin{proof}
+(a) $\Delta_I$ depends only on $T$ and the $a$-data. $\Delta_{III_2}$ is a
+continuous character of the compact group $T(F)$, so it is trivial on a
+neighborhood of $1$.
+
+(b) By definition $\Delta_{II}(\gamma)=\prod_\rho\chi_\rho\bigl((\rho(\gamma)-1)/a_\rho\bigr)$,
+the product over representatives of the $\Gamma_T$-orbits of roots outside
+$\Sigma_H=\{\pm\alpha,\pm\zeta\}$. There are two such orbits,
+$\{\pm\beta,\pm\epsilon\}$ and $\{\pm\gamma,\pm\delta\}$, since
+$s_\alpha\beta=\epsilon$, $s_\zeta\beta=-\epsilon$, $s_\alpha\gamma=\delta$,
+$s_\zeta\gamma=-\delta$. In each orbit the stabilizer of a root is trivial and
+the stabilizer of the pair $\{\rho,-\rho\}$ is $\{1,-1\}$. So $\rho=\beta,\gamma$
+is symmetric with $F_\rho=K$ and $F_{\pm\rho}=L$. The $a$-data satisfy
+$\sigma_{-1}(a_\rho)=a_{-\rho}=-a_\rho$, and $\chi_\rho$ is a character of
+$K^\times$ whose restriction to $L^\times$ is the character $\omega_{K/L}$
+of the quadratic extension $K/L$. Now
+$\rho(\exp Y)-1=\rho(Y)(1+\eta)$ with $|\eta|\le|\rho(Y)|$, and
+$\sigma_{-1}(\rho(Y))=-\rho(Y)$, so $\rho(Y)/a_\rho\in L^\times$. For $Y$ small,
+$\chi_\rho(1+\eta)=1$. Hence
+\[
+\Delta_{II}(\exp Y)=\omega_{K/L}\Bigl(\frac{\beta(Y)\gamma(Y)}{a_\beta a_\gamma}\Bigr)
+=\Bigl(\frac{\beta(Y)\gamma(Y)}{a_\beta a_\gamma},d_\alpha\Bigr)_L ,
+\]
+since $K=L(\sqrt{d_\alpha})$. As $d_\alpha\in F$, the projection formula for
+the Hilbert symbol \cite[Ch.~XIV]{Ser79} gives $(x,d_\alpha)_L=(N_{L/F}x,d_\alpha)_F$.
+The non-trivial element of $\Gal(L/F)$ acts on root values through $s_\alpha$,
+which sends $\beta,\gamma$ to $\epsilon,\delta$, so
+$N_{L/F}(\beta(Y)\gamma(Y))=P(Y)$. Finally
+$c=(N_{L/F}(a_\beta a_\gamma),d_\alpha)_F$.
+\end{proof}
+
+The root-theoretic steps (the orbits, the stabilizers and \eqref{eq:7.6}) are
+checked by the script \texttt{g2\_transfer\_factor\_biquadratic.py}.
+
+\begin{resdef}{Example}{7.7}\label{res:7.7}
+Let $F$ have residue characteristic $p\geq5$, uniformizer $\varpi$, and a
+non-square unit $\varepsilon$.
+\begin{enumerate}[label=(\alph*)]
+\item If one of $F(\sqrt{d_\alpha})$, $F(\sqrt{d_\zeta})$ is unramified over
+$F$, then $(P(Y),d_\alpha)_F=1$ for all regular $Y$, so $\Delta_0$ is
+constant. For example, if $d_\alpha=\varepsilon$ and $d_\zeta\in\varpi\mathcal
+O_F^\times$, then in each factor of \eqref{eq:7.6} the two terms have
+valuations of different parity, so $P(Y)$ has even valuation, and
+$(P(Y),\varepsilon)_F=(-1)^{v(P(Y))}=1$. If instead $d_\zeta=\varepsilon$, then
+$P(Y)$ is a square times $1+\varpi(\cdots)$, hence a square.
+\item If both are ramified (so $L/F$ is unramified), say $d_\alpha=\varpi$ and
+$d_\zeta=\varepsilon\varpi$, then $(P(Y),d_\alpha)_F=1$ when $v(u)\neq v(v)$.
+When $v(u)=v(v)$ it is the Legendre symbol of the residue of
+$(\varepsilon\bar v^2-\bar u^2)(\varepsilon\bar v^2-9\bar u^2)$, where
+$\bar u,\bar v$ are the residues of the unit parts of $u$ and $v$. For $p=5$
+this is $-1$ for every $\bar u,\bar v$. For $7\le p\le23$ it takes both values
+(script).
+\end{enumerate}
+So $\Delta_0$ is \emph{not} constant in the direction of approach when both
+quadratic subfields of $K$ are ramified.
+\end{resdef}
+
+\begin{res}{Corollary}{7.8}\label{res:7.8}
+Let $T$, $\kappa$ and $H=H_2$ be as in Theorem~\ref{res:7.2}. Assume
+Lemma~\ref{res:5.14} and the proviso of Lemma~\ref{res:0.8}. Then Hypothesis
+$(\mathrm X_2)$ holds for $(T,\kappa)$ if and only if, for $u\in\mathcal O_2(F)$
+and regular $X\in\mathfrak t(F)$ near $0$,
+\begin{equation}\tag{7.7}\label{eq:7.7}
+J(X):=\int_{E_{\emptyset,\alpha,\delta}(u)(F)}\kappa_1(t_*)
+\,|\omega_{E_{\emptyset,\alpha,\delta}(u)}|
+=C\cdot|\alpha(X)\zeta(X)|\cdot\bigl(P(X),d_\alpha\bigr)_F,
+\end{equation}
+with $C$ independent of $X$ and of $u$.
+\end{res}
+
+\begin{proof}
+With the full transfer factor, $(\mathrm X_2)$ says that the $\mathcal
+O_2$-germ of $\Delta\,\Phi^{T,\kappa}$ is a constant $c_0$: the unnormalized
+stable germ of the trivial class of $H$ is constant. The germ
+$\Gamma^{T,\kappa}_{\mathcal O_2}$ of \eqref{eq:0.1}, which uses only
+$\Delta_{III_1}\Delta_{IV}$, is then $c_0\,\Delta_0(X)^{-1}$. Since
+$\mathcal O_2$ is a single $F$-class (\S\ref{sec:A7}), Formula~\ref{res:0.6}
+and \eqref{eq:7.1} give
+\[
+|D_H(\gamma_{\lambda,H})|\,c_0\,\Delta_0(X)^{-1}\mu_{\mathcal O_2}(f)
+=\kappa(\inv(\gamma^0_G,\gamma_\lambda))\,|\lambda|^2
+\int_{\mathcal O_2(F)}f(u)\,J(X)\,|\omega_{\mathcal O_2}|
+\]
+for all $f$. Here $\kappa(\inv(\gamma^0_G,\gamma_\lambda))$ is constant on
+$T(F)$, and $|D_H(\exp\lambda X)|=|\lambda|^2|\alpha(X)\zeta(X)|$ for
+$\lambda$ small. Since $\Delta_0(X)^{-1}=\Delta_0(X)$ is given by
+Proposition~\ref{res:7.6}, \eqref{eq:7.7} follows, and conversely.
+\end{proof}
+
+So $(\mathrm X_2)$ splits into two explicit statements about the fiber integral
+$J(X)$. First, its absolute scaling: by \eqref{eq:7.4}--\eqref{eq:7.5}, the
+1994 text asserts $|J(X)|\propto|\alpha(X)|^{f_\alpha}|\zeta(X)|^{f_\zeta}$
+with $f_\alpha+f_\zeta=2$. Corollary~\ref{res:7.8} requires
+$f_\alpha=f_\zeta=1$. Second, its sign: $J(X)$ must carry the factor
+$(P(X),d_\alpha)_F$. This factor involves the roots $\beta,\gamma,\delta,\epsilon$
+\emph{outside} $H$, and by Example~\ref{res:7.7} it is not constant in
+general. The form \eqref{eq:7.4} is positive, so this sign has to come from
+$\kappa_1(t_*)$ and from the $F$-structure of the fiber, which depends on $X$
+through \eqref{eq:1.22} and the Galois action of \S\ref{sec:2}.
+
+\begin{rem26}[status of $(\mathrm X_2)$]\label{rem:7.status}
+Proposition~\ref{res:7.6}, Example~\ref{res:7.7} and
+Corollary~\ref{res:7.8} are new and are checked at level~1 (by hand, and by
+the script for the root data and the Hilbert symbols over $\qqq_p$); the
+projection formula and the definitions of the factors $\Delta_I,\dots,\Delta_{IV}$
+are standard \cite{Ser79}, \cite{LS87}. They show that the 1994 strategy
+could not have worked even if Lemma~\ref{res:5.19} applied: the
+$X$-dependence of $\Delta_0$ is through the roots outside $H$, and it is not
+translation invariant. The display of $\Delta$ in \eqref{eq:0.1} omits
+$\Delta_I\Delta_{II}\Delta_{III_2}$; for the tori of Theorem~\ref{res:7.2}
+this matters exactly in the case of Example~\ref{res:7.7}(b).
+To finish $(\mathrm X_2)$ one still needs three inputs, none of which is
+available in the 1994 text:
+(i) the exact coordinate relations \eqref{eq:1.22}, whose constants
+$c_1,\dots,c_7$ and omitted terms are not given (they can in principle be
+computed from Lemma~\ref{res:1.21} in the explicit model of \S A.4);
+(ii) the cocycle $t_*$ on $E_{\emptyset,\alpha,\delta}$, from
+\cite[Ch.~I, Cor.~5.4 and 5.7]{Ha92a}, which we could not consult;
+(iii) the Galois action on the coordinates, which \S\ref{sec:2} gives only
+schematically (Remark~\ref{rem:2.11}).
+By Corollary~\ref{res:8.8}, \eqref{eq:7.7} is true given Lemma~\ref{res:5.14}
+and the proviso of Lemma~\ref{res:0.8}. So it predicts
+$f_\alpha=f_\zeta=1$ in \eqref{eq:7.5}, and the sign $(P(X),d_\alpha)_F$ for
+the $\kappa$-weighted integral over the fiber. Either prediction can be
+tested once (i)--(iii) are available.
+\end{rem26}
+
 
 % ---------------------------------------------------------------------
 \numsection{8}{On the $3$-regular germ for $G_2$}\label{sec:8}
@@ -4878,6 +5059,9 @@ orbital integrals'', Compositio Math. \textbf{42} (1980), 417--423.
 
 \bibitem[Sa71]{Sa71} I.~Satake, \textit{Classification Theory of
 Semi-simple Algebraic Groups}, Marcel Dekker, 1971.
+
+\bibitem[Ser79]{Ser79} J.-P.~Serre, \textit{Local Fields}, Graduate Texts in
+Math. \textbf{67}, Springer, 1979.
 
 \bibitem[Sh72]{Sh72} J.~Shalika, ``A theorem on semi-simple $p$-adic
 groups'', Ann. of Math. \textbf{95} (1972), 226--242.

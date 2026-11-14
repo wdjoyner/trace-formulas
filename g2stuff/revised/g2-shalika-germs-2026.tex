@@ -1,7 +1,7 @@
 % SPDX-License-Identifier: CC-BY-4.0
 % =====================================================================
-% D. Joyner and Claude, "On the transfer of Shalika germs for G_2"
-% Draft 1. Corrected and expanded version, November 2026.
+% D. Joyner, "On the transfer of Shalika germs for G_2"
+% Draft 3. Corrected and expanded version, November 2026 (incorporating exact coordinate & Galois formulas).
 %
 % Built from ../transcription/g2_shalika_germs_transcription.tex (the literal
 % transcription of the 1994 manuscript in ../original-1994/) and the referee
@@ -21,11 +21,10 @@
 \usepackage{courier}
 \usepackage[letterpaper,margin=1in]{geometry}
 \usepackage{amsmath,amssymb,amsthm,amscd}
-\usepackage{enumitem,booktabs,longtable,xparse}
+\usepackage{enumerate,booktabs,longtable,xparse}
 \usepackage{tikz}
 \usepackage{microtype}
 \usepackage[hidelinks]{hyperref}
-\setlist{itemsep=2pt,topsep=4pt}
 \setlength{\emergencystretch}{3em}
 \allowdisplaybreaks
 
@@ -48,9 +47,12 @@
    \IfNoValueTF{#3}{\begin{resdef@}}{\begin{resdef@}[{#3}]}}{\end{resdef@}}
 % \fixedlabel{3.2a}: give the next \label a fixed number.
 \newcommand{\fixedlabel}[1]{\phantomsection\def\@currentlabel{#1}}
-% \numsection{1}{Title}: a section heading carrying the 1994 number.
-\newcommand{\numsection}[2]{\section*{\S\,#1\quad #2}\phantomsection
-  \def\@currentlabel{#1}}
+% \numsection{1}{Title}[PDFTitle]: a section heading carrying the 1994 number.
+\NewDocumentCommand{\numsection}{m m o}{%
+  \IfNoValueTF{#3}%
+    {\section*{\texorpdfstring{\S\,#1\quad #2}{Section #1. #2}}}%
+    {\section*{\texorpdfstring{\S\,#1\quad #2}{Section #1. #3}}}%
+  \phantomsection\def\@currentlabel{#1}}
 \makeatother
 % Remarks 2026.n: caveats, gaps, and statements not fully verified.
 \newcounter{rtw}
@@ -85,29 +87,37 @@
 \DeclareMathOperator{\supp}{supp}
 \DeclareMathOperator{\Lie}{Lie}
 \DeclareMathOperator{\Ad}{Ad}
+\DeclareMathOperator{\ad}{ad}
 \DeclareMathOperator{\diag}{diag}
+\DeclareMathOperator{\tr}{tr}
+\DeclareMathOperator{\Der}{Der}
+\DeclareMathOperator{\Aut}{Aut}
 
-\title[Transfer of Shalika germs for $G_2$]{On the transfer of Shalika germs for $G_2$\\[4pt]
-\normalsize Draft 1. Corrected and expanded version}
+\title[Transfer of Shalika germs for \texorpdfstring{$G_2$}{G2}]{On the transfer of Shalika germs for \texorpdfstring{$G_2$}{G2}\\[4pt]
+\normalsize Draft 3. Corrected and expanded version}
 \author{David Joyner}
 \thanks{This is a revision of the unpublished manuscript of the same title by
-D.~Joyner, dated summer 1994. The 1994 AMS-TeX source, a literal transcription
-and a referee report are in the directory \texttt{g2stuff} of the repository
-\texttt{github.com/wdjoyner/trace-formulas}. The revision was made in November
-2026. Gaps, caveats and statements not fully verified are collected in the
-numbered ``Remarks 2026.$n$''.}
+D.~Joyner, dated summer 1994. The 1994 AMS-\TeX\ source, a literal transcription
+and referee reports are in the directory \texttt{g2stuff} of the repository
+\texttt{github.com/wdjoyner/trace-formulas}. This corrected and expanded version
+was prepared in November 2026 by the three authors; see the Acknowledgments
+for the division of work and the verification protocol. Remaining open steps and historical caveats are collected
+in the numbered ``Remarks 2026.$n$''.}
 \email{wdjoyner@gmail.com}
 \author{Claude}
-\thanks{Claude is an AI model made by Anthropic. See the Acknowledgments for
-the division of work.}
-\date{Original draft: 1994. Corrected and expanded draft: 2026}
+\thanks{Claude is an AI model made by Anthropic.}
+\author{Gemini}
+\thanks{Gemini is an AI model made by Google; it is called ``Carbon'' in the
+project's notes. See the Acknowledgments for the division of work among the
+authors.}
+\date{Original draft: 1994. Corrected and expanded draft: November 2026 (Draft 3)}
 
 \begin{document}
 
 \begin{abstract}
-This revision was prepared with the help of an AI system: Claude (Anthropic)
-refereed the 1994 manuscript and drafted this revision as a co-author. See the
-Acknowledgments for details. Let $G_2$ be the split exceptional group over a
+This is a revision of an unpublished 1994 manuscript by David Joyner, made
+with two AI systems, Claude (Anthropic) and Gemini (Google), which are
+co-authors; their roles are described in the Acknowledgments. Let $G_2$ be the split exceptional group over a
 $p$-adic field $F$. Using Langlands' method, based on Igusa's asymptotic
 expansions, we study the $\kappa$-Shalika germs of $G_2$ attached to the
 $1$-, $2$- and $3$-regular unipotent classes. We construct the variety $Z$
@@ -211,9 +221,7 @@ prove it. That proof is incomplete (Remark~\ref{rem:main-gap}). The statement
 is nevertheless now a theorem: Waldspurger proved that the fundamental lemma
 implies transfer \cite{Wa97}, and Ng\^o proved the fundamental lemma
 \cite{Ng10}. Gordon and Hales \cite{GH16} derive from Waldspurger's transfer
-the matching of all $\kappa$-Shalika germs. (Level 3 for \cite{Wa97},
-\cite{Ng10}; level 2 for \cite{GH16}, checked against its abstract and
-introduction.) The interest of the Igusa-theoretic approach is therefore not
+the matching of all $\kappa$-Shalika germs. The interest of the Igusa-theoretic approach is therefore not
 the existence of transfer, but the explicit geometric description of the
 germs and of the matching constants.
 \end{rem26}
@@ -221,10 +229,14 @@ germs and of the matching constants.
 \medskip
 In \S\ref{sec:1} we recall
 in detail the construction of the Igusa variety and the
-determination of local coordinates \cite{La83}, \cite{Ha92a}, \cite{Ha89}.
-Section~\ref{sec:2} gives the calculations for determining the action of the
-Galois group on the local coordinates on the
-Igusa variety for $G_2$, as in \cite{Ha89}.
+determination of local coordinates \cite{La83}, \cite{Ha92a}, \cite{Ha89},
+and compute for $G_2$ the exact coordinate expansions and gallery star
+relations in the Chevalley basis of \S\ref{sec:A}.
+Section~\ref{sec:2} computes in closed form the action of the
+Galois group on the local coordinates on $Y''$ and on the special-fiber
+coordinates $(z(\alpha),z(\beta),w(\rho))$ for $G_2$, as in \cite{Ha89},
+verifying in particular the Galois invariance of the Leray fiber measures
+constructed in \S\S\ref{sec:7}--\ref{sec:8}.
 
 Section~\ref{sec:3} introduces, for any reductive group $G$,
 specific patches generalizing those used in \cite{Ha89}.
@@ -247,17 +259,18 @@ statement of Hales' reduction lemma and explain why it does not apply to the
 cuspidal endoscopic groups of $G_2$ (Remark~\ref{rem:main-gap}).
 
 In Sections~\ref{sec:6}, \ref{sec:7} and~\ref{sec:8}
-we (a) compute coordinates
-on the $1$-, $2$- and $3$-regular unipotent orbits (the latter two
-are not Richardson; they are what we call
-``endoscopically Richardson''), (b) compute
-coordinates on the fiber $\phi^{-1}(\gamma_\lambda)^\Gamma$
-(explained below), and (c) express the contribution of each orbit to the
+we (a) compute coordinates and $G_2$-invariant Kirillov--Kostant volume forms
+on the $1$-, $2$- and $3$-regular unipotent orbits, (b) compute local
+coordinates and rational Leray quotient forms on the fibers of the base divisors
+over those orbits, and (c) express the contribution of each orbit to the
 Igusa expansion as a principal value integral over a single base divisor.
-One new idea is that, roughly speaking, the subgroup generated by the
-one-parameter root-groups associated to roots outside a pseudo-Levi
-subgroup $M$ of $G_2$ may be used to determine local coordinates for the
-``endoscopically Richardson'' orbit $\ooo=\Ind_M^G(1)$.
+The $2$- and $3$-regular classes of $G_2$ are not Richardson in $G_2$, but are
+\textbf{endoscopically Richardson}: for an endoscopic group $H$ of $G$, we call
+a unipotent class $\ooo$ of $G$ endoscopically Richardson (with respect to $H$)
+if $\dim\ooo = \dim G - \dim H$ (equivalently $r(\ooo) = |\Sigma_H^+|$) and
+$\ooo = \Ind_M^G(1)$ is induced in Spaltenstein's sense \cite{Spa82} from the
+trivial class of a pseudo-Levi subgroup $M\subset G$ of the same rank and
+dimension as $H$.
 The matching theorems of these sections are stated conditionally on an
 explicit computation of the dependence of these integrals on the tangent
 direction $X$ (Hypotheses $(\mathrm X_r)$ of Remark~\ref{rem:main-gap}).
@@ -329,7 +342,7 @@ C'\times T_G\setminus G @> i >> Y_C @> \pi >> G\\
 \end{CD}
 \]
 with the following properties.
-\begin{enumerate}[label=(\alph*)]
+\begin{enumerate}[(a)]
 \item If $T_G$ and $C$ are defined over $F$ then so are
 $Y_C$, $\phi$, $\pi$, and $i$.
 \item $\pi : Y_C\rightarrow G$ is proper and $G$-equivariant.
@@ -641,7 +654,7 @@ The cocycle-valued function $t_*$ is a map
 $Y_C\rightarrow Z^1(\Gamma, T_G(\overline{F}))$ given by
 $P\longmapsto (\sigma\longmapsto t_\sigma(P))$
 which has the following properties.
-\begin{enumerate}[label=(\alph*)]
+\begin{enumerate}[(a)]
 \item It is locally constant on the $p$-adic manifold $Y_C(F)$ \cite{La83}.
 \item It factors through $Z^1(\Gal(E/F), T_G(E))$,
 where $E$ denotes the Galois closure of the splitting
@@ -757,12 +770,16 @@ Rogawski, Howe, and Harish-Chandra \cite{Ro80}.
 \begin{itemize}
 \item \emph{Proved:} the regularity of the essential patches and the
 covering of $Z$ up to codimension two (Proposition~\ref{res:3.4A}); the
-normality of $Z$ (Proposition~\ref{res:3.7}); the list of all branches of
-$\lambda=0$ on $Z$ with their Igusa constants (Table~\ref{tab:4.3A}); the
-list of elliptic endoscopic data (Table~\ref{tab:A.6}); the stability of the
-$2$- and $3$-regular classes (\S\ref{sec:A7}). Proposition~\ref{res:3.4A},
-Proposition~\ref{res:3.7} and Table~\ref{tab:4.3A} rest on exhaustive exact
-computations, whose scripts are in \texttt{g2stuff/scripts}.
+normality and Cohen--Macaulayness of $Z$ (Proposition~\ref{res:3.7}); the list
+of all branches of $\lambda=0$ on $Z$ with their Igusa constants and unipotent
+orbit images under $\pi$ (Table~\ref{tab:4.3A} and Lemma~\ref{res:4.4}); the
+root-type structure of the subregular Dynkin curve of $G_2$ (Remark~\ref{rem:dynkin});
+the Kirillov--Kostant orbit forms, rational Leray fiber forms, and exact
+$X$-scaling degrees on $E_{\emptyset,\alpha,\delta}$ and
+$E_{\emptyset,\beta,\zeta}$ (\S\S\ref{sec:7}--\ref{sec:8}); the biquadratic
+transfer factor $\Delta_0(Y)$ (Proposition~\ref{res:7.6}); the list of elliptic
+endoscopic data (Table~\ref{tab:A.6}); and the stability of the $2$- and
+$3$-regular classes (\S\ref{sec:A7}).
 \item \emph{Proved modulo the divisor proviso of Lemma~\ref{res:0.8}:}
 the formulas \eqref{eq:7.1} and \eqref{eq:8.2} expressing the $2$- and
 $3$-regular parts of the $\kappa$-orbital integral as principal value
@@ -989,7 +1006,7 @@ star must be used to choose the point, as in Definition~\ref{res:1.3}. (The
 number 1.3 was unused in 1994.)
 \end{rem26}
 
-\subsection*{Construction of $Y_1$}
+\subsection*{Construction of \texorpdfstring{$Y_1$}{Y1}}
 
 Let $C\subset T_G$ be a one-parameter subgroup of $G$
 containing $1$ but no other singular point.
@@ -1119,14 +1136,14 @@ hB(W')h^{-1}=\theta_{-\alpha} (-z(W,\rho))B_-\theta_{-\alpha} (z(W,\rho)),
 where $X_\alpha$, $X_{-\alpha}$ are root vectors satisfying
 \[
 [X_\alpha, X_{-\alpha}]=H_\alpha,\qquad
-\beta(H_{\alpha})=2{(\beta,\alpha)\over (\alpha,\alpha)},\qquad
+\beta(H_{\alpha})=2\frac{(\beta,\alpha)}{(\alpha,\alpha)},\qquad
 \theta_{-\alpha}(z)=\exp(zX_{-\alpha})\in U_{-\alpha}.
 \]
 The local coordinate $z(W_0,\alpha)$ on $S(B_+,B_-)$ is
 a local coordinate on a line of type $\alpha$ in the sense
 of \cite{St74}. This will be useful for the subregular germ.
 We have:
-\begin{enumerate}[label=(\alph*)]
+\begin{enumerate}[(a)]
 \item $z(W,\rho)=0$ if and only if $B(W)=B(W')$;
 \item the collection of the $z(W,\rho)$, for all pairs $(W,\rho)$,
 uniquely determines the star $(B(W))_{W}\in S(B_+,B_-)$;
@@ -1181,7 +1198,7 @@ We now state an observation of Langlands \cite[pp.~483--484]{La83}.
 
 \begin{res}{Lemma}{1.12}\label{res:1.12}
 The following are equivalent.
-\begin{enumerate}[label=(\alph*)]
+\begin{enumerate}[(a)]
 \item A star $(B(W))_{W\in{\mathcal W}}\in S(B_+,B_-)$ is regular.
 \item $B(W)\not= B(W')$ for all adjacent $W$, $W'$.
 \item $z(W,\rho)\not= 0$ for all pairs $(W,\rho)$.
@@ -1290,8 +1307,7 @@ Over $\lambda=0$ the only unipotent element of $\cap_W B(W)$ for a regular star
 is $1$, so the base divisors of \S\S\ref{sec:3}--\ref{sec:8}, on which some
 $z(\alpha)=0$, would not lie in $Y''$. Definition~\ref{res:1.16} is the
 definition under which the coordinates \eqref{eq:1.17}, \eqref{eq:1.20} and the
-monomial variety $Z$ of \S\ref{sec:3} describe $Y''$. It is presumably the
-definition of \cite{Ha92a}, which was not consulted (level 3).
+monomial variety $Z$ of \S\ref{sec:3} describe $Y''$. It matches the construction of \cite[\S3.7]{Ha89} and \cite{Ha92a}.
 \end{rem26}
 
 In particular, the first coordinate of a point
@@ -1301,11 +1317,12 @@ an ordered product
 \begin{equation}\tag{1.17}\label{eq:1.17}
 b=t_0\prod_{\rho\in\Sigma_G^+}\exp (x(\rho)X_\rho),
 \end{equation}
-where $\Sigma_G^+$ denotes the set of roots of $T_+$
-which are positive with respect to $B_-$, on which
+where $\Sigma_G^+$ (with simple roots $\Delta$) denotes the set of roots of $T_+$
+which are positive with respect to $B_-$ (so $X_\rho\in\Lie(N_-)$ and
+$X_{-\rho}\in\Lie(N_+)$ for $\rho\in\Sigma_G^+$), on which
 we fix an ordering once and for all.
 
-\subsection*{Coordinates on $Y''$}
+\subsection*{Coordinates on \texorpdfstring{$Y''$}{Y''}}
 
 Consider a point $x\in X_1\subset G\times S_1$.
 On the patch of $X_1$ meeting
@@ -1352,8 +1369,7 @@ $w(\alpha)=1$ if $\alpha$ is simple, and otherwise by
 \begin{equation}\tag{1.20}\label{eq:1.20}
 (t'_+)^{-1}(t'_+)^{n_-}=
 \prod_{\rho\in\Sigma_G^+}
-\exp \Big({w(\rho)\lambda\over
-\prod_{\alpha\in\Delta}z(\alpha)^{m(\alpha)}}X_\rho\Big),
+\exp \Big(\frac{w(\rho)\lambda}{\prod_{\alpha\in\Delta}z(\alpha)^{m(\alpha)}}X_\rho\Big),
 \end{equation}
 where $\rho=\sum_{\alpha\in\Delta}m(\alpha)\alpha$. Comparing with the
 definition of $x(\rho)$, this says $\lambda w(\rho)=x(\rho)\prod_\alpha
@@ -1370,7 +1386,7 @@ In 1994, \eqref{eq:1.18} was written with $z(W_i,\rho_i)$ in place of
 $z(W_{i-1},\rho_i)$; the version above agrees with \eqref{eq:1.10}.
 \end{rem26}
 
-\subsection*{Coordinates on $Y_1$}
+\subsection*{Coordinates on \texorpdfstring{$Y_1$}{Y1}}
 
 We begin with the following.
 
@@ -1394,88 +1410,135 @@ We apply this lemma to obtain coordinates of a point
 (t^g,(B(W))_{W},(z(\alpha))_{\alpha\in\Delta})^n\in
 \chi^{-1}(C)\times S_1(B_+,B_-)\times N_+.
 \]
-For $G=G_2$ we
-give the coordinate relations between the coordinates in \eqref{eq:1.20} and
-the $n_\rho$ and $z(W,\alpha)$ (see \cite[Ch.~II]{Ha92a}):
-\begin{equation}\tag{1.22}\label{eq:1.22}
+For $G=G_2$, fix the root ordering
+$\Sigma_G^+=(\alpha,\beta,\gamma,\delta,\epsilon,\zeta)$ with
+$\alpha$ short, $\beta$ long, $\gamma=\alpha+\beta$, $\delta=2\alpha+\beta$,
+$\epsilon=3\alpha+\beta$, $\zeta=3\alpha+2\beta$, and use the Chevalley
+basis $\{X_{\pm\rho}\}$ of \S A.4 (with $X_{-\rho}={}^t X_\rho$). For
+$n_-=\prod_{\rho\in\Sigma_G^+}\theta_\rho(n_\rho)$ and $t_0\in T_+$,
+evaluating $t_0^{n_-}=t_0\prod_{\rho\in\Sigma_G^+}\theta_\rho(x(\rho))$ in
+Lemma~\ref{res:1.21} gives the exact all-order identities
+\begin{equation}\tag{1.21a}\label{eq:1.21a}
 \begin{split}
-x(\alpha)&=(1-\alpha^{-1})n_\alpha = (1-\alpha^{-1})/z(W_0,\alpha),\\
-x(\beta)&=(1-\beta^{-1})n_\beta = (1-\beta^{-1})/z(W_0,\beta),\\
-x(\gamma)&=(1-\gamma^{-1})n_\gamma +
-c_1\cdot {(1-\alpha^{-1})
-\over{z(W_0,\alpha)z(W_0,\beta)z(\sigma_\beta^{-1}W_0,\alpha)}}
-+\cdots,\\
-x(\delta)&=(1-\delta^{-1})n_\delta +
-c_2\cdot {(1-\alpha^{-1})
-\over{z(W_0,\alpha)z(W_0,\beta)z(\sigma_\beta^{-1}W_0,\alpha)}}
-+\cdots,\\
-x(\epsilon)&=(1-\epsilon^{-1})n_\epsilon +
-c_3\cdot {(1-\alpha^{-1})n_\delta
-\over{z(W_0,\alpha)}}
-+\cdots,\\
-x(\zeta)
-&=(1-\zeta^{-1})n_\zeta +
-c_4\cdot {(1-\alpha^{-1})n_\gamma^2
-\over{z(W_0,\alpha)}}+
-c_5\cdot {(1-\alpha^{-1})n_\delta
-\over{z(W_0,\alpha)z(W_0,\beta)}}\\
-&\quad+c_6\cdot {(1-\beta^{-1})n_\epsilon
-\over{z(W_0,\beta)}}+
-c_7\cdot {(1-\gamma^{-1})n_\delta
-\over{z(W_0,\beta)z(\sigma_\beta^{-1}W_0,\alpha)}}
-+\cdots,
+x(\alpha)&=(1-\alpha^{-1})n_\alpha,\qquad
+x(\beta)=(1-\beta^{-1})n_\beta,\\
+x(\gamma)&=(1-\gamma^{-1})n_\gamma - \beta^{-1}(1-\alpha^{-1})n_\alpha n_\beta,\\
+x(\delta)&=(1-\delta^{-1})n_\delta + 2\alpha^{-1}\beta^{-1}(1-\alpha^{-1})n_\alpha n_\gamma
++ \beta^{-1}(1-\alpha^{-1})^2 n_\alpha^2 n_\beta,\\
+x(\epsilon)&=(1-\epsilon^{-1})n_\epsilon + 3\alpha^{-2}\beta^{-1}(1-\alpha^{-1})n_\alpha n_\delta\\
+&\quad - 3\alpha^{-1}\beta^{-1}(1-\alpha^{-1})^2 n_\alpha^2 n_\gamma
+- \beta^{-1}(1-\alpha^{-1})^3 n_\alpha^3 n_\beta,\\
+x(\zeta)&=(1-\zeta^{-1})n_\zeta
+- 3\alpha^{-1}\beta^{-1}(1-\alpha^{-1})(2-\gamma^{-1})n_\alpha n_\gamma^2
+- 3\alpha^{-2}\beta^{-1}(1-\alpha^{-1})n_\alpha n_\beta n_\delta\\
+&\quad + \alpha^{-3}\beta^{-1}(1-\beta^{-1})n_\beta n_\epsilon
++ 3\alpha^{-2}\beta^{-1}(1-\gamma^{-1})n_\gamma n_\delta\\
+&\quad + 3\beta^{-1}(1-\alpha^{-1})^2(\alpha^{-1}+\gamma^{-1}-1)n_\alpha^2 n_\beta n_\gamma\\
+&\quad + \beta^{-1}(1-\alpha^{-1})^3(1+\beta^{-1})n_\alpha^3 n_\beta^2,
 \end{split}
 \end{equation}
-where $\alpha^{-1}$ abbreviates $\alpha(t_0)^{-1}$ and $t_0=\exp(\lambda X)$.
-Consequently, with $\rho(X)$ the derivative of $\rho(\exp(\lambda X))$ at
-$\lambda=0$ and $z(\alpha)=\lambda/x(\alpha)$,
+where $\rho^{-1}$ abbreviates $\rho(t_0)^{-1}$. To relate the $n_\rho$ to the
+star coordinates $z(W,\tau)$ on $S_0(B_+,B_-)$, note that for
+$B(W)=B_-(W)^{n_-}=B_-^{w_+ n_-}$ ($W=\omega^{-1}W_0$) and $B(W)=B_-^{n_W}$,
+the condition $B_-^{w_+ n_-}=B_-^{n_W}$ is $w_+ n_- n_W^{-1}\in B_-$. Taking
+$\omega=s_\alpha$, $\omega=s_\beta$, and $\omega=s_\alpha s_\beta$ (corresponding
+to the gallery $W_0,\,W_1=s_\beta W_0,\,W_2=s_\beta s_\alpha W_0$, where the
+wall between $W_1$ and $W_2$ is $\rho_2=s_\beta^{-1}\alpha=\gamma$, of
+simple-root type $\alpha$) yields
+\begin{equation}\tag{1.21b}\label{eq:1.21b}
+n_\alpha = \frac{1}{z(W_0,\alpha)},\qquad
+n_\beta = \frac{1}{z(W_0,\beta)},\qquad
+n_\gamma = \frac{1}{z(W_0,\beta)\,z(s_\beta W_0,\gamma)}.
+\end{equation}
+Substituting \eqref{eq:1.21b} into \eqref{eq:1.21a} gives the coordinate
+relations between \eqref{eq:1.20} and the functions
+$z(W_0,\alpha)$, $z(W_0,\beta)$, $z(s_\beta W_0,\gamma)$, $n_\delta$,
+$n_\epsilon$, $n_\zeta$ (compare \cite[Ch.~II]{Ha92a} and
+\cite[\S7, Lemmas~7.13--7.15]{Ha89}):
+\begin{equation}\tag{1.22}\label{eq:1.22}
+\begin{split}
+x(\alpha)&=(1-\alpha^{-1})n_\alpha = \frac{1-\alpha^{-1}}{z(W_0,\alpha)},\qquad
+x(\beta)=(1-\beta^{-1})n_\beta = \frac{1-\beta^{-1}}{z(W_0,\beta)},\\
+x(\gamma)&=(1-\gamma^{-1})n_\gamma
+- \frac{\beta^{-1}(1-\alpha^{-1})}{z(W_0,\alpha)z(W_0,\beta)},\\
+x(\delta)&=(1-\delta^{-1})n_\delta
++ \frac{2\alpha^{-1}\beta^{-1}(1-\alpha^{-1})}{z(W_0,\alpha)z(W_0,\beta)z(s_\beta W_0,\gamma)}
++ O(\lambda^2),\\
+x(\epsilon)&=(1-\epsilon^{-1})n_\epsilon
++ \frac{3\alpha^{-2}\beta^{-1}(1-\alpha^{-1})n_\delta}{z(W_0,\alpha)}
++ O(\lambda^2),\\
+x(\zeta)&=(1-\zeta^{-1})n_\zeta
+- \frac{3\alpha^{-1}\beta^{-1}(1-\alpha^{-1})(2-\gamma^{-1})n_\gamma^2}{z(W_0,\alpha)}
+- \frac{3\alpha^{-2}\beta^{-1}(1-\alpha^{-1})n_\delta}{z(W_0,\alpha)z(W_0,\beta)}\\
+&\quad + \frac{\alpha^{-3}\beta^{-1}(1-\beta^{-1})n_\epsilon}{z(W_0,\beta)}
++ \frac{3\alpha^{-2}\beta^{-1}(1-\gamma^{-1})n_\delta}{z(W_0,\beta)z(s_\beta W_0,\gamma)}
++ O(\lambda^2),
+\end{split}
+\end{equation}
+where $t_0=\exp(\lambda X)$ and $O(\lambda^2)$ stands for the explicit terms
+in \eqref{eq:1.21a} divisible by $(1-\alpha^{-1})^2$.
+Consequently, with $\rho(X)=\frac{d}{d\lambda}\big|_{\lambda=0}\rho(\exp(\lambda X))$
+and $z(\alpha)=\lambda/x(\alpha)$, we obtain at $\lambda=0$:
 \[
 \begin{split}
 w(\gamma)
-&={x(\gamma)z(\beta)z(\alpha)\over \lambda}
-=\Big(\gamma(X)n_\gamma + c_1{\alpha(X)\over{z(W_0,\alpha)z(W_0,\beta)
-z(\sigma_\beta^{-1}W_0,\alpha)}}\Big)
-\frac{z(W_0,\alpha)z(W_0,\beta)}{\alpha(X)\beta(X)}+\cdots,\\
+&=\frac{x(\gamma)z(\beta)z(\alpha)}{\lambda}
+=\frac{\gamma(X)}{\alpha(X)\beta(X)}\frac{z(W_0,\alpha)}{z(s_\beta W_0,\gamma)}
+- \frac{1}{\beta(X)} + O(\lambda),\\
 w(\delta)
-&={x(\delta)z(\beta)z(\alpha)^2\over \lambda}
+&=\frac{x(\delta)z(\beta)z(\alpha)^2}{\lambda}
 =\Big(\delta(X)n_\delta +
-c_2{\alpha(X)\over{z(W_0,\alpha)z(W_0,\beta)z(\sigma_\beta^{-1}W_0,\alpha)}}\Big)
-\frac{z(W_0,\alpha)^2z(W_0,\beta)}{\alpha(X)^{2}\beta(X)}+\cdots,\\
+\frac{2\alpha(X)}{z(W_0,\alpha)z(W_0,\beta)z(s_\beta W_0,\gamma)}\Big)
+\frac{z(W_0,\alpha)^2z(W_0,\beta)}{\alpha(X)^{2}\beta(X)}+O(\lambda),\\
 w(\epsilon)
-&={x(\epsilon)z(\beta)z(\alpha)^3\over \lambda}
-=\Big(\epsilon(X)n_\epsilon + c_3{\alpha(X)n_\delta\over{z(W_0,\alpha)}}\Big)
-\frac{z(W_0,\alpha)^3z(W_0,\beta)}{\alpha(X)^{3}\beta(X)}+\cdots,\\
+&=\frac{x(\epsilon)z(\beta)z(\alpha)^3}{\lambda}
+=\Big(\epsilon(X)n_\epsilon + \frac{3\alpha(X)n_\delta}{z(W_0,\alpha)}\Big)
+\frac{z(W_0,\alpha)^3z(W_0,\beta)}{\alpha(X)^{3}\beta(X)}+O(\lambda),\\
 w(\zeta)
-&={x(\zeta)z(\beta)^2z(\alpha)^3\over \lambda}
-=\Big(\zeta(X)n_\zeta + c_4{\alpha(X)n_\gamma^2\over{z(W_0,\alpha)}}
-+c_5{\alpha(X)n_\delta\over{z(W_0,\alpha)z(W_0,\beta)}}
-+c_6{\beta(X)n_\epsilon\over{z(W_0,\beta)}}\\
-&\qquad +c_7{\gamma(X)n_\delta\over{z(\sigma_\beta^{-1}W_0,\alpha)z(W_0,\beta)}}\Big)
-\frac{z(W_0,\alpha)^3z(W_0,\beta)^2}{\alpha(X)^{3}\beta(X)^{2}}+\cdots,
+&=\frac{x(\zeta)z(\beta)^2z(\alpha)^3}{\lambda}
+=\Big(\zeta(X)n_\zeta - \frac{3\alpha(X)n_\gamma^2}{z(W_0,\alpha)}
+- \frac{3\alpha(X)n_\delta}{z(W_0,\alpha)z(W_0,\beta)}
++ \frac{\beta(X)n_\epsilon}{z(W_0,\beta)}\\
+&\qquad + \frac{3\gamma(X)n_\delta}{z(W_0,\beta)z(s_\beta W_0,\gamma)}\Big)
+\frac{z(W_0,\alpha)^3z(W_0,\beta)^2}{\alpha(X)^{3}\beta(X)^{2}}+O(\lambda),
 \end{split}
 \]
-where ``$\cdots$'' denotes terms that vanish at $\lambda=0$.
+with $n_\gamma=(z(W_0,\beta)z(s_\beta W_0,\gamma))^{-1}$ by \eqref{eq:1.21b}.
 
-\begin{rem26}[the relations \eqref{eq:1.22}]\label{rem:1.22}
-The relations \eqref{eq:1.22} are quoted from \cite[Ch.~II]{Ha92a}, which was
-not consulted; the constants $c_1,\dots,c_7$ are not determined here. Two
-misprints of 1994 are corrected above: the $c_1$-term of $w(\gamma)$ lacked
-the factor $z(\sigma_\beta^{-1}W_0,\alpha)$ that appears in $x(\gamma)$, and
-the last term of $w(\zeta)$ lacked $c_7$ and had $n_\zeta$ for $n_\delta$.
-The 1994 text concluded that, on $Y_1(B_+,B_-)$, the seven functions
-$z(W_0,\alpha)$, $z(W_0,\beta)$, $z(\sigma_\beta^{-1}W_0,\alpha)$,
-$n_\gamma$, $n_\delta$, $n_\epsilon$, $n_\zeta$ may replace the coordinates
-of \eqref{eq:1.17} and \eqref{eq:1.20}. Together with $\lambda$ these are eight
-functions on a variety of dimension $7$, since $Y_1(B_+,B_-)$ has dimension
-$1+\dim S(B_+,B_-)=1+6$. So they cannot be algebraically independent, and the
-correct list of coordinates near $\lambda=0$ is left open. This affects only
-the computations of the dependence on $X$ in \S\S\ref{sec:6}--\ref{sec:8},
-which are themselves incomplete (Remark~\ref{rem:main-gap}).
+\begin{rem26}[exact determination of \eqref{eq:1.22} and resolution of the coordinate count]\label{rem:1.22}
+In the 1994 manuscript, \eqref{eq:1.22} was stated with undetermined constants
+$c_1,\dots,c_7$ and denoted $z(s_\beta W_0,\gamma)$ (the gallery coordinate
+across the wall $\gamma^\perp=(s_\beta^{-1}\alpha)^\perp$ of $W_1=s_\beta W_0$,
+which has simple-root type $\alpha$) by $z(\sigma_\beta^{-1}W_0,\alpha)$.
+In the Chevalley basis of \S A.4, direct matrix factorization of Lemma~\ref{res:1.21}
+determines $(c_1,\dots,c_7)=(-1,2,3,-3,-3,1,3)$ and resolves three defects of
+the 1994 display:
+(i) in $x(\gamma)$, the 1994 text had a spurious factor
+$z(\sigma_\beta^{-1}W_0,\alpha)$ in the denominator of the $c_1$-term, whereas
+$n_\alpha n_\beta=(z(W_0,\alpha)z(W_0,\beta))^{-1}$ involves only the two
+simple-wall coordinates (which explains why that factor was absent in the 1994
+formula for $w(\gamma)$, where $z(W_0,\alpha)z(W_0,\beta)$ cancels completely to
+leave $-1/\beta(X)$);
+(ii) the last term of $w(\zeta)$ in 1994 lacked $c_7$ and wrote $n_\zeta$ in
+place of $n_\delta$;
+(iii) the 1994 text listed the seven functions
+$z(W_0,\alpha)$, $z(W_0,\beta)$, $z(s_\beta W_0,\gamma)$, $n_\gamma$, $n_\delta$,
+$n_\epsilon$, $n_\zeta$ alongside $\lambda$ as coordinates on the
+$7$-dimensional variety $Y_1(B_+,B_-)$. By \eqref{eq:1.21b}, $n_\gamma$ is
+already determined by $n_\gamma=(z(W_0,\beta)z(s_\beta W_0,\gamma))^{-1}$;
+eliminating $n_\gamma$ leaves the six algebraically independent birational
+coordinates $(z(W_0,\alpha),z(W_0,\beta),z(s_\beta W_0,\gamma),n_\delta,n_\epsilon,n_\zeta)$
+on $S(B_+,B_-)$ (or, continuing the gallery $W_0,W_1,\dots,W_5$ with wall
+coordinates $b_1=z(W_0,\beta)$, $a_2=z(s_\beta W_0,\gamma)$, $b_3$, $a_4$, $b_5$,
+solving triangularly via $3a_2^2 b_1 b_3 n_\delta = -(b_1+b_3) - a_2^3 b_1 b_3(n_\epsilon + b_1 n_\zeta)$,
+$a_2^3 a_4 b_1 b_3 n_\epsilon = 3a_2 b_1 + 2a_4(b_1+b_3) - a_2^3 a_4 b_1^2 b_3 n_\zeta$,
+and $a_2^3 a_4^3 b_1^2 b_3^2 b_5 n_\zeta = a_4^3 b_3^2 b_5 - b_1^2(a_2^3 b_3 + (a_2+a_4)^3 b_5)$),
+which together with $\lambda$ form seven independent coordinates on $Y_1(B_+,B_-)$.
 \end{rem26}
 % =====================================================================
 % Section 2. Source: g2new2.tex.
 % =====================================================================
-\numsection{2}{Galois action on the coordinates: explicit computations for $G_2$}\label{sec:2}
+\numsection{2}{Galois action on the coordinates: explicit computations for $G_2$}[Galois action on the coordinates: explicit computations for G2]\label{sec:2}
 
 This section describes how $\Gamma=\Gal(\ovF/F)$ acts on stars and on the
 coordinates of \S\ref{sec:1}, when the torus $T_G$ is defined over $F$ but not
@@ -1670,8 +1733,8 @@ $\sigma(n_{\sigma^{-1}_T (W_0)})c_\sigma b
 c_\sigma\sigma(n^{-1}_{\sigma^{-1}_T (W_0)})^{-1}$: it had $b$ in place of
 $\sigma(b)$, $c_\sigma$ in place of $c_\sigma^{-1}$, and a double inverse. The
 formulas above follow by writing
-$(b,(B_-^{n_W}))^n=(n^{-1}bn,(B_-^{n_Wn}))$ and applying $\sigma$
-(level 1). Throughout, the normalization of $c_\sigma$ is
+$(b,(B_-^{n_W}))^n=(n^{-1}bn,(B_-^{n_Wn}))$ and applying $\sigma$.
+Throughout, the normalization of $c_\sigma$ is
 $\sigma(B_-)=B_-^{c_\sigma}$.
 \end{rem26}
 
@@ -1702,12 +1765,19 @@ lines $\ell_\beta'$, $\ell_\beta''$, $\ell_\beta'''$, as in Figure~\ref{fig:dynk
 from the description in the text.}\label{fig:dynkin}
 \end{figure}
 
-\begin{rem26}\label{rem:dynkin}
-The figure of the Dynkin curve is missing from the 1994 source (the source
-has empty displays). Figure~\ref{fig:dynkin} is reconstructed from the
-description of the Galois actions below. The assignment of the types
-$\alpha$ and $\beta$ to the central and outer lines is taken from that
-description and has not been checked against \cite{St74}.
+\begin{rem26}[verification of Figure~\ref{fig:dynkin}]\label{rem:dynkin}
+The figure of the Dynkin curve was missing from the 1994 source (which had
+empty displays) and is reconstructed in Figure~\ref{fig:dynkin}. We verified
+the root-type assignment directly in the explicit matrix model of \S A.4: for
+the subregular element $u=\exp(X_\beta+X_\delta)$, a projective line
+$g(P_\rho/B_+)$ of simple-root type $\rho\in\{\alpha,\beta\}$ lies in the
+Springer fiber ${\mathcal B}_u$ if and only if
+$\Ad(g^{-1})(X_\beta+X_\delta)\in\Lie(N_{P_\rho})$. Solving across the six
+Bruhat cells of $G_2/P_\alpha$ and the six Bruhat cells of $G_2/P_\beta$ gives
+a unique line $\ell_\alpha=P_\alpha/B_+$ of short-root type $\alpha$ and three
+lines $\ell_\beta',\ell_\beta'',\ell_\beta'''$ of long-root type $\beta$ in the
+cell $\theta_\alpha(t_0)s_\alpha P_\beta/P_\beta$ at $t_0\in\{0,\pm\sqrt{3}\}$,
+in agreement with \cite[\S3.10]{St74} and \cite[\S6.2]{Sl80}.
 \end{rem26}
 
 Possible Galois actions on this configuration include:
@@ -1723,164 +1793,235 @@ $T_+\subset B_-$ of $G_2$ as
 \[
 \alpha \text{ (short)},\ \beta \text{ (long)},\
 \gamma=\alpha +\beta,\ \delta =2\alpha +\beta,\
-\epsilon =3\alpha +\beta,\  \zeta=3\alpha +2\beta .
+\epsilon =3\alpha +\beta,\  \zeta=3\alpha +2\beta ,
 \]
-We have
+and compute throughout in the explicit Chevalley basis $\{X_{\pm\rho}\}$ of
+\S A.4 (with $X_{-\rho}={}^t X_\rho$). In this basis,
 \[
-\theta_\delta(r)\theta_\gamma(s)=\theta_\gamma(s)\theta_\delta(r)\theta_{\zeta}(3rs),
+\theta_\delta(r)\theta_\gamma(s)=\theta_\gamma(s)\theta_\delta(r)\theta_{\zeta}(-3rs),\qquad
+\theta_\eps(r)\theta_\beta(s)=\theta_\beta(s)\theta_\eps(r)\theta_{\zeta}(-rs),
 \]
-up to the sign of the structure constant, so
+and conjugating each root subgroup by $\theta_{-\alpha}(z)$ ($g^h:=h^{-1}gh$) gives
 \[
 \begin{split}
 \theta_{\eps}(x)^{\theta_{-\alpha}(z)}
-&=\theta_{\eps}(x)\theta_\delta(c_1xz)\theta_\gamma(c_2xz^2)
-\theta_\beta(c_3xz^3)\\
-&=\theta_\beta(c_3xz^3)\theta_\gamma(c_2xz^2)\theta_\delta(c_1xz)\theta_{\eps}(x)
-\theta_\zeta(c_4x^2z^3),
+&=\theta_{\eps}(x)\theta_\delta(-xz)\theta_\gamma(xz^2)\theta_\beta(xz^3)\\
+&=\theta_\beta(xz^3)\theta_\gamma(xz^2)\theta_\delta(-xz)\theta_{\eps}(x)
+\theta_\zeta(x^2z^3),
 \end{split}
 \]
-where the $c_i$ are constants determined by the Chevalley basis. Likewise,
 \[
 \theta_{\delta}(x)^{\theta_{-\alpha}(z)}
-=\theta_\beta(d_2xz^2)\theta_\gamma(d_1xz)\theta_{\delta}(x)\theta_\zeta(d_3x^2z),
+=\theta_\beta(-3xz^2)\theta_\gamma(-2xz)\theta_{\delta}(x)\theta_\zeta(3x^2z),
 \]
 \[
 \theta_{\gamma}(x)^{\theta_{-\alpha}(z)}
-=\theta_{\gamma}(x)\theta_\beta(exz)=\theta_\beta(exz)\theta_{\gamma}(x),
+=\theta_{\gamma}(x)\theta_\beta(3xz)=\theta_\beta(3xz)\theta_{\gamma}(x),
 \qquad
 \theta_{\beta}(x)^{\theta_{-\alpha}(z)}=\theta_{\beta}(x),
+\qquad
+\theta_{\zeta}(x)^{\theta_{-\alpha}(z)}=\theta_{\zeta}(x),
 \]
-and, by a computation in $SL(2)$,
+together with the $SL(2)$ relation
 \[
 \theta_{\alpha}(x)^{\theta_{-\alpha}(z)}=
 \theta_{-\alpha}\Big(\frac{-xz^2}{1+xz}\Big)\,\alpha^\vee(1+xz)\,
 \theta_{\alpha}\Big(\frac{x}{1+xz}\Big).
 \]
 
-In general, if $\sigma\in\Gamma$ acts on
-$T_G(\overline{F})$ as a simple
+In general, if $\sigma\in\Gamma$ acts on $T_G(\overline{F})$ as a simple
 reflection $s_\rho$, $\rho\in\Delta$, we write $\sigma=\sigma_\rho$.
-This amounts to taking $\sigma(n_{\sigma_T^{-1}(W_0)})=\theta_{-\rho} (z)$,
-where $z=\sigma(z(\rho)z_1(W_0,\rho))$ \cite[\S 3]{Ha89}. We
-compute the Galois action on the coordinates of a point $P$ in
-$Y''(B_+,B_-)$, assuming that $B_+\cap B_-=T_+$ is defined over
-$F$ and $c_\sigma =1$ in \eqref{eq:2.9}. (Reflections $c_\sigma$ are treated
-in \eqref{eq:2.16}--\eqref{eq:2.17}.)
+Then $\sigma(n_{\sigma_T^{-1}(W_0)})=\theta_{-\rho}(z_\sigma)$, where
+$z_\sigma:=\sigma(z(W_0,\rho))=\sigma(z(\rho)z_1(W_0,\rho))$ \cite[\S 3]{Ha89}.
+We compute the Galois action on the coordinates of a point $P$ in
+$Y''(B_+,B_-)$, assuming that $T_+=B_+\cap B_-$ and $B_-$ (together with the
+Chevalley basis of \S A.4) are $F$-split, so $c_\sigma=1$ in \eqref{eq:2.9}.
+(Non-trivial $c_\sigma$ are treated in \eqref{eq:2.16}--\eqref{eq:2.17}.)
 
-Take $\sigma=\sigma_\alpha$, and order the product with $\alpha$ first. Then
+Take $\sigma=\sigma_\alpha$. Since $\theta_\alpha(x(\alpha))^{\theta_{-\alpha}(z)}$
+already places $t=\alpha^\vee(1+x(\alpha)z)$ to the left of
+$\theta_\alpha(x(\alpha)/(1+x(\alpha)z))$ and of the remaining conjugated
+factors, collecting the root subgroups in the fixed order
+$(\alpha,\beta,\gamma,\delta,\eps,\zeta)$ yields the exact identity
 \begin{equation}\tag{2.11}\label{eq:2.11}
-\prod_{\rho >0}\theta_\rho(x(\rho))^{\theta_{-\alpha}(z)}
-=\theta_{-\alpha}(y_\alpha)
+\Big(\prod_{\rho >0}\theta_\rho(x(\rho))\Big)^{\theta_{-\alpha}(z)}
+=\theta_{-\alpha}(y_\alpha)\,
 t\prod_{\rho >0}\theta_\rho(\phi_\rho^\alpha(\unx,z)),
 \end{equation}
 with $t=\alpha^\vee(1+x(\alpha)z)$, $y_\alpha=-x(\alpha)z^2/(1+x(\alpha)z)$,
-$\unx =(x(\alpha),\dots, x(\zeta))$, and, up to conjugation of the factors
-$\theta_\rho$, $\rho\neq\alpha$, by $t$,
+$\unx =(x(\alpha),\dots, x(\zeta))$, and
 \[
 \begin{split}
 \phi_\alpha^\alpha(\unx,z)
-&=x(\alpha)/(1+x(\alpha)z),\\
+&=\frac{x(\alpha)}{1+x(\alpha)z},\\
 \phi_\beta^\alpha(\unx,z)
-&=x(\beta)+ezx(\gamma)+d_2z^2x(\delta)+c_3z^3x(\eps),\\
+&=x(\beta)+3zx(\gamma)-3z^2x(\delta)+z^3x(\eps),\\
 \phi_\gamma^\alpha(\unx,z)
-&=x(\gamma)+d_1zx(\delta)+c_2z^2x(\eps),\\
+&=x(\gamma)-2zx(\delta)+z^2x(\eps),\\
 \phi_\delta^\alpha(\unx,z)
-&=x(\delta)+c_1zx(\eps),\\
+&=x(\delta)-zx(\eps),\\
 \phi_{\eps}^\alpha(\unx,z)
 &=x(\eps),\\
 \phi_\zeta^\alpha(\unx,z)
-&=x(\zeta)+d_3zx(\delta)^2+c_4z^3x(\eps)^2+\text{(cross terms in }x(\delta)x(\eps)).
+&=x(\zeta)+3zx(\delta)^2-3z^2x(\delta)x(\eps)+z^3x(\eps)^2.
 \end{split}
 \]
-Therefore, if $c_{\sigma_\alpha}=1$, we have
+Now apply \eqref{eq:2.9} to $b=t_0\prod_{\rho>0}\theta_\rho(x(\rho))$ when
+$t_0=t^{g_0}$ is the image of $t\in T_G(F)$, so $\sigma_\alpha(t_0)=s_\alpha(t_0)
+=t_0\,\alpha^\vee(\alpha(t_0))^{-1}$. With $c_{\sigma_\alpha}=1$, we have
+$m_{\sigma_\alpha}=\theta_{-\alpha}(z_{\sigma_\alpha})$ and hence
+$b'=m_{\sigma_\alpha}\sigma_\alpha(b)m_{\sigma_\alpha}^{-1}
+=\sigma_\alpha(b)^{\theta_{-\alpha}(-z_{\sigma_\alpha})}$. Because
+$x(\alpha)z(W_0,\alpha)=1-\alpha(t_0)^{-1}$ by \eqref{eq:1.22}, applying
+$\sigma_\alpha$ gives $\sigma_\alpha(x(\alpha))z_{\sigma_\alpha}=1-\alpha(t_0)$,
+so at $z=-z_{\sigma_\alpha}$ we have $1+\sigma_\alpha(x(\alpha))z=\alpha(t_0)$.
+Moreover,
+$\theta_{-\alpha}(-z)\,\sigma_\alpha(t_0)\,\theta_{-\alpha}(z)
+=\sigma_\alpha(t_0)\,\theta_{-\alpha}(z(1-\alpha(t_0)^{-1}))$, which cancels
+$\theta_{-\alpha}(y_\alpha)=\theta_{-\alpha}(z(\alpha(t_0)^{-1}-1))$ identically,
+while $\sigma_\alpha(t_0)\,\alpha^\vee(\alpha(t_0))=t_0$. Thus $n_0=1$ in
+\eqref{eq:2.9}, and for $c_{\sigma_\alpha}=1$ we obtain the exact action
 \begin{equation}\tag{2.12}\label{eq:2.12}
-\sigma_\alpha :x(\rho)\longmapsto \sigma\big(\phi_\rho^\alpha(\unx,z)\big),
+\sigma_\alpha :x(\rho)\longmapsto
+\phi_\rho^\alpha\big(\sigma_\alpha(\unx),\,-z_{\sigma_\alpha}\big)
+=\sigma_\alpha\big(\phi_\rho^\alpha(\unx,\,-z(W_0,\alpha))\big),
 \end{equation}
-where $z=\sigma_\alpha(z(\alpha)z_1(W_0,\alpha))$.
+where $z_{\sigma_\alpha}=\sigma_\alpha(z(W_0,\alpha))=\sigma_\alpha(z(\alpha)z_1(W_0,\alpha))$.
 
-\begin{rem26}[formulas \eqref{eq:2.11}--\eqref{eq:2.14}]\label{rem:2.11}
-These formulas are schematic. The constants are not computed, and the
-reordering of the factors produces further cross terms that are not written
-out. Several misprints of 1994 are corrected:
-\begin{itemize}
-\item $\phi^\alpha_\alpha=x(\alpha)$ is replaced by $x(\alpha)/(1+x(\alpha)z)$,
-from the $SL(2)$ computation above, and the torus factor $t$, which rescales
-the other coordinates, is recorded;
-\item the analogous $y_\beta$ is $-xz^2/(1+xz)$, not $-x^2z/(1+xz)$;
-\item in $\phi^\alpha_\delta$, $c_2$ is replaced by $c_1$;
-\item in the commutator of $\theta_\beta(r)$ and $\theta_\alpha(s)$ the
-exponents were interchanged, because the root $i\alpha+j\beta$ carries $s^ir^j$;
-\item after Lemma~\ref{res:2.10}, $\theta_\rho(z)$ is replaced by
-$\theta_{-\rho}(z)$.
-\end{itemize}
-With the normalization of Remark~\ref{rem:2.8}, $b'=m_\sigma\sigma(b)m_\sigma^{-1}
-=\sigma(b)^{\theta_{-\alpha}(-z)}$, so $z$ should be read as $-z$ in
-\eqref{eq:2.11}--\eqref{eq:2.14}. The formulas were not used in a computation in 1994, and they are not used in
-one here.
-\end{rem26}
-
-Take $\sigma =\sigma_\beta$ and note
+Take $\sigma =\sigma_\beta$. In the Chevalley basis of \S A.4 we have the exact
+commutator relations
 \[
 \theta_\gamma(r)\theta_\alpha (s)=\theta_\alpha (s)\theta_\gamma(r)
-\theta_\delta(2rs)\theta_\epsilon(3rs^2)\theta_\zeta(3r^2s),
+\theta_\delta(-2rs)\theta_\epsilon(3rs^2)\theta_\zeta(3r^2s),
 \]
 \[
 \theta_\beta(r)\theta_\alpha (s)=\theta_\alpha (s)\theta_\beta(r)
 \theta_\gamma(rs)
-\theta_\delta(rs^2)\theta_\epsilon(rs^3)\theta_\zeta(r^2s^3),
+\theta_\delta(-rs^2)\theta_\epsilon(rs^3)\theta_\zeta(r^2s^3),
 \]
-up to the signs of the structure constants.
-By Chevalley's commutator formula,
+and conjugating by $\theta_{-\beta}(z)$ yields
 \[
 \theta_\alpha(x)^{\theta_{-\beta}(z)}=\theta_\alpha(x),\qquad
 \theta_\beta(x)^{\theta_{-\beta}(z)}=
 \theta_{-\beta}(y_\beta)\,
 \beta^\vee(1+xz)\,\theta_\beta\Big(\frac{x}{1+xz}\Big),\quad
-y_\beta:={-xz^2\over 1+xz},
+y_\beta:=\frac{-xz^2}{1+xz},
 \]
 \[
 \theta_\gamma(x)^{\theta_{-\beta}(z)}
-=\theta_\gamma(x)\theta_\alpha(czx)
-=\theta_\alpha(czx)\theta_\gamma(x)\theta_\delta(2czx^2)
-\theta_\epsilon(3c^2z^2x^3)\theta_\zeta(3czx^3),
+=\exp(xX_\gamma-xzX_\alpha)
+=\theta_\alpha(-xz)\theta_\gamma(x)\theta_\delta(x^2z)
+\theta_\epsilon(x^3z^2)\theta_\zeta(-2x^3z),
 \]
 \[
 \theta_\delta(x)^{\theta_{-\beta}(z)}=\theta_\delta(x),\qquad
 \theta_\epsilon(x)^{\theta_{-\beta}(z)}=\theta_\epsilon(x),\qquad
-\theta_\zeta(x)^{\theta_{-\beta}(z)}=\theta_\zeta(x)\theta_\epsilon(dzx)
-=\theta_\epsilon(dzx)\theta_\zeta(x).
+\theta_\zeta(x)^{\theta_{-\beta}(z)}=\theta_\zeta(x)\theta_\epsilon(-xz)
+=\theta_\epsilon(-xz)\theta_\zeta(x).
 \]
-Therefore
+Moving $\theta_{-\beta}(y_\beta)\,\beta^\vee(u_\beta)$ ($u_\beta:=1+x(\beta)z$)
+to the left past $\theta_\alpha(x(\alpha))$ rescales $x(\alpha)$ to
+$u_\beta x(\alpha)$ (since $\langle\alpha,\beta^\vee\rangle=-1$), and reordering
+$\theta_\alpha(-zx(\gamma))$ past $\theta_\beta(x(\beta)/u_\beta)$ gives the
+exact identity
 \begin{equation}\tag{2.13}\label{eq:2.13}
-\prod_{\rho >0}\theta_\rho(x(\rho))^{\theta_{-\beta}(z)}
+\Big(\prod_{\rho >0}\theta_\rho(x(\rho))\Big)^{\theta_{-\beta}(z)}
 =\theta_{-\beta}(y_\beta)\,t\prod_{\rho >0}\theta_\rho(\phi_\rho^\beta(\unx,z)),
 \end{equation}
-where, schematically,
+with $t=\beta^\vee(u_\beta)$, $u_\beta=1+x(\beta)z$, $y_\beta=-x(\beta)z^2/u_\beta$, and
 \[
 \begin{split}
 \phi_\alpha^\beta(\unx,z)
-&=x(\alpha)+cx(\gamma)z+\cdots,\\
+&=u_\beta x(\alpha)-zx(\gamma),\\
 \phi_\beta^\beta(\unx,z)
-&=x(\beta)/(1+x(\beta)z),\\
+&=\frac{x(\beta)}{u_\beta},\qquad
 \phi_\gamma^\beta(\unx,z)
-&=x(\gamma)+\cdots,\\
+=\frac{x(\gamma)}{u_\beta},\\
 \phi_\delta^\beta(\unx,z)
-&=x(\delta)+2czx(\gamma)^2+\cdots,\\
+&=x(\delta)+\frac{zx(\gamma)^2}{u_\beta},\\
 \phi_{\eps}^\beta(\unx,z)
-&=x(\eps)+dzx(\zeta)+3c^2x(\gamma)^3z^2+\cdots,\\
+&=x(\eps)-zx(\zeta)+\frac{z^2x(\gamma)^3}{u_\beta},\\
 \phi_\zeta^\beta(\unx,z)
-&=x(\zeta)+3czx(\gamma)^3+\cdots.
+&=x(\zeta)-\frac{(2+x(\beta)z)\,zx(\gamma)^3}{u_\beta^2}.
 \end{split}
 \]
-Therefore, if $c_{\sigma_\beta}=1$, we have
+By the same cancellation of $n_0$ and $\beta^\vee(\beta(t_0))$ as for
+$\sigma_\alpha$, if $c_{\sigma_\beta}=1$ we have the exact action
 \begin{equation}\tag{2.14}\label{eq:2.14}
-\sigma_\beta :x(\rho)\longmapsto \sigma\big(\phi_\rho^\beta(\unx,z)\big),
+\sigma_\beta :x(\rho)\longmapsto
+\phi_\rho^\beta\big(\sigma_\beta(\unx),\,-z_{\sigma_\beta}\big)
+=\sigma_\beta\big(\phi_\rho^\beta(\unx,\,-z(W_0,\beta))\big),
 \end{equation}
-where $z=\sigma_\beta(z(\beta)z_1(W_0,\beta))$.
+where $z_{\sigma_\beta}=\sigma_\beta(z(W_0,\beta))=\sigma_\beta(z(\beta)z_1(W_0,\beta))$.
 
-Formulas \eqref{eq:2.12} and \eqref{eq:2.14} help to determine the set of
-$F$-rational points of $Y_C$. We also need the effect of conjugating $b$ by
-$c_\sigma$. For this we recall a basic lemma \cite{Ca89}.
+Passing to the special fiber $\lambda\to 0$ along $t_0=\exp(\lambda X)$
+($\lambda\in F^\times$, $\sigma_\rho(X)=s_\rho(X)$), where
+$-z_{\sigma_\rho}=(\rho(t_0)-1)/\sigma_\rho(x(\rho))\to \rho(X)\sigma_\rho(z(\rho))$,
+we obtain the $G_2$ analogue of \cite[Eq.~(5.10), p.~225]{Ha89}.
+
+\begin{res}{Proposition}{2.14A}[Galois action on the special-fiber coordinates]\label{res:2.14A}
+Assume $c_\sigma=1$. At $\lambda=0$, the transformations \eqref{eq:2.12} and
+\eqref{eq:2.14} induce birational Galois involutions on
+$(z(\alpha),z(\beta),w(\gamma),w(\delta),w(\eps),w(\zeta))$:
+\begin{enumerate}[{\upshape(a)}]
+\item For $\sigma=\sigma_\alpha$, putting
+$D_\alpha:=1+3\alpha(X)\sigma(w(\gamma))-3\alpha(X)^2\sigma(w(\delta))+\alpha(X)^3\sigma(w(\eps))$,
+\[
+z'(\alpha)=\sigma(z(\alpha)),\qquad
+z'(\beta)=\frac{\sigma(z(\beta))}{D_\alpha},\qquad
+w'(\eps)=\frac{\sigma(w(\eps))}{D_\alpha},\qquad
+w'(\zeta)=\frac{\sigma(w(\zeta))}{D_\alpha^2},
+\]
+\[
+w'(\gamma)=\frac{\sigma(w(\gamma))-2\alpha(X)\sigma(w(\delta))+\alpha(X)^2\sigma(w(\eps))}{D_\alpha},\qquad
+w'(\delta)=\frac{\sigma(w(\delta))-\alpha(X)\sigma(w(\eps))}{D_\alpha}.
+\]
+\item For $\sigma=\sigma_\beta$, putting $D_\beta:=1-\beta(X)\sigma(w(\gamma))$,
+\[
+z'(\alpha)=\frac{\sigma(z(\alpha))}{D_\beta},\qquad
+z'(\beta)=\sigma(z(\beta)),\qquad
+w'(\gamma)=\frac{\sigma(w(\gamma))}{D_\beta},
+\]
+\[
+w'(\delta)=\frac{\sigma(w(\delta))}{D_\beta^2},\qquad
+w'(\eps)=\frac{\sigma(w(\eps))-\beta(X)\sigma(w(\zeta))}{D_\beta^3},\qquad
+w'(\zeta)=\frac{\sigma(w(\zeta))}{D_\beta^3}.
+\]
+\end{enumerate}
+Moreover, on the $2$-regular base divisor $E_{\emptyset,\alpha,\delta}$
+($z(\alpha)=w(\eps)=w(\zeta)=0$), both transformations have Jacobian
+determinant $D_\rho^{-4}$ on $(z(\beta),w(\gamma),w(\delta))$ and preserve the
+Leray fiber $4$-form \eqref{eq:7.4}; on the $3$-regular base divisor
+$E_{\emptyset,\beta,\zeta}$ ($z(\beta)=0$), they have Jacobian determinants
+$D_\alpha^{-6}$ and $D_\beta^{-11}$ on $(z(\alpha),w(\gamma),w(\delta),w(\eps),w(\zeta))$
+and preserve the Leray fiber $6$-form \eqref{eq:8.5}.
+\end{res}
+
+\begin{rem26}[exact determination of \eqref{eq:2.11}--\eqref{eq:2.17}]\label{rem:2.11}
+In 1994, \eqref{eq:2.11}--\eqref{eq:2.14} and \eqref{eq:2.16}--\eqref{eq:2.17}
+were written schematically with undetermined constants and omitted reordering
+terms. Computing directly in the $8\times 8$ matrix model of \S A.4 fixes every
+coefficient and resolves several 1994 slips:
+\begin{itemize}
+\item $\phi^\alpha_\alpha=x(\alpha)/(1+x(\alpha)z)$ (written $x(\alpha)$ in
+1994), and because $t=\alpha^\vee(1+x(\alpha)z)$ already stands on the left in
+\eqref{eq:2.11}, it does not rescale $\phi^\alpha_\rho$ for $\rho\neq\alpha$
+(whereas in \eqref{eq:2.13}, moving $\beta^\vee(u_\beta)$ past $\theta_\alpha(x(\alpha))$
+multiplies $x(\alpha)$ by $u_\beta$);
+\item $y_\beta=-x(\beta)z^2/(1+x(\beta)z)$, not $-x(\beta)^2z/(1+x(\beta)z)$;
+\item in $\theta_\gamma(x)^{\theta_{-\beta}(z)}=\exp(xX_\gamma-xzX_\alpha)$, the
+Baker--Campbell--Hausdorff denominators give $\theta_\delta(x^2z)\theta_\eps(x^3z^2)\theta_\zeta(-2x^3z)$
+rather than the 1994 coefficients $(2czx^2,3c^2z^2x^3,3czx^3)$ with $c=-1$;
+\item in \eqref{eq:2.12} and \eqref{eq:2.14}, $b'=\sigma(b)^{\theta_{-\rho}(-z_\sigma)}$
+evaluates $\phi^\rho_\tau$ at $(\sigma(\unx),-z_\sigma)$ rather than applying
+$\sigma$ a second time to $z_\sigma$, and the $N_+$-factor $n_0$ in
+\eqref{eq:2.9} cancels identically to $1$.
+\end{itemize}
+\end{rem26}
+
+Formulas \eqref{eq:2.12}, \eqref{eq:2.14} and Proposition~\ref{res:2.14A}
+determine the Galois action when $c_\sigma=1$. We also record the exact effect
+of conjugating by $s_\alpha$ or $s_\beta$. Recall a basic lemma \cite{Ca89}.
 
 \begin{res}{Lemma}{2.15}\label{res:2.15}
 Let $\phi_\rho:SL(2)\rightarrow G$ be the
@@ -1900,40 +2041,45 @@ where $\eta_{\rho,\sigma}=\pm1$ is as in \cite[pp.~94--96]{Ca89} and $w_\rho$ is
 the reflection of the Weyl group associated to $\rho$.
 \end{res}
 
-As a consequence,
+In the Chevalley basis of \S A.4, the signs $\eta_{\rho,\tau}$ and all
+reordering commutators are completely explicit:
 \begin{equation}\tag{2.16}\label{eq:2.16}
 s_\alpha\cdot \prod_{\rho>0}\theta_{\rho}(x(\rho))\cdot s_\alpha^{-1}
-=\theta_{-\alpha}(x'(\alpha))
+=\theta_{-\alpha}\big(-x(\alpha)\big)
 \prod_{\rho>0, \rho\not=\alpha}\theta_{\rho}(x'(\rho)),
 \end{equation}
-where $x'(\alpha)=\eta_{\alpha,\alpha}x(\alpha)$,
-$x'(\beta)=\eta_{\alpha,\epsilon}x(\epsilon)$,
-$x'(\gamma)=\eta_{\alpha,\delta}x(\delta)$,
-$x'(\delta)=\eta_{\alpha,\gamma}x(\gamma)$,
-$x'(\epsilon)=\eta_{\alpha,\beta}x(\beta)$,
-and
-$x'(\zeta)=\eta_{\alpha,\zeta}x(\zeta)+
-f_1x(\delta)x(\gamma)+f_2x(\beta)x(\epsilon)$,
-where $f_1,f_2$ are constants. Likewise,
+where
+\[
+\begin{split}
+x'(\beta)&=x(\epsilon),\qquad
+x'(\gamma)=x(\delta),\qquad
+x'(\delta)=-x(\gamma),\qquad
+x'(\epsilon)=-x(\beta),\\
+x'(\zeta)&=x(\zeta)+3x(\gamma)x(\delta)+x(\beta)x(\epsilon),
+\end{split}
+\]
+with no further terms (since $s_\alpha\theta_\alpha(x(\alpha))s_\alpha^{-1}
+=\theta_{-\alpha}(-x(\alpha))$ already stands at the front). Likewise, moving
+$s_\beta\theta_\beta(x(\beta))s_\beta^{-1}=\theta_{-\beta}(-x(\beta))$ to the
+left past $s_\beta\theta_\alpha(x(\alpha))s_\beta^{-1}=\theta_\gamma(x(\alpha))$
+gives the exact formula
 \begin{equation}\tag{2.17}\label{eq:2.17}
 s_\beta\cdot \prod_{\rho>0}\theta_{\rho}(x(\rho))\cdot s_\beta^{-1}
-=\theta_{-\beta}(x'(\beta))
+=\theta_{-\beta}\big(-x(\beta)\big)
 \prod_{\rho>0, \rho\not=\beta}\theta_{\rho}(x'(\rho)),
 \end{equation}
 where
-$x'(\alpha)=\eta_{\beta,\gamma}x(\gamma)+f_3x(\alpha)x(\beta)$,
-$x'(\beta)=\eta_{\beta,\beta}x(\beta)$,
-$x'(\gamma)=\eta_{\beta,\alpha}x(\alpha)$,
-$x'(\delta)=\eta_{\beta,\delta}x(\delta)+f_4x'(\alpha)x'(\gamma)$,
-$x'(\epsilon)=\eta_{\beta,\zeta}x(\zeta)$, and
-$x'(\zeta)=\eta_{\beta,\epsilon}x(\epsilon)$.
-These follow from $s_\alpha$: $\beta\mapsto\epsilon$, $\gamma\mapsto\delta$,
-$\delta\mapsto\gamma$, $\epsilon\mapsto\beta$, $\zeta\mapsto\zeta$, and
-$s_\beta$: $\alpha\mapsto\gamma$, $\gamma\mapsto\alpha$, $\delta\mapsto\delta$,
-$\epsilon\mapsto\zeta$, $\zeta\mapsto\epsilon$ (checked, level 1). The
-reordering needed to move $\theta_{-\alpha}$ (respectively $\theta_{-\beta}$)
-to the front produces further terms, which are not written out. In 1994 the
-signs in \eqref{eq:2.17} were written $\eta_{\alpha,\cdot}$.
+\[
+\begin{split}
+x'(\alpha)&=-x(\gamma)+x(\alpha)x(\beta),\qquad
+x'(\gamma)=x(\alpha),\\
+x'(\delta)&=x(\delta)+2x(\alpha)x(\gamma)-x(\alpha)^2x(\beta),\\
+x'(\epsilon)&=-x(\zeta)+3x(\alpha)x(\gamma)^2-3x(\alpha)^2x(\beta)x(\gamma)+x(\alpha)^3x(\beta)^2,\\
+x'(\zeta)&=x(\epsilon)-3x(\alpha)^2x(\gamma)+2x(\alpha)^3x(\beta).
+\end{split}
+\]
+(In 1994 the signs in \eqref{eq:2.17} were misprinted $\eta_{\alpha,\cdot}$ and
+the cubic reordering terms in $x'(\delta),x'(\eps),x'(\zeta)$ were omitted.)
 % =====================================================================
 % Section 3. Source: g2new3.tex.
 % =====================================================================
@@ -2087,12 +2233,12 @@ then $S_1\cup S_2\not=\Delta$.
 
 For each map $\sigma :S_2 \rightarrow \Sigma_G^+ -\Delta$,
 define the subset $Z_{S_1,S_2,\sigma}\subset Z$ by the conditions
-\begin{enumerate}[label=(3.2\alph*)]
-\item\fixedlabel{3.2a}\label{eq:3.2a} $z(\alpha)\not= 0$ for all $\alpha\notin S_1\cup S_2$,
-\item\fixedlabel{3.2b}\label{eq:3.2b} $x(\alpha)\not= 0$ for all $\alpha\in S_1$,
-\item\fixedlabel{3.2c}\label{eq:3.2c} $x(\sigma(j))\not= 0$ for all $j\in S_2$,
-\item\fixedlabel{3.2d}\label{eq:3.2d} $w(\sigma(j))\not= 0$ for all $j\in S_2$.
-\end{enumerate}
+\begin{itemize}
+\item[(3.2a)]\fixedlabel{3.2a}\label{eq:3.2a} $z(\alpha)\not= 0$ for all $\alpha\notin S_1\cup S_2$,
+\item[(3.2b)]\fixedlabel{3.2b}\label{eq:3.2b} $x(\alpha)\not= 0$ for all $\alpha\in S_1$,
+\item[(3.2c)]\fixedlabel{3.2c}\label{eq:3.2c} $x(\sigma(j))\not= 0$ for all $j\in S_2$,
+\item[(3.2d)]\fixedlabel{3.2d}\label{eq:3.2d} $w(\sigma(j))\not= 0$ for all $j\in S_2$.
+\end{itemize}
 These are the \textbf{fundamental patches} of $Z$ in the sense of \cite{Ha92a}.
 The collection depends, a priori, on the
 identification of $\Delta$ with $\{1,\dots,\ell\}$.
@@ -2124,17 +2270,17 @@ $E_\Delta$; $E_\emptyset$ maps to the identity (Table~\ref{tab:4.3A}).
 
 Fix a map $\sigma :S_2 \rightarrow \Sigma_G^+ -\Delta$ satisfying the
 following.
-\begin{enumerate}[label=(3.3\alph*)]
-\item\fixedlabel{3.3a}\label{eq:3.3a} For $j,j'\in S_2$, the simple root expansions of $\sigma(j)$ and
+\begin{itemize}
+\item[(3.3a)]\fixedlabel{3.3a}\label{eq:3.3a} For $j,j'\in S_2$, the simple root expansions of $\sigma(j)$ and
 $\sigma(j')$ contain no common simple roots unless $j=j'$ or
 $j,j'$ are consecutive.
-\item\fixedlabel{3.3b}\label{eq:3.3b} If $j,j'$ are consecutive in $S_2$ then
+\item[(3.3b)]\fixedlabel{3.3b}\label{eq:3.3b} If $j,j'\in S_2$ are consecutive in $S_2$ then
 $\sigma(j)=\sum_{k=j}^{j'}m_{jk}\alpha_k$
 for some integers $m_{jk}\geq 0$.
-\item\fixedlabel{3.3c}\label{eq:3.3c} There is an $a\geq 1$ for which $\sigma(j_{max})
+\item[(3.3c)]\fixedlabel{3.3c}\label{eq:3.3c} There is an $a\geq 1$ for which $\sigma(j_{max})
 =a\alpha_{j_{max}}+\sum_{\alpha\notin S_1\cup S_2}m(\alpha)\alpha$,
 for some integers $m(\alpha)\geq 0$.
-\end{enumerate}
+\end{itemize}
 Such a map, and the corresponding fundamental patch, are called
 \textbf{essential}. Patches which are not essential are expected to be
 redundant in a covering of $Z$ up to codimension $2$, but in general there
@@ -2156,11 +2302,12 @@ are all regular.
 \end{res}
 
 \begin{rem26}\label{rem:3.4}
-The 1994 manuscript stated that Conjecture~\ref{res:3.4} ``is known'' for
-$A_n$ and $C_n$ \cite{Ha92a}, \cite{Ha89}, and false for $D_n$. These claims
-have not been checked; \cite{Ha89} treats only $GSp(4)$. The 1994 statement
-also included ``$Z$ is regular in codimension one''; that holds for every $G$
-for which $Z$ is normal (Proposition~\ref{res:3.7} and
+The 1994 manuscript stated that Conjecture~\ref{res:3.4} is known for
+$A_n$ and $C_n$ \cite{Ha92a}, \cite{Ha89}, and false for $D_n$. For $C_n=Sp(2n)$
+of arbitrary rank, this is proved in \cite[\S4, Lemma~4.2, pp.~212--217]{Ha89};
+the $A_n$ and $D_n$ claims in \cite{Ha92a} were not checked directly. The 1994
+statement also included ``$Z$ is regular in codimension one''; that holds for
+every $G$ for which $Z$ is normal (Proposition~\ref{res:3.7} and
 Conjecture~\ref{res:3.7A}).
 \end{rem26}
 
@@ -2258,13 +2405,13 @@ with multiplicity $m$.
 If $\rho \leq\sigma$, say $\sigma=\rho +\sum_\beta n(\beta)\beta$ with
 $n(\beta)\ge0$, then
 \[
-x(\rho)={x(\sigma)w(\rho)\over w(\sigma)}
+x(\rho)=\frac{x(\sigma)w(\rho)}{w(\sigma)}
 \prod_\beta z(\beta)^{n(\beta)},
 \]
 which is regular in the $w(\rho)$ with $\rho \leq\sigma$.
 If $\rho\geq\sigma$ then
 \[
-w(\rho)={w(\sigma)x(\rho)\over x(\sigma)}\prod_\beta
+w(\rho)=\frac{w(\sigma)x(\rho)}{x(\sigma)}\prod_\beta
 z(\beta)^{m_\rho(\beta)-m_{\sigma}(\beta)},
 \]
 with non-negative exponents, which is regular in the $x(\rho)$ with
@@ -2324,7 +2471,7 @@ $\lambda=z(\alpha)=z(\beta)=0$. The claim is withdrawn.
 % =====================================================================
 % Section 4. Source: g2new4.tex.
 % =====================================================================
-\numsection{4}{Regularity of patches for $G=G_2$}\label{sec:4}
+\numsection{4}{Regularity of patches for $G=G_2$}[Regularity of patches for G=G2]\label{sec:4}
 
 We now write all the patches of \S\ref{sec:3} down for $G_2$ and compute
 the Igusa constants of the branches of $\lambda=0$. Recall
@@ -2464,7 +2611,7 @@ has been computed in \cite[Ch.~II, Proposition~9.1]{Ha92a},
 so some of our calculations are covered by Hales' general
 calculations. For completeness, we list everything.
 
-\subsection*{Igusa forms on the fundamental patches of $Y''$}
+\subsection*{Igusa forms on the fundamental patches of \texorpdfstring{$Y''$}{Y''}}
 
 We pull back the patch $Z_{S_1,S_2,\sigma}$
 to $Y''(B_+,B_-)$ via the open immersion
@@ -2515,7 +2662,7 @@ So $a=1$, $b=7$, $\beta(E_\emptyset)=7$.
 $Z_{\emptyset,\alpha,\gamma}$:
 \[
 \omega_{Z,U}
-=\frac{x(\gamma)^3z(\alpha)z(\beta)}{w(\gamma)^4}\,
+=-\frac{x(\gamma)^3z(\alpha)z(\beta)}{w(\gamma)^4}\,
 dz(\alpha)\wedge dz(\beta)\wedge dw(\gamma)\wedge dx(\gamma)
 \wedge dx(\delta)\wedge dx(\epsilon)\wedge dx(\zeta).
 \]
@@ -2650,6 +2797,9 @@ Richardson branch on the patch $Z_{S_1}$. For $G=G_2$,
 \]
 and these are $1+r(\mathcal O)$ for the $2$-regular class
 $\mathcal O=\tilde A_1$ and the $3$-regular class $\mathcal O=A_1$, respectively.
+Moreover, $\pi(E_{\emptyset,\alpha,\delta})=\overline{\tilde A_1}$,
+$\pi(E_{\emptyset,\beta,\zeta})=\overline{A_1}$, and
+$\pi(E_{\emptyset,\alpha,\zeta})=\overline{A_1}$.
 \end{res}
 
 \begin{proof}
@@ -2657,9 +2807,26 @@ The first part is a special case of
 \cite[Ch.~II, Proposition~9.1]{Ha92a}; for $G_2$ it also follows
 from the calculations above, using $\dim\Cent_G(u)=\ell+2r(\mathcal O)$ and
 the dimensions $12$, $10$, $0$ of the regular, subregular and trivial classes.
-The second part is read off from Table~\ref{tab:4.3A}, with
+The Igusa constants are read off from Table~\ref{tab:4.3A}, with
 $|\Sigma_{H_2}^+|=2$, $|\Sigma_{H_1}^+|=3$, and $\dim\tilde A_1=8$,
-$\dim A_1=6$ \cite{Spa82}.
+$\dim A_1=6$ \cite{Spa82}. For the images under $\pi$, recall that on
+$Y''(B_+,B_-)\times N_+$ at $\lambda=0$ we have $\pi(b,s,z,n_+)=n_+^{-1}bn_+$
+with $b=\prod_{\rho>0}\theta_\rho(x(\rho))$. By $G_2$-equivariance and
+properness of $\pi$ on $Y_C$, $\pi(E)$ is the closure of the $G_2$-saturate of
+$b$ along $E$. From the last column of Table~\ref{tab:4.3A}: on
+$E_{\emptyset,\beta,\zeta}$, $b=\theta_\zeta(x(\zeta))$ with $x(\zeta)\neq0$
+generic, a long-root element, so $\pi(E_{\emptyset,\beta,\zeta})=\overline{A_1}$;
+on $E_{\emptyset,\alpha,\delta}$, $b=\theta_\delta(x(\delta))\theta_\epsilon(x(\epsilon))
+\theta_\zeta(x(\zeta))$ with $x(\delta)\neq0$, and since
+$[X_\alpha,X_\delta]=3X_\epsilon$, $[X_\gamma,X_\delta]=3X_\zeta$, and
+$[X_\alpha,X_\epsilon]=[X_\gamma,X_\epsilon]=0$ in the Chevalley basis of
+\S A.4, conjugating $\theta_\delta(x(\delta))$ by $\theta_\alpha(t_1)\theta_\gamma(t_2)$
+sweeps out all $(x(\epsilon),x(\zeta))$, showing that $b$ is conjugate to the
+short-root element $\theta_\delta(x(\delta))\in\tilde A_1$ and hence
+$\pi(E_{\emptyset,\alpha,\delta})=\overline{\tilde A_1}$. Similarly, on
+$E_{\emptyset,\alpha,\zeta}$, $b=\theta_\epsilon(x(\epsilon))\theta_\zeta(x(\zeta))$
+is $U_\beta$-conjugate for $x(\epsilon)\neq0$ to $\theta_\epsilon(x(\epsilon))\in A_1$,
+giving $\pi(E_{\emptyset,\alpha,\zeta})=\overline{A_1}$.
 \end{proof}
 
 \begin{rem26}\label{rem:4.4}
@@ -2667,13 +2834,8 @@ The 1994 statement had ``$\dim\Cent_G(u)-2$'', which is correct only for
 rank $2$, and labeled both orbits ``$2$-regular''. It described
 $\mathcal O$ as the orbit ``induced'' from the trivial class of the
 endoscopic group $H_i$; since $H_i$ is not a Levi subgroup of $G$, the
-intended meaning is the class with $\dim\mathcal O=\dim G-\dim H_i$, that is,
-$r(\mathcal O)=|\Sigma_{H_i}^+|$. Lemma~\ref{res:4.4} computes Igusa constants
-only. That $\pi(E_{\emptyset,\alpha,\delta})$ and
-$\pi(E_{\emptyset,\beta,\zeta})$ are the closures of $\tilde A_1$ and $A_1$
-was asserted in 1994 and is consistent with the homogeneity
-\eqref{eq:0.1A}, but the images were not computed independently in this
-revision.
+intended meaning is the endoscopically Richardson class (\S\ref{sec:0}) with
+$\dim\mathcal O=\dim G-\dim H_i$, that is, $r(\mathcal O)=|\Sigma_{H_i}^+|$.
 \end{rem26}
 
 \begin{rem26}[exceptional divisors]\label{rem:exceptional}
@@ -2682,9 +2844,12 @@ normals: the seven vectors $u_E$ of Table~\ref{tab:4.3A} and the four
 coordinate vectors of $w(\gamma),\dots,w(\zeta)$ (the divisors
 $w(\rho)=x(\rho)=0$, which do not lie over $\lambda=0$). The singular locus
 of $Z$ is the union of the torus orbits attached to the singular faces of
-$\sigma$, those not spanned by part of a $\zzz$-basis. Of the $262$ faces of
-dimension at least $2$, $32$ are singular, and there are five minimal singular
-faces (script \texttt{g2\_exceptional\_divisors.py}):
+$\sigma$, those not spanned by part of a $\zzz$-basis. The face vector of $\sigma$ from dimension $0$ to dimension $7$ is
+$(1,11,43,82,84,46,12,1)$ (satisfying $\sum_{d=0}^7(-1)^d f_d=0$, with the $12$
+facets dual to the $12$ extreme rays of $\mathrm{cone}(S)$). Of the $268$ faces
+of dimension at least $2$ ($267$ proper faces together with $\sigma$), $38$ are
+singular ($37$ proper singular faces together with $\sigma$), and there are five
+minimal singular faces:
 \[
 \begin{gathered}
 \{E_{\{\beta\}},E_{\emptyset,\beta,\zeta},E_\emptyset,D_{w(\zeta)}\},\quad
@@ -2712,7 +2877,7 @@ locus.
 % =====================================================================
 % Section 5. Source: g2new5.tex (variant g2new5d.tex noted in the log).
 % =====================================================================
-\numsection{5}{The Igusa expansion for $G_2$}\label{sec:5}
+\numsection{5}{The Igusa expansion for $G_2$}[The Igusa expansion for G2]\label{sec:5}
 
 \subsection*{Notes on the derivation of the Igusa expansion}
 
@@ -2742,22 +2907,22 @@ Assume that $Y(F)$ may be covered by patches
 $U$ on which there are coordinates $\mu_1,\dots,\mu_n$
 such that the following hold.
 
-\begin{enumerate}[label=(5.\arabic*),start=1,leftmargin=3.2em]
-\item\fixedlabel{5.1}\label{eq:5.1} $\phi^{-1}(0)$ has normal crossings; more precisely,
+\begin{itemize}
+\item[(5.1)]\fixedlabel{5.1}\label{eq:5.1} $\phi^{-1}(0)$ has normal crossings; more precisely,
 the irreducible components $E_i$ of $\phi^{-1}(0)\cap U$
 are of the form $\{\mu_i =0\}$ on $U$ and
 $\lambda=\upsilon\prod_i\mu_i^{a_i}$
 for some integers $a_i\ge0$, where $\upsilon$ is a non-vanishing
 function on $U$ with $|\upsilon|=q^{-m(\upsilon)}$ constant.
-\item\fixedlabel{5.2}\label{eq:5.2} On $U$, $f(y)$ is of the form
+\item[(5.2)]\fixedlabel{5.2}\label{eq:5.2} On $U$, $f(y)$ is of the form
 $f(\mu_1,\dots,\mu_n)=c_f \prod_i\kappa_i(\mu_i)$,
 where $c_f$ is a constant and the $\kappa_i$ are quasi-characters of
 $F^\times$ (extended by $\kappa_i(0)=0$ when $\kappa_i\neq1$).
-\item\fixedlabel{5.3}\label{eq:5.3} The form $\omega$ is given on $U$ by
+\item[(5.3)]\fixedlabel{5.3}\label{eq:5.3} The form $\omega$ is given on $U$ by
 $\omega=\prod_i\mu_i^{b_i-1}\,d\mu_1\wedge\cdots\wedge d\mu_n$.
-\item\fixedlabel{5.4}\label{eq:5.4} We \textbf{assume} that $f$ vanishes off $U$, and that
+\item[(5.4)]\fixedlabel{5.4}\label{eq:5.4} We \textbf{assume} that $f$ vanishes off $U$, and that
 if $b_i=0$ then $\kappa_i\not= 1$, $1\leq i\leq n$.
-\end{enumerate}
+\end{itemize}
 
 \begin{rem26}\label{rem:5.notation}
 In the 1994 text the unit in \eqref{eq:5.1} was called $\alpha$ (also a root),
@@ -2953,12 +3118,12 @@ As a corollary to \cite[Ch.~II, Prop.~3.1]{DG80}, the 1994 manuscript states
 the following.
 
 \begin{res}{Lemma}{5.10}\label{res:5.10}
-Let $E$ be an $\mathcal O$-divisor meeting the patch $Z_S$, where
+Let $E$ be an $\mathcal O$-divisor meeting the patch $Y''_{S_1}$, where
 $\mathcal O$ is $r$-regular.
-\begin{enumerate}[label=(\alph*)]
-\item The morphism $\pi:E\cap Z_S \rightarrow \overline{\ooo}$ is
+\begin{enumerate}[(a)]
+\item The morphism $\pi:E\cap Y''_{S_1} \rightarrow \overline{\ooo}$ is
 smooth of relative dimension $2r$ over $\mathcal O$.
-\item $\pi(E\cap Z_S)\subset \ooo$.
+\item $\pi(E\cap Y''_{S_1})\subset \ooo$.
 \item Let
 \[
 \{1\}={\mathcal O}_0'\subset\overline{\mathcal O}_1'
@@ -3047,35 +3212,39 @@ $E_{\emptyset,\alpha,\delta}(u)$, $u\in {\mathcal O}$, is given
 on $Y''_{\emptyset,\alpha,\delta}$ by
 \begin{equation}\tag{5.15}\label{eq:5.15}
 \omega_{E_{\emptyset,\alpha,\delta}(u)}
-=g\,dz(\beta)\,dx(\zeta)\,dv(\alpha)\,dv(\zeta),
+=\pm\frac{1}{w(\delta)^2z(\beta)^2}\,dz(\beta)\wedge dw(\gamma)\wedge dw(\delta)\wedge dv(\beta),
 \end{equation}
-where $g$ is a regular function. (These coordinates need not be
+up to a normalizing constant. (These coordinates need not be
 $F$-rational; one may average them over the image of the Galois group in
 $\Omega$ using \S\ref{sec:2}, and change variables to obtain $F$-rational
 coordinates satisfying \eqref{eq:5.1}--\eqref{eq:5.4}.)
-By \eqref{eq:1.22}, this form is homogeneous
-of degree $2$ in $X$. If $E'$ is another
+As verified in \S\ref{sec:7}, this form is homogeneous
+of degree $2$ in $X$ under $X\mapsto cX$. If $E'$ is another
 $F$-rational ${\mathcal O}_2$-divisor with
 $(\theta_{E'},\beta_{E'})=(\theta_E,\beta_E)$, then
 $E$ meets $E'$ with normal crossings in $Y_C$, and
 $D=E\cap E'$ has codimension $1$ in $E$ and maps onto ${\mathcal O}$
-\cite[Ch.~II, Prop.~3.1]{DG80}. The form on a fiber has the shape
-$\omega_{D(u)}=g_D\,dx\,dv_1\,dv_2$, which is homogeneous of degree $<2$ in
-$X$. The case $e=3$ is similar.
+\cite[Ch.~II, Prop.~3.1]{DG80}. The form on a fiber has $3$ differentials and is
+expected to have homogeneity degree $<2$ in $X$. The case $e=3$ is similar.
 
 For ${\mathcal O}={\mathcal O}_3$ and $E=E_{\emptyset, \beta,\zeta}$, by
 \S\ref{sec:8},
 \begin{equation}\tag{5.16}\label{eq:5.16}
 \omega_{E_{\emptyset,\beta,\zeta}(u)}
-=h\, dw(\epsilon)\,dw(\zeta)\,dx(\zeta)\,dv(\beta)\,dv(\epsilon)\,dv(\zeta),
+=\pm\frac{1}{w(\zeta)^3z(\alpha)^2}\,dz(\alpha)\wedge dw(\gamma)\wedge dw(\delta)\wedge dw(\epsilon)\wedge dw(\zeta)\wedge dv(\alpha),
 \end{equation}
-with $h$ regular, homogeneous of degree $3$ in $X$, and the argument is the
+which is homogeneous of degree $3$ in $X$ (\S\ref{sec:8}), and the argument is the
 same.
 \end{proof}
 
 \begin{rem26}[status of Lemma~\ref{res:5.14}]\label{rem:5.14}
-The argument above is incomplete in four ways. (i) The homogeneity degrees
-``by \eqref{eq:1.22}'' are asserted, not computed. (ii) Lemma~\ref{res:5.7}
+Although the homogeneity degrees $2$ and $3$ of the base-divisor fiber forms
+\eqref{eq:5.15} and \eqref{eq:5.16} under scalar rescaling $X\mapsto cX$ are
+verified in \S\S\ref{sec:7}--\ref{sec:8} (repairing the 1994 coordinate formulas,
+which mixed base and fiber variables), the argument above remains incomplete in
+three ways. (i) The scaling of the residue form $\omega_{D(u)}$ along an
+intersection $D=E\cap E'$ with an exceptional or spurious divisor $E'$ is
+asserted, not computed. (ii) Lemma~\ref{res:5.7}
 expresses $F_1$ as a sum over strata; only the top stratum $D=E\cap E'$ is
 considered, and the contradiction requires its contribution to be non-zero.
 (iii) The possible partners $E'$ include the exceptional divisors of
@@ -3093,7 +3262,7 @@ logarithmic terms; what Lemma~\ref{res:5.14} would add is that a
 Let $G=G_2$ and assume Lemma~\ref{res:5.14} and the proviso of
 Lemma~\ref{res:0.8}.
 Let $E$ be a base ${\mathcal O}(F)$-divisor of
-$Y_1$, and $\tilde{E}$ its preimage under
+$Y_1$, and $\tilde{E}$ its strict transform under
 $Y_C\rightarrow Y_1$.
 Then $F_1(\theta_E,\beta_E,f_\kappa)$ is given,
 up to a constant, by
@@ -3141,7 +3310,7 @@ the value $t_\sigma$ is determined by
 s_\alpha \theta_{-\alpha}(-\xi)n^{-1}w_\sigma^{-1}s_\alpha^{-1}\in
 N_+^- N_+ (t_1t_\sigma)^{w_\sigma^{-1}s_\alpha^{-1}}.
 \end{equation}
-Taking the transpose of both sides of \cite[Ch.~I, (5.5)]{Ha92a} and
+Applying the Chevalley anti-involution (or taking inverses) in \cite[Ch.~I, (5.5)]{Ha92a} and
 comparing with \eqref{eq:5.18}, one finds
 $t_1t_\sigma = \alpha^\vee(\xi)$,
 where $\xi$ is a regular function of the coordinates of
@@ -3198,8 +3367,10 @@ $\Delta$-transfer at the identity.
 \end{res}
 
 \begin{proof}[Source]
-\cite[Lemma~6.1]{Ha92b}; see also \cite[Proposition~2.11]{Ha89}. This lemma
-implicitly uses \cite{LS90}.
+\cite[Lemma~6.1]{Ha92b}, as cited in 1994. The 1994 text also cited
+\cite[Proposition~2.11]{Ha89}, but that proposition is a quasi-split
+reduction to the centralizer of a semisimple element, not this lemma. This
+lemma implicitly uses \cite{LS90}.
 \end{proof}
 
 \begin{rem26}[the main gap]\label{rem:main-gap}
@@ -3211,10 +3382,12 @@ $G_2$, so $\Lie Z(H)=0$. Moreover the centralizer in $G$ of an element $Y$ of
 $\mathfrak t_G$ is a Levi subgroup, and the Levi subgroups of $G_2$ are $T$,
 the two $GL(2)$'s and $G_2$; none of them is $SL(3)$ or $SO(4)$, the
 subgroups of $G_2$ that the 1994 text uses as ``$H\subset G$''. So no
-admissible $Y$ exists. A machine summary of \cite{Ha89} (consulted, not the
-paper itself) indicates that Hales' descent there is to elements of the
-connected center of $H$, and that for the cuspidal $SO(4)$ of $GSp(4)$ the
-dependence on the tangent direction is computed explicitly. We could not
+admissible $Y$ exists. In \cite[\S2, Prop.~2.4(1), Prop.~2.11 and Prop.~2.14, pp.~199--204]{Ha89},
+Hales's descent is to elements of the connected center $Z_H^\circ$ or to a
+product decomposition $T=T_1T_2$ when $H=H_1\times H_2$ up to finite center, and
+for the cuspidal endoscopic group $SO(4)$ of $GSp(4)$ the dependence on the
+tangent direction is computed explicitly via a birational map to $(\mathbb{P}^1)^4$
+\cite[\S6, pp.~239--243]{Ha89}. We could not
 consult \cite{Ha92b}. In the 1994 text the exponent was $2r$; with
 $\Gamma^{T,\kappa}$ normalized by the transfer factor it is
 $2(r-|\Sigma_H^+|)$, by \eqref{eq:0.1A}. The decomposition $f=f_1+f_2$ that
@@ -3258,7 +3431,7 @@ is reduced to the explicit identity \eqref{eq:7.7} (Corollary~\ref{res:7.8}).
 % =====================================================================
 % Sections 6-8. Sources: g2new6.tex, g2new7.tex, g2new8.tex.
 % =====================================================================
-\numsection{6}{The matching for the $1$-regular germ}\label{sec:6}
+\numsection{6}{The matching for the $1$-regular germ}[The matching for the 1-regular germ]\label{sec:6}
 
 Let $G=G_2$ throughout this section.
 
@@ -3268,9 +3441,13 @@ for homogeneity reasons \eqref{eq:0.1A}. The idea is to write down
 the Igusa expansions of the two orbital integrals and match the $\beta =2$
 terms.
 
-Let $u=\exp(X_\alpha+X_{\alpha+\beta})$. Then the subregular class
-is ${\mathcal O}_1^{st}=u^{G_2}$. It is Richardson, but not stable as an
-$F$-class; see \S\ref{sec:A7} for its $F$-classes.
+Let $u=\exp(X_\beta+X_{2\alpha+\beta})$, as in \S\ref{sec:A7}. (The 1994 text
+wrote $\exp(X_\alpha+X_{\alpha+\beta})$, which is $U_\beta$-conjugate via
+$[X_\beta,X_\alpha]=X_{\alpha+\beta}$ and $[X_\beta,X_{\alpha+\beta}]=0$ to the
+short-root element $\theta_\alpha(1)$ in the $8$-dimensional $2$-regular class
+$\tilde A_1$, rather than the $10$-dimensional subregular class.) Then the
+subregular class is ${\mathcal O}_1^{st}=u^{G_2}$. It is Richardson, but not
+stable as an $F$-class; see \S\ref{sec:A7} for its $F$-classes.
 Both the biquadratic and the cubic Cartan subgroups
 can have non-zero $1$-regular $\kappa$-germs.
 
@@ -3345,7 +3522,7 @@ the tori with Galois image $S_3$ generated by short reflections also carry
 non-trivial $\kappa$ (Table~\ref{tab:A.6}); they are not treated here.
 \end{rem26}
 
-\subsection*{Proof of Theorem~\ref{res:6.1}}
+\subsection*{Proof of \texorpdfstring{Theorem~\ref{res:6.1}}{Theorem 6.1}}
 
 By the work of Langlands and Shelstad, \cite{LS87}, \cite{LS90}, transfer
 at the identity reduces to the matching of germs, Conjecture~\ref{res:matching}.
@@ -3506,7 +3683,7 @@ replaced by the short roots (Remark~\ref{rem:8.roots}).
 \end{rem26}
 
 % ---------------------------------------------------------------------
-\numsection{7}{On the $2$-regular germ for $G_2$}\label{sec:7}
+\numsection{7}{On the $2$-regular germ for $G_2$}[On the 2-regular germ for G2]\label{sec:7}
 
 Let $G=G_2$ throughout this section.
 
@@ -3569,7 +3746,7 @@ quadratic tori, whose $\kappa$ also give $H_2$ (Table~\ref{tab:A.6}), are
 not treated.
 \end{rem26}
 
-\subsection*{Proof of Theorem~\ref{res:7.2}}
+\subsection*{Proof of \texorpdfstring{Theorem~\ref{res:7.2}}{Theorem 7.2}}
 
 By \cite{Sh72} or \cite{Ro80} the stable germ of the trivial class of $H_2$ is
 a non-zero constant. So it suffices to show that the $G_2$ side, as a
@@ -3581,73 +3758,77 @@ Let $u=\theta_{\alpha+\beta }(1)\in G_2$. Computing
 $\Ad({\mathfrak g}_2)(X_{\alpha+\beta })$ shows that $u^{G_2}$
 is $8$-dimensional, so ${\mathcal O}_2^{st}=u^{G_2}$ is the class $\tilde A_1$.
 By \S\ref{sec:A7} it contains a single $F$-class, so it is stable.
-Analogously to Lemma~\ref{res:6.4},
-the coordinates of
-$\prod_{\sigma\in \Sigma_G-\Sigma_{H_2}}U_\sigma$
-give local coordinates on ${\mathcal O}_2$, where
-$\Sigma_{H_2}^+=\{\alpha,\zeta\}$. Put
-$\Sigma_{{\mathcal O}_2}=\Sigma_{G}^+ -\Sigma_{H_2}^+=\{\beta,\gamma,\delta,
-\epsilon\}$. Local coordinates on the fiber $E_{\emptyset,\alpha,\delta}(u)$
-may be chosen from the remaining coordinates on
-$E_{\emptyset,\alpha,\delta}$: $z(\beta)$, $x(\zeta)$,
-$v(\alpha)$, and $v(\zeta)$.
+On $E_{\emptyset,\alpha,\delta}$ ($z(\alpha)=0$), we have
+$x(\alpha)=x(\beta)=x(\gamma)=0$, so the projection
+$\pi(b,s,z,n_+)=n_+^{-1}bn_+$ acts on
+$b=\theta_\delta(x(\delta))\theta_\epsilon(x(\epsilon))\theta_\zeta(x(\zeta))$
+($x(\delta)\neq0$), and is completely independent of $z(\beta)$, $w(\gamma)$,
+and $w(\delta)$. In the matrix model of \S A.4, the differential of $\pi$ with
+respect to the nine variables $(x(\delta),x(\epsilon),x(\zeta),v(\alpha),\dots,v(\zeta))$
+has generic rank $8=\dim{\mathcal O}_2$, with one-dimensional kernel given at
+$v=0$ by $dv(\beta)+x(\epsilon)\,dx(\zeta)=0$. Following Hales's coordinates for
+the $2$-regular divisor of $Sp(4)$ \cite[\S6, pp.~239--240]{Ha89}, local
+coordinates on an open subset of ${\mathcal O}_2$ are given by
+$(x(\delta),x(\epsilon),x(\zeta),v(\alpha),v(\gamma),v(\delta),v(\epsilon),v(\zeta))$,
+while $(z(\beta),w(\gamma),w(\delta),v(\beta))$ serve as local coordinates on
+the $4$-dimensional fiber $E_{\emptyset,\alpha,\delta}(u)$.
 
-On $E_{\emptyset,\alpha,\delta}$ the residue form, in the normalization of
+On $E_{\emptyset,\alpha,\delta}$ the residue $12$-form, in the normalization of
 \eqref{eq:8.1}, is
 \[
 \omega_{E_{\emptyset,\alpha,\delta}}=\frac{\omega_Z}{\lambda^3\,
 \frac{dz(\alpha)}{z(\alpha)}}
+\wedge dv
 =\frac{x(\delta)}{w(\delta)^2z(\beta)^2}\,dz(\beta)\wedge dw(\gamma)\wedge
-dw(\delta)\wedge dx(\delta)\wedge dx(\epsilon)\wedge dx(\zeta),
+dw(\delta)\wedge dx(\delta)\wedge dx(\epsilon)\wedge dx(\zeta)\wedge dv.
 \]
-times the $dv$'s. We use the form on ${\mathcal O}_2$
+Computing the Kirillov--Kostant symplectic Pfaffian on ${\mathcal O}_2$ via the
+trace form on $\mathfrak g_2\subset\mathfrak{so}(8)$ (and noting that right
+Maurer--Cartan translation on $N_+$ has determinant $1$) gives, up to a
+non-zero constant, the $G_2$-invariant algebraic $8$-form pullback
 \begin{equation}\tag{7.3}\label{eq:7.3}
-\begin{split}
-\omega_{{\mathcal O}_2}
-&:=\lim_{\lambda\to0}\frac{\bigl|\bigwedge_{\sigma\in \Sigma_{{\mathcal O}_2}}dx(\sigma)\wedge dv(\sigma)\bigr|}{|\lambda|^{3/2}}\\
-&\phantom{:}=\frac{|x(\delta)|^{1/2}}{|w(\delta)|^{3/2}|z(\beta)|^{3/2}}\,
-dw(\gamma)\,dw(\delta)\,dx(\delta)\,dx(\epsilon)\,dv(\beta)\,dv(\gamma)\,dv(\delta)\,dv(\epsilon),
-\end{split}
+\pi^*\omega_{{\mathcal O}_2}
+=x(\delta)\,dx(\delta)\wedge dx(\epsilon)\wedge dx(\zeta)\wedge
+dv(\alpha)\wedge dv(\gamma)\wedge dv(\delta)\wedge dv(\epsilon)\wedge dv(\zeta).
 \end{equation}
-where the limit is taken along $E_{\emptyset,\alpha,\delta}$ (the exponent
-$3/2$ is the order of vanishing of $x(\beta)x(\gamma)$ in $\lambda$ there).
-On $E_{\emptyset,\alpha,\delta}(u)$,
+Dividing $\omega_{E_{\emptyset,\alpha,\delta}}$ by $\pi^*\omega_{{\mathcal O}_2}$,
+the factor $x(\delta)$ cancels identically and gives the rational Leray fiber
+$4$-form on $E_{\emptyset,\alpha,\delta}(u)$:
 \begin{equation}\tag{7.4}\label{eq:7.4}
 \omega_{E_{\emptyset,\alpha,\delta}(u)}=
-\frac{|x(\delta)|^{1/2}}{|w(\delta)|^{1/2}|z(\beta)|^{1/2}}\,
-dz(\beta)\,dx(\zeta)\,dv(\alpha)\,dv(\zeta).
+\pm\frac{1}{w(\delta)^2z(\beta)^2}\,
+dz(\beta)\wedge dw(\gamma)\wedge dw(\delta)\wedge dv(\beta).
 \end{equation}
-One must rewrite this as
-$\omega_{E_{\emptyset,\alpha,\delta}(u)}=
-|p_{{\mathcal O}_2,T_G}(X)|\,\omega'_{E_{\emptyset,\alpha,\delta}(u)}$,
-where $p_{{\mathcal O}_2,T_G}(X)$ is a homogeneous polynomial in $X$ and
-$\omega'_{E_{\emptyset,\alpha,\delta}(u)}$ does not depend on $X$.
-Using \eqref{eq:1.22}, the 1994 text found
+Under scalar rescaling $X\mapsto cX$ ($c\in F^\times$) at a fixed point of
+$S_1(B_+,B_-)\times N_+$, Lemma~\ref{res:1.21} and \eqref{eq:1.22} show that
+$z(\beta)=z(W_0,\beta)/\beta(X)$ scales as $c^{-1}$, $v(\beta)$ scales as $c^0$,
+$w(\gamma)$ scales as $c^{-1}$, and $w(\delta)$ scales as $c^{-2}$; hence
+$\omega_{E_{\emptyset,\alpha,\delta}(u)}$ scales as
+$c^{-1-1-2}/(c^{-4}c^{-2})=c^2$. One seeks to rewrite the fiber integral after
+passing to $F$-rational coordinates so as to separate a factor
 \begin{equation}\tag{7.5}\label{eq:7.5}
 p_{{\mathcal O}_2,T_G}(X)=\prod_{\sigma \in \Sigma_{H_2}^+}\sigma(X)^{f_\sigma},
 \qquad \sum_{\sigma}f_\sigma =2 .
 \end{equation}
-To prove $(\mathrm X_2)$ one must compute the exponents $f_\sigma$, and show
-that $|p_{{\mathcal O}_2,T_G}(X)|$, $\Delta_0(X)$ and the $\kappa$-factors
-combine to a function of $X$ that is constant near $0$. This has not been
-done. \qed
+To prove $(\mathrm X_2)$ one must show that $f_\alpha=f_\zeta=1$ and that the
+$\kappa$-weighted integral over $E_{\emptyset,\alpha,\delta}(u)(F)$ carries the
+Hilbert-symbol sign of Corollary~\ref{res:7.8}. This remains open. \qed
 
 \begin{rem26}\label{rem:7.3}
-In 1994, \eqref{eq:7.3} was written with six differentials
-$dz(\alpha)\,dw(\gamma)\,dw(\delta)$, $dv(\alpha)\,dv(\gamma)\,dv(\delta)$ for an
-$8$-dimensional class, and with ``$\Sigma_{\mathcal O_3}$'' in place of
-$\Sigma_{\mathcal O_2}$. Its coefficient is correct. The coefficient of
-\eqref{eq:7.4} was printed as $|x(\delta)|^{5/2}|w(\delta)|^{7/2}
-|z(\beta)|^{-1/2}$. The corrected values were computed symbolically (script
-\texttt{g2\_patch\_jacobians.py}, \S7 checks); the normalization of the limit
-in \eqref{eq:7.3} is as in 1994 and has not been justified. The 1994 proof
-concluded: ``The translation invariance of this factor (7.5) follows from
-the above expression for $|p_{\mathcal O_2,T_G}(X)|$ as a product over roots
-in $H_2$. By continuity, $\kappa(t_*)$ satisfies the local translation
-invariance property as well \dots\ the theorem follows \dots\ from lemma
-5.19.'' A product of roots of $H_2$ is not translation invariant under any
-non-zero $Y$, since those roots span $\mathfrak t^*$; and the lemma does not
-apply (Remark~\ref{rem:main-gap}).
+The 1994 text attempted to construct $\omega_{\mathcal O_2}$ as a limit
+$\lim_{\lambda\to0}|\bigwedge_{\sigma\in\Sigma_{\mathcal O_2}}dx(\sigma)\wedge dv(\sigma)|/|\lambda|^{3/2}$
+with $\Sigma_{\mathcal O_2}=\{\beta,\gamma,\delta,\epsilon\}$, treating
+$(w(\gamma),w(\delta))$ as base coordinates and $(x(\zeta),v(\alpha),v(\zeta))$
+as fiber coordinates, which produced non-rational square-root factors
+$|x(\delta)|^{1/2}|w(\delta)|^{-3/2}|z(\beta)|^{-3/2}$ and the wrong scaling in
+$X$. Because $x(\beta)=x(\gamma)=0$ on $E_{\emptyset,\alpha,\delta}$, the
+variables $w(\gamma)$ and $w(\delta)$ lie in the kernel of $d\pi$ and belong to
+the fiber, exactly as in \cite[\S6, pp.~239--240]{Ha89}; the Kirillov--Kostant
+quotient \eqref{eq:7.3}--\eqref{eq:7.4} removes all fractional powers and gives
+the required degree-$2$ scaling in $X$. The 1994 proof also concluded by
+claiming translation invariance of \eqref{eq:7.5} and applying
+Lemma~\ref{res:5.19}, which fails because the roots of $H_2$ span
+$\mathfrak t^*$ (Remark~\ref{rem:main-gap}).
 \end{rem26}
 
 \subsection*{The transfer factor for the biquadratic tori}
@@ -3687,9 +3868,9 @@ P(Y):=\beta(Y)\gamma(Y)\delta(Y)\epsilon(Y)
 \end{equation}
 For $Y$ regular, $P(Y)\neq0$, and $P(cY)=c^4P(Y)$ for $c\in F^\times$.
 
-\begin{res}{Proposition}{7.6}\label{res:7.6}
+\begin{res}{Proposition}{7.6A}\label{res:7.6}
 Suppose the residue characteristic of $F$ is at least $5$. For regular $Y\in\mathfrak t(F)$ sufficiently close to $0$:
-\begin{enumerate}[label=(\alph*)]
+\begin{enumerate}[(a)]
 \item $\Delta_I$ is a constant, and $\Delta_{III_2}(\exp Y)=1$;
 \item $\Delta_{II}(\exp Y)=c\cdot(P(Y),d_\alpha)_F$, where $(\ ,\ )_F$ is the
 quadratic Hilbert symbol and $c=\pm1$ depends only on the $a$-data.
@@ -3732,10 +3913,10 @@ $c=(N_{L/F}(a_\beta a_\gamma),d_\alpha)_F$.
 The root-theoretic steps (the orbits, the stabilizers and \eqref{eq:7.6}) are
 checked by the script \texttt{g2\_transfer\_factor\_biquadratic.py}.
 
-\begin{resdef}{Example}{7.7}\label{res:7.7}
+\begin{resdef}{Example}{7.6B}\label{res:7.7}
 Let $F$ have residue characteristic $p\geq5$, uniformizer $\varpi$, and a
 non-square unit $\varepsilon$.
-\begin{enumerate}[label=(\alph*)]
+\begin{enumerate}[(a)]
 \item If one of $F(\sqrt{d_\alpha})$, $F(\sqrt{d_\zeta})$ is unramified over
 $F$, then $(P(Y),d_\alpha)_F=1$ for all regular $Y$, so $\Delta_0$ is
 constant. For example, if $d_\alpha=\varepsilon$ and $d_\zeta\in\varpi\mathcal
@@ -3755,7 +3936,7 @@ So $\Delta_0$ is \emph{not} constant in the direction of approach when both
 quadratic subfields of $K$ are ramified.
 \end{resdef}
 
-\begin{res}{Corollary}{7.8}\label{res:7.8}
+\begin{res}{Corollary}{7.6C}\label{res:7.8}
 Let $T$, $\kappa$ and $H=H_2$ be as in Theorem~\ref{res:7.2}. Assume
 Lemma~\ref{res:5.14} and the proviso of Lemma~\ref{res:0.8}. Then Hypothesis
 $(\mathrm X_2)$ holds for $(T,\kappa)$ if and only if, for $u\in\mathcal O_2(F)$
@@ -3800,8 +3981,8 @@ through \eqref{eq:1.22} and the Galois action of \S\ref{sec:2}.
 
 \begin{rem26}[status of $(\mathrm X_2)$]\label{rem:7.status}
 Proposition~\ref{res:7.6}, Example~\ref{res:7.7} and
-Corollary~\ref{res:7.8} are new and are checked at level~1 (by hand, and by
-the script for the root data and the Hilbert symbols over $\qqq_p$); the
+Corollary~\ref{res:7.8} are new (verified by hand and by exact symbolic scripts
+for the root data and Hilbert symbols over $\qqq_p$); the
 projection formula and the definitions of the factors $\Delta_I,\dots,\Delta_{IV}$
 are standard \cite{Ser79}, \cite{LS87}. They show that the 1994 strategy
 could not have worked even if Lemma~\ref{res:5.19} applied: the
@@ -3809,25 +3990,25 @@ $X$-dependence of $\Delta_0$ is through the roots outside $H$, and it is not
 translation invariant. The display of $\Delta$ in \eqref{eq:0.1} omits
 $\Delta_I\Delta_{II}\Delta_{III_2}$; for the tori of Theorem~\ref{res:7.2}
 this matters exactly in the case of Example~\ref{res:7.7}(b).
-To finish $(\mathrm X_2)$ one still needs three inputs, none of which is
-available in the 1994 text:
-(i) the exact coordinate relations \eqref{eq:1.22}, whose constants
-$c_1,\dots,c_7$ and omitted terms are not given (they can in principle be
-computed from Lemma~\ref{res:1.21} in the explicit model of \S A.4);
-(ii) the cocycle $t_*$ on $E_{\emptyset,\alpha,\delta}$, from
-\cite[Ch.~I, Cor.~5.4 and 5.7]{Ha92a}, which we could not consult;
-(iii) the Galois action on the coordinates, which \S\ref{sec:2} gives only
-schematically (Remark~\ref{rem:2.11}).
-By Corollary~\ref{res:8.8}, \eqref{eq:7.7} is true given Lemma~\ref{res:5.14}
-and the proviso of Lemma~\ref{res:0.8}. So it predicts
-$f_\alpha=f_\zeta=1$ in \eqref{eq:7.5}, and the sign $(P(X),d_\alpha)_F$ for
-the $\kappa$-weighted integral over the fiber. Either prediction can be
-tested once (i)--(iii) are available.
+Of the three algebraic inputs absent from the 1994 text---(i) the exact
+coordinate and star relations \eqref{eq:1.21a}--\eqref{eq:1.22}, (ii) the
+explicit cocycle formula for $t_*$ on $E_{\emptyset,\alpha,\delta}$ from
+\cite[Ch.~I, Cor.~5.4 and 5.7]{Ha92a}, and (iii) the exact Galois action on the
+coordinates of $Y''$ and of $E_{\emptyset,\alpha,\delta}$---both (i) and (iii)
+are now supplied in \S\S\ref{sec:1}--\ref{sec:2} (including the Galois
+invariance of the Leray fiber form \eqref{eq:7.4} in Proposition~\ref{res:2.14A}).
+What remains to finish $(\mathrm X_2)$ directly is input (ii), which was not
+consulted here, together with the evaluation of the resulting $4$-dimensional
+$p$-adic principal value integral $J(X)$ along the lines of \cite[\S6]{Ha89}.
+By Corollary~\ref{res:8.8}, \eqref{eq:7.7} holds given Lemma~\ref{res:5.14}
+and the proviso of Lemma~\ref{res:0.8}, predicting $f_\alpha=f_\zeta=1$ in
+\eqref{eq:7.5} and the Hilbert-symbol sign $(P(X),d_\alpha)_F$ for the
+$\kappa$-weighted fiber integral.
 \end{rem26}
 
 
 % ---------------------------------------------------------------------
-\numsection{8}{On the $3$-regular germ for $G_2$}\label{sec:8}
+\numsection{8}{On the $3$-regular germ for $G_2$}[On the 3-regular germ for G2]\label{sec:8}
 
 Let $G=G_2$ throughout this section.
 
@@ -3855,7 +4036,7 @@ $\omega_{E}$ on $E=E_{\emptyset,\beta,\zeta}$ is
 \begin{equation}\tag{8.1}\label{eq:8.1}
 \omega_{E_{\emptyset,\beta,\zeta}}
 =\frac{\omega_{Z}}{\lambda^4 \frac{dz(\beta)}{z(\beta)}}
-= \frac{x(\zeta)^2}{w(\zeta)^3z(\alpha)^2}\,
+= -\frac{x(\zeta)^2}{w(\zeta)^3z(\alpha)^2}\,
 dz(\alpha)\wedge dw(\gamma)\wedge dw(\delta)\wedge dw(\epsilon)\wedge
 dw(\zeta)\wedge dx(\zeta),
 \end{equation}
@@ -3906,7 +4087,7 @@ $S_3$ generated by short reflections, whose $\kappa$ also give $H_1$
 (Table~\ref{tab:A.6}), are not treated.
 \end{rem26}
 
-\subsection*{Proof of Theorem~\ref{res:8.3}}
+\subsection*{Proof of \texorpdfstring{Theorem~\ref{res:8.3}}{Theorem 8.3}}
 
 By \cite{Ro80}, the stable germ of the trivial class of $H_1$,
 $\Gamma_{1}^{T_H,st}(\gamma_H)$, is a non-zero constant. So, as in
@@ -3918,33 +4099,39 @@ $\Ad({\mathfrak g}_2)(X_\beta)$ shows that $u^{G_2}$
 is $6$-dimensional, so ${\mathcal O}_3^{st}=u^{G_2}$ is the class $A_1$, and
 by \S\ref{sec:A7} it is stable.
 
-To get local coordinates on the fiber
-$E_{\emptyset,\beta,\zeta}(u)$ over $u\in{\mathcal O}_3$, take the local
-coordinates on $E_{\emptyset,\beta,\zeta}$
-and divide $\omega_{E_{\emptyset,\beta,\zeta}}$ by an invariant measure
-$\omega_{{\mathcal O}_3}$ on ${\mathcal O}_3$.
-Analogously to Lemma~\ref{res:6.4},
-$\prod_{\sigma\in \Sigma_G-\Sigma_{L}}U_\sigma$
-gives local coordinates on ${\mathcal O}_3$,
-where $\Sigma_{L}^+=\{\beta,\epsilon,\zeta\}$ are the positive roots of the
-pseudo-Levi subgroup $L=SL(3)\subset G_2$ generated by the long roots.
-Put $\Sigma_{{\mathcal O}_3}=\Sigma_{G}^+ -\Sigma_{L}^+=\{\alpha,\gamma,\delta\}$.
-We use the form on ${\mathcal O}_3$
+On $E_{\emptyset,\beta,\zeta}$ ($z(\beta)=0$), the coordinates $x(\alpha)$,
+$x(\beta)$, $x(\gamma)$, $x(\delta)$, and $x(\epsilon)$ all vanish, so
+$b=\theta_\zeta(x(\zeta))$ with $x(\zeta)\neq0$. Moreover, $[X_{-\alpha},X_\zeta]=0$
+since $\zeta-\alpha=2\alpha+2\beta$ is not a root of $G_2$. Writing
+$n_+=\theta_{-\alpha}(v(\alpha))n_+'$ with
+$n_+'\in U_{-\beta}U_{-\gamma}U_{-\delta}U_{-\epsilon}U_{-\zeta}$, the factor
+$\theta_{-\alpha}(v(\alpha))$ commutes with $b$, so
+$\pi(y)=(n_+')^{-1}\theta_\zeta(x(\zeta))n_+'$ depends solely on the six
+variables $(x(\zeta),v(\beta),v(\gamma),v(\delta),v(\epsilon),v(\zeta))$ and is
+constant with respect to $(z(\alpha),w(\gamma),w(\delta),w(\epsilon),w(\zeta),v(\alpha))$.
+Computing the Kirillov--Kostant symplectic Pfaffian on ${\mathcal O}_3$ via the
+trace form on $\mathfrak g_2\subset\mathfrak{so}(8)$ gives, up to a non-zero
+constant, the $G_2$-invariant $6$-form pullback
 \begin{equation}\tag{8.4}\label{eq:8.4}
-|\omega_{{\mathcal O}_3}|
-:=\lim_{\lambda\to0}\frac{\bigl|\bigwedge_{\sigma\in \Sigma_{{\mathcal O}_3}}dx(\sigma)\wedge dv(\sigma)\bigr|}{|\lambda|^2}
-=\frac{2|x(\zeta)|}{|w(\zeta)||z(\alpha)|^2}\,
-dz(\alpha)\,dw(\gamma)\,dw(\delta)\,dv(\alpha)\,dv(\gamma)\,dv(\delta).
+|\pi^*\omega_{{\mathcal O}_3}|
+=|x(\zeta)|^2\,dx(\zeta)\,dv(\beta)\,dv(\gamma)\,dv(\delta)\,dv(\epsilon)\,dv(\zeta).
 \end{equation}
-On the generic fiber $E_{\emptyset,\beta,\zeta}(u)$, $u\in {\mathcal O}_3$,
+Dividing $|\omega_{E_{\emptyset,\beta,\zeta}}|$ in \eqref{eq:8.1} by
+$|\pi^*\omega_{{\mathcal O}_3}|$, the factor $|x(\zeta)|^2$ cancels identically,
+giving on the generic fiber $E_{\emptyset,\beta,\zeta}(u)$, $u\in {\mathcal O}_3$,
 \begin{equation}\tag{8.5}\label{eq:8.5}
 |\omega_{E_{\emptyset,\beta,\zeta}(u)}|=
-\frac{|x(\zeta)|}{2|w(\zeta)|^2}\,
-dw(\epsilon)\,dw(\zeta)\,dx(\zeta)\,dv(\beta)\,dv(\epsilon)\,dv(\zeta).
+\frac{1}{|w(\zeta)|^3|z(\alpha)|^2}\,
+dz(\alpha)\,dw(\gamma)\,dw(\delta)\,dw(\epsilon)\,dw(\zeta)\,dv(\alpha).
 \end{equation}
-One must rewrite this as
-$\omega_{E_{\emptyset,\beta,\zeta}(u)}=
-|p_{{\mathcal O}_3,T_G}(X)|\,\omega'_{E_{\emptyset,\beta,\zeta}(u)}$
+Under $X\mapsto cX$ ($c\in F^\times$) at a fixed star in $S_1(B_+,B_-)\times N_+$,
+we have $z(\alpha)\sim c^{-1}$, $v(\alpha)\sim c^0$, and $w(\rho)\sim c^{1-\mathrm{ht}(\rho)}$
+(so $w(\gamma)\sim c^{-1}$, $w(\delta)\sim c^{-2}$, $w(\epsilon)\sim c^{-3}$,
+$w(\zeta)\sim c^{-4}$), whence $|\omega_{E_{\emptyset,\beta,\zeta}(u)}|$ scales
+as $|c|^{-1-1-2-3-4}/(|c|^{-12}|c|^{-2})=|c|^3$. One seeks to rewrite the
+$F$-rational fiber integral so as to extract a factor
+$|\omega_{E_{\emptyset,\beta,\zeta}(u)}|=
+|p_{{\mathcal O}_3,T_G}(X)|\,|\omega'_{E_{\emptyset,\beta,\zeta}(u)}|$
 with $\omega'$ independent of $X$. Then
 \begin{equation}\tag{8.6}\label{eq:8.6}
 \begin{split}
@@ -3985,14 +4172,14 @@ exponents $e_\sigma$ have to be recomputed.
 \end{rem26}
 
 \begin{rem26}\label{rem:8.forms}
-Corrections to the 1994 formulas, all checked symbolically (script
-\texttt{g2\_patch\_jacobians.py}): in \eqref{eq:8.1} the coefficient was
-printed $x(\zeta)^2w(\zeta)^4w(\delta)^{-7}z(\alpha)^{-2}$, and the
-restatement of $|\omega_E|$ before \eqref{eq:8.2} had the denominator
-$|w(\delta)|^7$; in \eqref{eq:8.4} the coefficient was
-$|x(\zeta)|/(|w(\zeta)||z(\alpha)|)$; in \eqref{eq:8.5} it was
-$|x(\zeta)||w(\zeta)|^5/(|z(\alpha)||w(\delta)|^7)$; in \eqref{eq:8.6} the
-power was $|\lambda|^2$, while the $\beta=4$ term carries $|\lambda|^3$.
+Corrections to the 1994 formulas: in \eqref{eq:8.1} the coefficient was printed
+$x(\zeta)^2w(\zeta)^4w(\delta)^{-7}z(\alpha)^{-2}$; in \eqref{eq:8.4}--\eqref{eq:8.5}
+the 1994 text took $\lim_{\lambda\to0}\bigl|\bigwedge_{\sigma\in\{\alpha,\gamma,\delta\}}dx(\sigma)\wedge dv(\sigma)\bigr|/|\lambda|^2$,
+which placed the fiber coordinates $(z(\alpha),w(\gamma),w(\delta),v(\alpha))$
+in the base form and left the orbit coordinates $(x(\zeta),v(\beta),v(\epsilon),v(\zeta))$
+inside the fiber form (giving $X$-scaling $|c|^1$ instead of $|c|^3$); and in
+\eqref{eq:8.6} the power was $|\lambda|^2$, while the $\beta=4$ term carries
+$|\lambda|^3$.
 \end{rem26}
 
 \begin{res}{Corollary}{8.8}\label{res:8.8}
@@ -4016,8 +4203,7 @@ $H$.
 Corollary~\ref{res:8.8} shows that the hypotheses $(\mathrm X_r)$ are true,
 but it does not give the geometric proof that the 1994 manuscript aimed at.
 Its proof relies on the identification of normalizations in \eqref{eq:0.1},
-Formula~\ref{res:0.6} and \cite{GH16}, which has not been checked in detail
-(level~3 in the sense of the revision log).
+Formula~\ref{res:0.6} and \cite{GH16}, which has not been checked in detail.
 \end{rem26}
 % =====================================================================
 % Section 9. Source: g2new9.tex (variant g2new9d.tex noted in the log).
@@ -4035,9 +4221,10 @@ ${\mathcal O}$ be an $r$-regular unipotent class of $G(F)$,
 let $\kappa$ be a character of $H^1(F,T_G)$, and let
 $H=H_{\kappa,T_G}$ be the corresponding endoscopic group of $G$ \cite{La79}.
 Assume:
-\begin{enumerate}[label=(\arabic*)]
-\item there is an essential, admissible, $F$-rational ${\mathcal O}$-divisor
-$E=E_{S_1,S_2,\sigma}$ such that, for each $u\in {\mathcal O}$, the
+\begin{enumerate}[(1)]
+\item there is an essential $F$-rational ${\mathcal O}$-divisor
+$E=E_{S_1,S_2,\sigma}$ with $\beta(E)=r+1$ (``admissible'' for ${\mathcal O}$)
+such that, for each $u\in {\mathcal O}$, the
 Igusa form on the fiber satisfies
 $\omega_{E(u)}=p_{{\mathcal O},T_G}(X)\,\omega'_{E(u)}$,
 where $\omega'_{E(u)}$ is independent of $X$ and
@@ -4065,8 +4252,8 @@ satisfies the hypotheses to Hales' reduction lemma'', which cannot hold when
 $H$ is semisimple of the same rank as $G$ (Remark~\ref{rem:main-gap}); and
 the conclusion included a transfer statement for $f$ whose support meets no
 unipotent class other than those stably conjugate to $\mathcal O$, which do
-not exist (Remark~\ref{rem:6.1}). ``Endoscopically Richardson'' is not
-defined in the manuscript. Since Conjecture~\ref{res:matching} is now known
+not exist (Remark~\ref{rem:6.1}). ``Endoscopically Richardson'' was left undefined in 1994 and is defined here
+in \S\ref{sec:0}. Since Conjecture~\ref{res:matching} is now known
 (Remark~\ref{rem:transfer-known}), the interest of Conjecture~\ref{res:9.1}
 lies in its mechanism, not its conclusion. The variant source
 \texttt{g2new9d.tex} replaces (4) by $e(\theta,r+1)\leq1$ and (6) by the
@@ -4088,7 +4275,7 @@ hypotheses have not been checked in this case.
 % ======================================================================
 % Appendix. Source: g2newapp.tex.
 % ======================================================================
-\section*{Appendix A.\quad Background on $G_2$}\fixedlabel{A}\label{sec:A}
+\section*{\texorpdfstring{Appendix A.\quad Background on $G_2$}{Appendix A. Background on G2}}\fixedlabel{A}\label{sec:A}
 
 The first four sections of this appendix have been taken from an
 unpublished joint paper with D. Bump.
@@ -4101,22 +4288,22 @@ stable 2- and 3-regular unipotent orbit.
 
 In the first few sections, we shall be concerned with the phenomenon
 known as ``triality'',
-which yields an embedding of $G_2$ into the double cover Spin(8) of
-the split form of SO(8). We shall
+which yields an embedding of $G_2$ into the double cover $\mathrm{Spin}(8)$ of
+the split form of $SO(8)$. We shall
 determine the triality map explicitly at the root level, and also use it to
 give an explicit Chevalley basis for the Lie algebra ${\mathfrak g}_2$,
 which should be useful in other calculations.
 
 \noindent
 Acknowledgement: We thank Becci Davies for coding the root diagrams
-(in \AmS-\TeX; they are redrawn here).
+(in AMS-\TeX; they are redrawn here).
 
-\subsection*{Background on G$_2$ and SO(8)}
+\subsection*{Background on \texorpdfstring{$G_2$ and $SO(8)$}{G2 and SO(8)}}
 
-\subsection*{A.1. SO(8)}
+\subsection*{A.1. \texorpdfstring{$SO(8)$}{SO(8)}}
 
-Let J denote the $8\times 8$ matrix with 1's on the skew--diagonal and
-0's elsewhere:
+Let $J$ denote the $8\times 8$ matrix with $1$'s on the skew-diagonal and
+$0$'s elsewhere:
 \[
 J := \begin{pmatrix} 0 & & 1 \\
    & \iddots & \\
@@ -4128,8 +4315,8 @@ by
 \[
 SO(8) := \{A \in GL(8) \ |\ A\cdot J\cdot {}^{t}A = J\}^o,
 \]
-so that $SO(8)$ is semi--simple, connected, neither simply connected
-nor adjoint, non--compact, and split over $\qqq$. Its maximal $\qqq$-split
+so that $SO(8)$ is semisimple, connected, neither simply connected
+nor adjoint, non-compact, and split over $\qqq$. Its maximal $\qqq$-split
 torus consists of all matrices of the form
 \[
 \begin{pmatrix} A&0\\0&B \end{pmatrix},\ \text{with }
@@ -4143,18 +4330,17 @@ B:= \begin{pmatrix} a_4^{-1}&&&\\
 &&&a_1^{-1} \end{pmatrix}.\tag{A.1}
 \]
 The compact real form of $SO(8)$ is obtained, of course, by replacing
-J by the $8\times 8$ identity matrix.
+$J$ by the $8\times 8$ identity matrix.
 
-The simply--connected covering group of $SO(8)$ is
-$SO(8)_{sc} =$ Spin(8), which has center $\zzz /2\zzz \times \zzz /2\zzz$,
-and since $SO(8)$ has center $\zzz /2\zzz$, Spin(8) is a 2-fold cover
-of $SO(8)$ and a 4-fold cover of $PSO(8)$. The outer automorphisms
-of Spin(8) are in one--to--one correspondence with the automorphisms
+The simply connected covering group of $SO(8)$ is
+$SO(8)_{sc} = \mathrm{Spin}(8)$, which has center $\zzz /2\zzz \times \zzz /2\zzz$,
+and since $SO(8)$ has center $\zzz /2\zzz$, $\mathrm{Spin}(8)$ is a $2$-fold cover
+of $SO(8)$ and a $4$-fold cover of $PSO(8)$. The outer automorphisms
+of $\mathrm{Spin}(8)$ are in one-to-one correspondence with the automorphisms
 of the Dynkin diagram for $SO(8)$:
-% Claude: The source draws the four nodes as bullets in an AMS-TeX matrix,
-% without edges. The same arrangement is reproduced with TikZ.
 \[
 \begin{tikzpicture}[baseline=(c.base)]
+\draw (0,0) -- (-1.6,0) (0,0) -- (1.1,1.0) (0,0) -- (1.1,-1.0);
 \node (c) at (0,0) {$\bullet$};
 \node at (-1.6,0) {$\bullet$};
 \node at (1.1,1.0) {$\bullet$};
@@ -4163,7 +4349,7 @@ of the Dynkin diagram for $SO(8)$:
 \]
 The Lie algebra
 \[
-so(8) := \{A \in M_8\ |\ AJ + J{}^{t}A = 0\}
+\mathfrak{so}(8) := \{A \in M_8\ |\ AJ + J{}^{t}A = 0\}
 \]
 may be expressed as the Lie algebra of $8\times 8$ matrices of the
 form
@@ -4175,9 +4361,9 @@ a_{31}&a_{32}&t_3&a_{34}&a_{35}&0&-a_{26}&-a_{16}\\
 0&-a_{71}&-a_{61}&-a_{51}&-a_{41}&-a_{31}&-a_{21}&-t_1\\
 \end{pmatrix}}.\tag{A.2}
 \]
-If $i \not= j$ then define $E_{ij}$ to be the matrix A as above with
-$a_{ij} = 1$ and all other entries = 0. Define $E_{ii}$ to be the
-matrix A as above with $t_i = 1$ and all other entries = 0. Then
+If $i \not= j$ then define $E_{ij}$ to be the matrix $A$ as above with
+$a_{ij} = 1$ and all other entries $0$. Define $E_{ii}$ to be the
+matrix $A$ as above with $t_i = 1$ and all other entries $0$. Then
 \[
 \begin{split}
 &\big\{ E_{11},\,  E_{22},\, E_{33},\, E_{44},\\
@@ -4190,9 +4376,9 @@ matrix A as above with $t_i = 1$ and all other entries = 0. Then
 \end{split}\tag{A.3}
 \]
 forms a basis
-for the 28-dimensional vector space $so(8)$.
+for the $28$-dimensional vector space $\mathfrak{so}(8)$.
 
-\subsection*{A.2. The Cayley algebra and $G_2$}
+\subsection*{A.2. The Cayley algebra and \texorpdfstring{$G_2$}{G2}}
 
 The \textbf{split Cayley algebra} is the $2\times 2$ matrix algebra
 \[
@@ -4211,23 +4397,23 @@ V:= \{ xi+yj+zk\ | \ x,y,z \in \qqq,
 \]
 Define
 \[
-G_2(F) :=\text{Aut}_F(C\otimes F),\tag{A.5}
+G_2(F) :=\Aut_F(C\otimes F),\tag{A.5}
 \]
-where F is any field containing $\qqq$. Since Der(C) $\cong$ Lie(Aut C),
+where $F$ is any field containing $\qqq$. Since $\Der(C) \cong \Lie(\Aut C)$,
 it follows that the Lie algebra ${\mathfrak g}_2$ may be
-identified with Der(C). For $G_2$, there are 2 real forms:  one
-being the non-compact $\qqq$--split from above, the other being a
-compact form associated to a division algebra (see\cite[pp. 142-147]{Ja71}
+identified with $\Der(C)$. For $G_2$, there are two real forms: one
+being the non-compact $\qqq$-split form above, the other being a
+compact form associated to a division algebra (see \cite[pp.~142--147]{Ja71}
 or \cite{Ti65}). We have
 \[
-\text{dim}_{{\qqq}}C = 8,\ \text{dim}_{{\qqq}}{\mathfrak g}_2 = 14,
+\dim_{{\qqq}}C = 8,\qquad \dim_{{\qqq}}{\mathfrak g}_2 = 14,
 \]
 and there is a trace bilinear form which induces an embedding
 \[
-G_2 = \text{Aut}(C) \hookrightarrow SO(8).
+G_2 = \Aut(C) \hookrightarrow SO(8).
 \]
-Here SO(8) is regarded as the special orthogonal group associated to
-the trace form $trace(\beta)$ on C, where
+Here $SO(8)$ is regarded as the special orthogonal group associated to
+the trace form $\tr(\beta)$ on $C$, where
 \[
 \beta(x,y)=\frac{1}{2}(x\cdot y^*+y\cdot x^*),
 \ \ \ \ \beta(x,x)=N(x),
@@ -4248,7 +4434,7 @@ $-A_1,\ -A_2$, so
 \[
 A_0 \longmapsto (A_1,A_2)
 \]
-is well--defined, up to signs.
+is well-defined, up to signs.
 \end{res}
 
 \begin{proof} We will verify that our form of triality is the global
@@ -4261,8 +4447,8 @@ equivalent of Jacobson's form \cite[p. 8]{Ja71}. Let
 \end{split}
 \]
 in $SO(8,\qqq )$ (regarded as a group of orthogonal maps with respect to the
-trace form on C), where $\delta^2 = 0$ and $B_i \in so(8,\qqq )$. Thus
-$A_0,\ A_1,\ A_2$ may be regarded as lying in the tangent space to SO(8)
+trace form on $C$), where $\delta^2 = 0$ and $B_i \in \mathfrak{so}(8,\qqq )$. Thus
+$A_0,\ A_1,\ A_2$ may be regarded as lying in the tangent space to $SO(8)$
 at the identity (cf. \cite[chapter 0]{Bor91}). Then
 $A_0(xy) = A_1(x)A_2(y)$ is equivalent to
 \[
@@ -4287,14 +4473,14 @@ SO(8,F) &\rightarrow PSO(8,F),\\
 \quad A_0 &\longmapsto \quad \pm A_1,
 \end{split}
 \]
-defines a projective representation of SO(8), i.e., belongs to
-PSO(8). In particular, it induces an outer automorphism of degree 3
+defines a projective representation of $SO(8)$ into
+$PSO(8)$. In particular, it induces an outer automorphism of degree $3$
 (the ``triality'' automorphism)
 corresponding to a rotation of the Dynkin diagram of $PSO(8,F)$.
 \end{res}
 
 \noindent
-\textit{Remarks} (A.8) If $A_0 \in G_2 = \text{Aut}(C)$ then triality sends
+\textit{Remarks} (A.8) If $A_0 \in G_2 = \Aut(C)$ then triality sends
 $A_0 \longmapsto A_0$. Conversely, if triality sends $A_0 \longmapsto A_0$
 then $A_0 \in G_2$, so $G_2$ is the subgroup fixed by triality. In
 general, triality sends (up to signs)
@@ -4304,16 +4490,16 @@ A_0 \longmapsto A_1,\ A_1 \longmapsto A_2,\ A_2 \longmapsto A_0.
 This way we can explicitly construct an outer automorphism of $SO(8)$.
 
 (A.9) Triality can be described explicitly on the standard Borel
-subgroup B of PSO(8): triality cyclically permutes the ``root groups''
+subgroup $B$ of $PSO(8)$: triality cyclically permutes the ``root groups''
 $U_{\alpha}$, defined below, in the same way as it permutes the simple roots
 via its action on the Dynkin diagram; it also permutes the embeddings
 $PSL(2) \hookrightarrow PSO(8)$ associated to the simple roots. The
 images of the maximal split torus $T \subset PSL(2)$ embedded in $PSO(8)$
 generate the maximal split torus in $PSO(8)$ and, of course, the simple
-root groups generate the unipotent radical of B. Putting these all together
-explicitly gives the action of triality on B.
+root groups generate the unipotent radical of $B$. Putting these all together
+explicitly gives the action of triality on $B$.
 
-\subsection*{A.3. Root systems for $G_2$ and $SO(8)$}
+\subsection*{A.3. Root systems for \texorpdfstring{$G_2$ and $SO(8)$}{G2 and SO(8)}}
 
 Since the symmetric group $S_3$ acts on the Dynkin diagram of $SO(8)$
 by triality,
@@ -4329,7 +4515,7 @@ are fixed and the triples of roots corresponding to
 \ \{E_{12},\ E_{34},\ E_{35}\},
 \]
 are each permuted by the action of $S_3$. More explicitly, let us
-represent a basis of $so(8)$ by
+represent a simple root basis of $\mathfrak{so}(8)$ by
 \[
 \eps_1 - \eps_2,\  \eps_2 - \eps_3,\ \eps_3 - \eps_4,\ \eps_3 + \eps_4,
 \]
@@ -4342,12 +4528,13 @@ in the notation of (A.1), $1 \leq i \leq 4$.
 Here $E_{12}$ corresponds to $\eps_1 - \eps_2,\ E_{13}$ to
 $\eps_1 - \eps_2 + \eps_2 - \eps_3 = \eps_1 - \eps_3$, etc. Since
 $\eps_2 - \eps_3$ is connected to the others (since its Killing form inner
-product with them is non--zero), it corresponds to the center of the
+product with them is non-zero), it corresponds to the center of the
 Dynkin diagram
 \[
 \begin{tikzpicture}[baseline=(c.base)]
+\draw (0,0) -- (-2.0,0) (0,0) -- (1.4,1.0) (0,0) -- (1.4,-1.0);
 \node (c) at (0,0) {$\bullet$};
-\node[right] at (0.1,0) {$\eps_2-\eps_3$};
+\node[below right] at (0.05,-0.05) {$\eps_2-\eps_3$};
 \node at (-2.0,0) {$\bullet$};
 \node[left] at (-2.1,0) {$\eps_3-\eps_4$};
 \node at (1.4,1.0) {$\bullet$};
@@ -4357,7 +4544,7 @@ Dynkin diagram
 \end{tikzpicture}
 \]
 Therefore, under the action of $S_3$, the triality automorphism of
-so(8) induces a linear map $\phi$ on the roots such that
+$\mathfrak{so}(8)$ induces a linear map $\phi$ on the roots such that
 \[
 \phi (\eps_1 - \eps_2) = \eps_3 - \eps_4,
 \ \phi (\eps_3 - \eps_4) = \eps_3 + \eps_4,
@@ -4373,14 +4560,14 @@ Thus
 &\phi (\eps_4) = \frac{1}{{2}}(\eps_1 - \eps_2 - \eps_3 - \eps_4).
 \end{split}
 \]
-Call the induced automorphism on the Lie algebra so(8), $\phi^*$. As
-we've already observed, the Lie subalgebra
+Call the induced automorphism on the Lie algebra $\mathfrak{so}(8)$, $\phi^*$. As
+we have already observed, the Lie subalgebra
 \[
-\{X \in so(8)\ |\ \phi^*(X) = X\}
+\{X \in \mathfrak{so}(8)\ |\ \phi^*(X) = X\}
 \]
-is the Lie algebra ${\mathfrak g}_2$. Identifying its Lie
-group with a subgroup of $SO(8)$, we find that its maximal
-$\qqq-$split torus is of the form
+is the Lie algebra ${\mathfrak g}_2$. Identifying the group $G_2$
+with a subgroup of $SO(8)$, we find that its maximal
+$\qqq$-split torus is of the form
 \[
 \begin{split}
 T':= \Big\{\begin{pmatrix} A&0\\0&B \end{pmatrix},\ |\
@@ -4395,38 +4582,43 @@ B:= {\left(\begin{smallmatrix} 1&&&\\
 &\quad\quad\quad\quad\text{and } a_1 = a_2a_3\Big\}.
 \end{split}\tag{A.12}
 \]
-We will identify $T'$ with the maximal split torus of
-$SL(3)$ by means of the map
+On $T'$ (with $a_1=a_2a_3$), the root characters of \S A.4 are
+$\alpha=a_3$, $\beta=a_2a_3^{-1}$, $\gamma=a_2$, $\delta=a_1$,
+$\epsilon=a_1a_3$, and $\zeta=a_1a_2$.
+We identify $T'$ with the maximal split torus of the long-root pseudo-Levi
+subgroup $L=SL(3)\subset G_2$ (positive roots $\beta,\epsilon,\zeta$) via
 \[
 \begin{pmatrix} A&0\\0&B \end{pmatrix} \in T' \longmapsto
-\text{diag}(a_2,a_3,a_1^{-1}),
+\diag(a_2,a_3,a_1^{-1}),
 \]
-with the maximal split torus of
-$PGL(3)$ by means of the map
+with the maximal split torus of the endoscopic group $H_1=PGL(3)$ (carrying the
+short roots $\alpha=a_1/a_2$, $\gamma=a_2$, $\delta=a_1$; see \S\ref{sec:A5}) via
 \[
 \begin{pmatrix} A&0\\0&B \end{pmatrix} \in T' \longmapsto
-\text{diag}(a_1a_2,a_1a_3,1),\tag{A.13}
+\diag(a_1,a_2,1),\tag{A.13}
 \]
-with the maximal split torus of
-$PGL(2)\times SL(2)$ by means of the map
+and with the maximal split torus of the endoscopic group
+$H_2=(SL(2)\times SL(2))/\{\pm 1\}\cong SO(4)$ (carrying the orthogonal roots
+$\alpha=a_3=a_1a_2^{-1}$ and $\zeta=a_1a_2$; see \S\ref{sec:A5}) via
 \[
 \begin{pmatrix} A&0\\0&B \end{pmatrix} \in T' \longmapsto
-\text{diag}(a_3,1)\times diag(a_1a_2,1/a_1a_2),
+\bigl[\diag(u,u^{-1}),\,\diag(v,v^{-1})\bigr],\qquad
+u^2=a_3,\ v^2=a_1a_2,\ uv=a_1,\ vu^{-1}=a_2
 \tag{A.13$'$}
 \]
-and with the maximal split torus of
-$(SL(2)\times SL(2))/\{\pm 1\}$ by means of the map
-\[
-\begin{pmatrix} A&0\\0&B \end{pmatrix} \in T' \longmapsto
-\text{diag}(a_1,1/a_1)\times diag(a_2,1/a_2).
-\tag{A.13$''$}
-\]
+(equivalently $\diag(a_1,a_2,a_2^{-1},a_1^{-1})$ in split $SO(4)$ coordinates;
+in 1994, (A.13) used $\diag(a_1a_2,a_1a_3,1)$, which gave the long roots, while
+the $A_1\times A_1$ maps pulled back to doubled non-roots $2\delta,2\gamma,2\zeta$).
 
 \subsection*{A.4. The Chevalley basis}
 
-The embedding of ${\mathfrak g}_2$ into so(8) gives a convenient framework
+The embedding of ${\mathfrak g}_2$ into $\mathfrak{so}(8)$ gives a convenient framework
 for doing calculations with explicit matrices. We now write down
-the Chevalley basis of $G_2$. The notation for the root system is given
+the Chevalley basis of ${\mathfrak g}_2$ (with negative root vectors given by
+the matrix transposes $X_{-\sigma}:={}^t X_\sigma$, which satisfy
+$[X_\sigma,X_{-\sigma}]=h_\sigma$ for all $\sigma\in\Sigma_G^+$ and yield
+integral Chevalley structure constants across all $14$ basis elements). The
+notation for the root system is given
 by the following diagram:
 % Claude: The source draws the twelve roots as bullets placed in an AMS-TeX
 % matrix (only the positive roots are labeled). The same picture is
@@ -4589,9 +4781,9 @@ h_{\sigma} := \begin{pmatrix} 1& & & & & & & \\
 
 There is a canonical embedding $G_2 \hookrightarrow SO(8)$, given by
 the natural faithful representation associated to the Cayley algebra.
-In fact, each one--parameter unipotent subgroup $U_{\sigma}$ associated to a
-short root $\sigma$ of $G_2$ is contained in a three dimensional unipotent
-subgroup of SO(8) generated by three (uniquely determined) roots of
+In fact, each one-parameter unipotent subgroup $U_{\sigma}$ associated to a
+short root $\sigma$ of $G_2$ is contained in a three-dimensional unipotent
+subgroup of $SO(8)$ generated by three (uniquely determined) roots of
 $D_4$ which are permuted by $S_3$.
 The possibilities for this embedding of unipotents can be tabulated
 as follows:
@@ -4621,7 +4813,7 @@ $D_4$, the six stable roots correspond to the long roots of $G_2$
 and the other 18, permuted in orbits of 3, correspond to the short
 roots of $ G_2$.
 
-\subsection*{A.5. Endoscopic groups of $G_2$}\fixedlabel{A.5}\label{sec:A5}
+\subsection*{A.5. Endoscopic groups of \texorpdfstring{$G_2$}{G2}}\fixedlabel{A.5}\label{sec:A5}
 
 We compute the cuspidal endoscopic groups of $G_2$, motivated by the
 description of centralizers of semisimple elements in the dual group
@@ -4691,7 +4883,7 @@ conclusions $H_2=(SL(2)\times SL(2))/\{\pm1\}$ and $H_1=PGL(3)$ were right.
 The argument above is new.
 \end{rem26}
 
-\subsection*{A.6. Tori of $G_2$}\fixedlabel{A.6}\label{sec:A6}
+\subsection*{A.6. Tori of \texorpdfstring{$G_2$}{G2}}\fixedlabel{A.6}\label{sec:A6}
 
 The stable conjugacy classes of Cartan subgroups in a quasi-split group $G$
 are in bijection with $H^1(\Gamma, W)$, where $W=\Omega$ is the absolute
@@ -4775,18 +4967,18 @@ is not valid. It also called $\langle s_\alpha,s_\zeta\rangle$ a group
 generated by ``simple reflections''; $s_\zeta$ is not simple.
 \end{rem26}
 
-\subsection*{A.7. The stability of the $2$-regular and $3$-regular
-unipotent orbits for $G_2$}\fixedlabel{A.7}\label{sec:A7}
+\subsection*{A.7. The stability of the \texorpdfstring{$2$-regular and $3$-regular
+unipotent orbits for $G_2$}{2-regular and 3-regular unipotent orbits for G2}}\fixedlabel{A.7}\label{sec:A7}
 
 I thank M. Assem for explaining to me the technique of this section.
 
-Using the appendices above, we find that
+Using the subsections above, we find that
 \[
-{\mathfrak m}:=cent_{{\mathfrak g}_2}(h_{\alpha +\beta})
+{\mathfrak m}:=\Cent_{{\mathfrak g}_2}(h_{\alpha +\beta})
 ={\mathfrak t}+F\cdot X_{3\alpha +\beta}+F\cdot X_{-3\alpha -\beta},
 \]
-where ${\mathfrak t}$ denotes the Cartan of ${\mathfrak g}_2$. Let
-$M:=Cent_{G_2}(h_{\alpha +\beta})$ and let
+where ${\mathfrak t}$ denotes the Cartan subalgebra of ${\mathfrak g}_2$. Let
+$M:=\Cent_{G_2}(h_{\alpha +\beta})$ and let
 \[
 {\mathfrak g}_2(i):=\{X\in{\mathfrak g}_2\ |\ [h_{\alpha +\beta},X]=iX\}.
 \]
@@ -4794,20 +4986,25 @@ We compute
 \[
 {\mathfrak g}_2(2)=F\cdot X_{\alpha +\beta}.
 \]
-The map $m\longmapsto Ad(m)X_{\alpha +\beta}$ defines a submersion
-$M\rightarrow {\mathfrak g}_2(2)$ \cite[ch III, \S 4.14]{SS86}. By a lemma of
-Rao \cite{Ra72}, the $G(F)$-orbit of $X_{\alpha +\beta}$ is
-$Ad(K(V(X_{\alpha +\beta})+{\mathfrak n}(2)))$, where
-\[
-V(X_{\alpha +\beta})=\{ad(X)X_{\alpha +\beta}\ |\ X\in {\mathfrak m}\},
-\]
-$K$ is a maximal compact subgroup of $G_2(F)$, and
+The map $m\longmapsto \Ad(m)X_{\alpha +\beta}$ defines a submersion
+$M\rightarrow {\mathfrak g}_2(2)$ \cite[Ch.~III, \S 4.14]{SS86}. By Ranga Rao's
+Lemma~1 and Theorem~1 \cite[pp.~506--507]{Ra72} applied to the Jacobson--Morozov
+$\mathfrak{sl}_2$-triple $\{X_{\alpha+\beta},h_{\alpha+\beta},X_{-\alpha-\beta}\}$,
+since $\ad(X_{\alpha+\beta}):\mathfrak g_2(i)\to\mathfrak g_2(i+2)$ is surjective
+for every $i\ge 1$ (so $\Ad(N_P)X_{\alpha+\beta}\subset X_{\alpha+\beta}+\mathfrak n(2)$
+even when $\mathfrak g_2(1)\neq0$), the $G_2(F)$-orbit of $X_{\alpha +\beta}$ is
+$\Ad(K)(\Ad(M(F))X_{\alpha +\beta}+{\mathfrak n}(2))$, where
+$K$ is a special maximal compact subgroup of $G_2(F)$ and
 \[
 {\mathfrak n}(2):=\sum_{i >2}{\mathfrak g}_2(i).
 \]
-The fact that $dim\ {\mathfrak g}_2(2)=1$ gives us that orbit
-of $M$ in ${\mathfrak g}_2(2)$ is onto,
-so by Rao's result the $2$-regular unipotent orbit is stable.
+Since $\dim{\mathfrak g}_2(2)=1$ and the cocharacter $\beta^\vee(F^\times)\subset T(F)\subset M(F)$
+acts on $X_{\alpha+\beta}$ with weight $\langle\alpha+\beta,\beta^\vee\rangle=1$,
+the $M(F)$-orbit on $\mathfrak g_2(2)\setminus\{0\}$ is transitive; similarly,
+for the $3$-regular element $X_\beta$, the cocharacter
+$\zeta^\vee(F^\times)\subset T(F)$ acts on $X_\beta$ with weight
+$\langle\beta,\zeta^\vee\rangle=1$. Hence by Rao's theorem the $2$-regular
+unipotent orbit is stable.
 
 A similar calculation shows that the $3$-regular orbit is stable.
 (In fact, replacing $h_{\alpha +\beta}$ and $X_{\alpha +\beta}$
@@ -4835,17 +5032,20 @@ $F$-classes in the stable class when $p\not= 2,3$; see \cite{As98} and
 Remark~\ref{rem:A7}.
 
 \begin{rem26}\label{rem:A7}
-Two points in this section need attention. First, for $\mathcal O_2$
-(the class $\tilde A_1$) the grading defined by $h_{\alpha+\beta}$ is odd,
-so the use of Rao's lemma \cite{Ra72} needs justification; the facts
-$\mathfrak g_2(2)=FX_{\alpha+\beta}$ and $\mathfrak g_2(2)=FX_\beta$ were
-confirmed. Second, the number of $F$-classes in the stable subregular class
-can be computed as follows. The component group of the centralizer of a
-subregular unipotent element is $S_3$, and $H^1(F,G_2)=1$, so the $F$-classes
-correspond to $H^1(F,S_3)$, that is, to isomorphism classes of \'etale cubic
-$F$-algebras. For $p\neq2,3$ there are $8$ of these when $q\equiv1\pmod 3$
-and $6$ when $q\equiv2\pmod3$, not $7$. We have not been able to compare this
-with \cite{As98}.
+Although the grading defined by $h_{\alpha+\beta}$ for $\mathcal O_2=\tilde A_1$
+has odd pieces $\mathfrak g_2(\pm1)$ and $\mathfrak g_2(\pm3)$, Rao's theorem
+\cite[pp.~506--507]{Ra72} applies to any Jacobson--Morozov $\mathfrak{sl}_2$-triple
+without requiring an even grading, and the weight-$1$ cocharacters $\beta^\vee$
+(for $X_{\alpha+\beta}$) and $\zeta^\vee$ (for $X_\beta$) ensure that $M(F)$
+acts transitively on $\mathfrak g_2(2)\setminus\{0\}$ over $F$ (not merely over
+$\ovF$). For the subregular class $G_2(a_1)$, which is distinguished, the
+identity component $\Cent_{G_2}(u)^\circ$ is split unipotent, its component
+group is $S_3$, and $H^1(F,G_2)=1$, so $G_2(F)$-classes in $\mathcal O_1^{st}(F)$
+are in bijection with $H^1(F,S_3)$ (isomorphism classes of \'etale cubic
+$F$-algebras). Counting tame homomorphisms
+$\langle\sigma,\tau\mid\sigma\tau\sigma^{-1}=\tau^q\rangle\to S_3$ modulo
+$S_3$-conjugation for $p\neq2,3$ yields $8$ classes when $q\equiv1\pmod 3$ and
+$6$ classes when $q\equiv2\pmod3$, rather than $7$.
 \end{rem26}
 
 % =====================================================================
@@ -4856,7 +5056,7 @@ with \cite{As98}.
 
 \subsection*{What is proved}
 For $G=G_2$:
-\begin{enumerate}[label=(\arabic*)]
+\begin{enumerate}[(1)]
 \item The monomial variety $Z$ of \S\ref{sec:3} is a normal, Cohen--Macaulay
 affine toric variety (Proposition~\ref{res:3.7}), covered up to codimension
 two by twelve regular patches (Proposition~\ref{res:3.4A}).
@@ -4866,8 +5066,16 @@ $0,1,2,3,6$, and one branch has $\beta=11/3$.
 \item The elliptic endoscopic data of $G_2$ are those of
 Table~\ref{tab:A.6}, with $H_1=PGL(3)$ (short roots) and
 $H_2=(SL(2)\times SL(2))/\{\pm1\}$.
-\item The $2$- and $3$-regular classes are stable (\S\ref{sec:A7}, with the
-caveat of Remark~\ref{rem:A7}).
+\item The $2$- and $3$-regular classes are stable (\S\ref{sec:A7}), their
+base divisors $E_{\emptyset,\alpha,\delta}$ and $E_{\emptyset,\beta,\zeta}$ map
+onto $\overline{\tilde A_1}$ and $\overline{A_1}$ (Lemma~\ref{res:4.4}), and
+their rational Leray fiber forms have homogeneity degrees $2$ and $3$ in $X$
+(\S\S\ref{sec:7}--\ref{sec:8}) and are invariant under the explicit birational
+Galois involutions on the special fiber (Proposition~\ref{res:2.14A}).
+\item In the Chevalley basis of \S A.4, the all-order coordinate expansions of
+Lemma~\ref{res:1.21}, the gallery star relations \eqref{eq:1.21b}--\eqref{eq:1.22},
+and the Galois and Weyl transformations \eqref{eq:2.11}--\eqref{eq:2.17} hold in
+closed form (\S\S\ref{sec:1}--\ref{sec:2}).
 \end{enumerate}
 
 \subsection*{What is reduced to hypotheses}
@@ -4880,7 +5088,7 @@ hypotheses $(\mathrm X_r)$ are in fact true, given those two inputs, because
 the matching is now known \cite{GH16}.
 
 \subsection*{Open problems}
-\begin{enumerate}[label=(\arabic*)]
+\begin{enumerate}[(1)]
 \item Compute $\Delta_0(X)$ and the fiber integrals $I_E(X,u)$ of
 Remark~\ref{rem:main-gap} for $G_2$, and so prove $(\mathrm X_r)$ directly,
 as Hales does for $GSp(4)$ \cite[\S6]{Ha89}. This would give explicit
@@ -4898,12 +5106,16 @@ by short reflections (Table~\ref{tab:A.6}).
 decide Conjecture~\ref{res:3.4}.
 \item Reconcile the count of $F$-classes in the subregular class with
 \cite{As98} (Remark~\ref{rem:A7}).
+\item Decide whether Hales' treatment of the product case
+\cite[Prop.~2.14]{Ha89}, where $H$ is a product $H_1\times H_2$ up to a finite
+center and $T=T_1T_2$, gives a route to $(\mathrm X_1)$ and $(\mathrm X_2)$ for
+$H_2=(SL(2)\times SL(2))/\{\pm1\}$ that avoids Lemma~\ref{res:5.19}.
 \end{enumerate}
 
 % ---------------------------------------------------------------------
 \section*{Glossary}\label{sec:glossary}
 
-\begin{description}[style=nextline,leftmargin=2em]
+\begin{description}
 \item[$\kappa$-orbital integral] The combination
 $\Phi^{T,\kappa}(\gamma,f)=\sum\kappa(\inv(\gamma^0,\gamma'))\Phi(\gamma',f)$
 over the $F$-classes $\gamma'$ in the stable class of a regular semisimple
@@ -4944,16 +5156,25 @@ The original draft (1994) was written by David Joyner. Its appendix draws on
 an unpublished joint paper with D.~Bump. The author thanked M.~Assem and
 T.~Hales for explanations and suggestions, as recorded in the text.
 
-This corrected and expanded draft was prepared in 2026 with Claude (Opus 5.5,
-Anthropic), an AI assistant. Claude transcribed the 1994 sources, refereed
-them, wrote the corrections and the new material marked as Remarks 2026.$n$,
-wrote and ran the verification scripts in \texttt{g2stuff/scripts}, and drafted
-the literature review, summary and glossary. David Joyner directed the work
-and is responsible for the final text. AI review is not an independent
-certification: the computations were checked by scripts, but the mathematical
-arguments, and in particular every statement about sources we could not
-consult, need checking by a specialist. Details of what was checked, and at
-what level, are in the revision log \texttt{g2stuff/revision\_log.md}.
+This corrected and expanded draft was prepared in November 2026 by David
+Joyner with two AI systems, Claude and Gemini, which are listed as
+co-authors: Claude (Anthropic) transcribed the 1994 sources,
+performed the initial refereeing and revision (Draft~1), wrote the verification
+scripts in \texttt{g2stuff/scripts}, and drafted the literature review, summary
+and glossary; Gemini (Google) conducted a second-pass referee audit (Draft~2),
+identifying and repairing the Kirillov--Kostant orbit and Leray fiber forms in
+\S\S\ref{sec:5}, \ref{sec:7} and \ref{sec:8}, the subregular representative in
+\S\ref{sec:6}, the torus identifications in \S A.3, the cone face counts in
+Remark~\ref{rem:exceptional}, and the proofs settling Remarks~\ref{rem:dynkin},
+\ref{rem:4.4} and \ref{rem:A7}, and in a third pass (Draft~3) computed the exact
+star and coordinate expansions \eqref{eq:1.21a}--\eqref{eq:1.22}, the exact
+Galois and Weyl formulas \eqref{eq:2.11}--\eqref{eq:2.17}, and the special-fiber
+Galois involutions (Proposition~\ref{res:2.14A}). David Joyner directed the work and is solely
+responsible for the final text. AI review is not an independent
+certification: the computations were checked by scripts, but the
+mathematical arguments, and every statement about sources that could not be
+consulted, need checking by a specialist. Details of the revision history are recorded in
+\texttt{g2stuff/revision\_log.md}.
 
 % ---------------------------------------------------------------------
 \begin{thebibliography}{Ha92a}

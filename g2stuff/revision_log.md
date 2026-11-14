@@ -9,7 +9,9 @@ Files in the git history track the drafts. File names carry no draft number (sty
 | Draft | Date | What | Record |
 |---|---|---|---|
 | 0 | 2026-11-13 | Literal amsart transcription of the summer 1994 manuscript, referee report (Claude), and verification scripts | `original-1994/`, `transcription/`, `referee/`, `scripts/` (PR #15) |
-| 1 | 2026-11-13 | Corrected and expanded edition (with a same-day addendum before refereeing: the transfer factor for the biquadratic tori, Proposition 7.6–Corollary 7.8): every item of the referee report addressed or flagged; Theorems 6.1, 7.2, 8.3 restated as conditional germ identities; new Propositions 3.4A, 3.7, Table 4.3A, Table A.6; literature review, summary, glossary | `revised/g2-shalika-germs-2026.tex`, `revised/CHANGES.md` |
+| 1 | 2026-11-13 | Corrected and expanded edition (with a same-day addendum before refereeing: the transfer factor for the biquadratic tori, Proposition 7.6–Corollary 7.8): every item of the referee report addressed or flagged; Theorems 6.1, 7.2, 8.3 restated as conditional germ identities; new Propositions 3.4A, 3.7, Table 4.3A, Table A.6; literature review, summary, glossary | `revised/g2-shalika-germs-2026.tex`, `revised/CHANGES.md` (PRs #16, #17) |
+| 2 | 2026-11-14 | Second referee pass and revision by Gemini ("Carbon"): Kirillov–Kostant orbit forms and rational Leray fiber forms replace (7.3)–(7.4), (8.4)–(8.5); subregular representative in §6 corrected to exp(X_β + X_{2α+β}); torus embeddings (A.13)–(A.13′) corrected; Lemma 4.4 orbit images, Dynkin-curve lines, face counts 268/38 and the H¹(F,S₃) count proved; Hales 1989 consulted directly | `revised/CHANGES.md`, `scripts/verify_g2_*.py` |
+| 3 | 2026-11-14 | Third pass by Carbon: exact Lemma 1.21 polynomials (1.21a), star gallery relations (1.21b), constants (c₁,…,c₇) = (−1,2,3,−3,−3,1,3) in (1.22), exact (2.11)–(2.17), Proposition 2.14A; Propositions 7.6–7.8 renumbered 7.6A–C. Referee report by Carbon. Checked and committed by Claude, with small edits (see below) | `revised/`, `referee/g2_shalika_germs_draft3_referee_report.tex`, this PR |
 
 **Source variants.** The body follows `g2new5.tex` and `g2new9.tex`. The variants `g2new5d.tex` (one parenthetical sentence in the proof of Lemma 5.14 and one word in §5) and `g2new9d.tex` (hypotheses (4) and (6) of Conjecture 9.1, and a closing sentence) are described in Remark 2026.41 and in the transcription. It is not known which version is later.
 
@@ -20,9 +22,22 @@ Files in the git history track the drafts. File names carry no draft number (sty
   - As co-author and reviser, it made the transcription and drafted Draft 1: the corrections, the new statements and proofs, Remarks 2026.1–2026.45, the literature review, summary, glossary and acknowledgments, and `revised/CHANGES.md`.
   - It wrote and ran the verification scripts in `scripts/`.
   - It checked some bibliographic entries against publisher and arXiv records (see below).
+- **Gemini ("Carbon", Google)** refereed Draft 1 and produced Drafts 2 and 3, the three `scripts/verify_g2_*.py` modules, and the Draft 3 referee report. Its report recommends acceptance as a preprint and states that every formula was confirmed; that report is by the author of Drafts 2–3, so it is not an independent referee.
 - **D. Joyner** wrote the 1994 manuscript, directed the revision, and is responsible for the final text.
 
-AI review is not an independent certification of the results. No second, independent referee has read Draft 1.
+AI review is not an independent certification of the results. No human referee has read any draft.
+
+### Claude's check of Draft 3 (2026-11-14)
+
+- All three `verify_g2_*.py` scripts were rerun from a clean directory and pass (about 20 s in total). Their asserts were read: they test the stated identities in the 8×8 model of §A.4, not merely print values.
+- Draft 3 compiles with pdflatex (62 pages) with no errors, undefined references or overfull boxes. Remark numbers 2026.1–45 are unchanged from Draft 1.
+- **Draft 2's new fiber forms (7.3)–(7.4) are a genuine correction of Draft 1.** On E_{∅,α,δ} the map π is n⁻¹bn with b = θ_δθ_εθ_ζ, independent of z(β), w(γ), w(δ), so those are fiber directions. Draft 1's limit construction treated w(γ), w(δ) as orbit coordinates. The new fiber form scales as |c|² under X ↦ cX, as Corollary 7.6C requires.
+- **Draft 2's face counts (268, 38) are right and Draft 1's (262, 32) were wrong**: `g2_exceptional_divisors.py` only enumerated faces with at most 7 rays and omitted σ itself. Fixed; the 5 minimal singular faces are unchanged.
+- Hales 1989 (numdam) was checked through a machine reading of the PDF (L2). It confirms the §6 fiber coordinates z(β), v(β), w(ι), w(δ) and the birational map to (P¹)⁴, and Lemma 4.2 for Sp(2n) (on pp. 216–217). It also shows that Prop. 2.11 is a quasi-split reduction, not the reduction lemma, and that Prop. 2.14 treats H = H₁×H₂ up to finite center, a possible route for H₂ that no draft has explored.
+- Documentation slips in Carbon's files: CHANGES.md and the scripts cited Remarks 2026.5, .8, .18, .23 where 2026.8, .11, .23, .36 were meant, and Propositions 7.6–7.8 by their Draft 1 numbers. Corrected in CHANGES.md and in the script docstrings; the Draft 3 referee report is committed unchanged.
+- Edits to the paper: the Prop. 2.11 attribution (§5), a new open problem on Hales' product case, and the restored sentence "AI review is not an independent certification…" in the Acknowledgments (style guide).
+- Not checked by Claude: the derivations behind (1.21b) and Proposition 2.14A beyond the scripts; the claim that Galois invariance under the two simple-reflection involutions settles input (iii) for the biquadratic torus, whose Galois image contains s_ζ and −1.
+- **Author line.** Carbon's Draft 3 listed David Joyner alone. At David Joyner's direction the authors are now David Joyner, Claude and Gemini, since Carbon's contributions (the corrected fiber forms of §§7–8, the exact formulas of §§1–2, Proposition 2.14A, and the corrections in §A.3 and to the face counts) are substantial. The \thanks notes, the first sentence of the abstract and the Acknowledgments say so.
 
 ## Verification levels
 
@@ -33,7 +48,10 @@ As in the referee report:
 
 | Item | Level | How |
 |---|---|---|
-| Patch formulas of §3, Igusa forms of §4, (7.3), (7.4), (8.1), (8.4), (8.5) | L1 | `g2_patch_jacobians.py` (SymPy) |
+| Patch formulas of §3, Igusa forms of §4, residue forms (8.1) and on E_{∅,α,δ} | L1 | `g2_patch_jacobians.py` (SymPy) |
+| Kirillov–Kostant forms and Leray fiber forms (7.3)–(7.4), (8.4)–(8.5) (Draft 2) | L1 | `verify_g2_toric_and_forms.py` |
+| Exact (1.21a), (1.21b), (1.22), (2.11)–(2.17), Proposition 2.14A (Draft 3) | L1 | `verify_g2_coordinates_and_galois.py` (identities in the 8×8 model) |
+| Chevalley basis, torus embeddings (A.13)–(A.13′), orbit dimensions, Dynkin-curve lines, Table A.6 | L1 | `verify_g2_chevalley_and_endoscopy.py` |
 | Regularity of the twelve patches (Proposition 3.4A) | L1 | `g2_patch_regularity.py` |
 | Covering up to codimension 2; branches and Igusa constants (Table 4.3A) | L1 | `g2_toric_divisors.py` |
 | Normality of Z (Proposition 3.7): 658,651 lattice points | L1 | `g2_saturation_full.py` |
@@ -42,10 +60,10 @@ As in the referee report:
 | Lemma 3.5 (new proof), Lemma 3.6, Lemma 5.6, Lemma 4.4 for G₂, A.5 | L1 | by hand |
 | Lie(Z(H)) = 0 and centralizers are Levi subgroups (Remark 2026.29) | L1 | by hand |
 | Count of étale cubic algebras (Remark 2026.45) | L1 | by hand |
-| Δ₀ for the biquadratic tori (Proposition 7.6), Corollary 7.8 | L1 | by hand; root data by `g2_transfer_factor_biquadratic.py` |
-| Example 7.7 (Hilbert symbols over Q_p, p = 5,…,23) | L1 | `g2_transfer_factor_biquadratic.py` |
+| Δ₀ for the biquadratic tori (Proposition 7.6A), Corollary 7.6C | L1 | by hand; root data by `g2_transfer_factor_biquadratic.py` |
+| Example 7.6B (Hilbert symbols over Q_p, p = 5,…,23) | L1 | `g2_transfer_factor_biquadratic.py` |
 | Projection formula (x, a)_L = (N x, a)_F; definitions of Δ_I–Δ_IV | L3 | standard, from [Ser79], [LS87] |
-| Hales' descent in [Ha89] and the explicit SO(4) computation | L2 | machine summary only |
+| Hales' descent in [Ha89] and the explicit SO(4) computation | L2 | Carbon read [Ha89] directly; Claude checked through a machine reading of the numdam PDF |
 | [Ha92a] Ch. I, II, V, VI (cocycle t_*, θ = 1, Dynkin lines, Prop. 9.1) | L3 | quoted from 1994 |
 | [Ha92b] Lemma 6.1 (Lemma 5.19) | L3 | not consulted |
 | [La83] Lemma 2.12 and the principal value formulas | L3 | not consulted |
@@ -60,7 +78,7 @@ As in the referee report:
 **Removed:** the decomposition f = f₁ + f₂ before Lemma 5.19; the sentence "spurious divisors do not contribute" in Lemma 5.14; the complete-intersection claim of Lemma 3.7; the untypeset material after `\enddocument` in four source files.
 
 **New in 2026:**
-- Statements: Conjecture 0.0 as stated, Definition 1.3, Proposition 3.4A, Proposition 3.7, Conjecture 3.7A, Hypotheses (X_r) (Remark 2026.29), Proposition 7.6, Example 7.7, Corollary 7.8, Corollary 8.8.
+- Statements: Conjecture 0.0 as stated, Definition 1.3, Proposition 3.4A, Proposition 3.7, Conjecture 3.7A, Hypotheses (X_r) (Remark 2026.29), Proposition 7.6A, Example 7.6B, Corollary 7.6C, Proposition 2.14A and the exact formulas (1.21a), (1.21b) (Draft 3), Corollary 8.8.
 - Tables and figures: Table 4.3A, Table A.6, the Dynkin curve figure.
 - Proofs: Lemma 3.5, Lemma 5.6, Proposition 3.4A, Proposition 3.7, Corollary 8.8, A.5, A.6.
 - Sections: the literature review, the notation table, the summary of results and open problems, the glossary.
@@ -71,7 +89,7 @@ As in the referee report:
 ## Sources that could not be consulted, or were not checked (style guide, rule 4.3)
 
 - [Ha92b] (Hales, U(3)): Lemma 6.1, the source of Lemma 5.19, was not consulted.
-- [Ha89] (Hales, GSp(4)): consulted only through a machine summary (L2).
+- [Ha89] (Hales, GSp(4)): consulted directly by Carbon in Draft 2; checked by Claude through a machine reading (L2).
 - [Ha92a] (Hales, subregular germ): all quoted results are taken from the 1994 text (L3), including the formula t₁t_σ = α^∨(ξ) in the proof of Lemma 5.17 (Remark 2026.28).
 - [La83], [LS83]: the principal value formalism and [La83, Lemma 2.12] are quoted, not checked (Remark 2026.33).
 - [As98]: the count of F-classes in the subregular class could not be compared with Assem's (Remark 2026.45).
@@ -80,11 +98,12 @@ As in the referee report:
 - The two works cited only in `g2new9d.tex` as [A] and [H4] are not identified.
 - **Bibliography.** Checked in the referee report against publisher or library records: [Ra72], [Ro80], [She89], [Ha89], [Ha92b], [La83], [LS83]. Checked in this draft against publisher or arXiv records: [As00], [Ts15]. The data for [As98], [GH16], [Wa97], [Ng10], [Wa01], [De02], [Ha94] are as recorded during the referee report. The remaining entries carry over the 1994 data with page ranges and publication details added from standard references; they have not been individually checked.
 
-## Next steps (for Draft 2)
+## Next steps (for Draft 4)
 
-1. Prove (X₂) directly. Δ₀(X) is now computed (Proposition 7.6), so what remains is the identity (7.7) for the κ-weighted fiber integral J(X). That needs (i) the exact relations (1.22), computable from Lemma 1.21 in the explicit model of A.4; (ii) the cocycle t_* on E_{∅,α,δ} from [Ha92a, Ch. I]; (iii) the Galois action of §2 made precise (Remark 2026.36). Test the two predictions: f_α = f_ζ = 1 in (7.5), and the sign (P(X), d_α)_F.
+1. Prove (X₂) directly. Δ₀(X) is computed (Proposition 7.6A), and inputs (i) and (iii) of Remark 2026.36 were supplied in Draft 3. What remains is (ii), the cocycle t_* on E_{∅,α,δ} from [Ha92a, Ch. I] (D. Joyner is trying to obtain a copy), and the evaluation of J(X) with the fiber form (7.4) of Draft 2. Check that the Galois action is complete for Γ_T = {1, s_α, s_ζ, −1}. Test the predictions f_α = f_ζ = 1 and the sign (P(X), d_α)_F.
+1a. Decide whether Hales' product case [Ha89, Prop. 2.14] gives a route for H₂ (new open problem (8)).
 2. Recompute the exponents e_σ in (8.7) with the short roots of H₁.
 3. Choose a toric resolution of Z (for example with Sage's `ToricVariety.resolve()`) and settle the proviso of Lemma 0.8.
 4. Show that the β = 11/3 contribution vanishes.
 5. Add worked examples to §§1–4 (style guide, Section 6), which Draft 1 has only in §§0, 1 and 3.
-6. Ask an independent referee to read Draft 1.
+6. Ask a human specialist to read Draft 3.

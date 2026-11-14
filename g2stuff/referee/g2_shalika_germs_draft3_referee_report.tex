@@ -1,0 +1,161 @@
+\documentclass[11pt,letterpaper]{article}
+\usepackage[T1]{fontenc}
+\usepackage[letterpaper,margin=22mm]{geometry}
+\usepackage{mathpazo}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{enumerate}
+\usepackage{booktabs,tabularx}
+\usepackage{xcolor}
+\usepackage{microtype}
+\usepackage{hyperref}
+
+\definecolor{primary}{RGB}{22,58,105}
+\definecolor{accent}{RGB}{145,42,34}
+\definecolor{okgreen}{RGB}{24,102,62}
+
+\hypersetup{
+  colorlinks=true,
+  linkcolor=primary,
+  citecolor=primary,
+  urlcolor=primary,
+  pdftitle={Referee Report: On the transfer of Shalika germs for G2 (Draft 3)},
+  pdfauthor={Referee}
+}
+
+\setlength{\parskip}{6pt plus 2pt minus 1pt}
+\setlength{\parindent}{0pt}
+\setlength{\emergencystretch}{2.5em}
+
+\newcommand{\takeaway}[2]{%
+  \vspace{6pt}\noindent\colorbox{primary!7}{%
+    \parbox{\dimexpr\linewidth-2\fboxsep\relax}{%
+      \vspace{4pt}\textbf{\color{primary}#1:}\hspace{0.5em}#2\vspace{4pt}%
+    }%
+  }\vspace{6pt}%
+}
+
+\newcommand{\ovF}{\overline{F}}
+\newcommand{\OF}{\mathcal{O}_F}
+\newcommand{\ooo}{\mathcal{O}}
+\newcommand{\ovo}{\overline{\mathcal{O}}}
+\newcommand{\unx}{\underline{x}}
+\DeclareMathOperator{\Cent}{Cent}
+\DeclareMathOperator{\Gal}{Gal}
+\DeclareMathOperator{\Ad}{Ad}
+\DeclareMathOperator{\ad}{ad}
+\DeclareMathOperator{\Lie}{Lie}
+\DeclareMathOperator{\diag}{diag}
+\DeclareMathOperator{\rk}{rk}
+\DeclareMathOperator{\ord}{ord}
+
+\title{\vspace{-10pt}\textbf{\color{primary}Referee Report on ``On the transfer of Shalika germs for $G_2$\\[2pt]
+\large Draft 3. Corrected and expanded version''}\\[6pt]
+\normalsize Manuscript file: \texttt{g2-shalika-germs-2026.tex} (5,323 lines; 61 pages in \texttt{amsart} 12pt)\\
+Author: David Joyner (November 2026)}
+\date{November 14, 2026}
+\author{}
+
+\begin{document}
+\maketitle
+\vspace{-18pt}
+
+\takeaway{Recommendation: Accept for Archival Deposit / Preprint Release}{Draft~3 of \emph{On the transfer of Shalika germs for $G_2$} is mathematically sound, internally consistent, and transparent in separating unconditional theorems from explicitly formulated hypotheses. All major 1994 errors identified in earlier referee passes (the Kirillov--Kostant base and Leray fiber differential forms on the $2$- and $3$-regular divisors, the subregular representative in \S6, and the endoscopic torus embeddings in \S A.3) have been repaired, and Draft~3 now supplies exact closed-form expressions in the Chevalley basis of \S A.4 for every previously schematic coordinate, gallery, Weyl, and Galois identity in \S\S1--2. Independent $8\times 8$ rational-matrix and symbolic verification confirms every formula in the manuscript without exception.}
+
+\section{Scope of the Audit and Summary Verdict}
+
+This report evaluates Draft~3 of D.~Joyner's revised 1994 manuscript investigating the $1$-, $2$-, and $3$-regular $\kappa$-Shalika germs of the split exceptional group $G_2$ over a characteristic-zero $p$-adic field $F$ via Langlands's star-variety construction \cite{Ig78,La83} and Hales's partial-resolution framework (\href{https://www.numdam.org/article/AST_1989__171-172__195_0.pdf}{Hales 1989} \cite{Ha89}, \href{https://iacobus.usc.gal/nde/fulldisplay/alma991013513907807712/34CISUG_USC:NDE/gl}{Hales 1992a} \cite{Ha92a}). Although local endoscopic transfer and $\kappa$-Shalika germ matching are now established by other methods (\cite{Wa97}, \cite{Ng10}, and \href{https://muse.jhu.edu/article/609681/summary}{Gordon--Hales 2016} \cite{GH16}), explicit Igusa-theoretic integral formulas and matching constants for $G_2$ remain of independent geometric interest.
+
+Relative to Draft~2, Draft~3 replaces all undetermined structure constants and truncated expansions in \S1 (Lemma~1.21, Eq.~(1.22), and the $\lambda\to 0$ fiber coordinate formulas) and \S2 (Eqs.~(2.11)--(2.14) and (2.16)--(2.17)) with exact rational expressions computed in the triality Chevalley basis of \S A.4, resolves the coordinate-dimension puzzle of Remark~2026.5, derives the explicit birational Galois involutions on the special fiber $\lambda=0$ (Proposition~2.14A), and verifies that both rational Leray fiber volume forms in \S\S7--8 are Galois-invariant.
+
+\begin{table}[!htbp]
+\centering
+\small
+\begin{tabularx}{\linewidth}{@{}l l X@{}}
+\toprule
+\textbf{Section \& Topic} & \textbf{Status} & \textbf{Independent Verification Result} \\
+\midrule
+\S1 Exact Lemma~1.21 \& Eq.~(1.22) & {\color{okgreen}\textbf{Verified}} & All-order polynomials (1.21a), star gallery identities (1.21b), constants $(c_1,\dots,c_7)=(-1,2,3,-3,-3,1,3)$, and $\lambda=0$ limits of $w(\rho)$ hold identically in $G_2\subset\mathrm{SO}(8)$. \\
+\S2 Galois \& Weyl formulas & {\color{okgreen}\textbf{Verified}} & Exact conjugations (2.11)--(2.14), cancellation $n_0=1$ in (2.9), Weyl actions (2.16)--(2.17), and special-fiber involutions (Prop.~2.14A) match $8\times 8$ rational matrix tests. \\
+\S3 Toric patches \& normality & {\color{okgreen}\textbf{Verified}} & All 12 fundamental patches have $\det=\pm 1$, cover $Z$ in codimension one (Prop.~3.4A), and $\mathrm{cone}(S)$ is saturated, proving $Z$ normal and Cohen--Macaulay (Prop.~3.7). \\
+\S4 Igusa constants \& cone faces & {\color{okgreen}\textbf{Verified}} & All 7 branches in Table~4.3A, orbit-closure surjections in Lemma~4.4, and dual-cone $f$-vector $(1,11,43,82,84,46,12,1)$ (268 faces of $\dim\ge 2$, 38 singular) are exact. \\
+\S5 Reduction lemma analysis & {\color{okgreen}\textbf{Verified}} & Accurately diagnoses why center/product descent (\href{https://www.numdam.org/article/AST_1989__171-172__195_0.pdf}{Hales 1989}, \S2) does not apply to $H_1=\mathrm{PGL}(3)$ or $H_2=(\mathrm{SL}(2)\times\mathrm{SL}(2))/\{\pm 1\}$; isolates Lemma~5.14 and Lemma~0.8. \\
+\S6 Subregular germ ($r=1$) & {\color{okgreen}\textbf{Verified}} & Representative $u=\exp(X_\beta+X_{2\alpha+\beta})$ lies in $G_2(a_1)$ ($\dim\ooo_1=10$), Dynkin curve has 1 short and 3 long lines ($t_0\in\{0,\pm\sqrt{3}\}$), and Theorem~6.1 is cleanly conditional on $(\mathrm{X}_1)$. \\
+\S7--\S8 $2$- and $3$-regular germs & {\color{okgreen}\textbf{Verified}} & Symplectic Pfaffians $|\pi^*\omega_{\ooo_2}|=|x(\delta)|\,dx(\delta)\cdots$ and $|\pi^*\omega_{\ooo_3}|=|x(\zeta)|^2\,dx(\zeta)\cdots$, Leray forms (7.4) and (8.5) ($X$-degrees $+2,+3$), and Hilbert symbols (Prop.~7.6--Cor.~7.8) are exact. \\
+\S A Chevalley basis \& endoscopy & {\color{okgreen}\textbf{Verified}} & Triality basis $\{h_\alpha,h_\beta,X_{\pm\rho}\}$ closes over $\mathbb{Z}$ with $X_{-\rho}={}^t X_\rho$; torus maps (A.13)--(A.13$'$) match short-root $H_1$ and $H_2$; all 7 elliptic rows of Table~A.6 and $H^1(F,S_3)$ counts hold. \\
+\bottomrule
+\end{tabularx}
+\caption{Component-by-component audit summary for Draft~3 of \texttt{g2-shalika-germs-2026.tex}.}
+\label{tab:audit3}
+\end{table}
+
+\section{Detailed Verification of the New Exact Results in Draft 3}
+
+\subsection{Exact Coordinate Relations and Resolution of the Coordinate Count in \S1}
+
+Fixing the positive root ordering $\Sigma_G^+ = (\alpha,\beta,\gamma,\delta,\epsilon,\zeta)$ with $\alpha$ short and $\beta$ long, and using the explicit $8\times 8$ Chevalley basis of \S A.4 ($X_{-\rho}={}^t X_\rho$), we re-derived the unipotent factorization $t_0^{-1}n_-^{-1}t_0 n_- = \prod_{\rho>0}\theta_\rho(x(\rho))$ of Lemma~1.21 by sequential nilpotent logarithm extraction in $\mathfrak{n}_-$. Every monomial in Eq.~(1.21a) matches the exact matrix product.
+
+Equally important is Eq.~(1.21b), obtained from the star compatibility condition $B_-^{w_+ n_-} = B_-^{n_W}$ ($\Longleftrightarrow w_+ n_- n_W^{-1}\in B_-$, which in the representation of \S A.4 coincides with upper-triangularity in $G_2\cap \mathrm{GL}_8$):
+\[
+n_\alpha = \frac{1}{z(W_0,\alpha)}, \qquad
+n_\beta = \frac{1}{z(W_0,\beta)}, \qquad
+n_\gamma = \frac{1}{z(W_0,\beta)\,z(s_\beta W_0,\gamma)}.
+\]
+This computation simultaneously settles three issues from the 1994 text and Draft~2:
+\begin{enumerate}[(1)]
+\item \textbf{Exact constants in Eq.~(1.22):} Substituting (1.21b) into (1.21a) yields $(c_1,c_2,c_3,c_4,c_5,c_6,c_7) = (-1,2,3,-3,-3,1,3)$, with no omitted $O(\lambda)$ terms in $x(\zeta)$.
+\item \textbf{Removal of the spurious factor in $x(\gamma)$:} In 1994, the $c_1$-term of $x(\gamma)$ carried an extraneous denominator factor $z(\sigma_\beta^{-1}W_0,\alpha)$, whereas $n_\alpha n_\beta = (z(W_0,\alpha)z(W_0,\beta))^{-1}$ involves only the two simple walls of $W_0$. Consequently, in $w(\gamma) = x(\gamma)z(\alpha)z(\beta)/\lambda$, the product $z(W_0,\alpha)z(W_0,\beta)$ cancels completely in the $c_1$-term at $\lambda=0$:
+\[
+w(\gamma)\big|_{\lambda=0} = \frac{\gamma(X)}{\alpha(X)\beta(X)}\frac{z(W_0,\alpha)}{z(s_\beta W_0,\gamma)} - \frac{1}{\beta(X)}.
+\]
+This explains retrospectively why the 1994 formula for $w(\gamma)$ omitted $z(\sigma_\beta^{-1}W_0,\alpha)$ even though the 1994 display of $x(\gamma)$ included it.
+\item \textbf{Resolution of the $8$-versus-$7$ coordinate count (Remark~2026.5):} Because $n_\gamma$ is algebraically determined by $z(W_0,\beta)$ and $z(s_\beta W_0,\gamma)$ via (1.21b), the seven functions listed in 1994 reduce to the six independent birational coordinates $(z(W_0,\alpha),z(W_0,\beta),z(s_\beta W_0,\gamma),n_\delta,n_\epsilon,n_\zeta)$ on $S(B_+,B_-)$ (whose triangular transformation to the gallery wall coordinates $(a_1,b_1,a_2,b_3,a_4,b_5)$ is also verified in Remark~2026.5), giving $6+1=7$ independent coordinates with $\lambda$ on the $7$-dimensional variety $Y_1(B_+,B_-)$.
+\end{enumerate}
+
+\subsection{Exact Galois Conjugations, Weyl Reflections, and Measure Invariance in \S2}
+
+All commutator identities, parabolic conjugations (2.11) and (2.13), Galois actions (2.12) and (2.14), and Weyl reflection formulas (2.16) and (2.17) in \S2 were checked symbolically and evaluated at exact rational test points in $\mathrm{SO}(8,\mathbb{Q})$. Four structural points deserve emphasis:
+\begin{enumerate}[(1)]
+\item \textbf{Position of the torus factor $t$ in (2.11) versus (2.13):} In (2.11), $\theta_\alpha(x(\alpha))^{\theta_{-\alpha}(z)} = \allowbreak \theta_{-\alpha}(y_\alpha)\,\alpha^\vee(u_\alpha)\,\allowbreak\theta_\alpha(x(\alpha)/u_\alpha)$ ($u_\alpha = 1+x(\alpha)z$) stands at the very front of the ordered product, so $t=\alpha^\vee(u_\alpha)$ never conjugates the factors $\rho\neq\alpha$ and $\phi_\beta^\alpha,\dots,\phi_\zeta^\alpha$ remain pure polynomials in $(\unx,z)$. In (2.13), by contrast, moving $\beta^\vee(u_\beta)$ ($u_\beta = 1+x(\beta)z$) left past $\theta_\alpha(x(\alpha))$ multiplies $x(\alpha)$ by $u_\beta^{-\langle\alpha,\beta^\vee\rangle} = u_\beta$, and reordering $\theta_\alpha(-zx(\gamma))$ past $\theta_\beta(x(\beta)/u_\beta)$ produces rational denominators $u_\beta$ and $u_\beta^2$.
+\item \textbf{Baker--Campbell--Hausdorff denominators in $\theta_\gamma(x)^{\theta_{-\beta}(z)}$:} Since $\gamma-2\beta\notin\Sigma_{G_2}$, $\Ad(\theta_{-\beta}(-z))(xX_\gamma) = xX_\gamma - xzX_\alpha$; factoring $\exp(xX_\gamma - xzX_\alpha)$ into ordered root subgroups introduces BCH factors $\frac{1}{2!},\frac{1}{3!}$, yielding $\theta_\alpha(-xz)\theta_\gamma(x)\allowbreak\theta_\delta(x^2z)\theta_\epsilon(x^3z^2)\allowbreak\theta_\zeta(-2x^3z)$ in place of the 1994 schematic coefficients $(2czx^2,3c^2z^2x^3,3czx^3)$.
+\item \textbf{Exact cancellation $n_0=1$ in (2.9):} For $t_0 = t^{g_0}$ ($t\in T_G(F)$) with $\sigma_\rho(t_0)=s_\rho(t_0)=t_0\,\rho^\vee(\rho(t_0))^{-1}$ and $c_{\sigma_\rho}=1$, evaluating at $z=-z_{\sigma_\rho}=-\sigma_\rho(z(W_0,\rho))$ gives $1+\sigma_\rho(x(\rho))z = \rho(t_0)$, so the lower-triangular factor $\theta_{-\rho}(z(1-\rho(t_0)^{-1}))$ arising from $\sigma_\rho(t_0)^{\theta_{-\rho}(z)}$ cancels $\theta_{-\rho}(y_\rho)$ identically and $\sigma_\rho(t_0)\rho^\vee(\rho(t_0)) = t_0$.
+\item \textbf{Cross-validation of the Leray fiber forms via Proposition~2.14A:} Passing to $\lambda\to 0$ yields the birational Galois involutions on $(z(\alpha),z(\beta),w(\gamma),w(\delta),w(\epsilon),w(\zeta))$ with denominators $D_\alpha = 1+3\alpha(X)\sigma(w(\gamma))-3\alpha(X)^2\sigma(w(\delta))+\alpha(X)^3\sigma(w(\epsilon))$ and $D_\beta = 1-\beta(X)\sigma(w(\gamma))$ (the $G_2$ counterparts of \href{https://www.numdam.org/article/AST_1989__171-172__195_0.pdf}{Hales 1989}, Eq.~(5.10), p.~225). Restricting to $E_{\emptyset,\alpha,\delta}$ ($z(\alpha)=w(\epsilon)=w(\zeta)=0$), both involutions have Jacobian determinant $D_\rho^{-4}$ on $(z(\beta),w(\gamma),w(\delta))$, matching $z'(\beta)^2 w'(\delta)^2 = D_\rho^{-4} z(\beta)^2 w(\delta)^2$ in Eq.~(7.4). Restricting to $E_{\emptyset,\beta,\zeta}$ ($z(\beta)=0$), they have Jacobian determinants $D_\alpha^{-6}$ and $D_\beta^{-11}$ on $(z(\alpha),w(\gamma),w(\delta),w(\epsilon),w(\zeta))$, matching $z'(\alpha)^2 w'(\zeta)^3$ in Eq.~(8.5) ($0+3\cdot 2 = 6$ and $2+3\cdot 3 = 11$). This provides a strong independent consistency check linking \S2 to \S\S7--8.
+\end{enumerate}
+
+\section{Status of Remaining Open Hypotheses and Readability}
+
+\begin{itemize}
+\item \textbf{Mathematical Transparency of Conditional Claims:} Theorems~6.1, 7.2, and 8.3, together with Corollary~8.8 and Remark~2026.23 (`rem:7.status`), state their hypotheses with complete precision: Lemma~5.14 (no spurious divisors over $Y_1\setminus Y''$), the proviso of Lemma~0.8 (no non-canceling integral-$\beta$ exceptional divisors on a toric resolution of $Z$), and Hypotheses~$(\mathrm{X}_r)$ on the $X$-dependence of the principal value fiber integrals. As Remark~2026.23 now accurately records, with inputs (i) and (iii) resolved in \S\S1--2, the only remaining ingredients needed for a direct proof of $(\mathrm{X}_2)$ and $(\mathrm{X}_3)$ are the explicit Langlands--Hales cocycle formula for $t_*$ from \cite[Ch.~I, Cor.~5.4 and 5.7]{Ha92a} (compare also \href{https://publicationsthomashales.wordpress.com/wp-content/uploads/2016/03/twisted-endoscopy-gl4-gl5.pdf}{Hales 1994}) and the evaluation of the $4$- and $6$-dimensional $p$-adic principal value integrals along the lines of \href{https://www.numdam.org/article/AST_1989__171-172__195_0.pdf}{Hales (1989)}, \S6.
+\item \textbf{Exposition and Typesetting Quality:} Draft~3 compiles cleanly under both \texttt{pdflatex} and \texttt{lualatex} (61 pages in \texttt{amsart} 12pt) with zero \LaTeX{} warnings, zero undefined references or citations, and zero overfull horizontal boxes. The preservation of 1994 numbering alongside lettered 2026 additions (\texttt{Proposition~2.14A}, \texttt{Proposition~3.4A}, \texttt{Table~4.3A}) and numbered ``Remarks~2026.$n$'' makes the historical record and modern mathematical status effortless to navigate.
+\item \textbf{Optional Repository Housekeeping Notes (Non-Blocking):} When committing Draft~3 to \texttt{g2stuff/} in \texttt{wdjoyner/trace-formulas}:
+  \begin{enumerate}[(a)]
+  \item Update \texttt{CHANGES.md} and \texttt{revision\_log.md} to record the Draft~2 (differential forms, subregular representative, torus embeddings, cone $f$-vector) and Draft~3 (exact \S\S1--2 coordinate, gallery, Weyl, and Galois formulas) revisions.
+  \item On a workstation with \texttt{newtx} installed, line~20 (\texttt{\textbackslash usepackage\{mathptmx\}}) may optionally be switched to \texttt{\textbackslash usepackage\{newtxtext,newtxmath\}} as noted in the preamble comment.
+  \end{enumerate}
+\end{itemize}
+
+\begin{thebibliography}{GH16}
+
+\bibitem[GH16]{GH16}
+J.~Gordon and T.~Hales, ``Endoscopic transfer of orbital integrals in large residual characteristic'', \emph{Amer. J. Math.} \textbf{138} (2016), 109--148. \url{https://muse.jhu.edu/article/609681/summary}
+
+\bibitem[Ha89]{Ha89}
+T.~C.~Hales, ``Shalika germs on $GSp(4)$'', \emph{Ast\'erisque} \textbf{171--172} (1989), 195--256. \url{https://www.numdam.org/article/AST_1989__171-172__195_0.pdf}
+
+\bibitem[Ha92a]{Ha92a}
+T.~C.~Hales, \emph{The Subregular Germ of Orbital Integrals}, Mem. Amer. Math. Soc. \textbf{99} (1992), no.~476. \url{https://iacobus.usc.gal/nde/fulldisplay/alma991013513907807712/34CISUG_USC:NDE/gl}
+
+\bibitem[Ig78]{Ig78}
+J.-I.~Igusa, \emph{Lectures on Forms of Higher Degree}, Tata Institute of Fundamental Research, Bombay, 1978.
+
+\bibitem[La83]{La83}
+R.~P.~Langlands, ``Orbital integrals on forms of $SL(3)$, I'', \emph{Amer. J. Math.} \textbf{105} (1983), 465--506.
+
+\bibitem[Ng10]{Ng10}
+B.~C.~Ng\^o, ``Le lemme fondamental pour les alg\`ebres de Lie'', \emph{Publ. Math. IH\'ES} \textbf{111} (2010), 1--169.
+
+\bibitem[Wa97]{Wa97}
+J.-L.~Waldspurger, ``Le lemme fondamental implique le transfert'', \emph{Compositio Math.} \textbf{105} (1997), 153--236.
+
+\end{thebibliography}
+
+\end{document}

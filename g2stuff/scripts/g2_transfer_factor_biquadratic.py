@@ -1,6 +1,6 @@
 """The transfer factor Delta_II near the identity for the biquadratic tori of split G_2.
 
-Setting (paper, Section 7, Proposition 7.6).  T is elliptic with Galois image
+Setting (paper, Section 7, Proposition 7.6A).  T is elliptic with Galois image
 Gamma_T = <s_a, s_z> = {1, s_a, s_z, -1} in W(G_2), splitting over K = F(sqrt(d_a), sqrt(d_z)),
 where sqrt(d_a) generates the fixed field of s_z and sqrt(d_z) that of s_a.  For Y in t(F),
     a(Y) = sqrt(d_a) u,   z(Y) = sqrt(d_z) v,   u, v in F,

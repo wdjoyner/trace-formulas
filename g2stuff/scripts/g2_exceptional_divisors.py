@@ -53,7 +53,7 @@ def is_face(idx):
 
 
 faces = []
-for k in range(2, 8):
+for k in range(2, len(U) + 1):  # faces can have more rays than their dimension
     for idx in itertools.combinations(range(len(U)), k):
         if is_face(idx):
             faces.append(idx)
@@ -72,7 +72,8 @@ def smooth(idx):
 sing = [f for f in faces if not smooth(f)]
 # keep minimal singular faces
 minimal = [f for f in sing if not any(set(g) < set(f) for g in sing)]
-print(f"{len(faces)} faces of sigma (dim>=2); {len(sing)} singular; minimal singular faces:")
+print(f"{len(faces) + 1} faces of sigma of dim>=2 (including sigma itself, which is singular); "
+      f"{len(sing) + 1} singular; minimal singular faces:")
 for f in minimal:
     print("  ", [names[i] for i in f])
 

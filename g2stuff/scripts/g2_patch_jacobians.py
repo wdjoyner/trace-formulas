@@ -1,4 +1,8 @@
-"""Check the patch formulas of Section 3 and the Igusa forms of Section 4 (and (8.1), (8.4), (8.5)).
+"""Check the patch formulas of Section 3 and the Igusa forms of Section 4 (and the residue forms (8.1) and on E_(0,a,d)).
+
+NOTE (Draft 3): the orbit forms printed below for (7.3) and (8.4), and hence the fiber forms (7.4), (8.5),
+use the 1994 limit construction, which treats w(gamma), w(delta) as orbit coordinates. Draft 2 replaced them by
+Kirillov-Kostant forms; see verify_g2_toric_and_forms.py. The residue forms omega_E printed here are still valid.
 
 Coordinates on Z: lam w(rho) = x(rho) z(a)^{m_a} z(b)^{m_b}, w(simple) = 1.
 omega_Z = d lam ^ dx(a) ^ dx(b) ^ dx(g) ^ dx(d) ^ dx(e) ^ dx(z).
@@ -77,7 +81,7 @@ s = express(gens, others)[0]
 print("\nLemma 3.5 as printed, S1 = Delta: x(g) =", sp.factor(s[x['g']]), "(not regular at lam = 0)")
 
 # ---- Section 8: E = E_(0,b,z), divisor z_b = 0 on the w(z)!=0 patch ----
-print("\n==== Section 8 checks ====")
+print("\n==== Section 8 checks (residue form valid; (8.4) below is the superseded 1994-style limit) ====")
 gens = [za, zb, w['g'], w['d'], w['e'], w['z'], x['z']]
 others = [c for c in [lam, za, zb] + list(x.values()) + list(w.values()) if c not in gens]
 s = [t for t in express(gens, others) if t.get(lam, 1) != 0][0]
@@ -91,7 +95,7 @@ J = sp.Matrix([[sp.diff(s[x[r]], v) for v in (za, w['g'], w['d'])] for r in 'agd
 print("(8.4) coefficient dx_a dx_g dx_d / lam^2 =", sp.factor(J.det() / s[lam]**2))
 
 
-print("\n==== Section 7 checks (patch Z_(0,a,d), branch z_a = 0) ====")
+print("\n==== Section 7 checks (residue form valid; (7.3), (7.4) below are the superseded 1994-style limits) ====")
 za_, zb_, wg_, wd_, xd_, xe_, xz_ = sp.symbols('z_a z_b w_g w_d x_d x_e x_z', positive=True)
 g7 = [za_, zb_, wg_, wd_, xd_, xe_, xz_]
 lam7 = xd_ * za_**2 * zb_ / wd_

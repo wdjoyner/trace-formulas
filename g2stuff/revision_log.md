@@ -11,6 +11,7 @@ Files in the git history track the drafts. File names carry no draft number (sty
 | 0 | 2026-11-13 | Literal amsart transcription of the summer 1994 manuscript, referee report (Claude), and verification scripts | `original-1994/`, `transcription/`, `referee/`, `scripts/` (PR #15) |
 | 1 | 2026-11-13 | Corrected and expanded edition (with a same-day addendum before refereeing: the transfer factor for the biquadratic tori, Proposition 7.6–Corollary 7.8): every item of the referee report addressed or flagged; Theorems 6.1, 7.2, 8.3 restated as conditional germ identities; new Propositions 3.4A, 3.7, Table 4.3A, Table A.6; literature review, summary, glossary | `revised/g2-shalika-germs-2026.tex`, `revised/CHANGES.md` (PRs #16, #17) |
 | 2 | 2026-11-14 | Second referee pass and revision by Gemini ("Carbon"): Kirillov–Kostant orbit forms and rational Leray fiber forms replace (7.3)–(7.4), (8.4)–(8.5); subregular representative in §6 corrected to exp(X_β + X_{2α+β}); torus embeddings (A.13)–(A.13′) corrected; Lemma 4.4 orbit images, Dynkin-curve lines, face counts 268/38 and the H¹(F,S₃) count proved; Hales 1989 consulted directly | `revised/CHANGES.md`, `scripts/verify_g2_*.py` |
+| 4 | 2026-11-14 | Fourth pass by Claude, after D. Joyner found the TeX version (2016) of Hales' memoir [Ha92a]: Lemma 5.17 proof corrected; Propositions 7.6D–7.6E and Corollary 7.6F (explicit κ(t_*) for the biquadratic tori; the predicted Hilbert symbol appears as a factor); new script `g2_cocycle_biquadratic.py` | `revised/`, this PR |
 | 3 | 2026-11-14 | Third pass by Carbon: exact Lemma 1.21 polynomials (1.21a), star gallery relations (1.21b), constants (c₁,…,c₇) = (−1,2,3,−3,−3,1,3) in (1.22), exact (2.11)–(2.17), Proposition 2.14A; Propositions 7.6–7.8 renumbered 7.6A–C. Referee report by Carbon. Checked and committed by Claude, with small edits (see below) | `revised/`, `referee/g2_shalika_germs_draft3_referee_report.tex`, this PR |
 
 **Source variants.** The body follows `g2new5.tex` and `g2new9.tex`. The variants `g2new5d.tex` (one parenthetical sentence in the proof of Lemma 5.14 and one word in §5) and `g2new9d.tex` (hypotheses (4) and (6) of Conjecture 9.1, and a closing sentence) are described in Remark 2026.41 and in the transcription. It is not known which version is later.
@@ -64,7 +65,10 @@ As in the referee report:
 | Example 7.6B (Hilbert symbols over Q_p, p = 5,…,23) | L1 | `g2_transfer_factor_biquadratic.py` |
 | Projection formula (x, a)_L = (N x, a)_F; definitions of Δ_I–Δ_IV | L3 | standard, from [Ser79], [LS87] |
 | Hales' descent in [Ha89] and the explicit SO(4) computation | L2 | Carbon read [Ha89] directly; Claude checked through a machine reading of the numdam PDF |
-| [Ha92a] Ch. I, II, V, VI (cocycle t_*, θ = 1, Dynkin lines, Prop. 9.1) | L3 | quoted from 1994 |
+| [Ha92a] Ch. I §5 (Eq. 5.3, Cor. 5.4, 5.7, Rem. 5.6), Ch. II §7 (Prop. 7.3), Prop. II.9.1 | S | read in the TeX version (2016) by Claude (Draft 4) |
+| [Ha92a] Ch. V, VI (θ = 1, Dynkin lines, κ(E_α)) | L3 | quoted from 1994; now available to check |
+| Propositions 7.6D–7.6E: cocycle by principal minors, R, Q, leading terms on E_{∅,α,δ} | L1 | `g2_cocycle_biquadratic.py` (symbolic; leading terms checked numerically against exact (1.21a) to 10⁻¹²) |
+| Tate–Nakayama restriction to L in Proposition 7.6D; projection formula in 7.6E | L1/L3 | by hand; standard facts from [Ser79] |
 | [Ha92b] Lemma 6.1 (Lemma 5.19) | L3 | not consulted |
 | [La83] Lemma 2.12 and the principal value formulas | L3 | not consulted |
 | Corollary 8.8 (normalizations in (0.1), Formula 0.6 and [GH16]) | L3 | not checked in detail |
@@ -90,7 +94,7 @@ As in the referee report:
 
 - [Ha92b] (Hales, U(3)): Lemma 6.1, the source of Lemma 5.19, was not consulted.
 - [Ha89] (Hales, GSp(4)): consulted directly by Carbon in Draft 2; checked by Claude through a machine reading (L2).
-- [Ha92a] (Hales, subregular germ): all quoted results are taken from the 1994 text (L3), including the formula t₁t_σ = α^∨(ξ) in the proof of Lemma 5.17 (Remark 2026.28).
+- [Ha92a] (Hales, subregular germ): consulted in Draft 4 (TeX version of 2016). Ch. I §5 and Ch. II §§7, 9 were read. Hales' Prop. II.7.3 agrees with (1.21b) for n_α, n_β, n_γ; the other three were not compared, because the sign conventions differ. Results quoted from Ch. V and VI have not yet been rechecked.
 - [La83], [LS83]: the principal value formalism and [La83, Lemma 2.12] are quoted, not checked (Remark 2026.33).
 - [As98]: the count of F-classes in the subregular class could not be compared with Assem's (Remark 2026.45).
 - [SV00]: cited for the triality theorem without checking the exact formulation (Remark 2026.42).
@@ -98,9 +102,9 @@ As in the referee report:
 - The two works cited only in `g2new9d.tex` as [A] and [H4] are not identified.
 - **Bibliography.** Checked in the referee report against publisher or library records: [Ra72], [Ro80], [She89], [Ha89], [Ha92b], [La83], [LS83]. Checked in this draft against publisher or arXiv records: [As00], [Ts15]. The data for [As98], [GH16], [Wa97], [Ng10], [Wa01], [De02], [Ha94] are as recorded during the referee report. The remaining entries carry over the 1994 data with page ranges and publication details added from standard references; they have not been individually checked.
 
-## Next steps (for Draft 4)
+## Next steps (for Draft 5)
 
-1. Prove (X₂) directly. Δ₀(X) is computed (Proposition 7.6A), and inputs (i) and (iii) of Remark 2026.36 were supplied in Draft 3. What remains is (ii), the cocycle t_* on E_{∅,α,δ} from [Ha92a, Ch. I] (D. Joyner is trying to obtain a copy), and the evaluation of J(X) with the fiber form (7.4) of Draft 2. Check that the Galois action is complete for Γ_T = {1, s_α, s_ζ, −1}. Test the predictions f_α = f_ζ = 1 and the sign (P(X), d_α)_F.
+1. Prove Corollary 7.6F, which is equivalent to (X₂). This needs the twisted Galois action on the fiber coordinates z(β), w(γ), w(δ), v(β) for the elements acting by s_ζ and −1. It can be computed in the 8×8 model from σ(h⁻¹g) = w_σ h⁻¹g, by re-decomposing w_σ t n ν. Then evaluate J′(X) as in Hales 1989 §6.
 1a. Decide whether Hales' product case [Ha89, Prop. 2.14] gives a route for H₂ (new open problem (8)).
 2. Recompute the exponents e_σ in (8.7) with the short roots of H₁.
 3. Choose a toric resolution of Z (for example with Sage's `ToricVariety.resolve()`) and settle the proviso of Lemma 0.8.

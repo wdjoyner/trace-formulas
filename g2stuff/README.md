@@ -30,7 +30,7 @@ g2stuff/
 | `original-1994/g2new5d.tex`, `g2new9d.tex` | Variant versions of §5 and §9. It is not known which version is later. |
 | `transcription/g2_shalika_germs_transcription.tex`, `.pdf` | All sections in one amsart file, 12pt Times, letter paper, 49 pages. It is literal, as in §6.7 of the style guide: errors are kept, and Claude's notes appear only as `% Claude:` comments. The variant passages and the text that follows `\enddocument` in four source files are kept in `\iffalse` blocks, all of which compile when switched on. |
 | `referee/g2_referee_report.tex`, `.pdf` | Referee report by Claude (15 pages): eleven major issues, a table of minor issues and misprints, the results verified as correct, readability, a bibliography check, compliance with the style guide, and notes on the transcription. Every point has a verdict and a verification level (L1–L3). It also serves as the errata log for the transcription. |
-| `revised/g2-shalika-germs-2026.tex`, `.pdf` | **Draft 3. Corrected and expanded version** (62 pages), by David Joyner, Claude and Gemini ("Carbon"). Claude prepared Draft 1 and Carbon Drafts 2–3. Original numbering kept; new items lettered; every change or gap flagged in a Remark 2026.n (45 of them). |
+| `revised/g2-shalika-germs-2026.tex`, `.pdf` | **Draft 4. Corrected and expanded version** (63 pages), by David Joyner, Claude and Gemini ("Carbon"). Claude prepared Drafts 1 and 4, and Carbon Drafts 2–3. Original numbering kept; new items lettered; every change or gap flagged in a Remark 2026.n (45 of them). |
 | `referee/g2_shalika_germs_draft3_referee_report.tex`, `.pdf` | Report on Draft 3 by Carbon (5 pages), the author of Drafts 2–3, so not independent. Recommends release as a preprint. Claude's check of Draft 3 is in `revision_log.md`. |
 | `revised/CHANGES.md` | Changelog for Drafts 2–3 (Carbon), then what Draft 1 did with each item of the 1994 referee report, with a table of the Remarks 2026.n. |
 | `revision_log.md` | Drafts, AI usage, verification levels (L1–L3), original vs. new results, sources not consulted, next steps. |
@@ -41,6 +41,7 @@ g2stuff/
 | `scripts/verify_g2_toric_and_forms.py` | Carbon: cone facets and patches, the face lattice of σ (268 faces of dim ≥ 2, 38 singular), Lemma 4.4 orbit images, Kirillov–Kostant and Leray forms (7.3)–(7.4), (8.4)–(8.5). |
 | `scripts/verify_g2_coordinates_and_galois.py` | Carbon: exact (1.21a), (1.21b), (1.22), (2.11)–(2.17) and Proposition 2.14A in the 8×8 model. |
 | `scripts/g2_exceptional_divisors.py` | The singular torus orbits of Z and candidate exceptional divisors of a toric resolution (face count corrected in Draft 3). |
+| `scripts/g2_cocycle_biquadratic.py` | Draft 4: Hales' cocycle t_* by principal minors, the polynomials R and Q of (7.8), their leading terms on the 2-regular divisor (checked against exact formulas), and the norm identities behind Proposition 7.6E. |
 | `scripts/g2_transfer_factor_biquadratic.py` | The root data behind Proposition 7.6A and the Hilbert symbols of Example 7.6B over Q_p. |
 | `scripts/g2_tori_endoscopy.py` | H¹(F,T) for every elliptic torus of split G₂, and the root system of the endoscopic group for each κ. |
 
@@ -50,7 +51,7 @@ Run them one at a time, for example `python3 g2_tori_endoscopy.py`.
 
 ## Status
 
-**Draft 3 of the corrected edition (November 14, 2026).** Refereed by AI
+**Draft 4 of the corrected edition (November 14, 2026).** Refereed by AI
 systems only (Claude on Draft 1's source, Carbon on Drafts 1 and 3); no human
 referee yet.
 
@@ -70,8 +71,10 @@ referee yet.
   splitting field are ramified (Example 7.6B). (X₂) is reduced to one explicit
   identity, (7.7), for a κ-weighted fiber integral (Corollary 7.6C). Draft 2
   corrected the fiber form (7.4), and Draft 3 computed the coordinate
-  relations (1.22) and the Galois action of §2 exactly; what remains is
-  Hales' cocycle t_* [Ha92a, Ch. I] and the integral itself.
+  relations (1.22) and the Galois action of §2 for simple reflections. Draft 4
+  computed κ(t_*) from Hales' memoir: the predicted Hilbert symbol appears
+  exactly as a factor (Proposition 7.6E), and (X₂) is reduced to the identity
+  of Corollary 7.6F, which needs the Galois action for s_ζ and −1.
 - **Open.** A direct proof of (X_r) (for r = 2: the identity (7.7)); the exceptional divisors of a toric
   resolution (one candidate has β = 2); the vanishing of the β = 11/3 term;
   the quadratic and short-reflection S₃ tori; the count of F-classes in the

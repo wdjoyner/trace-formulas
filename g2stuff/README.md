@@ -1,7 +1,6 @@
 # On the transfer of Shalika germs for G₂
 
-An unpublished manuscript by David Joyner, dated summer 1994, and the first
-steps of its 2026 revision with AI assistance.
+An unpublished manuscript by David Joyner, dated summer 1994, and its corrected and expanded 2026 revision with AI assistance.
 
 The manuscript uses Langlands' Igusa-theoretic method to match the 1-, 2- and
 3-regular κ-Shalika germs of the split exceptional group G₂ with germs on its
@@ -15,9 +14,9 @@ transfer for G₂.
 g2stuff/
 ├── original-1994/   the 1994 AMS-TeX source files, unchanged
 ├── transcription/   literal single-file amsart transcription (no corrections)
-├── referee/         referee report on the 1994 manuscript
-├── scripts/         exact computations used in the referee report and Draft 1
-├── revised/         the corrected edition (Draft 1) and CHANGES.md
+├── referee/         referee reports on the 1994 manuscript and later drafts
+├── scripts/         computational checks accompanying the revised drafts
+├── revised/         corrected edition (currently Draft 5) and CHANGES.md
 ├── revision_log.md  drafts, AI usage, verification levels, sources not consulted
 └── README.md
 ```
@@ -30,9 +29,11 @@ g2stuff/
 | `original-1994/g2new5d.tex`, `g2new9d.tex` | Variant versions of §5 and §9. It is not known which version is later. |
 | `transcription/g2_shalika_germs_transcription.tex`, `.pdf` | All sections in one amsart file, 12pt Times, letter paper, 49 pages. It is literal, as in §6.7 of the style guide: errors are kept, and Claude's notes appear only as `% Claude:` comments. The variant passages and the text that follows `\enddocument` in four source files are kept in `\iffalse` blocks, all of which compile when switched on. |
 | `referee/g2_referee_report.tex`, `.pdf` | Referee report by Claude (15 pages): eleven major issues, a table of minor issues and misprints, the results verified as correct, readability, a bibliography check, compliance with the style guide, and notes on the transcription. Every point has a verdict and a verification level (L1–L3). It also serves as the errata log for the transcription. |
-| `revised/g2-shalika-germs-2026.tex`, `.pdf` | **Draft 4. Corrected and expanded version** (63 pages), by David Joyner, Claude and Gemini ("Carbon"). Claude prepared Drafts 1 and 4, and Carbon Drafts 2–3. Original numbering kept; new items lettered; every change or gap flagged in a Remark 2026.n (45 of them). |
+| `revised/g2-shalika-germs-2026.tex`, `.pdf` | **Draft 5** corrected and expanded edition, by David Joyner, Claude, and Gemini (Carbon), with explicit biquadratic 2-regular computations subject to the manuscript's remaining hypotheses. The source and supplied 69-page PDF are both included. |
 | `referee/g2_shalika_germs_draft3_referee_report.tex`, `.pdf` | Report on Draft 3 by Carbon (5 pages), the author of Drafts 2–3, so not independent. Recommends release as a preprint. Claude's check of Draft 3 is in `revision_log.md`. |
-| `revised/CHANGES.md` | Changelog for Drafts 2–3 (Carbon), then what Draft 1 did with each item of the 1994 referee report, with a table of the Remarks 2026.n. |
+| `revised/CHANGES.md` | Consolidated history of Drafts 1–5 and the 1994 errata; preexisting detailed entries preserved. |
+| `referee/g2_shalika_germs_draft5_referee_report.tex` | Carbon's 3-page Draft 5 referee / verification report (author of this revision; not an independent referee). |
+| `scripts/verify_g2_open_problem_1.py` | Draft 5 SymPy suite: five checks for §6 Pfaffians, §7 identities and birational map, p-adic constants and §8 cocycle / cover. |
 | `revision_log.md` | Drafts, AI usage, verification levels (L1–L3), original vs. new results, sources not consulted, next steps. |
 | `scripts/g2_toric_divisors.py` | Toric structure of the monomial variety Z of §3: every branch of λ = 0 with its Igusa constants a, b, β, and which patches meet which divisors (about 75 s). |
 | `scripts/g2_saturation_full.py` | A complete proof that the semigroup of Z is saturated, so Z is normal for G₂. |
@@ -51,38 +52,12 @@ Run them one at a time, for example `python3 g2_tori_endoscopy.py`.
 
 ## Status
 
-**Draft 4 of the corrected edition (November 14, 2026).** Refereed by AI
-systems only (Claude on Draft 1's source, Carbon on Drafts 1 and 3); no human
-referee yet.
+**Draft 5 of the corrected edition (November 14, 2026).** The editable source and its supplied PDF are in `revised/g2-shalika-germs-2026.tex` and `revised/g2-shalika-germs-2026.pdf`.
 
-- **Proved for G₂ (with exact computations in `scripts/`).** Z is a normal,
-  Cohen–Macaulay toric variety (Proposition 3.7), covered up to codimension
-  two by twelve regular patches (Proposition 3.4A). λ = 0 has exactly seven
-  branches, with the Igusa constants of Table 4.3A. Table A.6 lists all
-  elliptic endoscopic data; the roots of PGL(3) are the short roots.
-- **Conditional.** Theorems 6.1, 7.2 and 8.3 are now germ identities, proved
-  on Hypotheses (X_r) (Remark 2026.29) about how explicit fiber integrals
-  depend on the tangent direction X, plus Lemma 5.14 and the proviso of
-  Lemma 0.8 (exceptional and spurious divisors). Corollary 8.8 notes that
-  (X_r) hold a posteriori, given Gordon–Hales.
-- **The 2-regular case.** For the biquadratic tori the transfer-factor term
-  Δ₀(X) is computed (Proposition 7.6A). It is a Hilbert symbol in the roots
-  outside H, and it is not constant when both quadratic subfields of the
-  splitting field are ramified (Example 7.6B). (X₂) is reduced to one explicit
-  identity, (7.7), for a κ-weighted fiber integral (Corollary 7.6C). Draft 2
-  corrected the fiber form (7.4), and Draft 3 computed the coordinate
-  relations (1.22) and the Galois action of §2 for simple reflections. Draft 4
-  computed κ(t_*) from Hales' memoir: the predicted Hilbert symbol appears
-  exactly as a factor (Proposition 7.6E), and (X₂) is reduced to the identity
-  of Corollary 7.6F, which needs the Galois action for s_ζ and −1.
-- **Open.** A direct proof of (X_r) (for r = 2: the identity (7.7)); the exceptional divisors of a toric
-  resolution (one candidate has β = 2); the vanishing of the β = 11/3 term;
-  the quadratic and short-reflection S₃ tori; the count of F-classes in the
-  subregular class (6 or 8, not 7); whether Hales' product case [Ha89,
-  Prop. 2.14] helps for (SL(2)×SL(2))/{±1}. See "Summary of results and open
-  problems" in the paper and "Next steps" in `revision_log.md`.
+- **Established in the revision, subject to the paper's stated assumptions:** the normal and Cohen–Macaulay toric model, codimension-one patches, special-fiber constants, and the explicit 2-regular biquadratic calculation. Draft 5 constructs a birational map of the 4-dimensional fiber to `(P¹)^4`, evaluates `C'(q)`, and gives a direct argument for `(X₂)` for the biquadratic tori under the remaining hypotheses involving Lemmas 5.14 and 0.8.
+- **Still conditional or open:** the direct `(X₁)` and `(X₃)` calculations, exceptional and spurious divisors, the β = 11/3 contribution, and remaining torus cases. The §8 cubic cocycle and hexagon double cover do not themselves prove `(X₃)`.
+- **Computational check:** the added `verify_g2_open_problem_1.py` passed all five symbolic suites when run on November 14, 2026. This checks the supplied identities but is not an independent mathematical certification.
 
-**The original 1994 manuscript** was refereed once (Claude, November 2026),
-with the verdict major revision; see `referee/`.
+The original 1994 manuscript and earlier drafts remain in Git history and their existing directories. Draft 5's referee / verification report was written by Carbon, which also revised the manuscript. No human referee is represented here.
 
 AI review is not an independent certification of the results.

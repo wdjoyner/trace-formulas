@@ -1,11 +1,11 @@
 # Changelog for `g2-shalika-germs-2026.tex`
 
-**Manuscript:** D. Joyner, *"On the transfer of Shalika germs for $G_2$"*  
+**Manuscript:** D. Joyner, Claude, and Gemini, *"On the transfer of Shalika germs for $G_2$"*  
 **Repository Directory:** `g2stuff/` in `wdjoyner/trace-formulas`  
-**Current Revision:** Draft 4 (November 14, 2026)  
-**Prepared by:** Gemini ("Carbon") for Drafts 2–3; Claude for Draft 1 and for the check of Draft 3 recorded in `../revision_log.md`.
+**Current Revision:** Draft 5 (November 14, 2026)  
+**Prepared by:** Claude for Drafts 1 and 4; Gemini ("Carbon") for Drafts 2, 3 and 5. The verification status is recorded in `../revision_log.md`.
 
-This document records the mathematical corrections, closed-form derivations, structural additions, and typesetting updates made across the 2026 revisions (Drafts 1, 2, and 3) relative to the summer 1994 AMS-TeX sources (`g2new0.tex`–`g2new9.tex`, variants `g2new5d.tex` and `g2new9d.tex`, and `g2newapp.tex`).
+This document records the mathematical corrections, closed-form derivations, structural additions, and typesetting updates made across the 2026 revisions (Drafts 1–5) relative to the summer 1994 AMS-TeX sources (`g2new0.tex`–`g2new9.tex`, variants `g2new5d.tex` and `g2new9d.tex`, and `g2newapp.tex`).
 
 ## Overview of Revision Passes
 
@@ -14,7 +14,38 @@ This document records the mathematical corrections, closed-form derivations, str
 | **Draft 1** | Nov 2026 | Transcription of 1994 AMS-TeX to `amsart` 12pt; proof of toric normality, Cohen–Macaulayness, and codimension-one patch regularity of $Z$ (Propositions 3.4A, 3.7); Table 4.3A of Igusa constants; diagnosis of why Hales's center-descent reduction lemma fails for $G_2$; biquadratic transfer factor $\Delta_0(Y)$ (Proposition 7.6); complete Smith-normal-form table of elliptic tori (Table A.6); literature review, summary, and glossary. |
 | **Draft 2** | Nov 14, 2026 | Second referee pass: repaired misidentified base vs. fiber coordinates in §§5, 7, 8 via Kirillov–Kostant symplectic Pfaffians and rational Leray fiber forms ($X$-degrees $+2$ and $+3$); corrected subregular representative in §6; fixed endoscopic torus embeddings (A.13)–(A.13') in §A.3; proved Lemma 4.4 orbit images, subregular Dynkin curve line types (§2), dual cone $f$-vector `(1,11,43,82,84,46,12,1)`, and $H^1(F,S_3)$ subregular class counts; ensured portable `pdflatex` and `lualatex` compilation without `enumitem`. |
 | **Draft 4** | Nov 14, 2026 | Fourth pass (Claude), using Hales' memoir: Lemma 5.17 proof corrected (Cor. I.5.4, trivial inner twist); explicit κ(t_*) for the biquadratic tori (Propositions 7.6D–7.6E), showing the predicted Hilbert symbol (P(X), d_α)_F is a factor of κ₁(t_*) on the 2-regular divisor; (X₂) reduced to Corollary 7.6F. |
+| **Draft 5** | Nov 14, 2026 | Fifth pass (Open Problem 1): proved `Prop. 7.6E` symbolically from `(1.21a)` and repaired an inverted exponent in `(7.10)` ($\Phi_E = \frac{x(\delta)^2}{w(\delta)^2}F_1 F_2 \in L^\times$); computed the exact $\Omega(G_2)$ action on $E_{\emptyset,\alpha,\delta}(u_0)$ (`Prop. 7.6G`); constructed an explicit birational map $E_{\emptyset,\alpha,\delta}(u_0) \dashrightarrow (\mathbb{P}^1)^4$ after [Hales 1989](https://www.numdam.org/article/AST_1989__171-172__195_0.pdf) (§6), proving `Corollary 7.6F` and Hypothesis $(\mathrm{X}_2)$ directly and evaluating the exact $p$-adic constant $C'(q)$ (`Theorem 7.6H`); verified subregular Kirillov–Kostant Pfaffians and fixed double-counted tangent factors in `(6.5a)`–`(6.5b)`; proved $\Delta_0(Y)=\text{const}$, computed $\kappa_1(t_*)$, and constructed an $\Omega(G_2)$-equivariant degree-$2$ hexagon cover over $(\mathbb{P}^1)^6$ for the cubic tori in §8 (`Props. 8.3A`–`8.3E`). |
 | **Draft 3** | Nov 14, 2026 | Third pass: computed exact all-order Lemma 1.21 polynomials `(1.21a)`, exact star gallery identities `(1.21b)`, and exact constants $(c_1,\dots,c_7)=(-1,2,3,-3,-3,1,3)$ in `(1.22)` (resolving the 8-vs.-7 coordinate count of Remark 2026.8); computed exact Chevalley commutators, parabolic conjugations `(2.11)` and `(2.13)`, Galois actions `(2.12)` and `(2.14)` (with $n_0=1$ identically), Weyl conjugations `(2.16)`–`(2.17)`, and special-fiber Galois involutions (Proposition 2.14A), proving $D_6$-Galois invariance of both Leray fiber volume forms `(7.4)` and `(8.5)`. |
+
+## Draft 5 Changes (Direct Proof of $(\mathrm{X}_2)$, $p$-adic Matching Constant $C'(q)$, and Cubic Torus Cocycle)
+
+1. **Section 7 — Symbolic Proof of `Proposition 7.6E`, Explicit Polynomial $G$, and Exponent Repair in `Eq. (7.10)`:**
+   * Replaced the numerical check of `Proposition 7.6E` with an exact formal Laurent series derivation in $z(\alpha)$ directly from the all-order identities `(1.21a)` (with $L = x(\delta)z(\beta)/w(\delta)$, $x(\epsilon)$, $x(\zeta)$ free), and recorded the compact closed form of the degree-$6$ numerator polynomial $G$ in $Q_E = F_2 G / (\beta\gamma^3\delta^3\epsilon\zeta^2 z(\beta)^4)$:
+     $$G = F_0 F_1 F_2 - \zeta\bigl(\beta\gamma w(\delta) - 2F_0\bigr)\bigl(\alpha\epsilon w(\gamma)w(\delta) - 2\delta w(\delta) - w(\gamma)F_0\bigr), \qquad F_0 := 1 + \beta w(\gamma).$$
+   * **Repaired `Eq. (7.10)`:** Since $\lambda = x(\delta)z(\alpha)^2 z(\beta)/w(\delta)$, inverting $z(\alpha)^2 = \lambda w(\delta)/(x(\delta)z(\beta))$ gives $z(\alpha)^{-4} = \lambda^{-2} x(\delta)^2 z(\beta)^2 / w(\delta)^2$ (Draft 4 had written $\lambda^{-2} w(\delta)^2/(x(\delta)^2 z(\beta)^2)$ without inverting the second fraction). Multiplying by $R_E$ cancels $z(\beta)^2$ identically and yields
+     $$\Phi_E = \frac{x(\delta)^2}{w(\delta)^2}\,F_1 F_2 \in L^\times,$$
+     which is genuinely fixed by $\tau = \sigma_{-1}$ on the fiber and independent of $(z(\beta), v(\beta))$.
+
+2. **Section 7 — Exact $\Omega(G_2) \cong D_6$ Action on the $4$-Dimensional Fiber (`Proposition 7.6G`):**
+   * Over $u_0 = \theta_\delta(1) \in \mathcal{O}_2(F)$, showed that $b n_+ = n_+ u_0$ cuts out $x(\delta)=1$, $x(\epsilon)=x(\zeta)=0$, and $v(\alpha)=v(\gamma)=v(\delta)=v(\epsilon)=v(\zeta)=0$, leaving $(z(\beta), w(\gamma), w(\delta), \xi := v(\beta))$ with $s_\alpha^*(\xi) = \xi$ and $s_\beta^*(\xi) = \xi + \beta z(\beta)$.
+   * Computed the exact factored pullbacks under the non-simple biquadratic elements $-1 = (s_\alpha s_\beta)^3$ and $s_\zeta = s_\alpha(-1)$, establishing $(-1)^*(\xi) = \xi + \frac{H}{G} z(\beta)$ with $H = \zeta(\beta\gamma w(\delta) - 2F_0)(\gamma\zeta w(\delta) - F_0)$, $(-1)^*(\Phi_E|_{u_0}) = \Phi_E|_{u_0}$, and $s_\alpha^*(\Phi_E|_{u_0}) = s_\zeta^*(\Phi_E|_{u_0}) = F_0 F_2 / w(\delta)^2$.
+
+3. **Section 7 — Birational Trivialization to $(\mathbb{P}^1)^4$, Direct Proof of `Corollary 7.6F` / $(\mathrm{X}_2)$, and Explicit Constant $C'(q)$ (`Theorem 7.6H` & `Theorem 7.2`):**
+   * Constructed the degree-$1$ birational isomorphism $\Psi_X : E_{\emptyset,\alpha,\delta}(u_0) \dashrightarrow (\mathbb{P}^1)^4$ (the $G_2$ analogue of [Hales 1989](https://www.numdam.org/article/AST_1989__171-172__195_0.pdf), §6, Eqs. (6.7)–(6.9), pp. 242–243):
+     $$U := \frac{F_1}{F_0}, \qquad V := \frac{G}{F_0 F_1 F_2}, \qquad \xi_1 := \xi, \qquad \xi_2 := (-1)^*(\xi) = \xi + \frac{H}{G}\,z(\beta).$$
+   * Proved that $\omega_{E_{\emptyset,\alpha,\delta}(u_0)} = \pm\alpha(X)\zeta(X)\frac{dU}{(U-1)^2}\wedge\frac{dV}{V}\wedge\frac{d\xi_1\wedge d\xi_2}{(\xi_1-\xi_2)^2}$ and that $\Gamma_T = \{1, s_\alpha, s_\zeta, -1\}$ acts on $(U, V, \xi_1, \xi_2)$ with zero $X$-dependence, identifying $E_{\emptyset,\alpha,\delta}(u_0)(F)$ birationally with $T^1_{L/F}(F) \times T^1_{K_\zeta/F}(F) \times \mathbb{P}^1(K_\zeta)$ ($K_\zeta = F(\sqrt{d_\zeta})$).
+   * Under the Cayley parameterization $U = (t + \delta_L)/(t - \delta_L)$ ($t \in F$, $\delta_L = \sqrt{d_\alpha d_\zeta}$), proved $\Phi_E|_{u_0} = \frac{uv}{8}(2uvt + d_\zeta v^2 - 3d_\alpha u^2)(t + \delta_L)$, so $\omega_{K/L}(\Phi_E|_{u_0}) = (t^2 - d_\alpha d_\zeta, d_\alpha)_F$ is pointwise independent of $X$.
+   * Using the regularity of the Langlands–Shelstad boundary factors ([Langlands & Shelstad 1984](https://www.numdam.org/article/AST_1989__171-172__195_0.pdf)) under the divisor proviso of Lemma 0.8, evaluated all three $p$-adic factors explicitly for $p \ge 5$, obtaining `Eq. (7.13)`: $C' = 4(q+1)q^{-5/2}$ when $L/F$ is ramified and $C' = 2(q+1)^2 q^{-3}$ when $L/F$ is unramified. Removed Hypothesis $(\mathrm{X}_2)$ from the assumptions of `Theorem 7.2`.
+
+4. **Section 6 — Verification of Subregular Kirillov–Kostant $10$-Forms and Repair of `(6.5a)`–`(6.5b)` (`Remark 6.5`):**
+   * Computed the Kirillov–Kostant symplectic Pfaffians on $\mathcal{O}_1$ along $E_\beta$ and $E_\alpha$ in the $8\times 8$ model of §A.4, finding nonzero constants $288$ and $864$.
+   * Repaired the 1994 double-counting of $\alpha(X)$ and $\beta(X)$ in $\omega_{E_\beta(u)}$, $\omega_{E_\alpha(u)}$, and `(6.5a)`–`(6.5b)`: since $z(\alpha) = z(W_0,\alpha)/\alpha(X)$ already scales as $c^{-1}$, $\omega_{E_\beta(u)} = \pm dv(\alpha)\wedge\frac{dz(\alpha)}{z(\alpha)^2} = \pm\alpha(X)\,dv(\alpha)\wedge\frac{dz(W_0,\alpha)}{z(W_0,\alpha)^2}$, restoring exact $X$-homogeneity degree $+1$.
+
+5. **Section 8 — Cubic Tori ($r=3$): Transfer Factor, Explicit Cocycle $\kappa_1(t_*)$, and Hexagon Double Cover (`Propositions 8.3A`–`8.3E`):**
+   * Proved $\Delta_{II}(\exp Y) = 1$ and $\Delta_0(Y) = \text{const}$ near $0$ for both cyclic order-$3$ and short-reflection $S_3$ tori (`Proposition 8.3A`), reducing $(\mathrm{X}_3)$ to $J_3(X) = C_3 |\alpha(X)\gamma(X)\delta(X)|$ (`Corollary 8.3B`).
+   * Computed the exact Bruhat torus factors `(8.7b)` for $w^2$ and $w^4$, proved $\kappa(t_*) = c\cdot\omega_{K/F}(q_2 p_2^{-1}\tau^2(p_2))$ via $1 \to \mathbb{G}_m \to \mathrm{Res}_{K/F}\mathbb{G}_m \to T_G \to 1$ (`Proposition 8.3C`), and proved on $E_{\emptyset,\beta,\zeta}(F)$ that $\theta = 1$, all root factors assemble into norms in $N_{K/F}(K^\times)$, and $\kappa_1(t_*) = c'\cdot\omega_{K/F}^{-1}(\tilde{\Phi}_{E,3})$ with $\tilde{\Phi}_{E,3} = \frac{z(\alpha)^3}{x(\zeta)^3 w(\zeta)^3}\bigl(\frac{Q_1 Q_2}{P_1 P_2}\bigr)^2 \in F^\times$ (`Proposition 8.3D`).
+   * Proved that the six $\Omega(G_2)$-translates $(\eta_0,\dots,\eta_5)$ of $\eta = v(\alpha)$ define an $\Omega(G_2)$-equivariant degree-$2$ branched cover $E_{\emptyset,\beta,\zeta}(u_0) \dashrightarrow (\mathbb{P}^1)^6$ cut out by $y_{\mathrm{hex}}^2 = (m_1 + m_2)^2 - 4 d_{024} d_{135}$ (`Proposition 8.3E`).
+
 
 ## Draft 4 Changes (Hales' cocycle and the character κ(t_*); by Claude)
 
@@ -95,6 +126,8 @@ All computations in Draft 3 use the fixed positive root ordering $\Sigma_G^+ = (
 | `verify_g2_chevalley_and_endoscopy.py` | `sympy` | Root/coroot lattices, Weyl subgroups & Table A.6 SNF; §A.4 Chevalley basis over $\mathbb{Z}$; §A.3 torus embeddings `(A.13)`–`(A.13')`; orbit dimensions & $\mathfrak{sl}_2$-triples; Bruhat-cell proof of Figure 1 Dynkin curve; §7 Legendre symbols ($5 \le p \le 23$). |
 | `verify_g2_toric_and_forms.py` | `sympy`, `numpy`, `scipy` | Cone facets, §3–§4 regular patches (`Prop. 3.4A`), Igusa constants (`Table 4.3A`); LP enumeration of dual cone $\sigma$ $f$-vector `(1,11,43,82,84,46,12,1)` (`268` faces of $\dim\ge 2$, `38` singular, `5` minimal); `Lemma 4.4` orbit ranks; Kirillov–Kostant Pfaffians & Leray fiber forms `(7.3)`–`(7.4)` and `(8.4)`–`(8.5)`. |
 | `verify_g2_coordinates_and_galois.py` | `sympy` | Exact all-order Lemma 1.21 (`(1.21a)`), gallery relations (`(1.21b)` & `Remark 2026.8`), constants in `(1.22)` & $w(\rho)|_{\lambda=0}$; exact $8\times 8$ rational-matrix verification of `(2.11)`–`(2.14)` ($n_0=1$) and `(2.16)`–`(2.17)`; `Proposition 2.14A` involutions & pullback invariance of `(7.4)` and `(8.5)`. |
+
+New for Draft 5: `../scripts/verify_g2_open_problem_1.py` checks the algebraic formulas, biquadratic birational map and p-adic constants, and the cubic-torus cocycle. On 2026-11-14 all five supplied test suites passed under SymPy 1.14.0 (execution of the supplied assertions, not an independent mathematical referee).
 
 ## Small edits made by Claude when committing Draft 3 (Nov 14, 2026)
 

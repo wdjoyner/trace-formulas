@@ -11,10 +11,13 @@ Files in the git history track the drafts. File names carry no draft number (sty
 | 0 | 2026-11-13 | Literal amsart transcription of the summer 1994 manuscript, referee report (Claude), and verification scripts | `original-1994/`, `transcription/`, `referee/`, `scripts/` (PR #15) |
 | 1 | 2026-11-13 | Corrected and expanded edition (with a same-day addendum before refereeing: the transfer factor for the biquadratic tori, Proposition 7.6–Corollary 7.8): every item of the referee report addressed or flagged; Theorems 6.1, 7.2, 8.3 restated as conditional germ identities; new Propositions 3.4A, 3.7, Table 4.3A, Table A.6; literature review, summary, glossary | `revised/g2-shalika-germs-2026.tex`, `revised/CHANGES.md` (PRs #16, #17) |
 | 2 | 2026-11-14 | Second referee pass and revision by Gemini ("Carbon"): Kirillov–Kostant orbit forms and rational Leray fiber forms replace (7.3)–(7.4), (8.4)–(8.5); subregular representative in §6 corrected to exp(X_β + X_{2α+β}); torus embeddings (A.13)–(A.13′) corrected; Lemma 4.4 orbit images, Dynkin-curve lines, face counts 268/38 and the H¹(F,S₃) count proved; Hales 1989 consulted directly | `revised/CHANGES.md`, `scripts/verify_g2_*.py` |
-| 4 | 2026-11-14 | Fourth pass by Claude, after D. Joyner found the TeX version (2016) of Hales' memoir [Ha92a]: Lemma 5.17 proof corrected; Propositions 7.6D–7.6E and Corollary 7.6F (explicit κ(t_*) for the biquadratic tori; the predicted Hilbert symbol appears as a factor); new script `g2_cocycle_biquadratic.py` | `revised/`, this PR |
 | 3 | 2026-11-14 | Third pass by Carbon: exact Lemma 1.21 polynomials (1.21a), star gallery relations (1.21b), constants (c₁,…,c₇) = (−1,2,3,−3,−3,1,3) in (1.22), exact (2.11)–(2.17), Proposition 2.14A; Propositions 7.6–7.8 renumbered 7.6A–C. Referee report by Carbon. Checked and committed by Claude, with small edits (see below) | `revised/`, `referee/g2_shalika_germs_draft3_referee_report.tex`, this PR |
+| 4 | 2026-11-14 | Fourth pass by Claude, after D. Joyner found the TeX version (2016) of Hales' memoir [Ha92a]: Lemma 5.17 proof corrected; Propositions 7.6D–7.6E and Corollary 7.6F (explicit κ(t_*) for the biquadratic tori; the predicted Hilbert symbol appears as a factor); new script `g2_cocycle_biquadratic.py` | `revised/`, this PR |
+| 5 | 2026-11-14 | Fifth pass by Gemini ("Carbon"): the inversion correction in (7.10), direct construction of the biquadratic fiber birational map and proof of (X₂) modulo Lemmas 5.14 and 0.8, explicit C′(q), and cubic cocycle / hexagon-cover computation. The companion code passed five SymPy suites when executed during repository update. | `revised/`, `referee/g2_shalika_germs_draft5_referee_report.tex`, `scripts/verify_g2_open_problem_1.py`, `revised/CHANGES.md` |
 
 **Source variants.** The body follows `g2new5.tex` and `g2new9.tex`. The variants `g2new5d.tex` (one parenthetical sentence in the proof of Lemma 5.14 and one word in §5) and `g2new9d.tex` (hypotheses (4) and (6) of Conjecture 9.1, and a closing sentence) are described in Remark 2026.41 and in the transcription. It is not known which version is later.
+
+**Draft 5 upload check (2026-11-14).** The supplied `g2_shalika_germs_2026.tex` compiled with `pdflatex` in this environment; the supplied `verify_g2_open_problem_1.py` completed all five assertions suites under SymPy 1.14.0. Execution of another AI's assertions is not an independent proof of every claim. The Carbon Draft 5 referee report is included as an AI-authored report, not an independent certification. The uploaded PDF differs in pagination from our local build; source is authoritative.
 
 ## AI usage
 
@@ -24,6 +27,7 @@ Files in the git history track the drafts. File names carry no draft number (sty
   - It wrote and ran the verification scripts in `scripts/`.
   - It checked some bibliographic entries against publisher and arXiv records (see below).
 - **Gemini ("Carbon", Google)** refereed Draft 1 and produced Drafts 2 and 3, the three `scripts/verify_g2_*.py` modules, and the Draft 3 referee report. Its report recommends acceptance as a preprint and states that every formula was confirmed; that report is by the author of Drafts 2–3, so it is not an independent referee.
+- **Gemini ("Carbon")** also prepared Draft 5, its verification program, changelog entry and associated referee / verification report. It assesses its own revision and should not be treated as an independent referee.
 - **D. Joyner** wrote the 1994 manuscript, directed the revision, and is responsible for the final text.
 
 AI review is not an independent certification of the results. No human referee has read any draft.
@@ -67,6 +71,7 @@ As in the referee report:
 | Hales' descent in [Ha89] and the explicit SO(4) computation | L2 | Carbon read [Ha89] directly; Claude checked through a machine reading of the numdam PDF |
 | [Ha92a] Ch. I §5 (Eq. 5.3, Cor. 5.4, 5.7, Rem. 5.6), Ch. II §7 (Prop. 7.3), Prop. II.9.1 | S | read in the TeX version (2016) by Claude (Draft 4) |
 | [Ha92a] Ch. V, VI (θ = 1, Dynkin lines, κ(E_α)) | L3 | quoted from 1994; now available to check |
+| Draft 5: (7.10) inversion, (X₂) fiber map, C′(q), cubic cocycle, hexagon cover | L1 for executable identities only | `verify_g2_open_problem_1.py` (all five suites executed on 2026-11-14); geometric and analytic completeness not independently certified |
 | Propositions 7.6D–7.6E: cocycle by principal minors, R, Q, leading terms on E_{∅,α,δ} | L1 | `g2_cocycle_biquadratic.py` (symbolic; leading terms checked numerically against exact (1.21a) to 10⁻¹²) |
 | Tate–Nakayama restriction to L in Proposition 7.6D; projection formula in 7.6E | L1/L3 | by hand; standard facts from [Ser79] |
 | [Ha92b] Lemma 6.1 (Lemma 5.19) | L3 | not consulted |
@@ -102,12 +107,10 @@ As in the referee report:
 - The two works cited only in `g2new9d.tex` as [A] and [H4] are not identified.
 - **Bibliography.** Checked in the referee report against publisher or library records: [Ra72], [Ro80], [She89], [Ha89], [Ha92b], [La83], [LS83]. Checked in this draft against publisher or arXiv records: [As00], [Ts15]. The data for [As98], [GH16], [Wa97], [Ng10], [Wa01], [De02], [Ha94] are as recorded during the referee report. The remaining entries carry over the 1994 data with page ranges and publication details added from standard references; they have not been individually checked.
 
-## Next steps (for Draft 5)
+## Next steps (after Draft 5)
 
-1. Prove Corollary 7.6F, which is equivalent to (X₂). This needs the twisted Galois action on the fiber coordinates z(β), w(γ), w(δ), v(β) for the elements acting by s_ζ and −1. It can be computed in the 8×8 model from σ(h⁻¹g) = w_σ h⁻¹g, by re-decomposing w_σ t n ν. Then evaluate J′(X) as in Hales 1989 §6.
-1a. Decide whether Hales' product case [Ha89, Prop. 2.14] gives a route for H₂ (new open problem (8)).
-2. Recompute the exponents e_σ in (8.7) with the short roots of H₁.
-3. Choose a toric resolution of Z (for example with Sage's `ToricVariety.resolve()`) and settle the proviso of Lemma 0.8.
-4. Show that the β = 11/3 contribution vanishes.
-5. Add worked examples to §§1–4 (style guide, Section 6), which Draft 1 has only in §§0, 1 and 3.
-6. Ask a human specialist to read Draft 3.
+1. Seek an independent mathematical review of the new birational, descent, and p-adic integration arguments of §7, including the assumptions of Lemmas 5.14 and 0.8. Passing symbolic assertions is not a substitute for such review.
+2. Settle (X₁) for the 1-regular germ and (X₃) for the 3-regular germ; the §8 hexagon double-cover construction does not yet evaluate J₃(X).
+3. Resolve the exceptional/spurious divisor proviso (Lemma 0.8) and the β = 11/3 branch contribution.
+4. Revisit outstanding cases of elliptic tori and the product-group comparison from Hales, with checked citations.
+5. Request a human specialist referee, and add further worked examples for non-specialists.

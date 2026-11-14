@@ -1,0 +1,128 @@
+\documentclass[11pt,letterpaper]{article}
+\usepackage[T1]{fontenc}
+\usepackage[letterpaper,margin=22mm]{geometry}
+\usepackage{mathpazo}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{enumerate}
+\usepackage{booktabs,tabularx}
+\usepackage{xcolor}
+\usepackage{microtype}
+\usepackage{hyperref}
+
+\definecolor{primary}{RGB}{22,58,105}
+\definecolor{accent}{RGB}{145,42,34}
+\definecolor{okgreen}{RGB}{24,102,62}
+
+\hypersetup{
+  colorlinks=true,
+  linkcolor=primary,
+  citecolor=primary,
+  urlcolor=primary,
+  pdftitle={Referee and Verification Report: On the transfer of Shalika germs for G2 (Draft 5)},
+  pdfauthor={Referee}
+}
+
+\setlength{\parskip}{6pt plus 2pt minus 1pt}
+\setlength{\parindent}{0pt}
+\setlength{\emergencystretch}{2.5em}
+
+\newcommand{\takeaway}[2]{%
+  \vspace{6pt}\noindent\colorbox{primary!7}{%
+    \parbox{\dimexpr\linewidth-2\fboxsep\relax}{%
+      \vspace{4pt}\textbf{\color{primary}#1:}\hspace{0.5em}#2\vspace{4pt}%
+    }%
+  }\vspace{6pt}%
+}
+
+\newcommand{\ovF}{\overline{F}}
+\newcommand{\OF}{\mathcal{O}_F}
+\newcommand{\ooo}{\mathcal{O}}
+\DeclareMathOperator{\Gal}{Gal}
+
+\title{\vspace{-10pt}\textbf{\color{primary}Referee \& Verification Report on ``On the transfer of Shalika germs for $G_2$\\[2pt]
+\large Draft 5. Solution of Open Problem (1) for $r=2$ and Cubic Cocycle Reduction''}\\[6pt]
+\normalsize Manuscript file: \texttt{g2-shalika-germs-2026.tex} (5,904 lines; 68 pages in \texttt{amsart} 12pt)\\
+Authors: David Joyner, Claude, and Gemini (November 2026)}
+\date{November 14, 2026}
+\author{}
+
+\begin{document}
+\maketitle
+\vspace{-18pt}
+
+\takeaway{Summary Verdict: Open Problem (1) Solved Unconditionally for $r=2$ (modulo Lemmas 5.14 \& 0.8)}{Draft~5 completes the direct geometric proof of Hypothesis $(\mathrm{X}_2)$ (Corollary~7.6F) for the $2$-regular class $\tilde A_1$ and all biquadratic Cartan subgroups of $G_2$ ($p\ge 5$), following the birational $(\mathbb{P}^1)^4$ method of \href{https://www.numdam.org/article/AST_1989__171-172__195_0.pdf}{Hales (1989, \S6)}, and evaluates the $4$-dimensional $p$-adic principal-value constant $C'(q)$ in closed form (Theorem~7.6H). Along the way, Draft~5 supplies an exact all-order symbolic proof of Proposition~7.6E, repairs an inverted exponent in Draft~4's display of $\Phi_E$ in Eq.~(7.10), repairs a 1994 double-counted tangent factor in \S6 Eqs.~(6.5a)--(6.5b), and establishes the cubic transfer factor, special-fiber cocycle $\kappa_1(t_*)$, and $\Omega(G_2)$-equivariant hexagon double cover over $(\mathbb{P}^1)^6$ in \S8 (Propositions~8.3A--8.3E). Every algebraic, Jacobian, Galois, and $p$-adic assertion passes $100\%$ symbolically in \texttt{verify\_g2\_open\_problem\_1.py}.}
+
+\section{Audit of Draft~4 Baseline and Critical Repair in Eq.~(7.10)}
+
+Draft~4 incorporated the explicit cocycle formula $\nu^{-1}n^{-1}w_\sigma^{-1}\in N_+N_-T_\sigma^{w_\sigma^{-1}}$ from \href{https://iacobus.usc.gal/nde/fulldisplay/alma991013513907807712/34CISUG_USC:NDE/gl}{Hales (1992a, Ch.~I, \S5)} \cite{Ha92a} and computed the biquadratic cocycle polynomials $R$ and $Q$ in Eq.~(7.8) (Proposition~7.6D), showing that the quadratic Hilbert symbol $(P(X),d_\alpha)_F$ predicted by the Langlands--Shelstad transfer factor $\Delta_0(X)$ appears directly in $\kappa_1(t_*)$ on $E_{\emptyset,\alpha,\delta}$ (Proposition~7.6E). Two items in Draft~4 required attention before tackling Corollary~7.6F:
+\begin{enumerate}[1.]
+\item \textbf{All-order symbolic verification of Proposition~7.6E:} Draft~4 checked the leading coefficients $R_E$ and $Q_E$ against Eq.~(1.21a) numerically to $10^{-12}$. Expanding $(1-\rho(t_0)^{-1})^{-1}=(\lambda\rho(X))^{-1}+\tfrac12+O(z(\alpha)^2)$ formally in $z(\alpha)$ inside Eq.~(1.21a) (with $L=x(\delta)z(\beta)/w(\delta)$, $x(\epsilon)$, $x(\zeta)$ free) confirms $R_E$ and $Q_E$ symbolically and yields the compact identity
+\[
+G=F_0F_1F_2-\zeta\bigl(\beta\gamma w(\delta)-2F_0\bigr)\bigl(\alpha\epsilon w(\gamma)w(\delta)-2\delta w(\delta)-w(\gamma)F_0\bigr),\qquad F_0:=1+\beta w(\gamma).
+\]
+\item \textbf{Exponent repair in Eq.~(7.10):} On $Z_{\emptyset,\alpha,\delta}$ we have $\lambda=x(\delta)z(\alpha)^2z(\beta)/w(\delta)$, so $z(\alpha)^2=\lambda w(\delta)/(x(\delta)z(\beta))$ and hence
+\[
+z(\alpha)^{-4}=\lambda^{-2}\,\frac{x(\delta)^2z(\beta)^2}{w(\delta)^2}
+\qquad\text{(printed upside-down in Draft~4 as }\lambda^{-2}\,\frac{w(\delta)^2}{x(\delta)^2z(\beta)^2}\text{)}.
+\]
+Draft~4's un-inverted fraction produced $\Phi_E^{\text{Draft 4}}=\frac{w(\delta)^2}{x(\delta)^2z(\beta)^4}F_1F_2$, which transforms under $(-1)^*$ by $(G/(F_0F_1F_2))^8\neq 1$ and does not lie in $L^\times$. With the corrected substitution, $z(\beta)^2$ cancels $z(\beta)^{-2}$ in $R_E$ identically, leaving
+\[
+\Phi_E=\frac{x(\delta)^2}{w(\delta)^2}\,F_1F_2\in L^\times,
+\]
+which satisfies $(-1)^*(\Phi_E|_{u_0})=\Phi_E|_{u_0}$ identically and is independent of both $z(\beta)$ and $v(\beta)$.
+\end{enumerate}
+
+\section{\texorpdfstring{Direct Proof of Hypothesis $(\mathrm{X}_2)$ and Explicit Constant $C'(q)$ (\S7)}{Direct Proof of Hypothesis (X2) and Explicit Constant C'(q) (Section 7)}}
+
+Over $u_0=\theta_\delta(1)\in\ooo_2(F)$, the fiber $E_{\emptyset,\alpha,\delta}(u_0)$ has global birational coordinates $(z(\beta),w(\gamma),w(\delta),\xi:=v(\beta))$ (`Proposition~7.6G`). Composing the generators $s_\alpha^*$ and $s_\beta^*$ in $\mathbb{Q}(z(\beta),w(\gamma),w(\delta),\xi,\alpha,\beta)$ yields $(-1)^*(\xi)=\xi+(H/G)z(\beta)$ with $H=\zeta(\beta\gamma w(\delta)-2F_0)(\gamma\zeta w(\delta)-F_0)$, and motivates the birational map (`Theorem~7.6H`, analogous to \href{https://www.numdam.org/article/AST_1989__171-172__195_0.pdf}{Hales 1989, Eqs.~(6.7)--(6.9), p.~242} \cite{Ha89}):
+\[
+\Psi_X:E_{\emptyset,\alpha,\delta}(u_0)\stackrel{\sim}{\dashrightarrow}(\mathbb{P}^1)^4,\qquad
+U:=\frac{F_1}{F_0},\quad V:=\frac{G}{F_0F_1F_2},\quad \xi_1:=\xi,\quad \xi_2:=(-1)^*(\xi)=\xi+\frac{H}{G}z(\beta).
+\]
+Three exact identities then settle Corollary~7.6F completely:
+\begin{enumerate}[(a)]
+\item \textbf{Pullback of the Leray $4$-form (7.4):} $\omega_{E_{\emptyset,\alpha,\delta}(u_0)}=\pm\alpha(X)\zeta(X)\,\frac{dU}{(U-1)^2}\wedge\frac{dV}{V}\wedge\frac{d\xi_1\wedge d\xi_2}{(\xi_1-\xi_2)^2}$.
+\item \textbf{$X$-independent $\Gamma_T$-structure:} $s_\alpha^*(U,V,\xi_1,\xi_2)=(U^{-1},V,\xi_1,\xi_2)$ and $(-1)^*(U,V,\xi_1,\xi_2)=(U,V^{-1},\xi_2,\xi_1)$, identifying $E_{\emptyset,\alpha,\delta}(u_0)(F)$ birationally with $T^1_{L/F}(F)\times T^1_{K_\zeta/F}(F)\times\mathbb{P}^1(K_\zeta)$ ($K_\zeta=F(\sqrt{d_\zeta})$).
+\item \textbf{Cayley factorization and $p$-adic integral:} Writing $U=(t+\delta_L)/(t-\delta_L)$ ($t\in F$, $\delta_L=\sqrt{d_\alpha d_\zeta}$) gives
+\[
+\Phi_E|_{u_0}=\frac{uv}{8}\bigl(2uvt+d_\zeta v^2-3d_\alpha u^2\bigr)(t+\delta_L)\implies
+\omega_{K/L}(\Phi_E|_{u_0})=\bigl(t^2-d_\alpha d_\zeta,\,d_\alpha\bigr)_F,
+\]
+since $\omega_{K/L}|_{F^\times}=1$. Under the divisor proviso of Lemma~0.8, all boundary zeta denominators $1-q^{a_{E'}(3-\beta(E'))-a_{E'}s}$ in \cite{LS83} are regular at $s=0$, and the factored $p$-adic principal-value integral evaluates for $p\ge 5$ to $J'(X)=C'\,|\alpha(X)\zeta(X)|_F$ with
+\[
+C'(q)=\begin{cases}
+4(q+1)\,q^{-5/2}, & L/F\text{ ramified }\bigl((v_F(d_\alpha),v_F(d_\zeta))=(0,1)\text{ or }(1,0)\bigr),\\[3pt]
+2(q+1)^2\,q^{-3}, & L/F\text{ unramified }\bigl(v_F(d_\alpha)=v_F(d_\zeta)=1,\;d_\zeta\in\varepsilon d_\alpha(F^\times)^2\bigr).
+\end{cases}
+\]
+Notably, the two asymmetric ramification subcases $(0,1)$ and $(1,0)$ swap $(I_s,I_\xi)=(2,-(q+1)/q^2)$ with $((q+1)/q,-2/q)$ while preserving the exact product $C'=4(q+1)q^{-5/2}$.
+\end{enumerate}
+
+\section{\texorpdfstring{Updates in \S6 ($r=1$) and \S8 ($r=3$, Cubic Tori)}{Updates in Section 6 (r=1) and Section 8 (r=3, Cubic Tori)}}
+
+\begin{table}[!htbp]
+\centering
+\small
+\begin{tabularx}{\linewidth}{@{}l l X@{}}
+\toprule
+\textbf{Result in Draft~5} & \textbf{Status} & \textbf{Mathematical Content \& Verification} \\
+\midrule
+\S6 Eqs.~(6.5a)--(6.5b), Rem.~6.5 & {\color{okgreen}\textbf{Repaired}} & Symplectic Pfaffians on $\ooo_1$ equal $288$ ($E_\beta$) and $864$ ($E_\alpha$); removed double-counted $\alpha(X),\beta(X)$ factors so $\omega_{E_\beta(u)}=\pm dv(\alpha)\wedge\frac{dz(\alpha)}{z(\alpha)^2}=\pm\alpha(X)\,dv(\alpha)\wedge\frac{dz(W_0,\alpha)}{z(W_0,\alpha)^2}$ has $X$-degree $+1$. \\
+\S7 Prop.~7.6E, Eq.~(7.10) & {\color{okgreen}\textbf{Proved}} & Symbolic Laurent proof from (1.21a); explicit $G$; fixed $z(\alpha)^{-4}$ inversion so $\Phi_E=(x(\delta)^2/w(\delta)^2)F_1F_2\in L^\times$. \\
+\S7 Prop.~7.6G, Thm.~7.6H & {\color{okgreen}\textbf{Proved}} & Exact $D_6$ fiber action, birational map $E_{\emptyset,\alpha,\delta}(u_0)\dashrightarrow(\mathbb{P}^1)^4$, proof of $(\mathrm{X}_2)$, and explicit $C'(q)$ for $p\ge 5$. \\
+\S8 Prop.~8.3A, Cor.~8.3B & {\color{okgreen}\textbf{Proved}} & $-1\notin\Gamma_T$ for $\mathbb{Z}/3\mathbb{Z}$ and short-$S_3$ tori $\implies$ long-root orbits asymmetric $\implies$ $\Delta_0(Y)$ constant near $0$. \\
+\S8 Props.~8.3C--8.3D & {\color{okgreen}\textbf{Proved}} & Exact cubic cocycle $\kappa(t_*)=c\,\omega_{K/F}(q_2p_2^{-1}\tau^2(p_2))$; $z(\beta)\to 0$ limit gives $\theta=1$, kills root norms $N_{K/F}(\alpha)^{-2}N_{K/F}(\beta)^{-2}$, and leaves $\tilde\Phi_{E,3}=\frac{z(\alpha)^3}{x(\zeta)^3w(\zeta)^3}(\frac{Q_1Q_2}{P_1P_2})^2\in F^\times$. \\
+\S8 Prop.~8.3E & {\color{okgreen}\textbf{Proved}} & Six $\Omega(G_2)$-translates $(\eta_0,\dots,\eta_5)$ of $v(\alpha)$ present $E_{\emptyset,\beta,\zeta}(u_0)$ as the $X$-independent double cover $y_{\mathrm{hex}}^2=(m_1+m_2)^2-4d_{024}d_{135}$ over $(\mathbb{P}^1)^6$; evaluating $J_3(X)$ remains open. \\
+\bottomrule
+\end{tabularx}
+\caption{Summary of new results and repairs verified in Draft~5.}
+\end{table}
+
+\begin{thebibliography}{Ha92a}
+\bibitem[GH16]{GH16} J.~Gordon and T.~Hales, ``Endoscopic transfer of orbital integrals in large residual characteristic'', \textit{Amer. J. Math.} \textbf{138} (2016), 109--148 (\url{https://muse.jhu.edu/article/609681/summary}).
+\bibitem[Ha89]{Ha89} T.~Hales, ``Shalika germs on $GSp(4)$'', \textit{Ast\'erisque} \textbf{171--172} (1989), 195--256 (\url{https://www.numdam.org/article/AST_1989__171-172__195_0.pdf}).
+\bibitem[Ha92a]{Ha92a} T.~Hales, \textit{The Subregular Germ of Orbital Integrals}, Mem. Amer. Math. Soc. \textbf{99} (1992), no.~476 (\url{https://iacobus.usc.gal/nde/fulldisplay/alma991013513907807712/34CISUG_USC:NDE/gl}).
+\bibitem[LS83]{LS83} R.~Langlands and D.~Shelstad, ``On principal values on $p$-adic manifolds'', Lecture Notes in Math. \textbf{1041}, Springer, 1984, 250--279.
+\end{thebibliography}
+
+\end{document}

@@ -1,7 +1,7 @@
 % SPDX-License-Identifier: CC-BY-4.0
 % =====================================================================
 % D. Joyner, "On the transfer of Shalika germs for G_2"
-% Draft 3. Corrected and expanded version, November 2026 (incorporating exact coordinate & Galois formulas).
+% Draft 4. Corrected and expanded version, November 2026 (adds the explicit cocycle t_* from Hales, Ch. I, Section 5).
 %
 % Built from ../transcription/g2_shalika_germs_transcription.tex (the literal
 % transcription of the 1994 manuscript in ../original-1994/) and the referee
@@ -94,7 +94,7 @@
 \DeclareMathOperator{\Aut}{Aut}
 
 \title[Transfer of Shalika germs for \texorpdfstring{$G_2$}{G2}]{On the transfer of Shalika germs for \texorpdfstring{$G_2$}{G2}\\[4pt]
-\normalsize Draft 3. Corrected and expanded version}
+\normalsize Draft 4. Corrected and expanded version}
 \author{David Joyner}
 \thanks{This is a revision of the unpublished manuscript of the same title by
 D.~Joyner, dated summer 1994. The 1994 AMS-\TeX\ source, a literal transcription
@@ -110,7 +110,7 @@ in the numbered ``Remarks 2026.$n$''.}
 \thanks{Gemini is an AI model made by Google; it is called ``Carbon'' in the
 project's notes. See the Acknowledgments for the division of work among the
 authors.}
-\date{Original draft: 1994. Corrected and expanded draft: November 2026 (Draft 3)}
+\date{Original draft: 1994. Corrected and expanded draft: November 2026 (Draft 4)}
 
 \begin{document}
 
@@ -3287,35 +3287,27 @@ we add some details on the function $\kappa(\tilde{t}_*)$
 and the cocycle-valued function $t_*$.
 
 Some information about $t_*$ is given after Formula~\ref{res:0.6}.
-More explicit information about
-$t_\sigma :Y_1(B_+,B_-)\rightarrow T_G(\overline{F})$
-is given in \cite[Ch.~I, Corollary~5.4]{Ha92a}. Since the
-only $F$-form of $G_2$ over a $p$-adic field is the split form \cite{Ti65},
-we have $G=G_2=G_{in}=G_{qs}$, $T_G=T_{in}$, $\underline{T}=T_{qs}$, and
-$\underline{B}=B_{qs}$, in the notation of \cite{Ha92a}. Let
-$\alpha\in \Delta$ be a simple root, and
-suppose $\sigma\in \Gamma$ acts on
-$T_G(\overline{F})$ through the
-reflection $s_\alpha\in \Omega$. Choose $g$, $h$ as in
-\cite[Ch.~I, \S5]{Ha92a}, and take
-$A_\sigma=w_\sigma^{-1}=s_\alpha \in N_G(T_G)$
-in \cite[Ch.~I, Corollary~5.7]{Ha92a}. There is a constant
-$t_1\in T_G(\overline{F})$, independent of the star, such that at a point
-\[
-(t^g,(B(W))_{W\in{\mathcal W}},(z(\alpha))_{\alpha\in\Delta},n)
-\in\chi^{-1}(C)\times S_1(B_+,B_-)\times N_+,
-\]
-the value $t_\sigma$ is determined by
+Explicit information about $t_\sigma$ is given in \cite[Ch.~I, \S5]{Ha92a}.
+Since the only $F$-form of $G_2$ over a $p$-adic field is the split form
+\cite{Ti65}, we have $G=G_2=G_{in}=G_{qs}$ in the notation of \cite{Ha92a}, so
+the inner twist $A_\sigma$ there is trivial. Write $h^{-1}g=tn\nu$ as in
+\cite[Ch.~I, proof of Prop.~5.2]{Ha92a}, with $t\in T_+$, $n=n_-$ upper
+unipotent and $\nu=n_+$ lower unipotent in the model of \S A.4, and let
+$w_\sigma\in N_G(T_+)$ be defined by $\sigma(h^{-1})=w_\sigma h^{-1}$, so that
+$w_\sigma$ represents the action of $\sigma$ on $T_G$. Then
+\cite[Ch.~I, Eq.~5.3]{Ha92a} reads
 \begin{equation}\tag{5.18}\label{eq:5.18}
-s_\alpha \theta_{-\alpha}(-\xi)n^{-1}w_\sigma^{-1}s_\alpha^{-1}\in
-N_+^- N_+ (t_1t_\sigma)^{w_\sigma^{-1}s_\alpha^{-1}}.
+\nu^{-1}n^{-1}w_\sigma^{-1}\in N_+N_-\,T_\sigma^{\,w_\sigma^{-1}},
 \end{equation}
-Applying the Chevalley anti-involution (or taking inverses) in \cite[Ch.~I, (5.5)]{Ha92a} and
-comparing with \eqref{eq:5.18}, one finds
-$t_1t_\sigma = \alpha^\vee(\xi)$,
-where $\xi$ is a regular function of the coordinates of
-$Y''(B_+,B_-)\times N_+$. Choose $B_-, B_+$ such that these coordinates are
-$F$-rational.
+where $\sigma\mapsto T_\sigma$ is the cocycle $t_*$, transported to $T_+$ with
+the twisted action $\sigma_*(t)=\sigma(t)^{w_\sigma}$. Since
+$\nu^{-1}\in N_+$, the diagonal factor $T_\sigma^{w_\sigma^{-1}}$ is the
+torus part of $n^{-1}w_\sigma^{-1}$, which can be read off from its leading
+principal minors \cite[Ch.~I, Remark~5.6]{Ha92a}. If $w_\sigma=s_\alpha$ is a
+simple reflection, \cite[Ch.~I, Cor.~5.4]{Ha92a} gives
+$t_0T_\sigma=\alpha^\vee(z(W_0,\alpha))$ for a constant $t_0$, in agreement with
+$n_\alpha=1/z(W_0,\alpha)$ in \eqref{eq:1.21b}. For the elements acting by
+non-simple reflections, or by $-1$, see Proposition~\ref{res:7.6D}.
 
 When $H^1(F,T_G)$ is cyclic, of order $m\in \{2,3\}$, which is the case for
 the biquadratic, cubic and short-reflection $S_3$ tori
@@ -3326,9 +3318,15 @@ character $\theta$ of $F^\times/N_{E_{T_G}/F}E_{T_G}^\times$, where $E_{T_G}$
 is the Galois closure of the splitting field of $T_G$. One may
 construct a (non-canonical) map
 $\phi_T:H^1(F,T_G) \rightarrow F^\times/N_{E_{T_G}/F}E_{T_G}^\times$
-such that $\kappa(\tilde{t}_*)=\theta(\phi_T(\tilde{t}_*))$
-is a monomial in the coordinates of $Y''(B_+,B_-)\times N_+$.
-So \eqref{eq:5.1}--\eqref{eq:5.4} hold.
+such that $\kappa(\tilde{t}_*)=\theta(\phi_T(\tilde{t}_*))$.
+The 1994 text asserted that this is a monomial in the coordinates of
+$Y''(B_+,B_-)\times N_+$, so that \eqref{eq:5.1}--\eqref{eq:5.4} hold. For
+the biquadratic tori, Proposition~\ref{res:7.6D} shows instead that
+$\kappa(\tilde t_*)$ is a quadratic character of a polynomial $R$ in the
+coordinates; on the divisor $E_{\emptyset,\alpha,\delta}$ its leading
+coefficient has non-monomial factors (Proposition~\ref{res:7.6E}), so
+\eqref{eq:5.2} holds only after a further change of coordinates near their
+zero sets.
 For the quadratic tori, $H^1(F,T_G)\cong(\zzz/2)^2$; there $\kappa$ is a
 character of $(\zzz/2)^2$, and the same argument applies with $\theta$ a
 quadratic character, but this case was not treated in 1994.
@@ -3339,8 +3337,12 @@ The 1994 proof asserted that $H^1(\Gamma,T_G)$ is always cyclic of order
 $2$ or $3$; this fails for the quadratic tori (Table~\ref{tab:A.6}). It also
 cited ``(5.10)'' (a lemma, not an equation) for the comparison with
 \eqref{eq:5.18}, and wrote $\epsilon_{-\alpha}$ for $\theta_{-\alpha}$; and
-``$\xi$ satisfies (5.2)'' was unexplained. The precise source of $\xi$ in
-\cite{Ha92a} has not been checked.
+``$\xi$ satisfies (5.2)'' was unexplained. Draft~4 consulted \cite{Ha92a}
+(in the \TeX\ version of 2016): the 1994 proof applied \cite[Ch.~I,
+Cor.~5.7]{Ha92a}, which treats a non-trivial inner twist $A_\sigma$, with
+$A_\sigma=w_\sigma^{-1}=s_\alpha$. For split $G_2$ the twist is trivial and
+\cite[Ch.~I, Cor.~5.4]{Ha92a} applies; the function $\xi$ does not occur.
+The proof has been rewritten accordingly.
 \end{rem26}
 
 We close this section by recalling a reduction lemma
@@ -3979,6 +3981,133 @@ general. The form \eqref{eq:7.4} is positive, so this sign has to come from
 $\kappa_1(t_*)$ and from the $F$-structure of the fiber, which depends on $X$
 through \eqref{eq:1.22} and the Galois action of \S\ref{sec:2}.
 
+\subsection*{The character \texorpdfstring{$\kappa(t_*)$}{kappa(t*)} for the biquadratic tori}
+
+We now compute the sign factor directly, using \cite[Ch.~I, \S5]{Ha92a}. Keep
+the notation of Proposition~\ref{res:7.6} and of the proof of
+Lemma~\ref{res:5.17}, and write $n=\prod_{\rho>0}\theta_\rho(n_\rho)$ for the
+upper unipotent factor of $h^{-1}g$, so that the $n_\rho$ are the functions of
+Lemma~\ref{res:1.21} and \eqref{eq:1.21b}. Let $\tau\in\Gal(K/F)$ be the
+element acting on $T$ by $-1$; its fixed field is $L=F(\sqrt{d_\alpha d_\zeta})$.
+Put
+\begin{equation}\tag{7.8}\label{eq:7.8}
+\begin{split}
+R&=n_\alpha n_\beta n_\epsilon+2n_\alpha n_\gamma n_\delta+n_\alpha n_\zeta
++n_\delta^2-n_\gamma n_\epsilon,\\
+Q&=n_\beta n_\delta^3+n_\beta n_\epsilon n_\zeta+3n_\gamma^2n_\delta^2
++3n_\gamma n_\delta n_\zeta-n_\gamma^3n_\epsilon+n_\zeta^2 .
+\end{split}
+\end{equation}
+
+\begin{res}{Proposition}{7.6D}\label{res:7.6D}
+Let $T$ and $\kappa\neq1$ be as in Theorem~\ref{res:7.2}. Then, at the points
+of $Y''(F)$ over the regular part of $C$,
+\[
+\kappa(t_*)=c\cdot\omega_{K/L}(R),
+\]
+where $\omega_{K/L}$ is the quadratic character of $L^\times$ attached to
+$K/L$ and $c=\pm1$ is a constant. Moreover $\omega_{K/L}(Q)=1$ at these points.
+\end{res}
+
+\begin{proof}
+By \eqref{eq:5.18} with $w_\tau$ a representative of $-1=(s_\alpha s_\beta)^3$,
+the torus part of $n^{-1}w_\tau^{-1}$ in the model of \S A.4 is
+$\alpha^\vee(R)\beta^\vee(Q)$, computed from the first two leading principal
+minors (the other six are then determined, and agree). Since $w_\tau$ acts on
+$T_+$ by inversion, $T_\tau=\alpha^\vee(R)^{-1}\beta^\vee(Q)^{-1}$, up to a
+constant independent of the point. The cocycle condition for $\tau$, whose
+twisted action on $T_+$ is $t\mapsto\tau(t)^{-1}$, says that $R,Q\in L^\times$.
+Over $L$, $T$ is the product of two norm-one tori of $K/L$, and
+$H^1(L,T)\cong(L^\times/N_{K/L}K^\times)^2$; by Tate--Nakayama this is
+$X_*/2X_*$, the class of $\alpha^\vee(a_1)\beta^\vee(a_2)$ ($a_i\in L^\times$)
+corresponding to $\alpha^\vee$ times the class of $a_1$ plus $\beta^\vee$
+times the class of $a_2$. Under the Tate--Nakayama isomorphisms
+$H^1(F,T)\cong X_*/I_\Gamma X_*$ and $H^1(L,T)\cong X_*/2X_*$, restriction is the
+map $x\mapsto x+s_\alpha x$ (a sum over representatives of
+$\Gal(K/F)/\langle\tau\rangle$). It sends the generator $\beta^\vee$ of
+$X_*/I_\Gamma X_*\cong\zzz/2\zzz$ (Table~\ref{tab:A.6}) to
+$\alpha^\vee+2\beta^\vee\equiv\alpha^\vee$, and kills $\alpha^\vee$. So
+restriction is injective with image $\{0,\alpha^\vee\}$, and for the class of
+$t_*$ we get $\omega_{K/L}(Q)=1$ and $\kappa(t_*)=\omega_{K/L}(R)$, up to the
+constant.
+\end{proof}
+
+For a simple reflection the same computation gives $\alpha^\vee(-n_\alpha)$ and
+$\beta^\vee(-n_\beta)$, which is \cite[Ch.~I, Cor.~5.4]{Ha92a}. For the element
+acting by $s_\zeta$ it gives
+$\alpha^\vee\bigl(-(n_\beta n_\epsilon+2n_\gamma n_\delta+n_\zeta)\bigr)\beta^\vee(Q)$.
+These computations are in the script \texttt{g2\_cocycle\_biquadratic.py}.
+
+\begin{res}{Proposition}{7.6E}\label{res:7.6E}
+On the patch $Z_{\emptyset,\alpha,\delta}$, as $z(\alpha)\to0$ with
+$z(\beta)$, $w(\gamma)$, $w(\delta)$, $x(\delta)$, $x(\epsilon)$, $x(\zeta)$
+fixed,
+\[
+R=z(\alpha)^{-4}R_E\,\bigl(1+O(z(\alpha))\bigr),\qquad
+Q=z(\alpha)^{-6}Q_E\,\bigl(1+O(z(\alpha))\bigr),
+\]
+where, with the roots evaluated at $X$,
+\begin{equation}\tag{7.9}\label{eq:7.9}
+R_E=\frac{F_1F_2}{\alpha\gamma\delta^2\epsilon\zeta\;z(\beta)^2},\qquad
+F_1=1+\beta\,w(\gamma)+\alpha\zeta\,w(\delta),\quad
+F_2=1+\beta\,w(\gamma)+\gamma\epsilon\,w(\delta),
+\end{equation}
+and $Q_E=F_2\,G/(\beta\gamma^3\delta^3\epsilon\zeta^2z(\beta)^4)$ for a
+polynomial $G$ in $w(\gamma)$, $w(\delta)$ and the root values. Consequently, on
+$E_{\emptyset,\alpha,\delta}(F)$,
+\begin{equation}\tag{7.10}\label{eq:7.10}
+\kappa_1(t_*)=c'\cdot\bigl(P(X),d_\alpha\bigr)_F\cdot\omega_{K/L}(\Phi_E),
+\qquad
+\Phi_E=\frac{w(\delta)^2}{x(\delta)^2z(\beta)^4}\,F_1F_2,
+\end{equation}
+with $c'=\pm1$ a constant and $\Phi_E\in L^\times$.
+\end{res}
+
+\begin{proof}
+Substitute \eqref{eq:1.21b} and the $\lambda=0$ formulas for $w(\gamma)$,
+$w(\delta)$, $w(\epsilon)$, $w(\zeta)$ after \eqref{eq:1.22} into
+\eqref{eq:7.8}, and set $w(\epsilon)=w(\zeta)=0$. This gives the leading terms;
+the script checks them against the exact relations \eqref{eq:1.21a}, with
+exact exponentials, as $z(\alpha)\to0$. Since $\lambda=x(\delta)z(\alpha)^2
+z(\beta)/w(\delta)$ on the patch, $z(\alpha)^{-4}=\lambda^{-2}
+w(\delta)^2/(x(\delta)^2z(\beta)^2)$, and $\omega_{K/L}$ is trivial on $F^\times$
+(the transfer from $\Gal(K/F)$ to $\Gal(K/\,L)$ is trivial, as in the proof of
+Proposition~\ref{res:7.6}). Hence near $E$ we have
+$\omega_{K/L}(R)=\omega_{K/L}(R_E\,w(\delta)^2/(x(\delta)^2z(\beta)^2))$, which
+extends to $E$ with $\theta=1$, as required by Formula~\ref{res:0.6}. It
+remains to evaluate $\omega_{K/L}$ on $c(X)=1/(\alpha\gamma\delta^2\epsilon\zeta)$,
+which lies in $L$ because each of $\alpha\zeta$, $\gamma\epsilon$, $\delta^2$
+does. By the projection formula, $\omega_{K/L}(x)=(N_{L/F}x,d_\alpha)_F$ for
+$x\in L^\times$, and the non-trivial element of $\Gal(L/F)$ acts on root values
+through $s_\alpha$. Now $N_{L/F}(\alpha\zeta)=-\alpha^2\zeta^2=-d_\alpha d_\zeta
+u^2v^2$, $N_{L/F}(\gamma\epsilon)=\beta\gamma\delta\epsilon=P$, and
+$N_{L/F}(\delta^2)=(\gamma\delta)^2$ with $\gamma\delta\in F$. So
+$\omega_{K/L}(c(X))=(-d_\alpha d_\zeta,d_\alpha)_F\,(P(X),d_\alpha)_F$. In the
+same way the $X$-part of $Q_E$ has trivial symbol, consistently with
+$\omega_{K/L}(Q)=1$.
+\end{proof}
+
+So the Hilbert symbol that Corollary~\ref{res:7.8} requires appears, exactly,
+as a factor of $\kappa_1(t_*)$ on the $2$-regular divisor. Since
+\eqref{eq:7.4} is positive, Corollary~\ref{res:7.8} becomes the following.
+
+\begin{res}{Corollary}{7.6F}\label{res:7.6F}
+Under the hypotheses of Corollary~\ref{res:7.8}, Hypothesis $(\mathrm X_2)$
+holds for $(T,\kappa)$ if and only if
+\[
+J'(X):=\int_{E_{\emptyset,\alpha,\delta}(u)(F)}\omega_{K/L}(\Phi_E)\,
+|\omega_{E_{\emptyset,\alpha,\delta}(u)}|=C'\,|\alpha(X)\zeta(X)|
+\]
+with $C'$ independent of $X$ and of $u$.
+\end{res}
+
+The integral $J'(X)$ contains no Hilbert symbol in $X$. It still depends on
+$X$, through the coefficients of $F_1$ and $F_2$ and through the $F$-structure
+of the fiber, that is, the twisted Galois action on $z(\beta)$, $w(\gamma)$,
+$w(\delta)$, $v(\beta)$ for the elements acting by $s_\alpha$, $s_\zeta$ and
+$-1$. Proposition~\ref{res:2.14A} gives that action for simple reflections
+only; $s_\zeta$ is not simple when $s_\alpha$ is.
+
 \begin{rem26}[status of $(\mathrm X_2)$]\label{rem:7.status}
 Proposition~\ref{res:7.6}, Example~\ref{res:7.7} and
 Corollary~\ref{res:7.8} are new (verified by hand and by exact symbolic scripts
@@ -3992,18 +4121,22 @@ $\Delta_I\Delta_{II}\Delta_{III_2}$; for the tori of Theorem~\ref{res:7.2}
 this matters exactly in the case of Example~\ref{res:7.7}(b).
 Of the three algebraic inputs absent from the 1994 text---(i) the exact
 coordinate and star relations \eqref{eq:1.21a}--\eqref{eq:1.22}, (ii) the
-explicit cocycle formula for $t_*$ on $E_{\emptyset,\alpha,\delta}$ from
-\cite[Ch.~I, Cor.~5.4 and 5.7]{Ha92a}, and (iii) the exact Galois action on the
-coordinates of $Y''$ and of $E_{\emptyset,\alpha,\delta}$---both (i) and (iii)
-are now supplied in \S\S\ref{sec:1}--\ref{sec:2} (including the Galois
-invariance of the Leray fiber form \eqref{eq:7.4} in Proposition~\ref{res:2.14A}).
-What remains to finish $(\mathrm X_2)$ directly is input (ii), which was not
-consulted here, together with the evaluation of the resulting $4$-dimensional
-$p$-adic principal value integral $J(X)$ along the lines of \cite[\S6]{Ha89}.
-By Corollary~\ref{res:8.8}, \eqref{eq:7.7} holds given Lemma~\ref{res:5.14}
-and the proviso of Lemma~\ref{res:0.8}, predicting $f_\alpha=f_\zeta=1$ in
-\eqref{eq:7.5} and the Hilbert-symbol sign $(P(X),d_\alpha)_F$ for the
-$\kappa$-weighted fiber integral.
+explicit cocycle $t_*$ on $E_{\emptyset,\alpha,\delta}$, and (iii) the exact
+Galois action on the coordinates of $Y''$ and of $E_{\emptyset,\alpha,\delta}$---
+(i) was supplied in Draft~3, (ii) in Draft~4
+(Propositions~\ref{res:7.6D} and \ref{res:7.6E}, from \cite[Ch.~I, \S5]{Ha92a}),
+and (iii) for simple reflections in Draft~3 (Proposition~\ref{res:2.14A}).
+Proposition~\ref{res:7.6E} shows that the Hilbert symbol $(P(X),d_\alpha)_F$
+predicted by Corollary~\ref{res:7.8} is a factor of $\kappa_1(t_*)$ on the
+fiber. What remains for $(\mathrm X_2)$ is Corollary~\ref{res:7.6F}: the
+twisted Galois action on the fiber coordinates for the elements acting by
+$s_\zeta$ and $-1$, and the evaluation of the $4$-dimensional $p$-adic integral
+$J'(X)$ along the lines of \cite[\S6]{Ha89}. The leading coefficients in
+Proposition~\ref{res:7.6E} were checked against the exact relations
+\eqref{eq:1.21a} numerically (to $10^{-12}$), not symbolically; the
+Tate--Nakayama step in the proof of Proposition~\ref{res:7.6D} is standard but
+was checked only by hand. By Corollary~\ref{res:8.8}, Corollary~\ref{res:7.6F}
+holds given Lemma~\ref{res:5.14} and the proviso of Lemma~\ref{res:0.8}.
 \end{rem26}
 
 
@@ -5085,12 +5218,18 @@ tori to Hypotheses $(\mathrm X_r)$ on the dependence of explicit fiber
 integrals on the tangent direction $X$, together with Lemma~\ref{res:5.14}
 and the proviso of Lemma~\ref{res:0.8}. By Corollary~\ref{res:8.8} the
 hypotheses $(\mathrm X_r)$ are in fact true, given those two inputs, because
-the matching is now known \cite{GH16}.
+the matching is now known \cite{GH16}. For $r=2$ and the biquadratic tori, the
+transfer factor and the character $\kappa(t_*)$ have been computed
+explicitly (Propositions~\ref{res:7.6}, \ref{res:7.6D}, \ref{res:7.6E}), and
+$(\mathrm X_2)$ is reduced to the identity of Corollary~\ref{res:7.6F}.
 
 \subsection*{Open problems}
 \begin{enumerate}[(1)]
-\item Compute $\Delta_0(X)$ and the fiber integrals $I_E(X,u)$ of
-Remark~\ref{rem:main-gap} for $G_2$, and so prove $(\mathrm X_r)$ directly,
+\item Compute the fiber integrals $I_E(X,u)$ of
+Remark~\ref{rem:main-gap} for $G_2$, and so prove $(\mathrm X_r)$ directly.
+For $r=2$ and the biquadratic tori this means proving
+Corollary~\ref{res:7.6F}, which needs the twisted Galois action on the fiber
+coordinates for the elements acting by $s_\zeta$ and $-1$; then proceed
 as Hales does for $GSp(4)$ \cite[\S6]{Ha89}. This would give explicit
 formulas for the $\kappa$-germs and the matching constants, which
 \cite{GH16} does not.
@@ -5169,7 +5308,10 @@ Remark~\ref{rem:exceptional}, and the proofs settling Remarks~\ref{rem:dynkin},
 \ref{rem:4.4} and \ref{rem:A7}, and in a third pass (Draft~3) computed the exact
 star and coordinate expansions \eqref{eq:1.21a}--\eqref{eq:1.22}, the exact
 Galois and Weyl formulas \eqref{eq:2.11}--\eqref{eq:2.17}, and the special-fiber
-Galois involutions (Proposition~\ref{res:2.14A}). David Joyner directed the work and is solely
+Galois involutions (Proposition~\ref{res:2.14A}). Claude prepared Draft~4,
+correcting the proof of Lemma~\ref{res:5.17} from \cite{Ha92a} and computing
+the character $\kappa(t_*)$ for the biquadratic tori
+(Propositions~\ref{res:7.6D}, \ref{res:7.6E} and Corollary~\ref{res:7.6F}). David Joyner directed the work and is solely
 responsible for the final text. AI review is not an independent
 certification: the computations were checked by scripts, but the
 mathematical arguments, and every statement about sources that could not be
@@ -5210,7 +5352,9 @@ integrals in large residual characteristic'', Amer. J. Math. \textbf{138}
 \textbf{171--172} (1989), 195--256.
 
 \bibitem[Ha92a]{Ha92a} T.~Hales, \textit{The Subregular Germ of Orbital
-Integrals}, Mem. Amer. Math. Soc. \textbf{99} (1992), no.~476.
+Integrals}, Mem. Amer. Math. Soc. \textbf{99} (1992), no.~476. (Draft~4
+consulted the author's \TeX\ version of 2016, which has the same numbering of
+chapters and results.)
 
 \bibitem[Ha92b]{Ha92b} T.~Hales, ``Orbital integrals on $U(3)$'', in
 \textit{The Zeta Functions of Picard Modular Surfaces}, ed. R.~Langlands and

@@ -2,7 +2,7 @@
 
 **Manuscript:** D. Joyner, *"On the transfer of Shalika germs for $G_2$"*  
 **Repository Directory:** `g2stuff/` in `wdjoyner/trace-formulas`  
-**Current Revision:** Draft 3 (November 14, 2026)  
+**Current Revision:** Draft 4 (November 14, 2026)  
 **Prepared by:** Gemini ("Carbon") for Drafts 2–3; Claude for Draft 1 and for the check of Draft 3 recorded in `../revision_log.md`.
 
 This document records the mathematical corrections, closed-form derivations, structural additions, and typesetting updates made across the 2026 revisions (Drafts 1, 2, and 3) relative to the summer 1994 AMS-TeX sources (`g2new0.tex`–`g2new9.tex`, variants `g2new5d.tex` and `g2new9d.tex`, and `g2newapp.tex`).
@@ -13,7 +13,19 @@ This document records the mathematical corrections, closed-form derivations, str
 | :--- | :--- | :--- |
 | **Draft 1** | Nov 2026 | Transcription of 1994 AMS-TeX to `amsart` 12pt; proof of toric normality, Cohen–Macaulayness, and codimension-one patch regularity of $Z$ (Propositions 3.4A, 3.7); Table 4.3A of Igusa constants; diagnosis of why Hales's center-descent reduction lemma fails for $G_2$; biquadratic transfer factor $\Delta_0(Y)$ (Proposition 7.6); complete Smith-normal-form table of elliptic tori (Table A.6); literature review, summary, and glossary. |
 | **Draft 2** | Nov 14, 2026 | Second referee pass: repaired misidentified base vs. fiber coordinates in §§5, 7, 8 via Kirillov–Kostant symplectic Pfaffians and rational Leray fiber forms ($X$-degrees $+2$ and $+3$); corrected subregular representative in §6; fixed endoscopic torus embeddings (A.13)–(A.13') in §A.3; proved Lemma 4.4 orbit images, subregular Dynkin curve line types (§2), dual cone $f$-vector `(1,11,43,82,84,46,12,1)`, and $H^1(F,S_3)$ subregular class counts; ensured portable `pdflatex` and `lualatex` compilation without `enumitem`. |
+| **Draft 4** | Nov 14, 2026 | Fourth pass (Claude), using Hales' memoir: Lemma 5.17 proof corrected (Cor. I.5.4, trivial inner twist); explicit κ(t_*) for the biquadratic tori (Propositions 7.6D–7.6E), showing the predicted Hilbert symbol (P(X), d_α)_F is a factor of κ₁(t_*) on the 2-regular divisor; (X₂) reduced to Corollary 7.6F. |
 | **Draft 3** | Nov 14, 2026 | Third pass: computed exact all-order Lemma 1.21 polynomials `(1.21a)`, exact star gallery identities `(1.21b)`, and exact constants $(c_1,\dots,c_7)=(-1,2,3,-3,-3,1,3)$ in `(1.22)` (resolving the 8-vs.-7 coordinate count of Remark 2026.8); computed exact Chevalley commutators, parabolic conjugations `(2.11)` and `(2.13)`, Galois actions `(2.12)` and `(2.14)` (with $n_0=1$ identically), Weyl conjugations `(2.16)`–`(2.17)`, and special-fiber Galois involutions (Proposition 2.14A), proving $D_6$-Galois invariance of both Leray fiber volume forms `(7.4)` and `(8.5)`. |
+
+## Draft 4 Changes (Hales' cocycle and the character κ(t_*); by Claude)
+
+Source: T. Hales, *The Subregular Germ of Orbital Integrals* (Mem. AMS 476), consulted in the author's TeX version of 2016 (same numbering).
+
+1. **Lemma 5.17, proof rewritten.** The 1994 proof applied Hales' Ch. I, Cor. 5.7, which treats a non-trivial inner twist A_σ, with A_σ = s_α. For split G₂ the twist is trivial, so Hales' Eq. I.5.3 applies directly. In the form (5.18) it reads ν⁻¹n⁻¹w_σ⁻¹ ∈ N₊N₋ T_σ^{w_σ⁻¹}, and for simple reflections Cor. 5.4 gives α^∨(z(W₀,α)). The unexplained function ξ disappears (Remark 2026.28 updated). The claim that κ(t_*) is a monomial in the coordinates is withdrawn for the biquadratic tori.
+2. **Proposition 7.6D (new).** For the biquadratic torus, κ(t_*) = c·ω_{K/L}(R), where R is the explicit quartic polynomial (7.8) in the n_ρ, and ω_{K/L}(Q) = 1 for a second polynomial Q. Proof: the torus part of n⁻¹w_τ⁻¹ is read off by principal minors (Hales, Remark I.5.6) for the element τ acting by −1; then restrict to L = F(√(d_α d_ζ)), where Tate–Nakayama restriction H¹(F,T) → H¹(L,T) is injective.
+3. **Proposition 7.6E (new).** On E_{∅,α,δ}: R = z(α)⁻⁴R_E(1+O(z(α))), with R_E = F₁F₂/(αγδ²εζ z(β)²), F₁ = 1 + βw(γ) + αζ w(δ), F₂ = 1 + βw(γ) + γε w(δ). Hence κ₁(t_*) = c′·(P(X), d_α)_F·ω_{K/L}(Φ_E). **The Hilbert symbol predicted by Corollary 7.6C appears exactly as a factor of κ₁(t_*).**
+4. **Corollary 7.6F (new).** (X₂) is equivalent to J′(X) = ∫ ω_{K/L}(Φ_E)|ω_{E(u)}| = C′|α(X)ζ(X)|, an identity with no Hilbert symbol in X.
+5. Remark 2026.36, the summary, the open problems, the bibliographic entry for [Ha92a] and the Acknowledgments were updated. No new Remarks were added, so the Remark numbers are unchanged.
+6. **New script.** `scripts/g2_cocycle_biquadratic.py` contains the principal-minor computations for s_α, s_β, s_ζ, −1 (reproducing Hales' Cor. I.5.4), R and Q, their leading terms on E_{∅,α,δ}, a check of these against the exact relations (1.21a) with exact exponentials (ratios 1 to 10⁻¹²), and the norm identities behind (P(X), d_α)_F.
 
 ## Draft 3 Changes (Exact Coordinate, Star Gallery & Galois Computations)
 

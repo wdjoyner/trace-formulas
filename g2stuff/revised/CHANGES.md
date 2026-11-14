@@ -88,6 +88,7 @@ All computations in Draft 3 use the fixed positive root ordering $\Sigma_G^+ = (
 
 - §5, source of Lemma 5.19: noted that [Hales 1989, Prop. 2.11] is a quasi-split reduction to the centralizer of a semisimple element, not the reduction lemma.
 - Open problems: added item (8), whether Hales' product case [Hales 1989, Prop. 2.14] gives a route to (X₁), (X₂) for H₂.
+- Authors: David Joyner, Claude and Gemini (Draft 3 as delivered listed David Joyner alone); the first sentence of the abstract, the \thanks notes and the Acknowledgments were updated to match.
 - Acknowledgments: restored the sentence "AI review is not an independent certification…" required by the style guide.
 - Scripts: corrected remark and result numbers in the docstrings of the three `verify_*.py` files; fixed the face count in `g2_exceptional_divisors.py` (it skipped faces with more than 7 rays and σ itself; it now gives 268 and 38, agreeing with Draft 2); marked the 1994-style orbit forms in `g2_patch_jacobians.py` as superseded.
 

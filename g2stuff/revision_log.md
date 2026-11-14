@@ -37,7 +37,7 @@ AI review is not an independent certification of the results. No human referee h
 - Documentation slips in Carbon's files: CHANGES.md and the scripts cited Remarks 2026.5, .8, .18, .23 where 2026.8, .11, .23, .36 were meant, and Propositions 7.6–7.8 by their Draft 1 numbers. Corrected in CHANGES.md and in the script docstrings; the Draft 3 referee report is committed unchanged.
 - Edits to the paper: the Prop. 2.11 attribution (§5), a new open problem on Hales' product case, and the restored sentence "AI review is not an independent certification…" in the Acknowledgments (style guide).
 - Not checked by Claude: the derivations behind (1.21b) and Proposition 2.14A beyond the scripts; the claim that Galois invariance under the two simple-reflection involutions settles input (iii) for the biquadratic torus, whose Galois image contains s_ζ and −1.
-- **Author line.** Draft 3 lists David Joyner alone, with the AI contributions in the \thanks note, abstract and Acknowledgments. Draft 1 listed "David Joyner and Claude", following the local-trace precedent. This is left as in Draft 3, for David Joyner to decide.
+- **Author line.** Carbon's Draft 3 listed David Joyner alone. At David Joyner's direction the authors are now David Joyner, Claude and Gemini, since Carbon's contributions (the corrected fiber forms of §§7–8, the exact formulas of §§1–2, Proposition 2.14A, and the corrections in §A.3 and to the face counts) are substantial. The \thanks notes, the first sentence of the abstract and the Acknowledgments say so.
 
 ## Verification levels
 

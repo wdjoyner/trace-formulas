@@ -9,15 +9,15 @@ Files in the git history track the drafts. File names carry no draft number (sty
 | Draft | Date | What | Record |
 |---|---|---|---|
 | 0 | 2026-11-13 | Literal amsart transcription of the summer 1994 manuscript, referee report (Claude), and verification scripts | `original-1994/`, `transcription/`, `referee/`, `scripts/` (PR #15) |
-| 1 | 2026-11-13 | Corrected and expanded edition: every item of the referee report addressed or flagged; Theorems 6.1, 7.2, 8.3 restated as conditional germ identities; new Propositions 3.4A, 3.7, Table 4.3A, Table A.6; literature review, summary, glossary | `revised/g2-shalika-germs-2026.tex`, `revised/CHANGES.md` |
+| 1 | 2026-11-13 | Corrected and expanded edition (with a same-day addendum before refereeing: the transfer factor for the biquadratic tori, Proposition 7.6–Corollary 7.8): every item of the referee report addressed or flagged; Theorems 6.1, 7.2, 8.3 restated as conditional germ identities; new Propositions 3.4A, 3.7, Table 4.3A, Table A.6; literature review, summary, glossary | `revised/g2-shalika-germs-2026.tex`, `revised/CHANGES.md` |
 
-**Source variants.** The body follows `g2new5.tex` and `g2new9.tex`. The variants `g2new5d.tex` (one parenthetical sentence in the proof of Lemma 5.14 and one word in §5) and `g2new9d.tex` (hypotheses (4) and (6) of Conjecture 9.1, and a closing sentence) are described in Remark 2026.40 and in the transcription. It is not known which version is later.
+**Source variants.** The body follows `g2new5.tex` and `g2new9.tex`. The variants `g2new5d.tex` (one parenthetical sentence in the proof of Lemma 5.14 and one word in §5) and `g2new9d.tex` (hypotheses (4) and (6) of Conjecture 9.1, and a closing sentence) are described in Remark 2026.41 and in the transcription. It is not known which version is later.
 
 ## AI usage
 
 - **Claude (Anthropic, Opus 5.5)**, co-author.
   - As referee, it wrote the referee report on the 1994 manuscript (`referee/g2_referee_report.tex`).
-  - As co-author and reviser, it made the transcription and drafted Draft 1: the corrections, the new statements and proofs, Remarks 2026.1–2026.44, the literature review, summary, glossary and acknowledgments, and `revised/CHANGES.md`.
+  - As co-author and reviser, it made the transcription and drafted Draft 1: the corrections, the new statements and proofs, Remarks 2026.1–2026.45, the literature review, summary, glossary and acknowledgments, and `revised/CHANGES.md`.
   - It wrote and ran the verification scripts in `scripts/`.
   - It checked some bibliographic entries against publisher and arXiv records (see below).
 - **D. Joyner** wrote the 1994 manuscript, directed the revision, and is responsible for the final text.
@@ -41,7 +41,10 @@ As in the referee report:
 | H¹(F,T) and endoscopic roots for all elliptic tori (Table A.6) | L1 | `g2_tori_endoscopy.py` |
 | Lemma 3.5 (new proof), Lemma 3.6, Lemma 5.6, Lemma 4.4 for G₂, A.5 | L1 | by hand |
 | Lie(Z(H)) = 0 and centralizers are Levi subgroups (Remark 2026.29) | L1 | by hand |
-| Count of étale cubic algebras (Remark 2026.44) | L1 | by hand |
+| Count of étale cubic algebras (Remark 2026.45) | L1 | by hand |
+| Δ₀ for the biquadratic tori (Proposition 7.6), Corollary 7.8 | L1 | by hand; root data by `g2_transfer_factor_biquadratic.py` |
+| Example 7.7 (Hilbert symbols over Q_p, p = 5,…,23) | L1 | `g2_transfer_factor_biquadratic.py` |
+| Projection formula (x, a)_L = (N x, a)_F; definitions of Δ_I–Δ_IV | L3 | standard, from [Ser79], [LS87] |
 | Hales' descent in [Ha89] and the explicit SO(4) computation | L2 | machine summary only |
 | [Ha92a] Ch. I, II, V, VI (cocycle t_*, θ = 1, Dynkin lines, Prop. 9.1) | L3 | quoted from 1994 |
 | [Ha92b] Lemma 6.1 (Lemma 5.19) | L3 | not consulted |
@@ -57,11 +60,11 @@ As in the referee report:
 **Removed:** the decomposition f = f₁ + f₂ before Lemma 5.19; the sentence "spurious divisors do not contribute" in Lemma 5.14; the complete-intersection claim of Lemma 3.7; the untypeset material after `\enddocument` in four source files.
 
 **New in 2026:**
-- Statements: Conjecture 0.0 as stated, Definition 1.3, Proposition 3.4A, Proposition 3.7, Conjecture 3.7A, Hypotheses (X_r) (Remark 2026.29), Corollary 8.8.
+- Statements: Conjecture 0.0 as stated, Definition 1.3, Proposition 3.4A, Proposition 3.7, Conjecture 3.7A, Hypotheses (X_r) (Remark 2026.29), Proposition 7.6, Example 7.7, Corollary 7.8, Corollary 8.8.
 - Tables and figures: Table 4.3A, Table A.6, the Dynkin curve figure.
 - Proofs: Lemma 3.5, Lemma 5.6, Proposition 3.4A, Proposition 3.7, Corollary 8.8, A.5, A.6.
 - Sections: the literature review, the notation table, the summary of results and open problems, the glossary.
-- Remarks 2026.1–2026.44.
+- Remarks 2026.1–2026.45.
 
 **Numbering.** The 1994 numbering is kept. New items carry letters or follow the last 1994 number of their section, so no concordance is needed.
 
@@ -71,15 +74,15 @@ As in the referee report:
 - [Ha89] (Hales, GSp(4)): consulted only through a machine summary (L2).
 - [Ha92a] (Hales, subregular germ): all quoted results are taken from the 1994 text (L3), including the formula t₁t_σ = α^∨(ξ) in the proof of Lemma 5.17 (Remark 2026.28).
 - [La83], [LS83]: the principal value formalism and [La83, Lemma 2.12] are quoted, not checked (Remark 2026.33).
-- [As98]: the count of F-classes in the subregular class could not be compared with Assem's (Remark 2026.44).
-- [SV00]: cited for the triality theorem without checking the exact formulation (Remark 2026.41).
+- [As98]: the count of F-classes in the subregular class could not be compared with Assem's (Remark 2026.45).
+- [SV00]: cited for the triality theorem without checking the exact formulation (Remark 2026.42).
 - [Ha92a], [Ha89]: the 1994 claims that Conjecture 3.4 is known for A_n and C_n, and false for D_n, were not checked (Remark 2026.15).
 - The two works cited only in `g2new9d.tex` as [A] and [H4] are not identified.
 - **Bibliography.** Checked in the referee report against publisher or library records: [Ra72], [Ro80], [She89], [Ha89], [Ha92b], [La83], [LS83]. Checked in this draft against publisher or arXiv records: [As00], [Ts15]. The data for [As98], [GH16], [Wa97], [Ng10], [Wa01], [De02], [Ha94] are as recorded during the referee report. The remaining entries carry over the 1994 data with page ranges and publication details added from standard references; they have not been individually checked.
 
 ## Next steps (for Draft 2)
 
-1. Compute Δ₀(X) and the fiber integrals I_E(X,u), and prove (X₂) directly (the most promising case).
+1. Prove (X₂) directly. Δ₀(X) is now computed (Proposition 7.6), so what remains is the identity (7.7) for the κ-weighted fiber integral J(X). That needs (i) the exact relations (1.22), computable from Lemma 1.21 in the explicit model of A.4; (ii) the cocycle t_* on E_{∅,α,δ} from [Ha92a, Ch. I]; (iii) the Galois action of §2 made precise (Remark 2026.36). Test the two predictions: f_α = f_ζ = 1 in (7.5), and the sign (P(X), d_α)_F.
 2. Recompute the exponents e_σ in (8.7) with the short roots of H₁.
 3. Choose a toric resolution of Z (for example with Sage's `ToricVariety.resolve()`) and settle the proviso of Lemma 0.8.
 4. Show that the β = 11/3 contribution vanishes.

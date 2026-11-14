@@ -2,7 +2,7 @@
 """
 Standalone SymPy verification suite (Part 4 of 4 — Open Problem 1) for:
   D. Joyner, Claude, and Gemini,
-  "On the transfer of Shalika germs for G_2" (Draft 5, November 2026)
+  "On the transfer of Shalika germs for G_2" (Draft 6, November 2026)
 
 Verifies symbolically in the explicit 8x8 Chevalley basis of Appendix A.4:
   1. Section 6, Eqs. (6.5a)-(6.5b) & Remark 2026.15:
@@ -27,14 +27,22 @@ Verifies symbolically in the explicit 8x8 Chevalley basis of Appendix A.4:
        inverse, X-independent Gamma_T-action, exact 4x4 Jacobian identity pulling back
        alpha(X) zeta(X) dU/(U-1)^2 ^ dV/V ^ dxi_1^dxi_2/(xi_1-xi_2)^2 to the Leray
        4-form (7.4), exact Cayley norm N_{L/F}(Phi_E) showing omega_{K/L}(Phi_E) =
-       (t^2 - d_alpha d_zeta, d_alpha)_F is independent of X, and exact p-adic
-       principal-value evaluation of C'(q) across all biquadratic ramification types.
+       (t^2 - d_alpha d_zeta, d_alpha)_F is independent of X, and the arithmetic of
+       the hand-evaluated factors whose product gives C'(q) (the factors themselves
+       are typed in, not computed here).
   4. Section 8, Propositions 8.3A-8.3E (Cubic Tori, r = 3):
      - Asymmetry of Gamma_T-orbits on long roots (Delta_0(X) = const).
      - Exact Bruhat torus factors (p_1, q_1) and (p_2, q_2) for w^2 and w^4,
        1-cocycle identity, Artin norm invariant tilde_Phi_{E,3} in F^x on
        E_{empty,beta,zeta}(theta_zeta(1)), and degree-2 hexagon double cover
        y_hex^2 = (m_1 + m_2)^2 - 4 d_{024} d_{135} over (P^1_alpha)^6.
+  5. Section 8, Propositions 8.3F-8.3G and Claim 8.3H (Draft 6):
+     - X-independent D_6 action in intrinsic coordinates, SL_2(alpha) invariants,
+       split quadric cone structure, and an exact 6x6 Jacobian audit over K.
+     - The residue of the t-one-form at t_*(X), computed as an exact Laurent
+       expansion over Q(w), w^2+w+1=0: a simple pole with residue -2/9 for all X.
+     - Arithmetic of the hand-derived valuation-shell formulas giving |C_3(q)|.
+       These formulas are typed in; their derivation is Open Problem (1)(b).
 """
 
 import sympy as sp
@@ -83,7 +91,7 @@ def build_chevalley():
 
 
 def verify_section_6_subregular_forms(r_names, mats_X, mats_Xm, ha, hb, theta, log_unip):
-    print("[1/5] Verifying Section 6 subregular Kirillov-Kostant 10-form Pfaffians...")
+    print("[1/6] Verifying Section 6 subregular Kirillov-Kostant 10-form Pfaffians...")
     basis_14 = [ha, hb] + [mats_X[k] for k in r_names] + [mats_Xm[k] for k in r_names]
     xb, xg, xd, xe, xz = sp.symbols("xb xg xd xe xz")
     b_mat = sp.eye(8)
@@ -135,7 +143,7 @@ def verify_section_6_subregular_forms(r_names, mats_X, mats_Xm, ha, hb, theta, l
 
 
 def verify_bruhat_and_prop_76E(r_names, theta, s_a, s_b):
-    print("[2/5] Verifying Bruhat torus factors and all-order symbolic proof of Prop. 7.6E...")
+    print("[2/6] Verifying Bruhat torus factors and all-order symbolic proof of Prop. 7.6E...")
     na, nb, ng, nd, ne, nz = sp.symbols("na nb ng nd ne nz")
     n_inv = sp.eye(8)
     for rn, sym in reversed(list(zip(r_names, [na, nb, ng, nd, ne, nz]))):
@@ -280,7 +288,7 @@ def verify_bruhat_and_prop_76E(r_names, theta, s_a, s_b):
 
 
 def verify_section_7_birational_proof_X2(r_names, theta):
-    print("[3/5] Verifying Section 7 D_6 fiber action, birational map to (P^1)^4, and Theorem 7.6H ((X_2))...")
+    print("[3/6] Verifying Section 7 D_6 fiber action, birational map to (P^1)^4, and Theorem 7.6H ((X_2))...")
     va, vb, vg, vd, ve, vz, xd, xe, xz = sp.symbols("va vb vg vd ve vz xd xe xz")
     b_E2 = sp.expand(theta("delta", xd) * theta("eps", xe) * theta("zeta", xz))
     n_plus = sp.eye(8)
@@ -449,7 +457,7 @@ def verify_section_7_birational_proof_X2(r_names, theta):
 
 
 def verify_padic_constant_C_prime():
-    print("[4/5] Verifying exact p-adic principal-value constant C'(q) for p = 5, 7, 11, 13...")
+    print("[4/6] Checking the product of hand-evaluated factors giving C'(q) for p = 5, 7, 11, 13...")
 
     def hilbert_p(a, b, p):
         va = 0
@@ -497,11 +505,11 @@ def verify_padic_constant_C_prime():
 
         assert C_a1 == C_a2 == 4 * (p + 1) / (p ** sp.Rational(5, 2))
         assert C_b == sp.Rational(2 * (p + 1) ** 2, p**3)
-    print("      PASS: Exact p-adic constant C'(q) verified and symmetric in (d_alpha, d_zeta).")
+    print("      PASS (arithmetic of hand-evaluated factors I_t, I_s, I_xi): C'(q) product, symmetric in (d_alpha, d_zeta).")
 
 
 def verify_section_8_cubic_tori(r_names, theta):
-    print("[5/5] Verifying Section 8 cubic torus cocycle tilde_Phi_{E,3} and hexagon double cover...")
+    print("[5/6] Verifying Section 8 cubic torus cocycle tilde_Phi_{E,3} and hexagon double cover...")
     va, vb, vg, vd, ve, vz, xz = sp.symbols("va vb vg vd ve vz xz")
     b_E3 = theta("zeta", xz)
     n_plus = sp.eye(8)
@@ -639,6 +647,380 @@ def verify_section_8_cubic_tori(r_names, theta):
     print("      PASS: Cubic torus cocycle tilde_Phi_{E,3} in F^x and hexagon double cover verified.")
 
 
+
+def verify_section_8_proof_X3_and_C3():
+    """6. Section 8 (Draft 6): intrinsic SL2(alpha)-fibration, split quadric cone C_K(F), residue at t_*, C_3(q) arithmetic."""
+    from fractions import Fraction
+
+    print("[6/6] Verifying Section 8: Props. 8.3F-8.3G, 6x6 Dual(K) audit, the residue at t_*, and C_3(q) arithmetic...")
+
+    # --- 6A. Proposition 8.3F(a): X-independent D_6 action in intrinsic coordinates (8.7d) ---
+    z_a, rg, nd, ne, nz, eta = sp.symbols("z_a rg nd ne nz eta")
+    aX, bX = sp.symbols("aX bX")
+    gX, dX, eX, zX = aX + bX, 2 * aX + bX, 3 * aX + bX, 3 * aX + 2 * bX
+
+    za = z_a / aX
+    wg = (gX * rg - aX) / (aX * bX)
+    wd = (dX * nd + 2 * aX * rg) / (aX**2 * bX)
+    we = (eX * ne + 3 * aX * nd) / (aX**3 * bX)
+    L_X = zX * nz - 3 * aX * rg**2 + 3 * (gX * rg - aX) * nd + bX * ne
+    wz = L_X / (aX**3 * bX**2)
+
+    da = 1 - 3 * aX * wg - 3 * aX**2 * wd - aX**3 * we
+    D_sa = 3 * nd + ne + 3 * rg - 1
+    assert sp.cancel(da + (eX / bX) * D_sa) == 0
+
+    sa_map = {
+        z_a: -z_a,
+        rg: (rg + 2 * nd + ne) / D_sa,
+        nd: -(nd + ne) / D_sa,
+        ne: ne / D_sa,
+        nz: (3 * nd**2 + 3 * nd * ne + ne**2 - nz) / D_sa**2,
+        eta: eta + z_a,
+        aX: -aX,
+        bX: bX + 3 * aX,
+    }
+    assert sp.cancel(za.subs(sa_map, simultaneous=True) - za) == 0
+    assert sp.cancel(wg.subs(sa_map, simultaneous=True) - (wg + 2 * aX * wd + aX**2 * we) / da) == 0
+    assert sp.cancel(wd.subs(sa_map, simultaneous=True) - (wd + aX * we) / da) == 0
+    assert sp.cancel(we.subs(sa_map, simultaneous=True) - we / da) == 0
+    assert sp.cancel(wz.subs(sa_map, simultaneous=True) - wz / da**2) == 0
+    assert sp.cancel(L_X.subs(sa_map, simultaneous=True) + L_X / D_sa**2) == 0
+
+    db = 1 + bX * wg
+    sb_map = {
+        z_a: z_a / rg,
+        rg: 1 / rg,
+        nd: -(nd + 2 * rg) / rg**2,
+        ne: -(ne + nz - 3 * rg**2) / rg**3,
+        nz: (nz - 3 * rg**2 + 3 * rg) / rg**3,
+        eta: eta,
+        aX: aX + bX,
+        bX: -bX,
+    }
+    assert sp.cancel(za.subs(sb_map, simultaneous=True) - za / db) == 0
+    assert sp.cancel(wg.subs(sb_map, simultaneous=True) - wg / db) == 0
+    assert sp.cancel(wd.subs(sb_map, simultaneous=True) - wd / db**2) == 0
+    assert sp.cancel(we.subs(sb_map, simultaneous=True) - (we + bX * wz) / db**3) == 0
+    assert sp.cancel(wz.subs(sb_map, simultaneous=True) - wz / db**3) == 0
+    assert sp.cancel(L_X.subs(sb_map, simultaneous=True) - L_X / rg**3) == 0
+
+    # --- 6B. Proposition 8.3F(b): SL_2(alpha) invariants (j2, j3', j3'') (8.7e) ---
+    u_sl2 = sp.Symbol("u_sl2")
+    sl2_inf = {
+        rg: (rg + u_sl2) / (1 + u_sl2),
+        nd: (nd - 2 * u_sl2 * rg - u_sl2**2) / (1 + u_sl2) ** 2,
+        ne: (ne - 3 * u_sl2 * nd + 3 * u_sl2**2 * rg + u_sl2**3) / (1 + u_sl2) ** 3,
+        nz: (nz + 3 * u_sl2 * rg**2 + 3 * u_sl2**2 * rg + u_sl2**3) / (1 + u_sl2) ** 3,
+    }
+    j2 = (nd + rg**2) / (1 - rg) ** 2
+    j3p = (ne + 3 * rg * nd + 2 * rg**3) / (1 - rg) ** 3
+    j3q = (nz - rg**3) / (1 - rg) ** 3
+    for inv_expr in (j2, j3p, j3q):
+        assert sp.cancel(inv_expr.subs(sl2_inf, simultaneous=True) - inv_expr) == 0
+
+    # --- 6C. Proposition 8.3G: Split quadric cone C_K(F), Hilbert-90 W_0, S_F, (-1)^*(Y+1), Dual(K) 6x6 audit ---
+    u0, u1, Y = sp.symbols("u0 u1 Y")
+    u2 = -(Y**2 + u0 * u1) / (u0 + u1)
+    tau_cone = {u0: u1, u1: u2, Y: Y}
+
+    assert sp.cancel((Y + u0) * (Y + u1) * (Y + u2) + (u0 + u1) * (u1 + u2) * (u2 + u0)) == 0
+    Q0 = Y**2 + Y * (u0 - u1) + u0**2 + u0 * u1 + u1**2
+    A_num = (Y - u1) * (Y + u0) * (u0 + u1)
+    W0 = -Q0 / A_num
+    assert sp.cancel(W0.subs(tau_cone, simultaneous=True) / W0 + (u0 + u1) / (Y + u1)) == 0
+    S_F = sp.cancel(Q0**3 / A_num**2)
+    assert sp.cancel(S_F.subs(tau_cone, simultaneous=True) - S_F) == 0
+
+    # Exact Dual(K) 6x6 Jacobian & (-1)^*(Y+1)=4/(Y+1) over K = Q(2*cos(2*pi/7)) (th^3 + th^2 - 2*th - 1 = 0, delta_K = 7)
+    def k_add(x, y): return (x[0] + y[0], x[1] + y[1], x[2] + y[2])
+    def k_sub(x, y): return (x[0] - y[0], x[1] - y[1], x[2] - y[2])
+    def k_neg(x): return (-x[0], -x[1], -x[2])
+    def k_mul(x, y):
+        a0, a1, a2 = x
+        b0, b1, b2 = y
+        p0, p1, p2 = a0 * b0, a0 * b1 + a1 * b0, a0 * b2 + a1 * b1 + a2 * b0
+        p3, p4 = a1 * b2 + a2 * b1, a2 * b2
+        return (p0 + p3 - p4, p1 + 2 * p3 - p4, p2 - p3 + 3 * p4)
+    def k_tau(x): return (x[0] - 2 * x[1] + 3 * x[2], -x[2], x[1] - x[2])
+    def k_norm(x):
+        n = k_mul(x, k_mul(k_tau(x), k_tau(k_tau(x))))
+        assert n[1] == 0 and n[2] == 0
+        return n[0]
+    def k_inv(x):
+        n = k_norm(x)
+        adj = k_mul(k_tau(x), k_tau(k_tau(x)))
+        return (adj[0] / n, adj[1] / n, adj[2] / n)
+    def k_div(x, y): return k_mul(x, k_inv(y))
+    def Fk(n, d=1): return (Fraction(n, d), Fraction(0), Fraction(0))
+
+    ONE = Fk(1)
+    def d_const(x): return (x, Fk(0))
+    def d_add(a, b): return (k_add(a[0], b[0]), k_add(a[1], b[1]))
+    def d_sub(a, b): return (k_sub(a[0], b[0]), k_sub(a[1], b[1]))
+    def d_neg(a): return (k_neg(a[0]), k_neg(a[1]))
+    def d_mul(a, b): return (k_mul(a[0], b[0]), k_add(k_mul(a[0], b[1]), k_mul(a[1], b[0])))
+    def d_inv(a):
+        inv0 = k_inv(a[0])
+        return (inv0, k_neg(k_mul(a[1], k_mul(inv0, inv0))))
+    def d_div(a, b): return d_mul(a, d_inv(b))
+    def d_tau(a): return (k_tau(a[0]), k_tau(a[1]))
+
+    def map_F6_to_fiber(coords6, x_a=Fraction(2), x_b=Fraction(-1)):
+        c0, c1, c2, r_v, s_v, t_v = coords6
+        def pack_dk(q0, q1, q2): return ((q0[0], q1[0], q2[0]), (q0[1], q1[1], q2[1]))
+        def dq_to_dk(q): return (Fk(q[0]), Fk(q[1]))
+        def q_add(a, b): return (a[0] + b[0], a[1] + b[1])
+        def q_sc(c, a): return (c * a[0], c * a[1])
+        def q_mul(a, b): return (a[0] * b[0], a[0] * b[1] + a[1] * b[0])
+
+        eta0 = pack_dk(c0, c1, c2)
+        eta2 = d_tau(eta0)
+        eta4 = d_tau(eta2)
+        r_k, s_k, t_k = dq_to_dk(r_v), dq_to_dk(s_v), dq_to_dk(t_v)
+        f4, f3, f2, f1 = d_const(Fk(4)), d_const(Fk(3)), d_const(Fk(2)), d_const(ONE)
+        Y_d = d_div(d_mul(r_k, d_add(d_mul(s_k, t_k), f4)), f4)
+
+        rst = q_mul(r_v, q_mul(s_v, t_v))
+        rs = q_mul(r_v, s_v)
+        rt = q_mul(r_v, t_v)
+        u0_0 = q_add(q_add(q_sc(Fraction(-1, 4), rst), q_sc(Fraction(-3, 14), rt)), r_v)
+        u0_1 = q_add(q_add(q_add(q_sc(Fraction(-1, 4), rst), q_sc(Fraction(3), rs)), q_sc(Fraction(-1, 28), rt)), r_v)
+        u0_2 = q_add(q_sc(Fraction(2), rs), q_sc(Fraction(1, 14), rt))
+        u0_d = pack_dk(u0_0, u0_1, u0_2)
+        u1_d = d_tau(u0_d)
+
+        Nj2 = d_add(d_add(d_mul(Y_d, Y_d), d_mul(u0_d, u1_d)), d_add(u0_d, u1_d))
+        Dj2 = d_mul(d_add(Y_d, f1), d_add(Y_d, u0_d))
+        j2_d = d_div(Nj2, Dj2)
+        B2 = d_add(d_sub(d_mul(Y_d, d_add(u0_d, f1)), d_mul(u0_d, u1_d)), d_add(d_mul(f2, u0_d), u1_d))
+        B4 = d_sub(f1, u0_d)
+        c2_v = d_div(d_mul(f2, d_mul(Dj2, d_add(u0_d, u1_d))), d_mul(Nj2, B2))
+        c4_v = d_div(d_mul(f2, Dj2), d_mul(Nj2, B4))
+        j3p_d = d_sub(d_div(d_sub(f1, j2_d), c2_v), d_mul(f2, j2_d))
+        j3q_d = d_add(d_sub(d_neg(d_div(j2_d, c4_v)), d_div(d_sub(f1, j2_d), c2_v)), d_mul(f2, j2_d))
+
+        cr = d_div(d_sub(eta2, eta0), d_sub(eta4, eta0))
+        A_rg = d_sub(d_mul(cr, d_mul(j2_d, d_sub(d_add(d_mul(f3, j2_d), j3p_d), f1))),
+                     d_mul(d_sub(j2_d, f1), d_add(j2_d, d_add(j3p_d, j3q_d))))
+        B_rg = d_sub(d_mul(cr, d_mul(j2_d, d_add(d_mul(f2, j2_d), j3p_d))),
+                     d_mul(d_sub(j2_d, f1), d_add(j3p_d, j3q_d)))
+        rg_d = d_div(B_rg, A_rg)
+        za_s = d_div(d_mul(d_sub(eta2, eta0), d_sub(d_mul(d_sub(d_add(d_mul(f3, j2_d), j3p_d), f1), rg_d),
+                     d_add(d_mul(f2, j2_d), j3p_d))), d_sub(j2_d, f1))
+        om_rg = d_sub(f1, rg_d)
+        om_rg2 = d_mul(om_rg, om_rg)
+        om_rg3 = d_mul(om_rg2, om_rg)
+        rg2 = d_mul(rg_d, rg_d)
+        rg3 = d_mul(rg2, rg_d)
+        nd_d = d_sub(d_mul(j2_d, om_rg2), rg2)
+        ne_d = d_sub(d_sub(d_mul(j3p_d, om_rg3), d_mul(f3, d_mul(rg_d, nd_d))), d_mul(f2, rg3))
+        nz_d = d_add(d_mul(j3q_d, om_rg3), rg3)
+
+        a0_v = (x_a, 3 * x_a + 5 * x_b, x_b)
+        a1_v = k_tau(k_tau(a0_v))
+        aX_d = d_const(a0_v)
+        bX_d = d_const(k_sub(a1_v, a0_v))
+        gX_d = d_add(aX_d, bX_d)
+        dX_d = d_add(d_mul(f2, aX_d), bX_d)
+        eX_d = d_add(d_mul(f3, aX_d), bX_d)
+        zX_d = d_add(d_mul(f3, aX_d), d_mul(f2, bX_d))
+        aX2, aX3, bX2 = d_mul(aX_d, aX_d), d_mul(aX_d, d_mul(aX_d, aX_d)), d_mul(bX_d, bX_d)
+        z_al = d_div(za_s, aX_d)
+        w_ga = d_div(d_sub(d_mul(gX_d, rg_d), aX_d), d_mul(aX_d, bX_d))
+        w_de = d_div(d_add(d_mul(dX_d, nd_d), d_mul(f2, d_mul(aX_d, rg_d))), d_mul(aX2, bX_d))
+        w_ep = d_div(d_add(d_mul(eX_d, ne_d), d_mul(f3, d_mul(aX_d, nd_d))), d_mul(aX3, bX_d))
+        LX_d = d_add(d_sub(d_mul(zX_d, nz_d), d_mul(f3, d_mul(aX_d, rg2))),
+                     d_add(d_mul(d_sub(d_mul(f3, d_mul(gX_d, rg_d)), d_mul(f3, aX_d)), nd_d), d_mul(bX_d, ne_d)))
+        w_ze = d_div(LX_d, d_mul(aX3, bX2))
+        return [z_al, w_ga, w_de, w_ep, w_ze, eta0], Y_d[0][0], [rg_d[0], nd_d[0], ne_d[0], nz_d[0], za_s[0], eta0[0]]
+
+    base_pt = [Fraction(1), Fraction(2), Fraction(-1), Fraction(3), Fraction(5), Fraction(2)]
+    J_K = [[None] * 6 for _ in range(6)]
+    vals, Y_val, intr_vals = None, None, None
+    for col in range(6):
+        inp = [(base_pt[i], Fraction(1 if i == col else 0)) for i in range(6)]
+        out, yv, iv = map_F6_to_fiber(inp)
+        if vals is None:
+            vals, Y_val, intr_vals = [o[0] for o in out], yv, iv
+        for row in range(6):
+            J_K[row][col] = out[row][1]
+
+    # Verify (-1)^*(Y + 1) = 4 / (Y + 1) on C_K(F)
+    p_rg, p_nd, p_ne, p_nz, p_za, p_eta = intr_vals
+    for _ in range(3):
+        d = k_sub(k_add(k_add(k_mul(Fk(3), p_nd), p_ne), k_mul(Fk(3), p_rg)), ONE)
+        p_za, p_rg, p_nd, p_ne, p_nz, p_eta = (
+            k_neg(p_za),
+            k_div(k_add(p_rg, k_add(k_mul(Fk(2), p_nd), p_ne)), d),
+            k_neg(k_div(k_add(p_nd, p_ne), d)),
+            k_div(p_ne, d),
+            k_div(k_sub(k_add(k_mul(Fk(3), k_mul(p_nd, p_nd)), k_add(k_mul(Fk(3), k_mul(p_nd, p_ne)), k_mul(p_ne, p_ne))), p_nz), k_mul(d, d)),
+            k_add(p_eta, p_za),
+        )
+        r0 = p_rg
+        r02 = k_mul(r0, r0)
+        r03 = k_mul(r02, r0)
+        p_za, p_rg, p_nd, p_ne, p_nz = (
+            k_div(p_za, r0),
+            k_inv(r0),
+            k_neg(k_div(k_add(p_nd, k_mul(Fk(2), r0)), r02)),
+            k_neg(k_div(k_sub(k_add(p_ne, p_nz), k_mul(Fk(3), r02)), r03)),
+            k_div(k_add(k_sub(p_nz, k_mul(Fk(3), r02)), k_mul(Fk(3), r0)), r03),
+        )
+    om = k_sub(ONE, p_rg)
+    om2, om3 = k_mul(om, om), k_mul(om, k_mul(om, om))
+    r2, r3 = k_mul(p_rg, p_rg), k_mul(p_rg, k_mul(p_rg, p_rg))
+    j2_m = k_div(k_add(p_nd, r2), om2)
+    j3p_m = k_div(k_add(p_ne, k_add(k_mul(Fk(3), k_mul(p_rg, p_nd)), k_mul(Fk(2), r3))), om3)
+    j3q_m = k_div(k_sub(p_nz, r3), om3)
+    u0_m = k_add(ONE, k_div(k_mul(Fk(2), k_add(j3p_m, j3q_m)), k_mul(j2_m, j2_m)))
+    u1_m = k_tau(u0_m)
+    u2_m = k_tau(u1_m)
+    s2_m = k_add(k_mul(u0_m, u1_m), k_add(k_mul(u1_m, u2_m), k_mul(u2_m, u0_m)))
+    Ym_val = Fraction(4) / (Y_val + 1) - 1
+    assert s2_m[1] == 0 and s2_m[2] == 0 and Ym_val**2 + s2_m[0] == 0
+    assert k_mul(j2_m, k_mul(Fk(Ym_val + 1), k_add(Fk(Ym_val), u0_m))) == k_mul(k_sub(ONE, u2_m), k_add(u0_m, u1_m))
+
+    def det_K(M):
+        n = len(M)
+        A = [[x for x in row] for row in M]
+        det = ONE
+        for i in range(n):
+            piv = i
+            while piv < n and A[piv][i] == Fk(0):
+                piv += 1
+            if piv != i:
+                A[i], A[piv] = A[piv], A[i]
+                det = k_neg(det)
+            det = k_mul(det, A[i][i])
+            inv_ii = k_inv(A[i][i])
+            for r_idx in range(i + 1, n):
+                fac = k_mul(A[r_idx][i], inv_ii)
+                if fac != Fk(0):
+                    for c_idx in range(i, n):
+                        A[r_idx][c_idx] = k_sub(A[r_idx][c_idx], k_mul(fac, A[i][c_idx]))
+        return det
+
+    d6 = det_K(J_K)
+    wz3_za2 = k_mul(k_mul(vals[4], k_mul(vals[4], vals[4])), k_mul(vals[0], vals[0]))
+    om_pull = k_div(d6, wz3_za2)
+    assert om_pull == (Fraction(-282296, 42052775427), Fraction(0), Fraction(0))
+
+    c0v, c1v, c2v, rv, sv, tv = base_pt
+    x_av, x_bv = Fraction(2), Fraction(-1)
+    a0_k = (x_av, 3 * x_av + 5 * x_bv, x_bv)
+    b0_k = k_sub(k_tau(k_tau(a0_k)), a0_k)
+    agd_v, bez_v = k_norm(a0_k), k_norm(b0_k)
+    e0_k = (c0v, c1v, c2v)
+    d024_v = k_mul(k_sub(e0_k, k_tau(e0_k)), k_mul(k_sub(k_tau(e0_k), k_tau(k_tau(e0_k))), k_sub(k_tau(k_tau(e0_k)), e0_k)))[0]
+    F_ind_v = d024_v / 7
+    N_Kv = tv**3 - 28 * tv**2 + 112 * tv + 448
+    P_Av = 9*tv**3*x_av + 13*tv**3*x_bv - 84*tv**2*x_av - 112*tv**2*x_bv - 336*tv*x_av - 560*tv*x_bv + 1344*x_av + 896*x_bv
+    P_Bv = 3*tv**3*x_av + 4*tv**3*x_bv - 60*tv**2*x_av - 68*tv**2*x_bv + 336*tv*x_av + 224*tv*x_bv - 1344*x_av - 1344*x_bv
+    P_0v = 4 * (6*tv**2*x_av + 11*tv**2*x_bv - 56*tv*x_bv - 672*x_av - 784*x_bv)
+    om_analytic = -agd_v * (Fraction(1) / F_ind_v) * Fraction(64, 7) * bez_v * N_Kv**2 * rv / (rv * (P_Av * sv + P_Bv) + P_0v) ** 3
+    assert abs(om_pull[0]) == abs(om_analytic)
+
+    # --- 6D. Claim 8.3H: residue -2/9 at t_*, U_* = -3; arithmetic of the hand-derived shell formulas for |C_3(q)| ---
+    r_s, s_s, t_s, al, xa, xb, w = sp.symbols("r_s s_s t_s al xa xb w")
+    sq3 = 2 * w + 1
+
+    def red_w(expr):
+        return sp.rem(sp.Poly(sp.expand(expr), w), sp.Poly(w**2 + w + 1, w)).as_expr()
+
+    def simp_w(expr):
+        n, d = sp.fraction(sp.together(expr))
+        dc = d.subs(w, -1 - w)
+        return sp.factor(sp.cancel(red_w(n * dc) / red_w(d * dc)))
+
+    u0_r0 = sp.Rational(1, 6) * sq3 * r_s * (1 - 3 * al * s_s * t_s)
+    Y_r = sp.Rational(1, 2) * r_s * (1 + 3 * al * s_s * t_s)
+    J_kum = sp.Matrix([[sp.diff(f, v) for v in [r_s, s_s, t_s]] for f in [r_s * s_s, r_s * t_s, Y_r]])
+    res_kum = simp_w(3 * sq3 * al * J_kum.det() / (6 * u0_r0))
+
+    P_A_k = 9 * al**2 * t_s**3 * xa + 9 * al * t_s * xb - 2 * sq3 * xa
+    P_B_k = 6 * sq3 * al**2 * t_s**3 * xb + 9 * al * t_s**2 * xa + xb
+    P_0_k = 6 * (3 * al * t_s**2 * xa + xb)
+    D_kum = red_w(P_A_k - 3 * al * t_s * P_B_k)
+    l1_kum = simp_w(D_kum / (3 * sq3 * al**2 * t_s**3 - 1))
+    t_star_k = sp.solve(l1_kum, t_s)[0]
+    assert simp_w(-P_0_k.subs(t_s, t_star_k) / (2 * P_B_k.subs(t_s, t_star_k))) == -3
+
+    S_F_kum = simp_w(81 * al**2 * t_s**3 * (54 * al**4 * t_s**6 * w + 27 * al**4 * t_s**6 + 18 * al**2 * t_s**3 - 2 * w - 1) / (27 * al**4 * t_s**6 + 1) ** 2)
+    bez_kum = -3 * al * sq3 * (al * xb**3 - xa**3)
+    coeff_t = simp_w(2 * bez_kum / S_F_kum * (216 * t_s**3) * (res_kum / r_s) * (2 * P_0_k / D_kum) / (-P_0_k**3))
+    # Residue at t = t_*(X), computed as an exact Laurent expansion over Q(w), w^2+w+1=0.
+    # (Draft 6 substituted t = t_* directly into coeff_t*(t - t_*); that is fragile, because
+    # SymPy zeroes the factor (t - t_*) before reducing the denominator modulo w^2+w+1, and it
+    # returned 0 in SymPy 1.14.  Draft 6 also asserted the value +-2/27; the exact value is -2/9.
+    # Only its X-independence and |-2/9|_F = 1 for p >= 5 are used in the paper.)
+    h_s = sp.symbols("h_s")
+
+    def red_frac_w(c):
+        cn, cd = sp.fraction(sp.together(c))
+        cc = cd.subs(w, -1 - w)
+        return sp.cancel(red_w(sp.expand(cn * cc)) / red_w(sp.expand(cd * cc)))
+
+    def leading_term_at_ts(expr):
+        P = sp.Poly(sp.expand(expr.subs(t_s, t_star_k + h_s)), h_s)
+        for (k,), c in sorted(P.terms()):
+            v = red_frac_w(c)
+            if sp.simplify(v) != 0:
+                return k, v
+        raise AssertionError("expression vanishes identically near t_*")
+
+    n_coeff, d_coeff = sp.fraction(sp.together(coeff_t))
+    k_n, lead_n = leading_term_at_ts(n_coeff)
+    k_d, lead_d = leading_term_at_ts(d_coeff)
+    assert (k_n, k_d) == (0, 1)  # simple pole at t_*
+    res_at_ts = sp.factor(red_frac_w(lead_n / lead_d))
+    assert res_at_ts == sp.Rational(-2, 9)  # X-independent, a p-adic unit for p >= 5
+    print(f"      PASS: simple pole of the t-one-form at t_*(X) with exact residue {res_at_ts} (X-independent).")
+
+    # Valuation-shell formulas for I_{P^1(K)}, B_1(S), B_2(1), and |C_3(q)|.  These are typed in from
+    # the hand derivation sketched in the proof of Claim 8.3H; the checks below confirm only their
+    # algebra, not that they equal the regularized integrals (see Open Problem (1) in the paper).
+    q, S = sp.symbols("q S", positive=True)
+    def geom(R): return R / (1 - R)
+
+    I_P1K_unram = sp.factor((1 - 1 / q**2) / (1 - q) + (1 / q) * (1 - 1 / q**2) * q / (1 - q))
+    I_P1K_ram = sp.factor((1 + 1 / q) * 2 * (1 - 1 / q) / (1 - q))
+    assert sp.simplify(I_P1K_unram + 2 * (q + 1) / q**2) == 0
+    assert sp.simplify(I_P1K_ram + 2 * (q + 1) / q**2) == 0
+
+    B1_unram = (
+        (1 - 1 / q) * geom(w * S / q)
+        + (1 - 2 / q)
+        + (1 - 1 / q) * geom(1 / (q * S**4))
+        + (1 - 1 / q) * geom(w**2 * q * S**3)
+    )
+    assert red_w(sp.numer(sp.together(B1_unram.subs(S, 1)))) == 0
+    B1_prime_unram = simp_w(sp.diff(B1_unram, S).subs(S, 1))
+    B2_unram = simp_w(
+        -q / (q + 1)
+        + (1 - 2 / q)
+        + (1 - 1 / q) * geom(w / q**2)
+        + (1 - 1 / q) * geom(w**2 / q)
+    )
+    prod_unram = simp_w(B1_prime_unram * B2_unram)
+    assert sp.simplify(prod_unram - 12 / (q**2 - 1)) == 0
+    J_Q3_unram = sp.simplify(sp.Rational(1, 4) * ((q - 1) / q) * prod_unram)
+    assert sp.simplify(J_Q3_unram - 3 / (q * (q + 1))) == 0
+    assert sp.simplify((-I_P1K_unram) * J_Q3_unram - 6 / q**3) == 0
+
+    B1_ram = (-1 / q) + (1 - 1 / q) * geom(1 / (q * S**4))
+    assert sp.simplify(B1_ram.subs(S, 1)) == 0
+    B1_prime_ram = sp.factor(sp.diff(B1_ram, S).subs(S, 1))
+    assert sp.simplify(B1_prime_ram + 4 / (q - 1)) == 0
+    B2_ram_mag = sp.factor(q / (q + 1) + 1 / q)
+    assert sp.simplify(B2_ram_mag - (q**2 + q + 1) / (q * (q + 1))) == 0
+    J_Q3_ram = sp.simplify(sp.Rational(1, 4) * ((q - 1) / q) * (-B1_prime_ram) * B2_ram_mag)
+    assert sp.simplify(J_Q3_ram - (q**2 + q + 1) / (q**2 * (q + 1))) == 0
+    assert sp.simplify((-I_P1K_ram) * J_Q3_ram - 2 * (q**2 + q + 1) / q**4) == 0
+    print(f"      PASS (arithmetic of hand-derived shell sums): |C_3(q)| = {(-I_P1K_unram)*J_Q3_unram} (unram), {(-I_P1K_ram)*J_Q3_ram} (tame ram).")
+
+
 if __name__ == "__main__":
     r_names, mats_X, mats_Xm, ha, hb, theta, log_unip, s_a, s_b = build_chevalley()
     verify_section_6_subregular_forms(r_names, mats_X, mats_Xm, ha, hb, theta, log_unip)
@@ -646,4 +1028,5 @@ if __name__ == "__main__":
     verify_section_7_birational_proof_X2(r_names, theta)
     verify_padic_constant_C_prime()
     verify_section_8_cubic_tori(r_names, theta)
-    print("\nALL 5 VERIFICATION SUITES FOR OPEN PROBLEM (1) PASSED 100% SYMBOLICALLY.")
+    verify_section_8_proof_X3_and_C3()
+    print("\nALL 6 VERIFICATION SUITES PASSED (the constants C'(q) and C_3(q) are checked only as arithmetic of hand-derived factors).")

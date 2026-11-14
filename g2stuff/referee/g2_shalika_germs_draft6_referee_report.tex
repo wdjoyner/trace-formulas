@@ -1,0 +1,129 @@
+\documentclass[11pt,letterpaper]{article}
+\usepackage[T1]{fontenc}
+\usepackage[letterpaper,margin=21mm]{geometry}
+\usepackage{mathpazo}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{enumerate}
+\usepackage{booktabs,tabularx}
+\usepackage{xcolor}
+\usepackage{microtype}
+\usepackage{hyperref}
+
+\definecolor{primary}{RGB}{22,58,105}
+\definecolor{accent}{RGB}{145,42,34}
+\definecolor{okgreen}{RGB}{24,102,62}
+
+\hypersetup{
+  colorlinks=true,
+  linkcolor=primary,
+  citecolor=primary,
+  urlcolor=primary,
+  pdftitle={Referee and Verification Report: On the transfer of Shalika germs for G2 (Draft 6)},
+  pdfauthor={Referee}
+}
+
+\setlength{\parskip}{5.5pt plus 2pt minus 1pt}
+\setlength{\parindent}{0pt}
+\setlength{\emergencystretch}{2.5em}
+
+\newcommand{\takeaway}[2]{%
+  \vspace{4pt}\noindent\colorbox{primary!7}{%
+    \parbox{\dimexpr\linewidth-2\fboxsep\relax}{%
+      \vspace{4pt}\textbf{\color{primary}#1:}\hspace{0.5em}#2\vspace{4pt}%
+    }%
+  }\vspace{4pt}%
+}
+
+\newcommand{\ovF}{\overline{F}}
+\newcommand{\OF}{\mathcal{O}_F}
+\newcommand{\ooo}{\mathcal{O}}
+\DeclareMathOperator{\Gal}{Gal}
+\DeclareMathOperator{\Cent}{Cent}
+\DeclareMathOperator{\tr}{tr}
+
+\title{\vspace{-12pt}\textbf{\color{primary}Referee \& Verification Report on ``On the transfer of Shalika germs for $G_2$\\[2pt]
+\large Draft 6. Closed-Form Evaluation of $J_3(X)$ and Direct Proof of Hypothesis $(\mathrm{X}_3)$''}\\[5pt]
+\normalsize Manuscript file: \texttt{g2-shalika-germs-2026.tex} (6,143 lines; 71 pages in \texttt{amsart} 12pt)\\
+Authors: David Joyner, Claude, and Gemini (November 2026)}
+\date{November 14, 2026}
+\author{}
+
+\begin{document}
+\maketitle
+\vspace{-20pt}
+
+\takeaway{Summary Verdict: Hypothesis $(\mathrm{X}_3)$ Proved Directly for Cyclic Cubic Tori ($p\ge 5$)}{Draft~6 evaluates the $6$-dimensional $p$-adic principal-value integral $J_3(X)=\int_{E_{\emptyset,\beta,\zeta}(u_0)(F)}\kappa_1(t_*)\,|\omega_{E_{\emptyset,\beta,\zeta}(u_0)}|$ in closed form for all cyclic cubic elliptic Cartan subgroups of $G_2$ ($H_1=PGL(3)$, $\Sigma_{H_1}^+=\{\alpha,\gamma,\delta\}$, $p\ge 5$), upgrading Theorem~8.3 from conditional on $(\mathrm{X}_3)$ to proved modulo Lemma~5.14 and the divisor proviso of Lemma~0.8 (parallel to Theorem~7.2 in \S7). Every algebraic, Galois-cohomological, Jacobian, and $p$-adic step is verified symbolically in Suite~6 of \texttt{verify\_g2\_open\_problem\_1.py}.}
+
+\section{\texorpdfstring{Geometric Reduction of $E_{\emptyset,\beta,\zeta}(u_0)$ to $\mathbb{P}^1(K)\times\mathcal{C}_K(F)$}{Geometric Reduction of E to P1(K) x C_K(F)}}
+
+Unlike the $4$-dimensional biquadratic fiber $E_{\emptyset,\alpha,\delta}(u_0)\dashrightarrow(\mathbb{P}^1)^4$ of \S7 (modeled on \href{https://www.numdam.org/article/AST_1989__171-172__195_0.pdf}{Hales 1989, \S6} \cite{Ha89}), pulling back the Leray $6$-form~(8.5) directly to the hexagon double cover $y_{\mathrm{hex}}^2=(m_1+m_2)^2-4d_{024}d_{135}$ of Proposition~8.3E leaves non-monomial $X$-dependence inside $w(\zeta)^3$. Draft~6 resolves this in two structural steps (Propositions~8.3F--8.3G):
+\begin{enumerate}[1.]
+\item \textbf{Intrinsic $X$-free coordinates and $SL_2(\alpha)$-fibration (Proposition~8.3F):} Under the triangular change of variables~(8.7d) to $(z_a,r_\gamma,\tilde n_\delta,\tilde n_\epsilon,\tilde n_\zeta,\eta)$ with $w(\zeta)=L_X/(\alpha^3\beta^2)$, the entire $\Omega(G_2)\cong D_6$ action becomes independent of $X$, while $s_\alpha^*(L_X)=-L_X/D_{s_\alpha}^2$ and $s_\beta^*(L_X)=L_X/r_\gamma^3$ imply $L_X/L_{X_0}\in F^\times$ and $(L_X/L_{X_0})^3\in(F^\times)^3\subset N_{K/F}(K^\times)$, proving that both $E_{\emptyset,\beta,\zeta}(u_0)(F)$ and $\kappa_1(t_*)$ are pointwise independent of regular $X\in\mathfrak t(F)$. Moreover, $SL_2(\alpha)=\langle U_\alpha,U_{-\alpha}\rangle\subset\Cent_{G_2}(u_0)$ commutes with $u_0$ and $\Omega(G_2)$, preserves $\lambda$ on $Y_C$, acts simply transitively on $\mathbb{P}^1(K)\setminus\mathbb{P}^1(F)$ via $(\eta_0,\eta_2,\eta_4)$, and splits the $6$-form~(8.5) as
+\[
+\omega_{E_{\emptyset,\beta,\zeta}(u_0)}=\pm\alpha(X)\gamma(X)\delta(X)\,
+\frac{d\eta_0\wedge d\eta_2\wedge d\eta_4}{(\eta_0-\eta_2)(\eta_2-\eta_4)(\eta_4-\eta_0)}
+\wedge\omega_{\mathcal{Q}_3},
+\]
+where $\mathcal{Q}_3$ has $SL_2(\alpha)$-invariant coordinates $(j_2,j_3',j_3'')$ in~(8.7e) and $\omega_{\mathcal{Q}_3}=\beta\epsilon\zeta\,(3\alpha(j_2-j_3'')-\beta(j_3'+2j_3''))^{-3}\,dj_2\wedge dj_3'\wedge dj_3''$.
+\item \textbf{Smooth split quadric cone $\mathcal{C}_K(F)$ and Hilbert~90 reduction (Proposition~8.3G):} Putting $u_0:=1+2(j_3'+j_3'')/j_2^2$ and $u_i:=\tau^{i*}(u_0)$ identifies $\mathcal{Q}_3(F)$ birationally over $F$ with the quadric cone
+\[
+\mathcal{C}_K(F)=\bigl\{(u_0,Y)\in K\times F : Y^2+u_0\tau(u_0)+\tau(u_0)\tau^2(u_0)+\tau^2(u_0)u_0=0\bigr\}
+\]
+via $j_2=\frac{(1-u_2)(u_0+u_1)}{(Y+1)(Y+u_0)}$. Because $K/F$ is cyclic cubic, $\mathcal{C}_K$ has square discriminant $\frac14 D_{K/F}\in(F^\times)^2$ and smooth $F$-rational points, so $\mathbb{P}(\mathcal{C}_K)\cong\mathbb{P}^1_F\times\mathbb{P}^1_F$. Using $N_{K/F}(Y+u_0)=-N_{K/F}(u_0+u_1)$ on $\mathcal{C}_K$, Hilbert's Theorem~90 gives $W_0=-Q_0/A_{\mathrm{num}}$ with $\tau^*(W_0)/W_0=-(u_0+u_1)/(Y+u_1)$, whence $S_F:=Q_0^3/A_{\mathrm{num}}^2\in\delta_K\cdot N_{K/F}(K^\times)(F^\times)^3$ and $\Lambda_F:=\tr_{K/F}(\alpha(X)W_\alpha)\in F(\mathcal{C}_K)$ satisfy~(8.7h):
+\[
+\kappa_1(t_*)=c'''\cdot\omega_{K/F}(Y+1),\qquad
+\omega_{\mathcal{Q}_3}=\pm 2\,\frac{\beta(X)\epsilon(X)\zeta(X)}{S_F\,\Lambda_F^3}\,\frac{du_0\wedge du_1\wedge dY}{u_0+u_1}.
+\]
+In addition, $(-1)^*$ descends to a measure-preserving $F$-involution of $\mathcal{C}_K(F)$ satisfying $(-1)^*(Y+1)=4/(Y+1)$, forcing $J_{\mathcal{Q}_3}(X)$ to be real (up to $\chi_3(2)\in\mu_3$ in the tamely ramified case). An end-to-end $6\times 6$ Jacobian check over $K=\mathbb{Q}(2\cos(2\pi/7))$ using exact $\mathrm{Dual}(K)$ arithmetic confirms zero $\theta,\theta^2$ components and exact ratio~$1$ against~(8.7f) and~(8.7h).
+\end{enumerate}
+
+\section{\texorpdfstring{Closed-Form Evaluation of $J_3(X)$ and $C_3(q)$ (Theorem~8.3H)}{Closed-Form Evaluation of J3(X) and C3(q) (Theorem 8.3H)}}
+
+\begin{enumerate}[1.]
+\item \textbf{Universal $\mathbb{P}^1(K)$ factor:} Expanding $\eta_0=c_0+c_1\theta+c_2\theta^2$ in an $\OF$-basis of $\mathcal{O}_K$ cancels $|\delta_K|_F$ between numerator and denominator. Covering $\mathbb{P}^1(K)$ by $\mathcal{O}_K$ and $\mathfrak p_K$ yields $I_{\mathbb{P}^1(K)}=-2(q+1)q^{-2}$ for \emph{both} unramified and tamely ramified cyclic cubic extensions $K/F$ ($p\ge 5$).
+\item \textbf{Decoupling on $\mathcal{C}_K(F)$ and cancellation of $\beta(X)\epsilon(X)\zeta(X)$:} In radial-ruling coordinates $(r,s,t)$, setting $rL_1(s,t;X)+L_0(t;X)=-L_0(t;X)z$ and $Y+1=1+U(1+z)$ decouples $(z,U)$ from $(t,X)$ (compare the M\"obius and principal-value analysis of \href{https://publications.ias.edu/sites/default/files/orbital-integrals-ii_rpl.pdf}{Langlands \& Shelstad 1989, \S7 and Appendix~I} \cite{LS89}):
+\[
+\omega_{\mathcal{Q}_3}=\pm\Bigl[c_{\mathrm{alg}}\,\frac{\beta(X)\epsilon(X)\zeta(X)\,N_K(t)}{P_0(t;X)^2\,\ell_1(t;X)}\,dt\Bigr]\wedge\frac{(1+z)\,dz\wedge dU}{z^3}.
+\]
+At the unique root $t=t_*(X)$ of $\ell_1(t;X)=0$, symbolic evaluation in both rational cyclic cubic and general Kummer ($K=F(\sqrt[3]{\alpha})$) models shows that the pole of $s(U,t)$ coalesces at $U=-3$ and the algebraic residue of the $t$-one-form equals $\pm\frac{2}{27}$ identically, canceling $\beta(X)\epsilon(X)\zeta(X)$ and $\delta_K$ ($|2/27|_F=1$ for $p\ge 5$).
+\item \textbf{Mellin limit and closed-form constants:} Under the Igusa norm regulator $R_{\mathrm{cone}}^{\sigma/3}$ ($S=q^\sigma\to 1$), substituting $V=1+U(1+z)$ ($u=1+z$) factors the limiting $(z,U)$-integral near $t_*(X)$ as $B_1(S)B_2(S)$. Since $B_1(1)=0$, the $1/\sigma$ pole of $|\ell_1(t;X)|_F^{-1-4\sigma}$ cancels (confirming no $\log_q|\lambda|$ term) and $\frac{d}{d\sigma}C(X)^{\sigma/3}\big|_{\sigma=0}$ vanishes. Valuation-shell summation gives $B_1'(1)B_2(1)=12/(q^2-1)$ for unramified $K/F$ (all $\sqrt{-3}$ imaginary parts canceling identically) and $B_1'(1)=-4/(q-1)$, $B_2(1)=-\chi_3(2)(q^2+q+1)/(q(q+1))$ for tamely ramified $K/F$, yielding Eq.~(8.8):
+\[
+|C_3(q)|=\begin{cases}
+6\,q^{-3}, & K/F\text{ unramified},\\[3pt]
+2(q^2+q+1)\,q^{-4}, & K/F\text{ tamely ramified }(q\equiv 1\pmod 3).
+\end{cases}
+\]
+Note that as $q\to 1$, both branches satisfy $|C_3(q)|\to 6=|\Omega(H_1)|$, matching $C'(q)\to 8$ in Eq.~(7.13).
+\end{enumerate}
+
+\section{Remaining Open Items in the Project}
+
+\begin{table}[!htbp]
+\centering
+\small
+\begin{tabularx}{\linewidth}{@{}l l X@{}}
+\toprule
+\textbf{Hypothesis / Item} & \textbf{Status in Draft~6} & \textbf{Remaining Scope} \\
+\midrule
+$(\mathrm{X}_2)$ ($r=2$, biquadratic tori, \S7) & {\color{okgreen}\textbf{Proved}} (Thm.~7.6H) & Direct $(\mathbb{P}^1)^4$ proof \& explicit $C'(q)$ ($p\ge 5$, mod Lemmas~5.14 \& 0.8). \\
+$(\mathrm{X}_3)$ ($r=3$, cyclic cubic tori, \S8) & {\color{okgreen}\textbf{Proved}} (Thm.~8.3H) & Direct $\mathbb{P}^1(K)\times\mathcal{C}_K(F)$ proof \& explicit $|C_3(q)|$ ($p\ge 5$, mod Lemmas~5.14 \& 0.8). \\
+$(\mathrm{X}_1)$ ($r=1$, subregular $\ooo_1$, \S6) & {\color{accent}\textbf{Open directly}} & Known indirectly via \cite{Wa97,Ng10,GH16} (Cor.~8.8); direct $2$-dim fiber proof on $E_\beta,E_\alpha$ via \cite{Ha92a} remains to be written out. \\
+$r=3$ short-reflection $S_3$ tori (\S8) & {\color{accent}\textbf{Open directly}} & $\Delta_0(Y)=\text{const}$ proved (Prop.~8.3A); cocycle $\kappa_1(t_*)$ and $J_3(X)$ for $H_1=PGL(3)$ twisted ($SU(3)$) remain open. \\
+Lemmas~5.14 \& 0.8 divisor proviso & {\color{accent}\textbf{Standing}} & Descent of $t_*$ to $Z$ and blow-up separation of non-admissible $\beta=r+1$ divisors in \cite{LS83}. \\
+\bottomrule
+\end{tabularx}
+\caption{Status of the geometric program after Draft~6.}
+\end{table}
+
+\begin{thebibliography}{Ha92a}
+\bibitem[GH16]{GH16} J.~Gordon and T.~Hales, ``\href{https://muse.jhu.edu/article/609681/summary}{Endoscopic transfer of orbital integrals in large residual characteristic}'', \textit{Amer. J. Math.} \textbf{138} (2016), 109--148.
+\bibitem[Ha89]{Ha89} T.~Hales, ``\href{https://www.numdam.org/article/AST_1989__171-172__195_0.pdf}{Shalika germs on $GSp(4)$}'', \textit{Ast\'erisque} \textbf{171--172} (1989), 195--256.
+\bibitem[Ha92a]{Ha92a} T.~Hales, \href{https://iacobus.usc.gal/nde/fulldisplay/alma991013513907807712/34CISUG_USC:NDE/gl}{\textit{The Subregular Germ of Orbital Integrals}}, Mem. Amer. Math. Soc. \textbf{99} (1992), no.~476.
+\bibitem[Ha94]{Ha94} T.~Hales, ``\href{https://publicationsthomashales.wordpress.com/wp-content/uploads/2016/03/hyperelliptic-curves-harmonic-analysis-scan.pdf}{Hyperelliptic curves and harmonic analysis}'', \textit{Contemp. Math.} \textbf{177} (1994), 137--169.
+\bibitem[LS83]{LS83} R.~Langlands and D.~Shelstad, ``On principal values on $p$-adic manifolds'', Lecture Notes in Math. \textbf{1041}, Springer, 1984, 250--279.
+\bibitem[LS89]{LS89} R.~Langlands and D.~Shelstad, ``\href{https://publications.ias.edu/sites/default/files/orbital-integrals-ii_rpl.pdf}{Orbital integrals on forms of $SL(3)$, II}'', \textit{Canad. J. Math.} \textbf{41} (1989), 480--507.
+\bibitem[Ng10]{Ng10} B.~C.~Ng\^o, ``Le lemme fondamental pour les alg\`ebres de Lie'', \textit{Publ. Math. IH\'ES} \textbf{111} (2010), 1--169.
+\bibitem[Wa97]{Wa97} J.-L.~Waldspurger, ``Le lemme fondamental implique le transfert'', \textit{Compositio Math.} \textbf{105} (1997), 153--236.
+\end{thebibliography}
+
+\end{document}

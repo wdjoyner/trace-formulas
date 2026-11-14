@@ -1,0 +1,226 @@
+\documentclass[12pt,letterpaper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{mathptmx}
+\usepackage[letterpaper,margin=1in]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{booktabs,tabularx}
+\usepackage{enumitem}
+\usepackage{microtype}
+\usepackage[hidelinks]{hyperref}
+\setlength{\parskip}{4pt}
+\setlength{\emergencystretch}{3em}
+
+\title{Referee report on ``On the transfer of Shalika germs for $G_2$'',\\
+Draft 6 (with the Draft 5 material it builds on)}
+\author{Claude (Anthropic), for David Joyner}
+\date{November 14, 2026}
+
+\begin{document}
+\maketitle
+
+\section*{Summary and recommendation}
+
+Drafts 5 and 6, by Gemini (``Carbon''), add direct proofs of the
+tangent-direction hypotheses: $(\mathrm X_2)$ for the biquadratic tori
+(Theorem~7.6H, Draft~5) and $(\mathrm X_3)$ for the cyclic cubic tori
+(Propositions~8.3F--8.3G and Theorem~8.3H, Draft~6), with closed-form
+constants $C'(q)$ and $C_3(q)$.
+
+\textbf{Recommendation.}
+\begin{itemize}[leftmargin=1.5em]
+\item \textbf{Draft~5 material:} accept with minor revisions.
+\item \textbf{Draft~6 material:} major revision. Do not merge it as it
+stands.
+\end{itemize}
+
+\textbf{Reasons.}
+\begin{itemize}[leftmargin=1.5em]
+\item \emph{The $(\mathrm X_2)$ argument is sound in structure, and its
+algebra is verified by script.} After a birational change of coordinates the
+Galois action on the fiber no longer depends on $X$. The $\kappa$-factor
+becomes $(t^2-d_\alpha d_\zeta,d_\alpha)_F$, which has no $X$ in it. The
+pulled-back form carries exactly $|\alpha(X)\zeta(X)|$.
+\item \emph{The $(\mathrm X_3)$ argument is not established.} Carbon's own
+check of its key step fails. The proof of Theorem~8.3H is a compressed sketch
+that uses objects defined nowhere in the paper. And the step that removes the
+$X$-dependence is a regularization argument whose relation to the principal
+value of \cite{LS83} is not explained.
+\end{itemize}
+
+\section*{Checks performed}
+
+\begin{itemize}[leftmargin=1.5em]
+\item \textbf{Compilation.} The manuscript compiles with \texttt{pdflatex}
+(72 pages), with no errors, undefined references or overfull boxes.
+\item \textbf{Remark numbering.} Draft~6 inserts Remark~2026.40
+(\texttt{rem:8.status}). The former Remarks 2026.40--45 become 2026.41--46.
+\item \textbf{Scripts.} All verification scripts were run in a clean directory
+with SymPy~1.14.0:
+\begin{itemize}[leftmargin=1.5em]
+\item \texttt{verify\_g2\_chevalley\_and\_endoscopy.py},
+\texttt{verify\_g2\_toric\_and\_forms.py},
+\texttt{verify\_g2\_coordinates\_and\_galois.py},
+\texttt{g2\_cocycle\_biquadratic.py} and
+\texttt{g2\_transfer\_factor\_biquadratic.py} all pass.
+\item \texttt{verify\_g2\_open\_problem\_1.py} passes Suites~1--5 (the Draft~5
+material) and Suite~6A--6C (Propositions~8.3F--8.3G). It \textbf{fails} in
+Suite~6D, at the assertion that the residue at $t_*(X)$ is $\pm 2/27$.
+\end{itemize}
+\item \textbf{Independent checks.} The claims below were checked by hand, by
+symbolic computation, and by high-precision numerics.
+\end{itemize}
+
+\section*{Major issues}
+
+\begin{enumerate}[leftmargin=1.5em]
+\item \textbf{The residue in Theorem~8.3H is $-2/9$, not $\pm2/27$, and the
+script's check of it is fragile.}
+
+\emph{What the script does.} Suite~6D evaluates
+$\bigl(c(t)\,(t-t_*)\bigr)\big|_{t=t_*}$ by symbolic substitution, with
+$w$ ($w^2+w+1=0$) treated as an indeterminate. In SymPy~1.14 the substitution
+makes the factor $t-t_*$ zero, while the factor $3\alpha^2t^2x_b^2+x_a^2$
+(which vanishes at $t_*$ only modulo $w^2+w+1$) is left unreduced. The result
+is $0$, and the assertion fails. Carbon's environment presumably simplified in
+a different order.
+
+\emph{What the expression actually gives.} Evaluating the unsimplified
+expression of the script at $t_*+h$, with $w=e^{2\pi i/3}$, at 50 digits:
+\begin{itemize}[leftmargin=1.5em]
+\item there is a genuine simple pole;
+\item $h\cdot c(t_*+h)\to-0.2222222222\ldots=-2/9$, for
+$(\alpha,x_a,x_b)=(2,1,3)$ and for $(5,-2,7)$ alike;
+\end{itemize}
+
+\emph{Why the conclusion survives.} The residue is independent of $X$, and
+$|{-2/9}|_F=|2/27|_F=1$ for $p\ge5$. So the cancellation of
+$\beta\epsilon\zeta(X)$ that the proof needs does hold.
+
+\emph{Requested.} State the value as $-2/9$, or justify the normalization
+that gives $\pm2/27$. Replace the substitution in the script by an exact
+limit over $\mathbb Q(\sqrt{-3})$, or by the numerical check described here.
+
+\item \textbf{Theorem~8.3H is not proved in the paper.} The proof uses
+$R_{\mathrm{cone}}$, $c_{\mathrm{alg}}$, $P_0(t;X)$, $\ell_1(t;X)$,
+$L_0(t;X)$, $L_1(s,t;X)$, $N_K(t)$, $s(U,t)$ and $C(X)$. None of these is
+defined anywhere in the manuscript.
+
+\emph{The regularization.} The decisive $X$-independence comes from
+regularizing with an ``Igusa Mellin regulator $R_{\mathrm{cone}}^{\sigma/3}$''.
+The proof says that $B_1(1)=0$ ``annihilates
+$\frac{d}{d\sigma}C(X)^{\sigma/3}|_{\sigma=0}$''. But:
+\begin{itemize}[leftmargin=1.5em]
+\item the integrals in Formula~0.6 and Lemma~5.7 are principal values in the
+sense of \cite{LS83}, and nothing shows that this regularization computes the
+same number;
+\item $B_1(S)=\int_F\omega_{K/F}(y)|y|^{-\sigma}|y+1|^{4\sigma}\,dy$ does not
+converge absolutely at $\sigma=0$, so ``$B_1(1)=0$'' is itself a regularized
+statement.
+\end{itemize}
+
+\emph{The constants.} The valuation-shell sums giving $B_1'(1)B_2(1)$ are
+asserted, not derived. Suite~6D encodes the final shell formulas, so it checks
+their arithmetic but not that they equal the integrals.
+
+\emph{Requested.}
+\begin{itemize}[leftmargin=1.5em]
+\item Either supply a complete proof, or downgrade Theorem~8.3H to a
+proposition marked as a sketch.
+\item Restore Theorem~8.3 to ``conditional on $(\mathrm X_3)$, Lemma~5.14
+and Lemma~0.8''.
+\item Keep Propositions~8.3F--8.3G, whose algebra the script verifies, and
+list the missing steps in Remark~2026.40.
+\end{itemize}
+
+\item \textbf{The abstract overstates the results.} It says that for both
+the 2- and 3-regular classes ``we give direct geometric proofs'', and that
+``only the 1-regular matching statement remains conditional''.
+\begin{itemize}[leftmargin=1.5em]
+\item The 2- and 3-regular results remain conditional on Lemma~5.14 and on
+the divisor proviso of Lemma~0.8, as Theorems~7.2 and~8.3 themselves state.
+\item In view of issue~2, the 3-regular result also remains conditional on
+$(\mathrm X_3)$.
+\end{itemize}
+The summary and Remark~2026.40 make the same claims (``verified
+symbolically'', ``completes the direct geometric proof'') and should be
+revised to match.
+
+\item \textbf{The constant $C'(q)$ in Theorem~7.6H is checked only by hand.}
+The proof of Theorem~7.6H(d) derives the factors $I_t$, $I_s$, $I_\xi$ briefly,
+and the power $q^{-5/2}$ comes from $|d_\alpha d_\zeta|_F^{-1/2}$. But Suite~4
+only multiplies the hand values, which are typed in as literals (for example
+$I_\xi=-(p+1)/p^2$). It confirms that the product is $4(q+1)q^{-5/2}$,
+respectively $2(q+1)^2q^{-3}$. The main content of Theorem~7.6H, the
+independence from $X$, is verified by Suites~2--3; the constant is not.
+
+\emph{Requested.} Say that the constants are hand computations, and justify the
+regularized steps (such as $\mathrm{PV}\int_{|t|_F>1}dt=-1$, and the negative
+value of $I_\xi$) by reference to \cite{LS83}.
+\end{enumerate}
+
+\section*{Confirmed}
+
+\begin{itemize}[leftmargin=1.5em]
+\item \textbf{The exponent correction in (7.10).} Draft~5's correction of
+Draft~4 is right. Since $\lambda=x(\delta)z(\alpha)^2z(\beta)/w(\delta)$, we
+have $z(\alpha)^{-4}=\lambda^{-2}x(\delta)^2z(\beta)^2/w(\delta)^2$, not the
+inverse that Draft~4 used. Hence $\Phi_E=x(\delta)^2F_1F_2/w(\delta)^2$.
+\item \textbf{The $X$-independence of the sign in Theorem~7.6H.} In the Cayley
+coordinates, $\Phi_E$ is $\alpha(X)\zeta(X)$ times $t+\sqrt{d_\alpha d_\zeta}$
+times a factor in $F$. Since $\omega_{K/L}$ is trivial on $F^\times$,
+$\omega_{K/L}(\Phi_E)=(t^2-d_\alpha d_\zeta,d_\alpha)_F$, which does not depend
+on $X$.
+\item \textbf{The algebra of Propositions~7.6G, 8.3A--8.3E and~8.3F--8.3G}, as
+far as the script asserts it: Suites~2, 3, 5 and~6A--6C pass.
+\end{itemize}
+
+\section*{Disposition (added when Draft~6 was committed)}
+
+At David Joyner's request, Claude made the following changes before committing
+Draft~6; what remains is recorded as Open Problem~(1)(a)--(c) of the paper.
+\begin{itemize}[leftmargin=1.5em]
+\item Issue~1: the residue is now computed in the script as an exact Laurent
+expansion over $\mathbb Q(w)$, $w^2+w+1=0$. It confirms a simple pole with
+residue exactly $-2/9$ for all $X$. The paper states $-2/9$.
+\item Issue~2: Theorem~8.3H is now Claim~8.3H, with a sketched proof, a note on
+the undefined objects, and a list of missing steps in Remark~2026.40.
+Theorem~8.3 is again conditional on $(\mathrm X_3)$.
+\item Issue~3: the abstract, the introduction, the summary and the
+acknowledgments now match.
+\item Issue~4: Remark~2026.36 and the script's messages now say that the
+constants are checked only as arithmetic of hand-evaluated factors.
+\item The CHANGES.md items below were fixed when merging the change log.
+\end{itemize}
+
+\section*{Minor issues}
+
+\begin{itemize}[leftmargin=1.5em]
+\item \textbf{CHANGES.md:}
+\begin{itemize}[leftmargin=1.5em]
+\item it again cites ``Remark~2026.5'' for the coordinate count, where
+Remark~2026.8 is meant;
+\item it drops the Draft~1 disposition table and the record of the edits made
+when Draft~3 was committed;
+\item its remark references need the shift caused by the new
+Remark~2026.40.
+\end{itemize}
+\item \textbf{Carbon's Draft~6 report:}
+\begin{itemize}[leftmargin=1.5em]
+\item it states that every step is verified symbolically, and does not record
+the software environment;
+\item its observation that $|C_3(q)|\to6=|\Omega(H_1)|$ as $q\to1$, ``matching
+$C'(q)\to8$'', has no mathematical content and should not be offered as
+evidence.
+\end{itemize}
+\item \textbf{The proof of Theorem~8.3H} is one dense paragraph. Even when
+completed, it should be split into lemmas: the $\mathbb P^1(K)$ factor, the
+cone decoupling, the residue, and the shell sums.
+\end{itemize}
+
+\begin{thebibliography}{LS83}
+\bibitem[LS83]{LS83} R.~Langlands and D.~Shelstad, ``On principal values on
+$p$-adic manifolds'', Lecture Notes in Math.\ \textbf{1041}, Springer, 1984,
+250--279.
+\end{thebibliography}
+
+\end{document}

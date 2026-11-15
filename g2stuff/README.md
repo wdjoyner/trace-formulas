@@ -72,6 +72,13 @@ Run them one at a time, for example `python3 g2_tori_endoscopy.py`.
 - [`scripts/verify_g2_four_blowup_charts.py`](scripts/verify_g2_four_blowup_charts.py) is a standalone exact SymPy checker for the four charts, cyclic common denominator, regulator norm cancellation, boundary/polar equations and repeated-polar case. Run `python3 scripts/verify_g2_four_blowup_charts.py` from `g2stuff/`. The checker also verifies the coordinates of the isolated third-norm zeros; it does not resolve them. The LaTeX source builds with two runs of `pdflatex` (12pt Times, US Letter). The compiled PDF is distributed separately and has not been committed.
 - **Scope limitation:** this is an auxiliary analysis, not a proof of global Langlands–Shelstad principal-value compatibility or `(X_3)`. The isolated third-norm points and further global boundary/resolution checks remain open. Draft 6 of the main paper is unchanged.
 
+
+### Special cubic local resolutions (November 15, 2026)
+
+- [Repeated-polar and third-norm local resolution note](notes/cubic-special-local-resolutions-2026-11-15.md): explicit two-curve-blow-up SNC resolution of the repeated polar \(\mathscr D=0\), and three-stage (curve, point, curve) local resolution at all four isolated third-norm intersections. Exceptional orders are computed for the actual cubic fiber 3-form, regulator and cubic-character argument. The repeated-polar new divisors have orders \((-1,-3)\) and \((-2,-6)\) for (form, regulator); the third-norm new divisors have \((0,0),(+2,+1),(+1,+1)\), with nontrivial character exponents \(1,2,1\bmod3\).
+- [Standalone Python/SymPy checker](scripts/verify_g2_special_resolution.py): algebraic factorization and blow-up/Jacobian regression checks; run from the g2stuff directory with **python3 scripts/verify_g2_special_resolution.py**. The longer printed 12-point Times LaTeX/PDF exposition is available as a conversation attachment; only the Markdown note and code are committed.
+- **Limits:** the blow-up models are local over a splitting field, not a proof of Galois descent, global Langlands–Shelstad principal-value compatibility, Lemmas 0.8/5.14, or \((X_3)\). Main manuscript **still Draft 6**.
+
 ## Status
 
 **Draft 6 of the corrected edition (November 14, 2026).** The editable source and the PDF built from it are in `revised/g2-shalika-germs-2026.tex` and `revised/g2-shalika-germs-2026.pdf`.

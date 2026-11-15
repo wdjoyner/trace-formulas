@@ -92,4 +92,14 @@ print('Cubic I_P1(K): both =',I_P1_unram)
 print('Cubic unram B1(1)=0, B1\'(1)*B2(1)=12/(q^2-1).')
 print('Cubic tame ram B1\'(1)=',B1r_prime,'; B2(1)/chi_3(2)=',sp.factor(B2r_div_chi2))
 print('Claim 8.3H magnitudes recover 6/q^3 and 2(q^2+q+1)/q^4 under stated regularization.')
-print('WARNING: LS principal-value compatibility / geometry NOT checked.')
+print('WARNING: global cubic-cone LS compatibility and geometry NOT checked.')
+# Split cubic quadric cone and its vertex blow-up. A scalar/rational linear
+# change of coordinates produces Q=x0*x3-x1*x2 in Proposition 8.3G.
+x0,x1,x2,x3,r,s,t = sp.symbols("x0 x1 x2 x3 r s t")
+Qcone = x0*x3-x1*x2
+assert sp.Matrix([sp.diff(Qcone,v) for v in (x0,x1,x2,x3)]) == sp.Matrix([x3,-x2,-x1,x0])
+assert sp.det(sp.hessian(Qcone,(x0,x1,x2,x3))) != 0
+blow = sp.Matrix([r,r*s,r*t,r*s*t])
+assert sp.expand(Qcone.subs(dict(zip((x0,x1,x2,x3),list(blow))))) == 0
+assert blow.jacobian((r,s,t)).subs(r,0).rank() == 1
+print('Split cubic cone: unique singular vertex; blow-down rank drops at exceptional divisor.')

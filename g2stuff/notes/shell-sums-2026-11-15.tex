@@ -1,0 +1,186 @@
+\documentclass[12pt,letterpaper]{amsart}
+\usepackage[T1]{fontenc}
+\IfFileExists{newtxtext.sty}{\usepackage{newtxtext,newtxmath}}{\usepackage{mathptmx}}
+\usepackage[letterpaper,margin=1in]{geometry}
+\usepackage{amsmath,amsthm}
+\usepackage{microtype}
+\usepackage[hidelinks]{hyperref}
+\DeclareMathOperator{\vol}{vol}
+\DeclareMathOperator{\Norm}{N}
+\newtheorem{lemma}{Lemma}[section]
+\newtheorem{proposition}[lemma]{Proposition}
+\newtheorem{remark}[lemma]{Remark}
+\title[Independent shell sums for $G_2$]{Independent valuation-shell calculations for the $G_2$ Shalika-germ revision}
+\author{ChatGPT (OpenAI)}
+\date{November 15, 2026\\Research note, not a manuscript revision}
+\begin{document}
+\begin{abstract}
+This AI-aided note independently derives several valuation-shell expressions used in Draft~6 of the revision of D. Joyner's 1994 manuscript on transfer of Shalika germs for $G_2$. It addresses the arithmetic portion of Open Problem~(1)(c) and the shell-sum portion of Open Problem~(1)(b). The calculated meromorphic continuations agree with the stated factors $C'(q)$ and the proposed magnitude $|C_3(q)|$. The analysis does \emph{not} establish compatibility with the Langlands--Shelstad principal-value prescription, the geometric factorization of the cubic fiber integral, Lemma~5.14, or the exceptional-divisor proviso of Lemma~0.8. In particular, $(X_3)$ remains unproved by this note.
+\end{abstract}
+\maketitle
+
+\section{Purpose and notation}
+Let $F$ be a nonarchimedean local field with residual characteristic at least $5$, residue-field cardinality $q$, integer ring $\mathcal O$, and maximal ideal $\mathfrak p=(\varpi)$. Normalize additive Haar measure by $\vol(\mathcal O)=1$ and $|\varpi|=q^{-1}$. The shell $v_F(x)=k$ has measure $(1-q^{-1})q^{-k}$. We use the elementary meromorphic geometric series
+\begin{equation}\label{eq:geom}
+G(z)=\frac{z}{1-z};\qquad \sum_{k\geq1}z^k=G(z),
+\end{equation}
+initially only in its domain of convergence.
+
+Every integral below is evaluated first in a region of absolute convergence after insertion of the \emph{specified} Mellin weight; the resulting rational function is then evaluated at exponent $0$. This is a precise local calculation, but the equality of these choices with the principal values of \cite{LS83} is a separate problem. The labels refer to Theorem~7.6H and Claim~8.3H of the GitHub manuscript \cite{Jo26}. The attached independent script checks the rational identities exactly; it does not import the manuscript's checking scripts.
+
+\section{Quadratic factors in Theorem 7.6H}
+\subsection*{Ordinary convergent factor}
+For a nonsquare $d\in F^\times$ set
+\begin{equation}\label{eq:Is}
+I_s(d)=\int_F\frac{ds}{|s^2-d|}.
+\end{equation}
+If $d$ is a nonsquare unit, then $|s^2-d|=1$ on $\mathcal O$ and equals $|s|^2$ outside it. Thus $I_s=1+q^{-1}=(q+1)/q$. If $v_F(d)=1$, the regions $s\in\mathcal O^\times$, $s\in\mathfrak p$, and $|s|>1$ contribute $1-q^{-1}$, $1$, and $q^{-1}$ respectively. Hence $I_s=2$. These evaluations involve no regularization.
+
+\subsection*{A divergent one-dimensional tail}
+For $\Re z>1$,
+\begin{equation}\label{eq:tail}
+\int_{|t|>1}|t|^{-z}\,dt
+=(1-q^{-1})\sum_{k=1}^{\infty}q^{k(1-z)}
+=(1-q^{-1})G(q^{1-z}).
+\end{equation}
+The value of its meromorphic continuation at $z=0$ is $-1$. This explains the number used for $\mathrm{PV}\int_{|t|>1}dt$ in the manuscript, without yet identifying this continuation with the specific global principal value.
+
+\subsection*{The quadratic-character factor}
+Put $L=F(\sqrt{d_\alpha d_\zeta})$, and let $(\cdot,\cdot)_F$ denote the quadratic Hilbert symbol. Under the continuation in \eqref{eq:tail} the expression is
+\begin{equation}\label{eq:It}
+I_t=\int_{\mathcal O}\bigl[(t^2-d_\alpha d_\zeta,d_\alpha)_F-1\bigr]\,dt.
+\end{equation}
+Choose representatives for the two quadratic square classes with valuations $0$ or $1$. If $L/F$ is ramified, the integrand is $0$ on $\mathcal O^\times$ and $-2$ on $\mathfrak p$. Thus $I_t=-2/q$. If $L/F$ is unramified in the biquadratic situation, both $d_\alpha$ and $d_\zeta$ have valuation $1$, and their product is a nonsquare unit times $\varpi^2$. For $t=\varpi y$ the character reduces to the Legendre symbol of $y^2-\varepsilon$, where $\bar\varepsilon$ is a nonsquare in the residue field. The identity
+\[
+\sum_{y\in\mathbb F_q}\left(\frac{y^2-\varepsilon}{\mathbb F_q}\right)=-1
+\]
+then gives $I_t=-(q+1)/q^2$. One proof of the identity counts solutions of $x^2-y^2=-\varepsilon$: there are $q-1$ solutions, since $(x-y)(x+y)=-\varepsilon$.
+
+\subsection*{The meromorphic projective-line factor}
+Let $K_\zeta=F(\sqrt d)$. In coordinates $\xi=x+y\sqrt d$, the form
+\begin{equation}\label{eq:quadratic-form}
+\Omega_2=\frac{dx\wedge dy}{y^2}
+\end{equation}
+is invariant, up to sign, under $\xi\mapsto\xi^{-1}$. This follows from $y'=-y/(x^2-dy^2)$ and the Jacobian $(x^2-dy^2)^{-2}$ in absolute value. Partition $\mathbb P^1(K_\zeta)$ into the affine pieces $\mathcal O_{K_\zeta}$ and $\xi^{-1}\in\mathfrak p_{K_\zeta}$. For $A,B\ge0$ define
+\begin{equation}\label{eq:Zab}
+Z_{A,B}(z)=\int_{x\in\mathfrak p^A\!,\ y\in\mathfrak p^B}|y|^{z-2}\,dx\,dy
+=q^{-A}\frac{(1-q^{-1})q^{B(1-z)}}{1-q^{1-z}}.
+\end{equation}
+For an unramified quadratic extension, $\mathcal O_K=\mathcal O\oplus\mathcal O\sqrt d$ and $\mathfrak p_K=\mathfrak p\oplus\mathfrak p\sqrt d$. For a tamely ramified quadratic extension with $d=\varpi u$, the second lattice is $\mathfrak p\oplus\mathcal O\sqrt d$. Therefore the two continuations are
+\begin{align}\label{eq:Ixi}
+I_\xi^{\rm unr}&=\left.(Z_{0,0}+Z_{1,1})\right|_{z=0}=-\frac2q,\\
+I_\xi^{\rm ram}&=\left.(Z_{0,0}+Z_{1,0})\right|_{z=0}=-\frac{q+1}{q^2}.
+\end{align}
+Combining \eqref{eq:Is}, \eqref{eq:It} and \eqref{eq:Ixi} with $|d_\alpha d_\zeta|^{-1/2}$ gives
+\begin{equation}\label{eq:Cprime}
+|d_\alpha d_\zeta|^{-1/2}|I_tI_sI_\xi|=
+\begin{cases}
+4(q+1)q^{-5/2},& L/F\text{ ramified},\\
+2(q+1)^2q^{-3},&L/F\text{ unramified}.
+\end{cases}
+\end{equation}
+The two ramified-$L$ distributions of the ramification between $d_\alpha$ and $d_\zeta$ give the same constant.
+
+\section{The cyclic cubic projective-line factor}
+Let $K/F$ be cyclic cubic. For $\eta\in K$ set $\eta_i=\tau^i\eta$ ($i=0,1,2$) and
+\[
+D(\eta)=(\eta_0-\eta_1)(\eta_1-\eta_2)(\eta_2-\eta_0),\qquad
+\Omega_3=\frac{d\eta_0\wedge d\eta_1\wedge d\eta_2}{D(\eta)}.
+\]
+The form $\Omega_3$ is unchanged, up to sign, under $\eta\mapsto\eta^{-1}$: numerator and denominator both acquire a factor $\Norm_{K/F}(\eta)^{-2}$. As in Section~2, use the two disjoint charts $\eta\in\mathcal O_K$ and $\eta^{-1}\in\mathfrak p_K$.
+
+\subsection*{Unramified cubic extension}
+Choose an integral power basis $\eta=a+b\theta+c\theta^2$ whose reduction generates $\mathbb F_{q^3}$ over $\mathbb F_q$. The determinant of the three embeddings is a unit. Moreover $D(\eta)$ is a unit precisely when $(b,c)$ is primitive. For arbitrary $(b,c)$, $v_F(D)=3\min(v_F(b),v_F(c))$. Inserting a local Mellin weight of order $z$ along $D$, the first chart therefore gives
+\[
+Z_{\rm unr}(z)=\frac{1-q^{-2}}{1-q^{1-3z}}.
+\]
+The inverted chart requires $a,b,c\in\mathfrak p$; its contribution is
+$q^{-1}(1-q^{-2})q^{1-3z}/(1-q^{1-3z})$. Evaluating at $z=0$, each contributes $-(q+1)/q^2$.
+
+\subsection*{Tamely ramified cubic extension}
+Now $q\equiv1\pmod3$. Choose $\theta^3=\varpi u$ with $u\in\mathcal O^\times$ and $\mathcal O_K=\mathcal O[\theta]$. A primitive cube root of unity is in $F$. For $\eta=a+b\theta+c\theta^2$, direct multiplication of the three conjugate differences gives, up to a unit,
+\[
+D(\eta)=\varpi u\,(b^3-\varpi u c^3).
+\]
+The numerator determinant has the same initial factor $\varpi u$ in absolute value. Hence the measure density is $|b^3-\varpi u c^3|^{-1}da\,db\,dc$. The terms of the primitive $(b,c)$-shell are as follows: $b$ a unit contributes measure $1-q^{-1}$ and denominator norm $1$; $b\in\mathfrak p$ and $c$ a unit contributes measure $q^{-1}(1-q^{-1})$ and denominator norm $q^{-1}$. Subsequent simultaneous dilations by $\varpi^k$ multiply the integral by $q^{k(1-3z)}$. Thus
+\[
+Z_{\rm ram}(z)=\frac{(1-q^{-1})(1+q^{-z})}{1-q^{1-3z}},\qquad
+Z_{\rm ram}(0)=-\frac2q.
+\]
+Since $\mathfrak p_K=\mathfrak p\oplus\mathcal O\theta\oplus\mathcal O\theta^2$, the inverted chart contributes $q^{-1}Z_{\rm ram}(0)=-2/q^2$. We have independently derived the formula asserted in Claim~8.3H:
+\begin{equation}\label{eq:Iproj}
+I_{\mathbb P^1(K)}=-\frac{2(q+1)}{q^2}
+\quad\text{for both unramified and tamely ramified cyclic cubic }K/F.
+\end{equation}
+
+\section{The two cubic character integrals}
+Let $\chi=\omega_{K/F}$ be the order-$3$ character attached to the cyclic cubic extension. The proof sketch introduces
+\begin{equation}\label{eq:Bdefs}
+B_1(S)=\int_F\chi(y)|y|^{-\sigma}|y+1|^{4\sigma}\,dy,
+\qquad S=q^\sigma,
+\end{equation}
+and
+\[
+B_2(1)=\operatorname{PV}\!\int_F\chi(3u-1)
+\frac{|3u-1|}{|u-1|^3}\,du.
+\]
+The following are calculations of the \emph{specified} meromorphic shell sums. In particular, the pole of $B_2$ at $u=1$ is regularized by multiplying the local density by $|u-1|^z$ before continuation. This is not an assertion about the prescription of \cite{LS83}.
+
+\subsection*{Unramified cubic character}
+Let $w=\chi(\varpi)$, so $w^2+w+1=0$. Split $B_1$ into $v(y)>0$, $v(y)=0$ with $\bar y\neq-1$, $y\in-1+\mathfrak p$, and $v(y)<0$, respectively. The four contributions give
+\begin{equation}\label{eq:B1u}
+B_1(S)=(1-q^{-1})\left[G\!\left(\frac{wS}{q}\right)
++G\!\left(\frac1{qS^4}\right)
++G(w^2qS^3)\right]+1-\frac2q.
+\end{equation}
+At $S=1$, use $w^3=1$ to see that the first and third terms cancel the other contributions. Thus $B_1(1)=0$, and direct differentiation gives
+\begin{equation}\label{eq:B1up}
+B_1'(1)=4(q-1)\left[\frac{w}{(q-w)^2}-\frac1{(q-1)^2}\right].
+\end{equation}
+For $B_2$, put $y=u-1$, so $3u-1=3y+2$. The shell $y\in\mathfrak p$ gives $-q/(q+1)$ by continuing $\int_{\mathfrak p}|y|^{z-3}dy$. Units outside $y\equiv-2/3\pmod{\mathfrak p}$ contribute $1-2/q$; the exceptional unit class contributes $(1-q^{-1})G(w/q^2)$; and $v(y)<0$ contributes $(1-q^{-1})G(w^2/q)$. Therefore
+\begin{equation}\label{eq:B2u}
+B_2(1)=-\frac q{q+1}+1-\frac2q
++(1-q^{-1})\left[G\!\left(\frac w{q^2}\right)+G\!\left(\frac{w^2}{q}\right)\right].
+\end{equation}
+Multiply \eqref{eq:B1up} by \eqref{eq:B2u} and reduce using $w^2+w+1=0$. The result is the exact identity
+\begin{equation}\label{eq:unramproduct}
+B_1'(1)B_2(1)=\frac{12}{q^2-1}.
+\end{equation}
+
+\subsection*{Tamely ramified cubic character}
+Now $\chi$ is a nontrivial cubic character on the residue-field units. Shells with $v(y)\neq0$ in $B_1$ vanish by multiplicative character orthogonality. The class $y\equiv-1$ gives the geometric series, and the other unit classes sum to $-1/q$. Hence
+\begin{equation}\label{eq:B1r}
+B_1(S)=-\frac1q+(1-q^{-1})G\!\left(\frac1{qS^4}\right),
+\quad B_1(1)=0,\quad B_1'(1)=-\frac4{q-1}.
+\end{equation}
+In $B_2$, shells with $v(y)<0$ and the exceptional class $y\equiv-2/3$ have zero character average. For the ordinary unit residues the finite character sum is $-\chi(2)/q$. On $y\in\mathfrak p$, the continued value is $-\chi(2)q/(q+1)$. Thus
+\begin{equation}\label{eq:B2r}
+B_2(1)=-\chi(2)\left(\frac q{q+1}+\frac1q\right)
+=-\chi(2)\frac{q^2+q+1}{q(q+1)}.
+\end{equation}
+
+Under the additional \emph{unproved} geometric and principal-value identifications used in Claim~8.3H, the stated factor
+$-\frac{q-1}{4q}B_1'(1)B_2(1)$ has absolute value
+$3/[q(q+1)]$ in the unramified case and $(q^2+q+1)/[q^2(q+1)]$ in the ramified case. Multiplying by \eqref{eq:Iproj} then gives precisely the \emph{proposed} magnitudes $6/q^3$ and $2(q^2+q+1)/q^4$ respectively. This is not a proof that the geometric fiber integral equals that product.
+
+\section{Status and remaining tasks}
+The arguments above are independent \emph{derivations} of the algebraic shell sums and their local meromorphic continuations. The symbolic companion script reproduces the rational identities without importing any $G_2$ verification modules. They settle the shell arithmetic \emph{conditional on the displayed regularization}, not the analytic identification required in the main draft.
+
+Three essential tasks remain. First, prove that these locally chosen Mellin weights and chart decompositions implement the canonical principal-value construction used in the orbital-integral formula \cite{LS83}; changing a regulator can change a finite part. Second, justify the cone factorization and changes of variables in the sketch of Claim~8.3H, including all Jacobians and $X$-dependent factors. Third, retain Lemma~5.14 and the divisor condition of Lemma~0.8 as hypotheses until independently resolved. The $r=1$ comparison and the omitted torus classes are also untouched here.
+
+\section*{Glossary}
+\begin{description}
+\item[Valuation shell.] The measurable subset $\{x\in F:v_F(x)=k\}$.
+\item[Mellin continuation.] Continuation in a complex exponent $z$ from a region in which a weighted local integral converges.
+\item[Principal value.] A regularized integral defined by a specified analytic construction; it must not be identified with an arbitrary meromorphic finite part without proof.
+\item[Tamely ramified.] A finite extension whose ramification degree is prime to the residue characteristic.
+\end{description}
+
+\section*{Acknowledgments}
+This note was written and algebraically verified by ChatGPT (OpenAI) on November 15, 2026, while reviewing the current GitHub files. It is a separate computational and mathematical note, not a revision of the manuscript by D.~Joyner, Claude, and Gemini. AI review is not an independent certification of the results. Further details of the project-level AI usage appear in the repository revision log.
+
+\begin{thebibliography}{99}
+\bibitem[Jo26]{Jo26} D.~Joyner, Claude, and Gemini, \emph{On the transfer of Shalika germs for $G_2$}, Draft~6 (2026), \url{https://github.com/wdjoyner/trace-formulas/tree/main/g2stuff}.
+\bibitem[LS83]{LS83} R.~Langlands and D.~Shelstad, ``On principal values on $p$-adic manifolds'', in \emph{Lie Group Representations II}, Lecture Notes in Math. \textbf{1041}, Springer, 1984, 250--279. Bibliographic data taken from the manuscript; this work was not directly checked for the present note.
+\end{thebibliography}
+\end{document}

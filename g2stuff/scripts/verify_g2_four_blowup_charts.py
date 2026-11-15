@@ -113,4 +113,16 @@ assert sp.simplify(sp.diff(H1,t).subs(spec).subs(s,star)) != 0
 assert 2-3+1 == 0
 assert 2+4-3-3 == 0
 print("PASS separation, repeated-root warning and generic triple-curve orders")
-print("NOT CHECKED: isolated norm intersections, descent, global LS PV or X_3")
+# Isolated extra norm intersections on a representative x0 chart.
+# These are zero loci, not claims of a resolution of singularities.
+u0, u1, u2, y0 = source(charts["x0"])
+for boundary_root, third, extra_ts in [
+    (sp.Integer(0), u2, [-sp.Rational(1,2), sp.Rational(1,2)]),
+    (sp.Integer(2), u0, [sp.Rational(1,2)]),
+    (-sp.Integer(2), u1, [-sp.Rational(1,2)]),
+]:
+    extra = sp.factor((y0**2-third**2).subs(s,boundary_root))
+    for extra_t in extra_ts:
+        assert sp.simplify(extra.subs(t,extra_t)) == 0
+print("PASS locations of isolated third-norm intersections on the triple curves")
+print("NOT CHECKED: resolution at isolated intersections, descent, global LS PV or X_3")

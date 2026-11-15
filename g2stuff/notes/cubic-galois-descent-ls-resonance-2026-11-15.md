@@ -79,6 +79,27 @@ The right-hand side has a simple pole at σ=0 with residue -(1-q^-1)/log q; the 
 
 One could introduce an independent regulator |ρ|^z and take a Laurent finite part, but that finite part depends on the scaling of ρ unless one specifies invariant subtraction data. Consequently merely saying “take the finite part” is not a replacement for Langlands–Shelstad's coordinate-independent principal-value construction.
 
+
+## 3a. Where the usual local principal value *does* apply
+
+At generic smooth F-rational points of the polar divisor, with character locally constant and ord(ω)=-3, ord(R)=-3, choose a transverse F-coordinate x=h. The shell computation is
+
+\[
+ \int_{|x|\le q^{-m}} |x|^{-3-\sigma}\,dx
+ =(1-q^{-1})\frac{q^{m(2+\sigma)}}{1-q^{2+\sigma}}.
+\]
+
+This is initially convergent for Re(σ)<-2 and holomorphic by continuation at σ=0. Its value is (1-q^-1)q^(2m)/(1-q²), or -q/(q+1) for m=1. The Langlands–Shelstad monomial exponent is c=-2 and the trivial character is nonresonant.
+
+At a generic point of the character divisor C={Y+1=0} away from the polar divisor, choose x=Y+1. The normal integral of χ(x)|x|^-σ is, for an unramified cubic character,
+
+\[
+ (1-q^{-1})\frac{(\chi(\varpi)q^{\sigma-1})^m}
+ {1-\chi(\varpi)q^{\sigma-1}},
+\]
+
+and it is zero shellwise for a ramified cubic character. Both are holomorphic at σ=0. This is a valid application of Langlands–Shelstad Lemma 1.A for the **isolated transverse normal integrals**, with locally constant tangential unit factors. It is **not** a statement about F-rational character–polar intersections or globally interchanging the remaining fiber integrations. The full typeset five-page note includes the detailed derivation.
+
 ## 4. Conclusions and scope
 
 - **Positive descent result:** all six third-norm points form two degree-three closed orbits; the associated blow-ups descend, but their exceptional fibers have no F-rational points and cannot contribute local F-principal-value terms.

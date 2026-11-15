@@ -58,6 +58,13 @@ Run them one at a time, for example `python3 g2_tori_endoscopy.py`.
 - [`notes/shell-sums-2026-11-15.tex`](notes/shell-sums-2026-11-15.tex) derives the valuation-shell continuations behind the quadratic constant \(C'(q)\) and the proposed cyclic-cubic constant \(C_3(q)\). This is an auxiliary research note, **not a new draft of the main manuscript**. For the **isolated one-dimensional cubic factors**, §1 of Langlands–Shelstad's paper now supplies a direct principal-value justification, as proved in the expanded note. However, the **global cubic-cone regulator and fiberwise factorization** have not been justified; \((X_3)\) remains open by direct computation. The note also verifies that the affine cubic quadric cone has a singular vertex, whose blow-up creates an exceptional \(\mathbb P^1\times\mathbb P^1\) requiring analysis.
 - [`scripts/verify_g2_shell_sums_independent.py`](scripts/verify_g2_shell_sums_independent.py) is a pure-Python/SymPy checker, independent of the earlier suites. Run `python3 scripts/verify_g2_shell_sums_independent.py` from `g2stuff/`.
 
+
+## Cubic exceptional-divisor audit (November 15, 2026)
+
+- [`notes/cubic-exceptional-orders-2026-11-15.md`](notes/cubic-exceptional-orders-2026-11-15.md) computes the **actual** 3-form, cubic character, and Igusa regulator from Proposition 8.3G(b) on the blow-up of the singular vertex of the cyclic-cubic quadric cone. The generic exceptional orders are **(+1, 0, 0)**. An exact norm identity cancels the common `Lambda_F^{-3}` factor in the ratio of form and regulator.
+- [`scripts/verify_g2_cubic_exceptional_orders.py`](scripts/verify_g2_cubic_exceptional_orders.py) independently verifies the rational coordinate, norm, Jacobian and ratio identities using Python 3 + SymPy. Run `python3 scripts/verify_g2_cubic_exceptional_orders.py`.
+- **Remaining analytic issue:** along the transverse intersection with `H0 + r*H1 = 0`, both form and regulator have order **−3**; the corresponding principal value is not justified by this generic calculation. Other blow-up charts, Igusa boundary divisors, Lemmas 0.8/5.14, and direct `(X_3)` remain open. The principal manuscript is still **Draft 6**.
+
 ## Status
 
 **Draft 6 of the corrected edition (November 14, 2026).** The editable source and the PDF built from it are in `revised/g2-shalika-germs-2026.tex` and `revised/g2-shalika-germs-2026.pdf`.

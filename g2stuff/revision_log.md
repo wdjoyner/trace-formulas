@@ -181,3 +181,10 @@ As in the referee report:
 - Exact identity \(\mathscr D=12(3\alpha^2+3\alpha\beta+\beta^2)=6\operatorname{Tr}(u^2)\). The nonzero zero locus of \(\mathscr D\) exists iff \(\mu_3\subset F\) (equivalently \(q\equiv1\bmod3\) for \(p\ge5\)); it is the union of two nontrivial Galois eigendirections, both fully regular. Explicit \(F=\mathbb Q_7,\ K=F(\sqrt[3]{2})\) unramified example, valid arbitrarily close to zero by scaling.
 - New standalone exact checker \`scripts/verify_g2_polar_regular.py\` verifies the discriminant, root-hyperplane comparisons, cube-root eigenlines, and residue computations (no SageMath). Algebra tested independently with SymPy; no analytical principal-value identity claimed.
 - **Status change:** the previously open question whether regularity excludes the repeated-polar singularity is resolved **negatively**. The repeated-polar LS resonance therefore persists within the hypotheses of Claim 8.3H for the stated field classes. This does not establish that \((X_3)\) is false. The main manuscript remains Draft 6.
+
+
+## Main manuscript inclusion of the regularity theorem (2026-11-15)
+
+- On request, revised `revised/g2-shalika-germs-2026.tex` itself rather than leaving the result solely in an auxiliary note. Inserted a self-contained Remark `rem:8.polar-regular` after Proposition 8.3G with the exact discriminant identity, full regularity proof, iff classification of repeated-polar regular (X), and the unramified `Q_7` example. Added a cross-reference in status Remark `rem:8.status` to explain the analytic obstruction.
+- Independent symbolic algebra has been checked, including the companion `verify_g2_polar_regular.py`. The additional mathematical content is proved algebraically; the LS principal-value comparison remains a separate unresolved analytic task.
+- **Version discipline:** this is a post-Draft-6 insertion, not an upgrade of Claim 8.3H or a new draft number. The original `revised/g2-shalika-germs-2026.pdf` has not been rebuilt and should be regarded as older than the TeX source until compiled. No full-manuscript TeX compilation was performed as part of the connector-only edit.

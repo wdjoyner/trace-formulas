@@ -89,3 +89,6 @@ An independent Python 3/SymPy checker verifies the discriminant factorization, r
 **Remaining:** Galois descent of the four local models; global normal-crossings data of the original Igusa compactification; the principal-value compatibility of the actual regulator and character with Langlands–Shelstad; Lemmas 0.8 and 5.14; and (X_3). No changes are made to the Draft 6 main manuscript. AI verification is not human refereeing.
 
 Sources: Joyner, Claude, Gemini, *On the transfer of Shalika germs for G₂*, Draft 6 (2026), §8; Langlands–Shelstad, *On principal values on p-adic manifolds*, LNM 1041 (1984), 250–279.
+
+
+**Subsequent descent and principal-value audit (2026-11-15).** The four points on this affine chart represent only four of six split-field points, forming two Galois orbits of degree three. The orbitwise resolution descends, but its exceptional fibers have no F-rational points, so no local F-principal-value integral is supported there. In the repeated-polar case the first new exceptional divisor is F-rational and has trivial-character logarithmic pole: Langlands--Shelstad condition (1.4) fails there and the single Mellin regulator has a localized pole. See [cubic-galois-descent-ls-resonance-2026-11-15.md](cubic-galois-descent-ls-resonance-2026-11-15.md). These discoveries do not settle the global integral.

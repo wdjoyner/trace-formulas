@@ -15,7 +15,7 @@
 \date{November 15, 2026\\Research note, not a manuscript revision}
 \begin{document}
 \begin{abstract}
-This AI-aided note independently derives several valuation-shell expressions used in Draft~6 of the revision of D. Joyner's 1994 manuscript on transfer of Shalika germs for $G_2$. It addresses the arithmetic portion of Open Problem~(1)(c) and the shell-sum portion of Open Problem~(1)(b). The calculated meromorphic continuations agree with the stated factors $C'(q)$ and the proposed magnitude $|C_3(q)|$. The analysis does \emph{not} establish compatibility with the Langlands--Shelstad principal-value prescription, the geometric factorization of the cubic fiber integral, Lemma~5.14, or the exceptional-divisor proviso of Lemma~0.8. In particular, $(X_3)$ remains unproved by this note.
+This AI-aided note independently derives several valuation-shell expressions used in Draft~6 of the revision of D. Joyner's 1994 manuscript on transfer of Shalika germs for $G_2$. It addresses the arithmetic portion of Open Problem~(1)(c) and the shell-sum portion of Open Problem~(1)(b). The calculated meromorphic continuations agree with the stated factors $C'(q)$ and the proposed magnitude $|C_3(q)|$. The analysis identifies the isolated one-dimensional cubic factors with the local Langlands--Shelstad principal-value construction, but it does \emph{not} establish compatibility of the proposed regulator on the whole cubic cone, the geometric factorization of the cubic fiber integral, Lemma~5.14, or the exceptional-divisor proviso of Lemma~0.8. In particular, $(X_3)$ remains unproved by this note.
 \end{abstract}
 \maketitle
 
@@ -26,7 +26,7 @@ G(z)=\frac{z}{1-z};\qquad \sum_{k\geq1}z^k=G(z),
 \end{equation}
 initially only in its domain of convergence.
 
-Every integral below is evaluated first in a region of absolute convergence after insertion of the \emph{specified} Mellin weight; the resulting rational function is then evaluated at exponent $0$. This is a precise local calculation, but the equality of these choices with the principal values of \cite{LS83} is a separate problem. The labels refer to Theorem~7.6H and Claim~8.3H of the GitHub manuscript \cite{Jo26}. The attached independent script checks the rational identities exactly; it does not import the manuscript's checking scripts.
+The valuation cells are evaluated separately, each initially in its own region of absolute convergence and then by meromorphic continuation. \emph{One global convergence region need not exist.} In particular, the one-parameter cubic integral $B_1(\sigma)$ below has no common absolute-convergence strip. Section~\ref{sec:pv} checks the isolated one-dimensional continuations against the local principal-value definition in \cite[\S1]{LS83}; the corresponding global cubic-cone calculation remains open. The labels refer to Theorem~7.6H and Claim~8.3H of the GitHub manuscript \cite{Jo26}. The attached independent script checks the rational identities exactly; it does not import the manuscript's checking scripts.
 
 \section{Quadratic factors in Theorem 7.6H}
 \subsection*{Ordinary convergent factor}
@@ -124,7 +124,7 @@ and
 B_2(1)=\operatorname{PV}\!\int_F\chi(3u-1)
 \frac{|3u-1|}{|u-1|^3}\,du.
 \]
-The following are calculations of the \emph{specified} meromorphic shell sums. In particular, the pole of $B_2$ at $u=1$ is regularized by multiplying the local density by $|u-1|^z$ before continuation. This is not an assertion about the prescription of \cite{LS83}.
+The following are calculations of the \emph{specified} meromorphic shell sums. At $u=1$ the pole of $B_2$ is regularized by multiplying the local density by $|u-1|^z$ before continuation. These are local regularizations, whose compatibility with \cite[\S1]{LS83} is checked in Section~\ref{sec:pv}. Importantly, $B_1(\sigma)$ has \emph{no} global region of absolute convergence: convergence near $y=-1$ demands $\operatorname{Re}\sigma>-1/4$, whereas at infinity it requires $\operatorname{Re}\sigma<-1/3$.
 
 \subsection*{Unramified cubic character}
 Let $w=\chi(\varpi)$, so $w^2+w+1=0$. Split $B_1$ into $v(y)>0$, $v(y)=0$ with $\bar y\neq-1$, $y\in-1+\mathfrak p$, and $v(y)<0$, respectively. The four contributions give
@@ -163,10 +163,94 @@ Under the additional \emph{unproved} geometric and principal-value identificatio
 $-\frac{q-1}{4q}B_1'(1)B_2(1)$ has absolute value
 $3/[q(q+1)]$ in the unramified case and $(q^2+q+1)/[q^2(q+1)]$ in the ramified case. Multiplying by \eqref{eq:Iproj} then gives precisely the \emph{proposed} magnitudes $6/q^3$ and $2(q^2+q+1)/q^4$ respectively. This is not a proof that the geometric fiber integral equals that product.
 
-\section{Status and remaining tasks}
-The arguments above are independent \emph{derivations} of the algebraic shell sums and their local meromorphic continuations. The symbolic companion script reproduces the rational identities without importing any $G_2$ verification modules. They settle the shell arithmetic \emph{conditional on the displayed regularization}, not the analytic identification required in the main draft.
 
-Three essential tasks remain. First, prove that these locally chosen Mellin weights and chart decompositions implement the canonical principal-value construction used in the orbital-integral formula \cite{LS83}; changing a regulator can change a finite part. Second, justify the cone factorization and changes of variables in the sketch of Claim~8.3H, including all Jacobians and $X$-dependent factors. Third, retain Lemma~5.14 and the divisor condition of Lemma~0.8 as hypotheses until independently resolved. The $r=1$ comparison and the omitted torus classes are also untouched here.
+\section{Langlands--Shelstad principal values for the one-dimensional factors}\label{sec:pv}
+We now compare the \emph{isolated} factors $B_1$ and $B_2$ with the primary
+source \cite[\S1, Lemmas 1.A and 1.C]{LS83}, which was consulted for this
+revision of the note. The comparison is local on the \emph{projective line};
+it does not settle the push-forward of the cubic-cone fiber measure.
+
+\begin{proposition}\label{prop:local-pv}
+Let $\chi:F^\times\to\mathbb C^\times$ be a nontrivial character of order $3$.
+For $\sigma$ in a neighborhood of $0$, let
+\[
+ h_\sigma(y)=\chi(y)|y|^{-\sigma}|1+y|^{4\sigma}
+ \quad(y\in\mathbb P^1(F)\setminus\{0,-1,\infty\}).
+\]
+The Langlands--Shelstad principal value
+$\oint_{\mathbb P^1(F)}h_\sigma(y)|dy|$ is well-defined and holomorphic
+near $\sigma=0$. It equals the rational shell continuation denoted
+$B_1(q^\sigma)$ in \eqref{eq:B1u} and \eqref{eq:B1r}. In particular,
+\[
+ \oint_{\mathbb P^1(F)}\chi(y)|dy|=0,
+ \qquad B_1(1)=0.
+\]
+Likewise, the principal value on $\mathbb P^1(F)$ of
+\[
+ \chi(3u-1)\frac{|3u-1|}{|u-1|^3}\,|du|
+\]
+exists in the sense of \cite[\S1]{LS83} and equals the cellwise values
+$B_2(1)$ calculated in \eqref{eq:B2u} and \eqref{eq:B2r}.
+\end{proposition}
+
+\begin{proof}
+Use the disjoint compact-open covering of $\mathbb P^1(F)$ by the sets
+$y\in\mathfrak p$, $y\in-1+\mathfrak p$, the remaining units, and
+$z=1/y\in\mathfrak p$ (including the point at infinity).
+In these coordinates the local character and measure factors are,
+respectively,
+\[
+\begin{array}{c|c|c}
+ \text{neighborhood}&\text{character}&\text{power of the local coordinate in }|dy|\,h_\sigma\\
+ \hline
+ y=0 &\chi(y)&1-\sigma\\
+ y=-1 &1&1+4\sigma\\
+ z=0\ (y=\infty)&\chi^{-1}(z)&-1-3\sigma
+\end{array}
+\]
+where powers are those in the standard expression
+$|u|^c\,|du|/|u|$. Near ordinary units there is no singularity.
+Since $\chi$ and $\chi^{-1}$ are nontrivial and $1+4\sigma\ne0$ near
+$\sigma=0$, the nonresonance condition (1.4) of \cite{LS83} is satisfied.
+Lemma 1.A there gives, on each compact-open neighborhood, exactly the
+geometric-series continuation used in Section~4. Their sum is holomorphic
+near $\sigma=0$ and is the stated $B_1(q^\sigma)$. Equivalently,
+$B_1(1)=0$ follows immediately from \cite[Lemma 1.C]{LS83} applied to
+$\theta_0=\chi$, $\theta_1=\chi^{-1}$, $c_0=1$, $c_1=-1$.
+
+For $B_2$, set $y=u-1$. The singular points are $y=0$, $y=-2/3$ and
+$y=\infty$. Their local powers and characters are
+\[
+\begin{array}{c|c|c}
+ y=0&1&-2\\
+ v=3y+2=0&\chi(v)&2\\
+ z=1/y=0&\chi^{-1}(z)&1
+\end{array}
+\]
+up to locally constant unit factors. None violates the nonresonance
+condition of \cite[(1.4)]{LS83}; $3$ is a unit since the residual
+characteristic is at least $5$. The four valuation regions used to derive
+\eqref{eq:B2u} and \eqref{eq:B2r} therefore give precisely the local
+principal-value integrals by \cite[Lemma 1.A]{LS83}. This proves the claim.
+\end{proof}
+
+\begin{remark}\label{rem:global-pv}
+The result does \emph{not} identify the quantity
+$\oint_{\mathcal C_K(F)}\kappa_1(t_*)|\omega_{\mathcal Q_3}|$
+with the product of the isolated principal values. That would require
+showing that the factorization, compactification and push-forward of the
+measure meet the smooth-submersion and local-coordinate hypotheses of
+\cite[Lemma 1.F]{LS83}, or proving an appropriate extension across the
+singular and boundary loci. In particular, the proposed radial regulator
+$R_{\mathrm{cone}}^{\sigma/3}$ in Claim 8.3H has not been identified with
+the independent local regulators of the normal-crossings construction.
+The order of continuation and fiber integration cannot simply be interchanged.
+\end{remark}
+
+\section{Status and remaining tasks}
+The arguments above independently derive the shell sums; Proposition~\ref{prop:local-pv} further identifies the isolated one-dimensional cubic factors with Langlands--Shelstad local principal values. The symbolic companion script reproduces the rational identities without importing any $G_2$ verification modules. This does \emph{not} establish the analytic fiber-integral identity required in the main draft.
+
+Three essential tasks remain. First, prove that the global cubic-cone regulator and fiberwise factorization implement the principal-value construction of \cite{LS83}; the one-dimensional result of Proposition~\ref{prop:local-pv} is not enough. Second, justify the cone factorization and changes of variables in the sketch of Claim~8.3H, including all Jacobians, $X$-dependent factors, and boundary contributions. Third, retain Lemma~5.14 and the divisor condition of Lemma~0.8 as hypotheses until independently resolved. The $r=1$ comparison and the omitted torus classes are also untouched here.
 
 \section*{Glossary}
 \begin{description}
@@ -181,6 +265,6 @@ This note was written and algebraically verified by ChatGPT (OpenAI) on November
 
 \begin{thebibliography}{99}
 \bibitem[Jo26]{Jo26} D.~Joyner, Claude, and Gemini, \emph{On the transfer of Shalika germs for $G_2$}, Draft~6 (2026), \url{https://github.com/wdjoyner/trace-formulas/tree/main/g2stuff}.
-\bibitem[LS83]{LS83} R.~Langlands and D.~Shelstad, ``On principal values on $p$-adic manifolds'', in \emph{Lie Group Representations II}, Lecture Notes in Math. \textbf{1041}, Springer, 1984, 250--279. Bibliographic data taken from the manuscript; this work was not directly checked for the present note.
+\bibitem[LS83]{LS83} R.~Langlands and D.~Shelstad, ``On principal values on $p$-adic manifolds'', in \emph{Lie Group Representations II}, Lecture Notes in Math. \textbf{1041}, Springer, 1984, 250--279. Original PDF consulted directly for Section~5: \url{https://www.sunsite.ubc.ca/DigitalMathArchive/Langlands/pdf/prin2-ps.pdf}.
 \end{thebibliography}
 \end{document}

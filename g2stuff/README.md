@@ -87,6 +87,13 @@ Run them one at a time, for example `python3 g2_tori_endoscopy.py`.
 - **New obstruction:** when the repeated-polar discriminant \(\mathscr D=M^2+3\Delta^2\) vanishes, the first new exceptional divisor has actual fiber-form order \(-1\), regulator order \(-3\), and **trivial** cubic character. Langlands--Shelstad's nonresonance condition (1.4) therefore fails. The proposed single Mellin factor \(|R_{\rm cone}|^{\sigma/3}\) produces a localized simple pole at \(\sigma=0\). The cited LS theorem assumes characteristic-zero local fields.
 - **Main paper unchanged:** these results do **not** prove Claim 8.3H or \((X_3)\). A globally invariant regularization or a proof that the exceptional special \(X\) is excluded is still required. A printable five-page LaTeX/PDF appendix was prepared separately; the repository files here are the Markdown note and Python checker.
 
+
+### Regularity and repeated-polar discriminant (November 15, 2026)
+
+- [Full regularity/discriminant proof](notes/cubic-regularity-discriminant-2026-11-15.md) shows **every nonzero \(X\in\mathfrak t(F)\) is regular** for the cyclic-cubic torus, but \(\mathscr D=M^2+3\Delta^2=6\operatorname{Tr}_{K/F}(\alpha(X)^2)\) can vanish on **two regular \(F\)-lines** precisely when \(\mu_3\subset F\), or equivalently \(q\equiv1\bmod3\) in residue characteristic at least \(5\). This includes all tame ramified cyclic cubic cases and some unramified cases; an explicit unramified example uses \(F=\mathbb Q_7\), \(K=F(\sqrt[3]{2})\). Scaling \(X\) toward zero does not remove the repeated-polar condition.
+- [Independent SymPy verification](scripts/verify_g2_polar_regular.py): run \`python3 scripts/verify_g2_polar_regular.py\` from \`g2stuff/\`. It checks the root formulas and discriminant algebra, not principal values.
+- **Implication:** the repeated-polar Langlands--Shelstad resonance reported in the descent note cannot be excluded by the manuscript's regularity or smallness assumptions. No result here proves or disproves \((X_3)\); Draft 6 stays unchanged.
+
 ## Status
 
 **Draft 6 of the corrected edition (November 14, 2026).** The editable source and the PDF built from it are in `revised/g2-shalika-germs-2026.tex` and `revised/g2-shalika-germs-2026.pdf`.

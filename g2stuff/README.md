@@ -79,6 +79,14 @@ Run them one at a time, for example `python3 g2_tori_endoscopy.py`.
 - [Standalone Python/SymPy checker](scripts/verify_g2_special_resolution.py): algebraic factorization and blow-up/Jacobian regression checks; run from the g2stuff directory with **python3 scripts/verify_g2_special_resolution.py**. The longer printed 12-point Times LaTeX/PDF exposition is available as a conversation attachment; only the Markdown note and code are committed.
 - **Limits:** the blow-up models are local over a splitting field, not a proof of Galois descent, global Langlands–Shelstad principal-value compatibility, Lemmas 0.8/5.14, or \((X_3)\). Main manuscript **still Draft 6**.
 
+
+## Cubic Galois descent and Langlands--Shelstad resonance (November 15, 2026)
+
+- [Descent and resonance research note](notes/cubic-galois-descent-ls-resonance-2026-11-15.md): the *six* geometric third-norm points (only four lie on the earlier x0 chart) form **two degree-three Galois orbits**, whose equivariant blow-ups have no F-rational exceptional points. In fact the split cubic boundary components have no F-points off the vertex. Their local split-field character exponents are not separate F-principal-value contributions.
+- [Independent SymPy checker](scripts/verify_g2_descent_ls.py): verifies the two Galois orbits, omitted x0-chart points, the repeated-polar F-point, the first exceptional valuation and the localized Mellin pole. Run with Python 3 and SymPy.
+- **New obstruction:** when the repeated-polar discriminant \(\mathscr D=M^2+3\Delta^2\) vanishes, the first new exceptional divisor has actual fiber-form order \(-1\), regulator order \(-3\), and **trivial** cubic character. Langlands--Shelstad's nonresonance condition (1.4) therefore fails. The proposed single Mellin factor \(|R_{\rm cone}|^{\sigma/3}\) produces a localized simple pole at \(\sigma=0\). The cited LS theorem assumes characteristic-zero local fields.
+- **Main paper unchanged:** these results do **not** prove Claim 8.3H or \((X_3)\). A globally invariant regularization or a proof that the exceptional special \(X\) is excluded is still required. A printable five-page LaTeX/PDF appendix was prepared separately; the repository files here are the Markdown note and Python checker.
+
 ## Status
 
 **Draft 6 of the corrected edition (November 14, 2026).** The editable source and the PDF built from it are in `revised/g2-shalika-germs-2026.tex` and `revised/g2-shalika-germs-2026.pdf`.

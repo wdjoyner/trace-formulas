@@ -128,3 +128,11 @@ As in the referee report:
 4. Resolve the exceptional and spurious divisor proviso (Lemma 0.8) and the contribution of the β = 11/3 branch.
 5. Revisit the outstanding cases of elliptic tori and the product-group comparison from Hales, with checked citations.
 6. Seek an independent mathematical review of §§7–8, including the assumptions of Lemmas 5.14 and 0.8, and request a human specialist referee. Passing symbolic assertions is not a substitute for such a review.
+
+
+## Post-Draft-6 auxiliary calculations (2026-11-15)
+
+- Added `notes/shell-sums-2026-11-15.tex`: an independent research note deriving valuation-shell expressions for the quadratic factors `I_t`, `I_s`, `I_xi` and for the **proposed** cubic factors `I_{P^1(K)}`, `B_1'(1)`, and `B_2(1)` under the explicitly chosen Mellin continuations.
+- Added `scripts/verify_g2_shell_sums_independent.py`, a standalone Python 3 / SymPy checker that passed before commit. It confirms arithmetic identities but cannot test the analytic definitions of regularized integrals.
+- Status: Open Problem (1)(c) is reduced to reconciling the chosen meromorphic continuations with the Langlands–Shelstad principal-value construction. The analogous compatibility, the cone factorization and the geometry of exceptional divisors remain open for Open Problem (1)(b); Hypothesis (X_3) is **not** proved by this note. Draft number remains 6.
+- The companion PDF was generated locally but is not included in this source-only commit.

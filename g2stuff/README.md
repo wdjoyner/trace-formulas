@@ -92,11 +92,11 @@ Run them one at a time, for example `python3 g2_tori_endoscopy.py`.
 
 - [Full regularity/discriminant proof](notes/cubic-regularity-discriminant-2026-11-15.md) shows **every nonzero \(X\in\mathfrak t(F)\) is regular** for the cyclic-cubic torus, but \(\mathscr D=M^2+3\Delta^2=6\operatorname{Tr}_{K/F}(\alpha(X)^2)\) can vanish on **two regular \(F\)-lines** precisely when \(\mu_3\subset F\), or equivalently \(q\equiv1\bmod3\) in residue characteristic at least \(5\). This includes all tame ramified cyclic cubic cases and some unramified cases; an explicit unramified example uses \(F=\mathbb Q_7\), \(K=F(\sqrt[3]{2})\). Scaling \(X\) toward zero does not remove the repeated-polar condition.
 - [Independent SymPy verification](scripts/verify_g2_polar_regular.py): run \`python3 scripts/verify_g2_polar_regular.py\` from \`g2stuff/\`. It checks the root formulas and discriminant algebra, not principal values.
-- **Implication:** the repeated-polar Langlands--Shelstad resonance reported in the descent note cannot be excluded by the manuscript's regularity or smallness assumptions. No result here proves or disproves \((X_3)\); Draft 6 stays unchanged.
+- **Implication:** the repeated-polar Langlands--Shelstad resonance reported in the descent note cannot be excluded by the manuscript's regularity or smallness assumptions. The result is now also included **in the main TeX manuscript** as Remark \`rem:8.polar-regular\`, immediately following Proposition 8.3G, with a cross-reference from the status of Claim 8.3H. No result here proves or disproves \((X_3)\); the draft number remains 6.
 
 ## Status
 
-**Draft 6 of the corrected edition (November 14, 2026).** The editable source and the PDF built from it are in `revised/g2-shalika-germs-2026.tex` and `revised/g2-shalika-germs-2026.pdf`.
+**Draft 6 of the corrected edition (November 14, 2026), with a November 15 supplementary remark.** The editable source is `revised/g2-shalika-germs-2026.tex`. The committed `revised/g2-shalika-germs-2026.pdf` **predates the supplementary remark**; rebuild the PDF from the latest TeX source to view the new material.
 
 - **Established in the revision, subject to the paper's stated assumptions (Lemma 5.14 and the proviso of Lemma 0.8):**
   - the normal, Cohen–Macaulay toric model, its codimension-one patches, and the special-fiber constants;

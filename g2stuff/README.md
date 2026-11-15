@@ -55,7 +55,7 @@ Run them one at a time, for example `python3 g2_tori_endoscopy.py`.
 
 ## Independent follow-up note (November 15, 2026)
 
-- [`notes/shell-sums-2026-11-15.tex`](notes/shell-sums-2026-11-15.tex) derives the valuation-shell continuations behind the quadratic constant \(C'(q)\) and the proposed cyclic-cubic constant \(C_3(q)\). This is an auxiliary research note, **not a new draft of the main manuscript**. Its regularization has **not** been identified with Langlands–Shelstad principal values; therefore \((X_3)\) remains open by direct computation.
+- [`notes/shell-sums-2026-11-15.tex`](notes/shell-sums-2026-11-15.tex) derives the valuation-shell continuations behind the quadratic constant \(C'(q)\) and the proposed cyclic-cubic constant \(C_3(q)\). This is an auxiliary research note, **not a new draft of the main manuscript**. For the **isolated one-dimensional cubic factors**, §1 of Langlands–Shelstad's paper now supplies a direct principal-value justification, as proved in the expanded note. However, the **global cubic-cone regulator and fiberwise factorization** have not been justified; \((X_3)\) remains open by direct computation. The note also verifies that the affine cubic quadric cone has a singular vertex, whose blow-up creates an exceptional \(\mathbb P^1\times\mathbb P^1\) requiring analysis.
 - [`scripts/verify_g2_shell_sums_independent.py`](scripts/verify_g2_shell_sums_independent.py) is a pure-Python/SymPy checker, independent of the earlier suites. Run `python3 scripts/verify_g2_shell_sums_independent.py` from `g2stuff/`.
 
 ## Status

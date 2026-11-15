@@ -247,10 +247,68 @@ the independent local regulators of the normal-crossings construction.
 The order of continuation and fiber integration cannot simply be interchanged.
 \end{remark}
 
+
+\section{The vertex of the cubic quadric cone}\label{sec:cone}
+The geometry in Proposition~8.3G of \cite{Jo26} provides a second, independent
+obstruction to applying the fiber-integration lemma without further work.
+
+\begin{proposition}\label{prop:vertex}
+Let $K/F$ be a cyclic cubic field extension, with residual characteristic
+$p\ge5$, and set
+\[
+ \mathcal C_K=\{(u,Y)\in\operatorname{Res}_{K/F}\mathbb A^1\times\mathbb A^1:
+ Q(u,Y)=Y^2+u\tau(u)+\tau(u)\tau^2(u)+\tau^2(u)u=0\}.
+\]
+The affine three-dimensional quadric $\mathcal C_K$ is singular at exactly
+its vertex $(u,Y)=(0,0)$. Its projectivization is smooth. When the
+projectivization is split as in Proposition~8.3G of \cite{Jo26}, blowing
+up the vertex resolves the singularity, with exceptional divisor
+$\mathbb P^1_F\times\mathbb P^1_F$. The blow-down map is not a submersion
+along that exceptional divisor.
+\end{proposition}
+
+\begin{proof}
+Using $\operatorname{tr}=\operatorname{Tr}_{K/F}$, write
+$Q(u,Y)=Y^2+((\operatorname{tr}u)^2-\operatorname{tr}(u^2))/2$.
+Its differential in a direction $v\in K$ is
+$(\operatorname{tr}u)(\operatorname{tr}v)-\operatorname{tr}(uv)$.
+The trace pairing is nondegenerate because $K/F$ is separable.
+If the differential vanishes for all $v$, then
+$u=(\operatorname{tr}u)\cdot1_K$. Tracing this equality gives
+$\operatorname{tr}u=3\operatorname{tr}u$, whence $u=0$ since the residue
+characteristic is not $2$. The $Y$ derivative is $2Y$, so also $Y=0$.
+Since the equation is homogeneous quadratic, the vertex is singular and
+the projectivization is smooth.
+
+In split coordinates the equation is $x_0x_3-x_1x_2=0$. On a chart of
+the blow-up of the vertex, the blow-down map is
+\[
+ (r,s,t)\longmapsto (x_0,x_1,x_2,x_3)=(r,rs,rt,rst).
+\]
+At $r=0$ the exceptional divisor has coordinates $(s,t)$, and the
+Jacobian of this map has rank $1$ rather than $3$. Other charts give the
+full exceptional divisor $\mathbb P^1\times\mathbb P^1$.
+For orientation, the standard hypersurface residue form
+$dx_0\wedge dx_1\wedge dx_2/x_0$ pulls back to
+$r\,dr\wedge ds\wedge dt$: it has a zero, rather than a pole, on the
+exceptional divisor. This says nothing by itself about the additional
+rational factors of the actual Igusa fiber form in \cite{Jo26}.
+\end{proof}
+
+\begin{remark}
+The phrase \emph{smooth quadric cone} in Proposition~8.3G should refer to
+its smooth projectivization or to its punctured cone. To apply
+\cite[Lemmas 1.D and 1.F]{LS83} to the cubic fiber integral, one must
+calculate the pullbacks of the fiber form, character, and regulator on
+the blow-up, including their orders along $r=0$; mere omission of the
+vertex from an ordinary integral does not rule out a principal-value
+contribution from the exceptional divisor.
+\end{remark}
+
 \section{Status and remaining tasks}
 The arguments above independently derive the shell sums; Proposition~\ref{prop:local-pv} further identifies the isolated one-dimensional cubic factors with Langlands--Shelstad local principal values. The symbolic companion script reproduces the rational identities without importing any $G_2$ verification modules. This does \emph{not} establish the analytic fiber-integral identity required in the main draft.
 
-Three essential tasks remain. First, prove that the global cubic-cone regulator and fiberwise factorization implement the principal-value construction of \cite{LS83}; the one-dimensional result of Proposition~\ref{prop:local-pv} is not enough. Second, justify the cone factorization and changes of variables in the sketch of Claim~8.3H, including all Jacobians, $X$-dependent factors, and boundary contributions. Third, retain Lemma~5.14 and the divisor condition of Lemma~0.8 as hypotheses until independently resolved. The $r=1$ comparison and the omitted torus classes are also untouched here.
+Three essential tasks remain. First, prove that the global cubic-cone regulator and fiberwise factorization implement the principal-value construction of \cite{LS83}; the one-dimensional result of Proposition~\ref{prop:local-pv} is not enough. Second, resolve the singular vertex and exceptional divisor of Proposition~\ref{prop:vertex}, then justify the cone factorization and changes of variables in Claim~8.3H, including all Jacobians, $X$-dependent factors, and boundary contributions. Third, retain Lemma~5.14 and the divisor condition of Lemma~0.8 as hypotheses until independently resolved. The $r=1$ comparison and the omitted torus classes are also untouched here.
 
 \section*{Glossary}
 \begin{description}

@@ -4872,6 +4872,66 @@ $S_F\in\delta_K\cdot N_{K/F}(K^\times)(F^\times)^3$ (script
 \texttt{verify\_g2\_open\_problem\_1.py}).
 \end{proof}
 
+\begin{rem26}[full regularity does not exclude a repeated cubic polar divisor]
+\label{rem:8.polar-regular}
+For the cyclic cubic tori of Theorem~\ref{res:8.3}, put
+$a=\alpha(X)$, $b=\beta(X)$, and
+\[
+ A_0=\alpha(X),\qquad A_1=\tau(\alpha(X))=-\delta(X)=-2a-b,
+ \qquad A_2=\tau^2(\alpha(X))=\gamma(X)=a+b.
+\]
+Then $A_0+A_1+A_2=0$. With
+$\Delta=A_0-A_1=3a+b$ and $M=A_0+A_1-2A_2=-3(a+b)$, the
+discriminant of the quadratic polar polynomial on the exceptional
+quadric cone is
+\begin{equation}\label{eq:8.polar-discriminant}
+ \mathscr D(X)=M^2+3\Delta^2
+ =12(3a^2+3ab+b^2)
+ =6\operatorname{Tr}_{K/F}\bigl(\alpha(X)^2\bigr)\in F.
+\end{equation}
+This condition is \emph{not} implied to be nonzero by regularity.
+Indeed, $X\mapsto\alpha(X)$ identifies the two-dimensional $F$-space
+$\mathfrak t(F)$ with $K^0=\ker\operatorname{Tr}_{K/F}$.
+For $X\ne0$, the three short-root values (up to signs) are the
+nonzero conjugates $A_0,A_1,A_2$, and the long-root values are their
+pairwise differences. If two conjugates coincided, their common value
+would lie in $F$; trace zero and $p\ge5$ would force $X=0$.
+Thus \emph{every nonzero $X\in\mathfrak t(F)$ is regular}.
+
+More precisely, for nonzero $X$ the equation $\mathscr D(X)=0$ holds
+if and only if $F$ contains a primitive cube root of unity $\xi$
+and $\alpha(X)$ lies in one of the two nontrivial eigenspaces
+$\tau u=\xi u$ or $\tau u=\xi^2u$ of $K^0$.
+To see necessity, note that $\Delta\ne0$, so
+$(M/\Delta)^2=-3$; since $M/\Delta\in K$ and a cyclic cubic extension
+has no quadratic subextension, $\sqrt{-3}\in F$.
+Conversely, when $\mu_3\subset F$, the two nontrivial Galois
+eigenlines are defined over $F$ and satisfy
+$\operatorname{Tr}_{K/F}(u^2)=0$.
+Hence $\mathscr D=0$ consists of exactly two nonzero regular
+$F$-directions when $\mu_3\subset F$, and has no nonzero $F$-solution
+otherwise. For $p\ge5$ the first case is equivalent to
+$q\equiv1\pmod3$, where $q$ denotes the residue-field cardinality.
+
+For example, take $F=\mathbb Q_7$, $K=F(\theta)$ with
+$\theta^3=2$, and $\tau\theta=\xi\theta$ for a primitive cube root
+$\xi\in F$. The extension is unramified cyclic cubic.
+The unique $X\in\mathfrak t(F)$ with $\alpha(X)=\theta$ has
+all twelve root values nonzero, but
+$\mathscr D(X)=6\theta^2(1+\xi^2+\xi^4)=0$.
+The same is true for the regular elements $7^nX$ arbitrarily
+close to zero. Thus neither regularity nor the smallness
+hypothesis in Corollary~\ref{res:8.3B} excludes the repeated-polar
+case. The associated exceptional-divisor resonance identified
+in the auxiliary analysis must be treated before the
+one-parameter principal-value argument in Claim~\ref{res:8.3H}
+can be justified; it does not, by itself, disprove
+Hypothesis $(\mathrm X_3)$. See
+\texttt{notes/cubic-regularity-discriminant-2026-11-15.md} and
+\texttt{scripts/verify\_g2\_polar\_regular.py}
+for the detailed argument and independent exact checks.
+\end{rem26}
+
 \begin{res}{Claim}{8.3H}[evaluation of $J_3(X)$ and the constant $C_3(q)$; proof sketched only]\label{res:8.3H}
 Let $(T_G,\kappa)$ be as in Theorem~\ref{res:8.3} over $F$ of residue
 characteristic $p\ge 5$, with cyclic cubic splitting field $K/F$ and Haar
@@ -4970,7 +5030,11 @@ the text and the cone decoupling $(r,s,t)\mapsto(z,U,t)$ written out;
 \item the regularization by $R_{\mathrm{cone}}^{\sigma/3}$ must be shown to
 compute the principal value of \cite{LS83} that enters
 Formula~\ref{res:0.6} and Lemma~\ref{res:5.7}, and with it the vanishing
-$B_1(1)=0$ that removes the dependence on $X$;
+$B_1(1)=0$ that removes the dependence on $X$. In particular,
+Remark~\ref{rem:8.polar-regular} shows that the repeated-polar locus
+$\mathscr D(X)=0$ contains fully regular parameters when
+$q\equiv1\pmod3$; the exceptional logarithmic pole there requires
+an invariant regularization or a verified cancellation;
 \item the valuation-shell sums giving $I_{\mathbb{P}^1(K)}$, $B_1'(1)$ and
 $B_2(1)$, and hence \eqref{eq:8.8}, must be derived; the script checks only the
 algebra of the formulas as typed in.

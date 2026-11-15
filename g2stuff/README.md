@@ -65,6 +65,13 @@ Run them one at a time, for example `python3 g2_tori_endoscopy.py`.
 - [`scripts/verify_g2_cubic_exceptional_orders.py`](scripts/verify_g2_cubic_exceptional_orders.py) independently verifies the rational coordinate, norm, Jacobian and ratio identities using Python 3 + SymPy. Run `python3 scripts/verify_g2_cubic_exceptional_orders.py`.
 - **Remaining analytic issue:** along the transverse intersection with `H0 + r*H1 = 0`, both form and regulator have order **−3**; the corresponding principal value is not justified by this generic calculation. Other blow-up charts, Igusa boundary divisors, Lemmas 0.8/5.14, and direct `(X_3)` remain open. The principal manuscript is still **Draft 6**.
 
+
+### Four-chart cubic intersection audit (November 15, 2026)
+
+- [`notes/cubic-four-chart-intersections-2026-11-15.md`](notes/cubic-four-chart-intersections-2026-11-15.md) computes the actual cubic fiber form, regulator, and character on all four vertex blow-up charts. For regular `X`, polar and boundary curves are disjoint on the exceptional surface; they have explicit triple intersections away from it. The note also identifies a repeated-polar exceptional case and the generic orders (0, 0) after blowing up a triple-intersection curve.
+- [`scripts/verify_g2_four_blowup_charts.py`](scripts/verify_g2_four_blowup_charts.py) is a standalone exact SymPy checker for the four charts, cyclic common denominator, regulator norm cancellation, boundary/polar equations and repeated-polar case. Run `python3 scripts/verify_g2_four_blowup_charts.py` from `g2stuff/`.
+- **Scope limitation:** this is an auxiliary analysis, not a proof of global Langlands–Shelstad principal-value compatibility or `(X_3)`. The isolated third-norm points and further global boundary/resolution checks remain open. Draft 6 of the main paper is unchanged.
+
 ## Status
 
 **Draft 6 of the corrected edition (November 14, 2026).** The editable source and the PDF built from it are in `revised/g2-shalika-germs-2026.tex` and `revised/g2-shalika-germs-2026.pdf`.

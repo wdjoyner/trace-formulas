@@ -1,0 +1,170 @@
+\documentclass[12pt,letterpaper]{amsart}
+\usepackage[T1]{fontenc}
+\IfFileExists{newtxtext.sty}{\usepackage{newtxtext,newtxmath}}{\usepackage{mathptmx}}
+\usepackage[letterpaper,margin=1in]{geometry}
+\usepackage{amsmath,amsthm,booktabs,longtable}
+\usepackage{microtype}
+\usepackage[hidelinks]{hyperref}
+\DeclareMathOperator{\ord}{ord}
+\DeclareMathOperator{\Norm}{N}
+\DeclareMathOperator{\Tr}{Tr}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{remark}[theorem]{Remark}
+\title[Four blow-up charts for the cubic cone]{Polar and boundary intersections on all four blow-up charts of the cubic $G_2$ fiber cone}
+\author{ChatGPT (OpenAI)}
+\date{November 15, 2026\\Independent research note; main manuscript remains Draft 6}
+\begin{document}
+\begin{abstract}
+This AI-aided note derives exact equations for the actual cubic fiber form, cubic character, and Igusa regulator on all four standard affine charts of the blow-up of the split quadric cone from Proposition~8.3G of \cite{Jo26}. The polar divisor is controlled on the exceptional surface by a quadratic $F_X$, and the principal boundary divisor by three disjoint ruling lines. For regular $X$, these are disjoint on the exceptional surface. Their intersections away from it are controlled by the character divisor $Y+1=0$. Blowing up a generic such intersection produces zero orders for both the fiber form and the regulator, but the cubic character retains nontrivial monodromy. A repeated-root exceptional case and isolated extra norm intersections require further analysis. The work does not establish $(X_3)$ or Langlands--Shelstad principal-value compatibility.
+\end{abstract}
+\maketitle
+\section{Coordinates and exact cancellation}
+We work after base change to a splitting field of the cyclic cubic extension $K/F$. Put $u_i=\tau^i(u_0)$, let $Y\in F$, and set
+\[
+ \mathcal C:\ Y^2+u_0u_1+u_1u_2+u_2u_0=0.
+\]
+Introduce the invertible linear coordinates
+\begin{equation}\label{eq:linear}
+ x_0=Y+\tfrac12(u_0-u_1),\quad x_1=u_0+u_1,\quad
+ x_2=-u_2-\tfrac14(u_0+u_1),\quad x_3=Y-\tfrac12(u_0-u_1).
+\end{equation}
+The cone becomes $x_0x_3-x_1x_2=0$. Its blow-up at the vertex has four affine charts indexed by $x_j$, with $x_j=r$ and all other $x_i=r v_i(s,t)$:
+\begin{equation}\label{eq:atlas}
+\begin{array}{c|rrrr|c}
+\text{chart}&v_0&v_1&v_2&v_3&y=Y/r\\\hline
+x_0&1&s&t&st&(1+st)/2\\
+x_1&s&1&st&t&(s+t)/2\\
+x_2&t&st&1&s&(s+t)/2\\
+x_3&st&t&s&1&(1+st)/2.
+\end{array}
+\end{equation}
+Write $\underline u=(a,b,c):=(u_0,u_1,u_2)/r$; thus $a,b,c,y$ are the linear functions of $v$ obtained from \eqref{eq:linear}. Let $A_i=\tau^i(\alpha(X))$, $B=\beta(X)\epsilon(X)\zeta(X)$, $\Delta=A_0-A_1$, and $M=A_0+A_1-2A_2$. In the cubic case $A_0+A_1+A_2=0$. Define
+\begin{align}\label{eq:adapted}
+ q_0&=y^2+y(a-b)+a^2+ab+b^2,\\
+ T_0&=(b-y)(-y-2a-b),& U_0&=a(b-y)^2,\notag\\
+ T_1&=(y+a)(-y+a+2b),& U_1&=b(y+a)^2,\notag\\
+ T_2&=-(a+b)(2y+a-b),& U_2&=c(a+b)^2.\notag
+\end{align}
+Direct algebra on the cone shows that each cyclic conjugate of $W_\alpha$ in \cite[(8.7h)]{Jo26} is $(T_i+rU_i)/q_0$. Thus
+\begin{equation}\label{eq:h}
+ \Lambda_F=\frac{H_0+rH_1}{q_0},\qquad
+ H_k=\sum_{i=0}^2 A_i(T_i\text{ if }k=0\text{, else }U_i).
+\end{equation}
+The key norm identity is
+\begin{equation}\label{eq:norm}
+ \Norm_{K/F}(y+a)^2q_0^3
+ =[(y-b)(y+a)(a+b)]^2\Norm_{K/F}(q_0).
+\end{equation}
+Here $\Norm(q_0)$ means the product of the three cyclically permuted $q$-polynomials. Equation~\eqref{eq:norm} is an identity of rational functions on the cone; no assertion is made about their separately defined values at zeros of denominators.
+
+\section{All four chart formulas}
+Let
+\begin{align*}
+ F(s)&=\Delta(1-3s^2/4)+Ms,&F^\vee(s)&=\Delta(s^2-3/4)+Ms,\\
+ P(s)&=s(s^2-4),&P^\vee(s)&=4s^2-1,\\
+ C_j&=1+ry_j(s,t),&\mathcal N_j&=\prod_{i=0}^2(1-r^2u_{ij}(s,t)^2).
+\end{align*}
+The $u_{ij}$ are the three $a,b,c$ on chart $j$. Put $h_j=F_j(s)C_j+rP_j(s)K_j(t)$, where the table is
+\begin{equation}\label{eq:table}
+\begin{array}{c|c|c|c}
+ j&F_j&P_j&8K_j(t)\\\hline
+0&F&P&M+2\Delta t\\
+1&F^\vee&P^\vee&-M-2\Delta t\\
+2&F&P&2\Delta+Mt\\
+3&F^\vee&P^\vee&-2\Delta-Mt.
+\end{array}
+\end{equation}
+\begin{theorem}[Exact four-chart identities]\label{thm:four}
+Assume the starting rational identities (8.7h) of \cite{Jo26}. On each chart, up to an orientation sign,
+\begin{align}\label{eq:forms}
+\pi^*\omega_{\mathcal Q_3}
+ &=\pm\frac{B rP_j(s)^2}{16h_j(s,t,r)^3}\,dr\wedge ds\wedge dt,\\
+\pi^*R_{\mathrm{cone}}
+ &=-\frac{P_j(s)^2\mathcal N_j(s,t,r)^2}{1024 C_j(s,t,r)^3h_j(s,t,r)^3},\label{eq:reg}\\
+\pi^*\kappa_1(t_*)&=c'''\chi(C_j).\label{eq:char}
+\end{align}
+The apparent divisors from $x_0=x_1=0$, $q_0=0$ and the parameterization denominator $u_0+u_1=0$ cancel in these identities. In particular the extra coordinate factors $t^6$ cancel identically on charts $x_2$ and $x_3$.
+\end{theorem}
+\begin{proof}
+The homogeneous polynomial $H_0$ equals
+\[
+ \Delta(x_0^2-3x_1^2/4)+M x_0x_1.
+\]
+On charts $0,1$ it restricts to $F,F^\vee$, and on charts $2,3$ to $t^2F,t^2F^\vee$. Direct substitution shows $H_1$ is divisible by the same chart factor $1,1,t^2,t^2$ and yields $h_j$ in \eqref{eq:table}. Moreover $A=(y-b)(y+a)(a+b)=x_1(x_0^2-x_1^2/4)$, so in charts $0,1,2,3$ it becomes $-P/4,P^\vee/4,-t^3P/4,t^3P^\vee/4$. Finally, the Jacobian of $(u_0,u_1,Y)$ divided by $r^2(a+b)$ is $+1/2,-1/2,-1/2,+1/2$, respectively. These substitutions and the norm identity \eqref{eq:norm} give \eqref{eq:forms}--\eqref{eq:char}. The companion Python checker verifies these rational identities independently for all four charts.
+\end{proof}
+
+\section{Exceptional and strict-transform intersections}
+The vertex exceptional divisor is $E=\{r=0\}\simeq\mathbb P^1\times\mathbb P^1$. The zeros of $P_j$ give three lines of one ruling; the zeros of $F_j$ give the polar intersection with $E$.
+\begin{proposition}[Separation for regular $X$]\label{prop:separation}
+If $A_0,A_1,A_2$ are pairwise distinct, then the boundary and polar curves on $E$ are disjoint. The boundary curves are simple and distinct; their orders are $+2$ in both the form and regulator. The polar curve has order $-3$ in both, with two simple ruling components when
+\begin{equation}\label{eq:disc}
+\mathscr D=M^2+3\Delta^2\ne0.
+\end{equation}
+The vertex exceptional divisor still has form order $+1$ and regulator order $0$.
+\end{proposition}
+\begin{proof}
+On charts $0,2$ the boundary is $s=0,\pm2$. Exactly,
+\[F(0)=A_0-A_1,\quad F(2)=4(A_1-A_2),\quad F(-2)=-4(A_0-A_2),\]
+so all are nonzero. On charts $1,3$ the reciprocal boundary points are $s=\pm1/2$; their nonvanishing follows from $F^\vee(s)=s^2F(1/s)$. At $r=0$ the factor $C_j=1$ and $\mathcal N_j=1$, so \eqref{eq:forms}--\eqref{eq:reg} give the orders. The discriminant of $F$ is \eqref{eq:disc}.
+\end{proof}
+\begin{remark}[Repeated polar component]\label{rem:double}
+If $\mathscr D=0$ with $\Delta\ne0$, the polar intersects $E$ in a \emph{double} ruling line at $s_*=2M/(3\Delta)$. Thus $E$ and the polar divisor need not have normal crossings even for regular $X$. In chart $x_0$, using $A_0+A_1+A_2=0$, the radial derivative of $h_0$ on that line is
+\[
+\left.\frac{\partial h_0}{\partial r}\right|_{r=0,s=s_*}
+ =\frac{4\Delta}{3}-\frac{8M}{9}t.
+\]
+It vanishes at the unique point $t_*=3\Delta/(2M)$. There the polar surface has an ordinary quadratic singularity: the second-order expansion has a nonzero $\delta s^2$ term and a nonzero $r\,\delta t$ term. A further embedded resolution is necessary. For fields with $\sqrt{-3}\notin F$, such an $F$-rational repeated-root condition cannot occur; it can occur geometrically in general.
+\end{remark}
+
+\section{Boundary--character--polar triple curves away from $E$}
+Define $B_j=\{P_j=0\}$, $D_j=\{h_j=0\}$ and $C_j^0=\{C_j=0\}$. The label $C_j$ for the function should not be confused with the divisor $C_j^0$. Because $h_j=F_jC_j+rP_jK_j$, at every boundary point $s=s_b$ one has
+\begin{equation}\label{eq:triple}
+ h_j(s_b,t,r)=F_j(s_b)C_j(s_b,t,r),\qquad F_j(s_b)\ne0.
+\end{equation}
+Thus $B_j\cap D_j=B_j\cap C_j^0$ as sets, and this intersection is disjoint from $E$. At its generic point, exactly two of $1-r^2u_{ij}^2$ vanish simply. The third vanishes at isolated points listed in Table~\ref{tab:third}.
+\begin{table}[ht]
+\centering\caption{Third norm factor on the triple curves in the $x_0$ chart. The other three charts give reciprocal coordinates.}\label{tab:third}
+\begin{tabular}{ccc}\toprule
+$s_b$&generic vanishing norm factors&additional zero of the third\\\midrule
+$0$&$i=0,1$&$t=\pm\tfrac12$\\
+$2$&$i=1,2$&$t=\tfrac12$\\
+$-2$&$i=0,2$&$t=-\tfrac12$\\\bottomrule
+\end{tabular}
+\end{table}
+\begin{proposition}[Blow-up of a generic triple curve]\label{prop:trip}
+Blow up the smooth codimension-two center $Z=B_j\cap C_j^0$ near its generic point, at which the third norm factor is nonzero. The new exceptional divisor $E_Z$ has
+\[
+ \ord_{E_Z}(\omega_{\mathcal Q_3})=0,
+ \qquad \ord_{E_Z}(R_{\mathrm{cone}})=0.
+\]
+The character nevertheless acquires the factor $\chi(\rho)$ along $E_Z$, where $\rho$ is its local exceptional parameter.
+\end{proposition}
+\begin{proof}
+Take local transverse coordinates $z=P_j$ and $v=C_j$ and a coordinate along $Z$. In the ideal $(z,v)$ the polar function $h_j=F_jv+rK_jz$ has order $1$ and the two norm factors each have order $1$. Thus the coefficient of the fiber form has order $2-3=-1$; the Jacobian of blowing up a codimension-two center contributes $+1$. The regulator has scalar order $2+4-3-3=0$. On the chart $v=\rho w$, the cubic character is $\chi(\rho)\chi(w)$, which need not become trivial. These are generic divisorial orders only; the isolated third-norm zero points require separate local checks.
+\end{proof}
+\begin{remark}[Normal-crossings warning]\label{rem:warning}
+The strict transforms of the boundary, character, polar and norm divisors meet the new exceptional divisor in several sections. For regular $X$ the two vanishing norm factors and the polar divisor have distinct slopes at the generic point of each triple curve, but some slopes can meet the character section at isolated points. Combined with the additional third-norm zeros in Table~\ref{tab:third}, this prevents an unconditional assertion that the displayed single blow-up gives a global normal-crossings model. Nor does the scalar order $0$ of $R_{\mathrm{cone}}$ imply triviality of the character local system on $E_Z$.
+\end{remark}
+
+\section{Divisor orders and limitations}
+The following orders hold at generic points away from other divisors; negative means a pole. The row $E_Z$ refers to Proposition~\ref{prop:trip}.
+\[
+\begin{array}{c|cc|c}
+\text{divisor}&\ord\omega&\ord R&\text{cubic character}\\\hline
+E\ (r=0)&+1&0&\text{trivial near }E\\
+B\ (P=0)&+2&+2&\text{unit off }C\\
+D\ (h=0)&-3&-3&\text{unit off }C\\
+C^0\ (1+r y=0)&0&-3&\chi(C)\\
+N_i^{\pm}\ (1\pm r u_i=0)&0&+2&\text{unit off }C\\
+E_Z&0&0&\chi(\rho)\end{array}
+\]
+The calculation is conditional on the rational formulas of \cite[(8.7h)]{Jo26}. It establishes neither compatibility of the global cone regularization with \cite{LS83} nor the required global compactification. The special repeated-polar case, the isolated norm intersections and the original exceptional/spurious divisors from Lemma~0.8 remain to be treated. Therefore Claim~8.3H and $(X_3)$ stay conditional.
+
+\section*{Acknowledgments}
+ChatGPT (OpenAI) carried out the independent algebraic analysis, wrote the checking script, and prepared this note. The 1994 manuscript is by D.~Joyner and Draft~6 credits Claude and Gemini. AI review is not independent mathematical certification. Further provenance is recorded in the repository revision log.
+\begin{thebibliography}{99}
+\bibitem[Jo26]{Jo26} D.~Joyner, Claude, and Gemini, \emph{On the transfer of Shalika germs for $G_2$}, corrected and expanded Draft~6 (2026), \S8 and Proposition~8.3G. \url{https://github.com/wdjoyner/trace-formulas/tree/main/g2stuff}.
+\bibitem[LS83]{LS83} R.~Langlands and D.~Shelstad, "On principal values on $p$-adic manifolds," \emph{Lie Group Representations II}, Lecture Notes in Math. \textbf{1041} (1984), 250--279.
+\end{thebibliography}
+\end{document}

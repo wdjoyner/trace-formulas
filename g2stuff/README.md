@@ -15,6 +15,7 @@ g2stuff/
 ├── original-1994/   the 1994 AMS-TeX source files, unchanged
 ├── transcription/   literal single-file amsart transcription (no corrections)
 ├── referee/         referee reports on the 1994 manuscript and later drafts
+├── notes/           independent analytical notes (not part of the main draft)
 ├── scripts/         computational checks accompanying the revised drafts
 ├── revised/         corrected edition (currently Draft 6) and CHANGES.md
 ├── revision_log.md  drafts, AI usage, verification levels, sources not consulted

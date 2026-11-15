@@ -53,6 +53,11 @@ The scripts need Python 3 with NumPy, SymPy and SciPy. They are named so that
 `../run_checks.py` does not run them, because they take longer and need SciPy.
 Run them one at a time, for example `python3 g2_tori_endoscopy.py`.
 
+## Independent follow-up note (November 15, 2026)
+
+- [`notes/shell-sums-2026-11-15.tex`](notes/shell-sums-2026-11-15.tex) derives the valuation-shell continuations behind the quadratic constant \(C'(q)\) and the proposed cyclic-cubic constant \(C_3(q)\). This is an auxiliary research note, **not a new draft of the main manuscript**. Its regularization has **not** been identified with Langlands–Shelstad principal values; therefore \((X_3)\) remains open by direct computation.
+- [`scripts/verify_g2_shell_sums_independent.py`](scripts/verify_g2_shell_sums_independent.py) is a pure-Python/SymPy checker, independent of the earlier suites. Run `python3 scripts/verify_g2_shell_sums_independent.py` from `g2stuff/`.
+
 ## Status
 
 **Draft 6 of the corrected edition (November 14, 2026).** The editable source and the PDF built from it are in `revised/g2-shalika-germs-2026.tex` and `revised/g2-shalika-germs-2026.pdf`.

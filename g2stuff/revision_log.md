@@ -146,3 +146,11 @@ As in the referee report:
 - **Level 1, independent rational derivation:** on the generic exceptional divisor, the actual 3-form has order +1; the cubic character is locally constant (order 0); and `R_cone` has order 0. The same cubic denominator occurs in the form and regulator and cancels *exactly* in their ratio.
 - **Intersection not resolved:** at smooth transverse points of `E ∩ {H0+rH1=0}`, both the form and regulator have order −3 along the polar divisor. The induced principal-value regularization must still be matched with Langlands--Shelstad. Other blow-up charts, spurious divisors, Lemmas 0.8 and 5.14 and the global fiber integral remain open.
 - Main article `revised/g2-shalika-germs-2026.tex` was not changed. `(X_3)` remains conditional. Auxiliary note is Markdown in GitHub; the longer independent LaTeX write-up and compiled PDF are attached to the working conversation.
+
+
+## Four-chart cubic polar/boundary follow-up (2026-11-15)
+
+- Added `notes/cubic-four-chart-intersections-2026-11-15.md` and standalone `scripts/verify_g2_four_blowup_charts.py`, analyzing the actual cubic form, character, and regulator on each of four standard blow-up charts of the split quadric cone from Proposition 8.3G.
+- Exact rational-function results: (h_j=F_j(s)(1+ry_j)+rP_j(s)K_j(t)), ω = ± B r P_j^2/(16h_j^3) dr ds dt, and (R=-P_j^2 N_j^2/[1024(1+ry_j)^3h_j^3]). Boundary and polar loci on the vertex exceptional surface are disjoint for pairwise distinct conjugate root values; the polar discriminant is (M^2+3Δ^2).
+- New geometric warnings: when this discriminant vanishes, the polar is tangent to the vertex exceptional surface, with an isolated singular point. Away from that surface, boundary, character and polar divisors meet on curves; two norm factors also vanish there. The blow-up of a generic such curve gives exceptional orders ω:0 and R:0 but carries a nontrivial cubic-character factor. The isolated additional norm zeros are unresolved.
+- Verification: symbolic chart identities and intersection orders checked using independent SymPy calculations. The companion Python checker checks rational identities, not LS principal values. **No upgrade to Claim 8.3H, Hypothesis (X_3), Lemma 5.14 or Lemma 0.8. Main manuscript remains Draft 6.**

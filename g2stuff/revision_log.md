@@ -157,3 +157,11 @@ As in the referee report:
 
 
 **Repository publication follow-up (2026-11-15).** Added the complete five-page LaTeX source `notes/cubic-four-chart-intersections-2026-11-15.tex` to `main`, alongside the pre-existing Markdown exposition. Expanded `scripts/verify_g2_four_blowup_charts.py` to check isolated third-norm intersection locations, and reran the local full checker. The PDF was built and validated locally but is **not committed**; this GitHub connector supports UTF-8 source updates, not direct local binary PDF upload. These auxiliary results do not alter Draft 6 or prove `(X_3)`.
+
+
+## Resolution of the two remaining cubic local configurations (2026-11-15)
+
+- Added the independent note notes/cubic-special-local-resolutions-2026-11-15.md and its ordinary Python/SymPy algebraic checker scripts/verify_g2_special_resolution.py.
+- **Repeated polar:** when the discriminant \(M^2+3\Delta^2=0\), \(h\) reduces locally to the A1 model \(u^2+rv\). Two smooth curve blow-ups give a simple-normal-crossings total divisor for the polar and original exceptional; new exceptional orders (fiber form, regulator) are (-1,-3) and (-2,-6). The cubic character is a unit at those centers.
+- **Four isolated third-norm points:** each has local norm-factor pattern (v+az, v+bw, v+czw); after blowing up the original triple curve, its remaining point, and the residual curve, the reduced local divisor is SNC. New exceptional orders are (0,0), (+2,+1), (+1,+1), and cubic character exponents are 1,2,1 mod 3. Chart coordinates and unit conditions are in the note and checker.
+- **Verification level:** local algebra and Jacobians checked symbolically. Full LaTeX source, five-page PDF, and expanded checker prepared for local download. This is not a global resolution nor a Langlands-Shelstad PV theorem. Galois descent of third-norm charts, other Igusa boundary components, Lemmas 0.8/5.14 and (X_3) remain open. Main paper remains Draft 6.

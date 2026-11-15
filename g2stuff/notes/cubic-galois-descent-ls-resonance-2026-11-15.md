@@ -41,7 +41,7 @@ Then (M/Δ)²=-3. A cubic field extension cannot contain a new quadratic subfiel
  Y/r=1,\qquad u_0/r=u_1/r=u_2/r=s_*/2.
 \]
 
-Thus it is F-rational. The condition is algebraically attainable for cyclic trace-zero triples: if μ3 is in F, take a Kummer cubic K=F(θ) with τθ=ζ3θ and α(X)=θ, for which (M/Δ)²=-3. Whether every manuscript regularity hypothesis permits such an X still merits explicit verification.
+Thus it is F-rational. The condition is algebraically attainable for cyclic trace-zero triples: if μ3 is in F, take a Kummer cubic K=F(θ) with τθ=ζ3θ and α(X)=θ, for which (M/Δ)²=-3. **This outstanding regularity question is now settled affirmatively:** the [independent full-regularity proof](cubic-regularity-discriminant-2026-11-15.md) shows every nonzero cubic-torus Lie element is regular, and the repeated-polar locus contains two nonzero regular F-directions when \(\mu_3\subset F\). The example \(F=\mathbb Q_7,\ K=F(\sqrt[3]{2})\) is explicit.
 
 ## 3. Exact Langlands–Shelstad obstruction
 
@@ -104,7 +104,7 @@ and it is zero shellwise for a ramified cubic character. Both are holomorphic at
 
 - **Positive descent result:** all six third-norm points form two degree-three closed orbits; the associated blow-ups descend, but their exceptional fibers have no F-rational points and cannot contribute local F-principal-value terms.
 - **Negative principal-value finding:** repeated-polar E1 is a trivial-character logarithmic pole, failing the Langlands–Shelstad nonresonance requirement. The proposed single Mellin parameter has a genuine localized pole at zero.
-- **Still unresolved:** whether the repeated-polar case is excluded by an additional condition on the *actual* regular X in the original Igusa fiber; a coordinate-independent replacement regularization if it is not excluded; possible global cancellations; remaining F-rational character/polar strata; the original Igusa compactification, Lemmas 0.8/5.14 and Hypothesis (X3).
+- **Regularity resolved:** the repeated-polar case is **not** excluded by full regularity or by smallness of \(X\) (see the linked regularity proof). **Still unresolved:** a coordinate-independent replacement regularization; possible global cancellations; remaining F-rational character/polar strata; the original Igusa compactification, Lemmas 0.8/5.14 and Hypothesis (X3).
 - Langlands–Shelstad (1984) explicitly assume characteristic-zero local fields. The argument above only asserts their principal-value theorem under that hypothesis; an equal-characteristic extension requires a separate source or proof.
 
 The companion checker verifies the six points, both cyclic orbits, the missing x0-chart points, an algebraic repeated-polar example, the blow-up valuation, the simple Mellin pole, and the list of local resonance candidates. It checks algebra, **not** any global principal-value equality.

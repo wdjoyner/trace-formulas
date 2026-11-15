@@ -315,3 +315,12 @@ Numbering of sections, equations and results is the 1994 numbering. Items added 
 - **Transfer factor (new subsection at the end of §7).** The 1994 display of Δ in (0.1) is only Δ_III₁Δ_IV. Proposition 7.6 computes the rest near the identity for the biquadratic tori: Δ₀(X) = c·(P(X), d_α)_F with P = βγδε(X). Example 7.7 shows that this is not constant when both quadratic subfields of the splitting field are ramified. Corollary 7.8 makes (X₂) the explicit identity (7.7) for the κ-weighted fiber integral (Remark 2026.36). A pointer was added after the display of Δ in §0, and in Remark 2026.29.
 - **Scripts.** `../scripts/g2_patch_jacobians.py` gains the §7 checks for (7.3) and (7.4); `../scripts/g2_transfer_factor_biquadratic.py` is new (root data for Proposition 7.6 and the Hilbert symbols of Example 7.7 over Q_p).
 - **Bibliography.** [Ser79] added.
+
+
+## Post-Draft-6 insertion into the main LaTeX source (November 15, 2026)
+
+- **Section 8, new Remark `rem:8.polar-regular`, immediately following Proposition 8.3G.** The previously separate computation of the repeated-polar discriminant is now included, with a proof that for cyclic cubic tori all nonzero (X\in\mathfrak t(F)) are regular and
+  (\mathscr D=12(3\alpha^2+3\alpha\beta+\beta^2)=6\operatorname{Tr}_{K/F}(\alpha(X)^2)).
+  The locus (\mathscr D=0) is nonempty among regular (X) precisely when (\mu_3\subset F), and consists of two (F)-lines. A concrete unramified (\mathbb Q_7) example and the smallness argument are given in the remark.
+- **Status Remark `rem:8.status` expanded.** It now identifies the repeated-polar exceptional logarithmic pole as an explicit unresolved regularization/cancellation issue for Claim 8.3H.
+- **No theorem upgraded.** Claim 8.3H remains a sketch; Hypothesis ((X_3)) remains unproved. The draft number remains 6, with this documented editorial/research addendum. The previously committed PDF has **not** been regenerated from the changed TeX source.

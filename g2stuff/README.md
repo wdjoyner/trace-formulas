@@ -17,7 +17,7 @@ g2stuff/
 ├── referee/         referee reports on the 1994 manuscript and later drafts
 ├── notes/           independent analytical notes (not part of the main draft)
 ├── scripts/         computational checks accompanying the revised drafts
-├── revised/         corrected edition (currently Draft 7) and CHANGES.md
+├── revised/         corrected edition (currently Draft 8, the final form) and CHANGES.md
 ├── revision_log.md  drafts, AI usage, verification levels, sources not consulted
 └── README.md
 ```
@@ -30,9 +30,9 @@ g2stuff/
 | `original-1994/g2new5d.tex`, `g2new9d.tex` | Variant versions of §5 and §9. It is not known which version is later. |
 | `transcription/g2_shalika_germs_transcription.tex`, `.pdf` | All sections in one amsart file, 12pt Times, letter paper, 49 pages. It is literal, as in §6.7 of the style guide: errors are kept, and Claude's notes appear only as `% Claude:` comments. The variant passages and the text that follows `\enddocument` in four source files are kept in `\iffalse` blocks, all of which compile when switched on. |
 | `referee/g2_referee_report.tex`, `.pdf` | Referee report by Claude (15 pages): eleven major issues, a table of minor issues and misprints, the results verified as correct, readability, a bibliography check, compliance with the style guide, and notes on the transcription. Every point has a verdict and a verification level (L1–L3). It also serves as the errata log for the transcription. |
-| `revised/g2-shalika-germs-2026.tex`, `.pdf` | **Draft 7** corrected and expanded edition (77 pages), by David Joyner, Claude, and Gemini (Carbon). It proves (X₂) for the biquadratic tori, subject to the manuscript's remaining hypotheses, and sketches (X₃) for the cyclic cubic tori. The PDF is built from the committed source. |
+| `revised/g2-shalika-germs-2026.tex`, `.pdf` | **Draft 8** corrected and expanded edition (78 pages), intended as the final form, by David Joyner, Claude, and Gemini (Carbon). It proves (X₂) for the biquadratic tori, subject to the manuscript's remaining hypotheses, and states the expected value of the cubic fiber integral as Conjecture 8.3H; (X₁) and (X₃) are open problems. The PDF is built from the committed source. |
 | `referee/g2_shalika_germs_draft3_referee_report.tex`, `.pdf` | Report on Draft 3 by Carbon (5 pages), the author of Drafts 2–3, so not independent. Recommends release as a preprint. Claude's check of Draft 3 is in `revision_log.md`. |
-| `revised/CHANGES.md` | Consolidated history of Drafts 1–7 and the 1994 errata, including Claude's edits when committing Draft 6 and the Draft 7 editorial pass (with the renumbering of the Remarks 2026.n). |
+| `revised/CHANGES.md` | Consolidated history of Drafts 1–8 and the 1994 errata, including Claude's edits when committing Draft 6 and the Draft 7 editorial pass (with the renumbering of the Remarks 2026.n). |
 | `referee/g2_shalika_germs_draft5_referee_report.tex` | Carbon's 3-page Draft 5 referee / verification report (author of this revision; not an independent referee). |
 | `referee/g2_shalika_germs_draft6_referee_report.tex`, `.pdf` | Carbon's 3-page Draft 6 report (by the author of the revision; not an independent referee). Committed unchanged; it predates the corrections below. |
 | `referee/g2_draft6_referee_report_claude.tex`, `.pdf` | Claude's 4-page referee report on Draft 6: the failed residue check (the residue is −2/9, not ±2/27), the incomplete proof of 8.3H, the overstated abstract, and how each point was handled on commit. |
@@ -57,6 +57,7 @@ Run them one at a time, for example `python3 g2_tori_endoscopy.py`.
 
 ## Independent follow-up note (November 15, 2026)
 
+- [`notes/conjecture-8.3H-heuristic-2026-11-16.tex`](notes/conjecture-8.3H-heuristic-2026-11-16.tex) preserves the Draft 7 sketch of the evaluation of `J₃(X)` (now Conjecture 8.3H), including the auxiliary functions defined only in explicit models of K.
 - [`notes/shell-sums-2026-11-15.tex`](notes/shell-sums-2026-11-15.tex) derives the valuation-shell continuations behind the quadratic constant \(C'(q)\) and the proposed cyclic-cubic constant \(C_3(q)\). This is an auxiliary research note, **not a new draft of the main manuscript**. For the **isolated one-dimensional cubic factors**, §1 of Langlands–Shelstad's paper now supplies a direct principal-value justification, as proved in the expanded note. However, the **global cubic-cone regulator and fiberwise factorization** have not been justified; \((X_3)\) remains open by direct computation. The note also verifies that the affine cubic quadric cone has a singular vertex, whose blow-up creates an exceptional \(\mathbb P^1\times\mathbb P^1\) requiring analysis.
 - [`scripts/verify_g2_shell_sums_independent.py`](scripts/verify_g2_shell_sums_independent.py) is a pure-Python/SymPy checker, independent of the earlier suites. Run `python3 scripts/verify_g2_shell_sums_independent.py` from `g2stuff/`.
 
@@ -98,13 +99,13 @@ Run them one at a time, for example `python3 g2_tori_endoscopy.py`.
 
 ## Status
 
-**Draft 7 of the corrected edition (November 16, 2026).** An editorial revision of Draft 6 and its November 15 supplementary remark: expanded glossary and notation, corrections of 1994 misprints moved to Appendix B, readability edits and local corrections; no result changed status. The editable source is `revised/g2-shalika-germs-2026.tex`; the committed PDF is built from it.
+**Draft 8 of the corrected edition (November 16, 2026), intended as the final form.** It completes the write-up of Draft 7: the evaluation of the cubic fiber integral is stated as Conjecture 8.3H with a heuristic derivation, intermediate formulas are printed, and (X₁) and (X₃) are stated as open problems. The editable source is `revised/g2-shalika-germs-2026.tex`; the committed PDF is built from it.
 
 - **Established in the revision, subject to the paper's stated assumptions (Lemma 5.14 and the proviso of Lemma 0.8):**
   - the normal, Cohen–Macaulay toric model, its codimension-one patches, and the special-fiber constants;
   - for the biquadratic tori, a birational map of the 4-dimensional fiber to `(P¹)^4` and a direct proof of `(X₂)` (Theorem 7.6H);
   - for the cyclic cubic tori, the fibration of the 6-dimensional fiber onto a split quadric cone (Propositions 8.3F–8.3G).
-- **Sketched only:** the evaluation of the cubic fiber integral `J₃(X)` that would prove `(X₃)`, with constants `C₃(q)` (Claim 8.3H). Open Problem (1)(b) and Remark 2026.23 list what is missing, including the repeated-polar directions of Remark 2026.22 (Draft 7 numbering). The main gap is that the Mellin regularization used has not been shown to compute the Langlands–Shelstad principal value.
+- **Conjectural:** the value of the cubic fiber integral `J₃(X)` that would prove `(X₃)`, with constants `C₃(q)` (Conjecture 8.3H, with a heuristic derivation; the earlier detailed sketch is in `notes/conjecture-8.3H-heuristic-2026-11-16.tex`). Open Problem (1)(b) and Remark 2026.23 list what is missing to prove Conjecture 8.3H, including the repeated-polar directions of Remark 2026.22 (numbering of Drafts 7–8). The main gap is that the Mellin regularization used has not been shown to compute the Langlands–Shelstad principal value.
 - **Still conditional or open:**
   - the direct `(X₁)` and `(X₃)` calculations;
   - an independent check of the hand-evaluated factors of `C′(q)`;

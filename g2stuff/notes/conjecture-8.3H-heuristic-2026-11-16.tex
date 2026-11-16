@@ -1,0 +1,99 @@
+\documentclass[12pt,letterpaper]{amsart}
+\usepackage[T1]{fontenc}
+\usepackage{mathptmx}
+\usepackage[letterpaper,margin=1in]{geometry}
+\usepackage{amsmath,amssymb}
+\newcommand{\OF}{\mathcal{O}_F}
+\DeclareMathOperator{\Cent}{Cent}
+\title{The heuristic evaluation of $J_3(X)$ (Draft~7 sketch of Claim~8.3H)}
+\date{November 16, 2026}
+\begin{document}
+\maketitle
+
+This note preserves, verbatim apart from cross-references, the sketch that
+accompanied Claim~8.3H in Draft~7 of D.~Joyner, Claude and Gemini, \emph{On the
+transfer of Shalika germs for $G_2$}. In Draft~8 the statement became
+Conjecture~8.3H, and the paper gives only a shorter heuristic derivation.
+Numbers refer to Draft~8 (Remark~2026.22 is the repeated-polar remark,
+Remark~2026.23 the status of $(\mathrm X_3)$). Several functions used below
+($P_0$, $\ell_1$, $L_0$, $L_1$, $N_K$, $s(U,t)$, $C(X)$, $c_{\mathrm{alg}}$)
+are defined only in explicit models of $K$, in Suite~6 of
+\texttt{scripts/verify\_g2\_open\_problem\_1.py}. The point written $t_X$ was
+written $t_*(X)$ before Draft~7. This is not a proof.
+
+The argument below is a sketch, and the statement is not used elsewhere in the
+paper. When $q\equiv1\pmod3$, the sketch does not cover the two directions of
+Remark~2026.22. Several of the functions it uses ($P_0$, $\ell_1$, $L_0$, $L_1$, $N_K$,
+$s(U,t)$, $C(X)$, $c_{\mathrm{alg}}$ and the regulator $R_{\mathrm{cone}}$)
+are not defined here; explicit forms of $P_0$, $\ell_1$, $N_K$ and the
+$t$-one-form are in \texttt{verify\_g2\_open\_problem\_1.py}, Suite~6. What remains to be done is
+listed in Remark~2026.23 and in Open Problem~(1).
+
+\subsection*{Sketch}
+Because $SL_2(\alpha)(F)\subset\Cent_{G_2}(u_0)(F)$ acts by regular
+automorphisms of $Y_C$ preserving $\lambda$, Proposition~8.3F(b) and
+the divisor proviso of Lemma~0.8 factor $J_3(X)$ into
+$|\alpha(X)\gamma(X)\delta(X)|_F\cdot I_{\mathbb{P}^1(K)}\cdot J_{\mathcal Q_3}(X)$.
+Writing $\eta_0=c_0+c_1\theta+c_2\theta^2$ in an $\OF$-basis of $\mathcal O_K$
+cancels $\delta_K$ between $d\eta_0\wedge d\eta_2\wedge d\eta_4$ and $d_{024}$;
+covering $\mathbb{P}^1(K)$ by $\mathcal O_K$ and $\mathfrak p_K$ via
+$\eta_0\mapsto\eta_0^{-1}$ gives $I_{\mathbb{P}^1(K)}=-2(q+1)q^{-2}$ in both
+the unramified and tamely ramified cases.
+
+On the split quadric cone $\mathcal C_K(F)\cong\{u_1v_1-u_2v_2=0\}$ in radial
+and ruling coordinates $(r,s,t)\in F^\times\times\mathbb{P}^1(F)\times\mathbb{P}^1(F)$,
+$Y=r\,c(s,t)$ is bilinear in $(r,s)$, $S_F(t)$ depends only on $t$, and
+$\Lambda_F=r\,L_1(s,t;X)+L_0(t;X)$ is affine linear in $r$ and $s$. Setting
+$r\,L_1+L_0=-L_0\,z$ and $Y+1=1+U(1+z)$ decouples $(z,U)$ from $t$ and $X$
+(compare the M\"obius reduction and principal-value analysis of
+[LS89, \S7 and Appendix~I]):
+\[
+\omega_{\mathcal Q_3}=\pm\Bigl[c_{\mathrm{alg}}\,
+\frac{\beta(X)\epsilon(X)\zeta(X)\,N_K(t)}{P_0(t;X)^2\,\ell_1(t;X)}\,dt\Bigr]
+\wedge\frac{(1+z)\,dz\wedge dU}{z^3},
+\]
+where $\ell_1(t;X)$ is linear in $t$ with unique root $t_X\in\mathbb{P}^1(F)$.
+At $t=t_X$, exact polynomial evaluation shows that the pole of $s(U,t)$
+coalesces at $U=-3$ (independent of $X$ and $K/F$), and the $t$-one-form has a
+simple pole at $t_X$ with residue $-\frac{2}{9}$, independent of $X$
+(computed by an exact Laurent expansion over $\mathbb Q(\sqrt{-3})$ in the
+script). This
+cancels $\beta(X)\epsilon(X)\zeta(X)$ and $\delta_K$ identically, since
+$|2/9|_F=1$ for $p\ge 5$. Under the Igusa Mellin regulator $R_{\mathrm{cone}}^{\sigma/3}$ as
+$\sigma\to 0^+$ ($S=q^\sigma\to 1$), substituting $1+U(1+z)=V$ at $u=1+z$
+factors the limiting $(z,U)$-integral near $t=t_X$ as $B_1(S)B_2(S)$, with
+\[
+B_1(S)=\int_F\omega_{K/F}(y)\,|y|_F^{-\sigma}|y+1|_F^{4\sigma}\,dy,\qquad
+B_2(1)=\mathrm{PV}\!\int_F\omega_{K/F}(3u-1)\,\frac{|3u-1|_F}{|u-1|_F^3}\,du.
+\]
+Here $B_1(S)$ does not converge absolutely at $S=1$, and $B_1(1)$ means its
+meromorphic continuation; that this regularization computes the principal value
+of [LS83] has not been checked. Granting it, since $B_1(1)=0$, the
+$1/\sigma$ pole from $|\ell_1(t;X)|_F^{-1-4\sigma}$
+cancels (confirming directly that no $\log_q|\lambda|$ term arises on
+$E_{\emptyset,\beta,\zeta}$) and annihilates $\frac{d}{d\sigma}C(X)^{\sigma/3}\big|_{\sigma=0}$,
+rendering $J_{\mathcal Q_3}(X)$ independent of $X$:
+\[
+\lim_{S\to 1}\frac{(1-q^{-1})(S-1)}{1-S^4}\,B_1'(1)B_2(1)
+=-\frac{q-1}{4q}\,B_1'(1)B_2(1).
+\]
+For $K/F$ unramified ($\omega_{K/F}(y)=\zeta_3^{v_F(y)}$), summation over
+valuation shells (by hand; the script checks only the algebra of the resulting
+formulas) gives $B_1'(1)B_2(1)=12/(q^2-1)$ (all $\sqrt{-3}$ imaginary
+parts canceling identically, in accord with $(-1)^*(Y+1)=4/(Y+1)$), so
+$|J_{\mathcal Q_3}(X)|=3/(q(q+1))$. For $K/F$ tamely ramified ($q\equiv 1\pmod 3$,
+$\omega_{K/F}(\varpi_F^k u)=\chi_3(\bar u)$ on $\mathbb F_q^\times$), all shells
+with $v_F(y)\neq 0$ vanish by character orthogonality, leaving
+$B_1'(1)=-4/(q-1)$ and $B_2(1)=-\chi_3(2)(q^2+q+1)/(q(q+1))$ ($|\chi_3(2)|=1$,
+in accord with $(-1)^*(Y+1)=4/(Y+1)$), so
+$|J_{\mathcal Q_3}(X)|=(q^2+q+1)/(q^2(q+1))$. Multiplying by
+$|I_{\mathbb{P}^1(K)}|=2(q+1)q^{-2}$ yields (8.8).
+
+
+\begin{thebibliography}{LS89}
+\bibitem[LS83]{LS83} R.~Langlands and D.~Shelstad, On principal values on
+$p$-adic manifolds, Lecture Notes in Math.\ 1041, Springer, 1984, 250--279.
+\bibitem[LS89]{LS89} R.~Langlands and D.~Shelstad, Orbital integrals on forms
+of $SL(3)$, II, Canad.\ J.\ Math.\ 41 (1989), 480--507.
+\end{thebibliography}
+\end{document}

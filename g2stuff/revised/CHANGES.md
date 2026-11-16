@@ -2,10 +2,10 @@
 
 **Manuscript:** D. Joyner, Claude, and Gemini, *"On the transfer of Shalika germs for $G_2$"*  
 **Repository Directory:** `g2stuff/` in `wdjoyner/trace-formulas`  
-**Current Revision:** Draft 7 (November 16, 2026)  
-**Prepared by:** Claude for Drafts 1 and 4; Gemini ("Carbon") for Drafts 2, 3, 5 and 6, with Claude's edits when committing Draft 6; Claude for Draft 7. The verification status is recorded in `../revision_log.md`.
+**Current Revision:** Draft 8 (November 16, 2026), intended as the final form of the revision  
+**Prepared by:** Claude for Drafts 1 and 4; Gemini ("Carbon") for Drafts 2, 3, 5 and 6, with Claude's edits when committing Draft 6; Claude for Drafts 7 and 8. The verification status is recorded in `../revision_log.md`.
 
-This document records the mathematical corrections, closed-form derivations, structural additions, and typesetting updates made across the 2026 revisions (Drafts 1–7) relative to the summer 1994 AMS-TeX sources (`g2new0.tex`–`g2new9.tex`, variants `g2new5d.tex` and `g2new9d.tex`, and `g2newapp.tex`).
+This document records the mathematical corrections, closed-form derivations, structural additions, and typesetting updates made across the 2026 revisions (Drafts 1–8) relative to the summer 1994 AMS-TeX sources (`g2new0.tex`–`g2new9.tex`, variants `g2new5d.tex` and `g2new9d.tex`, and `g2newapp.tex`).
 
 ## Overview of Revision Passes
 
@@ -18,6 +18,7 @@ This document records the mathematical corrections, closed-form derivations, str
 | **Draft 5** | Nov 14, 2026 | Fifth pass (Open Problem 1): proved `Prop. 7.6E` symbolically from `(1.21a)` and repaired an inverted exponent in `(7.10)` ($\Phi_E = \frac{x(\delta)^2}{w(\delta)^2}F_1 F_2 \in L^\times$); computed the exact $\Omega(G_2)$ action on $E_{\emptyset,\alpha,\delta}(u_0)$ (`Prop. 7.6G`); constructed an explicit birational map $E_{\emptyset,\alpha,\delta}(u_0) \dashrightarrow (\mathbb{P}^1)^4$ after [Hales 1989](https://www.numdam.org/article/AST_1989__171-172__195_0.pdf) (§6), proving `Corollary 7.6F` and Hypothesis $(\mathrm{X}_2)$ directly and evaluating the exact $p$-adic constant $C'(q)$ (`Theorem 7.6H`); verified subregular Kirillov–Kostant Pfaffians and fixed double-counted tangent factors in `(6.5a)`–`(6.5b)`; proved $\Delta_0(Y)=\text{const}$, computed $\kappa_1(t_*)$, and constructed an $\Omega(G_2)$-equivariant degree-$2$ hexagon cover over $(\mathbb{P}^1)^6$ for the cubic tori in §8 (`Props. 8.3A`–`8.3E`). |
 | **Draft 6** | Nov 14, 2026 | Sixth pass (Open Problem 1, the 6-dimensional cubic integral $J_3(X)$): intrinsic $X$-free fiber coordinates `(8.7d)` and an $\mathrm{SL}_2(\alpha)$-fibration onto $\mathbb{P}^1(K)\times\mathcal{Q}_3$ (`Prop. 8.3F`); $\mathcal{Q}_3(F)$ identified with a smooth split quadric cone $\mathcal{C}_K(F)$, with a Hilbert 90 reduction of $\kappa_1(t_*)$ and $\omega_{\mathcal{Q}_3}$ (`Prop. 8.3G`); a sketched evaluation of $J_3(X)$ with constants $\lvert C_3(q)\rvert$ (`Claim 8.3H`, `Eq. (8.8)`). Carbon presented 8.3H as a theorem proving $(\mathrm{X}_3)$; when committing, Claude marked it a claim with a sketched proof, corrected its residue to $-2/9$, kept `Theorem 8.3` conditional on $(\mathrm{X}_3)$, and recorded what remains in Open Problem (1). |
 | **Draft 7** | Nov 16, 2026 | Editorial pass (Claude) after a second referee report on the post-Draft-6 source: compile fix (`mathrsfs`); glossary expanded from 9 to 46 entries with $G_2$ examples; notation table extended for §§7–8; corrections of 1994 misprints moved to a new Appendix B; repeated-polar remark rewritten to be self-contained and moved after Claim 8.3H; proof structure of Theorems 7.2 and 8.3 fixed; several local corrections (Jacobian identity in the proof of Theorem 7.6H, Lemma 3.6 count). No result upgraded. |
+| **Draft 8** | Nov 16, 2026 | Completion of the write-up (Claude), at David Joyner's direction: Claim 8.3H restated as Conjecture 8.3H with a heuristic derivation (the Draft 7 sketch kept in `../notes/`); intermediate formulas printed in the proofs of Propositions 7.6E, 8.3C and 8.3D; Langlands–Shelstad justification of the one-variable factors in Theorem 7.6H recorded; (X₁) and (X₃) stated as open problems; scope stated in §0. |
 
 ## Draft 6 Changes (by Carbon, as delivered; see the next section for what was changed on commit)
 
@@ -401,3 +402,17 @@ Claude refereed the post-Draft-6 source (`../referee/g2_draft6_referee_report_cl
 | 45 | 47 | `rem:A5` |
 | 46 | 27 | `rem:A6` |
 | 47 | 28 | `rem:A7` |
+
+
+## Draft 8 changes (by Claude, November 16, 2026)
+
+At David Joyner's direction, Draft 8 finishes the revision as a preprint: it completes the write-up and leaves the direct proofs of $(X_1)$ and $(X_3)$ as stated open problems. Since the matching of germs is known by Gordon–Hales, nothing in the paper depends on them. No result changed status, except that Claim 8.3H is now labeled a conjecture.
+
+- **Scope.** §0 states that this is the intended final form, what the main new result is, and that $(X_1)$, $(X_3)$ are open; the abstract is adjusted.
+- **Conjecture 8.3H.** The former Claim 8.3H is now Conjecture 8.3H (same statement and constants (8.8)). Its sketch, which used auxiliary functions defined only in explicit models of $K$ in the script, is replaced by a self-contained heuristic derivation in prose. The Draft 7 sketch is preserved verbatim in `../notes/conjecture-8.3H-heuristic-2026-11-16.tex`. Remark 8.status, the Summary and Open Problem (1)(b) are updated: the shell sums are derived in `../notes/shell-sums-2026-11-15.tex`, and the isolated one-variable factors $B_1$, $B_2$ are Langlands–Shelstad principal values (that note, Proposition 5.1).
+- **Theorem 7.6H.** Remark 7.status now records why the one-variable factors $I_t$, $I_s$, $I_\xi$ are Langlands–Shelstad principal values (exponent $c=-1$, trivial character, so LS (1.4) holds and Lemma 1.A gives the continuations used). Open Problem (1)(c) is narrowed to the compatibility of the 4-dimensional principal value with the product (LS Lemma 1.F).
+- **Proposition 7.6E.** The leading Laurent terms of $n_\alpha,\dots,n_\zeta$ on $Z_{\emptyset,\alpha,\delta}$ are printed (computed from the series of Suite 2, and simplified; $D_E=\beta\gamma w(\delta)-2F_0$).
+- **Proposition 8.3C.** $q_1$ is printed explicitly as (8.7b′); it has degree 6, not 7 as stated before (checked against the matrix minor in the model of §A.4).
+- **Proposition 8.3D.** The recursive leading terms of the $n_\rho$ on $Z_{\emptyset,\beta,\zeta}$ are printed, and $Q_1$ is defined explicitly from them. The leading terms of $p_1,p_2,q_2$ were rechecked independently against $P_1,P_2,Q_2$.
+- **Proposition 7.6G.** The proof points to the independent rational-point check.
+- **Acknowledgments** record Draft 8.

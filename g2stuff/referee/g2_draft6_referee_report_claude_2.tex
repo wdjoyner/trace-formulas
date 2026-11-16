@@ -1,0 +1,324 @@
+\documentclass[12pt,letterpaper]{amsart}
+\usepackage[T1]{fontenc}
+\usepackage{mathptmx}
+\usepackage{courier}
+\usepackage[letterpaper,margin=1in]{geometry}
+\usepackage{amsmath,amssymb,mathrsfs,enumitem}
+\usepackage[hidelinks]{hyperref}
+\setlength{\emergencystretch}{3em}
+\DeclareMathOperator{\inv}{inv}
+
+\title[Referee report: Shalika germs for $G_2$, Draft 6]{Referee report on ``On the transfer of Shalika germs for $G_2$'', Draft 6 (file \texttt{g2-shalika-germs-2026.tex})}
+\author{Claude (Anthropic)}
+\date{November 16, 2026}
+
+\begin{document}
+\maketitle
+
+\section{Summary and overall assessment}
+
+The manuscript is the November 2026 corrected and expanded edition of the 1994
+manuscript. It proves the toric and patch results of \S\S3--4. It gives a
+direct proof of Hypothesis $(\mathrm X_2)$ for the biquadratic tori
+(Theorem~7.6H), conditional on Lemma~5.14 and the divisor proviso of
+Lemma~0.8. For the cyclic cubic tori it reduces $(\mathrm X_3)$ to a sketched
+principal-value computation (Claim~8.3H). On the whole the paper is honest
+about its status: the conditional results are labeled, and the gaps are
+recorded in Remarks~2026.$n$ and in the Open Problems.
+
+I found no error that changes a stated result. The one compile error is fixed.
+The main points are these:
+\begin{enumerate}[label=(\roman*)]
+\item The new remark on the repeated polar divisor
+(\S\ref{sec:polar} below) has a consequence that the text does not draw out.
+The tamely ramified line of (8.8) lies \emph{entirely} in the case
+$q\equiv1\pmod 3$, so Claim~8.3H as stated covers directions $X$ for which the
+sketch is not justified. I suggest a way around this that uses local constancy
+of germs.
+\item The Jacobian identity displayed in the proof of Theorem~7.6H(a)--(b) is
+wrong. The conclusion (7.12) is right (I checked it independently).
+\item A few local slips: an off-by-one count in Lemma~3.6, a wrong
+cross-reference in \S4, an over-attribution to the divisor proviso in
+Theorem~7.6H(d), and stale status statements together with an inconsistent
+draft number.
+\item On readability, the main problems are clashing symbols in
+\S\S7--8 (some within a single proof), proofs in \S\S7--8 that consist mostly
+of ``verified by script'', and a status summary repeated in seven places that
+have drifted apart.
+\end{enumerate}
+
+\section{The compile error}
+
+\texttt{\textbackslash mathscr} (used in Remark~2026, ``full regularity does not
+exclude a repeated cubic polar divisor'', line~4888) is not defined by
+\texttt{mathptmx} or \texttt{amssymb}. In the corrected file I added
+\begin{verbatim}
+\usepackage{mathrsfs}
+\end{verbatim}
+after \texttt{amsmath,amssymb,amsthm,amscd}. The displayed equation in that
+remark was the only untagged numbered equation in the paper, so it printed as
+``(1)''. I gave it \texttt{\textbackslash tag\{8.7i\}}, in keeping with the
+paper's numbering. With these two changes the file compiles without errors,
+undefined references or overfull boxes (73 pages). I made no other change to
+the manuscript.
+
+\section{What was checked independently}
+
+These checks were made in exact rational arithmetic at random rational
+points (scripts \texttt{s7num.py} and \texttt{s8num.py}, sent with this
+report) or by hand. They are independent of the project's own scripts.
+
+\begin{enumerate}[label=(C\arabic*)]
+\item Table~4.3A. The values of $a$, $b$ and $\beta$ for all seven branches
+follow from $u_E$ and $m_\omega=(7,-10,-6,1,1,1,1)$. For
+$E_{\emptyset,\alpha,\delta}$ the last column is consistent with the exponent
+vectors of the $x(\rho)$.
+\item Lemma~3.5: the generator count is right. Lemma~3.6: the comparability
+hypothesis holds for $G_2$ (but see \S\ref{sec:minor-correct}, item~1).
+\item Proposition~7.6G(a), (b). The maps $s_\alpha^*$ and $s_\beta^*$ are
+involutions and $(s_\beta^*s_\alpha^*)^6=1$. $(-1)^*$ acts on root values by
+$-1$, and $(-1)^*\Phi_E|_{u_0}=\Phi_E|_{u_0}$.
+\item Theorem~7.6H(b). The actions $s_\alpha^*:(U,V,\xi_1,\xi_2)\mapsto
+(U^{-1},V,\xi_1,\xi_2)$, $(-1)^*\mapsto(U,V^{-1},\xi_2,\xi_1)$ and
+$s_\zeta^*\mapsto(U^{-1},V^{-1},\xi_2,\xi_1)$ hold exactly. The pullback
+(7.12) holds with sign $-1$.
+\item Theorem~7.6H(c). The factorization of $\Phi_E|_{u_0}$ and the identity
+$\omega_{K/L}(\Phi_E|_{u_0})=(t^2-d_\alpha d_\zeta,d_\alpha)_F$ check out by hand.
+\item Theorem~7.6H(d). I recomputed $I_t$, $I_s$ and $I_\xi$ by hand in the
+three valuation cases, using the analytic-continuation regularization
+($\mathrm{PV}\!\int_{|t|>1}dt=-1$, $\mathrm{PV}\!\int_{\mathcal O}|y|^{-2}dy=-q^{-1}$),
+and obtained the values stated. The products give (7.13) in all three
+cases.
+\item Example~7.6B(b). For $p=5$ the Legendre symbol is $-1$ for all unit
+residues. For $p=7,11,\dots,29$ it takes both values.
+\item Proposition~8.3F(a). In the intrinsic coordinates (8.7d), the
+stated formulas for $s_\alpha^*$ and $s_\beta^*$ hold exactly, and so do
+$s_\alpha^*(L_X)=-L_X/D_{s_\alpha}^2$ and $s_\beta^*(L_X)=L_X/r_\gamma^3$. For
+this I took the geometric actions to be those of Proposition~2.14A, with the
+root values transformed as in Proposition~7.6G, extended by
+$s_\alpha^*(\eta)=\eta+\alpha z(\alpha)$.
+\item Claim~8.3H. I recomputed $I_{\mathbb P^1(K)}=-2(q+1)q^{-2}$ by hand. The
+measure reduces to $dc_0\,dc_1\,dc_2/|N_{K/F}(c_1+c_2\varphi)|$, and I
+regularized with $|N|^{s}$. The value is the same in the unramified case
+($-(q+1)q^{-2}$ from $\mathcal O_K$ and the same again from the complement) and
+in the tame case ($-2q^{-1}$ and $-2q^{-2}$). The passage from $B_1'(1)B_2(1)$
+to (8.8) is arithmetically consistent.
+\item The algebra of the repeated-polar remark is correct:
+$M^2+3\Delta^2=12(3a^2+3ab+b^2)=6\operatorname{Tr}_{K/F}(\alpha(X)^2)$. Every
+nonzero $X\in\mathfrak t(F)$ is regular. The zero set is a pair of eigenlines
+exactly when $\mu_3\subset F$. The $\mathbb Q_7$ example is valid: $2$ is not
+a cube mod~$7$, so $x^3-2$ gives the unramified cubic extension.
+\end{enumerate}
+
+\section{Correctness}
+
+\subsection{The repeated-polar remark and Claim~8.3H}\label{sec:polar}
+
+\begin{enumerate}
+\item \emph{Scope.} A tamely ramified cyclic cubic extension exists only when
+$\mu_3$ lies in the residue field, that is, $q\equiv1\pmod3$. So the second
+line of (8.8) is \emph{always} in the repeated-polar case. The first
+line is in it whenever $q\equiv1\pmod 3$. As stated, Claim~8.3H covers these
+$X$, but by the remark's own account the one-parameter principal-value
+argument is not justified there. The Claim (or Remark~8.status(b)) should say
+so plainly.
+\item \emph{A suggested repair.} Under the Claim's own hypotheses (Lemma~5.14
+and the proviso), Corollary~8.3B and (8.6) identify
+$J_3(X)/|\alpha\gamma\delta(X)|$, up to $X$-independent factors, with the
+normalized $3$-regular $\kappa$-germ. Shalika germs are locally constant on
+the regular set near $1$. The set $\mathscr D(X)=0$ is a union of two lines,
+and every point of it is a limit of regular points off it. So it would be
+enough to prove the identity for $\mathscr D(X)\neq0$ and extend by local
+constancy. This avoids any regularization at the exceptional pole. Please
+check that the identification really involves only factors that are
+continuous in $X$ (the $\kappa(\inv)$ factor and $\Delta_0$ are constant here
+by Proposition~8.3A).
+\item \emph{Undefined terms.} The remark uses ``the quadratic polar
+polynomial'', ``the exceptional quadric cone'', ``the associated
+exceptional-divisor resonance'' and ``the auxiliary analysis''. None of these
+is defined in the paper, and none is tied to the objects of Claim~8.3H
+($\ell_1$, $t_*(X)$, the coalescence at $U=-3$). Also, the cone
+$\mathcal C_K$ of Proposition~8.3G is called smooth and split, not
+exceptional. Give the polynomial explicitly and say where its discriminant
+enters the sketch, or say only what the external note
+\texttt{notes/cubic-regularity-discriminant-2026-11-15.md} establishes.
+\item \emph{Placement.} The remark sits between Proposition~8.3G and
+Claim~8.3H but is about the proof of the Claim. It would read better directly
+after the Claim's sketch, or folded into Remark~8.status(b).
+\item \emph{A detail.} The argument that coinciding conjugates force $X=0$
+uses only trace zero and characteristic $0$; ``$p\geq5$'' is not needed there.
+The phrase ``This condition is \emph{not} implied to be nonzero by regularity''
+should be reworded, e.g.\ ``Regularity of $X$ does not imply
+$\mathscr D(X)\neq0$.''
+\end{enumerate}
+
+\subsection{Theorem~7.6H, proof of (a)--(b)}
+
+The displayed identity
+\[
+\det\frac{\partial(U,\log V)}{\partial(w(\gamma),w(\delta))}
+=\frac{\alpha\zeta H}{F_0^3F_1F_2}
+\]
+is false. The correct value is
+\[
+\det\frac{\partial(U,\log V)}{\partial(w(\gamma),w(\delta))}
+=\frac{\alpha\zeta H}{F_0^2\,G},
+\qquad\text{equivalently}\qquad
+\det\frac{\partial(U,V)}{\partial(w(\gamma),w(\delta))}
+=\frac{\alpha\zeta H}{F_0^3F_1F_2}.
+\]
+So the printed right side is the Jacobian of $(U,V)$, not of $(U,\log V)$. The
+middle expression in the display, with the factor
+$(U-1)^2/(F_0^2/(\alpha^2\zeta^2w(\delta)^2))$, does not simplify to either
+value: by $U-1=\alpha\zeta w(\delta)/F_0$ it equals
+$\alpha^4\zeta^4w(\delta)^4/F_0^4$. With the corrected determinant, and
+$d\xi_1\wedge d\xi_2/(\xi_1-\xi_2)^2\equiv (G/(Hz(\beta)^2))\,d\xi\wedge dz(\beta)$
+modulo $dw(\gamma),dw(\delta)$, one recovers (7.12) exactly. I
+confirmed this (C4). The symbols $L_1$, $L_2$ and $Q_0$ in ``$V=L_2/(L_1Q_0)$''
+are not defined. $Q_0$ is later defined differently in Proposition~8.3G.
+
+\subsection{Theorem~7.6H, proof of (d)}
+
+The proof says: ``Under the divisor proviso of Lemma~0.8, no other branch $E'$
+of $\phi^{-1}(1)$ on a smooth resolution has $\beta(E')=3$.'' The proviso
+excludes only branches with the same $(\theta,\beta)$ \emph{whose $F$-points
+map onto $\mathcal O^{st}(F)$}. What the argument needs is that no branch with
+$(\theta,\beta)=(1,3)$ \emph{meets} the strict transform of
+$E_{\emptyset,\alpha,\delta}$, and that is $e(1,3)=1$, i.e.\ Lemma~5.14. (A
+branch with $\theta\neq1$ gives a factor regular at $s=0$ anyway.) Please
+reword so that each input is cited for what it supplies.
+
+\subsection{Smaller correctness points}\label{sec:minor-correct}
+
+\begin{enumerate}
+\item \emph{Lemma~3.6, proof.} The count
+``$\ell+|\{\rho\ge\sigma\}|+|\{\rho<\sigma\}|-\ell=p+1$'' evaluates to $p$. The
+$w$-generators are the non-simple $\rho\le\sigma$, which number
+$|\{\rho<\sigma\}|+1-\ell$, because $\sigma$ itself counts and all simple roots
+lie below a non-simple $\sigma$. The count should read
+$\ell+|\{\rho\ge\sigma\}|+(|\{\rho<\sigma\}|+1-\ell)=p+1$. The hypothesis that
+all simple roots are $<\sigma$ should be stated. It holds for $G_2$.
+\item \emph{\S4, after Table~4.3A.} ``By Igusa's theorem (property (e) in
+\S0)'': property~(e) of \S0 is faithful flatness of $\pi|_E$. The intended
+reference is the expansion (0.3)/(5.5), or
+Lemma~5.7.
+\item \emph{Remark~5.14} says the argument ``remains incomplete in three ways''
+and then lists four items. Item~(iv) is a removed sentence, not an
+incompleteness. Say ``three ways (i)--(iii)'' and make (iv) a separate
+sentence.
+\item \emph{Remark~2026 on the main gap, last paragraph.} It says that for
+$r=3$ only Propositions~8.3A--8.3E are available and that the evaluation of
+the $6$-dimensional integral ``remain[s] open''. That predates
+Propositions~8.3F--8.3G and Claim~8.3H. Update it to match Remark~8.status.
+\item \emph{Draft number.} The title, date line and header comment say
+Draft~6. But the text records changes made \emph{after} Draft~6: Claim~8.3H
+says ``Draft~6 stated $\pm\frac{2}{27}$''; the Acknowledgments say
+``Claude refereed Draft~6, corrected the residue''; and the repeated-polar
+remark cites a note dated 2026-11-15. By the style guide this should be
+Draft~7. The Acknowledgments should then say who wrote the repeated-polar
+remark and its verification script, and Open Problem~(1) should say
+``as of Draft~7''.
+\item \emph{Proposition~8.3F(b):} ``commutes elementwise with $\Omega(G_2)$''
+is unclear. $SL_2(\alpha)$ is not normalized pointwise by the Weyl group in
+any obvious sense. Presumably what is meant is that the $SL_2(\alpha)$-action
+commutes with the geometric $\Omega(G_2)$-action on the fiber. Please say so,
+or give the reason.
+\item \emph{Claim~8.3H} factors $J_3(X)$ as a product of separately
+regularized integrals ($I_{\mathbb P^1(K)}$ is the regularized volume of a
+$PGL_2(F)$-torsor, which has infinite measure). That a regularized integral
+over a product equals the product of the regularized factors is part of what
+Remark~8.status(b) must justify, and could be named there explicitly. The
+value of $I_{\mathbb P^1(K)}$ itself is correct (C9).
+\end{enumerate}
+
+\section{Readability}
+
+\subsection{Clashing symbols that matter}
+
+The paper already acknowledges the root/exponent clashes inherited from 1994
+(``$\beta$'', ``$\gamma,\delta,\epsilon,\zeta$''). The following are new, and
+several occur inside a single proof or proposition:
+\begin{itemize}
+\item $L$: the field $F(\sqrt{d_\alpha d_\zeta})$, and also
+$L:=x(\delta)z(\beta)/w(\delta)$ in the proof of Proposition~7.6E. That
+proof uses $\omega_{K/L}$ a few lines later. This is the worst case; rename
+the function (e.g.\ $\ell_E$).
+\item $u_0$: the basepoint $\theta_\delta(1)$ in \S7, the basepoint
+$\theta_\zeta(1)$ in \S8, and the cone coordinate
+$u_0:=1+2(j_3'+j_3'')/j_2^2$ in Proposition~8.3G, whose part~(b) uses both
+meanings (``on $E_{\emptyset,\beta,\zeta}(u_0)(F)$''). Rename the cone
+coordinates (e.g.\ $c_0,c_1,c_2$).
+\item $t_*(X)$ in Claim~8.3H (the root of $\ell_1$) versus the cocycle $t_*$.
+\item $G$, $H$ (polynomials in Propositions~7.6E--7.6G) versus the group and
+the endoscopic group; $F_0,F_1,F_2$ versus the field $F$; $P(Y)$, $P_1$,
+$P_2$ versus the parabolic $P$ and the weight lattice $P$; $\Delta$ and $M$
+in the repeated-polar remark versus the simple roots, the transfer factor, and
+$M$ in Lemma~5.7 and \S A.7; $\delta_L$, $\delta_K$ versus the root $\delta$;
+$Q$, $Q_0$, $Q_1$, $Q_2$, $\mathcal Q_3$ and the root lattice $Q$.
+\end{itemize}
+A short ``Notation for \S\S7--8'' paragraph would help, or an extension of the
+Notation table.
+
+\subsection{Proofs that only cite a script}
+
+The proofs of Propositions~7.6E, 7.6G, 8.3D, 8.3E, 8.3F and 8.3G consist mostly
+of ``exact polynomial composition'' plus a script name. As written, a reader
+cannot check them without running the code. For each, give the key
+intermediate formulas: the leading Laurent terms of the $n_\rho$ in 7.6E;
+$q_1$ and $Q_1$ explicitly in 8.3C--8.3D; the cone parametrization and the
+Hilbert-90 element in 8.3G. If space is a concern, put them in an appendix.
+The Claim~8.3H sketch already admits that $P_0$, $\ell_1$, $L_0$, $L_1$,
+$N_K$, $s(U,t)$, $C(X)$ and $c_{\mathrm{alg}}$ are undefined; this belongs at
+the top of Open Problem~(1)(b).
+
+\subsection{Structure}
+
+\begin{enumerate}
+\item \emph{Forward-referencing proofs.} The ``Proof of Theorem~7.2'' ends with
+$\square$ after saying the needed statements ``are proved \dots\ below''. The
+same pattern occurs for Theorem~8.3. Either move the proof heading after
+Theorem~7.6H (respectively Claim~8.3H), or make Theorem~7.6H the main theorem
+of \S7 and derive Theorem~7.2 from it in two lines.
+\item \emph{Status is stated seven times.} It appears in the abstract, the
+``Status of the results'' list in \S0, the main-gap remark, Remark~7.status,
+Remark~8.status, the Summary, and the Open Problems, and these have drifted
+(\S\ref{sec:minor-correct}, item~4). Keep one authoritative list (the Summary)
+and replace the others by a sentence and a pointer.
+\item \emph{Density of Remarks~2026.n.} There are about sixty. Many only
+record a 1994 misprint (e.g.\ the remarks after (1.18), the
+\S3 patch formulas, the \S4 forms, (2.6), the regular branch).
+The header states that clear-cut changes go to \texttt{CHANGES.md}. Moving the
+pure-misprint remarks there, or into an appendix ``Corrections to the 1994
+text'', would make the mathematics much easier to follow. Keep in the text
+the remarks that affect the logic (transfer known, 0.8, 5.14, exceptional
+divisors, main gap, 6.1, 8.roots, 7.status, 8.status, repeated polar).
+\item \emph{Revision history inside the mathematics} (``Draft~4 consulted
+\dots'', ``Draft~5 also supplied \dots'', ``Draft~6 stated $\pm\frac{2}{27}$'')
+belongs in \texttt{revision\_log.md}, per the style guide.
+\item \emph{Abstract.} At about 30 lines it is long and cites five
+proposition numbers. Shorten it to the AI-disclosure sentence, what is proved,
+what is conditional, and the fact that the matching is now known by
+\cite{GH16}; the details belong in \S0.
+\item \emph{Labels.} Several labels do not match the printed numbers
+(\texttt{res:7.6} is Proposition~7.6A, \texttt{res:7.7} is Example~7.6B,
+\texttt{res:7.8} is Corollary~7.6C). This is invisible in the PDF but a trap
+for whoever edits next.
+\end{enumerate}
+
+\section{Recommendation}
+
+The corrections in \S4 are all local. The repeated-polar issue should be
+handled by narrowing Claim~8.3H or by the local-constancy argument suggested
+in \S\ref{sec:polar}, item~2. On readability, the most valuable changes are
+fixing the $L$ and $u_0$ clashes, consolidating the status statements, and
+moving the misprint remarks to \texttt{CHANGES.md}. After these changes the
+paper would be a clear record of what Igusa theory does and does not yet
+prove for $G_2$.
+
+\begin{thebibliography}{GH16}
+\bibitem[GH16]{GH16} J.~Gordon and T.~Hales, Endoscopic transfer of orbital
+integrals in large residual characteristic, Amer. J. Math. \textbf{138}
+(2016), 109--148.
+\end{thebibliography}
+
+\end{document}

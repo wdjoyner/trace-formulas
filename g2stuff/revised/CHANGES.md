@@ -2,10 +2,10 @@
 
 **Manuscript:** D. Joyner, Claude, and Gemini, *"On the transfer of Shalika germs for $G_2$"*  
 **Repository Directory:** `g2stuff/` in `wdjoyner/trace-formulas`  
-**Current Revision:** Draft 6 (November 14, 2026)  
-**Prepared by:** Claude for Drafts 1 and 4; Gemini ("Carbon") for Drafts 2, 3, 5 and 6, with Claude's edits when committing Draft 6. The verification status is recorded in `../revision_log.md`.
+**Current Revision:** Draft 7 (November 16, 2026)  
+**Prepared by:** Claude for Drafts 1 and 4; Gemini ("Carbon") for Drafts 2, 3, 5 and 6, with Claude's edits when committing Draft 6; Claude for Draft 7. The verification status is recorded in `../revision_log.md`.
 
-This document records the mathematical corrections, closed-form derivations, structural additions, and typesetting updates made across the 2026 revisions (Drafts 1–6) relative to the summer 1994 AMS-TeX sources (`g2new0.tex`–`g2new9.tex`, variants `g2new5d.tex` and `g2new9d.tex`, and `g2newapp.tex`).
+This document records the mathematical corrections, closed-form derivations, structural additions, and typesetting updates made across the 2026 revisions (Drafts 1–7) relative to the summer 1994 AMS-TeX sources (`g2new0.tex`–`g2new9.tex`, variants `g2new5d.tex` and `g2new9d.tex`, and `g2newapp.tex`).
 
 ## Overview of Revision Passes
 
@@ -17,6 +17,7 @@ This document records the mathematical corrections, closed-form derivations, str
 | **Draft 4** | Nov 14, 2026 | Fourth pass (Claude), using Hales' memoir: Lemma 5.17 proof corrected (Cor. I.5.4, trivial inner twist); explicit κ(t_*) for the biquadratic tori (Propositions 7.6D–7.6E), showing the predicted Hilbert symbol (P(X), d_α)_F is a factor of κ₁(t_*) on the 2-regular divisor; (X₂) reduced to Corollary 7.6F. |
 | **Draft 5** | Nov 14, 2026 | Fifth pass (Open Problem 1): proved `Prop. 7.6E` symbolically from `(1.21a)` and repaired an inverted exponent in `(7.10)` ($\Phi_E = \frac{x(\delta)^2}{w(\delta)^2}F_1 F_2 \in L^\times$); computed the exact $\Omega(G_2)$ action on $E_{\emptyset,\alpha,\delta}(u_0)$ (`Prop. 7.6G`); constructed an explicit birational map $E_{\emptyset,\alpha,\delta}(u_0) \dashrightarrow (\mathbb{P}^1)^4$ after [Hales 1989](https://www.numdam.org/article/AST_1989__171-172__195_0.pdf) (§6), proving `Corollary 7.6F` and Hypothesis $(\mathrm{X}_2)$ directly and evaluating the exact $p$-adic constant $C'(q)$ (`Theorem 7.6H`); verified subregular Kirillov–Kostant Pfaffians and fixed double-counted tangent factors in `(6.5a)`–`(6.5b)`; proved $\Delta_0(Y)=\text{const}$, computed $\kappa_1(t_*)$, and constructed an $\Omega(G_2)$-equivariant degree-$2$ hexagon cover over $(\mathbb{P}^1)^6$ for the cubic tori in §8 (`Props. 8.3A`–`8.3E`). |
 | **Draft 6** | Nov 14, 2026 | Sixth pass (Open Problem 1, the 6-dimensional cubic integral $J_3(X)$): intrinsic $X$-free fiber coordinates `(8.7d)` and an $\mathrm{SL}_2(\alpha)$-fibration onto $\mathbb{P}^1(K)\times\mathcal{Q}_3$ (`Prop. 8.3F`); $\mathcal{Q}_3(F)$ identified with a smooth split quadric cone $\mathcal{C}_K(F)$, with a Hilbert 90 reduction of $\kappa_1(t_*)$ and $\omega_{\mathcal{Q}_3}$ (`Prop. 8.3G`); a sketched evaluation of $J_3(X)$ with constants $\lvert C_3(q)\rvert$ (`Claim 8.3H`, `Eq. (8.8)`). Carbon presented 8.3H as a theorem proving $(\mathrm{X}_3)$; when committing, Claude marked it a claim with a sketched proof, corrected its residue to $-2/9$, kept `Theorem 8.3` conditional on $(\mathrm{X}_3)$, and recorded what remains in Open Problem (1). |
+| **Draft 7** | Nov 16, 2026 | Editorial pass (Claude) after a second referee report on the post-Draft-6 source: compile fix (`mathrsfs`); glossary expanded from 9 to 46 entries with $G_2$ examples; notation table extended for §§7–8; corrections of 1994 misprints moved to a new Appendix B; repeated-polar remark rewritten to be self-contained and moved after Claim 8.3H; proof structure of Theorems 7.2 and 8.3 fixed; several local corrections (Jacobian identity in the proof of Theorem 7.6H, Lemma 3.6 count). No result upgraded. |
 
 ## Draft 6 Changes (by Carbon, as delivered; see the next section for what was changed on commit)
 
@@ -324,3 +325,79 @@ Numbering of sections, equations and results is the 1994 numbering. Items added 
   The locus (\mathscr D=0) is nonempty among regular (X) precisely when (\mu_3\subset F), and consists of two (F)-lines. A concrete unramified (\mathbb Q_7) example and the smallness argument are given in the remark.
 - **Status Remark `rem:8.status` expanded.** It now identifies the repeated-polar exceptional logarithmic pole as an explicit unresolved regularization/cancellation issue for Claim 8.3H.
 - **No theorem upgraded.** Claim 8.3H remains a sketch; Hypothesis ((X_3)) remains unproved. The draft number remains 6, with this documented editorial/research addendum. The previously committed PDF has **not** been regenerated from the changed TeX source.
+
+
+## Draft 7 changes (by Claude, November 16, 2026)
+
+Claude refereed the post-Draft-6 source (`../referee/g2_draft6_referee_report_claude_2.tex`). At David Joyner's request it made the readability corrections of that report, expanded the glossary, and made the clear-cut local corrections. No theorem, claim or hypothesis changed status.
+
+**Compilation.** `\usepackage{mathrsfs}` added (the repeated-polar remark used `\mathscr`); its displayed equation is tagged (8.7i).
+
+**Local corrections.**
+- Proof of Theorem 7.6H(a)–(b): the displayed determinant was the Jacobian of $(U,V)$, not of $(U,\log V)$. The correct value $\det\partial(U,\log V)/\partial(w(\gamma),w(\delta))=\alpha\zeta H/(F_0^2G)$ is now given, with the step to (7.12). The undefined $L_1,L_2,Q_0$ were replaced by an explicit argument. (7.12) itself was checked independently and is unchanged.
+- Proof of Theorem 7.6H(d): Lemma 5.14 and the divisor proviso of Lemma 0.8 are now each cited for what they supply.
+- Lemma 3.6: generator count corrected ($\ell+|\{\rho\ge\sigma\}|+(|\{\rho<\sigma\}|+1-\ell)=p+1$).
+- §4: wrong cross-reference "property (e) in §0" replaced by the Igusa expansion (0.3).
+- Remark on Lemma 5.14: "three ways (i)–(iii)", with the removed 1994 sentence as a separate note.
+- The cone $\mathcal C_K$ is no longer called smooth: its vertex is singular (see `../notes/`); only $\mathbb P(\mathcal C_K)$ is smooth.
+- Proposition 8.3F(b): "commutes elementwise with $\Omega(G_2)$" reworded as "its action on the fiber commutes with the geometric action of $\Omega(G_2)$".
+- Claim 8.3H and Remark 8.status: when $q\equiv1\pmod3$ (in particular for every tamely ramified $K/F$) the sketch does not cover the repeated-polar directions; a possible route by local constancy of germs, and the factorization of $J_3$ into separately regularized integrals, are recorded as open points (Remark 8.status(b), (d)).
+
+**Readability.**
+- Abstract shortened; §0 status list now points to the Summary as the authoritative list; the stale last paragraph of the main-gap remark replaced by a pointer.
+- Repeated-polar remark rewritten: the polar divisor, the vertex exceptional quadric and the polar quadratic are defined, its relation to Claim 8.3H is explained, and it is placed after the Claim.
+- §7: the "Proof of Theorem 7.2" heading, which ended with a forward reference, is now "The fiber form on $E_{\emptyset,\alpha,\delta}$"; the actual proof of Theorem 7.2 follows Theorem 7.6H. §8: the proof of Theorem 8.3 (conditional on $(X_3)$) now ends where it is complete; the computations toward $(X_3)$ follow under "The fiber form on $E_{\emptyset,\beta,\zeta}$".
+- Symbol clashes removed: $L:=x(\delta)z(\beta)/w(\delta)$ in the proof of Proposition 7.6E is now $\ell_E$; the cone coordinates $u_0,u_1,u_2$ of Proposition 8.3G are now $k_0,k_1,k_2$ (the basepoint stays $u_0$); the root $t_*(X)$ of $\ell_1$ in Claim 8.3H is now $t_X$ (not the cocycle $t_*$).
+- Notation table: a block "Notation used mainly in §§7–8" (17 rows).
+- Glossary: expanded to 46 alphabetical entries, each with a $G_2$ example where available.
+- Revision history removed from the mathematics ("Draft 4 consulted …", "Draft 5 also supplied …", "Draft 6 stated ±2/27") and kept here and in `../revision_log.md`.
+- Labels made to match printed numbers: `res:7.6`, `res:7.7`, `res:7.8` are now `res:7.6A`, `res:7.6B`, `res:7.6C`.
+- Appendix B, "Corrections to the 1994 text": 19 Remarks 2026.n that only record 1994 misprints or local errors moved from the body, grouped by section, labels unchanged. Remarks bearing on the argument stay in the body.
+
+**Renumbering of the Remarks 2026.n.** Moving remarks to Appendix B changes their automatic numbers. The table "The Remarks 2026.n" above uses the Draft 6 numbering (before the November 15 insertion). Draft 6 (as committed on November 15) → Draft 7:
+
+| Draft 6 | Draft 7 | label |
+|---|---|---|
+| 5 | 29 | `rem:conventions` |
+| 6 | 5 | `rem:Spp` |
+| 7 | 30 | `rem:1.18` |
+| 8 | 31 | `rem:1.22` |
+| 9 | 32 | `rem:2.cocycle` |
+| 10 | 33 | `rem:2.8` |
+| 11 | 6 | `rem:dynkin` |
+| 12 | 34 | `rem:2.11` |
+| 13 | 35 | `rem:3.patches` |
+| 14 | 36 | `rem:3.regular-branch` |
+| 15 | 7 | `rem:3.4` |
+| 16 | 37 | `rem:3.5` |
+| 17 | 8 | `rem:3.6` |
+| 18 | 9 | `rem:3.7` |
+| 19 | 38 | `rem:4.redundancy` |
+| 20 | 10 | `rem:4.II` |
+| 21 | 39 | `rem:4.forms` |
+| 22 | 40 | `rem:4.4` |
+| 23 | 11 | `rem:exceptional` |
+| 24 | 41 | `rem:5.notation` |
+| 25 | 12 | `rem:5.7` |
+| 26 | 13 | `rem:5.10` |
+| 27 | 14 | `rem:5.14` |
+| 28 | 42 | `rem:5.17` |
+| 29 | 15 | `rem:main-gap` |
+| 30 | 43 | `rem:6.three` |
+| 31 | 16 | `rem:6.1` |
+| 32 | 44 | `rem:6.4` |
+| 33 | 17 | `rem:6.5` |
+| 34 | 18 | `rem:7.2` |
+| 35 | 45 | `rem:7.3` |
+| 36 | 19 | `rem:7.status` |
+| 37 | 20 | `rem:8.3` |
+| 38 | 21 | `rem:8.roots` |
+| 39 | 46 | `rem:8.forms` |
+| 40 | 22 | `rem:8.polar-regular` |
+| 41 | 23 | `rem:8.status` |
+| 42 | 24 | `rem:8.8` |
+| 43 | 25 | `rem:9.1` |
+| 44 | 26 | `rem:A2` |
+| 45 | 47 | `rem:A5` |
+| 46 | 27 | `rem:A6` |
+| 47 | 28 | `rem:A7` |

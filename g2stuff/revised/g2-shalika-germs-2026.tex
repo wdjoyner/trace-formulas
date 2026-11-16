@@ -1,13 +1,15 @@
 % SPDX-License-Identifier: CC-BY-4.0
 % =====================================================================
 % D. Joyner, "On the transfer of Shalika germs for G_2"
-% Draft 6. Corrected and expanded version, November 2026 (proves Hypothesis (X_2) for the biquadratic tori directly via Igusa theory; for the cyclic cubic tori proves the fibration of the fiber onto a split quadric cone and sketches the evaluation of J_3(X), leaving (X_3) open).
+% Draft 7. Corrected and expanded version, November 2026. Draft 7 is an editorial
+% revision of Draft 6 (glossary, notation, readability, local corrections; corrections of
+% 1994 misprints moved to Appendix B); see ../revision_log.md.
 %
 % Built from ../transcription/g2_shalika_germs_transcription.tex (the literal
 % transcription of the 1994 manuscript in ../original-1994/) and the referee
 % report ../referee/g2_referee_report.tex. Every change from the 1994 text is
-% either clear-cut (recorded in CHANGES.md) or flagged in the text by a
-% "Remark 2026.n". Comments beginning "% [Claude]" are editorial notes.
+% either clear-cut (recorded in CHANGES.md) or flagged by a "Remark 2026.n"
+% (in the text if it affects the argument, otherwise in Appendix B). Comments beginning "% [Claude]" are editorial notes.
 % Numbering of sections, equations and results follows the 1994 manuscript;
 % items added in 2026 carry letters (Proposition 3.4A, Table 4.3A).
 % History of the drafts: ../revision_log.md.
@@ -21,6 +23,7 @@
 \usepackage{courier}
 \usepackage[letterpaper,margin=1in]{geometry}
 \usepackage{amsmath,amssymb,amsthm,amscd}
+\usepackage{mathrsfs}
 \usepackage{enumerate,booktabs,longtable,xparse}
 \usepackage{tikz}
 \usepackage{microtype}
@@ -94,7 +97,7 @@
 \DeclareMathOperator{\Aut}{Aut}
 
 \title[Transfer of Shalika germs for \texorpdfstring{$G_2$}{G2}]{On the transfer of Shalika germs for \texorpdfstring{$G_2$}{G2}\\[4pt]
-\normalsize Draft 6. Corrected and expanded version}
+\normalsize Draft 7. Corrected and expanded version}
 \author{David Joyner}
 \thanks{This is a revision of the unpublished manuscript of the same title by
 D.~Joyner, dated summer 1994. The 1994 AMS-\TeX\ source, a literal transcription
@@ -110,40 +113,33 @@ in the numbered ``Remarks 2026.$n$''.}
 \thanks{Gemini is an AI model made by Google; it is called ``Carbon'' in the
 project's notes. See the Acknowledgments for the division of work among the
 authors.}
-\date{Original draft: 1994. Corrected and expanded draft: November 2026 (Draft 6)}
+\date{Original draft: 1994. Corrected and expanded draft: November 2026 (Draft 7)}
 
 \begin{document}
 
 \begin{abstract}
 This is a revision of an unpublished 1994 manuscript by David Joyner, made
 with two AI systems, Claude (Anthropic) and Gemini (Google), which are
-co-authors; their roles are described in the Acknowledgments. Let $G_2$ be the split exceptional group over a
-$p$-adic field $F$. Using Langlands' method, based on Igusa's asymptotic
-expansions, we study the $\kappa$-Shalika germs of $G_2$ attached to the
-$1$-, $2$- and $3$-regular unipotent classes. We construct the variety $Z$
-underlying Langlands' partial resolution, prove that $Z$ is normal and
-Cohen--Macaulay, cover it up to codimension two by explicit regular patches,
-and compute the Igusa constants of every branch of the special fiber. The
-$2$- and $3$-regular classes are carried by unique base divisors, with Igusa
-constants $3$ and $4$, matching the trivial classes of the cuspidal
-endoscopic groups $(SL(2)\times SL(2))/\{\pm1\}$ and $PGL(3)$. We list all
-elliptic endoscopic data of $G_2$. The 1994 manuscript claimed to deduce the
-matching of these germs, and hence local transfer for $G_2$, from a reduction
-lemma of Hales. That lemma does not apply to $G_2$. For the $2$-regular class
-and the biquadratic tori ($p\ge5$), we give a direct geometric proof of the
-required tangent-direction identity by constructing an explicit birational map
-from the $4$-dimensional fiber to $(\mathbb{P}^1)^4$
-(Theorem~\ref{res:7.6H}). For the $3$-regular class and the cyclic cubic tori
-($p\ge5$), we fiber the $6$-dimensional fiber by $SL_2(\alpha)$ over
-$\mathbb{P}^1(K)\setminus\mathbb{P}^1(F)$ onto a smooth split quadric cone
-(Propositions~\ref{res:8.3F}--\ref{res:8.3G}) and sketch an evaluation of the
-resulting principal-value integral (Claim~\ref{res:8.3H}). The $1$- and
-$3$-regular matching statements remain conditional on the corresponding fiber
-integrals (Remark~\ref{rem:main-gap}), and all three remain conditional on a
-lemma on the Igusa expansion and a proviso on the exceptional divisors
-(Lemma~\ref{res:5.14} and Lemma~\ref{res:0.8}). The matching itself is
-now known by other means, from Waldspurger's transfer theorem and the
-fundamental lemma.
+co-authors; their roles are described in the Acknowledgments. Let $G_2$ be the
+split exceptional group over a $p$-adic field $F$. Using Langlands' method,
+based on Igusa's asymptotic expansions, we study the $\kappa$-Shalika germs of
+$G_2$ attached to the $1$-, $2$- and $3$-regular unipotent classes. We prove
+that the variety $Z$ underlying Langlands' partial resolution is a normal,
+Cohen--Macaulay affine toric variety, cover it up to codimension two by regular
+patches, and compute the Igusa constants of every branch of the special fiber.
+The $2$- and $3$-regular classes are carried by unique base divisors, with
+Igusa constants $3$ and $4$, matching the trivial classes of the cuspidal
+endoscopic groups $(SL(2)\times SL(2))/\{\pm1\}$ and $PGL(3)$. The 1994
+manuscript deduced the matching of these germs from a reduction lemma of Hales
+that does not apply to $G_2$. In its place, for the $2$-regular class and the
+biquadratic tori ($p\ge5$) we prove the required independence of the tangent
+direction directly, by a birational map from the fiber to $(\mathbb{P}^1)^4$.
+For the $3$-regular class and the cyclic cubic tori we reduce it to a
+principal-value integral over a split quadric cone, whose evaluation is only
+sketched, and for the $1$-regular class to an explicit hypothesis. All of these
+results are conditional on two statements about the Igusa expansion that remain
+unproved. The matching itself is now known by other means, from Waldspurger's
+transfer theorem and the fundamental lemma.
 \end{abstract}
 
 \maketitle
@@ -466,7 +462,7 @@ neighborhood of the identity by
 as in \cite{LS90}, $\gamma_G^0$ being a fixed regular element of $T_G(F)$.
 This is only the part $\Delta_{III_1}\Delta_{IV}$ of the transfer factor
 of \cite{LS87}; the remaining factors form the term $\Delta_0(X)$ below,
-which is computed for the biquadratic tori in Proposition~\ref{res:7.6}.
+which is computed for the biquadratic tori in Proposition~\ref{res:7.6A}.
 The sum over ${\mathcal O}$ in \eqref{eq:0.1} runs over all stable unipotent
 classes ${\mathcal O}^{st}$ in $G(F)$, ${\mathcal O}\subset {\mathcal O}^{st}$
 denoting an arbitrarily chosen $G(F)$-orbit within ${\mathcal O}^{st}$.
@@ -781,6 +777,11 @@ Rogawski, Howe, and Harish-Chandra \cite{Ro80}.
 
 \subsection*{Status of the results in this revision}
 
+This is an overview; the Summary at the end of the paper is the authoritative
+list of what is proved, what is conditional, and what is open. Corrections of
+misprints in the 1994 text that do not affect the argument are collected in
+Appendix~\ref{sec:B}.
+
 \begin{itemize}
 \item \emph{Proved:} the regularity of the essential patches and the
 covering of $Z$ up to codimension two (Proposition~\ref{res:3.4A}); the
@@ -792,12 +793,12 @@ the Kirillov--Kostant orbit forms, rational Leray fiber forms, and exact
 $X$-scaling degrees on $E_\alpha$, $E_\beta$, $E_{\emptyset,\alpha,\delta}$ and
 $E_{\emptyset,\beta,\zeta}$ (\S\S\ref{sec:6}--\ref{sec:8}); the biquadratic and
 cubic transfer factors $\Delta_0(Y)$ and special-fiber cocycles $\kappa_1(t_*)$
-(Propositions~\ref{res:7.6}, \ref{res:7.6D}, \ref{res:7.6E}, \ref{res:8.3A}--\ref{res:8.3D});
+(Propositions~\ref{res:7.6A}, \ref{res:7.6D}, \ref{res:7.6E}, \ref{res:8.3A}--\ref{res:8.3D});
 the birational trivialization $E_{\emptyset,\alpha,\delta}(u_0)\dashrightarrow(\mathbb{P}^1)^4$
 and explicit $p$-adic evaluation of $J'(X)$ proving $(\mathrm X_2)$ directly for
 the biquadratic tori (Theorem~\ref{res:7.6H}); the $SL_2(\alpha)$-fibration
 $E_{\emptyset,\beta,\zeta}(u_0)(F)\dashrightarrow(\mathbb{P}^1(K)\setminus\mathbb{P}^1(F))\times\mathcal C_K(F)$
-onto a smooth split quadric cone for the cyclic cubic tori
+onto a split quadric cone for the cyclic cubic tori
 (Propositions~\ref{res:8.3F}--\ref{res:8.3G}); the list
 of elliptic endoscopic data (Table~\ref{tab:A.6}); and the stability of the
 $2$- and $3$-regular classes (\S\ref{sec:A7}).
@@ -811,7 +812,8 @@ the $2$-regular $\kappa$-germ for the biquadratic tori).
 Hypotheses $(\mathrm X_1)$ and $(\mathrm X_3)$ of Remark~\ref{rem:main-gap}.
 For $(\mathrm X_3)$, Claim~\ref{res:8.3H} sketches a direct evaluation of the
 fiber integral, with explicit constants $C_3(q)$; completing it is part of
-Open Problem~(1).
+Open Problem~(1). When $q\equiv1\pmod 3$ the sketch does not cover the
+directions of Remark~\ref{rem:8.polar-regular}.
 \item \emph{Known by other means:} Conjectures~\ref{res:smooth} and
 \ref{res:matching} for $G_2$ (Remark~\ref{rem:transfer-known}).
 \end{itemize}
@@ -925,6 +927,26 @@ $a(E)$, $b(E)$, $\beta(E)$ & multiplicity of $E$ in $\lambda=0$, order of the Ig
 $e(\theta,\beta)$ & the maximal number of branches with data $(\theta,\beta)$ through a point (see \cite{La83})\\
 $X$, $C$ & the tangent direction of the curve $C=\exp(\OF X)$ in $T_G$\\
 $t_*$ & the cocycle-valued function on $Y_C$\\
+\midrule
+\multicolumn{2}{l}{\emph{Notation used mainly in \S\S\ref{sec:7}--\ref{sec:8}}}\\
+\midrule
+$\Delta_I,\dots,\Delta_{IV}$, $\Delta_0$ & the factors of the Langlands--Shelstad transfer factor; $\Delta_0=\Delta_I\Delta_{II}\Delta_{III_2}$ near the identity\\
+$d_\alpha$, $d_\zeta$; $K$, $L$, $K_\zeta$ & \S\ref{sec:7}: $K=F(\sqrt{d_\alpha},\sqrt{d_\zeta})$ splits a biquadratic torus, $L=F(\sqrt{d_\alpha d_\zeta})$, $K_\zeta=F(\sqrt{d_\zeta})$\\
+$K$, $\tau$ & \S\ref{sec:8}: the cyclic cubic splitting field of a cubic torus, and a generator of $\Gal(K/F)$\\
+$\omega_{K/L}$, $\omega_{K/F}$ & quadratic character of $L^\times$ attached to $K/L$; cubic character of $F^\times$ attached to $K/F$ and $\kappa$\\
+$(x,y)_F$ & quadratic Hilbert symbol of $F$\\
+$P(Y)$ & $\beta(Y)\gamma(Y)\delta(Y)\epsilon(Y)$, \eqref{eq:7.6}\\
+$R$, $Q$ & polynomials in the $n_\rho$ giving $\kappa(t_*)$ for the biquadratic tori, \eqref{eq:7.8}\\
+$F_0,F_1,F_2$, $G$, $H$ & polynomials on $E_{\emptyset,\alpha,\delta}$ (Propositions~\ref{res:7.6E}, \ref{res:7.6G}); here $G$ and $H$ are not the group and the endoscopic group\\
+$\Phi_E$ & the argument of $\omega_{K/L}$ in $\kappa_1(t_*)$ on $E_{\emptyset,\alpha,\delta}$, \eqref{eq:7.10}\\
+$u_0$ & the basepoint $\theta_\delta(1)\in\mathcal O_2(F)$ in \S\ref{sec:7}, and $\theta_\zeta(1)\in\mathcal O_3(F)$ in \S\ref{sec:8}\\
+$J$, $J'$, $J_3$ & fiber integrals over $E(u_0)(F)$: \eqref{eq:7.7}, Corollary~\ref{res:7.6F}, \eqref{eq:8.7a}\\
+$U,V,\xi_1,\xi_2$ & coordinates of the birational map $\Psi_X$, \eqref{eq:7.11}\\
+$T^1_{M/F}$ & the norm-one torus of a quadratic extension $M/F$\\
+$\eta_0,\dots,\eta_5$; $j_2,j_3',j_3''$ & the $\Omega(G_2)$-translates of $\eta=v(\alpha)$ (Proposition~\ref{res:8.3E}); the $SL_2(\alpha)$-invariants \eqref{eq:8.7e}\\
+$\mathcal Q_3$, $\mathcal C_K$; $k_0,k_1,k_2$, $Y$ & the quotient of the fiber by $SL_2(\alpha)$; the split quadric cone \eqref{eq:8.7g}, with coordinates $k_i=\tau^i(k_0)\in K$ and $Y\in F$\\
+$\Lambda_F$, $S_F$ & functions on $\mathcal C_K$ in \eqref{eq:8.7h}; $\{\Lambda_F=0\}$ is the polar divisor\\
+$\mathscr D(X)$ & the discriminant of the polar quadratic, \eqref{eq:8.polar-discriminant}\\
 \bottomrule
 \end{longtable}
 % =====================================================================
@@ -1176,16 +1198,6 @@ uniquely determines the star $(B(W))_{W}\in S(B_+,B_-)$;
 the coordinate ring of $S(B_+,B_-)$.
 \end{enumerate}
 
-\begin{rem26}\label{rem:conventions}
-Three conventions in this subsection were inconsistent in 1994 and are
-corrected here: the root condition was written with $t^{-1}\theta_\rho(\xi)t$;
-the pair condition read $\rho=\omega\alpha$, which contradicts
-$\alpha_{i+1}=\omega_i\rho_{i+1}$ below; and the sign of $z$ in \eqref{eq:1.8}
-was opposite to that in \eqref{eq:1.9} and \eqref{eq:1.10}. The versions above
-agree with \eqref{eq:1.9} and \eqref{eq:1.10}. The open immersion
-$U_{-\alpha}\hookrightarrow P_{-,\alpha}/B_-$ was written as an isomorphism.
-\end{rem26}
-
 The coordinates $z(W,\rho)$ are not algebraically independent.
 Their relations are most naturally
 described using galleries in the spherical building
@@ -1406,11 +1418,6 @@ C'\times T_G\setminus G\hookrightarrow Y_1(B_+,B_-)\times N_+
 \]
 where $C'=C\cap T_G'=C-\{1\}$.
 
-\begin{rem26}\label{rem:1.18}
-In 1994, \eqref{eq:1.18} was written with $z(W_i,\rho_i)$ in place of
-$z(W_{i-1},\rho_i)$; the version above agrees with \eqref{eq:1.10}.
-\end{rem26}
-
 \subsection*{Coordinates on \texorpdfstring{$Y_1$}{Y1}}
 
 We begin with the following.
@@ -1530,36 +1537,6 @@ w(\zeta)
 \]
 with $n_\gamma=(z(W_0,\beta)z(s_\beta W_0,\gamma))^{-1}$ by \eqref{eq:1.21b}.
 
-\begin{rem26}[exact determination of \eqref{eq:1.22} and resolution of the coordinate count]\label{rem:1.22}
-In the 1994 manuscript, \eqref{eq:1.22} was stated with undetermined constants
-$c_1,\dots,c_7$ and denoted $z(s_\beta W_0,\gamma)$ (the gallery coordinate
-across the wall $\gamma^\perp=(s_\beta^{-1}\alpha)^\perp$ of $W_1=s_\beta W_0$,
-which has simple-root type $\alpha$) by $z(\sigma_\beta^{-1}W_0,\alpha)$.
-In the Chevalley basis of \S A.4, direct matrix factorization of Lemma~\ref{res:1.21}
-determines $(c_1,\dots,c_7)=(-1,2,3,-3,-3,1,3)$ and resolves three defects of
-the 1994 display:
-(i) in $x(\gamma)$, the 1994 text had a spurious factor
-$z(\sigma_\beta^{-1}W_0,\alpha)$ in the denominator of the $c_1$-term, whereas
-$n_\alpha n_\beta=(z(W_0,\alpha)z(W_0,\beta))^{-1}$ involves only the two
-simple-wall coordinates (which explains why that factor was absent in the 1994
-formula for $w(\gamma)$, where $z(W_0,\alpha)z(W_0,\beta)$ cancels completely to
-leave $-1/\beta(X)$);
-(ii) the last term of $w(\zeta)$ in 1994 lacked $c_7$ and wrote $n_\zeta$ in
-place of $n_\delta$;
-(iii) the 1994 text listed the seven functions
-$z(W_0,\alpha)$, $z(W_0,\beta)$, $z(s_\beta W_0,\gamma)$, $n_\gamma$, $n_\delta$,
-$n_\epsilon$, $n_\zeta$ alongside $\lambda$ as coordinates on the
-$7$-dimensional variety $Y_1(B_+,B_-)$. By \eqref{eq:1.21b}, $n_\gamma$ is
-already determined by $n_\gamma=(z(W_0,\beta)z(s_\beta W_0,\gamma))^{-1}$;
-eliminating $n_\gamma$ leaves the six algebraically independent birational
-coordinates $(z(W_0,\alpha),z(W_0,\beta),z(s_\beta W_0,\gamma),n_\delta,n_\epsilon,n_\zeta)$
-on $S(B_+,B_-)$ (or, continuing the gallery $W_0,W_1,\dots,W_5$ with wall
-coordinates $b_1=z(W_0,\beta)$, $a_2=z(s_\beta W_0,\gamma)$, $b_3$, $a_4$, $b_5$,
-solving triangularly via $3a_2^2 b_1 b_3 n_\delta = -(b_1+b_3) - a_2^3 b_1 b_3(n_\epsilon + b_1 n_\zeta)$,
-$a_2^3 a_4 b_1 b_3 n_\epsilon = 3a_2 b_1 + 2a_4(b_1+b_3) - a_2^3 a_4 b_1^2 b_3 n_\zeta$,
-and $a_2^3 a_4^3 b_1^2 b_3^2 b_5 n_\zeta = a_4^3 b_3^2 b_5 - b_1^2(a_2^3 b_3 + (a_2+a_4)^3 b_5)$),
-which together with $\lambda$ form seven independent coordinates on $Y_1(B_+,B_-)$.
-\end{rem26}
 % =====================================================================
 % Section 2. Source: g2new2.tex.
 % =====================================================================
@@ -1628,13 +1605,6 @@ The action $\sigma_T$ on chambers induces an action,
 also denoted $\sigma_T$, on roots, taking
 the walls $\rho^\perp$ of $W$ to the walls
 $\sigma_T(\rho)^\perp$ of $\sigma_TW$.
-
-\begin{rem26}\label{rem:2.cocycle}
-In 1994 the condition read $g^{-1}\sigma(g)\in T_G(\overline{F})$ for all
-$\sigma$. That would make $B_G$ defined over $F$, which is impossible for an
-elliptic $T_G$. It also said the homomorphism factors through
-$\Gal(\ovF/E)$, which is its kernel; it factors through $\Gal(E/F)$.
-\end{rem26}
 
 We define an action of $\Gamma$ on the set $S_0$ of regular stars by
 \begin{equation}\tag{2.2}\label{eq:2.2}
@@ -1749,19 +1719,6 @@ where $\Sigma^+$ denotes the set of roots of $T_+$
 which are positive with respect to $B_-$.
 Chevalley's commutator formula then gives explicit formulas for
 $x'(\rho)$.
-
-\begin{rem26}\label{rem:2.8}
-In 1994, \eqref{eq:2.6} carried the exponent
-$\sigma(n_{\sigma_T^{-1}(W_0)}n)$ outside the star as well as inside it, and the
-formula for $b'$ in \eqref{eq:2.8} and \eqref{eq:2.9} read
-$\sigma(n_{\sigma^{-1}_T (W_0)})c_\sigma b
-c_\sigma\sigma(n^{-1}_{\sigma^{-1}_T (W_0)})^{-1}$: it had $b$ in place of
-$\sigma(b)$, $c_\sigma$ in place of $c_\sigma^{-1}$, and a double inverse. The
-formulas above follow by writing
-$(b,(B_-^{n_W}))^n=(n^{-1}bn,(B_-^{n_Wn}))$ and applying $\sigma$.
-Throughout, the normalization of $c_\sigma$ is
-$\sigma(B_-)=B_-^{c_\sigma}$.
-\end{rem26}
 
 \begin{res}{Lemma}{2.10}[{\cite[proof of Lemma 5.3]{Ha89}}]\label{res:2.10}
 \textup{(a)} Let $\alpha$ be a simple root of a quasi-split group $G$. If
@@ -2022,28 +1979,6 @@ $D_\alpha^{-6}$ and $D_\beta^{-11}$ on $(z(\alpha),w(\gamma),w(\delta),w(\eps),w
 and preserve the Leray fiber $6$-form \eqref{eq:8.5}.
 \end{res}
 
-\begin{rem26}[exact determination of \eqref{eq:2.11}--\eqref{eq:2.17}]\label{rem:2.11}
-In 1994, \eqref{eq:2.11}--\eqref{eq:2.14} and \eqref{eq:2.16}--\eqref{eq:2.17}
-were written schematically with undetermined constants and omitted reordering
-terms. Computing directly in the $8\times 8$ matrix model of \S A.4 fixes every
-coefficient and resolves several 1994 slips:
-\begin{itemize}
-\item $\phi^\alpha_\alpha=x(\alpha)/(1+x(\alpha)z)$ (written $x(\alpha)$ in
-1994), and because $t=\alpha^\vee(1+x(\alpha)z)$ already stands on the left in
-\eqref{eq:2.11}, it does not rescale $\phi^\alpha_\rho$ for $\rho\neq\alpha$
-(whereas in \eqref{eq:2.13}, moving $\beta^\vee(u_\beta)$ past $\theta_\alpha(x(\alpha))$
-multiplies $x(\alpha)$ by $u_\beta$);
-\item $y_\beta=-x(\beta)z^2/(1+x(\beta)z)$, not $-x(\beta)^2z/(1+x(\beta)z)$;
-\item in $\theta_\gamma(x)^{\theta_{-\beta}(z)}=\exp(xX_\gamma-xzX_\alpha)$, the
-Baker--Campbell--Hausdorff denominators give $\theta_\delta(x^2z)\theta_\eps(x^3z^2)\theta_\zeta(-2x^3z)$
-rather than the 1994 coefficients $(2czx^2,3c^2z^2x^3,3czx^3)$ with $c=-1$;
-\item in \eqref{eq:2.12} and \eqref{eq:2.14}, $b'=\sigma(b)^{\theta_{-\rho}(-z_\sigma)}$
-evaluates $\phi^\rho_\tau$ at $(\sigma(\unx),-z_\sigma)$ rather than applying
-$\sigma$ a second time to $z_\sigma$, and the $N_+$-factor $n_0$ in
-\eqref{eq:2.9} cancels identically to $1$.
-\end{itemize}
-\end{rem26}
-
 Formulas \eqref{eq:2.12}, \eqref{eq:2.14} and Proposition~\ref{res:2.14A}
 determine the Galois action when $c_\sigma=1$. We also record the exact effect
 of conjugating by $s_\alpha$ or $s_\beta$. Recall a basic lemma \cite{Ca89}.
@@ -2219,19 +2154,6 @@ and $z(\alpha)\neq0$, then also $x(\delta)=x(\epsilon)=x(\zeta)=0$. So the
 complement of the four patches is contained in $K\cup K_0$, and the claim
 follows.
 
-\begin{rem26}\label{rem:3.patches}
-Three of the patch formulas were misprinted in 1994. The correct values are
-$w(\zeta)=x(\zeta)x(\alpha)z(\alpha)^4/x(\beta)^2$ on $x(\beta)\neq0$ and
-$w(\zeta)=x(\zeta)x(\alpha)x(\beta)^2w(\gamma)^4/x(\gamma)^4$ on
-$x(\gamma)\neq0$; the 1994 versions were $x(\zeta)z(\alpha)^5x(\alpha)^2/x(\beta)^3$
-and $x(\zeta)x(\alpha)x(\beta)^2w(\gamma)^4/x(\gamma)$. The 1994 text also
-gave a fifth patch, $z(\alpha)\neq0$ with $x(\epsilon)\neq0$ (or
-$x(\delta)\neq0$, or $x(\zeta)\neq0$). By the identities above it lies inside
-$\{x(\beta)\neq0\}$, so it is omitted; its formula for $w(\zeta)$ had a
-spurious factor $z(\alpha)^{-3}$. All formulas were checked symbolically
-(script \texttt{g2\_patch\_jacobians.py}).
-\end{rem26}
-
 The claim is weaker than it looks: $K$ contains the divisor
 $E_{\emptyset,\alpha,\delta}$ of \S\ref{sec:4}, along which $Z$ is
 generically regular. The exact singular locus is described in
@@ -2286,12 +2208,6 @@ and $E_\emptyset$ is the branch of the trivial class. Since
 $E_\Delta$ is regular,
 $\pi:E_\Delta \rightarrow V$ is a resolution of singularities
 similar to the Springer resolution \cite{Sl80}, \cite{St74}.
-
-\begin{rem26}\label{rem:3.regular-branch}
-The 1994 text called $E_\emptyset$ the regular branch. With the convention
-of this paper (``Hales' $E_S$ is my $E_{\Delta -S}$'') the regular branch is
-$E_\Delta$; $E_\emptyset$ maps to the identity (Table~\ref{tab:4.3A}).
-\end{rem26}
 
 Fix a map $\sigma :S_2 \rightarrow \Sigma_G^+ -\Delta$ satisfying the
 following.
@@ -2388,15 +2304,6 @@ $1+(\ell-|S_1|)+(p-|\Sigma^+_{\Delta-S_1}|)+(|\Sigma^+_{\Delta-S_1}|-(\ell-|S_1|
 one of the coordinates.
 \end{proof}
 
-\begin{rem26}\label{rem:3.5}
-As printed in 1994, the lemma had $\Sigma^+_{S_1}$ in place of
-$\Sigma^+_{\Delta-S_1}$, so the roles of $x(\rho)$ and $w(\rho)$ were
-interchanged. For $S_1=\Delta$ that version gives the generators $\lambda$,
-$x(\alpha)$, $x(\beta)$, $w(\gamma),\dots$, for which
-$x(\gamma)=w(\gamma)x(\alpha)x(\beta)/\lambda$ is not regular. The generator
-count also failed unless $S_1=\Delta$. The proof above is new.
-\end{rem26}
-
 For brevity, let $m_\alpha$ denote the multiplicity with
 which $z(\alpha)=0$ occurs in $\lambda =0$.
 
@@ -2441,8 +2348,11 @@ z(\beta)^{m_\rho(\beta)-m_{\sigma}(\beta)},
 \]
 with non-negative exponents, which is regular in the $x(\rho)$ with
 $\rho \geq\sigma$. For simple $\beta$, $x(\beta)=\lambda/z(\beta)$ is regular
-because $m\ge1$. The number of generators is $\ell+|\{\rho\ge\sigma\}|+
-|\{\rho<\sigma\}|-\ell=p+1$ when every root is comparable with $\sigma$.
+because $m\ge1$. When every root is comparable with $\sigma$, the simple roots
+lie below $\sigma$ (a simple root cannot lie above a non-simple one), so the
+non-simple $\rho\le\sigma$ are $\sigma$ and the $|\{\rho<\sigma\}|-\ell$
+non-simple $\rho<\sigma$, and the number of generators is
+$\ell+|\{\rho\ge\sigma\}|+(|\{\rho<\sigma\}|+1-\ell)=p+1$.
 For $G_2$ the hypothesis is checked directly: $\delta-\gamma$, $\epsilon-\gamma$,
 $\zeta-\gamma$, $\epsilon-\delta$, $\zeta-\delta$, $\zeta-\epsilon$ are all
 non-negative combinations of $\alpha$ and $\beta$, and the simple roots are below
@@ -2574,12 +2484,6 @@ E_{\emptyset,\alpha,\gamma}=E_{\{\alpha\}},\qquad
 E_{\emptyset,\alpha,\epsilon}=E_{\emptyset,\alpha,\zeta}.
 \]
 So $\lambda=0$ has exactly seven irreducible branches on $Z$.
-
-\begin{rem26}\label{rem:4.redundancy}
-The 1994 text noted only the first set of identities. The multiplicity of
-$E_{\emptyset,\alpha,\zeta}$ was correctly given as $3$, the coefficient of
-$\alpha$ in $\zeta$.
-\end{rem26}
 
 We denote the branch of $\{\lambda =0\}\subset Z$
 occurring in $Z_{S_1,S_2,\sigma}$ by $E_{S_1,S_2,\sigma}$. The same notation
@@ -2730,17 +2634,6 @@ On $Z_{\emptyset,\beta,\sigma}$ with $\sigma=\gamma,\delta,\epsilon$ the
 branch $z(\beta)=0$ has $a=1$ and $b=2$, in agreement with
 $E_{\emptyset,\beta,\sigma}=E_{\{\beta\}}$.
 
-\begin{rem26}\label{rem:4.forms}
-In the 1994 text the forms on $Z_{\emptyset,\alpha,\epsilon}$,
-$Z_{\emptyset,\alpha,\zeta}$ and $Z_{\emptyset,\beta,\zeta}$ had the
-denominator $w(\delta)$ in place of $w(\epsilon)$, respectively $w(\zeta)$,
-and the form on $Z_{\emptyset,\alpha,\epsilon}$ had $z(\alpha)^9$ and $b=10$,
-giving $\beta=10/3$ and $\beta-1=7/3$ in Table~\ref{tab:4.3}. The correct
-values are $z(\alpha)^{10}$, $b=11$, $\beta=11/3$; this agrees with
-$E_{\emptyset,\alpha,\epsilon}=E_{\emptyset,\alpha,\zeta}$. The
-unspecified constants $c$ of the 1994 text are $\pm1$, as shown.
-\end{rem26}
-
 We summarize this in the following table.
 \begin{equation}\tag{4.3}\label{tab:4.3}
 \begin{array}{cccc}
@@ -2799,8 +2692,8 @@ $E_{\emptyset}$ & $(1,0,0,0,0,0,0)$ & $1$ & $7$ & $7$ & $6$ & all\\
 
 The integral values $\beta-1=0,1,2,3,6$ are the values $r(\mathcal O)$ of the
 regular, subregular, $\tilde A_1$, $A_1$ and trivial classes. The branch with
-$\beta=11/3$ has non-integral $\beta$; by Igusa's theorem (property (e) in
-\S\ref{sec:0}) its contribution to the asymptotic expansion has the form
+$\beta=11/3$ has non-integral $\beta$; by Igusa's expansion \eqref{eq:0.3}
+its contribution to the asymptotic expansion has the form
 $|\lambda|^{8/3}$ times a function of the angular component, and since the
 left side of \eqref{eq:0.1} contains no such terms, this contribution must
 cancel. That the coefficient vanishes was not checked directly.
@@ -2853,15 +2746,6 @@ $E_{\emptyset,\alpha,\zeta}$, $b=\theta_\epsilon(x(\epsilon))\theta_\zeta(x(\zet
 is $U_\beta$-conjugate for $x(\epsilon)\neq0$ to $\theta_\epsilon(x(\epsilon))\in A_1$,
 giving $\pi(E_{\emptyset,\alpha,\zeta})=\overline{A_1}$.
 \end{proof}
-
-\begin{rem26}\label{rem:4.4}
-The 1994 statement had ``$\dim\Cent_G(u)-2$'', which is correct only for
-rank $2$, and labeled both orbits ``$2$-regular''. It described
-$\mathcal O$ as the orbit ``induced'' from the trivial class of the
-endoscopic group $H_i$; since $H_i$ is not a Levi subgroup of $G$, the
-intended meaning is the endoscopically Richardson class (\S\ref{sec:0}) with
-$\dim\mathcal O=\dim G-\dim H_i$, that is, $r(\mathcal O)=|\Sigma_{H_i}^+|$.
-\end{rem26}
 
 \begin{rem26}[exceptional divisors]\label{rem:exceptional}
 The fan of $Z$ is the cone $\sigma\subset\rrr^7$ spanned by the eleven facet
@@ -2948,15 +2832,6 @@ $\omega=\prod_i\mu_i^{b_i-1}\,d\mu_1\wedge\cdots\wedge d\mu_n$.
 \item[(5.4)]\fixedlabel{5.4}\label{eq:5.4} We \textbf{assume} that $f$ vanishes off $U$, and that
 if $b_i=0$ then $\kappa_i\not= 1$, $1\leq i\leq n$.
 \end{itemize}
-
-\begin{rem26}\label{rem:5.notation}
-In the 1994 text the unit in \eqref{eq:5.1} was called $\alpha$ (also a root),
-the constant in \eqref{eq:5.2} was called $\gamma$ (also a root and a group
-element), the truncation radius in Lemma~\ref{res:5.6} was $\epsilon$ (also a
-root), and the number of indices in Lemma~\ref{res:5.7} was $p$ (also the
-residue characteristic and $|\Sigma^+_G|$). These have been renamed
-$\upsilon$, $c_f$, $q^{-N}$ and $k$.
-\end{rem26}
 
 Let $F(\lambda)$ be given by \eqref{eq:0.2}.
 We sketch the derivation of an equality of the form
@@ -3267,13 +3142,13 @@ Although the homogeneity degrees $2$ and $3$ of the base-divisor fiber forms
 \eqref{eq:5.15} and \eqref{eq:5.16} under scalar rescaling $X\mapsto cX$ are
 verified in \S\S\ref{sec:7}--\ref{sec:8} (repairing the 1994 coordinate formulas,
 which mixed base and fiber variables), the argument above remains incomplete in
-three ways. (i) The scaling of the residue form $\omega_{D(u)}$ along an
+three ways, (i)--(iii). (i) The scaling of the residue form $\omega_{D(u)}$ along an
 intersection $D=E\cap E'$ with an exceptional or spurious divisor $E'$ is
 asserted, not computed. (ii) Lemma~\ref{res:5.7}
 expresses $F_1$ as a sum over strata; only the top stratum $D=E\cap E'$ is
 considered, and the contradiction requires its contribution to be non-zero.
 (iii) The possible partners $E'$ include the exceptional divisors of
-Remark~\ref{rem:exceptional}, which were not analyzed. (iv) The 1994
+Remark~\ref{rem:exceptional}, which were not analyzed. Separately, the 1994
 statement added ``In particular, spurious divisors do not contribute to the
 Igusa expansion''; $e=1$ does not imply this, and the sentence has been
 removed. We therefore treat Lemma~\ref{res:5.14} as a hypothesis in what
@@ -3357,19 +3232,6 @@ character of $(\zzz/2)^2$, and the same argument applies with $\theta$ a
 quadratic character, but this case was not treated in 1994.
 \end{proof}
 
-\begin{rem26}\label{rem:5.17}
-The 1994 proof asserted that $H^1(\Gamma,T_G)$ is always cyclic of order
-$2$ or $3$; this fails for the quadratic tori (Table~\ref{tab:A.6}). It also
-cited ``(5.10)'' (a lemma, not an equation) for the comparison with
-\eqref{eq:5.18}, and wrote $\epsilon_{-\alpha}$ for $\theta_{-\alpha}$; and
-``$\xi$ satisfies (5.2)'' was unexplained. Draft~4 consulted \cite{Ha92a}
-(in the \TeX\ version of 2016): the 1994 proof applied \cite[Ch.~I,
-Cor.~5.7]{Ha92a}, which treats a non-trivial inner twist $A_\sigma$, with
-$A_\sigma=w_\sigma^{-1}=s_\alpha$. For split $G_2$ the twist is trivial and
-\cite[Ch.~I, Cor.~5.4]{Ha92a} applies; the function $\xi$ does not occur.
-The proof has been rewritten accordingly.
-\end{rem26}
-
 We close this section by recalling a reduction lemma
 due to T.~Hales, in the form quoted in 1994, and by explaining why it does
 not apply here.
@@ -3451,14 +3313,10 @@ For $r=1$, $(\mathrm X_1)$ asks that the $X$-dependence of $I_E$ be that of
 the stable subregular germ of $H$, given for $SL(2)$ in \cite{SS83} and for
 $GL(3)$ in \cite{Re84}. Verifying $(\mathrm X_r)$ requires computing
 $\Delta_0(X)$ and the fiber integrals as functions of $X$, as in
-\cite[\S6]{Ha89}. For $r=2$ and the biquadratic tori, $\Delta_0$ and
-$\kappa_1(t_*)$ are computed in Propositions~\ref{res:7.6}--\ref{res:7.6E}, and
-$(\mathrm X_2)$ is proved directly via a birational map to $(\mathbb{P}^1)^4$ in
-Theorem~\ref{res:7.6H}. For $r=3$ and the cubic tori, $\Delta_0$, $\kappa_1(t_*)$
-and an $\Omega(G_2)$-equivariant double cover over $(\mathbb{P}^1)^6$ are
-computed in Propositions~\ref{res:8.3A}--\ref{res:8.3E}; evaluating the
-resulting $6$-dimensional integral for $(\mathrm X_3)$, and the subregular
-comparison for $(\mathrm X_1)$, remain open.
+\cite[\S6]{Ha89}. This is done for $r=2$ and the biquadratic tori in
+\S\ref{sec:7} (Theorem~\ref{res:7.6H}) and begun for $r=3$ and the cyclic cubic
+tori in \S\ref{sec:8}. The status of each case is recorded in the Summary at
+the end of the paper.
 \end{rem26}
 % =====================================================================
 % Sections 6-8. Sources: g2new6.tex, g2new7.tex, g2new8.tex.
@@ -3499,13 +3357,6 @@ on $Z_\beta=Z_{\{\beta\}}$,
 which is regular with local coordinates
 $\lambda$, $z(\alpha)$, $x(\beta)$, $x(\gamma)$,
 $x(\delta)$, $x(\epsilon)$, $x(\zeta)$.
-
-\begin{rem26}\label{rem:6.three}
-The 1994 text listed a third base divisor with $\beta=2$,
-$E_{\emptyset,\alpha,\gamma}$, and eliminated it by
-\cite[Ch.~V, Lemma~1.1]{Ha92a}. It is the same divisor as $E_\alpha$
-(\S\ref{sec:4}), so no elimination is needed.
-\end{rem26}
 
 As a corollary to \cite[Ch.~VI, Lemma~1.1]{Ha92a},
 $E_\alpha$ and $E_\beta$ are $F$-rational. The action of the Galois
@@ -3638,15 +3489,6 @@ If ${\mathcal O}$ is the Richardson class of a
 parabolic $P$, then the coordinates on $N_P^- \times N_P$ serve as local
 coordinates on ${\mathcal O}$.
 \end{res}
-
-\begin{rem26}\label{rem:6.4}
-The 1994 argument used Corollary~\ref{res:1.6} for the statement
-``$B^{\overline n}$ is opposite to $B^-$ and $B^{\overline n}\neq B$ unless
-$\overline n=1$''; the injectivity needed is that of the map
-$N_P^-\times({\mathcal O}\cap N_P)\to G$, $(\overline n,v)\mapsto
-v^{\overline n}$, which follows from $N_P^-\cap P=1$ and the fact that
-$P$ is the normalizer of $N_P$. The reworded argument above is ours.
-\end{rem26}
 
 Returning to the proof of Theorem~\ref{res:6.1}:
 computing the Kirillov--Kostant symplectic Pfaffian on ${\mathcal O}_1$ in the
@@ -3788,13 +3630,14 @@ quadratic tori, whose $\kappa$ also give $H_2$ (Table~\ref{tab:A.6}), are
 not treated.
 \end{rem26}
 
-\subsection*{Proof of \texorpdfstring{Theorem~\ref{res:7.2}}{Theorem 7.2}}
+\subsection*{The fiber form on \texorpdfstring{$E_{\emptyset,\alpha,\delta}$}{E(0,alpha,delta)}}
 
 By \cite{Sh72} or \cite{Ro80} the stable germ of the trivial class of $H_2$ is
-a non-zero constant. So it suffices to show that the $G_2$ side, as a
-function of the tangent direction $X$, is constant; by \eqref{eq:7.1} and
-the argument at the end of \S\ref{sec:6} that is Hypothesis $(\mathrm X_2)$.
-We record what the 1994 manuscript computed toward $(\mathrm X_2)$.
+a non-zero constant. So Theorem~\ref{res:7.2} says that the $G_2$ side, as a
+function of the tangent direction $X$, is constant; by \eqref{eq:7.1} and the
+argument at the end of \S\ref{sec:6}, that is Hypothesis $(\mathrm X_2)$. The
+proof of Theorem~\ref{res:7.2} is completed after Theorem~\ref{res:7.6H}. We
+first compute the fiber form, correcting the 1994 computation.
 
 Let $u=\theta_{\alpha+\beta }(1)\in G_2$. Computing
 $\Ad({\mathfrak g}_2)(X_{\alpha+\beta })$ shows that $u^{G_2}$
@@ -3854,26 +3697,9 @@ p_{{\mathcal O}_2,T_G}(X)=\prod_{\sigma \in \Sigma_{H_2}^+}\sigma(X)^{f_\sigma},
 \end{equation}
 To prove $(\mathrm X_2)$ one must show that $f_\alpha=f_\zeta=1$ and that the
 $\kappa$-weighted integral over $E_{\emptyset,\alpha,\delta}(u)(F)$ carries the
-Hilbert-symbol sign of Corollary~\ref{res:7.8}. Both statements are proved
-directly in Propositions~\ref{res:7.6}--\ref{res:7.6G} and
-Theorem~\ref{res:7.6H} below. \qed
-
-\begin{rem26}\label{rem:7.3}
-The 1994 text attempted to construct $\omega_{\mathcal O_2}$ as a limit
-$\lim_{\lambda\to0}|\bigwedge_{\sigma\in\Sigma_{\mathcal O_2}}dx(\sigma)\wedge dv(\sigma)|/|\lambda|^{3/2}$
-with $\Sigma_{\mathcal O_2}=\{\beta,\gamma,\delta,\epsilon\}$, treating
-$(w(\gamma),w(\delta))$ as base coordinates and $(x(\zeta),v(\alpha),v(\zeta))$
-as fiber coordinates, which produced non-rational square-root factors
-$|x(\delta)|^{1/2}|w(\delta)|^{-3/2}|z(\beta)|^{-3/2}$ and the wrong scaling in
-$X$. Because $x(\beta)=x(\gamma)=0$ on $E_{\emptyset,\alpha,\delta}$, the
-variables $w(\gamma)$ and $w(\delta)$ lie in the kernel of $d\pi$ and belong to
-the fiber, exactly as in \cite[\S6, pp.~239--240]{Ha89}; the Kirillov--Kostant
-quotient \eqref{eq:7.3}--\eqref{eq:7.4} removes all fractional powers and gives
-the required degree-$2$ scaling in $X$. The 1994 proof also concluded by
-claiming translation invariance of \eqref{eq:7.5} and applying
-Lemma~\ref{res:5.19}, which fails because the roots of $H_2$ span
-$\mathfrak t^*$ (Remark~\ref{rem:main-gap}).
-\end{rem26}
+Hilbert-symbol sign of Corollary~\ref{res:7.6C}. Both statements are proved
+directly in Propositions~\ref{res:7.6A}--\ref{res:7.6G} and
+Theorem~\ref{res:7.6H} below.
 
 \subsection*{The transfer factor for the biquadratic tori}
 
@@ -3912,7 +3738,7 @@ P(Y):=\beta(Y)\gamma(Y)\delta(Y)\epsilon(Y)
 \end{equation}
 For $Y$ regular, $P(Y)\neq0$, and $P(cY)=c^4P(Y)$ for $c\in F^\times$.
 
-\begin{res}{Proposition}{7.6A}\label{res:7.6}
+\begin{res}{Proposition}{7.6A}\label{res:7.6A}
 Suppose the residue characteristic of $F$ is at least $5$. For regular $Y\in\mathfrak t(F)$ sufficiently close to $0$:
 \begin{enumerate}[(a)]
 \item $\Delta_I$ is a constant, and $\Delta_{III_2}(\exp Y)=1$;
@@ -3957,7 +3783,7 @@ $c=(N_{L/F}(a_\beta a_\gamma),d_\alpha)_F$.
 The root-theoretic steps (the orbits, the stabilizers and \eqref{eq:7.6}) are
 checked by the script \texttt{g2\_transfer\_factor\_biquadratic.py}.
 
-\begin{resdef}{Example}{7.6B}\label{res:7.7}
+\begin{resdef}{Example}{7.6B}\label{res:7.6B}
 Let $F$ have residue characteristic $p\geq5$, uniformizer $\varpi$, and a
 non-square unit $\varepsilon$.
 \begin{enumerate}[(a)]
@@ -3980,7 +3806,7 @@ So $\Delta_0$ is \emph{not} constant in the direction of approach when both
 quadratic subfields of $K$ are ramified.
 \end{resdef}
 
-\begin{res}{Corollary}{7.6C}\label{res:7.8}
+\begin{res}{Corollary}{7.6C}\label{res:7.6C}
 Let $T$, $\kappa$ and $H=H_2$ be as in Theorem~\ref{res:7.2}. Assume
 Lemma~\ref{res:5.14} and the proviso of Lemma~\ref{res:0.8}. Then Hypothesis
 $(\mathrm X_2)$ holds for $(T,\kappa)$ if and only if, for $u\in\mathcal O_2(F)$
@@ -4009,16 +3835,16 @@ and \eqref{eq:7.1} give
 for all $f$. Here $\kappa(\inv(\gamma^0_G,\gamma_\lambda))$ is constant on
 $T(F)$, and $|D_H(\exp\lambda X)|=|\lambda|^2|\alpha(X)\zeta(X)|$ for
 $\lambda$ small. Since $\Delta_0(X)^{-1}=\Delta_0(X)$ is given by
-Proposition~\ref{res:7.6}, \eqref{eq:7.7} follows, and conversely.
+Proposition~\ref{res:7.6A}, \eqref{eq:7.7} follows, and conversely.
 \end{proof}
 
 So $(\mathrm X_2)$ splits into two explicit statements about the fiber integral
 $J(X)$. First, its absolute scaling: by \eqref{eq:7.4}--\eqref{eq:7.5}, the
 1994 text asserts $|J(X)|\propto|\alpha(X)|^{f_\alpha}|\zeta(X)|^{f_\zeta}$
-with $f_\alpha+f_\zeta=2$. Corollary~\ref{res:7.8} requires
+with $f_\alpha+f_\zeta=2$. Corollary~\ref{res:7.6C} requires
 $f_\alpha=f_\zeta=1$. Second, its sign: $J(X)$ must carry the factor
 $(P(X),d_\alpha)_F$. This factor involves the roots $\beta,\gamma,\delta,\epsilon$
-\emph{outside} $H$, and by Example~\ref{res:7.7} it is not constant in
+\emph{outside} $H$, and by Example~\ref{res:7.6B} it is not constant in
 general. The form \eqref{eq:7.4} is positive, so this sign has to come from
 $\kappa_1(t_*)$ and from the $F$-structure of the fiber, which depends on $X$
 through \eqref{eq:1.22} and the Galois action of \S\ref{sec:2}.
@@ -4026,7 +3852,7 @@ through \eqref{eq:1.22} and the Galois action of \S\ref{sec:2}.
 \subsection*{The character \texorpdfstring{$\kappa(t_*)$}{kappa(t*)} for the biquadratic tori}
 
 We now compute the sign factor directly, using \cite[Ch.~I, \S5]{Ha92a}. Keep
-the notation of Proposition~\ref{res:7.6} and of the proof of
+the notation of Proposition~\ref{res:7.6A} and of the proof of
 Lemma~\ref{res:5.17}, and write $n=\prod_{\rho>0}\theta_\rho(n_\rho)$ for the
 upper unipotent factor of $h^{-1}g$, so that the $n_\rho$ are the functions of
 Lemma~\ref{res:1.21} and \eqref{eq:1.21b}. Let $\tau\in\Gal(K/F)$ be the
@@ -4109,12 +3935,13 @@ with $c'=\pm1$ a constant and $\Phi_E\in L^\times$.
 \end{res}
 
 \begin{proof}
-Write $\lambda=L\,z(\alpha)^2$ with $L:=x(\delta)z(\beta)/w(\delta)$, so
-$x(\alpha)=L\,z(\alpha)$, $x(\beta)=(L/z(\beta))z(\alpha)^2$,
-$x(\gamma)=(Lw(\gamma)/z(\beta))z(\alpha)$, and expand
+Write $\lambda=\ell_E\,z(\alpha)^2$ with $\ell_E:=x(\delta)z(\beta)/w(\delta)$
+(not to be confused with the field $L$), so
+$x(\alpha)=\ell_E\,z(\alpha)$, $x(\beta)=(\ell_E/z(\beta))z(\alpha)^2$,
+$x(\gamma)=(\ell_Ew(\gamma)/z(\beta))z(\alpha)$, and expand
 $(1-\rho(t_0)^{-1})^{-1}=(\lambda\rho(X))^{-1}+\frac12+O(z(\alpha)^2)$ formally
 in $z(\alpha)$ inside the exact all-order identities \eqref{eq:1.21a} (keeping
-$L,x(\epsilon),x(\zeta)$ free). Solving triangularly for
+$\ell_E,x(\epsilon),x(\zeta)$ free). Solving triangularly for
 $n_\alpha,\dots,n_\zeta$ as formal Laurent series in $z(\alpha)$ shows
 symbolically that $n_\alpha,n_\gamma=O(z(\alpha)^{-1})$, $n_\beta=O(1)$,
 $n_\delta=O(z(\alpha)^{-2})$, and $n_\epsilon,n_\zeta=O(z(\alpha)^{-3})$ (with
@@ -4125,7 +3952,7 @@ $z(\alpha)^2=\lambda w(\delta)/(x(\delta)z(\beta))$ on the patch, we have
 $z(\alpha)^{-4}=\lambda^{-2}x(\delta)^2z(\beta)^2/w(\delta)^2$; multiplying by
 $R_E$ cancels $z(\beta)^2$ identically, and $\omega_{K/L}$ is trivial on
 $\lambda^{-2}\in(F^\times)^2$ and on $F^\times$ (as in the proof of
-Proposition~\ref{res:7.6}). Hence near $E_{\emptyset,\alpha,\delta}$ we have
+Proposition~\ref{res:7.6A}). Hence near $E_{\emptyset,\alpha,\delta}$ we have
 $\omega_{K/L}(R)=\omega_{K/L}(c(X)\Phi_E)$ with
 $c(X)=1/(\alpha\gamma\delta^2\epsilon\zeta)\in L^\times$ and
 $\Phi_E=(x(\delta)^2/w(\delta)^2)F_1F_2$, which extends to
@@ -4139,12 +3966,12 @@ $\omega_{K/L}(c(X))=(-d_\alpha d_\zeta,d_\alpha)_F\,(P(X),d_\alpha)_F$. Likewise
 the $X$-part of $Q_E$ has trivial symbol, consistently with $\omega_{K/L}(Q)=1$.
 \end{proof}
 
-So the Hilbert symbol that Corollary~\ref{res:7.8} requires appears, exactly,
+So the Hilbert symbol that Corollary~\ref{res:7.6C} requires appears, exactly,
 as a factor of $\kappa_1(t_*)$ on the $2$-regular divisor. Since
-\eqref{eq:7.4} is positive, Corollary~\ref{res:7.8} becomes the following.
+\eqref{eq:7.4} is positive, Corollary~\ref{res:7.6C} becomes the following.
 
 \begin{res}{Corollary}{7.6F}\label{res:7.6F}
-Under the hypotheses of Corollary~\ref{res:7.8}, Hypothesis $(\mathrm X_2)$
+Under the hypotheses of Corollary~\ref{res:7.6C}, Hypothesis $(\mathrm X_2)$
 holds for $(T,\kappa)$ if and only if
 \[
 J'(X):=\int_{E_{\emptyset,\alpha,\delta}(u)(F)}\omega_{K/L}(\Phi_E)\,
@@ -4290,8 +4117,8 @@ with explicit non-zero constant (for Haar measure normalized by $\mathrm{vol}(\O
 and residue cardinality $q=|\OF/\mathfrak p_F|$)
 \begin{equation}\tag{7.13}\label{eq:7.13}
 C'=\begin{cases}
-4(q+1)\,q^{-5/2}, & \text{if $L/F$ is ramified (Example~\ref{res:7.7}(a))},\\[4pt]
-2(q+1)^2\,q^{-3}, & \text{if $L/F$ is unramified (Example~\ref{res:7.7}(b))}.
+4(q+1)\,q^{-5/2}, & \text{if $L/F$ is ramified (Example~\ref{res:7.6B}(a))},\\[4pt]
+2(q+1)^2\,q^{-3}, & \text{if $L/F$ is unramified (Example~\ref{res:7.6B}(b))}.
 \end{cases}
 \end{equation}
 \end{enumerate}
@@ -4299,12 +4126,16 @@ C'=\begin{cases}
 
 \begin{proof}
 (a)--(b) Substituting $w(\delta)=(U-1)F_0/(\alpha\zeta)$ into $F_1,F_2,G$ makes
-$F_0^2$ divide $G$, leaving $V=L_2/(L_1Q_0)$ fractional linear in $w(\gamma)$,
-which gives (a). Differentiating $(U,\log V)$ with respect to $(w(\gamma),w(\delta))$
-yields the exact polynomial Jacobian identity
+$F_0^2$ divide $G$, and $F_1F_2=F_0^2\,c(U)$ with $c(U)$ independent of
+$w(\gamma)$. So at fixed $U$ the function $V=(G/F_0^2)/(c(U)F_0)$ is a ratio of
+two affine linear functions of $w(\gamma)$, which gives (a). Differentiating
+$(U,\log V)$ with respect to $(w(\gamma),w(\delta))$ gives the exact identity
 $\det\frac{\partial(U,\log V)}{\partial(w(\gamma),w(\delta))}
-=\frac{\alpha\zeta\,H}{F_0F_1F_2w(\delta)^2}\cdot\frac{(U-1)^2}{F_0^2/(\alpha^2\zeta^2w(\delta)^2)}
-=\frac{\alpha\zeta\,H}{F_0^3F_1F_2}$, whence
+=\frac{\alpha\zeta\,H}{F_0^2\,G}$ (equivalently, the Jacobian of $(U,V)$ is
+$\alpha\zeta H/(F_0^3F_1F_2)$). Since $U-1=\alpha\zeta w(\delta)/F_0$ and,
+modulo $dw(\gamma)$ and $dw(\delta)$,
+$d\xi_1\wedge d\xi_2/(\xi_1-\xi_2)^2=(G/(Hz(\beta)^2))\,d\xi\wedge dz(\beta)$,
+we get
 $\alpha\zeta\frac{dU}{(U-1)^2}\wedge\frac{dV}{V}\wedge\frac{d\xi_1\wedge d\xi_2}{(\xi_1-\xi_2)^2}
 =\pm\frac{1}{w(\delta)^2z(\beta)^2}dw(\gamma)\wedge dw(\delta)\wedge d\xi\wedge dz(\beta)$.
 Proposition~\ref{res:7.6G}(c) gives $s_\alpha^*(U)=U^{-1}$, $(-1)^*(U)=U$, and
@@ -4324,13 +4155,15 @@ $\delta_L$ in $\alpha(X)\zeta(X)=\delta_L uv$, while the two $\sqrt{d_\zeta}$
 factors in $dV/V$ and $d\xi_1\wedge d\xi_2$ cancel $4d_\zeta$ in
 $(\xi_1-\xi_2)^2=4d_\zeta y_1^2$ (and $|2|_F=1$ for $p\ge 5$).
 
-(d) Under the divisor proviso of Lemma~\ref{res:0.8}, no other branch $E'$ of
-$\phi^{-1}(1)$ on a smooth resolution has $\beta(E')=3=\beta(E_{\emptyset,\alpha,\delta})$
-(and $e(1,3)=1$ by Lemma~\ref{res:5.14}). In the Langlands--Shelstad
+(d) By Lemma~\ref{res:5.14} ($e(1,3)=1$), no branch $E'$ of $\phi^{-1}(1)$
+with $(\theta,\beta)=(1,3)$ other than the strict transform of
+$E_{\emptyset,\alpha,\delta}$ meets that strict transform; by the divisor
+proviso of Lemma~\ref{res:0.8}, no other branch with these data contributes to
+the $\mathcal O_2$-term. In the Langlands--Shelstad
 regularization \cite[\S\S1--2]{LS83}, each boundary divisor $E'$ meeting the
 proper transform of $E_{\emptyset,\alpha,\delta}$ enters through an analytic
 continuation factor $(1-q^{a_{E'}(3-\beta(E'))-a_{E'}s})^{-1}$, which is regular
-at $s=0$ because $\beta(E')\neq 3$; multiplying a local boundary coordinate by
+at $s=0$ because $(\theta_{E'},\beta(E'))\neq(1,3)$; multiplying a local boundary coordinate by
 an $X$-dependent unit therefore contributes $|c(X)|^{a_{E'}s}|_{s=0}=1$ (compare
 \cite[Lemma~6.10, p.~243]{Ha89}). Since $|uv|_F=|d_\alpha d_\zeta|_F^{-1/2}|\alpha(X)\zeta(X)|_F$,
 the integral $J'(X)$ factors as $|d_\alpha d_\zeta|_F^{-1/2}|\alpha(X)\zeta(X)|_F\,|I_t\,I_s\,I_\xi|$.
@@ -4356,20 +4189,26 @@ note that the two asymmetric subcases $(v_F(d_\alpha),v_F(d_\zeta))=(0,1)$ and
 $(1,0)$ yield the identical constant $4(q+1)q^{-5/2}$.
 \end{proof}
 
+\subsection*{Proof of \texorpdfstring{Theorem~\ref{res:7.2}}{Theorem 7.2}}
+
+By the reduction at the beginning of the subsection on the fiber form, the
+theorem is Hypothesis $(\mathrm X_2)$ for $(T_G,\kappa)$. By
+Corollaries~\ref{res:7.6C} and~\ref{res:7.6F}, under Lemma~\ref{res:5.14} and
+the divisor proviso of Lemma~\ref{res:0.8}, $(\mathrm X_2)$ is equivalent to
+$J'(X)=C'|\alpha(X)\zeta(X)|$ with $C'$ independent of $X$ and $u$, and this is
+Theorem~\ref{res:7.6H}(d). Since $C'\neq0$ by \eqref{eq:7.13}, the germ
+$\Gamma^{T_G,\kappa}_{\mathcal O_2}$ is a non-zero multiple of the stable germ
+of the trivial class of $H_2$. \qed
+
 \begin{rem26}[status of $(\mathrm X_2)$]\label{rem:7.status}
-Propositions~\ref{res:7.6}--\ref{res:7.6G}, Corollary~\ref{res:7.6F} and
+Propositions~\ref{res:7.6A}--\ref{res:7.6G}, Corollary~\ref{res:7.6F} and
 Theorem~\ref{res:7.6H} are new, and their algebra is verified symbolically in
 \texttt{verify\_g2\_open\_problem\_1.py}. Together they complete the direct
 geometric proof of $(\mathrm X_2)$ for the biquadratic tori (given
 Lemma~\ref{res:5.14} and the divisor proviso of Lemma~\ref{res:0.8}), without
 appealing to \cite{Wa97}, \cite{Ng10} or \cite{GH16}. The explicit constants
 in \eqref{eq:7.13} are evaluated by hand in the proof; the script checks only
-the product of the factors (Open Problem~(1)(c)). Draft~5 also supplied the exact
-symbolic proof of Proposition~\ref{res:7.6E} from \eqref{eq:1.21a} (replacing a
-numerical check in Draft~4) and corrected an inverted exponent in Draft~4's
-display of $\Phi_E$ in \eqref{eq:7.10} (which had written
-$w(\delta)^2/(x(\delta)^2z(\beta)^4)\,F_1F_2$ instead of
-$(x(\delta)^2/w(\delta)^2)F_1F_2$).
+the product of the factors (Open Problem~(1)(c)).
 \end{rem26}
 
 
@@ -4457,8 +4296,14 @@ $S_3$ generated by short reflections, whose $\kappa$ also give $H_1$
 
 By \cite{Ro80}, the stable germ of the trivial class of $H_1$,
 $\Gamma_{1}^{T_H,st}(\gamma_H)$, is a non-zero constant. So, as in
-\S\ref{sec:7}, the theorem is Hypothesis $(\mathrm X_3)$, by \eqref{eq:8.2}.
-We record what the 1994 manuscript computed toward $(\mathrm X_3)$.
+\S\ref{sec:7}, by \eqref{eq:8.2} and the argument at the end of \S\ref{sec:6},
+the conclusion of the theorem is Hypothesis $(\mathrm X_3)$, which is assumed.
+\qed
+
+\subsection*{The fiber form on \texorpdfstring{$E_{\emptyset,\beta,\zeta}$}{E(0,beta,zeta)}}
+
+We now compute the fiber form toward a proof of $(\mathrm X_3)$, correcting the
+1994 computation.
 
 Let $u=\theta_{\beta}(1)\in G_2$. Computing
 $\Ad({\mathfrak g}_2)(X_\beta)$ shows that $u^{G_2}$
@@ -4524,7 +4369,7 @@ To prove $(\mathrm X_3)$ one must show that the $\kappa$-weighted integral over
 $E_{\emptyset,\beta,\zeta}(u)(F)$, multiplied by $\Delta_0(X)$, is proportional
 to $|D_{H_1}(X)|=|\alpha(X)\gamma(X)\delta(X)|$; see
 Corollary~\ref{res:8.3B} and Propositions~\ref{res:8.3C}--\ref{res:8.3G} below,
-and Claim~\ref{res:8.3H} for a sketch of this proportionality. \qed
+and Claim~\ref{res:8.3H} for a sketch of this proportionality.
 
 \begin{rem26}[the roots of $H_1$]\label{rem:8.roots}
 The 1994 text took $\Sigma_{H_1}^+=\{\beta,\epsilon,\zeta\}$, the long
@@ -4537,17 +4382,6 @@ short roots: $\Sigma_{H_1}^+=\{\alpha,\gamma,\delta\}$
 Lemma~\ref{res:4.4} use the short roots, as do $D_{H_1}$ and the transfer
 factor. In 1994, \eqref{eq:8.7} was derived with the long roots, so the
 exponents $e_\sigma$ have to be recomputed.
-\end{rem26}
-
-\begin{rem26}\label{rem:8.forms}
-Corrections to the 1994 formulas: in \eqref{eq:8.1} the coefficient was printed
-$x(\zeta)^2w(\zeta)^4w(\delta)^{-7}z(\alpha)^{-2}$; in \eqref{eq:8.4}--\eqref{eq:8.5}
-the 1994 text took $\lim_{\lambda\to0}\bigl|\bigwedge_{\sigma\in\{\alpha,\gamma,\delta\}}dx(\sigma)\wedge dv(\sigma)\bigr|/|\lambda|^2$,
-which placed the fiber coordinates $(z(\alpha),w(\gamma),w(\delta),v(\alpha))$
-in the base form and left the orbit coordinates $(x(\zeta),v(\beta),v(\epsilon),v(\zeta))$
-inside the fiber form (giving $X$-scaling $|c|^1$ instead of $|c|^3$); and in
-\eqref{eq:8.6} the power was $|\lambda|^2$, while the $\beta=4$ term carries
-$|\lambda|^3$.
 \end{rem26}
 
 \subsection*{The transfer factor, cocycle \texorpdfstring{$\kappa_1(t_*)$}{kappa1(t*)}, split quadric cone, and a sketch of \texorpdfstring{$(\mathrm X_3)$}{(X3)}}
@@ -4569,7 +4403,7 @@ independent of $Y$.
 \end{res}
 
 \begin{proof}
-As in Proposition~\ref{res:7.6}(a), $\Delta_I$ is constant and
+As in Proposition~\ref{res:7.6A}(a), $\Delta_I$ is constant and
 $\Delta_{III_2}(\exp Y)=1$ near $0$. Neither $\zzz/3\zzz$ nor the short-reflection
 $S_3$ contains $-1\in\Omega$ (the reflections $s_\alpha,s_\gamma,s_\delta$ have
 determinant $-1$ while $-1$ has determinant $+1$ and order $2$). Hence no element
@@ -4593,7 +4427,7 @@ with $C_3$ independent of $X$ and of $u$.
 \end{res}
 
 \begin{proof}
-This follows by the same calculation as in Corollary~\ref{res:7.8}, using
+This follows by the same calculation as in Corollary~\ref{res:7.6C}, using
 Proposition~\ref{res:8.3A} together with
 $|D_{H_1}(\exp\lambda X)|=|\lambda|^3|\alpha(X)\gamma(X)\delta(X)|$ for small $\lambda$.
 \end{proof}
@@ -4726,7 +4560,7 @@ $y_{\mathrm{hex}}$. Unlike \eqref{eq:7.12}, pulling back \eqref{eq:8.5} directly
 $(\eta_0,\dots,\eta_5,y_{\mathrm{hex}})$ retains non-monomial $X$-dependence
 through $w(\zeta)^3$; we resolve this below by factoring out a commuting
 $SL_2(\alpha)$-action on $(\eta_0,\eta_2,\eta_4)$ and identifying the
-$3$-dimensional quotient with a smooth split quadric cone over $F$.
+$3$-dimensional quotient with a split quadric cone over $F$.
 \end{proof}
 
 \begin{res}{Proposition}{8.3F}[intrinsic coordinates and $SL_2(\alpha)$-fibration]\label{res:8.3F}
@@ -4768,7 +4602,8 @@ while $s_\alpha^*(L_X)=-L_X/D_{s_\alpha}^2$ and $s_\beta^*(L_X)=L_X/r_\gamma^3$.
 Hence both the $F$-rational domain $E_{\emptyset,\beta,\zeta}(u_0)(F)$ and the
 cocycle $\kappa_1(t_*)$ are pointwise independent of regular $X\in\mathfrak t(F)$.
 \item The root subgroup $SL_2(\alpha)=\langle U_\alpha,U_{-\alpha}\rangle\subset\Cent_{G_2}(u_0)$
-commutes elementwise with $u_0$ and with $\Omega(G_2)$, preserves $\lambda$ on
+commutes elementwise with $u_0$; its action on the fiber commutes with the
+geometric action of $\Omega(G_2)$, and it preserves $\lambda$ on
 $Y_C$, and acts on $(\eta_0,\eta_2,\eta_4)$ by simultaneous M\"obius
 transformations (making $\mathbb{P}^1(K)\setminus\mathbb{P}^1(F)$ a principal
 homogeneous space under $PGL_2(F)$). Its invariant ring on the fiber is
@@ -4822,26 +4657,28 @@ differentiation gives \eqref{eq:8.7f} (script
 \end{proof}
 
 \begin{res}{Proposition}{8.3G}[split quadric cone structure of $\mathcal Q_3(F)$]\label{res:8.3G}
-Put $u_0:=1+2(j_3'+j_3'')/j_2^2$, $u_1:=\tau^*(u_0)$, $u_2:=\tau^{2*}(u_0)$
+Put $k_0:=1+2(j_3'+j_3'')/j_2^2$ (a $K$-valued function; not to be confused with the basepoint $u_0$), $k_1:=\tau^*(k_0)$, $k_2:=\tau^{2*}(k_0)$
 ($\tau^*=(w^2)^*$). Then:
 \begin{enumerate}[{\upshape(a)}]
-\item Expressing $(j_3',j_3'')$ in terms of $(j_2,u_0,u_1)$ yields a quadratic
-equation for $j_2$ over $(u_0,u_1,u_2)$ whose discriminant is a square on the
-smooth quadric cone
+\item Expressing $(j_3',j_3'')$ in terms of $(j_2,k_0,k_1)$ yields a quadratic
+equation for $j_2$ over $(k_0,k_1,k_2)$ whose discriminant is a square on the
+quadric cone
 \begin{equation}\tag{8.7g}\label{eq:8.7g}
-\mathcal C_K(F):=\bigl\{(u_0,Y)\in K\times F :
-Y^2+u_0\tau(u_0)+\tau(u_0)\tau^2(u_0)+\tau^2(u_0)u_0=0\bigr\},
+\mathcal C_K(F):=\bigl\{(k_0,Y)\in K\times F :
+Y^2+k_0\tau(k_0)+\tau(k_0)\tau^2(k_0)+\tau^2(k_0)k_0=0\bigr\},
 \end{equation}
 identifying $\mathcal Q_3(F)\stackrel{\sim}{\dashrightarrow}\mathcal C_K(F)$
-birationally over $F$ via $j_2=\frac{(1-u_2)(u_0+u_1)}{(Y+1)(Y+u_0)}$, with
+birationally over $F$ via $j_2=\frac{(1-k_2)(k_0+k_1)}{(Y+1)(Y+k_0)}$, with
 $\tau^*(Y)=+Y$ and $(-1)^*(Y+1)=4/(Y+1)$. Since $K/F$ is cyclic cubic,
 $\mathcal C_K$ has square discriminant $\tfrac14 D_{K/F}\in(F^\times)^2$ and
-smooth $F$-point $\bigl(\frac{2\tau\theta-\tau^2\theta-\theta}{\theta-\tau\theta},\,3\bigr)$
+non-vertex $F$-point $\bigl(\frac{2\tau\theta-\tau^2\theta-\theta}{\theta-\tau\theta},\,3\bigr)$
 ($\theta\in K\setminus F$), so $\mathcal C_K$ is split over $F$:
-$\mathbb{P}(\mathcal C_K)\cong\mathbb{P}^1_F\times\mathbb{P}^1_F$.
-\item Put $Q_0:=Y^2+Y(u_0-u_1)+u_0^2+u_0u_1+u_1^2$,
-$A_{\mathrm{num}}:=(Y-u_1)(Y+u_0)(u_0+u_1)$, and
-$W_\alpha:=\frac{(u_1-Y)(u_0u_1-Y(u_0+1)-2u_0-u_1)}{Q_0}\in K^0$. Then
+$\mathbb{P}(\mathcal C_K)\cong\mathbb{P}^1_F\times\mathbb{P}^1_F$. (The affine
+cone $\mathcal C_K$ is singular at its vertex $(k_0,Y)=(0,0)$; only its
+projectivization is smooth.)
+\item Put $Q_0:=Y^2+Y(k_0-k_1)+k_0^2+k_0k_1+k_1^2$,
+$A_{\mathrm{num}}:=(Y-k_1)(Y+k_0)(k_0+k_1)$, and
+$W_\alpha:=\frac{(k_1-Y)(k_0k_1-Y(k_0+1)-2k_0-k_1)}{Q_0}\in K^0$. Then
 $S_F:=Q_0^3/A_{\mathrm{num}}^2$ and
 $\Lambda_F:=\tr_{K/F}(\alpha(X)W_\alpha)$ lie in $F(\mathcal C_K)$, $S_F$ lies
 in $\delta_K\cdot N_{K/F}(K^\times)(F^\times)^3$ ($\delta_K=\sqrt{D_{K/F}}\in F^\times$),
@@ -4849,88 +4686,28 @@ and on $\mathcal C_K(F)$,
 \begin{equation}\tag{8.7h}\label{eq:8.7h}
 \kappa_1(t_*)=c'''\cdot\omega_{K/F}(Y+1),\qquad
 \omega_{\mathcal Q_3}=\pm 2\,\frac{\beta(X)\epsilon(X)\zeta(X)}{S_F\,\Lambda_F^3}\,
-\frac{du_0\wedge du_1\wedge dY}{u_0+u_1},
+\frac{dk_0\wedge dk_1\wedge dY}{k_0+k_1},
 \end{equation}
 with $c'''\in\mu_3$ constant, while the Igusa norm regulator on
 $E_{\emptyset,\beta,\zeta}(u_0)(F)$ factors as
 $N_{K/F}(z(\alpha)^3/w(\zeta))=N_{K/F}(\beta(X))^2\,d_{024}^3\,R_{\mathrm{cone}}$
-with $R_{\mathrm{cone}}=-\frac{N_{K/F}(Y+u_0)^2N_{K/F}(u_0+1)^2N_{K/F}(1-u_0)^2}
+with $R_{\mathrm{cone}}=-\frac{N_{K/F}(Y+k_0)^2N_{K/F}(k_0+1)^2N_{K/F}(1-k_0)^2}
 {64(Y+1)^3N_{K/F}(Q_0)\Lambda_F^3}$.
 \end{enumerate}
 \end{res}
 
 \begin{proof}
 Setting $c_2=(1-j_2)/(2j_2+j_3')$ and $c_4=-j_2/(j_3'+j_3'')$, we have
-$c_4j_2=2/(1-u_0)$ and $c_2j_2=2(u_0+u_1)/(Y(u_0+1)-u_0u_1+2u_0+u_1)$ on
+$c_4j_2=2/(1-k_0)$ and $c_2j_2=2(k_0+k_1)/(Y(k_0+1)-k_0k_1+2k_0+k_1)$ on
 \eqref{eq:8.7g}, giving (a). On $\mathcal C_K$, Hilbert's Theorem~90 for
-$-(u_0+u_1)/(Y+u_1)$ (whose $K/F$-norm is $+1$ since
-$N_{K/F}(Y+u_0)=-N_{K/F}(u_0+u_1)$ on $Y^2+s_2(u_0)=0$) produces
-$W_0=-Q_0/A_{\mathrm{num}}$ with $\tau^*(W_0)/W_0=-(u_0+u_1)/(Y+u_1)$,
+$-(k_0+k_1)/(Y+k_1)$ (whose $K/F$-norm is $+1$ since
+$N_{K/F}(Y+k_0)=-N_{K/F}(k_0+k_1)$ on $Y^2+s_2(k_0)=0$) produces
+$W_0=-Q_0/A_{\mathrm{num}}$ with $\tau^*(W_0)/W_0=-(k_0+k_1)/(Y+k_1)$,
 establishing $\tau^*(S_F)=S_F$, $\tau^*(\Lambda_F)=\Lambda_F$, and
 \eqref{eq:8.7h}; ruling coordinates on $\mathcal C_K(F)$ show
 $S_F\in\delta_K\cdot N_{K/F}(K^\times)(F^\times)^3$ (script
 \texttt{verify\_g2\_open\_problem\_1.py}).
 \end{proof}
-
-\begin{rem26}[full regularity does not exclude a repeated cubic polar divisor]
-\label{rem:8.polar-regular}
-For the cyclic cubic tori of Theorem~\ref{res:8.3}, put
-$a=\alpha(X)$, $b=\beta(X)$, and
-\[
- A_0=\alpha(X),\qquad A_1=\tau(\alpha(X))=-\delta(X)=-2a-b,
- \qquad A_2=\tau^2(\alpha(X))=\gamma(X)=a+b.
-\]
-Then $A_0+A_1+A_2=0$. With
-$\Delta=A_0-A_1=3a+b$ and $M=A_0+A_1-2A_2=-3(a+b)$, the
-discriminant of the quadratic polar polynomial on the exceptional
-quadric cone is
-\begin{equation}\label{eq:8.polar-discriminant}
- \mathscr D(X)=M^2+3\Delta^2
- =12(3a^2+3ab+b^2)
- =6\operatorname{Tr}_{K/F}\bigl(\alpha(X)^2\bigr)\in F.
-\end{equation}
-This condition is \emph{not} implied to be nonzero by regularity.
-Indeed, $X\mapsto\alpha(X)$ identifies the two-dimensional $F$-space
-$\mathfrak t(F)$ with $K^0=\ker\operatorname{Tr}_{K/F}$.
-For $X\ne0$, the three short-root values (up to signs) are the
-nonzero conjugates $A_0,A_1,A_2$, and the long-root values are their
-pairwise differences. If two conjugates coincided, their common value
-would lie in $F$; trace zero and $p\ge5$ would force $X=0$.
-Thus \emph{every nonzero $X\in\mathfrak t(F)$ is regular}.
-
-More precisely, for nonzero $X$ the equation $\mathscr D(X)=0$ holds
-if and only if $F$ contains a primitive cube root of unity $\xi$
-and $\alpha(X)$ lies in one of the two nontrivial eigenspaces
-$\tau u=\xi u$ or $\tau u=\xi^2u$ of $K^0$.
-To see necessity, note that $\Delta\ne0$, so
-$(M/\Delta)^2=-3$; since $M/\Delta\in K$ and a cyclic cubic extension
-has no quadratic subextension, $\sqrt{-3}\in F$.
-Conversely, when $\mu_3\subset F$, the two nontrivial Galois
-eigenlines are defined over $F$ and satisfy
-$\operatorname{Tr}_{K/F}(u^2)=0$.
-Hence $\mathscr D=0$ consists of exactly two nonzero regular
-$F$-directions when $\mu_3\subset F$, and has no nonzero $F$-solution
-otherwise. For $p\ge5$ the first case is equivalent to
-$q\equiv1\pmod3$, where $q$ denotes the residue-field cardinality.
-
-For example, take $F=\mathbb Q_7$, $K=F(\theta)$ with
-$\theta^3=2$, and $\tau\theta=\xi\theta$ for a primitive cube root
-$\xi\in F$. The extension is unramified cyclic cubic.
-The unique $X\in\mathfrak t(F)$ with $\alpha(X)=\theta$ has
-all twelve root values nonzero, but
-$\mathscr D(X)=6\theta^2(1+\xi^2+\xi^4)=0$.
-The same is true for the regular elements $7^nX$ arbitrarily
-close to zero. Thus neither regularity nor the smallness
-hypothesis in Corollary~\ref{res:8.3B} excludes the repeated-polar
-case. The associated exceptional-divisor resonance identified
-in the auxiliary analysis must be treated before the
-one-parameter principal-value argument in Claim~\ref{res:8.3H}
-can be justified; it does not, by itself, disprove
-Hypothesis $(\mathrm X_3)$. See
-\texttt{notes/cubic-regularity-discriminant-2026-11-15.md} and
-\texttt{scripts/verify\_g2\_polar\_regular.py}
-for the detailed argument and independent exact checks.
-\end{rem26}
 
 \begin{res}{Claim}{8.3H}[evaluation of $J_3(X)$ and the constant $C_3(q)$; proof sketched only]\label{res:8.3H}
 Let $(T_G,\kappa)$ be as in Theorem~\ref{res:8.3} over $F$ of residue
@@ -4949,7 +4726,8 @@ non-zero magnitude
 \end{res}
 
 The argument below is a sketch, and the statement is not used elsewhere in the
-paper. Several of the functions it uses ($P_0$, $\ell_1$, $L_0$, $L_1$, $N_K$,
+paper. When $q\equiv1\pmod3$, the sketch does not cover the two directions of
+Remark~\ref{rem:8.polar-regular}. Several of the functions it uses ($P_0$, $\ell_1$, $L_0$, $L_1$, $N_K$,
 $s(U,t)$, $C(X)$, $c_{\mathrm{alg}}$ and the regulator $R_{\mathrm{cone}}$)
 are not defined here; explicit forms of $P_0$, $\ell_1$, $N_K$ and the
 $t$-one-form are in \texttt{verify\_g2\_open\_problem\_1.py}, Suite~6. What remains to be done is
@@ -4978,16 +4756,16 @@ $r\,L_1+L_0=-L_0\,z$ and $Y+1=1+U(1+z)$ decouples $(z,U)$ from $t$ and $X$
 \frac{\beta(X)\epsilon(X)\zeta(X)\,N_K(t)}{P_0(t;X)^2\,\ell_1(t;X)}\,dt\Bigr]
 \wedge\frac{(1+z)\,dz\wedge dU}{z^3},
 \]
-where $\ell_1(t;X)$ is linear in $t$ with unique root $t_*(X)\in\mathbb{P}^1(F)$.
-At $t=t_*(X)$, exact polynomial evaluation shows that the pole of $s(U,t)$
+where $\ell_1(t;X)$ is linear in $t$ with unique root $t_X\in\mathbb{P}^1(F)$.
+At $t=t_X$, exact polynomial evaluation shows that the pole of $s(U,t)$
 coalesces at $U=-3$ (independent of $X$ and $K/F$), and the $t$-one-form has a
-simple pole at $t_*(X)$ with residue $-\frac{2}{9}$, independent of $X$
-(Draft~6 stated $\pm\frac{2}{27}$; the value $-\frac29$ is computed by an
-exact Laurent expansion over $\mathbb Q(\sqrt{-3})$ in the script). This
+simple pole at $t_X$ with residue $-\frac{2}{9}$, independent of $X$
+(computed by an exact Laurent expansion over $\mathbb Q(\sqrt{-3})$ in the
+script). This
 cancels $\beta(X)\epsilon(X)\zeta(X)$ and $\delta_K$ identically, since
 $|2/9|_F=1$ for $p\ge 5$. Under the Igusa Mellin regulator $R_{\mathrm{cone}}^{\sigma/3}$ as
 $\sigma\to 0^+$ ($S=q^\sigma\to 1$), substituting $1+U(1+z)=V$ at $u=1+z$
-factors the limiting $(z,U)$-integral near $t=t_*(X)$ as $B_1(S)B_2(S)$, with
+factors the limiting $(z,U)$-integral near $t=t_X$ as $B_1(S)B_2(S)$, with
 \[
 B_1(S)=\int_F\omega_{K/F}(y)\,|y|_F^{-\sigma}|y+1|_F^{4\sigma}\,dy,\qquad
 B_2(1)=\mathrm{PV}\!\int_F\omega_{K/F}(3u-1)\,\frac{|3u-1|_F}{|u-1|_F^3}\,du.
@@ -5016,6 +4794,67 @@ $|J_{\mathcal Q_3}(X)|=(q^2+q+1)/(q^2(q+1))$. Multiplying by
 $|I_{\mathbb{P}^1(K)}|=2(q+1)q^{-2}$ yields \eqref{eq:8.8}.
 \end{proof}
 
+\begin{rem26}[repeated polar directions]\label{rem:8.polar-regular}
+This remark concerns the proof sketch of Claim~\ref{res:8.3H}. Blow up the
+vertex $(k_0,Y)=(0,0)$ of the quadric cone $\mathcal C_K$ of \eqref{eq:8.7g}.
+The exceptional divisor $E_0$ is the smooth quadric surface
+$\mathbb P(\mathcal C_K)\cong\mathbb P^1_F\times\mathbb P^1_F$. The form
+$\omega_{\mathcal Q_3}$ of \eqref{eq:8.7h} has a pole of order $3$ along the
+\emph{polar divisor} $\{\Lambda_F=0\}$, and on $E_0$ the polar divisor is the
+zero set of a quadratic polynomial in a ruling coordinate (the \emph{polar
+quadratic}). Put $a=\alpha(X)$, $b=\beta(X)$ and
+\[
+ A_0=\alpha(X),\qquad A_1=\tau(\alpha(X))=-\delta(X)=-2a-b,
+ \qquad A_2=\tau^2(\alpha(X))=\gamma(X)=a+b,
+\]
+so that $A_0+A_1+A_2=0$. With $\Delta=A_0-A_1=3a+b$ and
+$M=A_0+A_1-2A_2=-3(a+b)$, the discriminant of the polar quadratic is, up to a
+non-zero constant,
+\begin{equation}\tag{8.7i}\label{eq:8.polar-discriminant}
+ \mathscr D(X)=M^2+3\Delta^2
+ =12(3a^2+3ab+b^2)
+ =6\operatorname{Tr}_{K/F}\bigl(\alpha(X)^2\bigr)\in F
+\end{equation}
+(\texttt{notes/cubic-four-chart-intersections-2026-11-15.md}). If
+$\mathscr D(X)\neq0$, the polar divisor meets $E_0$ transversally in two
+distinct ruling lines. If $\mathscr D(X)=0$, it meets $E_0$ in a double line;
+resolving this produces an $F$-rational exceptional divisor along which the
+integrand has a logarithmic pole with trivial character. This violates the
+non-resonance condition (1.4) of \cite{LS83}, so the one-parameter
+principal-value argument in the sketch of Claim~\ref{res:8.3H} does not apply
+there (\texttt{notes/cubic-galois-descent-ls-resonance-2026-11-15.md}).
+
+Regularity of $X$ does not exclude $\mathscr D(X)=0$. Indeed,
+$X\mapsto\alpha(X)$ identifies the two-dimensional $F$-space $\mathfrak t(F)$
+with $K^0=\ker\operatorname{Tr}_{K/F}$. For $X\ne0$ the three short-root values
+(up to sign) are the non-zero conjugates $A_0,A_1,A_2$, and the long-root values
+are their pairwise differences. If two conjugates coincided, all three would,
+and their common value would lie in $F$ and have trace zero, forcing $X=0$. So
+\emph{every non-zero $X\in\mathfrak t(F)$ is regular}. On the other hand, for
+non-zero $X$, $\mathscr D(X)=0$ holds if and only if $F$ contains a primitive
+cube root of unity $\xi$ and $\alpha(X)$ lies in one of the two eigenlines
+$\tau u=\xi u$, $\tau u=\xi^2u$ of $K^0$. For necessity, $\Delta\ne0$, so
+$(M/\Delta)^2=-3$ with $M/\Delta\in K$; a cyclic cubic extension has no
+quadratic subextension, so $\sqrt{-3}\in F$. Conversely, when $\mu_3\subset F$
+the two eigenlines are defined over $F$ and satisfy
+$\operatorname{Tr}_{K/F}(u^2)=0$. For $p\ge5$, $\mu_3\subset F$ if and only if
+$q\equiv1\pmod3$. Since a tamely ramified cyclic cubic extension exists only
+when $q\equiv1\pmod 3$, the repeated polar directions occur for \emph{every}
+tamely ramified $K/F$, and for unramified $K/F$ when $q\equiv1\pmod3$.
+
+For example, take $F=\mathbb Q_7$ and $K=F(\theta)$ with $\theta^3=2$ (which
+is unramified, since $2$ is not a cube modulo $7$), and $\tau\theta=\xi\theta$
+for a primitive cube root of unity $\xi\in F$. The element $X\in\mathfrak t(F)$
+with $\alpha(X)=\theta$ is regular, but
+$\mathscr D(X)=6\theta^2(1+\xi^2+\xi^4)=0$, and the same holds for the regular
+elements $7^nX$, arbitrarily close to $0$. So neither regularity nor the
+smallness hypothesis in Corollary~\ref{res:8.3B} excludes these directions.
+This does not by itself contradict Hypothesis $(\mathrm X_3)$; see
+Remark~\ref{rem:8.status}(b). The algebra is checked in
+\texttt{scripts/verify\_g2\_polar\_regular.py}; see also
+\texttt{notes/cubic-regularity-discriminant-2026-11-15.md}.
+\end{rem26}
+
 \begin{rem26}[status of $(\mathrm X_3)$]\label{rem:8.status}
 Propositions~\ref{res:8.3A}--\ref{res:8.3G} and Corollary~\ref{res:8.3B} are
 new, and their algebra is verified symbolically in
@@ -5031,15 +4870,23 @@ the text and the cone decoupling $(r,s,t)\mapsto(z,U,t)$ written out;
 compute the principal value of \cite{LS83} that enters
 Formula~\ref{res:0.6} and Lemma~\ref{res:5.7}, and with it the vanishing
 $B_1(1)=0$ that removes the dependence on $X$. In particular,
-Remark~\ref{rem:8.polar-regular} shows that the repeated-polar locus
-$\mathscr D(X)=0$ contains fully regular parameters when
-$q\equiv1\pmod3$; the exceptional logarithmic pole there requires
-an invariant regularization or a verified cancellation;
+Remark~\ref{rem:8.polar-regular} shows that the repeated polar locus
+$\mathscr D(X)=0$ contains regular directions whenever $q\equiv1\pmod3$, and so
+for every tamely ramified $K/F$; the logarithmic pole there requires an
+invariant regularization or a verified cancellation. A possible way around
+it, not checked: prove $J_3(X)=C_3|\alpha\gamma\delta(X)|$ for
+$\mathscr D(X)\neq0$, and extend it to the two remaining lines using the
+identification of $J_3$ with the $3$-regular $\kappa$-germ in
+Corollary~\ref{res:8.3B} and the local constancy of Shalika germs on the
+regular set;
 \item the valuation-shell sums giving $I_{\mathbb{P}^1(K)}$, $B_1'(1)$ and
 $B_2(1)$, and hence \eqref{eq:8.8}, must be derived; the script checks only the
-algebra of the formulas as typed in.
+algebra of the formulas as typed in;
+\item the factorization of $J_3(X)$ into separately regularized integrals
+($I_{\mathbb{P}^1(K)}$ is the regularized volume of a $PGL_2(F)$-torsor of
+infinite measure) must be justified.
 \end{enumerate}
-The residue at $t_*(X)$ and its independence of $X$ are verified exactly by
+The residue at $t_X$ and its independence of $X$ are verified exactly by
 the script.
 \end{rem26}
 
@@ -5731,19 +5578,6 @@ pseudo-Levi subgroup $L=SL(3)\subset G_2$ has the long roots
 $\pm\beta,\pm\epsilon,\pm\zeta$; it is used in \S\ref{sec:8} only for
 coordinates.
 
-\begin{rem26}\label{rem:A5}
-The 1994 text gave the basis $(1/2,0)$, $(0,\sqrt3/2)$ for $P$ (but
-$(1/2,0)\cdot\beta^\vee=-1/2$); took the $A_1\times A_1$ subsystem of
-$\widehat G$ to be generated by $\beta^\vee$ and $\zeta^\vee$, which are not
-orthogonal; wrote ``$Q^\vee$ strictly contains $P^\vee$'' for ``is strictly
-contained in $P_1^\vee$''; and used $\Delta_2^\vee=\{\beta^\vee,\epsilon^\vee\}$
-for the $A_2$ case. These are short roots of $\widehat G$ and do not span a
-closed subsystem, since $\beta^\vee+\epsilon^\vee=\zeta^\vee$ in the coroot
-system ($\beta^\vee+(\alpha^\vee+\beta^\vee)=\alpha^\vee+2\beta^\vee$). The
-conclusions $H_2=(SL(2)\times SL(2))/\{\pm1\}$ and $H_1=PGL(3)$ were right.
-The argument above is new.
-\end{rem26}
-
 \subsection*{A.6. Tori of \texorpdfstring{$G_2$}{G2}}\fixedlabel{A.6}\label{sec:A6}
 
 The stable conjugacy classes of Cartan subgroups in a quasi-split group $G$
@@ -5910,6 +5744,255 @@ $6$ classes when $q\equiv2\pmod3$, rather than $7$.
 \end{rem26}
 
 % =====================================================================
+% Appendix B (Draft 7): corrections to the 1994 text that do not affect the
+% argument. Moved here from the body; labels are unchanged.
+% =====================================================================
+\section*{\texorpdfstring{Appendix B.\quad Corrections to the 1994 text}{Appendix B. Corrections to the 1994 text}}\fixedlabel{B}\label{sec:B}
+
+This appendix collects the Remarks~2026.$n$ that record misprints and other
+local errors of the 1994 text which do not affect the argument of this
+revision. They are grouped by the section they refer to. Remarks that bear on
+the logic of the paper (gaps, hypotheses, changed statements) remain in the
+body. Purely typographical changes are listed only in \texttt{CHANGES.md}.
+
+\subsection*{Corrections in \S\ref{sec:1}}
+
+\begin{rem26}\label{rem:conventions}
+Three conventions in the subsection on the coordinates $z(W,\rho)$ were inconsistent in 1994 and are
+corrected here: the root condition was written with $t^{-1}\theta_\rho(\xi)t$;
+the pair condition read $\rho=\omega\alpha$, which contradicts
+$\alpha_{i+1}=\omega_i\rho_{i+1}$ (before \eqref{eq:1.9}); and the sign of $z$ in \eqref{eq:1.8}
+was opposite to that in \eqref{eq:1.9} and \eqref{eq:1.10}. The versions in \S\ref{sec:1} agree with \eqref{eq:1.9} and \eqref{eq:1.10}. The open immersion
+$U_{-\alpha}\hookrightarrow P_{-,\alpha}/B_-$ was written as an isomorphism.
+\end{rem26}
+
+\begin{rem26}\label{rem:1.18}
+In 1994, \eqref{eq:1.18} was written with $z(W_i,\rho_i)$ in place of
+$z(W_{i-1},\rho_i)$; the version in \S\ref{sec:1} agrees with \eqref{eq:1.10}.
+\end{rem26}
+
+\begin{rem26}[exact determination of \eqref{eq:1.22} and resolution of the coordinate count]\label{rem:1.22}
+In the 1994 manuscript, \eqref{eq:1.22} was stated with undetermined constants
+$c_1,\dots,c_7$ and denoted $z(s_\beta W_0,\gamma)$ (the gallery coordinate
+across the wall $\gamma^\perp=(s_\beta^{-1}\alpha)^\perp$ of $W_1=s_\beta W_0$,
+which has simple-root type $\alpha$) by $z(\sigma_\beta^{-1}W_0,\alpha)$.
+In the Chevalley basis of \S A.4, direct matrix factorization of Lemma~\ref{res:1.21}
+determines $(c_1,\dots,c_7)=(-1,2,3,-3,-3,1,3)$ and resolves three defects of
+the 1994 display:
+(i) in $x(\gamma)$, the 1994 text had a spurious factor
+$z(\sigma_\beta^{-1}W_0,\alpha)$ in the denominator of the $c_1$-term, whereas
+$n_\alpha n_\beta=(z(W_0,\alpha)z(W_0,\beta))^{-1}$ involves only the two
+simple-wall coordinates (which explains why that factor was absent in the 1994
+formula for $w(\gamma)$, where $z(W_0,\alpha)z(W_0,\beta)$ cancels completely to
+leave $-1/\beta(X)$);
+(ii) the last term of $w(\zeta)$ in 1994 lacked $c_7$ and wrote $n_\zeta$ in
+place of $n_\delta$;
+(iii) the 1994 text listed the seven functions
+$z(W_0,\alpha)$, $z(W_0,\beta)$, $z(s_\beta W_0,\gamma)$, $n_\gamma$, $n_\delta$,
+$n_\epsilon$, $n_\zeta$ alongside $\lambda$ as coordinates on the
+$7$-dimensional variety $Y_1(B_+,B_-)$. By \eqref{eq:1.21b}, $n_\gamma$ is
+already determined by $n_\gamma=(z(W_0,\beta)z(s_\beta W_0,\gamma))^{-1}$;
+eliminating $n_\gamma$ leaves the six algebraically independent birational
+coordinates $(z(W_0,\alpha),z(W_0,\beta),z(s_\beta W_0,\gamma),n_\delta,n_\epsilon,n_\zeta)$
+on $S(B_+,B_-)$ (or, continuing the gallery $W_0,W_1,\dots,W_5$ with wall
+coordinates $b_1=z(W_0,\beta)$, $a_2=z(s_\beta W_0,\gamma)$, $b_3$, $a_4$, $b_5$,
+solving triangularly via $3a_2^2 b_1 b_3 n_\delta = -(b_1+b_3) - a_2^3 b_1 b_3(n_\epsilon + b_1 n_\zeta)$,
+$a_2^3 a_4 b_1 b_3 n_\epsilon = 3a_2 b_1 + 2a_4(b_1+b_3) - a_2^3 a_4 b_1^2 b_3 n_\zeta$,
+and $a_2^3 a_4^3 b_1^2 b_3^2 b_5 n_\zeta = a_4^3 b_3^2 b_5 - b_1^2(a_2^3 b_3 + (a_2+a_4)^3 b_5)$),
+which together with $\lambda$ form seven independent coordinates on $Y_1(B_+,B_-)$.
+\end{rem26}
+
+\subsection*{Corrections in \S\ref{sec:2}}
+
+\begin{rem26}\label{rem:2.cocycle}
+In 1994 the condition read $g^{-1}\sigma(g)\in T_G(\overline{F})$ for all
+$\sigma$. That would make $B_G$ defined over $F$, which is impossible for an
+elliptic $T_G$. It also said the homomorphism factors through
+$\Gal(\ovF/E)$, which is its kernel; it factors through $\Gal(E/F)$.
+\end{rem26}
+
+\begin{rem26}\label{rem:2.8}
+In 1994, \eqref{eq:2.6} carried the exponent
+$\sigma(n_{\sigma_T^{-1}(W_0)}n)$ outside the star as well as inside it, and the
+formula for $b'$ in \eqref{eq:2.8} and \eqref{eq:2.9} read
+$\sigma(n_{\sigma^{-1}_T (W_0)})c_\sigma b
+c_\sigma\sigma(n^{-1}_{\sigma^{-1}_T (W_0)})^{-1}$: it had $b$ in place of
+$\sigma(b)$, $c_\sigma$ in place of $c_\sigma^{-1}$, and a double inverse. The formulas in \S\ref{sec:2} follow by writing
+$(b,(B_-^{n_W}))^n=(n^{-1}bn,(B_-^{n_Wn}))$ and applying $\sigma$.
+Throughout, the normalization of $c_\sigma$ is
+$\sigma(B_-)=B_-^{c_\sigma}$.
+\end{rem26}
+
+\begin{rem26}[exact determination of \eqref{eq:2.11}--\eqref{eq:2.17}]\label{rem:2.11}
+In 1994, \eqref{eq:2.11}--\eqref{eq:2.14} and \eqref{eq:2.16}--\eqref{eq:2.17}
+were written schematically with undetermined constants and omitted reordering
+terms. Computing directly in the $8\times 8$ matrix model of \S A.4 fixes every
+coefficient and resolves several 1994 slips:
+\begin{itemize}
+\item $\phi^\alpha_\alpha=x(\alpha)/(1+x(\alpha)z)$ (written $x(\alpha)$ in
+1994), and because $t=\alpha^\vee(1+x(\alpha)z)$ already stands on the left in
+\eqref{eq:2.11}, it does not rescale $\phi^\alpha_\rho$ for $\rho\neq\alpha$
+(whereas in \eqref{eq:2.13}, moving $\beta^\vee(u_\beta)$ past $\theta_\alpha(x(\alpha))$
+multiplies $x(\alpha)$ by $u_\beta$);
+\item $y_\beta=-x(\beta)z^2/(1+x(\beta)z)$, not $-x(\beta)^2z/(1+x(\beta)z)$;
+\item in $\theta_\gamma(x)^{\theta_{-\beta}(z)}=\exp(xX_\gamma-xzX_\alpha)$, the
+Baker--Campbell--Hausdorff denominators give $\theta_\delta(x^2z)\theta_\eps(x^3z^2)\theta_\zeta(-2x^3z)$
+rather than the 1994 coefficients $(2czx^2,3c^2z^2x^3,3czx^3)$ with $c=-1$;
+\item in \eqref{eq:2.12} and \eqref{eq:2.14}, $b'=\sigma(b)^{\theta_{-\rho}(-z_\sigma)}$
+evaluates $\phi^\rho_\tau$ at $(\sigma(\unx),-z_\sigma)$ rather than applying
+$\sigma$ a second time to $z_\sigma$, and the $N_+$-factor $n_0$ in
+\eqref{eq:2.9} cancels identically to $1$.
+\end{itemize}
+\end{rem26}
+
+\subsection*{Corrections in \S\ref{sec:3}}
+
+\begin{rem26}\label{rem:3.patches}
+Three of the patch formulas were misprinted in 1994. The correct values are
+$w(\zeta)=x(\zeta)x(\alpha)z(\alpha)^4/x(\beta)^2$ on $x(\beta)\neq0$ and
+$w(\zeta)=x(\zeta)x(\alpha)x(\beta)^2w(\gamma)^4/x(\gamma)^4$ on
+$x(\gamma)\neq0$; the 1994 versions were $x(\zeta)z(\alpha)^5x(\alpha)^2/x(\beta)^3$
+and $x(\zeta)x(\alpha)x(\beta)^2w(\gamma)^4/x(\gamma)$. The 1994 text also
+gave a fifth patch, $z(\alpha)\neq0$ with $x(\epsilon)\neq0$ (or
+$x(\delta)\neq0$, or $x(\zeta)\neq0$). By the monomial identities following the four patches in \S\ref{sec:3} it lies inside
+$\{x(\beta)\neq0\}$, so it is omitted; its formula for $w(\zeta)$ had a
+spurious factor $z(\alpha)^{-3}$. All formulas were checked symbolically
+(script \texttt{g2\_patch\_jacobians.py}).
+\end{rem26}
+
+\begin{rem26}\label{rem:3.regular-branch}
+The 1994 text called $E_\emptyset$ the regular branch. With the convention
+of this paper (``Hales' $E_S$ is my $E_{\Delta -S}$'') the regular branch is
+$E_\Delta$; $E_\emptyset$ maps to the identity (Table~\ref{tab:4.3A}).
+\end{rem26}
+
+\begin{rem26}\label{rem:3.5}
+As printed in 1994, the lemma had $\Sigma^+_{S_1}$ in place of
+$\Sigma^+_{\Delta-S_1}$, so the roles of $x(\rho)$ and $w(\rho)$ were
+interchanged. For $S_1=\Delta$ that version gives the generators $\lambda$,
+$x(\alpha)$, $x(\beta)$, $w(\gamma),\dots$, for which
+$x(\gamma)=w(\gamma)x(\alpha)x(\beta)/\lambda$ is not regular. The generator
+count also failed unless $S_1=\Delta$. The proof of Lemma~\ref{res:3.5} given in \S\ref{sec:3} is new.
+\end{rem26}
+
+\subsection*{Corrections in \S\ref{sec:4}}
+
+\begin{rem26}\label{rem:4.redundancy}
+The 1994 text noted only the first set of identities. The multiplicity of
+$E_{\emptyset,\alpha,\zeta}$ was correctly given as $3$, the coefficient of
+$\alpha$ in $\zeta$.
+\end{rem26}
+
+\begin{rem26}\label{rem:4.forms}
+In the 1994 text the forms on $Z_{\emptyset,\alpha,\epsilon}$,
+$Z_{\emptyset,\alpha,\zeta}$ and $Z_{\emptyset,\beta,\zeta}$ had the
+denominator $w(\delta)$ in place of $w(\epsilon)$, respectively $w(\zeta)$,
+and the form on $Z_{\emptyset,\alpha,\epsilon}$ had $z(\alpha)^9$ and $b=10$,
+giving $\beta=10/3$ and $\beta-1=7/3$ in Table~\ref{tab:4.3}. The correct
+values are $z(\alpha)^{10}$, $b=11$, $\beta=11/3$; this agrees with
+$E_{\emptyset,\alpha,\epsilon}=E_{\emptyset,\alpha,\zeta}$. The
+unspecified constants $c$ of the 1994 text are $\pm1$, as shown.
+\end{rem26}
+
+\begin{rem26}\label{rem:4.4}
+The 1994 statement had ``$\dim\Cent_G(u)-2$'', which is correct only for
+rank $2$, and labeled both orbits ``$2$-regular''. It described
+$\mathcal O$ as the orbit ``induced'' from the trivial class of the
+endoscopic group $H_i$; since $H_i$ is not a Levi subgroup of $G$, the
+intended meaning is the endoscopically Richardson class (\S\ref{sec:0}) with
+$\dim\mathcal O=\dim G-\dim H_i$, that is, $r(\mathcal O)=|\Sigma_{H_i}^+|$.
+\end{rem26}
+
+\subsection*{Corrections in \S\ref{sec:5}}
+
+\begin{rem26}\label{rem:5.notation}
+In the 1994 text the unit in \eqref{eq:5.1} was called $\alpha$ (also a root),
+the constant in \eqref{eq:5.2} was called $\gamma$ (also a root and a group
+element), the truncation radius in Lemma~\ref{res:5.6} was $\epsilon$ (also a
+root), and the number of indices in Lemma~\ref{res:5.7} was $p$ (also the
+residue characteristic and $|\Sigma^+_G|$). These have been renamed
+$\upsilon$, $c_f$, $q^{-N}$ and $k$.
+\end{rem26}
+
+\begin{rem26}\label{rem:5.17}
+The 1994 proof asserted that $H^1(\Gamma,T_G)$ is always cyclic of order
+$2$ or $3$; this fails for the quadratic tori (Table~\ref{tab:A.6}). It also
+cited ``(5.10)'' (a lemma, not an equation) for the comparison with
+\eqref{eq:5.18}, and wrote $\epsilon_{-\alpha}$ for $\theta_{-\alpha}$; and
+``$\xi$ satisfies (5.2)'' was unexplained. We consulted \cite{Ha92a}
+in the author's \TeX\ version of 2016: the 1994 proof applied \cite[Ch.~I,
+Cor.~5.7]{Ha92a}, which treats a non-trivial inner twist $A_\sigma$, with
+$A_\sigma=w_\sigma^{-1}=s_\alpha$. For split $G_2$ the twist is trivial and
+\cite[Ch.~I, Cor.~5.4]{Ha92a} applies; the function $\xi$ does not occur.
+The proof has been rewritten accordingly.
+\end{rem26}
+
+\subsection*{Corrections in \S\ref{sec:6}}
+
+\begin{rem26}\label{rem:6.three}
+The 1994 text listed a third base divisor with $\beta=2$,
+$E_{\emptyset,\alpha,\gamma}$, and eliminated it by
+\cite[Ch.~V, Lemma~1.1]{Ha92a}. It is the same divisor as $E_\alpha$
+(\S\ref{sec:4}), so no elimination is needed.
+\end{rem26}
+
+\begin{rem26}\label{rem:6.4}
+The 1994 argument used Corollary~\ref{res:1.6} for the statement
+``$B^{\overline n}$ is opposite to $B^-$ and $B^{\overline n}\neq B$ unless
+$\overline n=1$''; the injectivity needed is that of the map
+$N_P^-\times({\mathcal O}\cap N_P)\to G$, $(\overline n,v)\mapsto
+v^{\overline n}$, which follows from $N_P^-\cap P=1$ and the fact that
+$P$ is the normalizer of $N_P$. The argument preceding Lemma~\ref{res:6.4} in \S\ref{sec:6} is ours.
+\end{rem26}
+
+\subsection*{Corrections in \S\ref{sec:7}}
+
+\begin{rem26}\label{rem:7.3}
+The 1994 text attempted to construct $\omega_{\mathcal O_2}$ as a limit
+$\lim_{\lambda\to0}|\bigwedge_{\sigma\in\Sigma_{\mathcal O_2}}dx(\sigma)\wedge dv(\sigma)|/|\lambda|^{3/2}$
+with $\Sigma_{\mathcal O_2}=\{\beta,\gamma,\delta,\epsilon\}$, treating
+$(w(\gamma),w(\delta))$ as base coordinates and $(x(\zeta),v(\alpha),v(\zeta))$
+as fiber coordinates, which produced non-rational square-root factors
+$|x(\delta)|^{1/2}|w(\delta)|^{-3/2}|z(\beta)|^{-3/2}$ and the wrong scaling in
+$X$. Because $x(\beta)=x(\gamma)=0$ on $E_{\emptyset,\alpha,\delta}$, the
+variables $w(\gamma)$ and $w(\delta)$ lie in the kernel of $d\pi$ and belong to
+the fiber, exactly as in \cite[\S6, pp.~239--240]{Ha89}; the Kirillov--Kostant
+quotient \eqref{eq:7.3}--\eqref{eq:7.4} removes all fractional powers and gives
+the required degree-$2$ scaling in $X$. The 1994 proof also concluded by
+claiming translation invariance of \eqref{eq:7.5} and applying
+Lemma~\ref{res:5.19}, which fails because the roots of $H_2$ span
+$\mathfrak t^*$ (Remark~\ref{rem:main-gap}).
+\end{rem26}
+
+\subsection*{Corrections in \S\ref{sec:8}}
+
+\begin{rem26}\label{rem:8.forms}
+Corrections to the 1994 formulas: in \eqref{eq:8.1} the coefficient was printed
+$x(\zeta)^2w(\zeta)^4w(\delta)^{-7}z(\alpha)^{-2}$; in \eqref{eq:8.4}--\eqref{eq:8.5}
+the 1994 text took $\lim_{\lambda\to0}\bigl|\bigwedge_{\sigma\in\{\alpha,\gamma,\delta\}}dx(\sigma)\wedge dv(\sigma)\bigr|/|\lambda|^2$,
+which placed the fiber coordinates $(z(\alpha),w(\gamma),w(\delta),v(\alpha))$
+in the base form and left the orbit coordinates $(x(\zeta),v(\beta),v(\epsilon),v(\zeta))$
+inside the fiber form (giving $X$-scaling $|c|^1$ instead of $|c|^3$); and in
+\eqref{eq:8.6} the power was $|\lambda|^2$, while the $\beta=4$ term carries
+$|\lambda|^3$.
+\end{rem26}
+
+\subsection*{Corrections in Appendix~\ref{sec:A}}
+
+\begin{rem26}\label{rem:A5}
+The 1994 text gave the basis $(1/2,0)$, $(0,\sqrt3/2)$ for $P$ (but
+$(1/2,0)\cdot\beta^\vee=-1/2$); took the $A_1\times A_1$ subsystem of
+$\widehat G$ to be generated by $\beta^\vee$ and $\zeta^\vee$, which are not
+orthogonal; wrote ``$Q^\vee$ strictly contains $P^\vee$'' for ``is strictly
+contained in $P_1^\vee$''; and used $\Delta_2^\vee=\{\beta^\vee,\epsilon^\vee\}$
+for the $A_2$ case. These are short roots of $\widehat G$ and do not span a
+closed subsystem, since $\beta^\vee+\epsilon^\vee=\zeta^\vee$ in the coroot
+system ($\beta^\vee+(\alpha^\vee+\beta^\vee)=\alpha^\vee+2\beta^\vee$). The
+conclusions $H_2=(SL(2)\times SL(2))/\{\pm1\}$ and $H_1=PGL(3)$ were right.
+The argument in \S\ref{sec:A5} is new.
+\end{rem26}
+
+% =====================================================================
 % Back matter (new in 2026): summary, open problems, glossary,
 % acknowledgments, references.
 % =====================================================================
@@ -5945,12 +6028,12 @@ $\Omega(G_2)$-action on $E_{\emptyset,\alpha,\delta}(u_0)$, and a birational
 isomorphism $E_{\emptyset,\alpha,\delta}(u_0)\dashrightarrow(\mathbb{P}^1)^4$ are
 computed in closed form, proving Corollary~\ref{res:7.6F} and Hypothesis
 $(\mathrm X_2)$ directly (given Lemma~\ref{res:5.14} and Lemma~\ref{res:0.8})
-with explicit $p$-adic constant $C'(q)$ (Propositions~\ref{res:7.6}--\ref{res:7.6G},
+with explicit $p$-adic constant $C'(q)$ (Propositions~\ref{res:7.6A}--\ref{res:7.6G},
 Theorem~\ref{res:7.6H}). For $r=3$ and the cyclic cubic tori ($p\ge 5$),
 $\Delta_0(X)=\text{const}$, the explicit cocycle $\kappa_1(t_*)$, an
 $\Omega(G_2)$-equivariant double cover over $(\mathbb{P}^1)^6$, and an
 $SL_2(\alpha)$-fibration over $\mathbb{P}^1(K)\setminus\mathbb{P}^1(F)$ onto a
-smooth split quadric cone $\mathcal C_K(F)$ are proved in
+split quadric cone $\mathcal C_K(F)$ are proved in
 Propositions~\ref{res:8.3A}--\ref{res:8.3G}. The evaluation of $J_3(X)$ that
 would prove $(\mathrm X_3)$ is sketched in Claim~\ref{res:8.3H}.
 \end{enumerate}
@@ -5969,14 +6052,15 @@ matching is now known \cite{GH16}.
 \begin{enumerate}[(1)]
 \item Complete the direct computation of the fiber integrals $I_E(X,u)$ of
 Remark~\ref{rem:main-gap}. Hypothesis $(\mathrm X_2)$ for the biquadratic tori
-is proved in Theorem~\ref{res:7.6H}. What remains (as of Draft~6):
+is proved in Theorem~\ref{res:7.6H}. What remains (as of Draft~7):
 \begin{enumerate}[(a)]
 \item For $r=1$: carry out the comparison of
 \eqref{eq:6.5a}--\eqref{eq:6.5b} with \cite{SS83} and \cite{Re84}.
 \item For $r=3$ and the cyclic cubic tori: complete the proof of
-Claim~\ref{res:8.3H}, as listed in Remark~\ref{rem:8.status}(a)--(c). The main
+Claim~\ref{res:8.3H}, as listed in Remark~\ref{rem:8.status}(a)--(d). The main
 point is to show that the Mellin regularization used there computes the
-principal value of \cite{LS83}. The independence of $X$ would then prove
+principal value of \cite{LS83}, including along the repeated polar directions
+of Remark~\ref{rem:8.polar-regular}. The independence of $X$ would then prove
 $(\mathrm X_3)$ directly; the explicit values of $|C_3(q)|$ in \eqref{eq:8.8}
 also need the valuation-shell sums, which have been done only by hand.
 \item For $r=2$: check the regularized evaluations in the proof of
@@ -6008,38 +6092,254 @@ $H_2=(SL(2)\times SL(2))/\{\pm1\}$ that avoids Lemma~\ref{res:5.19}.
 % ---------------------------------------------------------------------
 \section*{Glossary}\label{sec:glossary}
 
+Terms are listed alphabetically, each with an example from $G_2$ where one is
+available. Section and equation numbers point to the full definitions.
+
 \begin{description}
-\item[$\kappa$-orbital integral] The combination
-$\Phi^{T,\kappa}(\gamma,f)=\sum\kappa(\inv(\gamma^0,\gamma'))\Phi(\gamma',f)$
-over the $F$-classes $\gamma'$ in the stable class of a regular semisimple
-$\gamma$.
-\item[Shalika germ] The function $\Gamma^{T}_{\mathcal O}$ (or
-$\Gamma^{T,\kappa}_{\mathcal O}$) giving the coefficient of the unipotent
-orbital integral $\mu_{\mathcal O}(f)$ in the expansion of an orbital
-integral near the identity \cite{Sh72}.
-\item[$r$-regular class] A unipotent class $\mathcal O$ with
-$\dim\Cent_G(u)=\mathrm{rk}\,G+2r$ for $u\in\mathcal O$. For $G_2$: regular
-($r=0$), subregular ($1$), $\tilde A_1$ ($2$), $A_1$ ($3$), trivial ($6$).
+\item[$a$-data] Elements $a_\rho\in\ovF^\times$, one for each root, with
+$a_{\sigma\rho}=\sigma(a_\rho)$ and $a_{-\rho}=-a_\rho$, used to define the
+factor $\Delta_{II}$ of the transfer factor \cite[\S2.2]{LS87}. \emph{Example:}
+for the biquadratic tori only the orbits of $\beta$ and $\gamma$ enter, and
+the $a$-data contribute the constant $c$ of Proposition~\ref{res:7.6A}.
+
+\item[Adjoint quotient] The morphism $\chi:G\to T/\Omega$ sending $g$ to the
+class of its semisimple part \cite{Sl80}. \emph{Example:} the unipotent
+variety $V$ is $\chi^{-1}(1)$, the image of the special fiber $\phi^{-1}(1)$.
+
+\item[Base divisor] A branch of $\phi^{-1}(1)$ in $Y''$, or its strict
+transform in $Y_C$ (\S\ref{sec:0}). \emph{Example:} $E_{\emptyset,\alpha,\delta}$,
+with $\beta=3$, is the base divisor carrying the $2$-regular germ.
+
+\item[Biquadratic, cubic and quadratic tori] The elliptic maximal tori of $G_2$
+whose Galois image in $\Omega$ is conjugate to $\langle s_\alpha,s_\zeta\rangle$,
+to a cyclic group of order $3$, or to $\{\pm1\}$ (Table~\ref{tab:A.6}). Their
+splitting fields are biquadratic, cyclic cubic, and quadratic extensions of $F$.
+\emph{Example:} a biquadratic torus has $H^1(F,T)\cong\zzz/2$, and its
+non-trivial $\kappa$ gives $H_2$.
+
+\item[Branch] An irreducible component of the special fiber $\phi^{-1}(1)$, or
+of $\{\lambda=0\}$ on $Z$. \emph{Example:} $\lambda=0$ has seven branches on $Z$
+(Table~\ref{tab:4.3A}).
+
+\item[Chevalley basis] A basis $\{X_{\pm\rho},h_\rho\}$ of the Lie algebra with
+integral structure constants. \emph{Example:} in \S A.4,
+$X_\alpha=E_{12}+E_{34}+E_{35}$ inside $\mathfrak{so}(8)$.
+
+\item[Cocycle function $t_*$] The map $Y_C\to Z^1(\Gamma,T_G(\ovF))$ of
+\cite{La83}, \cite{Ha92a} that records, at each point, the cocycle measuring how
+far that point is from being $F$-rational in the naive sense; $\kappa(t_*)$ is
+the $\kappa$-weight in the integrand (\S\ref{sec:0}, \eqref{eq:5.18}).
+\emph{Example:} for the biquadratic tori $\kappa(t_*)=c\,\omega_{K/L}(R)$
+(Proposition~\ref{res:7.6D}).
+
+\item[Cuspidal (elliptic) endoscopic group] An endoscopic group attached to a
+pair $(T,\kappa)$ with $T$ elliptic and $\kappa\neq1$. \emph{Example:} for
+$G_2$ these are $PGL(3)$ and $(SL(2)\times SL(2))/\{\pm1\}$ (\S A.5).
+
+\item[Dynkin curve] The Springer fiber $\mathcal B_u$ of a subregular unipotent
+element, a union of projective lines \cite{St74}. \emph{Example:} for $G_2$ it
+is one line of type $\alpha$ meeting three lines of type $\beta$
+(Figure~\ref{fig:dynkin}).
+
+\item[Elliptic torus] A maximal torus $T$ over $F$ with $X^*(T)^\Gamma=0$, so that
+$T(F)$ is compact modulo the center. \emph{Example:} the torus with Galois
+image $\{\pm1\}$ is elliptic, since $-1$ fixes no non-zero character.
+
 \item[Endoscopic group] A quasi-split group $H$ attached to a pair
 $(T,\kappa)$, whose dual group is the centralizer of $\kappa$ in $\widehat G$
-\cite{La79}, \cite{LS87}.
-\item[Transfer factor] The function $\Delta_{G/H}$ of Langlands and
-Shelstad \cite{LS87} that normalizes the comparison of $\kappa$-orbital
-integrals on $G$ with stable orbital integrals on $H$.
-\item[Variety of stars] Langlands' variety $S$ of configurations of Borel
-subgroups indexed by the chambers of the Weyl group (\S\ref{sec:1}).
+\cite{La79}, \cite{LS87}. Its roots, transported to $T$, are the roots $a$ of
+$G$ with $\kappa(a^\vee)=1$. \emph{Example:} for a cubic torus these are the
+short roots $\pm\alpha,\pm\gamma,\pm\delta$, and $H=PGL(3)$.
+
+\item[Endoscopically Richardson class] A unipotent class $\ooo$ with
+$\dim\ooo=\dim G-\dim H$ for an endoscopic group $H$, induced in
+Spaltenstein's sense from the trivial class of a pseudo-Levi subgroup of the
+same rank and dimension as $H$ (\S\ref{sec:0}). \emph{Example:} $A_1$, of
+dimension $14-8=6$, for $H=PGL(3)$ and the pseudo-Levi subgroup $SL(3)$.
+
+\item[Essential patch] A fundamental patch $Z_{S_1,S_2,\sigma}$ whose map
+$\sigma$ satisfies (3.3a)--(3.3c) (\S\ref{sec:3}). \emph{Example:}
+$Z_{\emptyset,\alpha,\delta}$, on which $\lambda=0$ is $z(\alpha)=0$ with
+multiplicity $2$.
+
+\item[Exceptional divisor] A divisor of a resolution $\tilde Z\to Z$ (or
+$Y_C\to Y_1$) lying over the singular locus (Remark~\ref{rem:exceptional}).
+\emph{Example:} the ray $u=(3,2,2,2,3,5,7)$ of a subdivision of the fan of $Z$
+gives an exceptional divisor with $a=3$, $b=6$, $\beta=2$.
+
+\item[Fundamental divisor] A branch of $\phi^{-1}(1)$ in $Y_C$ that maps into
+$Y''$ and has $\beta\in\{2,3,4\}$ (\S\ref{sec:0}). \emph{Example:} the base
+divisors $E_{\{\alpha\}}$ and $E_{\{\beta\}}$, with $\beta=2$.
+
+\item[Fundamental patch] An open set $Z_{S_1,S_2,\sigma}\subset Z$ defined by
+the non-vanishing conditions (3.2a)--(3.2d). \emph{Example:}
+$Z_{\{\alpha\}}=\{x(\alpha)\neq0,\ z(\beta)\neq0\}$.
+
+\item[Gallery, wall--chamber pair] A gallery is a sequence of Weyl chambers,
+consecutive ones sharing a wall; a pair $(W,\rho)$ is a chamber with one of its
+walls $\rho^\perp$ (\S\ref{sec:1}). \emph{Example:} the gallery
+$W_0,\,s_\beta W_0,\,s_\beta s_\alpha W_0$ crosses the walls $\beta^\perp$ and
+$\gamma^\perp$, and gives the coordinates in \eqref{eq:1.21b}.
+
+\item[Hilbert symbol] The pairing $(x,y)_F\in\{\pm1\}$ on $F^\times$, equal to
+$1$ exactly when $x$ is a norm from $F(\sqrt y)$ \cite[Ch.~XIV]{Ser79}.
+\emph{Example:} $\Delta_{II}(\exp Y)=c\,(P(Y),d_\alpha)_F$ for the biquadratic
+tori (Proposition~\ref{res:7.6A}).
+
+\item[Hypothesis $(\mathrm X_r)$] The statement that the fiber integral
+$I_E(X,u)$ over the base divisor of the $r$-regular class depends on $X$ as a
+combination of stable $r$-regular germs of $H$ (Remark~\ref{rem:main-gap}).
+\emph{Example:} for $r=2$ it says that $I_E$ is independent of $X$; this is
+Theorem~\ref{res:7.6H} for the biquadratic tori.
+
 \item[Igusa constants] For a branch $E$ of $\lambda=0$ on a smooth model,
 $a(E)=\mathrm{ord}_E\lambda$, $b(E)=1+\mathrm{ord}_E\omega$, and
 $\beta(E)=b(E)/a(E)$; the branch contributes terms
-$\theta(\lambda)|\lambda|^{\beta-1}$ to the Igusa expansion.
-\item[Branch, base divisor] An irreducible component of $\phi^{-1}(0)$ (or of
-$\lambda=0$); a base divisor is a branch of $Y''$, as opposed to an
-exceptional or spurious divisor of the resolution.
+$\theta(\lambda)|\lambda|^{\beta-1}$ to the Igusa expansion. \emph{Example:}
+$E_{\emptyset,\beta,\zeta}$ has $a=2$, $b=8$, $\beta=4$.
+
+\item[Igusa expansion] The asymptotic expansion \eqref{eq:0.3} of a fiber
+integral $F(\lambda)$ as $\lambda\to0$, a finite sum of terms
+$\theta(\lambda)|\lambda|^{\beta-1}(-\log_q|\lambda|)^{r-1}$, valid exactly near
+$0$ on a $p$-adic manifold \cite{Ig78}, \cite{La83}. \emph{Example:} the $2$-regular
+germ appears in the term $|\lambda|^2$ of \eqref{eq:7.1}.
+
+\item[Igusa integrand (Igusa data)] A function $f$ on $Y_C(F)$ which, near
+$\phi^{-1}(0)$, is locally a product of quasi-characters in coordinates in
+which $\phi^{-1}(0)$ has normal crossings, together with the forms
+$\omega$, $\omega_\lambda$; see (5.1)--(5.4) and \cite{LS83}. \emph{Example:}
+$f_\kappa$ in \eqref{eq:0.2}.
+
+\item[Induced class] For a Levi or pseudo-Levi subgroup $M$, the class
+$\Ind_M^G(1)$ is the dense class in $G\cdot\mathrm{Lie}(N)$ for a parabolic with
+Levi factor $M$, or its analogue in Spaltenstein's sense \cite{Spa82}.
+\emph{Example:} the subregular class of $G_2$ is induced from the trivial class
+of either Levi subgroup $GL(2)$.
+
+\item[$\kappa$-orbital integral] The combination
+$\Phi^{T,\kappa}(\gamma,f)=\sum\kappa(\inv(\gamma^0,\gamma'))\Phi(\gamma',f)$
+over the $F$-classes $\gamma'$ in the stable class of a regular semisimple
+$\gamma$. \emph{Example:} for a cubic torus there are three $F$-classes, and
+$\kappa$ takes cube-root-of-unity values.
+
+\item[Kirillov--Kostant form] The invariant symplectic volume form on a
+nilpotent (or unipotent) orbit. \emph{Example:} on $\mathcal O_2=\tilde A_1$ its
+pullback is $x(\delta)\,dx(\delta)\wedge dx(\epsilon)\wedge dx(\zeta)\wedge
+dv(\alpha)\wedge\cdots\wedge dv(\zeta)$, \eqref{eq:7.3}.
+
+\item[Leray (fiber) form] The quotient of the residue form on a divisor $E$ by
+the pullback of the orbit form, a form on the fibers $E(u)$ of $\pi:E\to\ovo$.
+\emph{Example:} \eqref{eq:7.4} on $E_{\emptyset,\alpha,\delta}(u)$, homogeneous of
+degree $2$ in $X$.
+
+\item[Monomial variety $Z$] The affine toric variety of \S\ref{sec:3}, the
+closure of the torus orbit cut out by \eqref{eq:3.1}; locally $Y''$ is the
+product of an affine space and $Z$. \emph{Example:} for $G_2$, $Z\subset\aaa^{13}$
+has dimension $7$, and $x(\zeta)=\lambda w(\zeta)z(\alpha)^{-3}z(\beta)^{-2}$.
+
+\item[Norm-one torus] $T^1_{M/F}=\ker(N_{M/F}:\mathrm{Res}_{M/F}\gga_m\to\gga_m)$
+for a quadratic extension $M/F$; its $F$-points form a compact group.
+\emph{Example:} the fiber $E_{\emptyset,\alpha,\delta}(u_0)(F)$ is birationally
+$T^1_{L/F}(F)\times T^1_{K_\zeta/F}(F)\times\mathbb P^1(K_\zeta)$
+(Theorem~\ref{res:7.6H}).
+
+\item[$\ooo$-divisor, $\ooo(F)$-divisor] A divisor $E$ with $\pi(E)=\ovo$ (or
+with $\ooo$ minimal such that $\pi(E)\subset\ovo$); an $\ooo(F)$-divisor is also
+defined over $F$ with $\pi(E(F))$ dense in $\ooo(F)$ (\S\S\ref{sec:0},
+\ref{sec:5}). \emph{Example:} $E_{\emptyset,\beta,\zeta}$ is an $A_1$-divisor.
+
+\item[Principal homogeneous space] A space on which a group acts simply
+transitively. \emph{Example:} $\mathbb P^1(K)\setminus\mathbb P^1(F)$, for $K/F$
+cyclic cubic, under $PGL_2(F)$ (Proposition~\ref{res:8.3F}).
+
+\item[Principal value integral] The regularized integral over a branch that
+gives the coefficient $F_1(\theta,\beta,f)$, defined by analytic continuation
+\cite{LS83}, \cite{La83}. \emph{Example:} in the proof of
+Theorem~\ref{res:7.6H}(d), $\mathrm{PV}\!\int_{|t|_F>1}dt=-1$, the value at $s=0$
+of $\int_{|t|_F>1}|t|_F^{-s}dt$.
+
+\item[Pseudo-Levi subgroup] The identity component of the centralizer of a
+semisimple element; it need not be a Levi subgroup. \emph{Example:} $SL(3)$,
+with the long roots $\pm\beta,\pm\epsilon,\pm\zeta$, and
+$(SL(2)\times SL(2))/\{\pm1\}$, with $\pm\alpha,\pm\zeta$.
+
+\item[$r$-regular class] A unipotent class $\mathcal O$ with
+$\dim\Cent_G(u)=\mathrm{rk}\,G+2r$ for $u\in\mathcal O$; equivalently
+$\dim\mathcal B_u=r$. For $G_2$: regular ($r=0$), subregular ($1$), $\tilde
+A_1$ ($2$), $A_1$ ($3$), trivial ($6$).
+
+\item[Richardson class, Richardson branch] The Richardson class of a parabolic
+$P=MN_P$ is the unipotent class meeting $N_P$ in a dense open set; the
+Richardson branch $E_{S_1}$ lies on the patch $Z_{S_1}$ and maps onto the
+closure of the Richardson class of $P_{\Delta-S_1}$ (\S\ref{sec:3}).
+\emph{Example:} $E_{\{\alpha\}}$ and $E_{\{\beta\}}$ map onto the closure of the
+subregular class.
+
+\item[Shalika germ] The function $\Gamma^{T}_{\mathcal O}$ (or
+$\Gamma^{T,\kappa}_{\mathcal O}$) giving the coefficient of the unipotent
+orbital integral $\mu_{\mathcal O}(f)$ in the expansion of an orbital integral
+near the identity \cite{Sh72}. By homogeneity, the normalized $\kappa$-germ of an
+$r$-regular class scales as $|\lambda|^{2(r-|\Sigma_H^+|)}$ \eqref{eq:0.1A}.
+\emph{Example:} for $H=H_2$ the $2$-regular $\kappa$-germ is homogeneous of
+degree $0$.
+
+\item[Special fiber] The fiber $\phi^{-1}(1)$ of $\phi:Y_C\to C$ over the
+identity, a divisor whose image under $\pi$ is the unipotent variety.
+\emph{Example:} on $Z$ it is $\{\lambda=0\}$.
+
+\item[Spurious divisor] A branch of $\phi^{-1}(1)\subset Y_C$ that does not
+map into $Y''$ (\S\ref{sec:0}). \emph{Example:} none contributes to the
+subregular germ \cite[Ch.~III]{Ha92a}; for the $2$- and $3$-regular germs they
+have not been analyzed.
+
+\item[Stable conjugacy, $\inv$] Two regular semisimple elements of $G(F)$ are
+stably conjugate if they are conjugate over $\ovF$; if $\gamma'=g\gamma g^{-1}$,
+then $\inv(\gamma,\gamma')$ is the class of $\sigma\mapsto g^{-1}\sigma(g)$ in
+$H^1(F,T)$. \emph{Example:} for a biquadratic torus the stable class of a
+regular $\gamma\in T(F)$ contains two $F$-classes.
+
+\item[Star, regular star, variety of stars] A star is a $|\Omega|$-tuple of
+Borel subgroups indexed by Weyl chambers satisfying the adjacency condition of
+\S\ref{sec:1}; a regular star is one of the form $(B_G(W)^h)_W$. Their variety
+$S$ is projective, with $S_0\cong T_G\setminus G$ open in it.
+\emph{Example:} for $G_2$ a star is a $12$-tuple, and $\dim S_0=12$.
+
+\item[Star coordinates] The functions $z(W,\rho)$ on $S(B_+,B_-)$, the
+blow-up coordinates $z(\alpha)$, $z_1(W,\rho)$ on $S_1$, and the coordinates
+$x(\rho)$, $w(\rho)$, $v(\rho)$ on $Y''$ (\S\ref{sec:1}). \emph{Example:}
+$\lambda w(\rho)=x(\rho)\prod_\alpha z(\alpha)^{m(\alpha)}$, \eqref{eq:3.1}.
+
+\item[Tate--Nakayama isomorphism] For an elliptic torus,
+$H^1(F,T)\cong X_*/I_\Gamma X_*$ \cite{La79}. \emph{Example:} for a cubic torus
+$I_\Gamma X_*=\zzz\alpha^\vee+3\zzz\beta^\vee$, so $H^1(F,T)\cong\zzz/3$
+(\S A.6).
+
 \item[Toric variety] A normal variety with a dense torus orbit; here
 $Z=\operatorname{Spec}k[S]$ for a finitely generated saturated semigroup $S$
-\cite{Ke72}.
-\item[Principal value integral] The regularized integral over a branch that
-gives the coefficient $F_1(\theta,\beta,f)$ \cite{LS83}, \cite{La83}.
+\cite{Ke72}. Its torus-invariant prime divisors correspond to the facets of the
+cone of $S$. \emph{Example:} the cone of $Z$ has eleven facets, seven of them
+branches of $\lambda=0$ (Remark~\ref{rem:exceptional}).
+
+\item[Transfer factor] The function $\Delta_{G/H}=\Delta_I\Delta_{II}
+\Delta_{III_1}\Delta_{III_2}\Delta_{IV}$ of Langlands and Shelstad \cite{LS87}
+that normalizes the comparison of $\kappa$-orbital integrals on $G$ with stable
+orbital integrals on $H$. This paper writes $\Delta_{III_1}\Delta_{IV}$
+explicitly and collects the rest near the identity in $\Delta_0$.
+\emph{Example:} $\Delta_0$ is constant for the cubic tori
+(Proposition~\ref{res:8.3A}) but not for the biquadratic tori in general
+(Example~\ref{res:7.6B}).
+
+\item[Unipotent orbital integral] $\mu_{\mathcal O}(f)$, the integral of $f$
+over a unipotent class $\mathcal O$ against an invariant measure, which
+converges by \cite{Ra72}. \emph{Example:} the trivial class gives
+$\mu_{\{1\}}(f)=f(1)$.
+
+\item[Variety of stars] See \emph{Star}.
+
+\item[Weyl discriminant] Here $D_G(\gamma)=\prod_{\sigma>0}(1-\sigma(\gamma)^{-1})$,
+a square root of the usual discriminant up to a unit for elliptic $\gamma$.
+\emph{Example:} $D_G(\exp\lambda X)=\lambda^6\prod_{\sigma>0}\sigma(X)+\cdots$
+for $G_2$.
 \end{description}
 
 % ---------------------------------------------------------------------
@@ -6079,7 +6379,15 @@ $SL_2(\alpha)$-fibration onto the split quadric cone $\mathcal C_K(F)$
 $6$-dimensional cubic principal-value integral $J_3(X)$
 (Claim~\ref{res:8.3H}). Claude refereed Draft~6, corrected the residue in
 Claim~\ref{res:8.3H} and its verification script, and marked the claim as a
-sketch. David Joyner directed the work and is solely
+sketch. After Draft~6, auxiliary notes in \texttt{g2stuff/notes} (dated
+November 15, 2026) established the facts recorded in
+Remark~\ref{rem:8.polar-regular}; see the revision log. Claude prepared Draft~7
+(November 16, 2026): it refereed the post-Draft-6 text, corrected the Jacobian
+identity in the proof of Theorem~\ref{res:7.6H} and several local slips,
+rewrote Remark~\ref{rem:8.polar-regular} so that it is self-contained, expanded
+the glossary and the table of notation, moved the corrections of 1994
+misprints to Appendix~\ref{sec:B}, and edited the text for readability.
+David Joyner directed the work and is solely
 responsible for the final text. AI review is not an independent
 certification: the computations were checked by scripts, but the
 mathematical arguments, and every statement about sources that could not be
@@ -6120,7 +6428,7 @@ integrals in large residual characteristic}'', Amer. J. Math. \textbf{138}
 \textbf{171--172} (1989), 195--256.
 
 \bibitem[Ha92a]{Ha92a} T.~Hales, \href{https://iacobus.usc.gal/nde/fulldisplay/alma991013513907807712/34CISUG_USC:NDE/gl}{\textit{The Subregular Germ of Orbital
-Integrals}}, Mem. Amer. Math. Soc. \textbf{99} (1992), no.~476. (Draft~4
+Integrals}}, Mem. Amer. Math. Soc. \textbf{99} (1992), no.~476. (We
 consulted the author's \TeX\ version of 2016, which has the same numbering of
 chapters and results.)
 

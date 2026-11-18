@@ -32,12 +32,14 @@
 \theoremstyle{remark}
 \newtheorem{remarkrev}{Remark}
 % A lemma added after Proposition 7.5 without renumbering what follows.
-\newcommand{\shellref}{\ref{prop:weil-char}$'$}
+\newcommand{\shellnum}{\ref*{prop:weil-char}$'$}
+\newcommand{\shellref}{\hyperref[lem:shell]{\shellnum}}
 \theoremstyle{plain}
-\newtheorem*{lemmaprime}{Lemma \shellref}
+\newtheorem*{lemmaprime}{Lemma \shellnum}
 % A proposition added after Lemma 7.8 without renumbering what follows.
-\newcommand{\normref}{\ref{lem:variance-gl2}$'$}
-\newtheorem*{propprime}{Proposition \normref}
+\newcommand{\normnum}{\ref*{lem:variance-gl2}$'$}
+\newcommand{\normref}{\hyperref[prop:norm-N5]{\normnum}}
+\newtheorem*{propprime}{Proposition \normnum}
 \renewcommand{\theremarkrev}{2026.\arabic{remarkrev}}
 
 \newcommand{\Q}{\mathbb{Q}}
@@ -72,8 +74,8 @@ Acknowledgments for the division of work.}}
 \begin{abstract}
 This revision was written with the help of AI systems: Claude (Anthropic)
 refereed the 1995 notes and drafted the revision as a co-author, and
-ChatGPT (OpenAI) refereed the revised draft. See the Acknowledgments for
-details. We write out the Arthur--Selberg trace formula, in its non-invariant and
+ChatGPT (OpenAI) and Gemini (Google) refereed the revised draft. See the
+Acknowledgments for details. We write out the Arthur--Selberg trace formula, in its non-invariant and
 in its invariant form, for the metaplectic double cover of
 $G=\Res_{k/\Q}SL(2)$ over a number field $k$, and take the first steps
 towards its stable form. The general theory is due to
@@ -137,6 +139,14 @@ Section~\ref{sec:stable} in a second report. Several definitions, proofs
 and examples of the present draft were added or corrected in response
 to these reports.
 
+Gemini (Google), an AI model, acted as a second independent referee. It
+refereed the draft of November 16, 2026 in two reports, one on the master
+file and one on all sections. Claude checked each point of these reports
+against the source. One misprint in Section~\ref{sec:stable}, several
+inconsistent sentences and two bibliography entries were corrected in
+response, and the background of Section~\ref{sec:background} and the
+glossary were then enlarged at the first author's request.
+
 Review by AI systems is not an independent certification of the
 results. The errors that remain are the authors'. Further details on the
 AI usage, including the referee reports, the responses to them and a
@@ -189,6 +199,9 @@ the metaplectic group}, Lecture Notes in Math. \textbf{530}, Springer, 1976.
 \bibitem[GGW18]{GGW18} W. T. Gan, F. Gao and M. H. Weissman, ``L-groups and the
 Langlands program for covering groups: a historical introduction'',
 Ast\'erisque \textbf{398} (2018), 1--31.
+\bibitem[GHP79]{GHP79} S. Gelbart, R. Howe and I. Piatetski-Shapiro,
+``Uniqueness and existence of Whittaker models for the metaplectic
+group'', Israel J. Math. \textbf{34} (1979), 21--37.
 \bibitem[GI18]{GI18} W. T. Gan and A. Ichino, ``The Shimura--Waldspurger
 correspondence for $\mathrm{Mp}_{2n}$'', Ann. of Math. (2) \textbf{188}
 (2018), 965--1016.
@@ -248,7 +261,7 @@ rev\^etements de groupes r\'eductifs connexes. III. Le d\'eveloppement
 spectral fin'', Math. Ann. \textbf{356} (2013), 1029--1064.
 \bibitem[Li14a]{Li14a} W.-W. Li, ``La formule des traces pour les rev\^etements
 de groupes r\'eductifs connexes. I. Le d\'eveloppement g\'eom\'etrique fin'',
-J. reine angew. Math. \textbf{686} (2014), 37--109.
+J. Reine Angew. Math. \textbf{686} (2014), 37--109.
 \bibitem[Li14b]{Li14b} W.-W. Li, ``La formule des traces pour les rev\^etements
 de groupes r\'eductifs connexes. IV. Distributions invariantes'', Ann. Inst.
 Fourier \textbf{64} (2014), 2379--2448.
@@ -259,7 +272,7 @@ m\'etaplectique: les termes elliptiques'', Invent. Math. \textbf{202}
 I. Local character relations'', J. Inst. Math. Jussieu \textbf{18} (2019),
 25--123.
 \bibitem[Li21]{Li21} W.-W. Li, ``Stabilization of the trace formula for
-metaplectic groups'', preprint, arXiv:2109.06581.
+metaplectic groups'', Ast\'erisque \textbf{464} (2026); arXiv:2109.06581.
 \bibitem[Li24]{Li24} W.-W. Li, ``Arthur packets for metaplectic groups'',
 preprint, arXiv:2410.13606.
 \bibitem[LL79]{LL79} J.-P. Labesse and R. P. Langlands, ``L-indistinguishability
@@ -322,6 +335,9 @@ Ann. of Math. (2) \textbf{97} (1973), 440--481.
 \bibitem[Sh75]{Sh75} T. Shintani, ``On the construction of holomorphic cusp
 forms of half integral weight'', Nagoya Math. J. \textbf{58} (1975),
 83--126.
+\bibitem[SS77]{SS77} J.-P. Serre and H. M. Stark, ``Modular forms of weight
+$1/2$'', in \emph{Modular functions of one variable VI}, Lecture Notes in
+Math. \textbf{627}, Springer, 1977, 27--67.
 \bibitem[Sz09]{Sz09} D. Szpruch, ``Computation of the local coefficients for
 principal series representations of the metaplectic double cover of
 $SL_2(F)$'', J. Number Theory \textbf{129} (2009), 2180--2213.

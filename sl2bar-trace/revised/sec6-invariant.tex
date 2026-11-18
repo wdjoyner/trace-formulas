@@ -127,7 +127,7 @@ set of places of $k$ above $S$, and $\GS$, $\mathcal H(\GS)$,
 $f=f_S\otimes e^S$ and $\gamma_S$ are as in Section~\ref{sec:local-dist}.
 Let $K_S=\prod_{v\in S_k}K_v$, with preimage $\KS$ in $\GS$, and let
 $\AS$ be the preimage of $A(\Q_S)=\prod_{v\in S_k}A(k_v)$, an abelian
-group (it is the group $\overline{A(\A_S)}$ of Section~\ref{sec:IA}). Put
+group (the group of Section~\ref{sec:IA}). Put
 $H_S(x)=\sum_{v\in S_k}H_v(x_v)$ for $x\in\GS$; on the image of $\GS$ in
 $\GA$ it is the height $H$ of Lemma~\ref{lem:NAK-global}. Let
 $\Pi_u(\AS)$ be the group of genuine unitary characters of $\AS$. It is
@@ -844,7 +844,7 @@ In our
 case $\phi(\pi,X)$ is the Fourier transform of the restriction of
 $\Phi_A(\cdot,f)$ to $\{H_S=X\}$, and Theorem~\ref{thm:IA}(a) is the
 statement that $\varphi_A(f)\in\mathcal I_{\mathrm{ac}}$. This space is
-strictly larger than the space $\mathcal I(\overline{A(\A_S)})$ of Fourier
+strictly larger than the space $\mathcal I(\overline{A(\Q_S)})$ of Fourier
 transforms of compactly supported functions, for the reason given in
 Section~\ref{sec:local-dist} for the spaces of test functions:
 $\mathfrak a_A\ne0$ (Example~\ref{ex:Phi-real}).
@@ -1220,7 +1220,15 @@ m(\mu,\lambda)=c\,\frac{\xi(2\lambda)}{\xi(2\lambda+1)}\cdot
 \]
 where $r_2$ is the $2$-adic factor of Theorem~\ref{thm:normalization}
 (Remark~\ref{rem:bad-places}) and $c=\sqrt2\,e^{\pm i\pi/4}$ comes from
-Lemma~\ref{lem:explicit-r}(b), the sign being that of $b$. The
+Lemma~\ref{lem:explicit-r}(b), the sign being that of $b$. This formula
+simplifies once $r_2$ is known. Here $\mu=\chi_{\psi_b}$ corresponds to
+the quadratic character $\chi=(b,\cdot)$, so $\chi^2=1$ at every place,
+also at $2$ when $\chi_2$ is ramified. By
+Proposition~\normref{}(c), $r_2(\mu_2,\lambda)$ is then a constant times
+$L_2(2\lambda,1)/L_2(2\lambda+1,1)=(1-2^{-1-2\lambda})/(1-2^{-2\lambda})$.
+This cancels the displayed $2$-adic factor, and
+$m(\mu,\lambda)=c_\mu\,\xi(2\lambda)/\xi(2\lambda+1)$ with a nonzero
+constant $c_\mu$, for each of the four characters. The
 hyperbolic classes that contribute are those of $a(t)$, $t=\pm2^j$,
 $j\ge1$, and their terms are $c_\Q\,I_A(a(t)_S,f_S)$. The archimedean part of the correction $\Phi_A$ is
 given by Example~\ref{ex:Phi-real}.

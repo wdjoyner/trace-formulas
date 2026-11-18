@@ -1006,3 +1006,80 @@ written; the items below say what became of each part.
 - The fonts: built with `mathptmx`, not newtx. Under newtx the line breaks will differ, and the build should be rechecked for overfull boxes.
 - The Markdown above, from the former Appendix A, writes the paper's LaTeX math as `$…$`, which GitHub renders. It was converted by script. The `\ref`s were resolved from the compiled draft. It has not been proofread against the PDF of the previous draft.
 - Layout. Five overfull boxes in the 12pt build were removed without manual line breaks and without changing wording: equation (2.3) uses `\quad` instead of `\qquad`; the local integral Z_v after (4.9) and the kernel K_{G,χ} in Proposition 5.9(a) became displays; the proof of Lemma 6.3 has its parts (a), (b), (c) as separate paragraphs; the three identities in Proposition 7.8′(a) are set on two lines (`gather*`). Underfull boxes were left.
+
+## Third referee (Gemini) and background pass (2026-11-18)
+
+Two things were done in this pass, at the request of DJ. First, the two referee reports of Gemini were assessed and the valid points were applied. Second, the background (Section 2) and the glossary were enlarged. Draft 2: 128 pages (Draft 1 had 111). The subtitle is now "Draft 2. Corrected and expanded version".
+
+### Response to the reports of Gemini
+
+The reports and the point-by-point response are in `referee-2026-11/` (`report-gemini-master-file.md`, `report-gemini-all-sections.md`, `response-gemini.md`). Summary of the changes:
+
+- `sec7-stable.tex`, proof of Proposition 7.5, archimedean case: $a(-c^{-1})$ corrected to $a(c^{-1})$. A misprint. It was used only for the continuity of a section.
+- `sec7-stable.tex`, proof of Proposition 7.8′(b): the uniqueness of $h_\pi$ is written out (the reflection identity $u(z)\overline{u(1/\bar z)}=1$). No change of statement.
+- `sec7-stable.tex`, proof of Proposition 7.10(b): one sentence saying that $Z_v$ and (7.8) use the same measures $d^\times t$.
+- `sec1-introduction.tex`, Section 1.2 and the table before it: the normalizing factors are "not evaluated in Sections 4–6" and taken from Szpruch in Proposition 7.8′(c).
+- `sec3-rank0.tex`, `sec6-invariant.tex`: $A(\mathbb{A}_S)$ replaced by $A(\mathbb{Q}_S)$.
+- `sec6-invariant.tex`, Example 6.D (`ex:itf-Q`): added that $r_2$ cancels the displayed 2-adic factor, so $m(\mu,\lambda)=c_\mu\,\xi(2\lambda)/\xi(2\lambda+1)$ for $\mu=\chi_{\psi_b}$.
+- `sl2bar-trace-2026.tex`: `\shellref` and `\normref` now link to Lemma 7.5′ and Proposition 7.8′ themselves. [Li21] is now Astérisque 464 (2026). "J. Reine Angew. Math." is spelled one way. Gemini is named in the abstract and in the Acknowledgments.
+- Not accepted: the published reference proposed for [Ga14] (the two reports give two different ones, and the article of that journal has another title), and the claim that "Publ. Math. IHES" is abbreviated in two ways.
+
+No status of any statement changed.
+
+### Background pass (Section 2)
+
+- **An example in every subsection.** New examples: `ex:hilbert` (Notation), `ex:nak-local`, `ex:height-local`, `ex:chambers`, `ex:hecke-local`, `ex:measure-real` (Sections 2.1.1–2.1.5), `ex:nak-global`, `ex:norm-global`, `ex:test-global`, `ex:tamagawa` (Sections 2.2.1–2.2.4), `ex:gl2-center` (Section 2.3). Section 2.6 (status) has none.
+- **New Section 2.4, "Representations of the local cover"** (`sec:rep-local`): genuine representations and characters, the central character, genuine characters of the torus, the principal series and the intertwining operator, and eight quoted facts (L1)–(L8): irreducibility, the points of reducibility and the even Weil representations, supercuspidal representations, the real place, the complex places, unramified representations and Satake parameters, Whittaker functionals, and the local correspondence of Shimura and Waldspurger. Example `ex:unramified-weil`.
+- **New Section 2.5, "Automorphic forms and the Shimura correspondence"** (`sec:rep-global`): genuine automorphic forms and representations; the dictionary with modular forms of half-integral weight in the sense of Shimura (new Lemma 2.11, `lem:classical`, proved); Hecke operators and Shimura's theorem; Waldspurger's theorem; a list of the places where the correspondence is visible in this paper. Example `ex:shimura-lift` (Shimura's lift of $\eta(2z)^{12}\theta(z)^{-3}$ to $(\eta(z)\eta(2z))^8$).
+- New bibliography entries: [GHP79] (Gelbart, Howe, Piatetski-Shapiro) and [SS77] (Serre, Stark).
+- New script `checks/background_n2_check.py` (32 checks, all pass). It checks the numerical statements of the new examples, Shimura's formula for $j(\gamma,z)$ on random elements of $\Gamma_0(4)$, and the relation between the two $q$-expansions of `ex:shimura-lift` for $n\le12$ in integer arithmetic.
+
+**New mathematical text, for refereeing.** Proved in this pass and not yet refereed: Lemma 2.11 (`lem:classical`), the statements of Section 2.4 on the central character, and the computations in the new examples. Everything else in Sections 2.4 and 2.5 is quoted, and Remark 2026.4 says what.
+
+**Sources not consulted (style guide 4.3).** The statements quoted in Sections 2.4 and 2.5 from [Mo88], [Wa80], [Wa81], [Wa91], [Ge76], [GPS80], [GHP79], [KP84], [Sa88], [Sa67], [GS12], [Sh73], [Ni75], [SS77], [HI13], [He83] were written from memory. The sources were not reopened in this pass, and no theorem or page numbers are given for them. They need a check against the sources. Two of them were tested numerically: Shimura's formula for $j(\gamma,z)$, and Shimura's example in weight 9/2. In (L8) the convention relating $\psi$ to the character $\chi'$ on $PGL(2)$ was deliberately left open ($\chi'$ is $\chi$ or $\chi\cdot(-1,\cdot)_v$).
+
+**Measures.** While writing the examples on measures we found that the draft used two normalizations. This is settled in the normalization pass below.
+
+### Normalization of measures (same day)
+
+Draft 1 fixed the global measure twice. Section 2.2.4 took the Tamagawa measure, for which $\operatorname{vol}(G(\mathbb{Q})\backslash G(\mathbb{A}))=1$. Section 4.3 took $dx=\delta_B^{-1}dn\,da\,dk$ with $\operatorname{vol}(K_0)=1$, and the examples took $c_\mathbb{Q}=1$. For $k=\mathbb{Q}$ these are different Haar measures: the second gives the volume $\pi/6$, and for the Tamagawa measure $c_\mathbb{Q}=6/\pi$. No formula was wrong, because the volume and $c_k$ appear as symbols, but "total volume 1" (Section 5) and "$c_\mathbb{Q}=1$" (running example) could not both hold.
+
+Draft 2 uses one normalization, the second one, since all local computations and examples already used it.
+
+- Section 2.1.5: $da$ is now fixed. It gives $\mathcal{O}_v^\times$ the volume 1 at finite places, is $dt/|t|$ at real places and $2\,dx\,dy/(x^2+y^2)$ at complex places. Measures on the other tori are any Haar measures that correspond under conjugation by $GL(2,k_v)$ (this replaces "the pull-back of $da$ as in [Ro90]"). The volume of $K_p$ is 1 when $\psi$ is unramified, and this hypothesis is now stated.
+- Section 2.2.4 (label `sec:measures-global`): rewritten. $dg=\prod_v dg_v=\delta_B^{-1}dn\,da\,dk$. It does not depend on $\psi$. The three volumes that enter the trace formula are listed, with the remark that the elliptic terms do not depend on the measure on the torus.
+- Example 2.M (`ex:tamagawa`): rewritten. For $k=\mathbb{Q}$ the volume is $\pi/6$ and the Tamagawa measure is $(6/\pi)\,dg$. New: for totally real $k$ the volume is $|d_k|\zeta_k(2)\pi^{-d}$.
+- Section 4.3: refers to the measure of Section 2.2.4, and gives $c_k=2^{r_1}(2\pi)^{r_2}h_kR_k/w_k$ [Ta67], so $c_\mathbb{Q}=1$.
+- Section 4.5: the convention outside $S$ is now a consequence of Section 2, under the stated assumption that $S$ contains the places where $\psi$ is ramified.
+- Section 5 (conventions): "total volume 1" removed.
+- Section 7: "Tamagawa measure" replaced by the measure of Section 2.2.4 in four places (the elliptic terms and Lemma 7.11(a)). The arguments use only that $\operatorname{Ad}(\delta_a)$ preserves Haar measure and that the measures on conjugate tori correspond.
+- Section 1.3 (running example): now gives both constants, $c_\mathbb{Q}=1$ and volume $\pi/6$.
+- Glossary: new entry "Measures", and the entry "Tamagawa measure" says that it is not the measure of the paper.
+
+No theorem changes. What changes is the numerical value of the symbol $\operatorname{vol}(G(\mathbb{Q})\backslash\overline{G(\mathbb{A})})$: it is $\pi/6$ for $k=\mathbb{Q}$, not 1. Equation and statement numbers are unchanged (the new displays are unnumbered).
+
+For refereeing: the formula for $c_k$ is quoted from Tate's thesis from memory and was checked only for $k=\mathbb{Q}$ (Example 4.B). The formula for totally real $k$ is derived in Example 2.M from the Tamagawa number 1. It was cross-checked for $\mathbb{Q}(\sqrt5)$ against the classical volume $2\zeta_k(-1)(2\pi)^2$ of the Hilbert modular surface. The value at complex places was not computed.
+
+### Glossary
+
+The list of terms was rewritten: 62 entries (was 17). Each entry is a short summary that can be read on its own, with no pointers to numbered statements (DJ, 2026-11-17). The table of notation keeps its "Defined in" column and has a new block "Representations and classical forms".
+
+### Numbering concordance
+
+Lemma and equation numbers of Section 2 up to Lemma 2.10 and (2.14) are unchanged. New: Lemma 2.11, equations (2.15), (2.16), Sections 2.4 and 2.5. The former Section 2.4 (status) is Section 2.6. The examples of Section 2 are relettered:
+
+| Label | Old | New |
+|---|---|---|
+| `ex:discontinuous` | 2.A | 2.B |
+| `ex:real` | 2.B | 2.C |
+| `ex:jacobi` | 2.C | 2.I |
+
+Earlier sections of this log use the old letters. No other section is renumbered.
+
+### What was not done
+
+- The new sections were not refereed by another system.
+- The quoted statements were not checked against their sources (see above).
+- Rule 3.8 (no semicolons) was followed in the new text only.
+- The build still uses `mathptmx`.
+

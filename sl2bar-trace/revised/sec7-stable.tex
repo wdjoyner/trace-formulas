@@ -600,7 +600,7 @@ the last step is Lemma~\ref{lem:weil}(a). This is~\eqref{eq:weil-char}.
 \emph{Let $v$ be archimedean.} We show that $K_f$ is a Schwartz function
 on $F\times F$. On $X$ use the coordinates $(\alpha,c,d)$. The section
 $g\mapsto(g,1)$ is continuous on each connected component of $\{c\ne0\}$:
-$g=n(\alpha/c)\,a(-c^{-1})\,w\,n(d/c)$, the sections of
+$g=n(\alpha/c)\,a(c^{-1})\,w\,n(d/c)$, the sections of
 Lemma~\ref{lem:local}(i) are continuous on the factors, and the cocycle
 of the factors is a Hilbert symbol in $c$, which is locally constant. The Haar
 measure is a smooth
@@ -632,7 +632,7 @@ order on the smooth part of its zero set and is a nondegenerate quadratic
 form in three variables at $-1$.
 \end{proof}
 
-\begin{lemmaprime}
+\begin{lemmaprime}\phantomsection\label{lem:shell}
 Let $F$ be non-archimedean, let $\psi$ be trivial on $\varpi^{n_0}\OO$ and
 not on $\varpi^{n_0-1}\OO$, and let $e=\mathrm{ord}(2)$. For $a\in F^\times$
 and $j\in\Z$ with
@@ -931,8 +931,9 @@ $\Ad(\delta_a)\gamma_v$ are not coherent in $v$. (Compare
 
 For $f\in\mathcal H(\GA)$ and $x=a\star s(\gamma)$, $a\in\A_k^\times$
 (we write $a\star$ for $\delta_a\star$), let $J_G(x,f)=\int f(y^{-1}xy)\,
-dy$ over $T_x(\A)\backslash G(\A)$, with the Tamagawa measures on $G(\A)$
-and on $T_x(\A)=\delta_aT_\gamma(\A)\delta_a^{-1}$; no factor $|D|^{1/2}$ is
+dy$ over $T_x(\A)\backslash G(\A)$, with the measure of Section~\ref{sec:measures-global} on
+$G(\A)$, and with measures on the tori $T_x(\A)=\delta_aT_\gamma(\A)
+\delta_a^{-1}$ that correspond under $\Ad(\delta_a)$; no factor $|D|^{1/2}$ is
 needed, since $|D(\gamma)|_{\A_k}=1$. Put
 \begin{equation}\label{eq:Jst-global}
 J^{\mathrm{st}}_G(\gamma,f)=\sum_{a\in\A_k^\times/N\A_E^\times}J_G\bigl(a\star
@@ -942,7 +943,7 @@ a\star s(\gamma),f\bigr).
 \end{equation}
 Here $\A_k^\times/N\A_E^\times=\bigoplus_vk_v^\times/N E_v^\times$. By
 Lemma~\ref{lem:kappa-orbital}(d) only finitely many $a$ contribute, and
-for $f=\bigotimes f_v$ and local measures whose products are the Tamagawa
+for $f=\bigotimes f_v$ and local measures whose products are these global
 measures,
 \[
 J^{\mathrm{st}}_G(\gamma,f)=\prod_vJ^{\mathrm{st}}_G(\gamma_v,f_v),\qquad
@@ -981,8 +982,9 @@ The $SL(2,k)$-conjugacy classes in the $G_1(k)$-class of $\gamma$ are the
 classes $\mathcal O_a$ of $\delta_a\gamma\delta_a^{-1}$, $a\in k^\times/
 N E^\times$. By Proposition~\ref{prop:elliptic}
 and~\eqref{eq:rational-stable}, $J_{\mathcal O_a}(f)=\vol\cdot
-J_G(a\star s(\gamma),f)$, with the same volume for all $a$, the Tamagawa
-measure being compatible with $\Ad(\delta_a)$. Let
+J_G(a\star s(\gamma),f)$, with the same volume for all $a$, because the
+measures on the tori correspond under $\Ad(\delta_a)$ and $\Ad(\delta_a)$
+preserves the Haar measure of $G(\A)$. Let
 $\Phi(a)=J_G(a\star s(\gamma),f)$ for $a\in\A_k^\times$. It depends only
 on the image of $a$ in $\A_k^\times/N\A_E^\times$, and it vanishes outside
 a finite set. By the Hasse norm theorem, $k^\times/N E^\times$ injects
@@ -1247,7 +1249,7 @@ principal series. Let $\omega(\pi)=\pi\bigl((w,1)^2\bigr)$; the element
 $(w,1)^2$ lies over $-1$ and is central, and its square is $1$ or
 $(1,-1)$, so $\omega(\pi)\in\mu_4$.
 
-\begin{propprime}
+\begin{propprime}\phantomsection\label{prop:norm-N5}
 Let $v$ be a finite place of $k$, dyadic or not, and let $\psi_v$ be
 arbitrary.
 \begin{enumerate}[label=(\alph*)]
@@ -1338,9 +1340,14 @@ h(z)=\prod_{1<|\alpha|<\infty}(1-z/\alpha)^{m_\alpha}\prod_{|\alpha|=1}
 Then $P(z)/\bigl(h(z)\overline{h(1/\bar z)}\bigr)$ has no zero or pole in
 $\C^\times$, so it is $Cz^j$, and it is positive on the circle, so $j=0$
 and $C>0$; $h_\pi=\sqrt C\,h$. If $h_1$ is a second such function,
-$h_1/h_\pi$ has no zero or pole in $|z|<1$ and absolute value $1$ on the
-circle, hence by reflection no zero or pole at all; it is a positive
-constant of absolute value $1$.
+the quotient $u=h_1/h_\pi$ has no zero or pole in $|z|<1$ and absolute
+value $1$ on the circle away from its poles. Hence
+$u(z)\overline{u(1/\bar z)}=1$ identically. This identity exchanges the
+zeros of $u$ with its poles by the reflection $z\mapsto1/\bar z$. A point
+of the circle is fixed by the reflection, so it is neither a zero nor a
+pole, and there are no zeros or poles in $|z|>1$ either. So $u$ is a
+constant of absolute value $1$, and it is positive because
+$h_1(0),h_\pi(0)>0$.
 
 \emph{Symmetries.} By uniqueness and~(a): $h_{\pi_\nu}(z)=h_\pi(q^{-\nu}
 z)$; $h_{\pi\kappa_a}=h_\pi$; and, since $p(\pi^w,\lambda)=p(\pi,
@@ -1655,7 +1662,10 @@ $\eta\in\OO_S$, $\kappa_S(\eta)=\prod_{v\notin S_k}\kappa_v(\varpi_v)^{
 product formula. The sum over $\eta\in(\OO_S\smallsetminus\{0\})/\Gamma$
 runs over the nonzero ideals of $\OO_S$ and gives $L^S(s,\kappa)$.
 
-(b) By~\eqref{eq:squares} with $h=\Phi_v|\cdot|_v$ and~\eqref{eq:JG-unip},
+(b) The integrals $Z_v$ and the integrals in~\eqref{eq:JG-unip} are taken
+with the same Haar measures $d^\times t$ on the $k_v^\times$, $v\in S_k$,
+namely the components of $da$ fixed in Section~\ref{sec:fine}. So no
+constant enters the comparison. By~\eqref{eq:squares} with $h=\Phi_v|\cdot|_v$ and~\eqref{eq:JG-unip},
 $J_{G,v}(u_\xi,f_v)=\frac14\sum_{\kappa_v}\kappa_v(\xi)Z_v(\Phi_v,\kappa_v,
 1)$; invert on $k_v^\times/k_v^{\times2}$ and multiply over $v\in S_k$. The
 constant is $\prod_{v\in S_k}4\,[k_v^\times:k_v^{\times2}]^{-1}=\prod_{v\in
@@ -1787,7 +1797,7 @@ Let $h\in G_1(k)$ and $a=\det h$.
 \end{lemma}
 
 \begin{proof}
-(a) $\Ad(h)$ preserves $G(\Q)$ and the Tamagawa measure, which
+(a) $\Ad(h)$ preserves $G(\Q)$ and the Haar measure of $G(\A)$, which
 gives unitarity and the two formulas. It preserves $N(\A)$ and its Haar
 measure up to the factor $|a|_{\A_k}=1$, so $(U_h\varphi)_B=U_h(\varphi_B)$
 for the constant term along $B$; hence cusp forms go to cusp forms, and

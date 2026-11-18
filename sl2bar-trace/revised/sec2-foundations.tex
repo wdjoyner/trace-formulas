@@ -15,6 +15,10 @@
 % Revised after the second referee report (ChatGPT, November 2026): the
 % topology of the cover and the spaces of test functions (Lemma 2.1,
 % Lemma 2.2(i), Sections 2.1.4 and 2.2); see ../referee-2026-11/response.md.
+% Background pass of November 18, 2026: an example in every subsection,
+% and Sections 2.4 (local representations) and 2.5 (automorphic forms and
+% the Shimura correspondence). The new examples are checked by
+% checks/background_n2_check.py.
 % Comments beginning "% [Claude]" are editorial notes by Claude.
 % =====================================================================
 
@@ -28,7 +32,12 @@ then assembled into the cover of $G(\Q_p)$. Section~\ref{sec:global}
 builds the adelic cover and its splitting over $G(\Q)$, and
 Section~\ref{sec:gl2} fixes a double cover of $GL(2)$ and the resulting
 $GL(2)$-action on the cover of $SL(2)$, which is what
-Section~\ref{sec:stable} uses.
+Section~\ref{sec:stable} uses. The last two subsections are background on
+representations. Section~\ref{sec:rep-local} describes the genuine
+representations of the local cover, and Section~\ref{sec:rep-global}
+describes the automorphic representations of the adelic cover and their
+relation to modular forms of half-integral weight in the sense of
+Shimura. Each subsection contains at least one worked example.
 
 One point needs care throughout. The cover is described by an explicit
 cocycle, in coordinates $(g,\zeta)$, but the cocycle is only a Borel
@@ -80,6 +89,32 @@ $F=k_v$~\cite{We74,Se73}. We use only the following properties:
 By~\ref{H3}, $(-1,-1)_v=1$ at non-dyadic finite places and at complex
 places, and $(-1,-1)_v=-1$ at real places. At a dyadic place both values
 occur; $(-1,-1)_{\Q_2}=-1$.
+
+\begin{example}\label{ex:hilbert}
+\emph{Hilbert symbols of $\Q$.} Let $p$ be an odd prime and let
+$u,u'\in\Z_p^\times$. Then
+\[
+(u,u')_p=1,\qquad(p,u)_p=\Bigl(\frac up\Bigr),\qquad
+(p,p)_p=(p,-1)_p=\Bigl(\frac{-1}p\Bigr),
+\]
+with Legendre symbols on the right. By~\ref{H1} these values determine
+the symbol on $\Q_p^\times$. The group $\Q_p^\times/\Q_p^{\times2}$ has
+four elements, represented by $1,u_0,p,pu_0$ with $u_0$ a unit that is
+not a square. For $p=2$ the group $\Q_2^\times/\Q_2^{\times2}$ has eight
+elements, represented by $\pm1,\pm2,\pm5,\pm10$, and
+$\R^\times/\R^{\times2}$ has two. The number $2\cdot8=16$ of square
+classes of $\R^\times\times\Q_2^\times$ returns in the running example of
+Section~\ref{sec:running}.
+
+Take $a=-1$ and $b=3$. Then $(-1,3)_\infty=1$ because $3>0$,
+$(-1,3)_3=\bigl(\frac{-1}3\bigr)=-1$, $(-1,3)_2=-1$, and $(-1,3)_p=1$ for
+every prime $p\ge5$ by~\ref{H3}. The product over all places is $1$, as
+\ref{H4} requires. In the same way $(2,5)_v=-1$ exactly for $v=2$ and
+$v=5$. For two distinct odd primes $p$ and $q$ the product
+formula~\ref{H4} for $(p,q)$ reads $\bigl(\frac pq\bigr)\bigl(\frac qp
+\bigr)(p,q)_2=1$ with $(p,q)_2=(-1)^{(p-1)(q-1)/4}$. This is the law of
+quadratic reciprocity.
+\end{example}
 
 Let $G$ be the group over $\Q$ obtained from $SL(2)$ by restriction of
 scalars from $k$ to $\Q$, so $G(\Q)=SL(2,k)$ and
@@ -482,6 +517,28 @@ is trivial on $A(\Q_p)\cap K_p$.
 % [Claude] The 1995 lemma says that a is determined modulo the center and
 % identifies K_p with {(k,1)}; both are corrected here (items I.1, I.7).
 
+\begin{example}\label{ex:nak-local}
+Let $F=k_v$ and $\bar n(c)=\begin{pmatrix}1&0\\c&1\end{pmatrix}$ with
+$c\ne0$. Let $v$ be finite. If $|c|_v\le1$, then $\bar n(c)\in K$ and the
+decomposition is trivial. If $|c|_v\ge1$, then
+\[
+\bar n(c)=n(c^{-1})\,a(c^{-1})\,k,\qquad
+k=\begin{pmatrix}0&-1\\1&c^{-1}\end{pmatrix}\in K .
+\]
+The decomposition lifts to the cover without any sign:
+$(\bar n(c),1)=(n(c^{-1}),1)\,(a(c^{-1}),1)\,(k,1)$. Indeed, by
+\eqref{eq:beta}, $\beta(a(c^{-1}),k)=(1,c)_v=1$, and $\beta(n,g)=1$ for
+every $n\in N(F)$ and every $g$, because $x(ng)=x(g)$ and $x(n)=1$. If $v$
+is not dyadic, then $(k,1)$ lies in $K^*$, because $\kappa(k)=1$ when
+the lower left entry is a unit. So the $A$-component of $\bar n(c)$ is
+$a(c^{-1})$ when $|c|_v\ge1$, and it is determined up to $A(\OO^\times)$.
+
+Let $v$ be real. Then $\bar n(c)=n(x)\,a(t)\,k_\theta$ with
+$t=(1+c^2)^{-1/2}$, $x=c/(1+c^2)$ and a rotation $k_\theta\in SO(2)$. This
+is read off from the action on the upper half plane:
+$\bar n(c)\cdot i=(c+i)/(1+c^2)$, and $n(x)a(t)k_\theta\cdot i=x+it^2$.
+\end{example}
+
 \subsubsection{Heights}
 
 Heights measure how far an element lies from the maximal compact
@@ -519,6 +576,23 @@ Lemma~\ref{lem:NAK-global}.
 % [Claude] The 1995 Lemma 2.5 is stated over A(A) and G(A) before these
 % are defined, and (b) asserts left K-invariance, which fails; H is left
 % N-invariant and right K-invariant.
+
+\begin{example}\label{ex:height-local}
+Let $k=\Q$. By Example~\ref{ex:nak-local}, for $c\ne0$ and
+$\zeta\in\mu_2$,
+\[
+H(\bar n(c),\zeta)=-\log\max(1,|c|_p)\quad(p<\infty),\qquad
+H(\bar n(c),\zeta)=-\tfrac12\log(1+c^2)\quad(p=\infty).
+\]
+So $H\le0$ on the lower triangular unipotent group, and $H\to-\infty$ as
+$|c|\to\infty$. In general $H(g,\zeta)=-\log\|e_2g\|$, where $e_2g$ is
+the bottom row of $g$ and the norm of a row is the maximum of the
+absolute values of its entries for $p<\infty$ and the Euclidean norm for
+$p=\infty$. The norms of the matrices are $\|\bar n(c)\|_p=\max(1,|c|_p)$
+and $\|\bar n(c)\|_\infty=(2+c^2)^{1/2}$. So $|H(x)|=\log\|x\|_p$ at a
+finite place when $|c|_p\ge1$, and the bound of Lemma~\ref{lem:H}(c)
+cannot be improved there. At the real place $|H(x)|<\log\|x\|_\infty$.
+\end{example}
 
 \subsubsection{Characteristic functions of Weyl chambers}\label{sec:chambers}
 
@@ -564,6 +638,22 @@ $\mathfrak a\cong\R$:
 \sigma_B^G=\tau_B,\qquad\sigma_B^B=0,\qquad\sigma_G^G=1.
 \label{eq:sigma}
 \end{gather}
+
+\begin{example}\label{ex:chambers}
+Let $k=\Q$. Then $d=1$, $\chi_1(a(s))=s$, $\alpha=2\chi_1$ and
+$\alpha^\vee=1$ under $\mathfrak a\cong\R$. For $x\in\overline{G(\R)}$
+above $n(u)a(y^{1/2})k_\theta$ we have $H(x)=\frac12\log y$, and
+$\tau_B(H(x)-T)=1$ exactly when $y>e^{2T}$. This is the region above a
+horizontal line in the upper half plane, a neighborhood of the cusp.
+
+Let $k=\Q(i)$. Then $d=2$, and for $s\in\Q^\times$ the element $a(s)$ has
+$\chi_1(a(s))=N_{k/\Q}(s)=s^2$. So $\alpha=\chi_1$ and $\alpha^\vee=2$.
+At the complex place the normalized absolute value is $|s|_v=s^2$, so
+$H(a(s))=2\log|s|$ for the component at infinity, and
+$\alpha(H(a(s)))=(2/d)\cdot2\log|s|=\log|s^2|$, as it must be for the
+root $a(s)\mapsto s^2$. The factor $2/d$ is what Remark~\ref{rem:alpha}
+keeps track of.
+\end{example}
 
 \subsubsection{Algebras of functions}\label{sec:functions}
 
@@ -622,20 +712,53 @@ function $(k,\zeta)\mapsto\zeta^{-1}$ on $\overline{K_p}$ is a different
 function, $\prod_v\kappa_v\cdot e_p$; it is neither locally constant nor
 bi-$K_p^*$-invariant.
 
+\begin{example}\label{ex:hecke-local}
+Let $k=\Q$ and let $p$ be odd. Let $K_1^*$ be the image of $K_1$ under
+$k\mapsto(k,1)$. It is a compact open subgroup of $K_p^*$, because
+$\kappa\equiv1$ on $K_1$. Its index is $[K_p:K_1]=|SL(2,\mathbb F_p)|=
+p(p^2-1)$, which is $24$ for $p=3$. Put
+\[
+f_1(\tilde k\zeta)=\zeta^{-1}\,p(p^2-1)\quad(\tilde k\in K_1^*,\
+\zeta\in\mu_2),\qquad f_1=0\ \text{off}\ \overline{K_1}.
+\]
+Then $f_1\in C_c^\infty(\overline{G(\Q_p)})_-$. For a genuine
+representation $\pi$, with the measure of Section~\ref{sec:measures-local},
+\[
+\pi(f_1)=\frac1{\vol(K_1)}\int_{K_1}\pi(k,1)\,dk,
+\]
+the projection onto the vectors fixed by $K_1^*$. In the same way
+$\pi(e_p)$ is the projection onto the vectors fixed by $K_p^*$. This is
+the reason for the sign $\zeta^{-1}$ in the definition of anti-genuine
+functions. For a representation that is trivial on $\mu_2$ both operators
+are zero.
+\end{example}
+
 \subsubsection{Measures}\label{sec:measures-local}
 
 This subsection fixes the Haar measures on the local groups and on their
-covers.
+covers. They are fixed once and for all. The global measures of
+Section~\ref{sec:measures-global} are their products, and every volume in
+this paper is taken with respect to them.
 
 
 Let $dk$ be the Haar measure on $K_p$ of total volume $1$. Fix a
 nontrivial additive character $\psi_v$ of $k_v$ for each $v$, and let
 $dn$ be the measure on $N(\Q_p)\cong\bigoplus_{v\mid p}k_v$ that is the
-product of the self-dual measures for the $\psi_v$. Let $da$ be a Haar
-measure on $A(\Q_p)$. If $T$ is a maximal torus of $G$ over $\Q_p$, and
-$h\in G(\overline{\Q}_p)$ conjugates $T$ to $A$, let $dt$ be the
-pull-back of $da$ as in~\cite{Ro90}; stably conjugate tori get compatible
-measures as in~\cite{Ro90}. Put
+product of the self-dual measures for the $\psi_v$. Let $da$ be the
+product over $v\mid p$ of the following measures $d^\times t$ on
+$A(k_v)\cong k_v^\times$, $a=a(t)$:
+\[
+\vol(\OO_v^\times)=1\ \ (v\ \text{finite}),\qquad
+d^\times t=\frac{dt}{|t|}\ \ (v\ \text{real}),\qquad
+d^\times t=\frac{2\,dx\,dy}{x^2+y^2}\ \ (v\ \text{complex},\ t=x+iy),
+\]
+with Lebesgue measures $dt$, $dx$, $dy$. If $T$ is another maximal torus
+of $G$ over $\Q_p$, let $dt$ be a Haar measure on $T(\Q_p)$, chosen so
+that tori that are conjugate under $\prod_{v\mid p}GL(2,k_v)$ have
+measures that correspond under the conjugation~\cite{Ro90}. The
+terms of the trace formula do not depend on this choice
+(Section~\ref{sec:measures-global}). Where a local computation needs a
+definite measure on $T$, it is stated there. Put
 \[
 \delta_B(a(t))=|\alpha(a(t))|_p=|t|_p^2.
 \]
@@ -649,6 +772,10 @@ The two expressions agree because $dg$ is invariant under
 $g\mapsto g^{-1}$ (as $G$ is unimodular) and $(nak)^{-1}=k^{-1}a^{-1}
 n^{-1}$; see~\cite[Ch.~VIII]{Kn02} for the real case.
 
+By~\eqref{eq:iwasawa} the volume of $K_p$ for $dg$ is the volume of
+$N(\Q_p)\cap K_p$ for $dn$. It is $1$ when the $\psi_v$, $v\mid p$, are
+unramified, which we assume in the rest of this subsection.
+
 On a cover we use $d\tilde g=dg\,d\zeta$, where $d\zeta$ gives
 $\mu_2$ total volume~$1$. Then $\overline{K_p}$ has volume $1$, and
 $e_p$ of~\eqref{eq:unit} is idempotent: for $x=\tilde k\in K_p^*$,
@@ -656,6 +783,28 @@ $e_p$ of~\eqref{eq:unit} is idempotent: for $x=\tilde k\in K_p^*$,
 (e_p*e_p)(x)=\int_{\overline{K_p}}e_p(y)\,e_p(y^{-1}x)\,dy
 =\int_{K_p^*}\int_{\mu_2}\zeta^{-1}\zeta\,d\zeta\,dy=1.
 \]
+
+\begin{example}\label{ex:measure-real}
+Let $k=\Q$. At a prime $p$ take $\psi_p$ unramified, so that $\Z_p$ has
+measure $1$ for $dn$, and $\vol(A(\Z_p))=1$ by the choice of $da$. Then
+\eqref{eq:iwasawa} gives $\vol(K_p)=1$ for $dg$, because
+$N(\Z_p)A(\Z_p)K_p=K_p$.
+
+At the real place take $\psi_\infty(x)=e^{-2\pi ix}$, so $dn=du$ is
+Lebesgue measure, and $da=dt/|t|$ on $A(\R)\cong\R^\times$. Every
+element
+of $SL(2,\R)$ is $n(u)a(t)k$ for exactly two triples, with $t$ and $-t$.
+Put $z=u+iy$ with $y=t^2$, so that $dt/|t|=dy/(2y)$ and
+$\delta_B(a(t))^{-1}=y^{-1}$. Then \eqref{eq:iwasawa} becomes
+\[
+\int_{SL(2,\R)}\phi(g)\,dg=\int_{\mathfrak H}\int_{SO(2)}
+\phi\bigl(n(u)a(y^{1/2})k\bigr)\,dk\,\frac{du\,dy}{y^2},
+\]
+with $\mathfrak H$ the upper half plane. So $dg$ is the product of the
+hyperbolic area and the normalized measure of $SO(2)$. Since $-1$ acts
+trivially on $\mathfrak H$, the quotient $SL(2,\Z)\backslash SL(2,\R)$ has
+volume $\frac12\cdot\frac\pi3=\frac\pi6$ for this measure.
+\end{example}
 
 \subsection{Global aspects}\label{sec:global}
 
@@ -866,6 +1015,25 @@ $\gamma x=(n'',1)\,(a(s),1)\tilde a\,\tilde k$ with $n''\in N(\A)$, so
 $H(\gamma x)=\log|s|_{\A_k}+H(x)=H(x)$ by the product formula.
 \end{proof}
 
+\begin{example}\label{ex:nak-global}
+Let $k=\Q$, let $\gamma\in SL(2,\Q)$ have bottom row $(c,d)$, and let
+$g_z\in\overline{G(\R)}$ lie above $n(u)a(y^{1/2})$, $z=u+iy$. At a prime
+$p$ the $A$-component $a(t_p)$ of $\gamma$ has $|t_p|_p^{-1}=
+\max(|c|_p,|d|_p)$, and at the real place $H(\gamma g_z)=\frac12\log
+\mathrm{Im}(\gamma z)$. Write $(c,d)=r\,(c_0,d_0)$ with $r\in\Q^\times$ and
+$c_0,d_0$ coprime integers. Then $\prod_p\max(|c|_p,|d|_p)=|r|_\infty^{-1}$,
+and adding the local heights gives
+\[
+H(\gamma g_z)=\tfrac12\log\frac{y}{|c_0z+d_0|^2}.
+\]
+The right side depends only on the pair $\pm(c_0,d_0)$, that is, on the
+coset $B(\Q)\gamma$, in accordance with Lemma~\ref{lem:NAK-global}(b).
+The cosets $B(\Q)\backslash G(\Q)$ correspond to the pairs $\pm(c_0,d_0)$
+of coprime integers. So a sum of $e^{(\lambda+1)H(\gamma x)}$ over these
+cosets, as in the Eisenstein series~\eqref{eq:Eis}, is the classical sum
+of $y^s|c_0z+d_0|^{-2s}$ with $s=(\lambda+1)/2$.
+\end{example}
+
 \subsubsection{Heights}
 
 The global norm is the product of the local norms. Its elementary
@@ -891,6 +1059,18 @@ $\|g_v\|_v\ge1$. For~(d), $g^{-1}$ has the same entries as $g$ up to
 order and sign. The cover does not change $\|\cdot\|$.
 \end{proof}
 
+\begin{example}\label{ex:norm-global}
+Let $k=\Q$. For $\gamma\in SL(2,\Z)$ all finite norms are $1$, and
+$\|\gamma\|$ is the Euclidean norm of the matrix. For example
+$\|\bigl(\begin{smallmatrix}2&1\\1&1\end{smallmatrix}\bigr)\|=\sqrt7$. For
+a prime $p$ the element $a(p)\in G(\Q)$ has $\|a(p)\|_p=p$, norm $1$ at
+the other primes, and $\|a(p)\|_\infty=(p^2+p^{-2})^{1/2}$. So
+$\|a(p)\|>p^2$, while $H(a(p))=\log|p|_p+\log|p|_\infty=0$. The norm
+measures the distance from the identity in $G(\A)$. The height is
+invariant under $B(\Q)$ and measures the distance from the cusp in
+$G(\Q)\backslash G(\A)$.
+\end{example}
+
 \subsubsection{Algebras of functions}
 
 The global test functions are products of local ones, almost all of
@@ -909,21 +1089,114 @@ anti-genuine there. It is smooth on $\overline{G(\A)}$: invariant under a
 compact open subgroup of the finite part, and $C^\infty$ in the
 archimedean variables.
 
-\subsubsection{Measures}
+\begin{example}\label{ex:test-global}
+Let $k=\Q$. The test functions of the running example are
+$f=f_\infty\otimes f_2\otimes\bigotimes_{p\ \mathrm{odd}}e_p$ with
+$f_\infty\in C_c^\infty(\overline{SL(2,\R)})_-$ and $f_2\in C_c^\infty(
+\overline{SL(2,\Q_2)})_-$. Take for $f_2$ the function supported on
+$\overline{K_{3,2}}$ with $f_2((k,1)\zeta)=\zeta^{-1}/\vol(K_{3,2})$, as in
+Example~\ref{ex:hecke-local}. Put $K_f=K_{3,2}\times\prod_{p\ \mathrm{odd}}
+K_p$. Then $G(\Q)\cap K_f$ is the principal congruence subgroup
+$\Gamma(8)$ of $SL(2,\Z)$. For a genuine function $\varphi$ on
+$G(\Q)\backslash\overline{G(\A)}$ the function $R(f)\varphi=\int f(y)
+\varphi(\cdot\,y)\,dy$ is invariant on the right under $K_f^*$. By
+Lemma~\ref{lem:strong} it is a function on $\widetilde{\Gamma(8)}
+\backslash\overline{SL(2,\R)}$, and on such functions $R(f)$ acts as
+convolution with $f_\infty$. So for these $f$ the adelic trace formula is
+a trace formula for the lattice $\widetilde{\Gamma(8)}$ in the
+metaplectic group $\overline{SL(2,\R)}$.
+\end{example}
 
-This subsection fixes the global measures. With them the quotient
-$G(\Q)\backslash\overline{G(\A)}$ has volume $1$.
+\subsubsection{Measures}\label{sec:measures-global}
 
+This subsection fixes the global measures. They are the products of the
+local measures of Section~\ref{sec:measures-local}. One normalization is
+used throughout the paper, in the general statements and in the
+examples. It is not the Tamagawa measure, and
+Example~\ref{ex:tamagawa} compares the two.
 
-Let $dk=\prod_vdk_v$ on $K_0$. Let $dg=\prod_vdg_v$ be the Tamagawa
-measure on $G(\A)$~\cite{We82}, with $dg_v$ built from the self-dual
-measures of a fixed nontrivial character $\psi=\prod\psi_v$ of
-$\A_k/k$; then $\vol(G(\Q)\backslash G(\A))=1$. For a maximal
-torus $T$ of $G$ over $\Q$ let $dt$ be the Tamagawa measure on $T(\A)$,
-written $da$ for $T=A$, and let $dn$ be the product measure on $N(\A)$,
-for which $\vol(N(\Q)\backslash N(\A))=1$. On the cover put
-$d\tilde g=dg\,d\zeta$ with $\vol(\mu_2)=1$, so
-$\vol(G(\Q)\backslash\overline{G(\A)})=1$.
+Let $\psi=\prod_v\psi_v$ be a fixed nontrivial character of $\A_k/k$.
+Let $dk=\prod_vdk_v$ on $K_0$, of total volume $1$. Let $dn=\prod_vdn_v$
+on $N(\A)\cong\A_k$, the self-dual measure for $\psi$, for which
+$\vol(N(\Q)\backslash N(\A))=1$. Let $da=\prod_vd^\times t_v$ on
+$A(\A)\cong\A_k^\times$, with the local measures $d^\times t$ of
+Section~\ref{sec:measures-local}. Let
+$dg=\prod_vdg_v$. It is the Haar measure on $G(\A)$ with
+\[
+\int_{G(\A)}\phi(g)\,dg=\int_{N(\A)}\int_{A(\A)}\int_{K_0}\phi(nak)\,
+\delta_B(a)^{-1}\,dk\,da\,dn .
+\]
+It does not depend on $\psi$. Indeed another character of $\A_k/k$ is
+$\psi_c$ with $c\in k^\times$, the local self-dual measures are
+multiplied by $|c|_v^{1/2}$, and $\prod_v|c|_v=1$. On the cover put
+$d\tilde g=dg\,d\zeta$ with $\vol(\mu_2)=1$. Then
+$\vol(G(\Q)\backslash\overline{G(\A)})=\vol(G(\Q)\backslash G(\A))$. For a
+maximal torus $T$ of $G$ over $\Q$ other than $A$, let $dt=\prod_vdt_v$
+be a product of local measures as in Section~\ref{sec:measures-local},
+with $\vol(T(k_v)\cap K_v)=1$ for almost all $v$.
+
+Three volumes enter the trace formula:
+\[
+\vol\bigl(G(\Q)\backslash\overline{G(\A)}\bigr),\qquad
+c_k=\vol\bigl(A(\Q)\backslash A(\A)^1\bigr),\qquad
+\vol\bigl(T(\Q)\backslash T(\A)\bigr)\ \ (T\ \text{anisotropic}).
+\]
+The first two are determined by the choices above. Their values are
+given in Example~\ref{ex:tamagawa} and Section~\ref{sec:coarse}. The
+third depends on $dt$. But it occurs only in the product with an orbital
+integral over $T(\A)\backslash G(\A)$ (Proposition~\ref{prop:elliptic}),
+and the product does not depend on $dt$. Both sides of the trace formula
+are linear in $dg$. So a different Haar measure on $G(\A)$ would multiply
+every term by the same constant, provided that all volumes and all
+orbital integrals are computed from it.
+
+\begin{example}\label{ex:tamagawa}
+\emph{The volume of $G(\Q)\backslash G(\A)$, and the Tamagawa measure.}
+Let $k=\Q$ and let $\psi$ be as in Example~\ref{ex:measure-real}. By that
+example, $dg$ gives every $K_p$ the volume $1$, and at the real place it
+is the product of the hyperbolic area $du\,dy/y^2$ and the normalized
+measure of $SO(2)$. By strong approximation (Lemma~\ref{lem:strong})
+\[
+\vol\bigl(G(\Q)\backslash G(\A)\bigr)=\vol\bigl(SL(2,\Z)\backslash
+SL(2,\R)\bigr)=\frac12\cdot\frac\pi3=\frac\pi6 .
+\]
+The other global constant is $c_\Q=1$ (Example~\ref{ex:unip-Q}). These
+are the values used in all examples with $k=\Q$.
+
+The Tamagawa measure $\tau$ on $G(\A)$~\cite{We82} is defined by the
+invariant differential form that is $du\wedge dh\wedge dv$ at the
+identity, in the coordinates of the Lie algebra element
+$\bigl(\begin{smallmatrix}h&u\\v&-h\end{smallmatrix}\bigr)$. For it
+\[
+\tau_p\bigl(SL(2,\Z_p)\bigr)=\frac{|SL(2,\mathbb F_p)|}{p^3}=1-p^{-2},
+\qquad \tau_\infty=\frac{du\,dy\,d\theta}{2y^2}\quad\bigl(g=n(u)a(y^{1/2})
+k_\theta,\ 0\le\theta<2\pi\bigr).
+\]
+So $\tau_p=(1-p^{-2})\,dg_p$ and $\tau_\infty=\pi\,dg_\infty$, and
+\[
+\tau=\pi\prod_p(1-p^{-2})\cdot dg=\frac6\pi\,dg,\qquad
+\tau\bigl(G(\Q)\backslash G(\A)\bigr)=\frac6\pi\cdot\frac\pi6=1 ,
+\]
+in accordance with the fact that the Tamagawa number of $SL(2)$ is
+$1$. If one used $\tau$ in place of $dg$, the constant $c_\Q$ would
+be $\frac6\pi$, because $da$ would be multiplied by $\frac6\pi$ in the
+formula $dg=\delta_B^{-1}dn\,da\,dk$.
+
+The same comparison works for a totally real field $k$ of degree $d$ and
+discriminant $d_k$. Take $\psi=\psi_\Q\circ\operatorname{tr}_{k/\Q}$. At
+a finite place $v$ the self-dual measure gives $\OO_v$ the volume
+$N(\mathfrak d_v)^{-1/2}$, with $\mathfrak d_v$ the local different. So
+$\tau_v(K_v)=N(\mathfrak d_v)^{-3/2}(1-q_v^{-2})$, while $dg_v$ gives
+$K_v$ the volume $N(\mathfrak d_v)^{-1/2}$. At each real place
+$\tau_v=\pi\,dg_v$ as before. Hence $\tau=|d_k|^{-1}\zeta_k(2)^{-1}\pi^d
+\,dg$, and since $\tau(G(\Q)\backslash G(\A))=1$,
+\[
+\vol\bigl(G(\Q)\backslash G(\A)\bigr)=|d_k|\,\zeta_k(2)\,\pi^{-d}
+\qquad(k\ \text{totally real}).
+\]
+For $k=\Q(\sqrt5)$ this is $2\pi^2/(15\sqrt5)$. We do not need the value
+for fields with complex places.
+\end{example}
 
 \subsection{The double cover of \texorpdfstring{$GL(2)$}{GL(2)}}\label{sec:gl2}
 
@@ -991,6 +1264,27 @@ in~\eqref{eq:gl2-commutator} is $(\det h,\det(1+\gamma))_v$
 of an element, and stable conjugacy on the cover is conjugation by
 $GL(2,F)$ twisted by this sign.
 
+\begin{example}\label{ex:gl2-center}
+Let $F=\R$ and $h=\diag(-1,1)$. By Lemma~\ref{lem:gl2}(c) with $y=t=-1$,
+\[
+\Ad(h)(-1,\zeta)=\bigl(-1,(-1,-1)_\infty\,\zeta\bigr)=(-1,-\zeta).
+\]
+So conjugation by $h$ exchanges the two lifts of the central element
+$-1$. These are the two generators of the center, which is cyclic of
+order $4$ (Example~\ref{ex:real}), and $\Ad(h)$ acts on the center by
+inversion. Consequently, if a genuine representation $\pi$ has central
+character $\omega_\pi$, then $\pi\circ\Ad(h)$ has central character
+$\overline{\omega_\pi}$. On the upper half plane $h$ acts by
+$z\mapsto-\bar z$, and composition with $\Ad(h)$ exchanges holomorphic
+forms of weight $\frac12+j$ with antiholomorphic ones of weight
+$-\frac12-j$. On $SL(2,\R)$ itself nothing of this is visible, because
+there $h$ fixes the center.
+
+Let $F=\Q_3$. Then $\Ad(\diag(3,1))$ maps $(-1,\zeta)$ to
+$(-1,(3,-1)_3\zeta)=(-1,-\zeta)$, while $\Ad(\diag(u,1))$ fixes
+$(-1,\zeta)$ for every unit $u$, since $(u,-1)_3=1$.
+\end{example}
+
 \begin{remarkrev}\label{rem:gl2-twist}
 The cocycle $\sigma'(g_1,g_2)=\sigma(g_1,g_2)\,(\det g_1,\det g_2)_v$ is
 another double cover of $GL(2,F)$ with the same restriction to $SL(2,F)$;
@@ -1018,6 +1312,522 @@ $1+\varpi^m\OO\subset F^{\times n}$ (the same proof). Genuine
 convention $R(f)$ vanishes on $L^2_{\mathrm{gen}}$ unless $n\mid2$.
 \end{remarkrev}
 
+\subsection{Representations of the local cover}\label{sec:rep-local}
+
+The spectral side of the trace formula is a sum of traces of test
+functions in representations of the cover. This subsection collects the
+representation theory of $\overline{SL(2,F)}$, $F=k_v$, that the later
+sections use or refer to. Nothing in it is new. Statements given without
+proof are quoted from the literature, and Remark~\ref{rem:sec2-status}
+lists them. The Weil characters and the Weil representation are defined
+in Sections~\ref{sec:torus-cover} and~\ref{sec:eisenstein}. We use them
+here in order to describe the landscape before the technical work
+begins.
+
+\paragraph{Genuine representations and their characters.} Let $v$ be
+finite. A representation $(\pi,V)$ of $\overline{SL(2,F)}$ on a complex
+vector space is \emph{smooth} if every vector is fixed by an open
+subgroup. It is \emph{admissible} if in addition the space of vectors
+fixed by each compact open subgroup has finite dimension. At a real
+place we consider unitary representations and their
+$(\mathfrak g,\overline K)$-modules, as for $SL(2,\R)$~\cite{Kn02}. In an
+irreducible representation the central subgroup $\mu_2$ acts by a
+character. If this character is trivial, $\pi$ is a representation of
+$SL(2,F)$. Otherwise $\pi$ is genuine (Section~\ref{sec:functions}). So
+the irreducible representations of the cover are those of $SL(2,F)$
+together with the genuine ones, and only the genuine ones are new.
+
+Let $\pi$ be admissible and genuine, and let $f\in C_c^\infty(
+\overline{SL(2,F)})_-$. The operator $\pi(f)=\int f(x)\pi(x)\,dx$ has
+finite rank when $v$ is finite, because $f$ is invariant under a compact
+open subgroup, and it is of trace class when $v$ is real. The linear form
+\[
+\Theta_\pi(f)=\operatorname{tr}\pi(f)
+\]
+is the \emph{character} of $\pi$. It is an invariant distribution:
+$\Theta_\pi(f^y)=\Theta_\pi(f)$ for $f^y(x)=f(yxy^{-1})$. It determines
+$\pi$ when $\pi$ is irreducible. The characters $\operatorname{tr}I(\pi,f)$ of
+principal series are the spectral terms that the invariant trace formula
+of Section~\ref{sec:invariant} is built from.
+
+\paragraph{The central character.} By Schur's lemma the center
+$\overline{\{\pm1\}}$ acts in an irreducible genuine representation $\pi$
+by a genuine character $\omega_\pi$. By Lemma~\ref{lem:local}(e),
+$\omega_\pi(-1,1)^2=(-1,-1)_v$. So
+\[
+\omega_\pi(-1,1)\in\{\pm1\}\ \text{if}\ (-1,-1)_v=1,\qquad
+\omega_\pi(-1,1)\in\{\pm i\}\ \text{if}\ (-1,-1)_v=-1 .
+\]
+The second case occurs at the real places and, for $k=\Q$, at the place
+$2$. For $SL(2,F)$ the central character has the values $\pm1$ at every
+place.
+
+\paragraph{Genuine characters of the torus.} The group $\overline{A(F)}$
+is abelian (Lemma~\ref{lem:local}(f)), so its irreducible genuine
+representations are characters. If $\pi_0$ is one genuine character, the
+others are the products $\pi_0\cdot(\chi\circ p)$ with $\chi$ a character
+of $A(F)\cong F^\times$. There is no canonical choice of $\pi_0$. A
+choice of a nontrivial additive character $\psi_v$ gives one, the
+\emph{Weil character}
+\[
+\chi_{\psi,v}(a(t),\zeta)=\zeta\,\gamma_v(t)/\gamma_v(1)
+\]
+of Lemma~\ref{lem:weil}, where $\gamma_v(t)$ is the Weil index of
+$x\mapsto\psi_v(tx^2)$, an eighth root of unity. So every genuine
+character of $\overline{A(F)}$ is
+\[
+\pi=\chi_{\psi,v}\cdot(\chi\circ p)
+\]
+with a unique character $\chi$ of $F^\times$. Replacing $\psi_v$ by
+$\psi_{b,v}(x)=\psi_v(bx)$ replaces $\chi$ by $\chi\cdot(b,\cdot)_v$. The
+square $\chi^2$ does not depend on the choice of $\psi_v$. It is $\chi^2$
+that appears in the $L$-functions of this paper.
+
+\paragraph{The principal series.} Let $\pi$ be a genuine character of
+$\overline{A(F)}$ and $\lambda\in\C$, and put $\pi_\lambda=\pi\,
+e^{\lambda H}$. The \emph{principal series} $I(\pi_\lambda)$ is the
+representation of $\overline{SL(2,F)}$ by right translation on the space
+of smooth genuine functions $\varphi$ with
+\[
+\varphi\bigl((n,1)\,\tilde a\,x\bigr)=\pi(\tilde a)\,e^{(\lambda+1)H(\tilde
+a)}\,\varphi(x)\qquad(n\in N(F),\ \tilde a\in\overline{A(F)}).
+\]
+The shift by $1$ is the square root of the modulus character
+$\delta_B=e^{2H}$. With it $I(\pi_\lambda)$ is unitary, for the norm
+$\int_{\overline K}|\varphi|^2$, when $\pi$ is unitary and
+$\lambda\in i\R$. Section~\ref{sec:invariant} realizes all the
+$I(\pi_\lambda)$ on one space $V(\pi)$ of functions on $\overline K$. The
+\emph{intertwining operator}
+\[
+\bigl(M_v(\pi,\lambda)\varphi\bigr)(x)=\int_F\varphi\bigl((w,1)^{-1}
+(n(u),1)\,x\bigr)\,du
+\]
+converges for $\mathrm{Re}\,\lambda>0$, continues meromorphically in
+$\lambda$, and maps $I(\pi_\lambda)$ to $I(\pi^w_{-\lambda})$. Here
+$\pi^w(\tilde a)=\pi((w,1)^{-1}\tilde a(w,1))$, and $\pi^w=
+\chi_{\psi,v}\cdot(\chi^{-1}\circ p)$ for $\pi=\chi_{\psi,v}\cdot(\chi
+\circ p)$ (Lemma~\ref{lem:w-action}). The composition $M_v(\pi^w,-\lambda)
+M_v(\pi,\lambda)$ is a scalar $\rho(\pi,\lambda)$, and
+$\rho(\pi,\lambda)^{-1}$ is, up to a positive constant, the Plancherel
+density of the principal series.
+
+The following facts are quoted.
+\begin{enumerate}[label=(L\arabic*)]
+\item\label{R1} \emph{Irreducibility}~\cite{Mo88,Wa80,Sz09}. Let $v$ be
+  finite and $\pi=\chi_{\psi,v}\cdot(\chi\circ p)$. Then $I(\pi_\lambda)$
+  is irreducible unless $\chi^2|\cdot|_v^{2\lambda}=|\cdot|_v^{\pm1}$. In
+  particular $I(\pi_\lambda)$ is irreducible whenever $\pi$ is unitary
+  and $\lambda\in i\R$. For $SL(2,F)$ this is not so. The unitary
+  principal series of $SL(2,F)$ attached to a character of order two is
+  the sum of two irreducible representations, and this is the origin of
+  $L$-indistinguishability in~\cite{LL79}. On the cover the reducibility
+  on the unitary axis disappears.
+\item\label{R2} \emph{The points of reducibility.} For unitary $\pi$
+  they are the points $\lambda=\pm\frac12+i\tau$ with
+  $\chi^2=|\cdot|_v^{-2i\tau}$. After replacing $\pi$ by $\pi_{i\tau}$ this
+  is $\lambda=\pm\frac12$ and $\chi^2=1$. Then $\chi=(b,\cdot)_v$ for some
+  $b\in F^\times$, and $\pi$ is the Weil character $\chi_{\psi_b,v}$. By Lemma~\ref{lem:weil-rep} the even Weil
+  representation $r^+_{\psi'}$ is a subrepresentation of
+  $I(\pi_{-1/2})$ for $\pi=\chi_{\psi'_{-1},v}$, and it is the image of
+  $M_v(\pi,\frac12)$. So $r^+_{\psi'}$ is the unique irreducible quotient
+  of $I(\pi_{1/2})$. The kernel of $M_v(\pi,\frac12)$ is an irreducible
+  square integrable representation, the analog of the Steinberg
+  representation~\cite{Ge76,GPS80,Wa80}. In this picture the even Weil
+  representations take the place that the trivial representation has for
+  $SL(2,F)$.
+\item\label{R3} \emph{Supercuspidal representations.} Let $v$ be finite.
+  An irreducible genuine representation that is not a subquotient of a
+  principal series is supercuspidal. The odd Weil representations
+  $r^-_{\psi'}$ are supercuspidal~\cite{Ge76,GPS80}.
+\item\label{R4} \emph{The real place}~\cite{Ge76,Sa67}. Let $\theta\mapsto
+  \tilde k_\theta$ be the one-parameter subgroup of $\overline{SO(2)}$
+  above the rotations $k_\theta$ (Lemma~\ref{lem:explicit-r}). It has
+  period $4\pi$, and its genuine characters are $\tilde k_\theta\mapsto
+  e^{im\theta}$ with $m\in\frac12+\Z$. Such an $m$ is a \emph{weight}. The
+  center acts by $\omega_\pi(-1,1)=e^{i\pi m}=\pm i$ on a vector of
+  weight $m$. The irreducible genuine unitary representations are the
+  following. The unitary principal series have the weights $m_0+2\Z$,
+  each once, with $m_0=\pm\frac12$. For each $m\in\{\frac12,\frac32,
+  \frac52,\dots\}$ there is a representation $D_m^+$ of lowest weight
+  $m$, with weights $m,m+2,m+4,\dots$, and a representation $D_m^-$ of
+  highest weight $-m$. For $m\ge\frac32$ these are discrete series. The
+  representations $D^\pm_{1/2}$ are the even Weil representations and
+  $D^\pm_{3/2}$ are the odd ones, by the computation after
+  Lemma~\ref{lem:weil-rep}. The $D^\pm_{1/2}$ are not square integrable.
+  Finally there are complementary series, which we do not need.
+\item\label{R5} \emph{The complex places.} The cover splits
+  (Lemma~\ref{lem:local}(d)). A genuine representation is a representation
+  of $SL(2,\C)$ tensored with the nontrivial character of $\mu_2$.
+\item\label{R6} \emph{Unramified representations.} Let $v$ be finite and
+  non-dyadic with $\psi_v$ unramified. An irreducible genuine
+  representation is \emph{unramified} if it has a nonzero vector fixed by
+  $K_v^*$. Such a vector is unique up to a scalar. The unramified
+  representations are the subquotients with a $K_v^*$-fixed vector of the
+  $I(\pi_\lambda)$ with $\pi=\chi_{\psi,v}\cdot(\chi\circ p)$ and $\chi$
+  unramified. The representation is determined by the number
+  $\chi(\varpi)q^{-\lambda}\in\C^\times$ up to inversion, that is, by the
+  conjugacy class of $\diag(\chi(\varpi)q^{-\lambda},\chi(\varpi)^{-1}
+  q^{\lambda})$ in $SL(2,\C)$, its \emph{Satake
+  parameter}~\cite{KP84,Sa88}.
+  The spherical Hecke algebra of Section~\ref{sec:functions} acts on the
+  fixed vector through this parameter.
+\item\label{R7} \emph{Whittaker functionals.} Let $\psi'$ be a nontrivial
+  character of $F$. A $\psi'$-Whittaker
+  functional on $(\pi,V)$ is a linear form $\ell$ with $\ell(\pi(n(u),1)
+  \phi)=\psi'(u)\ell(\phi)$. For an irreducible genuine representation of
+  the double cover the space of such functionals has dimension at most
+  one~\cite{GHP79}. For covers of higher degree this
+  fails~\cite{KP84}. In the Weil representation $\omega_{\psi'}$
+  of~\eqref{eq:weil-rep}, evaluation $\phi\mapsto\phi(x_0)$ is a Whittaker
+  functional for the character $u\mapsto\psi'(x_0^2u)$. The representations
+  $r^\pm_{\psi'}$ have Whittaker functionals only for the characters
+  $\psi'_a$ with $a\in F^{\times2}$~\cite{GPS80}. An irreducible
+  principal series has one for every nontrivial character.
+\item\label{R8} \emph{The local correspondence of Shimura and
+  Waldspurger}~\cite{Wa80,Wa91}. Fix $\psi_v$. The theta correspondence
+  defines a bijection between the irreducible genuine representations of
+  $\overline{SL(2,F)}$ and the irreducible representations of the two
+  groups $PGL(2,F)=SO(2,1)$ and $PD^\times=SO(3)$, where $D$ is the
+  quaternion division algebra over $F$. (At a complex place there is
+  only $PGL(2)$.) For this formulation, and for the generalization to
+  the double cover of $Sp(2n)$, see~\cite{GS12}. The bijection depends
+  on $\psi_v$. It sends the principal series $I(\pi_\lambda)$,
+  $\pi=\chi_{\psi,v}\cdot(\chi\circ p)$, to the principal series of
+  $PGL(2,F)$ induced from $\diag(t_1,t_2)\mapsto\chi'(t_1/t_2)
+  |t_1/t_2|_v^{\lambda}$. Here $\chi'$ is $\chi$ or $\chi\cdot(-1,\cdot)_v$,
+  depending on the convention that relates $\psi_v$ to the Weil character,
+  and in both cases $\chi'^2=\chi^2$. It sends the even Weil
+  representations to one-dimensional representations of $PGL(2,F)$ and
+  the odd ones to one-dimensional representations of $PD^\times$.
+\end{enumerate}
+
+Fact~\ref{R8} explains the shape of several formulas below. The
+normalizing factor of $M_v(\pi,\lambda)$ is $L_v(2\lambda,\chi^2)/
+L_v(2\lambda+1,\chi^2)$ (Lemma~\ref{lem:intertwining}), which is the
+normalizing factor of the corresponding principal series of $PGL(2,F)$.
+The dual group of the cover is $SL(2,\C)$, the dual group of $PGL(2)$
+(Section~\ref{sec:stable-conj}).
+
+The group $GL(2,F)$ acts on the set of genuine representations by
+$\pi\mapsto\pi\circ\Ad(h)$ (Lemma~\ref{lem:gl2}(c)). This action is not
+trivial on equivalence classes. For example
+$r^\pm_{\psi'}\circ\Ad(\diag(a,1))=r^\pm_{\psi'_a}$
+(Lemma~\ref{lem:weil-kernel}), and Example~\ref{ex:gl2-center} shows the
+effect on the central character. Section~\ref{sec:stable} studies this
+action on the terms of the trace formula.
+
+\begin{example}\label{ex:unramified-weil}
+\emph{The even Weil representation at an odd prime.} Let $F=\Q_p$ with
+$p$ odd, and let $\psi'$ be unramified. We show that $r^+_{\psi'}$ is
+unramified and find its Satake parameter. Let $\phi_0=\mathbf 1_{\Z_p}$,
+an even function. By~\eqref{eq:weil-rep},
+$\omega_{\psi'}(n(u),1)\phi_0=\phi_0$ for $u\in\Z_p$, because
+$\psi'(ux^2)=1$ for $x\in\Z_p$. Also $\omega_{\psi'}(w,1)\phi_0=\phi_0$.
+Indeed the constant $c=\gamma'(1)^{-1}$ is $1$ by
+Lemma~\ref{lem:weil}(b), and $\mathcal F\phi_0=\phi_0$, since the
+measure that is self-dual for $\psi'(2xy)$ gives $\Z_p$ the measure $1$
+when $p$ is odd. The elements $(n(u),1)$, $u\in\Z_p$, and $(w,1)$ lie in
+$K_p^*$, because $\kappa(n(u))=\kappa(w)=1$ by~\eqref{eq:kappa}. They
+generate $K_p^*$, since $N(\Z_p)$ and $w$ generate $SL(2,\Z_p)$. So
+$\phi_0$ is fixed by $K_p^*$.
+
+By Lemma~\ref{lem:weil-rep}, $r^+_{\psi'}$ lies in $I(\pi_{-1/2})$ with
+$\pi=\chi_{\psi'_{-1},p}=\chi_{\psi',p}\cdot(\chi_0\circ p)$ and
+$\chi_0=(-1,\cdot)_p$. This character is unramified, and
+$\chi_0(p)=\bigl(\frac{-1}p\bigr)$ by Example~\ref{ex:hilbert}. So in the
+parametrization of~\ref{R6} by $\psi'$, the Satake parameter of
+$r^+_{\psi'}$ is
+\[
+\Bigl(\frac{-1}p\Bigr)\diag\bigl(p^{1/2},p^{-1/2}\bigr).
+\]
+This is the Satake parameter of the one-dimensional representation
+$\chi_0\circ\det$ of $PGL(2,\Q_p)$. If one parametrizes by $\psi'_{-1}$
+instead, the sign disappears and one gets the parameter of the trivial
+representation. This is the dependence on the additive character
+in~\ref{R8}. For $p\equiv1\pmod4$ there is no difference. The parameter
+is not unitary, in accordance with the fact that $r^+_{\psi'}$ is not
+tempered.
+\end{example}
+
+\subsection{Automorphic forms and the Shimura correspondence}
+\label{sec:rep-global}
+
+This subsection describes the automorphic representations of the adelic
+cover and explains how they are related to the modular forms of
+half-integral weight of Shimura~\cite{Sh73}. The trace formula of this
+paper is a formula for the trace of a test function on this spectrum, and
+for $k=\Q$ and suitable test functions it is a formula for traces of
+Hecke operators on forms of half-integral weight. The precise
+statements about the spectrum are in Section~\ref{sec:decomp}. Here we
+give the dictionary, with one lemma proved in full, and state the
+theorems of Shimura and Waldspurger that put the results of the later
+sections in context.
+
+\paragraph{Genuine automorphic forms.} A function $\varphi$ on
+$\overline{G(\A)}$ is \emph{genuine} if $\varphi(x\zeta)=\zeta\varphi(x)$
+for $\zeta\in\mu_2$. By Lemma~\ref{lem:global}(a) the group $G(\Q)$ is a
+subgroup of $\overline{G(\A)}$, so one can ask that $\varphi$ be left
+invariant under $G(\Q)$. This is the reason for the care taken with the
+splitting $\gamma\mapsto(\gamma,\kappa_\A(\gamma))$. A \emph{genuine
+automorphic form} is a smooth genuine function on $G(\Q)\backslash
+\overline{G(\A)}$ that is finite under $\overline{K_0}$ and under the
+center of the enveloping algebra at the archimedean places, and of
+moderate growth. It is a \emph{cusp form} if its constant term
+$\int_{N(\Q)\backslash N(\A)}\varphi(nx)\,dn$ vanishes. The group
+$\overline{G(\A)}$ acts by right translation on the space
+$L^2_{\mathrm{gen}}$ of square integrable genuine functions on
+$G(\Q)\backslash\overline{G(\A)}$. The irreducible constituents of this
+representation are the genuine \emph{automorphic representations}. The
+functions on $G(\Q)\backslash\overline{G(\A)}$ that are not genuine are
+functions on $G(\Q)\backslash G(\A)$, and belong to the theory of
+$SL(2)$.
+
+The space $L^2_{\mathrm{gen}}$ is the sum of a discrete part and a
+continuous part (Lemma~\ref{lem:spec-decomp}). The continuous part is
+described by the Eisenstein series induced from the genuine characters
+of $A(\Q)\backslash\overline{A(\A)}$, which are the products
+$\chi_\psi\cdot(\chi\circ p)$ of the global Weil character and a Hecke
+character $\chi$ of $k$ (Theorem~\ref{thm:corr}). The discrete part is
+the sum of the cuspidal part and the residual part. The residual part
+consists of the even Weil representations, realized by theta functions
+(Theorem~\ref{thm:residual}). For $SL(2)$ the residual spectrum consists
+of the constants. Each irreducible constituent is a restricted tensor
+product $\bigotimes'_v\pi_v$ of irreducible genuine representations of
+the local covers, almost all of them unramified
+(Lemma~\ref{lem:factor}).
+
+\paragraph{The classical dictionary.} Let $k=\Q$, and let $\psi$ be the
+character of $\A/\Q$ of Example~\ref{ex:weil-Q}. Let $\mathfrak H$ be the
+upper half plane. For $z=u+iy\in\mathfrak H$ let $\tilde g_z$ be the
+element $(n(u)a(y^{1/2}),1)$ of $\overline{G(\R)}\subset\overline{G(\A)}$.
+The map $z\mapsto\tilde g_z$ is continuous (Lemma~\ref{lem:local}(i)), and
+every element of $\overline{G(\R)}$ is $\tilde g_z\tilde k_r$ for a
+unique $z$ and a unique angle $r$ modulo $4\pi$. (In this subsection the
+angle is written $r$, because $\theta$ denotes the theta function.) Let
+\[
+\theta(z)=\sum_{n\in\Z}e^{2\pi in^2z},\qquad
+j(\gamma,z)=\frac{\theta(\gamma z)}{\theta(z)}\quad(\gamma\in\Gamma_0(4)).
+\]
+The function $\theta$ has no zeros in $\mathfrak H$, by the Jacobi
+triple product. Shimura's formula~\cite{Sh73} for the factor is
+\begin{equation}\label{eq:shimura-j}
+j(\gamma,z)=\varepsilon_d^{-1}\Bigl(\frac cd\Bigr)(cz+d)^{1/2},\qquad
+\gamma=\begin{pmatrix}a&b\\c&d\end{pmatrix}\in\Gamma_0(4),
+\end{equation}
+where $\varepsilon_d=1$ for $d\equiv1\pmod4$ and $\varepsilon_d=i$ for
+$d\equiv3\pmod4$, the square root has argument in $(-\frac\pi2,
+\frac\pi2]$, and $(\frac cd)$ is the Jacobi symbol extended to negative
+$d$ as in~\cite{Sh73}. A \emph{modular form of weight $\kappa/2$} in the
+sense of Shimura, $\kappa$ an odd integer, on a subgroup $\Gamma$ of
+finite index in $\Gamma_0(4)$, is a holomorphic function $F$ on
+$\mathfrak H$, holomorphic at the cusps, with
+\[
+F(\gamma z)=j(\gamma,z)^\kappa F(z)\qquad(\gamma\in\Gamma).
+\]
+
+\begin{lemma}\label{lem:classical}
+Let $k=\Q$ and $m\in\frac12+\Z$. There is an integer $M\ge3$ with the
+following property. Let $K_f=K_{M,2}\times\prod_{p\ \mathrm{odd}}K_p$ and
+$\Gamma=G(\Q)\cap K_f=\Gamma(2^M)$. Let $\varphi$ be a genuine function
+on $G(\Q)\backslash\overline{G(\A)}$ with
+\[
+\varphi(x\,\tilde k_r\,\tilde k)=e^{imr}\varphi(x)\qquad(r
+\in\R,\ \tilde k\in K_f^*),
+\]
+and put $F(z)=y^{-m/2}\varphi(\tilde g_z)$. Then
+\[
+F(\gamma z)=j(\gamma,z)^{2m}F(z)\qquad(\gamma\in\Gamma).
+\]
+Every function $F$ on $\mathfrak H$ with this property arises from
+exactly one such $\varphi$.
+\end{lemma}
+
+\begin{proof}
+Let $\vartheta=\theta^{\psi_{-1}}_{\phi}$ be the theta
+function~\eqref{eq:theta} of $\phi=\phi_\infty\otimes\mathbf 1_{\hat\Z}$
+with $\phi_\infty(\xi)=e^{-2\pi\xi^2}$, as in Example~\ref{ex:theta}. It
+is a genuine function on $G(\Q)\backslash\overline{G(\A)}$, and
+$\vartheta(\tilde g_z)=y^{1/4}\theta(z)$. The function $\phi_\infty$ has
+weight $\frac12$ in $\omega_{\psi_{-1,\infty}}$, by the computation after
+Lemma~\ref{lem:weil-rep}. The function $\mathbf 1_{\Z_p}$ is fixed by
+$K_p^*$ for odd $p$ (Example~\ref{ex:unramified-weil}). The function
+$\mathbf 1_{\Z_2}$ is a smooth vector, so it is fixed by an open subgroup
+of $\overline{SL(2,\Q_2)}$, which contains the image of $K_{M,2}$ under
+$k\mapsto(k,1)$ for some $M\ge3$ (Lemma~\ref{lem:kubota}(c)). Hence
+$\vartheta(x\tilde k_r\tilde k)=e^{ir/2}\vartheta(x)$ for
+$\tilde k\in K_f^*$. By Lemma~\ref{lem:strong} every element of
+$\overline{G(\A)}$ is $\gamma\,\tilde g_z\tilde k_r\,\tilde k$ with
+$\gamma\in G(\Q)$ and $\tilde k\in K_f^*$. So $|\vartheta|=y^{1/4}
+|\theta(z)|$ at such a point, and $\vartheta$ has no zeros.
+
+Put $h=\varphi/\vartheta^{2m}$. The exponent $2m$ is an odd integer, so
+$\vartheta^{2m}$ is genuine and $h$ is invariant under $\mu_2$. It is
+left invariant under $G(\Q)$ and right invariant under the $\tilde
+k_r$ and under $K_f^*$. So $h$ is a function on $G(\Q)\backslash
+G(\A)/SO(2)K_f=\Gamma\backslash\mathfrak H$. That is, the function
+$h(z)=h(\tilde g_z)$ satisfies $h(\gamma z)=h(z)$ for $\gamma\in\Gamma$.
+Now
+\[
+F(z)=y^{-m/2}\,h(z)\,\bigl(y^{1/4}\theta(z)\bigr)^{2m}=h(z)\,\theta(z)^{2m},
+\]
+and therefore $F(\gamma z)=h(z)\theta(\gamma z)^{2m}=j(\gamma,z)^{2m}F(z)$.
+Conversely, if $F$ has this property, then $h=F/\theta^{2m}$ is
+$\Gamma$-invariant. It defines a function on $G(\Q)\backslash G(\A)$ that
+is right invariant under $SO(2)K_f$, and $\varphi=h\,\vartheta^{2m}$ is
+the function required. It is unique because $\varphi$ is determined by
+its values at the points $\tilde g_z$.
+\end{proof}
+
+So genuine automorphic forms of weight $m=\kappa/2$ at the real place
+are functions on $\mathfrak H$ that transform by the $\kappa$-th power
+of Shimura's factor. The transformation law is forced by the cover. The
+sign $(\frac cd)$ in~\eqref{eq:shimura-j} has the same origin as the
+Jacobi symbol $\kappa_\A(\gamma)$ of Example~\ref{ex:jacobi}, and the two
+are related by quadratic reciprocity~\cite{Ge76}. Under the dictionary of
+Lemma~\ref{lem:classical} the following correspond~\cite{Ge76,Wa81}.
+\begin{itemize}
+\item $F$ is holomorphic exactly when $\varphi$ is a lowest weight
+  vector, that is, when $\varphi$ generates a representation $D^+_m$
+  of~\ref{R4} at the real place. Here $m>0$.
+\item $F$ vanishes at all cusps exactly when $\varphi$ is a cusp form.
+\item The space $S_{\kappa/2}(\Gamma)$ of holomorphic cusp forms of weight
+  $\kappa/2$ on $\Gamma$ is isomorphic to the sum of the spaces of
+  $K_f^*$-fixed vectors in the finite parts $\pi_f$ of the cuspidal
+  automorphic representations $\pi=\pi_\infty\otimes\pi_f$ with
+  $\pi_\infty\cong D^+_{\kappa/2}$.
+\end{itemize}
+Shimura considers forms on $\Gamma_0(N)$, $4\mid N$, with a character.
+They
+correspond to vectors that transform by a genuine character of the
+preimage of a larger compact open subgroup. The group $K_f$ of
+Lemma~\ref{lem:classical} is smaller than necessary, and
+Remark~\ref{rem:dyadic} is the first step toward the larger groups at
+the place $2$. For a totally real field $k$ the same dictionary leads to
+Hilbert modular forms of half-integral weight~\cite{HI13}.
+
+\paragraph{Hecke operators and Shimura's theorem.} Let $p$ be an odd
+prime. The spherical Hecke algebra $\mathcal H(\overline{G(\Q_p)},K_p^*)$
+of Section~\ref{sec:functions} acts on the $K_p^*$-fixed vectors of every
+genuine representation. In the classical language it is generated by
+Shimura's operator $T(p^2)$, which corresponds to the double coset of the
+lifts of $a(p)$~\cite{Sh73,Ge76}. There is no operator $T(p)$. The reason
+is visible on the group: the cover is defined over $SL(2)$, and its
+torus contains $a(p)=\diag(p,p^{-1})$, which has the same image in
+$PGL(2)$ as $\diag(p^2,1)$.
+
+Shimura's theorem~\cite{Sh73} is the following. Let $\kappa\ge3$ be odd,
+$\ell=(\kappa-1)/2$, let $N$ be divisible by $4$ and $\chi$ a
+Dirichlet character modulo $N$. Let $f(z)=\sum_{n\ge1}a(n)e^{2\pi inz}$
+be a cusp form of weight $\kappa/2$ and character $\chi$ on $\Gamma_0(N)$
+that is an eigenfunction of $T(p^2)$ with eigenvalue $\omega_p$ for
+every prime $p$. Let $t$ be a positive squarefree integer and
+$\chi_t(n)=\chi(n)\bigl(\frac{-1}n\bigr)^\ell\bigl(\frac tn\bigr)$.
+Define $A_t(n)$ by
+\begin{equation}\label{eq:shimura-lift}
+\sum_{n\ge1}A_t(n)n^{-s}=L(s-\ell+1,\chi_t)\sum_{n\ge1}a(tn^2)n^{-s}.
+\end{equation}
+Then $\sum_nA_t(n)n^{-s}=a(t)\prod_p\bigl(1-\omega_pp^{-s}+\chi(p)^2
+p^{\kappa-2-2s}\bigr)^{-1}$, and $F_t(z)=\sum_nA_t(n)e^{2\pi inz}$ is a
+modular form of integral weight $\kappa-1$ and character $\chi^2$, a cusp
+form if $\kappa\ge5$. Its level is $N/2$, as Shimura conjectured and
+Niwa~\cite{Ni75} proved by writing the lift as an integral against a
+theta function. So the eigenvalue of $T(p^2)$ on $f$ is the eigenvalue of
+the ordinary Hecke operator $T(p)$ on a form of weight $\kappa-1$. For
+$\kappa=3$ the lift is cuspidal when $f$ is orthogonal to the theta
+series $\sum_n\chi'(n)\,n\,e^{2\pi itn^2z}$ of weight $\frac32$, with
+$\chi'$ an odd Dirichlet character.
+
+In terms of representations, Shimura's theorem is the global form
+of~\ref{R8}. Waldspurger~\cite{Wa80,Wa91} proved that the theta
+correspondence for $\psi$ attaches to every genuine cuspidal automorphic
+representation $\pi$ of the cover, outside the spaces of theta functions
+of one variable, a cuspidal automorphic representation of $PGL(2,\A_k)$
+whose local components are given by~\ref{R8}. At an unramified place the
+Satake parameter of~\ref{R6} is carried over unchanged, up to the sign
+convention noted in~\ref{R8}, and this is the equality of the eigenvalues
+of $T(p^2)$ and $T(p)$. The choice of the
+squarefree integer $t$ in~\eqref{eq:shimura-lift} corresponds to the
+choice of the additive character $\psi_t$, and changing it twists the
+lift by a quadratic character. Waldspurger also described the fibers of
+the correspondence and the multiplicities, which are $0$ or $1$, and
+related the Fourier coefficients $a(t)$ to central values of twisted
+$L$-functions~\cite{Wa81}. For the double cover of $Sp(2n)$
+see~\cite{GI18}.
+
+\paragraph{Where the correspondence is visible in this paper.} The
+trace formula of this paper is not compared with a trace formula for
+$PGL(2)$ or $SO(3)$. That comparison is the stabilization, which is due
+to Li~\cite{Li21} and is not reproduced. But the correspondence leaves
+traces on each term that we compute.
+\begin{itemize}
+\item \emph{The continuous spectrum.} The global normalizing factor of
+  the intertwining operator is $L(2\lambda,\chi^2)/L(2\lambda+1,\chi^2)$
+  (Lemma~\ref{lem:intertwining}). It is the factor of the Eisenstein
+  series of $PGL(2)$ induced from $\diag(t_1,t_2)\mapsto\chi(t_1/t_2)$.
+  For $SL(2)$ the factor would be $L(\lambda,\chi)/L(\lambda+1,\chi)$.
+\item \emph{The residual spectrum.} It consists of the even Weil
+  representations $V_b\cong r^+_{\psi_{-b}}$, spanned by theta functions
+  of weight $\frac12$ at the real places (Theorem~\ref{thm:residual},
+  Example~\ref{ex:theta}). Classically, every modular form of weight
+  $\frac12$ on a congruence subgroup is a linear combination of theta
+  series $\sum_n\chi'(n)e^{2\pi itn^2z}$, by the theorem of Serre and
+  Stark~\cite{SS77}, with $\chi'$ an even Dirichlet character.
+  Under~\ref{R8} these representations correspond to one-dimensional
+  representations.
+\item \emph{The theta functions among the cusp forms.} The spaces
+  $\Theta_b$ of Proposition~\ref{prop:theta-packet} contain, besides
+  $V_b$, cuspidal representations $\bigotimes_vr^{\varepsilon_v}_{\psi'_v}$
+  with an even number of odd components. Those with an odd component at
+  the real place contain the theta series of weight $\frac32$ that
+  Shimura's theorem excludes. The parity condition $\prod_v\varepsilon_v
+  =1$ is the simplest case of the multiplicity formula of Waldspurger.
+\item \emph{The dependence on $\psi$.} The group $GL(2,k)$ acts on
+  genuine automorphic forms through the automorphisms $\Ad(h)$ of
+  Section~\ref{sec:gl2}, and $\diag(a,1)$ carries $\Theta_b$ to
+  $\Theta_{ab}$ (Proposition~\ref{prop:theta-packet}(c)). This is the
+  group-theoretic form of the dependence of the lift on $t$.
+\item \emph{The geometric side.} The classical counterpart of the
+  formula of Section~\ref{sec:tf}, for $k=\Q$ and the test functions of
+  Example~\ref{ex:test-global}, is the Selberg trace formula for a
+  multiplier system of half-integral weight~\cite{He83}. The stable form
+  of the elliptic terms, $S(f)+S(f_-)$ in
+  Theorem~\ref{thm:elliptic-stable}, reflects the two elliptic endoscopic
+  data of the cover. Both have the group $PGL(2)$, and they are attached
+  to the central elements $\pm1$ of the dual group
+  $SL(2,\C)$~\cite{Li11}.
+\end{itemize}
+
+\begin{example}\label{ex:shimura-lift}
+\emph{Shimura's first example.} Let $\eta(z)=e^{\pi iz/12}\prod_{n\ge1}
+(1-e^{2\pi inz})$ and $q=e^{2\pi iz}$. The space of cusp forms of weight
+$\frac92$ on $\Gamma_0(4)$ is spanned by~\cite{Sh73}
+\[
+f(z)=\eta(2z)^{12}\,\theta(z)^{-3}
+=q-6q^2+12q^3-8q^4+12q^6-48q^7+48q^8-15q^9+\cdots.
+\]
+Here $\kappa=9$, $\ell=4$, $N=4$, $\chi=1$ and $t=1$, so $\chi_1(n)=1$
+for odd $n$ and $\chi_1(n)=0$ for even $n$, and~\eqref{eq:shimura-lift}
+reads
+\[
+A_1(n)=\sum_{d\mid n,\ d\ \mathrm{odd}}d^{\,3}\,a\bigl(n^2/d^2\bigr).
+\]
+The lift is the cusp form of weight $8$ on $\Gamma_0(2)$
+\[
+F(z)=\bigl(\eta(z)\eta(2z)\bigr)^8=q-8q^2+12q^3+64q^4-210q^5-96q^6+
+1016q^7+\cdots.
+\]
+For example $A_1(3)=a(9)+27a(1)=-15+27=12$, and $A_1(2)=a(4)=-8$. For an
+odd prime $p$ the relation is $a(p^2)=A_1(p)-p^3$. So $a(25)=-210-125=
+-335$. The script \texttt{checks/background\_n2\_check.py} computes both
+$q$-expansions with integer arithmetic and verifies the displayed
+relation for $n\le12$. In the language of~\ref{R6}, for every odd $p$
+the unramified component $\pi_p$ of the automorphic representation of
+the cover generated by $f$ has the Satake parameter
+$\diag(\alpha_p,\alpha_p^{-1})$ with $p^{7/2}(\alpha_p+\alpha_p^{-1})=
+A_1(p)$, which is the Satake parameter of the representation of
+$PGL(2,\Q_p)$ generated by $F$.
+\end{example}
+
 \subsection{Status of the results}\label{sec:status2}
 
 This subsection lists the statements of Section~\ref{sec:background}
@@ -1031,10 +1841,28 @@ group in Lemma~\ref{lem:kubota}(c)~\cite{Ku67,Mo68}; Lemma~\ref{lem:local}(b)
 and the cocycle identity for~\eqref{eq:sigma-gl2}~\cite{Ku69,Ge76}; the
 statement on $\overline{SO(2)}$ in Lemma~\ref{lem:local}(d);
 Lemma~\ref{lem:H}(c)~\cite{Ar78}; strong approximation in
-Lemma~\ref{lem:strong}; and the facts about Tamagawa measures in
-Section~\ref{sec:global}. Lemma~\ref{lem:gl2}(b) and
+Lemma~\ref{lem:strong}; and, in Example~\ref{ex:tamagawa}, the fact that
+the Tamagawa number of $SL(2)$ is $1$~\cite{We82}. Lemma~\ref{lem:gl2}(b) and
 Remark~\ref{rem:dyadic} are supported by numerical checks only.
-Everything else in this section is proved in the text.
+Everything else in
+Sections~\ref{sec:local}--\ref{sec:gl2} is proved in the text.
+
+Sections~\ref{sec:rep-local} and~\ref{sec:rep-global} are background, and
+most of their statements are quoted. Quoted: the
+facts~\ref{R1}--\ref{R8}, except for what is derived there from
+Lemma~\ref{lem:local}, Lemma~\ref{lem:weil-rep} and~\eqref{eq:weil-rep}.
+Also quoted: Shimura's formula~\eqref{eq:shimura-j} for $j(\gamma,z)$,
+the three correspondences listed after Lemma~\ref{lem:classical},
+the description of the Hecke algebra by $T(p^2)$, the theorems of
+Shimura, Niwa, Waldspurger and Serre--Stark, and the statement
+in Example~\ref{ex:shimura-lift} that $f$ spans the space of cusp forms of
+weight $\frac92$ on $\Gamma_0(4)$ and that $F$ is its lift. Proved in
+the text: the statements on the central character, Lemma~\ref{lem:classical}
+(which uses the theta function of Example~\ref{ex:theta} and
+Lemma~\ref{lem:strong}), and Examples~\ref{ex:hilbert}--\ref{ex:gl2-center}
+and~\ref{ex:unramified-weil}. The sources for the quoted statements were
+cited from memory in this pass and were not reopened. No later section
+depends on Sections~\ref{sec:rep-local} and~\ref{sec:rep-global}.
 \end{remarkrev}
 
 \begin{remarkrev}\label{rem:verified}
@@ -1049,5 +1877,14 @@ are on random elements of $SL(2,\Q)$, $GL(2,\Q)$, $SL(2,\Z_{(p)})$ and
 the tori $T_\theta(\Q)$; they are evidence, not proofs. Of the
 statements in this section, Lemma~\ref{lem:local}(b) and
 Lemma~\ref{lem:gl2}(a),~(b) are supported here only by citation and these
-checks.
+checks. The script \texttt{checks/background\_n2\_check.py} verifies the
+numerical statements of the examples added to this section: the Hilbert
+symbols and square classes of Example~\ref{ex:hilbert}, the
+decomposition and the heights of Examples~\ref{ex:nak-local},
+\ref{ex:height-local} and~\ref{ex:nak-global}, the index in
+Example~\ref{ex:hecke-local}, the volumes $\frac\pi6$ and $\zeta(2)$ of
+Examples~\ref{ex:measure-real} and~\ref{ex:tamagawa}, the signs in
+Examples~\ref{ex:gl2-center} and~\ref{ex:unramified-weil},
+formula~\eqref{eq:shimura-j} on random elements of $\Gamma_0(4)$, and the
+relation between the two $q$-expansions of Example~\ref{ex:shimura-lift}.
 \end{remarkrev}

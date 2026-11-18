@@ -3,6 +3,10 @@
 % Glossary for D. Joyner and Claude, "A hitch-hiker's guide to the
 % metaplectic trace formula for SL(2)" (November 2026).
 % Added in response to the second referee report (ChatGPT). Needs longtable.
+% Background pass of November 18, 2026: the list of terms was rewritten and
+% enlarged. Each entry is a short summary that can be read on its own, with
+% no pointers to numbered statements. The table of notation keeps its
+% "Defined in" column.
 % =====================================================================
 
 \section*{Glossary}\label{sec:glossary}
@@ -69,7 +73,33 @@ $\mathcal H(\overline{G(\A)})$, $\mathcal H(\overline{G(\Q_S)})$ & Hecke
   algebras of test functions; $f=f_S\otimes e^S$ & \S\ref{sec:global},
   \S\ref{sec:local-dist}\\
 $f^y$ & $x\mapsto f(yxy^{-1})$ & \S\ref{sec:invariant}\\
-$c_k$ & $\vol(A(\Q)\backslash A(\A)^1)$ & \S\ref{sec:coarse}\\[4pt]
+$dg$, $dn$, $da$, $dk$ & the Haar measures on $G$, $N$, $A$, $K$, local
+  and global; $dg=\delta_B^{-1}dn\,da\,dk$ with $\vol(K)=1$ &
+  \S\ref{sec:measures-local}, \S\ref{sec:measures-global}\\
+$c_k$ & $\vol(A(\Q)\backslash A(\A)^1)=2^{r_1}(2\pi)^{r_2}h_kR_k/w_k$;
+  $c_\Q=1$ & \S\ref{sec:coarse}\\
+$\vol(G(\Q)\backslash\overline{G(\A)})$ & the volume for $dg$; $\frac\pi6$
+  for $k=\Q$ & Example~\ref{ex:tamagawa}\\[4pt]
+\multicolumn{3}{@{}l}{\emph{Representations and classical forms}}\\
+$\Theta_\pi$, $\omega_\pi$ & the character $f\mapsto\operatorname{tr}\pi(f)$
+  of a representation; its central character & \S\ref{sec:rep-local}\\
+$\pi_\lambda$, $I(\pi_\lambda)$, $\pi^w$ & $\pi\,e^{\lambda H}$ for a genuine
+  character $\pi$ of the cover of $A$; the principal series; the Weyl
+  conjugate of $\pi$ & \S\ref{sec:rep-local}\\
+$M_v(\pi,\lambda)$, $\rho(\pi,\lambda)$ & local intertwining operator
+  $I(\pi_\lambda)\to I(\pi^w_{-\lambda})$; the scalar
+  $M_v(\pi^w,-\lambda)M_v(\pi,\lambda)$ & \S\ref{sec:rep-local}\\
+$D_m^\pm$ & representation of the real cover of lowest weight $m$
+  (highest weight $-m$), $m\in\frac12+\Z$, $m>0$ & \S\ref{sec:rep-local}\\
+$\tilde k_\theta$, $\tilde g_z$ & the one-parameter subgroup above the
+  rotations; the lift $(n(u)a(y^{1/2}),1)$ of a point $z=u+iy$ &
+  \S\ref{sec:rep-local}, \S\ref{sec:rep-global}\\
+$\theta(z)$, $j(\gamma,z)$ & $\sum_ne^{2\pi in^2z}$; Shimura's factor
+  $\theta(\gamma z)/\theta(z)$ on $\Gamma_0(4)$ & \eqref{eq:shimura-j}\\
+$S_{\kappa/2}(\Gamma)$, $T(p^2)$ & cusp forms of weight $\kappa/2$ in the
+  sense of Shimura; Shimura's Hecke operator & \S\ref{sec:rep-global}\\
+$A_t(n)$, $F_t$ & the coefficients of the Shimura lift of a form with
+  coefficients $a(n)$; the lift & \eqref{eq:shimura-lift}\\[4pt]
 \multicolumn{3}{@{}l}{\emph{Rank $0$}}\\
 $\psi$, $\psi_b$ & a nontrivial character of $\A_k/k$; $x\mapsto\psi(bx)$
   & \S\ref{sec:torus-cover}\\
@@ -139,7 +169,7 @@ $r_v(\pi_v,\lambda)$, $R_v$, $R_S$ & local normalizing factor; normalized
   operator $r_v^{-1}M_v$; $\bigotimes_{v\in S_k}R_v$ &
   Theorem~\ref{thm:normalization}\\
 $S_{\mathrm{bad}}(\mu)$ & the places where $r_v$ is not explicit in
-  Section~\ref{sec:invariant} (see Proposition~\normref{}) &
+  Section~\ref{sec:invariant}; made explicit in Proposition~\normref{}(c) &
   \S\ref{sec:normalized}\\
 $\rho(\pi,\lambda)$, $\omega(\pi)$, $h_\pi$ & the scalar
   $M_v(\pi^w,-\lambda)M_v(\pi,\lambda)$; the value $\pi((w,1)^2)\in\mu_4$;
@@ -193,65 +223,317 @@ $U_h$, $\Theta_b$, $\Theta^{\mathrm{st}}_b$ & the action of $G_1(k)$ on
 
 \subsection*{Terms}
 
+Each entry is a short reminder of what the term means in this paper. The
+entries can be read independently of the text and of each other.
+
 \begin{description}
+\item[Admissible representation.] A representation of a $p$-adic group or
+  of its cover in which every vector is fixed by some open subgroup, and
+  the vectors fixed by any given compact open subgroup form a space of
+  finite dimension. For such a representation $\pi$ and a test function
+  $f$, the operator $\pi(f)$ has finite rank, so its trace is defined.
 \item[Anti-genuine function.] A function $f$ on a cover with
   $f(x\zeta)=\zeta^{-1}f(x)$ for $\zeta\in\mu_2$. All test functions are
-  anti-genuine. For the double cover this is the same condition as
-  \emph{genuine}, $f(x\zeta)=\zeta f(x)$.
-\item[Borel coordinates.] The coordinates $(g,\zeta)$ in which a cover is
-  described by a cocycle. They give the group law and the Borel
-  structure, but not the topology (Lemma~\ref{lem:kubota}).
+  anti-genuine. The inverse is there so that $\pi(f)=\int f(x)\pi(x)\,dx$
+  does not vanish on genuine representations. For the double cover
+  $\zeta^{-1}=\zeta$, so the condition is the same as \emph{genuine},
+  $f(x\zeta)=\zeta f(x)$.
+\item[Automorphic form (genuine).] A smooth function $\varphi$ on the
+  adelic cover that is left invariant under the rational points $G(\Q)$,
+  satisfies $\varphi(x\zeta)=\zeta\varphi(x)$ for $\zeta\in\mu_2$, is
+  finite under the maximal compact subgroup and under the center of the
+  enveloping algebra, and has moderate growth. For $k=\Q$ these functions
+  correspond to classical forms of half-integral weight on the upper half
+  plane.
+\item[Automorphic representation (genuine).] An irreducible representation
+  of the adelic cover that occurs in the space of genuine automorphic
+  forms. It is a restricted tensor product of irreducible genuine
+  representations of the local covers, almost all of them unramified.
+\item[Borel coordinates.] The coordinates $(g,\zeta)$, with $g$ in the
+  linear group and $\zeta\in\mu_2$, in which a cover is described by a
+  cocycle. They give the group law and the measurable structure. They do
+  not give the topology, because the cocycle is not continuous: a
+  sequence $g_j\to g$ need not satisfy $(g_j,1)\to(g,1)$.
+\item[Central character.] The character by which the center of a group
+  acts in an irreducible representation. The center of the local cover
+  of $SL(2)$ is the preimage of $\{\pm1\}$, a group of order $4$. It is
+  cyclic at the real places and at some dyadic places, and there the
+  central character of a genuine representation takes the values $\pm i$
+  on the lifts of $-1$.
+\item[Character of a representation.] The linear form $f\mapsto
+  \operatorname{tr}\pi(f)$ on test functions. It is invariant under
+  conjugation and determines an irreducible representation. The spectral
+  side of the trace formula is a sum and integral of characters.
 \item[Class (geometric).] A set of elements of $G(\Q)$ whose semisimple
-  parts are conjugate: central, hyperbolic or elliptic
-  (Lemma~\ref{lem:classes}). A class is \emph{unramified} if it consists
-  of semisimple elements.
-\item[Cuspidal datum.] A pair $(G,\pi)$ with $\pi$ cuspidal, or a pair
-  $(A,\mu)$ with $\mu$ a genuine automorphic character of the cover of
-  $A$; $(A,\mu)$ and $(A,\mu^w)$ are equivalent. A class $\chi$ of data
-  $(A,\mu)$ is \emph{ramified} if $\mu^w=\mu$, and then
-  $\mu=\chi_{\psi_b}$.
+  parts are conjugate. For $SL(2)$ there are three kinds. A central class
+  consists of $z=\pm1$ times unipotent elements. A hyperbolic class is
+  the conjugacy class of a diagonal element $a(t)$ with $t\ne\pm1$. An
+  elliptic class is the conjugacy class of an element whose eigenvalues
+  are not in $k$. A class is \emph{unramified} if it consists of
+  semisimple elements.
+\item[Coarse expansion.] The first form of each side of the trace
+  formula: a sum over geometric classes $\mathcal O$ of distributions
+  $J_{\mathcal O}(f)$, or over classes $\chi$ of cuspidal data of
+  distributions $J_\chi(f)$. The terms are defined by truncation and are
+  not yet written as orbital integrals or characters.
+\item[Cocycle.] A function $\beta$ of two group elements with values in
+  $\mu_2$ such that $(g_1,\zeta_1)(g_2,\zeta_2)=(g_1g_2,\beta(g_1,g_2)
+  \zeta_1\zeta_2)$ is a group law. Kubota's cocycle on $SL(2,F)$ is a
+  Hilbert symbol of the lower left entries of $g_1$, $g_2$ and $g_1g_2$,
+  or of the lower right entries when the lower left ones vanish.
+\item[Constant term.] The integral $\int_{N(\Q)\backslash N(\A)}
+  \varphi(nx)\,dn$ of an automorphic form over the unipotent radical of
+  the Borel subgroup. It describes $\varphi$ near the cusp.
+\item[Cover, double cover.] A group $\overline G$ with a surjective
+  homomorphism $p\colon\overline G\to G$ whose kernel is the central
+  subgroup $\mu_2=\{\pm1\}$. The double cover of $SL(2,F)$ used here does
+  not split: it is not $SL(2,F)\times\mu_2$, unless $F=\C$. It splits over
+  unipotent subgroups, over small compact open subgroups, and, in the
+  adelic case, over the rational points.
+\item[Cusp form.] An automorphic form whose constant term vanishes. The
+  cusp forms span the cuspidal part of the discrete spectrum.
+\item[Cuspidal datum.] A pair $(G,\pi)$ with $\pi$ a cuspidal
+  automorphic representation, or a pair $(A,\mu)$ with $\mu$ a genuine
+  automorphic character of the cover of the diagonal torus $A$. The data
+  $(A,\mu)$ and $(A,\mu^w)$, with $\mu^w$ the conjugate of $\mu$ by the
+  Weyl element, are equivalent. The class of $(A,\mu)$ is \emph{ramified}
+  if $\mu^w=\mu$. This happens exactly when $\mu$ is a Weil character
+  $\chi_{\psi_b}$.
+\item[Discrete series.] An irreducible unitary representation whose
+  matrix coefficients are square integrable. For the real cover these are
+  the representations of lowest weight $m$ or highest weight $-m$ with
+  $m\in\{\frac32,\frac52,\dots\}$. They correspond to holomorphic and
+  antiholomorphic forms of weight $m$.
+\item[Dual group.] The complex group that parametrizes unramified
+  representations. For the double cover of $SL(2)$ it is $SL(2,\C)$, the
+  dual group of $PGL(2)=SO(3)$. It is not $PGL(2,\C)$, the dual group of
+  $SL(2)$.
 \item[Dyadic place.] A place of $k$ above $2$. The explicit splitting
-  $\kappa_v$ and the explicit normalizing factors are not available
-  there.
+  $\kappa_v$ of the cover over the maximal compact subgroup is not
+  available there, and one uses a splitting over a smaller congruence
+  subgroup. The unramified computation of the normalizing factors does
+  not apply at a dyadic place either. There the explicit form of the
+  factors is taken from the work of Szpruch on local coefficients.
+\item[Eisenstein series.] The function $E(x,\varphi,\lambda)=\sum_\delta
+  \varphi_\lambda(\delta x)$, summed over $B(\Q)\backslash G(\Q)$, built
+  from a function $\varphi$ in a principal series. It converges for
+  $\mathrm{Re}\,\lambda>1$ and continues meromorphically. The Eisenstein
+  series on the line $\mathrm{Re}\,\lambda=0$ describe the continuous
+  spectrum, and their residues at $\lambda=\frac12$ are theta functions.
+\item[Elliptic element.] An element of $SL(2,F)$ whose eigenvalues do not
+  lie in $F$. Its centralizer is a torus $T_\theta$ isomorphic to the
+  group of elements of norm $1$ in a quadratic extension of $F$.
+\item[Endoscopic group.] A smaller group whose stable orbital integrals
+  account for the unstable part of the trace formula. For the double
+  cover of $SL(2)$ there are two elliptic endoscopic data, attached to
+  the central elements $\pm1$ of the dual group $SL(2,\C)$. Both have the
+  group $SO(3)$ in its split form $PGL(2)$. They are discussed in this
+  paper but not used.
+\item[Fine expansion.] The second form of the geometric side, due to
+  Arthur: each class contributes a finite sum of weighted orbital
+  integrals on the group over $\Q_S$, multiplied by global coefficients
+  $a^M(S,\gamma)$.
+\item[$(G,S)$-equivalence.] Arthur's equivalence relation on $G(\Q)$, for
+  a finite set $S$ of places. Two elements are equivalent if their
+  semisimple parts are conjugate and their unipotent parts are conjugate
+  in the centralizer over $\Q_S$. The equivalence classes index the terms
+  of the fine expansion.
+\item[Genuine character.] A character of the cover of an abelian group
+  that is the identity on $\mu_2$. The genuine characters of the cover of
+  the diagonal torus are the products of one of them, for example Weil's
+  character, with the ordinary characters of the torus.
 \item[Genuine representation.] A representation of a cover in which
-  $\mu_2$ acts by the identity character.
-\item[$(G,S)$-equivalence.] Arthur's equivalence relation on $G(\Q)$,
-  for a finite set $S$ of places: equal semisimple parts up to
-  conjugacy, and unipotent parts conjugate in the centralizer over
-  $\Q_S$. It indexes the terms of the fine expansion
-  (Theorem~\ref{thm:fine}).
-\item[Endoscopic group.] For the double cover of $SL(2)$ the elliptic
-  endoscopic groups are two copies of $SO(3)$, attached to the central
-  elements $\pm1$ of the dual group $SL(2,\C)$~\cite{Li11}. They are
-  discussed but not used.
+  $\mu_2$ acts by $\zeta\mapsto\zeta$. A representation that is not
+  genuine is trivial on $\mu_2$ and is a representation of the linear
+  group.
+\item[Half-integral weight (in the sense of Shimura).] A holomorphic
+  function $F$ on the upper half plane has weight $\kappa/2$, with
+  $\kappa$ odd, on a subgroup $\Gamma$ of $\Gamma_0(4)$ if $F(\gamma z)=
+  j(\gamma,z)^\kappa F(z)$ for $\gamma\in\Gamma$. Here $j(\gamma,z)=
+  \theta(\gamma z)/\theta(z)$ is the factor of the theta function
+  $\theta(z)=\sum_ne^{2\pi in^2z}$. It is a square root of $cz+d$ times a
+  Jacobi symbol and a fourth root of unity. Such forms are the genuine
+  automorphic forms on the adelic double cover of $SL(2)$ over $\Q$ that
+  have weight $\kappa/2$ at the real place.
+\item[Hecke algebra.] An algebra of test functions under convolution.
+  The \emph{spherical} Hecke algebra at an odd place consists of the
+  anti-genuine functions that are invariant on both sides under the
+  lifted maximal compact subgroup $K_v^*$. It is commutative, and its
+  unit $e_v$ acts on a genuine representation as the projection onto the
+  $K_v^*$-fixed vectors. In classical terms it is generated by the Hecke
+  operator $T(p^2)$.
+\item[Height.] The function $H(x)=\log|t|$, where $a(t)$ is the diagonal
+  component of $x$ in the decomposition $x=nak$. It is invariant on the
+  left under $N(\A)$ and under $B(\Q)$, and on the right under the
+  maximal compact subgroup. On the upper half plane it is half the
+  logarithm of the imaginary part.
+\item[Hilbert symbol.] The symbol $(a,b)_v=\pm1$ on $k_v^\times\times
+  k_v^\times$, equal to $1$ exactly when $ax^2+by^2=1$ has a solution in
+  $k_v$. It is bimultiplicative and symmetric, it depends on $a$ and $b$
+  only modulo squares, and the product of $(a,b)_v$ over all places is
+  $1$ for $a,b\in k^\times$. The cover is built from it.
+\item[Hyperbolic element.] An element of $SL(2,F)$ conjugate to a
+  diagonal element $a(t)$ with $t\ne\pm1$. Its centralizer is the
+  diagonal torus.
+\item[Intertwining operator.] The operator $M(w,\lambda)$, or locally
+  $M_v(\pi,\lambda)$, given by integration over the unipotent group
+  after translation by the Weyl element. It maps the principal series of
+  $\pi_\lambda$ to that of $\pi^w_{-\lambda}$ and commutes with the action
+  of the group. The constant term of an Eisenstein series is
+  $\varphi_\lambda+(M(w,\lambda)\varphi)_{-\lambda}$.
 \item[Invariant distribution.] A linear form $I$ on test functions with
-  $I(f^y)=I(f)$ for all $y$ in the group.
+  $I(f^y)=I(f)$ for all $y$ in the group, where $f^y(x)=f(yxy^{-1})$.
+  Orbital integrals and characters are invariant. Weighted orbital
+  integrals are not.
+\item[Invariant trace formula.] The form of the trace formula in which
+  every term is an invariant distribution. It is obtained from the
+  coarse and fine expansions by subtracting from each weighted orbital
+  integral a correction built from the logarithmic derivative of the
+  normalized intertwining operators.
+\item[Iwasawa decomposition.] The decomposition $x=nak$ of an element of
+  the group or of its cover, with $n$ upper triangular unipotent, $a$
+  diagonal and $k$ in the maximal compact subgroup. The component $a$ is
+  determined up to the compact part of the torus.
+\item[Metaplectic group.] The nontrivial double cover of $SL(2,F)$, or
+  of the symplectic group $Sp(2n,F)$, and the corresponding adelic cover.
+  Over $\R$ it is the connected Lie group $Mp(2,\R)$. In the 1995 notes
+  the term also covers the $n$-fold covers of $SL(2)$.
 \item[Normalizing factor.] A scalar function $r_v(\pi_v,\lambda)$ such
-  that $r_v^{-1}M_v$ has the properties \ref{N1}--\ref{N4} of
-  Theorem~\ref{thm:normalization}. Its existence, an explicit formula for
-  it, and its role in the global factor $m$ are three different matters
-  (Section~\ref{sec:normalized}).
+  that the normalized operator $r_v^{-1}M_v$ is unitary and holomorphic
+  on the imaginary axis, satisfies a functional equation, is rational on
+  each type of the maximal compact subgroup, and fixes the unramified
+  vector at almost all places. Three questions about it are separate:
+  whether it exists, what its explicit formula is, and how the product of
+  the local factors enters the global function $m(\mu,\lambda)$. For the
+  double cover the factor is a constant times $L_v(2\lambda,\chi_v^2)/
+  L_v(2\lambda+1,\chi_v^2)$.
+\item[Orbital integral.] The integral $J_G(\gamma,f)$ of a test function
+  over the conjugacy class of $\gamma$, normalized by a power of the
+  discriminant. It is an invariant distribution. On the cover the
+  orbital integral at a lift of $\gamma$ is the negative of the one at
+  the other lift.
+\item[Packet.] A finite set of irreducible representations that the
+  stable trace formula does not separate. For the cover the packets are
+  those of Waldspurger. The even and odd Weil representations
+  $r^\pm_{\psi'}$ attached to one character form the simplest example.
+\item[Principal series.] The representations $I(\pi_\lambda)$ induced
+  from a genuine character $\pi$ of the cover of the diagonal torus,
+  twisted by $e^{\lambda H}$. They are unitary for unitary $\pi$ and
+  imaginary $\lambda$, and on the double cover they are then irreducible.
 \item[Residual spectrum.] The part of the discrete spectrum that is not
   cuspidal. For this group it is spanned by the residues of Eisenstein
-  series at $\lambda=\frac12$ and consists of even Weil representations.
+  series at $\lambda=\frac12$. It is the sum of the even Weil
+  representations $r^+_{\psi_b}$, one for each class $b$ in
+  $k^\times/k^{\times2}$, and its elements are theta functions.
+\item[Satake parameter.] The conjugacy class in the dual group
+  $SL(2,\C)$ that determines an unramified representation. For the
+  principal series of $\pi=\chi_\psi\cdot(\chi\circ p)$ and $\lambda$ it
+  is the class of $\diag(\chi(\varpi)q^{-\lambda},\chi(\varpi)^{-1}
+  q^{\lambda})$.
+\item[Shimura correspondence.] Shimura's map from Hecke eigenforms of
+  half-integral weight $\kappa/2$ to eigenforms of even weight
+  $\kappa-1$, under which the eigenvalue of $T(p^2)$ becomes the
+  eigenvalue of $T(p)$. In terms of representations it is Waldspurger's
+  correspondence, defined by theta series, between genuine automorphic
+  representations of the double cover of $SL(2)$ and automorphic
+  representations of $PGL(2)$ and of its inner forms. It depends on the
+  choice of an additive character.
+\item[Splitting.] A homomorphism $s$ from a subgroup $H$ of the linear
+  group to the cover with $p\circ s=\mathrm{id}$. The cover splits over
+  $N$ by $n\mapsto(n,1)$, over the maximal compact subgroup at odd places
+  by $k\mapsto(k,\kappa_v(k))$, and over $G(\Q)$ by $\gamma\mapsto(\gamma,
+  \kappa_\A(\gamma))$. It does not split over $SL(2,F)$ or over the
+  diagonal torus.
 \item[Stable conjugacy.] On $SL(2,F)$: conjugacy under $GL(2,F)$. On the
-  cover: the relation whose classes are the orbits of $h\star x$; a stable
-  class lies over a stable class of $SL(2,F)$ and contains one of the two
-  lifts of each element (Section~\ref{sec:stable-conj}). Conjugation by
-  $GL(2,F)$ without the twist is coarser.
+  cover: the equivalence relation whose classes are the orbits of the
+  twisted action $h\star x=(\det h,\det(1+\gamma))_v\,\Ad(h)x$ of
+  $GL(2,F)$, where $\gamma$ is the image of $x$. A stable class lies over
+  a stable class of $SL(2,F)$ and contains exactly one of the two lifts
+  of each of its elements. Conjugation by $GL(2,F)$ without the twist can
+  exchange the two lifts, so it gives a coarser relation.
 \item[Stable distribution.] An invariant distribution given by a class
   function that is constant on stable classes, or a stable orbital
-  integral $J^{\mathrm{st}}_G$; equivalently, one that is invariant under
-  $f\mapsto f^{[h]}$.
+  integral, which is the sum of the orbital integrals over the conjugacy
+  classes in a stable class. Equivalently, an invariant distribution
+  that is also invariant under the twisted action of $GL(2)$.
 \item[Stable(r) form.] The trace formula with its terms organized by
-  stable classes, before any transfer to $SO(3)$
-  (Theorem~\ref{thm:stabler}).
+  stable classes, before any transfer to $SO(3)$. In it the regular
+  elliptic terms are $S(f)+S(f_-)$ with $S$ stable and $f_-$ the
+  translate of $f$ by the central element $-1$.
+\item[Strong approximation.] The statement that $G(\Q)G(\R)$ is dense in
+  $G(\A)$ for $G=SL(2)$. It identifies the adelic quotient, divided by a
+  compact open subgroup, with the quotient of the real group by a
+  congruence subgroup. The same holds for the cover.
+\item[Measures.] One Haar measure $dg$ on $G(\A)$ is used throughout. In
+  the decomposition $x=nak$ it is $\delta_B(a)^{-1}dn\,da\,dk$, where the
+  maximal compact subgroup has volume $1$, $dn$ is the self-dual measure,
+  and $da$ gives the units $\OO_v^\times$ the volume $1$ at the finite
+  places and is $dt/|t|$ at the real places. For $k=\Q$ it gives
+  $G(\Q)\backslash G(\A)$ the volume $\frac\pi6$, and the constant $c_\Q$
+  is $1$.
+\item[Tamagawa measure.] The Haar measure on $G(\A)$ defined by an
+  invariant differential form over $\Q$ and the self-dual measures of an
+  additive character. For $SL(2)$ it gives $G(\Q)\backslash G(\A)$ the
+  volume $1$. It is not the measure used in this paper. For $k=\Q$ it is
+  $\frac6\pi$ times that measure.
+\item[Test function.] A smooth, compactly supported, anti-genuine
+  function on a local cover, or a finite sum of products of such
+  functions over all places, almost all of them equal to the unit of the
+  spherical Hecke algebra. Smoothness refers to the topology of the
+  cover, not to the coordinates $(g,\zeta)$.
+\item[Theta function.] The automorphic form $\theta_\phi(x)=\sum_{\xi\in
+  k}(\omega_\psi(x)\phi)(\xi)$ attached to a Schwartz function $\phi$ on
+  the adeles through the Weil representation. For $k=\Q$ and a Gaussian
+  it is $y^{1/4}\sum_ne^{2\pi in^2z}$, of weight $\frac12$.
+\item[Trace formula.] The identity between the geometric and the spectral
+  expansion of the trace of a test function acting on the discrete
+  spectrum, corrected by the contribution of the continuous spectrum.
 \item[Truncation.] Subtracting from a kernel, or from an automorphic
-  form, its constant term in the cusp $\{H(\delta x)>T\}$.
+  form, its constant term in the region $\{H(\delta x)>T\}$ near the
+  cusp. The truncated kernel is integrable over the diagonal, and its
+  integral is a polynomial in $T$ of degree at most one.
+\item[Unipotent element.] An element $n(u)$, or a conjugate of one. The
+  unipotent classes of $SL(2,F)$ other than the identity are indexed by
+  $F^\times/F^{\times2}$. Their contribution to the trace formula is
+  computed with a zeta integral and involves values at $1$ of quadratic
+  Hecke $L$-functions.
+\item[Unramified representation.] An irreducible genuine representation
+  of the cover at an odd place that has a nonzero vector fixed by the
+  lifted maximal compact subgroup $K_v^*$. The fixed vector is unique up
+  to a scalar.
+\item[Weight (of a vector).] A vector in a representation of the real
+  cover has weight $m$ if the one-parameter group above the rotations
+  acts on it by $e^{im\theta}$. In a genuine representation the weights
+  lie in $\frac12+\Z$.
+\item[Weight (of an orbital integral).] The function $v_A(x)=-H(x)-H(wx)$
+  that is inserted into the orbital integral of a hyperbolic element by
+  truncation.
 \item[Weighted orbital integral.] An orbital integral with the weight
-  $v_A$ inserted, \eqref{eq:JA}. It arises from truncation and is not
-  invariant.
+  $v_A$ inserted. It arises from truncation and is not invariant: under
+  conjugation of the test function it changes by an ordinary orbital
+  integral on the cover of the torus.
+\item[Weil character.] The genuine character $\chi_\psi(a(t),\zeta)=
+  \zeta\,\gamma_\psi(t)/\gamma_\psi(1)$ of the cover of the diagonal
+  torus, built from Weil indices. It depends on the additive character
+  $\psi$, it is fixed by the Weyl group, and globally it is trivial on
+  the rational points of the torus.
 \item[Weil index.] The eighth root of unity $\gamma_v(a)$ attached to the
-  character of second degree $x\mapsto\psi_v(ax^2)$,
-  \eqref{eq:weil-index}.
+  character of second degree $x\mapsto\psi_v(ax^2)$. It is defined by
+  $\int\psi_v(ax^2)\,dx=\gamma_v(a)|2a|_v^{-1/2}$ and satisfies
+  $\gamma_v(ab)\gamma_v(1)=\gamma_v(a)\gamma_v(b)(a,b)_v$.
+\item[Weil representation.] The genuine representation $\omega_\psi$ of
+  the cover on the Schwartz functions on $k_v$ in which $n(u)$ acts by
+  multiplication by $\psi(ux^2)$ and the Weyl element by a Fourier
+  transform. It is the sum of the \emph{even} part $r^+_\psi$ and the
+  \emph{odd} part $r^-_\psi$, on the even and the odd functions, and both
+  are irreducible.
+\item[Weyl element.] The matrix $w=\bigl(\begin{smallmatrix}0&-1\\1&0
+  \end{smallmatrix}\bigr)$. Conjugation by it sends $a(t)$ to
+  $a(t^{-1})$. On the cover of the torus this conjugation is not
+  inversion.
+\item[Whittaker functional.] A linear form $\ell$ on a representation
+  with $\ell(\pi(n(u))\phi)=\psi'(u)\ell(\phi)$ for a nontrivial
+  character $\psi'$. On the double cover it is unique up to a scalar
+  when it exists. The Weil representations $r^\pm_\psi$ have such functionals
+  only for the characters $\psi_a$ with $a$ a square.
 \end{description}

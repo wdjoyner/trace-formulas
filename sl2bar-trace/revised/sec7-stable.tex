@@ -931,8 +931,9 @@ $\Ad(\delta_a)\gamma_v$ are not coherent in $v$. (Compare
 
 For $f\in\mathcal H(\GA)$ and $x=a\star s(\gamma)$, $a\in\A_k^\times$
 (we write $a\star$ for $\delta_a\star$), let $J_G(x,f)=\int f(y^{-1}xy)\,
-dy$ over $T_x(\A)\backslash G(\A)$, with the Tamagawa measures on $G(\A)$
-and on $T_x(\A)=\delta_aT_\gamma(\A)\delta_a^{-1}$; no factor $|D|^{1/2}$ is
+dy$ over $T_x(\A)\backslash G(\A)$, with the measure of Section~\ref{sec:measures-global} on
+$G(\A)$, and with measures on the tori $T_x(\A)=\delta_aT_\gamma(\A)
+\delta_a^{-1}$ that correspond under $\Ad(\delta_a)$; no factor $|D|^{1/2}$ is
 needed, since $|D(\gamma)|_{\A_k}=1$. Put
 \begin{equation}\label{eq:Jst-global}
 J^{\mathrm{st}}_G(\gamma,f)=\sum_{a\in\A_k^\times/N\A_E^\times}J_G\bigl(a\star
@@ -942,7 +943,7 @@ a\star s(\gamma),f\bigr).
 \end{equation}
 Here $\A_k^\times/N\A_E^\times=\bigoplus_vk_v^\times/N E_v^\times$. By
 Lemma~\ref{lem:kappa-orbital}(d) only finitely many $a$ contribute, and
-for $f=\bigotimes f_v$ and local measures whose products are the Tamagawa
+for $f=\bigotimes f_v$ and local measures whose products are these global
 measures,
 \[
 J^{\mathrm{st}}_G(\gamma,f)=\prod_vJ^{\mathrm{st}}_G(\gamma_v,f_v),\qquad
@@ -981,8 +982,9 @@ The $SL(2,k)$-conjugacy classes in the $G_1(k)$-class of $\gamma$ are the
 classes $\mathcal O_a$ of $\delta_a\gamma\delta_a^{-1}$, $a\in k^\times/
 N E^\times$. By Proposition~\ref{prop:elliptic}
 and~\eqref{eq:rational-stable}, $J_{\mathcal O_a}(f)=\vol\cdot
-J_G(a\star s(\gamma),f)$, with the same volume for all $a$, the Tamagawa
-measure being compatible with $\Ad(\delta_a)$. Let
+J_G(a\star s(\gamma),f)$, with the same volume for all $a$, because the
+measures on the tori correspond under $\Ad(\delta_a)$ and $\Ad(\delta_a)$
+preserves the Haar measure of $G(\A)$. Let
 $\Phi(a)=J_G(a\star s(\gamma),f)$ for $a\in\A_k^\times$. It depends only
 on the image of $a$ in $\A_k^\times/N\A_E^\times$, and it vanishes outside
 a finite set. By the Hasse norm theorem, $k^\times/N E^\times$ injects
@@ -1795,7 +1797,7 @@ Let $h\in G_1(k)$ and $a=\det h$.
 \end{lemma}
 
 \begin{proof}
-(a) $\Ad(h)$ preserves $G(\Q)$ and the Tamagawa measure, which
+(a) $\Ad(h)$ preserves $G(\Q)$ and the Haar measure of $G(\A)$, which
 gives unitarity and the two formulas. It preserves $N(\A)$ and its Haar
 measure up to the factor $|a|_{\A_k}=1$, so $(U_h\varphi)_B=U_h(\varphi_B)$
 for the constant term along $B$; hence cusp forms go to cusp forms, and

@@ -143,6 +143,20 @@ check("measure: the volume for dk of mass 1 and da = dt/|t| is (pi/3)/2 = pi/6",
       abs(area / 2 - math.pi / 6) < 1e-6)
 
 
+# normalization pass: tau = (6/pi) dg, and the totally real formula
+check("measure: Tamagawa = pi * prod_p (1 - p^-2) * dg = (6/pi) dg, so (6/pi)(pi/6) = 1",
+      abs(math.pi * prod - 6 / math.pi) < 1e-5)
+# k = Q(sqrt 5): |d_k| zeta_k(2) pi^-2 = 2 pi^2 / (15 sqrt 5), with zeta_k = zeta * L(., chi_5)
+chi5 = {0: 0, 1: 1, 2: -1, 3: -1, 4: 1}
+L2 = sum(chi5[n % 5] / (n * n) for n in range(1, 2000001))
+check("measure: L(2, chi_5) = 4 pi^2 / (25 sqrt 5)", abs(L2 - 4 * math.pi ** 2 / (25 * math.sqrt(5))) < 1e-6)
+check("measure: Q(sqrt 5): 5 zeta_k(2) / pi^2 = 2 pi^2 / (15 sqrt 5)",
+      abs(5 * zeta2 * L2 / math.pi ** 2 - 2 * math.pi ** 2 / (15 * math.sqrt(5))) < 1e-5)
+# the same number from the hyperbolic volume 2 zeta_k(-1) (2 pi)^2 = 4 pi^2/15 of SL(2,O_k)\H^2:
+# (1/2) * (4 pi^2 / 15) * |d_k|^(-1/2)   (zeta_k(-1) = 1/30)
+check("measure: Q(sqrt 5): agrees with (1/2) * 2 zeta_k(-1) (2 pi)^2 / sqrt 5",
+      abs(0.5 * 2 * (1 / 30) * (2 * math.pi) ** 2 / math.sqrt(5) - 2 * math.pi ** 2 / (15 * math.sqrt(5))) < 1e-12)
+
 # ------------------------------------------------------------ ex:nak-global
 def rand_sl2q():
     while True:

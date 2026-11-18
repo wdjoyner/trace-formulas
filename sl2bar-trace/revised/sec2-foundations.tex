@@ -736,17 +736,29 @@ are zero.
 \subsubsection{Measures}\label{sec:measures-local}
 
 This subsection fixes the Haar measures on the local groups and on their
-covers.
+covers. They are fixed once and for all. The global measures of
+Section~\ref{sec:measures-global} are their products, and every volume in
+this paper is taken with respect to them.
 
 
 Let $dk$ be the Haar measure on $K_p$ of total volume $1$. Fix a
 nontrivial additive character $\psi_v$ of $k_v$ for each $v$, and let
 $dn$ be the measure on $N(\Q_p)\cong\bigoplus_{v\mid p}k_v$ that is the
-product of the self-dual measures for the $\psi_v$. Let $da$ be a Haar
-measure on $A(\Q_p)$. If $T$ is a maximal torus of $G$ over $\Q_p$, and
-$h\in G(\overline{\Q}_p)$ conjugates $T$ to $A$, let $dt$ be the
-pull-back of $da$ as in~\cite{Ro90}; stably conjugate tori get compatible
-measures as in~\cite{Ro90}. Put
+product of the self-dual measures for the $\psi_v$. Let $da$ be the
+product over $v\mid p$ of the following measures $d^\times t$ on
+$A(k_v)\cong k_v^\times$, $a=a(t)$:
+\[
+\vol(\OO_v^\times)=1\ \ (v\ \text{finite}),\qquad
+d^\times t=\frac{dt}{|t|}\ \ (v\ \text{real}),\qquad
+d^\times t=\frac{2\,dx\,dy}{x^2+y^2}\ \ (v\ \text{complex},\ t=x+iy),
+\]
+with Lebesgue measures $dt$, $dx$, $dy$. If $T$ is another maximal torus
+of $G$ over $\Q_p$, let $dt$ be a Haar measure on $T(\Q_p)$, chosen so
+that tori that are conjugate under $\prod_{v\mid p}GL(2,k_v)$ have
+measures that correspond under the conjugation~\cite{Ro90}. The
+terms of the trace formula do not depend on this choice
+(Section~\ref{sec:measures-global}). Where a local computation needs a
+definite measure on $T$, it is stated there. Put
 \[
 \delta_B(a(t))=|\alpha(a(t))|_p=|t|_p^2.
 \]
@@ -760,6 +772,10 @@ The two expressions agree because $dg$ is invariant under
 $g\mapsto g^{-1}$ (as $G$ is unimodular) and $(nak)^{-1}=k^{-1}a^{-1}
 n^{-1}$; see~\cite[Ch.~VIII]{Kn02} for the real case.
 
+By~\eqref{eq:iwasawa} the volume of $K_p$ for $dg$ is the volume of
+$N(\Q_p)\cap K_p$ for $dn$. It is $1$ when the $\psi_v$, $v\mid p$, are
+unramified, which we assume in the rest of this subsection.
+
 On a cover we use $d\tilde g=dg\,d\zeta$, where $d\zeta$ gives
 $\mu_2$ total volume~$1$. Then $\overline{K_p}$ has volume $1$, and
 $e_p$ of~\eqref{eq:unit} is idempotent: for $x=\tilde k\in K_p^*$,
@@ -770,12 +786,13 @@ $e_p$ of~\eqref{eq:unit} is idempotent: for $x=\tilde k\in K_p^*$,
 
 \begin{example}\label{ex:measure-real}
 Let $k=\Q$. At a prime $p$ take $\psi_p$ unramified, so that $\Z_p$ has
-measure $1$ for $dn$, and take $da$ with $\vol(A(\Z_p))=1$. Then
+measure $1$ for $dn$, and $\vol(A(\Z_p))=1$ by the choice of $da$. Then
 \eqref{eq:iwasawa} gives $\vol(K_p)=1$ for $dg$, because
 $N(\Z_p)A(\Z_p)K_p=K_p$.
 
 At the real place take $\psi_\infty(x)=e^{-2\pi ix}$, so $dn=du$ is
-Lebesgue measure, and $da=dt/|t|$ on $A(\R)\cong\R^\times$. Every element
+Lebesgue measure, and $da=dt/|t|$ on $A(\R)\cong\R^\times$. Every
+element
 of $SL(2,\R)$ is $n(u)a(t)k$ for exactly two triples, with $t$ and $-t$.
 Put $z=u+iy$ with $y=t^2$, so that $dt/|t|=dy/(2y)$ and
 $\delta_B(a(t))^{-1}=y^{-1}$. Then \eqref{eq:iwasawa} becomes
@@ -1090,51 +1107,95 @@ a trace formula for the lattice $\widetilde{\Gamma(8)}$ in the
 metaplectic group $\overline{SL(2,\R)}$.
 \end{example}
 
-\subsubsection{Measures}
+\subsubsection{Measures}\label{sec:measures-global}
 
-This subsection fixes the global measures. With them the quotient
-$G(\Q)\backslash\overline{G(\A)}$ has volume $1$.
+This subsection fixes the global measures. They are the products of the
+local measures of Section~\ref{sec:measures-local}. One normalization is
+used throughout the paper, in the general statements and in the
+examples. It is not the Tamagawa measure, and
+Example~\ref{ex:tamagawa} compares the two.
 
+Let $\psi=\prod_v\psi_v$ be a fixed nontrivial character of $\A_k/k$.
+Let $dk=\prod_vdk_v$ on $K_0$, of total volume $1$. Let $dn=\prod_vdn_v$
+on $N(\A)\cong\A_k$, the self-dual measure for $\psi$, for which
+$\vol(N(\Q)\backslash N(\A))=1$. Let $da=\prod_vd^\times t_v$ on
+$A(\A)\cong\A_k^\times$, with the local measures $d^\times t$ of
+Section~\ref{sec:measures-local}. Let
+$dg=\prod_vdg_v$. It is the Haar measure on $G(\A)$ with
+\[
+\int_{G(\A)}\phi(g)\,dg=\int_{N(\A)}\int_{A(\A)}\int_{K_0}\phi(nak)\,
+\delta_B(a)^{-1}\,dk\,da\,dn .
+\]
+It does not depend on $\psi$. Indeed another character of $\A_k/k$ is
+$\psi_c$ with $c\in k^\times$, the local self-dual measures are
+multiplied by $|c|_v^{1/2}$, and $\prod_v|c|_v=1$. On the cover put
+$d\tilde g=dg\,d\zeta$ with $\vol(\mu_2)=1$. Then
+$\vol(G(\Q)\backslash\overline{G(\A)})=\vol(G(\Q)\backslash G(\A))$. For a
+maximal torus $T$ of $G$ over $\Q$ other than $A$, let $dt=\prod_vdt_v$
+be a product of local measures as in Section~\ref{sec:measures-local},
+with $\vol(T(k_v)\cap K_v)=1$ for almost all $v$.
 
-Let $dk=\prod_vdk_v$ on $K_0$. Let $dg=\prod_vdg_v$ be the Tamagawa
-measure on $G(\A)$~\cite{We82}, with $dg_v$ built from the self-dual
-measures of a fixed nontrivial character $\psi=\prod\psi_v$ of
-$\A_k/k$; then $\vol(G(\Q)\backslash G(\A))=1$. For a maximal
-torus $T$ of $G$ over $\Q$ let $dt$ be the Tamagawa measure on $T(\A)$,
-written $da$ for $T=A$, and let $dn$ be the product measure on $N(\A)$,
-for which $\vol(N(\Q)\backslash N(\A))=1$. On the cover put
-$d\tilde g=dg\,d\zeta$ with $\vol(\mu_2)=1$, so
-$\vol(G(\Q)\backslash\overline{G(\A)})=1$.
+Three volumes enter the trace formula:
+\[
+\vol\bigl(G(\Q)\backslash\overline{G(\A)}\bigr),\qquad
+c_k=\vol\bigl(A(\Q)\backslash A(\A)^1\bigr),\qquad
+\vol\bigl(T(\Q)\backslash T(\A)\bigr)\ \ (T\ \text{anisotropic}).
+\]
+The first two are determined by the choices above. Their values are
+given in Example~\ref{ex:tamagawa} and Section~\ref{sec:coarse}. The
+third depends on $dt$. But it occurs only in the product with an orbital
+integral over $T(\A)\backslash G(\A)$ (Proposition~\ref{prop:elliptic}),
+and the product does not depend on $dt$. Both sides of the trace formula
+are linear in $dg$. So a different Haar measure on $G(\A)$ would multiply
+every term by the same constant, provided that all volumes and all
+orbital integrals are computed from it.
 
 \begin{example}\label{ex:tamagawa}
-Let $k=\Q$ and let $\psi$ be as in Example~\ref{ex:measure-real}. The
-local Tamagawa measures are defined by the invariant differential form
-that is $du\wedge dh\wedge dv$ at the identity, in the coordinates of the
-Lie algebra element $\bigl(\begin{smallmatrix}h&u\\v&-h\end{smallmatrix}
-\bigr)$. For them
+\emph{The volume of $G(\Q)\backslash G(\A)$, and the Tamagawa measure.}
+Let $k=\Q$ and let $\psi$ be as in Example~\ref{ex:measure-real}. By that
+example, $dg$ gives every $K_p$ the volume $1$, and at the real place it
+is the product of the hyperbolic area $du\,dy/y^2$ and the normalized
+measure of $SO(2)$. By strong approximation (Lemma~\ref{lem:strong})
 \[
-\vol\bigl(SL(2,\Z_p)\bigr)=\frac{|SL(2,\mathbb F_p)|}{p^3}=1-p^{-2},
-\qquad dg_\infty=\frac{du\,dy\,d\theta}{2y^2}\quad\bigl(g=n(u)a(y^{1/2})
+\vol\bigl(G(\Q)\backslash G(\A)\bigr)=\vol\bigl(SL(2,\Z)\backslash
+SL(2,\R)\bigr)=\frac12\cdot\frac\pi3=\frac\pi6 .
+\]
+The other global constant is $c_\Q=1$ (Example~\ref{ex:unip-Q}). These
+are the values used in all examples with $k=\Q$.
+
+The Tamagawa measure $\tau$ on $G(\A)$~\cite{We82} is defined by the
+invariant differential form that is $du\wedge dh\wedge dv$ at the
+identity, in the coordinates of the Lie algebra element
+$\bigl(\begin{smallmatrix}h&u\\v&-h\end{smallmatrix}\bigr)$. For it
+\[
+\tau_p\bigl(SL(2,\Z_p)\bigr)=\frac{|SL(2,\mathbb F_p)|}{p^3}=1-p^{-2},
+\qquad \tau_\infty=\frac{du\,dy\,d\theta}{2y^2}\quad\bigl(g=n(u)a(y^{1/2})
 k_\theta,\ 0\le\theta<2\pi\bigr).
 \]
-A fundamental domain for $SL(2,\Z)$ in $SL(2,\R)$ is the product of the
-standard fundamental domain in $\mathfrak H$, of area $\frac\pi3$, and
-the interval $0\le\theta<\pi$. So $\vol(SL(2,\Z)\backslash SL(2,\R))=
-\frac12\cdot\frac\pi3\cdot\pi=\zeta(2)$. By strong approximation
+So $\tau_p=(1-p^{-2})\,dg_p$ and $\tau_\infty=\pi\,dg_\infty$, and
 \[
-\vol\bigl(G(\Q)\backslash G(\A)\bigr)=\zeta(2)\prod_p(1-p^{-2})=1 .
+\tau=\pi\prod_p(1-p^{-2})\cdot dg=\frac6\pi\,dg,\qquad
+\tau\bigl(G(\Q)\backslash G(\A)\bigr)=\frac6\pi\cdot\frac\pi6=1 ,
 \]
-The measure of Example~\ref{ex:measure-real}, with $\vol(K_p)=1$ for all
-$p$ and $\vol(SO(2))=1$, is a different Haar measure on $G(\A)$. It gives
-$G(\Q)\backslash G(\A)$ the volume $\frac\pi6$, so it is $\frac\pi6$
-times the Tamagawa measure. The two sides of the trace formula are
-linear in the Haar measure $dx$ on $G(\A)$, and the constants
-$\vol(G(\Q)\backslash\overline{G(\A)})$ and $c_k$ that occur in it must be
-computed from the measure that is used. For $k=\Q$, the normalization
-$c_\Q=1$ of Example~\ref{ex:unip-Q} belongs to the second measure, for
-which the volume is $\frac\pi6$. If $dx$ is the Tamagawa measure, then the
-measure $da$ defined by $dx=\delta_B^{-1}dn\,da\,dk$ in
-Section~\ref{sec:coarse} gives $c_\Q=\frac6\pi$.
+in accordance with the fact that the Tamagawa number of $SL(2)$ is
+$1$. If one used $\tau$ in place of $dg$, the constant $c_\Q$ would
+be $\frac6\pi$, because $da$ would be multiplied by $\frac6\pi$ in the
+formula $dg=\delta_B^{-1}dn\,da\,dk$.
+
+The same comparison works for a totally real field $k$ of degree $d$ and
+discriminant $d_k$. Take $\psi=\psi_\Q\circ\operatorname{tr}_{k/\Q}$. At
+a finite place $v$ the self-dual measure gives $\OO_v$ the volume
+$N(\mathfrak d_v)^{-1/2}$, with $\mathfrak d_v$ the local different. So
+$\tau_v(K_v)=N(\mathfrak d_v)^{-3/2}(1-q_v^{-2})$, while $dg_v$ gives
+$K_v$ the volume $N(\mathfrak d_v)^{-1/2}$. At each real place
+$\tau_v=\pi\,dg_v$ as before. Hence $\tau=|d_k|^{-1}\zeta_k(2)^{-1}\pi^d
+\,dg$, and since $\tau(G(\Q)\backslash G(\A))=1$,
+\[
+\vol\bigl(G(\Q)\backslash G(\A)\bigr)=|d_k|\,\zeta_k(2)\,\pi^{-d}
+\qquad(k\ \text{totally real}).
+\]
+For $k=\Q(\sqrt5)$ this is $2\pi^2/(15\sqrt5)$. We do not need the value
+for fields with complex places.
 \end{example}
 
 \subsection{The double cover of \texorpdfstring{$GL(2)$}{GL(2)}}\label{sec:gl2}
@@ -1780,8 +1841,8 @@ group in Lemma~\ref{lem:kubota}(c)~\cite{Ku67,Mo68}; Lemma~\ref{lem:local}(b)
 and the cocycle identity for~\eqref{eq:sigma-gl2}~\cite{Ku69,Ge76}; the
 statement on $\overline{SO(2)}$ in Lemma~\ref{lem:local}(d);
 Lemma~\ref{lem:H}(c)~\cite{Ar78}; strong approximation in
-Lemma~\ref{lem:strong}; and the facts about Tamagawa measures in
-Section~\ref{sec:global}. Lemma~\ref{lem:gl2}(b) and
+Lemma~\ref{lem:strong}; and, in Example~\ref{ex:tamagawa}, the fact that
+the Tamagawa number of $SL(2)$ is $1$~\cite{We82}. Lemma~\ref{lem:gl2}(b) and
 Remark~\ref{rem:dyadic} are supported by numerical checks only.
 Everything else in
 Sections~\ref{sec:local}--\ref{sec:gl2} is proved in the text.

@@ -73,7 +73,13 @@ $\mathcal H(\overline{G(\A)})$, $\mathcal H(\overline{G(\Q_S)})$ & Hecke
   algebras of test functions; $f=f_S\otimes e^S$ & \S\ref{sec:global},
   \S\ref{sec:local-dist}\\
 $f^y$ & $x\mapsto f(yxy^{-1})$ & \S\ref{sec:invariant}\\
-$c_k$ & $\vol(A(\Q)\backslash A(\A)^1)$ & \S\ref{sec:coarse}\\[4pt]
+$dg$, $dn$, $da$, $dk$ & the Haar measures on $G$, $N$, $A$, $K$, local
+  and global; $dg=\delta_B^{-1}dn\,da\,dk$ with $\vol(K)=1$ &
+  \S\ref{sec:measures-local}, \S\ref{sec:measures-global}\\
+$c_k$ & $\vol(A(\Q)\backslash A(\A)^1)=2^{r_1}(2\pi)^{r_2}h_kR_k/w_k$;
+  $c_\Q=1$ & \S\ref{sec:coarse}\\
+$\vol(G(\Q)\backslash\overline{G(\A)})$ & the volume for $dg$; $\frac\pi6$
+  for $k=\Q$ & Example~\ref{ex:tamagawa}\\[4pt]
 \multicolumn{3}{@{}l}{\emph{Representations and classical forms}}\\
 $\Theta_\pi$, $\omega_\pi$ & the character $f\mapsto\operatorname{tr}\pi(f)$
   of a representation; its central character & \S\ref{sec:rep-local}\\
@@ -458,10 +464,18 @@ entries can be read independently of the text and of each other.
   $G(\A)$ for $G=SL(2)$. It identifies the adelic quotient, divided by a
   compact open subgroup, with the quotient of the real group by a
   congruence subgroup. The same holds for the cover.
+\item[Measures.] One Haar measure $dg$ on $G(\A)$ is used throughout. In
+  the decomposition $x=nak$ it is $\delta_B(a)^{-1}dn\,da\,dk$, where the
+  maximal compact subgroup has volume $1$, $dn$ is the self-dual measure,
+  and $da$ gives the units $\OO_v^\times$ the volume $1$ at the finite
+  places and is $dt/|t|$ at the real places. For $k=\Q$ it gives
+  $G(\Q)\backslash G(\A)$ the volume $\frac\pi6$, and the constant $c_\Q$
+  is $1$.
 \item[Tamagawa measure.] The Haar measure on $G(\A)$ defined by an
   invariant differential form over $\Q$ and the self-dual measures of an
   additive character. For $SL(2)$ it gives $G(\Q)\backslash G(\A)$ the
-  volume $1$.
+  volume $1$. It is not the measure used in this paper. For $k=\Q$ it is
+  $\frac6\pi$ times that measure.
 \item[Test function.] A smooth, compactly supported, anti-genuine
   function on a local cover, or a finite sum of products of such
   functions over all places, almost all of them equal to the unit of the

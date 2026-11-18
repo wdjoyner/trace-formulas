@@ -1009,7 +1009,7 @@ written; the items below say what became of each part.
 
 ## Third referee (Gemini) and background pass (2026-11-18)
 
-Two things were done in this pass, at the request of DJ. First, the two referee reports of Gemini were assessed and the valid points were applied. Second, the background (Section 2) and the glossary were enlarged. Draft: 126 pages (was 111).
+Two things were done in this pass, at the request of DJ. First, the two referee reports of Gemini were assessed and the valid points were applied. Second, the background (Section 2) and the glossary were enlarged. Draft 2: 128 pages (Draft 1 had 111). The subtitle is now "Draft 2. Corrected and expanded version".
 
 ### Response to the reports of Gemini
 
@@ -1032,17 +1032,37 @@ No status of any statement changed.
 - **New Section 2.4, "Representations of the local cover"** (`sec:rep-local`): genuine representations and characters, the central character, genuine characters of the torus, the principal series and the intertwining operator, and eight quoted facts (L1)–(L8): irreducibility, the points of reducibility and the even Weil representations, supercuspidal representations, the real place, the complex places, unramified representations and Satake parameters, Whittaker functionals, and the local correspondence of Shimura and Waldspurger. Example `ex:unramified-weil`.
 - **New Section 2.5, "Automorphic forms and the Shimura correspondence"** (`sec:rep-global`): genuine automorphic forms and representations; the dictionary with modular forms of half-integral weight in the sense of Shimura (new Lemma 2.11, `lem:classical`, proved); Hecke operators and Shimura's theorem; Waldspurger's theorem; a list of the places where the correspondence is visible in this paper. Example `ex:shimura-lift` (Shimura's lift of $\eta(2z)^{12}\theta(z)^{-3}$ to $(\eta(z)\eta(2z))^8$).
 - New bibliography entries: [GHP79] (Gelbart, Howe, Piatetski-Shapiro) and [SS77] (Serre, Stark).
-- New script `checks/background_n2_check.py` (28 checks, all pass). It checks the numerical statements of the new examples, Shimura's formula for $j(\gamma,z)$ on random elements of $\Gamma_0(4)$, and the relation between the two $q$-expansions of `ex:shimura-lift` for $n\le12$ in integer arithmetic.
+- New script `checks/background_n2_check.py` (32 checks, all pass). It checks the numerical statements of the new examples, Shimura's formula for $j(\gamma,z)$ on random elements of $\Gamma_0(4)$, and the relation between the two $q$-expansions of `ex:shimura-lift` for $n\le12$ in integer arithmetic.
 
 **New mathematical text, for refereeing.** Proved in this pass and not yet refereed: Lemma 2.11 (`lem:classical`), the statements of Section 2.4 on the central character, and the computations in the new examples. Everything else in Sections 2.4 and 2.5 is quoted, and Remark 2026.4 says what.
 
 **Sources not consulted (style guide 4.3).** The statements quoted in Sections 2.4 and 2.5 from [Mo88], [Wa80], [Wa81], [Wa91], [Ge76], [GPS80], [GHP79], [KP84], [Sa88], [Sa67], [GS12], [Sh73], [Ni75], [SS77], [HI13], [He83] were written from memory. The sources were not reopened in this pass, and no theorem or page numbers are given for them. They need a check against the sources. Two of them were tested numerically: Shimura's formula for $j(\gamma,z)$, and Shimura's example in weight 9/2. In (L8) the convention relating $\psi$ to the character $\chi'$ on $PGL(2)$ was deliberately left open ($\chi'$ is $\chi$ or $\chi\cdot(-1,\cdot)_v$).
 
-**An observation on measures, not acted on.** Section 2.2.4 takes the Tamagawa measure on $G(\mathbb{A})$, for which $\operatorname{vol}(G(\mathbb{Q})\backslash G(\mathbb{A}))=1$. Section 4.3 takes $dx=\delta_B^{-1}dn\,da\,dk$ with $\operatorname{vol}(K_0)=1$, and Example 4.B takes $c_\mathbb{Q}=1$. For $k=\mathbb{Q}$ these cannot hold for one and the same Haar measure: with $c_\mathbb{Q}=1$ the volume is $\pi/6$, and with the Tamagawa measure $c_\mathbb{Q}=6/\pi$. The formulas of the paper keep $\operatorname{vol}(G(\mathbb{Q})\backslash\overline{G(\mathbb{A})})$ and $c_k$ as symbols, so no formula is wrong. But "total volume 1" in the conventions of Section 5 and "$c_\mathbb{Q}=1$" in the running example should not be read together. The new Example 2.M (`ex:tamagawa`) states the relation. A later pass should fix one normalization for the examples.
+**Measures.** While writing the examples on measures we found that the draft used two normalizations. This is settled in the normalization pass below.
+
+### Normalization of measures (same day)
+
+Draft 1 fixed the global measure twice. Section 2.2.4 took the Tamagawa measure, for which $\operatorname{vol}(G(\mathbb{Q})\backslash G(\mathbb{A}))=1$. Section 4.3 took $dx=\delta_B^{-1}dn\,da\,dk$ with $\operatorname{vol}(K_0)=1$, and the examples took $c_\mathbb{Q}=1$. For $k=\mathbb{Q}$ these are different Haar measures: the second gives the volume $\pi/6$, and for the Tamagawa measure $c_\mathbb{Q}=6/\pi$. No formula was wrong, because the volume and $c_k$ appear as symbols, but "total volume 1" (Section 5) and "$c_\mathbb{Q}=1$" (running example) could not both hold.
+
+Draft 2 uses one normalization, the second one, since all local computations and examples already used it.
+
+- Section 2.1.5: $da$ is now fixed. It gives $\mathcal{O}_v^\times$ the volume 1 at finite places, is $dt/|t|$ at real places and $2\,dx\,dy/(x^2+y^2)$ at complex places. Measures on the other tori are any Haar measures that correspond under conjugation by $GL(2,k_v)$ (this replaces "the pull-back of $da$ as in [Ro90]"). The volume of $K_p$ is 1 when $\psi$ is unramified, and this hypothesis is now stated.
+- Section 2.2.4 (label `sec:measures-global`): rewritten. $dg=\prod_v dg_v=\delta_B^{-1}dn\,da\,dk$. It does not depend on $\psi$. The three volumes that enter the trace formula are listed, with the remark that the elliptic terms do not depend on the measure on the torus.
+- Example 2.M (`ex:tamagawa`): rewritten. For $k=\mathbb{Q}$ the volume is $\pi/6$ and the Tamagawa measure is $(6/\pi)\,dg$. New: for totally real $k$ the volume is $|d_k|\zeta_k(2)\pi^{-d}$.
+- Section 4.3: refers to the measure of Section 2.2.4, and gives $c_k=2^{r_1}(2\pi)^{r_2}h_kR_k/w_k$ [Ta67], so $c_\mathbb{Q}=1$.
+- Section 4.5: the convention outside $S$ is now a consequence of Section 2, under the stated assumption that $S$ contains the places where $\psi$ is ramified.
+- Section 5 (conventions): "total volume 1" removed.
+- Section 7: "Tamagawa measure" replaced by the measure of Section 2.2.4 in four places (the elliptic terms and Lemma 7.11(a)). The arguments use only that $\operatorname{Ad}(\delta_a)$ preserves Haar measure and that the measures on conjugate tori correspond.
+- Section 1.3 (running example): now gives both constants, $c_\mathbb{Q}=1$ and volume $\pi/6$.
+- Glossary: new entry "Measures", and the entry "Tamagawa measure" says that it is not the measure of the paper.
+
+No theorem changes. What changes is the numerical value of the symbol $\operatorname{vol}(G(\mathbb{Q})\backslash\overline{G(\mathbb{A})})$: it is $\pi/6$ for $k=\mathbb{Q}$, not 1. Equation and statement numbers are unchanged (the new displays are unnumbered).
+
+For refereeing: the formula for $c_k$ is quoted from Tate's thesis from memory and was checked only for $k=\mathbb{Q}$ (Example 4.B). The formula for totally real $k$ is derived in Example 2.M from the Tamagawa number 1. It was cross-checked for $\mathbb{Q}(\sqrt5)$ against the classical volume $2\zeta_k(-1)(2\pi)^2$ of the Hilbert modular surface. The value at complex places was not computed.
 
 ### Glossary
 
-The list of terms was rewritten: 61 entries (was 17). Each entry is a short summary that can be read on its own, with no pointers to numbered statements (DJ, 2026-11-17). The table of notation keeps its "Defined in" column and has a new block "Representations and classical forms".
+The list of terms was rewritten: 62 entries (was 17). Each entry is a short summary that can be read on its own, with no pointers to numbered statements (DJ, 2026-11-17). The table of notation keeps its "Defined in" column and has a new block "Representations and classical forms".
 
 ### Numbering concordance
 

@@ -16,7 +16,7 @@ mult1sl2/
 ├── revised/
 │   ├── multiplicity-one-SL2.tex, .pdf   the manuscript (currently Draft 2)
 │   └── referee-report_draft1.md         referee report on Draft 1
-├── revision_log.md                      stages, AI usage, every Draft 2 change, open items
+├── revision_log.md                      stages, AI usage, every change (Drafts 1 and 2), open items
 └── README.md
 ```
 

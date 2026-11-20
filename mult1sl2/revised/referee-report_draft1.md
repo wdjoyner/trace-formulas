@@ -1,4 +1,4 @@
-> Referee report on Draft 1, supplied by the author (Nov. 20, 2026). Draft 2 responds to it;
+> Referee report on Draft 1 (Nov. 20, 2026), which the author believes was written by ChatGPT (OpenAI). Draft 2 responds to it;
 > see `../revision_log.md`, section 1. Line numbers refer to Draft 1 (`git show 045016f`).
 > Formatting was cleaned for GitHub (math delimiters, stray web-citation artifacts); the text is unchanged.
 

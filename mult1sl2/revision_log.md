@@ -3,8 +3,8 @@
 ## Stages
 
 - **1995.** The Scientific Word manuscript `aabook.tex` with its `\input` files (not in this repository).
-- **Draft 1** (Claude, November 20, 2026). It was refereed by Carbon (Gemini). The files are merged into one pdflatex file, the main theorem is stated conditionally (the author's decision), and mechanical fixes are applied. In git, see commit `045016f`. Its log is the last section of this file.
-- **Draft 2** (Claude, November 20, 2026). This is the response to the referee report on Draft 1 in `revised/referee-report_draft1.md`, which was supplied by the author. Sections 1–5 below cover Draft 1 → Draft 2.
+- **Draft 1** (Claude, November 20, 2026). Carbon (Gemini) had refereed the merged 1995 draft. In Draft 1 the files are merged into one pdflatex file, the main theorem is stated conditionally (the author's decision), and mechanical fixes are applied. In git, see commit `045016f`. Its log is the last section of this file.
+- **Draft 2** (Claude, November 20, 2026). This is the response to the referee report on Draft 1 in `revised/referee-report_draft1.md`. The author believes that report was written by ChatGPT (OpenAI). Sections 1–5 below cover Draft 1 → Draft 2.
 
 The source compiles with `pdflatex` (three passes, 64 pages), with no warnings, no overfull boxes, and no undefined references or citations.
 

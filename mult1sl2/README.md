@@ -25,7 +25,7 @@ File names carry no draft number; git history tracks the drafts. Draft 1 is comm
 ## Status
 
 - **Draft 1** (Claude, November 20, 2026). The 1995 source files are merged into one pdflatex file, and the main theorem is stated conditionally.
-- **Draft 2** (Claude, November 20, 2026). This responds to the referee report on Draft 1:
+- **Draft 2** (Claude, November 20, 2026). This responds to the referee report on Draft 1, which the author believes was written by ChatGPT:
   - The false finiteness lemma is replaced by Harish-Chandra finiteness at a fixed infinitesimal character, with GH refined to match and a new condition (LH4).
   - Waldspurger's theorem is applied only on 𝒜₀₀, via a new lemma excluding the elementary theta series.
   - The torus character correspondences are corrected: p-adic (ε = η_ϖ·ϑ) and real (−i).

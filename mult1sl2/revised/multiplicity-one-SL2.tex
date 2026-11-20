@@ -1,0 +1,4753 @@
+%% Multiplicity one for SL(2) -- David Joyner
+%% Draft 2 (2026) of the 1995 Scientific Word manuscript aabook.tex and its
+%% \input files, assembled into a single file.  See ../revision_log.md.
+\documentclass[12pt,letterpaper]{book}
+\usepackage[american]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{mathptmx}          % Times text and math
+\usepackage{courier}           % Courier for typewriter text
+\usepackage[letterpaper,margin=1in]{geometry}
+
+% --- theorem environments (formerly from the thmsa option) ---
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[chapter]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{hypothesis}[theorem]{Hypothesis}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{claim}[theorem]{Claim}
+
+\newcommand{\tr}{\operatorname{tr}}
+
+% --- the book class has no abstract environment ---
+\newenvironment{abstract}%
+  {\begin{center}\bfseries Abstract\end{center}\begin{quote}}%
+  {\end{quote}}
+
+\begin{document}
+
+\author{David Joyner}
+\title{Multiplicity one for $SL(2)$\\[2ex]
+\large Draft 2\\[0.5ex] Corrected and expanded version}
+\date{Original draft: 1995. Corrected and expanded draft: 2026}
+\maketitle
+
+\begin{abstract}
+This revision was prepared with the help of AI systems, whose roles are
+described in the Acknowledgments at the end of Chapter~\ref{ch:intro}.
+We apply the trace formula to compare cuspidal automorphic
+representations of $SL(2,\mathbb{A})$ with genuine cuspidal
+automorphic representations of the 2-fold metaplectic cover
+$\overline{SL(2,\mathbb{A})}$, where $\mathbb{A}$ is the ring of adeles
+of a number field $k$. \emph{The main result is conditional.}
+Let $\pi$ be a cuspidal automorphic representation of $SL(2,\mathbb{A})$
+and let $S(\pi)$ be the set of archimedean places, dyadic places, and
+odd places $v$ at which $\pi_v$ has no vector fixed by $SL(2,{\cal O}_v)$.
+Assuming a global trace identity, refined according to archimedean
+infinitesimal characters (Hypothesis~\ref{hyp:GH}), and a local
+spectral transfer hypothesis (Hypothesis~\ref{hyp:LH}) at each place of
+$S(\pi)$, we show that $\pi$ occurs with multiplicity one and
+corresponds to a unique genuine cuspidal automorphic representation of
+the cover. The local hypothesis is verified at odd places where $\pi_v$
+is spherical with respect to a hyperspecial maximal compact subgroup.
+Multiplicity one for $SL(2)$ is known unconditionally by the work of
+Ramakrishnan; the interest here is the method, which derives it from
+Waldspurger's multiplicity one theorem for the metaplectic cover.
+The 1995 draft claimed an unconditional proof; this version explains
+which steps of that argument are incomplete, and marks as ``Claims''
+the local statements of the 1995 draft that have not been verified.
+\end{abstract}
+
+\tableofcontents
+
+\chapter{Introduction}\label{ch:intro}
+
+The goal of this text is to use the trace formula to study the
+multiplicity one problem for cuspidal automorphic representations of
+$SL(2)$, by deducing it from the multiplicity one result for
+the 2-fold metaplectic cover of $SL(2)$, where it is a theorem
+of Waldspurger. The motivation for this problem
+has its origins in several stimulating conversations
+with R. Langlands in the late 1980s.
+
+\section{Status of the main result}
+
+Multiplicity one for the cuspidal spectrum of $SL(2)$ was conjectured
+by Labesse and Langlands \cite{LL}, \cite{Lab}, and was proved by
+Ramakrishnan \cite{Ra}. D. Blasius has shown that the analog of the
+multiplicity one result is false for $SL(n)$, $n>2$ \cite{Blas}.
+Strong multiplicity one fails for $SL(2)$ \cite{LL}; Chai and Zhang
+\cite{CZ} (see also \cite{Zh}) proved a qualified form of it, for pairs
+of cuspidal representations which also agree at the archimedean places
+and at the places above $2$. We stress that the following four
+properties are different and are not used interchangeably here:
+multiplicity one (each cuspidal representation occurs at most once),
+strong multiplicity one (a cuspidal representation is determined by
+almost all of its local components), the local theta correspondence,
+and the description of global near-equivalence classes (``Waldspurger
+packets'') on the metaplectic cover \cite{Wa1}, \cite{Wa2}, \cite{PS}.
+
+The 1995 draft of this text claimed an unconditional proof of
+multiplicity one for $SL(2)$ by a comparison of trace formulas.
+On re-examination, several steps of that argument are incomplete:
+\begin{itemize}
+\item at the dyadic places, the generalized Hecke algebra argument of the
+1995 draft contains errors, and the orbital integral identity it
+needed was derived from a global argument that presupposed the
+equality of the cuspidal spectral sides (see \S\ref{sec:dyadic});
+\item at the archimedean places, the matchings of \S\ref{sec:realA} and
+\S\ref{sec:realds} control only some of the representations
+(for instance, the elliptic matchings see only functions whose
+orbital integrals vanish on the hyperbolic set);
+\item at odd places, several of the local character relations are
+incomplete (see Remark~\ref{rem:sc-caveat} and
+Remark~\ref{rem:savin-caveat}), the correspondence of characters of
+the diagonal torus in the 1995 draft was inconsistent when
+$(\varpi,\varpi)_2=-1$ (corrected in \S\ref{sec:charsA}), and the
+spherical Hecke algebra isomorphism gives the matching of hyperbolic,
+but not of elliptic, orbital integrals (Remark~\ref{rem:satake-oi});
+\item in the global argument, weighted orbital integrals cannot be
+matched for arbitrary corresponding pairs
+(Remark~\ref{rem:weighted-noninv}); and the final step of the 1995
+argument contained two further gaps (see \S\ref{sec:1995-argument}).
+\end{itemize}
+This revision therefore states the main result conditionally, and
+isolates exactly what is assumed.
+
+Informally, the main result (Theorem~\ref{thm:main}) is as follows.
+Fix a cuspidal automorphic representation $\pi=\otimes_v\pi_v$ of
+$SL(2,\mathbb{A})$, and let $S=S(\pi)$ be the finite set consisting of the
+archimedean places, the dyadic places, and the odd places $v$ at which
+$\pi_v$ is not spherical with respect to $K_{0,v}=SL(2,{\cal O}_v)$.
+Assume:
+\begin{itemize}
+\item (Hypothesis~\ref{hyp:GH}) for global functions $f$ on
+$SL(2,\mathbb{A})$ and genuine global functions $\overline{f}$ on the cover
+which correspond at every place (by the Satake correspondence outside
+$S$, and through prescribed local classes of pairs at the places of
+$S$), the traces of the cuspidal spectra agree after restriction to
+each archimedean infinitesimal character $\nu$:
+$\tr R_{cusp}^\nu(f)=\tr \overline{R}{}_{cusp}^{\,\nu}(\overline{f})$;
+\item (Hypothesis~\ref{hyp:LH}) at each $v\in S$, the local class of
+pairs separates characters, detects $\pi_v$, and transfers each genuine
+irreducible representation to at most one irreducible representation
+of $SL(2,k_v)$, with only finitely many genuine infinitesimal
+characters over each infinitesimal character of $SL(2,k_v)$ when $v$
+is archimedean.
+\end{itemize}
+Then $\pi$ occurs with multiplicity one, and $\pi$ corresponds to a
+unique genuine cuspidal automorphic representation $\overline{\pi}$ of
+the cover. The local hypothesis is verified here at odd places where
+$\pi_v$ is spherical with respect to a hyperspecial maximal compact
+subgroup (Proposition~\ref{prop:LH-spherical}).
+Chapters \ref{ch:sc} and \ref{ch:local} contain partial results toward
+the local hypothesis at other places, which we record together with
+their limitations in \S\ref{sec:LH-status}.
+
+The refinement by infinitesimal characters in Hypothesis~\ref{hyp:GH} is
+needed because the cuspidal spectrum at a fixed level and with fixed
+$K_\infty$-types is infinite (Remark~\ref{rem:why-refine}); Draft~1
+overlooked this. Hypothesis~\ref{hyp:GH} is a strong assumption: it
+contains most of the global comparison that the 1995 project hoped to
+establish.
+
+The proof of Theorem~\ref{thm:main} uses Waldspurger's multiplicity one
+theorem for the cover, which is a statement about the space ${\cal A}_{00}$
+of genuine cusp forms orthogonal to the elementary theta series. We show
+(Lemma~\ref{lem:A00}) that the genuine representations which arise in
+the proof lie in ${\cal A}_{00}$; this step uses the Labesse--Langlands
+description of the cuspidal spectrum of $SL(2)$ by restriction from
+$GL(2)$ and the Gelbart--Jacquet bound toward the Ramanujan conjecture
+for $GL(2)$. The proof does not use the failure, or any weak form, of
+strong multiplicity one for the cover.
+
+\section{Conventions on the status of statements}
+
+Statements labeled Theorem, Proposition, Lemma, or Corollary are either
+proved here or quoted, with a reference, from the literature. Statements
+of the 1995 draft that have not been verified in this revision, or that
+are known to need correction, are labeled \textbf{Claim}; the qualification
+is attached to the statement itself. Statements labeled Conjecture or
+Hypothesis are assumptions, and are named as such wherever they are used.
+
+\section{Outline}
+
+The table of contents gives some idea about the content of each chapter.
+Chapter~\ref{ch:background} recalls the metaplectic covers of $SL(2)$,
+locally and globally. Chapter~\ref{ch:reps} surveys the representation
+theory of the local cover. Chapter~\ref{ch:sc} discusses a correspondence
+between supercuspidal representations for $p>2$.
+Chapter~\ref{ch:local} presents the local correspondences needed in the
+comparison between the trace formula of $SL(2)$ and its 2-fold cover.
+They are divided into three types according to the residual
+characteristic of the field: $p=\infty$ (real or complex), $p=2$,
+and $p>2$. For $p>2$ and $p=\infty$, the idea is to show that if there
+is a certain type of identity between the orbital integral of a smooth
+function $f$ on $SL(2,F)$ and the orbital integral of a smooth function
+$\overline{f}$ on the two-fold cover $\overline{SL(2,F)}$ (call this a
+``correspondence'' or ``matching'' of functions), then there is an
+analogous identity between the trace maps
+$f^\wedge:\pi\longmapsto \tr(\pi(f))$
+and $\overline{f}^\wedge:\overline{\pi}\longmapsto
+\tr(\overline{\pi}(\overline{f}))$
+on the unitary duals (call this a ``lifting'' or ``transfer''
+of genuine virtual representations of $\overline{SL(2,F)}$ to
+virtual representations of $SL(2,F)$).
+In \cite{L4} and \cite{Fl}, only two types
+of correspondences or matchings were needed: the
+``Satake correspondence'' of spherical functions and the
+``smooth matching'' of Schwartz-Bruhat functions.
+In the case of $SL(2)$, some new
+types of ``matchings'' are introduced. No matching is established at
+$p=2$ in this version (\S\ref{sec:dyadic}).
+
+Chapter~\ref{ch:tf} recalls the trace formulas of $SL(2)$ and its cover.
+Chapter~\ref{ch:global} contains the application. The comparison is
+modeled on the Corvallis paper of Gelbart and Jacquet \cite{GJ}.
+Under the hypotheses above, comparing the cuspidal spectra
+and applying Waldspurger's multiplicity one theorem for the cover gives
+multiplicity one for $\pi$.
+
+\section{Notation}\label{sec:notation}
+
+The following symbols are used throughout. Local notation refers to a
+local field $F$; global notation refers to a number field $k$.
+
+\medskip
+\begin{center}
+\renewcommand{\arraystretch}{1.15}
+\begin{tabular}{p{0.27\textwidth}p{0.66\textwidth}}
+\hline
+$G=SL(2)$, $G(F)$ & the special linear group and its $F$-points\\
+$\overline{G(F)}$, $\overline{H}$ & the 2-fold metaplectic cover, and the
+inverse image of a subgroup $H\subset G(F)$\\
+$(g,\varsigma)$ & an element of $\overline{G(F)}$, $g\in G(F)$,
+$\varsigma\in\mu_2=\{\pm1\}$\\
+$\beta$, $(x,y)_2$ & the Kubota cocycle, and the quadratic Hilbert
+symbol\\
+$p$, $q$, ${\cal O}$, $\varpi$ & residual characteristic ($p=\infty$ if
+$F$ is archimedean), order of the residue field, ring of integers, and a
+uniformizer of $F$ \\
+$\nu$, $|\cdot|$ & normalized valuation and absolute value,
+$|\varpi|=q^{-1}$\\
+$B=AN$ & the upper triangular Borel subgroup, its diagonal torus $A$ and
+unipotent radical $N$\\
+$a(x)$, $h(x)$ & the diagonal element ${\rm diag}(x,x^{-1})$\\
+$T$, ${\cal T}$ & a Cartan subgroup of $G$; a set of representatives of
+the $G(F)$-conjugacy classes of Cartan subgroups\\
+$K_0$, $K_1$ & the hyperspecial maximal compact subgroups $G({\cal O})$
+and $w^{-1}G({\cal O})w$ ($p$ odd)\\
+$\pi$, $\overline{\pi}$ & a representation of $G$, and a genuine
+representation of the cover\\
+$\Theta_\pi$, $\tr\pi(f)$ & the character of $\pi$, and the trace of
+$\pi(f)$\\
+$\chi$, $\overline{\chi}$ & a character of $A(F)$, and a genuine
+character of $\overline{A(F)}$\\
+$O_f$, $F_f$, $\Phi_f$ & orbital integral, normalized hyperbolic orbital
+integral, normalized elliptic orbital integral of $f$\\
+$S$ & a finite set of places of $k$ (only in Chapters~\ref{ch:tf}
+and~\ref{ch:global})\\
+$S(\pi)$ & the exceptional set of places of
+Definition~\ref{def:exceptional}\\
+${\cal C}_v$ & a class of corresponding pairs at a place $v\in S$\\
+$t_v$ & the local transfer of genuine representations in
+Hypothesis~\ref{hyp:LH}\\
+$\nu_\infty(\pi)$ & the archimedean infinitesimal character of $\pi$
+(\S\ref{sec:hypotheses})\\
+\hline
+\end{tabular}
+\end{center}
+
+\section*{Acknowledgments}
+\addcontentsline{toc}{section}{Acknowledgments}
+
+I thank C. Moen and J. Adams for many helpful conversations,
+and some anonymous referees of the 1995 draft for their comments
+(one of whom prodded me to treat the case $p=2$ separately).
+
+This 2026 revision was prepared with the help of AI systems.
+Carbon (Google Gemini) refereed the 1995 draft. Claude (Anthropic)
+assessed those referee reports, merged the original source files into a
+single file, made the corrections, and rewrote the Introduction,
+\S\ref{sec:dyadic}, and Chapter~\ref{ch:global} so that the main result
+is stated conditionally (Draft~1). The author made the decision to state
+the result conditionally. A referee report on Draft~1, supplied by the
+author, found further errors, among them a false finiteness lemma in
+Chapter~\ref{ch:global}; Claude assessed that report and made the
+Draft~2 revisions, including the infinitesimal-character refinement of
+Hypothesis~\ref{hyp:GH}, Lemma~\ref{lem:A00}, and the corrections to the
+local character formulas in Chapter~\ref{ch:local}. Further details of
+the AI usage, the list of changes, and the sources that were not
+consulted directly during the revision are recorded in the revision log
+(\texttt{revision\_log.md} in the directory \texttt{mult1sl2} of the
+repository \texttt{github.com/wdjoyner/trace-formulas}).
+
+
+%% ===== begin aabook1.tex =====
+\chapter{Background on covers of $SL(2)$}\label{ch:background}
+
+\section{Local covers of $SL(2)$}\label{sec:local}
+
+Let $F$ be a local field of characteristic zero and let $\mu_2=\{\pm 1\}$.
+Let $p=\infty$ if $F$ is archimedean and otherwise
+let $p$ denote the residual characteristic of $F$.
+If $F$ is a p-adic field, let ${\cal O}$ denote its ring of integers,
+$\varpi$ a uniformizer, $q$ the cardinality of the residue field, and
+$\nu =\nu _F=\nu _v:F^{\times }\rightarrow {\mathbb{Z}}$ the
+normalized valuation, so that $\nu (\varpi )=1$; we write
+$|x|_F=q^{-\nu(x)}$, so that $|\varpi|_F=q^{-1}$.
+
+
+For $g=\left(
+\begin{array}{cc}
+a & b \\
+c & d
+\end{array}
+\right) \in SL_2(F)$, let
+\[
+x(g)=\left\{
+\begin{array}{c}
+c,\;\;\;c\neq 0, \\
+d,\;\;\;c=0,
+\end{array}
+\right.
+\]
+and let $\beta =\beta _v:SL_2(F)\times SL_2(F)\rightarrow \mu _2$ be defined
+by
+\begin{align}
+\beta (g_1,g_2) &=(x(g_1),x(g_2))_2\cdot (-x(g_1)^{-1}x(g_2),x(g_1g_2))_2 \label{eq:beta}\\
+&=(\frac{x(g_1g_2)}{x(g_1)},\frac{x(g_1g_2)}{x(g_2)})_2,  \nonumber
+\end{align}
+where $(...,...)_2=(...,...)_{2,v}:F^{\times }
+\times F^{\times }\rightarrow \mu _2$
+denotes the Hilbert symbol \cite{W1}.
+Note that this is trivial if $F={\mathbb {C}}$.
+
+\begin{lemma}\label{lem:kubota}
+(Kubota \cite{K1}, Moore \cite{M})
+The map $\beta $ defines a continuous Borel
+2-cocycle (giving $\mu _2$ the discrete topology of course). Its cohomology
+class in the continuous cohomology group $H^2(SL_2(F),\mu _2)$ corresponds
+to a 2-fold topological central extension $\overline{SL_2(F)}$ which fits
+into the short exact sequence
+\[
+1\rightarrow \mu _2\rightarrow \overline{SL_2(F)}\stackrel{p}{\rightarrow }%
+SL_2(F)\rightarrow 1.
+\]
+\end{lemma}
+
+If $H<SL_2(F)$ is a subgroup then we define $\overline{H}=p^{-1}(H)\subset
+\overline{SL_2(F)}$.
+
+If $g\in GL_2(F)$, let
+\begin{align*}
+p(g) &=\left(
+\begin{array}{cc}
+1 & 0 \\
+0 & \det g
+\end{array}
+\right) ^{-1}g, \\
+d(a,b) &=\left(
+\begin{array}{cc}
+a & 0 \\
+0 & b
+\end{array}
+\right) , \\
+g^x &=x^{-1}gx,
+\end{align*}
+and define the extension $\beta _1$ of the above cocycle to
+$G_1(F)=GL_2(F)$ by
+\begin{equation}
+\beta _1(g_1,g_2)=\beta (p(g_1)^{d(1,\det g_2)},p(g_2))\cdot v(\det
+g_2,p(g_1)),\label{eq:beta1}
+\end{equation}
+where $v:F^{\times }\times SL_2(F)\rightarrow \mu_2$ is defined by
+\[
+v(z,g)=\left\{
+\begin{array}{c}
+1,\;\;\;c\neq 0,\;F\neq {\mathbb R}, \\
+(z,d)_2,\;\;\;\;\;\;\;c=0,
+\end{array}
+\right.
+\]
+and $v=1$ if $F={\mathbb R}$. This defines a 2-fold metaplectic cover of
+$GL_2(F)$.
+
+Elements of $\overline{SL_2(F)}$ will be denoted by $(g,\varsigma )$,
+where $g\in SL_2(F)$, $\varsigma \in \mu _2$.
+Multiplication on $\overline{SL_2(F)}$ is given by
+\begin{equation}
+(g_1,\varsigma _1)\cdot (g_2,\varsigma _2)=(g_1g_2,\beta (g_1,g_2)\varsigma
+_1\varsigma _2),\label{eq:mult}
+\end{equation}
+so inverses are given by
+\begin{equation}
+(g,\varsigma )^{-1}=(g^{-1},\beta (g,g^{-1})^{-1}\varsigma ^{-1})\label{eq:inv}
+\end{equation}
+and conjugation is given by
+\begin{equation}
+(g,\varsigma )\cdot (h,\varsigma ^{\prime })\cdot (g,\varsigma
+)^{-1}=(ghg^{-1},\beta (gh,g^{-1})\beta (g,h)\beta (g,g^{-1})^{-1}\varsigma
+^{\prime }),\label{eq:conj}
+\end{equation}
+for $g,h,g_1,g_2\in G(F)$.
+
+These identities also hold for $\beta _1$ in place of $\beta$,
+for $g,h,g_1,g_2\in G_1(F)$.
+
+We let $B=\{\left(
+\begin{array}{cc}
+\ast  & * \\
+0 & *
+\end{array}
+\right) \}\subset G=SL_2$ denote the standard Borel, $N$ its unipotent
+radical, and $A$ its Levi component. Let
+$\theta\in F^\times -F^{\times 2}$ and let
+$T=T_\theta\subset G(F)$ denote the non-split Cartan subgroup
+\[
+T=\{
+    \left(
+    \begin{array}{cc}
+    a&b\theta\\
+    b&a
+    \end{array}
+    \right)
+    \ |\ a^2-b^2\theta =1,\ a,b\in F
+  \}.
+\]
+\begin{lemma}\label{lem:Ainv}
+For all $g\in A(F)$, 
+\[
+g=\left(
+\begin{array}{cc}
+a & 0 \\
+0 & a^{-1}
+\end{array}
+\right) ,
+\]
+$\varsigma \in \mu _2$, we have $(g,\varsigma
+)^{-1}=(g^{-1},(a,a)_2\varsigma ^{-1})$.
+\end{lemma}
+
+\begin{lemma}\label{lem:facts}
+(a) $\overline{N(F)}=N(F)\times \mu _2$ (direct product),
+
+(b) if $p>2$ then
+$\overline{SL_2({\cal O})}\cong SL_2({\cal O})\times
+\mu _2$ (direct product but the splitting may be non-trivial),
+
+(c) if $K_0=SL_2({\cal{O}})$ and
+\[
+K_{m}=\{\left(
+\begin{array}{cc}
+a & b \\
+c & d
+\end{array}
+\right) \in SL_2({\cal{O}})\;|\;a-1,d-1,b,c\in \varpi ^m{\cal{O}}\},
+\;m>0,
+\]
+then $\overline{K_{m}}=K_{m}\times \mu _2$
+(direct product) for all sufficiently large $m$,
+
+(d) if $F={\mathbb {R}}$, and $K=SO(2,{\mathbb {R})}$ then
+$\overline{K}$ does not split,
+
+(e) The center of $\overline{SL_2(F)}$ is $Z(\overline{SL_2(F)})=\{\pm
+1_2\}\times \mu _2$ (direct product if $(-1,-1)_2=1$).
+
+(f) $\overline{A(F)}$ is abelian.
+
+(g) $\overline{T}$ is abelian.
+
+(h) If $g\in G(F)$ and
+$n=
+\left(
+\begin{array}{cc}
+1 & 1\\
+0 & 1
+\end{array}
+\right)
+$
+then $(g,\zeta)(n,\zeta ')(g,\zeta)^{-1}
+=(gng^{-1},\zeta')$.
+
+\end{lemma}
+
+\begin{remark}
+These well-known facts
+were proven in \cite{K2} or follow from the properties of the Hilbert
+symbol \cite{W1}.
+For example, (g) is a consequence of a calculation in \cite{Fl}, p. 128.
+\end{remark}
+
+\subsection{Local algebras of functions}\label{sec:localalg}
+
+If $H$ is the group of $F$-rational points of a reductive algebraic group
+over an archimedean
+or p-adic field $F$, let $C_c^\infty (H)$ denote the usual
+algebra of compactly supported smooth (if $F$ is p-adic: locally constant)
+functions under convolution, and, for an open compact subgroup $K$ of
+$H$ ($F$ p-adic), let $C_c^\infty (H//K)$ denote the subalgebra of
+functions in $C_c^\infty(H)$ which are bi-$K$-invariant. A
+function $f:\overline{G(F)}\rightarrow {\mathbb{C}}$ such that
+\begin{equation}
+f(g,\varsigma )=\varsigma \cdot f(g,1)\label{eq:genuine}
+\end{equation}
+will be called \textbf{genuine}. For a function $f$ on
+$\overline{G(F)}$ we write $f|_{G(F)}$ for the function $g\mapsto f(g,1)$
+on $G(F)$. Let
+\begin{align*}
+C_c^\infty (\overline{G(F)})_{gen}
+&=\{f:\overline{G(F)}\rightarrow {\mathbb{C}}\
+|\;(i)\;f|_{G(F)}\in C_c^\infty (G(F)),
+\\
+&\quad (ii)\;f\;\mathrm{is\;genuine}\}
+\end{align*}
+denote the Schwartz-Bruhat algebra of smooth genuine functions.
+If $F$ is p-adic, $K=G({\cal O})$, and $p>2$, let
+$\kappa:K\rightarrow\overline{K}$, $\kappa(k)=(k,s_K(k))$, be a splitting
+of $\overline{K}$ over $K$ (Lemma~\ref{lem:facts}(b)), and let
+\begin{align*}
+{\cal{H}}(\overline{G(F)},K)_{gen}
+&=\{f\in C_c^\infty (\overline{G(F)})_{gen}
+\ |\ f(\kappa(k)x\kappa(k'))=f(x)\ \text{for all } k,k'\in K,\
+x\in\overline{G(F)}\}
+\end{align*}
+denote the Hecke algebra of genuine spherical functions; it is an
+algebra under convolution because its elements have compact support.
+We also write ${\cal H}(G(F),K)=C_c^\infty(G(F)//K)$.
+
+\begin{example}
+The unit element of ${\cal{H}}(\overline{G(F)},K)_{gen}$ (for the
+measure giving $\overline{K}$ volume $1$, as in the next subsection) is
+the function $e_K$ with $e_K(k,\varsigma)=\varsigma\, s_K(k)$ for $k\in K$ and
+$e_K=0$ off $\overline{K}$. Thus $e_K|_{G(F)}=s_K\cdot 1_K$, which is
+the characteristic function of $K$ only when the splitting $\kappa$ is
+$k\mapsto(k,1)$. This is why bi-invariance is imposed with respect to
+$\kappa(K)$, not by requiring $f|_{G(F)}$ to be bi-$K$-invariant.
+\end{example}
+
+\subsection{Local measures}
+
+Let $F$ be a local field and let $\overline{F}$ denote a separable
+algebraic closure.
+Let $dk$ denote the Haar measure on $K=G({\cal O})$
+normalized so that $K$ has
+volume 1. Fix an additive non-trivial character $\psi$ of
+$F$ and let $dn$ denote a Haar
+measure on $N(F)$ which is induced by a self-dual measure on
+the additive group $F$ (with respect to $\psi$).
+Let $da$ be a Haar measure on $A(F)$. Every Cartan subgroup $T$ of
+$G$ defined over $F$ is either $G(F)$-conjugate to $A$, or anisotropic
+over $F$; in the second case $T(F)$ is compact, and we let $dt$ be the
+Haar measure on $T(F)$ of total volume $1$. (Draft~1 defined $dt$ by
+pulling back $da$ along an isomorphism $T\rightarrow A$ defined over
+$\overline{F}$; such an isomorphism does not carry $T(F)$ to $A(F)$,
+so it does not by itself transport Haar measures between these groups.
+Any fixed normalization will do for the local comparisons below, provided
+the same one is used on $T(F)$ and on $\overline{T(F)}$.)
+Let $dg$ be the Haar measure
+on $G(F)$ such that $dg=\delta _B(a)\,dk\,da\,dn$, $g=kan$, where
+\begin{equation}
+\delta _B(a)=|t|^2,\;\;a=\left(
+\begin{array}{cc}
+t & 0 \\
+0 & t^{-1}
+\end{array}
+\right)
+\end{equation}
+is the modulus of $B$. (Draft~1 had $\delta_B(a)^{1/2}$ here.)
+
+We extend these measures to the 2-fold cover by imposing the discrete
+measure $d\varsigma $ on $\mu _2$ which gives $\mu _2$ total volume 1. For
+example, the measure on $\overline{G(F)}$ will be denoted
+$d\overline{g}=dg\cdot d\varsigma $.
+
+\section{Global aspects}\label{sec:global}
+
+Let $k$ denote a number field. Let $\Sigma _k$ denote the set of places of
+$k$, $\Sigma _k^\infty $ denote the set of archimedean places of
+$k$ (which we may identify with the set of inequivalent
+complex embeddings $k\hookrightarrow {\mathbb{C}}$), and let
+$\Sigma _k^f$ denote the set of non-archimedean places of
+$k$ (which we may identify with the set of non-zero prime ideals of
+${\cal{O}}_k$). Let ${\mathbb{A}}={\mathbb{A}}_k$ denote the adele
+ring of $k$ and, for $v\in \Sigma _k$, let $k_v$ denote
+the completion of $k$ with respect to $v$.
+
+Let $G=SL(2)$.
+
+The global cover is constructed from the local ones as follows
+\cite{K2}. For each odd finite place $v$ let
+$\kappa_v:K_{0,v}\rightarrow\overline{SL_2(k_v)}$ be the splitting of
+Lemma~\ref{lem:facts}(b); for almost all $v$ we may take $\kappa_v(k)=(k,s_v(k))$, with
+$s_v$ as in (\ref{eq:sv}) below. Let
+$\prod'_v\overline{SL_2(k_v)}$ denote the restricted direct product of the
+local covers with respect to the subgroups $\kappa_v(K_{0,v})$, and let
+\[
+Z_0=\Bigl\{(\varsigma_v)_v\in\bigoplus_{v\in\Sigma_k}\mu_2\ \Bigm|\
+\prod_v\varsigma_v=1\Bigr\},
+\]
+a discrete central subgroup (only finitely many $\varsigma_v$ are
+$\neq 1$). Then
+\[
+\overline{G({\mathbb{A}})}=\Bigl({\prod_v}'\,\overline{SL_2(k_v)}\Bigr)\Big/Z_0 ,
+\]
+and the product map $\mu_2^{(\Sigma_k)}\rightarrow\mu_2$ identifies the
+image of $\bigoplus_v\mu_2$ with a central subgroup $\mu_2$, giving the
+exact sequence
+\begin{equation}
+1\rightarrow \mu _2\rightarrow
+\overline{G({\mathbb{A}})}\stackrel{p}{\rightarrow }G({\mathbb{A}})\rightarrow 1.
+\end{equation}
+Thus $\overline{G({\mathbb{A}})}$ is a \emph{quotient} of the restricted
+product of the local covers, not a subgroup of it.
+
+Equivalently, $\overline{G({\mathbb{A}})}$ is the set $G({\mathbb{A}})\times\mu_2$
+with the multiplication (\ref{eq:mult}) for the 2-cocycle
+\[
+\beta_{\mathbb{A}}(g_1,g_2)=\prod_{v\in \Sigma_k}\beta'_v(g_{1,v},g_{2,v}),\qquad
+\beta'_v(g_1,g_2)=\beta_v(g_1,g_2)\,s_v(g_1)\,s_v(g_2)\,s_v(g_1g_2)^{-1}
+\]
+(with $s_v$ as in (\ref{eq:sv}); $s_v=1$ at the archimedean places). The cocycle $\beta'_v$
+is cohomologous to $\beta_v$ and is trivial on $K_{0,v}\times K_{0,v}$ for
+almost all $v$ \cite{K2}, so for $g_1,g_2\in G({\mathbb{A}})$ the product
+has only finitely many factors different from $1$. (Draft~1 wrote the
+product of the unmodified $\beta_v$, which is not a finite product in
+general.) The rules of multiplication, inverses, and conjugation are as in
+(\ref{eq:mult})--(\ref{eq:conj}), with $\beta_{\mathbb{A}}$ in place of
+$\beta$. If $H<G({\mathbb{A}})$ is a subgroup then we define
+$\overline{H}=p^{-1}(H)<\overline{G({\mathbb{A}})}$.
+
+\begin{example}
+Let $v_1\neq v_2$ be places of $k$. The element of the restricted
+product with $\varsigma_{v_1}=\varsigma_{v_2}=-1$ and all other
+components trivial lies in $Z_0$, so it is the identity of
+$\overline{G({\mathbb{A}})}$; the element with $-1$ at $v_1$ only is the
+nontrivial central element of $\mu_2\subset\overline{G({\mathbb{A}})}$.
+\end{example}
+
+\begin{lemma}\label{lem:Gk-split}
+$\overline{G(k)}\cong G(k)\times \mu _2$,
+where the splitting isomorphism in $\cong$ will be
+described below.
+\end{lemma}
+
+\begin{proof} This is well-known \cite{K2}.
+\end{proof}
+
+From \cite{K2}, we see that
+the splitting of the above exact sequence indicated in the above
+lemma is not given by $\gamma \longmapsto (\gamma ,1)$ but by $\gamma
+\longmapsto (\gamma ,s_{{\mathbb{A}}}(\gamma )^{-1})$, where
+\[
+s_{{\mathbb{A}}}(\gamma )=
+\prod_{v\in \Sigma _k}
+s_v(\gamma),
+\]
+and
+\begin{equation}\label{eq:sv}
+s_v(\gamma)=\left\{
+\begin{array}{c}
+(c,d)_{v,2}^{-1},
+\;\;\;cd\neq 0{\rm \ and\ }
+2\;\mathrm{does\;not\;divide}\;v(c)
+{\rm \ and\ }v\notin \Sigma_k^\infty, \\
+1,\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;
+\mathrm{\;otherwise}.\;\;\;\;\;\;\;\;
+\end{array}
+\right.
+\end{equation}
+Here $\gamma =\left[
+\begin{array}{cc}
+a & b \\
+c & d
+\end{array}
+\right] \in G(k)$.
+
+{\em From now on, we identify $G(k)$ with its image
+in $\overline{G({\mathbb{A}})}$ under this splitting (and the diagonal
+embedding).} We identify $N({\mathbb{A}})$ with the
+subgroup $N({\mathbb{A}})\times 1\subset \overline{G({\mathbb{A}})}$.
+
+Let $K_0=\Pi_{v\in \Sigma_k}K_{0,v}$
+denote the ``usual'' maximal compact subgroup of $G({\mathbb{A}})$.
+Here, if $v\in \Sigma_k^f $ then $K_{0,v}=G({\cal O}_v)$ and
+otherwise
+$K_{0,\infty}=\prod_{\substack{ v|\infty\\ v\in\Sigma_k}}
+K_v$, where $K_v=SO(2,{\mathbb{R}})$ if $v$ is real and
+$K_v=SU(2,{\mathbb{C}})$ if $v$ is complex.
+
+\subsection{Global algebras of functions}\label{sec:globalalg}
+
+A function $f:\overline{G({\mathbb{A}})}\rightarrow {\mathbb{C}}$
+such that (\ref{eq:genuine})
+holds will be called \textbf{genuine}. Let
+${\cal{H}}(\overline{G({\mathbb{A}})})$ denote the algebra of
+functions generated by the elements of the
+restricted tensor product
+$\bigotimes_{v\in \Sigma_k }
+C_c^\infty (\overline{G(k_v)})_{gen}$,
+where almost all $f_v$ in the product
+$f=\otimes _{v\in \Sigma_k}f_v\in
+\bigotimes_{v\in \Sigma_k }C_c^\infty (\overline{G(k_v)})_{gen}$ are
+spherical in the sense of \S\ref{sec:localalg}.
+
+\subsection{Global measures}
+
+Let $dk$ denote the Haar measure on $K=\prod_{v\in \Sigma_k }K_v$
+defined by $dk=\prod_{v\in \Sigma_k }dk_v$.
+Let $dg$ be the Tamagawa measure on
+$G({\mathbb{A}})$ \cite{W2}. For any Cartan subgroup
+$T$ of $G$ defined over $k$, let $dt$
+denote the global Tamagawa measure on
+$T({\mathbb{A}})$. If $T=A$ then this will
+be denoted by $da$. Let $dn$ denote the product measure on $N({\mathbb{A}})$.
+
+We extend these measures to the 2-fold cover by imposing the discrete
+measure $d\varsigma $ on $\mu _2$ which gives $\mu _2$ total volume 1. For
+example, the measure on $\overline{G({\mathbb{A}})}$ will be denoted
+$d\overline{g}=dg\cdot d\varsigma $.
+%% ===== end aabook1.tex =====
+
+
+
+%% ===== begin aabook3.tex =====
+\chapter{Representations of $\overline{SL(2,F)}$}\label{ch:reps}
+
+This chapter presents a survey of certain aspects of the
+representation theory of central covering groups of p-adic reductive groups
+in the case of $SL(2)$.
+
+\section{Characters}
+
+Characters occur naturally in the trace formula, so we recall
+some of their properties.
+
+\subsection{The character as a function}
+
+The existence of the character as a function has been used many times in
+the literature but no proof, as far as I know, has been published.
+The argument in \cite{S} extends to the metaplectic case with only
+minor modification.
+
+Let $\overline{G(F)}^{\prime }=\{(g,\varsigma )\in \overline{G(F)}%
+\;|\;g\;{\rm has\;distinct\;eigenvalues}\},$ called the {\bf regular set} of
+$\overline{G(F)}.$ In particular, every element in the regular set is
+semi-simple (i.e., diagonalizable). The following result is a corollary of a
+result of Howe and Harish-Chandra \cite{S}:
+
+\begin{lemma}
+There exists a genuine locally constant function denoted $\Theta _\pi $ on
+the regular set $\overline{G(F)}^{\prime }$ which represents the trace of $%
+\pi :$%
+\[
+\tr(\pi (f))=\int_{\overline{G(F)}}\Theta _\pi (x)f(x)dx,
+\]
+for all $f\in C_c^\infty (\overline{G(F)})_{gen}.$
+\end{lemma}
+
+This trace, which we sometimes denote simply by $\Theta _\pi (f)$, is called
+the {\bf Fourier transform} of $f$ at $\pi $. The function $\Theta _\pi (x)$
+is called the {\bf character} of $\pi $.
+
+\subsection{Principal series representations}\label{sec:ps-char}
+
+Let ${\cal T}$ denote a complete set of representatives of conjugacy classes of
+Cartan subgroups of $G(F)$. We may and do assume that $A\in {\cal T}$. For each
+$T\in {\cal T}$, let $W_T=N_{G(F)}(T)/T$ denote the Weyl
+group of $T$. If $t\in T$ is regular then
+\[
+T\subset G(F)_t=Cent(t,G(F))
+\]
+is finite index.
+
+\begin{lemma}
+Assume $\chi\in \Pi (\overline{A(F)})$ and suppose
+that $\chi \neq \chi ^w$. The character of the
+irreducible representation $\pi =I_{A}(\chi )$\ is given on the regular
+set by
+\[
+\Theta _\pi (x)=\left\{
+\begin{array}{c}
+\frac{\chi (a)+\chi (a^w)}{|a_1-a_2|},
+\;\;x=a^g,\;{\rm for\;some}\;g\in \overline{G(F)},
+\;a\in \overline{A(F)}, \\
+0,\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;
+{\rm \;if\;}\;\;\;
+x\in \overline{G(F)}^{\prime }-\overline{A(F)}^{\overline{G(F)}},
+\end{array}
+\right.
+\]
+where
+\[
+\overline{A(F)}^{\overline{G(F)}}=\{a^g\;|\;a\in \overline{A(F)},\;g\in
+\overline{G(F)}\}.\
+\]
+\end{lemma}
+
+The proof, which is omitted, follows the proof of \cite{Ge1}, Theorem 5.19.
+
+\begin{remark} As noted above, on the regular set,
+this character vanishes off the conjugacy class of $\overline{A(F)}$.
+\end{remark}
+
+Now we describe the character of a principal series representation
+as the Fourier transform of the function $a\longmapsto J_G(a,f)$.
+
+Let $\chi \in \Pi (\overline{A(F)})$,
+$\pi =I_{A}(\chi )\in \Pi (\overline{G(F)})$.
+This lemma and the Weyl integration formula
+imply that, for $f\in C_c^\infty
+(\overline{G(F)})$,
+\begin{equation}
+\begin{array}{c}
+\Theta _\pi (f)=\int_{\overline{G(F)}}\Theta _\pi (x)f(x)dx \\
+=\frac 12\int_{\overline{A(F)}}(\chi (a)+
+\chi(a^w))F_f^{\overline{A(F)}}(a)da \\
+=(F_f^{\overline{A(F)}})^{\wedge }(\chi ) ,
+\end{array}
+\end{equation}
+where the Fourier transform is defined by
+\begin{equation}
+\begin{array}{c}
+\varphi ^{\wedge }(\chi )=\int_{\overline{A(F)}}\chi (x)\varphi
+(x)da \\
+\ \ \ \ \ \ \chi \in \Pi (\overline{A(F)}).
+\end{array}
+\end{equation}
+The last equality in the first display holds because $F_f^{\overline{A(F)}}$ is
+invariant under $a\mapsto a^w$, since $a$ and $a^w$ are conjugate in
+$\overline{G(F)}$. The same formulas, without bars, hold for $G(F)$.
+
+\begin{lemma}
+If $F(\chi)=\tr I_A(\chi)(f)$ then
+\[
+F^\vee(\gamma)
+=|a_1-a_2|J_G(\gamma,f),
+\]
+for $\gamma =(a,\zeta)\in \overline{A(F)}$, $a\not= \pm 1$.
+\end{lemma}
+
+\begin{proof} This follows from our results above.
+\end{proof}
+
+\section{Description of the dual spaces}
+
+The dual of $\overline{G(F)}$ is classified in \cite{Wa2}.
+We shall recall some details from that paper and the
+papers of Moen and Ariturk.
+
+\subsection{Principal series, reducible principal series}
+
+Let $\chi \in \Pi (\overline{A(F)})$. The induced representation
+$I_{A}(\chi )$ is in general not irreducible. However, we do have the
+following
+
+\begin{theorem}
+(Moen \cite{Mo2}) If $p>2$ then $I_{A}(\chi )$ is
+irreducible for all $\chi \in \Pi _u(\overline{A(F)})$.
+\end{theorem}
+
+In fact, C. Moen \cite{Mo1}
+explicitly computes the intertwining operators as
+matrices using the Kirillov model.
+
+\subsection{Complementary series}
+
+Let $\mu \in \Pi (\overline{C})$,
+$\chi =Ind_{\overline{C}}^{\overline{A(F)}}\mu \in
+\Pi (\overline{A(F)})$. If $\mu (x)=\mu _0(x)|x|^s$, for some
+character $\mu _0$ of finite order and some $s\in {\mathbb C}$ then
+we write $s=s(\mu )=s(\chi )$.
+
+\begin{lemma} If $0<s<1/2$ and $\mu (x)=|x|^s$ then $I_A(\mu )$ is unitary.
+\end{lemma}
+
+This follows from \cite{GS}, Proposition 1 following
+the argument of \cite{Ar} sketched above. See also
+\cite{Mo1} if $p>2$ and \cite{Ge1}, \S 5.4.
+
+\subsection{Special representation, non-tempered representation}
+
+The following result is due to Gelbart and Sally \cite{GS}:
+
+\begin{lemma}
+If $s=1/2$ and $\mu (x)=|x|^s$ then there is an irreducible
+constituent of $I_A(\mu)$, ``the special
+representation'' $\pi _{sp}$, which is elliptic (in the sense that its
+character has support on the elliptic set) and square-integrable.
+Its complement in $I_A(\mu)$ is an infinite-dimensional,
+elliptic, non-tempered representation $\pi _{nt}$.
+\end{lemma}
+
+Furthermore, in this case
+
+(1) the representation $\pi _{sp}$ is the only square-integrable
+representation in $\Pi _u(\overline{G(F)})$ which is not cuspidal.
+
+(2) $\pi _{sp}$ is tempered.
+
+(3) The representation $\pi _{nt}$ and the complementary series comprise the
+only non-tempered representations in $\Pi _u(\overline{G(F)})$.
+
+\subsection{Cuspidal representations}
+
+Thanks to ideas originally introduced by Weil and Shale, much is known about
+the cuspidal representations in $\Pi _u(\overline{G(F)})$ in the case
+where $p>2$. See for example \cite{M1}, \cite{M2}, \cite{M3}.
+The information we shall need will be recalled in Chapter~\ref{ch:sc}.
+%% ===== end aabook3.tex =====
+
+
+
+%% ===== begin aabook4.tex =====
+\chapter{On a supercuspidal correspondence}\label{ch:sc}
+
+\section{Introduction}
+In this chapter, we obtain a character relation between
+``oddly corresponding'' supercuspidal
+representations of $G(F)=SL(2,F)$ and its 2-fold metaplectic cover
+$\overline{SL(2,F)}$, where $F$ is a p-adic field with $p>2$.
+Following a suggestion of P. Kutzko, we use the Frobenius formula
+to obtain character relations between ``corresponding'' supercuspidal
+representations of $G(F)$ consistent with the global
+correspondence in Chapter~\ref{ch:global}.
+The parameterization of the supercuspidals for the correspondence
+which we use is that of D. Manderscheid \cite{M1}-\cite{M2}, recalled
+below (see also \cite{M3}).
+
+\section{Filtrations and classification}\label{sec:filtrations}
+
+Let
+$F$ denote a p-adic field, let
+$\varpi =\varpi_F$ be a fixed uniformizer of $F$, let $P:=P_F:=\varpi_F{\cal{O}}_F$,
+and ${\mathbb{F}} :={\cal{O}}_F/P_F$.
+Let ${\cal{B}}$ denote the tree for $G(F)$, $x_0$ the vertex fixed by
+$K_0:=G({\cal{O}}_F)$ and $x_1$ the vertex fixed by $
+K_1:=w^{-1}G({\cal{O}}_F)w$, where
+$w:=
+\left(\begin{array}{cc}
+0&\varpi \\ 1& 0\end{array}\right)$.
+We may find a metric $d$ on the ambient affine space of ${\cal{B}}$
+for which the subgroup of $K_0$ fixing the ball
+\begin{equation}
+{\cal{B}}_m(x_0):=\{\text{ vertices }x\ |\ d(x,x_0)\leq m\}
+\end{equation}
+pointwise, $Fix\ {\cal{B}}_m(x_0)$, is the standard filtration subgroup:
+\begin{equation}
+Fix\ {\cal{B}}_m(x_0)=K_{0,m}:=
+\{\left(\begin{array}{cc} a&b \\ c& d\end{array}\right)\in K_0\ |\
+a-1\equiv d-1\equiv b\equiv c\equiv 0\  ({\rm mod\ } P^m)\}.
+\end{equation}
+Similarly,
+\begin{equation}
+Fix\ {\cal{B}}_m(x_1)=K_{1,m}=w^{-1}K_{0,m}w.
+\end{equation}
+For $i=0,1$, we call an irreducible representation $\sigma$ of
+$K_i/K_{i,m}\cong G({\cal{O}}_F/\varpi^m{\cal{O}}_F)$
+{\bf strongly cuspidal of level $m>1$} if
+$\sigma$ does not contain the trivial character
+of the subgroup $(N\cap K_{i,m-1-i})/K_{i,m}$. In case $m=1$ we call a
+{\bf strongly cuspidal representation} of
+$K_i/K_{i,1}\cong G({\mathbb{F}})$
+any irreducible representation which is cuspidal as a representation of
+$G({\mathbb{F}})$. Since $p> 2$, the metaplectic group
+$\overline{SL(2,F)}$ splits over $K_0$ and $K_1$ (though the splittings
+are different), so a similar definition may be given for
+{\bf strongly cuspidal representation} of
+$\overline{K_i}/\overline{K_{i,m}}$. The papers \cite{M1},
+\cite{M2} show that each irreducible strongly cuspidal representation
+of $K_i/K_{i,m}$ ($i=0,1;m\geq 1$) compactly induces to a irreducible
+supercuspidal representation of $G(F)$, and similarly for its metaplectic
+covers. Moreover, all irreducible supercuspidal representations
+of $G(F)$ (or of $\overline{G(F)}$) arise in this way.
+
+Let $pr$ denote the natural projection $pr:\overline{G(F)}\rightarrow G(F)$.
+
+\begin{claim}[1995 draft; needs correction, see Remark~\ref{rem:sc-caveat}] Fix a strongly cuspidal of level $m\geq 1$
+representation $\sigma$ of $K_i$, $i=0,1$. Let
+$\overline{\sigma}:=\sigma \otimes \varepsilon$ on
+$\overline{K_i}\cong K_i\times \mu_2$, where $\varepsilon$ is the
+identity character of $\mu_2$, and let
+$$
+\begin{array}{c}
+\overline{\pi}
+:=\text{Ind }_{\overline{K_i}}^{\overline{G(F)}}\overline{\sigma},\\
+\pi
+:=\text{Ind }_{K_i}^{G(F)}\sigma.
+\end{array}
+$$
+We have
+\begin{equation}
+\chi_{\overline{\pi}}(x)=\zeta\cdot\chi_{\pi}(pr(x)),\label{eq:sc-relation}
+\end{equation}
+if $x=(pr(x),\zeta )\in \overline{G(F)}$ with $pr(x)$
+elliptic regular.
+\label{prop:164}
+\end{claim}
+
+\begin{claim}[1995 draft; depends on Claim~\ref{prop:164}] Suppose that $p>2$. The character relation above
+determines a bijective correspondence
+$\overline{\pi}\longmapsto \pi$
+between the equivalence classes of irreducible genuine supercuspidal
+representations of $\overline{SL(2,F)}$, and the equivalence
+classes of irreducible supercuspidal representations of $SL(2,F)$.
+\end{claim}
+
+\begin{remark}\label{rem:sc-caveat}
+(Added 2026.) Two points in Claim~\ref{prop:164} and its proof need
+attention. First, $\overline{\sigma}$ must be genuine; in the 1995 draft
+it was written $\sigma\otimes 1$, which is not genuine, and we have
+replaced it by $\sigma\otimes\varepsilon$, where $\varepsilon$ is the
+identity character of $\mu_2$. Second, the isomorphism
+$\overline{K_i}\cong K_i\times\mu_2$ is given by a splitting
+$\kappa_i(k)=(k,s_i(k))$ which, by Lemma~\ref{lem:facts}(b), need not be
+$k\mapsto(k,1)$. With respect to it,
+$\overline{\sigma}((k,\zeta))=\zeta\, s_i(k)\,\sigma(k)$, whereas the proof
+below evaluates $\chi_{\overline{\sigma}}^\circ$ as if $s_i$ were
+trivial. Relatedly, the function $(x,\zeta)\mapsto\zeta\,\chi_\pi(x)$ in
+(\ref{eq:sc-relation}) is not obviously invariant under conjugation in
+$\overline{G(F)}$. A corrected statement presumably involves the factor
+$s_i$ (compare the function $s_v$ of \S\ref{sec:global}, which is
+nontrivial on some elliptic elements of $K_0$ when the lower left entry
+has odd valuation). Until this is checked, the two claims are not used
+in Chapter~\ref{ch:global}. Note also that over a p-adic field the
+regular elliptic elements lie in several conjugacy classes of anisotropic
+Cartan subgroups (\S\ref{sec:elliptic}); a corrected relation must be
+checked on each of them.
+\end{remark}
+
+The 1995 argument for Claim~\ref{prop:164} is given in the next subsection,
+with the gaps noted in Remark~\ref{rem:sc-caveat}.
+
+\section{The Frobenius formula}
+
+First we prove the following metaplectic version of the Frobenius formula.
+
+\begin{proposition} If $\overline{\pi} \in \Pi_{gen}(\overline{G(F)})$
+is induced from a finite dimensional representation $\overline{\sigma}$
+of $\overline{K_i}$ then
+$$
+\chi_{\overline{\pi}} (x)=\sum_{\substack{ z \text{ in }\\
+\overline{K_i}\setminus\overline{G(F)}/\overline{K_i}}}
+[\sum_{\substack{ g \text{ in }\\
+\overline{K_i}\setminus\overline{K_i}z\overline{K_i}}}
+\chi_{\overline{\sigma}}^\circ (gxg^{-1})]
+$$
+converges for each $x\in \overline{G(F)}^{reg}$. (The convergence is not
+uniform.)
+\label{prop:166}
+\end{proposition}
+
+Let me first prove a preliminary lemma.
+\begin{lemma} Let $x\in \overline{G(F)}^{reg}$ and let
+$$
+\chi_{\overline{\sigma}}^z(x):=\sum_{\substack{ g \text{ in }\\
+\overline{K_i}\setminus\overline{K_i}z\overline{K_i}}}
+\chi_{\overline{\sigma}}^\circ (gxg^{-1}).
+$$
+There exists a finite subset $Z$ of representatives $z$ of
+$\overline{K_i}\setminus\overline{G(F)}/\overline{K_i}$
+and an open neighborhood $U$ of $x$ such that
+$\chi_{\overline{\sigma}}^z(y)=0$ unless $y\in U$ and $z\in Z$.
+\end{lemma}
+\begin{proof} Note $\chi_{\overline{\sigma}}^\circ$ is supported
+on $\overline{K_i}$ and $K_i$ is the stabilizer in $G(F)$ of the vertex
+$x_i$ of the tree ${\cal{B}}$.
+It follows that $\chi_{\overline{\sigma}}^\circ (gxg^{-1})\not= 0$
+if and only if $gxg^{-1}\in \overline{K_i}$ if and only if
+$p(x)$ fixes the point $p(g)^{-1}x_i$ in the tree for $G(F)$.
+It follows that
+$\chi_{\overline{\sigma}}^z (x)= 0$ unless $p(x)$ is elliptic regular
+in $G(F)$. Let $\Delta (x)=q^{-m}$ for $m\geq 0$. It is known that
+(\cite{L4}, \S 5)
+\begin{equation}
+|\text{Fix}(x)|=
+\left\{ \begin{array}{c}
+\frac{q^{m+1}+q^m-2}{q-1},\ \ \ \ \text{if $F[x]/F$ is unramified},\\
+\frac{2(q^m-1)}{q-1},\ \ \ \text{if $F[x]/F$ is ramified}.
+\end{array} \right.
+\end{equation}
+From this formula, it follows that there is a neighborhood $U'$
+of $p(x)$ in $G(F)^{reg}$ and a number $N=N(U')<\infty$
+such that, for all $y\in U'$, we have $|\text{Fix}(y)|\leq N$.
+In other words, the fixed point formula above implies that the
+number of fixed points is locally uniformly bounded.
+
+From this we obtain a finite set $Z$ as desired.
+\end{proof}
+
+\begin{proof}[Proof of Proposition~\ref{prop:166}]
+The proposition follows immediately from
+the lemma exactly as in \cite[p.~213]{Kut}.
+\end{proof}
+
+\begin{proof}[1995 argument for Claim~\ref{prop:164}]
+The idea is as follows:
+We compare the character of the supercuspidal representations
+$\overline{\pi}\in \Pi_{gen}(\overline{G(F)})$ and
+$\pi\in\Pi(G(F))$ corresponding to a given finite dimensional representation
+$\sigma$ of $K_i$, $i=0,1$, using the Frobenius formula.
+As the number of terms in the sum for $\chi_\pi$ and in
+the sum for $\chi_{\overline{\pi}}$ are the same, by
+Proposition \ref{prop:166} it suffices to compare the
+characters $\chi_\sigma^\circ$
+and $\chi_{\overline{\sigma}}^\circ$ term-by-term.
+For $x$ in $\overline{K_0}$,
+we want to show that two analogous terms are equal by
+conjugating the elliptic element $x$ around by an element in the cover of
+$K_0$ or $A(F)\cup \{t,t^{-1}\}$ or $N(F)$ (in that order), where
+$t={\rm diag}(1,\varpi)$ is a diagonal matrix in $GL(2,F)$.
+Note we may pass between $K_0$ and $K_1$ by conjugating by either
+$t$ or its inverse.
+
+If $T:=$ Cent$(x,\overline{G(F)})$ then $T$ is elliptic and we may embed $T$ into a maximal
+compact subgroup $\overline{K}$ of $\overline{G(F)}$.
+To effect the term-by-term comparison, we recall that $\overline{K}_0$
+splits, so we must first worry about conjugation by
+an element $(r,\zeta)$ with $r$ in $A(F)\cup \{t,t^{-1}\}$.
+We first calculate
+$$
+(r,\zeta)\cdot (k,\zeta')\cdot ( r,\zeta)^{-1}
+=(r,\zeta)\cdot (k,\zeta')\cdot (r^{-1},(r_1,r_2)_2\zeta^{-1} ),
+$$
+for $k\in K_0$ elliptic
+and $r=\left(\begin{array}{cc} r_1&0\\0&r_2\end{array}\right)\in
+GL(2,F)$. The details of this straightforward calculation are
+included for the
+reader's convenience. Writing
+$k=\left(\begin{array}{cc} a&b\\c&d\end{array}\right)$ and
+recalling the definition of $p:GL(2)\rightarrow SL(2)$ from \S\ref{sec:local}, we have
+\begin{equation}
+\begin{array}{c}
+rkr^{-1}=\left(\begin{array}{cc} r_1a&r_1b\\r_2c&r_2d\end{array}\right)\cdot
+\left(\begin{array}{cc} r_1^{-1}&0\\0&r_2^{-1}\end{array}\right)
+=\left(\begin{array}{cc} a&r_1r_2^{-1}b\\r_1^{-1}r_2c&d\end{array}\right)\\
+p(r)k=
+\left(\begin{array}{cc} r_1a&r_1b\\r_1^{-1}c&r_1^{-1}d\end{array}\right)\\
+p(rk)=
+\left(\begin{array}{cc} r_1a&r_1b\\r_1^{-1}c&r_1^{-1}d\end{array}\right)\\
+p(rk)^{d(1,r_1^{-1}r_2^{-1})}=
+\left(\begin{array}{cc} r_1a&r_2^{-1}b\\r_2c&r_1^{-1}d\end{array}\right)
+\end{array}
+\end{equation}
+If $k$ is elliptic then $c\not= 0$. We have, by (\ref{eq:mult}), 
+$$
+(r,\zeta)\cdot (k,\zeta')
+=(rk,\beta (r,k)\zeta\zeta' )=(rk,(r_1,c)_2\zeta\zeta' ),
+$$
+so
+$$
+(r,\zeta)\cdot (k,\zeta')\cdot ( r,\zeta)^{-1}
+=(rkr^{-1}, (r_1,c)_2(r_1,r_2)_2(r_1,r_1)_2^{-2}\beta (rk, r^{-1})\zeta' ).
+$$
+Since
+$\beta (rk, r^{-1})=(r_1^{-1},r_1^{-2}r_2c)_2(r_1^{-1}r_2^{-1},r_1)_2$,
+we find that
+$$
+(r,\zeta)\cdot (k,\zeta')\cdot ( r,\zeta)^{-1}
+=(rkr^{-1}, (r_1,r_1r_2)_2\zeta' ).
+$$
+Since $r\in A(F)\cup \{t,t^{-1}\}$, we obtain the desired comparison
+$$
+\chi_{\overline{\sigma}}^\circ ((r,\zeta)
+\cdot (k,\zeta')\cdot ( r,\zeta)^{-1})
+=\zeta'\cdot \chi_{\sigma}^\circ (rkr^{-1}),
+$$
+in this case.
+\par
+Next we must conjugate our elliptic regular $x=(k,\zeta')$ by
+$(n,\zeta)$, where $n\in N(F)$. We obtain, as the reader may verify,
+$(n,\zeta)\cdot (k,\zeta')\cdot (n,\zeta)^{-1}=(nkn^{-1},\zeta')$.
+\end{proof}
+%% ===== end aabook4.tex =====
+
+
+
+%% ===== begin aabook2a.tex =====
+\chapter{Local comparisons on the groups}\label{ch:local}
+
+\section{Introduction}
+We prove the identities necessary to compare the
+invariant trace formula to its metaplectic analog in Chapter~\ref{ch:global}.
+
+We shall describe, in the real case, several
+correspondences between functions in
+$C_c^\infty(G({\mathbb{R}}))$ and functions in
+$C_c^\infty(\overline{G({\mathbb{R}})})$, each of which is associated
+to a matching of characters. See \S\ref{sec:realA} and
+\S\ref{sec:realds}.
+
+We shall describe, in the p-adic case with $p\not= 2$,
+five correspondences between functions in
+$C_c^\infty(G(F))$ and functions in
+$C_c^\infty(\overline{G(F)})$, each of which is associated
+to a matching of characters. The case $p=2$ is discussed in
+\S\ref{sec:dyadic}, where no matching is established in this version.
+
+\section{Orbital integrals - basics}
+
+Let $G(F)_\gamma$ denote the connected component of the centralizer of
+$\gamma$ in $G(F)$.
+
+\subsection{Orbital integrals: definitions}\label{sec:weighted-defs}
+
+Certain weighted orbital integrals occur naturally in the invariant trace
+formula. We will need some of their properties to put the trace formula in
+stable form as well as to compare trace formulas.
+
+If $M\in \{A,G\}$, $f\in C_c^\infty (\overline{G(F)})_{gen}$, and $g\in
+\overline{M(F)}$ is regular, let
+\[
+J_M(g,f)=|D(g)|^{1/2}
+\int_{\overline{G(F)}_g\backslash \overline{G(F)}}
+f(x^{-1}gx)v_M(x)dx.
+\]
+If $F$ is a local field then
+\[
+v_M(x)=\left\{
+\begin{array}{ll}
+1, & M=G, \\
+\log (1+|n|^2)^{1/2}, & M=A,\ F\ {\rm archimedean},\\
+\log \max(1,|n|_F), & M=A,\ F\ {\rm non\hbox{-}archimedean},
+\end{array}
+\right.
+\]
+where $x=a\left(
+\begin{array}{cc}
+1 & n \\
+0 & 1
+\end{array}
+\right) k$.
+
+Note that the centralizer in $\overline{G(F)}$ of a regular element
+in $a\in A(F)$ is $\overline{A(F)}$. We may therefore write,
+for a regular $a\in \overline{A(F)}$,
+\begin{equation}
+J_M(a,f)=
+|D(g)|^{1/2}\int_{\overline{A(F)}\backslash \overline{G(F)}}
+f(x^{-1}gx)v_M(x)dx.
+\end{equation}
+
+\subsection{Elliptic orbital integrals}
+
+We now discuss the elliptic orbital integrals $J_G(\gamma)$,
+$\gamma\in \overline{T}_{reg}$, where $\overline{T}_{reg}$
+denotes the subset of elements of the form $(x,\zeta)$
+where $x\in T$ has distinct eigenvalues and $T$ is an elliptic
+Cartan of $SL(2,F)$.
+
+By Lemma~\ref{lem:facts}(g), we have
+\[
+\overline{G(F)}_\gamma
+=\overline{T},\ \ \ \ \ \
+\gamma\in \overline{T}_{reg}.
+\]
+We have
+\begin{equation}
+\int_{\overline{G(F)}_\gamma\backslash \overline{G(F)}}
+f(x^{-1}\gamma x)\frac{dx}{dt}
+=\int_{\overline{T}\backslash \overline{G(F)}}
+f(x^{-1}\gamma x)\frac{dx}{dt},
+\end{equation}
+where $\gamma =(g,1)\in \overline{T}_{reg}$.
+
+\subsection{Hyperbolic orbital integrals}
+
+By Lemma~\ref{lem:facts}(f), we have
+\[
+\overline{G(F)}_\gamma
+=\overline{A(F)},\ \ \ \ \ \
+\gamma\in \overline{A(F)}_{reg}.
+\]
+We have
+\begin{equation}
+\int_{\overline{G(F)}_\gamma\backslash \overline{G(F)}}
+f(x^{-1}\gamma x)\frac{dx}{da}
+=\int_{\overline{A(F)}\backslash \overline{G(F)}}
+f(x^{-1}\gamma x)\frac{dx}{da},
+\end{equation}
+where $\gamma =(g,1)\in \overline{A(F)}_{reg}$.
+
+\subsection{Unipotent orbital integrals}
+
+Using (\ref{eq:conj}) and Lemma~\ref{lem:facts}(h), a straightforward calculation involving only the definitions
+yields the following result:
+\[
+\overline{G(F)}_\gamma
+=\overline{N(F)},\ \ \ \ \ \
+\gamma=
+(
+\pm \left(
+\begin{array}{cc}
+1 & 1\\
+0 & 1
+\end{array}
+\right)
+,1)\in \overline{N(F)}.
+\]
+We have
+\begin{equation}
+\int_{\overline{G(F)}_\gamma\backslash \overline{G(F)}}
+f(x^{-1}\gamma x)\frac{dx}{dn}
+=\int_{\overline{N(F)}\backslash \overline{G(F)}}
+f(x^{-1}\gamma x)\frac{dx}{dn},
+\end{equation}
+where $\gamma $ is as above.
+
+\subsection{Weighted orbital integrals}
+
+If $\gamma =(g,1)\in \overline{A(F)}_{reg}$ and if
+\[
+g=
+\pm \left(
+\begin{array}{cc}
+a & 0\\
+0 & a^{-1}
+\end{array}
+\right)
+\in A(F),
+\]
+then
+\begin{equation}
+\int_{\overline{G(F)}_\gamma\backslash \overline{G(F)}}
+f(x^{-1}\gamma x)v_A(x)\frac{dx}{da}
+=\int_{\overline{A(F)}\backslash \overline{G(F)}}
+f(x^{-1}\gamma x)v_A(x)\frac{dx}{da}.
+\end{equation}
+
+If
+\[
+\gamma=
+(
+\pm \left(
+\begin{array}{cc}
+1 & 0\\
+0 & 1
+\end{array}
+\right)
+,1)\in Z_{\overline{G}}(F),
+\]
+we have
+\begin{equation}
+J_A(\gamma,f)=
+\lim_{\substack{ a\rightarrow 1\\ a\ {\rm regular}}}
+\int_{\overline{A(F)}\backslash \overline{G(F)}}
+f(x^{-1}\gamma a x)v_A(x)\frac{dx}{dt}.
+\end{equation}
+
+\section{Corresponding functions}
+
+We define the notion of a ``smooth matching''. We shall use separate
+definitions for $p=\infty$ and $p>2$; for $p=2$ see
+\S\ref{sec:dyadic}.
+In these cases we shall base our ``matching'' of functions (or, more
+properly, of orbital integrals) on our knowledge of the characters of the
+representations. For the purpose of avoiding confusion in later
+chapters, we shall assume $p>2$ in some sections even though
+that hypothesis will not be used until later.
+
+\subsection{Corresponding functions on $A$}
+
+We concentrate first on the set $A(F)_{reg}$.
+
+\subsubsection{Characters of $\overline{A(F)}$}\label{sec:charsA}
+
+We assume $p>2$ throughout this subsection. (The case $p=2$ is
+not covered; see \S\ref{sec:dyadic}.) We write $a(x)={\rm diag}(x,x^{-1})$
+and, for $a\in A(F)$, $x_a$ for the element with $a=a(x_a)$. We write
+$(x,y)$ for the Hilbert symbol $(x,y)_2$; its values are $\pm1$, so
+$(x,y)^{-1}=(x,y)=(y,x)$.
+
+\begin{lemma}\label{lem:Acocycle}
+(a) For $x,y\in F^\times$, $\beta(a(x),a(y))=(x,y)$. Hence
+\[
+(a(x),\zeta)(a(y),\zeta')=(a(xy),(x,y)\zeta\zeta').
+\]
+
+(b) Let $w=\left(\begin{smallmatrix}0&-1\\1&0\end{smallmatrix}\right)$.
+For every $a\in A(F)$, $(w,1)(a,1)(w,1)^{-1}=(a^{-1},1)$.
+(This holds for every local field $F$.)
+\end{lemma}
+
+\begin{proof}
+(a) Since $c=0$, $x(a(x))=x^{-1}$, so by (\ref{eq:beta})
+$\beta(a(x),a(y))=((xy)^{-1}/x^{-1},(xy)^{-1}/y^{-1})=(y^{-1},x^{-1})=(x,y)$.
+
+(b) Let $a=a(x)$. We have $x(w)=1$, $x(w^{-1})=-1$, $x(a)=x^{-1}$,
+$wa=\left(\begin{smallmatrix}0&-x^{-1}\\x&0\end{smallmatrix}\right)$ so
+$x(wa)=x$, and $waw^{-1}=a(x^{-1})$ so $x(waw^{-1})=x$. Hence
+$\beta(w,a)=(x,x^2)=1$, $\beta(w,w^{-1})=(1,-1)=1$ and
+$\beta(wa,w^{-1})=(1,-x)=1$. By (\ref{eq:mult}) and (\ref{eq:inv}),
+$(w,1)^{-1}=(w^{-1},1)$ and
+$(w,1)(a,1)(w^{-1},1)=(wa,1)(w^{-1},1)=(a^{-1},1)$.
+\end{proof}
+
+Let
+\[
+A_2(F)=\{a(x)\ |\ \nu (x)\ {\rm \ even}\}.
+\]
+If $\nu(x)$ and $\nu(y)$ are even then $(x,y)=1$ (as $p$ is odd), so by
+Lemma~\ref{lem:Acocycle}(a), $\overline{A_2(F)}=A_2(F)\times \mu_2$
+(direct product), and every genuine character of $\overline{A_2(F)}$
+has the form $(a(x),\zeta)\mapsto\zeta\,\chi_1(x)$ for a character
+$\chi_1$ of $A_2(F)$ (which we regard as a character of the group of
+$x$ with $\nu(x)$ even). Every element of $A(F)-A_2(F)$ is $a(x)$ with
+$x/\varpi$ of even valuation.
+
+\begin{lemma}\label{lem:genuine-chars}
+Let $\chi_1\in\Pi(A_2(F))$ and let $\epsilon\in{\mathbb C}$ satisfy
+\begin{equation}\label{eq:eps}
+\epsilon^2=(\varpi,\varpi)^{-1}\chi_1(\varpi^2).
+\end{equation}
+Then
+\begin{equation}\label{eq:chi-eps}
+\overline{\chi}_\epsilon (a(x),\zeta)=
+\left\{
+\begin{array}{ll}
+\zeta^{-1}\chi_1(x), & \nu(x)\ \text{even},\\
+\epsilon\,\zeta^{-1}(x,\varpi)^{-1}\chi_1(x/\varpi),
+& \nu(x)\ \text{odd},
+\end{array}
+\right.
+\end{equation}
+is a genuine character of $\overline{A(F)}$, and every genuine character
+of $\overline{A(F)}$ is of this form for exactly one pair
+$(\chi_1,\epsilon)$. Thus for each $\chi_1$ there are exactly two genuine
+characters extending $\zeta\chi_1$.
+\end{lemma}
+
+\begin{proof}
+By Lemma~\ref{lem:Acocycle}(a), a genuine function
+$(a(x),\zeta)\mapsto\zeta^{-1}\psi(x)$ is a character if and only if
+$\psi(xy)=(x,y)\psi(x)\psi(y)$ for all $x,y$. If $\psi$ is such a
+function, put $\chi_1=\psi|_{A_2}$ and
+$\epsilon=(\varpi,\varpi)\psi(\varpi)$. For $\nu(x)$ odd write
+$x=\varpi x_0$; then
+$\psi(x)=(\varpi,x_0)\psi(\varpi)\chi_1(x_0)=\epsilon(x,\varpi)\chi_1(x/\varpi)$,
+because $(x,\varpi)=(\varpi,\varpi)(x_0,\varpi)$; and
+$\chi_1(\varpi^2)=\psi(\varpi^2)=(\varpi,\varpi)\psi(\varpi)^2
+=(\varpi,\varpi)\epsilon^2$, which is (\ref{eq:eps}). Conversely, let
+$\psi$ be defined by (\ref{eq:chi-eps}) with $\zeta=1$. If $\nu(x)$,
+$\nu(y)$ are both even the relation is clear. If $\nu(x)$ is odd and
+$\nu(y)$ even, it reads $(xy,\varpi)=(x,y)(x,\varpi)$, i.e.\
+$(y,x\varpi)=1$, which holds because $y$ and $x\varpi$ have even
+valuation. If both are odd, it reads
+$\chi_1(xy)=(x,y)\epsilon^2(x,\varpi)(y,\varpi)\chi_1(xy/\varpi^2)$; by
+(\ref{eq:eps}) the right side is
+$(x,y)(x,\varpi)(y,\varpi)(\varpi,\varpi)\chi_1(xy)
+=(x\varpi,y\varpi)\chi_1(xy)=\chi_1(xy)$, since $x\varpi$ and $y\varpi$
+have even valuation.
+\end{proof}
+
+Since $A(F)/A_2(F)$ has order 2, the characters of $A(F)$ are
+also in 2-1 correspondence with the characters of $A_2(F)$:
+given $\chi_1\in \Pi(A_2(F))$, its two extensions to $A(F)$ are
+\begin{equation}\label{eq:chi-theta}
+\chi_\vartheta (a(x))=
+\left\{
+\begin{array}{ll}
+\chi_1(x), & \nu(x)\ \text{even},\\
+\vartheta\, \chi_1(x/\varpi), & \nu(x)\ \text{odd},
+\end{array}
+\right.
+\qquad \vartheta^2 = \chi_1(\varpi^2).
+\end{equation}
+
+Comparing (\ref{eq:eps}) with $\vartheta^2=\chi_1(\varpi^2)$, we see that
+$\epsilon=\vartheta$ is impossible when $(\varpi,\varpi)=-1$. Since
+$(\varpi,\varpi)=(\varpi,-1)=(-1)^{(q-1)/2}$, this happens exactly when
+$q\equiv 3\pmod 4$. Fix once and for all $\eta_\varpi\in{\mathbb C}$ with
+\[
+\eta_\varpi^2=(\varpi,\varpi)^{-1},
+\]
+and take $\eta_\varpi=1$ when $(\varpi,\varpi)=1$.
+
+\begin{definition} Let $\chi_1\in \Pi(A_2(F))$ be given.
+We say that
+$\overline{\chi}_\epsilon\in \Pi(\overline{A(F)})$ {\bf corresponds}
+to $\chi_\vartheta \in \Pi(A(F))$ if $\epsilon =\eta_\varpi\vartheta$.
+If $\chi \in \Pi(A(F))$ is given we let
+$\overline{\chi}\in \Pi(\overline{A(F)})$ denote
+its corresponding genuine character.
+\label{def:corrchar}
+\end{definition}
+
+If $\vartheta^2=\chi_1(\varpi^2)$ then $\epsilon=\eta_\varpi\vartheta$
+satisfies (\ref{eq:eps}), so Definition~\ref{def:corrchar} gives a
+bijection $\chi\mapsto\overline{\chi}$ between $\Pi(A(F))$ and the genuine
+characters of $\overline{A(F)}$. It depends on the choices of $\varpi$
+and $\eta_\varpi$. (The 1995 draft required $\epsilon=\vartheta$, which is
+inconsistent when $q\equiv3\pmod 4$.)
+
+\begin{example}
+Let $F={\mathbb Q}_3$, $\varpi=3$, and $\chi_1=1$. Then
+$(3,3)_3=(3,-1)_3=-1$, so $\vartheta=\pm1$ while $\epsilon=\pm i$. With
+$\eta_3=i$, the trivial character $\chi_{1}$ of $A({\mathbb Q}_3)$
+corresponds to $\overline{\chi}_i$, and the character $\chi_{-1}$
+($a(x)\mapsto(-1)^{\nu(x)}$) corresponds to $\overline{\chi}_{-i}$. For
+$F={\mathbb Q}_5$, $(5,5)_5=1$, $\eta_5=1$, and the definition reduces to
+that of the 1995 draft.
+\end{example}
+
+\subsubsection{Corresponding functions on $\overline{A(F)}_{reg}$}
+
+We now determine the conditions on
+$\phi \in C_c^\infty(A(F))$,
+$\overline{\phi}
+\in C_c^\infty(\overline{A(F)})_{gen}$
+under which
+$\phi^{\wedge}(\chi)=
+\overline{\phi}^{\wedge}(\overline{\chi})$ for all $\chi \in \Pi(A(F))$.
+Let $\chi=\chi_\vartheta$ extend $\chi_1$. Then
+\begin{equation}\label{eq:FT-lin}
+\phi^{\wedge}(\chi)=
+\int_{A(F)}\phi(a)\chi(a)\, da
+=\int_{A_2(F)}\phi(a)\chi_1(x_a)\, da +
+\vartheta \int_{A(F)-A_2(F)}\phi(a)\chi_1(x_a/\varpi)\, da .
+\end{equation}
+Since $\overline{\phi}\,\overline{\chi}$ is invariant under
+$\mu_2$ and $d\varsigma$ gives $\mu_2$ volume $1$, and since
+$\overline{\chi}=\overline{\chi}_{\epsilon}$ with
+$\epsilon=\eta_\varpi\vartheta$,
+\begin{equation}\label{eq:FT-gen}
+\begin{aligned}
+\overline{\phi}^{\wedge}(\overline{\chi})&=
+\int_{A(F)}\overline{\phi}(a,1)\overline{\chi}(a,1)\, da\\
+&=\int_{A_2(F)}\overline{\phi}(a,1)\chi_1(x_a)\, da +
+\eta_\varpi\vartheta \int_{A(F)-A_2(F)}\overline{\phi}(a,1)\,(x_a,\varpi)^{-1}
+\chi_1(x_a/\varpi)\, da.
+\end{aligned}
+\end{equation}
+(Draft~1 omitted the factor $(x_a,\varpi)^{-1}$ in (\ref{eq:FT-gen}) and
+wrote $\epsilon$ in place of $\vartheta$ in (\ref{eq:FT-lin}).)
+
+\begin{definition}\label{def:corrA} We say that
+$\phi \in C_c^\infty(A(F))$ {\bf corresponds} to
+$\overline{\phi}
+\in C_c^\infty(\overline{A(F)})_{gen}$
+if
+\[
+\overline{\phi}(a,1)=
+\left\{
+\begin{array}{ll}
+\phi(a), & a\in A_2(F),\\
+\eta_\varpi^{-1}(x_a,\varpi)\,\phi(a), & a\in A(F)-A_2(F).
+\end{array}
+\right.
+\]
+\end{definition}
+
+\begin{lemma}\label{lem:FT-match}
+(a) If $\phi \in C_c^\infty(A(F))$ corresponds to
+$\overline{\phi}\in C_c^\infty(\overline{A(F)})_{gen}$
+then
+$\phi^{\wedge}(\chi)=
+\overline{\phi}^{\wedge}(\overline{\chi})$
+for all $\chi \in \Pi(A(F))$. Conversely, if this holds for all $\chi$,
+then $\phi$ corresponds to $\overline{\phi}$.
+
+(b) If $\phi$ corresponds to $\overline{\phi}$ and $\phi(a^{-1})=\phi(a)$
+for all $a$, then $\overline{\phi}((a,1)^w)=\overline{\phi}(a,1)$ for all
+$a$.
+\end{lemma}
+
+\begin{proof}
+(a) The first terms of (\ref{eq:FT-lin}) and (\ref{eq:FT-gen}) agree
+when $\overline{\phi}(a,1)=\phi(a)$ on $A_2(F)$. In the second term of
+(\ref{eq:FT-gen}), substituting
+$\overline{\phi}(a,1)=\eta_\varpi^{-1}(x_a,\varpi)\phi(a)$ gives
+$\vartheta\int\phi(a)(x_a,\varpi)^2\chi_1(x_a/\varpi)\,da$, which is the
+second term of (\ref{eq:FT-lin}). Conversely, as $\chi_1$ ranges over
+$\Pi(A_2(F))$ and $\vartheta$ over both square roots of
+$\chi_1(\varpi^2)$, Fourier inversion on $A_2(F)$ and on its coset
+$A(F)-A_2(F)$ forces both pointwise identities.
+
+(b) By Lemma~\ref{lem:Acocycle}(b), $(a,1)^w=(a^{-1},1)$, and
+$(x_a^{-1},\varpi)=(x_a,\varpi)$.
+\end{proof}
+
+\begin{definition} We say that
+$f \in C_c^\infty(G(F))$ {\bf corresponds oddly
+on the hyperbolic set} to
+$\overline{f}\in C_c^\infty(\overline{G(F)})_{gen}$
+if the normalized orbital integral $F_f$ on $A(F)_{reg}$ corresponds to
+the normalized orbital integral $F_{\overline{f}}$ on
+$\overline{A(F)}_{reg}$ in the sense of Definition~\ref{def:corrA}.
+\end{definition}
+
+By Lemma~\ref{lem:FT-match}(b), this definition is compatible with the
+invariance of $F_f$ and $F_{\overline f}$ under the Weyl group.
+
+\begin{definition}
+We say $f,\overline{f}$ {\bf correspond evenly on the hyperbolic set}
+if $\Delta(g)O_{\overline{f}}(g)=\Delta(h)O_f(h)$, when
+$g=t(h)$ is regular, and $\Delta(g)O_{\overline{f}}(g,1)=0$,
+if $g\notin {\rm image}(t)$. Here $O_f$ is the orbital integral
+\[
+O_f(x)=\int_{G_x(F)\backslash G(F)} f(g^{-1}xg)dg,
+\]
+and $\Delta$, $t$ are as in \cite{Fl}. (This is the definition of the
+1995 draft; the corresponding matching of representations, as in
+\cite{Fl}, is not verified here.)
+\end{definition}
+
+\begin{claim}[1995 draft; false as stated]\label{lem:weighted-small}
+For $f$ of sufficiently small support, if
+$f \in C_c^\infty(G(F))$ corresponds oddly on $A(F)_{reg}$ to
+$\overline{f}\in C_c^\infty(\overline{G(F)})_{gen}$
+then the weighted orbital integral of
+$f$ corresponds to the weighted orbital integral of
+$\overline{f}$ in the sense above (as functions on $A(F)$).
+\end{claim}
+
+\begin{remark}\label{rem:weighted-noninv}
+(Added in Draft~2.) The 1995 proof was ``a direct calculation''. The
+claim cannot hold for \emph{all} corresponding pairs. Indeed, if
+$(f,\overline{f})$ correspond, so does $(f,\overline{f}+\overline{h})$
+for any genuine $\overline{h}$ whose orbital integrals vanish, for
+example $\overline{h}=\overline{g}-\overline{g}^{\,y}$ with
+$\overline{g}^{\,y}(x)=\overline{g}(yxy^{-1})$ and $y\in\overline{G(F)}$.
+The claim would then force $J_A(a,\overline{h})=0$, i.e.,
+\[
+|D(a)|^{1/2}\int_{\overline{A(F)}\backslash\overline{G(F)}}
+\overline{g}(x^{-1}ax)\,\bigl(v_A(x)-v_A(xy)\bigr)\,dx=0
+\]
+for all small-support $\overline{g}$ and all $y$, which fails because
+weighted orbital integrals are not invariant distributions
+\cite{A7}. A correct statement must either restrict to pairs constructed
+in a specific way from one another, or replace the weighted orbital
+integrals $J_A$ by the invariant distributions $I_A$ of the invariant
+trace formula \cite{A6}. The same objection applies to the remark on
+real weighted orbital integrals in \S\ref{sec:realA}. Neither statement
+is used in Chapter~\ref{ch:global}.
+\end{remark}
+
+\begin{proposition}\label{prop:hyp-ps}
+Suppose that $\overline{f}\in C^\infty_c(\overline{G(F)})_{gen}$
+corresponds oddly on $A(F)_{reg}$ to
+$f\in C_c^\infty(G(F))$. Let $\chi\in\Pi(A(F))$ and let $\overline{\chi}$
+be the corresponding genuine character
+(Definition~\ref{def:corrchar}). Then
+\[
+\tr I_A(\overline{\chi})(\overline{f})=\tr I_A(\chi)(f).
+\]
+\end{proposition}
+
+\begin{proof}
+By \S\ref{sec:ps-char},
+\[
+\tr I_A(\chi)(f)=(F_f)^\wedge(\chi),\qquad
+\tr I_A(\overline{\chi})(\overline{f})=(F_{\overline{f}})^\wedge(\overline{\chi}).
+\]
+These agree by Lemma~\ref{lem:FT-match}(a). (The metaplectic character
+formula of \S\ref{sec:ps-char} is quoted there with its proof omitted,
+so the proposition depends on it.)
+\end{proof}
+
+\begin{example}
+Let $F={\mathbb Q}_3$, $\varpi=3$, $\eta_3=i$, and let $\phi$ be the
+characteristic function of $\{a(x)\ |\ x\in 3{\mathbb Z}_3^\times\}$.
+Then the corresponding $\overline\phi$ has
+$\overline{\phi}(a(3u),1)=-i\,(3u,3)_3=-i\,(3,3)_3(u,3)_3=i\left(\frac{u}{3}\right)$
+for $u\in{\mathbb Z}_3^\times$, where $(\frac{\cdot}{3})$ is the Legendre
+symbol, and $\overline\phi(a(x),1)=0$ otherwise. For the trivial character
+$\chi=\chi_1$ (with $\chi_1=1$, $\vartheta=1$), $\phi^\wedge(\chi)={\rm vol}(3{\mathbb Z}_3^\times)$,
+and $\overline{\phi}^\wedge(\overline\chi)
+=i\int i\,(\tfrac{u}{3})(3u,3)_3\,da=-\int(\tfrac{u}{3})\cdot(-(\tfrac{u}{3}))\,da
+={\rm vol}(3{\mathbb Z}_3^\times)$, as it should be.
+\end{example}
+
+A similar result holds in the real case, which is discussed in the
+next subsection.
+
+\subsection{Corresponding functions on
+$\overline{A({\mathbb{R}})}$}\label{sec:realA}
+
+Let $F={\mathbb{R}}$ in this subsection, and let $a(x)$ denote the
+diagonal matrix with entries $x,x^{-1}$. The real Hilbert symbol is
+\[
+(x,y)_2=
+\left\{
+\begin{array}{ll}
+-1, & x<0\ \text{and}\ y<0,\\
+1, & \text{otherwise}.
+\end{array}
+\right.
+\]
+(Draft~1 gave a formula depending only on the sign of $x$.) By
+Lemma~\ref{lem:Acocycle}(a), which holds for every local field,
+$(a(x),\zeta)(a(y),\zeta')=(a(xy),(x,y)_2\zeta\zeta')$.
+
+Let $\chi_1$ be a character of ${\mathbb{R}}_+^\times$. Define
+$\chi$ on $A({\mathbb{R}})$ by
+\[
+\chi(a(x))=\chi_\epsilon(a(x))
+=
+\left\{
+\begin{array}{ll}
+\chi_1(x), & x>0,\\
+\epsilon \chi_1(-x), & x<0,
+\end{array}
+\right.
+\]
+where $\epsilon =\pm 1$. Define
+$\overline{\chi}$ on $\overline{A({\mathbb{R}})}$ by
+\[
+\overline{\chi}(a(x),\zeta)=\overline{\chi}_\eta(a(x),\zeta)
+=
+\left\{
+\begin{array}{ll}
+\zeta^{-1}\chi_1(x), & x>0,\\
+\zeta^{-1}\eta \chi_1(-x), & x<0,
+\end{array}
+\right.
+\]
+where $\eta=\pm i$. This is a genuine character: the only nontrivial
+condition, at $x=y=-1$, reads $1=(-1,-1)_2\,\eta^2=-\eta^2$. Every
+genuine character of $\overline{A({\mathbb R})}$ is of this form (compare
+\cite{GS}). We say that
+$\chi_\epsilon$ {\bf corresponds} to $\overline{\chi}_\eta$ if
+$\eta =\epsilon i$; this is a bijection
+$\chi\mapsto\overline{\chi}$ from $\Pi(A({\mathbb R}))$ onto the genuine
+characters of $\overline{A({\mathbb R})}$.
+
+\begin{definition}\label{def:corrA-real}
+We say that $\phi \in C_c^\infty(A({\mathbb R}))$ {\bf corresponds} to
+$\overline{\phi}\in C_c^\infty(\overline{A({\mathbb R})})_{gen}$
+if
+$\phi^{\wedge}(\chi)=
+\overline{\phi}^{\wedge}(\overline{\chi})$
+for all $\chi \in \Pi(A({\mathbb R}))$.
+\end{definition}
+
+\begin{lemma}\label{lem:realA-match}
+$\phi$ corresponds to $\overline{\phi}$ if and only if
+\begin{equation}\label{eq:realA-match}
+\overline{\phi}(a(x),1)=
+\left\{
+\begin{array}{ll}
+\phi(a(x)), & x>0,\\
+-i\,\phi(a(x)), & x<0.
+\end{array}
+\right.
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+As in the p-adic case,
+$\phi^\wedge(\chi_\epsilon)=\int_{x>0}\phi(a(x))\chi_1(x)\,d^\times x
++\epsilon\int_{x<0}\phi(a(x))\chi_1(-x)\,d^\times x$ and
+$\overline{\phi}^\wedge(\overline{\chi}_{\epsilon i})
+=\int_{x>0}\overline{\phi}(a(x),1)\chi_1(x)\,d^\times x
++\epsilon i\int_{x<0}\overline{\phi}(a(x),1)\chi_1(-x)\,d^\times x$.
+These agree for all $\chi_1$ and both values of $\epsilon$ if and only if
+$\overline{\phi}=\phi$ on $x>0$ and $i\,\overline{\phi}(a(x),1)=\phi(a(x))$
+on $x<0$, i.e.\ $\overline{\phi}(a(x),1)=-i\,\phi(a(x))$.
+\end{proof}
+
+(Draft~1 stated (\ref{eq:realA-match}) with the factor $\epsilon$ in
+place of $-i$; that is not compatible with $\eta=\epsilon i$, and since
+$\epsilon$ depends on the character it cannot appear in a condition on
+functions.) By Lemma~\ref{lem:Acocycle}(b), $(a,1)^w=(a^{-1},1)$, so the
+condition (\ref{eq:realA-match}) is compatible with Weyl group
+invariance.
+
+\begin{definition} We say that
+$f \in C_c^\infty(G({\mathbb R}))$ {\bf corresponds oddly on the
+hyperbolic set} to
+$\overline{f}\in C_c^\infty(\overline{G({\mathbb R})})_{gen}$
+if $F_f$ corresponds to
+$F_{\overline{f}}$
+in the sense of Definition~\ref{def:corrA-real}.
+\end{definition}
+
+With this definition, the proof of Proposition~\ref{prop:hyp-ps} gives
+$\tr I_A(\overline{\chi})(\overline{f})=\tr I_A(\chi)(f)$ for
+$f$, $\overline{f}$ corresponding oddly on the hyperbolic set, given the
+character formula of \S\ref{sec:ps-char} for ${\mathbb R}$.
+
+\begin{remark}
+The 1995 draft added here that, by a direct calculation, weighted
+orbital integrals of functions corresponding on
+$A({\mathbb{R}})_{reg}$ also correspond. For arbitrary corresponding
+pairs this cannot hold, for the reason given in
+Remark~\ref{rem:weighted-noninv}.
+\end{remark}
+
+\subsection{Corresponding functions on the elliptic set}\label{sec:elliptic}
+
+Finally, we concentrate on the elliptic set. Let ${\cal T}_{ell}$ be a
+set of representatives of the $G(F)$-conjugacy classes of anisotropic
+(elliptic) Cartan subgroups of $G$ over $F$. If $F={\mathbb R}$, there is
+one class, represented by $SO(2)$. If $F$ is p-adic, there are several:
+each anisotropic torus is isomorphic to the norm-one torus of a
+quadratic extension $E/F$, and for $p$ odd there are three such $E$ and
+two $G(F)$-conjugacy classes of tori for each $E$. (Draft~1 used only one
+elliptic Cartan in the p-adic case, which is not enough.)
+
+For $T$ a Cartan subgroup, $t\in T(F)$ regular, and
+$f\in C_c^\infty(G(F))$, let $\Phi_f(t)=|D(t)|\,O_f(t)$, where
+$O_f(t)=\int_{T(F)\backslash G(F)}f(x^{-1}tx)\,dx/dt$, and define
+$\Phi_{\overline{f}}$ on $\overline{T(F)}_{reg}$ in the same way for
+$\overline{f}\in C_c^\infty(\overline{G(F)})_{gen}$. With this
+normalization (and the measures of \S\ref{sec:local}), the Weyl
+integration formula reads
+\[
+\Theta _{\pi}(f)=\sum_{T\in{\cal T}}\frac 1{|W_T|}\int_{T(F)}\Theta _{\pi}(t)
+\Phi_f(t)\,dt,\;\;\;f\in C_c^\infty (G(F)),
+\]
+and
+\[
+\Theta _{\overline{\pi } }(\overline{f})
+=\sum_{T\in{\cal T}}\frac 1{|W_T|}\int_{\overline{T(F)}}
+\Theta _{\overline{\pi } }(t)
+\Phi_{\overline{f}}(t)\,dt\,d\varsigma,
+\;\;\;\overline{f}\in C_c^\infty (\overline{G(F)})_{gen},
+\]
+where ${\cal T}$ consists of $A$ and the elements of ${\cal T}_{ell}$,
+and $W_T=N_{G(F)}(T)/T(F)$. Since $\Theta_{\overline{\pi}}$ and
+$\Phi_{\overline{f}}$ are both genuine, the integrand on
+$\overline{T(F)}$ is invariant under $\mu_2$, and the integral over
+$\overline{T(F)}$ equals $\int_{T(F)}\Theta_{\overline\pi}(t,1)\Phi_{\overline f}(t,1)\,dt$.
+
+\begin{definition}\label{def:ell-corr}
+We say that $f$ and $\overline{f}$ {\bf have vanishing hyperbolic
+orbital integrals} if $\Phi_f=0$ on $A(F)_{reg}$ and
+$\Phi_{\overline f}=0$ on $\overline{A(F)}_{reg}$.
+
+(a) If $f,\overline{f}$ have vanishing hyperbolic orbital integrals and
+satisfy
+\[
+\Phi_f(t)=\Phi_{\overline{f}}(t,1),\ \ \ \ t\in T(F)_{reg},\ \text{for every } T\in{\cal T}_{ell},
+\]
+then we say that they \textbf{correspond oddly on the elliptic set}.
+
+(b) If $f,\overline{f}$ have vanishing hyperbolic orbital integrals and
+satisfy, for every $T\in{\cal T}_{ell}$,
+\[
+\Phi_{\overline{f}}(g)
+=
+\left\{
+\begin{array}{ll}
+\Phi_f(h), & g=\tau(h),\ h\in T(F)_{reg},\\
+0, & g\notin \tau(T(F)),
+\end{array}
+\right.
+\]
+then we say that they \textbf{correspond evenly on the elliptic set}.
+Here $\tau:h\longmapsto (h,1)^2$ is the map denoted
+$h\longmapsto \tilde{h}$ in \cite{Fl}.
+\end{definition}
+
+For instance, if $f$ and $\overline{f}|_{G(F)}$ are supported in the
+(open) set of regular elliptic elements, they have vanishing hyperbolic
+orbital integrals.
+
+\begin{lemma}\label{lem:ell-odd}
+Let $f,\overline{f}$ correspond oddly on the elliptic set. Let $\pi$ and
+$\overline{\pi}$ be an admissible representation of $G(F)$ and a genuine
+admissible representation of $\overline{G(F)}$ whose characters satisfy
+\begin{equation}\label{eq:ell-char-rel}
+\Theta_{\overline{\pi}}(t,\zeta)=\zeta\,\Theta_\pi(t),\qquad
+t\in T(F)_{reg},\ \zeta\in\mu_2,\ \text{for every }T\in{\cal T}_{ell}.
+\end{equation}
+Then $\Theta _{\pi }(f)=\Theta _{\overline{\pi }}(\overline{f})$.
+\end{lemma}
+
+\begin{proof}
+In both Weyl integration formulas the term for $T=A$ vanishes, because
+the hyperbolic orbital integrals vanish. For $T\in{\cal T}_{ell}$, the
+term for the cover equals
+$|W_T|^{-1}\int_{T(F)}\Theta_{\overline\pi}(t,1)\Phi_{\overline f}(t,1)\,dt
+=|W_T|^{-1}\int_{T(F)}\Theta_{\pi}(t)\Phi_{f}(t)\,dt$ by
+(\ref{eq:ell-char-rel}) and Definition~\ref{def:ell-corr}(a), which is
+the term for $G$. Summing over ${\cal T}_{ell}$ gives the result.
+\end{proof}
+
+The character relation (\ref{eq:ell-char-rel}) for supercuspidal
+representations is Claim~\ref{prop:164}, which needs correction
+(Remark~\ref{rem:sc-caveat}); Lemma~\ref{lem:ell-odd} is therefore
+stated with (\ref{eq:ell-char-rel}) as a hypothesis.
+
+\subsection{Corresponding spherical functions, $p> 2$}\label{sec:spherical}
+
+We sketch the Satake correspondence for $\overline{G(F)}$
+following \cite{J}, \S 1.3 and using its notation.
+
+Recall that the genuine characters of
+$\overline{A(F)}$ are in 1-1 correspondence with
+the characters of $A(F)$. Moreover, from results recalled in
+Chapter~\ref{ch:reps} we deduce that all
+the unramified genuine representations of
+$\overline{G(F)}$ belong to the unramified principal series.
+Replacing $GL(r)$ by
+$SL(2)$ in \cite{J}, \S 1.3, we first observe that the
+set $\Pi_{unr.p.s.}(\overline{G(F)})_{gen}$ is
+parametrized by the $W$-orbit of unramified
+genuine characters of $\overline{A(F)}$. Therefore, we have the following
+
+\begin{lemma} The set $\Pi_{unr.p.s.}(\overline{G(F)})_{gen}$ is
+in natural 1-1 correspondence with
+$\Pi_{unr.p.s.}(G(F))$.
+\end{lemma}
+
+Following now \cite{J}, \S 1.4, we obtain a transform
+\begin{equation}
+\begin{array}{c}
+{\cal{H}}(\overline{G(F)},K)_{gen}\rightarrow
+{\cal{A}}_{cl.fcn}(PGL(2,{\mathbb{C}}))\\
+f\longmapsto S_0 f(\chi)=\tr I_A(\chi)(f).
+\end{array}
+\end{equation}
+
+This is essentially the inverse Fourier transform of the Satake
+transform, which we define next. The Satake transform of a
+genuine spherical function is defined as in the non-metaplectic Case:
+\begin{equation}
+Sf(a)=\delta(a)^{1/2}\int_{N(F)}f(an)dn.
+\end{equation}
+The relationship between this expression and an orbital integral
+is well-known - see for example \cite{C}.
+
+This defines an algebra isomorphism
+\begin{equation}
+\begin{array}{c}
+{\cal{H}}(\overline{G(F)},K)_{gen}\rightarrow
+{\cal{H}}(\overline{A(F)},K\cap A(F))^W_{gen}\\
+f\longmapsto Sf(a).
+\end{array}
+\end{equation}
+
+By Lemma~\ref{lem:FT-match}, the correspondence $\phi\mapsto\overline\phi$
+of Definition~\ref{def:corrA} preserves Fourier transforms, hence
+convolution; it maps $W$-invariant functions to $W$-invariant functions;
+and, since the splitting $\kappa$ is $a(u)\mapsto(a(u),1)$ on $K\cap A(F)$
+(by (\ref{eq:sv}), as $c=0$), it maps functions invariant under
+$K\cap A(F)$ to genuine functions invariant under $\kappa(K\cap A(F))$
+(the factor $(x_a,\varpi)$ transforms correctly under $a\mapsto a\,a(u)$
+by Lemma~\ref{lem:Acocycle}(a)). It therefore gives an algebra isomorphism
+${\cal{H}}(A(F),K\cap A(F))^W\cong
+{\cal{H}}(\overline{A(F)},\kappa(K\cap A(F)))^W_{gen}$, and so
+\[
+{\cal{H}}(G(F),K)\cong{\cal{H}}(\overline{G(F)},K)_{gen}.
+\]
+
+\begin{definition}\label{def:satake-corr}
+We say that $f\in{\cal H}(G(F),K)$ and
+$\overline f\in{\cal H}(\overline{G(F)},K)_{gen}$ {\bf correspond under
+the Satake isomorphism} if $Sf$ corresponds to $S\overline{f}$ in the
+sense of Definition~\ref{def:corrA}.
+\end{definition}
+
+If $f$ and $\overline f$ correspond under the Satake isomorphism and $\chi$ is
+an unramified character of $A(F)$, then
+$\tr I_A(\overline\chi)(\overline f)=(S\overline f)^\wedge(\overline\chi)
+=(Sf)^\wedge(\chi)=\tr I_A(\chi)(f)$, by Lemma~\ref{lem:FT-match}(a).
+This is the \emph{spectral} matching supplied by the Satake isomorphism.
+
+\begin{remark}\label{rem:satake-oi}
+The 1995 draft concluded: ``This implies the matching of orbital
+integrals for spherical functions.'' That does not follow from the
+existence of an algebra isomorphism alone. What does follow is the
+following. For $f\in{\cal H}(G(F),K)$ and regular $a\in A(F)$, the
+normalized hyperbolic orbital integral $F_f(a)$ equals the Satake
+transform $Sf(a)$ \cite{C}; granted the analogous identity on the cover
+(the same computation, using the splitting $\kappa$ and
+Lemma~\ref{lem:facts}(h); the cocycle bookkeeping has not been written out
+here), functions corresponding under the Satake isomorphism correspond
+oddly on the hyperbolic set. The \emph{elliptic} orbital integrals of
+corresponding spherical functions are not determined by their Satake
+transforms in any formal way, and their matching (a fundamental lemma
+for this comparison) is not established here. It is one of the
+ingredients assumed in Hypothesis~\ref{hyp:GH}.
+\end{remark}
+
+\begin{example}
+For the unit elements $f=1_K$ and $\overline f=e_K$ of the two Hecke
+algebras, $Sf=1_{K\cap A(F)}$ and $S\overline f$ is supported on
+$\overline{A_2(F)}$, where it equals $(a,\zeta)\mapsto\zeta\,1_{K\cap A(F)}(a)$;
+these correspond (the factor $\eta_\varpi^{-1}(x_a,\varpi)$ only enters off
+$A_2(F)$). Hence $\tr I_A(\overline\chi)(e_K)=\tr I_A(\chi)(1_K)=1$ for
+unramified $\chi$.
+\end{example}
+
+\begin{remark}\label{rem:weighted-units}
+On the matching of
+weighted orbital integrals of spherical functions:
+every global smooth genuine function
+$\overline{f}=\otimes_v\overline{f}_v$ is a restricted tensor product
+of local smooth functions, almost all of which are units of the
+local Hecke algebra of genuine spherical functions on
+$\overline{G(k_v)}$. In order to match weighted orbital integrals
+of such global functions, one must match them locally.
+The 1995 draft states that a direct calculation of the weighted orbital
+integrals shows that the weighted orbital integral of the unit element
+$\overline{f}$ of the genuine spherical Hecke algebra on $\overline{A(F)}$
+matches that of the unit element $f$ of the spherical Hecke algebra of
+$G(F)$ on $A(F)$. That calculation is not reproduced here. (This is a
+statement about a specific pair, so the objection of
+Remark~\ref{rem:weighted-noninv} does not apply to it.)
+\end{remark}
+
+\begin{lemma}
+Finally, if $f,\overline{f}$ are the respective unit elements
+of the respective Hecke algebras, $p\not= 2$, then
+$\Theta_\pi(f)=\Theta_{\overline{\pi}}(\overline{f})$,
+where
+$\pi \leftrightarrow \overline{\pi}$ are corresponding
+unramified principal series as above.
+\end{lemma}
+
+\section{The dyadic places}\label{sec:dyadic}
+
+In this section $F$ is a dyadic field, i.e., $p=2$, and we write
+$G=SL(2,F)$ and $\overline{G}=\overline{SL(2,F)}$.
+
+In the 1995 draft, this section attempted to construct, following
+Howe and Moy \cite[ch.~3]{HM}, an injection of a metaplectic generalized
+Hecke algebra $\overline{\cal H}_k$ (supported on a ``maximal split
+subset'' $\overline{G_s}$ of $\overline{G}$) into the generalized Hecke
+algebra ${\cal H}(G//B_k)$ of a deep filtration subgroup $B_k$ of the
+Iwahori subgroup, and to deduce from it a matching of orbital integrals
+and of characters at dyadic places. That argument is withdrawn in this
+version, for the following reasons.
+
+\begin{enumerate}
+\item The presentation of ${\cal H}(G//B_k)$ included the braid relation
+$f_{s_1}*f_{s_2}*f_{s_1}=f_{s_2}*f_{s_1}*f_{s_2}$, where
+$s_1=\left(\begin{smallmatrix}0&-1\\1&0\end{smallmatrix}\right)$ and
+$s_2=\left(\begin{smallmatrix}0&-\varpi^{-1}\\\varpi&0\end{smallmatrix}\right)$.
+Since $s_1s_2={\rm diag}(-\varpi,-\varpi^{-1})$ has infinite order, the affine
+Weyl group of $SL(2)$ is infinite dihedral and
+$s_1s_2s_1\neq s_2s_1s_2$, so this relation does not hold. (It is the
+analog of a relation valid for $GL(n)$, $n\geq 3$.)
+
+\item The set
+$X=\{g\in G\ |\ c\in F^{\times 2},\ d=0\ {\rm or}\ d\in F^{\times 2}\}$
+was claimed to lie in a maximal subset $G_s$ of $G$ which is closed under
+inversion and on which the cocycle $\beta$ is trivial. However, the
+lower left entry of $g^{-1}$ is $-c$, so $X$ is not closed under inversion
+when $-1\notin F^{\times 2}$ (as for $F={\mathbb Q}_2$); and the proof
+computed $\beta(g_1,g_2^{-1})$ rather than $\beta(g_1,g_2)$.
+
+\item The map
+$N\left(\begin{smallmatrix}a&b\\c&d\end{smallmatrix}\right)=
+\left(\begin{smallmatrix}a\epsilon_d^{-1}&b\epsilon_c^{-1}\\
+c\epsilon_c&d\epsilon_d\end{smallmatrix}\right)$,
+where $\epsilon_x$ denotes a fixed representative in ${\cal O}$ of the
+square class of $x$, is not defined when $c=0$ or $d=0$, does not
+map the Iwahori subgroup into itself when $c$ has odd valuation (since
+then $b\epsilon_c^{-1}\notin{\cal O}$ in general), and is not
+multiplicative.
+
+\item The restrictions of genuine functions to $\overline{G_s}$ do not
+form a convolution algebra, since $G_s$ is not a subgroup; the
+computation of $\overline{f}_{g_1}*\overline{f}_{g_2}$ dropped cocycle
+factors at points $x$ of $B_kg_2B_k$ outside $G_s$; and the
+definition of the functions $\overline{f}_g$ ignored the splitting of
+$\overline{B_k}$, which need not be $b\mapsto (b,1)$.
+
+\item An injection of algebras does not by itself induce a map on
+irreducible modules, so the claimed surjection
+${\cal H}(G//B_k)^\wedge\rightarrow{\cal H}(\overline{G}//B_k)^\wedge$
+with matching traces does not follow.
+
+\item The orbital integral identity at a dyadic place was derived from
+a global argument which assumed that the spectral sides of the two trace
+formulas agree. That agreement is what Chapter~\ref{ch:global} needs to
+establish, so the argument is circular.
+\end{enumerate}
+
+The generalized Hecke algebra material is revised separately in the
+author's paper \cite{J3}.
+
+In this version no local matching of functions or of characters is
+established at the dyadic places. Instead, the dyadic places are always
+put in the exceptional set $S$ of Chapter~\ref{ch:global}, and what is
+needed there is assumed in Hypotheses~\ref{hyp:GH} and~\ref{hyp:LH}.
+
+\begin{remark}
+(1) The construction of \S\ref{sec:charsA} does not extend to $p=2$
+without change: there $\overline{A_2(F)}$ need not be the direct product
+$A_2(F)\times\mu_2$. For example, if $F={\mathbb Q}_2$, then
+$(-I,1)^2=(I,(-1,-1)_2)=(I,-1)$, so the lifts of $-I\in A_2(F)$ have
+order $4$.
+
+(2) At Iwahori level, there are Hecke algebra correspondences at
+$p=2$ for the metaplectic group (Takeda and Wood \cite{TW}, extending
+work of Gan and Savin for $p\neq 2$), but they relate genuine
+representations of $\overline{SL(2,F)}$ to representations of
+$SO(3)\cong PGL(2)$ and its inner form, not of $SL(2)$. Whether such
+results can be used to verify Hypothesis~\ref{hyp:LH} at dyadic places
+is not addressed here.
+\end{remark}
+
+%% (aabook2b.tex withdrawn in Draft 1; see revision_log.md)
+
+
+
+%% ===== begin aabook2c.tex =====
+\section{On the correspondence of limits of d.s. for
+$\overline{SL(2,\mathbb{R})}$}\label{sec:realds}
+
+Let $T$ denote a Cartan of $G=SL(2)$.
+%$F$ be a field and
+%$\overline{F}$ a separable algebraic closure. By the density
+%theorem (see for example, [Hum], \S 22.2), the conjugate $T^G$ contains
+%a $\overline{F}$-Zariski-open dense subset of $G$.
+%The $F$-rational
+%points $T^G(F)$ remain $F$-Zariski open in $G(F)$ (but not necessarily dense,
+%see for example, Theorem 1 of ch II, \S 4, in [Mum]). If $F$ is a
+%complete local field then the points $T^G(F)$ are open (in the induced
+%$F$-manifold topology) in $G(F)$. However, in general,
+%$T(F)^{G(F)}\not= T^G(F)$.
+If $F={\mathbb{R}}$ and $T$ is an
+anisotropic Cartan of $G$ defined over $F$ then recall $T(F)^{G(F)}$ is the
+elliptic set of $G$.
+
+We shall describe 3 different correspondences
+$c_i:\overline{\pi}\longmapsto \pi$, $i=1,2,3$, between representations of
+$\overline{SL(2,\mathbb{R})}$ and those of $SL(2,\mathbb{R})$. They are
+consistent with a ``matching'' $c_i^*:\overline{f}\longmapsto f$,
+$i=1,2,3$, of functions whose hyperbolic orbital integrals vanish, in the
+sense that the characters match:
+$\Theta_{\overline{\pi}}(\overline{f})=\Theta_{\pi}(f)$, where
+$\pi=c_i(\overline{\pi})$, $f=c_i^*(\overline{f})$, $i=1,2,3$
+(Lemma~\ref{lem:realds}).
+Furthermore, if $\pi$ is any element of the discrete series or limit of
+discrete series of $G(F)$ then $\pi$ occurs in the image of at least one
+of the $c_i$.
+
+\subsection{Discrete series for $\overline{SL(2,\mathbb{R})}$}
+
+Let
+\begin{align*}
+\overline{B} &=\overline{M}\cdot A(\mathbb{R})^o\cdot N(\mathbb{R}), \\
+A(\mathbb{R})^o &=\{a(x)=\left(
+\begin{array}{cc}
+x & 0 \\
+0 & x^{-1}
+\end{array}
+\right) \;|\;x>0\}, \\
+N(\mathbb{R}) &=\{n=\left(
+\begin{array}{cc}
+1 & x \\
+0 & 1
+\end{array}
+\right) \;|\;x\in \mathbb{R}\}, \\
+\overline{M} &=<\gamma >,\;\gamma =(-\left(
+\begin{array}{cc}
+1 & 0 \\
+0 & 1
+\end{array}
+\right) ,1),
+\end{align*}
+and let
+\[
+\overline{r}(\theta )=\left(
+\begin{array}{cc}
+\cos (\theta ) & -\sin (\theta ) \\
+\sin (\theta ) & \cos (\theta )
+\end{array}
+\right) ,\;\;0\leq \theta \leq 4\pi ,
+\]
+which we use to denote the element of $\overline{K}$ lying over the
+displayed rotation, chosen so that $\theta\mapsto\overline r(\theta)$ is a
+continuous homomorphism ${\mathbb R}\rightarrow\overline K$ with
+$\overline r(0)$ the identity. Then $\overline r(2\pi)=(I,-1)$, since
+$\overline K$ is connected (Lemma~\ref{lem:facts}(d)).
+Let $\overline{\chi }=\overline{\chi }_{\lambda ,\tau }$ denote the
+character of $\overline{B}$ given by
+\[
+\overline{\chi }(\gamma ^ja(x)n)=e^{ij\tau \pi }x^\lambda ,\;\;\tau \in
+\{0,1,1/2,-1/2\},\ \ \ \ \ \ x>0.
+\]
+This character is genuine if and only if $\tau \in \{1/2,-1/2\}$. Every
+genuine principal series is given by
+\[
+\rho (\lambda ,\tau )=Ind(\overline{\chi },\overline{B},\overline{SL(2,\mathbb{R%
+})}).
+\]
+
+Let $\Pi (\overline{SL(2,\mathbb{R})})_{ds}$ denote the set of equivalence
+classes of genuine unitary discrete series representations of $\overline{%
+SL(2,\mathbb{R})}$.
+
+\subsection{Gelbart's parameterization \cite[p.~75]{Ge2}}
+
+Let $k>1$ be an odd integer and let $\tau \in \{1/2,-1/2\}$. Let
+\[
+\phi _m(na(x)\overline{r}(\theta ))=x^\lambda e^{im\theta }=x^\lambda
+e^{i(2s+\tau )\theta },\;\;\;\lambda \in \mathbb{C},\;\;m=2s+\tau ,\;\;s\in
+\mathbb{Z}.
+\]
+
+These form a collection of functions which can be used to describe a basis
+for the discrete series. The discrete series are tabulated as follows:
+\[
+\begin{array}{cccc}
+\mathrm{d.s.\;repn} & k & \tau & \lambda \\
+B_{-}^{1/2}(k/2) & k\equiv 1(4) & 1/2 & \frac k2-1 \\
+B_{+}^{-1/2}(-k/2) & k\equiv 1(4) & -1/2 & \frac k2-1 \\
+B_{+}^{1/2}(-k/2) & k\equiv 3(4) & 1/2 & \frac k2-1 \\
+B_{-}^{-1/2}(k/2) & k\equiv 3(4) & -1/2 & \frac k2-1
+\end{array}
+\]
+These representations exhaust $\Pi (\overline{SL(2,\mathbb{R})})_{ds}$. Another
+parameterization is as follows:
+\[
+\begin{array}{cccc}
+\mathrm{d.s.\;repn} & k & \tau & \lambda \\
+B_{-}^{1/2}(-k/2+2) & k\equiv 3(4) & 1/2 & -\frac k2+1 \\
+B_{+}^{-1/2}(k/2-2) & k\equiv 3(4) & -1/2 & -\frac k2+1 \\
+B_{+}^{1/2}(k/2-2) & k\equiv 1(4) & 1/2 & -\frac k2+1 \\
+B_{-}^{-1/2}(-k/2+2) & k\equiv 1(4) & -1/2 & -\frac k2+1
+\end{array}
+\]
+
+\subsection{Discrete series for $SL(2,\mathbb{R})$}
+
+Let
+\begin{align*}
+B &=M\cdot A(\mathbb{R})^o\cdot N(\mathbb{R}), \\
+M &=\{\pm I_2\},\;I_2=\left(
+\begin{array}{cc}
+1 & 0 \\
+0 & 1
+\end{array}
+\right) ,
+\end{align*}
+and let
+\[
+r(\theta )=\left(
+\begin{array}{cc}
+\cos (\theta ) & -\sin (\theta ) \\
+\sin (\theta ) & \cos (\theta )
+\end{array}
+\right) ,\;\;0\leq \theta \leq 2\pi .
+\]
+
+For each non-zero $m\in \mathbb{Z}$ there is a $\pi _m\in \Pi (SL(2,\mathbb{R}%
+))_{ds}$ whose character $\Theta _{\pi _m}$ satisfies
+\[
+\Theta _{\pi _m}(r(\theta ))=-sgn(m)
+\frac{e^{im\theta }}{e^{i\theta }-e^{-i\theta }},
+\;\;\;0<\theta <2\pi ,\;\theta \neq \pi ,
+\]
+and
+\[
+\Theta _{\pi _m}((-I_2)^j a(e^t ))=(-1)^{(m-1)j}
+\frac{e^{-|mt| }}{|e^t-e^{-t}|}.
+\]
+
+For $m$ odd, $\pi _m$ has trivial central character. For $m$ even, $m\neq 0$
+($m=0$ corresponds to the two irreducible components of the unitary
+reducible principal series), $\pi _m$ has non-trivial central character.
+This may be found in \cite{HC2}, page 660.
+
+We denote the two irreducible components of the unitary reducible principal
+series by $\pi _0^{+}$ and $\pi _0^{-}$, labeled in such a way that their
+character $\Theta _{\pi _0^{\pm }}$ satisfies
+\begin{align*}
+\Theta _{\pi _0^\varepsilon }(r(\theta )) &=-\varepsilon \frac 1{e^{i\theta
+}-e^{-i\theta }},\;\;\;0<\theta <2\pi ,\;\theta \neq \pi , \\
+\Theta _{\pi _0^\varepsilon }((-I_2)^ja(x)) &=(-1)^j\frac
+1{|x-x^{-1}|},\;\;\;\varepsilon =\pm .
+\end{align*}
+
+\subsection{A correspondence between the discrete series}
+
+\emph{Labels and characters.} For $k\geq 3$ odd, let
+$\overline{\pi}{}^{+}_{k/2}$ denote the genuine holomorphic discrete series
+representation of $\overline{SL(2,{\mathbb R})}$ with lowest
+$\overline{K}$-type $\overline{r}(\theta)\mapsto e^{ik\theta/2}$ (its
+$\overline K$-types are $e^{i(k/2+2j)\theta}$, $j\geq0$), and
+$\overline{\pi}{}^{-}_{k/2}$ the antiholomorphic one, with
+$\overline K$-types $e^{-i(k/2+2j)\theta}$. On the regular elliptic set
+their characters are given by the $\overline K$-characters, summed as
+geometric series (Harish-Chandra; compare \cite{Ad2}):
+\begin{equation}\label{eq:mds-char}
+\Theta_{\overline{\pi}{}^{+}_{k/2}}(\overline r(\theta))
+=-\frac{e^{i(k/2-1)\theta}}{e^{i\theta}-e^{-i\theta}},\qquad
+\Theta_{\overline{\pi}{}^{-}_{k/2}}(\overline r(\theta))
+=\frac{e^{-i(k/2-1)\theta}}{e^{i\theta}-e^{-i\theta}},\qquad
+\theta\notin\pi{\mathbb Z}.
+\end{equation}
+The same computation for $SL(2,{\mathbb R})$ gives the formulas for
+$\Theta_{\pi_m}$ and $\Theta_{\pi_0^\pm}$ above; in particular $\pi_m$,
+$m>0$, is holomorphic with lowest $K$-type $m+1$, and $\pi_0^+$ is the
+holomorphic limit of discrete series. (Here $\varepsilon=+$ always means
+holomorphic. The 1995 draft used Gelbart's labels, and its statement of
+Lemma~\ref{lem:realds} differs from the one below by $\varepsilon\mapsto-\varepsilon$
+together with an interchange of $+$odd and $-$odd, which is the effect of
+reversing the orientation $\theta\mapsto-\theta$; we have not checked the
+labels of \cite{Ge2} against (\ref{eq:mds-char}).)
+
+\emph{Weyl integration formula.} With $\Phi$ normalized as in
+\S\ref{sec:elliptic}, $dk=d\theta/2\pi$ on $K=\{r(\theta)\}$ and
+$d\overline k=d\theta/4\pi$ on $\overline K=\{\overline r(\theta)\}$,
+the elliptic terms of the Weyl integration formulas for $\Theta_{\pi}(f)$
+and $\Theta_{\overline\pi}(\overline f)$ are
+\begin{gather*}
+\int_0^{2\pi }\Theta _{\pi}(r(\theta ))\Phi_f(r(\theta ))\,\frac{d\theta}{2\pi}
+\qquad\text{and}\\
+\int_0^{4\pi }
+\Theta _{\overline{\pi }}(\overline{r}(\varphi ))
+\Phi_{\overline{f}}(\overline{r}(\varphi ))\,\frac{d\varphi}{4\pi}
+=\int_0^{2\pi }
+\Theta _{\overline{\pi }}(\overline{r}(2\theta ))
+\Phi_{\overline{f}}(\overline{r}(2\theta ))\,\frac{d\theta}{2\pi}.
+\end{gather*}
+Here the Weyl group of $SO(2)$ in $SL(2,{\mathbb R})$ is trivial. Since
+\[
+e^{2i\theta}-e^{-2i\theta}=(e^{i\theta}-e^{-i\theta})(e^{i\theta}+e^{-i\theta}),
+\]
+the substitution $\varphi=2\theta$ in (\ref{eq:mds-char}) produces the
+factor $e^{i\theta}+e^{-i\theta}=2\cos\theta$ in the denominator. This
+factor vanishes at $\theta=\pi/2,3\pi/2$, where $r(\theta)$ is regular
+but $\overline r(2\theta)$ lies over the central element $-I$. We
+therefore state the matching conditions without division.
+
+\begin{definition}\label{def:realds-corr}
+Let $f,\overline{f}$ have vanishing hyperbolic orbital integrals, and let
+$E=\{\pi/2,\pi,3\pi/2\}$. We say that $f,\overline f$
+\textbf{correspond evenly}, \textbf{$+$oddly}, or \textbf{$-$oddly}
+\textbf{on the elliptic set} if, for all $\theta\in(0,2\pi)-E$,
+\begin{align*}
+\Phi_{\overline{f}}(\overline{r}(2\theta ))
+&=(e^{i\theta }+e^{-i\theta })\,\Phi_f(r(\theta )) &&(\mathrm{even}),\\
+\Phi_{\overline{f}}(\overline{r}(2\theta ))
+&=e^{-i\theta}(e^{i\theta }+e^{-i\theta })\,\Phi_f(r(\theta )) &&(+\mathrm{odd}),\\
+\Phi_{\overline{f}}(\overline{r}(2\theta ))
+&=e^{i\theta}(e^{i\theta }+e^{-i\theta })\,\Phi_f(r(\theta )) &&(-\mathrm{odd}),
+\end{align*}
+respectively.
+\end{definition}
+
+\begin{remark}\label{rem:realds-consistency}
+(1) As $\theta$ runs over $(0,2\pi)-E$, $\overline r(2\theta)$ runs over
+all regular elements of $\overline K$, so each condition determines
+$\Phi_{\overline f}$ on the regular elliptic set from $\Phi_f$. Since
+$\Phi_f$ is smooth near $r(\pi/2)$ and $r(3\pi/2)$, which are regular,
+each condition forces $\Phi_{\overline f}(\overline r(\varphi))\rightarrow0$
+as $\varphi\rightarrow\pi$ or $3\pi$. (In Draft~1 the conditions were
+written with the factor $(e^{i\theta}+e^{-i\theta})^{-1}$, which is
+undefined at these points.)
+
+(2) Since $\overline r(2\pi)=(I,-1)$ and $\Phi_{\overline f}$ is genuine,
+replacing $\theta$ by $\theta+\pi$ shows that the even condition can hold
+only if $\Phi_f(-t)=\Phi_f(t)$, and the odd conditions only if
+$\Phi_f(-t)=-\Phi_f(t)$, for regular elliptic $t$. This is consistent
+with Lemma~\ref{lem:realds}: the even matching sees the $\pi_m$ with
+trivial central character ($m$ odd), the odd matchings those with
+nontrivial central character ($m$ even).
+\end{remark}
+
+\begin{example}
+Let $\Phi_f(r(\theta))=\sin(\theta)\,g(\theta)$ with $g$ smooth,
+$2\pi$-periodic and supported in a small neighborhood of $\theta=\pi/2$
+and of $\theta=3\pi/2=\pi/2+\pi$ (with $g(\theta+\pi)=-g(\theta)$, so that
+$\Phi_f(-t)=\Phi_f(t)$). The even condition requires
+$\Phi_{\overline f}(\overline r(\varphi))=2\cos(\varphi/2)\sin(\varphi/2)g(\varphi/2)
+=\sin(\varphi)g(\varphi/2)$, which is smooth and vanishes at
+$\varphi=\pi,3\pi$, as Remark~\ref{rem:realds-consistency}(1) requires.
+\end{example}
+
+\begin{lemma}\label{lem:realds}
+Let $k\geq3$ be odd and $\varepsilon\in\{+,-\}$.
+
+(a) If $f,\overline{f}$ correspond evenly, then
+$\Theta _{\pi _m}(f)
+=\Theta _{\overline{\pi }{}_{k/2}^\varepsilon }(\overline{f})$ for
+$m=\varepsilon (k-2)$.
+
+(b) If $f,\overline{f}$ correspond $+$oddly, then
+$\Theta _{\pi _m}(f)
+=\Theta _{\overline{\pi }{}_{k/2}^\varepsilon }(\overline{f})$ for
+$m=\varepsilon (k-2)-1$, unless $k=3$ and
+$\varepsilon =+$; and
+$\Theta _{\pi _{0}^{+}}(f)=\Theta _{\overline{\pi }{}_{3/2}^{+}}(\overline{f})$.
+
+(c) If $f,\overline{f}$ correspond $-$oddly, then
+$\Theta _{\pi _m}(f)
+=\Theta _{\overline{\pi }{}_{k/2}^\varepsilon }(\overline{f})$ for
+$m=\varepsilon (k-2)+1$, unless $k=3$ and
+$\varepsilon =-$; and
+$\Theta _{\pi _{0}^{-}}(f)=\Theta _{\overline{\pi }{}_{3/2}^{-}}(\overline{f})$.
+\end{lemma}
+
+\begin{proof}
+Since the hyperbolic orbital integrals vanish, only the elliptic terms
+of the Weyl integration formulas contribute. By (\ref{eq:mds-char}) and
+the factorization above, for $\theta\notin E$,
+\[
+\Theta_{\overline{\pi}{}^{+}_{k/2}}(\overline r(2\theta))
+=-\frac{e^{i(k-2)\theta}}{(e^{i\theta}-e^{-i\theta})(e^{i\theta}+e^{-i\theta})},
+\qquad
+\Theta_{\overline{\pi}{}^{-}_{k/2}}(\overline r(2\theta))
+=\frac{e^{-i(k-2)\theta}}{(e^{i\theta}-e^{-i\theta})(e^{i\theta}+e^{-i\theta})}.
+\]
+Multiplying by $\Phi_{\overline f}(\overline r(2\theta))$ as given by
+Definition~\ref{def:realds-corr}, the factor $e^{i\theta}+e^{-i\theta}$
+cancels, and the elliptic integrand of $\Theta_{\overline\pi}(\overline f)$
+becomes $\Phi_f(r(\theta))$ times:
+\[
+\renewcommand{\arraystretch}{1.6}
+\begin{array}{c|cc}
+ & \overline{\pi}{}^{+}_{k/2} & \overline{\pi}{}^{-}_{k/2}\\ \hline
+\text{even} & -\dfrac{e^{i(k-2)\theta}}{e^{i\theta}-e^{-i\theta}}
+ & \dfrac{e^{-i(k-2)\theta}}{e^{i\theta}-e^{-i\theta}}\\
++\text{odd} & -\dfrac{e^{i(k-3)\theta}}{e^{i\theta}-e^{-i\theta}}
+ & \dfrac{e^{-i(k-1)\theta}}{e^{i\theta}-e^{-i\theta}}\\
+-\text{odd} & -\dfrac{e^{i(k-1)\theta}}{e^{i\theta}-e^{-i\theta}}
+ & \dfrac{e^{-i(k-3)\theta}}{e^{i\theta}-e^{-i\theta}}
+\end{array}
+\]
+Comparing with
+$\Theta_{\pi_m}(r(\theta))=-{\rm sgn}(m)e^{im\theta}/(e^{i\theta}-e^{-i\theta})$
+and $\Theta_{\pi_0^{\pm}}(r(\theta))=\mp1/(e^{i\theta}-e^{-i\theta})$, the
+entries are $\Theta_{\pi_m}(r(\theta))$ with $m=\pm(k-2)$ (even),
+$m=k-3$ or $-(k-1)$ ($+$odd), $m=k-1$ or $-(k-3)$ ($-$odd); when $k=3$
+the entries $k-3$ and $-(k-3)$ are replaced by $\pi_0^+$ and $\pi_0^-$.
+These agree with $\Theta_{\pi_m}(r(\theta))\Phi_f(r(\theta))$ for almost
+all $\theta$, so the integrals agree.
+\end{proof}
+
+In every case the infinitesimal character of the representation of
+$SL(2,{\mathbb R})$ is $|m|\in\{2\nu-1,2\nu,2\nu+1\}$, where
+$\nu=k/2-1$ is the infinitesimal character of $\overline\pi{}^\pm_{k/2}$
+(both normalized so that the trivial representation of $SL(2,{\mathbb R})$
+has infinitesimal character $1$). Every discrete series or limit of
+discrete series representation of $SL(2,{\mathbb R})$ occurs in at least
+one of (a)--(c).
+
+\begin{remark}
+First, we recall from \cite{HC2}, page 660, that
+\[
+\Theta _{\pi _m}((-I_2)^ja(x))
+=(-1)^{(m-1)j}\frac{e^{-|m\ln(x)|}}{|x-x^{-1}|}%
+,\;\;m\neq 0,\;x>0,
+\]
+and from \cite{Ad2}, (15.7)(b), that
+\[
+\Theta _{\overline{\pi }_{k/2}^\varepsilon }(a(x))=\frac{%
+sgn(x)^{-\varepsilon k/2}e^{-|(\frac k2-1)\ln(x)|}}{|x-x^{-1}|}
+\]
+(with the labels of \cite{Ad2}, which have not been compared with those
+of Lemma~\ref{lem:realds}).
+By definition, if $f,\overline{f}$ are corresponding on the hyperbolic set
+then $(F_f)^{\wedge }(\chi )
+=(F_{\overline{f}})^{\wedge }(\overline{\chi })$,
+where $\chi ,\overline{\chi }$ are corresponding characters and
+$F_\phi$ is the normalized orbital integral. Combining these
+together, we see that without the assumption that
+the hyperbolic orbital integrals vanish, the result is
+inconsistent with the matching of principal series.
+\end{remark}
+
+%\begin{center}
+%\textbf{REFERENCES}
+%\end{center}
+
+%[A] J. Adams, Lifting of characters on orthogonal and metaplectic groups,
+%preprint, 1995
+
+%[Fl] Y. Flicker, Automorphic forms on covering groups of GL(2), Inv. Math.,
+%1980
+
+%[G] S. Gelbart, \underline{Weil's representation and the spectrum of the
+%metaplectic group}, SLNM 530, 1976
+
+%[HC] Harish-Chandra, \underline{Collected Works, vol III}, Springer-Verlag
+
+%[Hum] J. Humpheries, \underline{Linear algebraic groups}, Springer-Verlag Grad Texts
+
+%[Mum] D. Mumford, \underline{The red book}, Springer LNM, 1358, 1988
+
+%[V] V. S. Varadarajan, An introduction to harmonic analysis on semi-simple
+%Lie groups, Cambridge U. Press, 1989
+%% ===== end aabook2c.tex =====
+
+
+%% ===== begin aabook2d.tex (revised) =====
+\section{On the correspondence of d. s. for
+$\overline{SL(2,F)}$, $p>2$}\label{sec:padic-ds}
+
+We have described several correspondences
+$c_i:\overline{\pi}\longmapsto \pi$
+between representations of
+$\overline{SL(2,F)}$ and those of $SL(2,F)$. They are meant to be
+consistent with a ``matching''
+$c_i^*:\overline{f}\longmapsto f$
+of functions, in the sense that the characters match:
+$\Theta_{\overline{\pi}}(\overline{f})=\Theta_{\pi}(f)$, where
+$\pi=c_i(\overline{\pi})$ and $f=c_i^*(\overline{f})$.
+In the 1995 draft it was asserted that every element $\pi$ of the
+unitary dual of $G(F)$ occurs in the image of at
+least one of the $c_i$; in view of Remarks~\ref{rem:sc-caveat}
+and~\ref{rem:savin-caveat}, this is not established here.
+
+Let $\tau:G(F)\rightarrow \overline{G(F)}$ denote the map
+$g\longmapsto \tilde{g}$ of \cite{Fl}.
+
+\subsection{The Iwahori algebra}
+
+Let $B$ denote the Iwahori subgroup of $G(F)$ and assume $p$ is odd.
+Savin \cite{Sav} studied the genuine Iwahori--Hecke algebras of
+metaplectic covers of split groups. The 1995 draft used his work in the
+following form.
+
+\begin{claim}[1995 draft, attributed to Savin \cite{Sav}; unverified, see
+Remark~\ref{rem:savin-caveat}]\label{claim:savin} There is an isomorphism
+of algebras
+${\cal H}(\overline{G}//B)\rightarrow {\cal H}(G//B)$.
+\end{claim}
+
+\begin{claim}[1995 draft; depends on Claim~\ref{claim:savin}]
+The isomorphism
+${\cal H}(\overline{G}//B)\rightarrow {\cal H}(G//B)$
+induces a set-theoretic
+bijection ${\cal H}(\overline{G}//B)^\wedge
+\rightarrow {\cal H}(G//B)^\wedge$ on the sets of equivalence
+classes of irreducible (genuine, in the case of $\overline{G}$)
+representations with a $B$-fixed vector.
+Furthermore, if
+\[
+\begin{array}{ccc}
+{\cal H}(G//B)&\rightarrow &{\cal H}(\overline{G}//B)\\
+f & \longmapsto & \overline{f}
+\end{array}
+\]
+and
+\[
+\begin{array}{ccc}
+{\cal H}(\overline{G}//B)^\wedge &\rightarrow &{\cal H}(G//B)^\wedge\\
+\overline{\pi}&\longmapsto &\pi
+\end{array}
+\]
+then $\tr(\overline{\pi}(\overline{f}))=\tr(\pi(f))$.
+Furthermore, if $\overline{\pi}$ is a discrete series representation
+then so is $\pi$.
+\end{claim}
+
+\begin{remark}\label{rem:savin-caveat}
+(Added 2026.) In the later literature on Hecke algebra correspondences
+for metaplectic groups (see \cite{TW} and the references there), the
+linear group paired with the metaplectic cover of $SL(2)=Sp(2)$ is
+$SO(3)\cong PGL(2)$, not $SL(2)$, and the resulting bijection of
+Iwahori-spherical representations is with representations of $PGL(2,F)$.
+The two claims above, with $G=SL(2)$, should therefore be
+checked against \cite{Sav} before being used. In particular, the 1995
+draft's assertion that this isomorphism is associated with an identity
+of orbital integrals rested on the argument of the 1995 version of
+\S\ref{sec:dyadic}, which has been withdrawn.
+Neither claim is used in Chapter~\ref{ch:global}.
+\end{remark}
+
+The 1995 draft intended this corollary to be used in the comparison of
+the special representations at non-archimedean places $v$ not dividing
+$2$.
+
+%% ===== end aabook2d.tex =====
+
+
+%% ===== begin aabook2e.tex =====
+\section{On the character of the Weil representation}\label{sec:weil}
+
+We formally compute the character of the ``even'' and ``odd'' parts
+of the Weil representation on the ``big cell'' of the Bruhat decomposition
+by integrating the kernel along the diagonal. (This integral does not
+converge absolutely...). We then state some consequences for local matching
+of representations. This section shall not be needed later.
+
+Here $F$ may be either p-adic or real. If $F$ is p-adic we shall
+sometimes impose the assumption that $p\not= 2$.
+
+\subsection{A Bruhat decomposition}
+
+Let $G=SL(2)$, let
+\[
+h(x)=\left(
+\begin{array}{cc}
+x & 0 \\
+0 & x^{-1}
+\end{array}
+\right)
+,\ \ \ \
+n(x)=\left(
+\begin{array}{cc}
+1 & x \\
+0 & 1
+\end{array}
+\right)
+\]
+and let
+\[
+w:=\left(
+\begin{array}{cc}
+0 & -1 \\
+1 & 0
+\end{array}
+\right),\ \ \
+r(\theta )=\left(
+\begin{array}{cc}
+cos(\theta) & -\sin(\theta) \\
+\sin(\theta) & \cos(\theta)
+\end{array}
+\right) .
+\]
+
+Let $F$ be either ${\mathbb{R}}$ or a p-adic field.
+If $F$ is p-adic, let $|\ |$ denote the norm which is normalized
+so that $|\varpi|=q^{-1}$, where $q$ denotes the number of elements of the
+residue field, and let ${\cal O}_F$ denote the ring of integers.
+Let $(\ ,\ )$ denote
+the quadratic Hilbert symbol and let $\psi$ denote a non-trivial
+additive character of $F$. If $F$ is real, take $\psi(x)=\exp(\pi ix)$
+and if $F$ is p-adic then assume $\psi$ has conductor ${\cal O}_F$.
+
+Let $\beta: G(F)\times G(F)\rightarrow \mu_2=\{\pm 1\}$
+denote the cocycle
+\[
+\beta(g,g')=({\frac{x(gg')}{x(g)}}, {\frac{x(gg')}{x(g')}} ),
+\]
+where $g,g'\in G(F)$ and
+\[
+x\left(
+\begin{array}{cc}
+a & b \\
+c & d
+\end{array}
+\right)
+=
+\left\{
+    \begin{array}{c}
+    c,\ \ \ c\not= 0,\\
+    d,\ \ \ {\rm otherwise}.
+    \end{array}
+\right.
+\]
+We define a group structure $\overline{G(F)}$ on
+$G(F)\times \mu_2$ by
+\[
+(g,\zeta)\cdot (g',\zeta')=(gg',\beta(g,g')\zeta\zeta'),
+\]
+$g,g'\in G(F),\ \zeta,\zeta'\in \mu_2$.
+The following simple fact has appeared in several places:
+
+\begin{lemma} If
+\[
+g=\left(
+\begin{array}{cc}
+a & b \\
+c & d
+\end{array}
+\right)
+\]
+has determinant 1 then
+\[
+(g,(-c,-1))=(n(a/c),1)\cdot (w,1)\cdot (h(-c),1)\cdot (n(d/c),1),
+\]
+provided $c\not= 0$.
+\end{lemma}
+
+\begin{proof} We have
+\[
+n(a/c)\cdot w =
+\left(
+\begin{array}{cc}
+-a/c & 1 \\
+-1 & 0
+\end{array}
+\right)
+\]
+so $\beta(n(a/c),w)
+=({\frac{x(n(a/c)w)}{x(n(a/c))}},{\frac{x(n(a/c)w)}{x(w)}})
+=(-1,1)=1$.
+Also,
+\[
+n(a/c)\cdot w h(-c) =
+\left(
+\begin{array}{cc}
+a & -1/c \\
+c & 0
+\end{array}
+\right)
+\]
+so $\beta(n(a/c)w,h(-c))
+=({\frac{x(n(a/c)wh(-c))}{x(n(a/c)w)}},{\frac{x(n(a/c)wh(-c))}{x(h(-c))}})
+=(-c,-c^2)=(-c,-1)$.
+Finally,
+\[
+n(a/c)\cdot w h(-c)n(d/c) =
+\left(
+\begin{array}{cc}
+a & b \\
+c & d
+\end{array}
+\right)=g
+\]
+so $\beta(n(a/c)wh(-c),n(d/c))
+=({\frac{x(g)}{x(n(a/c)wh(-c))}},{\frac{x(g)}{x(n(d/c))}})
+=(1,c)=1$.
+\end{proof}
+
+\subsection{The Weil representation}
+
+Let $\omega$, $q(x)$, and $\gamma(q)$ be as in \cite{Fl}, \S 2.2. See also
+\cite{Ge2}, page 36, and \cite{Rao}, Appendix.
+
+For $\phi \in L^1(F)$, let
+\[
+\hat{\phi}_q(x)=\int_F \phi(y)\psi(2qxy)dy,
+\]
+where $dy$ is normalized as in \cite{Ge2}, ch 2, so that this extends to
+an isometry of $L^2(F)$. This implies that $dy$ depends on $\psi, q$
+in a way we will make explicit later.
+(In the case where $F={\mathbb{R}}$, if $\psi(x)=\exp(\pi i x)$ then
+$dy$ is $\sqrt{|q|}$ times Lebesgue measure.)
+
+Let $\epsilon \in \{\pm\}$ and let
+\[
+L^2(F)_\epsilon=
+\{\phi \ |\ \phi(-x)=\epsilon \phi(x),\ \ \forall x\in F\}.
+\]
+For $\phi\in L^2(F)_\epsilon$, we have
+\[
+\int_F \phi(x)\psi(2qxy)dx =
+\int_{F/\{\pm \}}
+\phi(x) (\psi(2qxy)+\epsilon \psi(-2qxy))\overline{dx},
+\]
+if $dx=2\overline{dx}$.
+
+We define the Weil representation $r=r_{\psi,q}$ of
+$\overline{G(F)}$ on $L^2(F)$ as in \cite{Fl}, \S 2.2, so
+
+(i) $r(n(b),\zeta)\phi(x)=\zeta\cdot \psi(bq(x))\phi(x)$,
+
+(ii) $r(w,\zeta)\phi(x)
+=\zeta\cdot \gamma(q)\hat{\phi}_q(x)$,
+
+(iii) $r(h(a),\zeta)\phi(x)=\zeta\cdot |a|^{1/2}\omega(a)\phi(ax)$.
+
+We define the Weil representation $r_\epsilon=r_{\psi,q,\epsilon}$ of
+$\overline{G(F)}$ on $L^2(F)_\epsilon$ by
+
+(i) $r_\epsilon(n(b),\zeta)\phi(x)=\zeta\cdot \psi(bq(x))\phi(x)$,
+
+(ii) $r_\epsilon(w,\zeta)\phi(x)
+=\zeta\cdot {\frac{1}{2}}\gamma(q)(\hat{\phi}_q(x)
++\epsilon \hat{\phi}_{-q}(x))$,
+
+(iii) $r_\epsilon(h(a),\zeta)\phi(x)=\zeta\cdot |a|^{1/2}\omega(a)\phi(ax)$.
+
+We will assume that $r_\epsilon$ agrees with the restriction of
+$r$ to $L^2(G)_\epsilon$.
+
+We have
+\[
+r_\epsilon(g,1)=(-c,-1)
+r_\epsilon(n(a/c),1)\cdot r(w,1)\cdot r_\epsilon(h(-c),1)
+\cdot r_\epsilon(n(d/c),1),
+\]
+where $g$ is as in the lemma above. This implies
+\[
+r_\epsilon(g,1)\phi(x)=(-c,-1)|c|^{-1/2}\omega(-c)
+\psi_q({\frac{a+d}{c}}q(x))
+\gamma(q)(\hat{\phi}_q(-x/c)+
+\epsilon \hat{\phi}_{-q}(-x/c)).
+\]
+
+Since $r_+$ is even and $r_-$ is odd, we point out that
+the characters $\Theta_\epsilon$ of each of these
+representations may be obtained from the
+character of the sum (i.e., the character of $r$)
+by virtue of the trick
+\[
+\Theta_+(-g,1)+\Theta_-(-g,1)=
+\Theta_+(g,1)-\Theta_-(g,1).
+\]
+The character $\Theta_+(g)+\Theta_-(g)$ is determined in \cite{H}.
+We shall take another approach.
+
+\subsection{Integrating the kernel}
+
+For $\phi\in L^2(F)_\epsilon$, we have
+\[
+r_\epsilon(g,1)\phi(x)=
+\int_{F}
+k_\epsilon (x,y)\phi(y)dy,
+\]
+where the kernel function (which also depends on $g$)
+\[
+\begin{array}{c}
+k_\epsilon (x,y)=
+(-c,-1)|{\frac{1}{c}}|^{1/2}
+\omega(-c)\psi({\frac{a+d}{c}}q(x))
+\gamma(q)(\psi_{-q}({\frac{2}{c}}xy)+\epsilon \psi_q({\frac{2}{c}}xy))\\
+=(-c,-1)|{\frac{1}{c}}|^{1/2}
+\omega(-c)\gamma(q)
+(\psi_{-q}(-{\frac{a+d-2}{c}}xy)+\epsilon \psi_q({\frac{a+d+2}{c}}xy))
+\end{array}
+\]
+Note that $k_\epsilon(x,x)$ may be regarded as a function on either
+$F$ or $F/\{\pm 1\}$.
+Also, note if $\phi\in L^2(F)_\epsilon$ then
+the functions $x\longmapsto k_\epsilon(x,y)\phi(x)$,
+$y\longmapsto k_\epsilon(x,y)\phi(y)$ are
+functions on $F/\{\pm 1\}$.
+
+The restriction $r_\epsilon$ of $r$ to $L^2(F)_\epsilon$
+is an irreducible admissible representation (see, for example,
+\cite{Fl}, \S 2.2, or \cite{Ge2}). For each genuine $f\in C_c^\infty(\overline{G(F)})$,
+the trace of the operator $r_\epsilon(f)$ exists and there is an
+anti-genuine function $\Theta_\epsilon(g)$ on $\overline{G(F)}$
+such that
+\[
+\tr(r_\epsilon(f))=\int_{\overline{G(F)}} \Theta_\epsilon (g)f(g)dg.
+\]
+
+We shall assume the following
+
+\begin{conjecture}
+On the regular elements of the ``big cell''
+$N(F)wN(F)\overline{A(F)}$, the character $\Theta_\epsilon$
+is given by the principal
+value integral of the kernel function along the diagonal:
+\[
+\Theta_\epsilon(g,1)=
+\lim_{N\rightarrow \infty}
+\int_{\{x\in F\ |\ |x|<N\}}
+k_\epsilon(x,x)dx.
+\]
+Here $dx$ is the normalized Haar measure as above.
+\end{conjecture}
+
+\begin{remark} This conjecture implies
+\[
+\begin{array}{c}
+\Theta_\epsilon(g,1)\\
+=(-c,-1)|{\frac{1}{c}}|^{1/2}\omega(-c)\gamma(q)
+\lim_{N\rightarrow \infty}
+\int_{\{x\in F\ |\ |x|<N\}}
+{\frac{\psi_{-q}(-{\frac{a+d-2}{c}}x^2)
++\epsilon \psi_q({\frac{a+d+2}{c}}x^2)}{2}}dx.
+\end{array}
+\]
+\end{remark}
+
+Let
+\[
+\int_{\mathbb{R}} \exp(aix^2)dx
+=\lim_{N\rightarrow \infty}
+\int_{\{x\in {\mathbb{R}}\ |\ |x|<N\}} \exp(aix^2)dx.
+\]
+The following result is elementary and well-known:
+
+\begin{lemma}\label{lem:gauss} Let $d_Lx$ denote the usual Lebesgue measure.
+If $F=\mathbb{R}$ and $a\not= 0$ is real then
+\[
+\int_{F} \exp(aix^2)d_Lx =\exp(\pi i sgn(a)/4)\sqrt{\frac{\pi}{|a|}}.
+\]
+\end{lemma}
+
+\begin{remark}
+If $<\ ,\ >$ is the usual inner product on
+$F^n$ then
+\[
+\int_{F^n} \exp(ai<\vec{x},\vec{x}>)d_L x =({\frac{\pi}{|a|}})^{n/2}.
+\]
+Using simple generalizations like this it is hoped that it will
+be possible to generalize some of the results below to
+$\overline{Sp(2n,{\mathbb{R}})}$.
+\end{remark}
+
+\begin{proof} We may assume without loss of generality that $a>0$.
+Let $C_R=C_{R,a}\cup C_{R,b}\cup C_{R,c}$
+denote the sector of the circle of radius $R$,
+consisting of $z=re^{i\theta}$ with (a) $\theta=0,\ 0\leq r\leq R$,
+(b) $\theta=\pi/4,\ 0\leq r\leq R$, and (c) $0\leq \theta \leq \pi/4,\ r=R$.
+We have
+\[
+\begin{array}{c}
+\int_{C_{R,c}} e^{iaz^2}dz=
+Ri\int_0^{\pi/4} e^{R^2(-\sin 2\theta +i\cos 2\theta )}e^{i\theta} d\theta\\
+<< R\int_0^{\pi/4} e^{-R^2\sin 2\theta }d\theta\\
+<< R\int_0^{\epsilon} e^{-2R^2x}dx +Re^{-\epsilon R^2}
+<<ln(R)/R,
+\end{array}
+\]
+picking $\epsilon =2ln(R)/R^2$.
+This allows us to use a standard residue theorem argument
+applied to $C_R$ to obtain
+\[
+\int_F e^{iax^2}dx=\exp(\pi i/4)\int_F e^{-ay^2}dy.
+\]
+The result now follows from the fact that, for $a>0$,
+\[
+\int_0^\infty e^{-ax^2}dx={\frac{1}{2}}\sqrt{\frac{\pi}{a}}.
+\]
+\end{proof}
+
+Let $\tau (x)=\exp (\pi i q x)$, so $\tau=\psi_q$,
+and let $d_\tau x$ denote
+the Haar measure normalized as in \cite{Ge2}, ch 2. If
+\[
+\gamma(\tau)=
+\int_{\mathbb{R}} \tau(x^2)d_\tau x
+\]
+then $\gamma(\tau) =\gamma(q)$ (in the notation of \cite{Fl}, \S 2.2) and
+\[
+\gamma(\tau)=\exp ({\frac{\pi i}{4}} sgn(q)),
+\]
+by \cite{Ge2}, page 36. Let $\tau_a(x)=\tau(ax)$. Then
+\[
+\int_{\mathbb{R}} \tau_a(x^2)d_\tau x
+=|a|^{-1/2}\exp ({\frac{\pi i}{4}} sgn(q)).
+\]
+In particular,
+\[
+\begin{array}{c}
+\gamma(q)
+\int_{\mathbb{R}}
+(\psi_{-q}(-{\frac{a+d-2}{c}}x^2)+
+\epsilon\psi_q({\frac{a+d+2}{c}}x^2)d_\tau x\\
+=\gamma(q)\gamma(-q)|{\frac{a+d-2}{c}}|^{-1/2}+
+\epsilon \gamma(q)^2|{\frac{a+d+2}{c}}|^{-1/2}.
+\end{array}
+\]
+
+In the p-adic case, let
+\[
+\kappa(\tau)=\lim_{N\rightarrow - \infty}
+\int_{\varpi^N{\cal O}_F}
+\tau(u^2) du.
+\]
+For a $fixed$ Haar measure $du$, we have
+$\kappa(\tau_{a^2})=|a|^{-1}\kappa(\tau)$, for all
+$a\in F^\times$. Now normalize the measure $du$ as in \cite{Mo3}
+(so $du=d_\tau u$ depends on $\tau$) and
+call the result $\kappa_{nor}(\tau)$. It is known
+that (see for example \cite{Mo3})
+\[
+\kappa_{nor}(\tau)=
+\left\{
+    \begin{array}{c}
+    1,\ \ \ 2|f(\tau),\\
+    G(\tau),\ \ \ {\rm otherwise}.
+    \end{array}
+\right.
+\]
+where the conductor of $\tau$ is given by
+$\varpi^{f(\tau)}{\cal O}_F$ and where $G(\tau)$ denotes the Gauss sum
+normalized so as to be a $8^{th}$ root of unity as in \cite{Mo3}.
+Now, the Haar measure $d_\tau u$ has been chosen to depend on
+$\tau$ in such a way that $vol({\cal O}_F,d_\tau u)=q^{f(\tau)/2}$.
+This is the measure for which $(\hat{\phi}_q)^\wedge_q(x)=\phi(-x)$,
+by \cite{Shal}.
+Note that $f(\tau_a)=f(\tau)-\nu(a)$, where
+$\nu : F^\times \rightarrow {\mathbb{Z}}$ is the normalized
+valuation. Putting these together gives
+$\kappa_{nor}(\tau_{a^2})=\kappa_{nor}(\tau)$. It is also known that
+$\kappa_{nor}(\tau_{a})=({\frac{a}{\varpi}})\kappa_{nor}(\tau)$, for
+$a\in {\cal O}_F^\times$, where $\left(\frac{\cdot}{\varpi}\right)$ is the
+Legendre symbol. Of course,
+\[
+vol({\cal O}_F,d_\tau u)^{-1}
+\kappa_{nor}(\tau)
+=vol({\cal O}_F,du)^{-1}\kappa(\tau),
+\]
+so it is easy to convert from one to the other.
+We assume that $du$ is the measure in the conjecture above.
+
+\begin{proposition} (Assume the conjecture above.)
+If $c\not= 0$ then
+\[
+\Theta_\epsilon (g,1)=
+(-c,-1)||{\frac{q}{c}}|^{1/2}\omega(-c)
+{\frac{\gamma(q)\gamma(-q)\kappa(\psi_\alpha)+
+\epsilon \gamma(q)^2\kappa(\psi_\beta)}{2}},
+\]
+where $\alpha={\frac{a+d-2}{c}}q$, $\beta={\frac{a+d+2}{c}}q$.
+\end{proposition}
+
+\begin{proof} This follows by putting the results above into the conjecture
+and the remark following it.
+\end{proof}
+
+\begin{corollary} (Assume the conjecture above)
+If $F={\mathbb{R}}$ and
+$g=r(\theta)$ is elliptic regular then
+\[
+\begin{array}{c}
+\Theta_\epsilon (g,\zeta_g)=
+\zeta_g
+{\frac{(-\sin(\theta),-1)\omega(-\sin(\theta))}{2}}
+({\frac{\gamma(q)\gamma(-q)}{|\det(g-1)|^{1/2}}}
++\epsilon {\frac{\gamma(q)^2}{|\det(g+1)|^{1/2}}})\\
+=\zeta_g
+{\frac{(-\sin(\theta),-1)\omega(-\sin(\theta))}{2}}
+({\frac{1}{2|\sin(\theta /2)|^{1/2}}}
++\epsilon {\frac{\gamma(q)^2}{2|\cos(\theta/2)|^{1/2}}}).
+\end{array}
+\]
+for $\zeta_g=sgn(\cos(\theta))\in \mu_2$.
+\end{corollary}
+
+\begin{remark}
+Note that
+$(-\sin(\theta),-1)=-sgn(\sin(\theta))$. According to \cite{Ge2}, page
+36, $\gamma(q)=\exp(-{\frac{i\pi}{4}}sgn(q))$ is the Weil index
+associated to the quadratic character
+$x\longmapsto \exp(\pi i qx^2)$ (here $\gamma(q)$ is as in \cite{Fl}, \S 2.2;
+apparently, one should replace $q$ by $-q$ in \cite{Fl} to get formulas
+consistent with \cite{Ge2}, ch 2). In the notation of \cite{Fl}, we have
+\[
+\omega(a)=\gamma(q)/\gamma(aq)
+=
+\left\{
+\begin{array}{c}
+1,\ \ \ \ \ \ \ \ a>0,\\
+-i,\ \ \ \ a<0,\ \ q>0,\\
+i,\ \ \ \ a<0,\ \ q<0.
+\end{array}
+\right.
+\]
+Using this, the corollary agrees with Adams' formula in the case
+$0<\theta <\pi$. Since $r(-\theta)=wr(\theta)w^{-1}$,
+we see that this also agrees with Adams' formula for $-\pi<\theta <0$.
+\end{remark}
+
+\begin{remark}
+This should be compared with the formulas in \cite{Ad1}
+(see especially Proposition 4.5, 4.7, and equation (5.5)),
+where one finds that
+\[
+\theta(\psi_\epsilon)_{even}(g,\zeta_g)
+={\frac{1}{4}} ({\frac{1}{\cos(\theta/2)}}
++\epsilon {\frac{i}{\sin(\theta/2)}}),
+\]
+and
+\[
+\theta(\psi_\epsilon)_{odd}(g,\zeta_g)
+={\frac{1}{4}} (-{\frac{1}{\cos(\theta/2)}}
++\epsilon {\frac{i}{\sin(\theta/2)}}),
+\]
+for $0<\theta <4\pi$, $\theta\not= \pi,2\pi,3\pi$.
+\end{remark}
+
+\begin{proof} Since $a+d\pm 2=\det(g\pm 1)$, this follows from
+the proposition above and Lemma~\ref{lem:gauss}.
+\end{proof}
+
+\begin{corollary} (Assume the conjecture above)
+If $F$ is p-adic and
+$g=\left(
+\begin{array}{cc}
+a & \eta b \\
+b & a
+\end{array}
+\right)$ is elliptic regular ($\eta\in F$ is a non-square)
+then
+\[
+\begin{array}{c}
+\Theta_\epsilon (g,1)\\
+=(-b,-1)\omega(-b)|2q{\frac{\sqrt{\eta}}{\lambda_1 -\lambda_2}}|^{1/2}
+{\frac{\gamma(q)\gamma(-q)\kappa(\psi_\alpha)+
+\epsilon \gamma(q)^2\kappa(\psi_\beta)}{2}}\\
+=C(g,q,du)
+({\frac{\gamma(q)\gamma(-q)\kappa_{nor}(\psi_\alpha)}{|\det(g-1)|^{1/2}}}+
+\epsilon {\frac{\gamma(q)^2\kappa_{nor}(\psi_\beta)}{|\det(g+1)|^{1/2}}}),
+\end{array}
+\]
+where $C(g,q,du)=vol({\cal O}_F,du)(-b,-1)\omega(-b)/2$,
+where
+\[
+\alpha=2q{\frac{a-1}{b}}=
+{\frac{2q\sqrt{\eta}}{\lambda_1-\lambda_2}}\det(g-1),
+\ \ \ \
+\beta=2q{\frac{a+1}{b}}
+={\frac{2q\sqrt{\eta}}{\lambda_1-\lambda_2}}\det(g+1),
+\]
+and where $\lambda_1,\lambda_2$ are the eigenvalues of $g$.
+\end{corollary}
+
+\begin{remark}
+This should be compared with the formulas in \cite{H}.
+\end{remark}
+
+\subsection{Matchings for non-tempered representations}
+
+Let $r_{even}$ denote the even part of the Weil representation
+on $\overline{GL(2,F)}$ in \cite{Fl}, \S 2.2 (where it is denoted by
+$r_\mu$, $\mu$ an even character which we take here to be the
+trivial character).
+
+\subsubsection{The real case}
+
+Let $F={\mathbb{R}}$. Let $\overline{\pi}_{+,nt},\overline{\pi}_{-,nt}$
+denote the two irreducible, genuine, non-tempered, unitary representations
+of $\overline{G(F)}$. In the notation of \cite{Ad1}, \cite{Ge2}, we have
+\[
+\overline{\pi}_{+,nt}
+=\overline{\pi}^+_{1/2}=\omega(\psi_+)_{even},
+\ \ \ \ \
+\overline{\pi}_{-,nt}
+=\overline{\pi}^-_{1/2}=\omega(\psi_-)_{even}.
+\]
+On the Grothendieck group of the unitary dual of $\overline{G(F)}$,
+we have
+\[
+r_{even}|_{\overline{G(F)}}=
+\overline{\pi}_{+,nt}+\overline{\pi}_{-,nt}.
+\]
+Let $\pi_{nt}$ denote the (non-tempered) trivial representation of $G(F)$.
+
+Using the notation above and that
+of \cite{Ad1}-\cite{Ad2}, we have the following additional
+identities in the Grothendieck group
+of the unitary dual of $\overline{G(F)}$ or $G(F)$
+(whichever is appropriate to the context):
+\begin{equation}\label{eq:groth}
+\begin{array}{c}
+\pi'_{PS}(1/2,1/2)=\overline{\pi}_{+,nt}+\pi'_{DS}(-,1/2),\\
+\pi'_{PS}(-1/2,1/2)=\overline{\pi}_{-,nt}+\pi'_{DS}(+,1/2),\\
+\pi_{PS}(0,1)=\pi_{nt}+\pi_{DS}(+,1)+\pi_{DS}(-,1),\\
+\pi_{PS}(0,-1)=\pi_{nt}+\pi_{DS}(+,1)+\pi_{DS}(-,1).
+\end{array}
+\end{equation}
+Here $\pi'_{DS}(\pm,1/2)$ are the genuine discrete series with
+$\overline K$-types $\pm(3/2+2j)$, $j\ge0$, i.e.\
+$\overline\pi{}^{\pm}_{3/2}$ in the notation of \S\ref{sec:realds}, and
+$\pi_{DS}(\pm,1)=\pi_{\pm1}$. (For instance, the even oscillator
+representation $\overline\pi_{+,nt}$ has $\overline K$-types
+$1/2+2j$, $j\geq0$, and the remaining $\overline K$-types $-3/2-2j$ of the
+principal series containing it are those of $\overline\pi{}^-_{3/2}$.)
+
+\begin{lemma}\label{lem:ds-3/2} If
+$f,\overline{f}$ correspond evenly on the elliptic set in
+the sense of Definition~\ref{def:realds-corr}, then
+$\Theta_{\pi'_{DS}(\pm,1/2)}(\overline{f})
+=\Theta_{\pi_{DS}(\pm,1)}(f)$.
+\end{lemma}
+
+\begin{proof}
+This is Lemma~\ref{lem:realds}(a) with $k=3$.
+\end{proof}
+
+\begin{lemma} If $f,\overline{f}$ correspond evenly on the elliptic set
+in the sense of Definition~\ref{def:realds-corr}, then
+\[
+\Theta_{\overline{\pi}_{+,nt}}(\overline{f})
++\Theta_{\overline{\pi}_{-,nt}}(\overline{f})
+=\Theta_{\pi_{nt}}(f).
+\]
+\end{lemma}
+
+\begin{proof}
+(Added in Draft~2.) The characters of principal series representations
+vanish on the regular elliptic set, and the hyperbolic orbital
+integrals of $f$ and $\overline f$ vanish. Hence, by (\ref{eq:groth}) and
+the Weyl integration formula,
+$\Theta_{\overline{\pi}_{\pm,nt}}(\overline f)=-\Theta_{\pi'_{DS}(\mp,1/2)}(\overline f)$
+and
+$\Theta_{\pi_{nt}}(f)=-\Theta_{\pi_{DS}(+,1)}(f)-\Theta_{\pi_{DS}(-,1)}(f)$.
+The result follows from Lemma~\ref{lem:ds-3/2}. (The identities
+(\ref{eq:groth}) are quoted from \cite{Ad1}, \cite{Ge2}, and have not
+been rechecked here.)
+\end{proof}
+
+\begin{remark}
+Indeed, it seems likely that \cite{Fl} implies that
+if $f,\overline{f}$ correspond evenly on the hyperbolic set in
+the sense of \S\ref{sec:charsA}, then
+\[
+\Theta_{\overline{\pi}_{+,nt}}(\overline{f})
++\Theta_{\overline{\pi}_{-,nt}}(\overline{f})
+=\Theta_{\pi_{nt}}(f).
+\]
+\end{remark}
+
+\subsubsection{The $p$-adic case}
+
+Let $F$ be p-adic. Let $r_{odd}$ denote the odd part of some Weil
+representation (associated to some odd character)
+on $\overline{GL(2,F)}$ as in \cite{Fl}, \S 2.2. This is an
+irreducible genuine supercuspidal representation of
+$\overline{GL(2,F)}$. Its restriction to
+$\overline{SL(2,F)}$ decomposes into $4=[F^\times:F^{\times 2}]$
+irreducible genuine supercuspidal components $\overline{\pi}_{sc,i}$
+\cite{M3}.
+
+Let $r_{even}$ denote the even part of the Weil
+representation associated to the trivial character on
+$\overline{GL(2,F)}$ as in \cite{Fl}, \S 2.2. This is an
+irreducible genuine representation of
+$\overline{GL(2,F)}$, which is not supercuspidal. (Draft~1 called it
+supercuspidal.) Its restriction to
+$\overline{SL(2,F)}$ decomposes into $4=[F^\times:F^{\times 2}]$
+irreducible genuine infinite dimensional
+non-tempered components $\overline{\pi}_{nt,i}$.
+
+Let $\sigma$ denote the special representation of $SL(2,F)$
+and $\pi_{nt}$ the trivial representation.
+
+The 1995 draft derived the following from \cite{Fl} and the fact that the
+restriction of the special (Steinberg) representation of $GL(2,F)$
+to $SL(2,F)$ is irreducible.
+
+\begin{claim}[1995 draft; unverified] (a) If $f, \overline{f}$ correspond evenly on the elliptic set
+then
+\[
+\sum_i \Theta_{\overline{\pi}_{sc,i}}(\overline{f})
+=\Theta_\sigma(f).
+\]
+(b) If $f,\overline{f}$ correspond evenly on the elliptic set
+then
+\[
+\sum_i \Theta_{\overline{\pi}_{nt,i}}(\overline{f})
+=\Theta_{\pi_{nt}}(f).
+\]
+(c) Let $\overline{\sigma}_i$ denote the complement of
+$\overline{\pi_{nt,i}}$ (in the associated full unitarily
+induced representation). If $f,\overline{f}$ correspond
+evenly on the elliptic set then
+\[
+\sum_i \Theta_{\overline{\sigma}_{i}}(\overline{f})
+=-\Theta_{\pi_{nt}}(f).
+\]
+\end{claim}
+
+\begin{remark} If $f,\overline{f}$ correspond oddly on the elliptic set
+then we have the supercuspidal
+correspondence described in Chapter~\ref{ch:sc} (see Remark~\ref{rem:sc-caveat}).
+\end{remark}
+
+%\begin{center}
+%\textbf{REFERENCES}
+%\end{center}
+
+%[A] J. Adams, ``Character of the oscillator representations'',
+%preprint, 1995 (to appear in Isr. J. Math.)
+
+%[A'] ---, Notes on the Flicker correspondence
+
+%[A''] ---, ``Lifting of characters on orthogonal and metaplectic groups'',
+%preprint, 1995
+
+%[Fl] Y. Flicker, ``Automorphic forms on covering groups of GL(2)'',
+%Inv. Math., 1980
+
+%[G] S. Gelbart, \underline{Weil's representation and the spectrum of the
+%metaplectic group}, SLNM 530, 1976
+
+%[H] R. Howe, unpublished
+
+%[HC] Harish-Chandra, \underline{Collected Works, vol III}, Springer-Verlag
+
+%[Hum] J. Humpheries, \underline{Linear algebraic groups},
+%Springer-Verlag Grad Texts
+
+%[Mum] D. Mumford, \underline{The red book}, Springer LNM, 1358, 1988
+
+%[J] D. Joyner, book
+
+%[J'] ---, Notes on the ds correspondence for $\overline{SL(2,F)}$,
+%$F$ p-adic
+
+%[J''] ---, Notes on the ds correspondence for
+%$\overline{SL(2,{\mathbb{R}})}$
+
+%[Man] D. Manderscheid, ``Supercuspidal representations and the
+%theta correspondence'', preprint
+
+%[M] C. Moen, ``The dual pair $(U(1),U(1))$ over a p-adic field'',
+%Pac J Math, vol 158, 1993
+
+%[R] R. Rao, ``On some explicit formulas in the theory of Weil
+%representations'', Pac J Math \underbar{157}(1993)335-371
+
+%[S] J. Shalika, ``Representations of the two by two unimodular group
+%over local fields'', IAS
+
+%[V] V. S. Varadarajan, An introduction to harmonic analysis on semi-simple
+%Lie groups, Cambridge U. Press, 1989
+%% ===== end aabook2e.tex =====
+
+
+
+%% ===== begin aabook5.tex =====
+\chapter{The trace formulas}\label{ch:tf}
+
+We recall the trace formula in the case of $SL(2)$, as formulated by
+Arthur. Then we state the metaplectic analog of the formula which
+can be derived analogously. We shall be very brief since there are
+already several expository works explaining the ideas needed here
+(e.g., \cite{A15}, \cite{MW}).
+
+\section{The trace formula for $SL(2)$}
+
+We shall merely write down the terms, with some definitions, from the
+work of Arthur \cite{A2}, \cite{A3}, \cite{A7}.
+
+\subsection{The definition of $J_M(u,f)$}
+
+Let $f\in C_c^\infty (G({\mathbb {A}}_S))$ and let
+$\gamma \in M({\mathbb {A}}_S)$ have Jordan decomposition
+$\gamma =\sigma u$. Suppose that
+$M({\mathbb {A}}_S)_\gamma =G({\mathbb {A}}_S)_\gamma $.
+Assume that $S$ is a ``sufficiently large'' finite set which contains
+the archimedean places. In this case, define
+\begin{equation}
+J_M(\gamma ,f)=|D(\gamma )|^{1/2}
+\int_{M({\mathbb {A}}_S)\backslash G({\mathbb {A}}_S)}
+\int_{{\cal O}_\gamma (M({\mathbb {A}}_S))}f(x^{-1}\mu x)v_M(x)d\mu dx,
+\end{equation}
+where ${\cal O}_\gamma (M({\mathbb {A}}_S))
+=\{m^{-1}\gamma m\;m\in M({\mathbb {A}}_S))$.
+Here $v_M$ is the ``volume'' of the convex hull of the points
+$\{H_B(x),H_{B^{-}}(x)\}$ in ${\mathfrak a}$. If $x=nk$ then
+$H_B(x)=0$, so $v_M(nk)=|H_{B^{-}}(x)|=|\log\delta (wx)|$.
+In any case, this integral can be written as
+\[
+J_M(\gamma ,f)=|D(\gamma )|^{1/2}
+\int_{G({\mathbb {A}}_S)_\gamma \backslash G({\mathbb{A}}_S)}
+f(x^{-1}\gamma x)v_M(x)dx.
+\]
+This is a function on $M({\mathbb {A}}_S)$.
+
+Suppose now $\gamma \in M({\mathbb {A}}_S)$ is arbitrary and $a\in
+A_M({\mathbb {A}}_S)$ is chosen so that
+$M({\mathbb {A}}_S)_{a\gamma }=G({\mathbb {A}}_S)_{a\gamma }$.
+Following \cite{A7}, (8.1)
+we define $J_M(\gamma ,f)$ to be the limit at $a=1$
+of $|D(a\gamma )|^{1/2}$ times the integral
+\begin{equation}
+\int_{G({\mathbb {A}}_S)_\sigma \backslash G({\mathbb {A}}_S)}
+\int_{M({\mathbb {A}}_S)_\gamma \backslash G({\mathbb {A}}_S)_\sigma }
+f(y^{-1}\sigma x^{-1}a u xy) \left( \sum_{L\in {\cal L}(M)}r_M^L(\gamma
+,a)v_L(xy)\right) dxdy,
+\end{equation}
+where $\gamma\in M({\mathbb A}_S)$ is as above and $r_M^L$ is as in \cite{A7}.
+
+\begin{example}
+Let $G=SL(2),\;M=A,\;a=\left(
+\begin{array}{cc}
+t & 0 \\
+0 & t^{-1}
+\end{array}
+\right) $, where $t\neq \pm 1$. In this case,
+\[
+r_A(\gamma ,a)=1,
+\]
+and
+\[
+v_A(x)=\sum_{v\in S}v_{A,v}(x_v),
+\]
+where $x=\prod_{v\in S}a_v\cdot \left[
+\begin{array}{cc}
+1 & n_v \\
+0 & 1
+\end{array}
+\right] \cdot k_v,$ for
+$a_v\in {A(k_v)}$, $k_v\in {K_v}$
+where $v_{A,v}$ is the local weight of \S\ref{sec:weighted-defs}
+(\cite{A6}, Intro., \cite{Sho}, chap. 6). Therefore,
+$J_A(z,f)$, for $z\in Z(G(k))$,
+is the limit as $a\rightarrow 1$ of
+\begin{equation}
+\ |D(a)|^{1/2}
+\int_{A({\mathbb {A}}_S)\backslash G({\mathbb {A}}_S)}
+f(y^{-1} az y)v_A(y)dy
+\end{equation}
+\cite{Sho}, section 6.1, p. 64.
+\end{example}
+
+\subsection{Definitions}
+
+Let ${\cal X}$ denote the equivalence classes of pairs $(M,\rho)$ as in
+\cite{A2}, \cite{A3}.
+For each standard parabolic $P=MN$ of $G$ defined over $k$
+and each $\chi \in {\cal X}$, we define
+$L^2(M(k)\backslash M({\mathbb{A}})^1)_\chi $
+as follows. If there is no $P_1\in {\cal P}_\chi $
+with $P_1\subset P$ then we define
+$L^2(M(k)\backslash M({\mathbb{A}})^1)_\chi $ to be $0$.
+Otherwise, let
+$\Psi (P_1,P,\chi,W )$ denote the space of
+all complex-valued functions $\psi :N({\mathbb{A}})M_1(k)\backslash G(%
+{\mathbb{A}})\rightarrow {\mathbb C}$, $P_1=N_1M_1\in {\cal P}_\chi $
+with $P_1\subset P$, such that
+
+\begin{enumerate}
+\item  $\psi (amk)$, as a function of
+$a\in A_1(k)\backslash A_1({\mathbb{A}})$ (fixed
+$m\in M_1(k)\backslash M_1({\mathbb{A}})^1,\;k\in K$),
+is compactly supported,
+
+\item  $\psi (amk)$, as a function of $k\in K_\infty $, belongs to the
+vector space defined by the span of the matrix coefficients of some
+irreducible representation $W$ of $K_\infty $,
+
+\item  $\psi (amk)$, as a function of $m\in M$, belongs to
+$L^2(M(k)\backslash M({\mathbb{A}})^1)_{cusp,\chi }$.
+\end{enumerate}
+
+Given $\psi \in \Psi (P_1,P,\chi,W )$, $P_1\subset P$, let
+\[
+\psi ^{\wedge ,M}(m)=
+\sum_{\delta \in P_1(k)\cap M(k)\backslash
+M(k)}\psi (\delta m),\;\;\;\;\;m\in M(k)\backslash
+M({\mathbb{A}})^1,
+\]
+and by \cite[Lemma 1]{L1} the function $\psi ^{\wedge ,M}$ lies in
+$L^2(M(k)\backslash M({\mathbb{A}})^1)$. We call this a {\bf theta function}.
+Let $L^2(M(k)\backslash M({\mathbb{A}})^1)_\chi $ denote
+the $L^2$-closure of the span of all the $\psi ^{\wedge ,M}$ with $\psi \in
+\Psi (P_1,P,\chi,W )$, some $W$ and $P_1\subset P$ as above.
+Lemma 2 of \cite{L1} implies
+\begin{equation}
+L^2(M(k)\backslash M({\mathbb{A}})^1)=\bigoplus_{\chi \in
+{\cal X}}L^2(M(k)\backslash M({\mathbb{A}})^1)_\chi .
+\end{equation}
+
+Now, define $I_P(\pi)$ induced representation as in \cite{A2},
+\cite{A3}. If $f$ is a smooth function and $\chi\in {\cal X}$,
+Define $I_P(\pi,f)_\chi$ denote the
+$L^2(M(k)\backslash M({\mathbb{A}})^1)_\chi$-isotypic component
+of $I_P(\pi,f)$.
+
+\begin{definition}
+Let $G=SL(2)$. Define $M^T_P$ as follows:
+
+if $\chi =(G,\rho )$, let $M_G^T(\pi )_\chi =1$;
+
+if $\chi =(G,\rho )$, let $M_B^T(\pi )_\chi =1$;
+
+if $P=B,\chi =(A,\rho )$ unramified, let
+\[
+\begin{array}{c}
+M_B^T(\pi )_\chi \\
+=vol({\mathbb{R}}/{\mathbb{Z}})
+\lim_{\varsigma \rightarrow 0}
+\left[
+\frac{e^{\varsigma (T)}
+M(1,\pi )^{-1}M(1,\pi ,\varsigma )}{\varsigma (\alpha^{\vee })}
++\frac{e^{-\varsigma (T)}
+M(s,\pi )^{-1}M(s,\pi ,\varsigma )}{-\varsigma (\alpha^{\vee })}
+\right]\\
+=M(s,\pi)^{-1}
+\lim_{\varsigma \rightarrow 0}
+{\frac{M(s,\pi)-e^{-2\varsigma (T)}M(s,\pi,\varsigma)}{\varsigma(\alpha^\vee)}} ,
+\end{array}
+\]
+where $\alpha $ denotes the unique positive root.
+\end{definition}
+
+\begin{lemma}
+For $G=SL(2)$, each $(G,\pi)\in\chi\in{\cal{X}}$ is
+unramified. Moreover, $(A,\mu)\in\chi\in{\cal{X}}$ is unramified
+if and only if $\mu^w\not=\mu$.
+In the case case of the above definition, at a function $\phi$ on $K$,
+\[
+\begin{array}{c}
+(M^T_B(\pi)_\chi \phi)(k)=
+M(s,\pi)^{-1}
+\lim_{\varsigma \rightarrow 0}
+{\frac{M(s,\pi)\phi(k)-e^{-2\varsigma (T)}e^{\varsigma (H(k))}
+M(s,\pi_\varsigma)\phi_\varsigma(k)}{\varsigma(\alpha^\vee)}} \\
+=M(s,\pi)^{-1}
+\lim_{\varsigma \rightarrow 0}
+{\frac{M(s,\pi)\phi(k)-e^{-2\varsigma (T)}M(s,\pi_\varsigma)\phi_\varsigma (k)}{\varsigma(\alpha^\vee)}} \\
+=M(s,\pi)^{-1}M'(s,\pi)\phi(k)-2 \phi(k) T,
+\end{array}
+\]
+where the prime denotes differentiation with respect to
+$\varsigma$. Thus
+\[
+M_B^T(\pi )_\chi =
+M(s,\pi)^{-1}M'(s,\pi)-2\cdot I\cdot T,
+\]
+where $I$ denotes the identity.
+\end{lemma}
+
+\subsection{The trace formula}
+
+The geometric side of the trace formula is the sum of the following terms:
+
+(a) the sum over classes ${\cal{O}}\subset G(k)$
+such that ${\cal{O}}\cap Z(G(k))\not= \emptyset$ of
+\begin{equation}
+J_{\cal{O}}(f)=
+\sum_{\gamma\in {\cal O}}
+a^G(S,\gamma)J_G(\gamma,f)
++{\frac{1}{2}}\sum_{\gamma\in {\cal O}\cap A({\mathbb A})}
+a^A(S,\gamma)J_A(\gamma,f),
+\end{equation}
+where $J_M$ is defined above and
+the constants $a^M(S,\gamma )$ satisfy, if $\gamma$ is semisimple,
+the property
+\[
+a^M(S,\gamma )=\left\{
+\begin{array}{c}
+vol(M(k)_\gamma \backslash M({\mathbb {A}}_S)_\gamma ^1),
+\;\;\;\;{\rm if\;}\gamma \;{\rm is}\;
+k-{\rm elliptic\;in}\;M(k), \\
+0,\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;{\rm otherwise},\;\;\;\;\;
+\end{array}
+\right.
+\]
+
+(b) the sum over elliptic regular classes ${\cal{O}}\subset G(k)$
+of
+\begin{equation}
+J_{\cal{O}}(f)=
+\sum_{\gamma\in {\cal O}}
+a^G(S,\gamma)J_G(\gamma,f),
+\end{equation}
+where $J_G$ (an orbital integral) and $a^G$ (a volume)
+are as above,
+
+(c) the sum over ``hyperbolic'' regular classes
+${\cal{O}}\subset G(k)$
+of
+\begin{equation}
+J_{\cal{O}}(f)=
+{\frac{1}{2}}\sum_{\gamma\in {\cal O}\cap A({\mathbb A})}
+a^A(S,\gamma)J_A(\gamma,f),
+\end{equation}
+where $J_A$ and $a^A$ are as above,
+
+The spectral side of the trace formula is the sum of the following terms:
+
+(d) the sum over classes $\chi\in {\cal{X}}(G)$ of
+\begin{equation}
+J_\chi(f)=
+\tr(\pi(f)),\ \ \ (\pi,G)\in\chi,
+\end{equation}
+
+(e) the sum over classes $\chi\in {\cal{X}}-{\cal{X}}(G)$ of
+\begin{equation}
+J_\chi(f)=
+{\frac{1}{2}}\int_{\Pi_u(A({\mathbb{A}}_S))}
+\tr(M_A^T(\pi)_\chi
+I_B(\pi,f)_\chi)d\pi,
+\end{equation}
+where $M_A^T(\pi)_\chi$ is (essentially a logarithmic derivative
+of an intertwining operator) given by the definition and lemma above.
+
+\section{The trace formula for $\overline{SL(2)}$}
+
+The analogs of the definitions above for the 2-fold cover of $SL(2)$
+are so similar that we do not repeat them (precise definitions
+are all given in \cite{J2}).
+
+The geometric side of the trace formula is the sum of the following terms:
+
+(a) the sum over classes ${\cal{O}}\subset G(k)$
+such that ${\cal{O}}\cap Z(G(k))\not= \emptyset$ of
+\begin{equation}
+J_{\cal{O}}(f)=
+\sum_{\gamma\in {\cal O}}
+a^G(S,\gamma)J_G(\gamma,f)+{\frac{1}{2}}
+\sum_{\gamma\in {\cal O}\cap A({\mathbb A})}
+a^A(S,\gamma)J_A(\gamma,f),
+\end{equation}
+where $J_M$ and $a^M$
+are given by the ``obvious'' analogs of the formulas
+in the previous section,
+
+(b) the sum over elliptic regular classes ${\cal{O}}\subset G(k)$
+of
+\begin{equation}
+J_{\cal{O}}(f)=
+\sum_{\gamma\in {\cal O}}
+a^G(S,\gamma)J_G(\gamma,f),
+\end{equation}
+where $J_G$ (an orbital integral) and $a^G$ (a volume)
+are given by the ``obvious'' analogs of the formulas
+in the previous section,
+
+(c) the sum over ``hyperbolic'' regular classes
+${\cal{O}}\subset G(k)$
+of
+\begin{equation}
+J_{\cal{O}}(f)=
+{\frac{1}{2}}\sum_{\gamma\in {\cal O}\cap A({\mathbb A})}
+a^A(S,\gamma)J_A(\gamma,f),
+\end{equation}
+where $J_A$ and $a^A$
+are given by the ``obvious'' analogs of the formulas
+in the previous section,
+
+The spectral side of the trace formula is the sum of the following terms:
+
+(d) the sum over the cuspidal classes $\chi\in {\cal{X}}(G)$ of
+\begin{equation}
+J_\chi(f)=
+\tr(\pi(f)),\ \ \ (\pi,G)\in\chi,
+\end{equation}
+
+(e) the sum over classes $\chi\in {\cal{X}}-{\cal{X}}(G)$ of
+\begin{equation}
+J_\chi(f)=
+{\frac{1}{2}}\int_{\Pi_u(\overline{A({\mathbb{A}}_S)})}
+\tr(M_A(\pi)_\chi I_B(\pi,f)_\chi)d\pi,
+\end{equation}
+where $M_A(\pi)_\chi =M_A^T(\pi)_\chi|_{T=0}$.
+%% ===== end aabook5.tex =====
+
+
+%% ===== begin aabook6.tex (rewritten in Draft 1) =====
+\chapter{Global comparison and multiplicity one}\label{ch:global}
+
+Throughout this chapter, $k$ is a number field, ${\mathbb{A}}={\mathbb{A}}_k$,
+$G=SL(2)$, and $\overline{G({\mathbb{A}})}$ is the 2-fold cover of
+\S\ref{sec:global}. Let ${\cal H}(G({\mathbb{A}}))$ and
+${\cal H}(\overline{G({\mathbb{A}})})$ denote the spaces of global
+functions of \S\ref{sec:globalalg}. We write $R_{cusp}$ for the
+representation of $G({\mathbb{A}})$ on
+$L^2_{cusp}(G(k)\backslash G({\mathbb{A}}))$ and $\overline{R}_{cusp}$ for
+the representation of $\overline{G({\mathbb{A}})}$ on the genuine part of
+$L^2_{cusp}(G(k)\backslash \overline{G({\mathbb{A}})})$, where $G(k)$ is
+embedded in $\overline{G({\mathbb{A}})}$ by the splitting of
+\S\ref{sec:global}. For a cuspidal automorphic representation $\pi$ of
+$G({\mathbb{A}})$ (resp. genuine cuspidal automorphic representation
+$\overline{\pi}$ of $\overline{G({\mathbb{A}})}$), $m(\pi)$ (resp.
+$m(\overline{\pi})$) denotes its multiplicity in $R_{cusp}$ (resp.
+$\overline{R}_{cusp}$). As usual, global test functions are assumed
+$K_\infty$-finite.
+
+For each place $v$ we write $K_{0,v}=G({\cal O}_v)$ if $v$ is finite,
+and, if $v$ is finite and odd, $K_{1,v}=w^{-1}K_{0,v}w$ with $w$ as in
+\S\ref{sec:filtrations}. These are representatives of the two conjugacy
+classes of hyperspecial maximal compact subgroups of $G(k_v)$. Since $v$
+is odd, $\overline{K_{i,v}}$ splits (Lemma~\ref{lem:facts}(b)), and
+${\cal H}(\overline{G(k_v)},K_{i,v})$ denotes the Hecke algebra of
+genuine functions that are bi-invariant under the image of the
+splitting.
+
+The argument is modeled on that of Gelbart and Jacquet \cite{GJ}, who
+compare automorphic representations of $GL(2)$ and of the multiplicative
+group of a quaternion algebra. Besides the groups being different, there
+are two other differences: $SL(2)$ and its 2-fold cover do not satisfy
+strong multiplicity one, and the local comparison of functions is more
+complicated. The input that replaces strong multiplicity one is
+Waldspurger's multiplicity one theorem for the cover, applied through
+Lemma~\ref{lem:A00}.
+
+\section{The hypotheses}\label{sec:hypotheses}
+
+\begin{definition}\label{def:exceptional}
+For a cuspidal automorphic representation $\pi=\otimes_v\pi_v$ of
+$G({\mathbb{A}})$, let $S(\pi)$ denote the finite set of places $v$ of $k$
+such that $v$ is archimedean, or $v$ is dyadic, or $v$ is odd and $\pi_v$
+has no nonzero $K_{0,v}$-fixed vector.
+\end{definition}
+
+\begin{definition}\label{def:corresponding}
+Let $S$ be a finite set of places of $k$ containing the archimedean and
+dyadic places. For each $v\in S$, let ${\cal C}_v$ be a vector space of
+pairs $(f_v,\overline{f}_v)$ with $f_v\in C_c^\infty(G(k_v))$ and
+$\overline{f}_v\in C_c^\infty(\overline{G(k_v)})_{gen}$ ($K_v$-finite if
+$v$ is archimedean). A pair $(f,\overline{f})$ with
+$f=\otimes_v f_v\in{\cal H}(G({\mathbb{A}}))$ and
+$\overline{f}=\otimes_v\overline{f}_v\in{\cal H}(\overline{G({\mathbb{A}})})$
+is called {\bf $(S,{\cal C})$-corresponding} if
+\begin{enumerate}
+\item $(f_v,\overline{f}_v)\in{\cal C}_v$ for each $v\in S$;
+\item for each $v\notin S$, $f_v\in{\cal H}(G(k_v),K_{0,v})$ and
+$\overline{f}_v\in{\cal H}(\overline{G(k_v)},K_{0,v})_{gen}$ correspond
+under the Satake isomorphism of \S\ref{sec:spherical};
+\item for almost all $v$, $f_v$ and $\overline{f}_v$ are the unit
+elements of the respective spherical Hecke algebras.
+\end{enumerate}
+\end{definition}
+
+\begin{hypothesis}[local spectral transfer]\label{hyp:LH}
+Let $v$ be a place of $k$ and $\pi_v$ an irreducible unitary
+representation of $G(k_v)$. We say that {\bf Hypothesis LH holds for
+$\pi_v$ with the class ${\cal C}_v$} if ${\cal C}_v$ is a vector space of
+pairs as in Definition~\ref{def:corresponding} with the following
+properties.
+\begin{enumerate}
+\item[(LH0)] ${\cal C}_v=\bigcup_L{\cal C}_v(L)$ is a directed union of
+subspaces ${\cal C}_v(L)$, indexed by open compact subgroups $L$ of
+$G(k_v)$ if $v$ is finite (with the pairs in ${\cal C}_v(L)$ bi-invariant
+under $L$, respectively under its image in a splitting of $\overline{L}$
+over a subgroup of finite index), and by finite sets $L$ of
+$K_v$-types if $v$ is archimedean (with the pairs in ${\cal C}_v(L)$
+having $K_v$-types in $L$, respectively in the corresponding genuine
+$\overline{K_v}$-types).
+\item[(LH1)] (Separation) For each $L$, and for each finite family
+$\sigma_1,\dots,\sigma_r$ of pairwise inequivalent irreducible
+admissible representations of $G(k_v)$ none of whose characters vanishes
+identically on ${\cal C}_v(L)$, the linear functionals
+$(f_v,\overline{f}_v)\longmapsto\tr \sigma_j(f_v)$ on
+${\cal C}_v(L)$ are linearly independent.
+\item[(LH2)] (Transfer) For each genuine irreducible unitary
+representation $\overline{\tau}$ of $\overline{G(k_v)}$, either
+$\tr \overline{\tau}(\overline{f}_v)=0$ for all
+$(f_v,\overline{f}_v)\in{\cal C}_v$, or there is an irreducible
+admissible representation $t_v(\overline{\tau})$ of $G(k_v)$ such that
+\[
+\tr \overline{\tau}(\overline{f}_v)=\tr t_v(\overline{\tau})(f_v)
+\qquad\text{for all }(f_v,\overline{f}_v)\in{\cal C}_v .
+\]
+Moreover, $t_v$ is injective on the set of $\overline{\tau}$ for which it
+is defined.
+\item[(LH3)] (Detection) $\tr \pi_v(f_v)\neq 0$ for some
+$(f_v,\overline{f}_v)\in{\cal C}_v$.
+\item[(LH4)] (Infinitesimal characters; $v$ archimedean only) For each
+infinitesimal character $\nu_v$ of $G(k_v)$, the genuine $\overline\tau$
+for which $t_v(\overline\tau)$ is defined and has infinitesimal character
+$\nu_v$ have only finitely many distinct infinitesimal characters.
+\end{enumerate}
+\end{hypothesis}
+
+For example, for the elliptic matchings of \S\ref{sec:realds}, a genuine
+discrete series representation of infinitesimal character $\overline\nu$
+is matched with a representation of infinitesimal character
+$2\overline\nu$ or $2\overline\nu\pm1$, so (LH4) holds for them.
+
+\begin{definition}\label{def:infchar}
+Let $\mathfrak{z}_\infty$ denote the center of the universal enveloping
+algebra of the complexified Lie algebra of
+$G_\infty=\prod_{v|\infty}G(k_v)$. Since $\overline{G_\infty}$ has the same
+Lie algebra, $\mathfrak{z}_\infty$ acts by a character (the infinitesimal
+character) on every irreducible admissible representation of $G_\infty$
+or of $\overline{G_\infty}$. For a cuspidal automorphic representation
+$\pi'$ of $G({\mathbb{A}})$, let $\nu_\infty(\pi')$ be the infinitesimal
+character of $\pi'_\infty=\otimes_{v|\infty}\pi'_v$.
+
+Suppose that, for each archimedean $v$, ${\cal C}_v$ satisfies (LH2), with
+transfer $t_v$. A genuine cuspidal automorphic representation
+$\overline\pi'$ of $\overline{G({\mathbb{A}})}$ {\bf lies over} the
+character $\nu$ of $\mathfrak{z}_\infty$ if $t_v(\overline\pi'_v)$ is
+defined for each archimedean $v$ and $\otimes_{v|\infty}t_v(\overline\pi'_v)$
+has infinitesimal character $\nu$. For global functions $f$ and genuine
+global functions $\overline f$, put
+\[
+\tr R_{cusp}^\nu(f)=\sum_{\pi':\ \nu_\infty(\pi')=\nu}m(\pi')\tr\pi'(f),
+\qquad
+\tr \overline{R}{}_{cusp}^{\,\nu}(\overline f)=
+\sum_{\overline\pi'\text{ lying over }\nu}m(\overline\pi')\tr\overline\pi'(\overline f).
+\]
+These are subseries of the absolutely convergent series for
+$\tr R_{cusp}(f)$ and $\tr\overline R_{cusp}(\overline f)$.
+\end{definition}
+
+\begin{example}
+Let $k={\mathbb Q}$, and let $\pi'$ be a cuspidal automorphic
+representation of $SL(2,{\mathbb A})$ occurring in the restriction of the
+representation of $GL(2,{\mathbb A})$ generated by the cusp form $\Delta$
+of weight $12$. Then $\pi'_\infty$ is one of the discrete series
+$\pi_{\pm11}$ (lowest $K$-types $\pm12$), and $\nu_\infty(\pi')$ is the
+infinitesimal character $11$. Take ${\cal C}_\infty$ to be one of the
+elliptic matchings of \S\ref{sec:realds}. By Lemma~\ref{lem:realds}, a
+genuine $\overline\pi'$ lies over $\nu=11$ only if
+$\overline\pi'_\infty=\overline\pi{}^{\pm}_{k/2}$ with $k-2=11$ (even
+matching) or with $k-1=11$ or $k-3=11$ (odd matchings). Since $k$ must
+be odd, only the even matching contributes, and then
+$\overline\pi'_\infty=\overline\pi{}^{\pm}_{13/2}$, of infinitesimal
+character $11/2$: the finite set allowed by (LH4) is $\{11/2\}$.
+\end{example}
+
+\begin{hypothesis}[global trace identity]\label{hyp:GH}
+For the given $S$ and $({\cal C}_v)_{v\in S}$, and for every character
+$\nu$ of $\mathfrak{z}_\infty$,
+\[
+\tr R_{cusp}^\nu(f)=\tr \overline{R}{}_{cusp}^{\,\nu}(\overline{f})
+\]
+for all $(S,{\cal C})$-corresponding pairs $(f,\overline{f})$.
+\end{hypothesis}
+
+If $(f,\overline f)$ is $(S,{\cal C})$-corresponding and $\overline\pi'$
+lies over no $\nu$, then some archimedean $\tr\overline\pi'_v$ vanishes on
+${\cal C}_v$ by (LH2), so $\tr\overline\pi'(\overline f)=0$. Summing
+Hypothesis~\ref{hyp:GH} over $\nu$ therefore gives
+$\tr R_{cusp}(f)=\tr\overline R_{cusp}(\overline f)$, which is the form
+of the hypothesis used in Draft~1.
+
+\begin{remark}\label{rem:why-refine}
+(Added in Draft~2.) (1) Draft~1 assumed only the unrefined identity
+$\tr R_{cusp}(f)=\tr\overline R_{cusp}(\overline f)$, and reduced it to a
+finite identity by a ``finiteness lemma'' asserting that only finitely
+many cuspidal representations have a vector fixed by a given open compact
+subgroup $L_f$ with $K_\infty$-types in a given finite set. That is
+false: for $k={\mathbb Q}$, $L_f=SL(2,\widehat{\mathbb Z})$, and the
+trivial $SO(2)$-type, there are infinitely many spherical Maass cusp forms
+of level one, with Laplace eigenvalues tending to infinity (Weyl's law
+for the cuspidal spectrum). What is true is the finiteness for a
+\emph{fixed infinitesimal character} (Lemma~\ref{lem:finiteness}), and
+Hypothesis~\ref{hyp:GH} is refined accordingly.
+
+(2) One would hope to derive the refined identity from the unrefined one
+by spectral multipliers at the archimedean places: for a $W$-invariant
+Paley--Wiener function $\alpha$ there is an operation
+$f_\infty\mapsto f_{\infty,\alpha}$ on $K_\infty$-finite functions in
+$C_c^\infty(G_\infty)$ with $\tr\pi(f_{\infty,\alpha})=\alpha(\nu_\pi)\tr\pi(f_\infty)$
+(Arthur's multipliers, \cite{APW}). If each archimedean class ${\cal C}_v$
+were stable under such multipliers, applied compatibly to $f_v$ and
+$\overline f_v$ (compatibility being governed by the relation between
+infinitesimal characters in (LH4)), then the unrefined identity would hold
+with $f$ replaced by $f_\alpha$ for all $\alpha$, and one could hope to
+isolate a single $\nu$ using the absolute convergence of the spectral
+expansions. Neither the stability of the classes nor the isolation
+argument is carried out here, so we assume the refined form.
+\end{remark}
+
+\begin{remark}\label{rem:GH}
+(1) Hypothesis~\ref{hyp:GH} is what a full comparison of the trace
+formulas of Chapter~\ref{ch:tf} would give, refined as in
+Remark~\ref{rem:why-refine}(2). Write the trace formula of
+$\overline{G({\mathbb{A}})}$ as
+\[
+\tr \;\overline{R}_{cusp}(\overline{f})+
+\sum_{\chi \in \overline{{\cal X}}-\overline{{\cal X}}(G)}
+J_\chi (\overline{f}) =\sum_{{\cal O}\in {\cal C}}J_{{\cal O}}(\overline{f}),
+\]
+and the trace formula of $G({\mathbb{A}})$ as
+\[
+\tr \;R_{cusp}(f)+
+\sum_{\chi \in {\cal X}-{\cal X}(G)}J_\chi(f)
+=\sum_{{\cal O}\in {\cal C}}J_{{\cal O}}(f).
+\]
+If the geometric sides agree term by term for corresponding pairs, then
+subtracting gives
+\begin{equation}\label{eq:decomp-measures}
+\tr \;\overline{R}_{cusp}(\overline{f})-\tr \;R_{cusp}(f)
+=\sum_{\chi \in {\cal X}-{\cal X}(G)}J_\chi (f)
+-\sum_{\chi \in \overline{{\cal X}}-\overline{{\cal X}}(G)}
+J_\chi(\overline{f}).
+\end{equation}
+(The 1995 draft had a plus sign in front of the second sum.)
+The unrefined identity then amounts to the vanishing of both sides
+of (\ref{eq:decomp-measures}). Langlands' decomposition-of-measures
+argument \cite{L4}, as adapted by Flicker \cite[\S\S 4.1--4.2]{Fl} (see
+also \cite[\S\S 10.5, 14.5]{R}), is designed to prove such a vanishing.
+The 1995 draft asserted that Flicker's argument applies almost verbatim
+to the present situation; this has not been checked.
+
+(2) A term-by-term comparison of the geometric sides requires matching
+of orbital integrals and of weighted orbital integrals (or, in the
+invariant trace formula, of the invariant distributions $I_M$) at every
+place. Chapter~\ref{ch:local} provides this only in part. For spherical
+functions outside $S$, the Satake isomorphism gives the matching of
+hyperbolic orbital integrals but not of elliptic ones
+(Remark~\ref{rem:satake-oi}); weighted orbital integrals of spherical
+functions are matched only for the unit elements
+(Remark~\ref{rem:weighted-units}), while Definition~\ref{def:corresponding}
+lets $f_v$ range over the whole spherical Hecke algebra for $v\notin S$;
+weighted orbital integrals cannot be matched for arbitrary corresponding
+pairs (Remark~\ref{rem:weighted-noninv}); and nothing is matched at the
+dyadic places. In particular, Hypothesis~\ref{hyp:GH} contains much of
+the global comparison that the 1995 project hoped to establish.
+\end{remark}
+
+\section{The main theorem}\label{sec:main}
+
+\begin{theorem}\label{thm:main}
+Let $\pi=\otimes_v\pi_v$ be a cuspidal automorphic representation of
+$G({\mathbb{A}})$ and let $S=S(\pi)$. Suppose that for each $v\in S$
+Hypothesis~\ref{hyp:LH} holds for $\pi_v$ with a class ${\cal C}_v$, and
+that Hypothesis~\ref{hyp:GH} holds for $S$ and $({\cal C}_v)_{v\in S}$.
+Then:
+\begin{enumerate}
+\item[(a)] $m(\pi)=1$;
+\item[(b)] there is a unique genuine cuspidal automorphic
+representation $\overline{\pi}=\otimes_v\overline{\pi}_v$ of
+$\overline{G({\mathbb{A}})}$ such that $\overline{\pi}_v$ corresponds to
+$\pi_v$ under the Satake correspondence of \S\ref{sec:spherical} for
+$v\notin S$, and $t_v(\overline{\pi}_v)\cong\pi_v$ for $v\in S$.
+\end{enumerate}
+\end{theorem}
+
+We shall use the following facts.
+
+\begin{lemma}[finiteness]\label{lem:finiteness}
+Let $L_f$ be an open compact subgroup of $G({\mathbb{A}}_f)$, $E$ a
+finite set of $K_\infty$-types, and $\nu$ a character of
+$\mathfrak z_\infty$. Then only finitely many cuspidal
+automorphic representations $\pi'$ of $G({\mathbb{A}})$, counted with
+multiplicity, have $\nu_\infty(\pi')=\nu$ and a nonzero vector which is
+$L_f$-fixed and whose $K_\infty$-types lie in $E$. The same holds for
+genuine cuspidal automorphic representations of
+$\overline{G({\mathbb{A}})}$, with $L_f$ replaced by an open compact
+subgroup of $\overline{G({\mathbb{A}}_f)}$ meeting $\mu_2$ trivially and
+$E$ by a finite set of genuine $\overline{K_\infty}$-types.
+\end{lemma}
+
+\begin{proof}
+Distinct copies of such representations in the cuspidal spectrum
+contribute linearly independent vectors to the space of cusp forms which
+are $L_f$-invariant, have $K_\infty$-types in $E$, and are annihilated by
+the kernel of $\nu$ in $\mathfrak z_\infty$. That space is
+finite-dimensional by Harish-Chandra's finiteness theorem \cite{HC68}
+(see also \cite{BJ}, \cite{MW}). For the cover, one reduces as usual to
+finitely many quotients $\Gamma\backslash\overline{G_\infty}$ with
+$\Gamma$ arithmetic, and Harish-Chandra's argument applies; we have not
+written out the details. Without the condition on $\nu$ the statement
+is false (Remark~\ref{rem:why-refine}(1)).
+\end{proof}
+
+\begin{lemma}[tensor products]\label{lem:tensor}
+For $v$ in a finite set $S$, let $V_v$ be a complex vector space and
+$\Lambda_v$ a finite linearly independent set of linear functionals on
+$V_v$. Then the functionals $\otimes_{v\in S}\lambda_v$
+($\lambda_v\in\Lambda_v$) on $\otimes_{v\in S}V_v$ are linearly
+independent.
+\end{lemma}
+
+\begin{proof} Choose $x_{\mu}\in V_v$ ($\mu\in\Lambda_v$) with
+$\lambda(x_\mu)=\delta_{\lambda\mu}$ for $\lambda,\mu\in\Lambda_v$, and
+evaluate a linear relation at $\otimes_v x_{\mu_v}$.
+\end{proof}
+
+Let ${\cal A}_0$ denote the space of genuine cusp forms on
+$\overline{G({\mathbb{A}})}$ (so that $\overline R_{cusp}$ acts on its
+completion), let $\Theta_0\subset{\cal A}_0$ be the closed span of the
+cuspidal elementary theta series, i.e.\ the theta series attached to the
+Weil representations $r_{\psi,\chi}$ of one-dimensional quadratic forms
+(\cite{GePS}, \cite{Ge2}), and let ${\cal A}_{00}$ be the orthogonal
+complement of $\Theta_0$ in ${\cal A}_0$. Waldspurger's multiplicity one
+theorem \cite{Wa1} (see also \cite{PS}) states that every irreducible
+genuine representation occurs in ${\cal A}_{00}$ with multiplicity at
+most one. It is a statement about ${\cal A}_{00}$, not ${\cal A}_0$; Draft~1
+quoted it for all of ${\cal A}_0$.
+
+\begin{lemma}\label{lem:A00}
+Let $\pi$ be a cuspidal automorphic representation of $G({\mathbb{A}})$,
+let $S\supset S(\pi)$ be finite, and let $\overline{\pi}'$ be a genuine
+cuspidal automorphic representation of $\overline{G({\mathbb{A}})}$ such
+that $\overline{\pi}'_v$ corresponds to $\pi_v$ under the Satake
+correspondence for every $v\notin S$. Then no irreducible constituent of
+$\Theta_0$ is isomorphic to $\overline\pi'$. Consequently every copy of
+$\overline\pi'$ in the genuine cuspidal spectrum lies in ${\cal A}_{00}$,
+and $m(\overline{\pi}')\leq 1$.
+\end{lemma}
+
+\begin{proof}
+(Added in Draft~2.) We use three facts.
+
+(i) Every irreducible constituent $\sigma$ of $\Theta_0$ is a quotient of
+a global Weil representation $\otimes_v r_{\psi_v,\chi_v}$, and so
+$\sigma_v$ is the even part $r^+_{\psi_v,\chi_v}$ of the local Weil
+representation for almost all $v$ \cite{GePS}, \cite{Ge2}.
+
+(ii) Let $v$ be odd, with $\psi_v$ of conductor ${\cal O}_v$ and $\chi_v$
+unramified. By formula (iii) of \S\ref{sec:weil}, the functional
+$\phi\mapsto\phi(0)$ identifies the Jacquet module of $r^+_{\psi_v,\chi_v}$
+with the genuine character $(h(a),\zeta)\mapsto\zeta|a|^{1/2}\omega(a)$ of
+$\overline{A(k_v)}$. After normalizing by $\delta_B^{-1/2}(h(a))=|a|^{-1}$,
+Frobenius reciprocity embeds $r^+_{\psi_v,\chi_v}$ (which is irreducible
+and has a vector fixed by $\kappa_v(K_{0,v})$, namely the characteristic
+function of ${\cal O}_v$) in $I_A(\overline\chi)$ with
+$|\overline\chi(a(x),1)|=|x|^{-1/2}$. Under the Satake correspondence of
+Definition~\ref{def:satake-corr}, which does not change $\chi_1$ on
+$A_2(k_v)$, it therefore corresponds to the spherical constituent of
+$I_A(\chi)$ for a character $\chi$ with $|\chi(a(x))|=|x|^{\pm1/2}$.
+
+(iii) By Labesse--Langlands \cite{LL}, $\pi$ is a constituent of the
+restriction to $SL(2,{\mathbb{A}})$ of a cuspidal automorphic
+representation $\Pi$ of $GL(2,{\mathbb{A}})$. At each place $v$ where $\Pi_v$
+is unramified, $\Pi_v\cong I(\mu_1,\mu_2)$ with
+$|\mu_i(x)|=|x|^{\pm s_v}$ and $|s_v|<1/4$ \cite{GJ78}. Hence $\pi_v$ is
+the spherical constituent of $I_A(\chi)$ with $\chi(a(x))=\mu_1\mu_2^{-1}(x)$,
+and $|\chi(a(x))|=|x|^{\pm 2s_v}$ with $|2s_v|<1/2$.
+
+Now let $\sigma$ be an irreducible constituent of $\Theta_0$. Choose an odd
+place $v\notin S$ at which $\Pi_v$, $\psi_v$, $\chi_v$ are unramified and
+$\sigma_v\cong r^+_{\psi_v,\chi_v}$; all but finitely many places qualify.
+If $\sigma\cong\overline\pi'$, then $r^+_{\psi_v,\chi_v}$ would correspond
+to $\pi_v$ under the Satake correspondence, which by (ii) and (iii)
+is impossible, because a spherical representation determines the
+character $\chi$ of the principal series containing it up to
+$\chi\mapsto\chi^{-1}$. Hence $\overline\pi'$ is isomorphic to no
+constituent of $\Theta_0$. Since $\Theta_0$ is a closed invariant
+subspace of the (discretely decomposable) genuine cuspidal spectrum, the
+orthogonal projection to $\Theta_0$ of any copy of $\overline\pi'$ is
+zero, so every copy lies in ${\cal A}_{00}$. Waldspurger's theorem gives
+$m(\overline\pi')\leq1$.
+\end{proof}
+
+\begin{remark}
+The proof of Lemma~\ref{lem:A00} uses the bound $|s_v|<1/4$ only through
+the strict inequality $|2s_v|<1/2$; any bound toward the Ramanujan
+conjecture for $GL(2)$ that is strictly better than the trivial one
+$|s_v|<1/2$, and that holds at infinitely many places, would do. The
+normalizations in (ii) (of the Weil representation and of the
+correspondence of Definition~\ref{def:satake-corr}) should be rechecked
+against \cite{Ge2} and \cite{GePS}.
+\end{remark}
+
+\medskip
+
+\begin{proof}[Proof of Theorem~\ref{thm:main}]
+Let $\nu=\nu_\infty(\pi)$.
+For each $v\in S$ use (LH3) and (LH0) to fix an index $L_v$ such that
+$\tr \pi_v$ does not vanish identically on ${\cal C}_v(L_v)$.
+Restrict attention to $(S,{\cal C})$-corresponding pairs with
+$(f_v,\overline{f}_v)\in{\cal C}_v(L_v)$ for $v\in S$. Let ${\cal H}^S$ be
+the restricted tensor product of the spherical Hecke algebras
+${\cal H}(G(k_v),K_{0,v})$ for $v\notin S$; for $h\in{\cal H}^S$, let
+$\overline{h}$ denote the corresponding genuine function, and write
+$f=f_S\otimes h$, $\overline{f}=\overline{f}_S\otimes\overline{h}$.
+
+{\em Step 1 (finiteness).} If $\tr \pi'(f)\neq 0$ for some such $f$,
+then $\pi'_v$ has a nonzero $K_{0,v}$-fixed vector for $v\notin S$, and
+$\pi'_S=\otimes_{v\in S}\pi'_v$ has a nonzero vector fixed by
+$\prod_{v\in S, v<\infty}L_v$ with $K_\infty$-types in $\prod_{v|\infty}L_v$.
+By Lemma~\ref{lem:finiteness}, only a finite set ${\cal A}$ of cuspidal
+automorphic representations $\pi'$ with $\nu_\infty(\pi')=\nu$ can
+contribute to $\tr R^\nu_{cusp}(f)$. Similarly, a genuine $\overline\pi'$
+contributing to $\tr\overline R{}^{\,\nu}_{cusp}(\overline f)$ has a nonzero
+vector fixed by the image of a splitting of an open compact subgroup of
+$\overline{G({\mathbb A}_f)}$ determined by the $L_v$ ($v\in S$ finite) and
+the $\kappa_v(K_{0,v})$ ($v\notin S$), with genuine $\overline{K_\infty}$-types
+in a finite set determined by the $L_v$ ($v|\infty$); and since it lies
+over $\nu$, (LH4) allows only finitely many infinitesimal characters for
+$\overline\pi'_\infty$. By Lemma~\ref{lem:finiteness} again, only a finite
+set $\overline{{\cal A}}$ of such $\overline\pi'$ can contribute.
+Hypothesis~\ref{hyp:GH} for this $\nu$
+therefore reads
+\begin{equation}\label{eq:finite-identity}
+\sum_{\pi'\in{\cal A}}m(\pi')\,\omega_{\pi'}^S(h)
+\prod_{v\in S}\tr \pi'_v(f_v)
+=\sum_{\overline{\pi}'\in\overline{{\cal A}}}m(\overline{\pi}')\,
+\omega_{\overline{\pi}'}^S(\overline{h})
+\prod_{v\in S}\tr \overline{\pi}'_v(\overline{f}_v),
+\end{equation}
+where $\omega_{\pi'}^S$ (resp. $\omega_{\overline{\pi}'}^S$) is the
+character of ${\cal H}^S$ (resp. of its genuine analog) by which it acts
+on the line of spherical vectors of $\otimes_{v\notin S}\pi'_v$ (resp. of
+$\otimes_{v\notin S}\overline{\pi}'_v$).
+
+{\em Step 2 (isolating the components outside $S$).} By
+\S\ref{sec:spherical}, $\omega_{\overline{\pi}'}^S(\overline{h})$ is a
+character of ${\cal H}^S$ as a function of $h$, and it equals
+$\omega_{\pi''}^S(h)$ for the unramified representation
+$\otimes_{v\notin S}\pi''_v$ corresponding to
+$\otimes_{v\notin S}\overline{\pi}'_v$ under the Satake correspondence.
+Fix $f_S$ and regard both sides of (\ref{eq:finite-identity}) as
+functions of $h$. Distinct characters of an algebra are linearly
+independent (Artin), so, after grouping the finitely many terms
+according to their characters, we may equate the coefficients of the
+character $\omega_\pi^S$. Since a $K_{0,v}$-spherical irreducible
+representation is determined by its Hecke character, and the Satake
+correspondence is a bijection on spherical representations, this gives
+\begin{equation}\label{eq:S-identity}
+\sum_{\substack{\pi'\in{\cal A}\\ \pi'_v\cong\pi_v\ (v\notin S)}}
+m(\pi')\prod_{v\in S}\tr \pi'_v(f_v)
+=\sum_{\substack{\overline{\pi}'\in\overline{{\cal A}}\\
+\overline{\pi}'_v\leftrightarrow\pi_v\ (v\notin S)}}
+m(\overline{\pi}')\prod_{v\in S}\tr \overline{\pi}'_v(\overline{f}_v),
+\end{equation}
+where $\overline{\pi}'_v\leftrightarrow\pi_v$ means that they correspond
+under the Satake correspondence. This holds for all
+$(f_v,\overline{f}_v)\in{\cal C}_v(L_v)$, $v\in S$, and hence, by
+linearity, on $\otimes_{v\in S}{\cal C}_v(L_v)$.
+
+{\em Step 3 (transfer).} By (LH2), each term on the right of
+(\ref{eq:S-identity}) either vanishes identically or equals
+$m(\overline{\pi}')\prod_{v\in S}\tr t_v(\overline{\pi}'_v)(f_v)$.
+The representations $\overline{\pi}'$ occurring on the right are
+isomorphic to one another outside $S$ (the genuine Satake correspondence
+is injective), so two distinct ones differ at some $v\in S$, and by the
+injectivity of $t_v$ the corresponding tuples
+$(t_v(\overline{\pi}'_v))_{v\in S}$ are distinct. On the left, distinct
+$\pi'$ occurring in (\ref{eq:S-identity}) have distinct tuples
+$(\pi'_v)_{v\in S}$, since they agree outside $S$.
+
+{\em Step 4 (comparison of coefficients).} For each $v\in S$, let
+$\Lambda_v$ be the set of distinct representations of $G(k_v)$ which
+occur as $\pi'_v$ on the left or as $t_v(\overline{\pi}'_v)$ on the right
+of (\ref{eq:S-identity}), and whose characters do not vanish identically
+on ${\cal C}_v(L_v)$; it is finite by Step 1. Terms involving some other
+representation vanish on $\otimes_{v\in S}{\cal C}_v(L_v)$. By (LH1), the
+characters of the elements of $\Lambda_v$ are linearly independent on
+${\cal C}_v(L_v)$, so by Lemma~\ref{lem:tensor} the product functionals
+are linearly independent on $\otimes_{v\in S}{\cal C}_v(L_v)$. By the
+choice of the $L_v$, $\pi_v\in\Lambda_v$ for every $v\in S$. Comparing
+the coefficients of $\otimes_{v\in S}\tr \pi_v$ on the two sides of
+(\ref{eq:S-identity}) gives
+\[
+m(\pi)=\sum_{\overline{\pi}'}m(\overline{\pi}'),
+\]
+the sum over the genuine cuspidal automorphic representations
+$\overline{\pi}'$ in $\overline{\cal A}$ with
+$\overline{\pi}'_v\leftrightarrow\pi_v$ for
+$v\notin S$ and $t_v(\overline{\pi}'_v)\cong\pi_v$ for $v\in S$. (Every
+such $\overline\pi'$ lies over $\nu$, so it does lie in $\overline{\cal A}$.)
+By Step 3, there is at most one such $\overline{\pi}'$, and by
+Lemma~\ref{lem:A00}, $m(\overline{\pi}')\leq 1$. Hence $m(\pi)\leq 1$.
+Since $\pi$ is automorphic, $m(\pi)\geq 1$, which proves (a). Then the
+sum on the right equals $1$, so it has exactly one term, which proves (b).
+\end{proof}
+
+\begin{remark}
+Hypothesis~\ref{hyp:GH} is only used for $\nu=\nu_\infty(\pi)$ and for
+pairs with $f_S$ in $\otimes_{v\in S}{\cal C}_v(L_v)$ and arbitrary
+$h\in{\cal H}^S$.
+\end{remark}
+
+\section{The local hypothesis at hyperspecial places}
+
+\begin{proposition}\label{prop:LH-spherical}
+Let $v$ be an odd finite place, $i\in\{0,1\}$, and let $\pi_v$ be an
+irreducible unitary representation of $G(k_v)$ with a nonzero
+$K_{i,v}$-fixed vector. Let ${\cal C}_v$ be the space of pairs
+$(f_v,\overline{f}_v)$ with $f_v\in{\cal H}(G(k_v),K_{i,v})$ and
+$\overline{f}_v\in{\cal H}(\overline{G(k_v)},K_{i,v})_{gen}$
+corresponding under the Satake isomorphism (Definition~\ref{def:satake-corr};
+for $i=1$, transported from $i=0$ by conjugation by $w$ in the
+2-fold cover of $GL(2,k_v)$ of \S\ref{sec:local}). Then
+Hypothesis~\ref{hyp:LH} holds for $\pi_v$ with the class ${\cal C}_v$.
+\end{proposition}
+
+\begin{proof} (LH0) holds with the single index $L=K_{i,v}$. If $\sigma$ is an
+irreducible admissible representation of $G(k_v)$ whose character does
+not vanish on ${\cal H}(G(k_v),K_{i,v})$, then $\sigma$ has a
+$K_{i,v}$-fixed line, on which ${\cal H}(G(k_v),K_{i,v})$ acts by an
+algebra character $\omega_\sigma$, and $\tr \sigma(f)=\omega_\sigma(f)$
+for $f\in{\cal H}(G(k_v),K_{i,v})$. Since $\sigma$ is determined by
+$\omega_\sigma$, inequivalent such $\sigma$ give distinct characters,
+which are linearly independent (Artin). This proves (LH1). Similarly,
+if $\overline{\tau}$ is a genuine irreducible representation whose
+character does not vanish on the genuine spherical Hecke algebra, then
+$\tr \overline{\tau}(\overline{f})=\omega_{\overline{\tau}}(\overline{f})$
+for an algebra character $\omega_{\overline{\tau}}$. Composing with the
+Satake isomorphism of \S\ref{sec:spherical} gives an algebra character
+of ${\cal H}(G(k_v),K_{i,v})$, which is $\omega_\sigma$ for a unique
+spherical irreducible representation $\sigma=t_v(\overline{\tau})$.
+Since $\overline{\tau}$ is determined by $\omega_{\overline{\tau}}$,
+$t_v$ is injective. This proves (LH2). Finally, (LH3) holds with
+$f_v$ the unit element, since $\tr \pi_v(f_v)=1$. Condition (LH4) concerns
+archimedean places only.
+\end{proof}
+
+\begin{corollary}\label{cor:main}
+Suppose that, for each archimedean or dyadic place $v$, and for each
+irreducible unitary representation $\pi_v$ of $G(k_v)$ that occurs as a
+local component of a cuspidal automorphic representation, there is a
+class ${\cal C}_v$ for which Hypothesis~\ref{hyp:LH} holds for $\pi_v$,
+and that Hypothesis~\ref{hyp:GH} holds for these classes together with
+those of Proposition~\ref{prop:LH-spherical}. Then every cuspidal
+automorphic representation $\pi$ of $G({\mathbb{A}})$ such that, at each
+odd place $v$, $\pi_v$ has a nonzero vector fixed by $K_{0,v}$ or by
+$K_{1,v}$, occurs with multiplicity one.
+\end{corollary}
+
+\begin{proof} Combine Theorem~\ref{thm:main} with
+Proposition~\ref{prop:LH-spherical}.
+\end{proof}
+
+\section{What the local chapters provide toward Hypothesis LH}
+\label{sec:LH-status}
+
+We record what Chapters~\ref{ch:reps}--\ref{ch:local} contribute to
+Hypothesis~\ref{hyp:LH} at the places of $S(\pi)$, and what is missing.
+
+\begin{enumerate}
+\item {\em Odd places, $\pi_v$ hyperspecial-spherical.} Hypothesis LH
+holds (Proposition~\ref{prop:LH-spherical}). This covers the two
+components of a reducible unramified unitary principal series. (The
+1995 draft treated the non-$K_{0,v}$-spherical component by conjugating
+by an element of the cover of $GL(2,k_v)$; this is the case $i=1$ of
+Proposition~\ref{prop:LH-spherical}.)
+
+\item {\em Odd places, $\pi_v$ a ramified principal series.}
+Proposition~\ref{prop:hyp-ps}, with the corrected correspondence of
+characters of \S\ref{sec:charsA}, gives the character identity
+$\tr I_A(\overline{\chi})(\overline{f})=\tr I_A(\chi)(f)$ for
+functions corresponding oddly on the hyperbolic set, when
+$\chi\neq\chi^w$. For (LH2) one would also need to control the traces of
+the genuine discrete series representations on that class, and for
+(LH1) a separation statement; neither is established here.
+When $\chi=\chi^w$ is ramified, $I_A(\chi)$ is reducible and its two
+components are not separated by such functions.
+
+\item {\em Odd places, $\pi_v$ supercuspidal.} Chapter~\ref{ch:sc} and
+\S\ref{sec:elliptic} propose a correspondence through functions
+corresponding oddly on the elliptic set (Lemma~\ref{lem:ell-odd}, which
+requires the character relation on every anisotropic Cartan subgroup).
+See Remark~\ref{rem:sc-caveat} for a correction needed in the character
+relation of Chapter~\ref{ch:sc}. For (LH2) one would also need to
+control the traces of the genuine special and non-tempered
+representations on that class.
+
+\item {\em Odd places, $\pi_v$ special.} See
+Remark~\ref{rem:savin-caveat}.
+
+\item {\em Archimedean places.} \S\ref{sec:realA} and
+\S\ref{sec:realds} give character identities for principal series
+(through the hyperbolic matching) and for discrete series and limits of
+discrete series (through the three elliptic matchings of
+Lemma~\ref{lem:realds}, for functions with vanishing hyperbolic orbital
+integrals). Condition (LH4) holds for these matchings (see the remark
+following Hypothesis~\ref{hyp:LH}), and for the hyperbolic matching,
+since corresponding principal series have the same infinitesimal
+character. A verification of (LH1)--(LH3) for these classes is not
+carried out here. Complex places are not treated.
+
+\item {\em Dyadic places.} Nothing is established; see
+\S\ref{sec:dyadic}.
+\end{enumerate}
+
+The trivial representation never occurs as a local component of a
+cuspidal automorphic representation of $G({\mathbb{A}})$ (a consequence of
+the strong approximation theorem), so it need not be considered.
+
+\section{Remarks on the 1995 argument}\label{sec:1995-argument}
+
+The 1995 draft stated an unconditional theorem asserting, for each
+``global transfer'' (a choice of local matchings at all places), a
+correspondence between cuspidal automorphic representations of
+$G({\mathbb{A}})$ and genuine ones of $\overline{G({\mathbb{A}})}$, and
+deduced multiplicity one. Besides its dependence on the local results
+discussed in \S\ref{sec:LH-status} and on the trace identity of
+Remark~\ref{rem:GH}, the final step of that argument had two gaps.
+
+\begin{enumerate}
+\item It fixed a finite set $V$ of places containing the archimedean
+places, derived an identity of the form (\ref{eq:S-identity}) with
+$S$ replaced by $V$, and then took $V=\{v_0\}$ for a single finite
+unramified place $v_0$. This is not permitted, since $V$ must contain the
+archimedean places, and the character identities it then used were only
+assumed at finite places.
+
+\item To obtain a single genuine representation on the right side of
+the identity, it used a count attributed to Waldspurger \cite{Wa2}
+(via \cite{PS}) of the genuine cuspidal representations
+$\overline{\pi}'$ with $\overline{\pi}'_v\cong\overline{\pi}_v$ for all
+$v\notin V$: namely $1$ if $\Sigma\subset V$ and
+$2^{|\Sigma|-|\Sigma\cap V|-1}$ otherwise, where $\Sigma$ is the set of
+places where $\overline{\pi}_v$ is a discrete series representation and
+$|\Sigma\cap V|$ is assumed even. But $V$ was chosen to contain at most
+one place of $\Sigma$, so the count as stated is $2^{|\Sigma|-1}$, which
+is greater than $1$ as soon as $|\Sigma|\geq 2$.
+\end{enumerate}
+
+The proof of Theorem~\ref{thm:main} avoids both points: the set $S$ is
+never shrunk, and uniqueness on the metaplectic side comes from the
+injectivity in (LH2) together with Waldspurger's multiplicity one
+theorem, rather than from a count of near-equivalent representations.
+
+%% ===== end aabook6.tex =====
+
+
+%% ===== begin aabookrf.tex =====
+\begin{thebibliography}{99}
+
+\bibitem[Ad1]{Ad1} J. Adams, ``Character of the oscillator representation'',
+preprint (to appear in Isr. J. Math.)
+
+\bibitem[Ad2]{Ad2} -------,
+``Lifting of characters on orthogonal and metaplectic groups'',
+Duke Math. J. \underline{92} (1998) 129--178
+
+%\bibitem[Ad3]{Ad3} -------, Notes on the Flicker correspondence, 1995
+
+\bibitem[Ar]{Ar} Ariturk, ``On the composition series of principal series
+representations of a three-fold covering group of $SL(2,K)$'', Nagoya Math
+J. \underline{77}(1980)177-196
+
+%\bibitem[A1]{A1} J. Arthur,
+%``The Selberg trace formula for $F$-rank one groups'', Ann.
+%Math. \underline{100}(1974)326-385
+
+\bibitem[A1]{A2} ------,
+``A trace formula for reductive groups, I : terms associated to
+classes in $G(\mathbb{Q})$'', Duke Math. J. \underline{45} (1978)911-952
+
+\bibitem[A2]{A3}  ------,
+``A trace formula for reductive groups, II : applications of a
+truncation operator'', Comp. Math. \underline{40} (1980)87-121
+
+%\bibitem[A4]{A4} ------,``Eisenstein series and the trace formula'', in
+%\underline{Automorphic forms, }
+%\underline{Representations, } \underline{and
+%L-functions, vol. I}, 1979 Corvallis Conference, ed. A. Borel, W. Casselman,
+%Proc. Symp. Pure Math. vol 33, AMS, 1979
+
+%\bibitem[A5]{A5} ------,
+%``The trace formula for non-compact quotient'', Proc. Inter.
+%Cong. Math., Warsaw, Poland, 1983
+
+\bibitem[A3]{A6} ------, ``The trace formula in invariant form'', Ann. Math.
+\underline{114}(1981)
+
+\bibitem[A4]{A7} ------, ``The local behaviour of weighted orbital integrals'',
+Duke Math. J. \underline{56}(1988)223-293
+
+%\bibitem[A8]{A8} ------, ``A measure on the unipotent variety'', Can. J. Math.
+%\underline{37}(1985)1237-1274
+
+%\bibitem[A9]{A9} ------, ``The invariant trace formula, I. Local theory'',
+%J.A.M.S.\underline{1}(1988)323-383
+
+%\bibitem[A10]{A10} ------, ``The invariant trace formula, II. Global theory'',
+%J.A.M.S.\underline{1}(1988)501-554
+
+%\bibitem[A11]{A11} ------, ``Intertwining operators and residues, I: weighted
+%characters'', J. Func. Anal.\underline{84}(1989)19-84
+
+%\bibitem[A12]{A12} ------, ``A family of distributions obtained from
+%orbits'', Can. J. Math. \underline{38}(1986)179-214
+
+%\bibitem[A13]{A13} ------, ``A family of distributions obtained from
+%Eisenstein series, I'', preprint
+
+%\bibitem[A14]{A14} ------, ``A family of distributions obtained from
+%Eisenstein series, II,'' preprint
+
+\bibitem[A5]{A15} ------,``The trace formula for reductive groups,'' in
+\underline{Journ\'ees Automorphes}, Publ. Math. Univ. Paris VII,
+U.E.R. Math, 1983
+
+%\bibitem[A16]{A16} ------,``On the Fourier transform of weighted
+%orbital integrals,'' preprint
+
+\bibitem[APW]{APW} J. Arthur, ``A Paley--Wiener theorem for real reductive
+groups'', Acta Math. \underline{150} (1983) 1--89
+
+\bibitem[AC]{AC} ----- and L. Clozel, \underline{Simple algebras,
+base change, and the advanced} \underline{theory of the trace formula}
+Annals of Math. Studies, \underbar{120}, Princeton Univ. Press
+
+%\bibitem[As]{As} M. Assem,
+%``The Fourier transform and some character formulae for p-adic
+%$SL(\ell )$, $\ell $ a prime'', preprint
+
+%\bibitem[Ba]{Ba} G. Bachman,
+%\underline{Elements} \underline{of} \underline{abstract}
+%\underline{harmonic} \underline{analysis}, Academic Press, New York, 1965
+
+%\bibitem[B]{B} J. Bernstein, ``All reductive p-adic groups are tame'',
+%Funct. Anal. Appl. \underline{8}(1974)91-93
+
+%\bibitem[BD]{BD} ----, ``Le centre de Bernstein'', (notes by P. Deligne),
+%in \underline{Repr\'esentations} \underline{des}
+%\underline{groupes} \underline{r\'eductifs}
+%\underline{sur} \underline{un} \underline{corp} \underline{local},
+%Hermann, Paris, 1984
+
+%\bibitem[BDK]{BDK} J. Bernstein, P. Deligne, D. Kazhdan, ``Trace
+%Paley-Wiener theorem for
+%reductive p-adic groups'', J. d'Anal. Math. \underline{47}(1986)180-192
+
+%\bibitem[BZ1]{BZ1} J. Bernstein, A. Zelevinski, ``Representations of
+%the group $GL(n,F)$,
+%where $F$ is a non-archimedean local field'', Russian Math Surveys
+%\underline{31}(1976)1-68
+
+%\bibitem[BZ2]{BZ2} ----, ``Induced representations of reductive p-adic
+%groups, I'', Ann. scient. \'Ec. norm. Sup. \underline{10}(1977)441-472
+
+\bibitem[Blas]{Blas} D. Blasius, ``On multiplicities for $SL(n)$'',
+Israel J. Math. \underbar{88}(1994)237-251
+
+\bibitem[Bl]{Bl} C. Blondel, ``Les repr\'esentations supercuspidales
+des groupes
+m\'etaplectiques sur GL(2) et leurs caract\'eres'',
+Bull de la Soc. Math. France, Memoir 18, 1985
+
+%\bibitem[Bou]{Bou} A. Bouaziz, ``Int\'egrales orbitales sur les groupes
+%de Lie r\'eductifs'', Ann. Sc. \'Ec. Norm. Sup. \underline{27}(1994)573-609
+
+\bibitem[Bo]{Bo} A. Borel, et al, \underline{Seminar in algebraic groups and
+related finite groups}, Springer LNM \underline{131}, 1970
+
+\bibitem[BJ]{BJ} A. Borel and H. Jacquet, ``Automorphic forms and automorphic
+representations'', in \underbar{Automorphic} \underbar{forms},
+\underbar{representations}, \underbar{and} \underbar{L-functions},
+vol I, ed. A. Borel, W. Casselman, Proc. Symp. Pure Math. 33, AMS,
+Providence, RI, 1979
+
+\bibitem[CZ]{CZ} J. Chai and Q. Zhang, ``A strong multiplicity one theorem
+for $SL_2$'', Pacific J. Math. \underline{285} (2016) 345--374
+
+
+\bibitem[Car]{C} P. Cartier, ``Representations of p-adic groups: a survey'',
+in \underbar{Automorphic} \underbar{forms},
+\underbar{representations}, \underbar{and} \underbar{L-functions},
+vol I, ed. A. Borel, W. Casselman, AMS, Providence, RI, 1979
+
+%\bibitem[Ca]{Ca} W. Casselman, ``Introduction to the theory of admissible
+%representations on reductive p-adic groups'', preprint
+
+%\bibitem[Cl]{Cl} L. Clozel, ``Invariant harmonic analysis
+%on the Schwartz space of a
+%reductive p-adic group'', in \underbar{Harmonic} \underbar{analysis} %
+%\underbar{on} \underbar{reductive} \underbar{groups}, ed. W. Barker, P.
+%Sally, Birkh\"auser, Boston, 1991
+
+%\bibitem[CD]{CD} ------ and P. Delorme, ``Le th\'eor\`eme de Paley-Wiener
+%invariant pour les groupes de Lie reductif, II'',
+%Ann. Scient. Ec. Norm. Sup., \underline{23}(1990)193-228
+
+%\bibitem[D]{D} J. Dixmier, \underbar{$C^{*}$-algebras}, North-Holland,
+%Amsterdam, 1977
+
+%\bibitem[Fe]{Fe} J. Fell, ``$C^{*}$-algebras with smooth dual'', Ill. J.
+%Math. \underline{4}(1960)221-230
+
+%\bibitem[Fla]{F} D. Flath, ``Decomposition of representations into tensor
+%products'', in \underline{Automorphic forms, }
+%\underline{Representations, } \underline{and
+%L-functions}, 1979 Corvallis Conference, ed. A. Borel, W. Casselman,
+%Proc. Symp. Pure Math. vol 33, AMS, 1979
+
+\bibitem[Fl]{Fl} Y. Flicker, ``Automorphic forms on covering groups of
+$GL(2)$'', Inv
+Math \underline{57}(1980)119-182
+
+%\bibitem[Fr]{Fr} S. Franklin, ``The reducible principal series of
+%SL(2) over a p-adic field'', Thesis, Univ. Chicago, 1971
+
+\bibitem[Ge1]{Ge1} S. Gelbart, \underline{Automorphic forms on adele groups},
+Annals of
+Math. Studies, Princeton Univ. Press, Princeton, 1975
+
+\bibitem[Ge2]{Ge2} S. Gelbart, \underline{Weil's representation and the
+spectrum of the metaplectic} \underline{group},
+SLN Math \underline{530}, 1976
+
+\bibitem[GJ]{GJ} S. Gelbart and H. Jacquet,
+``Forms of $GL(2)$ from the analytic
+point of view'', in \underline{Automorphic forms},
+\underline{representations}, and \underline{L-functions},
+(ed. A. Borel, W. Casselman), Proc. Symp. Pure Math, vol 33, AMS, 1979
+
+%\bibitem[GeKn]{GeKn} ------ and T. Knapp, ``L-indistinguishability and R
+%groups for the special linear group'', Adv. Math. 43(1982)101-121
+
+\bibitem[GJ2]{GJ78} S. Gelbart and H. Jacquet, ``A relation between
+automorphic representations of $GL(2)$ and $GL(3)$'', Ann. Sci. \'Ec.
+Norm. Sup. \underline{11} (1978) 471--542
+
+\bibitem[GePS]{GePS} S. Gelbart and I. Piatetski-Shapiro, ``Distinguished
+representations and modular forms of half-integral weight'', Invent.
+Math. \underline{59} (1980) 145--188
+
+\bibitem[GPS]{GPS} S. Gelbart and I. Piatetski-Shapiro, ``Some remarks
+on metaplectic cusp
+forms and the correspondences of Shimura and Waldspurger'', Israel
+J. Math.
+\underline{44}(1983)97-126
+
+\bibitem[GS]{GS} ------ and P. Sally, ``Intertwining operators and
+automorphic forms on the metaplectic group'', Proc. Nat. Acad. Sci.
+\underline{72}(1975)1406-1410
+
+%\bibitem[GG]{GG} I. M. Gelfand, M. I. Graev,
+%``Representations of a group of the second
+%order with elements from a locally compact field'', Russian Math. Surveys,
+%18(1963)29-100
+
+%\bibitem[GGPS]{GGPS} ------ and I. Piatetski-Shapiro,
+%\underline{Representation
+%theory} \underline{and} \underline{automorphic functions}, W. B. Saunders,
+%Philadelphia, 1969
+
+%\bibitem[Go1]{Go1} R. Godement, ``Domaines fondamentaux des groupes
+%arithm\'etiques'', Sem. Bourbaki, no. 257, 1962/63
+
+%\bibitem[Go2]{Go2} ------, ``The spectral decomposition of cusp forms'', in
+%\underline{Algebraic} \underline{groups}
+%\underline{and} \underline{discontinuous}
+%\underline{subgroups}, Proc Symp Pure Math, vol. 9, AMS, Providence, 1966
+
+%\bibitem[Go3]{Go3} ------, ``Analyse spectrale des functions modulaires'',
+%Sem Bourbaki, no 278, 1964/65
+
+\bibitem[HC1]{HC} Harish-Chandra, \underline{Harmonic analysis on
+reductive p-adic
+groups}, (notes by G. van Dijk), SLN Math \underline{162}, 1970
+
+\bibitem[HC2]{HC2} -------, \underbar{Collected Works of
+Harish-Chandra, vol III}, (ed. V. Varadarajan et al), Springer-Verlag
+
+\bibitem[HC3]{HC68} -------, \underline{Automorphic forms on semisimple
+Lie groups}, (notes by J. G. M. Mars), SLN Math \underline{62}, 1968
+
+%\bibitem[H1]{H1} L. H\"ormander,
+%\underbar{An} \underbar{introduction} \underbar{to}
+%\underbar{complex} \underbar{analysis} \underbar{in}
+%\underbar{several} \underbar{complex} \underbar{variables},
+%2nd edition, North-Holland, Amsterdam, 1973
+
+%\bibitem[H2]{H2} -----, \underbar{The} \underbar{analysis}
+%\underbar{of} \underbar{linear} \underbar{partial}
+%\underbar{differential} \underbar{operators}, \underbar{I},
+%Springer-Verlag, New York, 1983
+
+%\bibitem[HT]{HT} R. Howe, E. C. Tan,
+%\underline{Non-abelian harmonic analysis}, Springer-Verlag, 1992
+
+\bibitem[H]{H} R. Howe, ``Character of the oscillator representation'',
+(appendix to ``Elements of Oscillator Representations'',
+unpublished notes)
+
+\bibitem[HM]{HM} R. Howe (with the collaboration of A. Moy),
+\underbar{Harish-Chandra}
+\newline
+\underbar{homomorphisms} \underbar{for}
+\underbar{p-adic} \underbar{groups}, CBMS \underbar{59}, AMS (1985).
+
+%\bibitem[Hu]{Hu} J. E. Humphreys, \underline{Arithmetic groups}, Springer
+%Lecture Notes in Math., vol. \underline{789} (1980)
+
+\bibitem[JL]{JL} H. Jacquet and R. Langlands,
+\underline{Automorphic} \underline{forms}
+\underline{on} \underline{$GL(2)$}, Springer Lecture Notes in Math.,
+vol 114, 1970
+
+\bibitem[J1]{J} D. Joyner, ``The metaplectic analog of of Kazhdan's
+endoscopic lift'', Israel J. Math. \underline{66}(1988)113-154
+
+\bibitem[J2]{J2} ------, ``An application of Arthur's invariant
+trace formula to $SL(2)$'', preprint, Feb/1996
+
+\bibitem[J3]{J3} ------, ``A correspondence for the generalized Hecke
+algebra of the metaplectic cover $\overline{SL(2,F)}$, $F$ p-adic'',
+New York J. Math. \underbar{4} (1998); revised version in preparation (2026)
+
+%\bibitem[K]{K} D. Kazhdan,
+%``Cuspidal geometry of p-adic groups'', J. d'Anal. Math.
+%47(1986)1-36
+
+%\bibitem[KP]{KP} ------ and  S. Patterson, ``Metaplectic forms'',
+%Publ. Math. IHES \underline{59}(1984)35-142
+
+%\bibitem[KP2]{KP2} ------, ``A Shimura correspondence'',
+%Adv. Math. \underline{}(1986)
+
+%\bibitem[Ko1]{Ko1} R. Kottwitz, ``Stable trace formula: elliptic singular
+%terms'', Math. Ann. \underline{275}(1986)365-399
+
+%\bibitem[Ko2]{Ko2} ------, ``Stable trace formula: cuspidal tempered terms'',
+%Duke Math. J. \underline{51}(1984)611-650
+
+\bibitem[K1]{K1} T. Kubota, ``Topological covering of $SL(2)$ over a
+local field'', J.
+Math. Soc. Japan \underline{19} (1967)114-121
+
+\bibitem[K2]{K2} ------, \underline{Automorphic functions and the reciprocity
+law in a number field}, Kyoto U., 1969
+
+%\bibitem[K3]{K3} ------, \underline{Eisenstein series for $SL(2,\mathbb{R})$},
+%John Wiley and Sons, 1973
+
+\bibitem[Kut]{Kut} P. Kutzko,
+``Character formulas for supercuspidal representations of
+$GL(\ell)$, $\ell$ a prime'', Amer J Math \underline{109}(1987)201-222
+
+\bibitem[Lab]{Lab} J.-P. Labesse, ``L-indistinguishable representations
+and the trace formula for $SL(2)$'', in
+\underbar{Lie groups and their representations}, John Wiley, 1975
+
+\bibitem[LL]{LL} ------- and R. P. Langlands,
+``L-indistinguishability for
+$SL(2)$'', Can. J. Math. \underline{33}(1979)
+
+%\bibitem[La]{La} S. Lang, \underline{$SL(2,{\mathbb{R}})$}, Addison-Wesley, 1975
+
+\bibitem[L1]{L1} R. Langlands, ``Eisenstein series'', Proc Symp Pure Math,
+vol. 9, AMS, Providence, 1966
+
+\bibitem[L2]{L2} ------, \underline{On} \underline{the} \underline{functional}
+\underline{equations} \underline{satisfied}
+\underline{by} \underline{Eisenstein}
+\underline{series}, Springer Lecture Notes, \underline{544} (1976)
+
+%\bibitem[L3]{L3} ------, \underline{Les d\'ebuts d'une formule des traces
+%stable}, Publ. Math. de L'Univ. Paris, VII, 1983
+
+\bibitem[L3]{L4} ------, \underline{Base} \underline{change}
+\underline{for $GL(2)$},
+Annals of Math. Studies, Princeton
+
+%\bibitem[L5]{L5} ------, ``On the notion of an automorphic
+%representation'', in \underbar{Automorphic} \underbar{forms},
+%\underbar{representations}, \underbar{and} \underbar{L-functions},
+%vol I, ed. A. Borel, W. Casselman, AMS, Providence, RI, 1979
+
+%\bibitem[Li]{Li}
+%R. Lipsman, \underline{Group representations: A survey of some current
+%topics}, Springer LNM \underline{388}, 1974
+
+%\bibitem[Ma]{Ma} G. Mackey, ``Borel structure in groups and their duals'',
+%Trans. AMS \underline{85}(1957)134-165
+
+%\bibitem[Mac]{Mac} G. Mackey, ``Unitary representations of group extensions, I'',
+%Acta Math. \underbar{99}(1958)265-311
+
+\bibitem[M1]{M1} D. Manderscheid, ``On the supercuspidal representations of
+$SL(2)$ and its 2-fold cover, I'', Math. Ann. \underbar{266}(1987)287-295
+
+\bibitem[M2]{M2} ------, ``On the supercuspidal representations of
+$SL(2)$ and its 2-fold cover, II'', Math. Ann.
+\underbar{266}(1987)297-305
+
+\bibitem[M3]{M3} ------, ``Supercuspidal representations and the
+theta correspondence'', preprint
+
+\bibitem[MW]{MW} C. Moeglin, J.-L. Waldspurger,
+\underline{Spectral decomposition and Eisenstein series},
+Cambridge Univ Press, 1995
+
+\bibitem[Mo1]{Mo1} C. Moen, ``Intertwining operators for covering groups
+of $SL(2)$ over
+a local field'', preprint
+
+\bibitem[Mo2]{Mo2} ------, ``Irreducibility of unitary principal series
+representations
+for covering groups of $SL(2)$'', Pac. J. Math. 135(1988)89-110
+
+\bibitem[Mo3]{Mo3} -----, ``The dual pair $(U(1),U(1))$ over a p-adic field'',
+Pac. J. Math. \underbar{158}(1993)
+
+\bibitem[M]{M} C. Moore, ``Group extensions of p-adic linear groups'',
+Publ. Math. IHES \underline{35} (1968)
+
+%\bibitem[O]{O} T. Ono, ``On Tamagawa numbers'', in Proc. Symp. Pure Math.,
+%vol. 9, AMS, Providence, 1966
+
+\bibitem[PS]{PS} I. Piatetski-Shapiro, ``Work of Waldspurger'', in Lie groups
+representations, II (ed. R. Herb, et al), Springer LNM
+\underline{1041},1983
+
+%\bibitem[PR]{PR} G. Prasad, M. Raganathan,
+%``Topological central extensions of
+%semi-simple groups over local fields'', Annals of Math.
+%\underline{119}(1984)143-268
+
+%\bibitem[RS]{RS} C. Rader, A. Silberger, ``Some consequences of
+%Harish-Chandra's submersion principle'', Proc. AMS \underbar{118}
+%(1993)1271-1279
+
+\bibitem[Rao]{Rao} R. Rao, ``On some explicit formulas in the theory
+of Weil representation'', Pac. J. Math. \underbar{157}(1993)335-371
+
+%\bibitem[Ro]{Ro} A. Robert, \underline{Introduction} \underline{to}
+%\underline{the} \underline{representation} \underline{theory} \underline{of}
+%\underline{compact} \underline{and} \underline{locally}
+%\underline{compact} \underline{groups},
+%London Math. Series, Cambridge Univ. Press, Cambridge, 1983
+
+\bibitem[Rog]{R} J. Rogawski,
+\underline{Automorphic representations of unitary groups
+in three} \underline{variables}
+Annals of Math. Studies, \underline{123}, Princeton Univ. Press, 1990
+
+%\bibitem[Ru]{Ru} W. Rudin, \underline{Functional} \underline{Analysis},
+%McGraw-Hill, New York, 1973
+
+\bibitem[Ra]{Ra} D. Ramakrishnan, ``Modularity of the Rankin-Selberg
+$L$-series, and multiplicity one for $SL(2)$'', Ann. of Math.
+\underbar{152} (2000) 45--111
+
+\bibitem[Sa]{Sa} P. Sally, ``Analytic continuation of the irreducible unitary
+representations of the covering group of $SL(2,{\mathbb{R}})$'', Memoirs AMS
+\underline{69}, 1967
+
+%\bibitem[SS1]{SS1} ------- and J. Shalika,
+%``Characters of the discrete series of
+%representations of SL(2) over a p-adic field'', Proc. Acad. Sci. USA
+%61(1968)1231-1237
+
+%\bibitem[SS2]{SS2} ------, ``The Fourier transform of orbital integrals
+%on SL(2) over a p-adic field'', in \underbar{Lie} \underbar{Group}
+%\underbar{Representations}, \underbar{II},
+%ed., R. Herb et al, Lecture Notes in Math. vol 1041,
+%Springer-Verlag, New York, 1984
+
+\bibitem[Sav]{Sav} G. Savin, ``A local Shimura correspondence'',
+Math Ann. \underbar{280}(1988)185-190
+\bibitem[Sch]{Sch} L. Schwartz, \underbar{Theorie} \underbar{des}
+\underbar{distributions}, \underbar{vol. I}, Hermann, Paris, 1950
+
+%\bibitem[Sen]{Sen} S. Sen, ``Explicit reciprocity laws, II', Crelle's J.,
+%\underline{323}(1981)
+
+%\bibitem[Se]{Se} J.-P. Serre,  \underline{Representations of finite groups},
+%Springer-Verlag
+
+%\bibitem[Sh]{Sh} F. Shahidi, ``Local coefficients as Artin factors
+%for real groups'', Duke Math J. \underbar{52}(1985)973-1007
+
+\bibitem[Shal]{Shal} J. Shalika, ``Representations of the two by two
+unimodular group over local fields'', IAS
+
+%\bibitem[Sha]{Sha} S. Shatz, \underline{Profinite groups, arithmetic, and
+%geometry}, Princeton Univ. Press, Princeton, 1972
+
+%\bibitem[She]{She} D. Shelstad, ``L-indistinguishability for real groups'',
+%Math Ann \underbar{259}(1982)385-430
+
+\bibitem[Sho]{Sho} S. Shokranian, \underline{The Selberg-Arthur trace formula},
+Springer Lecture Notes in Math., vol. \underline{1503} (1992)
+
+\bibitem[S]{S} A. Silberger, \underbar{Introduction} \underbar{to}
+\underbar{harmonic} \underbar{analysis} \underbar{on} \underbar{reductive}
+\underbar{p-adic} \underbar{groups}, Princeton Univ. Press, Princeton, 1979
+
+%\bibitem[SpSt]{SpSt} T. Springer and R. Steinberg, ``Conjugacy classes'',
+%in \underbar{Seminar on Algebraic}
+%\underbar{Groups ...} (by A. Borel, et al),
+%Springer LNM \underbar{131}, 2nd printing 1986
+
+%\bibitem[T]{T} M. Tadi\'c, ``The topology of the dual space of a
+%reductive group over a
+%local field'', Glasnik Matem., \underline{18}(1983)259-279
+
+%\bibitem[Ta]{Ta} M. Taibleson, \underbar{Fourier} \underbar{analysis}
+%\underbar{on} \underbar{local} \underbar{fields}, Princeton Univ.
+%Press, Princeton, 1975
+
+%\bibitem[Va]{Va} V. Varadarajan,
+%\underline{An introduction to harmonic analysis on semisimple}
+%\underline{Lie groups}
+%Cambridge Studies in Adv. in Math \underline{16}, Cambridge, 1986
+
+%\bibitem[Vig]{V} M.-F. Vign\'eras, ``Caract\'erisation des integrales
+%orbitales sur un
+%groupe r\'eductif p-adique'', J. Fac. Sci. Univ. Tokyo
+%\underline{28}(1981)945-961
+
+\bibitem[TW]{TW} S. Takeda and A. Wood, ``Hecke algebra correspondences
+for the metaplectic group'', Trans. Amer. Math. Soc. \underbar{370}
+(2018) 1101--1121
+
+\bibitem[Zh]{Zh} Q. Zhang, ``A strong multiplicity one theorem for $SL_2$'',
+Pacific J. Math. \underline{292} (2018) 283ff.
+
+\bibitem[Wa1]{Wa1} J.-L. Waldspurger, ``Correspondance de Shimura'',
+J. Math. Pure Appl. \underline{59}(1980)1-133
+
+\bibitem[Wa2]{Wa2} -------, ``Correspondance de Shimura et quaternions'',
+Forum Math \underbar{3}(1991)
+
+\bibitem[We]{W1} A. Weil, \underline{Basic Number Theory},
+Springer-Verlag, 1975
+
+\bibitem[We2]{W2} -----, \underline{Adeles and algebraic groups},
+Birkhauser, 1982
+
+
+\end{thebibliography}
+%% ===== end aabookrf.tex =====
+
+
+
+\end{document}

@@ -3,8 +3,8 @@
 ## Stages
 
 - **1995.** The Scientific Word manuscript `aabook.tex` with its `\input` files (not in this repository).
-- **Draft 1** (Claude, November 20, 2026). It was refereed by Carbon (Gemini). The files are merged into one pdflatex file, the main theorem is stated conditionally (the author's decision), and mechanical fixes are applied. In git, see commit `045016f`. The separate Draft 1 log (`revision_log.md` in the author's working copy) is not included here.
-- **Draft 2** (Claude, November 20, 2026). This is the response to the referee report on Draft 1 in `revised/referee-report_draft1.md`, which was supplied by the author. The rest of this log covers Draft 1 → Draft 2.
+- **Draft 1** (Claude, November 20, 2026). It was refereed by Carbon (Gemini). The files are merged into one pdflatex file, the main theorem is stated conditionally (the author's decision), and mechanical fixes are applied. In git, see commit `045016f`. Its log is the last section of this file.
+- **Draft 2** (Claude, November 20, 2026). This is the response to the referee report on Draft 1 in `revised/referee-report_draft1.md`, which was supplied by the author. Sections 1–5 below cover Draft 1 → Draft 2.
 
 The source compiles with `pdflatex` (three passes, 64 pages), with no warnings, no overfull boxes, and no undefined references or citations.
 
@@ -67,3 +67,186 @@ These were cited from memory or from secondary listings and have not been checke
 4. Reconcile the discrete-series labels with [Ge2] and [Ad2].
 5. Write out the cocycle bookkeeping for F_f̄ = Sf̄ on the cover (Remark 5.21).
 6. House style: the per-section examples are now present in Chapters 2, 5 and 7, but not yet in Chapters 3, 4 and 6.
+
+## Draft 1: from the 1995 manuscript to Draft 1
+
+> This is the Draft 1 log as written on November 20, 2026, supplied by the author. Its theorem, section, and line numbers refer to Draft 1 (commit `045016f`), not to Draft 2. Several items it lists as "flagged but not changed" or "not yet done" are addressed in Draft 2 (sections 1 and 2 above). For example, the claim in Chapter 5 that "this defines a character" is now Lemma 5.2, and the 1995 proof sketches are now Claims or have full proofs.
+
+Source: the 1995 Scientific Word manuscript `aabook.tex` with its input files
+`aabook1.tex`, `aabook3.tex`, `aabook4.tex`, `aabook2a.tex`–`aabook2e.tex`,
+`aabook5.tex`, `aabook6.tex`, `aabookrf.tex` (title-page date 4-9-95).
+Output: the single file `multiplicity-one-SL2.tex` (pdflatex, 12pt Times, letter, American English).
+
+### AI usage
+
+- **Carbon (Google Gemini)** refereed the merged 1995 draft (three reports, Nov 20, 2026).
+- **Claude (Anthropic)**:
+  - merged the source files into one pdflatex file and replaced the Scientific Word macros;
+  - assessed Carbon's reports, separating the points that hold from those that don't;
+  - made the corrections listed below and rewrote the Introduction, Section 5.4 and Chapter 7 so that the main result is stated conditionally.
+- **The author** decided to state the main result conditionally (Nov 20, 2026).
+
+### Decision: conditional main result
+
+The 1995 draft claimed an unconditional proof of multiplicity one for SL(2).
+That theorem is true. Labesse and Langlands conjectured it, and Ramakrishnan
+proved it (Ann. of Math. 152 (2000)). The 1995 argument, however, has gaps:
+
+- dyadic places (Section 5.4);
+- archimedean places;
+- several local character relations at odd places;
+- the global step in Chapter 7.
+
+Draft 1 replaces it by:
+
+- **Hypothesis 7.3 (GH):** a global trace identity tr R_cusp(f) = tr R̄_cusp(f̄) for corresponding pairs.
+- **Hypothesis 7.4 (LH):** local spectral transfer (separation, transfer with injectivity, detection) at each place of S(π).
+- **Theorem 7.6:** under GH and LH at the places of S(π), m(π) = 1, and π corresponds to a unique genuine cuspidal π̄.
+- **Proposition 7.10:** LH holds at odd places where π_v is K_0- or K_1-spherical.
+- **Corollary 7.11:** consequences for π that are hyperspecial-spherical at every odd place.
+- **Section 7.4:** what Chapters 3–5 provide toward LH, and what is missing.
+- **Section 7.5:** the two gaps in the final step of the 1995 argument.
+
+#### New in Draft 1 versus original
+
+- **New:** the formulation of GH and LH, the proof of Theorem 7.6 (finiteness → Artin's lemma at unramified places → transfer → tensor linear independence → Waldspurger's multiplicity one), Proposition 7.10, Corollary 7.11, and Sections 7.4–7.5. Theorem 7.6 does not use Waldspurger's near-equivalence count.
+- **Original (1995), corrected:** Chapters 2–6, apart from Section 5.4 and Section 5.6.
+
+### Changes, by chapter
+
+#### Front matter and Introduction
+- Title-page subtitle "Draft 1 / Corrected and expanded version", with the date line "Original draft: 1995. Corrected and expanded draft: 2026".
+- The abstract was rewritten. It opens with an AI-disclosure sentence and states the conditional result.
+- The Introduction was rewritten and now contains:
+  - a new §1.1 on the status of the result (Labesse–Langlands, Ramakrishnan, Blasius, and what is incomplete in 1995);
+  - an outline updated to the current chapter numbers;
+  - Acknowledgments, now including the AI roles.
+
+#### Chapter 2
+- ν(π) = q^{-1} → ν(π) = 1, with |π|_F = q^{-1}.
+- In β_1: v(deg g_2, ·) → v(det g_2, ·). Also "cocyle" → "cocycle".
+- Non-split torus: a² + b²θ = 1, a,b ∈ F^× → a² − b²θ = 1, a,b ∈ F (the determinant of [[a, bθ],[b, a]]).
+- Lemma 2.3(d): a leftover "n = 2" was removed.
+- Global cocycle:
+  - β_p → β_v.
+  - "converges by Lemma 3(b)" was replaced by a remark: one should use the cohomologous cocycle β_v·s_v(g_1)s_v(g_2)s_v(g_1g_2)^{-1}, which is trivial on K_{0,v} × K_{0,v} for almost all v [K2].
+  - "an 2-fold" → "a 2-fold".
+- Cross-references now use \label/\ref: "equations (2.1-2.3)", "(2.9)", "2.1.4", "Lemma 3(...)", and "part (a) of the above lemma" (the lemma has no parts).
+- Typo: "measue" → "measure".
+
+#### Chapter 3
+- Typos: "representations theory", "chracter".
+- Cross-references now point to the correct chapter.
+
+#### Chapter 4
+- σ̄ := σ ⊗ 1 is not genuine. It was replaced by σ ⊗ ε (ε = identity character of μ_2), and μ_n → μ_2.
+- Hilbert symbols (·,·)_n → (·,·)_2.
+- References to "(2.3)" now point to §2.1 and the multiplication formula.
+- Small typos fixed.
+- **New Remark 4.3 (caveat):**
+  - The splitting K̄_i ≅ K_i × μ_2 is k ↦ (k, s_i(k)), not k ↦ (k, 1).
+  - So σ̄((k,ζ)) = ζ s_i(k) σ(k), but the proof treats s_i as trivial.
+  - The function (x,ζ) ↦ ζχ_π(x) is not obviously a class function.
+  - The proposition is not used in Chapter 7.
+
+#### Chapter 5
+- Introduction: the real case now points to §5.3.2 and §5.5, and the p = 2 case to the new §5.4.
+- §5.2: "Orbital integrals - vanishing theorems" (there are no vanishing theorems) → "Orbital integrals: definitions".
+- The weight v_A was stated for F = Q_p or R as log √|1+n²|_F. That fails p-adically (it is log 0 if n² = −1). It is now:
+  - log (1+|n|²)^{1/2} for archimedean F;
+  - log max(1, |n|_F) for non-archimedean F.
+  - Normalization constants were not rechecked against Arthur.
+- The centralizer references were corrected: Lemma 3(h)/(g) → Lemma 2.3(g)/(f) (T̄, Ā abelian).
+- "(2.6)" → the conjugation formula plus Lemma 2.3(h).
+- "J_M(γ,f)= =lim" → "J_A(γ,f) = lim".
+- §5.3.1:
+  - "The p=2 case is similar" was removed. It is false as stated: over Q_2, (−I,1)² = (I,−1), so Ā_2(F) is not a direct product.
+  - "for n = 2" headings and hypotheses were removed.
+  - The definition of corresponding functions on A used f where φ was meant.
+- §5.3.2: in the boxed equation, f(a,1) → f̄(a,1).
+- §5.3.3: "chapter 4 below" → Chapter 4 above, with a pointer to Remark 4.3.
+- **§5.4 (aabook2b.tex) is withdrawn.** It was replaced by a short section listing the reasons:
+  - the braid relation is false (s_1s_2 has infinite order);
+  - X is not closed under inversion when −1 is a non-square, and the wrong β was computed;
+  - N is undefined when c = 0 or d = 0, does not preserve the Iwahori subgroup, and is not multiplicative;
+  - restrictions to G_s do not form a convolution algebra, cocycle factors were dropped, and the splitting of B̄_k was ignored;
+  - an algebra injection does not induce the claimed map on irreducible modules;
+  - the global orbital-integral argument is circular.
+  - The section closes with a remark on Takeda–Wood (p = 2, partner SO(3) ≅ PGL(2)).
+- **§5.6 (aabook2d.tex):**
+  - Savin's theorem and its corollary are kept "as stated in the 1995 draft".
+  - New Remark 5.23: in later work the metaplectic cover of SL(2) = Sp(2) is paired with SO(3) ≅ PGL(2), not SL(2), so the statement should be checked against [Sav]. It is not used in Chapter 7.
+  - The reference to the withdrawn orbital-integral identity ("§4.4.2") was removed.
+  - A missing ^∧ in the corollary was added.
+- **§5.7 (aabook2e.tex):**
+  - Lemma references were fixed ("Lemma 3" → the Gaussian integral lemma).
+  - "in the sense of then" was filled in with §5.3.1 and §5.3.3.
+  - "§5.3" → §5.5; "chapter 7 below" → Chapter 4.
+  - "Lebesque" → "Lebesgue"; "has be choosen" → "has been chosen".
+
+#### Chapter 6
+- Base field: Q was replaced by the number field k throughout, for example M(Q), M_1(Q), A_1(Q), P_1(Q).
+- Example 6.1: the weight Σ log √|1+t_v²|_v used the torus parameter t_v. It is now the local weights v_{A,v} of §5.2.1, which are in n_v.
+- A doubled comma was removed, and "given by the previous example" was corrected.
+
+#### Chapter 7
+- **Rewritten entirely.** The 1995 text is preserved in the original `aabook6.tex`.
+- Sign correction: the decomposition-of-measures identity is now (7.1):
+
+  tr R̄(f̄) − tr R(f) = Σ J_χ(f) − Σ J_χ(f̄)
+
+  (the 1995 draft had + in front of the f̄-sum).
+- Base field: G(Q)\G(A) → G(k)\G(A).
+
+#### Bibliography
+- Added: [Ra] Ramakrishnan 2000; [TW] Takeda–Wood 2018; [J3] Joyner, NYJM 4 (1998), the generalized Hecke algebra paper.
+- Restored (cited but commented out in 1995): [Ad1], [H], [Rao], [Shal].
+- Typos fixed: "froms", "Irreducibiliy", "Pac. J. Mth.", "Correspondence de Shimura" → "Correspondance", "invarinat", a mismatched quote.
+
+#### Throughout
+- archimedian → archimedean; choosen → chosen; Iwawori → Iwahori; arbitary → arbitrary; "the the" → "the"; 1980's → 1980s.
+
+### Flagged but not changed
+
+- **Ch 6, Definition of M_P^T:** the case "χ = (G,ρ), M_B^T = 1" is listed twice. The second case was probably meant for P = B and a different χ.
+- **Ch 6:** the factor vol(R/Z) and the J2 date (1996, cited from a 1995 manuscript) are unchanged.
+- **Ch 5, §5.3.1:**
+  - the claim that the formula defines a character is "left to the reader";
+  - "corresponds evenly on the hyperbolic set" is defined via a map t that is introduced only later (§5.3.3).
+- **Ch 3:** "the argument of [Ar] sketched above" refers to nothing sketched in the text.
+- **Several 1995 proofs** remain "proof: … □" sketches ("a direct calculation", "left to the reader"). These include Lemma 5.6 (weighted orbital integrals for small support) and the claim that every unitary genuine unramified representation is a principal series.
+- **Three overfull boxes** (Corollary 5.22, Conjecture 5.25, one display in §6.1) are present in the 1995 layout.
+
+### Sources not consulted directly during this revision
+
+The following were used only as cited in the 1995 text or through their abstracts, not read:
+
+- [Sav] Savin, Local Shimura correspondence;
+- [Wa1], [Wa2] Waldspurger;
+- [Fl] Flicker;
+- [HM] Howe–Moy;
+- [M1]–[M3] Manderscheid;
+- [GS] Gelbart–Sally;
+- [Mo1], [Mo2] Moen;
+- [Kut] Kutzko.
+
+In particular:
+
+- The statement of Waldspurger's multiplicity one theorem for the cover, which Theorem 7.6 relies on, was taken from the 1995 text.
+- The remark that Savin's partner group is SO(3) ≅ PGL(2) rests on the Takeda–Wood abstract and on the Gan–Savin results it describes.
+- Ramakrishnan's theorem was checked against the published abstract (Ann. of Math. 152 (2000) 45–111) and arXiv:math/0007203.
+
+### Style-guide conformance (joyner-math-paper-style-guide.md)
+
+**Done:**
+- AI-disclosure opening of the abstract;
+- Acknowledgments with AI roles and a pointer to this log;
+- Draft/date lines;
+- the restriction (conditional result) stated in the abstract and Introduction;
+- 12pt Times, letter size, American English, compiles with pdflatex.
+
+**Not yet done:**
+- glossary;
+- background section more detailed than the glossary;
+- at least one example per section;
+- a separate literature review section (§1.1 partly serves).

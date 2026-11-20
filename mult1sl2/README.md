@@ -14,8 +14,10 @@ It records which steps of the 1995 argument are incomplete. Multiplicity one for
 ```
 mult1sl2/
 ├── revised/
-│   ├── multiplicity-one-SL2.tex, .pdf   the manuscript (currently Draft 2)
+│   ├── multiplicity-one-SL2.tex, .pdf   the manuscript (currently Draft 3)
 │   └── referee-report_draft1.md         referee report on Draft 1
+├── scripts/
+│   └── local_formulas_check.py          exact checks of local formulas (run by ../run_checks.py)
 ├── revision_log.md                      stages, AI usage, every change (Drafts 1 and 2), open items
 └── README.md
 ```
@@ -34,6 +36,7 @@ File names carry no draft number; git history tracks the drafts. Draft 1 is comm
   - The relationship between Satake and orbital integrals is clarified, and the Hecke algebra and global-cover definitions are corrected.
   - The unverified 1995 statements are now labelled **Claim**.
   - A weighted-orbital-integral lemma that cannot hold as stated is identified and demoted.
+- **Draft 3** (Claude, November 20, 2026). A style-guide pass with no mathematical changes. It adds a literature review (before and after 1995), a summary of results and open questions, a glossary, orienting paragraphs, and examples in every section, with the cusp form Δ as a running example. It moves the acknowledgments to the end and adds the AI-certification disclaimer, the author line, and the title-page footnote. Draft comparisons move from the body to the log, unverified statements become "Remark 2026.n", and the log gets a Draft 1 → 2 → 3 concordance and an exact-check script.
 - **Not yet done:**
   - An independent referee report on Draft 2.
   - A check of the normalizations in Lemma 7.12.
@@ -45,8 +48,10 @@ File names carry no draft number; git history tracks the drafts. Draft 1 is comm
 
 ## Building
 
-In `revised/`, run `pdflatex multiplicity-one-SL2.tex` three times. The bibliography is inline, so there is no BibTeX run. The document uses 12pt Times (`mathptmx`), letter paper, and has 64 pages. The compiled PDF is committed beside the source.
+In `revised/`, run `pdflatex multiplicity-one-SL2.tex` three times. The bibliography is inline, so there is no BibTeX run. The document uses 12pt Times (`mathptmx`), letter paper, and has 72 pages. The compiled PDF is committed beside the source.
+
+The checks: `python3 scripts/local_formulas_check.py` (needs SymPy), or `python3 run_checks.py` from the repository root.
 
 ## License
 
-Text and LaTeX sources are CC BY 4.0 (see the top-level [LICENSE](../LICENSE)).
+Text and LaTeX sources are CC BY 4.0, and the script is MIT (see the top-level [LICENSE](../LICENSE)).

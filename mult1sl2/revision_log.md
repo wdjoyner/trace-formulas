@@ -4,11 +4,212 @@
 
 - **1995.** The Scientific Word manuscript `aabook.tex` with its `\input` files (not in this repository).
 - **Draft 1** (Claude, November 20, 2026). Carbon (Gemini) had refereed the merged 1995 draft. In Draft 1 the files are merged into one pdflatex file, the main theorem is stated conditionally (the author's decision), and mechanical fixes are applied. In git, see commit `045016f`. Its log is the last section of this file.
-- **Draft 2** (Claude, November 20, 2026). This is the response to the referee report on Draft 1 in `revised/referee-report_draft1.md`. The author believes that report was written by ChatGPT (OpenAI). Sections 1–5 below cover Draft 1 → Draft 2.
+- **Draft 3** (Claude, November 20, 2026). A style-guide pass with no mathematical changes. See the next section.
+- **Draft 2** (Claude, November 20, 2026). This is the response to the referee report on Draft 1 in `revised/referee-report_draft1.md`. The author believes that report was written by ChatGPT (OpenAI). The section "Draft 2" below covers Draft 1 → Draft 2. Its theorem numbers refer to Draft 2. See the concordance in the Draft 3 section.
+
+## Draft 3: style-guide pass
+
+Claude, November 20, 2026, at the author's request. Draft 3 brings the text into line with `joyner-math-paper-style-guide.md` (Draft 2 of the guide, November 11, 2026). **No mathematical statement, proof, or hypothesis was changed.** The only exceptions are the reworded sentences listed under "Wording", which remove draft comparisons without changing their content.
+
+The source compiles with `pdflatex` (three passes, 72 pages) with no warnings, no overfull boxes, and no undefined references or citations. The exact checks in `scripts/local_formulas_check.py` pass.
+
+### Changes, by rule of the style guide
+
+- **§1.8 Operators.** sgn, Ind, Cent, vol, diag and Fix are now set with `\operatorname` or `\DeclareMathOperator`. All 67 `\over` fractions were already converted in Draft 2.
+- **§1, default preamble.** Added `microtype` and `hyperref` (`hidelinks`). Section titles containing mathematics use `\texorpdfstring`. The fonts stay `mathptmx`, the guide's fallback, because `newtx` is not installed in the build environment, so a newtx build could not be tested.
+- **§2.3 Literature review.** New §1.2, split into work before and after 1995. Each cited work gets a one- or two-sentence summary saying how it relates to this text.
+- **§2.7 Summary.** New §7.6, "Summary of results and open questions". It lists what is proved, what is assumed, and five open questions.
+- **§2.8 Glossary.** New unnumbered chapter before the Acknowledgments. It has 30 entries, each an independent short summary with no cross-references.
+- **§2.9, §5.4 Acknowledgments.** Moved from the end of Chapter 1 to the end of the text, before the references. They now state that AI review, including the referee reports, is not an independent certification of the results, and they mention the Draft 3 pass. The abstract's pointer was updated.
+- **§3.2 Orienting paragraphs.** Added a one- to three-sentence orienting paragraph to 39 sections and subsections that began directly with a definition or formula.
+- **§3.3 Examples.** Added 18 examples, so that every section explaining a concept now has one. The cusp form Δ of weight 12 serves as a running example: Examples 1.1, 7.14, 7.17, 7.18 and 7.20. The new examples:
+  - the exceptional set S(π) for Δ, which involves Lehmer's conjecture;
+  - an example of the Conventions section;
+  - principal series characters vanish on the elliptic set;
+  - the complementary series at s = 1/4;
+  - depth-zero supercuspidals in Chapter 4 (two examples);
+  - the fixed-point counts q = 1 and q + 2;
+  - the unit elements as a corresponding pair;
+  - the hyperbolic orbital integral of 1_K;
+  - Q₂, where (−I,1)² = (I,−1);
+  - the Steinberg representation (Iwahori-fixed, not hyperspecial);
+  - the Fresnel integral;
+  - only the genuine spectrum contributes to the metaplectic trace formula;
+  - the reducible unramified principal series and K₀/K₁;
+  - the status of the running example at ∞ and at 2;
+  - the count 2^{|Σ|−1} with |Σ| = 3;
+  - the running example in the summary.
+
+  The numerical and algebraic assertions in these examples are checked by the script (fixed points, Fresnel, Q₂) or are direct consequences of cited facts.
+- **§3.8 Semicolons.** 44 semicolons joining clauses in prose were replaced by periods or commas. Semicolons that remain are inside headings of the form "(1995 draft; …)", in list items, and in 1995 text where removing them would change the wording substantially.
+- **§4.4, §8.4 Scripts.** New `scripts/local_formulas_check.py`, run by the repository's `run_checks.py`. It gives exact checks of:
+  - Lemma 5.3 over ℚ₃, ℚ₅, ℚ₂ and ℝ;
+  - Lemma 5.4 over ℚ₃ and ℚ₅;
+  - the Hilbert-symbol examples and the ℚ₃ example;
+  - Lemma 5.15;
+  - the table in the proof of Lemma 5.29, for k = 3, 5, 7, 13;
+  - the small examples.
+
+  The paper cites the script in §1.3.
+- **§5.1 Author line.** Added `wdjoyner@gmail.com`.
+- **§6.3 Title page.** Added a `\thanks` footnote identifying the original manuscript (Scientific Word files `aabook.tex`, `aabook1`–`aabook6`, `aabookrf.tex`, dated April 9, 1995) and this revision. The subtitle is now "Draft 3".
+- **§6.4 Revision history out of the body.** Removed 16 draft-to-draft comparisons from the body, such as "(Draft 1 had …)", "(Added in Draft 2.)", "(Added 2026.)" and "(The 1995 draft had a plus sign …)". Where a comparison carried mathematical content, it was rephrased as a plain statement. For example, "a product of the unmodified β_v is not finite", or "matching on a single elliptic Cartan is not enough in the p-adic case". The comparisons themselves are recorded in the Draft 2 section of this log. Three kinds of 1995 material were kept in the body, because they analyze what the 1995 argument gets wrong and not just how the text changed:
+  - §5.4, on the dyadic places;
+  - §7.5, "Remarks on the 1995 argument";
+  - the "1995 draft" provenance tags on unverified statements.
+- **§6.6 "Remark 2026.n".** The Draft 2 **Claim** environment is replaced by a separately numbered "Remark 2026.n" environment (no date or color in the label beyond the required "2026"). These items are now Remark 2026.n:
+  - the six 1995 Claims;
+  - Remarks 5.21 and 5.23 of Draft 2, which contain unverified assertions;
+  - the remark on the normalizations in Lemma 7.12;
+  - two new remarks, on the discrete-series labels (2026.6) and on the case of the cover in Lemma 7.10 (2026.10).
+
+  §1.3 explains the convention.
+- **§6.8, §1.9 Concordance.** See the table below. Theorem and lemma numbers in Chapter 7 are unchanged from Draft 2 (Theorem 7.9, Hypotheses 7.3 and 7.6, Lemma 7.12). The new examples shift the numbers in Chapters 3–5. Moving the Claims to their own counter shifts some numbers after them.
+
+### Wording
+
+The following sentences were reworded only to remove draft comparisons or semicolons. Their mathematical content is unchanged.
+- §2.1.2: the remark on pulling back Haar measures to anisotropic tori.
+- §2.2: the finiteness of the product of the modified cocycles.
+- §5.3.2: why the real matching factor cannot depend on ε.
+- §5.3.3: the number of anisotropic Cartan subgroups.
+- §5.5: the factor (e^{iθ}+e^{−iθ})^{−1} in Remark 5.27(1).
+- §5.7: why the p-adic even Weil representation is not supercuspidal.
+- Remark 7.7(1).
+
+### Not changed, by decision or because a rule is marked [DECIDE] or paper-specific
+
+- **Document class (§1, [DECIDE]).** The class stays `book`, the class of the existing file. Numbering is within chapters (Theorem 7.9), which is the book-class form of §1.6.
+- **Fonts (§1, [DECIDE]).** The fonts stay `mathptmx`. See above.
+- **Citation keys (§1.7).** The keys stay in the 1995 style (Ad1, A2, Fl, GJ78, …). The guide's provenance note says rule 1.7 was stated for one paper only. Changing the keys can be done in a later pass if wanted.
+- **Revision log format (§8.2).** The log stays Markdown, `revision_log.md`, as the repository's paper-specific rule (§9) prescribes.
+- **Outline and Notation sections (§3.3).** These sections explain no concept, so they have no example.
+- **Precise pinpoint citations (§4.3).** Theorem and page numbers were not added for the older 1995 citations. The sources not consulted are listed in the Draft 2 section and in the Draft 1 log.
+
+### New citations in Draft 3
+
+None. The literature review cites only works already in the bibliography. Its summaries of [Wa2], [GPS], [Mo1], [M1], [M2], [JL], [L4], [Sav] and [TW] rest on the descriptions in the 1995 text and in the Draft 1 and Draft 2 logs. The summary of [Ra] rests on its abstract. The summary of [CZ] and [Zh] rests on their abstracts as found during the Draft 2 revision. None of these sources were consulted in full.
+
+### Concordance of numbered items
+
+The table covers every numbered environment. "—" means the item did not exist in that draft. Draft 2's "Claim" items are Draft 3's "Remark 2026.n".
+
+| Draft 1 | Draft 2 | Draft 3 | Label or first words |
+|---|---|---|---|
+| — | — | Example 1.1 | Let … and let … be a cuspidal automorphic rep… |
+| — | — | Example 1.2 | The supercuspidal character relation of the 1… |
+| Lemma 2.1 | Lemma 2.1 | Lemma 2.1 | `lem:kubota` |
+| Lemma 2.2 | Lemma 2.2 | Lemma 2.2 | `lem:Ainv` |
+| Lemma 2.3 | Lemma 2.3 | Lemma 2.3 | `lem:facts` |
+| Remark 2.4 | Remark 2.4 | Remark 2.4 | These well-known facts were proven in or foll… |
+| — | Example 2.5 | Example 2.5 | The unit element of … (for the measure giving… |
+| — | Example 2.6 | Example 2.6 | Let … be places of …. The element of the rest… |
+| Lemma 2.5 | Lemma 2.7 | Lemma 2.7 | `lem:Gk-split` |
+| Lemma 3.1 | Lemma 3.1 | Lemma 3.1 | There exists a genuine locally constant funct… |
+| Lemma 3.2 | Lemma 3.2 | Lemma 3.2 | Assume … and suppose that …. The characte |
+| Remark 3.3 | Remark 3.3 | Remark 3.3 | As noted above, on the regular set, this char… |
+| Lemma 3.4 | Lemma 3.4 | Lemma 3.4 | If … then [ F^() =|a_1-a_2|J_G(,f), ] for $ |
+| — | — | Example 3.5 | Let … and let … with … regular elliptic. Then… |
+| Theorem 3.5 | Theorem 3.5 | Theorem 3.6 | (Moen ) If … then … is irreducible for all $ … |
+| Lemma 3.6 | Lemma 3.6 | Lemma 3.7 | If … and … then … is unitary. |
+| Lemma 3.7 | Lemma 3.7 | Lemma 3.8 | If … and … then there is an irreducible const… |
+| — | — | Example 3.9 | Take …. By the lemma on complementary series,… |
+| — | — | Example 4.1 | Let … be a cuspidal representation of …, infl… |
+| Remark 4.3 | Remark 4.3 | Remark 4.2 | `rem:sc-caveat` |
+| — | — | Example 4.3 | For …, a strongly cuspidal representation of … |
+| Proposition 4.4 | Proposition 4.4 | Proposition 4.4 | If … is induced from a finite dimensional r |
+| Lemma 4.5 | Lemma 4.5 | Lemma 4.5 | Let … and let … _^z(x):=_ |
+| — | — | Example 4.6 | The fixed-point count in the proof of the lem… |
+| — | — | Example 5.1 | The simplest corresponding pair consists of t… |
+| — | — | Example 5.2 | Let … be odd, …, and …. For regular …, the no… |
+| — | Lemma 5.1 | Lemma 5.3 | `lem:Acocycle` |
+| — | Lemma 5.2 | Lemma 5.4 | `lem:genuine-chars` |
+| Definition 5.1 | Definition 5.3 | Definition 5.5 | Let … be given. We say that $_ ( |
+| — | Example 5.4 | Example 5.6 | Let …, …, and …. Then …, so $ |
+| Definition 5.2 | Definition 5.5 | Definition 5.7 | `def:corrA` |
+| Lemma 5.3 | Lemma 5.6 | Lemma 5.8 | `lem:FT-match` |
+| Definition 5.4 | Definition 5.7 | Definition 5.9 | We say that … corresponds oddly on the hyperb… |
+| Definition 5.5 | Definition 5.8 | Definition 5.10 | We say … correspond evenly on the hyperbolic … |
+| — | Remark 5.10 | Remark 5.11 | `rem:weighted-noninv` |
+| Proposition 5.7 | Proposition 5.11 | Proposition 5.12 | `prop:hyp-ps` |
+| — | Example 5.12 | Example 5.13 | Let …, …, …, and let … be the characteristic … |
+| Definition 5.8 | Definition 5.13 | Definition 5.14 | `def:corrA-real` |
+| — | Lemma 5.14 | Lemma 5.15 | `lem:realA-match` |
+| Definition 5.9 | Definition 5.15 | Definition 5.16 | We say that … corresponds oddly on the hyperb… |
+| Remark 5.10 | Remark 5.16 | Remark 5.17 | The 1995 draft added here that, by a direct c… |
+| Definition 5.12 | Definition 5.17 | Definition 5.18 | `def:ell-corr` |
+| Lemma 5.13 | Lemma 5.18 | Lemma 5.19 | `lem:ell-odd` |
+| Lemma 5.14 | Lemma 5.19 | Lemma 5.20 | The set … is in natural 1-1 correspondence wi… |
+| — | Definition 5.20 | Definition 5.21 | `def:satake-corr` |
+| — | Example 5.22 | Example 5.22 | For the unit elements … and … of the two Heck… |
+| Lemma 5.16 | Lemma 5.24 | Lemma 5.23 | Finally, if … are the respective unit element… |
+| Remark 5.17 | Remark 5.25 | Remark 5.24 | (1) The construction of does not extend to … … |
+| — | — | Example 5.25 | Let …. Since …, the cocycle gives …, s |
+| Definition 5.18 | Definition 5.26 | Definition 5.26 | `def:realds-corr` |
+| — | Remark 5.27 | Remark 5.27 | `rem:realds-consistency` |
+| — | Example 5.28 | Example 5.28 | Let … with … smooth, …-periodic and supp |
+| Lemma 5.19 | Lemma 5.29 | Lemma 5.29 | `lem:realds` |
+| Remark 5.20 | Remark 5.30 | Remark 5.30 | First, we recall from , page 660, that [ _ _m… |
+| Remark 5.23 | Remark 5.33 | Remark 5.31 | `rem:savin-caveat` |
+| — | — | Example 5.32 | The Steinberg representation of … has a nonze… |
+| Lemma 5.24 | Lemma 5.34 | Lemma 5.33 | If [ g=( cc a & b c & d ) ] has determinant 1 |
+| Conjecture 5.25 | Conjecture 5.35 | Conjecture 5.34 | On the regular elements of the ``big cell'' …… |
+| Remark 5.26 | Remark 5.36 | Remark 5.35 | This conjecture implies [ c _(g,1) =(-c,-1)|c |
+| Lemma 5.27 | Lemma 5.37 | Lemma 5.36 | `lem:gauss` |
+| Remark 5.28 | Remark 5.38 | Remark 5.37 | If … is the usual inner product on … then [ _… |
+| Proposition 5.29 | Proposition 5.39 | Proposition 5.38 | (Assume the conjecture above.) If … then [ _ … |
+| Corollary 5.30 | Corollary 5.40 | Corollary 5.39 | (Assume the conjecture above) If … and … is e… |
+| Remark 5.31 | Remark 5.41 | Remark 5.40 | Note that …. According to , page 36, $ |
+| Remark 5.32 | Remark 5.42 | Remark 5.41 | This should be compared with the formulas in … |
+| Corollary 5.33 | Corollary 5.43 | Corollary 5.42 | (Assume the conjecture above) If … is p-adic … |
+| Remark 5.34 | Remark 5.44 | Remark 5.43 | This should be compared with the formulas in … |
+| Lemma 5.37 | Lemma 5.45 | Lemma 5.44 | `lem:ds-3/2` |
+| Lemma 5.35 | Lemma 5.46 | Lemma 5.45 | If … correspond evenly on the elliptic set in… |
+| Remark 5.36 | Remark 5.47 | Remark 5.46 | Indeed, it seems likely that implies that if … |
+| Remark 5.39 | Remark 5.49 | Remark 5.47 | If … correspond oddly on the elliptic set the… |
+| — | — | Example 5.48 | For …, Lemma is the Fresnel integral $_ Re^ix… |
+| Example 6.1 | Example 6.1 | Example 6.1 | Let … |
+| Definition 6.2 | Definition 6.2 | Definition 6.2 | Let …. Define … as follows: if …, let … |
+| Lemma 6.3 | Lemma 6.3 | Lemma 6.3 | For …, each … is unramified. Moreover, $(A,) |
+| — | — | Example 6.4 | Only the genuine part of the cuspidal spectru… |
+| Definition 7.1 | Definition 7.1 | Definition 7.1 | `def:exceptional` |
+| Definition 7.2 | Definition 7.2 | Definition 7.2 | `def:corresponding` |
+| Hypothesis 7.4 | Hypothesis 7.3 | Hypothesis 7.3 | `hyp:LH` |
+| — | Definition 7.4 | Definition 7.4 | `def:infchar` |
+| — | Example 7.5 | Example 7.5 | Let …, and let … be a cuspidal automorphic re… |
+| Hypothesis 7.3 | Hypothesis 7.6 | Hypothesis 7.6 | `hyp:GH` |
+| — | Remark 7.7 | Remark 7.7 | `rem:why-refine` |
+| Remark 7.5 | Remark 7.8 | Remark 7.8 | `rem:GH` |
+| Theorem 7.6 | Theorem 7.9 | Theorem 7.9 | `thm:main` |
+| Lemma 7.7 | Lemma 7.10 | Lemma 7.10 | `lem:finiteness` |
+| Lemma 7.8 | Lemma 7.11 | Lemma 7.11 | `lem:tensor` |
+| — | Lemma 7.12 | Lemma 7.12 | `lem:A00` |
+| Remark 7.9 | Remark 7.14 | Remark 7.13 | Hypothesis is only used for … and for pairs w… |
+| — | — | Example 7.14 | For the running example … of (from …), … cont… |
+| Proposition 7.10 | Proposition 7.15 | Proposition 7.15 | `prop:LH-spherical` |
+| Corollary 7.11 | Corollary 7.16 | Corollary 7.16 | `cor:main` |
+| — | — | Example 7.17 | Let … be odd and let … be the unramified quad… |
+| — | — | Example 7.18 | For the running example, … is one of the disc… |
+| — | — | Example 7.19 | If … and …, the count quoted in item2 is …, |
+| — | — | Example 7.20 | For the running example … (from …), the open … |
+| Proposition 4.1 | Claim 4.1 | Remark 2026.1 | Fix a strongly cuspidal of level … representa… |
+| Corollary 4.2 | Claim 4.2 | Remark 2026.2 | Suppose that …. The character relation above … |
+| Lemma 5.6 | Claim 5.9 | Remark 2026.3 | `lem:weighted-small` |
+| — | Remark 5.21 | Remark 2026.4 | `rem:satake-oi` |
+| Remark 5.15 | Remark 5.23 | Remark 2026.5 | `rem:weighted-units` |
+| — | — | Remark 2026.6 | `rem26:ds-labels` |
+| Theorem 5.21 | Claim 5.31 | Remark 2026.7 | `claim:savin` |
+| Corollary 5.22 | Claim 5.32 | Remark 2026.8 | The isomorphism … induces a set-theor |
+| Lemma 5.38 | Claim 5.48 | Remark 2026.9 | (a) If … correspond evenly on the elliptic se… |
+| — | — | Remark 2026.10 | `rem26:finiteness-cover` |
+| — | Remark 7.13 | Remark 2026.11 | The proof of Lemma uses the bound … only thro… |
+| Definition 5.11 | removed | removed | We say that … corresponds oddly on … to $ |
+
+## Draft 2: response to the referee report on Draft 1
 
 The source compiles with `pdflatex` (three passes, 64 pages), with no warnings, no overfull boxes, and no undefined references or citations.
 
-## 1. Response to the referee, point by point
+### 1. Response to the referee, point by point
 
 | Referee item | Verdict | What was done |
 |---|---|---|
@@ -30,7 +231,7 @@ The source compiles with `pdflatex` (three passes, 64 pages), with no warnings, 
 | §3 Bibliography and literature | Agree. | Added Chai–Zhang (PJM 285 (2016) 345–374) and Zhang (PJM 292 (2018)). Adams [Ad2] is updated to Duke Math. J. 92 (1998) 129–178. Added Gelbart–Jacquet 1978, Gelbart–Piatetski-Shapiro (Invent. 1980), Harish-Chandra LNM 62, Borel–Jacquet, and Arthur's Paley–Wiener paper. The Introduction now distinguishes multiplicity one, strong multiplicity one, the theta correspondence, and Waldspurger packets. |
 | §4 LaTeX | Agree. | `proof:` is replaced by the `proof` environment (17 places). `\tr` is now `\operatorname{tr}`, and every `eqnarray` is now `align`. All 67 `\over` are converted to `\frac`. Overfull boxes: 0. |
 
-## 2. Further corrections not raised by the referee
+### 2. Further corrections not raised by the referee
 
 1. **Weighted orbital integrals (Claim 5.9 / Remark 5.10).** The 1995 lemma says that weighted orbital integrals of *any* corresponding pair correspond. That cannot hold. Adding to f̄ a function ḡ − ḡ^y that has vanishing orbital integrals keeps the pair corresponding, but it changes J_A by ∫ ḡ(x⁻¹ax)(v_A(x) − v_A(xy)) dx, because J_A is non-invariant. The same objection applies to the real remark in §5.3.2. A correct version must restrict to specially constructed pairs or use Arthur's invariant distributions I_M. Neither statement is used in Chapter 7.
 2. **Haar measure.** The formula dg = δ_B(a)^{1/2} dk da dn (g = kan) is corrected to δ_B(a) dk da dn.
@@ -38,12 +239,12 @@ The source compiles with `pdflatex` (three passes, 64 pages), with no warnings, 
 4. **Real non-tempered lemma.** This was stated without proof. It now has a proof from Lemma 5.29 and the Grothendieck-group identities.
 5. Smaller fixes: the reference "correspond evenly in the sense of §5.3.3" in the real Weil section now points to the real definition. The garbled formula "F(χ) = (I_A(χ,f))" is cleaned up. Prop. 5.11 is stated as a trace identity.
 
-## 3. Original versus new results
+### 3. Original versus new results
 
 - **From the 1995 draft, corrected:** the character correspondences on A (p-adic and real), the matching definitions, the elliptic and real discrete-series correspondences, the Satake correspondence, and the structure of the conditional argument in Chapter 7.
 - **New in Draft 2:** Lemmas 5.1, 5.2, 5.6 and 5.14; the proof of Prop. 5.11; Lemma 5.18 in its corrected form; the computation in Lemma 5.29 and Remark 5.27; the proof of the real non-tempered lemma; Definition 7.4 and the refined Hypothesis 7.6; (LH4); Lemma 7.12; Remarks 5.10, 5.21 and 7.7.
 
-## 4. Sources not consulted directly in this revision
+### 4. Sources not consulted directly in this revision
 
 These were cited from memory or from secondary listings and have not been checked against the originals:
 
@@ -59,7 +260,7 @@ These were cited from memory or from secondary listings and have not been checke
 - Manderscheid [M1]–[M3] and Moen [Mo1]. Their publication data were not updated.
 - The page range of Zhang's 2018 PJM paper. I confirmed only the starting page, 283.
 
-## 5. Open items for Draft 3
+### 5. Open items for Draft 3
 
 1. Check the normalizations in Lemma 7.12(ii) against [Ge2] and [GePS].
 2. Either carry out the multiplier argument of Remark 7.7(2), or keep the refined GH as an assumption.

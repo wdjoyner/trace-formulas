@@ -1,0 +1,120 @@
+\documentclass[12pt,letterpaper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{newtxtext,newtxmath}
+\usepackage[letterpaper,margin=1in]{geometry}
+\usepackage{amsmath}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\title{Revision log: genuine invariant distributions on metaplectic covers of $SL(2)$}
+\author{David Joyner\\\texttt{wdjoyner@gmail.com}}
+\date{Draft 2 --- November 21, 2026}
+\begin{document}
+\maketitle
+\section*{Sources, scope, and decision}
+The inputs were the attached January 4, 1994 manuscript
+\texttt{hitchhiker-sl2bar-repns.tex}, the attached corrected 2026d source
+\texttt{joyner\_invar-distrib\_corrected-draft2026d.tex}, and the attached
+mathematical-paper style guide (November 11, 2026).  The revised manuscript
+adopts the original 1994 title, with a new 2026 date line.  It is a
+\emph{synthesis}, not a line-for-line edited republication of either the
+1994 manuscript or the 2001 journal article.  Material on $GL(r)$ is omitted
+except for bibliographic provenance.
+
+\section*{Changes from the supplied corrected 2026d draft}
+\begin{enumerate}[leftmargin=*,itemsep=4pt]
+\item Replaced the 2001 article's title with the exact title of the 1994
+metaplectic manuscript.  Identified both antecedents in a title footnote.
+Recorded 1994 as January 4 (the original has \texttt{1-4-94}) and the
+published 2001 article separately.
+\item Restricted the mathematical setting to $SL(2,F)$, with $F$ a finite
+extension of $\mathbb Q_p$, $\mu_n\subset F$, and $p\nmid 2n$.
+This is narrower than the 1994 manuscript and is not a result for wild covers.
+\item Rewrote the abstract and introduction; added an explicit split
+between algebraic trace density and the continuity/topology problem.
+\item Inserted literature reviews for the sources through 1994 and
+post-1994 developments, with a direct discussion of Li's 2012 Sections~5.4,
+5.6, and Theorem~5.8.10.
+\item Added the central-extension group law from the 1994 paper, and
+several elementary examples clarifying genuine test functions, tame fields,
+conjugation differences, and spectral distributions.
+\item Reorganized the notation table into a stand-alone early section.
+Removed scope-specific assumptions, comments and claims about covers of
+$GL(r)$.  Preserved the older internal theorem labels when possible.
+\item Replaced the cited maximal-abelian subgroup lemma by a self-contained
+proof of the index-$\nu$ subgroup statement and separated the stronger
+maximal-abelian assertion as source-dependent.
+\item Identified the orbital-integral surjectivity statements and proposed
+principal-series Fourier-image formulas as source-dependent and in need of
+verification.  This prevents an unverified surjectivity assertion from
+being mistaken for a new proof.
+\item Rewrote the kernel-of-trace proof as a deduction from the density
+result in Li, Theorem~5.8.10, subject to the hypotheses and representation
+inputs in that source; did not claim to reprove Li's theorem.
+\item Identified a material conflict: the 1994 typescript calls the image of $J_\mu$
+the special constituent and the kernel non-tempered, whereas the supplied
+2026d correction reverses them.  Demoted the endpoint proposition to a
+verification remark and inserted a separate section surveying the original
+conjectures without claiming they were all resolved.
+\item Clarified that the quotient-dual isomorphism is algebraic;
+continuity is an additional matter.
+\item Rewrote the final integral theorem as a \emph{conditional}
+continuous Paley--Wiener spectral pairing, with explicit kernel and
+quotient-topology requirements.  Removed the assertion that an arbitrary
+spectral functional is given by an ordinary density $m(\pi)\,d\mu(\pi)$.
+\item Clarified the finite-order definition, retained the Fourier-series
+proof of the Schwartz lemma, and restricted its equivariant clause to an
+isometric group action.
+\item Removed the in-body revision commentary. Added an end-of-paper
+summary, open verification items, and glossary.  Updated acknowledgments,
+removed the obsolete USNA address and retained the user's current email.
+\item Applied 12pt, US Letter, one-inch margins, Times text and math,
+and \texttt{pdflatex} compatibility.  Converted bibliography keys to
+author-initial/year labels where documentary years were available.
+\end{enumerate}
+
+\section*{Draft 2 editorial corrections (November 21, 2026)}
+\begin{enumerate}[leftmargin=*,itemsep=4pt]
+\item Replaced the temporary ``Draft 2026e'' designation with \emph{Draft 2} throughout the new manuscript and this log. Under the trace-formulas convention, filenames do not carry draft numbers; Git history records successive drafts.
+\item Corrected the first sentence of the abstract to disclose AI assistance by name (ChatGPT and Claude), identify the 1994 manuscript, and refer to the Acknowledgments. Removed the redundant AI-disclosure sentence at the end of the abstract.
+\item Established the intended repository location as \texttt{slcbar-invariant-distributions/} inside \texttt{wdjoyner/trace-formulas}.
+\item No mathematical statements or proofs were changed during this editorial correction.
+\end{enumerate}
+
+\section*{Mathematical verification status}
+\begin{description}[style=nextline]
+\item[Directly checked] Algebraic quotient argument for invariant
+functionals; convolution invariance of traces; finite-order torus lemma
+via Fourier series; distinction between ordinary densities and derivative
+distributions.
+\item[Checked in a cited source] W.-W. Li (2012), Theorem~5.8.10:
+vanishing of genuine tempered characters is equivalent to vanishing of
+regular orbital integrals and membership in the span of conjugation
+differences.  Li, Theorem~5.4.1, describes an $R$-group decomposition
+admitted as a hypothesis in the non-Archimedean case.  The theorem is
+used as a cited input, not independently reproved.
+\item[Conditional] Existence and precise topology of the full genuine
+tempered Paley--Wiener space underlying the distributional pairing.
+\item[Unverified against original sources] Exact endpoint constituents
+in the dual classification; Moen's exceptional genuine character;
+intertwining-form normalizations; the proposed orbital-integral image
+and principal-series spectral-image surjectivity; some bibliographic
+items originally supplied as unpublished preprints.
+\end{description}
+\section*{Relation to earlier numbering}
+The source theorem labels \texttt{thm:trace}, \texttt{thm:main},
+\texttt{prop:kernel}, \texttt{lemma:schwartz}, and the primary section
+labels were retained, although their printed numbers shifted after
+inserting the new introduction and literature/background material.
+An exact 1994-to-2026 numbered theorem concordance is not yet available:
+the 1994 typescript is 2,282 lines and this editorial synthesis has not
+established statement-by-statement identity.  Do not treat coincident
+numbers as equivalent results.
+
+\section*{Publication and copyright caution}
+The 2001 journal article is published material and may be subject to
+publisher-specific reuse conditions. The present standalone expository
+synthesis is not a reproduction or replacement of the published article.
+The author requested that Draft 2 be posted in the public
+\texttt{wdjoyner/trace-formulas} repository, in
+\texttt{slcbar-invariant-distributions/}.
+\end{document}

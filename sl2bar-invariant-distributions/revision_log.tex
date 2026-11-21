@@ -1,13 +1,14 @@
 \documentclass[12pt,letterpaper]{article}
 \usepackage[T1]{fontenc}
-\usepackage{newtxtext,newtxmath}
+\IfFileExists{newtxtext.sty}{\usepackage{newtxtext,newtxmath}}{\usepackage{mathptmx}\usepackage{amssymb}}
 \usepackage[letterpaper,margin=1in]{geometry}
-\usepackage{amsmath}
+\usepackage{amsmath,booktabs}
+\usepackage{microtype}
 \usepackage{enumitem}
 \usepackage[hidelinks]{hyperref}
 \title{Revision log: genuine invariant distributions on metaplectic covers of $SL(2)$}
 \author{David Joyner\\\texttt{wdjoyner@gmail.com}}
-\date{Draft 2 --- November 21, 2026}
+\date{Drafts 2 and 3 --- November 21, 2026}
 \begin{document}
 \maketitle
 \section*{Sources, scope, and decision}
@@ -80,6 +81,129 @@ author-initial/year labels where documentary years were available.
 \item No mathematical statements or proofs were changed during this editorial correction.
 \end{enumerate}
 
+
+\section*{Draft 3 (November 21, 2026): response to two referee reports}
+\paragraph{Inputs and AI usage.}
+Draft~2 was refereed by Gemini (Google), which the author calls Carbon (file
+\texttt{referee-2026-11/report-gemini.md}), and by Claude (Anthropic), who also
+assessed Gemini's report item by item (\texttt{referee-2026-11/report-claude.md}).
+Claude then prepared Draft~3 in response to both reports.  Claude wrote the new
+proofs listed below and the script \texttt{scripts/genuine\_torus\_check.py}.
+Draft~3 has not been refereed.
+
+\paragraph{Correction to Claude's own report.}
+Running the new script showed that item~9 of Claude's report was wrong in one
+respect.  The cocycle $\beta$ is trivial on $N\times N$ for every unipotent radical
+$N$, including the lower triangular one, by the Steinberg relation.  So Draft~2's
+identification of $N$ with $\{(u,1)\}$ was correct.  Draft~3 keeps it and adds the
+one-line reason.  Claude's report also proposed moving the notation table to an
+appendix.  That conflicts with the style guide (\S2, item~5, notation near the
+beginning), so the table was kept in place.
+
+\paragraph{Results newly established in Draft 3.}
+These are new mathematics, not present in the 1994 notes, the 2001 article, or Draft~2.
+\begin{enumerate}[leftmargin=*,itemsep=2pt]
+\item Lemma~5.2 (formerly Remark~5.2, source-dependent): $\beta(h(a),h(b))=(b,a)_n$, the
+commutator in $\bar A$ is $(a,b)_n^{-2}$, the center of $\bar A$ is the preimage of
+$A^\nu$ of index $\nu^2$, and $\overline{h(C)}$ is maximal abelian of index $\nu$.  Proved,
+and checked exactly by the script for six pairs $(p,n)$ with $p\le19$.
+\item Lemma~5.3 (formerly Remark~5.3(a)): vanishing of the split orbital integral off the
+center of $\bar A$.  Proved.
+\item Lemma~6.3 (restated): the duality pairing is now sesquilinear, between $I(\mu)$ and
+$I(\bar\mu^{-1})$.  The Draft~2 bilinear pairing between $I(\mu)$ and $I(\mu^w)$ is not
+well defined for $n>2$, because the contragredient of a genuine representation is not
+genuine.  Well-definedness and invariance are proved; non-degeneracy is cited.
+\item Necessity of the Weyl-fixed hypothesis in Proposition~6.6 (proved in the text after it).
+\item Proposition~6.8 (formerly Remark~6.8, an unresolved conflict): for $\mathrm{Re}\,s>0$,
+$\ker T_{w_0}$ is the unique irreducible subrepresentation and $\mathrm{im}\,T_{w_0}$ the
+Langlands quotient.  At the endpoint, $\ker T_{w_0}\simeq\pi_{sp}$ and
+$\mathrm{im}\,T_{w_0}\simeq\pi_{nt}$.  This agrees with the corrected 2026 draft and
+reverses the 1994 conjecture.  The proof uses the geometric lemma, Frobenius reciprocity,
+and the Langlands quotient theorem for covers (Ban--Jantzen 2013).
+\end{enumerate}
+
+\paragraph{Corrections of errors in Draft 2.}
+\begin{enumerate}[leftmargin=*,itemsep=2pt]
+\item Harish-Chandra's $\Xi$ (\S3.2): the integral of $\delta_B(xk)^{-1/2}$ collapses to
+$\delta_B(x)^{-1/2}$.  Replaced by $\int_{K_0}\delta_B(kx)^{1/2}\,dk$.  (Claude's report.)
+\item Unramified characters of $\bar A$ and the parameter space: $A^n$ replaced by $A^\nu$, the
+center (\S3.2, \S8.1).  (Gemini.)
+\item Characters $\Theta_\pi$ are anti-genuine, not genuine, under the paper's convention (\S3.2).  (Claude.)
+\item $w_0$ has order four (\S3.2).  (Claude.)
+\item Splitting over $K_0$: citation changed from Gelbart (the case $n=2$) to Kazhdan--Patterson,
+with the note that the splitting is not $k\mapsto(k,1)$.  (Claude.)
+\item \S6.2: genuine characters of $\bar C$ written as $\mu_0\eta_s$, with $\eta_s$ pulled back from $A$,
+in place of ``$\mu(x)=\mu_0(x)|x|^s$''.  Defined $I(\mu):=I(\chi_\mu)$.  Used $\delta_B^{1/2}$ in $V(\mu)$.
+$K(\mu)$ is now defined as the space of restrictions to the big cell, and condition (ii) is
+replaced by the exact formula from the Bruhat identity.  The decay is at $|x|\to\infty$ (noncompact
+picture); Gemini's suggestion of $|x|$ small was not adopted.  Named $T=T_{w_0}$.  (Gemini and Claude.)
+\item Lemma~6.4 is stated for the Hermitian form $H=\langle\cdot,\iota T\cdot\rangle$, which fixes the
+bilinear/sesquilinear mismatch.  (Gemini; root cause found by Claude.)
+\item Lemma~6.5: range $0<\mathrm{Re}\,s$ (the integral does not converge at $\mathrm{Re}\,s=0$), and
+the statement is about the image of $T_{w_0}$, not of the matrix $J_\mu$.  (Claude.)
+\item Proposition~6.6 and Corollary~6.7: added the hypotheses $s$ real, $\chi_{\mu_0}$ Weyl-fixed, and
+$I(\mu_0)$ irreducible.  (Claude.)
+\item Theorems~6.9 and 6.10: the irreducible $I(\chi)$ with $\chi^w=\chi$ and $n$ even was missing.
+``The special representation'' changed to ``a special representation''.  (Claude; Gemini.)
+\item $\Pi(\bar C)_u$ is a countable disjoint union of circles, not a compact torus (\S8.1).  (Claude.)
+\item Theorem~8.6: $\mathcal F(C_c^\infty)=PW_t$ by definition, so ``$\subset$'' became ``$=$''.  (Claude.)
+\item Example~8.12 claimed that the conditional Theorem~8.8 implies the Plancherel statement.  It
+was merged into Example~9.1 with conditional wording.  (Claude.)
+\end{enumerate}
+
+\paragraph{Changes of status.}
+Remark~5.2 $\to$ Lemma~5.2 (proved).  Remark~5.3 $\to$ Lemma~5.3 (part (a), proved) and Remark~5.4
+(parts (b), (c), still source-dependent).  Remark~6.8 $\to$ Proposition~6.8 (proved, using
+(Ban--Jantzen 2013)).  Theorems~6.9 and 6.10 $\to$ Remarks~6.9 and 6.10 (source-dependent classification;
+Draft~2 already said they were not verified).  No status was upgraded without a proof.
+
+\paragraph{Exposition and housekeeping.}
+Title page and date line in the form of the style guide (\S6.2).  Abstract names all three AI systems.
+Introduction states the tame restriction $p\nmid2n$ and mentions Section~7.  Literature review adds
+Ban--Jantzen (2013, 2016), Kaplan--Szpruch (arXiv 2022) and the 2024 corrections to Li's paper.
+\S8 opening softened from ``we classify'' to ``we review''.  Note that algebraic and continuous duals
+of $C_c^\infty$ coincide.  The duplicate definition of the space of conjugation differences removed.  \S8.1 rewritten in modern
+\LaTeX.  The \verb|\F| alias and the \verb|\verify|, \verb|\cD|, \verb|\aaa| macros and the unused
+cleveref package removed.  Commented verification notes turned into text.  Proofs use the
+\texttt{proof} environment.  ``2026d'' replaced by a citation ([Jo26] in the paper).  Bibliography typos fixed
+(centre, corps, Zelevinsky, non-Archimedean, forms, Th\'eorie, int\'egrales).  Uncited items Ar81, Be75,
+Da99, HC84, Jo88, JM00 and Me98 removed.  Acknowledgments name each AI and its role and point to this log.
+Notation table updated.  The preamble falls back to mathptmx when newtx is not installed (the
+committed PDF was built that way, because newtx was not available in Claude's workspace).
+
+\paragraph{Verification levels (style guide \S7.3).}
+Level~1 (independent derivation): Lemmas~5.2, 5.3, 6.3 (except non-degeneracy); the necessity
+argument after Proposition~6.6; Proposition~6.8 given its cited inputs; the Bruhat identities and the
+unipotent computation (also checked by the script).  Level~2 (source consulted): only the abstract and
+introduction of Ban--Jantzen (2013) and the title and authors of Kaplan--Szpruch.  Level~3 (memory,
+not consulted): Arit\"urk, Flicker--Kazhdan, Moen, Kazhdan--Patterson (splitting over $K_0$),
+Ban--Jantzen (2016), Vign\'eras, and the content of the 2024 corrections to Li's paper.
+
+\paragraph{Sources not consulted.}
+None of Arit\"urk (1980), Flicker--Kazhdan (1986), Moen (1988), or the body of Ban--Jantzen was read
+in preparing Draft~3.  The normalization of the endpoint $s=1/n$ and Moen's exceptional datum remain
+unchecked.
+
+\paragraph{Concordance, Draft 2 $\to$ Draft 3.}
+\begin{center}\small
+\begin{tabular}{@{}ll@{}}
+\toprule
+Draft 2 & Draft 3\\
+\midrule
+Remark 5.2 (maximal abelian preimages) & Lemma 5.2 (commutators in the covering torus)\\
+Remark 5.3 (orbital integrals) & Lemma 5.3 (part (a)) and Remark 5.4 (parts (b), (c))\\
+Example 5.4 (discriminant) & Example 5.5\\
+Lemma 6.5 (unlabeled) & Lemma 6.5 (label \texttt{lem:image-irred})\\
+Corollary 6.7 (unlabeled) & Corollary 6.7 (label \texttt{cor:positive})\\
+Remark 6.8 (endpoint conflict) & Proposition 6.8 (endpoint constituents)\\
+Theorem 6.9, Theorem 6.10 & Remark 6.9, Remark 6.10\\
+Lemma 8.5 (unlabeled) & Lemma 8.5 (label \texttt{lem:quotient-dual})\\
+Example 8.12 & merged into Example 9.1\\
+\bottomrule
+\end{tabular}
+\end{center}
+All other numbers are unchanged, and all Draft~2 labels are kept.
+
 \section*{Mathematical verification status}
 \begin{description}[style=nextline]
 \item[Directly checked] Algebraic quotient argument for invariant
@@ -94,7 +218,8 @@ admitted as a hypothesis in the non-Archimedean case.  The theorem is
 used as a cited input, not independently reproved.
 \item[Conditional] Existence and precise topology of the full genuine
 tempered Paley--Wiener space underlying the distributional pairing.
-\item[Unverified against original sources] Exact endpoint constituents
+\item[Proved in Draft 3] Lemmas 5.2, 5.3 and 6.3 and Proposition 6.8; see the Draft~3 section above.
+\item[Unverified against original sources] The normalization $s=1/n$ of the endpoint
 in the dual classification; Moen's exceptional genuine character;
 intertwining-form normalizations; the proposed orbital-integral image
 and principal-series spectral-image surjectivity; some bibliographic

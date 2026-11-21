@@ -1,0 +1,1182 @@
+\documentclass[12pt,letterpaper]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amsthm,mathtools,mathrsfs}
+\usepackage{newtxtext,newtxmath}
+\usepackage{microtype}
+\usepackage[letterpaper,margin=1in]{geometry}
+\usepackage{enumitem,booktabs,array,longtable}
+\usepackage{xcolor}
+\usepackage[hidelinks]{hyperref}
+\usepackage{cleveref}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+\newcommand{\F}{\mathbf{F}}
+\newcommand{\C}{\mathbb C}
+\newcommand{\R}{\mathbb R}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\aaa}{\mathbb{A}}
+\newcommand{\bG}{\overline{G}}
+\newcommand{\bA}{\overline{A}}
+\newcommand{\bC}{\overline{C}}
+\newcommand{\bw}{\overline{w}}
+\newcommand{\pr}{\mathrm{pr}}
+\newcommand{\Pit}{\Pi_t(\bG)}
+\newcommand{\tr}{\operatorname{tr}}
+\newcommand{\Cent}{\operatorname{Cent}}
+\newcommand{\Ind}{\operatorname{Ind}}
+\newcommand{\Span}{\operatorname{span}}
+\newcommand{\cD}{\mathcal D}
+\newcommand{\cS}{\mathcal S}
+\newcommand{\calC}{\mathcal C}
+\newcommand{\sF}{\mathscr F}
+\newcommand{\sJ}{\mathscr J}
+\newcommand{\vphi}{\varphi}
+\newcommand{\verify}[1]{\textit{[verification pending: #1]}}
+
+\begin{document}
+
+\title{A hitch-hiker's guide to genuine invariant distributions\\
+ on metaplectic covers of $SL(2)$ over a $p$-adic field\thanks{Corrected and expanded synthesis of the author's unpublished manuscript dated
+ January 4, 1994, and of the $SL(2)$ portions of
+ ``Invariant distributions on the $n$-fold metaplectic covers of $GL(r,F)$, $F$ $p$-adic,''
+ \emph{Journal of Fourier Analysis and Applications} \textbf{7} (2001), 343--358.
+ This draft has not been refereed independently and does not replace the published article.}}
+\author{David Joyner\\\texttt{wdjoyner@gmail.com}}
+\date{Draft 2: November 21, 2026\\Original notes: January 4, 1994}
+\maketitle
+
+\begin{abstract}
+This corrected and expanded version of the author's 1994 manuscript was prepared
+with the help of AI, specifically ChatGPT (OpenAI) and Claude (Anthropic); see
+the Acknowledgments for details.  The paper revisits the original notes on
+genuine invariant distributions for
+finite central covers of $SL(2,F)$, and incorporates the relevant material from a
+subsequent article published in 2001.  We work over a finite extension $F/\mathbb Q_p$
+containing $\mu_n$, with $p\nmid 2n$.  After describing the cover, its genuine
+representations, and principal-series spectral parameters, we explain the
+factorization of invariant distributions through tempered character traces.
+The principal algebraic factorization follows from a tempered-character density
+statement for covering groups, with the hypotheses and status of the cited
+literature made explicit.  A further representation of invariant tempered
+distributions as continuous functionals on a spectral Paley--Wiener space is
+stated under the precise topological Paley--Wiener input.  Unverified
+principal-series image formulas and classification details are identified rather
+than treated as independently established theorems.
+
+\end{abstract}
+
+
+\section{Introduction}\label{sec:intro}
+This paper concerns Fourier analysis on a finite central extension of
+$SL(2,F)$, where $F$ is a non-Archimedean local field.  On a commutative
+group the Fourier transform is parametrized by characters.  On a noncommutative
+cover one instead obtains operators $\pi(f)$ and their traces
+$\Theta_\pi(f)$, with $\pi$ running through genuine representations.
+A \emph{genuine} representation is one on which the central kernel $\mu_n$
+acts through its tautological character.  An \emph{invariant distribution}
+is a continuous linear functional on compactly supported test functions
+that is unchanged by conjugation.  The principal question is how much of
+such a distribution is determined by the traces of irreducible tempered
+representations.
+
+The starting point is the author's unpublished 1994 manuscript
+\cite{Jo94}.  That manuscript described the local cocycle, representations
+of the covering torus, principal and complementary series, and proposed
+Paley--Wiener descriptions.  It explicitly stated that portions of the
+classification and Fourier-image problem were conjectural.  The author's
+2001 article \cite{Jo01} subsequently developed an invariant-distribution
+argument for $SL(2)$ as well as for certain covers of $GL(r)$.  Here we
+consider only the former group.  Removing the general-linear component
+allows the local rank-one structure and its limitations to be made explicit.
+
+There are two logically distinct assertions.  First, if a compactly
+supported genuine test function has zero trace against every genuine
+irreducible tempered representation, a tempered-character density theorem
+identifies it with a sum of conjugation differences.  Consequently every
+invariant distribution factors algebraically, and uniquely, through the
+\emph{image} of the tempered trace map.  Second, describing a \emph{tempered}
+invariant distribution as a continuous spectral functional requires a
+specified topology on a Paley--Wiener space and a continuous Fourier
+surjection with the appropriate kernel.  The second statement does not
+follow formally from the first.  See Theorems~\ref{thm:trace}
+and \ref{thm:main}.
+
+\begin{example}[Why a spectral functional need not have a density]\label{ex:derivative}
+On a one-parameter circle of unitary characters, the rule
+$T(h)=h'(0)$ is a distribution, but it is not integration against an
+ordinary locally integrable density.  Thus an expression
+$\int\Theta_\pi(f)m(\pi)\,d\mu(\pi)$ for a general invariant
+distribution must be interpreted as the pairing of a distribution with
+the spectral transform, not as an integral with a scalar function $m$.
+\end{example}
+
+The paper is organized as follows.  Section~\ref{sec:lit} distinguishes
+sources available by 1994 from later developments.  Background and
+notation are given in Sections~\ref{sec:background} and
+\ref{sec:notations}.  Sections~\ref{sec:orbital} and
+\ref{sec:unitary} review orbital integrals and rank-one representations.
+Section~\ref{sec:invariant} separates algebraic trace density from the
+conditional topological spectral statement.  We end with a summary,
+open issues, and a glossary.
+
+\section{Literature review}\label{sec:lit}
+The following sources are grouped by their relation to the original
+1994 manuscript rather than presented as a claim of an exhaustive survey.
+\paragraph{Through 1994.}
+Kubota's construction and the theory of central extensions underlie the
+rank-one cover (see the sources assembled in \cite{Jo94}).  Gelbart's
+account \cite{Ge76}, Kazhdan--Patterson's metaplectic forms \cite{KP84},
+and Flicker--Kazhdan's correspondence \cite{FK86} provide much of the
+representation-theoretic setting.  Arit\"urk studied a threefold cover
+\cite{Ar80}, and Moen analyzed irreducibility of unitary principal series
+\cite{Mo88}.  Harish-Chandra's harmonic analysis \cite{HC70,HC78},
+Kazhdan's density ideas \cite{Ka86}, and Arthur's trace Paley--Wiener
+work \cite{Ar94} motivate the invariant-distribution question.  These
+results concern different groups and test-function spaces; citations
+alone are not substitutes for the hypotheses needed below.
+\paragraph{After 1994.}
+The 2001 paper \cite{Jo01} supplied the immediate source for many of the
+rank-one formulations below.  The 2012 work of Wen-Wei Li
+\cite{Li12}, especially Sections~5.4, 5.6, and Theorem~5.8.10,
+places tempered Fourier analysis and density for covering groups in the
+setting of a local invariant trace formula.  Li states a non-Archimedean
+$R$-group decomposition as an admitted hypothesis in Theorem~5.4.1;
+its role must be kept visible when invoking the later results.
+
+\begin{example}[A chronological distinction]
+Moen's 1988 irreducibility results \cite{Mo88} could inform the 1994
+notes.  Li's 2012 tempered-character density theorem \cite{Li12}
+could not, and belongs to the modern reassessment rather than to
+the original claims.
+\end{example}
+
+\section{Background}\label{sec:background}
+We fix the cover and the convention for its central character before
+describing invariant harmonic analysis.  Except where an elementary
+example is explicitly noted, subsequent statements concern the genuinely
+$\mu_n$-equivariant component.
+
+
+\subsection{Assumptions on \texorpdfstring{$\overline{G}$}{the covering group}}\label{section:assume}
+
+Let $F=\F$ be a finite extension of $\mathbb Q_p$ with residual
+characteristic $p$.  Fix an integer $n>1$ satisfying $p\nmid 2n$
+and assume $\mu_n\subset F^\times$.  Set $G=SL(2,F)$.  The Kubota
+$n$-fold metaplectic cover is a finite topological central extension
+\[
+1\longrightarrow\mu_n\longrightarrow\bG\xrightarrow{\ \pr\ }G
+\longrightarrow1.
+\]
+The restriction $p\nmid 2n$ is stronger than the original 1994
+manuscript's generality; no assertion for wildly ramified covers is
+made here.
+
+
+Let $\varpi$ be a uniformizer, $\mathcal O$ the ring of integers, $q=|\mathcal O/\varpi\mathcal O|$,
+and $|\cdot|$ the normalized absolute value. Put
+\begin{equation}\label{eqn:N}
+\nu=\begin{cases}n,& n\text{ odd},\\ n/2,& n\text{ even},\end{cases}
+\end{equation}
+and let $N_0$ denote
+the upper triangular unipotent subgroup of $G$.
+
+For $g=\begin{psmallmatrix}a&b\\c&d\end{psmallmatrix}\in SL(2,\F)$ let $x(g)=c$ if $c\ne0$ and
+$x(g)=d$ if $c=0$, and let $\beta:G\times G\to\mu_n$,
+\[
+\beta(g_1,g_2)=(x(g_1),x(g_2))_n\,(-x(g_1)^{-1}x(g_2),x(g_1g_2))_n
+=\Bigl(\tfrac{x(g_1g_2)}{x(g_1)},\tfrac{x(g_1g_2)}{x(g_2)}\Bigr)_n,
+\]
+where $(\cdot,\cdot)_n$ denotes the $n$th power Hilbert symbol
+\cite{We75}.  The extension has the group law
+\begin{equation}\label{eq:group-law}
+ (g_1,\zeta_1)(g_2,\zeta_2)=(g_1g_2,\beta(g_1,g_2)\zeta_1\zeta_2).
+\end{equation}
+This is the local cocycle model used in the 1994 manuscript
+\cite{Jo94}.
+\begin{example}[The central kernel]\label{ex:central}
+For $\zeta\in\mu_n$, the element $(1,\zeta)$ is central.  If $\pi$
+is genuine then $\pi(1,\zeta)=\zeta\,\mathrm{id}$, while a genuine
+test function satisfies $f((1,\zeta)x)=\zeta^{-1}f(x)$.
+Thus $f(x)\pi(x)$ is unchanged under changing the lift of a point
+of $G$.
+\end{example}
+
+\subsection{Basic notation}\label{subsec:notation}
+
+For $H\subset G$ put $\overline H=\pr^{-1}(H)$; in particular $\overline{G_r}$ is the preimage of the set $G_r$ of regular semisimple elements of $SL(2,F)$. Let $\mathcal L(G)=\{G,A\}$ denote the standard Levi subgroups, where $A$ is the diagonal torus, and write $\mathcal L(\bG)=\{\bG,\bA\}$ for their preimages. For a Levi
+$M$ let $X(M)$ (resp.\ $X^{un}(M)$) be the variety of unramified (resp.\ unramified unitary)
+characters; for $M=\bA$ these are the characters of $A^n$ (identified with characters of
+$\overline{A^n}$). Let $W=N_G(A)/A$ be the Weyl group. For $G=SL(2,\F)$,
+\[
+w_0=\begin{pmatrix}0&-1\\1&0\end{pmatrix}\in G
+\]
+represents the nontrivial element of the order-two group $W$.  Although $w_0^2=-I\in A$, the representative $w_0$ itself need not have order two. The
+group $W$ acts on $\bA$ by conjugation by any lift of $w_0$; we use the lift $\bw_0=(w_0,1)$.
+
+The unipotent radical $N$ of a parabolic subgroup is identified with $\{(u,1)\mid u\in N\}\subset\bG$.
+Let $K_0=SL(2,\mathcal O)$. For $SL(2)$ and $p\nmid 2n$, the cover splits over $K_0$ \cite{Ge76}.
+
+\paragraph{Genuine functions and representations.} A function $f$ on $\bG$ (or on a subgroup
+$H\subset \bG$) is \emph{genuine} if $f(g,\varsigma)=\varsigma^{-1}f(g,1)$. A representation $\pi$ is
+\emph{genuine} if $\pi(g,\varsigma)=\varsigma\,\pi(g,1)$. For genuine $f$ and $\pi$ the product
+$f(x)\pi(x)$ is invariant under $\mu_n$, so $\pi(f)=\int_G f(\tilde g)\pi(\tilde g)\,dg$ is defined
+(for any section $g\mapsto\tilde g$). Let $C_c^\infty(\bG)$ be the space of smooth (locally constant,
+compactly supported) genuine functions. Write $f^y(x)=f(y^{-1}xy)$ and
+\[
+\sJ=\Span\{f-f^y\mid f\in C_c^\infty(\bG),\ y\in\bG\}.
+\]
+A linear functional $D$ is \emph{invariant} if $D(f^y)=D(f)$ for all $y$, i.e.\ $D|_{\sJ}=0$.
+
+\paragraph{The Schwartz space (corrected definition).} Let $\|g\|=\max|g_{ij}|$ and put
+\[\sigma(g)=\log\max\bigl(\|g\|,\,\|g^{-1}\|\bigr)\ \ge0.\] Fix the maximal compact subgroup $K_0$ and the standard Borel
+subgroup $B$. Let $\delta_B$ be the modulus character of $B$, extended to $G=BK_0$
+(Iwasawa decomposition) by $\delta_B(bk)=\delta_B(b)$. Harish-Chandra's function is
+\[
+\Xi(x)=\int_{K_0}\delta_B(xk)^{-1/2}\,dk,
+\]
+pulled back to $\bG$ via $\pr$. For a compact open subgroup $K\subset\bG$ with $K\cap\mu_n=1$
+(so that bi-$K$-invariant genuine functions exist) let $\calC_K(\bG)$ be the space of genuine
+functions $f$ on $\bG$ that are bi-$K$-invariant (hence locally constant) with
+\[
+\upsilon_k(f)=\sup_{x\in\bG}|f(x)|\,\frac{(1+\sigma(x))^k}{\Xi(x)}<\infty\qquad(k\ge0).
+\]
+Topologize $\calC_K(\bG)$ by the seminorms $\upsilon_k$ and put
+$\calC(\bG)=\bigcup_K\calC_K(\bG)$ with the locally convex inductive limit topology. This is the
+\emph{Harish-Chandra Schwartz space} (in the $p$-adic case the letter $\calC$ is often used for the Schwartz space, rather than $\cS$;
+compact support is not part of the definition). It is an algebra under convolution
+and $C_c^\infty(\bG)\subset\calC(\bG)\subset L^2(\bG)$ with $C_c^\infty$ dense.
+A \emph{tempered distribution} on $\bG$ is a continuous linear functional on $\calC(\bG)$.
+
+\paragraph{Characters and dual objects.} For an admissible genuine representation $\pi$ of $\bG$ let
+$\Theta_\pi$ be its character, regarded as a locally integrable genuine function on $\overline{G_r}$ or
+as an invariant distribution (see \cite{Jo94}, \S4, for the extension of \cite{Si79}, \S4.8, to covers;
+\cite{HC70,HC78}). For a Levi $\overline M$ let $\Pi(\overline M)$ be the genuine admissible dual,
+$\Pi(\overline M)_t$ the genuine tempered dual, $\Pi(\overline M)_u$ the genuine unitary dual
+(equivalence classes of irreducible representations; all representations are admissible).
+Write $\Pit=\Pi(\bG)_t$. The \emph{trace transform} is
+\[
+\sF:C_c^\infty(\bG)\to\C^{\Pit},\qquad \sF f(\pi)=\Theta_\pi(f)=\tr\pi(f).
+\]
+Let $R_t(\bG)$ be the Grothendieck group of genuine, tempered, admissible representations of $\bG$,
+tensored with $\C$. The image of $\sF$, viewed as a space of functionals on $R_t(\bG)$, is the
+\emph{tempered Paley--Wiener space} $PW_t(\bG)$. Similarly $PW(\bG)$ denotes the (non-tempered)
+Paley--Wiener space, the space of functionals $\pi\mapsto\Theta_\pi(f)$ on $R(\bG)$, $f\in C_c^\infty(\bG)$.
+
+%====================================================================
+
+\section{Notation and conventions}\label{sec:notations}\label{subsec:notsum}
+
+For convenience, the main notation is collected here.  Every symbol also receives an explanation at its first substantive use.
+
+{\small
+\begin{longtable}{@{}>{\raggedright}p{4.1cm}>{\raggedright\arraybackslash}p{11.2cm}@{}}
+\toprule
+\textbf{Symbol} & \textbf{Meaning} \\
+\midrule
+\endhead
+$\F$, $\mathcal O$, $\varpi$, $q$, $|\cdot|$, $p$ & $p$-adic field; its ring of integers; a uniformizer; the order of the residue field; the normalized absolute value; the residual characteristic \\
+$n$, $\mu_n$ & degree of the cover; the group of $n$-th roots of unity (contained in $\F$) \\
+$G$, $\bG$, $\pr$ & $SL(2,F)$, its $n$-fold cover, and the projection $\bG\to G$ \\
+$\nu$ & $n$ if $n$ is odd, $n/2$ if $n$ is even (equation \eqref{eqn:N}) \\
+$A$, $\bA$, $N_0$ & diagonal subgroup of $G$; its preimage in $\bG$; the upper triangular unipotent subgroup \\
+$W$, $w_0$, $\bw_0$ & Weyl group $N_G(A)/A$; the representative $\begin{psmallmatrix}0&-1\\1&0\end{psmallmatrix}$ for $SL(2)$; its lift $(w_0,1)$ \\
+$(\cdot,\cdot)_n$, $\beta$ & Hilbert symbol; the cocycle defining $\bG$ \\
+$K_0$, $K$ & the maximal compact subgroup $SL(2,\mathcal O)$; compact open subgroups of $\bG$ meeting $\mu_n$ trivially \\
+$\|g\|$, $\sigma(g)$ & max-norm of the matrix entries; the height $\log\max(\|g\|,\|g^{-1}\|)$ \\
+$\delta_B$, $\Xi$ & modulus character of the Borel subgroup $B$; Harish-Chandra's function \\
+$C_c^\infty(\bG)$ & smooth, compactly supported, genuine functions on $\bG$ \\
+$\calC_K(\bG)$, $\calC(\bG)$ & $K$-bi-invariant genuine functions with $\Xi$-weighted rapid decay; the Schwartz space $\bigcup_K\calC_K(\bG)$ \\
+$f^y$, $\sJ$ & $f^y(x)=f(y^{-1}xy)$; the span of all $f-f^y$ in $C_c^\infty(\bG)$ \\
+$\Theta_\pi$ & the character of an admissible genuine representation $\pi$ \\
+$\Pi(\overline M)$, $\Pi(\overline M)_t$, $\Pi(\overline M)_u$ & genuine admissible, tempered, unitary dual of the Levi subgroup $\overline M$; $\Pit=\Pi(\bG)_t$ \\
+$R_t(\bG)$, $PW_t(\bG)$, $PW(\bG)$ & Grothendieck group of genuine tempered representations (tensored with $\C$); the tempered Paley--Wiener space; the Paley--Wiener space \\
+$\sF$, $\widehat D$ & the trace transform $f\mapsto(\pi\mapsto\Theta_\pi(f))$; the Fourier transform of an invariant distribution $D$, defined by $D=\widehat D\circ\sF$ \\
+$I_M(\tau)$, $I_{\bA}(\chi)$, $V_\tau$ & unitarily induced representations; the space of the supercuspidal $\tau$ \\
+$\chi^{\bw}$ & the conjugate $\chi^{\bw}(a)=\chi(\bw^{-1}a\bw)$ \\
+$C$, $\bC$, $\mu$, $\chi_\mu$, $s(\mu)$ & maximal subgroup of $A$ with $\bC$ abelian; a character of $\bC$; $\Ind_{\bC}^{\bA}\mu$; the exponent in $\mu(x)=\mu_0(x)|x|^s$ \\
+$K(\mu)$, $V(\mu)$, $T_w$, $J_\mu$, $d$, $\mathcal R$ & spaces and intertwining operator of \S\ref{subsec:cs}; the matrix of the operator $J$; the cardinality and a set of representatives of $\bA/\bC$ \\
+$\pi_{sp}$, $\pi_{nt}$ & the special representation; the non-tempered (``trash'') quotient \\
+$D(t)$, $Z_t$, $F_f^{Z_t}$, $F_f^{A^\nu}$ & Weyl discriminant; centralizer of $t$ in $\bG$; orbital integrals (\S\ref{sec:orbital}) \\
+$\Delta$ & Laplacian on a compact torus (\S\ref{subsec:main}) \\
+\bottomrule
+\end{longtable}}
+
+
+\begin{example}[A Weyl representative]
+For $a\in F^\times$, conjugation by the matrix $w_0$ sends
+$\operatorname{diag}(a,a^{-1})$ to
+$\operatorname{diag}(a^{-1},a)$.  Hence a Weyl-invariant test
+function on the diagonal torus satisfies $h(a)=h(a^{-1})$.
+\end{example}
+
+\section{Basic lemmas on orbital integrals}\label{sec:orbital}
+
+If $p<\infty$ then $\F^\times=\varpi^{\Z}\cdot\mu_{q-1}\cdot U_1$ (a direct product). If
+$p\nmid 2n$ then $\mu_n\subset\F^\times$ gives $q\equiv1\pmod n$. Recall $\nu$ from \eqref{eqn:N}.
+
+\begin{lemma}\label{lem:subgroup}
+Let $A$ be the diagonal subgroup of $SL(2,F)$ and let
+$h(a)=\operatorname{diag}(a,a^{-1})$.  Under the standing hypotheses,
+\[
+ C=\varpi^{\mathbb Z}\mathcal O^{\times\nu}
+ =\varpi^{\mathbb Z}\mu_{q-1}^{\nu}(1+\varpi\mathcal O)
+\]
+is a subgroup of index $\nu$ in $F^\times$.
+\end{lemma}
+\noindent\textbf{Proof.}
+The unit group decomposes as
+$\mathcal O^\times=\mu_{q-1}\times(1+\varpi\mathcal O)$.
+Because $p\nmid\nu$, raising to the $\nu$th power is an automorphism
+of $1+\varpi\mathcal O$.  Also $n\mid(q-1)$ and $\nu\mid n$, so
+$\nu\mid(q-1)$.  Since $\mu_{q-1}$ is cyclic, its subgroup of
+$\nu$th powers has index $\nu$.  The uniformizer factor contributes
+no additional index.\hfill$\square$
+
+\begin{remark}[Maximal abelian preimages]\label{rem:maxabelian}
+The earlier papers additionally identify $C$ as a maximal subgroup
+of $F^\times$ with abelian preimage $\overline{h(C)}$ in the covering
+diagonal torus \cite{Jo94,Jo01}.  This stronger assertion depends on
+the Hilbert-symbol commutator for the chosen cocycle and has not been
+reproved here.  It is not needed for Lemma~\ref{lem:subgroup}.
+\end{remark}
+
+Let $D(h(a))=\det(1-\mathrm{Ad}(h(a)))_{\mathfrak g/\mathfrak a}=-(a-a^{-1})^2$, which pulls back to
+$\overline{G_r}$ via $\pr$. For $t\in\overline{G_r}$ let $Z_t=\Cent(t,\bG)$. (This need not be the cover of
+a centralizer in $G$: for $t=(x,1)$ in general $\Cent(t,\bG)\ne\overline{\Cent(x,G)}$.) The
+\emph{orbital integral} of $f\in C_c^\infty(\bG)$ is
+\begin{equation}\label{eqn:orb}
+F_f^{Z_t}(t)=|D(t)|^{1/2}\int_{Z_t\backslash\bG}f(x^{-1}tx)\,\frac{dx}{dt}
+\end{equation}
+(it exists by Harish-Chandra \cite{HC70}; $D$ is defined by identifying $Z_t$ with a torus over
+$\overline\F$). For regular $a\in\bA$ put
+$F_f^{A^\nu}(a)=|D(a)|^{1/2}\int_{\overline{A^\nu}\backslash\bG}f(x^{-1}ax)\,\frac{dx}{da}$.
+
+\begin{remark}[Orbital-integral statements from the earlier sources; verification pending]\label{lem:orbital}
+Let $\bG$ be a cover of $SL(2,\F)$ as in \S\ref{section:assume}.
+\begin{enumerate}[label=(\alph*),leftmargin=*,itemsep=1pt]
+\item For $f\in C_c^\infty(\bG)$ and $a\in\bA-\overline{A^\nu}$, $F_f^{A^\nu}(a)=0$.
+\item $f\mapsto F_f^{A^\nu}$ is a surjection $C_c^\infty(\bG)\to C_c^\infty(\overline{A^\nu})^W$, where $W$
+acts on $\overline{A^\nu}$ as in \S\ref{subsec:notation}.
+\item $f\mapsto F_f^{A^\nu}$ is a continuous surjection $\calC(\bG)\to\calC(\overline{A^\nu})^W$.
+\end{enumerate}
+\end{remark}
+These assertions reproduce the earlier formulation.  The hypotheses and
+the claimed surjectivity for the genuine Schwartz space have not been
+checked against the original proofs in this revision, so they are recorded
+as source-dependent statements rather than newly proved lemmas.  See
+\cite{Jo94,Jo01}. 
+
+%====================================================================
+\begin{example}[The discriminant]
+For $h(a)=\operatorname{diag}(a,a^{-1})$ with $a^2\ne1$,
+the two nontrivial adjoint eigenvalues are $a^2$ and $a^{-2}$.
+Thus the rank-one Weyl discriminant is
+$(1-a^2)(1-a^{-2})=-(a-a^{-1})^2$, as used in
+\eqref{eqn:orb}.  The restriction $a^2\ne1$ is exactly the
+regularity condition on the split torus.
+\end{example}
+
+\section{Unitary and tempered dual of \texorpdfstring{$\overline{SL(2,\F)}$}{SL(2,F) cover}}\label{sec:unitary}
+
+In this section $\bG$ is a cover of $SL(2,\F)$ as in \S\ref{section:assume}. The results are
+essentially in the literature (see \cite{Jo99a}, \cite{Jo01}); they are recalled in order to describe
+the tempered dual in \S\ref{sec:invariant}. 
+
+It is remarked in \cite{Be84}, \S2.2 that the arguments of \cite{BZ76}, Ch.~2 carry over to finite
+central extensions of reductive groups over $p$-adic fields (see also \cite{KP84}, \S1.2), and the
+arguments of \cite{BZ77}, \S2 carry over to split reductive groups. These reduce the determination of the
+unitary dual to classifying the supercuspidal representations (done in \cite{Jo99b} for
+$\gcd(p,n)=1$ and in \cite{Jo98} for any $p,n$) and the constituents of induced representations.
+
+\subsection{Principal series}\label{subsec:ps}
+
+Let $\overline P=\overline MN$ be a Levi decomposition and $(\tau,V_\tau)$ a genuine
+supercuspidal representation of $\overline M$ (extended trivially to $N$). The \emph{unitarily
+induced representation} $I_M(\tau)$ is the right-translation representation on
+\begin{multline*}
+\Bigl\{f:\bG\to V_\tau\ \text{genuine}\ \Big|\ f(mg)=\delta_P(m)^{1/2}\tau(m)f(g),\\
+f\text{ right-invariant under some compact open }K\Bigr\}.
+\end{multline*}
+If $\varrho$ is a representation of $H\subset\bG$ and $x\in N_{\bG}(H)$, put
+$\varrho^x(h)=\varrho(x^{-1}hx)$.
+
+For $\chi,\chi'\in\Pi(\bA)$, call $\chi$ \emph{regular} if $\chi^{\bw}\ne\chi$ for all
+$w\in W-\{1\}$, and call $\chi,\chi'$ \emph{$W$-conjugate} if $\chi'=\chi^{\bw}$ for some $w$.
+Distinct $W$-conjugacy classes yield inequivalent representations. A \emph{unitary principal series} representation is an induced representation
+$I_{\bA}(\chi)$ with $\chi\in\Pi(\bA)_u$. It is tempered, but need
+not be irreducible; only its irreducible constituents determine points
+of $\Pi(\bG)_t$.  When $I_{\bA}(\chi)$ is reducible, we call those
+constituents \emph{reducible principal-series constituents}.
+
+\begin{proposition}[Moen \cite{Mo88}]\label{prop:moen}
+Assume $\gcd(p,n)=1$.
+\begin{enumerate}[label=(\alph*),leftmargin=*,itemsep=1pt]
+\item If $n$ is even, $I_{\bA}(\chi)$ is irreducible and unitary for every $\chi\in\Pi(\bA)_u$.
+\item If $n$ is odd, $I_{\bA}(\chi)$ is irreducible and unitary for every $\chi\in\Pi(\bA)_u$
+with $\chi^{\bw_0}\ne\chi$. If $\chi^{\bw_0}=\chi$ then $I_{\bA}(\chi)$ is reducible with two irreducible
+constituents, except possibly for one exceptional $\chi$ singled out in \cite{Mo88}.
+\end{enumerate}
+\end{proposition}
+%\verify{The earlier version states the exception as ``$\chi=1$''. For a genuine character of $\bA$ the
+%trivial character is not an option, so the exceptional datum must be re-expressed (for example in
+%terms of the associated character of $C$ or of $A^n$). Check against \cite{Mo88}.}
+Moen \cite{MoND} computes the intertwining operators explicitly, as matrices in the Kirillov model, for
+$\gcd(p,n)=1$. The irreducibility statement has a direct Bruhat-theory proof and can also be deduced from
+\cite{FK86}.
+
+\subsection{Complementary series}\label{subsec:cs}
+
+We review results of Arit\"urk \cite{Ar80} and use \cite{FK86} to extend them to the $n$-fold cover
+(\cite{Ar80} assumed $n=3$ and $p>3$; for $n=2$ the results were essentially known to Gelbart--Sally
+\cite{GS75}). An irreducible unitary representation is called a \emph{complementary series} representation if it occurs as
+$I_{\bA}(\chi)$ with $\chi\in\Pi(\bA)-\Pi(\bA)_u$; these are not tempered.
+
+Let $C\subset A$ be a maximal subgroup with $\bC\subset\bA$ abelian. For $\mu\in\Pi(\bC)$ let
+$\chi_\mu=\Ind_{\bC}^{\bA}\mu$. If $\mu(x)=\mu_0(x)|x|^s$ with $\mu_0$ of finite order and
+$s\in\C$, write $s=s(\mu)$. Let $K(\mu)$ be the space of locally constant $f:\F\times\bA\to\C$ with
+(i) $f(x,a_1a_2)=\mu(a_1)f(x,a_2)$ for $a_1\in\bC$, $a_2\in\bA$; and
+(ii) $|x|\,\chi(h(x),1)f(x,a)$ constant for $|x|$ large. Let $\mathcal R\subset\bA$ be a set of
+representatives for $\bA/\bC$, of cardinality $d$ ; then $f\in K(\mu)$ is
+identified with the $d$-tuple $(f(x,a))_{a\in\mathcal R}$.
+
+Let $V(\mu)$ be the space of locally constant $\vphi:\bG\times\bA\to\C$ with
+(i) $\vphi(g,a_1a_2)=\mu(a_1)\vphi(g,a_2)$, $a_1\in\bC$; and
+(ii) $\vphi(a_1ug,a_2)=\delta(a_1)\vphi(g,a_2a_1)$, $a_1,a_2\in\bA$, $u\in N_0$.
+For $w\in W$ define the intertwining operator
+\[
+T_w\vphi(g,a)=\int_{\F}\vphi\bigl(\bw\cdot(\begin{psmallmatrix}1&x\\0&1\end{psmallmatrix},1)\cdot g,\ \bw a\bw^{-1}\bigr)\,dx,
+\qquad \mathrm{Re}\,s(\mu)>0.
+\]
+\begin{lemma}[Arit\"urk]\label{lem:T} $T_w$ intertwines $I_{\bA}(\mu)$ and $I_{\bA}(\mu^{\bw})$.\end{lemma}
+\begin{lemma}[Arit\"urk]\label{lem:contra} The pairing
+$\langle\vphi_1,\vphi_2\rangle=\int_{\bar B\backslash\bG}\int_{\bA/\bC}\vphi_1(g,a)\vphi_2(g,a)\,da\,dg$
+is a non-degenerate bilinear form on $V(\mu)\times V(\mu^{\bw})$; hence $I_{\bA}(\mu^{\bw})$ is the
+contragredient of $I_{\bA}(\mu)$.\end{lemma}
+(Here $\bar B$ is the Borel subgroup of $\bG$; the integrand lies in the space $L(\bG,\bar B)$ of functions
+with $\vphi(\begin{psmallmatrix}a&*\\0&a^{-1}\end{psmallmatrix},\varsigma)g)=|a|^2\vphi(g)$.) Neither
+lemma needs $\gcd(p,n)=1$.
+
+For $f\in K(\mu)$ define $f^\wedge(x,a)=\int_{\F^\times}f(y,a)\psi(xy)\,dy$ with $\psi$ a fixed additive
+character.
+\begin{lemma}[Arit\"urk]\label{lemma:Jdef}
+Assume $\gcd(p,n)=1$, $\mu(x)=|x|^s$. For $\vphi_1,\vphi_2\in V(\mu)$,
+\[
+\langle\vphi_1,T\vphi_2\rangle=\int_{\F}\int_{\bA/\bC}f_1^\wedge(x,a)\,\overline{(Jf_2^\wedge)(x,a)}\,da\,dx,
+\]
+where $J=J_\mu$ is a linear transformation of $K(\mu)^\wedge$ (an $d\times d$ matrix) and
+$f_i(x,a)=\vphi_i(\bw^{-1}\cdot(\begin{psmallmatrix}1&x\\0&1\end{psmallmatrix},1),a)$.
+\end{lemma}
+%\verify{As written, the left side is complex-bilinear while the right side is conjugate-linear in
+%$\vphi_2$; the left side should be a sesquilinear pairing obtained from Lemma~\ref{lem:contra} by the
+%identification of $\overline{V(\mu)}$ with $V(\bar\mu)$. Consult \cite{Ar80} for the exact normalization.}
+
+\begin{lemma}[Langlands, Arit\"urk] Assume $\gcd(p,2n)=1$. If $0\le\mathrm{Re}\,s(\mu)\le1/n$ and
+$|\mathrm{Im}\,s(\mu)|\le\pi/(n\ln q)$ then the image of $J_\mu$ is an irreducible representation of $\bG$.\end{lemma}
+\begin{proposition}[Flicker--Kazhdan \cite{FK86}]\label{prop:fk}
+If $0<s(\mu)<1/n$ then $I_{\bA}(\mu)$ is unitarizable.\end{proposition}
+\begin{corollary}
+If $0<s<1/n$ and $\mu(x)=|x|^s$, then $I_{\bA}(\mu)$ is unitary (unitarizable) in this range; the Hermitian
+form obtained from the intertwining pairing is positive definite, and if in addition $\gcd(p,2n)=1$ the
+matrix $J_\mu$ is positive definite.
+%\verify{the earlier version called $\langle\vphi_1,T\vphi_2\rangle$
+%itself ``positive definite''; it is bilinear (indeed $\langle iv,T\,iv\rangle=-\langle v,Tv\rangle$ for a
+%bilinear form), so only the Hermitian form can be positive definite. Check the claim about $J_\mu$ against
+%\cite{Ar80}}
+\end{corollary}
+
+\subsection{The special and the ``trash'' representations}\label{subsec:special}
+
+For the origin of the term ``trash'' representation, see \cite{Ge76}.
+
+\begin{remark}[Endpoint of the complementary series: an unresolved source conflict]\label{prop:special}
+At $s=1/n$ with $\mu(x)=|x|^s$, the 1994 manuscript
+\cite{Jo94} conjectured that the \emph{image} of the intertwining
+matrix $J_\mu$ was the square-integrable special representation
+$\pi_{sp}$, while its \emph{kernel} was the non-tempered constituent
+$\pi_{nt}$.  The supplied corrected 2026d draft asserted the opposite:
+$\ker J_\mu\simeq\pi_{sp}$ and
+$\operatorname{im}J_\mu\simeq\pi_{nt}$.  These opposite identifications
+cannot both be retained as theorems without specifying and comparing
+the normalization, domain, and direction of $J_\mu$.  The notation
+$\pi_{sp},\pi_{nt}$ below refers to the respective square-integrable
+and non-tempered constituents without identifying which is the
+kernel or image of this operator.
+
+The 2026d draft cites Arit\"urk \cite{Ar80}, Gelbart--Sally
+\cite{GS75}, and Kazhdan--Patterson \cite{KP84} concerning endpoint
+constituents and unitarity.  Those citations have not been checked here
+for the exact general-$n$ assertions and the possible interchange
+between subrepresentation and quotient.  The endpoint identification
+must therefore be resolved against the original intertwining-operator
+conventions before claiming a corrected classification.
+\end{remark}
+
+\subsection{Classification}
+
+\begin{theorem}\label{thm:class-u}
+Let $\bG$ be as in \S\ref{section:assume} (cover of $SL(2)$). If $\pi\in\Pi(\bG)_u$ then one of the following
+holds.
+\begin{itemize}[leftmargin=*,itemsep=1pt]
+\item (Principal series) $\pi=I_{\bA}(\chi)$ with $\chi\in\Pi(\bA)_u$, $\chi^{\bw_0}\ne\chi$ (\S\ref{subsec:ps}).
+\item (Complementary series) $\pi=I_{\bA}(\chi)$ with $\chi\in\Pi(\bA)-\Pi(\bA)_u$ (\S\ref{subsec:cs}).
+\item (Reducible principal series; occurs only for $n$ odd by Proposition~\ref{prop:moen}) $\chi\in\Pi(\bA)_u$ with
+$\chi^{\bw_0}=\chi$, and $\pi$ is a subrepresentation or quotient of $I_{\bA}(\chi)$.
+\item $\pi$ is a ``special'' or ``trash'' representation (\S\ref{subsec:special}).
+\item $\pi$ is supercuspidal (\cite{Jo99b}).
+\end{itemize}
+\end{theorem}
+\begin{theorem}\label{thm:class-t}
+If $\pi\in\Pi(\bG)_t$ then $\pi$ is one of: a principal series $I_{\bA}(\chi)$ with $\chi\in\Pi(\bA)_u$,
+$\chi^{\bw_0}\ne\chi$; a constituent of a reducible $I_{\bA}(\chi)$ with $\chi$ unitary and $\chi^{\bw_0}=\chi$;
+the special representation $\pi_{sp}$; or a supercuspidal representation. In particular
+$\Pi(\bG)_t\subset\Pi(\bG)_u$, and for $n$ even there are no reducible unitary principal series.
+\end{theorem}
+For the inclusion $\Pi(\bG)_t\subset\Pi(\bG)_u$ in this rank-one setting, see the case-by-case discussion in \cite{Jo94,Jo01}.  The precise completeness of the list is not independently verified here.
+
+\begin{remark}[Classification status in this edition]\label{rem:classification-status}
+The preceding classification is retained as a guide to the expected
+rank-one structure and to the assertions in \cite{Jo94,Jo01}.  The
+exact exceptional parameters in Proposition~\ref{prop:moen}, the
+normalization of the intertwining Hermitian form, and the special and
+non-tempered endpoint constituents have not been rechecked against
+all primary sources in this revision.  The statements are therefore
+not presented as new, independently verified classification theorems.
+\end{remark}
+
+\begin{example}[An admissible tame datum]\label{ex:tame}
+Take $F=\mathbb Q_7$ and $n=3$.  Since $3\mid(7-1)$, the field
+contains $\mu_3$, and $7\nmid 2n$.  The invariant $\nu$ of
+\eqref{eqn:N} is $3$.  This provides a concrete rank-one setting
+in which the covering torus and its genuine inducing characters
+can be studied using the unitary circles in the unramified-character
+parameter space.
+\end{example}
+
+\section{The 1994 conjectures and the present scope}\label{sec:conjectures}
+The 1994 paper is more than an abbreviated version of the 2001 article.
+It develops the local covering torus, Jacquet functors, characters,
+and several spectral questions under explicitly conjectural hypotheses.
+This section records their disposition in the present narrower treatment.
+
+\begin{remark}[Principal-series reducibility in the 1994 draft]
+The conjectures in the 1994 section ``Principal series, reducible
+principal series'' include irreducibility for even $n$ and a reducibility
+pattern for odd $n$ \cite{Jo94}.  The corrected 2026d paper replaces
+these by an attribution to Moen \cite{Mo88}, but retains an exceptional
+parameter whose precise genuine-character meaning needs verification.
+This edition does not treat the 1994 conjectural wording as a proof.
+\end{remark}
+
+\begin{remark}[Intertwining operators and endpoint conventions]
+The original conjectures concern the determinant, positivity, and
+kernel and image of the matrix $J_\mu$ attached to a rank-one
+intertwining operator.  The strongest caution is the reversed
+kernel--image identification documented in Remark~\ref{prop:special}.
+Even if both manuscripts describe the same composition factors,
+these conventions must be reconciled before asserting the result.
+\end{remark}
+
+\begin{remark}[Temperedness and Paley--Wiener assertions]
+The 1994 typescript labels tempered unitarity and some Fourier-image
+theorems as conjectural or as dependent on the conjectural dual
+classification.  The later density theorem of
+\cite[Theorem~5.8.10]{Li12} addresses an algebraic trace-kernel
+question.  It does not, by itself, establish the particular
+principal-series surjectivity formulas or the full topological
+claim of Theorem~\ref{thm:main}.
+\end{remark}
+
+\begin{example}[Revising a conjectural assertion]\label{ex:conjecture-status}
+Let $\chi$ be a unitary genuine inducing datum fixed by the Weyl
+action.  A relation for the trace of $I_{\bA}(\chi)$ only gives
+the sum of the traces of its irreducible constituents.  A correct
+Fourier-image theorem for irreducible tempered characters must also
+specify compatibility with the individual constituents at this point.
+The conjectural Fourier-image formulas of the original guide do not
+address that distinction explicitly.
+\end{example}
+
+%====================================================================
+
+\section{Invariant distributions}
+\label{sec:invariant}
+
+We classify the image of $C_c^\infty(\overline{G})$
+and of ${\calC}(\overline{G})$ under the ``scalar-valued
+Fourier transform'' or ``trace map'',
+$f\longmapsto {\rm tr}\, \pi(f)$, where $\overline{G}$ is as
+in \S \ref{section:assume} above. 
+We describe the algebraic factorization through tempered traces, where $\overline{G}$ is a cover of $SL(2,{\F})$ as in Section~\ref{section:assume}.
+Finally, under an explicitly identified topological Paley--Wiener input,
+we obtain a continuous spectral functional for invariant tempered
+distributions.  This need not be an integral against a scalar density.
+
+\subsection{Tempered Paley-Wiener theorem}
+\label{subsec:TPW}
+
+In this section, $\overline{G}$ is a cover of $SL(2,{\F})$ as in \S \ref{section:assume}.
+Let $C\subset A$ be a maximal subgroup of $A$ for which 
+$\overline{C}\subset \overline{A}$ is abelian.
+Next we classify the image
+of the Fourier transforms of a ``generic'' {\em unitary} principal series
+representation 
+$
+\pi =I_{\overline{A }}(\chi ),
+$
+(where $\chi =Ind_{\overline{C}}^{\overline{A }}\mu \in \Pi (\overline{A }),
+\mu \in \Pi (\overline{C })$),
+on $C_c^\infty (\overline{G })$.
+Both the Weyl group $W$ and
+$H=\overline{A}/\overline{C}$ act on functions on $\Pi(\overline{C})$ by conjugation.
+Let $C^\infty (\Pi(\overline{C})_u)^{WH}$ denote the 
+$W$- and $H$-invariant smooth functions on the compact torus $\Pi(\overline{C})_u$.
+
+Recall the Fourier transform with respect to the 
+principal series,
+$
+\phi_f(\mu)=\Theta _\pi(f),
+$
+(where $\pi =I_{\overline{A}}(\chi ),
+ \chi =Ind_{\overline{C}}^{A }\mu
+\in \Pi(\overline{A }),
+\mu\in \Pi(\overline{C })$).
+When $\mu$ is unitary we call this the
+Fourier transform with respect to the 
+{\it unitary principal series}.
+If the restriction of $\mu$ to an
+$diag(x,x^{-1})\in A^n$ is of the form $|x|^s$ then
+we write $\phi_f(\mu)=\phi_f(s)$.
+When $\mu$ is of this form and $s$ is real, 
+we call this the
+Fourier transform with respect to the 
+{\it complementary series}.
+
+\begin{remark}[Principal-series images; verification pending]\label{prop:image}
+For $f\in C_c^\infty (\overline{G })$, the image
+$C_c^\infty (\overline{G })_{ps}^{\wedge }$
+of the Fourier transform $f\longmapsto \phi_f$
+with respect to the unitary principal series,
+is given by 
+\[
+C_c^\infty (\overline{G })_{ps}^{\wedge }
+=\left\{h\in C^\infty(\Pi (\overline{C})_u)^{WH}\;|\;
+\begin{array}{c}
+h\;{\rm is\;a\;trig\;polynomial\;on} \\ 
+{\rm each\;circle\;in\;}\Pi(\overline{C})_u
+\end{array}
+\;\right\}.
+\]
+The image
+$C_c^\infty (\overline{G })_{cs}^{\wedge }$
+of the Fourier transform $f\longmapsto \phi_f$
+with respect to the complementary series,
+is given by 
+\[
+C_c^\infty (\overline{G })_{cs}^{\wedge }
+\cong \left\{h\ {\rm restricted \ to}\ 0<s<1/n\ \Big|\ h\ {\rm a}\ WH\mbox{-invariant\ Laurent\ polynomial\ in\ }q^{\pm s}\right\}.
+\]
+\end{remark}
+
+These formulas are reproduced from the earlier paper as the
+\emph{proposed} principal-series images, not as independently verified
+surjectivity results.  In particular, finite support across the
+disconnected Bernstein components and compatibility at reducibility
+parameters require separate checks.  The motivating argument uses character formulas for induced representations and results on $p$-adic Mellin transforms
+in \cite{Ta75}, pp. 43-44. Further details in the earlier formulation appear in \cite{Jo01}. (Since $W$ acts by $s\mapsto-s$, a $W$-invariant Laurent
+polynomial in $q^{\pm s}$ is a polynomial in $q^s+q^{-s}$.)
+Note that these functions are traces of \emph{full} induced
+representations: at a reducible point $\Theta_{I_{\overline{A}}(\chi)}$ is the sum
+of the characters of the constituents, so the proposition does not by itself
+describe the image of $\sF$ on irreducible tempered representations.
+%\verify{whether the image of $C_c^\infty(\overline G)$ under the sum-of-constituents map is
+%literally all of the stated space}
+
+An analogous Schwartz-space image statement in the earlier manuscript is also recorded here for verification.
+
+\begin{remark}[Schwartz principal-series image; verification pending]
+For $f\in {\calC} (\overline{G })$, the proposed image
+${\calC} (\overline{G })_{ps}^{\wedge }$
+of the Fourier transform $f\longmapsto \phi_f$
+with respect to the unitary principal series,
+is given by 
+\[
+{\calC} (\overline{G })_{ps}^{\wedge }
+= C^\infty(\Pi (\overline{C})_u)^{WH}.
+\]
+This identification requires the relevant Schwartz Paley--Wiener theorem
+and topological control of all spectral components; it is not proved here.
+\end{remark}
+
+
+\subsection{The Fourier transform}
+\label{subsec:FT}
+
+Let
+\[
+\sJ={\rm span}\left\{f-f^y\ |\ f\in C_c^\infty(\overline{G })\ ,y\in 
+\overline{G}\right\},
+\]
+where $f^y(x)=f(y^{-1}xy)$, and recall $PW_t(\overline{G })$ denotes the tempered Paley-Wiener space.
+
+\begin{proposition}
+\label{prop:kernel}
+Let $\overline{G}$ be as in \S \ref{section:assume}. 
+The kernel of the trace map
+\[
+\sF :C_c^\infty(\overline{G })\rightarrow PW_t(\overline{G }),
+\]
+defined by $\sF f(\pi)=\Theta_\pi(f)$, is $\sJ$.
+\end{proposition}
+
+\noindent\textbf{Proof and dependence on the literature.}
+Every trace vanishes on $f-f^y$ because $\pi(f^y)$ is conjugate
+to $\pi(f)$, so $\sJ\subset\ker\sF$.  For the converse, invoke
+the tempered-character density theorem for covering groups
+\cite[Theorem~5.8.10]{Li12}, which identifies the simultaneous kernel
+of all genuine tempered character traces with the space generated
+by conjugation differences.  Li's proof depends on the local invariant
+trace formula and the representation-theoretic inputs described in
+\cite[Sections~5.4--5.8]{Li12}; in particular his Theorem~5.4.1 is
+admitted as a hypothesis for non-Archimedean fields.  The present
+argument is therefore a deduction from that source under its stated
+framework, not an independent derivation of the density theorem.
+\hfill$\square$
+\medskip
+
+\begin{example}[A conjugation difference]\label{ex:difference}
+If $f$ is any genuine compactly supported test function and $y\in\bG$,
+then $h=f-f^y$ satisfies $\Theta_\pi(h)=0$ for every admissible
+representation $\pi$.  The content of density is the converse for
+all genuine tempered traces, not this elementary implication.
+\end{example}
+
+
+
+Let $V'$ denote the \emph{algebraic} dual of the complex vector space $V$.
+If $V$ is in addition a $\overline{G }$-module, let 
+$(V')^{\overline{G }}$ denote the
+subspace of $\overline{G }$-invariant linear functionals.
+
+\begin{lemma}
+Let $\overline{G}$ be as in \S \ref{section:assume}. The canonical map
+\[
+(C_c^\infty(\overline{G })/\sJ)' 
+\rightarrow (C_c^\infty(\overline{G })')^{\overline{G }}
+\]
+is an isomorphism.
+\end{lemma}
+
+\noindent
+{\bf Proof.}
+For $f\in C_c^\infty(\overline{G })$, let $f\ {\rm mod}\, \sJ$ 
+denote its class in
+$C_c^\infty(\overline{G })/\sJ$. First, note that the canonical map
+\[
+\begin{array}{c}
+(C_c^\infty(\overline{G })/\sJ)'
+\rightarrow (C_c^\infty(\overline{G })')^{\overline{G }}\\
+D \longmapsto D^*\\
+(f\ {\rm mod}\, \sJ\longmapsto D(f\ {\rm mod}\, \sJ)) \longmapsto
+(f\longmapsto D(f\ {\rm mod}\, \sJ)).
+\end{array}
+\]
+is injective by definition.
+
+To see that this is surjective, let 
+$D\in (C_c^\infty(\overline{G })')^{\overline{G }}$.
+We must show that there is a $D_0\in (C_c^\infty(\overline{G })/\sJ)'$
+such that $D=D_0^*$. Let
+\[
+D_0(f\ {\rm mod}\, \sJ)=D(f),\ \ \ \ \ \ f\in C_c^\infty(\overline{G }).
+\]
+We want to show that $D_0$ is well-defined,
+i.e., that if $f,f'\in C_c^\infty(\overline{G })$ and
+$f\ {\rm mod}\, \sJ=f'\ {\rm mod}\, \sJ$ then $D(f)=D(f')$.
+By definition of $\sJ$, $f\ {\rm mod}\, \sJ=f'\ {\rm mod}\, \sJ$ implies
+$f'=f+\sum_{i\in I}c_i(f_i-f_i^{y_i})$, for some finite set $I$ and
+some $c_i\in {\C}$, $f_i\in C_c^\infty(\overline{G })$,
+$y_i\in \overline{G }$. Since $D$ is invariant, from linearity it follows
+that $D(f)=D(f')$, as desired. Therefore, the canonical map is 
+surjective.
+$\qed$
+
+From these two results, we conclude the following
+important fact.
+
+\begin{theorem}
+\label{thm:trace}
+Let $\overline{G}$ be as in \S \ref{section:assume} above. The trace map $\sF$
+induces an isomorphism $C_c^\infty(\overline{G})/\sJ\cong\sF(C_c^\infty(\overline{G}))\subset PW_t(\overline{G})$,
+and hence, by the lemma, a canonical isomorphism
+\[
+\bigl(\sF(C_c^\infty(\overline{G}))\bigr)' 
+\ \xrightarrow{\ \sim\ }\ (C_c^\infty(\overline{G })')^{\overline{G }}.
+\]
+In other words, every invariant distribution $D$ factors uniquely through the image of the tempered trace map. The duals in this theorem are algebraic duals; their use does not assert continuity of arbitrary factor functionals.  This is an algebraic statement about its values on compactly supported test functions.  It does not say that $D$ is a finite linear combination of tempered characters, or that its spectral functional is automatically continuous in a Schwartz Paley--Wiener topology.
+\end{theorem}
+
+This result allows us to define, for each invariant distribution $D$ on
+$\overline{G}$, the {\it Fourier transform} $\widehat D$ on the algebraic image $\sF(C_c^\infty(\overline G))$
+by
+\begin{equation}
+D(f)=\widehat D(\sF f),\ \ \ \ \ \ f\in C_c^\infty(\overline{G }).
+\label{eqn:FT}
+\end{equation}
+
+By the results of \S \ref{sec:unitary}
+above and of \cite{FK86},
+the tempered dual has both a continuous
+part and a discrete part. The continuous part of
+$PW_t(\overline{G })$ decomposes
+into a vector space sum of smooth functions on compact real tori.
+Continuity on these parameter spaces is a separate topological assertion; it does not follow from the algebraic factorization alone.
+
+\subsection{The Fourier transform as a spectral functional}
+\label{subsec:main}
+
+A function on the tempered dual extends linearly to the Grothendieck
+group $R_t(\overline{G})$.  A general spectral distribution, however,
+need not be determined by pointwise evaluations of such a function. 
+The parameters of the Fourier transform are the \emph{irreducible} tempered
+representations: if $I_{\overline{A}}(\chi)$ is reducible then $\Theta_{I_{\overline{A}}(\chi)}$ is only the sum of
+the characters of its constituents, and a functional on $PW_t(\overline{G})$ may separate them.
+
+The distributions that occur are of the following kind.
+
+\begin{definition}\label{def:finite-order}
+Let $X$ be a compact smooth torus.  A \emph{distribution of finite order}
+on $X$ is a continuous linear functional on $C^\infty(X)$ for which,
+for some $N$ and $C$, one has
+\[
+ |T(h)|\le C\sum_{|\alpha|\le N}\|\partial^\alpha h\|_\infty.
+\]
+For a spectral parameter space assembled from tori and discrete
+representations, ``locally finite order'' means this property on each
+of its smooth torus charts, subject to the compatibility at reducibility
+points.  No uniform global bound over all Bernstein components is claimed.
+\end{definition}
+
+\begin{theorem}[Conditional spectral representation]\label{thm:main}
+Assume the setting of Section~\ref{section:assume}.  Suppose the genuine
+Schwartz trace transform extends to a continuous open surjection
+\[
+\sF:\calC(\bG)\longrightarrow PW_t^{\mathrm{Sch}}(\bG)
+\]
+onto a specified locally convex tempered Paley--Wiener space, with
+$\ker\sF$ equal to the closure in $\calC(\bG)$ of the span of
+conjugation differences.  Suppose also that the spectral space has local smooth-torus charts and
+that each chart $X$ admits a continuous linear map
+$E_X:C^\infty(X)\to PW_t^{\mathrm{Sch}}(\bG)$ realizing smooth
+test functions on that chart, compatibly with its reducibility relations.
+Then any invariant tempered distribution $D\in\calC(\bG)'$ induces
+a unique continuous linear functional $\widehat D$ on
+$PW_t^{\mathrm{Sch}}(\bG)$ satisfying
+\begin{equation}\label{eq:conditional-pairing}
+ D(f)=\langle\widehat D,\sF f\rangle,
+ \qquad f\in\calC(\bG).
+\end{equation}
+On each smooth torus chart the induced spectral functional is a
+distribution of finite order.  In general \eqref{eq:conditional-pairing}
+is a \emph{distributional pairing}; no representation with an ordinary
+scalar density $m(\pi)\,d\mu(\pi)$ is asserted.
+\end{theorem}
+\noindent\textbf{Proof.}
+Because $D$ is invariant, it vanishes on every conjugation difference,
+and by continuity it vanishes on their closure.  The kernel hypothesis
+therefore gives $D|_{\ker\sF}=0$.  Define
+$\widehat D(\sF f)=D(f)$.  This is well defined.  As $\sF$ is a
+continuous open surjection, its quotient topology is the topology of
+$PW_t^{\mathrm{Sch}}(\bG)$, so $\widehat D$ is continuous.  Surjectivity
+gives uniqueness.  For a compact torus chart $X$, the composite functional
+$\widehat D\circ E_X$ is continuous on $C^\infty(X)$ and is therefore
+a distribution.  Every distribution on a compactsmooth manifold has finite order; Lemma~\ref{lemma:schwartz} proves
+an explicit stronger representation for a torus.\hfill$\square$
+
+\begin{remark}[Unverified analytic input]\label{rem:tpw-input}
+The assumptions of Theorem~\ref{thm:main} are not proved in this paper.
+Li \cite[Section~5.6]{Li12} establishes a tempered invariant
+Paley--Wiener framework for covering groups.  Its precise topological
+identification with the space and section conventions used in the
+2001 argument requires comparison at reducibility parameters, including
+the $R$-group hypothesis noted in Section~\ref{sec:lit}.
+The conclusion is consequently recorded here as conditional rather
+than as a new unconditional theorem.
+\end{remark}
+
+
+\medskip
+The classical fact on which the local form rests is the following, which replaces the lemma
+of L. Schwartz \cite{Sc50} (Ch.~III, Th.~XXI) quoted in the earlier version. (A distribution of finite order in the sense
+above is locally $(1-\Delta)^Nh$, $h$ continuous.) (A single partial derivative of a
+continuous function does not suffice: on a torus, $\langle\partial^Ih,1\rangle=0$ for $|I|\ge1$, while the Dirac mass
+satisfies $\langle\delta_{x_0},1\rangle=1$.)
+
+\begin{lemma} (Schwartz)
+\label{lemma:schwartz}
+Let $X=\R^d/(2\pi\Z)^d$ be a compact torus and $\Delta=\sum_j\partial^2/\partial x_j^2$. If $T$ is a distribution
+on $X$ then there are an integer $N\ge0$ and a continuous function $h$ on $X$ such that
+$T=(1-\Delta)^Nh$ (as distributions). If a finite group $W$ acts on $X$ by isometries and $T$ is $W$-invariant, $h$ may be chosen $W$-invariant.
+\end{lemma}
+\noindent
+{\bf Proof.} Continuity of $T$ on $C^\infty(X)$ gives constants $c,\kappa$ with $|\widehat T(k)|\le c(1+|k|)^\kappa$ for
+the Fourier coefficients $\widehat T(k)$, $k\in\Z^d$. Choose $N$ with $2N-\kappa>d$. Then
+$h=\sum_k\widehat T(k)(1+|k|^2)^{-N}e^{ik\cdot x}$ converges absolutely to a continuous function and
+$(1-\Delta)^Nh=T$ coefficientwise. Averaging $h$ over $W$ gives the invariant statement because the Laplacian commutes with the $W$-action. $\qed$
+
+
+
+\subsection{Some corollaries}
+
+By Theorem~\ref{thm:trace}, every invariant distribution on the compactly supported genuine test-function space factors algebraically through tempered traces.  Continuity of the spectral functional is an additional question.
+
+\begin{remark}
+Assume $\overline{G }=G$ ($n=1$).
+In the earlier version it was claimed that if $D$ is tempered then it is admissible on the regular set,
+that is, if we identify $C_c^\infty(G_{r})$ with the subspace of $C_c^\infty(G)$ of functions supported on
+$G_r$, then $D|_{C_c^\infty(G_{r})}$ is admissible in the sense of \cite{HC78}. The proof in \cite{Jo01}
+used the old form of \S\ref{subsec:main}; it should be re-derived from Theorem \ref{thm:main}.
+%\verify{admissibility on the regular set}
+\end{remark}
+
+\begin{example}
+ Clearly $f\longmapsto f(1)$ is an invariant tempered distribution.
+Theorem \ref{thm:main} implies that its Fourier transform is a distribution of finite order on
+$PW_t(\overline{G})$; in fact it is the Plancherel measure (order $0$):
+\[
+f(1)=\int_{\Pi(\overline{G })_t }
+\Theta _\pi (f)\,d\mu_{\rm Pl}(\pi ),\;\;\;\;\;f\in 
+C_c^\infty(\overline{G }). 
+\]
+This is a weak case of Harish-Chandra's Plancherel theorem.
+\end{example}
+
+
+\section{Summary of results and remaining problems}\label{sec:summary}
+We distinguish results established here from those imported from the
+literature or recorded conditionally.  The elementary factorization of
+invariant linear functionals through a quotient is proved in
+Section~\ref{subsec:FT}.  Proposition~\ref{prop:kernel}, the
+substantive identification of that quotient with tempered traces,
+is a consequence of a cited density theorem and its stated inputs
+\cite[Theorem~5.8.10]{Li12}.  Theorem~\ref{thm:main} records a
+conditional continuous Paley--Wiener formulation.  Lemma~\ref{lemma:schwartz}
+is proved directly using Fourier series.
+
+\begin{example}[An invariant distribution]\label{ex:identity}
+Evaluation at the identity, $D(f)=f(1)$, is invariant under
+conjugation.  It is tempered in the relevant Schwartz topology.
+The genuine Plancherel formula identifies it, with the appropriate
+normalization of measures, with a spectral functional on tempered
+characters \cite[Section~2]{Li12}.  This is an example of a
+spectral measure, unlike the derivative functional in
+Example~\ref{ex:derivative}.
+\end{example}
+
+The following issues remain open \emph{in the present revision}:
+(1) reconcile the opposite kernel--image identifications of the
+endpoint intertwining matrix in the 1994 and 2026d manuscripts, and
+verify the precise reducibility statements of Section~\ref{sec:unitary};
+(2) check the proposed principal-series images against a full
+Paley--Wiener description with finite Bernstein support and
+reducibility relations;
+(3) reconcile the topologies and $R$-group assumptions used for the
+Schwartz extension with \cite{Li12}; and
+(4) review all bibliographic page and theorem references against the
+original sources.  These are tasks for an independent mathematical
+referee, not claims of new open problems in representation theory.
+
+\section*{Glossary}\label{sec:glossary}
+\begin{description}[leftmargin=3.4cm,style=nextline]
+\item[Genuine representation] A representation of $\bG$ on which
+$(1,\zeta)$ acts by scalar $\zeta$ for every $\zeta\in\mu_n$.
+\item[Genuine test function] A function satisfying $f((1,\zeta)x)=\zeta^{-1}f(x)$.
+\item[Invariant distribution] A continuous linear functional $D$
+with $D(f^y)=D(f)$ for all $y\in\bG$.
+\item[Orbital integral] Integration of a test function over the
+conjugacy orbit of a regular element, with a discriminant normalization.
+\item[Tempered representation] An irreducible admissible representation
+weakly contained in the regular representation, or equivalently described
+by the usual tempered matrix-coefficient conditions in this setting.
+\item[Paley--Wiener space] A space of trace transforms subject to
+spectral regularity, support, and compatibility conditions.
+\item[Schwartz space] Smooth functions with rapid decay relative to
+Harish-Chandra's majorant $\Xi$ and the height $\sigma$.
+\item[Cocenter] The quotient of the Hecke algebra by its subspace of
+conjugation differences (equivalently by the commutator subspace).
+\item[$R$-group] A finite group governing the constituents and
+intertwining operators of certain tempered parabolic inductions.
+\item[Distributional pairing] Evaluation of a continuous spectral
+functional on a spectral test function, which need not be integration
+against an ordinary function.
+\end{description}
+
+\section*{Acknowledgments}
+The original 1994 notes and the article published in 2001 are by David
+Joyner.  ChatGPT (OpenAI) contributed criticism of the 2000 text and
+prepared this restructuring, mathematical status audit, and expository
+revision in November 2026.  Claude (Anthropic) prepared the earlier
+corrected 2026 draft, including its prior review notes.  The present
+manuscript is an AI-assisted editorial and mathematical review;
+\emph{AI review is not an independent certification of the results}.
+The 2001 article's dedication to John Benedetto is retained in its
+historical source rather than transferred to this differently framed
+manuscript.
+
+
+\begin{thebibliography}{99}
+
+\bibitem{Ar80} H. Arit\"urk, 
+ On the composition series of principal series
+representations of a three-fold covering group of $SL(2,K)$,  
+{\it Nagoya Math J.} {\bf 77}(1980)177-196 %\verify{initials}
+
+\bibitem{Ar81} J. Arthur, 
+ The trace formula in invariant form, {\it  Ann. Math.}
+{\bf 114}(1981)1-74
+
+\bibitem{Ar94} J. Arthur, 
+ The trace Paley-Wiener theorem for Schwartz functions, 
+{\it Contemp. Math.} {\bf 177}(1994)171-180
+
+\bibitem{Be75} J. Benedetto, {\it Spectral Synthesis}, 
+Academic Press, Inc., 1975
+
+\bibitem{Be84} J. Bernstein, 
+ Le center de Bernstein , (notes by P. Deligne), 
+in {\it Repr\'esentations des 
+groupes r\'eductifs sur un corp local},
+Hermann, Paris, 1984
+
+\bibitem{BZ76} J. Bernstein and A. Zelevinski,
+ Representations of 
+the group $GL(n,F)$, where $F$ is a non-archimedian local field, 
+{\it Russian Math Surveys} {\bf 31}(1976)1-68
+
+\bibitem{BZ77} J. Bernstein and A. Zelevinski,
+ Induced representations of reductive $p$-adic 
+groups, I,  {\it Ann. scient. \'Ec. norm. Sup.} {\bf 10}(1977)441-472
+
+\bibitem{Da99} C. Davis, keynote talk presented at the
+Conference on Harmonic Analysis in honor
+of John Benedetto, University of Maryland,
+October, 1999. 
+
+\bibitem{FK86} Y. Flicker and D. Kazhdan, 
+ Metaplectic correspondence,  
+{\it Publ. Math. IHES} {\bf 64}(1986)53-110
+
+\bibitem{Ge76} S. Gelbart, 
+{\it Weil's Representation and the 
+Spectrum of the Metaplectic Group},
+Springer Lecture Notes in Math {\bf 530}, 1976
+
+\bibitem{GS75} S. Gelbart and P. Sally, 
+ Intertwining operators and 
+automorphic froms on the metaplectic group,  
+{\it Proc. Nat. Acad. Sci.}
+{\bf 72}(1975)1406-1410
+
+\bibitem{HC70} Harish-Chandra, {\it Harmonic analysis
+on reductive $p$-adic groups},
+(notes by G. van Dijk), 
+Springer Lecture Notes in Math {\bf 162}, 1970
+
+\bibitem{HC78} Harish-Chandra,
+ Admissible invariant distributions on reductive $p$-adic groups, 
+{\it Queen's papers in pure and applied math.} {\bf 48}(1978)
+281-347
+
+\bibitem{HC84} Harish-Chandra,
+ The Plancherel formula for reductive $p$-adic groups ,
+in {\it Collected Works}, vol IV, ed. V.S. Varadarajan,
+Springer-Verlag, New York, 1984 (see also the paper
+ Corrections ..., in the same volume)
+
+\bibitem{Jo88}  D. Joyner,  On the metaplectic
+analog of Kazhdan's `endoscopic' lifting,  
+{\it Isr. J. Math.} {\bf 61}
+(1988)113-154
+
+\bibitem{Jo94}  D. Joyner,  A hitch-hiker's guide to genuine invariant 
+distributions on metaplectic covers of SL(2) over a $p$-adic field, 
+unpublished manuscript dated January 4, 1994 
+
+\bibitem{Jo98}  D. Joyner,  A correspondence for the generalized Hecke 
+algebra of
+the metaplectic cover $\overline{SL(2,F)}$, $F$ $p$-adic, 
+{\it New York J. of Math.} {\bf 4} (1998) 223-235. 
+
+\bibitem{Jo99a}  D. Joyner,  On the unitary dual of 
+$\overline{SL(2,F)}$, $F$ $p$-adic,  
+preprint, 1999 
+
+\bibitem{Jo99b} D. Joyner,  A correspondence for the supercuspidal
+representations of $\overline{SL_2(F)}$, $F$ $p$-adic,  
+{\it Archiv der Math.} 73(1999) 332--340.
+
+\bibitem{Jo01}  D. Joyner,  Invariant distributions on the
+$n$-fold metaplectic covers of $GL(r,F)$,
+$F$ $p$-adic, \emph{J. Fourier Anal. Appl.} \textbf{7} (2001), 343--358.
+(Original draft dated September 3, 2000)
+
+\bibitem{JM00} D. Joyner and Courtney Moen, 
+ The trace formula for $\overline{SL(2,\aaa)}$
+ and applications , preprint, 2000.
+
+\bibitem{Ka86} D. Kazhdan,  Cuspidal geometry of $p$-adic groups, 
+{\it J. d'Anal. Math.} {\bf 47}(1986)1-36
+
+\bibitem{KP84} D. Kazhdan and  S. Patterson, 
+ Metaplectic forms,  {\it Publ. Math. IHES} {\bf 59}(1984)35-142
+
+\bibitem{Li12} W.-W. Li, La formule des traces pour les rev\^etements de groupes r\'eductifs connexes.
+II. Analyse harmonique locale, {\it Ann. Sci. \'Ec. Norm. Sup\'er.} {\bf 45}(2012)787-859.
+
+\bibitem{Me98} P. Mezo,  A global comparison for general linear groups
+and their metaplectic coverings,  Univ. of Toronto PhD thesis
+(advisor: James Arthur), 1998
+
+\bibitem{MoND} C. Moen,  Intertwining operators for covering groups 
+of $SL(2)$ over a local field,  undated preprint (date unverified)
+
+\bibitem{Mo88} C. Moen,  Irreducibility of unitary principal series 
+representations for covering groups of $SL(2)$, 
+{\it  Pac. J. Math.} {\bf 135}(1988)89-110
+
+\bibitem{Cl26} Claude, notes prepared for D. Joyner, {\it Invariant distributions on metaplectic covers: a review
+of Joyner's 2000 paper, a corrected theorem, and errata}, October 2026.
+
+\bibitem{Sc50} L. Schwartz, 
+{\it Theorie des distributions, vol. I}, Hermann, Paris, 1950
+
+\bibitem{Si79} A. Silberger, {\it Introduction to
+harmonic analysis on reductive $p$-adic groups}, 
+Princeton Univ. Press, Princeton, 1979
+
+\bibitem{Ta75} M. Taibleson, {\it Fourier analysis on local
+fields}, Princeton Univ. Press, Princeton, 1975
+
+\bibitem{Vi81} M.-F. Vign\'eras,  Caract\'erisation des integrales 
+orbitales sur un groupe r\'eductif $p$-adique,  
+{\it J. Fac. Sci. Univ. Tokyo }
+{\bf 28}(1981)945-961
+
+\bibitem{We75} A. Weil, {\it Basic Number Theory}, Springer-Verlag, 
+1975
+
+\end{thebibliography}
+
+
+
+\end{document}

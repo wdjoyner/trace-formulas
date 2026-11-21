@@ -8,9 +8,11 @@
 
 - [`slcbar-invariant-distributions.tex`](slcbar-invariant-distributions.tex): editable manuscript (pdflatex, 12pt Times, US Letter).
 - [`revision_log.tex`](revision_log.tex): editorial revision log and mathematical verification status.
+- [`slcbar-invariant-distributions.pdf`](slcbar-invariant-distributions.pdf): compiled Draft 2 paper (18 pages).
+- [`revision_log.pdf`](revision_log.pdf): compiled revision log (3 pages).
 - [`original-1994/hitchhiker-sl2bar-repns.tex`](original-1994/hitchhiker-sl2bar-repns.tex): original 1994 manuscript, retained separately as a historical source.
 
-The compiled PDF of Draft 2 and the PDF revision log are available as conversation attachments. To rebuild them locally, run `pdflatex slcbar-invariant-distributions.tex` twice and `pdflatex revision_log.tex`. The PDFs are not yet committed here.
+The compiled files are [the Draft 2 paper PDF](slcbar-invariant-distributions.pdf) (18 pages) and [the revision log PDF](revision_log.pdf) (3 pages). To rebuild them locally, run `pdflatex slcbar-invariant-distributions.tex` twice and `pdflatex revision_log.tex`.
 
 ## Review status
 

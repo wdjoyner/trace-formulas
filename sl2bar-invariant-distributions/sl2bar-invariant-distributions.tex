@@ -235,19 +235,15 @@ of $\overline{A^\nu}$.  So the spectral parameters on the torus are characters o
 \[
 w_0=\begin{pmatrix}0&-1\\1&0\end{pmatrix}\in G
 \]
-represents the nontrivial element of the order-two group $W$.  Since $w_0^2=-I\ne I$, the representative $w_0$ has order four, although its image in $W$ has order two. The
+represents the nontrivial element of the order-two group $W$. The
 group $W$ acts on $\bA$ by conjugation by any lift of $w_0$; we use the lift $\bw_0=(w_0,1)$.
 
-The unipotent radical $N$ of a parabolic subgroup is identified with $\{(u,1)\mid u\in N\}\subset\bG$.
-This is a subgroup because $\beta$ is trivial on $N\times N$.  For $N=N_0$ this holds since $x\equiv1$ on $N_0$.
-For two lower triangular unipotent elements with lower-left entries $c_1,c_2$ and $c_1+c_2\ne0$,
-put $t=(c_1+c_2)/c_1$.  Then $(c_1+c_2)/c_2=t/(t-1)$, and
-$\beta=(t,t/(t-1))_n=(t,t)_n\,(t,t-1)_n^{-1}=1$, by the relations $(t,t)_n=(t,-1)_n$ and $(t,1-t)_n=1$.
-(If $c_1+c_2=0$ then $\beta=(c_1,-c_1)_n=1$.)  On any other conjugate of $N_0$ the lower-left entry is a
-nonzero multiple of the parameter, and the same computation applies.  The script
-\texttt{scripts/genuine\_torus\_check.py} checks these identities exactly in examples.
-Let $K_0=SL(2,\mathcal O)$. Since $p\nmid n$, the cover splits over $K_0$ \cite{KP84}.  The splitting is not
-$k\mapsto(k,1)$.  It is corrected by Kubota's function on $K_0$.
+For the unipotent radical $N$ of a parabolic subgroup, the map $u\mapsto(u,1)$ is a group homomorphism from $N$
+onto a subgroup of $\bG$, because $\beta$ is trivial on $N\times N$.  On $N_0$ this holds since $x\equiv1$ there.
+On the other conjugates of $N_0$ it follows from the Steinberg relation $(t,1-t)_n=1$ (the script
+\texttt{scripts/genuine\_torus\_check.py} checks it exactly in examples).  We identify $N$ with its image.
+Let $K_0=SL(2,\mathcal O)$. Since $p\nmid n$, the cover splits over $K_0$ \cite{KP84}.  (In fact, the splitting is not
+$k\mapsto(k,1)$.  It involves Kubota's correction function on $K_0$.)
 
 \paragraph{Genuine functions and representations.} A function $f$ on $\bG$ (or on a subgroup
 $H\subset \bG$) is \emph{genuine} if $f(g,\varsigma)=\varsigma^{-1}f(g,1)$. A representation $\pi$ is
@@ -268,9 +264,7 @@ subgroup $B$. Let $\delta_B$ be the modulus character of $B$, extended to $G=BK_
 \Xi(x)=\int_{K_0}\delta_B(kx)^{1/2}\,dk,
 \]
 the matrix coefficient of the $K_0$-fixed vector in the unitary principal series induced from the trivial
-character.  (Because $\delta_B$ is right $K_0$-invariant, the order $kx$ matters.  The integral of
-$\delta_B(xk)^{-1/2}$ would just equal $\delta_B(x)^{-1/2}$.)
-pulled back to $\bG$ via $\pr$. For a compact open subgroup $K\subset\bG$ with $K\cap\mu_n=1$
+character, pulled back to $\bG$ via $\pr$. For a compact open subgroup $K\subset\bG$ with $K\cap\mu_n=1$
 (so that bi-$K$-invariant genuine functions exist) let $\calC_K(\bG)$ be the space of genuine
 functions $f$ on $\bG$ that are bi-$K$-invariant (hence locally constant) with
 \[
@@ -297,8 +291,7 @@ Write $\Pit=\Pi(\bG)_t$. The \emph{trace transform} is
 \]
 Let $R_t(\bG)$ be the Grothendieck group of genuine, tempered, admissible representations of $\bG$,
 tensored with $\C$. The image of $\sF$, viewed as a space of functionals on $R_t(\bG)$, is the
-\emph{tempered Paley--Wiener space} $PW_t(\bG)$.  By definition it is the image of $\sF$.  No intrinsic
-description of $PW_t(\bG)$, by support and compatibility conditions, is proved in this paper. Similarly $PW(\bG)$ denotes the (non-tempered)
+\emph{tempered Paley--Wiener space} $PW_t(\bG)$.  By definition it is the image of $\sF$. Similarly $PW(\bG)$ denotes the (non-tempered)
 Paley--Wiener space, the space of functionals $\pi\mapsto\Theta_\pi(f)$ on $R(\bG)$, $f\in C_c^\infty(\bG)$.
 
 %====================================================================
@@ -526,9 +519,7 @@ constituents, except possibly for one exceptional $\chi$ singled out in \cite{Mo
 \end{enumerate}
 \end{proposition}
 The exceptional datum in (b) is the analogue of the trivial character of the diagonal torus for $SL(2)$
-itself, where $I(1)$ is irreducible.  A genuine representation of $\bA$ cannot be trivial.  So in the genuine
-setting the exceptional datum has to be described through its central character on $\overline{A^\nu}$.  That
-description has not been checked against \cite{Mo88} in this revision.
+itself.  Its description in genuine terms has not been checked against \cite{Mo88} in this revision.
 Moen \cite{MoND} computes the intertwining operators explicitly, as matrices in the Kirillov model, for
 $\gcd(p,n)=1$. The irreducibility statement has a direct Bruhat-theory proof and can also be deduced from
 \cite{FK86}.
@@ -569,8 +560,7 @@ and condition (ii) give
 f(x,a)=\zeta_x\,|x|^{-1}\,\vphi\Bigl(\bigl(\begin{psmallmatrix}1&0\\1/x&1\end{psmallmatrix},1\bigr),\,a\,\tilde h(-1/x)\Bigr)
 \]
 for some $\zeta_x\in\mu_n$ that depends only on $x$.  So the decay of $f$ is at $|x|\to\infty$, with a
-translation in the variable $a$, as in the noncompact picture of a principal series.  (This is not the
-Kirillov model, where the behavior as $|x|\to0$ is governed by Jacquet modules.)  Let $\mathcal R\subset\bA$
+translation in the variable $a$, as in the noncompact picture of a principal series.  Let $\mathcal R\subset\bA$
 be a set of representatives for $\bC\backslash\bA$, of cardinality $d=\nu$.  Then $f\in K(\mu)$ is
 identified with the $d$-tuple $(f(x,a))_{a\in\mathcal R}$.
 
@@ -602,10 +592,8 @@ $\bC\backslash\bA$.  In particular $F$ is invariant under $\mu_n$, and $F\in L(\
 defined and $\bG$-invariant.  Non-degeneracy is proved as for linear groups \cite{Ar80}.
 \end{proof}
 
-A bilinear pairing $\int\vphi_1\vphi_2$ would not be well defined when $n>2$.  Indeed, by (i) the product of
-two genuine functions is multiplied by $\zeta^2$ under $(1,\zeta)$.  Equivalently, the contragredient of a
-genuine representation has central character $\zeta\mapsto\zeta^{-1}$ on $\mu_n$, so it is not genuine when
-$n>2$.  For genuine representations the Hermitian dual, not the contragredient, is the natural partner.
+The contragredient of a genuine representation has central character $\zeta\mapsto\zeta^{-1}$ on $\mu_n$, so it
+is not genuine when $n>2$, and the Hermitian dual is the natural partner of a genuine representation.
 
 Now suppose $\mu=\mu_0\eta_s$ with $s$ real and $\chi_{\mu_0}^{\bw_0}\simeq\chi_{\mu_0}$.  Then
 $\chi_{\mu'}=\chi_{\mu_0}\otimes\eta_{-s}\simeq\chi_{\mu_0}^{\bw_0}\otimes\eta_{-s}=\chi_{\mu^{\bw_0}}$.  Fix an
@@ -811,7 +799,8 @@ We review the proposed image of $C_c^\infty(\bG)$ and of $\calC(\bG)$ under this
 restricted to principal series.  We then establish the algebraic factorization of invariant
 distributions through tempered traces.  Finally, under an explicitly identified topological
 Paley--Wiener input, we obtain a continuous spectral functional for invariant tempered
-distributions.  This need not be an integral against a scalar density.
+distributions.\footnote{This functional need not be an integral against a scalar density;
+see Example~\ref{ex:derivative}.}
 
 \subsection{Tempered Paley-Wiener theorem}
 \label{subsec:TPW}
@@ -954,9 +943,8 @@ canonical isomorphism
 \]
 In other words, every invariant distribution $D$ factors uniquely through the image of the tempered trace map.
 This is an algebraic statement about the values of $D$ on compactly supported test functions.  It does not
-assert continuity of $\widehat D$ for any topology on $PW_t(\bG)$.  It does not say that $D$ is a finite linear
-combination of tempered characters, or that its spectral functional is automatically continuous in a Schwartz
-Paley--Wiener topology.
+assert continuity of $\widehat D$ for any topology on $PW_t(\bG)$.\footnote{Nor does it say that $D$ is a finite
+linear combination of tempered characters.}
 \end{theorem}
 
 This result allows us to define, for each invariant distribution $D$ on $\bG$, the \emph{Fourier transform}
@@ -1049,9 +1037,7 @@ than as a new unconditional theorem.
 \medskip
 The classical fact on which the local form rests is the following form of a lemma
 of L. Schwartz \cite{Sc50} (Ch.~III, Th.~XXI). (A distribution of finite order in the sense
-above is locally $(1-\Delta)^Nh$, $h$ continuous.) (A single partial derivative of a
-continuous function does not suffice: on a torus, $\langle\partial^Ih,1\rangle=0$ for $|I|\ge1$, while the Dirac mass
-satisfies $\langle\delta_{x_0},1\rangle=1$.)
+above is locally $(1-\Delta)^Nh$, $h$ continuous.)
 
 \begin{lemma} (Schwartz)
 \label{lemma:schwartz}

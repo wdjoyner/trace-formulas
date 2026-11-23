@@ -1,0 +1,244 @@
+\documentclass[12pt,letterpaper]{amsart}
+\usepackage[T1]{fontenc}
+\usepackage{newtxtext,newtxmath}
+\usepackage[letterpaper,margin=1in]{geometry}
+\usepackage{microtype}
+\usepackage{booktabs,longtable,array}
+\usepackage[hidelinks]{hyperref}
+\title{Revision log for \emph{On twisted orbital-integral identities for $PGL(3)$ over a $p$-adic field}}
+\author{David Joyner and ChatGPT (OpenAI)}
+\date{Corrected revisit, Draft 1 --- November 23, 2026}
+\begin{document}
+\begin{abstract}
+This AI-aided editorial and mathematical audit accompanies Draft 1 of the
+corrected revisit, with mathematical contributions from ChatGPT (OpenAI).
+It distinguishes inherited claims, newly proved elementary statements,
+conditional reductions, and unverified historical proof obligations.
+\end{abstract}
+\maketitle
+
+\section*{Typesetting corrections (November 23, 2026)}
+The table of contents now uses separate indentation and number-label
+widths for sections and subsections, including the unnumbered end
+sections. The subtitle is typeset in a smaller italic font, separately
+from the uppercase main title. Underlining has been removed from
+bibliography entries: book titles are italicized and journal volume
+numbers are bold. No mathematical statements or proofs were changed.
+
+\section{Materials read and provenance}
+The uploaded corrected Draft 2 LaTeX source, its accompanying Markdown
+revision log, and the author's mathematical paper style guide were
+read in full. Their filenames and original versions are preserved
+with the user's submitted materials.
+The active GitHub connector confirmed that
+\href{https://github.com/wdjoyner/trace-formulas}{the trace-formulas repository} is a repository
+accessible to the author, but its \texttt{main} branch did not have an
+\path{adjoint-lift} directory during this session. The requested
+\path{adjoint_lift_combined.tex} and
+\path{adjoint_lift_referee_report.tex} therefore could not be
+read. They were not reconstructed from memory or invented.
+The 1990 publication was located on the \emph{Canadian Journal of
+Mathematics} site and its title-page publication data and selected
+mathematical passages were inspected. This was not an exhaustive
+page-by-page collation.
+
+The original historical source files do not correspond exactly to the
+published article, as specified by David Joyner. Therefore this
+working draft is neither a facsimile nor a literal transcription.
+David Joyner states that the original work was done during official
+federal duties and is public-domain United States government work.
+The new 2026 manuscript is separately identified as a corrected revisit.
+
+\section{Corrected Draft 2 results retained}
+The following corrections were already made in the uploaded Draft 2,
+and were carried forward without claiming a second independent
+verification of every geometric lemma:
+\begin{enumerate}
+\item The representation is $\operatorname{Sym}^{2n}(\mathrm{Std})\otimes
+(\det)^{-n}$, and the $n=1$ adjoint matrices and basis were corrected.
+\item The normalized building representative is $A=CJ$ for the actual
+outer involution $\sigma_J(C)=JC^{-t}J$.
+\item Twisted stabilizers, quotient integration variables, and rational
+stable-class kernels were corrected. The quadratic-torus case admits
+the stated cohomological simplification.
+\item The $\lambda_2$ Satake character restriction is $k_1-k_2$.
+The full Weyl discriminant and the nonabelian Jacobian interpretation
+were restored.
+\item $\mathcal C(\Lambda)$ (a double coset) and $Q(\Lambda)$ (a
+scalar) were separated. An open finite-index subgroup $U\subset F^\times$
+replaced the incompatible compact finite-index description.
+\item The contradictory parity wording of the old Lemma 4.14 and the
+fixed-vertex notation of the old formula (4.19) were corrected.
+\item The Section 5 scalar relation was restored as
+$S(0)/Q=1$, equivalent to $S(0)=Q=s(0)$ under its hypotheses.
+\item The ramified case $|1+\beta|_E<1$ was retained and illustrated
+by $F=\mathbb Q_3$, $E=F(\sqrt 3)$, $\beta=2+\sqrt3$.
+\item The signed comparison was explicitly distinguished from the
+absolute-value result $|S(0)|=s(0)$.
+\end{enumerate}
+These items reflect the uploaded revision log. They are not described
+as new discoveries of the present revisit.
+
+\section{New results established in Draft 1}
+The results below were proved from definitions by explicit elementary
+arguments for this draft (verification Level 1). Their novelty is
+\emph{expository or organizational}: they are not claimed to be
+previously unknown theorems of building theory or harmonic analysis.
+\begin{longtable}{@{}p{0.38\linewidth}p{0.53\linewidth}@{}}
+\toprule
+Result in the new paper & Verification and purpose\\
+\midrule
+\endhead
+Apartment folding & The action of $\sigma_J$ on diagonal apartment
+coordinates fixes the line $x_1+x_3=2x_2$. Fixed integral vertices
+have exponent vectors $(m,0,-m)$. Direct calculation.\\
+Diagonal midpoint obstruction & The involution
+$[L]\mapsto[A L^\vee]$, $A=\operatorname{diag}(\pi^{d_i})$,
+fixes the apartment point $\boldsymbol d/2$. A vertex exists
+in this apartment iff all $d_i$ agree modulo two.\\
+Type congruence & For $PGL_n$, a twisted fixed vertex satisfies
+$2t_n([L])\equiv v_F(\det A)\pmod n$. Direct determinant
+valuation; necessary, not sufficient.\\
+Tree parity & Odd determinant valuation exchanges the two
+vertex types on the $PGL_2$ tree. A fixed geometric point,
+if present, is an inverted edge midpoint. Explicit examples.\\
+Flag/Iwahori factor & $[K:I]=(q^2+q+1)(q+1)$ and
+$Q=q^{-3}[K:I]=\sum_{w\in S_3}q^{-\ell(w)}$.
+Exact finite projective incidence and Weyl-length proof.\\
+Iwahori averaging & With $\operatorname{vol}(K)=1$,
+$e_K=[K:I]^{-1}\sum_{kI\in K/I}{}^ke_I$ as functions.
+Direct finite-coset proof.\\
+Rank-two paths & $U_1^2=(q+1)U_2+U_{(2,0,0)}$.
+Elementary-divisor classification of two-step lattice chains.\\
+Tree distance recurrence & $AD_1=D_2+(q+1)D_0$ and
+$AD_n=D_{n+1}+qD_{n-1}$ for $n\geq2$; operator generating
+series $(1-u^2)/(1-Au+qu^2)$. Exact graph proof.\\
+Adjoint Satake character & $\operatorname{tr}(\operatorname{Sym}^2
+\operatorname{diag}(z,z^{-1}))=z^2+1+z^{-2}$. Direct weight proof.\\
+Tree-ball difference & $B_v(m)-B_e(m)=q^m$ with explicit
+rational generating functions. Complete counting proof and
+numerical examples at $q=3,5$.\\
+Pairing criterion & If the extra signed contributions admit a
+weight-preserving bijection, their difference is the base-ball
+difference $q^m$. Complete proof of the \emph{conditional} statement.\\
+\bottomrule
+\end{longtable}
+
+\section{Cited results distinguished from new proofs}
+The assertion that the geometric fixed set of the orthogonal
+involution equals the building of its connected fixed group is
+attributed to Prasad--Yu, \emph{Invent. Math.} \textbf{147}
+(2002), Theorem 1.9. The central hypotheses are that the finite
+involution group has order prime to the residue characteristic and
+that the ambient group is reductive. For $PGL_3$ and its split
+orthogonal involution, odd residue characteristic satisfies the
+prime-to-$p$ condition. This is a cited result (Level 2 for
+publication and theorem identity, based on the accessible original
+introduction and indexed theorem references); it is not an
+independent proof of Prasad--Yu. The author should consult the
+complete original theorem text before submission.
+
+The identifications involving quadratic norm characters and the
+Satake algebra are standard facts of local fields and spherical
+harmonic analysis. Their elementary special cases are derived
+where feasible. Any larger endoscopic assertion is cited or
+retained as a conditional historical input.
+
+\section{Unresolved issues and precise failure points}
+\begin{enumerate}
+\item \textbf{Transfer factor sign: essential.} The sign in the
+historical formula (3.18) has not been determined by this revisit.
+The Hilbert norm character does not fix an independent initial sign.
+The old Proposition 5.6 yields an absolute-value comparison only.
+This is a genuine missing verification, not a proved sign choice.
+\item \textbf{Building geometry: essential.} The historical Lemmas
+4.9, 4.13, 4.16, 4.18, 5.3, and 5.4 are retained, but the fixed-vertex
+and characteristic-leaf counts have not been independently reconstructed.
+The difficult boundary cases $b_1-b_2=-1,0$ in Lemma 5.4 remain.
+\item \textbf{Ramified vanishing: essential.} The last vanishing
+argument uses the preceding lemmas and passage to subdivided trees.
+It was not independently certified. The explicit $\mathbb Q_3$
+example shows that ramified parameters satisfying the supposedly
+vanishing condition really exist.
+\item \textbf{Common correction $R$: essential.} The proved identity
+$B_v(m)-B_e(m)=q^m$ only computes the base counts. A
+weight-preserving pairing of extra characteristic leaves has not
+been constructed, so equality of the correction terms is a hypothesis,
+not a theorem of the revisit.
+\item \textbf{Haar and nonunit conventions: essential for generalization.}
+The $q^{k_3-k_1}$ factor and $Q(\Lambda)$ are inherited from the
+historical source. They require a complete audit of double-coset
+representatives, measures, and Macdonald's formula outside $\Lambda=0$.
+\item \textbf{Prasad--Yu in residual characteristic two: excluded.}
+The present application assumes odd residue characteristic.
+Nothing is claimed for wild or residue-characteristic-two cases.
+\end{enumerate}
+
+\section{Expository and structural changes}
+The original five numbered mathematical sections and their theorem
+labels were retained as the historical core. The old opening
+was replaced by a new abstract, motivation, two-period literature
+review, explanatory background, and notation table. Five substantial
+sections add proofs and examples concerning folding, parity,
+finite projective flags, Hecke adjacency, and signed tree counts.
+There is a synthesis section, glossary, and an extended To Do section
+immediately before acknowledgments and references.
+Historical discussion of detected errors belongs in this log,
+not in the new mathematical proofs. The inherited original equations
+retain many explicitly tagged historical equation numbers; this is
+an intentional preservation of their cross-reference concordance.
+All new equations are numbered automatically.
+
+\section{Concordance and renumbering}
+The inherited historical labels \texttt{sec:1} through
+\texttt{sec:5}, together with \texttt{lemma:4.5},
+\texttt{lemma:4.16}, \texttt{lemma:5.4}, and
+\texttt{prop:5.6}, were not renamed. Since new material follows
+those sections, their internal historical numbering remains
+usable. The unnumbered preliminaries and afterword are newly
+organized. New results carry labels beginning
+\texttt{prop:new-} or \texttt{eq:new-}; there is no
+theorem-number concordance needed for those statements.
+
+The historical reference keys were changed to author-year keys in
+the new compilation. The exception \texttt{LaUn} denotes Langlands'
+unpublished notes, whose exact bibliographic date has not been
+independently established. The new citations
+\texttt{Jo90}, \texttt{PY02}, and \texttt{Pr18} were added.
+
+\section{AI contributions and verification limitations}
+OpenAI ChatGPT, listed as a co-author at David Joyner's explicit
+request for this working draft, wrote the explanatory sections,
+constructed and checked the direct lattice, incidence, and graph
+proofs, developed the conditional pairing formulation, and produced
+this source and log. It located bibliographic entries and compared
+selected details with web-accessible source descriptions. It did
+\emph{not} independently prove Langlands' omitted geometric lemmas,
+verify the historical article page by page, or compute the
+transfer-factor sign. AI mathematical review is not independent
+certification. For submission to a journal or arXiv, authorship
+and AI-disclosure requirements must be checked separately.
+
+\section{Compilation and distribution}
+The four deliverables are the editable new manuscript, its compiled
+PDF, the separate LaTeX revision log, and its compiled PDF.
+The compilation is with pdfLaTeX, 12-point Times-style text
+and mathematics via \texttt{newtx}, one-inch margins,
+and US letter paper. The author may place these files under
+\path{trace-formulas/adjoint-lift/} after reviewing the
+proof status, with the new manuscript distinguished from the
+original combined file and the corrected historical Draft 2.
+
+\begin{thebibliography}{9}
+\bibitem[Jo90]{Jo90}
+D. Joyner, ``On twisted orbital integral identities for $PGL(3)$ over
+a $p$-adic field,'' \emph{Canad. J. Math.} \textbf{42} (1990),
+1098--1130, \url{https://doi.org/10.4153/CJM-1990-059-6}.
+\bibitem[PY02]{PY02}
+G. Prasad and J.-K. Yu, ``On finite group actions on reductive groups
+and buildings,'' \emph{Invent. Math.} \textbf{147} (2002), 545--560.
+\bibitem[KS99]{KS99}
+R. Kottwitz and D. Shelstad, \emph{Foundations of Twisted Endoscopy},
+Ast\'erisque \textbf{255} (1999).
+\end{thebibliography}
+\end{document}

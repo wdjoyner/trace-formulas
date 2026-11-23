@@ -1,6 +1,6 @@
 # Direct comparison of SL(2) with its metaplectic cover
 
-A manuscript by David Joyner, revised with AI assistance in November 2026 from the 1995 book manuscript *Multiplicity one for SL(2)*.
+A manuscript by David Joyner and Claude (Anthropic), revised in November 2026 from the 1995 book manuscript *Multiplicity one for SL(2)*.
 
 **The question.** By the work of Weil, Shimura and Waldspurger, genuine cuspidal automorphic representations of the 2-fold metaplectic cover of SL(2, 𝔸) correspond to cuspidal automorphic representations of PGL(2, 𝔸). The cover lies over SL(2), so its orbital integrals can be compared with those of SL(2) directly. Does that give a correspondence with SL(2) itself? If not, why not, and how far off is it?
 

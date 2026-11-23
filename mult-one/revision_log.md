@@ -22,6 +22,8 @@ Draft 5 (Claude, November 23, 2026) follows three requests by the author.
 
 Unverified in Draft 5, and marked as Remark 2026.12: the formula for the intertwining scalar on the cover, the description of its residual spectrum, and the form of Weil's product formula, all quoted from memory. The references [Shi] (Shimura 1973) and [We3] (Weil 1964), and the statement that Shimura's proof used Rankin's method and Weil's converse theorem, are also from memory. Siegel's historical role is not discussed.
 
+- **Authorship.** At the author's request, Claude (Anthropic) is listed as second author from Draft 5 on.
+
 Other changes: the script `scripts/referee_check.py` was added (it is run by `run_checks.py`), and the lemma numbers in the docstring of `scripts/local_formulas_check.py` were updated to Draft 5.
 
 Theorem numbers in the "Draft 4" section below are the same in Draft 5. Sections of Chapter 5 after 5.3 moved down by one, and Chapter 1 gained a new Section 1.1.

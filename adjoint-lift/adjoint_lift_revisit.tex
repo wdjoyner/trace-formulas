@@ -11,6 +11,8 @@
 \usepackage[letterpaper,margin=1in]{geometry}
 \usepackage{microtype}
 \usepackage[bookmarks=false,hidelinks,hypertexnames=false]{hyperref}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,calc,patterns}
 \numberwithin{equation}{section}
 
 \newtheorem{theorem}{Theorem}[section]
@@ -90,13 +92,7 @@ for $PGL(3)$ over a $p$-adic field}
 \author{David Joyner}
 \email{wdjoyner@gmail.com}
 \author{ChatGPT (OpenAI)}
-\thanks{Corrected revisit, Draft 1 (November 2026). Original research: David
-Joyner, \emph{Canadian Journal of Mathematics} \textbf{42} (1990),
-1098--1130. The source files used for this revisit are not an exact
-transcription of the published version. David Joyner states that his
-original work was created in the course of official duties as a United
-States federal employee and is in the public domain. This is a distinct
-working paper with extensive new exposition and mathematics.}
+\thanks{Corrected revisit, Draft 1 (November 2026). This is a significant rewrite of the published paper \cite{Jo90} from a more geometric perspective.}
 \date{Original publication: 1990. Corrected revisit: Draft 1, November 23, 2026}
 \subjclass[2020]{11F70, 20G25, 22E50, 05C05}
 \keywords{twisted orbital integral, Bruhat--Tits building, tree,
@@ -167,6 +163,40 @@ the elementary arithmetic needed for the cancellation in the
 nonsplit reduction, provided its characteristic-leaf correction terms
 agree. That proviso is essential.
 
+\subsection{Notation}
+\label{sec:revisit-notation}
+\begin{center}
+\small
+\begin{tabular}{@{}p{0.23\linewidth}p{0.68\linewidth}@{}}
+$G,H_1,H_2$ & $PGL_3$, $SL_2$, $PGL_2$ over $F$ \\
+$\mathcal O_F,\pi,q$ & integers, uniformizer, residue cardinality \\
+$E/F$, $N_{E/F}$ & quadratic extension and field norm \\
+$\sigma_J$ & $g\mapsto J{}^tg^{-1}J$, the outer involution \\
+$\tau$, $T_A$ & $g\mapsto{}^tg^{-1}$, and $[L]\mapsto[AL^\vee]$ \\
+$\mathcal B(G)$ & affine Bruhat--Tits building \\
+$\mathcal Z$ & Levi subcomplex arising from the $1+2$ decomposition \\
+$K,I$ & hyperspecial and Iwahori subgroups of $PGL_3(F)$ \\
+$Q$ & $(1+q^{-1})(1+q^{-1}+q^{-2})$ \\
+$t_n([L])$ & lattice type modulo $n$ \\
+$B_v(m),B_e(m)$ & vertex-centered and edge-midpoint tree-ball counts \\
+$\chi_E$ & quadratic character $F^\times/N_{E/F}(E^\times)\to\{\pm1\}$ \\
+$S(0),s(0)$ & historical twisted and ordinary unit-element quantities \\
+\end{tabular}
+\end{center}
+
+\subsection{Conventions}
+In the historical portions of this paper, $A\sigma$ is shorthand for
+the normalized building action $[L]\mapsto[A L^\vee]$ and need not
+literally denote the $\sigma_J$-coset element represented by $A$.
+The scalar $Q$ is distinct from the double-coset object
+$\mathcal C(\Lambda)$. We keep the historical equation labels and
+lemma labels whenever possible, even though some inherited displayed
+numbers predate this new draft. Results labeled ``direct proof'' are
+proved here. A result labeled ``cited'' is used from the literature.
+An explicitly conditional proposition must not be used without its
+additional hypotheses.
+
+
 \section{Literature review: historical and subsequent work}
 \label{sec:revisit-literature}
 
@@ -207,7 +237,28 @@ For example $[\mathcal O_F^3]$ and
 $[\pi\mathcal O_Fe_1+\mathcal O_Fe_2+\mathcal O_Fe_3]$
 are adjacent. By contrast, the building of $PGL_2(F)$ is a
 $(q+1)$-regular tree. The type of a lattice class is the determinant
-valuation modulo its rank. This invariant plays a central role below.
+valuation modulo its rank. This invariant plays a central role below. Figure~\ref{fig:new-local-link} records the local incidence picture at a hyperspecial vertex.
+
+
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[scale=0.92,>=Latex]
+  \coordinate (O) at (0,0);
+  \foreach \a/\lab in {90/{plane},30/{line},-30/{plane},-90/{line},-150/{plane},150/{line}} {
+    \path (O) ++(\a:1.6) coordinate (P\a);
+    \draw[thick] (O) -- (P\a);
+    \fill (P\a) circle (2pt);
+    \node[font=\scriptsize] at ($(P\a)+(\a:0.45)$) {\lab};
+  }
+  \fill (O) circle (2.3pt);
+  \draw[gray!70,fill=gray!12] (O) -- (P90) -- (P30) -- cycle;
+  \draw[gray!70,fill=gray!12] (O) -- (P-30) -- (P-90) -- cycle;
+  \node[left] at (O) {$x=[L]$};
+  \node at (0,-2.25) {A chamber through $x$ corresponds to a line contained in a plane in $L/\pi L$.};
+\end{tikzpicture}
+\caption{A local view of the affine $\widetilde A_2$ building near a hyperspecial vertex. The neighbors come in two types (lines and planes in the residue-space quotient), and each chamber through $x$ corresponds to an incident line--plane pair.\label{fig:new-local-link}}
+\end{figure}
+
 
 For a regular semisimple $h\in H(F)$, an ordinary orbital integral is
 an integral of $f(x^{-1}hx)$ over $H_h(F)\backslash H(F)$.
@@ -234,36 +285,1152 @@ normalization already introduces a factor $52$, even before one
 counts any fixed vertices of a twisted transformation.
 \end{example}
 
-\section{Notation and conventions}
-\label{sec:revisit-notation}
-\begin{center}
-\small
-\begin{tabular}{@{}p{0.23\linewidth}p{0.68\linewidth}@{}}
-$G,H_1,H_2$ & $PGL_3$, $SL_2$, $PGL_2$ over $F$ \\
-$\mathcal O_F,\pi,q$ & integers, uniformizer, residue cardinality \\
-$E/F$, $N_{E/F}$ & quadratic extension and field norm \\
-$\sigma_J$ & $g\mapsto J{}^tg^{-1}J$, the outer involution \\
-$\tau$, $T_A$ & $g\mapsto{}^tg^{-1}$, and $[L]\mapsto[AL^\vee]$ \\
-$\mathcal B(G)$ & affine Bruhat--Tits building \\
-$\mathcal Z$ & Levi subcomplex arising from the $1+2$ decomposition \\
-$K,I$ & hyperspecial and Iwahori subgroups of $PGL_3(F)$ \\
-$Q$ & $(1+q^{-1})(1+q^{-1}+q^{-2})$ \\
-$t_n([L])$ & lattice type modulo $n$ \\
-$B_v(m),B_e(m)$ & vertex-centered and edge-midpoint tree-ball counts \\
-$\chi_E$ & quadratic character $F^\times/N_{E/F}(E^\times)\to\{\pm1\}$ \\
-$S(0),s(0)$ & historical twisted and ordinary unit-element quantities \\
-\end{tabular}
-\end{center}
-In the historical portions of this paper, $A\sigma$ is shorthand for
-the normalized building action $[L]\mapsto[A L^\vee]$ and need not
-literally denote the $\sigma_J$-coset element represented by $A$.
-The scalar $Q$ is distinct from the double-coset object
-$\mathcal C(\Lambda)$. We keep the historical equation labels and
-lemma labels whenever possible, even though some inherited displayed
-numbers predate this new draft. Results labeled ``direct proof'' are
-proved here. A result labeled ``cited'' is used from the literature.
-An explicitly conditional proposition must not be used without its
-additional hypotheses.
+\paragraph{Additional historical building background.}
+For readability, the two building-heavy historical sections are moved here as subsections of the general background section. Their original labels, equation tags, and theorem numbering are preserved so that the historical cross-references continue to work.
+
+
+\subsection{The buildings for $PGL(3)$ and $SL(2)$}
+\label{sec:4}
+
+For background, see for example \cite{Ko80} and \cite{Ti79}.
+The results (and pictures) in this section are, as 
+mentioned earlier, due to R. Langlands
+\cite{LaUn}. We assume $p\not= 2$ throughout this section.
+ 
+Fix a vector space $V$ over $F$ of dimension either 2 or 3.
+We may consider the buildings $\bbb (G),\ \bbb (H_1)$ for $G,\ H_1$
+as graphs of lattice classes; if L is a rank two or three $\off$--lattice
+in $V$
+then its class is denoted by [L]. Recall that two vertices $[L_1],\ [L_2]$
+are to be joined by an {\bf edge} if and only if there exist 
+$\lambda_1,\ \lambda_2 \in F^{\times}$ such that
+
+\begin{equation}
+\label{eqn:4.1}
+\pi\lambda_1 L_1 \sne \lambda_2 L_2 \sne \lambda_1 L_1.
+%\tag 4.1
+\tag{4.1}
+\end{equation}
+The edge from $[L_2]$ to $[L_1]$ is {\bf positively directed} if (4.1)
+holds and if $\lambda_1 L_1/\lambda_2 L_2$ is a module of rank one
+over the residue field.
+Three vertices $L_1,\ L_2,\ L_3$ are the vertices of a 2-simplex
+or {\bf chamber} of $\bbb (G)$ if and only if there exists
+$\lambda_1,\ \lambda_2,\ \lambda_3 \in F^{\times}$ such that
+
+\begin{equation}
+\label{eqn:4.2}
+\pi\lambda_1 L_1 \sne \lambda_3L_3 
+\sne \lambda_2 L_2 \sne \lambda_1 L_1.
+%\tag 4.2
+\tag{4.2}
+\end{equation}
+ 
+To describe the ordinary action of $G$ on
+$\bbg$, represent $g\in G(F)$ by $C\in GL(3,F)$.
+The scalar center $Z(GL_3)(F)=F^\times$ acts trivially on
+homothety classes, so this action is well-defined and given by
+$g:[L]\mapsto[CL]$.
+The action of $H_1$ on $\bbH1$ is simpler: $h\in H_1(F)$ sends
+$[\Lambda ]$ to $[h\Lambda ]$. These actions send vertices to vertices, 
+edges to edges, chambers to chambers
+(in the case of $\bbg$), preserve orientation and are
+automorphisms of the buildings. 
+ 
+The action of $\sigma$ on $\bbg$, however, does not preserve orientation.
+This ``anti--automorphism'' sends a lattice $L$ to its dual lattice
+
+\begin{equation}
+\label{eqn:4.3}
+\check{L} :=\{v \in V\ |\ {^{t}v}\cdot v' \in \off , \ \forall v' \in L\}.
+%\tag 4.3
+\tag{4.3}
+\end{equation}
+If $[L]=[C_0\off^3]$, then the original involution
+$\sigma_J(C)=J\,{}^tC^{-1}J$ acts on vertices by
+\[
+\sigma_J:[L]\longmapsto[J\check L],
+\]
+since $J\off^3=\off^3$. If $g=[C]$, put $A=CJ$. Then
+$g\sigma_J$ acts by $[L]\mapsto[A\check L]$.
+We retain the historical shorthand $A\sigma$ for this
+\emph{normalized building action}. Equivalently, this is $A\tau$
+with $\tau(C)={}^tC^{-1}$. In subsequent geometric formulas $A$ is
+normalized, not the literal representative $C$ of $g$.
+It is the fixed-point set of this action that we describe.
+
+\setcounter{theorem}{3}
+\begin{lemma}
+\label{lemma:4.4} 
+\begin{itemize}
+
+\item[(a)] 
+Suppose that the number of fixed points of 
+$h\in H_1(F)$ in $\bbH1$ is finite: $|{\rm Fix}(h)| < \infty$. 
+(This is the case if
+$h$ is elliptic regular, i.e., the eigenvalues of $h$ generate a quadratic
+extension of $F$.) Then, for any $x\in H_1(F)$, we have 
+$|{\rm Fix}(h)| =|{\rm Fix}(x^{-1}hx)|$,
+i.e., the number of fixed points depends only on the conjugacy class of $h$.
+
+\item[(b)] 
+Suppose that the number of fixed points of $g\sigma$ in $\bbg$ is
+finite: $|{\rm Fix}(g\sigma )|<\infty$. (This is the case if $N_1(g)$ is 
+elliptic regular.) Then, for any $x\in PGL(3,F)$, we have 
+$|{\rm Fix}(g\sigma )| = |{\rm Fix}((x^{-1}g\sigma (x))\sigma )|$,
+i.e., the number of fixed points of $g\sigma$ depends only on the
+$\sigma$--conjugacy class of $g$.
+\end{itemize}
+\end{lemma}
+
+\begin{remark}
+The proof of this lemma is easy, hence is omitted. 
+If $h,\ h'$ are stably conjugate but not conjugate over $F$ one
+may have $|{\rm Fix}(h)|\not= |{\rm Fix}(h')|$, 
+and a similar statement holds for
+$\sigma$--conjugacy.
+\end{remark}
+ 
+The following result is well-known. 
+
+\setcounter{theorem}{4}
+\begin{lemma}
+\label{lemma:4.5} 
+Let $h\in GL(2,F)$ be an elliptic regular element
+with $\Delta_{H_2} (h)=q^{-k}$, for some $k\geq 0$. Let $E/F$ denote the
+quadratic extension generated by $h$. 
+
+\begin{itemize}
+\item 
+If $E/F$ is unramified then
+
+\[
+|{\rm Fix}(h)|={{q^{k+1}+q^k-2}\over{q-1}}.
+\]        
+\item 
+If $E/F$ is ramified then
+
+\[
+|{\rm Fix}(h)|={2(q^k-1)\over{q-1}}.
+\]        
+(We have used the fact that the conductor of $E/F$, as defined in \cite{Bl85},
+is $1$ in the ramified case.)
+\end{itemize}
+\end{lemma}
+
+We now describe an embedding
+
+\[
+\bbb (H_1) \hookrightarrow \bbb (G).
+\]
+First, replace the tree $\bbb (H_1)$ by the product of itself with 
+the affine line:
+replace all vertices by lines (copies of $V_A$ running perpendicular to the 
+edges, as visualized in three dimensions) and all edges by strips. 
+This figure may be regarded as $\bbb (GL(2))$. 
+In order to embed this into
+$\bbb (G)$, one must impose a simplicial structure on it compatible with that
+of $\bbb (G)$. 
+Each line $\overline{\Lambda}$ of $\bbb (GL(2))$ associated to a
+vertex $\Lambda$ of $\bbb (H_1)$ must first be provided with its 
+own vertices. 
+We define the vertices on $\overline{\Lambda}$ to be 
+$\Lambda_{(n)} :=\pi^{-n}\off + \Lambda$,
+for fixed embeddings
+$\pi^{-n}\off \hookrightarrow V_A,\ \Lambda\hookrightarrow W_A$. 
+Here $V_A, \ W_A$ are as in subsection 1.3. Given two neighboring
+vertices $\Lambda , \Lambda '$ of $\bbb (H_1)$ we obtain neighboring lines
+$\overline{\Lambda},\ \overline{\Lambda '}$ and the vertices of these lines 
+are joined by an edge if they are neighbors. 
+This simplicial structure 
+on $\bbb (GL(2))$ defines an embedding of
+$\bbb (H_1)$ into $\bbb (G)$ whose image we denote by $\zz = \zz (V_A,W_A)$. 
+Let
+
+\[
+\pi\lambda \Lambda \sne \lambda ' \Lambda ' 
+\sne \lambda \Lambda ,
+\]
+and let $L'_{(n)} := \pi^{-n}\off + \Lambda ', 
+\ L_{(n)}:=\pi^{-n}\off + \Lambda$. The band in $\zz$ associated to the edge 
+joining $\Lambda $ and $\Lambda '$ in $\bbH1$ is represented by a 
+picture of the following sort:
+
+%%figure (4.6) on page 1119
+\begin{figure}[!h!]
+\begin{picture}(200.00,100.00)(-120.00,0.00)
+\thicklines
+\put(-80.00,50.00){\line(1,0){220.00}} 
+\put(-10.00,60.00){$L_{(-1)}$} 
+\put(-2.00,47.00){$\bullet$} 
+\put(0.00,50.00){\line(1,-1){50.00}}
+\put(100.00,50.00){\line(1,-1){30.00}}
+\put(-60.00,-23.00){$L'_{(-1)}$} 
+\put(-52.00,-3.00){$\bullet$} 
+\put(0.00,50.00){\line(-1,-1){50.00}}
+\put(47.00,-3.00){$\bullet$}  
+\put(90.00,60.00){$L_{(0)}$} 
+\put(-80.00,0.00){\line(1,0){220.00}}
+\put(40.00,-23.00){$L'_{(0)}$} 
+\put(50.00,0.00){\line(1,1){50.00}}
+\put(-50.00,0.00){\line(-1,1){20.00}}
+\put(98.00,47.00){$\bullet$}  
+\put(158.00,43.00){$\Lambda$}  
+\put(158.00,-7.00){$\Lambda'$}  
+\end{picture}
+\vskip .3in
+\caption{The band in the apartment \label{fig:4.6}}
+\end{figure}
+\vskip .4in
+
+\noindent
+The lines in $\zz$ have been drawn in such a way that the positive direction 
+on them is from left to right. As mentioned earlier, the action of
+$\text{Aut}_F(W_A) \hookrightarrow \text{Aut}_F(W_A +V_A)$ on $\zz$ preserves
+orientation. 
+The action of $\sigma$ on $\bbg$ does not even restrict to an action
+on $\zz = \zz (V_A,W_A)$. However, the action of $g\sigma$, with 
+$g=[A] \in G(F)$ 
+represented by $A \in GL(3,F)$, does send $\zz (V_A, W_A)$ to
+$\zz (AW_A^{\bot}, AV_A^{\bot}) = \zz (V_A, W_A)$, reversing orientation. 
+Here we have used the fact the $AW_A^{\bot} = V_A$ and 
+$AV_A^{\bot}=({^{t}A^{-1}}V_A)^{\bot}$, by definition of $W_A$.
+As we shall see, thanks to Corollary \ref{cor:1.14} it turns out 
+to be sufficient
+for our purpose of relating fixed points of $g\sigma$ 
+in $\bbg$ with fixed points
+of $h\in N_1(g),\ h\in H_1(F),$ in $\bbH1$ to assume that the matrix A in
+$GL(3,F) \cong \text{Aut}_F(V_A +W_A)$ is in $(1,2)$-block form. 
+For such
+matrices, it is possible to explicitly realize the action of $g\sigma$
+on $\zz$ in terms of the geometry described above. 
+In fact, this is what we do next.
+ 
+In \cite{LaUn}, R. Langlands introduced the notion of a ``characteristic
+leaf'' to understand explicitly vertices in $\bbg$ not in $\zz$ in terms
+of vertices in $\zz$. 
+This notion is very useful for relating fixed
+points of $g\sigma$ in $\bbg$ to fixed points of $h\in N_1(g)$ in $\bbH1$. 
+Given
+$L:=\pi^n\off +\pi^a\off +\pi^b\off$, let $M_1:=\pi^n\off,\ M_2:=\pi^b\off,
+\ M_3:=\pi^{-b}\off$. 
+Consider the vertices of the {\bf characteristic
+leaf} for $L$:
+
+\begin{equation}
+\label{eqn:4.7}
+\begin{split}
+&L':= M_1 +M_2 +M_3 \in \zz,\\ 
+&L:= \pi^b M_1 + M_2 +M_3 \notin \zz,\\ 
+&L'':= \pi^b M_1 +\pi^b M_2 + M_3 \in \zz,
+\end{split}
+%\tag 4.7
+\tag{4.7}
+\end{equation}
+depicted in Figure \ref{fig:4.8}.
+
+\begin{figure}[!h!]
+\begin{picture}(200.00,150.00)(-120.00,0.00)
+\thicklines
+\put(-50.00,100.00){\line(1,0){220.00}}
+\put(-50.00,0.00){\line(1,0){220.00}}
+\put(71.00,50.00){$\bullet$} 
+\put(80.00,-20.00){$L''$} 
+\put(86.00,-2.00){$\bullet$} 
+\put(135.00,97.00){$\bullet$} 
+\put(60.00,50.00){$L$} 
+\put(140.00,110.00){$L'$} 
+\put(90.00,00.00){\line(3,6){50.00}}
+
+\thinlines
+\put(90.00,00.00){\line(-1,3){17.00}}
+\put(72.00,52.00){\line(4,3){65.00}}
+
+\end{picture}
+\vskip .3in
+\caption{A characteristic leaf \label{fig:4.8}}
+\end{figure}
+
+\vskip .3in
+\noindent
+The vertices of the simplices forming the equilateral triangle
+are given by
+$\pi^{n_1}M_1 +\pi^{n_2}M_2 + M_3,\ 0 \leq n_2 \leq n_1 \leq b$.
+The segment of length $|b|$ joining $L'$ to $L''$ is called the
+{\bf characteristic base} or {\bf segment}. This base degenerates to a
+vertex if $L \in \zz$ and otherwise it may be regarded as 
+an equilateral triangle, under a suitable metric structure on $\bbg$.
+
+\setcounter{theorem}{8}
+\begin{lemma}
+\label{lemma:4.9} 
+(\cite{LaUn}) 
+Suppose $g\in G(F)$ is such that $N_1(g)$
+is elliptic regular. Then the following hold.
+
+\begin{itemize}
+\item[(a)] 
+$g\sigma$ sends the characteristic leaf of $L$ to the characteristic leaf
+of $g\check{L}$.
+
+\item[(b)] 
+For each vertex $\Lambda$ in $\bbH1$, $g\sigma$ sends the line 
+$\{\pi^{-n}\off +\Lambda\ |\ n\in \zzz\}$
+of $\zz$ with positive orientation to another line 
+$\{\pi^m\off +\Lambda ' \ |\ m \in \zzz\}$ in
+$\zz$ with reversed orientation.
+
+\item[(c)] 
+$g\sigma$ sends the characteristic base of the leaf for L to the
+characteristic base (with orientation reversed) for $g\check{L}$;
+
+\item[(d)] 
+For any $h\in SL(2,F)$ representing $N_1(g)$, the action of
+$h$ on $\zz$ is the same as the action of $(g\sigma)^2$ restricted
+to $\zz$.
+\end{itemize}
+\end{lemma}
+
+\begin{remark}
+The $h \in H_1(F)$ in (d) is fixed for the rest of this section.
+\end{remark}
+
+\pf
+We may assume by Corollary \ref{cor:1.14} that $g$ is represented by a 
+$(2,1)$-block matrix $A\in GL(3,F)$ in the basis giving the embedding
+$\zz$. From this the four statements (a)-(d) follow without difficulty
+from simple facts about buildings. 
+\qed
+
+In particular, (d) implies that if $\overline{\Lambda '},
+\ \overline{\Lambda ''}$ are lines associated to two fixed points
+$\Lambda ', \Lambda ''$ of $h \in N_1(g)$ and if the endpoints $L'$, $L''$
+of the vertices of the characteristic base lie on $\overline{\Lambda '},
+\ \overline{\Lambda ''}$, respectively, then $g\sigma$ ``flips'' $L$
+and its leaf about a certain ``dotted'' line $D_A$ (which depends only
+on $A$, not on $L$, $L'$, $L''$, and lies in the first barycentric
+subdivision of $\bbg$ but does not necessarily lie in $\bbg$):
+
+
+%%figure (4.10) on page 1121
+\begin{figure}[!h!]
+\begin{picture}(200.00,150.00)(-120.00,0.00)
+\thicklines
+\put(-50.00,100.00){\line(1,0){250.00}}
+\put(-50.00,0.00){\line(1,0){250.00}}
+%left leaf
+\put(-29.00,50.00){$\bullet$} 
+\put(-20.00,-20.00){$L''$} 
+\put(-14.00,-2.00){$\bullet$} 
+\put(35.00,97.00){$\bullet$} 
+\put(-35.00,33.00){$L$} 
+\put(40.00,110.00){$L'$} 
+\put(-10.00,00.00){\line(3,6){50.00}}
+
+%right leaf
+\put(91.00,50.00){$\bullet$} 
+\put(100.00,-20.00){$M''$} 
+\put(106.00,-2.00){$\bullet$} 
+\put(155.00,97.00){$\bullet$} 
+\put(86.00,33.00){$M$} 
+\put(160.00,110.00){$M'$} 
+\put(110.00,00.00){\line(3,6){50.00}}
+
+\thinlines
+%right leaf
+\put(110.00,00.00){\line(-1,3){17.00}}
+\put(92.00,52.00){\line(4,3){65.00}}
+
+%left leaf
+\put(-10.00,00.00){\line(-1,3){17.00}}
+\put(-28.00,52.00){\line(4,3){65.00}}
+
+%middle line
+\put(50.00,00.00){\line(3,6){50.00}}
+\put(43.00,33.00){$D_A$} 
+
+\put(-110.00,0.00){$\Lambda'' =\gamma \Lambda''$} 
+\put(-110.00,100.00){$\Lambda' =\gamma \Lambda'$} 
+\end{picture}
+\vskip .3in
+\caption{Flipping characteristic leaves \label{fig:4.10}}
+\end{figure}
+
+\vskip .4in
+\noindent
+If $N_1(g)$ does not contain a unipotent then by Corollary 
+\ref{cor:1.14} we may assume that the
+matrix $A\in GL(3,F)\cong \text{Aut}_F(V_{A'}+W_{A'})$ 
+representing $g=[A]$ is in block form:
+
+\begin{equation}
+\label{eqn:4.11}
+A = 
+\left(
+\begin{array}{cc}
+u\pi^c&\ \\\ &C
+\end{array}
+\right) ,
+\ \ \ C\in GL(2,F),\ u\in \off^{\times},\ c\in\zzz . 
+%\tag 4.11
+\tag{4.11}
+\end{equation}
+(Here $[A']$ is the matrix in Corollary \ref{cor:1.14} 
+which belongs to the same stable
+$\sigma$--conjugacy class as $[A]$.)
+In this case, $A\sigma$ sends the lattice $\pi^{-n}\off +\Lambda$ in $\zz$ to
+$\pi^{c+n}\off +\Lambda '$, for some $\Lambda '$. If we parameterize
+the vertices in the lines in Figure \ref{fig:4.8} 
+by the integers then, in a sense, 
+$D_A$ may be thought of 
+as the ``$c/2$--line''. It belongs to $\bbg$ if and only if $c$ is even. 
+Suppose that $c$ is even and that 
+
+\begin{equation}
+\label{eqn:4.12}
+\begin{split}
+&A\sigma : [\pi^{-n}\off +\Lambda] \longmapsto [\pi^{c+n}\off +\Lambda '],\\
+&A\sigma : [\pi^{-n}\off +\Lambda '] \longmapsto [\pi^{c+n}\off +\Lambda].
+\end{split}
+%\tag 4.12
+\tag{4.12}
+\end{equation}
+It can be shown without much effort that, in this case,  
+$[\Lambda ],\ [\Lambda ']$ in $\zz$ correspond to two fixed points of
+$h \in N_1(g)$ in $\bbH1$. Also, it is not hard to see that,
+
+\setcounter{theorem}{12}
+\begin{lemma}
+\label{lemma:4.13}
+%{Fact 4.13} 
+Suppose c is even and L is a fixed point of
+$[A]\sigma$ whose characteristic base has endpoints lying on the
+lines $\overline{\Lambda '}\not= \overline{\Lambda ''}$. Then 
+the following hold.
+
+\begin{itemize}
+\item[(a)] 
+$D_A$ intersects the lines 
+$\overline{\Lambda '},\ \overline{\Lambda ''}$
+at the two vertices which determine the endpoints of the characteristic base 
+of L and
+
+\item[(b)] 
+The lines $\overline{\Lambda '},\ \overline{\Lambda ''}$ in $\zz$
+correspond to two fixed points of $h$ in $\bbH1$.
+\end{itemize}
+\end{lemma}
+
+\begin{remark} 
+There is a simpler version of this dealing with the case 
+$\overline{\Lambda '}= \overline{\Lambda ''}$.
+In this way, we will obtain a ``2-1'' correspondence, when
+$c$ is even, between \underbar{pairs} of fixed points of $h$ in $\bbH1$ and
+fixed points of $[A]\sigma$ in $\bbg$. One important point to bear in mind is 
+that when $c$ is \underbar{odd} then the line $D_A$ cannot intersect $\bbg$
+and therefore there can be \underbar{no} fixed points of $[A]\sigma$ in this
+case. So far we have only shown that (when $c$ is even) given a fixed point 
+of $[A]$ in $\bbg$ there are associated two fixed points
+of $h$ in $\bbH1$.
+\end{remark}
+ 
+From the reduction of \S \ref{sec:3} 
+one sees that it is also necessary to know what
+happens when $A$ in (\ref{eqn:4.11}) is replaced by a matrix $A'$ 
+stably $\sigma$--conjugate
+to $A$ but not $\sigma$--conjugate to $A$ over $F$. Of course, 
+$N_1([A])=N_1([A'])$ so $A'$ may be put in $(1,2)$-block 
+form as in (\ref{eqn:4.11}),
+for some $c'\in\zzz ,\ C'\in GL(2,F),\ u'\in\off^{\times}$. 
+If moreover the eigenvalues of $h$ determine an unramified 
+extension of $F$ then
+$c'$ and $c$ have different parity. On the other hand, if $A'$ and $A$
+are $\sigma$--conjugate over $F$ then $c$ and $c'$ do have the same parity, so
+we have the following result.
+
+\setcounter{theorem}{13}
+\begin{lemma}
+\label{lemma:4.14}
+%{Fact 4.14} 
+The parity of $c$ depends only on the rational
+$\sigma$--conjugacy class of $[A]$. If the eigenvalues of $h$ determine an
+unramified extension of $F$ (the ``unramified case'') and $A$, $A'$ are stably 
+$\sigma$--conjugate but not
+$\sigma$--conjugate over $F$ then either $c$ or $c'$ is even (but not both). 
+\end{lemma}
+
+By the previous paragraph, in this ``unramified case'', there is either 
+a fixed point of $A\sigma$ (and $A'\sigma$ has no fixed point) or a
+fixed point of $A'\sigma$ (and $A\sigma$ has no fixed point). 
+ 
+The problem now is to deal with the converse of Lemma \ref{lemma:4.13}: 
+given a pair of fixed points
+of $h \in N_1(g)$, associate to them fixed point of $A\sigma$. Instead
+of proving this, we shall prove that this holds ``on average'', which is
+sufficient for our purposes.
+For this the following lemma is crucial, but first we need some notation:
+Let $d$ be the maximum distance
+between two fixed points of $h$, let the eigenvalues of $h$
+determine a quadratic extension $E$ of $F$, and suppose that
+
+\begin{equation}
+\label{eqn:4.15}
+U(d):=U_d\pi^{2\zzz}:=
+\{x\in\off^{\times}\ |\ x\equiv 1 \, {\rm mod}\, \pi^d\}\pi^{2\zzz}
+\subseteq N_{_{E/F}}(E^{\times})
+%\tag 4.15
+\tag{4.15}
+\end{equation}
+is finite index in $F^{\times}$. Let ${\cal S}$ denote the set of 
+$a\in F^{\times}$ for which
+$P'\not= P''$ exist (for a fixed $p'$, $p''$) and satisfying (ai)-(aiv) in the 
+lemma below. Here $A_a$ is defined to be a representative of $g_a$, where 
+$g_a$ is defined in the paragraph following (\ref{eqn:3.16}) and $A$ is our
+representative of $g$ chosen at the beginning of this section. We may,
+by Corollary \ref{cor:1.14}, choose all the $A_a$ to be in block form as in 
+(\ref{eqn:4.11}).
+$A_a\sigma$ may have no
+fixed points; however, if it does, let $P_0$ denote one of them. Let
+$U_n$ denote the stabilizer of the action of 
+$T_a :=(A_a\sigma )(A\sigma )^{-1}$ on $P_0$, for some $n\geq 0$, with
+$U_n$ as in (\ref{eqn:4.15}).
+
+\setcounter{theorem}{15}
+\begin{lemma}
+\label{lemma:4.16} 
+(\cite{LaUn}, Lemma 5.1) 
+Suppose that $p'$, $p''$ are 
+vertices in
+$\bbH1$ (possibly $p'$ = $p''$) and that $[A]\sigma$ ``flips'' the lines
+in $\bbg$ associated to $p'$, $p''$ onto each other. Then:
+
+\begin{itemize}
+\item[(a)] 
+For each $a\in F^{\times}$ there exists at most one pair $P'$, $P''$
+of vertices in $\bbg$ with
+
+\begin{itemize}
+\item[(i)] 
+$ P'$ lying on the line associated to $p'$,
+
+\item[(ii)] 
+$P''$ lying on the line associated to $p''$,
+
+\item[(iii)]
+In the notation of \S \ref{sec:3}, $A_a\sigma (P') = P'',
+\ A_a\sigma (P'')=P'$.
+
+\item[(iv)] 
+$P'$, $P''$ form the extreme vertices of a characteristic
+segment.
+\end{itemize}
+
+\item[(b)] 
+Suppose $a\in F^{\times}$ is such that a pair $p'$, $p''$ exists for $A_a$.
+Then a pair exists for $A_b$ (for the same $p'$, $p''$) if and only
+if $aN_{_{E/F}}(E^{\times})=bN_{_{E/F}}(E^{\times})$.
+
+\item[(c)] 
+Let ${\cal S},\ P_0,$ and $U_n$ be as above, and assume that $n\geq 1$.
+Then $n \leq d$ and there are $[\off^{\times}:U_n]$ distinct
+P's with segment $(P',P'')$ such that $(A_a\sigma )P = P$.
+
+\item[(d)] 
+If $|{\rm Fix}(A_a\sigma )|\not= 0$ then $|{\rm Fix}(A_{a\pi}\sigma )|=0$,
+for $E/F$ unramified.
+
+\item[(e)] 
+In the notation of part (c),
+
+\[
+{1\over{[\off^{\times}:U_d]}}\sum_{a\in F^{\times}/U(d)}
+\sum_{\substack{ P\\A_a\sigma P = P\\P \text{ has segment }(P',P'')}}
+1 
+={1\over{[\off^{\times}:U_n]}}\sum_{a\in F^{\times}/U(n)}
+\sum_{\substack{ P\\A_a\sigma P = P\\P \text{ has segment }(P',P'')}}
+1 .
+\]
+\end{itemize}
+
+There is an obvious ``$\kappa$--analog'' (see (\ref{eqn:3.18})) 
+of the above equation 
+whose statement is left to the reader.
+\end{lemma}
+
+\begin{remark} 
+(a) When applying this lemma to (\ref{eqn:3.17}) or 
+(\ref{eqn:3.18}), one uses the fact that
+
+\[
+{1\over{2}}[F^{\times}:U(n)] = [\off^{\times}:U_n].
+\]
+(b) For the situation in Lemma \ref{lemma:4.13}(c) when n = 0, 
+see \S \ref{sec:5}. The ``matching''
+is then $P = P' = P''\longmapsto p'=p''$.
+\end{remark}
+
+Let me now sketch the proof of this lemma. Consider the situation
+described by the following diagram:
+
+%%figure (4.17) on page 1123
+\begin{figure}[!h!]
+\begin{picture}(200.00,100.00)(-180.00,0.00)
+\thicklines
+\put(-100.00,50.00){\line(1,0){270.00}} 
+\put(-10.00,60.00){$Q'$} 
+\put(-2.00,47.00){$\bullet$} 
+\put(0.00,50.00){\line(1,-1){50.00}}
+\put(100.00,50.00){\line(1,-1){50.00}}
+\put(140.00,-23.00){$Q''$} 
+\put(148.00,-3.00){$\bullet$} 
+\put(0.00,50.00){\line(-1,-1){30.00}}
+\put(47.00,-3.00){$\bullet$}  
+\put(90.00,60.00){$P'$} 
+\put(-100.00,0.00){\line(1,0){270.00}}
+\put(40.00,-23.00){$P''$} 
+\put(50.00,0.00){\line(1,1){50.00}}
+\put(150.00,0.00){\line(1,1){20.00}}
+\put(98.00,47.00){$\bullet$}  
+\put(-150.00,20.00){$P',P'',Q',Q''\in {\cal Z}$}  
+\end{picture}
+
+\vskip .3in
+\caption{Another band in the apartment \label{fig:4.17}}
+\end{figure}
+
+\vskip .4in
+\noindent
+In this case, as we've noted above, there are three rank one $\off$--modules
+$M_1,\ M_2,\ M_3$ such that
+
+\[
+\begin{split}
+&P' = [M_1+M_2+M_3],\ \ P''=[\pi^bM_1+\pi^bM_2 +M_3],\\
+&Q' = [\pi^bM_1+M_2+M_3],\ \ Q''=[M_1+\pi^bM_2 +M_3].
+\end{split}
+\]
+
+\setcounter{theorem}{17}
+\begin{lemma}
+\label{lemma:4.18}
+
+\begin{itemize}
+\item[(a)] 
+The vertices $P$ in $\bbg$ with characteristic segment $(P',P'')$,
+$P' \not= P''$, correspond to rank three lattices
+$L+M_3$, where $L$ is a lattice satisfying
+\newline
+$\ \ (i) \pi^bM_1 +\pi^bM_2 \subseteq L \subseteq M_1+M_2,$
+\newline
+$\ \ (ii) \pi^{b-1}M_1 + \pi^{b-1}M_2 \not\subset L,$
+\newline
+$\ \ (iii) L \not\subset \pi M_1+\pi M_2,$
+\newline
+$\ \ (iv)  L \not\subset \pi M_1+ M_2 =:M',$
+\newline
+$\ \ (v) \  L \not\subset  M_1+\pi M_2=:M''.$
+\newline
+
+\item[(b)] 
+If $u\in \off^{\times}$ then the action of 
+$T_u := (A_u\sigma )(A\sigma )^{-1}$ on $\zz$ induces an action of 
+$\off^{\times}$ on the lattices $L$ in (a). This action agrees with
+that defined by the matrix
+
+\[
+\left(
+\begin{array}{cc}
+u&0\\0&1 
+\end{array}
+\right),
+\]
+and, moreover, it is transitive on the set of $L$'s.
+\end{itemize}
+\end{lemma}
+
+\pf
+(of Lemma \ref{lemma:4.18})
+The stabilizer of any point $P$ with segment $(P',P'')$ under the action of 
+$\off^{\times}$ via $T_u$ is of the form $U_b$, for some $b\geq 1$. Thus
+
+\begin{equation}
+\label{eqn:4.19}
+P=A\sigma T_u(P)=T_uA\sigma (P)=A_u\sigma (P),
+%\tag 4.19
+\tag{4.19}
+\end{equation}
+for some $u\in\off$ uniquely determined modulo $U_b$. In other words, if $P$ 
+has segment $(P',P'')$ then there is a $u\in \off^{\times}$ such that
+$A\sigma T_u (P)=P$ and
+
+\[
+\left(
+\begin{array}{cc}
+u'&0\\0&1 \end{array}
+\right),\ \ u'\in U_b,
+\]
+not only stabilizes $A\sigma (P)$ but also commutes with $T_u, \ u\in
+\off^{\times}$. 
+\qed
+
+From these facts, Lemma \ref{lemma:4.16} follows. 
+As a corollary, we obtain $r(0)=R(0)$,
+using Lemma \ref{lemma:3.3} and (\ref{eqn:3.17}).
+
+\subsection{The buildings for $PGL(3)$ and $PGL(2)$}
+\label{sec:5}
+
+Recall $H_1:=SL(2),\ H_2:=PGL(2),\ G:=PGL(3)$, and $N_1,\ N_2$
+denote the Jacquet-Shalika norms (\ref{eqn:1.9}). 
+We assume $p\not= 2$ without further mention.
+ 
+Let $h \in N_1(g)\cap H_1(F)$ have eigenvalues $\beta_1,\
+\beta_2=\beta_1^{-1}$ and
+let $h'\in N_2(g)\cap H_2(F)$ be represented by a matrix $B\in GL(2,F)$
+having eigenvalues $\lambda\beta_1,\ \lambda$, for some
+$\lambda\in \overline{F}^{\times}$. 
+Recall $\bbH1 = \bbh2$ and that the action
+of $H_2(F)$ on $\bbh2$ is defined analogously to the action of $G(F)$
+on $\bbg$. 
+Let $E/F$ denote the extension of $F$ obtained by adjoining the
+eigenvalues of $h$; we may assume $E/F$ 
+is quadratic since the split case was
+handled in \S \ref{sec:2}. 
+Since the tree $\bbh2$ has no closed loops, one can easily
+show that $h$ has fixed points only if 
+$c\beta_i\in \oee^{\times}$, for some $c\in F^{\times}$.
+ 
+Our strategy is
+to prove, in the notation of \S \ref{sec:3}, that $s(0)=S(0)$ in the
+following manner.
+
+\begin{itemize}
+\item[(a)] 
+If $|1+\beta_1|_E=1$ then $r(0)=s(0)$, and the geometric argument
+ establishes $|S(0)|=R(0)$. The signed equality also requires the
+ transfer-factor normalization to be verified.
+
+\item[(b)] 
+If $E/F$ is ramified and $|1+\beta_1|<1$, the intended
+conclusion is that the relevant building fixed-vertex counts vanish,
+not that such eigenvalues are impossible. 
+
+\item[(c)] 
+If $|1+\beta_1|_E<1$ and $E/F$ is unramified, the geometric count
+gives $|\operatorname{Fix}(h')|=1$ and hence $s(0)=Q$.
+The corresponding twisted identity is $S(0)/Q=1$, or $S(0)=Q$. 
+
+\end{itemize}
+The ramified subcase in (b) is treated separately below.
+The sign in \eqref{eqn:3.18} is prescribed by the Hilbert-symbol
+normalization, not chosen independently for each orbital integral.
+Proposition~\ref{prop:5.6} initially determines only $|S(0)|$;
+identifying it with $s(0)$ requires a signed argument.
+
+\begin{draftremark}[A ramified example]
+The ramified case described in (b) really exists. Take
+$F=\mathbb Q_3$, $E=F(\sqrt3)$, and $\beta=2+\sqrt3$.
+Then $\beta^{-1}=2-\sqrt3$, $N_{E/F}(\beta)=1$,
+and $|1+\beta|_E<1$ although $E/F$ is ramified.
+For example, $h=\left(\begin{smallmatrix}0&-1\\1&4\end{smallmatrix}\right)$
+has these eigenvalues. The desired vanishing in this case is therefore
+geometric, not a field-theoretic exclusion.
+\end{draftremark}
+
+\setcounter{theorem}{0}
+\begin{lemma}
+\label{lemma:5.1}
+\begin{itemize}
+\item[(a)] 
+$s(0)\leq r(0)$.
+
+\item[(b)] 
+Assume that $|1+\beta_1|=1$. Then the number of
+fixed points of $h$ is equal to the number of fixed points of $h'$,
+i.e., $r(0)=s(0)$. Moreover, $|S(0)|\leq R(0)=r(0)$.
+\end{itemize}
+\end{lemma}
+
+\pf
+Part (a) follows immediately from Lemma \ref{lemma:3.3}. 
+For part (b), recall $\Delta_{H_1}(h):=|1-\beta_1^2||\beta_1|^{-1}
+=|1-\beta_1||1+\beta_1||\beta_1|^{-1}$ and
+$\Delta_{H_2}(h'):=|1-\beta_1||\beta_1|^{-1/2}$, 
+by the definitions in \S \ref{sec:2}.
+The lemma now follows immediately from the counting 
+formulas (\ref{eqn:3.17})-(\ref{eqn:3.18}) for
+$R(0)$ and $S(0)$ and the hypothesis.
+\qed
+
+\setcounter{theorem}{1}
+\begin{lemma}
+\label{lemma:5.2}
+\begin{itemize}
+\item[(a)] 
+The set {\rm Fix}($A_a\sigma$) is in one--to--one correspondence with the
+L's such that
+
+\[
+[L] = [\{v\in V\ |\ {^{t}v}\cdot \, ^tA_a^{-1}\cdot v'\in \off ,
+\ \forall v'\in L\}],
+\]
+i.e., the class of $L$ is self--dual with respect to the bilinear form of
+$^tA_a^{-1}$.
+
+\item[(b)] 
+Assume $|{\rm Fix}(A\sigma )|\not= 0,\
+[L]\in {\rm Fix}(A_u\sigma ),\ u\in \off^{\times},$
+and $[L]\notin\zz$. Then $u=v^2$, for some $v\in\off^{\times}$, and in
+particular $(u,\eps)_2=1$ (in the notation of (\ref{eqn:3.18})).
+\end{itemize}
+\end{lemma}
+
+\pf
+(a) This is a simple calculation using (\ref{eqn:4.3}): 
+since $A\sigma$ sends $[L]$
+to $[AL^{\vee}]$, $[L]$ is fixed if and only if $L$ belongs to the same
+class as
+
+\[
+\begin{split}
+AL^{\vee}
+&=\{Av\in V\ |\ {^{t}v}\cdot v'\in \off ,
+\ \forall v'\in L\}\\
+&=\{v_o\in V\ |\  v_o=Av{\rm  and }\ {^{t}v}\cdot v'\in \off ,
+\ \forall v'\in L\}.
+\end{split}
+\]
+It is easy to see that this is equivalent to the statement in part (a).
+\newline
+(b) We may rephrase the problem in terms of self--dual lattice
+classes. 
+Let $P$ be an $^tA^{-1}$--self--dual lattice class. 
+By (a) above and Lemma \ref{lemma:4.14},
+the transitivity of $T_a$ implies that
+there is an $a\in\off^{\times}$ such that $[L]=T_aP$. It follows that
+$[L]$ is both
+$^tA_u^{-1}$--self--dual and $^tA_{a^{-2}}^{-1}$--self--dual, since $T_a$ and
+$A_b\sigma$ commute. 
+This implies, by (a), that $[L]$ corresponds to a fixed
+point of $T_{ua^2}$. 
+However, by Lemma \ref{lemma:4.18} and the discussion following 
+(\ref{eqn:4.15}), we know that the stabilizer of 
+$T_{ua^2}$ is $U_n$,
+where $n\geq 1$ is the distance between $[L]$ and its
+projection $[L']$ in $\zz$ (by hypothesis, $[L]\not= [L']$).
+Since, by definition,
+$U_n \subseteq \{ {\rm squares\ in\ }\off^{\times}\}$, for $n\geq 1$, we
+conclude that $u$ is a square in $\off^{\times}$.
+\qed
+
+\setcounter{theorem}{2}
+\begin{lemma}
+\label{lemma:5.3}
+Let $w:=\left(\smallmatrix \ &1\\-1&\ \endsmallmatrix
+\right)$, and let $\Lambda_0:=\off\oplus\off\oplus\off$ denote the standard
+rank 3 lattice written in terms of a fixed basis for $V_A\oplus W_A$.
+The action of $A_a\sigma$ on $\bbg$ is given on $\zz$ by
+
+\[
+\begin{split}
+\left[ 
+\left(
+\begin{array}{cc} 
+r&\ \\\ &C'
+\end{array}\right)
+\Lambda_0\right] \longmapsto
+&\left[ A_a
+\left(
+\begin{array}{cc} 
+1&\ \\ \ &w
+\end{array}\right)
+\left(
+\begin{array}{cc} 
+r^{-1}&\ \\
+\ &C'
+\end{array}\right)
+\left(
+\begin{array}{cc} 
+1&\ \\\ &w
+\end{array}\right)^{-1}\Lambda_0\right]\\
+&=\left[ A_a
+\left(
+\begin{array}{cc} 
+1&\ \\\ &w
+\end{array}\right)
+\left(
+\begin{array}{cc} 
+r^{-1}&\ \\\ &C'
+\end{array}\right)
+\Lambda_0\right],
+\end{split}
+\]
+where $r\in F^{\times},\ C'\in {\rm Aut}_F(W_A)\cong GL(2,F)$.
+\end{lemma}
+
+\begin{remark} This follows from (\ref{eqn:4.3}) and the fact that
+$C^{-1}=(det(C))^{-1}\, ^t(w^{-1}Cw)$. This description of the twisted
+action on the building is especially useful when the action of
+$A_a\sigma$ is restricted $\zz$.
+\end{remark}
+
+\setcounter{theorem}{3}
+\begin{lemma}
+\label{lemma:5.4} 
+Assume that $N_1(g)$ doesn't contain any
+unipotent element. If ${\rm Fix}(A\sigma )$
+contains a
+vertex \underbar{not} in $\zz$ and if
+${\rm Fix}(A\sigma )\cap\zz = \emptyset$ then $|\beta'_1/\beta'_2 +1|<1$,
+where $\beta'_i$ are the eigenvalues of $Cw$.
+\end{lemma}
+
+\pf 
+By hypothesis, we may assume that A is of the form
+$\left(\begin{array}{cc} 1 &\ \\ \ &C\end{array}\right)$, 
+thanks to Corollary \ref{cor:1.14}.
+Suppose that there is an $[L]\in {\rm Fix}(A\sigma )$ not in $\zz$. 
+Lemma \ref{lemma:4.16}
+implies that we can find $[L'],\ [L'']\in\zz$ forming the characteristic
+segment of $[L]$ such that
+$[A\sigma L'] = [L''],\ [A\sigma L''] = [L']$. 
+
+Denote by $p',\ p''$
+the vertices of $\bbb (SL(2))$ associated to $L',\ L''$,
+where $Aw(p')=p'',\ Aw(p'')=p'$.
+These are depicted by the lines in Figure \ref{fig:4.8}.
+%%%%%%%%%%Last sentence added 3-2003 to avoid redrawing 4.8 
+We may consider the midpoint $p_0$ of $p',\ p''$ in the first barycentric
+subdivision of $\bbb (SL(2,F))$ as a vertex of the tree over $E$, since
+$E/F$ is ramified. By Lemma \ref{lemma:5.3} and a
+well--known result on trees, $p_0$ in $\bbb (SL(2,E))$ is a fixed point
+of $Cw$ ($Cw$ acts without inversion on the first barycentric subdivision
+of $\bbb (SL(2,F))$). By Lemma \ref{lemma:5.3}, this midpoint
+is associated to a fixed point $[L_0]$ over E of ($A\sigma$ and)
+$A\cdot\left(\begin{array}{cc}
+1&\ \\\ &w\end{array}\right)$. By hypothesis 
+$[L_0]\notin \zz$.
+ 
+Let
+$p_1,\ p_2$ be two neighbors of $p_0$, with $p_i$ a vertex in
+$\bbb (SL(2,F))$ and with $Cw(p_1)=p_2,\ Cw(p_2)=p_1$. There is an
+apartment containing $p_1,\ p_2$ in which we can write
+
+\begin{equation}
+\begin{split}
+&p_1 = [\pi^{b_1+1}e_1\off + \pi^{b_2}e_2\off ],\\
+&p_2 = [\pi^{b_1}e_1\off + \pi^{b_2}e_2\off ],
+\end{split}
+\label{eqn:5.5}
+\tag{5.5}
+\end{equation}
+for some $b_i\in\zzz$ and a suitable basis $\{e_1,\ e_2\}$. It follows that
+$Cw$ is conjugate over $F$ to
+$\left(\smallmatrix u_1\pi^{-1}&u_2\pi^{b_1-b_2}\\ u_3\pi^{b_2-b_1-1}&
+u_4\endsmallmatrix\right)$,
+for some $u_i\in \off^{\times}$. After multiplying the matrix by a
+scalar in $F^\times$, this is projectively conjugate over $F$ to
+\[
+\begin{pmatrix}
+u_1\pi^{b_1-b_2} &u_2\pi^{2(b_1-b_2)+1}\\
+u_3&u_4\pi^{b_1-b_2+1}
+\end{pmatrix}.
+\]
+If $b_1-b_2\leq -2$ or
+$b_1-b_2\geq 1$ then the quotient of the eigenvalues
+of this matrix are equal to $-1 \pm \epsilon$, for some
+$|\epsilon |<1$. 
+In this case, from Lemma \ref{lemma:4.5} we find that
+$Cw$ can have at most one fixed point in the tree over $E$,
+and none in the tree over $F$. In this case,
+we conclude that
+there is no fixed point of $A\sigma$ in $\zz$. The cases $b_1-b_2=-1$
+and $b_1-b_2=0$ are similar: if $b_1-b_2=-1$ then $p_1=[\Lambda_0]$
+and $p_2=[\pi^{-1}e_1\off +\Lambda_0]$. It follows that
+$Cw$ is conjugate over $F$ to
+$\left(\smallmatrix u_1&u_2\pi^{-1}\\ u_3&u_4\endsmallmatrix\right)$,
+for some $u_i\in \off^{\times}$, and the same conclusion may be drawn.
+The case $b_1-b_2=0$ is similar and therefore omitted.  
+\qed
+
+\setcounter{theorem}{5}
+\begin{proposition}
+\label{prop:5.6}
+If $|1+\beta_1|_E = 1$ then $|S(0)| = s(0)$.
+\end{proposition}
+
+\pf 
+Again, by hypothesis, we may assume that $A$ is of the form
+$\left(\begin{array}{cc}
+1&\ \\\ &C\end{array}\right)$, thanks to Corollary
+\ref{cor:1.14}.
+ 
+Note that by the reduction formulas and Lemma \ref{lemma:5.2}(b), we have
+
+\begin{equation}
+R(0) - |S(0)| \leq 2Q(|{\rm Fix}(A\sigma )\cap \zz |
++|{\rm Fix}(A_a\sigma )\cap \zz |),
+\label{eqn:5.7}
+\tag{5.7}
+\end{equation}
+where $A$ and $A_a$ represent $\ddd_\sigma (g)$ (see (\ref{eqn:1.25})). 
+Thus if ${\rm Fix}(A\sigma )\cap\zz = \emptyset$ were true, 
+Lemma \ref{lemma:5.1}
+would imply the result. Moreover, since
+$|S(0)| \leq R(0) = r(0) = s(0)$, we may immediately dispose of the
+case $R(0) = 0$. We may therefore assume that $\Delta (h) < 1$, so that
+$|1-\beta_1|<1$ and that $|{\rm Fix}(A\sigma )|>0$.
+ 
+Suppose for the moment that ${\rm Fix}(A\sigma ) \subset \zz$.
+By Lemma \ref{lemma:4.16}(b) 
+it follows that ${\rm Fix}(A_a\sigma ) =\emptyset $,
+so we have $S(0) = R(0)$.
+ 
+Suppose next that ${\rm Fix}(A\sigma )$ is not a subset of $\zz$. Since
+${\rm Fix}(A_a\sigma ) \subset \zz$ 
+would contradict Lemma \ref{lemma:4.16},
+we must then have that ${\rm Fix}(A_a\sigma )$ is not a subset
+of $\zz$. 
+From Lemma \ref{lemma:4.16} 
+we have that ${\rm Fix}(A\sigma ) \cap \zz \not= \emptyset$
+or ${\rm Fix}(A_a\sigma ) \cap \zz \not= \emptyset$. Suppose without loss of 
+generality that 
+${\rm Fix}(A\sigma ) \cap \zz \not= \emptyset$. 
+By (\ref{eqn:1.25}) and 
+Lemma \ref{lemma:4.16}(b), if $E/F$ was 
+ramified then we may take $a\in \off^{\times}$
+(since $F^{\times}/N(E^{\times})$ is represented by a unit in the
+case of a ramified extension $E/F$).
+In this case, Lemma \ref{lemma:5.2}(b) implies all the signs in 
+(\ref{eqn:3.18}) are
+the same, so $|S(0)|=R(0)$. On the other hand, if $E/F$ were
+unramified then $a\notin \off^{\times}$ by 
+Lemma \ref{lemma:4.14} and then
+Lemma \ref{lemma:4.16}(d) forces ${\rm Fix}(A_a\sigma ) \cap \zz = \emptyset$.
+Then Lemma \ref{lemma:5.4} implies that $Cw$ has no fixed points, which
+by Lemma \ref{lemma:5.3} would contradict our assumption.
+\qed
+
+Next we must consider the case where $|1+\beta_1|<1$ and $E/F$ is unramified.
+In this case, $\Delta (h') = 1$, so by the formula for the number of fixed
+points we have $|{\rm Fix}(h')| = 1$. On the other hand, the same formula
+implies that $|{\rm Fix}(h)| > 1$, so it is clear that in this case
+$r(0) > s(0)$. We of course want to show that the normalized signed sum in the
+formula for $S(0)/Q$ is equal to $1$, so $s(0)=Q$. We want to show that,
+if $|1+\beta_1| = q^{-m}$ with $m>0$ and $|{\rm Fix}(A\sigma )|\not= 0$
+then
+
+\begin{equation}
+\begin{aligned}
+\frac{S(0)}{Q}
+&=\frac{\pm2}{[F^\times:U]}|(1+\beta_1)(1+\beta_2)|^{1/2}
+\\[-2pt]
+&\quad\cdot
+\sum_{a\in F^\times/U}
+\sum_{\substack{P\\\operatorname{Inv}(A_a\sigma(P),P)=0}}
+\kappa(A_a)=1.
+\end{aligned}
+\label{eqn:5.10}
+\tag{5.10}
+\end{equation}
+In other words, we want to show that
+
+\begin{equation}
+{2\over{[F^{\times}:U]}}
+\sum_{\substack{ a\in F^{\times}/U\\ (a,\epsilon)_2 =+1}}
+\sum_{\substack{ P\\ {\rm Inv}(A_a\sigma (P),P) = 0}} 1
+= q^m + {2\over{[F^{\times}:U]}}
+\sum_{\substack{ a\in F^{\times}/U\\ (a,\epsilon)_2=-1}}
+\sum_{\substack{ P\\ {\rm Inv}(A_a\sigma (P),P) = 0}} 1\ .
+\label{eqn:5.11}
+\tag{5.11}
+\end{equation}
+For this it clearly suffices to prove that
+\begin{equation}
+{2\over{[F^{\times}:U]}}
+\sum_{\substack{ a\in F^{\times}/U\\ (a,\epsilon)_2 =+1 }}
+\sum_{\substack{ P\\ {\rm Inv}(A_a\sigma (P),P) = 0 }} 1
+={{q^{m+1}+q^m-2}\over{q-1}}+R,
+\label{eqn:5.12}
+\tag{5.12}
+\end{equation}
+(the ``unramified case''), and
+
+\begin{equation}
+{2\over{[F^{\times}:U]}}
+\sum_{\substack{ a\in F^{\times}/U\\ (a,\epsilon)_2 =-1 }}
+\sum_{\substack{ P\\ {\rm Inv}(A_a\sigma (P),P) = 0 }} 1
+={{2(q^m - 1)}\over{q-1}}+R,
+\label{eqn:5.13}
+\tag{5.13}
+\end{equation}
+(the ``ramified case'') for some $R$. 
+These are due to the fact that every fixed point $P$ of $A$ gives
+rise to a characteristic leaf by Lemma \ref{lemma:4.16}, 
+hence to a fixed point in the
+first barycentric subdivision of ${\cal B}(SL(2,F))$. The difference
+of (\ref{eqn:5.12}) and (\ref{eqn:5.13}) 
+merely counts the difference between the
+sets of fixed points in the 
+first barycentric subdivision of ${\cal B}(SL(2,F))$ in the unramified case
+and in the ramified case, respectively. 
+The number of such fixed 
+points is as stated in (\ref{eqn:5.12}) by 
+Lemma \ref{lemma:4.5}(a), in the unramified
+case, and by Lemma \ref{lemma:4.5}(b) in the ramified case.
+ 
+It remains to dispose of the case $|1+\beta_1|<1$ and $E/F$ ramified.
+Although one must be able to deal with this case by a more direct argument,
+I will give the following geometric proof. 
+Since $|1-\beta_1|=1$ and $E/F$ is ramified, 
+it follows from \cite{La80b}, p. 50,
+for example, that $h'$ has no fixed points. 
+This implies that $s(0)=0$ and
+(by the proof of Lemma \ref{lemma:5.4}) that
+$A\sigma$ has no fixed points in $\zz$. 
+Thus each fixed point of $A\sigma$, which we may 
+assume exists, is associated to a
+characteristic base which is not a vertex.
+By the remarks preceding Figure \ref{fig:4.10}, the fact that
+$A\sigma$ has no fixed points in $\zz$ implies
+that, in the notation of (\ref{eqn:5.7}),
+$A_a\sigma$ will have fixed points in $\zz$ (since $E/F$ is ramified,
+there is an element of valuation one in $N_{E/F}(E^\times )$
+and therefore we may take $A_a$ to correspond to this element; the midpoint
+of the characteristic base isn't a vertex,
+whereas the midpoint of the dotted line $D_{A_a}$ associated to the fixed
+point $L$ of $A\sigma$ in Figure \ref{fig:4.10} is a vertex in $\zz$
+since the valuation of $a$ is one). By Lemma \ref{lemma:5.3}, 
+this implies that,
+in the notation of the proof of Proposition \ref{prop:5.6},
+$Cw$ has fixed points. By Lemma \ref{lemma:5.3},
+this contradicts the fact that $A\sigma$ has no fixed points in $\zz$.
+ 
+For the unramified case with $|1+\beta_1|_E<1$,
+\eqref{eqn:5.12} and \eqref{eqn:5.13} give a difference of $q^m$;
+since $|(1+\beta_1)(1+\beta_2)|^{1/2}=q^{-m}$,
+\eqref{eqn:5.10} yields $S(0)/Q=1$, hence $S(0)=Q=s(0)$.
+The ramified vanishing argument above uses Lemmas~\ref{lemma:5.3}
+and \ref{lemma:5.4}. The signed equality when
+$|1+\beta_1|_E=1$ also depends on the signed transfer-factor
+normalization, as distinguished from the absolute-value statement of
+Proposition~\ref{prop:5.6}.
+
+\begin{draftremark}[Remaining verification]
+The following steps are dependencies of a complete independent proof:
+(i) verify the sign of $S(0)$ with the fixed convention in
+\eqref{eqn:3.18} when $|1+\beta_1|_E=1$;
+(ii) supply the omitted boundary valuation calculation in
+Lemma~\ref{lemma:5.4} for $b_1-b_2=-1,0$;
+(iii) verify the fixed-point comparison underlying the last ramified
+vanishing argument; and (iv) verify the class-invariant averaging
+in the precise geometric parametrization used in Section~\ref{sec:4}.
+Until these checks are supplied, this corrected draft should not be
+read as an independent certification of every step of the final
+fundamental-lemma comparison.
+\end{draftremark}
+
+ 
 
 \section{Outline of the original paper}
 \label{sec:0}
@@ -1920,1157 +3087,8 @@ and those in Lemma \ref{lemma:3.3} constitute
 the desired reductions.
 
 % === END ORIGINAL adjoint_lift3.tex ===
-% === BEGIN ORIGINAL adjoint_lift4.tex ===
-
-\section{The buildings for $PGL(3)$ and $SL(2)$}
-\label{sec:4}
-
-For background, see for example \cite{Ko80} and \cite{Ti79}.
-The results (and pictures) in this section are, as 
-mentioned earlier, due to R. Langlands
-\cite{LaUn}. We assume $p\not= 2$ throughout this section.
- 
-Fix a vector space $V$ over $F$ of dimension either 2 or 3.
-We may consider the buildings $\bbb (G),\ \bbb (H_1)$ for $G,\ H_1$
-as graphs of lattice classes; if L is a rank two or three $\off$--lattice
-in $V$
-then its class is denoted by [L]. Recall that two vertices $[L_1],\ [L_2]$
-are to be joined by an {\bf edge} if and only if there exist 
-$\lambda_1,\ \lambda_2 \in F^{\times}$ such that
-
-\begin{equation}
-\label{eqn:4.1}
-\pi\lambda_1 L_1 \sne \lambda_2 L_2 \sne \lambda_1 L_1.
-%\tag 4.1
-\tag{4.1}
-\end{equation}
-The edge from $[L_2]$ to $[L_1]$ is {\bf positively directed} if (4.1)
-holds and if $\lambda_1 L_1/\lambda_2 L_2$ is a module of rank one
-over the residue field.
-Three vertices $L_1,\ L_2,\ L_3$ are the vertices of a 2-simplex
-or {\bf chamber} of $\bbb (G)$ if and only if there exists
-$\lambda_1,\ \lambda_2,\ \lambda_3 \in F^{\times}$ such that
-
-\begin{equation}
-\label{eqn:4.2}
-\pi\lambda_1 L_1 \sne \lambda_3L_3 
-\sne \lambda_2 L_2 \sne \lambda_1 L_1.
-%\tag 4.2
-\tag{4.2}
-\end{equation}
- 
-To describe the ordinary action of $G$ on
-$\bbg$, represent $g\in G(F)$ by $C\in GL(3,F)$.
-The scalar center $Z(GL_3)(F)=F^\times$ acts trivially on
-homothety classes, so this action is well-defined and given by
-$g:[L]\mapsto[CL]$.
-The action of $H_1$ on $\bbH1$ is simpler: $h\in H_1(F)$ sends
-$[\Lambda ]$ to $[h\Lambda ]$. These actions send vertices to vertices, 
-edges to edges, chambers to chambers
-(in the case of $\bbg$), preserve orientation and are
-automorphisms of the buildings. 
- 
-The action of $\sigma$ on $\bbg$, however, does not preserve orientation.
-This ``anti--automorphism'' sends a lattice $L$ to its dual lattice
-
-\begin{equation}
-\label{eqn:4.3}
-\check{L} :=\{v \in V\ |\ {^{t}v}\cdot v' \in \off , \ \forall v' \in L\}.
-%\tag 4.3
-\tag{4.3}
-\end{equation}
-If $[L]=[C_0\off^3]$, then the original involution
-$\sigma_J(C)=J\,{}^tC^{-1}J$ acts on vertices by
-\[
-\sigma_J:[L]\longmapsto[J\check L],
-\]
-since $J\off^3=\off^3$. If $g=[C]$, put $A=CJ$. Then
-$g\sigma_J$ acts by $[L]\mapsto[A\check L]$.
-We retain the historical shorthand $A\sigma$ for this
-\emph{normalized building action}. Equivalently, this is $A\tau$
-with $\tau(C)={}^tC^{-1}$. In subsequent geometric formulas $A$ is
-normalized, not the literal representative $C$ of $g$.
-It is the fixed-point set of this action that we describe.
-
-\setcounter{theorem}{3}
-\begin{lemma}
-\label{lemma:4.4} 
-\begin{itemize}
-
-\item[(a)] 
-Suppose that the number of fixed points of 
-$h\in H_1(F)$ in $\bbH1$ is finite: $|{\rm Fix}(h)| < \infty$. 
-(This is the case if
-$h$ is elliptic regular, i.e., the eigenvalues of $h$ generate a quadratic
-extension of $F$.) Then, for any $x\in H_1(F)$, we have 
-$|{\rm Fix}(h)| =|{\rm Fix}(x^{-1}hx)|$,
-i.e., the number of fixed points depends only on the conjugacy class of $h$.
-
-\item[(b)] 
-Suppose that the number of fixed points of $g\sigma$ in $\bbg$ is
-finite: $|{\rm Fix}(g\sigma )|<\infty$. (This is the case if $N_1(g)$ is 
-elliptic regular.) Then, for any $x\in PGL(3,F)$, we have 
-$|{\rm Fix}(g\sigma )| = |{\rm Fix}((x^{-1}g\sigma (x))\sigma )|$,
-i.e., the number of fixed points of $g\sigma$ depends only on the
-$\sigma$--conjugacy class of $g$.
-\end{itemize}
-\end{lemma}
-
-\begin{remark}
-The proof of this lemma is easy, hence is omitted. 
-If $h,\ h'$ are stably conjugate but not conjugate over $F$ one
-may have $|{\rm Fix}(h)|\not= |{\rm Fix}(h')|$, 
-and a similar statement holds for
-$\sigma$--conjugacy.
-\end{remark}
- 
-The following result is well-known. 
-
-\setcounter{theorem}{4}
-\begin{lemma}
-\label{lemma:4.5} 
-Let $h\in GL(2,F)$ be an elliptic regular element
-with $\Delta_{H_2} (h)=q^{-k}$, for some $k\geq 0$. Let $E/F$ denote the
-quadratic extension generated by $h$. 
-
-\begin{itemize}
-\item 
-If $E/F$ is unramified then
-
-\[
-|{\rm Fix}(h)|={{q^{k+1}+q^k-2}\over{q-1}}.
-\]        
-\item 
-If $E/F$ is ramified then
-
-\[
-|{\rm Fix}(h)|={2(q^k-1)\over{q-1}}.
-\]        
-(We have used the fact that the conductor of $E/F$, as defined in \cite{Bl85},
-is $1$ in the ramified case.)
-\end{itemize}
-\end{lemma}
-
-We now describe an embedding
-
-\[
-\bbb (H_1) \hookrightarrow \bbb (G).
-\]
-First, replace the tree $\bbb (H_1)$ by the product of itself with 
-the affine line:
-replace all vertices by lines (copies of $V_A$ running perpendicular to the 
-edges, as visualized in three dimensions) and all edges by strips. 
-This figure may be regarded as $\bbb (GL(2))$. 
-In order to embed this into
-$\bbb (G)$, one must impose a simplicial structure on it compatible with that
-of $\bbb (G)$. 
-Each line $\overline{\Lambda}$ of $\bbb (GL(2))$ associated to a
-vertex $\Lambda$ of $\bbb (H_1)$ must first be provided with its 
-own vertices. 
-We define the vertices on $\overline{\Lambda}$ to be 
-$\Lambda_{(n)} :=\pi^{-n}\off + \Lambda$,
-for fixed embeddings
-$\pi^{-n}\off \hookrightarrow V_A,\ \Lambda\hookrightarrow W_A$. 
-Here $V_A, \ W_A$ are as in subsection 1.3. Given two neighboring
-vertices $\Lambda , \Lambda '$ of $\bbb (H_1)$ we obtain neighboring lines
-$\overline{\Lambda},\ \overline{\Lambda '}$ and the vertices of these lines 
-are joined by an edge if they are neighbors. 
-This simplicial structure 
-on $\bbb (GL(2))$ defines an embedding of
-$\bbb (H_1)$ into $\bbb (G)$ whose image we denote by $\zz = \zz (V_A,W_A)$. 
-Let
-
-\[
-\pi\lambda \Lambda \sne \lambda ' \Lambda ' 
-\sne \lambda \Lambda ,
-\]
-and let $L'_{(n)} := \pi^{-n}\off + \Lambda ', 
-\ L_{(n)}:=\pi^{-n}\off + \Lambda$. The band in $\zz$ associated to the edge 
-joining $\Lambda $ and $\Lambda '$ in $\bbH1$ is represented by a 
-picture of the following sort:
-
-%%figure (4.6) on page 1119
-\begin{figure}[!h!]
-\begin{picture}(200.00,100.00)(-120.00,0.00)
-\thicklines
-\put(-80.00,50.00){\line(1,0){220.00}} 
-\put(-10.00,60.00){$L_{(-1)}$} 
-\put(-2.00,47.00){$\bullet$} 
-\put(0.00,50.00){\line(1,-1){50.00}}
-\put(100.00,50.00){\line(1,-1){30.00}}
-\put(-60.00,-23.00){$L'_{(-1)}$} 
-\put(-52.00,-3.00){$\bullet$} 
-\put(0.00,50.00){\line(-1,-1){50.00}}
-\put(47.00,-3.00){$\bullet$}  
-\put(90.00,60.00){$L_{(0)}$} 
-\put(-80.00,0.00){\line(1,0){220.00}}
-\put(40.00,-23.00){$L'_{(0)}$} 
-\put(50.00,0.00){\line(1,1){50.00}}
-\put(-50.00,0.00){\line(-1,1){20.00}}
-\put(98.00,47.00){$\bullet$}  
-\put(158.00,43.00){$\Lambda$}  
-\put(158.00,-7.00){$\Lambda'$}  
-\end{picture}
-\vskip .3in
-\caption{The band in the apartment \label{fig:4.6}}
-\end{figure}
-\vskip .4in
-
-\noindent
-The lines in $\zz$ have been drawn in such a way that the positive direction 
-on them is from left to right. As mentioned earlier, the action of
-$\text{Aut}_F(W_A) \hookrightarrow \text{Aut}_F(W_A +V_A)$ on $\zz$ preserves
-orientation. 
-The action of $\sigma$ on $\bbg$ does not even restrict to an action
-on $\zz = \zz (V_A,W_A)$. However, the action of $g\sigma$, with 
-$g=[A] \in G(F)$ 
-represented by $A \in GL(3,F)$, does send $\zz (V_A, W_A)$ to
-$\zz (AW_A^{\bot}, AV_A^{\bot}) = \zz (V_A, W_A)$, reversing orientation. 
-Here we have used the fact the $AW_A^{\bot} = V_A$ and 
-$AV_A^{\bot}=({^{t}A^{-1}}V_A)^{\bot}$, by definition of $W_A$.
-As we shall see, thanks to Corollary \ref{cor:1.14} it turns out 
-to be sufficient
-for our purpose of relating fixed points of $g\sigma$ 
-in $\bbg$ with fixed points
-of $h\in N_1(g),\ h\in H_1(F),$ in $\bbH1$ to assume that the matrix A in
-$GL(3,F) \cong \text{Aut}_F(V_A +W_A)$ is in $(1,2)$-block form. 
-For such
-matrices, it is possible to explicitly realize the action of $g\sigma$
-on $\zz$ in terms of the geometry described above. 
-In fact, this is what we do next.
- 
-In \cite{LaUn}, R. Langlands introduced the notion of a ``characteristic
-leaf'' to understand explicitly vertices in $\bbg$ not in $\zz$ in terms
-of vertices in $\zz$. 
-This notion is very useful for relating fixed
-points of $g\sigma$ in $\bbg$ to fixed points of $h\in N_1(g)$ in $\bbH1$. 
-Given
-$L:=\pi^n\off +\pi^a\off +\pi^b\off$, let $M_1:=\pi^n\off,\ M_2:=\pi^b\off,
-\ M_3:=\pi^{-b}\off$. 
-Consider the vertices of the {\bf characteristic
-leaf} for $L$:
-
-\begin{equation}
-\label{eqn:4.7}
-\begin{split}
-&L':= M_1 +M_2 +M_3 \in \zz,\\ 
-&L:= \pi^b M_1 + M_2 +M_3 \notin \zz,\\ 
-&L'':= \pi^b M_1 +\pi^b M_2 + M_3 \in \zz,
-\end{split}
-%\tag 4.7
-\tag{4.7}
-\end{equation}
-depicted in Figure \ref{fig:4.8}.
-
-\begin{figure}[!h!]
-\begin{picture}(200.00,150.00)(-120.00,0.00)
-\thicklines
-\put(-50.00,100.00){\line(1,0){220.00}}
-\put(-50.00,0.00){\line(1,0){220.00}}
-\put(71.00,50.00){$\bullet$} 
-\put(80.00,-20.00){$L''$} 
-\put(86.00,-2.00){$\bullet$} 
-\put(135.00,97.00){$\bullet$} 
-\put(60.00,50.00){$L$} 
-\put(140.00,110.00){$L'$} 
-\put(90.00,00.00){\line(3,6){50.00}}
-
-\thinlines
-\put(90.00,00.00){\line(-1,3){17.00}}
-\put(72.00,52.00){\line(4,3){65.00}}
-
-\end{picture}
-\vskip .3in
-\caption{A characteristic leaf \label{fig:4.8}}
-\end{figure}
-
-\vskip .3in
-\noindent
-The vertices of the simplices forming the equilateral triangle
-are given by
-$\pi^{n_1}M_1 +\pi^{n_2}M_2 + M_3,\ 0 \leq n_2 \leq n_1 \leq b$.
-The segment of length $|b|$ joining $L'$ to $L''$ is called the
-{\bf characteristic base} or {\bf segment}. This base degenerates to a
-vertex if $L \in \zz$ and otherwise it may be regarded as 
-an equilateral triangle, under a suitable metric structure on $\bbg$.
-
-\setcounter{theorem}{8}
-\begin{lemma}
-\label{lemma:4.9} 
-(\cite{LaUn}) 
-Suppose $g\in G(F)$ is such that $N_1(g)$
-is elliptic regular. Then the following hold.
-
-\begin{itemize}
-\item[(a)] 
-$g\sigma$ sends the characteristic leaf of $L$ to the characteristic leaf
-of $g\check{L}$.
-
-\item[(b)] 
-For each vertex $\Lambda$ in $\bbH1$, $g\sigma$ sends the line 
-$\{\pi^{-n}\off +\Lambda\ |\ n\in \zzz\}$
-of $\zz$ with positive orientation to another line 
-$\{\pi^m\off +\Lambda ' \ |\ m \in \zzz\}$ in
-$\zz$ with reversed orientation.
-
-\item[(c)] 
-$g\sigma$ sends the characteristic base of the leaf for L to the
-characteristic base (with orientation reversed) for $g\check{L}$;
-
-\item[(d)] 
-For any $h\in SL(2,F)$ representing $N_1(g)$, the action of
-$h$ on $\zz$ is the same as the action of $(g\sigma)^2$ restricted
-to $\zz$.
-\end{itemize}
-\end{lemma}
-
-\begin{remark}
-The $h \in H_1(F)$ in (d) is fixed for the rest of this section.
-\end{remark}
-
-\pf
-We may assume by Corollary \ref{cor:1.14} that $g$ is represented by a 
-$(2,1)$-block matrix $A\in GL(3,F)$ in the basis giving the embedding
-$\zz$. From this the four statements (a)-(d) follow without difficulty
-from simple facts about buildings. 
-\qed
-
-In particular, (d) implies that if $\overline{\Lambda '},
-\ \overline{\Lambda ''}$ are lines associated to two fixed points
-$\Lambda ', \Lambda ''$ of $h \in N_1(g)$ and if the endpoints $L'$, $L''$
-of the vertices of the characteristic base lie on $\overline{\Lambda '},
-\ \overline{\Lambda ''}$, respectively, then $g\sigma$ ``flips'' $L$
-and its leaf about a certain ``dotted'' line $D_A$ (which depends only
-on $A$, not on $L$, $L'$, $L''$, and lies in the first barycentric
-subdivision of $\bbg$ but does not necessarily lie in $\bbg$):
-
-
-%%figure (4.10) on page 1121
-\begin{figure}[!h!]
-\begin{picture}(200.00,150.00)(-120.00,0.00)
-\thicklines
-\put(-50.00,100.00){\line(1,0){250.00}}
-\put(-50.00,0.00){\line(1,0){250.00}}
-%left leaf
-\put(-29.00,50.00){$\bullet$} 
-\put(-20.00,-20.00){$L''$} 
-\put(-14.00,-2.00){$\bullet$} 
-\put(35.00,97.00){$\bullet$} 
-\put(-35.00,33.00){$L$} 
-\put(40.00,110.00){$L'$} 
-\put(-10.00,00.00){\line(3,6){50.00}}
-
-%right leaf
-\put(91.00,50.00){$\bullet$} 
-\put(100.00,-20.00){$M''$} 
-\put(106.00,-2.00){$\bullet$} 
-\put(155.00,97.00){$\bullet$} 
-\put(86.00,33.00){$M$} 
-\put(160.00,110.00){$M'$} 
-\put(110.00,00.00){\line(3,6){50.00}}
-
-\thinlines
-%right leaf
-\put(110.00,00.00){\line(-1,3){17.00}}
-\put(92.00,52.00){\line(4,3){65.00}}
-
-%left leaf
-\put(-10.00,00.00){\line(-1,3){17.00}}
-\put(-28.00,52.00){\line(4,3){65.00}}
-
-%middle line
-\put(50.00,00.00){\line(3,6){50.00}}
-\put(43.00,33.00){$D_A$} 
-
-\put(-110.00,0.00){$\Lambda'' =\gamma \Lambda''$} 
-\put(-110.00,100.00){$\Lambda' =\gamma \Lambda'$} 
-\end{picture}
-\vskip .3in
-\caption{Flipping characteristic leaves \label{fig:4.10}}
-\end{figure}
-
-\vskip .4in
-\noindent
-If $N_1(g)$ does not contain a unipotent then by Corollary 
-\ref{cor:1.14} we may assume that the
-matrix $A\in GL(3,F)\cong \text{Aut}_F(V_{A'}+W_{A'})$ 
-representing $g=[A]$ is in block form:
-
-\begin{equation}
-\label{eqn:4.11}
-A = 
-\left(
-\begin{array}{cc}
-u\pi^c&\ \\\ &C
-\end{array}
-\right) ,
-\ \ \ C\in GL(2,F),\ u\in \off^{\times},\ c\in\zzz . 
-%\tag 4.11
-\tag{4.11}
-\end{equation}
-(Here $[A']$ is the matrix in Corollary \ref{cor:1.14} 
-which belongs to the same stable
-$\sigma$--conjugacy class as $[A]$.)
-In this case, $A\sigma$ sends the lattice $\pi^{-n}\off +\Lambda$ in $\zz$ to
-$\pi^{c+n}\off +\Lambda '$, for some $\Lambda '$. If we parameterize
-the vertices in the lines in Figure \ref{fig:4.8} 
-by the integers then, in a sense, 
-$D_A$ may be thought of 
-as the ``$c/2$--line''. It belongs to $\bbg$ if and only if $c$ is even. 
-Suppose that $c$ is even and that 
-
-\begin{equation}
-\label{eqn:4.12}
-\begin{split}
-&A\sigma : [\pi^{-n}\off +\Lambda] \longmapsto [\pi^{c+n}\off +\Lambda '],\\
-&A\sigma : [\pi^{-n}\off +\Lambda '] \longmapsto [\pi^{c+n}\off +\Lambda].
-\end{split}
-%\tag 4.12
-\tag{4.12}
-\end{equation}
-It can be shown without much effort that, in this case,  
-$[\Lambda ],\ [\Lambda ']$ in $\zz$ correspond to two fixed points of
-$h \in N_1(g)$ in $\bbH1$. Also, it is not hard to see that,
-
-\setcounter{theorem}{12}
-\begin{lemma}
-\label{lemma:4.13}
-%{Fact 4.13} 
-Suppose c is even and L is a fixed point of
-$[A]\sigma$ whose characteristic base has endpoints lying on the
-lines $\overline{\Lambda '}\not= \overline{\Lambda ''}$. Then 
-the following hold.
-
-\begin{itemize}
-\item[(a)] 
-$D_A$ intersects the lines 
-$\overline{\Lambda '},\ \overline{\Lambda ''}$
-at the two vertices which determine the endpoints of the characteristic base 
-of L and
-
-\item[(b)] 
-The lines $\overline{\Lambda '},\ \overline{\Lambda ''}$ in $\zz$
-correspond to two fixed points of $h$ in $\bbH1$.
-\end{itemize}
-\end{lemma}
-
-\begin{remark} 
-There is a simpler version of this dealing with the case 
-$\overline{\Lambda '}= \overline{\Lambda ''}$.
-In this way, we will obtain a ``2-1'' correspondence, when
-$c$ is even, between \underbar{pairs} of fixed points of $h$ in $\bbH1$ and
-fixed points of $[A]\sigma$ in $\bbg$. One important point to bear in mind is 
-that when $c$ is \underbar{odd} then the line $D_A$ cannot intersect $\bbg$
-and therefore there can be \underbar{no} fixed points of $[A]\sigma$ in this
-case. So far we have only shown that (when $c$ is even) given a fixed point 
-of $[A]$ in $\bbg$ there are associated two fixed points
-of $h$ in $\bbH1$.
-\end{remark}
- 
-From the reduction of \S \ref{sec:3} 
-one sees that it is also necessary to know what
-happens when $A$ in (\ref{eqn:4.11}) is replaced by a matrix $A'$ 
-stably $\sigma$--conjugate
-to $A$ but not $\sigma$--conjugate to $A$ over $F$. Of course, 
-$N_1([A])=N_1([A'])$ so $A'$ may be put in $(1,2)$-block 
-form as in (\ref{eqn:4.11}),
-for some $c'\in\zzz ,\ C'\in GL(2,F),\ u'\in\off^{\times}$. 
-If moreover the eigenvalues of $h$ determine an unramified 
-extension of $F$ then
-$c'$ and $c$ have different parity. On the other hand, if $A'$ and $A$
-are $\sigma$--conjugate over $F$ then $c$ and $c'$ do have the same parity, so
-we have the following result.
-
-\setcounter{theorem}{13}
-\begin{lemma}
-\label{lemma:4.14}
-%{Fact 4.14} 
-The parity of $c$ depends only on the rational
-$\sigma$--conjugacy class of $[A]$. If the eigenvalues of $h$ determine an
-unramified extension of $F$ (the ``unramified case'') and $A$, $A'$ are stably 
-$\sigma$--conjugate but not
-$\sigma$--conjugate over $F$ then either $c$ or $c'$ is even (but not both). 
-\end{lemma}
-
-By the previous paragraph, in this ``unramified case'', there is either 
-a fixed point of $A\sigma$ (and $A'\sigma$ has no fixed point) or a
-fixed point of $A'\sigma$ (and $A\sigma$ has no fixed point). 
- 
-The problem now is to deal with the converse of Lemma \ref{lemma:4.13}: 
-given a pair of fixed points
-of $h \in N_1(g)$, associate to them fixed point of $A\sigma$. Instead
-of proving this, we shall prove that this holds ``on average'', which is
-sufficient for our purposes.
-For this the following lemma is crucial, but first we need some notation:
-Let $d$ be the maximum distance
-between two fixed points of $h$, let the eigenvalues of $h$
-determine a quadratic extension $E$ of $F$, and suppose that
-
-\begin{equation}
-\label{eqn:4.15}
-U(d):=U_d\pi^{2\zzz}:=
-\{x\in\off^{\times}\ |\ x\equiv 1 \, {\rm mod}\, \pi^d\}\pi^{2\zzz}
-\subseteq N_{_{E/F}}(E^{\times})
-%\tag 4.15
-\tag{4.15}
-\end{equation}
-is finite index in $F^{\times}$. Let ${\cal S}$ denote the set of 
-$a\in F^{\times}$ for which
-$P'\not= P''$ exist (for a fixed $p'$, $p''$) and satisfying (ai)-(aiv) in the 
-lemma below. Here $A_a$ is defined to be a representative of $g_a$, where 
-$g_a$ is defined in the paragraph following (\ref{eqn:3.16}) and $A$ is our
-representative of $g$ chosen at the beginning of this section. We may,
-by Corollary \ref{cor:1.14}, choose all the $A_a$ to be in block form as in 
-(\ref{eqn:4.11}).
-$A_a\sigma$ may have no
-fixed points; however, if it does, let $P_0$ denote one of them. Let
-$U_n$ denote the stabilizer of the action of 
-$T_a :=(A_a\sigma )(A\sigma )^{-1}$ on $P_0$, for some $n\geq 0$, with
-$U_n$ as in (\ref{eqn:4.15}).
-
-\setcounter{theorem}{15}
-\begin{lemma}
-\label{lemma:4.16} 
-(\cite{LaUn}, Lemma 5.1) 
-Suppose that $p'$, $p''$ are 
-vertices in
-$\bbH1$ (possibly $p'$ = $p''$) and that $[A]\sigma$ ``flips'' the lines
-in $\bbg$ associated to $p'$, $p''$ onto each other. Then:
-
-\begin{itemize}
-\item[(a)] 
-For each $a\in F^{\times}$ there exists at most one pair $P'$, $P''$
-of vertices in $\bbg$ with
-
-\begin{itemize}
-\item[(i)] 
-$ P'$ lying on the line associated to $p'$,
-
-\item[(ii)] 
-$P''$ lying on the line associated to $p''$,
-
-\item[(iii)]
-In the notation of \S \ref{sec:3}, $A_a\sigma (P') = P'',
-\ A_a\sigma (P'')=P'$.
-
-\item[(iv)] 
-$P'$, $P''$ form the extreme vertices of a characteristic
-segment.
-\end{itemize}
-
-\item[(b)] 
-Suppose $a\in F^{\times}$ is such that a pair $p'$, $p''$ exists for $A_a$.
-Then a pair exists for $A_b$ (for the same $p'$, $p''$) if and only
-if $aN_{_{E/F}}(E^{\times})=bN_{_{E/F}}(E^{\times})$.
-
-\item[(c)] 
-Let ${\cal S},\ P_0,$ and $U_n$ be as above, and assume that $n\geq 1$.
-Then $n \leq d$ and there are $[\off^{\times}:U_n]$ distinct
-P's with segment $(P',P'')$ such that $(A_a\sigma )P = P$.
-
-\item[(d)] 
-If $|{\rm Fix}(A_a\sigma )|\not= 0$ then $|{\rm Fix}(A_{a\pi}\sigma )|=0$,
-for $E/F$ unramified.
-
-\item[(e)] 
-In the notation of part (c),
-
-\[
-{1\over{[\off^{\times}:U_d]}}\sum_{a\in F^{\times}/U(d)}
-\sum_{\substack{ P\\A_a\sigma P = P\\P \text{ has segment }(P',P'')}}
-1 
-={1\over{[\off^{\times}:U_n]}}\sum_{a\in F^{\times}/U(n)}
-\sum_{\substack{ P\\A_a\sigma P = P\\P \text{ has segment }(P',P'')}}
-1 .
-\]
-\end{itemize}
-
-There is an obvious ``$\kappa$--analog'' (see (\ref{eqn:3.18})) 
-of the above equation 
-whose statement is left to the reader.
-\end{lemma}
-
-\begin{remark} 
-(a) When applying this lemma to (\ref{eqn:3.17}) or 
-(\ref{eqn:3.18}), one uses the fact that
-
-\[
-{1\over{2}}[F^{\times}:U(n)] = [\off^{\times}:U_n].
-\]
-(b) For the situation in Lemma \ref{lemma:4.13}(c) when n = 0, 
-see \S \ref{sec:5}. The ``matching''
-is then $P = P' = P''\longmapsto p'=p''$.
-\end{remark}
-
-Let me now sketch the proof of this lemma. Consider the situation
-described by the following diagram:
-
-%%figure (4.17) on page 1123
-\begin{figure}[!h!]
-\begin{picture}(200.00,100.00)(-180.00,0.00)
-\thicklines
-\put(-100.00,50.00){\line(1,0){270.00}} 
-\put(-10.00,60.00){$Q'$} 
-\put(-2.00,47.00){$\bullet$} 
-\put(0.00,50.00){\line(1,-1){50.00}}
-\put(100.00,50.00){\line(1,-1){50.00}}
-\put(140.00,-23.00){$Q''$} 
-\put(148.00,-3.00){$\bullet$} 
-\put(0.00,50.00){\line(-1,-1){30.00}}
-\put(47.00,-3.00){$\bullet$}  
-\put(90.00,60.00){$P'$} 
-\put(-100.00,0.00){\line(1,0){270.00}}
-\put(40.00,-23.00){$P''$} 
-\put(50.00,0.00){\line(1,1){50.00}}
-\put(150.00,0.00){\line(1,1){20.00}}
-\put(98.00,47.00){$\bullet$}  
-\put(-150.00,20.00){$P',P'',Q',Q''\in {\cal Z}$}  
-\end{picture}
-
-\vskip .3in
-\caption{Another band in the apartment \label{fig:4.17}}
-\end{figure}
-
-\vskip .4in
-\noindent
-In this case, as we've noted above, there are three rank one $\off$--modules
-$M_1,\ M_2,\ M_3$ such that
-
-\[
-\begin{split}
-&P' = [M_1+M_2+M_3],\ \ P''=[\pi^bM_1+\pi^bM_2 +M_3],\\
-&Q' = [\pi^bM_1+M_2+M_3],\ \ Q''=[M_1+\pi^bM_2 +M_3].
-\end{split}
-\]
-
-\setcounter{theorem}{17}
-\begin{lemma}
-\label{lemma:4.18}
-
-\begin{itemize}
-\item[(a)] 
-The vertices $P$ in $\bbg$ with characteristic segment $(P',P'')$,
-$P' \not= P''$, correspond to rank three lattices
-$L+M_3$, where $L$ is a lattice satisfying
-\newline
-$\ \ (i) \pi^bM_1 +\pi^bM_2 \subseteq L \subseteq M_1+M_2,$
-\newline
-$\ \ (ii) \pi^{b-1}M_1 + \pi^{b-1}M_2 \not\subset L,$
-\newline
-$\ \ (iii) L \not\subset \pi M_1+\pi M_2,$
-\newline
-$\ \ (iv)  L \not\subset \pi M_1+ M_2 =:M',$
-\newline
-$\ \ (v) \  L \not\subset  M_1+\pi M_2=:M''.$
-\newline
-
-\item[(b)] 
-If $u\in \off^{\times}$ then the action of 
-$T_u := (A_u\sigma )(A\sigma )^{-1}$ on $\zz$ induces an action of 
-$\off^{\times}$ on the lattices $L$ in (a). This action agrees with
-that defined by the matrix
-
-\[
-\left(
-\begin{array}{cc}
-u&0\\0&1 
-\end{array}
-\right),
-\]
-and, moreover, it is transitive on the set of $L$'s.
-\end{itemize}
-\end{lemma}
-
-\pf
-(of Lemma \ref{lemma:4.18})
-The stabilizer of any point $P$ with segment $(P',P'')$ under the action of 
-$\off^{\times}$ via $T_u$ is of the form $U_b$, for some $b\geq 1$. Thus
-
-\begin{equation}
-\label{eqn:4.19}
-P=A\sigma T_u(P)=T_uA\sigma (P)=A_u\sigma (P),
-%\tag 4.19
-\tag{4.19}
-\end{equation}
-for some $u\in\off$ uniquely determined modulo $U_b$. In other words, if $P$ 
-has segment $(P',P'')$ then there is a $u\in \off^{\times}$ such that
-$A\sigma T_u (P)=P$ and
-
-\[
-\left(
-\begin{array}{cc}
-u'&0\\0&1 \end{array}
-\right),\ \ u'\in U_b,
-\]
-not only stabilizes $A\sigma (P)$ but also commutes with $T_u, \ u\in
-\off^{\times}$. 
-\qed
-
-From these facts, Lemma \ref{lemma:4.16} follows. 
-As a corollary, we obtain $r(0)=R(0)$,
-using Lemma \ref{lemma:3.3} and (\ref{eqn:3.17}).
-
-
-
-% === END ORIGINAL adjoint_lift4.tex ===
-% === BEGIN ORIGINAL adjoint_lift5.tex ===
-
-
-\section{The buildings for $PGL(3)$ and $PGL(2)$}
-\label{sec:5}
-
-Recall $H_1:=SL(2),\ H_2:=PGL(2),\ G:=PGL(3)$, and $N_1,\ N_2$
-denote the Jacquet-Shalika norms (\ref{eqn:1.9}). 
-We assume $p\not= 2$ without further mention.
- 
-Let $h \in N_1(g)\cap H_1(F)$ have eigenvalues $\beta_1,\
-\beta_2=\beta_1^{-1}$ and
-let $h'\in N_2(g)\cap H_2(F)$ be represented by a matrix $B\in GL(2,F)$
-having eigenvalues $\lambda\beta_1,\ \lambda$, for some
-$\lambda\in \overline{F}^{\times}$. 
-Recall $\bbH1 = \bbh2$ and that the action
-of $H_2(F)$ on $\bbh2$ is defined analogously to the action of $G(F)$
-on $\bbg$. 
-Let $E/F$ denote the extension of $F$ obtained by adjoining the
-eigenvalues of $h$; we may assume $E/F$ 
-is quadratic since the split case was
-handled in \S \ref{sec:2}. 
-Since the tree $\bbh2$ has no closed loops, one can easily
-show that $h$ has fixed points only if 
-$c\beta_i\in \oee^{\times}$, for some $c\in F^{\times}$.
- 
-Our strategy is
-to prove, in the notation of \S \ref{sec:3}, that $s(0)=S(0)$ in the
-following manner.
-
-\begin{itemize}
-\item[(a)] 
-If $|1+\beta_1|_E=1$ then $r(0)=s(0)$, and the geometric argument
- establishes $|S(0)|=R(0)$. The signed equality also requires the
- transfer-factor normalization to be verified.
-
-\item[(b)] 
-If $E/F$ is ramified and $|1+\beta_1|<1$, the intended
-conclusion is that the relevant building fixed-vertex counts vanish,
-not that such eigenvalues are impossible. 
-
-\item[(c)] 
-If $|1+\beta_1|_E<1$ and $E/F$ is unramified, the geometric count
-gives $|\operatorname{Fix}(h')|=1$ and hence $s(0)=Q$.
-The corresponding twisted identity is $S(0)/Q=1$, or $S(0)=Q$. 
-
-\end{itemize}
-The ramified subcase in (b) is treated separately below.
-The sign in \eqref{eqn:3.18} is prescribed by the Hilbert-symbol
-normalization, not chosen independently for each orbital integral.
-Proposition~\ref{prop:5.6} initially determines only $|S(0)|$;
-identifying it with $s(0)$ requires a signed argument.
-
-\begin{draftremark}[A ramified example]
-The ramified case described in (b) really exists. Take
-$F=\mathbb Q_3$, $E=F(\sqrt3)$, and $\beta=2+\sqrt3$.
-Then $\beta^{-1}=2-\sqrt3$, $N_{E/F}(\beta)=1$,
-and $|1+\beta|_E<1$ although $E/F$ is ramified.
-For example, $h=\left(\begin{smallmatrix}0&-1\\1&4\end{smallmatrix}\right)$
-has these eigenvalues. The desired vanishing in this case is therefore
-geometric, not a field-theoretic exclusion.
-\end{draftremark}
-
-\setcounter{theorem}{0}
-\begin{lemma}
-\label{lemma:5.1}
-\begin{itemize}
-\item[(a)] 
-$s(0)\leq r(0)$.
-
-\item[(b)] 
-Assume that $|1+\beta_1|=1$. Then the number of
-fixed points of $h$ is equal to the number of fixed points of $h'$,
-i.e., $r(0)=s(0)$. Moreover, $|S(0)|\leq R(0)=r(0)$.
-\end{itemize}
-\end{lemma}
-
-\pf
-Part (a) follows immediately from Lemma \ref{lemma:3.3}. 
-For part (b), recall $\Delta_{H_1}(h):=|1-\beta_1^2||\beta_1|^{-1}
-=|1-\beta_1||1+\beta_1||\beta_1|^{-1}$ and
-$\Delta_{H_2}(h'):=|1-\beta_1||\beta_1|^{-1/2}$, 
-by the definitions in \S \ref{sec:2}.
-The lemma now follows immediately from the counting 
-formulas (\ref{eqn:3.17})-(\ref{eqn:3.18}) for
-$R(0)$ and $S(0)$ and the hypothesis.
-\qed
-
-\setcounter{theorem}{1}
-\begin{lemma}
-\label{lemma:5.2}
-\begin{itemize}
-\item[(a)] 
-The set {\rm Fix}($A_a\sigma$) is in one--to--one correspondence with the
-L's such that
-
-\[
-[L] = [\{v\in V\ |\ {^{t}v}\cdot \, ^tA_a^{-1}\cdot v'\in \off ,
-\ \forall v'\in L\}],
-\]
-i.e., the class of $L$ is self--dual with respect to the bilinear form of
-$^tA_a^{-1}$.
-
-\item[(b)] 
-Assume $|{\rm Fix}(A\sigma )|\not= 0,\
-[L]\in {\rm Fix}(A_u\sigma ),\ u\in \off^{\times},$
-and $[L]\notin\zz$. Then $u=v^2$, for some $v\in\off^{\times}$, and in
-particular $(u,\eps)_2=1$ (in the notation of (\ref{eqn:3.18})).
-\end{itemize}
-\end{lemma}
-
-\pf
-(a) This is a simple calculation using (\ref{eqn:4.3}): 
-since $A\sigma$ sends $[L]$
-to $[AL^{\vee}]$, $[L]$ is fixed if and only if $L$ belongs to the same
-class as
-
-\[
-\begin{split}
-AL^{\vee}
-&=\{Av\in V\ |\ {^{t}v}\cdot v'\in \off ,
-\ \forall v'\in L\}\\
-&=\{v_o\in V\ |\  v_o=Av{\rm  and }\ {^{t}v}\cdot v'\in \off ,
-\ \forall v'\in L\}.
-\end{split}
-\]
-It is easy to see that this is equivalent to the statement in part (a).
-\newline
-(b) We may rephrase the problem in terms of self--dual lattice
-classes. 
-Let $P$ be an $^tA^{-1}$--self--dual lattice class. 
-By (a) above and Lemma \ref{lemma:4.14},
-the transitivity of $T_a$ implies that
-there is an $a\in\off^{\times}$ such that $[L]=T_aP$. It follows that
-$[L]$ is both
-$^tA_u^{-1}$--self--dual and $^tA_{a^{-2}}^{-1}$--self--dual, since $T_a$ and
-$A_b\sigma$ commute. 
-This implies, by (a), that $[L]$ corresponds to a fixed
-point of $T_{ua^2}$. 
-However, by Lemma \ref{lemma:4.18} and the discussion following 
-(\ref{eqn:4.15}), we know that the stabilizer of 
-$T_{ua^2}$ is $U_n$,
-where $n\geq 1$ is the distance between $[L]$ and its
-projection $[L']$ in $\zz$ (by hypothesis, $[L]\not= [L']$).
-Since, by definition,
-$U_n \subseteq \{ {\rm squares\ in\ }\off^{\times}\}$, for $n\geq 1$, we
-conclude that $u$ is a square in $\off^{\times}$.
-\qed
-
-\setcounter{theorem}{2}
-\begin{lemma}
-\label{lemma:5.3}
-Let $w:=\left(\smallmatrix \ &1\\-1&\ \endsmallmatrix
-\right)$, and let $\Lambda_0:=\off\oplus\off\oplus\off$ denote the standard
-rank 3 lattice written in terms of a fixed basis for $V_A\oplus W_A$.
-The action of $A_a\sigma$ on $\bbg$ is given on $\zz$ by
-
-\[
-\begin{split}
-\left[ 
-\left(
-\begin{array}{cc} 
-r&\ \\\ &C'
-\end{array}\right)
-\Lambda_0\right] \longmapsto
-&\left[ A_a
-\left(
-\begin{array}{cc} 
-1&\ \\ \ &w
-\end{array}\right)
-\left(
-\begin{array}{cc} 
-r^{-1}&\ \\
-\ &C'
-\end{array}\right)
-\left(
-\begin{array}{cc} 
-1&\ \\\ &w
-\end{array}\right)^{-1}\Lambda_0\right]\\
-&=\left[ A_a
-\left(
-\begin{array}{cc} 
-1&\ \\\ &w
-\end{array}\right)
-\left(
-\begin{array}{cc} 
-r^{-1}&\ \\\ &C'
-\end{array}\right)
-\Lambda_0\right],
-\end{split}
-\]
-where $r\in F^{\times},\ C'\in {\rm Aut}_F(W_A)\cong GL(2,F)$.
-\end{lemma}
-
-\begin{remark} This follows from (\ref{eqn:4.3}) and the fact that
-$C^{-1}=(det(C))^{-1}\, ^t(w^{-1}Cw)$. This description of the twisted
-action on the building is especially useful when the action of
-$A_a\sigma$ is restricted $\zz$.
-\end{remark}
-
-\setcounter{theorem}{3}
-\begin{lemma}
-\label{lemma:5.4} 
-Assume that $N_1(g)$ doesn't contain any
-unipotent element. If ${\rm Fix}(A\sigma )$
-contains a
-vertex \underbar{not} in $\zz$ and if
-${\rm Fix}(A\sigma )\cap\zz = \emptyset$ then $|\beta'_1/\beta'_2 +1|<1$,
-where $\beta'_i$ are the eigenvalues of $Cw$.
-\end{lemma}
-
-\pf 
-By hypothesis, we may assume that A is of the form
-$\left(\begin{array}{cc} 1 &\ \\ \ &C\end{array}\right)$, 
-thanks to Corollary \ref{cor:1.14}.
-Suppose that there is an $[L]\in {\rm Fix}(A\sigma )$ not in $\zz$. 
-Lemma \ref{lemma:4.16}
-implies that we can find $[L'],\ [L'']\in\zz$ forming the characteristic
-segment of $[L]$ such that
-$[A\sigma L'] = [L''],\ [A\sigma L''] = [L']$. 
-
-Denote by $p',\ p''$
-the vertices of $\bbb (SL(2))$ associated to $L',\ L''$,
-where $Aw(p')=p'',\ Aw(p'')=p'$.
-These are depicted by the lines in Figure \ref{fig:4.8}.
-%%%%%%%%%%Last sentence added 3-2003 to avoid redrawing 4.8 
-We may consider the midpoint $p_0$ of $p',\ p''$ in the first barycentric
-subdivision of $\bbb (SL(2,F))$ as a vertex of the tree over $E$, since
-$E/F$ is ramified. By Lemma \ref{lemma:5.3} and a
-well--known result on trees, $p_0$ in $\bbb (SL(2,E))$ is a fixed point
-of $Cw$ ($Cw$ acts without inversion on the first barycentric subdivision
-of $\bbb (SL(2,F))$). By Lemma \ref{lemma:5.3}, this midpoint
-is associated to a fixed point $[L_0]$ over E of ($A\sigma$ and)
-$A\cdot\left(\begin{array}{cc}
-1&\ \\\ &w\end{array}\right)$. By hypothesis 
-$[L_0]\notin \zz$.
- 
-Let
-$p_1,\ p_2$ be two neighbors of $p_0$, with $p_i$ a vertex in
-$\bbb (SL(2,F))$ and with $Cw(p_1)=p_2,\ Cw(p_2)=p_1$. There is an
-apartment containing $p_1,\ p_2$ in which we can write
-
-\begin{equation}
-\begin{split}
-&p_1 = [\pi^{b_1+1}e_1\off + \pi^{b_2}e_2\off ],\\
-&p_2 = [\pi^{b_1}e_1\off + \pi^{b_2}e_2\off ],
-\end{split}
-\label{eqn:5.5}
-\tag{5.5}
-\end{equation}
-for some $b_i\in\zzz$ and a suitable basis $\{e_1,\ e_2\}$. It follows that
-$Cw$ is conjugate over $F$ to
-$\left(\smallmatrix u_1\pi^{-1}&u_2\pi^{b_1-b_2}\\ u_3\pi^{b_2-b_1-1}&
-u_4\endsmallmatrix\right)$,
-for some $u_i\in \off^{\times}$. After multiplying the matrix by a
-scalar in $F^\times$, this is projectively conjugate over $F$ to
-\[
-\begin{pmatrix}
-u_1\pi^{b_1-b_2} &u_2\pi^{2(b_1-b_2)+1}\\
-u_3&u_4\pi^{b_1-b_2+1}
-\end{pmatrix}.
-\]
-If $b_1-b_2\leq -2$ or
-$b_1-b_2\geq 1$ then the quotient of the eigenvalues
-of this matrix are equal to $-1 \pm \epsilon$, for some
-$|\epsilon |<1$. 
-In this case, from Lemma \ref{lemma:4.5} we find that
-$Cw$ can have at most one fixed point in the tree over $E$,
-and none in the tree over $F$. In this case,
-we conclude that
-there is no fixed point of $A\sigma$ in $\zz$. The cases $b_1-b_2=-1$
-and $b_1-b_2=0$ are similar: if $b_1-b_2=-1$ then $p_1=[\Lambda_0]$
-and $p_2=[\pi^{-1}e_1\off +\Lambda_0]$. It follows that
-$Cw$ is conjugate over $F$ to
-$\left(\smallmatrix u_1&u_2\pi^{-1}\\ u_3&u_4\endsmallmatrix\right)$,
-for some $u_i\in \off^{\times}$, and the same conclusion may be drawn.
-The case $b_1-b_2=0$ is similar and therefore omitted.  
-\qed
-
-\setcounter{theorem}{5}
-\begin{proposition}
-\label{prop:5.6}
-If $|1+\beta_1|_E = 1$ then $|S(0)| = s(0)$.
-\end{proposition}
-
-\pf 
-Again, by hypothesis, we may assume that $A$ is of the form
-$\left(\begin{array}{cc}
-1&\ \\\ &C\end{array}\right)$, thanks to Corollary
-\ref{cor:1.14}.
- 
-Note that by the reduction formulas and Lemma \ref{lemma:5.2}(b), we have
-
-\begin{equation}
-R(0) - |S(0)| \leq 2Q(|{\rm Fix}(A\sigma )\cap \zz |
-+|{\rm Fix}(A_a\sigma )\cap \zz |),
-\label{eqn:5.7}
-\tag{5.7}
-\end{equation}
-where $A$ and $A_a$ represent $\ddd_\sigma (g)$ (see (\ref{eqn:1.25})). 
-Thus if ${\rm Fix}(A\sigma )\cap\zz = \emptyset$ were true, 
-Lemma \ref{lemma:5.1}
-would imply the result. Moreover, since
-$|S(0)| \leq R(0) = r(0) = s(0)$, we may immediately dispose of the
-case $R(0) = 0$. We may therefore assume that $\Delta (h) < 1$, so that
-$|1-\beta_1|<1$ and that $|{\rm Fix}(A\sigma )|>0$.
- 
-Suppose for the moment that ${\rm Fix}(A\sigma ) \subset \zz$.
-By Lemma \ref{lemma:4.16}(b) 
-it follows that ${\rm Fix}(A_a\sigma ) =\emptyset $,
-so we have $S(0) = R(0)$.
- 
-Suppose next that ${\rm Fix}(A\sigma )$ is not a subset of $\zz$. Since
-${\rm Fix}(A_a\sigma ) \subset \zz$ 
-would contradict Lemma \ref{lemma:4.16},
-we must then have that ${\rm Fix}(A_a\sigma )$ is not a subset
-of $\zz$. 
-From Lemma \ref{lemma:4.16} 
-we have that ${\rm Fix}(A\sigma ) \cap \zz \not= \emptyset$
-or ${\rm Fix}(A_a\sigma ) \cap \zz \not= \emptyset$. Suppose without loss of 
-generality that 
-${\rm Fix}(A\sigma ) \cap \zz \not= \emptyset$. 
-By (\ref{eqn:1.25}) and 
-Lemma \ref{lemma:4.16}(b), if $E/F$ was 
-ramified then we may take $a\in \off^{\times}$
-(since $F^{\times}/N(E^{\times})$ is represented by a unit in the
-case of a ramified extension $E/F$).
-In this case, Lemma \ref{lemma:5.2}(b) implies all the signs in 
-(\ref{eqn:3.18}) are
-the same, so $|S(0)|=R(0)$. On the other hand, if $E/F$ were
-unramified then $a\notin \off^{\times}$ by 
-Lemma \ref{lemma:4.14} and then
-Lemma \ref{lemma:4.16}(d) forces ${\rm Fix}(A_a\sigma ) \cap \zz = \emptyset$.
-Then Lemma \ref{lemma:5.4} implies that $Cw$ has no fixed points, which
-by Lemma \ref{lemma:5.3} would contradict our assumption.
-\qed
-
-Next we must consider the case where $|1+\beta_1|<1$ and $E/F$ is unramified.
-In this case, $\Delta (h') = 1$, so by the formula for the number of fixed
-points we have $|{\rm Fix}(h')| = 1$. On the other hand, the same formula
-implies that $|{\rm Fix}(h)| > 1$, so it is clear that in this case
-$r(0) > s(0)$. We of course want to show that the normalized signed sum in the
-formula for $S(0)/Q$ is equal to $1$, so $s(0)=Q$. We want to show that,
-if $|1+\beta_1| = q^{-m}$ with $m>0$ and $|{\rm Fix}(A\sigma )|\not= 0$
-then
-
-\begin{equation}
-\begin{aligned}
-\frac{S(0)}{Q}
-&=\frac{\pm2}{[F^\times:U]}|(1+\beta_1)(1+\beta_2)|^{1/2}
-\\[-2pt]
-&\quad\cdot
-\sum_{a\in F^\times/U}
-\sum_{\substack{P\\\operatorname{Inv}(A_a\sigma(P),P)=0}}
-\kappa(A_a)=1.
-\end{aligned}
-\label{eqn:5.10}
-\tag{5.10}
-\end{equation}
-In other words, we want to show that
-
-\begin{equation}
-{2\over{[F^{\times}:U]}}
-\sum_{\substack{ a\in F^{\times}/U\\ (a,\epsilon)_2 =+1}}
-\sum_{\substack{ P\\ {\rm Inv}(A_a\sigma (P),P) = 0}} 1
-= q^m + {2\over{[F^{\times}:U]}}
-\sum_{\substack{ a\in F^{\times}/U\\ (a,\epsilon)_2=-1}}
-\sum_{\substack{ P\\ {\rm Inv}(A_a\sigma (P),P) = 0}} 1\ .
-\label{eqn:5.11}
-\tag{5.11}
-\end{equation}
-For this it clearly suffices to prove that
-\begin{equation}
-{2\over{[F^{\times}:U]}}
-\sum_{\substack{ a\in F^{\times}/U\\ (a,\epsilon)_2 =+1 }}
-\sum_{\substack{ P\\ {\rm Inv}(A_a\sigma (P),P) = 0 }} 1
-={{q^{m+1}+q^m-2}\over{q-1}}+R,
-\label{eqn:5.12}
-\tag{5.12}
-\end{equation}
-(the ``unramified case''), and
-
-\begin{equation}
-{2\over{[F^{\times}:U]}}
-\sum_{\substack{ a\in F^{\times}/U\\ (a,\epsilon)_2 =-1 }}
-\sum_{\substack{ P\\ {\rm Inv}(A_a\sigma (P),P) = 0 }} 1
-={{2(q^m - 1)}\over{q-1}}+R,
-\label{eqn:5.13}
-\tag{5.13}
-\end{equation}
-(the ``ramified case'') for some $R$. 
-These are due to the fact that every fixed point $P$ of $A$ gives
-rise to a characteristic leaf by Lemma \ref{lemma:4.16}, 
-hence to a fixed point in the
-first barycentric subdivision of ${\cal B}(SL(2,F))$. The difference
-of (\ref{eqn:5.12}) and (\ref{eqn:5.13}) 
-merely counts the difference between the
-sets of fixed points in the 
-first barycentric subdivision of ${\cal B}(SL(2,F))$ in the unramified case
-and in the ramified case, respectively. 
-The number of such fixed 
-points is as stated in (\ref{eqn:5.12}) by 
-Lemma \ref{lemma:4.5}(a), in the unramified
-case, and by Lemma \ref{lemma:4.5}(b) in the ramified case.
- 
-It remains to dispose of the case $|1+\beta_1|<1$ and $E/F$ ramified.
-Although one must be able to deal with this case by a more direct argument,
-I will give the following geometric proof. 
-Since $|1-\beta_1|=1$ and $E/F$ is ramified, 
-it follows from \cite{La80b}, p. 50,
-for example, that $h'$ has no fixed points. 
-This implies that $s(0)=0$ and
-(by the proof of Lemma \ref{lemma:5.4}) that
-$A\sigma$ has no fixed points in $\zz$. 
-Thus each fixed point of $A\sigma$, which we may 
-assume exists, is associated to a
-characteristic base which is not a vertex.
-By the remarks preceding Figure \ref{fig:4.10}, the fact that
-$A\sigma$ has no fixed points in $\zz$ implies
-that, in the notation of (\ref{eqn:5.7}),
-$A_a\sigma$ will have fixed points in $\zz$ (since $E/F$ is ramified,
-there is an element of valuation one in $N_{E/F}(E^\times )$
-and therefore we may take $A_a$ to correspond to this element; the midpoint
-of the characteristic base isn't a vertex,
-whereas the midpoint of the dotted line $D_{A_a}$ associated to the fixed
-point $L$ of $A\sigma$ in Figure \ref{fig:4.10} is a vertex in $\zz$
-since the valuation of $a$ is one). By Lemma \ref{lemma:5.3}, 
-this implies that,
-in the notation of the proof of Proposition \ref{prop:5.6},
-$Cw$ has fixed points. By Lemma \ref{lemma:5.3},
-this contradicts the fact that $A\sigma$ has no fixed points in $\zz$.
- 
-For the unramified case with $|1+\beta_1|_E<1$,
-\eqref{eqn:5.12} and \eqref{eqn:5.13} give a difference of $q^m$;
-since $|(1+\beta_1)(1+\beta_2)|^{1/2}=q^{-m}$,
-\eqref{eqn:5.10} yields $S(0)/Q=1$, hence $S(0)=Q=s(0)$.
-The ramified vanishing argument above uses Lemmas~\ref{lemma:5.3}
-and \ref{lemma:5.4}. The signed equality when
-$|1+\beta_1|_E=1$ also depends on the signed transfer-factor
-normalization, as distinguished from the absolute-value statement of
-Proposition~\ref{prop:5.6}.
-
-\begin{draftremark}[Remaining verification]
-The following steps are dependencies of a complete independent proof:
-(i) verify the sign of $S(0)$ with the fixed convention in
-\eqref{eqn:3.18} when $|1+\beta_1|_E=1$;
-(ii) supply the omitted boundary valuation calculation in
-Lemma~\ref{lemma:5.4} for $b_1-b_2=-1,0$;
-(iii) verify the fixed-point comparison underlying the last ramified
-vanishing argument; and (iv) verify the class-invariant averaging
-in the precise geometric parametrization used in Section~\ref{sec:4}.
-Until these checks are supplied, this corrected draft should not be
-read as an independent certification of every step of the final
-fundamental-lemma comparison.
-\end{draftremark}
-
- 
-% === END ORIGINAL adjoint_lift5.tex ===
+% === ORIGINAL adjoint_lift4.tex moved earlier into Section 3 ===
+% === ORIGINAL adjoint_lift5.tex moved earlier into Section 3 ===
 
 
 
@@ -3138,11 +3156,34 @@ $x_2(1,1,1)$ gives $(m,0,-m)$. Its determinant valuation is zero.
 For $F=\mathbb Q_3$, the vertices $[\mathbb Z_3^3]$ and
 $[3\mathbb Z_3 e_1\oplus\mathbb Z_3e_2\oplus
 3^{-1}\mathbb Z_3e_3]$ are both fixed by $\sigma_J$.
-The fixed apartment line passes through them. It contains points not
+The fixed apartment line, shown schematically in Figure~
+ef{fig:new-folded-apartment}, passes through them. It contains points not
 represented by vertices of the ambient simplicial complex. Thus
 counting only fixed ambient vertices does not recover the entire
 fixed-point building as a metric space.
 \end{example}
+
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[scale=0.9,>=Latex]
+  \foreach \x in {-3,-2,-1,0,1,2,3} {
+    \draw[gray!55] (\x,-2.6) -- (\x,2.6);
+  }
+  \foreach \k in {-4,-3,-2,-1,0,1,2,3,4} {
+    \draw[gray!55] (-3.7,0.577*\k-2.2) -- (3.7,0.577*\k+2.2);
+    \draw[gray!55] (-3.7,-0.577*\k+2.2) -- (3.7,-0.577*\k-2.2);
+  }
+  \draw[very thick,blue] (-3.2,-1.85) -- (3.2,1.85);
+  \node[blue,above right] at (2.2,1.25) {$\mathcal B(PGL_3)^{\sigma_J}$};
+  \filldraw[red] (-2, -1.1547) circle (2.2pt);
+  \filldraw[red] (0,0) circle (2.2pt);
+  \filldraw[red] (2, 1.1547) circle (2.2pt);
+  \node[red,below left] at (0,0) {$(0,0,0)$};
+  \node[red,below left] at (2,1.1547) {$(1,0,-1)$};
+  \node at (-2.8,2.2) {standard apartment};
+\end{tikzpicture}
+\caption{The orthogonal duality $\sigma_J$ folds the standard apartment of $PGL_3$ onto a fixed line. In the normalization of Proposition~\ref{prop:new-fold}, the fixed vertices are represented by $(m,0,-m)$.\label{fig:new-folded-apartment}}
+\end{figure}
 
 \subsection{The Prasad--Yu theorem and its precise scope}
 Let $\Theta$ be a finite group of $F$-automorphisms of a connected
@@ -3300,7 +3341,8 @@ remembers only the determinant valuation modulo three. Yet it gives a
 necessary condition for a twisted fixed vertex, without any use of
 the complicated characteristic-leaf classification. The analogous
 modulo-two invariant on the $PGL_2$ tree explains fixed edge
-midpoints and the appearance of ramified parity corrections.
+midpoints and the appearance of ramified parity corrections; see Figure~
+ef{fig:new-tree-parity}.
 
 \subsection{The type congruence}
 For a rank-$n$ lattice $L=M\mathcal O_F^n$, set
@@ -3463,6 +3505,33 @@ lines and planes. Two such neighbors are joined by a chamber
 with $x$ precisely when the corresponding line is contained in
 the corresponding plane. This is the incidence graph of
 $PG(2,q)$, the spherical building of $PGL_3(\mathbb F_q)$.
+Figure~\ref{fig:new-flag-chamber} shows schematically how a complete flag in the link corresponds to a chamber of the affine building.
+
+
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[scale=0.95,>=Latex]
+  \draw[thick] (-4.2,-1.4) rectangle (-1.2,1.4);
+  \node[font=\small] at (-2.7,1.75) {$PG(2,q)$ link data};
+  \fill (-3.5,0.55) circle (2.3pt);
+  \fill (-2.2,-0.65) circle (2.3pt);
+  \draw[thick] (-3.9,-0.95) -- (-1.5,1.0);
+  \draw[thick] (-3.8,0.9) -- (-1.6,-0.2);
+  \node[font=\scriptsize,left] at (-3.55,0.55) {point};
+  \node[font=\scriptsize,right] at (-1.55,1.0) {line};
+  \draw[thick,fill=gray!12] (1.3,-1.0) -- (2.8,1.1) -- (4.0,-0.95) -- cycle;
+  \fill (1.3,-1.0) circle (2pt);
+  \fill (2.8,1.1) circle (2pt);
+  \fill (4.0,-0.95) circle (2pt);
+  \node[font=\scriptsize,below] at (1.3,-1.0) {$x$};
+  \node[font=\scriptsize,above] at (2.8,1.1) {plane};
+  \node[font=\scriptsize,below] at (4.0,-0.95) {line};
+  \draw[->,thick] (-0.7,0) -- (0.8,0);
+  \node[font=\small,above] at (0.05,0.15) {complete flag $\leftrightarrow$ chamber};
+\end{tikzpicture}
+\caption{The factor $[K:I]$ counts complete flags in the link of a hyperspecial vertex. On the left is schematic finite-projective incidence data; on the right the corresponding chamber through the affine vertex $x$.\label{fig:new-flag-chamber}}
+\end{figure}
+
 
 \begin{proposition}[Flags, chambers, and Iwahori index; direct proof]
 \label{prop:new-Q}
@@ -3738,7 +3807,45 @@ from the midpoint of a chosen edge, with $B_e(0)=0$.
 Equivalently, in each of the two half-trees obtained by removing
 the interior of the edge, count vertices at distance at most
 $m-1$ from that half-tree's endpoint. The two contributions
-are disjoint.
+are disjoint. Figure~\ref{fig:new-tree-balls} illustrates the two kinds of centers whose ball counts are compared below.
+
+
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[scale=0.92,>=Latex]
+  \node[font=\small] at (-3.1,2.15) {vertex center};
+  \fill[red] (-3.1,0) circle (2.5pt);
+  \foreach \a in {90,210,330} {
+    \path (-3.1,0) ++(\a:1.1) coordinate (A\a);
+    \draw[thick] (-3.1,0) -- (A\a);
+    \fill[red!70] (A\a) circle (1.9pt);
+    \foreach \b in {-22,22} {
+      \path (A\a) ++(\a+\b:0.9) coordinate (B\a\b);
+      \draw[thick] (A\a) -- (B\a\b);
+      \fill[red!35] (B\a\b) circle (1.5pt);
+    }
+  }
+  \draw[red,dashed] (-3.1,0) circle (1.95);
+  \node[font=\small] at (3.1,2.15) {edge midpoint center};
+  \coordinate (L) at (2.2,0); \coordinate (R) at (4.0,0);
+  \draw[thick] (L) -- (R);
+  \fill (L) circle (2pt); \fill (R) circle (2pt);
+  \filldraw[blue] ($(L)!0.5!(R)$) circle (2.4pt);
+  \foreach \a in {120,240} {
+    \path (L) ++(\a:1.0) coordinate (LL\a);
+    \draw[thick] (L) -- (LL\a);
+    \fill[blue!45] (LL\a) circle (1.6pt);
+  }
+  \foreach \a in {60,-60} {
+    \path (R) ++(\a:1.0) coordinate (RR\a);
+    \draw[thick] (R) -- (RR\a);
+    \fill[blue!45] (RR\a) circle (1.6pt);
+  }
+  \draw[blue,dashed] (3.1,0) ellipse (1.75 and 1.35);
+\end{tikzpicture}
+\caption{The two counting centers used in Proposition~\ref{prop:new-ball}. A vertex-centered ball and an edge-midpoint-centered ball have different cardinalities, and their difference is exactly $q^m$.\label{fig:new-tree-balls}}
+\end{figure}
+
 
 \begin{proposition}[Vertex versus edge centers; direct proof]
 \label{prop:new-ball}

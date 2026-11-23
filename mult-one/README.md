@@ -11,14 +11,17 @@ A manuscript by David Joyner and Claude (Anthropic), revised in November 2026 fr
 - It is off by a square. The direct comparison matches unramified parameters up to sign; the Shimura–Waldspurger correspondence followed by restriction from PGL(2) squares them. Section 5.4 traces this through the trace formula: the torus terms match, and the intertwining operators, the residual spectrum and the cuspidal spectrum do not.
 - The 1995 strategy of deducing multiplicity one for SL(2) from Waldspurger's theorem by this comparison therefore cannot work (Proposition 5.10, Corollary 5.17). Multiplicity one for SL(2) is a theorem of Ramakrishnan (Ann. of Math. 152, 2000).
 
-**Status.** Theorem 5.16 and Section 5.4 were written by Claude and rest on results quoted from memory of the literature. They have not been checked by a specialist. Unverified statements are marked "Remark 2026.n" in the text.
+**Status.** Current manuscript: **Draft 6 (November 23, 2026)**, revised by ChatGPT (OpenAI) from Draft 5 in response to Carbon's (Gemini's) referee report. The core global noncorrespondence theorem (Theorem 5.16) and Section 5.4 originated in Claude's revision and have not been independently checked by a specialist. Draft 6 repairs local cocycle and Gaussian-phase conventions, clarifies the global splitting and orbital-integral normalization, and explicitly qualifies the remaining formal Weil-character calculation. Unverified statements remain marked "Remark 2026.n" in the text.
 
 ## Layout
 
 ```
 mult-one/
 ├── revised/
-│   ├── direct-comparison-SL2.tex, .pdf    the manuscript (Draft 5)
+│   ├── direct-comparison-SL2.tex, .pdf    the manuscript (Draft 6)
+│   ├── referee-report_draft5_carbon.md     Carbon's report on Draft 5
+│   ├── direct-comparison-SL2_draft6_revision-notes.md
+│   ├── direct-comparison-SL2_draft5-to-draft6.patch
 │   ├── referee-report_draft3.tex, .pdf    Claude's referee report on Draft 3
 │   └── referee-report_draft1.md           referee report on Draft 1
 ├── scripts/
@@ -32,11 +35,13 @@ Earlier drafts are not kept in this directory. The revision log describes them.
 
 ## Building
 
-In `revised/`, run `pdflatex direct-comparison-SL2.tex` three times. The bibliography is inline, so there is no BibTeX run. The document uses 12pt Times (`mathptmx`), letter paper, and has 87 pages. The compiled PDF is committed beside the source.
+In `revised/`, run `pdflatex direct-comparison-SL2.tex` three times. The bibliography is inline, so there is no BibTeX run. The document uses 12pt Times (`mathptmx`), letter paper, and has 81 pages. The compiled PDF is committed beside the source.
 
 The checks: `python3 scripts/local_formulas_check.py` (needs SymPy) and `python3 scripts/referee_check.py`, or `python3 run_checks.py` from the repository root.
 
 ## Open items
+
+- Verify the conditional real and nonarchimedean Weil-character kernel formulas and reconcile their phase/normalization with Adams's conventions.
 
 - Have a specialist check Theorem 5.16 and Section 5.4 against Waldspurger, Gelbart–Jacquet and Jacquet–Shalika.
 - Is there a comparison of trace formulas built on the squaring correspondence, and what does it say about SL(2)?

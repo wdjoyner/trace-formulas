@@ -10,7 +10,19 @@
 - **Draft 4** (Claude, November 23, 2026). Response to Claude's referee report on Draft 3 (`revised/referee-report_draft3.tex`). The main result is restated: the hypotheses of the Draft 3 theorem are inconsistent. See the section "Draft 4".
 - **Draft 5** (Claude, November 23, 2026). Motivation section, new title, and a section tracing where the comparison fails. See the section "Draft 5".
 
-The sections below are in reverse order: Draft 5, Draft 4, Draft 3, Draft 2, Draft 1. Theorem numbers in each section refer to the draft named there.
+- **Draft 6** (ChatGPT/OpenAI, November 23, 2026). Response to Carbon's detailed referee report on Draft 5, with local cocycle and Gaussian-phase corrections, clearer distinctions in Weyl and global-splitting normalizations, extra justification of the adjoint L-function pole argument, and explicit qualification of unverified Weil-character formulas. See the section "Draft 6" and `revised/direct-comparison-SL2_draft6_revision-notes.md`.
+
+The sections below are in reverse order: Draft 6, Draft 5, Draft 4, Draft 3, Draft 2, Draft 1. Theorem numbers in each section refer to the draft named there.
+
+## Draft 6: corrections following Carbon's referee report (November 23, 2026)
+
+The manuscript in `revised/direct-comparison-SL2.tex` was revised from Draft 5 using the detailed report by Carbon (Gemini), archived as `revised/referee-report_draft5_carbon.md`. The editorial and mathematical revision was carried out by ChatGPT (OpenAI). The compiled PDF is committed alongside the source (81 pages; 12pt Times-like fonts; US letter paper). The unified patch `revised/direct-comparison-SL2_draft5-to-draft6.patch` records the changes.
+
+**Mathematical corrections.** The definition of the GL(2) Kubota cocycle's auxiliary factor at the real place was corrected; the two global splitting coordinate models were distinguished; genuineness signs were standardized for the double cover; and the full discriminant normalization in the Weyl integration formula was explained separately from the half-discriminant normalization. In the Weil representation, the parity identity and real Gaussian-integral phase `sgn(qa)` were made explicit. Previously asserted real/p-adic character-kernel conclusions were replaced by appropriately conditional statements. The proof of Theorem 5.16 now explains the absence of a pole in the adjoint L-functions, including the dihedral case.
+
+**Exposition and sources.** The torus-character, Satake-transform, and unipotent-splitting descriptions were clarified; several typographical and bibliography errors were corrected. The Li bibliography entry follows the author's verified *Astérisque* 464 (2026) reference rather than the journal/volume conjectured in the referee report.
+
+**Remaining verification.** The Weil-character calculation depends on a principal-value condition, and its matching with Adams's archimedean character formula has not been independently established. The normalization of the unramified Waldspurger correspondence and the literature-dependent local Weil identifications remain items for specialist checking. The global nonexistence theorem and the trace-formula diagnosis were not replaced by an independently certified proof. See the detailed `revised/direct-comparison-SL2_draft6_revision-notes.md`.
 
 ## Draft 5: motivation, new title, and where the comparison fails
 

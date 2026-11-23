@@ -1,0 +1,510 @@
+\documentclass[12pt,letterpaper]{article}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{newtxtext,newtxmath}
+\usepackage[margin=1in]{geometry}
+\usepackage{microtype}
+\usepackage{enumitem}
+\usepackage{longtable,booktabs,array}
+\usepackage[colorlinks=true,urlcolor=blue,linkcolor=blue]{hyperref}
+\setlength{\parindent}{15pt}
+\setlength{\parskip}{3pt}
+\setlist[enumerate]{leftmargin=*,itemsep=4pt}
+\newcommand{\F}{F}
+\newcommand{\OF}{\mathcal O_F}
+\newcommand{\E}{E}
+\newcommand{\G}{\mathrm{PGL}_3}
+\newcommand{\Hone}{\mathrm{SL}_2}
+\newcommand{\Htwo}{\mathrm{PGL}_2}
+\newcommand{\Fix}{\operatorname{Fix}}
+\newcommand{\Sym}{\operatorname{Sym}}
+\newcommand{\tr}{\operatorname{tr}}
+\newcommand{\ord}{\operatorname{ord}}
+\newcommand{\Nm}{\operatorname{N}}
+\newcommand{\cl}{\operatorname{cl}}
+\newcommand{\pr}{\mathbb P}
+\title{Referee Report on\\[4pt]
+\emph{On twisted orbital integral identities for $PGL(3)$ over a $p$-adic field}}
+\author{Independent mathematical and editorial assessment}
+\date{23 November 2026}
+\begin{document}
+\maketitle
+
+\begin{abstract}
+This report assesses the correctness and readability of the six-part
+\LaTeX{} manuscript \texttt{adjoint\_lift0.tex}--\texttt{adjoint\_lift5.tex},
+with \texttt{adjoint\_lift\_pics.tex} considered as the associated figure
+source. The main published result is a geometric comparison of orbital
+integrals for the unit Hecke function, under the odd residual-characteristic
+hypothesis. The argument has a coherent overall architecture, but the supplied
+text contains several demonstrable inconsistencies and a small number of
+claims that are false literally. Some predate the 2003 re-typesetting; at
+least two mathematical transcription mistakes can be identified by direct
+comparison with the 1990 journal publication. The recommendation is a
+\emph{corrected historical edition with a substantive errata appendix}, not
+an unqualified republication in the present form. This is a targeted
+mathematical audit, not a complete independent reconstruction of every
+building-counting proof in Langlands' unpublished notes.
+\end{abstract}
+
+\section{Recommendation and scope}
+
+\noindent\textbf{Recommendation: major corrections and explicit verification
+before treating this version as a mathematically authoritative edition.}
+This recommendation concerns the present text, and is not a claim that the
+published fundamental-lemma result is false. The strategy is persuasive: the
+split case is handled by Satake transforms, the nonsplit case is reduced to
+fixed-point counts on Bruhat--Tits buildings, and the distinct geometric
+contributions are compared in Sections 4--5. The figures are helpful for
+visualizing characteristic leaves and their segments. However, several
+formulas defining the objects to be compared are not correct as written.
+
+The audit has three levels: (i) direct algebraic or logical checks;
+(ii) checks of the dependency and normalization chain in Sections 3--5;
+and (iii) spot comparison with the published article, Joyner
+\cite{Joyner1990}. I have not independently checked the unpublished
+Langlands manuscript or all of the implicit building combinatorics; an
+unmentioned step is \emph{not} thereby certified correct. Throughout,
+references such as ``(3.18)'' are to the paper's own equation numbering.
+Line numbers refer to the individual uploaded source files, not to the
+concatenated edition.
+
+\section{High-priority mathematical findings}
+
+\subsection{The symmetric-power representation is mislabeled and the basis
+for (1.3) is wrong}
+\label{issue:adjoint}
+
+\textbf{Location:} \texttt{adjoint\_lift1.tex}, lines 49--93;
+\textbf{priority: high}. The map
+\[
+r:\mathrm{GL}_2(\mathbb C)\longrightarrow\mathrm{GL}_{2n+1}(\mathbb C)
+\]
+is described as
+$\Sym^{\otimes 2n}\otimes(\det)^{-n}$. The tensor power of a
+2-dimensional standard representation has dimension $2^{2n}$, not
+$2n+1$. The representation with the specified target dimension is
+\[
+\boxed{\Sym^{2n}(\mathrm{Std})\otimes(\det)^{-n}}.
+\]
+The phrase ``symmetric $n$th power lifting'' likewise needs qualification:
+in this notation it is the symmetric \emph{$2n$th} power. This issue is
+also visible in the 1990 typeset article, p.~1099 \cite{Joyner1990}.
+
+There is a further, independently testable problem with the basis announced
+immediately after matrix (1.3). The displayed middle matrix
+$\bigl(\begin{smallmatrix}1&0\\-1&0\end{smallmatrix}\bigr)$
+has trace $1$ and therefore does not belong to
+$\mathfrak{sl}_2(\mathbb C)$. Moreover, the first and third printed basis
+vectors are reversed relative to the coordinate matrix (1.3). A basis
+with respect to which (1.3) \emph{does} represent the adjoint action is
+\[
+E_1=\begin{pmatrix}0&1\\0&0\end{pmatrix},\qquad
+E_2=\frac12\begin{pmatrix}1&0\\0&-1\end{pmatrix},\qquad
+E_3=\begin{pmatrix}0&0\\1&0\end{pmatrix}.
+\]
+Indeed, conjugation by
+$\mathrm{diag}(a,d)$ has eigenvalues $a/d,1,d/a$
+on this ordered basis, exactly as in (1.3). The basis currently printed
+cannot give the stated matrix. \textbf{Action:} correct the descriptive
+basis in an erratum and keep the published formula (1.3) only after
+checking it against the corrected basis.
+
+\subsection{Two distinct conventions for the outer involution are mixed}
+\label{issue:sigma}
+
+\textbf{Location:} \texttt{adjoint\_lift1.tex}, lines 119--131 and
+235--255; \texttt{adjoint\_lift4.tex}, lines 50--65;
+\textbf{priority: high}. In Section 1, the involution is
+\[
+\sigma_J(g)=J\,{}^tg^{-1}J,
+\qquad J^2=I.
+\]
+But Lemma 1.10 asserts that $A\sigma([A])$ is represented by
+$A\,{}^tA^{-1}$, and Section 4 describes the induced building action as
+$[L]\mapsto[A L^\vee]$. Taken literally, the former product for the
+stated involution is instead
+\[
+A J\,{}^tA^{-1}J.
+\]
+For example, with $A=\mathrm{diag}(a,b,c)$,
+$A\,{}^tA^{-1}=I$, whereas
+$AJ\,{}^tA^{-1}J=\mathrm{diag}(a/c,1,c/a)$, which
+is generally not projectively the identity. Thus the formulas do not
+refer to the same representative and convention.
+
+This may be a \emph{repairable normalization issue}, not a defect in the
+geometric idea: if $B=AJ$, then
+$B\,{}^tB^{-1}=AJ\,{}^tA^{-1}J$. The paper should state the
+replacement of the twisted representative $A$ by $AJ$ explicitly at the
+point of transition. Note also that $J$ is \emph{involutory}, not
+``idempotent'': $J^2=I\ne J$.
+
+\subsection{The centralizer and orbital-integral definitions have wrong
+bound variables}
+\label{issue:centralizers}
+
+\textbf{Location:} \texttt{adjoint\_lift1.tex}, lines 384--445 and
+514--529; \textbf{priority: high}. In (1.15) and (1.16), the element
+inside the set-builder is named $g$ or $h$, although $x$ is the element
+whose membership in the centralizer is being tested. The intended
+formulas are of the type
+\[
+G(g\sigma,F)=\{x\in G(F):x^{-1}g\sigma(x)=g\},
+\qquad
+H_i(h,F)=\{x\in H_i(F):x^{-1}hx=h\}.
+\]
+More seriously, the integrand in (1.17) is printed as
+$\phi(g^{-1}g\sigma(g))$: it contains no integration variable.
+It must have the form
+\[
+\phi\bigl(x^{-1}g\sigma(x)\bigr),
+\]
+as correctly used later in (2.5) and (2.12). In the same passage,
+$H_i(h\sigma,F)$ appears where $H_i(h,F)$ is meant.
+
+In (1.20), the twisted double quotient ends with $/H_i(F)$ instead of
+$/G(F)$, and the definition of $St_\sigma(g,G)$ uses ordinary
+$x^{-1}gx$ rather than $x^{-1}g\sigma(x)$. Its first factor also needs
+attention as to whether rational points or geometric points are
+intended. These are not innocuous in a definition used to enumerate
+rational twisted conjugacy classes. \textbf{Action:} rebuild (1.15)--(1.21)
+from a single coherent convention; where appropriate, state the usual
+\emph{kernel} of the map in nonabelian $H^1$ rather than an unqualified
+$H^1$ identification. In the particular groups at hand a simplification
+may be available, but it must be justified.
+
+\subsection{The torus restriction in Section 2 is inconsistent with the
+stated $L$-map}
+\label{issue:satake}
+
+\textbf{Location:} \texttt{adjoint\_lift2.tex}, lines 185--197,
+288--340 and 413--430; \textbf{priority: high}. The text gives
+\[
+\lambda_2:\mathrm{diag}(t,t^{-1})
+\longmapsto\mathrm{diag}(t,t^{-1},1).
+\]
+Consequently a character represented by the monomial
+$z_1^{k_1}z_2^{k_2}z_3^{k_3}$ restricts as
+\[
+\bigl(z_1^{k_1}z_2^{k_2}z_3^{k_3}\bigr)\circ\lambda_2
+=t^{\,k_1-k_2}.
+\]
+The criterion in the paragraph preceding Lemma 2.11(b), claiming an
+``if and only if'' involving
+$k_1+k_2=k'_1+k'_2=2k_3=2k'_3$, does not follow
+from this map. For instance, the triples $(1,0,0)$ and $(2,1,0)$
+both restrict to $t$, although they fail that criterion. Likewise, the
+sum in Lemma 2.11(b)(iii), written with $k_1=n_1$ and $k_2=n_2$,
+requires a rederivation using the correct quotient of the character
+lattice. As presented, the proof of the split $H_2$ identity in (2.13)
+is not independently verifiable from the stated lemma.
+
+There is also a repeated root factor in the displayed expression for
+$\Delta_G$ immediately before (2.9): it includes
+$|1-\gamma_1/\gamma_3|$ twice but omits the root pair $1,2$.
+The defining product over all roots is the reliable starting point.
+For a diagonal regular element, one can write
+\[
+\Delta_G(g)=\prod_{1\le i<j\le3}
+\left|\left(1-\frac{\gamma_i}{\gamma_j}\right)
+\left(1-\frac{\gamma_j}{\gamma_i}\right)\right|^{1/2}.
+\]
+\textbf{Action:} correct the lattice parametrization and repeat the
+coefficient comparison, including the discriminant normalization. The
+misstated coefficient criterion is present in the published text too.
+
+\subsection{The averaging subgroup in (3.17)--(3.18) cannot be both compact
+and finite index}
+\label{issue:U}
+
+\textbf{Location:} \texttt{adjoint\_lift3.tex}, lines 389--412;
+\texttt{adjoint\_lift4.tex}, lines 473--480 and 555--561;
+\textbf{priority: high}. Section 3 says
+$U\subset F^\times$ is a \emph{compact open subgroup of finite index}.
+There is no such subgroup in a nonarchimedean local field:
+\[
+F^\times\simeq\varpi^{\mathbb Z}\times\OF^\times,
+\]
+and a compact subgroup has valuation image $\{0\}$, hence cannot
+have finite index in $F^\times$. Therefore the displayed denominator
+$[F^\times:U]$ is not finite under the words as written.
+
+The manuscript itself suggests the repair in (4.15):
+\[
+U(d)=U_d\varpi^{2\mathbb Z},\qquad
+U_d=1+\varpi^d\OF
+\quad(\text{for }d\ge1).
+\]
+Here $U_d$ is compact open in $\OF^\times$, whereas $U(d)$ is open
+and of finite index in $F^\times$, but is \emph{not compact}.
+For suitable $d$, it lies in the relevant norm subgroup. The statement
+of (3.17)--(3.18) should use the finite-index group $U(d)$ or a
+precisely specified equivalent, and then prove that the averages are
+independent of admissible refinements.
+
+\subsection{Lemma 4.14 is internally contradictory}
+\label{issue:parity}
+
+\textbf{Location:} \texttt{adjoint\_lift4.tex}, lines 449--457;
+\textbf{priority: high}. The first sentence of Lemma 4.14 states that
+the parity of $c$ depends only on the \emph{stable}
+$\sigma$-conjugacy class. Its second sentence says that two
+stably $\sigma$-conjugate, but not rationally $\sigma$-conjugate,
+representatives in the unramified case have \emph{opposite} parities.
+These cannot both hold. The preceding paragraph indicates that the first
+sentence should likely say \emph{rational $\sigma$-conjugacy class},
+while the stable class contains the two possibilities. The same wording
+occurs in the 1990 article, p.~1122 \cite{Joyner1990}.
+
+A related problem appears in (4.19),
+\texttt{adjoint\_lift4.tex}, lines 645--657: the equality chain begins
+with $P'$ and ends in $P$. But $P'$ is an endpoint in $\mathcal Z$,
+whereas $P$ is a point with a nondegenerate characteristic segment;
+in the argument at hand $P\notin\mathcal Z$. This seems to be an
+incorrect equality or an omitted distinction between the endpoint and
+its leaf vertex. Because Lemma 4.16 is repeatedly invoked in Section 5,
+its proof should be rewritten with the vertices distinctly named.
+
+\subsection{The normalization $Q$ disappears at the decisive point of
+Section 5}
+\label{issue:Q}
+
+\textbf{Location:} \texttt{adjoint\_lift3.tex}, lines 34--80,
+390--405; \texttt{adjoint\_lift5.tex}, lines 26--43 and 312--369;
+\textbf{priority: high}. Section 3 sets
+\[
+Q=(1+q^{-1})(1+q^{-1}+q^{-2}),\qquad Q(0)=Q,
+\]
+and Lemma 3.3 gives $s(0)=Q$ when the $H_2$ element has one fixed
+vertex in the case relevant to the conclusion of Section 5.
+The latter explicitly recognizes this fact just before (5.10):
+``so $s(0)=Q$.'' Yet the initial case analysis in Section 5 claims
+$s(0)=1$, and (5.10) writes $S(0)=1$ after \emph{omitting} the
+multiplicative $Q(0)$ of (3.18).
+
+A consistent formulation would be to show that the \emph{normalized
+weighted fixed-point sum}, say $S(0)/Q$, equals $1$; the conclusion
+would then be
+\[
+\frac{S(0)}Q=1\quad\Longrightarrow\quad S(0)=Q=s(0).
+\]
+The equality is arithmetically checkable from the displayed expressions:
+the two fixed-point formulas (5.12)--(5.13) differ by $q^m$, as
+needed for (5.11), but a factor $Q$ must be restored to obtain the
+stated comparison of orbital integrals. This looks like a repairable
+normalization omission, not automatically a failure of the count.
+
+\subsection{The ``ramified and close to $-1$'' case really can occur}
+\label{issue:ramified}
+
+\textbf{Location:} \texttt{adjoint\_lift5.tex}, lines 34--46
+and 371--398; \textbf{priority: high for wording, medium for the proof}.
+The announced assertion that an elliptic norm eigenvalue cannot satisfy
+both $E/F$ ramified and $|1+\beta_1|_E<1$ is \emph{false literally}.
+For an explicit example, take
+\[
+F=\mathbb Q_3,\qquad E=\mathbb Q_3(\sqrt3),\qquad
+\beta=2+\sqrt3.
+\]
+Then $\beta^{-1}=2-\sqrt3$, so $\Nm_{E/F}(\beta)=1$,
+$F(\beta)=E$ is ramified, and
+\[
+1+\beta=3+\sqrt3,\qquad |1+\beta|_E<1.
+\]
+The matrix
+\[
+h=\begin{pmatrix}0&-1\\1&4\end{pmatrix}\in\mathrm{SL}_2(F)
+\]
+is regular elliptic with these eigenvalues. In particular, this
+combination of hypotheses must not simply be declared impossible.
+
+The final paragraph of Section 5 actually studies the case and seeks
+to prove that it contributes \emph{zero fixed points} to the relevant
+orbital-integral counts. That is the plausible intended statement.
+\textbf{Action:} change the case description in a future corrected
+edition to ``the ramified case gives no contributing fixed vertices''
+(or a precisely stated equivalent), and supply the needed proof. The
+example above prevents a misleading literal interpretation.
+
+\subsection{The sign in the last comparison should be proved rather than
+inferred from an absolute value}
+\label{issue:sign}
+
+\textbf{Location:} \texttt{adjoint\_lift5.tex}, lines 43--49 and
+256--310; \textbf{priority: medium/high}. Proposition 5.6 proves only
+\[
+|S(0)|=s(0)
+\quad\text{when }|1+\beta_1|=1,
+\]
+whereas the desired fundamental identity is $S(0)=s(0)$. The text says
+the remaining global sign has been chosen to make $S(0)\ge0$ but also
+says this positivity will only be proved later. The signed convention
+in (3.18) is tied to a Hilbert symbol, so it cannot be treated as an
+independent arbitrary sign at each element. State and verify the sign
+normalization in the $|1+\beta_1|=1$ range, perhaps as a short lemma.
+
+\section{Confirmed differences between the uploaded transcription and
+the 1990 publication}
+
+A spot comparison is especially useful here because the source file is
+dated March 2003 and already advertises minor post-publication edits.
+The following differences are visible in the actual published pages,
+not merely inferred from mathematical conventions.
+
+\begin{enumerate}[label=\arabic*.]
+\item \textbf{The local Langlands sentence was altered incorrectly.}
+In \texttt{adjoint\_lift1.tex}, lines 185--190, the sentence begins
+``According to the local Langlands correspondence for $GL(3)$'' and
+uses a parameter into ${}^L SL(3,\mathbb C)$ while assigning packets
+of $SL(2,F)$. The journal version (pp.~1100--1101) says \emph{for
+$SL(2)$} and has the parameter into ${}^L SL(2,\mathbb C)$.
+The source passage is a transcription error and should be checked
+against that page rather than emended by conjecture.
+
+\item \textbf{The target of $\theta^*$ changed in the transcription.}
+In \texttt{adjoint\_lift1.tex}, lines 193--197, $\theta^*$ is written
+as taking values in ${}^L PGL(2,\mathbb C)$, even though it was
+constructed using (1.4). The journal version (p.~1101) has the
+target ${}^L PGL(3,\mathbb C)$, consistent with (1.4) and (1.8).
+
+\item \textbf{The Weyl denominator lost a critical ``$1-$''.}
+In \texttt{adjoint\_lift3.tex}, equation (3.9), line 223, the term
+$1-s_1^{-1}s_2$ has become $s_1^{-1}s_2$. The published version
+(p.~1114) includes $1-s_1^{-1}s_2$. The correct displayed product is
+\[
+\rho(s)\prod_{\alpha>0}(1-\alpha(s)^{-1})
+=\frac{s_1}{s_3}
+ \left(1-\frac{s_2}{s_1}\right)
+ \left(1-\frac{s_3}{s_2}\right)
+ \left(1-\frac{s_3}{s_1}\right).
+\]
+Without that factor, the expression is not alternating in $s_1,s_2,s_3$,
+contradicting the sentence immediately following (3.9) and invalidating
+the displayed justification of (3.10). This is the most consequential
+confirmed error introduced during re-typesetting.
+\end{enumerate}
+
+By contrast, the incorrect ``idempotent'' description of $J$, the
+conflicting parity sentence of Lemma 4.14, and the $Q$ issue in
+Section 5 also appear in the journal version. Their historical
+presence should be recorded rather than attributed to the 2003 typing.
+
+\section{Readability and secondary corrections}
+
+\begin{enumerate}[label=\arabic*.]
+\item \textbf{State the convention sheet at the outset.} Specify the
+normalization of $|\cdot|_F$ and $|\cdot|_E$, the residue cardinality
+$q$, the chosen uniformizer, the distinction between $SL_2$, $PGL_2$
+and their complex duals, the version of the twist, and the Haar
+measure of the hyperspecial compact subgroup. Section 3 switches
+between the two meanings of $Q(\Lambda)$ (a double coset and a
+scalar factor); reserve different symbols for them.
+
+\item \textbf{Avoid using undeclared $\lambda_1-\lambda_3$.}
+The four definitions in \texttt{adjoint\_lift3.tex}, lines 66--73,
+contain $q^{\lambda_1-\lambda_3}$, although the associated exponents
+were denoted $k_1,k_2,k_3$. Check the intended power against the later
+$q^{k_3-k_1}$ and reconcile any sign. This matters for nonunit
+characteristic functions, even if the exponent vanishes at $\Lambda=0$.
+
+\item \textbf{Repair ancillary inaccuracies.} In Section 4 the subgroup
+$Z(F)$ is described as the center of $PGL_3(F)$; for the quotient
+$GL_3(F)/F^\times$ it should refer to the scalar center of $GL_3(F)$.
+In Section 1, ``$i=1.2$'' needs a comma, and the formulas distinguishing
+ordinary and twisted conjugacy should use different symbols as needed.
+The claimed exponential identities in Section 2.2 should be stated as
+linearizations (or justified with a triangular Jacobian calculation):
+for a nonabelian unipotent group, the exact identity
+$nmn^{-1}m^{-1}=\exp((1-\operatorname{Ad}(m))\log n)$ need not hold
+without higher commutator terms.
+
+\item \textbf{Make the geometric proof verifiable.} Lemmas 4.9, 4.13,
+4.16, 4.18, 5.3 and 5.4 are invoked at crucial points, but several
+proofs are just sketches or end with ``similar'' and ``easy''.
+In a modern explanatory edition, add explicit descriptions of the
+lattice coordinates and the action of $A_a\sigma$; prove the orbit and
+stabilizer counts needed for (4.16)(e). In Lemma 5.4, the valuation
+analysis for $b_1-b_2=-1,0$ should not be omitted.
+
+\item \textbf{Clarify the statement actually proved.} The introduction
+mentions arbitrary matching spherical functions, but the principal
+original calculation in Section 5 treats the \emph{unit} element of the
+Hecke algebra and assumes odd residual characteristic. Distinguish
+the previously known full fundamental lemma (attributed to Langlands)
+from the case directly demonstrated here. The introductory discussion
+of the conjectural transfer should also be set explicitly in its
+historical context rather than presented as the present state of the
+subject.
+
+\item \textbf{Presentation.} The source compiles successfully as
+12-point Times-style \LaTeX{} on US letter paper with resolved cross
+references. There remain underfull/overfull boxes and a warning about
+the older \verb|\over| form. The four figure environments in
+\texttt{adjoint\_lift4.tex} contain the drawings necessary to follow
+the paper; the stand-alone \texttt{adjoint\_lift\_pics.tex} repeats
+some of the same graphics and should not be compiled as an additional
+copy of those figures in the main text. Consider enlarging figure labels,
+renaming ``characteristic leafs'' as ``characteristic leaves'', and
+replacing raw picture coordinates with a preserved, separately
+verifiable vector source in a future edition.
+\end{enumerate}
+
+\section{Verification checklist and proposed editorial route}
+
+Before an unqualified corrected edition is released, I recommend the
+following sequence. It deliberately separates transcription fidelity
+from mathematical correction, respecting the historical nature of the
+paper.
+
+\begin{enumerate}[label=\textbf{Step \arabic*.},leftmargin=*]
+\item \textbf{Create a fidelity log}: systematically compare
+(1.3), (1.15)--(1.21), (2.7)--(2.13), (3.9)--(3.18), Lemma 4.14,
+(4.19), and (5.10)--(5.13) against the published pages.
+Mark which deviations are 2003 transcription errors and which were
+present in 1990.
+\item \textbf{Create a separate mathematical errata appendix}: address
+the twist convention, centralizer definitions, Satake restriction,
+averaging subgroup and normalization. Preserve the historical text if
+an archival transcription is the goal, and link each erratum to the
+relevant numbered assertion instead of altering it silently.
+\item \textbf{Re-derive the nonunit-to-unit reduction}: verify the
+$\lambda_i^*$ coefficient identities and the $Q(\Lambda)$ measure
+factors independently of the manuscript's formulas. Confirm that the
+fixed-point averages lead to exactly $R(0)=r(0)$ and $S(0)=s(0)$,
+with no lost factor $Q$ or undetermined sign.
+\item \textbf{Strengthen the Section 5 case split}: explicitly allow
+ramified $\beta$ close to $-1$ and prove the actual vanishing statement;
+record all hypotheses and justify the signed comparison.
+\item \textbf{Polish the explanatory layer last}: add a compact glossary,
+a paragraph introducing buildings and dual lattice classes, precise
+captions, and a short account of what is original in Section 5.
+\end{enumerate}
+
+\section{Concluding assessment}
+
+The paper's general method and historical place remain of clear
+interest. I did not find a counterexample to the intended equality of
+the \emph{properly normalized} orbital integrals. I did find
+counterexamples or direct contradictions to \emph{some of the statements
+as printed}, including the finite-index/compactness claim for $U$,
+the two sentences of Lemma 4.14, and the literal assertion that the
+ramified near-$-1$ case cannot occur. There is also a missing factor
+$Q$ at the final normalization step. Taken together, these warrant a
+careful correction and independent check of the delicate steps before
+the uploaded version is used as a reliable standalone proof.
+
+For an archival edition, retain the original article text intact and
+publish this report or a more formal \emph{Editor's Notes and Errata}
+appendix alongside it. The confirmed 2003 transcription mistakes should
+be documented separately from questions that already occur in the 1990
+publication.
+
+\begin{thebibliography}{9}
+\bibitem{Joyner1990}
+D.~Joyner, ``On twisted orbital integral identities for $PGL(3)$ over a
+$p$-adic field,'' \emph{Canadian Journal of Mathematics}
+\textbf{42} (1990), no.~6, 1098--1130.
+\url{https://doi.org/10.4153/CJM-1990-059-6}.
+\end{thebibliography}
+
+\end{document}

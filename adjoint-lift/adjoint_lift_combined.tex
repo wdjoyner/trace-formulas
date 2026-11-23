@@ -1,0 +1,2948 @@
+
+\documentclass[12pt,letterpaper]{article}
+\usepackage{amssymb}
+\usepackage{amscd}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{newtxtext,newtxmath}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{axiom}{Axiom}
+\newtheorem{remark}{Remark}
+\newtheorem{exercise}{Exercise}[section]
+
+\def\ppp{{\mathbb{P}}}
+\def\hhh{{\cal H}}
+\def\ddd{{\cal D}}
+\def\bbb{{\cal B}}
+\def\sss{{\cal S}}
+\def\zz{{\cal Z}}
+\def\aaa{{\mathbb{A}}}
+\def\fff{{\mathbb{F}}}
+\def\qqq{\mathbb{Q}}
+\def\rrr{\mathbb{R}}
+\def\ccc{\mathbb{C}}
+\def\zzz{\mathbb{Z}}
+\def\nnn{\mathbb{N}}
+\def\pf{{\bf proof}:\ }
+\def\qed{$\Box$}
+\def\eps{\epsilon}
+\def\okk{{\cal O}_K}
+\def\off{{\cal O}_F}
+\def\oee{{\cal O}_E}
+\def\ovg{\overline{g}}
+\def\tarrow{\stackrel{\sim}{\rightarrow}}
+\def\ovF{\overline{F}}
+\def\ovx{\overline{x}}
+\def\ovt{\overline{t}}
+\def\bbg{{\cal B}(G)}
+\def\bbh{{\cal B}(H)}
+\def\bbH1{{\cal B}(H_1)}
+\def\bbh2{{\cal B}(H_2)}
+\def\sne{\subseteq}
+\def\tr{{\rm tr}\,}
+
+\begin{document}
+
+
+\author{David Joyner}
+\title{On twisted orbital integral identities\\ for $PGL(3)$
+over a p-adic field\thanks{Appeared in Canadian Journal of Mathematics,
+vol 42, 1990, pp. 1098-1130. Latexed 3-2003, 
+correcting minor typos, with some minor changes to
+grammar and the construction of the figures.
+Research partially supported by an NSF fellowship, the Mathematics Department
+of Princeton University and the Institute for Advanced Study.}}
+\date{3-14-2003}
+\maketitle
+
+\begin{abstract}
+The object of this paper is to prove certain $p$-adic 
+orbital integral identities
+needed in order to accomplish the symmetric square transfer via the 
+twisted Arthur trace formula. Only \S \ref{sec:5} of this article 
+contains original material, the rest of it
+is due to R. Langlands. Very briefly,
+we reduce the problem of proving certain
+orbital integral identities for ``matching'' functions 
+in the respective Hecke algebras to two counting problems on the buildings.
+We give Langlands' solution of one of these problems in the case of the unit
+elements of the respective Hecke algebras and \S \ref{sec:5}
+provides the solution to the other one, again, in the unit element case. 
+The main results assume $p\not= 2$.
+
+\end{abstract}
+
+
+\tableofcontents
+
+\newpage
+
+% === BEGIN ORIGINAL adjoint_lift1.tex ===
+
+\section{Contents}
+\label{sec:0}
+
+Only \S \ref{sec:5} 
+of this article contains original material, the rest of it
+can be essentially be found in the unpublished notes \cite{La1}. 
+Very briefly, \S \ref{sec:1} provides an 
+introduction including the definition (due to
+H. Jacquet and J. Shalika) of the ``norm map'', 
+\S \ref{sec:2} applies the Satake transform
+to proving some simple orbital integral identities in the ``split case'',
+\S \ref{sec:3} reduces the problem of 
+proving these identities in the ``non--split
+case'' to two counting problems on the buildings, 
+\S \ref{sec:4} recalls
+R. Langlands' solution of one of these problems for the unit 
+element of the Hecke algebra, and, finally, 
+\S \ref{sec:5}
+provides the solution to the other one (for the unit 
+element of the Hecke algebra). 
+In sections \ref{sec:4} and \ref{sec:5} we assume that $p\not= 2$.
+\par
+This paper was written independently of a recent paper \cite{F}
+which also relied on Langlands' unpublished manuscipt \cite{La1}.
+\vskip .1in
+
+\noindent
+Acknowledgement: The author sincerely thanks Professor R. Langlands for his
+suggestions, many helpful conversations on the subject, and the use of
+his notes \cite{La1}. Conversations with R. Kottwitz were also beneficial. 
+Finally, I'd like to thank the referee
+for some helpful comments. Most of this work was carried out at the
+Institute for Advanced Study in 1986-7, supported by an NSF fellowship. 
+
+\section{Introduction}
+\label{sec:1}
+
+\subsection{History}
+
+Let $F$ denote a $p$--adic field and $\Pi (G(F))$ denote the set of
+equivalence classes of admissible irreducible representations of $G(F)$,
+for a 
+reductive algebraic group $G$ defined over $F$. 
+Typically, $F$ will be a completion of a
+number field $K$ at a place $v$; let $\aaa = \aaa_K$ denote the adele ring 
+of $K$.
+ 
+One example of the local functoriality conjecture (\cite{Bor}, \cite{La2})
+says that the 
+$L$--homomorphism
+
+\begin{equation}
+\label{eqn:1.1}
+r : GL(2,\ccc ) \rightarrow GL(2n+1,\ccc ),
+%\tag 1.1
+\end{equation}
+given by $r := \text{Sym}^{\otimes 2n}\otimes (\text{det})^{-n}$ should 
+yield a transfer (the ``symmetric $n^{th}$ power lifting'')
+
+\begin{equation}
+\label{eqn:1.2}
+r_* : \Pi (GL(2,F)) \rightarrow \Pi (GL(2n+1,F)) .
+%\tag 1.2
+\end{equation}
+Using $L$--parameters one can directly ``lift'' or transfer unramified
+principal series from $GL(2,F)$ to $GL(2n+1,F)$, so there is some evidence
+for the validity of this conjecture. There is of course a global analog
+of this conjectural transfer, predicted by the global functoriality
+principle. 
+ 
+If $n=1$ then S. Gelbart and H. Jacquet \cite{GJ} proved the existence
+of a global representation $\Pi \in \Pi (GL(3,\aaa ))$ associated
+to a cuspidal $\pi \in \Pi (GL(2,\aaa ))$ using the theory of $L$--functions,
+converse Hecke theory on $GL(3,\aaa )$ \cite{JPSS}, and an idea of
+G. Shimura \cite{Sh}. Let me reformulate this in terms of functoriality: 
+when $n = 1$, the $L$--map (\ref{eqn:1.1}) becomes
+
+\begin{equation}
+\label{eqn:1.3}
+r\left(\smallmatrix a&b \\ c&d \endsmallmatrix\right)
+= {1\over{ad-bc}}\left(\smallmatrix a^2&-ab&-b^2 \\
+-2ac&ad+bc&2bd\\
+-c^2&cd&d^2 \endsmallmatrix\right)
+%\tag 1.3
+\end{equation}
+the adjoint representation of $sl(2,\ccc )$ with respect to the basis
+
+\[
+\underline{e}_1 := \left(\smallmatrix 0&0 \\ 1&0 \endsmallmatrix\right),
+\ \underline{e}_2 := \left(\smallmatrix 1&0 \\ -1&0 \endsmallmatrix\right),
+\ \underline{e}_3 := \left(\smallmatrix 0&1 \\ 0&0 \endsmallmatrix\right),
+\]
+and this factors through $PGL(2)$ giving us
+
+\begin{equation}
+\label{eqn:1.4}
+\lambda_1 :  {^{L}SL(2,\ccc )} =PGL(2,\ccc )
+\hookrightarrow SO(3,\ccc ) 
+\hookrightarrow  SL(3,\ccc ) = {^{L}PGL(3,\ccc )} .
+%\tag 1.4
+\end{equation}
+The functoriality conjecture then predicts a local and global transfer
+from $SL(2)$ to $PGL(3)$. On the other hand, the natural embedding gives us
+an $L$--map
+
+\begin{equation}
+\label{eqn:1.5}
+\lambda_2 : {^{L}PGL(2,\ccc )} \hookrightarrow {^{L}PGL(3,\ccc )},
+%\tag 1.5
+\end{equation}
+In this case the functoriality conjecture predicts a local and global
+transfer from $PGL(2)$ to $PGL(3)$. The global transfer associated to 
+(\ref{eqn:1.5}) 
+is in fact the Gelbart--Jacquet lift. The local transfer associated to
+(\ref{eqn:1.4}) will be elaborated upon in subsection 
+\ref{sec:1.2} below.
+ 
+Around 1976, H. Jacquet suggested that there should be a twisted trace
+formula for $PGL(3)$, corresponding to the outer automorphism
+
+\[
+\sigma : g \longmapsto J{^{t}g^{-1}}J,\ \ \sigma^2 = 1,
+\]
+where $J$ is the idempotent matrix given by
+
+\[
+J:= \left(\smallmatrix \ &\ &1\\
+\ &-1&\ \\
+1&\ &\ \endsmallmatrix\right),
+\]
+and that this trace formula could be applied to proving the symmetric square 
+transfer in a fashion analogous to the base change lift of 
+Saito--Shintani--Langlands.  Moreover,
+$PGL(2)$ and $SL(2)$ should be $\sigma$--endoscopic groups for $PGL(3)$ and the
+symmetric square transfer should be a consequence of stabilizing this twisted
+$PGL(3)$-trace formula. The notes \cite{La1}, completely a year or so later,
+were motivated by Jacquet's suggestion.
+
+\subsection{$L$--parameters and the transfer from $SL(2)$ to $PGL(3)$}
+\label{sec:1.2}
+
+Let $F$ be a $p$--adic field with ring of integers $\off$, let $G$
+denote one of the groups $SL(n)$ or $PGL(n)$, let $K$ denote
+a maximal compact subgroup of $G(F)$, and let $\hhh (G,K)$
+denote the {\bf Hecke algebra} of compactly
+supported locally constant functions on the double coset space
+$K\setminus G(F)/K$. Let $K_0:= G(\off )$ denote the hyperspecial
+maximal compact subgroup; when $K = K_0$, we write $\hhh (G) := 
+\hhh (G,K_0)$. Let $C^\infty_c(G)$ denote the algebra of 
+{\bf Schwartz--Bruhat functions} of locally constant functions of
+compact support on $G(F)$. 
+ 
+Corresponding to the $L$--map (\ref{eqn:1.4}), the Satake transform (defined 
+in \S \ref{sec:2} below) gives us a homomorphism of Hecke algebras
+
+\begin{equation}
+\label{eqn:1.6}
+\begin{split}
+&\lambda_1^* : \hhh (PGL(3)) \rightarrow \hhh (SL(2)),\\
+&\ \ \ \ \ \ \ \ \ \ \ \phi \longmapsto f :=\lambda_1^*(\phi),
+\end{split}
+%\tag 1.6
+\end{equation}
+determined by 
+$\hat{f}(t) = \hat{\phi }(\lambda_1 (t)),\ t \in {^{L}SL(2,\ccc )}$.
+When this identity holds, one says that the spherical function $\phi $
+on $PGL(3,F)$ {\bf corresponds} with the spherical function $f$ on $SL(2,F)$.
+Similarly, corresponding to the $L$--map (\ref{eqn:1.5})
+there is the $L$--homomorphism of Hecke algebras
+
+\begin{equation}
+\label{eqn:1.7}
+\begin{split}
+&\lambda_2^* : \hhh (PGL(3)) \rightarrow \hhh (PGL(2)),\\
+&\ \ \ \ \ \ \ \ \ \ \ \phi \longmapsto f := \lambda_2^*(\phi),
+\end{split}
+%\tag 1.7
+\end{equation}
+determined by $\hat{f}(t) = \hat{\phi }(\lambda_2 (t)),\ t \in 
+{^{L}PGL(2,\ccc )}$. Using this one can define a ``correspondence'', as above,
+between spherical functions on $PGL(3,F)$ and spherical functions on
+$PGL(2,F)$. 
+ 
+According to the local Langlands correspondence for $GL(3)$, to each
+unramified admissible homomorphism
+$\psi :W_F \rightarrow {^{L}SL(3,\ccc )}$ there is an $L$--packet of
+admissible irreducible 
+unramified representations $\Pi (\theta )  \in
+\Pi (SL(2,F))_L$ of SL(2,F). Here $W_F$ denotes the 
+absolute local Weil group of $F$ and the subscript $L$ on the $\Pi$ signifies
+that we are identifying $L$--indistinguishable representations. 
+Each homomorphism
+$\theta : W_F \rightarrow {^{L}SL(2,\ccc )}$ yields via (\ref{eqn:1.4})
+a homomorphism $\theta^* : W_F \rightarrow {^{L}PGL(2,\ccc )}$, and if 
+$\theta$ is
+admissible then so is $\theta^*$. The local functoriality conjecture
+predicts that the $L$--map (\ref{eqn:1.4}) 
+should yield a map of tempered $L$--packets
+
+\begin{equation}
+\label{eqn:1.8}
+\begin{split}
+&\Lambda_1 : \Pi^{\text{temp}}(SL(2,F))_L \rightarrow 
+\Pi^{\text{temp}}(PGL(3,F)),\\
+&\quad\quad \ \ \ \ \ \ \ \ \ \ \Pi (\theta ) \longmapsto \pi_{\theta^*}.
+\end{split} 
+%\tag 1.8
+\end{equation}
+We say that $\pi \in \Pi (SL(2,F))$ {\bf transfers} to 
+$\Pi \in \Pi (PGL(3,F))$ if $\pi \in \Pi (\theta )$ and 
+$\Pi = \pi_{\theta^*}$, for some admissible $\theta$ as above. 
+The $L$--packets of $SL(2)$ have been described by J.-P. Labesse
+and R. Langlands \cite{LL}.
+
+\subsection{The Jacquet--Shalika norm maps}
+\label{sec:1.3}
+
+The basic ideas of this subsection are, I believe, due to H. Jacquet
+and J. Shalika and may be found in \cite{La1}.
+ 
+Let $G := PGL(3),\ H_1 := SL(2),\ H_2 := PGL(2)$.
+Associated to the two $\sigma$-endoscopic groups $H_i$ are ``norm'' maps
+
+\begin{equation}
+\label{eqn:1.9}
+N_i : \{\text{stable $\sigma$-conjugacy classes in G}\} \rightarrow
+\{\text{stable conjugacy classes in $H_i$}\},
+%\tag 1.9
+\end{equation}
+which (hopefully) allow one to relate stable class functions on $G$ to stable
+class functions on $H_i$. The explicit construction of these norm maps
+is the object of this subsection.
+
+\begin{lemma}
+\label{lemma:1.10} 
+If $[A] \in PGL(2n+1,F)$ is represented by
+$A \in GL(2n+1,F)$ then $[A]\sigma ([A])$ is represented by 
+$A\cdot {^{t}A^{-1}}$
+and $A\cdot {^{t}A^{-1}}$ has at least one eigenvalue equal to one.
+\end{lemma}
+ 
+This is an immediate consequence of the fact that $A^{-1} - {^{t}A^{-1}}$
+is singular (since $2n+1$ is odd), hence has $0$ as an eigenvalue.
+ 
+Let $V:=F^{2n+1}$ and identify, by fixing a basis of $V$, $GL(2n+1,F)$ with 
+$\text{Aut}_F(V)$. For the $[A]$ and $A$ in the lemma, let 
+$V_A \subset V$ be a 1-dimensional subspace on which $A\cdot {^{t}A^{-1}}$
+acts as the identity. Let $W_A$ be the orthogonal complement of
+${^{t}A^{-1}}V_A$ with respect to the inner product 
+$(v_1,v_2) := {^{t}v_1\cdot v_2}$.
+Observe that $A\cdot {^{t}A^{-1}}$ acts on $V_A$ trivially, 
+therefore on $V/V_A$, and
+$A{^{t}A^{-1}}$ acts on $W_A$. 
+ 
+Let me now restrict to the case $n = 1$.
+
+\begin{lemma}
+\label{lemma:1.11} 
+Suppose that $A\cdot {^{t}A^{-1}}$ induces the linear transformation
+$B_1 \in \text{Aut}_F(W_A)$ and $B_2 \in \text{Aut}_F(V/V_A)$. Then
+
+\begin{itemize}
+
+\item[(a)] 
+$\det B_1 = \det B_2 = 1$,
+
+\item[(b)] 
+there is an isomorphism $\theta : W_A \rightarrow V/V_A$ such that
+
+\[
+\begin{CD}
+W_A @>B_1>>W_A\\
+@V\theta VV @AA\theta A\\
+V/V_A @>B_2>>V/V_A
+\end{CD}
+\]
+commutes,
+
+\item[(c)] 
+as elements of $SL(2,F)$, $B_1$ and $B_2$ are stably conjugate,
+
+\item[(d)] 
+the stable conjugacy class of $B_i$ is independent of the choice 
+of $V_A$.
+\end{itemize}
+\end{lemma}
+ 
+For the proof, I refer to \cite{La1}.
+
+\begin{definition}
+\label{def:1.12} 
+Choose a basis of $V/V_A$ or of $W_A$ and represent
+the transformation induced by $A\cdot {^{t}A^{-1}}$ by a 
+$2\times 2$ matrix. The stable
+$SL(2)$-conjugacy class of this matrix is 
+well--defined and depends only on the 
+stable $\sigma$--conjugacy class of $[A]$. 
+This stable conjugacy class in
+$SL(2,F)$ is called the {\bf $H_1$-norm} of $[A]$, written as
+$N_1([A]) \subseteq H_1(F)$. For the $H_2$--norm, first identify
+$H_2$ with SO(3) via the adjoint representation (\ref{eqn:1.3}), 
+where $SO(3)$ denotes the connected component of the orthogonal group for the 
+skew--diagonal matrix $J$ above. If the eigenvalues of
+$A\cdot {^{t}A^{-1}}$ are $\alpha,\ 1,\ \alpha^{-1}$ and 
+$\alpha \not= \pm 1$, then
+define the {\bf $H_2$--norm} of $[A]$, written $N_2([A])$, to be the
+stable $H_2$--conjugacy class which contains a matrix with
+$\alpha,\ 1,\ \alpha^{-1}$ as eigenvalues.
+\end{definition}
+ 
+As a matter of notation, let
+
+\[
+\begin{split}
+&Cl^{st}_{\sigma}(G) :=\{\text{stable $\sigma$-conjugacy classes in G}\},\\
+&Cl^{st}(H_i) := \{\text{stable conjugacy classes in $H_i$}\}.
+\end{split}
+\]
+
+\begin{proposition} (Jacquet--Shalika)
+\label{prop:1.13} 
+The norm map
+
+\[
+N_1 : Cl^{st}_{\sigma}(G) \rightarrow Cl^{st}(H_1)
+\]
+is a bijection.
+\end{proposition}
+
+\begin{remark} 
+
+(1) This is proven in \cite{La1} by explicit
+matrix manipulations.
+\newline
+
+(2) For $H_2$ stable conjugacy and ordinary conjugacy
+are essentially the same, so the statement analogous to the 
+proposition is false for $N_2$. 
+\newline
+
+(3) In general, one expects to be able to define norms from PGL(r) to
+any of its $\sigma$--endoscopic groups. One expects that the norm map
+associated to the ``largest'' $\sigma$--endoscopic group should also yield a
+bijection. For r = 2n+1 and r = 2n, one would like bijections
+
+\[
+\begin{split}
+&N: Cl^{st}_{\sigma}(PGL(2n+1)) \rightarrow Cl^{st}(Sp(2n)),\\
+&N: Cl^{st}_{\sigma}(PGL(2n)) \rightarrow Cl^{st}(PSp(2n)).
+\end{split}
+\]
+\end{remark}
+ 
+The following corollary of Langlands' proof of (\ref{prop:1.13}) 
+is sometimes useful.
+
+\begin{corollary}
+\label{cor:1.14} 
+If $N_1([A])$ does not contain a unipotent, then 
+there is a $[A']$ in the same stable $\sigma$--conjugacy class 
+as $[A]$ and 
+represented by $A' \in GL(3,F)$, for which
+
+\begin{itemize}
+
+\item[(a)] 
+$V = V_{A'} \oplus W_{A'}$,
+
+\item[(b)] 
+$W_{A'}^{\bot} = V_{A'}$ with repect to the inner product
+$(v_1,v_2):={^{t}v_2}\cdot v_1$,
+
+\item[(c)] 
+$V_{A'}$ and $W_{A'}$ are both invariant under $A$ and 
+${^{t}A^{-1}}$ (i.e., $A$ can be put in $(2,1)$-block form).
+\end{itemize}
+\end{corollary}
+
+
+\subsection{The fundamental lemmas}
+\label{sec:1.4}
+
+Recall $G := PGL(3),\ H_1 := SL(2),\ H_2 := PGL(2)$. Let us denote the 
+{\bf twisted centralizer} by
+
+\begin{equation}
+\label{eqn:1.15}
+G(g\sigma ,F) := \{g \in G(F)\ |\ x^{-1}g\sigma (x) = g\},
+%\tag 1.15
+\end{equation}
+and the (ordinary) {\bf centralizer} by
+
+\begin{equation}
+\label{eqn:1.16}
+H_i(h,F) := \{h \in H_i(F) \ |\ x^{-1}hx = h\},\ \ \ i=1.2.
+%\tag 1.16
+\end{equation}
+Let $\omega_{G(g\sigma )},\ \omega_G$ be fixed nonzero forms of maximal
+degree on $G(g\sigma ,F),\ G(F)$, respectively, and let
+
+\[
+d\ovx := {d\omega_G(x)\over{d\omega_{G(g\sigma )}(x)}}
+\]
+denote the quotient measure. For $\phi \in C^\infty_c(G)$, define the 
+{\bf twisted orbital integral} by
+
+\begin{equation}
+\label{eqn:1.17}
+\Phi (g,\phi ,\omega_G,\omega_{G(g\sigma )}) = \Phi (g,\phi )
+:= \int_{G(g\sigma ,F)\setminus G(F)}
+\phi (g^{-1}g\sigma (g))\ d\ovg,
+%\tag 1.17
+\end{equation}
+provided it converges.
+Similarly, let $\omega_{H_i(h)},\ \omega_{H_i}$ be fixed nonzero 
+forms of maximal
+degree on $H_i(h\sigma ,F),\ H_i(F)$, respectively, and let
+
+\[
+d\ovx := {d\omega_{H_i}(x)\over{d\omega_{H_i(h)}(x)}}
+\]
+denote the quotient measure. In fact, we don't take any $\omega_{H_i(h)}$,
+but only one obtained by pulling back $\omega_{G(g\sigma)}$ via an \'etale
+surjective homomorphism over $\overline{F}$
+
+\[
+\psi_i : H_i(h)^0 \rightarrow G(g\sigma ),
+\]
+namely, it must satisfy
+
+\[
+\omega_{H_i(h)}=|\text{ker }\psi_i|^{-1}\psi^*_i\omega_{G(g\sigma )},
+\]
+for all $h \in N_i(g)$. Here $N_i$ denotes the norm map defined above. 
+Note that if $h \in H_i(F)$ is regular semi--simple then we may assume that
+$\psi_i$ is an isomorphism. For $f \in C^\infty_c(H_i)$ and $h \in H_i(F)$
+regular, define the {\bf orbital integral} by
+
+\begin{equation}
+\label{eqn:1.18}
+\Phi (h,f,\omega_{H_i},\omega_{H_i(h)}) = 
+\Phi (h,f):= \int_{H_i(h,F)\setminus H_i(F)}
+f(x^{-1}hx)\ d\ovx .
+%\tag 1.18
+\end{equation} 
+This defines the orbital integrals which will
+occur in the fundamental lemmas below. Note that, whereas 
+$\Phi (h,f)$ is a class function on $H_i(F)^{reg}$, $\Phi (g,\phi )$
+may be regarded as a class function on the nonconnected reductive group
+
+\[
+\overline{G} := G \rtimes \{1,\sigma \},\ \ {\rm (semi-direct\ product)},
+\]
+because of the identity
+
+\[
+(x\times \sigma )^{-1}(g\times \sigma )(x\times \sigma )
+=\sigma (x^{-1}g\sigma (x))\times \sigma .
+\]
+ 
+To analyse these integrals further we of course should know something
+about the conjugacy classes on $H_i$ and on $\overline{G}$. Actually,
+from now on I shall pretty much ignore $\overline{G}$ since it
+seems easier to regard conjugacy classes on
+$\overline{G}$ as $\sigma$--conjugacy classes on $G$. 
+ 
+Let me leave aside the notion of $\sigma$-conjugacy for the moment
+and first discuss the (untwisted) notions of conjugacy and
+stable conjugacy. Two elements
+$h_1,\ h_2 \in SL(2,F) = H_1(F)$ can be {\bf stably conjugate}
+(meaning that there is an $x \in H_1(\ovF )$ such that
+$h_1 = x^{-1}h_2x$) but not conjugate (over $F$). 
+This is not true for $PGL(n)$. 
+In other words, if two elements of $PGL(n,F)$ are
+$PGL(n,\ovF )$-conjugate then they are necessarily
+$PGL(n,F)$-conjugate (see, for example, \cite{L}, ch. 15, \S 3, p. 543).
+Equivalently, for $PGL(n)$, the notions of stable 
+conjugacy and (ordinary) conjugacy coincide. 
+For groups other than
+$PGL(n)$, however, these notions do not generally coincide. 
+As a measure of the 
+difference between these two notions, one may consider the set
+of conjugacy classes of an element within a given stable conjugacy class
+of that element. 
+For $h \in H_i(F)$, the set of $H_i(F)$-conjugacy
+classes of $h_i$ within the stable conjugacy class of $h$ is parameterized 
+by 
+
+\begin{equation}
+\label{eqn:1.19}
+\ddd (h,H_i) := H_{i,h}(\ovF )\setminus St(h,H_i)/H_i(F),
+%\tag 1.19
+\end{equation}
+where
+
+\[
+St(h,H_i) := \{x \in H_i(\ovF )\ |\ x^{-1}hx \in H_i(F)\}
+\]
+denotes those elements over $\ovF$ which leave invariant the
+stable conjugacy class of $h \in H_i(F)$ under conjugation. 
+If $i = 2$ then
+$\ddd (h,H_2)$ is a singleton since in that case the notions of 
+stable conjugacy and ordinary conjugacy coincide. 
+ 
+Now let me turn to the twisted analogs of these notions. Although
+$PGL(n)$ has ``no $L$--indistinguishabilty'' it \underbar{does} have
+``twisted 
+\newline
+$L$--indistinguishability''. In other words, it is
+possible for $g_1,\ g_2 \in G(F)$ to be stably $\sigma$-conjugate
+(meaning that there is some $g\in G(\ovF )$ such that
+$g_1 = g^{-1}g_2\sigma (g)$) but not $\sigma$-conjugate over $F$.
+For $g \in G(F)$, the set of $\sigma$-conjugacy classes of $g$ within the
+stable $\sigma$-conjugacy class of $g$ is parameterized by
+
+\begin{equation}
+\label{eqn:1.20}
+\ddd_{\sigma}(g,G) := G_{g\sigma}(F)\setminus St_{\sigma}(g)/H_i(F),
+%\tag 1.20
+\end{equation}
+where
+
+\[
+St_{\sigma}(g,G) := \{x \in G(\ovF )\ |\ x^{-1}gx \in G(F)\}
+\]
+denotes those elements over $\ovF$ which leave invariant the 
+stable $\sigma$-conjugacy class of $g$.
+
+\begin{lemma}
+\label{lemma:1.21} 
+There are isomorphisms (as pointed sets)
+
+\[
+\begin{split}
+&\ddd (h, H_i) \cong H^1(F,H_i(h)),\\
+&\ddd_{\sigma}(g,G) \cong H^1 (F,G(g\sigma)).
+\end{split}
+\]
+\end{lemma}
+ 
+For the proof of this see, for example, \cite{La2}. We will use this to
+compute the cardinality of these sets later.
+ 
+For fixed $g \in G(F)$ and arbitrary $g' \in \ddd_{\sigma}(g,G)$, 
+all the twisted centralizers $G(g'\sigma)$ are (well--defined and)
+isomorphic over $\ovF$. 
+When considering the twisted orbital integrals
+$\Phi (g',\omega_{G(g'\sigma )},\omega_G),\ g' \in \ddd_{\sigma}(g,G)$, 
+we will always assume that the measures $\omega_{G(g'\sigma )}$ are determined
+from the given $\omega_{G(g\sigma )}$ by pulling it back via some isomorphism
+$G(g'\sigma) \tarrow G(g\sigma)$. 
+A similar remark pertains to the 
+orbital integrals attached to the $h' \in \ddd (h,H_i)$.
+ 
+If $N_1(g)$ is regular, $g \in G(F)$ then define the {\bf stable twisted 
+orbital integral} of $\phi \in C^\infty_c(G)$ by
+
+\begin{equation}
+\label{eqn:1.22}
+\Phi^{T,1}(g,\phi ):= \sum_{g' \in \ddd_{\sigma}(g,G)} \Phi (g',\phi ),
+%\tag 1.22
+\end{equation}
+where $T$ denotes $G(g\sigma )$.
+Similarly, if $h \in H_i(F)$ is regular then define the
+{\bf stable orbital integral} of $f \in C^\infty_c(H_i)$ by
+
+\begin{equation}
+\label{eqn:1.23}
+\Phi^{T_i,1}(h,f):= \sum_{h' \in \ddd(h,H_i)} \Phi (h',f),
+%\tag 1.23
+\end{equation}
+whete $T_i$ denotes the centralizer $H_i(h)$.
+
+\begin{theorem} (Langlands,
+{\bf Fundamental Lemma for $H_1$})
+\label{thrm:fundlemmaH1}
+If
+$\phi \in \hhh (G)$ and $f_1 = \lambda_1^*(\phi ) \in
+\hhh (H_1)$ then, for all non--trivial $h \in N_1(g)$, we have
+
+\begin{equation}
+\label{eqn:1.24}
+\Phi^{T,1}(g,\phi ) = \Phi^{T_1,1}(h,f_1).
+%\tag 1.24
+\end{equation}
+\end{theorem}
+ 
+We will prove this in \S \ref{sec:4} 
+in the case where $\phi$ is the unit element
+of $\hhh (G)$ and $p\not= 2$.
+ 
+The analogous statement for $H_2$ requires the introduction
+of ``unstable'' orbital integrals. These are the same as stable orbital
+integrals except that the sum is ``twisted'' by certain roots of unity
+($\pm 1$'s in our case). To define these, we use the property that
+the elements $g \in G(F)$ with $N_1(g) = 1$ have the property
+that $|\ddd_{\sigma}(g,G)|=2$, and we can define a bijection of sets
+
+\begin{equation}
+\label{eqn:1.25}
+\kappa : \ddd_{\sigma}(g,G) \rightarrow \{\pm 1\},
+%\tag 1.25
+\end{equation}
+by
+
+\[
+\kappa (g) := 
+\begin{cases} 
++1,&\ \ \ {\rm if}\ G(g\sigma)\ {\rm is\ split\ over}\ F,\\
+-1,&\ \ \ {\rm if}\ G(g\sigma)\ {\rm is\ non--split\ over}\ F .
+\end{cases}.
+\]
+If $N_1(g) \not= 1$ is regular then replace $g$ by $g_{s} :=
+(g+{^{t}g})/2$ to get a regular element with $N_1(g_{s})=1$. In this
+case, define $\kappa (g) = \kappa (g_{s})$. This depends only
+on the $\sigma$-conjugacy class of $g$. This sign is closely related
+to the Hilbert norm residue symbol of $E/F$, where $E$ is the quadratic
+extension obtained from adjoining the eigenvalues of $h \in N_1(g)$ to
+$F$, see \S \ref{sec:4} below. 
+The {\bf unstable or $\kappa$-orbital integral}
+of $\phi \in C^\infty_c(G)$ is
+
+\begin{equation}
+\label{eqn:1.26}
+\Phi^{T,\kappa}(g,\phi ):= \sum_{g' \in \ddd_{\sigma}(g,G)} 
+\kappa (g')\Phi (g',\phi ),
+%\tag 1.26
+\end{equation}
+where $T:=G(g\sigma )$.
+
+\begin{conjecture}
+({\bf Fundamental Lemma for $H_2$})
+Assume $N_2(g) \not= 
+\pm 1$. If $\phi \in \hhh (G)$ and $f_2:=\lambda_2^*(\phi ) \in
+\hhh (H_2)$ then, for any $h \in N_2(g)$, we have
+
+\begin{equation}
+\label{eqn:1.27}
+\Phi^{T,\kappa}(g,\phi ) = \tau (g)\Phi(h,f_2),
+\end{equation}
+where $\tau$ is the transfer factor
+\[
+\tau (h) := \pm |(1+\beta_{1})(1+\beta_{2})|^{1/2},
+\]
+denoting the eigenvalues of $h$ by $\beta_{1},\ \beta_{2}$. The $\pm$ sign
+will be explained in (\ref{eqn:3.18}) below.
+\end{conjecture}
+ 
+This main result of this paper is, as mentioned earlier, the proof that
+this holds when the residual characteristic of $F$ is greater than $2$ and
+$\phi \in \hhh (G)$ is the unit element. 
+
+
+
+
+
+
+% === END ORIGINAL adjoint_lift1.tex ===
+% === BEGIN ORIGINAL adjoint_lift2.tex ===
+
+\section{The identities in the split case}
+\label{sec:2}
+
+\subsection{Summary}
+
+The object is to briefly sketch, following \cite{La1}, a proof of the stable
+and unstable fundamental lemmas
+
+\begin{equation}
+\label{eqn:2.1}
+\Phi^{T,1}(g,\phi ) = \Phi^{T_1,1}(h,f),
+%\tag 2.1
+\end{equation}
+for $h\in N_1(g)\cap A_1(F)$ regular semi--simple, and
+
+\begin{equation}
+\label{eqn:2.2}
+\Phi^{T,\kappa}(g,\phi ) = |(1+\beta_1)(1+\beta_2)|^{-1/2}\Phi(h',f),
+%\tag 2.2
+\end{equation}
+for $h'\in N_2(g)\cap A_2(F)$ regular, semi--simple. Here $A_i(F)$ denotes
+the maximal split torus in $H_i(F)$; let $A(F)$ denote the maximal split torus
+of G(F). The norms have been defined in such a way that, if $g\in A(F)$
+then $N_i(g)\cap A_i(F) \not= \emptyset$. We use Satake transforms,
+a method which has the advantage of yielding, for the split groups
+we consider, an explicit expression for the absolute value of the
+transfer factor (the precise transfer factor is very difficult to predict in
+general, see the recent work of R. Langlands and D. Shelstad \cite{LS}).
+
+\subsection{2.2. Background on twisted integration formulas}
+\label{sec:2.2}
+
+All Haar measures in this subsection are normalized as in \cite{C}.
+\par
+In this section, let $G' =SL(n)$ or $PGL(n)$ 
+and consider the outer automorphism
+$\sigma (g) = J'\cdot {^{t}g}^{-1}\cdot J'$ where $J'$ denotes the $n\times n$
+skew--diagonal matrix with alternating $\pm 1's$ on the skew--diagonal:
+
+\[
+J':=
+\left(
+\begin{array}{cccccc}
+ \ &\ &\ &\ &\ &1\\
+\ &\ &\ &\ &-1&\ \\
+\ &\ &\ &.&\ &\ \\
+\ &\ &.&\ &\ &\ \\
+\ &.&\ &\ &\ &\ \\
+(-1)^{n-1}&\ &\ &\ &\ &\
+\end{array}
+\right) .
+\]
+Let $Ad$ denote the action of $G'(F)$ on Lie$(G')$:
+$Ad(g)X :=gXg^{-1}$. 
+The Jacobian of the change--of--variables
+$n\longmapsto nmn^{-1}m^{-1} =\exp[(1-Ad(m))\log n]$,
+where $\log n\in Lie\  N'$ is given by $\exp \log n :=n$, is
+of course $\Delta (m) := |{\rm det} (Ad(m)-1)_{Lie\ N'}|_F $.
+Similarly, the Jacobian of $n\longmapsto nm\sigma (n)^{-1}m^{-1}
+=\exp [(1-Ad(m)\sigma )\log n]$ is $\Delta_{\sigma}(m) := |{\rm det}
+(Ad(m)\sigma - 1)_{Lie\ N'}|_F$.
+ 
+To be concrete, if $\alpha_1,\dots,\alpha_n$ are the simple roots of $G'$ then
+$\sigma$ acts on their associated root groups via
+$\sigma (\exp (tX_{\alpha_i})) = J(\exp (tX_{\alpha_i}))^{-1}J
+= (-1)^{n-1}\exp (-tJ{^{t}X}_{\alpha_i}J)$,
+or equivalently, via the action of $\sigma \in Out(G')\cong
+{\rm Aut}(\ddd )$ on the Dynkin diagram $\ddd $ of $G'$. 
+For $PGL(3)$, $\sigma$ exchanges the two simple roots; on the level of the
+Lie algebra, it exchanges the root vectors $X_{\alpha_1},
+\ X_{\alpha_2}$ and changes the sign of $X_{\alpha_1+\alpha_2}$
+in Lie$\,N'$ since $X_{\alpha_1+\alpha_2}=[X_{\alpha_1},X_{\alpha_2}]$.
+Therefore the analog to
+
+\begin{equation}
+\label{eqn:2.3}
+\int_{N'} \phi (nmn^{-1}m^{-1})\ dn
+= \Delta (m)^{-1}\int_{N'} \phi (n)\ dn 
+%\tag 2.3
+\end{equation}
+becomes
+
+\begin{equation}
+\label{eqn:2.4}
+\int_{N'} \phi (nm\sigma (n)^{-1}m^{-1})\ dn
+= \Delta_{\sigma}(m)^{-1}\int_{N'} \phi (n)\ dn 
+%\tag 2.4
+\end{equation}
+ 
+Let $a\in A'(F)$
+belong to the maximal split torus of $G'(F)$ and let $\phi$ be a spherical
+function on $G'(F)$. As a straightforward application of 
+(\ref{eqn:2.3})-(\ref{eqn:2.4}), we
+have
+
+\begin{equation}
+\label{eqn:2.5}
+\begin{split}
+\int_{G'(g\sigma ,F)\setminus G'(F)}
+&\phi (x^{-1}g\sigma (x))\ d\ovx\\
+&=\int_{G'(g\sigma ,F)\setminus A'(F)}\Delta_{\sigma}(m)^{-1}\Delta (m)
+\int_{A'(F)\setminus G'(F)} \phi (x^{-1}mx)\ d\ovx d\ovt ,
+\end{split}
+%\tag 2.5
+\end{equation}
+where $m:=t^{-1}a\sigma (t)$. Notice that the outer integral on the
+right is a finite sum. This fact will be used in a later subsection.
+ 
+The remainder of this subsection is devoted to the calculation of the
+twisted Jacobian $\Delta_{\sigma}(m)$, when $G' = G = PGL(3)$. Write
+Lie$\,N = F\cdot X_{\alpha_1}\oplus F\cdot X_{\alpha_2}
+\oplus F\cdot X_{\alpha_1+\alpha_2}$ and identify its elements as
+column vectors. In terms of this basis, $\sigma$ is represented by
+the matrix
+
+\[
+\left( 
+\begin{array}{ccc} 
+\ &-1&\ \\
+-1&\ &\ \\
+\ &\ &-1
+\end{array} 
+\right)
+\]
+and $Ad(a)$ is represented by the matrix
+
+\[
+\left( 
+\begin{array}{ccc} 
+\alpha_1(a)&\ &\ \\
+\ &\alpha_2(a)&\ \\
+\ &\ &(\alpha_1+\alpha_2)(a)
+\end{array} 
+\right),
+\]
+where of course $\alpha_1(a) = a_1/a_2,\ \alpha_2(a) = a_2/a_3,
+\ (\alpha_1 +\alpha_2)(a) = a_1/a_3$. Combining this together, we find
+that ${\rm det} (Ad(a)\sigma -1)_{Lie\, N}= (a_1/a_3)^2-1$.
+In particular, with $a = m = t^{-1}g\sigma (t) \left( \smallmatrix
+\gamma_1t_1^{-1}t_3^{-1}&\ &\ \\
+\ &\gamma_2t_2^{-2}&\ \\
+\ &\ &\gamma_3t_1^{-1}t_3^{-1}\endsmallmatrix\right)$,
+where $\gamma_i$ denote the eigenvalues of a representative of $g\in A(F)$,
+we find that
+
+\begin{equation}
+\label{eqn:2.6}
+\Delta_{\sigma}(m) = |1-(\gamma_1/\gamma_3)^2|_F.
+%\tag 2.6
+\end{equation}
+
+\subsection{The Satake transform on $PGL(3)$, $SL(2)$, $PGL(2)$}
+\label{sec:2.3}
+
+There are, as we mentioned already in \S \ref{sec:1}, $L$--maps
+
+\[
+\begin{split}
+&\lambda_1:{^{L}H_1}(\ccc ) \rightarrow {^{L}G}(\ccc ),
+\ \ \ {^{L}H_1} = SO(3)\\
+&\lambda_2:{^{L}H_2}(\ccc ) \rightarrow {^{L}G}(\ccc ),
+\ \ \ {^{L}H_2} = SL(2),
+\end{split}
+\]
+given on the maximal split torus by
+
+\[
+\begin{split}
+&\lambda_1 : 
+\left( 
+\begin{array}{cc} 
+t_1&\ \\ 
+\ &t_2
+\end{array} 
+\right) 
+\longmapsto
+\left( 
+\begin{array}{ccc} 
+t_1t_2^{-1}&\ &\ \\
+\ &1&\ \\
+\ &\ &t_2t_1^{-1}
+\end{array} 
+\right) ,\\
+&\lambda_2 : 
+\left( 
+\begin{array}{ccc} 
+t&\ \\ \ &t^{-1}
+\end{array} 
+\right) \longmapsto
+\left( 
+\begin{array}{ccc} 
+t&\ &\ \\
+\ &t^{-1}&\ \\
+\ &\ &1
+\end{array} 
+\right) .
+\end{split}
+\]
+Define the {\bf Satake transform} by
+
+\begin{equation}
+\label{eqn:2.7}
+\begin{split}
+&\hat{\phi}(t) := \sum_{\Lambda \in X^*({^{L}A})} \alpha (\Lambda )\Lambda (t),
+\ \ t\in {^{L}A}(\ccc ),\\
+&\hat{f_1}(t) := \sum_{\mu \in X^*({^{L}A_1})} \beta_1(\mu )\mu (t),
+\ \ t\in {^{L}A_1}(\ccc ),\\
+&\hat{f_2}(t) := \sum_{\nu \in X^*({^{L}A_2})} \beta_2(\nu )\nu (t),
+\ \ t\in {^{L}A_2}(\ccc ).
+\end{split}
+%\tag 2.7
+\end{equation}
+Here
+
+\begin{equation}
+\label{eqn:2.8}
+\alpha (\Lambda ):=\Delta_G (g)\int_{A(F)\setminus G(F)}
+\phi (x^{-1}gx)\ d\ovx ,
+%\tag 2.8
+\end{equation}
+where $\Lambda$ is that element $\Lambda =\Lambda (g)
+=\Lambda (k_1,k_2,k_3) \in X^*({^{L}A})
+\cong \zzz^3$ is that element corresponding to $(k_1,k_2,k_3)\in \zzz^3$
+for $k_i$ given by
+
+\[
+g = \left( \begin{array}{ccc} u_1\pi^{k_1}&\ &\ \\
+\ &u_2\pi^{k_2}&\ \\
+\ &\ &u_3\pi^{k_3}\end{array} \right) ,\ \ u_i\in \off^{\times}.
+\]
+We also define $\Delta_G(g)
+:=\prod_{{\rm all\  roots }\alpha }|1-\alpha (g)|^{1/2}
+=|1-\gamma_1/\gamma_3||1-\gamma_2/\gamma_3||1-\gamma_1/\gamma_3|
+|\gamma_3/\gamma_1|.$ Similarly, for $H_1(F)$ we have
+
+\begin{equation}
+\label{eqn:2.9}
+\eta_1 (\mu ):=\Delta_{H_1} (h)\int_{A_1(F)\setminus H_1(F)}
+f_1(x^{-1}hx)\ d\ovx ,
+%\tag 2.9
+\end{equation}
+where $\mu =\mu (h)= \mu (m) \in X^*({^{L}H_1})\cong \zzz$ corresponds to
+
+\[
+h = \left( \begin{array}{cc} \beta_1&\ \\ \ &\beta_2
+\end{array}
+\right)
+= \left( 
+\begin{array}{cc}
+u'_1\pi^{m}&\ \\ 
+\ &u'_2\pi^{-m}
+\end{array}
+\right),
+\]
+where $u'_i\in \off^{\times}$.
+Here we define $\Delta_{H_1}(h)
+:=\prod_{{\rm all\  roots }\alpha }|1-\alpha (h)|^{1/2}
+=|1-\beta_1/\beta_2||\beta_2/\beta_1|^{1/2}.$
+For $H_2(F)$ we define $\Delta_{H_2}(h')
+:=\prod_{{\rm all\  roots }\alpha }|1-\alpha (h')|^{1/2}
+=|1-\beta '_1||\beta '_1|^{-1/2}$, and
+
+\begin{equation}
+\label{eqn:2.10}
+\eta_2 (\nu ):=\Delta_{H_2} (h')\int_{A_2(F)\setminus H_2(F)}
+f_2(x^{-1}h'x)\ d\ovx ,
+%\tag 2.10
+\end{equation}
+where $\nu = \nu (n_1,n_2) \in X^*({^{L}H_2})$ corresponds to
+
+\[
+h' = \left( 
+\begin{array}{cc}
+\lambda\beta '_1&\ \\ \ &\lambda
+\end{array}
+\right)
+= \left( 
+\begin{array}{cc}
+u''_1\pi^{n_1}&\ \\ \ &u''_2\pi^{n_2}
+\end{array}
+\right) ,
+\]
+where
+$u''_i \in \off^{\times}$. Here the pair
+$(n_1,n_2) \in\zzz^2$ is not well--defined but $n_1 -n_2$ is.
+ 
+Note that, via the induced map
+$\lambda_1^* : X^*({^{L}A})\rightarrow X^*({^{L}A_1}),$
+two $\Lambda (k_1,k_2,k_3)$, 
+$\Lambda (k'_1,k'_2,k'_3)$ belonging to $X^*({^{L}A})$
+have the same image if and only if $k_1-k_3 = k'_1-k'_3$. Similarly,
+via the induced map
+$\lambda_2^* : X^*({^{L}A})\rightarrow X^*({^{L}A_2}),$
+two $\Lambda (k_1,k_2,k_3)$, 
+$\Lambda (k'_1,k'_2,k'_3)$ in $X^*({^{L}A})$
+have the same image if and only if $k_1+k_2 = k'_1+k'_2=2k_3=2k'_3$.
+
+\begin{lemma}
+\label{lemma:2.11}
+
+\begin{itemize}
+\item[(a)] 
+For $f_1$ and $\phi$ spherical, the following are equivalent:
+
+\begin{itemize}
+\item[(i)] 
+$f_1=\lambda_1^*\phi$,
+
+\item[(ii)] 
+$\hat{f_1}(t) = \hat{\phi}(\lambda_1(t)),\ \ t\in {^{L}H_1}$,
+
+\item[(iii)]
+
+\[
+\sum_{\substack{\Lambda = \Lambda (k_1,k_2,k_3)\\k_1-k_3=m}} 
+\alpha (\Lambda )
+=\eta_1 (\mu ),\ \ \forall \mu = \mu (m).
+\]
+\end{itemize}
+\item[(b)] 
+For $f_2$ and $\phi$ spherical, the following are equivalent:
+
+\begin{itemize}
+\item[(i)] 
+$f_2=\lambda_2^*\phi$,
+
+\item[(ii)]
+$\hat{f_2}(t) = \hat{\phi}(\lambda_2(t)),\ \ t\in {^{L}H_2}$,
+
+\item[(iii)]
+
+\[
+\sum_{\substack{\Lambda = \Lambda (k_1,k_2,k_3)\\k_1=n_1,\ k_2=n_2}}
+\alpha (\Lambda )
+=\eta_2 (\nu ),\ \ \forall \nu = \nu (n_1,n_2).
+\]
+\end{itemize}
+\end{itemize}
+\end{lemma}
+ 
+The proofs are omitted.
+
+\subsection{The fundamental identities in the split case}
+\label{sec:2.4}
+
+We may always
+represent $t\in A(F)$ by a diagonal matrix in $GL(3,F)$ whose middle
+entry $t_2$ is $1$. This gives
+
+\[
+t^{-1}\sigma (t)
+=
+\left( 
+\begin{array}{ccc} 
+t_1^{-1}t_3^{-1}&\ &\ \\
+\ &1&\ \\
+\ &\ &t_1^{-1}t_3^{-1}
+\end{array} 
+\right) .
+\]
+Because of this, the right side of the expression in (\ref{eqn:2.5}) is
+
+\[
+\begin{split}
+&\Delta_{\sigma}(m)^{-1}\sum_{t \pmod{A\cap K}}
+\delta (gt^{-1}\sigma (t))\Phi (gt^{-1}\sigma (t))\\
+&=|\gamma_3/\gamma_1|^{-1}\Delta_{\sigma}(m)^{-1}
+\sum_{\substack{\Lambda ' =\Lambda '(k,0,k)\in X^*(^{L}A) \\ k\in\zzz}}
+\alpha (\Lambda +\Lambda '),\ \ \Lambda =\Lambda (g),
+\end{split}
+\]
+since
+$\Delta_G(gt^{-1}\sigma (t))^{-1}\Delta (gt^{-1}\sigma (t))
+=|\gamma_3/\gamma_1|^{-1}$. By the previous lemma, the left side of
+(\ref{eqn:2.5}) is
+
+\[
+\begin{split}
+&\Delta_{\sigma}(m)^{-1}|\gamma_3/\gamma_1|^{-1}\eta_1 (\mu )\\
+&=\Delta_{\sigma}(m)^{-1}|\gamma_3/\gamma_1|^{-1}
+|1-\beta_1/\beta_2||\beta_2/\beta_1|^{1/2}
+\int_{A_1(F)\setminus H_1(F)} f_1(x^{-1}hx)\ d\ovx ,
+\end{split}
+\]
+where $h = 
+\left( \begin{array}{cc} 
+\gamma_1/\gamma_3&\ \\
+ \ &\gamma_3/\gamma_1\end{array}
+\right) \in N_1(g).$
+Since
+$\beta_1/\beta_2 = \gamma_1^2/\gamma_3^2$, these equations combine to give, for
+$g\in A(F)$ and $h\in N_1(g)\cap H_1(F)$,
+
+\begin{equation}
+\label{eqn:2.12}
+ \int_{G(g\sigma ,F)\setminus G(F)} \phi (x^{-1}g\sigma (x))\ d\ovx
+ =\int_{H_1(h,F)\setminus H_1(F)}
+(\lambda_1^*\phi )(x^{-1}hx)\ d\ovx .
+%\tag 2.12
+\end{equation}
+This proves the $SL(2)$--fundamental lemma
+in the split case since the stable conjugacy class of h contains only
+one element.
+ 
+For the $SO(3)$--fundamental lemma, we have $h' = \left(
+\begin{array}{ccc}  \gamma_1/\gamma_3&\ &\ \\
+ \ &1&\ \\
+ \ &\ &\gamma_3/\gamma_1\end{array}\right) \in N_1(g)$.
+(We identify $SO(3)$ with $PGL(2)$ via (\ref{eqn:1.3}).)
+Due to the symmetry under the Weyl group, we can replace the sum
+
+\[
+\sum_{\substack{M=M(k,0,k)\\k\in \zzz }}
+\alpha (\Lambda +M)
+=\sum_{\substack{ M=M(0,k,0)\\k\in \zzz }}
+\alpha (\Lambda +M),
+\]
+by a sum over the end coordinate: $(0,0,k)$. By Lemma \ref{lemma:2.11}, 
+this sum satisfies
+
+\[
+\beta_2 (\nu )=
+\sum_{\substack{M=M(0,0,k)\\k\in \zzz }}
+\alpha (\Lambda +M).
+\]
+A simple computation verifies that $\Delta_{\sigma }(m)^{-1}
+|\gamma_3/\gamma_1|^{-1}|1-\beta_1||\beta_1|^{-1/2}
+=|(1+\beta_1)(1+\beta_2)|^{-1/2}.$
+From this, (\ref{eqn:2.9}), and the above expression for $h'$, we have
+
+\begin{equation}
+\label{eqn:2.13}
+\Phi (g,\phi )=|(1+\beta_1)(1+\beta_2)|^{-1/2}
+\Phi (h',\lambda_2^*\phi ),
+%\tag 2.13
+\end{equation}
+for $h'\in N_2(g)\cap H_2(F)$. This proves the $SO(3)$--fundamental
+lemma in the split case.
+% === END ORIGINAL adjoint_lift2.tex ===
+% === BEGIN ORIGINAL adjoint_lift3.tex ===
+
+
+\section{The reduction in the non--split case to buildings}
+\label{sec:3}
+
+\subsection{Summary}
+\label{sec:3.1}
+
+R. Langlands \cite{La1}, \cite{La3} has shown how to exploit buildings
+to prove fundamental lemmas (see also R. Kottwitz \cite{Ko1}, \cite{Ko2}). 
+Following \cite{La1}, this section is concerned 
+with  reducing the individual terms of the identities
+
+\begin{equation}
+\label{eqn:3.1}
+\Phi^{T_1,1}(h,\lambda_1^*(\phi ),\omega_h) = 
+\Phi^{T,1}(g,\phi ,\omega_g),
+%\tag 3.1
+\end{equation}
+and
+
+\begin{equation}
+\label{eqn:3.2}
+\Phi(h',\lambda_2^*(\phi ),\omega_{h'}) = 
+\pm |(1+\beta_1)(1+\beta_2)|^{1/2}\Phi^{T,\kappa}(g,\phi ,\omega_g),
+%\tag 3.2
+\end{equation}
+down to finite sums, in case $\phi$ is the characteristic function of a
+double coset $KtK$, where $t\in A(F)$ and $K:=G(\off )$. 
+We will only be interested in the case $t=1$ but the simple reduction
+below is just as easy to carry out for general $t$.
+For background, some references are \cite{La3} and \cite{Ko1}.
+
+{\bf Notation}
+
+Recall $H_1:=SL(2)$ and $H_2:=PGL(2)$. Let
+
+\[
+Q(t) = Q(\Lambda )=Q(k_1,k_2,k_3) := KtK,
+\]
+where $T\in A(F)$ is represented by a diagonal matrix with entries
+$t_i \in F^{\times}\ |t_i|=q^{k_i}$, and $\Lambda\in X^*({^{L}}A)$
+is the character associated to the triple $(k_1,k_2,k_3)$ by duality. 
+We assume that the entries have been
+ordered in such a way that $k_1\geq k_2\geq k_3$. Of course, the triple
+$(k_1,k_2,k_3)\in \zzz^3$ is only well--defined up to translation by
+$(n,n,n), \ n\in \zzz$. Let
+
+\[
+\begin{split}
+\phi_{\Lambda} 
+&:= (meas\ Q(\Lambda ))^{-1}char\ Q(\Lambda ),\\
+f_{1,\Lambda} 
+&:= \lambda_1^*(\phi_{\Lambda}),\\
+f_{2,\Lambda} 
+&:= \lambda_2^*(\phi_{\Lambda}),\\
+a(\Lambda ) 
+&:=\Phi^{T_1,1}(h,f_{1,\Lambda}),\\
+b(\Lambda ) 
+&:=\Phi(h',f_{2,\Lambda}),\\
+A(\Lambda ) 
+&:=\Phi^{T,1}(g,\phi_{\Lambda}),\\
+B(\Lambda ) 
+&:=\pm
+|(1+\beta_1)(1+\beta_2)|^{1/2}\Phi^{T,\kappa}(g,\phi_{\Lambda}),\\
+r(\Lambda )
+&:= meas(H_{1}(h,F)\cap H_1(\off ))Qq^{\lambda_1-\lambda_3}a(\Lambda ),\\
+s(\Lambda )
+&:= meas(H_{2}(h',F)^o\cap H_2(\off ))Qq^{\lambda_1-\lambda_3}b(\Lambda ),\\
+R(\Lambda )
+&:= meas(G(g\sigma,F)\cap G(\off ))Qq^{\lambda_1-\lambda_3}A(\Lambda ),\\
+S(\Lambda )
+&:= meas(G(g\sigma,F)\cap G(\off ))Qq^{\lambda_1-\lambda_3}B(\Lambda ),
+\end{split}
+\]
+where
+$Q:=(1+q^{-1})(1+q^{-1}+q^{-2})$ and where the $\pm$ sign will be
+explained in (\ref{eqn:3.18}) below.
+In terms of the above notation, the object of section \ref{sec:5} 
+of this paper is to prove that $S(0) = s(0)$.
+
+\subsection{The reduction}
+\label{sec:3.2}
+
+To reduce $a(\Lambda )$ and $b(\Lambda )$ down to finite sums, one may
+use Macdonald's formula \cite{M} and Plancherel's formula for the Satake
+transform, following \cite{La1}. The only special case of this we shall
+need is the following
+
+\begin{lemma}
+\label{lemma:3.3} 
+Suppose that both $h\in H_1(F)$ and $h'\in H_2(F)$
+are elliptic regular. In the notation above, we have
+
+\[
+r(0)=
+\begin{cases} 
+Q|{\rm Fix}(h)|,&\ \ {\rm if}\ E=F(\beta_1) \ {\rm is\ unramified},\\
+2^{-1}Q|{\rm Fix} (h)|,&\ \ {\rm if}\ E\ {\rm is\ ramified},
+\end{cases} 
+\]
+and
+
+\[
+s(0)=
+\begin{cases} 
+r(0),&\ \ { if }\ \Delta (h)=\Delta (h'),\\
+0,&\ \ {\rm if}\  h'\ {\rm has\ no\ fixed\ points},\\
+Q,& \ \ {\rm otherwise}.
+\end{cases} 
+\]
+\end{lemma}
+ 
+I shall indicate two different proofs of the first part of 
+Lemma \ref{lemma:3.3}
+(the first is Lemma \ref{lemma:3.4} (b) and the second is 
+(\ref{eqn:3.12})-(\ref{eqn:3.14}) below).
+ 
+The proof
+of the following lemma, due to R. Langlands, provides an interesting
+application of the Macdonald and Weyl character formulas to the computation of
+the number of fixed points in the unramified case.
+
+\begin{lemma}
+\label{lemma:3.4} 
+First, assume that $E/F$ is unramified, 
+where $E:=F[h]=F[h']$ denotes the splitting
+field of the torus $T_1:=H_{1,h}$ determined by h. 
+
+\begin{itemize}
+
+\item[(a)] 
+If $f_1\in \hhh (SL(2)),\ h\in GL(2,\off )$ then
+
+\[
+\Phi^{T_1,1}(h,f_1) = {1\over{meas\ T(\off )}}\int_{^{L}S(\ccc )}
+\hat{f_1}(s){q+1\over{q-1}}\big[ {\Delta (h)^{-1}\over{q}}
+-{1\over{q}}|c(s)|^{-2}\big]\ ds,
+\]
+where the notation ($T_1$, $^LS$, $c(s)$) is explained below.
+
+\item[(b)] 
+If $f_1 =f_{1,(0,0,0)}$ is the characteristic function of $SL(2,\off )$
+divided by the measure of $SL(2,\off )$ then
+
+\[
+\Phi^{T_1,1}(h,f_1)=Q|{\rm Fix} (h)|.
+\]
+\end{itemize}
+\end{lemma}
+
+{\bf Notation}
+Here $T_1$ denotes the centralizer of $h$ in $H_1$ and
+$^{L}S(\ccc )$ is the maximal compact subgroup of $^{L}H_1(\ccc )$
+consisting of all $s\in {^{L}H_1}(\ccc )$ with eigenvalues a,b having the
+same absolute value. The Haar measure of $^{L}S(\ccc )$ is normalized so 
+that its total volume is $1$. Also, here
+
+\[
+c(s) := {1-q^{-1}ab^{-1}\over{1-ab^{-1}}}
+\]
+is the $p$-adic analog of the Harish--Chandra $c$--function for $SL(2)$
+(\cite{M}, p. 51), so that the Plancherel measure is given by
+
+\[
+{1+q^{-1}\over{2}}|c(s)|^{-2}ds
+\]
+(see \cite{M}, p. 65, \cite{La3}, p. 46).
+
+\pf (of Lemma \ref{lemma:3.4})
+
+(a) Substitute Lemmas 5.3 and 5.5 into Lemma 5.6 of \cite{La3},
+observing that $\Phi^{T_1,1}(h,f_1)=\Delta (h)^{-1}F(h,f_1)$
+(in the notation of \cite{La3}, p. 48).
+
+(b) We want to calculate the Satake transform of ${f_{1,\Lambda}},
+\ \Lambda =(k_1,k_2,k_3)\in\zzz^3, \ k_1\geq k_2\geq k_3$, in the
+case where $\Lambda =(0,0,0)$. By Macdonald's formula 
+\cite{M}, p. 52,
+
+\begin{equation}
+\label{eqn:3.5}
+\hat{f_{1,\Lambda}}(s)
+=\sss \big(s_1^{k_1}s_2^{k_2}s_3^{k_3}\prod_{\alpha >0}
+{1-q^{-1}\alpha (s)^{-1}\over{1-\alpha (s)^{-1}}}\big)
+\cdot Q^{-1}q^{k_3-k_1},
+%\tag 3.5
+\end{equation}
+where the product runs over all positive roots of $sl(3)$ and
+$\sss$ is the {\bf symmetry operator} on polynomials in the 
+$s_i$ defined by
+
+\begin{equation}
+\label{eqn:3.6}
+\sss (P(s_1,s_2,s_3)) := \sum_{\sigma\in S_3}
+P(s_{\sigma (1)},s_{\sigma (2)},s_{\sigma (3)}),
+%\tag 3.6
+\end{equation}
+where $S_3$ denotes the symmetric group on three letters. Let
+${\cal A}$ denote the {\bf anti--symmetry operator} defined by
+
+\begin{equation}
+\label{eqn:3.7}
+{\cal A} (P(s_1,s_2,s_3)) := \sum_{\sigma\in S_3}
+(sgn\  \sigma )P(s_{\sigma (1)},s_{\sigma (2)},s_{\sigma (3)}),
+%\tag 3.7
+\end{equation}
+so that
+
+\begin{equation}
+\label{eqn:3.8}
+{\cal A} (\sigma P) = (sgn\ \sigma ){\cal A} (P),\ \ \ \sigma\in S_3.
+%\tag 3.8
+\end{equation}
+Let $\rho$ denote half the sum of the positive roots.
+Observe that the {\bf Weyl function},
+
+\begin{equation}
+\label{eqn:3.9}
+\begin{split}
+q(s)
+&:=\rho (s)\prod_{\alpha >0}(1-\alpha (s)^{-1})\\
+&=s_1s_3^{-1}(s_1^{-1}s_2)(1-s_2^{-1}s_3)(1-s_1^{-1}s_3),
+\end{split}
+%\tag 3.9
+\end{equation}
+is anti--symmetric in the sense of (\ref{eqn:3.8}) and, by the Weyl character
+formula,
+
+\begin{equation}
+\label{eqn:3.10}
+\begin{split}
+\sss \big(\prod_{\alpha >0}
+{1-q^{-1}\alpha (s)^{-1}\over{1-\alpha (s)^{-1}}}\big)
+&={{{\cal A} \big(\rho (s)\prod_{\alpha >0}(1-q^{-1}\alpha (s)^{-1})\big)}
+\over{\rho (s)\prod_{\alpha >0}(1-\alpha (s)^{-1})}}\\
+&=Q\cdot {\rm tr}\, (r_{trivial}) = Q,
+\end{split}
+%\tag 3.10
+\end{equation}
+where $r_{trivial}$ is the trivial representation on $^{L}H_1$.
+(In fact, for arbitrary $\Lambda$, $\hat{f_{\Lambda}}$ can be expressed
+as a linear combination of characters of finite dimensional representations 
+of $^{L}H$.) The result now
+follows from (\ref{eqn:3.12}) (or Lemma \ref{lemma:4.5}) below and
+Plancherel's formula \cite{La3}, Lemma 5.4.
+\qed
+
+ 
+For the moment, $E/F$ need not be unramified. 
+Let $h\in SL(2,F)$ be non--split,
+so $E/F$ is quadratic and $T:=H_1(h)=H_1(h)^o$ is a non--split Cartan. 
+We have
+
+\begin{equation}
+\label{eqn:3.11}
+\begin{split}
+\int_{T(F)\setminus H_1(F)} f_{1,(0,0,0)}(x^{-1}hx)\ d\ovx
+&={1\over{meas\ T(F)}}
+\int_{H_1(F)} f_{1,(0,0,0)}(x^{-1}hx)\ d\ovx\\
+&={1\over{meas\ T(F)}}|{\rm Fix} _0(h)|,
+\end{split}
+%\tag 3.11
+\end{equation}
+where, in the notation of \cite{Ko2},
+
+\[
+{\rm Fix}_0(h):=\{x\in X_{H_1}(0)\ |\ hx=x\}.
+\]
+If $h^\delta\in \ddd (h),\ T^\delta$ the associated Cartan, for some
+$\delta\in GL(2,F)$, then
+
+\[
+\int_{T^\delta (F)\setminus H_1(F)} f_{1,(0,0,0)}(x^{-1}h^\delta x)\ d\ovx
+= {1\over{meas\ T(F)}}|{\rm Fix} _0(h^\delta )|,
+\]
+since the Haar measures on $T$ and $T^\delta $ have been chosen so that
+$meas\ T(F)=meas\ T^\delta (F)$ (we have $T^\delta \cong T$ over $\ovF$ and
+the Haar measure on $T^\delta $ is defined by the pull--back of that 
+on $T$).
+ 
+The following facts (which can be found in \cite{Bl}, ch. 1), 
+play a role here: if $h$ splits over a
+ramified extension, then the fixed points of $h$ (or of $h^\delta $) in
+the tree of $H_1(F)$ are those less than a certain distance
+from a certain point in the first barycentric
+subdivision of $X_{H_1(F)}$; if $h$ splits over an unramified extension
+then the fixed points are those less than a certain distance from a 
+certain vertex in $X_{H_1(F)}$. In the ramified case the fixed 
+points occur in pairs, one in $X(0)$ and
+the other in $X(1)$. In particular, if $T$ is ramified then 
+$|{\rm Fix} _0(h)| = |{\rm Fix} _0(h^\delta )|$ and
+$|{\rm Fix} _1(h)| = |{\rm Fix} _1(h^\delta )|$. Writing
+
+\[
+{\rm Fix}(h) = {\rm Fix} _0(h)\cup {\rm Fix}_1(h),
+\ \ {\rm (disjoint\ union)},
+\]
+where ${\rm Fix}_i(h):= X_{H_1(F)}(i)\cap {\rm Fix} (h)$, we have
+in the unramified case
+
+\[
+|{\rm Fix} _0(h)|=|{\rm Fix} _1(h^\delta )|,
+\ \ \ |{\rm Fix} _0(h^\delta )|=|{\rm Fix} _1(h)|,
+\]
+and therefore, by (\ref{eqn:1.23}),
+
+\begin{equation}
+\label{eqn:3.12}
+\Phi^{T,1}(h,f_{1,(0,0,0)}) = {1\over{meas\ T(F)}}|{\rm Fix} (h)|.
+%\tag 3.12
+\end{equation}
+A similar result holds for $\Phi_{H_2}(h',f_{2,(0,0,0)})$, where
+$h'\in N_2(g)\cap H_2(F)$.
+ 
+Suppose $|{\rm det }\, h| =|\pi |^{2n}$, for some $n\in\zzz$. This is 
+necessary for Fix$(h)\not=\emptyset$. If $E/F$ is ramified then the
+orbits on $X_{H_1}$ under $T(F)$ are twice as large as the orbits under
+$T(F)\cap H_1(\off )$, so that
+
+\begin{equation}
+\label{eqn:3.13}
+meas\ T(F) = 2\cdot meas(T(F)\cap H_1(\off ))
+%\tag 3.13
+\end{equation}
+(see \cite{La3}, p. 52); if $E/F$ is unramified then
+
+\begin{equation}
+\label{eqn:3.14}
+meas\ T(F)= meas(T(F)\cap H_1(\off )).
+%\tag 3.14
+\end{equation}
+These follow from the classification of the Cartan 
+subgroups of $H_1(F)$ in terms
+of the extensions of $F$. Recall that Haar measures have already been choosen 
+so that 
+
+\[
+meas(G(g\sigma ,F)\cap G(\off ))=meas(H_1(h,F)\cap H_1(\off )).
+\]
+This proves the first part of (\ref{lemma:3.3}). 
+The second part of (\ref{lemma:3.3}) follows along 
+similar lines.
+ 
+Langlands' proof that $R(\Lambda )=r(\Lambda )$ uses the identity (actually
+a facsimile thereof, given below)
+
+\begin{equation}
+\label{eqn:3.15}
+R(\Lambda )=Q(\Lambda )q^{k_3-k_1}\sum_{g'\in \ddd (g)}
+\sum_{\substack{P\\Inv(g'\sigma (P),P)=\Lambda}} 1,
+%\tag 3.15
+\end{equation}
+where
+
+\[
+Q(\Lambda )=
+\begin{cases} 1,&\ \ \ \ \ \ k_1>k_2>k_3,\\
+1+q^{-1},&\ \ \ k_1=k_2, {\rm  or  }\, k_2=k_3,\ {\rm  but }\ k_1\not= k_3,\\
+Q,&\ \ \ \ \ \ \ \Lambda = (0,0,0),
+\end{cases} ,
+\]
+and the inner sum runs over the vertices in the building for
+$G(F)$ (the inner sum is independent of the representative $g'$ choosen 
+for the $\sigma$--conjugacy class). In case $N_1(g)$ has distinct
+eigenvalues not in $F$, by explicitly analyzing the proof of Lemma 
+\ref{lemma:1.21} one
+can show that, as sets,
+
+\begin{equation}
+\label{eqn:3.16}
+\ddd_{\sigma}(g) \cong H^1(F,G(g\sigma )) 
+\cong F^{\times}/N_{_{E/F}}(E^{\times}),
+%\tag 3.16
+\end{equation}
+where $E$ denotes the quadratic extension determined 
+by the eigenvalues of $N_1(g)$. 
+Very briefly, one uses (\ref{eqn:3.16}) 
+to parameterize $\ddd_{\sigma}(g)$
+in terms of certain representatives $g_a,\ a\in F^{\times}$. 
+One can
+show that this parameterization satisfies the following property:
+two such $g_a,\ g_b$ belong to the same class in $\ddd_\sigma (g)$ 
+if and only if
+$a\cdot N_{_{E/F}}(E^{\times})=b\cdot N_{_{E/F}}(E^{\times})$. 
+Rather than (\ref{eqn:3.15}), it is actually 
+necessary to use the more general identity
+
+\begin{equation}
+\label{eqn:3.17}
+R(\Lambda )={2\over{[F^{\times}:U]}}
+Q(\Lambda )q^{k_3-k_1}\sum_{a\in F^{\times}/U}
+\sum_{\substack{ P\\Inv(g_a\sigma (P),P)=\Lambda}} 1,
+%\tag 3.17
+\end{equation}
+where $U\subseteq N_{_{E/F}}(E^{\times})\subseteq F^{\times}$
+is a compact open subgroup of finite index. Similarly, we have
+
+\begin{equation}
+\label{eqn:3.18}
+S(\Lambda )={\pm 2\over{[F^{\times}:U]}}|(1+\beta_1)(1+\beta_2)|^{1/2}
+Q(\Lambda )q^{k_3-k_1}\sum_{a\in F^{\times}/U}
+\sum_{\substack{P\\Inv(g_a\sigma (P),P)=\Lambda}} 
+\kappa (g_a),
+%\tag 3.18
+\end{equation}
+where $\kappa :\ddd_{\sigma }(g) \rightarrow \{\pm 1\}$
+is defined to be $+1$ on the element of $H^1(F,G(g\sigma ))$
+corresponding to the split inner form of $G(g\sigma ))$ and to be
+-1 on the other element. The $\pm$ sign is choosen so that 
+$\pm\kappa(g_a)=(a,\epsilon)_2$, where $E=F(\sqrt{\epsilon})$
+and $(\ ,\ )_2$ denotes the quadratic Hilbert symbol
+attached to $F$. The sign $\kappa$ satisfies the following property:
+
+\begin{lemma}
+\label{lemma:3.19}
+%{Fact 3.19} 
+For any $g',\ g'' \in G(F)$, we have
+$\kappa (g')=\kappa (g'')$ if and only if $g'$ and $g''$ belong to the
+same class in $\ddd_\sigma (g)$.
+\end{lemma}
+ 
+The expressions (\ref{eqn:3.17}), (\ref{eqn:3.18}), 
+and those in Lemma \ref{lemma:3.3} constitute 
+the desired reductions.
+
+% === END ORIGINAL adjoint_lift3.tex ===
+% === BEGIN ORIGINAL adjoint_lift4.tex ===
+
+\section{The buildings for $PGL(3)$ and $SL(2)$}
+\label{sec:4}
+
+For background, see for example \cite{Ko1} and \cite{T}.
+The results (and pictures) in this section are, as 
+mentioned earlier, due to R. Langlands
+\cite{La1}. We assume $p\not= 2$ throughout this section.
+ 
+Fix a vector space $V$ over $F$ of dimension either 2 or 3.
+We may consider the buildings $\bbb (G),\ \bbb (H_1)$ for $G,\ H_1$
+as graphs of lattice classes; if L is a rank two or three $\off$--lattice
+in $V$
+then its class is denoted by [L]. Recall that two vertices $[L_1],\ [L_2]$
+are to be joined by an {\bf edge} if and only if there exist 
+$\lambda_1,\ \lambda_2 \in F^{\times}$ such that
+
+\begin{equation}
+\label{eqn:4.1}
+\pi\lambda_1 L_1 \sne \lambda_2 L_2 \sne \lambda_1 L_1.
+%\tag 4.1
+\end{equation}
+The edge from $[L_2]$ to $[L_1]$ is {\bf positively directed} if (4.1)
+holds and if $\lambda_1 L_1/\lambda_2 L_2$ is a module of rank one
+over the residue field.
+Three vertices $L_1,\ L_2,\ L_3$ are the vertices of a 2-simplex
+or {\bf chamber} of $\bbb (G)$ if and only if there exists
+$\lambda_1,\ \lambda_2,\ \lambda_3 \in F^{\times}$ such that
+
+\begin{equation}
+\label{eqn:4.2}
+\pi\lambda_1 L_1 \sne \lambda_3L_3 
+\sne \lambda_2 L_2 \sne \lambda_1 L_1.
+%\tag 4.2
+\end{equation}
+ 
+To describe the action of $G$ on
+$\bbg$ one must first represent $g \in G(F)$ by a matrix
+$A\in GL(3,F)$. The point is that the definition of the lattice class
+implies that the center acts trivially, so the action of
+$g = A\cdot Z(F)$ is well--defined, where $Z(F)$ denotes the
+center of $G(F)$. Explicitly, the action of G(F) on $\bbg$ is given by
+$g: [L] \longmapsto [AL].$
+The action of $H_1$ on $\bbH1$ is simpler: $h\in H_1(F)$ sends
+$[\Lambda ]$ to $[h\Lambda ]$. These actions send vertices to vertices, 
+edges to edges, chambers to chambers
+(in the case of $\bbg$), preserve orientation and are
+automorphisms of the buildings. 
+ 
+The action of $\sigma$ on $\bbg$, however, does not preserve orientation.
+This ``anti--automorphism'' sends a lattice $L$ to its dual lattice
+
+\begin{equation}
+\label{eqn:4.3}
+\check{L} :=\{v \in V\ |\ {^{t}v}\cdot v' \in \off , \ \forall v' \in L\}.
+%\tag 4.3
+\end{equation}
+If $L=g\Lambda_0$, where $\Lambda_0$ denotes the lattice class of
+$\off^3$, then this means
+
+\[
+\sigma : g\Lambda_0 \longmapsto {^{t}g^{-1}}\Lambda_0.
+\]
+The composition $g\sigma$ acts by sending $[L]$ to $[A\check{L}]$. It is the
+fixed point set of $g\sigma$ in $\bbg$ that we want to describe.
+
+\begin{lemma}
+\label{lemma:4.4} 
+\begin{itemize}
+
+\item[(a)] 
+Suppose that the number of fixed points of 
+$h\in H_1(F)$ in $\bbH1$ is finite: $|{\rm Fix}(h)| < \infty$. 
+(This is the case if
+$h$ is elliptic regular, i.e., the eigenvalues of $h$ generate a quadratic
+extension of $F$.) Then, for any $x\in H_1(F)$, we have 
+$|{\rm Fix}(h)| =|{\rm Fix}(x^{-1}hx)|$,
+i.e., the number of fixed points depends only on the conjugacy class of $h$.
+
+\item[(b)] 
+Suppose that the number of fixed points of $g\sigma$ in $\bbg$ is
+finite: $|{\rm Fix}(g\sigma )|<\infty$. (This is the case if $N_1(g)$ is 
+elliptic regular.) Then, for any $x\in PGL(3,F)$, we have 
+$|{\rm Fix}(g\sigma )| = |{\rm Fix}((x^{-1}g\sigma (x))\sigma )|$,
+i.e., the number of fixed points of $g\sigma$ depends only on the
+$\sigma$--conjugacy class of $g$.
+\end{itemize}
+\end{lemma}
+
+\begin{remark}
+The proof of this lemma is easy, hence is omitted. 
+If $h,\ h'$ are stably conjugate but not conjugate over $F$ one
+may have $|{\rm Fix}(h)|\not= |{\rm Fix}(h')|$, 
+and a similar statement holds for
+$\sigma$--conjugacy.
+\end{remark}
+ 
+The following result is well-known. 
+
+\begin{lemma}
+\label{lemma:4.5} 
+Let $h\in GL(2,F)$ be an elliptic regular element
+with $\Delta_{H_2} (h)=q^{-k}$, for some $k\geq 0$. Let $E/F$ denote the
+quadratic extension generated by $h$. 
+
+\begin{itemize}
+\item 
+If $E/F$ is unramified then
+
+\[
+|{\rm Fix}(h)|={{q^{k+1}+q^k-2}\over{q-1}}.
+\]        
+\item 
+If $E/F$ is ramified then
+
+\[
+|{\rm Fix}(h)|={2(q^k-1)\over{q-1}}.
+\]        
+(We have used the fact that the conductor of $E/F$, as defined in \cite{Bl},
+is $1$ in the ramified case.)
+\end{itemize}
+\end{lemma}
+
+We now describe an embedding
+
+\[
+\bbb (H_1) \hookrightarrow \bbb (G).
+\]
+First, replace the tree $\bbb (H_1)$ by the product of itself with 
+the affine line:
+replace all vertices by lines (copies of $V_A$ running perpendicular to the 
+edges, as visualized in three dimensions) and all edges by strips. 
+This figure may be regarded as $\bbb (GL(2))$. 
+In order to embed this into
+$\bbb (G)$, one must impose a simplicial structure on it compatible with that
+of $\bbb (G)$. 
+Each line $\overline{\Lambda}$ of $\bbb (GL(2))$ associated to a
+vertex $\Lambda$ of $\bbb (H_1)$ must first be provided with its 
+own vertices. 
+We define the vertices on $\overline{\Lambda}$ to be 
+$\Lambda_{(n)} :=\pi^{-n}\off + \Lambda$,
+for fixed embeddings
+$\pi^{-n}\off \hookrightarrow V_A,\ \Lambda\hookrightarrow W_A$. 
+Here $V_A, \ W_A$ are as in subsection 1.3. Given two neighboring
+vertices $\Lambda , \Lambda '$ of $\bbb (H_1)$ we obtain neighboring lines
+$\overline{\Lambda},\ \overline{\Lambda '}$ and the vertices of these lines 
+are joined by an edge if they are neighbors. 
+This simplicial structure 
+on $\bbb (GL(2))$ defines an embedding of
+$\bbb (H_1)$ into $\bbb (G)$ whose image we denote by $\zz = \zz (V_A,W_A)$. 
+Let
+
+\[
+\pi\lambda \Lambda \sne \lambda ' \Lambda ' 
+\sne \lambda \Lambda ,
+\]
+and let $L'_{(n)} := \pi^{-n}\off + \Lambda ', 
+\ L_{(n)}:=\pi^{-n}\off + \Lambda$. The band in $\zz$ associated to the edge 
+joining $\Lambda $ and $\Lambda '$ in $\bbH1$ is represented by a 
+picture of the following sort:
+
+%%figure (4.6) on page 1119
+\begin{figure}[!h!]
+\begin{picture}(200.00,100.00)(-120.00,0.00)
+\thicklines
+\put(-80.00,50.00){\line(1,0){220.00}} 
+\put(-10.00,60.00){$L_{(-1)}$} 
+\put(-2.00,47.00){$\bullet$} 
+\put(0.00,50.00){\line(1,-1){50.00}}
+\put(100.00,50.00){\line(1,-1){30.00}}
+\put(-60.00,-23.00){$L'_{(-1)}$} 
+\put(-52.00,-3.00){$\bullet$} 
+\put(0.00,50.00){\line(-1,-1){50.00}}
+\put(47.00,-3.00){$\bullet$}  
+\put(90.00,60.00){$L_{(0)}$} 
+\put(-80.00,0.00){\line(1,0){220.00}}
+\put(40.00,-23.00){$L'_{(0)}$} 
+\put(50.00,0.00){\line(1,1){50.00}}
+\put(-50.00,0.00){\line(-1,1){20.00}}
+\put(98.00,47.00){$\bullet$}  
+\put(158.00,43.00){$\Lambda$}  
+\put(158.00,-7.00){$\Lambda'$}  
+\end{picture}
+\vskip .3in
+\caption{The band in the apartment \label{fig:4.6}}
+\end{figure}
+\vskip .4in
+
+\noindent
+The lines in $\zz$ have been drawn in such a way that the positive direction 
+on them is from left to right. As mentioned earlier, the action of
+$\text{Aut}_F(W_A) \hookrightarrow \text{Aut}_F(W_A +V_A)$ on $\zz$ preserves
+orientation. 
+The action of $\sigma$ on $\bbg$ does not even restrict to an action
+on $\zz = \zz (V_A,W_A)$. However, the action of $g\sigma$, with 
+$g=[A] \in G(F)$ 
+represented by $A \in GL(3,F)$, does send $\zz (V_A, W_A)$ to
+$\zz (AW_A^{\bot}, AV_A^{\bot}) = \zz (V_A, W_A)$, reversing orientation. 
+Here we have used the fact the $AW_A^{\bot} = V_A$ and 
+$AV_A^{\bot}=({^{t}A^{-1}}V_A)^{\bot}$, by definition of $W_A$.
+As we shall see, thanks to Corollary \ref{cor:1.14} it turns out 
+to be sufficient
+for our purpose of relating fixed points of $g\sigma$ 
+in $\bbg$ with fixed points
+of $h\in N_1(g),\ h\in H_1(F),$ in $\bbH1$ to assume that the matrix A in
+$GL(3,F) \cong \text{Aut}_F(V_A +W_A)$ is in $(1,2)$-block form. 
+For such
+matrices, it is possible to explicitly realize the action of $g\sigma$
+on $\zz$ in terms of the geometry described above. 
+In fact, this is what we do next.
+ 
+In \cite{La1}, R. Langlands introduced the notion of a ``characteristic
+leaf'' to understand explicitly vertices in $\bbg$ not in $\zz$ in terms
+of vertices in $\zz$. 
+This notion is very useful for relating fixed
+points of $g\sigma$ in $\bbg$ to fixed points of $h\in N_1(g)$ in $\bbH1$. 
+Given
+$L:=\pi^n\off +\pi^a\off +\pi^b\off$, let $M_1:=\pi^n\off,\ M_2:=\pi^b\off,
+\ M_3:=\pi^{-b}\off$. 
+Consider the vertices of the {\bf characteristic
+leaf} for $L$:
+
+\begin{equation}
+\label{eqn:4.7}
+\begin{split}
+&L':= M_1 +M_2 +M_3 \in \zz,\\ 
+&L:= \pi^b M_1 + M_2 +M_3 \notin \zz,\\ 
+&L'':= \pi^b M_1 +\pi^b M_2 + M_3 \in \zz,
+\end{split}
+%\tag 4.7
+\end{equation}
+depicted in Figure \ref{fig:4.8}.
+
+\begin{figure}[!h!]
+\begin{picture}(200.00,150.00)(-120.00,0.00)
+\thicklines
+\put(-50.00,100.00){\line(1,0){220.00}}
+\put(-50.00,0.00){\line(1,0){220.00}}
+\put(71.00,50.00){$\bullet$} 
+\put(80.00,-20.00){$L''$} 
+\put(86.00,-2.00){$\bullet$} 
+\put(135.00,97.00){$\bullet$} 
+\put(60.00,50.00){$L$} 
+\put(140.00,110.00){$L'$} 
+\put(90.00,00.00){\line(3,6){50.00}}
+
+\thinlines
+\put(90.00,00.00){\line(-1,3){17.00}}
+\put(72.00,52.00){\line(4,3){65.00}}
+
+\end{picture}
+\vskip .3in
+\caption{A characteristic leaf \label{fig:4.8}}
+\end{figure}
+
+\vskip .3in
+\noindent
+The vertices of the simplices forming the equilateral triangle
+are given by
+$\pi^{n_1}M_1 +\pi^{n_2}M_2 + M_3,\ 0 \leq n_2 \leq n_1 \leq b$.
+The segment of length $|b|$ joining $L'$ to $L''$ is called the
+{\bf characteristic base} or {\bf segment}. This base degenerates to a
+vertex if $L \in \zz$ and otherwise it may be regarded as 
+an equilateral triangle, under a suitable metric structure on $\bbg$.
+
+\begin{lemma}
+\label{lemma:4.9} 
+(\cite{La1}) 
+Suppose $g\in G(F)$ is such that $N_1(g)$
+is elliptic regular. Then the following hold.
+
+\begin{itemize}
+\item[(a)] 
+$g\sigma$ sends the characteristic leaf of $L$ to the characteristic leaf
+of $g\check{L}$.
+
+\item[(b)] 
+For each vertex $\Lambda$ in $\bbH1$, $g\sigma$ sends the line 
+$\{\pi^{-n}\off +\Lambda\ |\ n\in \zzz\}$
+of $\zz$ with positive orientation to another line 
+$\{\pi^m\off +\Lambda ' \ |\ m \in \zzz\}$ in
+$\zz$ with reversed orientation.
+
+\item[(c)] 
+$g\sigma$ sends the characteristic base of the leaf for L to the
+characteristic base (with orientation reversed) for $g\check{L}$;
+
+\item[(d)] 
+For any $h\in SL(2,F)$ representing $N_1(g)$, the action of
+$h$ on $\zz$ is the same as the action of $(g\sigma)^2$ restricted
+to $\zz$.
+\end{itemize}
+\end{lemma}
+
+\begin{remark}
+The $h \in H_1(F)$ in (d) is fixed for the rest of this section.
+\end{remark}
+
+\pf
+We may assume by Corollary \ref{cor:1.14} that $g$ is represented by a 
+$(2,1)$-block matrix $A\in GL(3,F)$ in the basis giving the embedding
+$\zz$. From this the four statements (a)-(d) follow without difficulty
+from simple facts about buildings. 
+\qed
+
+In particular, (d) implies that if $\overline{\Lambda '},
+\ \overline{\Lambda ''}$ are lines associated to two fixed points
+$\Lambda ', \Lambda ''$ of $h \in N_1(g)$ and if the endpoints $L'$, $L''$
+of the vertices of the characteristic base lie on $\overline{\Lambda '},
+\ \overline{\Lambda ''}$, respectively, then $g\sigma$ ``flips'' $L$
+and its leaf about a certain ``dotted'' line $D_A$ (which depends only
+on $A$, not on $L$, $L'$, $L''$, and lies in the first barycentric
+subdivision of $\bbg$ but does not necessarily lie in $\bbg$):
+
+
+%%figure (4.10) on page 1121
+\begin{figure}[!h!]
+\begin{picture}(200.00,150.00)(-120.00,0.00)
+\thicklines
+\put(-50.00,100.00){\line(1,0){250.00}}
+\put(-50.00,0.00){\line(1,0){250.00}}
+%left leaf
+\put(-29.00,50.00){$\bullet$} 
+\put(-20.00,-20.00){$L''$} 
+\put(-14.00,-2.00){$\bullet$} 
+\put(35.00,97.00){$\bullet$} 
+\put(-35.00,33.00){$L$} 
+\put(40.00,110.00){$L'$} 
+\put(-10.00,00.00){\line(3,6){50.00}}
+
+%right leaf
+\put(91.00,50.00){$\bullet$} 
+\put(100.00,-20.00){$M''$} 
+\put(106.00,-2.00){$\bullet$} 
+\put(155.00,97.00){$\bullet$} 
+\put(86.00,33.00){$M$} 
+\put(160.00,110.00){$M'$} 
+\put(110.00,00.00){\line(3,6){50.00}}
+
+\thinlines
+%right leaf
+\put(110.00,00.00){\line(-1,3){17.00}}
+\put(92.00,52.00){\line(4,3){65.00}}
+
+%left leaf
+\put(-10.00,00.00){\line(-1,3){17.00}}
+\put(-28.00,52.00){\line(4,3){65.00}}
+
+%middle line
+\put(50.00,00.00){\line(3,6){50.00}}
+\put(43.00,33.00){$D_A$} 
+
+\put(-110.00,0.00){$\Lambda'' =\gamma \Lambda''$} 
+\put(-110.00,100.00){$\Lambda' =\gamma \Lambda'$} 
+\end{picture}
+\vskip .3in
+\caption{Flipping characteristic leafs \label{fig:4.10}}
+\end{figure}
+
+\vskip .4in
+\noindent
+If $N_1(g)$ does not contain a unipotent then by Corollary 
+\ref{cor:1.14} we may assume that the
+matrix $A\in GL(3,F)\cong \text{Aut}_F(V_{A'}+W_{A'})$ 
+representing $g=[A]$ is in block form:
+
+\begin{equation}
+\label{eqn:4.11}
+A = 
+\left(
+\begin{array}{cc}
+u\pi^c&\ \\\ &C
+\end{array}
+\right) ,
+\ \ \ C\in GL(2,F),\ u\in \off^{\times},\ c\in\zzz . 
+%\tag 4.11
+\end{equation}
+(Here $[A']$ is the matrix in Corollary \ref{cor:1.14} 
+which belongs to the same stable
+$\sigma$--conjugacy class as $[A]$.)
+In this case, $A\sigma$ sends the lattice $\pi^{-n}\off +\Lambda$ in $\zz$ to
+$\pi^{c+n}\off +\Lambda '$, for some $\Lambda '$. If we parameterize
+the vertices in the lines in Figure \ref{fig:4.8} 
+by the integers then, in a sense, 
+$D_A$ may be thought of 
+as the ``$c/2$--line''. It belongs to $\bbg$ if and only if $c$ is even. 
+Suppose that $c$ is even and that 
+
+\begin{equation}
+\label{eqn:4.12}
+\begin{split}
+&A\sigma : [\pi^{-n}\off +\Lambda] \longmapsto [\pi^{c+n}\off +\Lambda '],\\
+&A\sigma : [\pi^{-n}\off +\Lambda '] \longmapsto [\pi^{c+n}\off +\Lambda].
+\end{split}
+%\tag 4.12
+\end{equation}
+It can be shown without much effort that, in this case,  
+$[\Lambda ],\ [\Lambda ']$ in $\zz$ correspond to two fixed points of
+$h \in N_1(g)$ in $\bbH1$. Also, it is not hard to see that,
+
+\begin{lemma}
+\label{lemma:4.13}
+%{Fact 4.13} 
+Suppose c is even and L is a fixed point of
+$[A]\sigma$ whose characteristic base has endpoints lying on the
+lines $\overline{\Lambda '}\not= \overline{\Lambda ''}$. Then 
+the following hold.
+
+\begin{itemize}
+\item[(a)] 
+$D_A$ intersects the lines 
+$\overline{\Lambda '},\ \overline{\Lambda ''}$
+at the two vertices which determine the endpoints of the characteristic base 
+of L and
+
+\item[(b)] 
+The lines $\overline{\Lambda '},\ \overline{\Lambda ''}$ in $\zz$
+correspond to two fixed points of $h$ in $\bbH1$.
+\end{itemize}
+\end{lemma}
+
+\begin{remark} 
+There is a simpler version of this dealing with the case 
+$\overline{\Lambda '}= \overline{\Lambda ''}$.
+In this way, we will obtain a ``2-1'' correspondence, when
+$c$ is even, between \underbar{pairs} of fixed points of $h$ in $\bbH1$ and
+fixed points of $[A]\sigma$ in $\bbg$. One important point to bear in mind is 
+that when $c$ is \underbar{odd} then the line $D_A$ cannot intersect $\bbg$
+and therefore there can be \underbar{no} fixed points of $[A]\sigma$ in this
+case. So far we have only shown that (when $c$ is even) given a fixed point 
+of $[A]$ in $\bbg$ there are associated two fixed points
+of $h$ in $\bbH1$.
+\end{remark}
+ 
+From the reduction of \S \ref{sec:3} 
+one sees that it is also necessary to know what
+happens when $A$ in (\ref{eqn:4.11}) is replaced by a matrix $A'$ 
+stably $\sigma$--conjugate
+to $A$ but not $\sigma$--conjugate to $A$ over $F$. Of course, 
+$N_1([A])=N_1([A'])$ so $A'$ may be put in $(1,2)$-block 
+form as in (\ref{eqn:4.11}),
+for some $c'\in\zzz ,\ C'\in GL(2,F),\ u'\in\off^{\times}$. 
+If moreover the eigenvalues of $h$ determine an unramified 
+extension of $F$ then
+$c'$ and $c$ have different parity. On the other hand, if $A'$ and $A$
+are $\sigma$--conjugate over $F$ then $c$ and $c'$ do have the same parity, so
+we have the following result.
+
+\begin{lemma}
+\label{lemma:4.14}
+%{Fact 4.14} 
+The parity of $c$ depends only on the stable 
+$\sigma$--conjugacy class of $[A]$. If the eigenvalues of $h$ determine an
+unramified extension of $F$ (the ``unramified case'') and $A$, $A'$ are stably 
+$\sigma$--conjugate but not
+$\sigma$--conjugate over $F$ then either $c$ or $c'$ is even (but not both). 
+\end{lemma}
+
+By the previous paragraph, in this ``unramified case'', there is either 
+a fixed point of $A\sigma$ (and $A'\sigma$ has no fixed point) or a
+fixed point of $A'\sigma$ (and $A\sigma$ has no fixed point). 
+ 
+The problem now is to deal with the converse of Lemma \ref{lemma:4.13}: 
+given a pair of fixed points
+of $h \in N_1(g)$, associate to them fixed point of $A\sigma$. Instead
+of proving this, we shall prove that this holds ``on average'', which is
+sufficient for our purposes.
+For this the following lemma is crutial, but first we need some notation:
+Let $d$ be the maximum distance
+between two fixed points of $h$, let the eigenvalues of $h$
+determine a quadratic extension $E$ of $F$, and suppose that
+
+\begin{equation}
+\label{eqn:4.15}
+U(d):=U_d\pi^{2\zzz}:=
+\{x\in\off^{\times}\ |\ x\equiv 1 \, {\rm mod}\, \pi^d\}\pi^{2\zzz}
+\subseteq N_{_{E/F}}(E^{\times})
+%\tag 4.15
+\end{equation}
+is finite index in $F^{\times}$. Let ${\cal S}$ denote the set of 
+$a\in F^{\times}$ for which
+$P'\not= P''$ exist (for a fixed $p'$, $p''$) and satisfying (ai)-(aiv) in the 
+lemma below. Here $A_a$ is defined to be a representative of $g_a$, where 
+$g_a$ is defined in the paragraph following (\ref{eqn:3.16}) and $A$ is our
+representative of $g$ choosen at the beginning of this section. We may,
+by Corollary \ref{cor:1.14}, choose all the $A_a$ to be in block form as in 
+(\ref{eqn:4.11}).
+$A_a\sigma$ may have no
+fixed points; however, if it does, let $P_0$ denote one of them. Let
+$U_n$ denote the stabilizer of the action of 
+$T_a :=(A_a\sigma )(A\sigma )^{-1}$ on $P_0$, for some $n\geq 0$, with
+$U_n$ as in (\ref{eqn:4.15}).
+
+\begin{lemma}
+\label{lemma:4.16} 
+(\cite{La1}, Lemma 5.1) 
+Suppose that $p'$, $p''$ are 
+vertices in
+$\bbH1$ (possibly $p'$ = $p''$) and that $[A]\sigma$ ``flips'' the lines
+in $\bbg$ associated to $p'$, $p''$ onto each other. Then:
+
+\begin{itemize}
+\item[(a)] 
+For each $a\in F^{\times}$ there exists at most one pair $P'$, $P''$
+of vertices in $\bbg$ with
+
+\begin{itemize}
+\item[(i)] 
+$ P'$ lying on the line associated to $p'$,
+
+\item[(ii)] 
+$P''$ lying on the line associated to $p''$,
+
+\item[(iii)]
+In the notation of \S \ref{sec:3}, $A_a\sigma (P') = P'',
+\ A_a\sigma (P'')=P'$.
+
+\item[(iv)] 
+$P'$, $P''$ form the extreme vertices of a characteristic
+segment.
+\end{itemize}
+
+\item[(b)] 
+Suppose $a\in F^{\times}$ is such that a pair $p'$, $p''$ exists for $A_a$.
+Then a pair exists for $A_b$ (for the same $p'$, $p''$) if and only
+if $aN_{_{E/F}}(E^{\times})=bN_{_{E/F}}(E^{\times})$.
+
+\item[(c)] 
+Let ${\cal S},\ P_0,$ and $U_n$ be as above, and assume that $n\geq 1$.
+Then $n \leq d$ and there are $[\off^{\times}:U_n]$ distinct
+P's with segment $(P',P'')$ such that $(A_a\sigma )P = P$.
+
+\item[(d)] 
+If $|{\rm Fix}(A_a\sigma )|\not= 0$ then $|{\rm Fix}(A_{a\pi}\sigma )|=0$,
+for $E/F$ unramified.
+
+\item[(e)] 
+In the notation of part (c),
+
+\[
+{1\over{[\off^{\times}:U_d]}}\sum_{a\in F^{\times}/U(d)}
+\sum_{\substack{ P\\A_a\sigma P = P\\P \text{ has segment }(P',P'')}}
+1 
+={1\over{[\off^{\times}:U_n]}}\sum_{a\in F^{\times}/U(n)}
+\sum_{\substack{ P\\A_a\sigma P = P\\P \text{ has segment }(P',P'')}}
+1 .
+\]
+\end{itemize}
+
+There is an obvious ``$\kappa$--analog'' (see (\ref{eqn:3.18})) 
+of the above equation 
+whose statement is left to the reader.
+\end{lemma}
+
+\begin{remark} 
+(a) When applying this lemma to (\ref{eqn:3.17}) or 
+(\ref{eqn:3.18}), one uses the fact that
+
+\[
+{1\over{2}}[F^{\times}:U(n)] = [\off^{\times}:U_n].
+\]
+(b) For the situation in Lemma \ref{lemma:4.13}(c) when n = 0, 
+see \S \ref{sec:5}. The ``matching''
+is then $P = P' = P''\longmapsto p'=p''$.
+\end{remark}
+
+Let me now sketch the proof of this lemma. Consider the situation
+described by the following diagram:
+
+%%figure (4.17) on page 1123
+\begin{figure}[!h!]
+\begin{picture}(200.00,100.00)(-180.00,0.00)
+\thicklines
+\put(-100.00,50.00){\line(1,0){270.00}} 
+\put(-10.00,60.00){$Q'$} 
+\put(-2.00,47.00){$\bullet$} 
+\put(0.00,50.00){\line(1,-1){50.00}}
+\put(100.00,50.00){\line(1,-1){50.00}}
+\put(140.00,-23.00){$Q''$} 
+\put(148.00,-3.00){$\bullet$} 
+\put(0.00,50.00){\line(-1,-1){30.00}}
+\put(47.00,-3.00){$\bullet$}  
+\put(90.00,60.00){$P'$} 
+\put(-100.00,0.00){\line(1,0){270.00}}
+\put(40.00,-23.00){$P''$} 
+\put(50.00,0.00){\line(1,1){50.00}}
+\put(150.00,0.00){\line(1,1){20.00}}
+\put(98.00,47.00){$\bullet$}  
+\put(-150.00,20.00){$P',P'',Q',Q''\in {\cal Z}$}  
+\end{picture}
+
+\vskip .3in
+\caption{Another band in the apartment \label{fig:4.17}}
+\end{figure}
+
+\vskip .4in
+\noindent
+In this case, as we've noted above, there are three rank one $\off$--modules
+$M_1,\ M_2,\ M_3$ such that
+
+\[
+\begin{split}
+&P' = [M_1+M_2+M_3],\ \ P''=[\pi^bM_1+\pi^bM_2 +M_3],\\
+&Q' = [\pi^bM_1+M_2+M_3],\ \ Q''=[M_1+\pi^bM_2 +M_3].
+\end{split}
+\]
+
+\begin{lemma}
+\label{lemma:4.18}
+
+\begin{itemize}
+\item[(a)] 
+The vertices $P$ in $\bbg$ with characteristic segment $(P',P'')$,
+$P' \not= P''$, correspond to rank three lattices
+$L+M_3$, where $L$ is a lattice satisfying
+\newline
+$\ \ (i) \pi^bM_1 +\pi^bM_2 \subseteq L \subseteq M_1+M_2,$
+\newline
+$\ \ (ii) \pi^{b-1}M_1 + \pi^{b-1}M_2 \not\subset L,$
+\newline
+$\ \ (iii) L \not\subset \pi M_1+\pi M_2,$
+\newline
+$\ \ (iv)  L \not\subset \pi M_1+ M_2 =:M',$
+\newline
+$\ \ (v) \  L \not\subset  M_1+\pi M_2=:M''.$
+\newline
+
+\item[(b)] 
+If $u\in \off^{\times}$ then the action of 
+$T_u := (A_u\sigma )(A\sigma )^{-1}$ on $\zz$ induces an action of 
+$\off^{\times}$ on the lattices $L$ in (a). This action agrees with
+that defined by the matrix
+
+\[
+\left(
+\begin{array}{cc}
+u&0\\0&1 
+\end{array}
+\right),
+\]
+and, moreover, it is transitive on the set of $L$'s.
+\end{itemize}
+\end{lemma}
+
+\pf
+(of Lemma \ref{lemma:4.18})
+The stabilizer of any point $P$ with segment $(P',P'')$ under the action of 
+$\off^{\times}$ via $T_u$ is of the form $U_b$, for some $b\geq 1$. Thus
+
+\begin{equation}
+\label{eqn:4.19}
+P'=A\sigma T_u(P)=T_uA\sigma (P)=A_u\sigma (P)=P,
+%\tag 4.19
+\end{equation}
+for some $u\in\off$ uniquely determined modulo $U_b$. In other words, if $P$ 
+has segment $(P',P'')$ then there is a $u\in \off^{\times}$ such that
+$A\sigma T_u (P)=P$ and
+
+\[
+\left(
+\begin{array}{cc}
+u'&0\\0&1 \end{array}
+\right),\ \ u'\in U_b,
+\]
+not only stabilizes $A\sigma (P)$ but also commutes with $T_u, \ u\in
+\off^{\times}$. 
+\qed
+
+From these facts, Lemma \ref{lemma:4.16} follows. 
+As a corollary, we obtain $r(0)=R(0)$,
+using Lemma \ref{lemma:3.3} and (\ref{eqn:3.17}).
+
+
+
+% === END ORIGINAL adjoint_lift4.tex ===
+% === BEGIN ORIGINAL adjoint_lift5.tex ===
+
+
+\section{The buildings for $PGL(3)$ and $PGL(2)$}
+\label{sec:5}
+
+Recall $H_1:=SL(2),\ H_2:=PGL(2),\ G:=PGL(3)$, and $N_1,\ N_2$
+denote the Jacquet-Shalika norms (\ref{eqn:1.9}). 
+We assume $p\not= 2$ without further mention.
+ 
+Let $h \in N_1(g)\cap H_1(F)$ have eigenvalues $\beta_1,\
+\beta_2=\beta_1^{-1}$ and
+let $h'\in N_2(g)\cap H_2(F)$ be represented by a matrix $B\in GL(2,F)$
+having eigenvalues $\lambda\beta_1,\ \lambda$, for some
+$\lambda\in \overline{F}^{\times}$. 
+Recall $\bbH1 = \bbh2$ and that the action
+of $H_2(F)$ on $\bbh2$ is defined analogously to the action of $G(F)$
+on $\bbg$. 
+Let $E/F$ denote the extension of $F$ obtained by adjoining the
+eigenvalues of $h$; we may assume $E/F$ 
+is quadratic since the split case was
+handled in \S \ref{sec:2}. 
+Since the tree $\bbh2$ has no closed loops, one can easily
+show that $h$ has fixed points only if 
+$c\beta_i\in \oee^{\times}$, for some $c\in F^{\times}$.
+ 
+Our strategy is
+to prove, in the notation of \S \ref{sec:3}, that $s(0)=S(0)$ in the
+following manner.
+
+\begin{itemize}
+\item[(a)] 
+If $|1+\beta_1|_E=1$ then we prove $r(0)=s(0)$, $R(0)=S(0)$.
+
+\item[(b)] 
+We prove that the case $E/F$ ramified and $|1+\beta_1|<1$
+cannot occur. 
+
+\item[(c)] 
+If $|1+\beta_1|_E<1$ then we prove
+$s(0)=|\text{Fix}(h')|=1$ and
+$S(0)=1$. 
+
+\end{itemize}
+Thus, in case (c), we may assume that $E/F$ is
+unramified. (That the case (b) cannot occur was
+pointed out to me by R. Kottwitz.) 
+The $\pm$ sign in (\ref{eqn:3.18}) has been choosen
+in such a way that $S(0)\geq 0$ though we won't prove this
+until later.
+
+\begin{lemma}
+\label{lemma:5.1}
+\begin{itemize}
+\item[(a)] 
+$s(0)\leq r(0)$.
+
+\item[(b)] 
+Assume that $|1+\beta_1|=1$. Then the number of
+fixed points of $h$ is equal to the number of fixed points of $h'$,
+i.e., $r(0)=s(0)$. Moreover, $|S(0)|\leq R(0)=r(0)$.
+\end{itemize}
+\end{lemma}
+
+\pf
+Part (a) follows immediately from Lemma \ref{lemma:3.3}. 
+For part (b), recall $\Delta_{H_1}(h):=|1-\beta_1^2||\beta_1|^{-1}
+=|1-\beta_1||1+\beta_1||\beta_1|^{-1}$ and
+$\Delta_{H_2}(h'):=|1-\beta_1||\beta_1|^{-1/2}$, 
+by the definitions in \S \ref{sec:2}.
+The lemma now follows immediately from the counting 
+formulas (\ref{eqn:3.17})-(\ref{eqn:3.18}) for
+$R(0)$ and $S(0)$ and the hypothesis.
+\qed
+
+\begin{lemma}
+\label{lemma:5.2}
+\begin{itemize}
+\item[(a)] 
+The set {\rm Fix}($A_a\sigma$) is in one--to--one correspondence with the
+L's such that
+
+\[
+[L] = [\{v\in V\ |\ {^{t}v}\cdot \, ^tA_a^{-1}\cdot v'\in \off ,
+\ \forall v'\in L\}],
+\]
+i.e., the class of $L$ is self--dual with respect to the bilinear form of
+$^tA_a^{-1}$.
+
+\item[(b)] 
+Assume $|{\rm Fix}(A\sigma )|\not= 0,\
+[L]\in {\rm Fix}(A_u\sigma ),\ u\in \off^{\times},$
+and $[L]\notin\zz$. Then $u=v^2$, for some $v\in\off^{\times}$, and in
+particular $(u,\eps)_2=1$ (in the notation of (\ref{eqn:3.18})).
+\end{itemize}
+\end{lemma}
+
+\pf
+(a) This is a simple calculation using (\ref{eqn:4.3}): 
+since $A\sigma$ sends $[L]$
+to $[AL^{\vee}]$, $[L]$ is fixed if and only if $L$ belongs to the same
+class as
+
+\[
+\begin{split}
+AL^{\vee}
+&=\{Av\in V\ |\ {^{t}v}\cdot v'\in \off ,
+\ \forall v'\in L\}\\
+&=\{v_o\in V\ |\  v_o=Av{\rm  and }\ {^{t}v}\cdot v'\in \off ,
+\ \forall v'\in L\}.
+\end{split}
+\]
+It is easy to see that this is equivalent to the statement in part (a).
+\newline
+(b) We may rephrase the problem in terms of self--dual lattice
+classes. 
+Let $P$ be an $^tA^{-1}$--self--dual lattice class. 
+By (a) above and Lemma \ref{lemma:4.14},
+the transitivity of $T_a$ implies that
+there is an $a\in\off^{\times}$ such that $[L]=T_aP$. It follows that
+$[L]$ is both
+$^tA_u^{-1}$--self--dual and $^tA_{a^{-2}}^{-1}$--self--dual, since $T_a$ and
+$A_b\sigma$ commute. 
+This implies, by (a), that $[L]$ corresponds to a fixed
+point of $T_{ua^2}$. 
+However, by Lemma \ref{lemma:4.18} and the discussion following 
+(\ref{eqn:4.15}), we know that the stabilizer of 
+$T_{ua^2}$ is $U_n$,
+where $n\geq 1$ is the distance between $[L]$ and its
+projection $[L']$ in $\zz$ (by hypothesis, $[L]\not= [L']$).
+Since, by definition,
+$U_n \subseteq \{ {\rm squares\ in\ }\off^{\times}\}$, for $n\geq 1$, we
+conclude that $u$ is a square in $\off^{\times}$.
+\qed
+
+\begin{lemma}
+\label{lemma:5.3}
+Let $w:=\left(\smallmatrix \ &1\\-1&\ \endsmallmatrix
+\right)$, and let $\Lambda_0:=\off\oplus\off\oplus\off$ denote the standard
+rank 3 lattice written in terms of a fixed basis for $V_A\oplus W_A$.
+The action of $A_a\sigma$ on $\bbg$ is given on $\zz$ by
+
+\[
+\begin{split}
+\left[ 
+\left(
+\begin{array}{cc} 
+r&\ \\\ &C'
+\end{array}\right)
+\Lambda_0\right] \longmapsto
+&\left[ A_a
+\left(
+\begin{array}{cc} 
+1&\ \\ \ &w
+\end{array}\right)
+\left(
+\begin{array}{cc} 
+r^{-1}&\ \\
+\ &C'
+\end{array}\right)
+\left(
+\begin{array}{cc} 
+1&\ \\\ &w
+\end{array}\right)^{-1}\Lambda_0\right]\\
+&=\left[ A_a
+\left(
+\begin{array}{cc} 
+1&\ \\\ &w
+\end{array}\right)
+\left(
+\begin{array}{cc} 
+r^{-1}&\ \\\ &C'
+\end{array}\right)
+\Lambda_0\right],
+\end{split}
+\]
+where $r\in F^{\times},\ C'\in {\rm Aut}_F(W_A)\cong GL(2,F)$.
+\end{lemma}
+
+\begin{remark} This follows from (\ref{eqn:4.3}) and the fact that
+$C^{-1}=(det(C))^{-1}\, ^t(w^{-1}Cw)$. This description of the twisted
+action on the building is especially useful when the action of
+$A_a\sigma$ is restricted $\zz$.
+\end{remark}
+
+\begin{lemma}
+\label{lemma:5.4} 
+Assume that $N_1(g)$ doesn't contain any
+unipotent element. If ${\rm Fix}(A\sigma )$
+contains a
+vertex \underbar{not} in $\zz$ and if
+${\rm Fix}(A\sigma )\cap\zz = \emptyset$ then $|\beta'_1/\beta'_2 +1|<1$,
+where $\beta'_i$ are the eigenvalues of $Cw$.
+\end{lemma}
+
+\pf 
+By hypothesis, we may assume that A is of the form
+$\left(\begin{array}{cc} 1 &\ \\ \ &C\end{array}\right)$, 
+thanks to Corollary \ref{cor:1.14}.
+Suppose that there is an $[L]\in {\rm Fix}(A\sigma )$ not in $\zz$. 
+Lemma \ref{lemma:4.16}
+implies that we can find $[L'],\ [L'']\in\zz$ forming the characteristic
+segment of $[L]$ such that
+$[A\sigma L'] = [L''],\ [A\sigma L''] = [L']$. 
+
+Denote by $p',\ p''$
+the vertices of $\bbb (SL(2))$ associated to $L',\ L''$,
+where $Aw(p')=p'',\ Aw(p'')=p'$.
+These are depicted by the lines in Figure \ref{fig:4.8}.
+%%%%%%%%%%Last sentence added 3-2003 to avoid redrawing 4.8 
+We may consider the midpoint $p_0$ of $p',\ p''$ in the first barycentric
+subdivision of $\bbb (SL(2,F))$ as a vertex of the tree over $E$, since
+$E/F$ is ramified. By Lemma \ref{lemma:5.3} and a
+well--known result on trees, $p_0$ in $\bbb (SL(2,E))$ is a fixed point
+of $Cw$ ($Cw$ acts without inversion on the first barycentric subdivision
+of $\bbb (SL(2,F))$). By Lemma \ref{lemma:5.3}, this midpoint
+is associated to a fixed point $[L_0]$ over E of ($A\sigma$ and)
+$A\cdot\left(\begin{array}{cc}
+1&\ \\\ &w\end{array}\right)$. By hypothesis 
+$[L_0]\notin \zz$.
+ 
+Let
+$p_1,\ p_2$ be two neighbors of $p_0$, with $p_i$ a vertex in
+$\bbb (SL(2,F))$ and with $Cw(p_1)=p_2,\ Cw(p_2)=p_1$. There is an
+apartment containing $p_1,\ p_2$ in which we can write
+
+\begin{equation}
+\begin{split}
+&p_1 = [\pi^{b_1+1}e_1\off + \pi^{b_2}e_2\off ],\\
+&p_2 = [\pi^{b_1}e_1\off + \pi^{b_2}e_2\off ],
+\end{split}
+\label{eqn:5.5}
+\end{equation}
+for some $b_i\in\zzz$ and a suitable basis $\{e_1,\ e_2\}$. It follows that
+$Cw$ is conjugate over $F$ to
+$\left(\smallmatrix u_1\pi^{-1}&u_2\pi^{b_1-b_2}\\ u_3\pi^{b_2-b_1-1}&
+u_4\endsmallmatrix\right)$,
+for some $u_i\in \off^{\times}$, hence projectively conjugate over $F$ to
+$\left(\begin{array}{cc} \ u_1\pi^{b_1-b_2}\ &u_2\pi^{2(b_1-b_2)+1}\\u_3&
+u_4\pi^{b_1-b_2+1}\end{array}\right)$. If $b_1-b_2\leq -2$ or
+$b_1-b_2\geq 1$ then the quotient of the eigenvalues
+of this matrix are equal to $-1 \pm \epsilon$, for some
+$|\epsilon |<1$. 
+In this case, from Lemma \ref{lemma:4.5} we find that
+$Cw$ can have at most one fixed point in the tree over $E$,
+and none in the tree over $F$. In this case,
+we conclude that
+there is no fixed point of $A\sigma$ in $\zz$. The cases $b_1-b_2=-1$
+and $b_1-b_2=0$ are similar: if $b_1-b_2=-1$ then $p_1=[\Lambda_0]$
+and $p_2=[\pi^{-1}e_1\off +\Lambda_0]$. It follows that
+$Cw$ is conjugate over $F$ to
+$\left(\smallmatrix u_1&u_2\pi^{-1}\\ u_3&u_4\endsmallmatrix\right)$,
+for some $u_i\in \off^{\times}$, and the same conclusion may be drawn.
+The case $b_1-b_2=0$ is similar and therefore omitted.  
+\qed
+
+\begin{proposition}
+\label{prop:5.6}
+If $|1+\beta_1|_E = 1$ then $|S(0)| = s(0)$.
+\end{proposition}
+
+\pf 
+Again, by hypothesis, we may assume that $A$ is of the form
+$\left(\begin{array}{cc}
+1&\ \\\ &C\end{array}\right)$, thanks to Corollary
+\ref{cor:1.14}.
+ 
+Note that by the reduction formulas and Lemma \ref{lemma:5.2}(b), we have
+
+\begin{equation}
+R(0) - |S(0)| \leq 2Q(|{\rm Fix}(A\sigma )\cap \zz |
++|{\rm Fix}(A_a\sigma )\cap \zz |),
+\label{eqn:5.7}
+\end{equation}
+where $A$ and $A_a$ represent $\ddd_\sigma (g)$ (see (\ref{eqn:1.25})). 
+Thus if ${\rm Fix}(A\sigma )\cap\zz = \emptyset$ were true, 
+Lemma \ref{lemma:5.1}
+would imply the result. Moreover, since
+$|S(0)| \leq R(0) = r(0) = s(0)$, we may immediately dispose of the
+case $R(0) = 0$. We may therefore assume that $\Delta (h) < 1$, so that
+$|1-\beta_1|<1$ and that $|{\rm Fix}(A\sigma )|>0$.
+ 
+Suppose for the moment that ${\rm Fix}(A\sigma ) \subset \zz$.
+By Lemma \ref{lemma:4.16}(b) 
+it follows that ${\rm Fix}(A_a\sigma ) =\emptyset $,
+so we have $S(0) = R(0)$.
+ 
+Suppose next that ${\rm Fix}(A\sigma )$ is not a subset of $\zz$. Since
+${\rm Fix}(A_a\sigma ) \subset \zz$ 
+would contradict Lemma \ref{lemma:4.16},
+we must then have that ${\rm Fix}(A_a\sigma )$ is not a subset
+of $\zz$. 
+From Lemma \ref{lemma:4.16} 
+we have that ${\rm Fix}(A\sigma ) \cap \zz \not= \emptyset$
+or ${\rm Fix}(A_a\sigma ) \cap \zz \not= \emptyset$. Suppose with out loss of 
+generality that 
+${\rm Fix}(A\sigma ) \cap \zz \not= \emptyset$. 
+By (\ref{eqn:1.25}) and 
+Lemma \ref{lemma:4.16}(b), if $E/F$ was 
+ramified then we may take $a\in \off^{\times}$
+(since $F^{\times}/N(E^{\times})$ is represented by a unit in the
+case of a ramified extension $E/F$).
+In this case, Lemma \ref{lemma:5.2}(b) implies all the signs in 
+(\ref{eqn:3.18}) are
+the the same, so $|S(0)|=R(0)$. On the other hand, if $E/F$ were
+unramified then $a\notin \off^{\times}$ by 
+Lemma \ref{lemma:4.14} and then
+Lemma \ref{lemma:4.16}(d) forces ${\rm Fix}(A_a\sigma ) \cap \zz = \emptyset$.
+Then Lemma \ref{lemma:5.4} implies that $Cw$ has no fixed points, which
+by Lemma \ref{lemma:5.3} would contradict our assumption.
+\qed
+
+Next we must consider the case where $|1+\beta_1|<1$ and $E/F$ is unramified.
+In this case, $\Delta (h') = 1$, so by the formula for the number of fixed
+points we have $|{\rm Fix}(h')| = 1$. On the other hand, the same formula
+implies that $|{\rm Fix}(h)| > 1$, so it is clear that in this case
+$r(0) > s(0)$. We of course want to show that the sum in the
+formula for $S(0)$ is equal to 1, so $s(0) = Q$. We want to show that,
+if $|1+\beta_1| = q^{-m}$ with $m>0$ and $|{\rm Fix}(A\sigma )|\not= 0$
+then
+
+\begin{equation}
+S(0):={\pm 2\over{[F^{\times}:U]}}|(1+\beta_1)(1+\beta_2)|^{1/2}
+\sum_{a\in F^{\times}/U}
+\sum_{\substack{ P\\ {\rm Inv}(A_a\sigma (P),P) = 0}}
+\kappa (A_a) = 1.
+\label{eqn:5.10}
+\end{equation}
+In other words, we want to show that
+
+\begin{equation}
+{2\over{[F^{\times}:U]}}
+\sum_{\substack{ a\in F^{\times}/U\\ (a,\epsilon)_2 =+1}}
+\sum_{\substack{ P\\ {\rm Inv}(A_a\sigma (P),P) = 0}} 1
+= q^m + {2\over{[F^{\times}:U]}}
+\sum_{\substack{ a\in F^{\times}/U\\ (a,\epsilon)_2=-1}}
+\sum_{\substack{ P\\ {\rm Inv}(A_a\sigma (P),P) = 0}} 1\ .
+\label{eqn:5.11}
+\end{equation}
+For this it clearly suffices to prove that
+\begin{equation}
+{2\over{[F^{\times}:U]}}
+\sum_{\substack{ a\in F^{\times}/U\\ (a,\epsilon)_2 =+1 }}
+\sum_{\substack{ P\\ {\rm Inv}(A_a\sigma (P),P) = 0 }} 1
+={{q^{m+1}+q^m-2}\over{q-1}}+R,
+\label{eqn:5.12}
+\end{equation}
+(the ``unramified case''), and
+
+\begin{equation}
+{2\over{[F^{\times}:U]}}
+\sum_{\substack{ a\in F^{\times}/U\\ (a,\epsilon)_2 =-1 }}
+\sum_{\substack{ P\\ {\rm Inv}(A_a\sigma (P),P) = 0 }} 1
+={{2(q^m - 1)}\over{q-1}}+R,
+\label{eqn:5.13}
+\end{equation}
+(the ``ramified case'') for some $R$. 
+These are due to the fact that every fixed point $P$ of $A$ gives
+rise to a characteristic leaf by Lemma \ref{lemma:4.16}, 
+hence to a fixed point in the
+first barycentric subdivision of ${\cal B}(SL(2,F))$. The difference
+of (\ref{eqn:5.12}) and (\ref{eqn:5.13}) 
+merely counts the difference between the
+sets of fixed points in the 
+first barycentric subdivision of ${\cal B}(SL(2,F))$ in the unramified case
+and in the ramified case, respectively. 
+The number of such fixed 
+points is as stated in (\ref{eqn:5.12}) by 
+Lemma \ref{lemma:4.5}(a), in the unramified
+case, and by Lemma \ref{lemma:4.5}(b) in the ramified case.
+ 
+It remains to dispose of the case $|1+\beta_1|<1$ and $E/F$ ramified.
+Although one must be able to deal with this case by a more direct argument,
+I will give the following geometric proof. 
+Since $|1-\beta_1|=1$ and $E/F$ is ramified, 
+it follows from \cite{La3}, p. 50,
+for example, that $h'$ has no fixed points. 
+This implies that $s(0)=0$ and
+(by the proof of Lemma \ref{lemma:5.4}) that
+$A\sigma$ has no fixed points in $\zz$. 
+Thus each fixed point of $A\sigma$, which we may 
+assume exists, is associated to a
+characteristic base which is not a vertex.
+By the remarks preceeding Figure \ref{fig:4.10}, the fact that
+$A\sigma$ has no fixed points in $\zz$ implies
+that, in the notation of (\ref{eqn:5.7}),
+$A_a\sigma$ will have fixed points in $\zz$ (since $E/F$ is ramified,
+there is an element of valuation one in $N_{E/F}(E^\times )$
+and therefore we may take $A_a$ to correspond to this element; the midpoint
+of the characteristic base isn't a vertex,
+whereas the midpoint of the dotted line $D_{A_a}$ associated to the fixed
+point $L$ of $A\sigma$ in Figure \ref{fig:4.10} is a vertex in $\zz$
+since the valuation of $a$ is one). By Lemma \ref{lemma:5.3}, 
+this implies that,
+in the notation of the proof of Proposition \ref{prop:5.6},
+$Cw$ has fixed points. By Lemma \ref{lemma:5.3},
+this contradicts the fact that $A\sigma$ has no fixed points in $\zz$.
+ 
+This completes the proof that $S(0)=s(0)$.
+
+ 
+% === END ORIGINAL adjoint_lift5.tex ===
+
+
+\begin{thebibliography}{99}
+
+
+\bibitem[Bl]{Bl} 
+C. Blondel, ``Les repr\'esentations supercuspidales des groupes 
+m\'etaplectiques sur GL(2) et leurs caract\'eres'', Bull. Soc. Math. de 
+France, (Memoire 18) \underbar{113}(1985)
+
+\bibitem[Bor]{Bor} 
+A. Borel, ``Automorphic L--functions'', in Proc. Symp. Pure
+Math., vol 33, part 2, AMS, Providence, RI, 1979
+
+\bibitem[C]{C} P. Cartier, ``Representations of p--adic groups'', in Proc. 
+Symp. Pure Math., vol 33, part 2, AMS, Providence, RI, 1979
+
+\bibitem[F]{F} Y. Flicker, ``On the symmetric square: orbital integrals'',
+Math. Ann. 279(1987)173-191
+
+\bibitem[GJ]{GJ} 
+S. Gelbart and H. Jacquet, ``A relation between automorphic forms
+on GL(2) and GL(3)'', Ann. Sci. \'Ecole Norm. Sup. \underbar{11}
+(1978)471-552
+
+\bibitem[JPSS]{JPSS} H. Jacquet, I. Piatetski--Shapiro, and J. Shalika,
+``Automorphic forms on GL(3), I, II'', Ann. Math. \underbar{109} 
+(1979) 169--258
+
+\bibitem[KS]{KS} R. Kottwitz and D. Shelstad, in preparation
+(since appeared as {\bf Foundations of twisted endoscopy}, 
+Asterisque, vol 255, 1999)
+
+\bibitem[Ko1]{Ko1} R. Kottwitz, ``Orbital integrals on GL(3)'', Amer. J. Math.
+\underbar{102} (1980) 327--384
+
+\bibitem[Ko2]{Ko2} R. Kottwitz, ``Unstable orbital integrals on SL(3)'', 
+Duke Math. J. \underbar{48}(1981)649--664
+
+\bibitem[LL]{LL} J.-P. Labesse and R. P. Langlands,
+``L-indistinguishability for
+$SL(2)$'', Can. J. Math. \underline{33}(1979)
+
+\bibitem[L]{L} S. Lang, \underbar{Algebra}, $2^{nd}$ ed., Addison-Wesley,
+1984
+
+\bibitem[La1]{La1} R. Langlands, ``Some identities for orbital integrals 
+attached to GL(3)'', manuscript
+
+\bibitem[La2]{La2} R. Langlands, \underbar{Les Debut d'une Formule des Traces
+Stable}, Publ. Math. Univ. Paris VII, 1980 
+
+\bibitem[La3]{La3} R. Langlands, \underbar{Base Change for GL(2)}, 
+Ann. Math. Studies, Princeton Univ. Press, 1980 
+
+\bibitem[LS]{LS} R. Langlands and D. Shelstad, ``On the definition of transfer 
+factors'', Math. Ann. (1987)219--271
+
+\bibitem[M]{M} I. Macdonald, \underbar{Spherical Functions on a Group of
+p--adic Type}, Publ. Ramanujan Inst., no. 2, Madras, 1971
+
+\bibitem[Sh]{Sh} G. Shimura, ``On the holomorphy of certain Dirichlet series'',
+Proc. London Math. Soc. \underbar{31} (1975) 79-98
+
+\bibitem[T]{T} J. Tits, ``Reductive groups over local fields'', in Proc. 
+Symp. Pure Math., vol 33, part 1, AMS, Providence, RI, 1979
+
+%\bibitem[]{}
+
+%\bibitem[]{} 
+
+%\bibitem[]{} 
+
+\end{thebibliography}
+
+\end{document}
+
+
+
+
+
+
+% === SOURCE ARCHIVE: original adjoint_lift_pics.tex ===
+% The separate picture study is preserved verbatim after \end{document}.
+% These figure drawings already appear, captioned and labeled, in adjoint_lift4.tex.
+\documentclass[12pt]{article}
+%\usepackage{amssymb}
+%\usepackage{amsthm}
+%\usepackage{amsgen}
+\usepackage{amsfonts}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{axiom}{Axiom}
+\newtheorem{remark}{Remark}
+\newtheorem{exercise}{Exercise}[section]
+
+\def\ppp{{\mathbb{P}}}
+\def\hhh{{\mathbb{H}}}
+\def\aaa{{\mathbb{A}}}
+\def\fff{{\mathbb{F}}}
+\def\qqq{\mathbb{Q}}
+\def\rrr{\mathbb{R}}
+\def\ccc{\mathbb{C}}
+\def\zzz{\mathbb{Z}}
+\def\nnn{\mathbb{N}}
+\def\pf{{\bf proof}:\ }
+\def\qed{$\Box$}
+
+\begin{document}
+
+
+\author{David Joyner}
+\title{Adjoint lifting figures}
+\date{3-2003}
+\maketitle
+
+
+%%figure (4.10) on page 1121
+\begin{picture}(200.00,150.00)(-120.00,0.00)
+\thicklines
+\put(-50.00,100.00){\line(1,0){250.00}}
+\put(-50.00,0.00){\line(1,0){250.00}}
+%left leaf
+\put(-29.00,50.00){$\bullet$} 
+\put(-20.00,-20.00){$L''$} 
+\put(-14.00,-2.00){$\bullet$} 
+\put(35.00,97.00){$\bullet$} 
+\put(-35.00,33.00){$L$} 
+\put(40.00,110.00){$L'$} 
+\put(-10.00,00.00){\line(3,6){50.00}}
+
+%right leaf
+\put(91.00,50.00){$\bullet$} 
+\put(100.00,-20.00){$M''$} 
+\put(106.00,-2.00){$\bullet$} 
+\put(155.00,97.00){$\bullet$} 
+\put(86.00,33.00){$M$} 
+\put(160.00,110.00){$M'$} 
+\put(110.00,00.00){\line(3,6){50.00}}
+
+\thinlines
+%right leaf
+\put(110.00,00.00){\line(-1,3){17.00}}
+\put(92.00,52.00){\line(4,3){65.00}}
+
+%left leaf
+\put(-10.00,00.00){\line(-1,3){17.00}}
+\put(-28.00,52.00){\line(4,3){65.00}}
+
+%middle line
+\put(50.00,00.00){\line(3,6){50.00}}
+\put(43.00,33.00){$D_A$} 
+
+\put(-110.00,0.00){$\Lambda'' =\gamma \Lambda''$} 
+\put(-110.00,100.00){$\Lambda' =\gamma \Lambda'$} 
+\end{picture}
+
+\vskip 1in
+
+
+%%figure (4.8) on page 1120
+\begin{figure}[h!]
+\begin{picture}(200.00,150.00)(-120.00,0.00)
+\thicklines
+\put(-50.00,100.00){\line(1,0){220.00}}
+\put(-50.00,0.00){\line(1,0){220.00}}
+\put(71.00,50.00){$\bullet$} 
+\put(80.00,-20.00){$L''$} 
+\put(86.00,-2.00){$\bullet$} 
+\put(135.00,97.00){$\bullet$} 
+\put(60.00,50.00){$L$} 
+\put(140.00,110.00){$L'$} 
+\put(90.00,00.00){\line(3,6){50.00}}
+
+\thinlines
+\put(90.00,00.00){\line(-1,3){17.00}}
+\put(72.00,52.00){\line(4,3){65.00}}
+
+\end{picture}
+\vskip .3in
+\caption{A characteristic leaf \label{fig:4.8}}
+\end{figure}
+
+\vskip 1in
+
+This is figure \ref{fig:4.8}.
+
+\vskip 1in
+
+%%figure (4.6) on page 1119
+\begin{picture}(200.00,150.00)(-120.00,0.00)
+\thicklines
+\put(-80.00,50.00){\line(1,0){220.00}} 
+\put(-10.00,60.00){$L_{(-1)}$} 
+\put(-2.00,47.00){$\bullet$} 
+\put(0.00,50.00){\line(1,-1){50.00}}
+\put(100.00,50.00){\line(1,-1){30.00}}
+\put(-60.00,-23.00){$L'_{(-1)}$} 
+\put(-52.00,-3.00){$\bullet$} 
+\put(0.00,50.00){\line(-1,-1){50.00}}
+\put(47.00,-3.00){$\bullet$}  
+\put(90.00,60.00){$L_{(0)}$} 
+\put(-80.00,0.00){\line(1,0){220.00}}
+\put(40.00,-23.00){$L'_{(0)}$} 
+\put(50.00,0.00){\line(1,1){50.00}}
+\put(-50.00,0.00){\line(-1,1){20.00}}
+\put(98.00,47.00){$\bullet$}  
+\put(158.00,43.00){$\Lambda$}  
+\put(158.00,-7.00){$\Lambda'$}  
+\end{picture}
+
+\vskip 1in
+
+
+%%figure (4.17) on page 1123
+\begin{picture}(200.00,150.00)(-120.00,0.00)
+\thicklines
+\put(-100.00,50.00){\line(1,0){270.00}} 
+\put(-10.00,60.00){$Q'$} 
+\put(-2.00,47.00){$\bullet$} 
+\put(0.00,50.00){\line(1,-1){50.00}}
+\put(100.00,50.00){\line(1,-1){50.00}}
+\put(140.00,-23.00){$Q''$} 
+\put(148.00,-3.00){$\bullet$} 
+\put(0.00,50.00){\line(-1,-1){30.00}}
+\put(47.00,-3.00){$\bullet$}  
+\put(90.00,60.00){$P'$} 
+\put(-100.00,0.00){\line(1,0){270.00}}
+\put(40.00,-23.00){$P''$} 
+\put(50.00,0.00){\line(1,1){50.00}}
+\put(150.00,0.00){\line(1,1){20.00}}
+\put(98.00,47.00){$\bullet$}  
+\put(-150.00,20.00){$P',P'',Q',Q''\in {\cal Z}$}  
+\end{picture}
+
+\vskip 1in
+
+\begin{thebibliography}{99}
+
+
+%\bibitem[]{}
+
+%\bibitem[]{} 
+
+%\bibitem[]{} 
+
+\end{thebibliography}
+
+\end{document}

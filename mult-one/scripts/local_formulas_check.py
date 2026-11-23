@@ -1,15 +1,15 @@
 # SPDX-License-Identifier: MIT
 # Copyright (c) 2026 David Joyner
-"""Exact checks of local formulas in "Multiplicity one for SL(2)", Draft 3.
+"""Exact checks of local formulas in "Direct comparison of SL(2) with its metaplectic cover", Draft 5.
 
 Checked:
-  * Lemma 5.3 (cocycle on the split torus; conjugation by w), over Q_3,
+  * Lemma 4.3 (cocycle on the split torus; conjugation by w), over Q_3,
     Q_5, Q_2 and R, on sample rational/real elements.
-  * Lemma 5.4 (genuine characters of the cover of A), over Q_3 and Q_5.
+  * Lemma 4.4 (genuine characters of the cover of A), over Q_3 and Q_5.
   * The examples (3,3)_3 = -1, (5,5)_5 = 1, (-1,-1)_2 = -1, and the
-    Q_3 example after Proposition 5.12.
-  * Lemma 5.15 (real torus matching factor -i) via the character relations.
-  * Lemma 5.29 (real discrete-series matchings): the table of integrands.
+    Q_3 example after Proposition 4.14.
+  * Lemma 4.17 (real torus matching factor -i) via the character relations.
+  * Lemma 4.31 (real discrete-series matchings): the table of integrands.
   * The fixed-point counts and the Fresnel integral used in two examples.
 Run: python3 local_formulas_check.py   (needs SymPy; exits nonzero on failure)
 """

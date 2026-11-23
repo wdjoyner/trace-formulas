@@ -1,0 +1,777 @@
+%% Referee report on "Multiplicity one for SL(2)", Draft 3 (D. Joyner)
+\documentclass[12pt,letterpaper]{article}
+\usepackage[american]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{mathptmx}
+\usepackage{courier}
+\usepackage[letterpaper,margin=1in]{geometry}
+\usepackage{microtype}
+\usepackage{enumitem}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage[hidelinks]{hyperref}
+
+\newcommand{\tr}{\operatorname{tr}}
+\newcommand{\Ad}{\operatorname{Ad}}
+\DeclareMathOperator{\sgn}{sgn}
+\newcommand{\A}{\mathbb{A}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\ov}[1]{\overline{#1}}
+\newcommand{\lref}[1]{\textup{(l.\,#1)}}
+
+\theoremstyle{plain}
+\newtheorem*{propR}{Proposition R}
+\newtheorem*{corR}{Corollary R}
+
+% Suggested replacement text is set off like this.
+\newenvironment{fix}[1][Suggested text]%
+  {\begin{quote}\small\noindent\textbf{#1.}\ }%
+  {\end{quote}}
+
+\setlist[enumerate]{itemsep=3pt,topsep=4pt}
+\setlist[itemize]{itemsep=2pt,topsep=4pt}
+
+\title{Referee report\\[1ex]
+\large D.~Joyner, \emph{Multiplicity one for $SL(2)$}, Draft~3 (November 2026)\\
+file \texttt{multiplicity-one-SL2\_draft3.tex}}
+\author{Claude (Anthropic)}
+\date{November 23, 2026}
+
+\begin{document}
+\maketitle
+
+\section{Summary and recommendation}
+
+The draft is honest about its status, and most of what it labels as proved
+is proved. The proof of Theorem~7.9 (\texttt{thm:main}) is logically
+correct as a deduction from Hypotheses LH and GH. The local torus
+computations of \S5.3, the real elliptic matchings of Lemma~5.29
+(\texttt{lem:realds}), Lemma~7.12 (\texttt{lem:A00}), and
+Proposition~7.15 (\texttt{prop:LH-spherical}) all check.
+
+There is, however, one finding that changes the status of the main result.
+
+\begin{quote}
+\textbf{The hypotheses of the main theorem can never hold.} For every
+cuspidal $\pi$ of $SL(2,\A)$ and every finite $S\supseteq S(\pi)$, there
+is \emph{no} genuine cuspidal representation $\ov\pi$ whose components
+outside $S$ correspond to those of $\pi$ under the Satake correspondence of
+Definition~5.21 (\texttt{def:satake-corr}). Conclusion (b) of the theorem
+is therefore false for every $\pi$, so Hypotheses LH and GH are jointly
+inconsistent and the theorem is vacuous. See M1 below, where the argument
+is written out.
+\end{quote}
+
+The cause is the choice of unramified correspondence. The draft matches
+unramified principal series ``pointwise'' on the torus (the \emph{odd}
+correspondence), whereas the correspondence that exists globally, through
+Waldspurger and restriction from $PGL(2)$, is the squaring (\emph{even})
+one. The draft's own archimedean matchings are of the even type, so the
+two ends of the comparison do not fit together.
+
+Six further issues are substantive (M2--M7): Hypothesis GH depends on
+unstated local choices; Hypothesis LH as stated fails for the real elliptic
+classes; the supercuspidal relation of Remark~2026.1 is false, not merely
+unverified, when $q\equiv3\pmod4$; the formula for the weighted orbital
+integral at central elements diverges; the recalled trace formula omits
+terms; and three statements in proved or explanatory text are wrong
+(Remark~2026.11 and Lemmas 3.2 and 3.4).
+
+\textbf{Recommendation: major revision.} The local results are worth
+keeping. Theorem~7.9 should not be presented as a conditional proof of
+multiplicity one in its present form. Section~\ref{sec:options} lists the
+options I see.
+
+\section{What was checked, and how}
+
+\begin{itemize}
+\item \emph{Read in full:} all 5{,}253 source lines. The file compiles
+with \texttt{pdflatex} (72 pages, no errors, no undefined references or
+citations).
+\item \emph{Re-derived by hand:} the cocycle identities of \S2.1,
+including Lemma~2.3(h); Lemmas 5.3, 5.4, 5.8, 5.15 and the two
+$\Q_3$ examples; the Haar measure formula $dg=\delta_B(a)\,dk\,da\,dn$; the
+character formulas (5.17) and the table in the proof of
+Lemma~5.29; Remark~5.27(2); the Jacquet module computation in
+Lemma~7.12(ii); every step of the proof of Theorem~7.9.
+\item \emph{Checked by exact computation} (script
+\texttt{referee\_checks.py}, supplied with this report; Hilbert symbols over
+$\Q_p$, $p=3,5,7$, on random elements of $SL(2,\Z)$): that
+$k\mapsto(k,s_v(k))$ is a homomorphism on $SL(2,\Z_p)$; Lemma~2.3(h); and
+the counterexample in M4.
+\item \emph{Checked against the web:} the statement and bibliographic data
+of Chai--Zhang and of Zhang's addendum; the titles and status of W.-W.~Li's
+papers on the metaplectic trace formula.
+\item \emph{Not consulted directly:} Waldspurger \cite{Wa1,Wa2},
+Gelbart--Jacquet, Jacquet--Shalika, Arthur, Gelbart's lecture notes, Adams,
+Manderscheid, Savin, Shokranian. Where I use results from these (notably in
+M1 and M5) I quote them from memory. They are standard, but the author
+should confirm each one before relying on my argument. Bibliographic
+corrections marked ``from memory'' in \S\ref{sec:bib} carry the same
+caveat.
+\end{itemize}
+
+An AI referee report is not an independent certification. M1 in particular
+should be read by a specialist.
+
+\section{Major issues}
+
+\subsection*{M1. The hypotheses of Theorem 7.9 are mutually inconsistent}
+
+\paragraph{The local computation.} Let $v$ be odd, $F=k_v$, and let
+$\psi$ be an additive character of $F$ of conductor ${\cal O}$. Put
+$\chi_\psi(x)=\gamma(q)/\gamma(xq)$, the function $\omega$ of \S5.7.2, so
+that $\chi_\psi(xy)=(x,y)\chi_\psi(x)\chi_\psi(y)$, $\chi_\psi=1$ on
+${\cal O}^\times$ and $\chi_\psi(x^2)=1$. By Lemma~5.4 every unramified
+genuine character of $\ov{A(F)}$ is
+$(a(x),\zeta)\mapsto\zeta\,\chi_\psi(x)\mu(x)$ for a unique unramified
+character $\mu$ of $F^\times$. Suppose this character is
+$\ov\chi_\epsilon$ and corresponds to $\chi=\chi_\vartheta$ in the sense of
+Definition~5.5. Writing $\ov\psi(x)=\ov\chi(a(x),1)$, the cocycle relation
+gives $\ov\psi(\varpi)^2=(\varpi,\varpi)\,\chi_1(\varpi^2)$ and
+$\chi_\psi(\varpi)^2=(\varpi,\varpi)$, hence
+\begin{equation}\label{eq:square}
+\mu(\varpi)^2=\chi_1(\varpi^2)=\chi(a(\varpi))^2,
+\qquad\text{i.e.}\qquad \mu(\varpi)=\pm\,\chi(a(\varpi)).
+\end{equation}
+The sign depends on $\varpi$, $\eta_\varpi$ and $\psi$ (see M2). So the
+draft's correspondence is $t'=\pm t$, where $t=\chi(a(\varpi))$ is the
+Satake parameter on $SL(2)$ and $t'=\mu(\varpi)$ the one on the cover.
+
+\paragraph{What the global theory gives.} For a genuine unramified
+principal series $I(\chi_\psi\mu)$, Waldspurger's lift to $PGL(2,F)$ is
+$\pi(\mu,\mu^{-1})$, whose restriction to $SL(2,F)$ has torus character
+$a(x)\mapsto\mu(x)^2$. On dual groups this is the projection
+$SL(2,\C)\to PGL(2,\C)$. The functorial relation is therefore
+$t=t'^{\,2}$, not $t=\pm t'$.
+
+\begin{propR}
+Let $\pi$ be a cuspidal automorphic representation of $SL(2,\A)$ and
+$S\supseteq S(\pi)$ a finite set of places. There is no genuine cuspidal
+automorphic representation $\ov\pi'$ of $\ov{SL(2,\A)}$ such that
+$\ov\pi'_v$ corresponds to $\pi_v$ under the Satake correspondence of
+Definition~5.21 for every $v\notin S$. This holds for every choice of the
+uniformizers $\varpi_v$ and of the constants $\eta_{\varpi_v}$.
+\end{propR}
+
+\begin{proof}
+Suppose $\ov\pi'$ exists. By Lemma~7.12 it lies in ${\cal A}_{00}$. Fix a
+nontrivial character $\psi$ of $k\backslash\A$. By Waldspurger
+\cite{Wa1,Wa2}, $\sigma=\mathrm{Wald}_\psi(\ov\pi')$ is a cuspidal
+automorphic representation of $PGL(2,\A)$, and for almost all $v$, if
+$\ov\pi'_v\subset I(\chi_{\psi_v}\mu_v)$ then
+$\sigma_v=\pi(\mu_v,\mu_v^{-1})$. By Labesse--Langlands, $\pi$ occurs in
+the restriction of a cuspidal $\Pi$ of $GL(2,\A)$; write
+$\Pi_v=I(\mu_{1,v},\mu_{2,v})$ and $t_v=(\mu_{1,v}/\mu_{2,v})(\varpi_v)$ at
+unramified places. By \eqref{eq:square}, $\mu_v(\varpi_v)^2=t_v^2$ for
+almost all $v$. The Satake parameters of the adjoint lifts are then
+\[
+\Ad(\Pi)_v:\ \{t_v,\,1,\,t_v^{-1}\},\qquad
+\Ad(\sigma)_v:\ \{t_v^2,\,1,\,t_v^{-2}\}.
+\]
+Multiplying out, the nine parameters of $\Ad(\Pi)_v\otimes\Ad(\Pi)_v$ are
+$\{t_v^{2},1,t_v^{-2}\}\cup\{t_v,1,t_v^{-1}\}\cup\{t_v,1,t_v^{-1}\}$.
+Hence, for a sufficiently large finite set $S'$,
+\[
+L^{S'}\!\bigl(s,\Ad(\Pi)\times\Ad(\Pi)\bigr)
+=L^{S'}\!\bigl(s,\Ad(\sigma)\bigr)\,L^{S'}\!\bigl(s,\Ad(\Pi)\bigr)^{2}.
+\]
+By Gelbart--Jacquet \cite{GJ78}, $\Ad(\Pi)$ is a self-dual isobaric
+automorphic representation of $GL(3,\A)$ with unitary cuspidal
+constituents, so the left side has a pole at $s=1$ (Jacquet--Shalika). On
+the right, $L^{S'}(s,\Ad\sigma)=L^{S'}(s,\sigma\times\sigma^\vee)/\zeta_k^{S'}(s)$
+is holomorphic at $s=1$ because $\sigma$ is cuspidal, and likewise
+$L^{S'}(s,\Ad\Pi)$. This is a contradiction.
+\end{proof}
+
+\begin{corR}
+No cuspidal $\pi$ satisfies the hypotheses of Theorem~7.9. If
+Hypothesis~LH holds at the places of $S(\pi)$, then Hypothesis~GH is false
+for $\nu=\nu_\infty(\pi)$.
+\end{corR}
+
+Indeed, the proof of Theorem~7.9 derives the existence of $\ov\pi'$ from
+the hypotheses, and that derivation is correct.
+
+\paragraph{Symptoms visible inside the draft.}
+\begin{enumerate}
+\item \emph{Reducibility and unitarity are not preserved.} With
+$|\chi(a(x))|=|\ov\chi(a(x),1)|=|x|^s$, the genuine principal series is
+unitary for $s<1/2$ and reducible at $s=1/2$ (Lemmas 3.7 and 3.8), while
+$I_A(\chi)$ on $SL(2,F)$ is unitary for $s<1$ and reducible at $s=1$.
+Lemma~7.12(ii) uses exactly this: it matches the even Weil representation
+with an \emph{irreducible complementary series} of $SL(2,F)$ at $s=1/2$.
+Under $t=t'^{\,2}$ it matches the trivial representation, as it should.
+\item \emph{The archimedean matchings are of the other type.}
+Definition~5.26 relates $\Phi_{\ov f}(\ov r(2\theta))$ to
+$\Phi_f(r(\theta))$, that is, it uses the squaring map
+$h\mapsto(h,1)^2$, and Lemma~5.29(a) sends weight $k/2$ to
+$m=\pm(k-2)$, weight $k-1$. That is the Shimura correspondence. The lemma
+on non-tempered representations
+($\Theta_{\ov\pi_{+,nt}}+\Theta_{\ov\pi_{-,nt}}=\Theta_{\pi_{nt}}$) is
+also of even type. The hyperbolic matchings (Definitions 5.7, 5.9, 5.16, 5.21)
+are of odd type. Hypothesis GH combines the two.
+\item \emph{The running example.} For $\Delta$ the draft finds
+$\ov\pi_\infty=\ov\pi^{\pm}_{13/2}$. The genuine form that actually exists
+is the weight $13/2$ form attached to $\Delta$ by Shimura--Kohnen. Its
+unramified parameters satisfy $t_p=t_p'^{\,2}$, not $t_p=\pm t'_p$.
+\end{enumerate}
+
+\paragraph{Literature.} The modern theory supports the same conclusion.
+W.-W.~Li has stabilized the full trace formula for $Mp(2n)$; the elliptic
+endoscopic groups are products of split odd orthogonal groups, so for
+$n=1$ the comparison is with $SO(3)=PGL(2)$ (and its inner form), not with
+$SL(2)$. This is the same phenomenon the draft already notes for Hecke
+algebras in Remark~5.31 (\texttt{rem:savin-caveat}). The literature review
+should cite this work (see \S\ref{sec:bib}).
+
+\subsection*{M2. The Satake correspondence depends on arbitrary local choices}
+
+Independently of M1, Hypothesis GH is not well posed as written. The
+bijection $\chi\mapsto\ov\chi$ of Definition~5.5 depends on $\varpi$ and
+$\eta_\varpi$, as the draft says, but the dependence is not harmless:
+\begin{itemize}
+\item replacing $\eta_\varpi$ by $-\eta_\varpi$ (possible when
+$q\equiv3\pmod4$) composes the bijection with the twist by the unramified
+quadratic character $a(x)\mapsto(-1)^{\nu(x)}$;
+\item replacing $\varpi$ by $u\varpi$ with $u$ a non-square unit does the
+same, for every odd $q$. (With $\varpi'=u\varpi$ one finds
+$\vartheta'=\chi_1(u)\vartheta$ and $\epsilon'=-\chi_1(u)\epsilon$.)
+\end{itemize}
+So at each odd place there are two ``Satake correspondences,'' differing by
+an unramified quadratic twist, and Definition~7.2 uses one at every
+$v\notin S$ without saying which. Hypothesis GH is a different statement
+for each of the uncountably many families of choices. By Proposition~R it
+is false for all of them, but a reader should not have to discover that:
+the dependence should be stated where GH is stated. The even
+correspondence $\chi(a(x))=\mu(x)^2$ is canonical: changing $\psi$ to
+$\psi^a$ multiplies $\mu$ by $(a,\cdot)$ and leaves $\mu^2$ unchanged.
+
+A related omission: the draft never checks that
+$\chi\mapsto\ov\chi$ commutes with the Weyl group, although \S5.3.4 and
+Proposition~5.12 use it. It does:
+
+\begin{fix}[Suggested lemma, after Definition 5.5]
+If $\ov\chi$ corresponds to $\chi$, then $\ov\chi^{\,w}$ corresponds to
+$\chi^w=\chi^{-1}$. \emph{Proof.} By Lemma~5.3(b),
+$\ov\chi^{\,w}(a(x),1)=\ov\chi(a(x^{-1}),1)$, which restricts to
+$\chi_1^{-1}$ on $A_2(F)$ and has parameter
+$\epsilon''=(\varpi,\varpi)\ov\chi(a(\varpi^{-1}),1)
+=\epsilon\,\chi_1(\varpi^2)^{-1}=(\varpi,\varpi)\epsilon^{-1}
+=(\varpi,\varpi)\eta_\varpi^{-1}\vartheta^{-1}$. Since
+$\eta_\varpi^2=(\varpi,\varpi)$, this equals $\eta_\varpi\vartheta^{-1}$,
+the parameter of the genuine character corresponding to $\chi^{-1}$.
+\end{fix}
+
+\subsection*{M3. Hypothesis LH fails for the real elliptic classes}
+
+Section~7.4, item~5, says that (LH1)--(LH3) are ``not carried out here''
+for the classes of \S5.5. In fact (LH1) and (LH2), as stated, are false for
+them. Both failures follow from results in the draft.
+
+\begin{enumerate}
+\item \emph{(LH1) fails for the $\pm$odd classes.} The sum
+$\Theta_{\pi_0^+}+\Theta_{\pi_0^-}$ is a principal series character and
+vanishes on the elliptic set. Hence
+$\tr\pi_0^+(f)=-\tr\pi_0^-(f)$ for every $f$ with vanishing hyperbolic
+orbital integrals. On the $+$odd class neither vanishes identically
+(Lemma~5.29(b) with $k=3$), so two inequivalent unitary representations
+give linearly dependent functionals.
+\item \emph{(LH1) fails for the even class.} On the elliptic set
+$\Theta_{\pi_{nt}}+\Theta_{\pi_1}+\Theta_{\pi_{-1}}=0$ (third line of
+(5.18)). More generally
+$\Theta_{\pi_m}+\Theta_{\pi_{-m}}+\Theta_{F_m}=0$ there, where $F_m$ is the
+$m$-dimensional representation. (LH1) quantifies over all irreducible
+admissible representations, so these relations violate it as soon as $L$
+contains enough $K$-types.
+\item \emph{(LH2) fails for the even class.} By the lemma on non-tempered
+representations (Lemmas 5.44 and 5.45),
+$\tr\ov\pi_{+,nt}(\ov f)=-\tr\pi_{-1}(f)$ on the even class. On the
+elliptic set, the irreducible characters of $SL(2,\R)$ times
+$e^{i\theta}-e^{-i\theta}$ are $-\sgn(m)e^{im\theta}$, $\mp1$,
+$e^{im\theta}-e^{-im\theta}$ and $0$. None equals $-e^{-i\theta}$, so
+$t_\infty(\ov\pi_{+,nt})$ does not exist, while the trace does not vanish
+on the class.
+\item \emph{(LH3) and $K$-types.} If $f$ has the single $K$-type $12$ and
+vanishing hyperbolic orbital integrals, then
+$\tr\pi_{11}(f)=-\tr\pi_{-11}(f)-\tr F_{11}(f)=0$, because neither
+$\pi_{-11}$ nor $F_{11}$ contains the type $12$. Detection of
+$\pi_{\pm11}$ therefore needs an index $L$ containing $-12$ or a $K$-type
+of $F_{11}$. This should be said in the final example of \S7.4.
+\end{enumerate}
+
+The same relations hold at $p$-adic places: on functions with vanishing
+hyperbolic orbital integrals, the two constituents of a reducible unitary
+principal series have opposite traces, and the trivial and Steinberg
+characters are negatives of each other. So no class of the type in
+Definition~5.18 can satisfy (LH1) as stated.
+
+\begin{fix}[Suggested repair of Hypothesis 7.3]
+The proof of Theorem~7.9 uses (LH1) only for the representations in
+$\Lambda_v$, and (LH2) only for local components of representations in
+${\cal A}_{00}$. Fix a set ${\cal F}_v$ of irreducible unitary
+representations of $G(k_v)$ containing every local component of a cuspidal
+automorphic representation, and a set $\ov{\cal F}_v$ of genuine ones
+containing every local component of a representation in ${\cal A}_{00}$.
+Require (LH1) only for $\sigma_j\in{\cal F}_v$, and (LH2) only for
+$\ov\tau\in\ov{\cal F}_v$ with $t_v(\ov\tau)\in{\cal F}_v$. (The even Weil
+representations are not in $\ov{\cal F}_v$, since their Waldspurger lifts
+are one-dimensional.) Definition~7.4 must then define ``lies over $\nu$''
+only for $\ov\pi'$ in ${\cal A}_{00}$, and Hypothesis~GH must be stated
+for the ${\cal A}_{00}$ part of the spectrum.
+\end{fix}
+
+Even with this repair, item~1 shows that the $\pm$odd classes cannot be
+used when $\pi_\infty$ is a limit of discrete series. A further small
+point: (LH2) does not say that $t_v(\ov\tau)$ is unique. It is, by (LH1),
+and one sentence should say so.
+
+\subsection*{M4. Remark 2026.1 is false when \texorpdfstring{$q\equiv3\pmod4$}{q = 3 mod 4}}
+
+Remark~4.2 (\texttt{rem:sc-caveat}) says that the function
+$(x,\zeta)\mapsto\zeta\chi_\pi(x)$ ``is not obviously invariant under
+conjugation.'' It is not invariant, and this refutes relation (4.4).
+
+Let $q\equiv3\pmod4$, $e\in{\cal O}^\times$, and
+\[
+h=\begin{pmatrix}-1+\varpi e&-e\\ \varpi&-1\end{pmatrix}\in K_0,\qquad
+w=\begin{pmatrix}0&-1\\1&0\end{pmatrix}.
+\]
+Then $\det h=1$, and $(\tr h)^2-4=-4\varpi e+\varpi^2e^2$ has valuation
+$1$, so $h$ is regular elliptic (ramified). A direct computation with
+(\ref{eq:conjfactor}) below gives
+\[
+(w,1)\,(h,1)\,(w,1)^{-1}=(whw^{-1},-1).
+\]
+In general, for $g=\left(\begin{smallmatrix}a&b\\c&d\end{smallmatrix}\right)$
+with $abc\neq0$,
+\begin{equation}\label{eq:conjfactor}
+(w,1)(g,1)(w,1)^{-1}=\bigl(wgw^{-1},\,(a,-bc)_2\bigr),
+\end{equation}
+and here $(a,-bc)_2=(-1+\varpi e,\varpi e)_2=(-1,\varpi)_2=-1$.
+Equivalently $s_v(h)=-1$ and $s_v(whw^{-1})=1$. If (4.4) held, then
+\[
+\chi_\pi(h)=\chi_{\ov\pi}(h,1)=\chi_{\ov\pi}(whw^{-1},-1)
+=-\chi_\pi(whw^{-1})=-\chi_\pi(h),
+\]
+so $\chi_\pi(h)=0$ for every supercuspidal $\pi$. That is false. The reduction of $h$ is $-1$ times a regular unipotent,
+and the same holds at the adjacent vertex $x_1$, so the fixed point set of
+$h$ in the tree is the single edge $\{x_0,x_1\}$. For
+$\pi=\text{c-Ind}_{K_0}^{G}\sigma$ of depth zero the Frobenius formula
+(Proposition~4.4 for $G$) therefore has one term,
+$\chi_\pi(h)=\chi_\sigma(\bar h)$, and the cuspidal characters of
+$SL(2,\mathbb{F}_q)$ do not vanish at $-1$ times a regular unipotent. (The
+sign computation is verified by machine for $q=3,7,11$; for $q=5,13$ the
+sign is $+1$, as expected.)
+
+Two consequences for the text.
+\begin{itemize}
+\item The parenthesis in Remark~4.2 should say that $s_v$ is nontrivial on
+regular elliptic elements of $K_0$ \emph{if and only if}
+$q\equiv3\pmod4$. When $v(c)$ is odd and $g$ is elliptic, $d\equiv\pm1$
+modulo $\varpi$, so $s_v(g)=(\varpi,d)_2=1$ unless $-1$ is a non-square.
+\item ``A corrected statement presumably involves the factor $s_i$'' is
+optimistic. In the Frobenius formula the sign
+$s_i(gxg^{-1})$ varies with the coset representative $g$, so the genuine
+character is a \emph{signed} sum of the terms of $\chi_\pi$, with no
+evident relation to $\chi_\pi$ itself. I suggest relabeling
+Remarks~2026.1 and 2026.2 as ``false when $q\equiv3\pmod4$; open when
+$q\equiv1\pmod4$,'' or removing Chapter~4 from the main text
+(\S\ref{sec:read}).
+\end{itemize}
+
+\subsection*{M5. The weighted orbital integral at central elements diverges}
+
+Section~5.2.5 \lref{1503--1540} and the example in \S6.1.1
+\lref{3615--3646} define $J_A(z,f)$, $z$ central, as
+$\lim_{a\to1}J_A(az,f)$, and state $r_A(\gamma,a)=1$. The limit does not
+exist in general. For $a=a(t)$ and $x=n(u)k$ one has
+$x^{-1}ax=k^{-1}a\,n\bigl((1-t^{-2})u\bigr)k$, so in the $p$-adic case
+\[
+J_A(a,f)=|t|\int_K\!\int_F f\bigl(k^{-1}a\,n(u)k\bigr)\,
+\log\max\!\Bigl(1,\frac{|u|}{|1-t^{-2}|}\Bigr)\,du\,dk
+=-\log|1-t^{-2}|\cdot J_G(a,f)+O(1),
+\]
+which diverges as $t\to1$ unless the unipotent orbital integral of $f$
+vanishes. Arthur's definition \cite[(8.1)]{A7} contains the term $L=G$
+with a nonzero function $r_A^G(z,a)$ precisely to cancel this.
+
+\begin{fix}[Suggested replacement for the last display of \S5.2.5]
+For $z=\pm1$ and $a=a(t)\to1$,
+\[
+J_A(z,f)=\lim_{t\to1}\Bigl[J_A(az,f)+\log|1-t^{-2}|\,J_G(az,f)\Bigr]
+=\int_K\!\int_F f\bigl(k^{-1}z\,n(u)k\bigr)\,\log|u|\,du\,dk
+\]
+in the $p$-adic case, with $\log|u|$ replaced by the corresponding
+archimedean weight otherwise. (The constant in front of the logarithm
+depends on the normalization of $v_A$; check it against \cite{A7}.)
+\end{fix}
+
+The same display has $dx/dt$ where $dx/da$ is meant, and the displays of
+\S5.2.1 mix the variables $g$, $a$ and $\gamma$.
+
+\subsection*{M6. Chapter 6 does not state the trace formula correctly}
+
+The chapter is not used in the proof of Theorem~7.9, but Remark~7.8
+(\texttt{rem:GH}) builds on it, and it is presented as a recollection of
+known results. As written:
+\begin{enumerate}
+\item The spectral side omits the discrete terms that are not cuspidal:
+the residual spectrum (the trivial representation of $SL(2)$; the even
+theta representations of the cover) and the terms
+$\tfrac14\tr\bigl(M(w,\chi)I_B(\chi,f)\bigr)$ for $\chi^w=\chi$. The lemma
+\lref{3732--3757} treats only ``unramified'' $\chi$, that is
+$\mu^w\neq\mu$. In a comparison these terms cannot be ignored: the lemma on
+non-tempered representations in \S5.7.4 is the local shadow of the
+matching of residual spectra.
+\item In (e), the integral should be over automorphic characters of
+$A(k)\backslash A(\A)^1$ (times $i\mathfrak{a}^*$), not over
+$\Pi_u(A(\A_S))$. The operator is written $M_A^T$ in (e) but $M_B^T$ in
+the definition.
+\item The formula depends on the truncation parameter $T$ through
+$-2T\cdot I$. The identity is stated for $SL(2)$ without fixing $T$ and for
+the cover at $T=0$.
+\item In the definition \lref{3705--3730}, the clause
+``if $\chi=(G,\rho)$, let $M_B^T(\pi)_\chi=1$'' duplicates the previous
+one and makes no sense for $P=B$. The factor
+$\operatorname{vol}(\R/\Z)$ is unexplained.
+\item On the geometric side, the sums run over
+$\gamma\in{\cal O}\cap A(\A)$ where $A(k)$ is meant, and
+$a^M(S,\gamma)$ is given as
+$\operatorname{vol}(M(k)_\gamma\backslash M(\A_S)^1_\gamma)$ where the
+global volume $\operatorname{vol}(M(k)_\gamma\backslash M(\A)^1_\gamma)$ is
+meant. The display \lref{3589} has unbalanced delimiters.
+\item The two displayed trace formulas in Remark~7.8(1) inherit the
+omission in item~1, and reuse the letter ${\cal C}$ for the set of classes
+${\cal O}$.
+\end{enumerate}
+I suggest replacing Chapter~6 by a one-page statement of the two formulas
+with precise references, or moving it to an appendix marked ``1995 text,
+not used.''
+
+\subsection*{M7. Three incorrect statements in proved or explanatory text}
+
+\begin{enumerate}
+\item \emph{Remark 2026.11} (\texttt{rem26:A00-norm}) says that any bound
+strictly better than $|s_v|<1/2$ would do. It would not. The proof of
+Lemma~7.12 needs $2s_v\neq\pm1/2$, and a bound such as $|s_v|\le 1/3$ does
+not exclude $s_v=1/4$. What is needed is $|s_v|\neq1/4$ at one suitable
+place, and the Gelbart--Jacquet bound $|s_v|<1/4$ is exactly the natural
+sufficient condition.
+\begin{fix}
+The proof of Lemma~7.12 uses the bound $|s_v|<1/4$ only to exclude
+$|s_v|=1/4$ at a single place $v\notin S$ where all data are unramified.
+The trivial bound $|s_v|<1/2$ does not suffice.
+\end{fix}
+(Under the even correspondence of M1 the theta representations match
+$s=1$ on $SL(2)$, and the trivial bound would suffice.)
+
+\item \emph{Lemma 3.4} \lref{951--958}. Since $J_G$ already
+contains the factor $|D(\gamma)|^{1/2}=|a_1-a_2|$, the conclusion should
+read $F^\vee(\gamma)=J_G(\gamma,f)$. The extra factor $|a_1-a_2|$ counts
+the normalization twice. The letter $F$ also clashes with the field.
+
+\item \emph{Lemma 3.2} \lref{893--915}. The hypothesis
+$\chi\neq\chi^w$ does not imply that $I_A(\chi)$ is irreducible (take
+$|x|^{\pm1}$ on $SL(2)$ or $|x|^{\pm1/2}$ on the cover), and it is not
+needed: the formula is the character of the induced representation for
+every $\chi$. Proposition~5.12 applies the formula to all $\chi$, while
+\S7.4 item~2 restricts to $\chi\neq\chi^w$. State the lemma for all
+$\chi$, as the character of the (possibly reducible) representation
+$I_A(\chi)$, and delete the restriction in \S7.4.
+\end{enumerate}
+
+\section{What is correct}
+
+So that the list above is read in proportion, here is what I verified.
+
+\begin{itemize}
+\item \S2.1: the two forms of the cocycle (2.1) agree; (2.3)--(2.5);
+Lemma~2.2; Lemma~2.3(a), (e), (f), (h). For (h) I found a clean proof,
+which could replace the appeal to the literature: for $c\neq0$,
+$\beta(g,n)=(1,c)=1$, $\beta(g,g^{-1})=(c,-c)=1$, and
+$\beta(gn,g^{-1})=(-c,c)=1$ because $gng^{-1}$ has lower left entry
+$-c^2$.
+\item \S2.2: the quotient construction, $Z_0$, and the splitting over
+$G(k)$ are consistent. (In the $\beta_{\A}$ model the image of
+$\gamma\in G(k)$ is $(\gamma,s_{\A}(\gamma))$; the inverse in the text is
+harmless since $s_{\A}=\pm1$.)
+\item \S5.3.1--5.3.2: Lemmas 5.3, 5.4, 5.8, 5.15, Definitions 5.5 and 5.7, and both
+$\Q_3$ examples. The correction of the 1995 requirement
+$\epsilon=\vartheta$ is right.
+\item \S5.3.4: the transfer of $K\cap A$-invariance under Definition~5.7; the
+unit elements (Example~5.22).
+\item \S5.5: formulas (5.17); the $SL(2,\R)$ character formulas and central
+characters; the Weyl integration formulas with $d\theta/2\pi$ and
+$d\varphi/4\pi$; Remark~5.27; the example following it; the table and all
+three parts of Lemma~5.29; the infinitesimal character bookkeeping
+$|m|\in\{2\nu-1,2\nu,2\nu+1\}$.
+\item \S5.4: items 1--6 of the list of errors in the 1995 dyadic argument;
+the $\Q_2$ example.
+\item Lemma~5.36 (Fresnel integral).
+\item Chapter 7: Lemma~7.10 (given Harish-Chandra's theorem, and with the
+draft's own caveat for the cover); Lemma~7.11; Lemma~7.12, including the
+Jacquet module and the normalization $\lambda=\omega|\cdot|^{-1/2}$;
+Steps~1--4 of the proof of Theorem~7.9; Proposition~7.15;
+\S7.5, both items.
+\end{itemize}
+
+\section{Minor mathematical points}
+
+\begin{enumerate}
+\item \emph{Lemma 2.3(b)} \lref{544--546}. For $p$ odd the splitting of
+$\ov{K_0}$ is unique, because $SL(2,{\cal O})$ has no quotient of order
+$2$. So ``a splitting'' can be ``the splitting,'' and
+$\kappa_v(k)=(k,s_v(k))$ holds at \emph{every} odd place, not only almost
+all \lref{700}. Uniqueness also settles a point left implicit in
+Proposition~7.15: conjugation by $w$ in the cover of $GL(2)$ carries
+$\kappa(K_0)$ to the splitting of $\ov{K_1}$.
+\item \emph{The cocycle on $GL(2)$} \lref{473--482}. The definition sets
+$v=1$ when $F=\R$. My recollection of \cite[\S2.1]{Ge2} is that
+$v(y,s)=(y,d)_2$ for $c=0$ with no exception at the real place. Please
+check.
+\item \emph{\S3.1.2} \lref{886--891}. For regular $t$ in $SL(2)$ the
+centralizer \emph{is} $T$; ``finite index'' is not wrong but misleading.
+\item \emph{\S4.2} \lref{1111--1116}. The quotient
+``$(N\cap K_{i,m-1-i})/K_{i,m}$'' is not a quotient of groups as written.
+Presumably $(N\cap K_{i,m-1})K_{i,m}/K_{i,m}$ is meant; the index
+$m-1-i$ needs an explanation.
+\item \emph{Lemma 4.5} \lref{1225--1228}. The
+quantifiers are wrong. It should read: there are a neighborhood $U$ of $x$
+and a finite set $Z$ such that $\chi^z_{\ov\sigma}(y)=0$ for all $y\in U$
+and all $z\notin Z$. In the proof, ``unless $p(x)$ is elliptic regular''
+should be ``unless $p(x)$ is elliptic'' ($x$ is regular by assumption).
+\item \emph{Remark 5.30} \lref{2675--2681}. The factor
+$\sgn(x)^{-\varepsilon k/2}$ is ambiguous for $x<0$ and half-integral
+exponent, and $\ln(x)$ should be $\ln|x|$. Write the fourth root of unity
+explicitly. The final sentence of the remark asserts an inconsistency
+without showing it.
+\item \emph{(5.18)} \lref{3383--3389}. Lines 3 and 4 give the same
+decomposition for two different principal series,
+$\pi_{PS}(0,1)$ and $\pi_{PS}(0,-1)$. Presumably the parameters are the
+exponents $\pm1$. Adams's notation should be explained.
+\item \emph{\S5.7 is used later.} The section says ``This section shall not
+be needed later'' \lref{2817}, but formula (iii) of \S5.7.2 is used in
+Lemma~7.12, and \S5.7.4 in \S7.4 and M3.
+\item \emph{\S5.7.2--5.7.3}, all conditional on the Conjecture:
+\begin{itemize}
+\item \lref{3049--3056}: the kernel $k_\epsilon(x,y)$ is written with
+$\tfrac{a+d}{c}q(x)$ and then with $\tfrac{a+d\mp2}{c}xy$. Off the
+diagonal the phase is $(ax^2+dy^2\mp2xy)q/c$; the displayed formulas are
+right only for $x=y$. A factor $\tfrac12$ is lost between the kernel and
+the following Remark.
+\item \lref{3254--3256}: $|\det(g-1)|^{1/2}=2|\sin(\theta/2)|$, so the
+second line should have $2|\sin(\theta/2)|$ and $2|\cos(\theta/2)|$,
+without the exponent $1/2$. (This is what agrees with the formulas quoted
+from Adams.)
+\item $\gamma(\tau)=\exp(\tfrac{\pi i}{4}\sgn q)$ \lref{3166} and
+$\gamma(q)=\exp(-\tfrac{i\pi}{4}\sgn q)$ \lref{3265} contradict each
+other.
+\item \lref{3123}: the $n$-dimensional Fresnel integral is missing the
+phase $e^{\pi i n\,\sgn(a)/4}$, and $F^n$ should be $\R^n$.
+\item \lref{3029--3031}: the ``trick'' ignores the scalar $\omega(-1)$ by
+which $(-I,1)$ acts and the cocycle $\beta(-I,g)$.
+\item \lref{3007}: $L^2(G)_\epsilon$ should be $L^2(F)_\epsilon$;
+\lref{3232}: stray ``$|$''.
+\end{itemize}
+\item \emph{Lemma 5.23} \lref{2206--2213} begins
+``Finally'' and repeats Example~5.22. Merge them.
+\item \emph{Hypothesis 7.3 (LH0) and Step 1.} ``The corresponding genuine
+$\ov{K_v}$-types'' in (LH0) is not defined. Since $\ov K=\ov{SO(2)}$ has
+characters $e^{in\theta/2}$, say which half-integers correspond to a given
+finite set $L$.
+\end{enumerate}
+
+\section{Readability}\label{sec:read}
+
+\begin{enumerate}
+\item \emph{The main line is hard to find.} Of roughly 70 pages, the main
+theorem uses \S2, \S5.3, formula (iii) of \S5.7.2, and Chapter~7. Chapters
+3, 4 and 6, and \S\S5.4, 5.6, 5.7.3--5.7.4, are either unverified 1995
+material or unused. I suggest three parts: (I) background and the verified
+local results; (II) the conditional theorem; (III) an appendix,
+clearly marked, holding the unverified and unused 1995 material. A
+dependency diagram in the introduction would help.
+
+\item \emph{Discussion of the 1995 errors dominates the text.} The
+introduction, \S5.4, \S7.5 and many remarks are about what the old draft
+got wrong. For a reader who never saw the 1995 draft this is a
+distraction. In line with the convention the author has adopted for other
+revisions, this material belongs in the revision log, with any
+mathematically useful residue rephrased as a remark (for instance,
+Remark~5.11 on why weighted orbital integrals cannot match for all pairs
+stands on its own without mentioning 1995).
+
+\item \emph{The labeling convention of \S1.3 is not followed.} It says
+that statements labeled Theorem, Proposition, Lemma or Corollary are proved
+or quoted with a reference. Exceptions: the lemma on the existence of
+characters on the cover (\S3.1.1, ``no proof has been published''; cite
+Li's local harmonic analysis paper, \S\ref{sec:bib}); the principal series
+character lemma (``proof omitted''); Lemma~7.10 for the cover (flagged in
+Remark~2026.10); Proposition~5.38 and Corollaries 5.39 and 5.42, which
+assume a Conjecture; Lemma~6.3.
+
+\item \emph{``Remark 2026.$n$'' is a confusing name.} These are not
+remarks; they are unverified or false \emph{claims}. Meanwhile the
+critiques of those claims are ordinary Remarks (4.2, 5.11, 5.31). Rename the
+environment, for example ``Unverified claim 2026.$n$,'' so that a reader
+skimming for statements is not misled.
+
+\item \emph{Notation that is used before it is defined, or never
+defined:} $\Pi(\cdot)$, $\Pi_u(\cdot)$, $\Pi_{gen}$; $I_A(\chi)$ (the
+normalization of induction is never stated); $J_G$, $F_f^{\ov{A(F)}}$ and
+$F^\vee$ in \S3.1.2 (defined in \S5.2 or not at all); $\overline C$ and
+``the argument of \cite{Ar} sketched above'' in \S3.2.2 (nothing is
+sketched above); $t$ and $\Delta$ ``as in \cite{Fl}''; $\omega$, $q(x)$,
+$\gamma(q)$ ``as in \cite{Fl}.''
+
+\item \emph{Overloaded symbols.} The following each carry several
+meanings, sometimes on the same page:
+
+\medskip
+\begin{center}
+\begin{tabular}{@{}ll@{}}
+\toprule
+Symbol & Meanings\\
+\midrule
+$w$ & $\left(\begin{smallmatrix}0&-1\\1&0\end{smallmatrix}\right)$;
+$\left(\begin{smallmatrix}0&\varpi\\1&0\end{smallmatrix}\right)$ (\S4.2, Ch.~7)\\
+$p$ & residual characteristic; projection $\ov G\to G$; map $GL_2\to SL_2$ (also $pr$)\\
+$\nu$ & valuation; infinitesimal character; $k/2-1$\\
+$\epsilon,\varepsilon$ & genuine parameter; sign $\pm1$ of $\chi_\epsilon$ on $\R$; parity; identity character of $\mu_2$\\
+$\tau$ & map $h\mapsto(h,1)^2$; $\pm1/2$; additive character; Ramanujan $\tau(p)$\\
+$\psi$ & additive character; the function in Lemma~5.4; elements of $\Psi(P_1,P,\chi,W)$\\
+$\chi$ & character of $A$; class in ${\cal X}$; quadratic character\\
+$S$ & set of places; Satake transform\\
+$B$ & Borel subgroup; Iwahori subgroup (\S5.6.1)\\
+$T$ & Cartan subgroup; truncation parameter\\
+$q$ & residue field order; quadratic form $q(x)$\\
+$F$ & local field; the function $\chi\mapsto\tr I_A(\chi)(f)$\\
+${\cal A}$, ${\cal C}$ & finite sets in Step~1 and spaces ${\cal A}_0$; classes ${\cal C}_v$ and set of ${\cal O}$\\
+\bottomrule
+\end{tabular}
+\end{center}
+\medskip
+
+The notation table lists both $a(x)$ and $h(x)$ for the same matrix; pick
+one.
+
+\item \emph{Examples placed at chapter ends.} Several examples sit after
+the last section of a chapter and refer to ``the lemma above'' many pages
+back (end of Chapters 3, 4, 5, 6). Move each next to the statement it
+illustrates.
+
+\item \emph{Small things.} ``In the case case'' \lref{3736}; ``a
+irreducible'' \lref{1125}; ``non-metaplectic Case'' \lref{2119}; ``Define
+$I_P(\pi)$ induced representation \dots\ Define \dots\ denote''
+\lref{3699--3703}; $\operatorname{Ind}$ for c-Ind in Remark~2026.1;
+``$cos$'' unformatted \lref{2853}; ``$ln$'' and ``$<<$'' in the proof of
+Lemma~5.36; ``p-adic'' versus ``$p$-adic''; first person singular and
+plural are mixed (``Let me first prove,'' ``we obtain'').
+\end{enumerate}
+
+\section{Literature and bibliography}\label{sec:bib}
+
+\begin{enumerate}
+\item \emph{Chai--Zhang} \lref{99--102, 260--265}. Their theorem also
+requires the two representations to be generic with respect to the same
+additive character. Add this condition in both places.
+\item \emph{[Zh]} is Q.~Zhang, ``Addendum to `A strong multiplicity one
+theorem for $SL_2$','' Pacific J. Math. 292 (2018), no.~1, starting at
+p.~283. The bibliography gives the title of the original paper and
+``283ff.''
+\item \emph{Add:} W.-W.~Li, ``Stabilization of the trace formula for
+metaplectic groups,'' arXiv:2109.06581; W.-W.~Li, ``Spectral transfer for
+metaplectic groups. I. Local character relations,'' J. Inst. Math. Jussieu
+18 (2019) 25--123. From memory, to be verified: W.-W.~Li, ``La formule des
+traces pour les rev\^etements de groupes r\'eductifs connexes. II. Analyse
+harmonique locale,'' Ann. Sci. \'Ec. Norm. Sup\'er. 45 (2012) (existence of
+characters on covering groups, for \S3.1.1); W.~T.~Gan and G.~Savin,
+``Representations of metaplectic groups II: Hecke algebra
+correspondences,'' Represent. Theory 16 (2012) (cited by name in \S5.4 but
+absent from the bibliography); H.~Jacquet and J.~Shalika, ``On Euler
+products and the classification of automorphic representations I, II,''
+Amer. J. Math. 103 (1981) (for M1).
+\item \emph{[LL]}: Canad. J. Math. \textbf{31} (1979) 726--785, not volume
+33 (from memory).
+\item \emph{[M1], [M2]}: Math. Ann. 266 appeared in 1984, not 1987 (from
+memory).
+\item \emph{[J1]}: I believe this is Israel J. Math. \textbf{61} (1988)
+113--154; the entry says volume 66. The author will know.
+\item \emph{[Ad1]} has appeared: Israel J. Math. 98 (1997) 229--252 (from
+memory).
+\item \emph{Author dashes.} The entry [A1] begins ``------'' directly
+after Ariturk, so it reads as a paper by Ariturk; write ``J.~Arthur.'' The
+same problem occurs at [GS] (after Gelbart--Piatetski-Shapiro) and should
+be checked throughout.
+\item \emph{Uncited entries:} [AC], [Bl], [Bo], [HC1], [L2], [Sa], [Sch].
+Remove or cite.
+\end{enumerate}
+
+\section{Options for the revision}\label{sec:options}
+
+\begin{enumerate}
+\item[(A)] \emph{Refocus on the local results.} Present the paper as a
+study of the genuine characters of the torus, the matching of functions on
+it, and the real elliptic matchings, with Lemma~7.12 as an application.
+State Proposition~R as a theorem: it is a clean negative result explaining
+why the odd unramified correspondence has no global counterpart. This is
+the smallest change and yields a correct paper.
+
+\item[(B)] \emph{Rebuild the conditional theorem on the even
+correspondence.} Replace Definition~5.21 by the homomorphism
+$b:{\cal H}(G,K)\to{\cal H}(\ov G,K)_{gen}$ with
+$\tr I(\chi_\psi\mu)(b(f))=\tr I_A(\mu^2)(f)$. This is canonical and
+agrees with the archimedean matchings already in the draft. But the
+argument changes in essential ways, and I do not see how it yields
+multiplicity one:
+\begin{itemize}
+\item $b$ is not an isomorphism and the transfer is not injective: $\mu$
+and $\mu$ times the unramified quadratic character have the same image. In
+Step~2 of the proof the right side becomes a sum over all $\ov\pi'$ whose
+Waldspurger lifts are quadratic twists of one another, and Step~3
+(uniqueness from injectivity of $t_v$) is lost.
+\item Only those $\pi$ are reached whose $\Pi$ can be twisted to have
+trivial central character. For the others no $\ov\pi'$ exists, so a trace
+identity of the form GH cannot hold on the whole cuspidal spectrum.
+\item The fibers are Waldspurger packets on one side and
+Labesse--Langlands packets on the other. An identity relating them will
+be of endoscopic type, with signs, not an equality of cuspidal traces.
+\end{itemize}
+If the author pursues this, the honest statement of the result would be a
+description of how the two packet structures correspond, with multiplicity
+one for $SL(2)$ as an input (Ramakrishnan), not an output.
+
+\item[(C)] \emph{Keep Theorem 7.9 but say what it is.} If the theorem is
+retained for the record, the abstract and introduction must state that its
+hypotheses are inconsistent (Proposition~R), so that it carries no
+information about multiplicity one. I do not recommend this.
+\end{enumerate}
+
+In all three cases the abstract's sentence ``we show that $\pi$ occurs with
+multiplicity one and corresponds to a unique genuine cuspidal automorphic
+representation of the cover'' must go.
+
+\begin{thebibliography}{9}
+\bibitem[A4]{A7} J. Arthur, ``The local behaviour of weighted orbital
+integrals,'' Duke Math. J. 56 (1988) 223--293.
+\bibitem[Ge2]{Ge2} S. Gelbart, \emph{Weil's representation and the
+spectrum of the metaplectic group}, Lecture Notes in Math. 530, Springer,
+1976.
+\bibitem[GJ2]{GJ78} S. Gelbart and H. Jacquet, ``A relation between
+automorphic representations of $GL(2)$ and $GL(3)$,'' Ann. Sci. \'Ec. Norm.
+Sup. 11 (1978) 471--542.
+\bibitem[Ar]{Ar} Ariturk, as in the draft.
+\bibitem[Fl]{Fl} Y. Flicker, ``Automorphic forms on covering groups of
+$GL(2)$,'' Invent. Math. 57 (1980) 119--182.
+\bibitem[Wa1]{Wa1} J.-L. Waldspurger, ``Correspondance de Shimura,''
+J. Math. Pures Appl. 59 (1980) 1--133.
+\bibitem[Wa2]{Wa2} J.-L. Waldspurger, ``Correspondance de Shimura et
+quaternions,'' Forum Math. 3 (1991) 219--307.
+\end{thebibliography}
+
+\end{document}

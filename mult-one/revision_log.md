@@ -1,4 +1,4 @@
-# Revision log: *Multiplicity one for SL(2)*
+# Revision log: *Direct comparison of SL(2) with its metaplectic cover* (formerly *Multiplicity one for SL(2)*)
 
 ## Stages
 
@@ -6,6 +6,326 @@
 - **Draft 1** (Claude, November 20, 2026). Carbon (Gemini) had refereed the merged 1995 draft. In Draft 1 the files are merged into one pdflatex file, the main theorem is stated conditionally (the author's decision), and mechanical fixes are applied. In git, see commit `045016f`. Its log is the last section of this file.
 - **Draft 3** (Claude, November 20, 2026). A style-guide pass with no mathematical changes. See the next section.
 - **Draft 2** (Claude, November 20, 2026). This is the response to the referee report on Draft 1 in `revised/referee-report_draft1.md`. The author believes that report was written by ChatGPT (OpenAI). The section "Draft 2" below covers Draft 1 → Draft 2. Its theorem numbers refer to Draft 2. See the concordance in the Draft 3 section.
+
+- **Draft 4** (Claude, November 23, 2026). Response to Claude's referee report on Draft 3 (`revised/referee-report_draft3.tex`). The main result is restated: the hypotheses of the Draft 3 theorem are inconsistent. See the section "Draft 4".
+- **Draft 5** (Claude, November 23, 2026). Motivation section, new title, and a section tracing where the comparison fails. See the section "Draft 5".
+
+The sections below are in reverse order: Draft 5, Draft 4, Draft 3, Draft 2, Draft 1. Theorem numbers in each section refer to the draft named there.
+
+## Draft 5: motivation, new title, and where the comparison fails
+
+Draft 5 (Claude, November 23, 2026) follows three requests by the author.
+
+- **Motivation.** The author explained the question behind the text: the cover of SL(2) is known to correspond to PGL(2) (Weil, Shimura, Waldspurger); why is a direct correspondence with SL(2) wrong, and how far off is it? A new Section 1.1 "Motivation" states this, and the abstract is rewritten around it.
+- **Title.** Changed from *Multiplicity one for SL(2)* to *Direct comparison of SL(2) with its metaplectic cover*. The directory was renamed from `mult1sl2/` to `mult-one/`, and the manuscript file from `multiplicity-one-SL2.tex` to `direct-comparison-SL2.tex`.
+- **New Section 5.4, "Where the global comparison fails".** It traces the proposed argument through the trace formula. The direct comparison is globally consistent on the split torus (Weil's product formula for the Weil index gives the matching of regular hyperbolic terms and of traces of principal series). It fails for the intertwining operators (L(s, mu) against L(2s, mu^2)), for the residual spectrum (trivial representation against the even theta representations), and for the cuspidal spectrum (Theorem 5.16). Diagnosis: the same torus, with the coroot doubled.
+
+Unverified in Draft 5, and marked as Remark 2026.12: the formula for the intertwining scalar on the cover, the description of its residual spectrum, and the form of Weil's product formula, all quoted from memory. The references [Shi] (Shimura 1973) and [We3] (Weil 1964), and the statement that Shimura's proof used Rankin's method and Weil's converse theorem, are also from memory. Siegel's historical role is not discussed.
+
+Other changes: the script `scripts/referee_check.py` was added (it is run by `run_checks.py`), and the lemma numbers in the docstring of `scripts/local_formulas_check.py` were updated to Draft 5.
+
+Theorem numbers in the "Draft 4" section below are the same in Draft 5. Sections of Chapter 5 after 5.3 moved down by one, and Chapter 1 gained a new Section 1.1.
+
+## Draft 4: the main result restated
+
+### Summary
+
+Draft 4 was prepared by Claude (Anthropic) from Claude's referee report on Draft 3
+(`revised/referee-report_draft3.tex`). The main change: the conditional main theorem of
+Draft 3 (Theorem 7.9) is now Proposition 5.10 (`thm:main`), and the main result is the new
+Theorem 5.16 (`thm:nonexist`): no genuine cuspidal representation corresponds to a given
+cuspidal representation of SL(2) under the Satake correspondence of Definition 4.23. Hence
+Hypotheses LH and GH are inconsistent (Corollary 5.17).
+
+### AI usage
+
+- Claude refereed Draft 3 and wrote Draft 4, including the statement and proof of
+  Theorem 5.16, Lemmas 4.6 (`lem:Wequiv`) and 5.14 (`lem:square`), Remarks 4.7, 5.4 and
+  2026.11 (`rem:even`), and the counterexample in Remark A.2.
+- None of this has been checked by a specialist.
+
+### Sources not consulted directly
+
+Quoted from memory in Draft 4:
+
+- Waldspurger [Wa1], [Wa2]: the correspondence Wald_psi on A_00, its compatibility with
+  unramified principal series, and the fact that the even Weil representation has a
+  one-dimensional image (used in Theorem 5.16 and Remark 5.4).
+- Gelbart-Jacquet [GJ2]: the adjoint lift and its properties.
+- Jacquet-Shalika [JS], Shahidi [Sha]: poles and nonvanishing of Rankin-Selberg L-functions at s=1.
+- Li [Li1] (bibliographic data and the statement on characters), Gan-Savin [GS2]
+  (bibliographic data), Arthur [A4] (8.1) (form of the correction term in section 4.2.5).
+- Bibliographic corrections made from memory: [LL] volume 31; [M1], [M2] year 1984;
+  [Ad1] Israel J. Math. 98 (1997).
+- Checked on the web: Chai-Zhang (genericity condition), Zhang's addendum (title, volume),
+  Li [Li2], [Li3].
+
+### Changes in Draft 4
+
+Structure
+- Chapters 4 (supercuspidal correspondence) and 6 (trace formulas) are now Appendices A and B.
+  Old Chapter 5 is Chapter 4; old Chapter 7 is Chapter 5, retitled "Global consequences".
+- Abstract, section 1.1 and section 1.4 rewritten. Section 7.5 of Draft 3 ("Remarks on the
+  1995 argument"), the list of errors in section 1.1, and the list of errors in the dyadic
+  section were moved to this log (below).
+- Corollary 7.16 of Draft 3 (`cor:main`) was deleted.
+
+Mathematics
+- New: Lemma 4.6 (Weyl group compatibility), Remark 4.7 (dependence on the uniformizer and
+  eta; failure to preserve unitarity), Lemma 5.14, Theorem 5.16, Corollary 5.17, Remark on the
+  even correspondence, Remark 5.4.
+- Hypothesis LH: (LH1) and (LH2) are now imposed only on local components of cuspidal
+  representations and of representations in A_00. Hypothesis GH is now stated for A_00.
+  Reason: as stated in Draft 3, (LH1) and (LH2) fail for the real elliptic classes (Remark 5.4).
+- Remark 2026 on Lemma 5.15 (`rem26:A00-norm`): the claim that any bound better than
+  |s_v| < 1/2 suffices was wrong; what is needed is |s_v| != 1/4.
+- Remark A.2: the supercuspidal relation (A.4) is false when q = 3 mod 4 (explicit element).
+- Section 4.2.5: the weighted orbital integral at central elements diverges as written in
+  Draft 3; correction term added.
+- Lemma 3.2: stated for all characters (irreducibility not needed). Lemma 3.4: removed a
+  duplicated normalizing factor.
+- Lemma 2.3(b): the splitting is unique; proof of 2.3(h) added.
+- Section 4.7 (Weil representation): kernel corrected off the diagonal; factor 1/2 restored;
+  exponent typo in the real elliptic corollary; phase in the n-dimensional Fresnel integral.
+- Appendix B: caveat paragraph on omitted terms; A(k) for A(A) in the sums; global volume;
+  M_B^T for M_A^T; duplicate clause removed.
+
+Notation and wording
+- w_varpi for the matrix (0 varpi; 1 0); calligraphic I for the Iwahori subgroup; Pi(H),
+  Pi_u(H), I_A(chi) defined in section 3.1.
+- Chai-Zhang statement corrected; Li and Gan-Savin added to the literature review.
+
+### Not done (decisions for the author)
+
+- The "Remark 2026.n" naming is unchanged.
+- [J1]: the volume (66 vs 61) was not changed.
+- Uncited bibliography entries ([AC], [Bl], [Bo], [HC1], [L2], [Sa], [Sch]) were kept.
+- Appendix B was not rewritten into a correct statement of the trace formulas.
+- Most overloaded symbols (nu, epsilon, tau, psi, chi, S, T, q) are unchanged.
+- The convention v = 1 at the real place in the GL(2) cocycle (section 2.1) is unchecked.
+
+### Material moved from Draft 3
+
+#### Section 1.1 of Draft 3 (status of the main result, with the list of 1995 errors)
+
+```latex
+\section{Status of the main result}
+
+This section states what is known about multiplicity one for $SL(2)$, what the 1995 draft claimed, and what this revision proves.
+
+
+Multiplicity one for the cuspidal spectrum of $SL(2)$ was conjectured
+by Labesse and Langlands \cite{LL}, \cite{Lab}, and was proved by
+Ramakrishnan \cite{Ra}. D. Blasius has shown that the analog of the
+multiplicity one result is false for $SL(n)$, $n>2$ \cite{Blas}.
+Strong multiplicity one fails for $SL(2)$ \cite{LL}; Chai and Zhang
+\cite{CZ} (see also \cite{Zh}) proved a qualified form of it, for pairs
+of cuspidal representations which also agree at the archimedean places
+and at the places above $2$. We stress that the following four
+properties are different and are not used interchangeably here:
+multiplicity one (each cuspidal representation occurs at most once),
+strong multiplicity one (a cuspidal representation is determined by
+almost all of its local components), the local theta correspondence,
+and the description of global near-equivalence classes (``Waldspurger
+packets'') on the metaplectic cover \cite{Wa1}, \cite{Wa2}, \cite{PS}.
+
+The 1995 draft of this text claimed an unconditional proof of
+multiplicity one for $SL(2)$ by a comparison of trace formulas.
+On re-examination, several steps of that argument are incomplete:
+\begin{itemize}
+\item at the dyadic places, the generalized Hecke algebra argument of the
+1995 draft contains errors, and the orbital integral identity it
+needed was derived from a global argument that presupposed the
+equality of the cuspidal spectral sides (see \S\ref{sec:dyadic});
+\item at the archimedean places, the matchings of \S\ref{sec:realA} and
+\S\ref{sec:realds} control only some of the representations
+(for instance, the elliptic matchings see only functions whose
+orbital integrals vanish on the hyperbolic set);
+\item at odd places, several of the local character relations are
+incomplete (see Remark~\ref{rem:sc-caveat} and
+Remark~\ref{rem:savin-caveat}), the correspondence of characters of
+the diagonal torus in the 1995 draft was inconsistent when
+$(\varpi,\varpi)_2=-1$ (corrected in \S\ref{sec:charsA}), and the
+spherical Hecke algebra isomorphism gives the matching of hyperbolic,
+but not of elliptic, orbital integrals (Remark~\ref{rem:satake-oi});
+\item in the global argument, weighted orbital integrals cannot be
+matched for arbitrary corresponding pairs
+(Remark~\ref{rem:weighted-noninv}); and the final step of the 1995
+argument contained two further gaps (see \S\ref{sec:1995-argument}).
+\end{itemize}
+This revision therefore states the main result conditionally, and
+isolates exactly what is assumed.
+
+Informally, the main result (Theorem~\ref{thm:main}) is as follows.
+Fix a cuspidal automorphic representation $\pi=\otimes_v\pi_v$ of
+$SL(2,\mathbb{A})$, and let $S=S(\pi)$ be the finite set consisting of the
+archimedean places, the dyadic places, and the odd places $v$ at which
+$\pi_v$ is not spherical with respect to $K_{0,v}=SL(2,{\cal O}_v)$.
+Assume:
+\begin{itemize}
+\item (Hypothesis~\ref{hyp:GH}) for global functions $f$ on
+$SL(2,\mathbb{A})$ and genuine global functions $\overline{f}$ on the cover
+which correspond at every place (by the Satake correspondence outside
+$S$, and through prescribed local classes of pairs at the places of
+$S$), the traces of the cuspidal spectra agree after restriction to
+each archimedean infinitesimal character $\nu$:
+$\tr R_{cusp}^\nu(f)=\tr \overline{R}{}_{cusp}^{\,\nu}(\overline{f})$;
+\item (Hypothesis~\ref{hyp:LH}) at each $v\in S$, the local class of
+pairs separates characters, detects $\pi_v$, and transfers each genuine
+irreducible representation to at most one irreducible representation
+of $SL(2,k_v)$, with only finitely many genuine infinitesimal
+characters over each infinitesimal character of $SL(2,k_v)$ when $v$
+is archimedean.
+\end{itemize}
+Then $\pi$ occurs with multiplicity one, and $\pi$ corresponds to a
+unique genuine cuspidal automorphic representation $\overline{\pi}$ of
+the cover. The local hypothesis is verified here at odd places where
+$\pi_v$ is spherical with respect to a hyperspecial maximal compact
+subgroup (Proposition~\ref{prop:LH-spherical}).
+Chapters \ref{ch:sc} and \ref{ch:local} contain partial results toward
+the local hypothesis at other places, which we record together with
+their limitations in \S\ref{sec:LH-status}.
+
+The refinement by infinitesimal characters in Hypothesis~\ref{hyp:GH} is
+needed because the cuspidal spectrum at a fixed level and with fixed
+$K_\infty$-types is infinite (Remark~\ref{rem:why-refine}). Hypothesis~\ref{hyp:GH} is a strong assumption: it
+contains most of the global comparison that the 1995 project hoped to
+establish.
+
+The proof of Theorem~\ref{thm:main} uses Waldspurger's multiplicity one
+theorem for the cover, which is a statement about the space ${\cal A}_{00}$
+of genuine cusp forms orthogonal to the elementary theta series. We show
+(Lemma~\ref{lem:A00}) that the genuine representations which arise in
+the proof lie in ${\cal A}_{00}$; this step uses the Labesse--Langlands
+description of the cuspidal spectrum of $SL(2)$ by restriction from
+$GL(2)$ and the Gelbart--Jacquet bound toward the Ramanujan conjecture
+for $GL(2)$. The proof does not use the failure, or any weak form, of
+strong multiplicity one for the cover.
+
+\begin{example}
+Let $k={\mathbb Q}$ and let $\pi$ be a cuspidal automorphic representation of
+$SL(2,{\mathbb A})$ in the restriction of the representation $\Pi$ of
+$GL(2,{\mathbb A})$ generated by the cusp form $\Delta$ of weight $12$. Since
+$\Delta$ has level one, $\Pi_p$ is unramified at every prime $p$. If
+$\tau(p)\neq0$, the restriction of $\Pi_p$ to $SL(2,{\mathbb Q}_p)$ is
+irreducible, so $\pi_p$ has a vector fixed by $SL(2,{\mathbb Z}_p)$. Hence
+$S(\pi)$ consists of the real place, the place $2$, and possibly some odd
+primes $p$ with $\tau(p)=0$. By Lehmer's conjecture there are no such
+primes. We use this $\pi$ as a running example.
+\end{example}
+
+
+```
+
+#### Section 5.4 of Draft 3 (why the 1995 dyadic argument was withdrawn)
+
+```latex
+In the 1995 draft, this section attempted to construct, following
+Howe and Moy \cite[ch.~3]{HM}, an injection of a metaplectic generalized
+Hecke algebra $\overline{\cal H}_k$ (supported on a ``maximal split
+subset'' $\overline{G_s}$ of $\overline{G}$) into the generalized Hecke
+algebra ${\cal H}(G//B_k)$ of a deep filtration subgroup $B_k$ of the
+Iwahori subgroup, and to deduce from it a matching of orbital integrals
+and of characters at dyadic places. That argument is withdrawn in this
+version, for the following reasons.
+
+\begin{enumerate}
+\item The presentation of ${\cal H}(G//B_k)$ included the braid relation
+$f_{s_1}*f_{s_2}*f_{s_1}=f_{s_2}*f_{s_1}*f_{s_2}$, where
+$s_1=\left(\begin{smallmatrix}0&-1\\1&0\end{smallmatrix}\right)$ and
+$s_2=\left(\begin{smallmatrix}0&-\varpi^{-1}\\\varpi&0\end{smallmatrix}\right)$.
+Since $s_1s_2=\operatorname{diag}(-\varpi,-\varpi^{-1})$ has infinite order, the affine
+Weyl group of $SL(2)$ is infinite dihedral and
+$s_1s_2s_1\neq s_2s_1s_2$, so this relation does not hold. (It is the
+analog of a relation valid for $GL(n)$, $n\geq 3$.)
+
+\item The set
+$X=\{g\in G\ |\ c\in F^{\times 2},\ d=0\ {\rm or}\ d\in F^{\times 2}\}$
+was claimed to lie in a maximal subset $G_s$ of $G$ which is closed under
+inversion and on which the cocycle $\beta$ is trivial. However, the
+lower left entry of $g^{-1}$ is $-c$, so $X$ is not closed under inversion
+when $-1\notin F^{\times 2}$ (as for $F={\mathbb Q}_2$), and the proof
+computed $\beta(g_1,g_2^{-1})$ rather than $\beta(g_1,g_2)$.
+
+\item The map
+$N\left(\begin{smallmatrix}a&b\\c&d\end{smallmatrix}\right)=
+\left(\begin{smallmatrix}a\epsilon_d^{-1}&b\epsilon_c^{-1}\\
+c\epsilon_c&d\epsilon_d\end{smallmatrix}\right)$,
+where $\epsilon_x$ denotes a fixed representative in ${\cal O}$ of the
+square class of $x$, is not defined when $c=0$ or $d=0$, does not
+map the Iwahori subgroup into itself when $c$ has odd valuation (since
+then $b\epsilon_c^{-1}\notin{\cal O}$ in general), and is not
+multiplicative.
+
+\item The restrictions of genuine functions to $\overline{G_s}$ do not
+form a convolution algebra, since $G_s$ is not a subgroup. The
+computation of $\overline{f}_{g_1}*\overline{f}_{g_2}$ dropped cocycle
+factors at points $x$ of $B_kg_2B_k$ outside $G_s$, and the
+definition of the functions $\overline{f}_g$ ignored the splitting of
+$\overline{B_k}$, which need not be $b\mapsto (b,1)$.
+
+\item An injection of algebras does not by itself induce a map on
+irreducible modules, so the claimed surjection
+${\cal H}(G//B_k)^\wedge\rightarrow{\cal H}(\overline{G}//B_k)^\wedge$
+with matching traces does not follow.
+
+\item The orbital integral identity at a dyadic place was derived from
+a global argument which assumed that the spectral sides of the two trace
+formulas agree. That agreement is what Chapter~\ref{ch:global} needs to
+establish, so the argument is circular.
+\end{enumerate}
+
+The generalized Hecke algebra material is revised separately in the
+author's paper \cite{J3}.
+
+
+```
+
+#### Section 7.5 of Draft 3 (remarks on the 1995 argument)
+
+```latex
+\section{Remarks on the 1995 argument}\label{sec:1995-argument}
+
+The 1995 draft stated an unconditional theorem asserting, for each
+``global transfer'' (a choice of local matchings at all places), a
+correspondence between cuspidal automorphic representations of
+$G({\mathbb{A}})$ and genuine ones of $\overline{G({\mathbb{A}})}$, and
+deduced multiplicity one. Besides its dependence on the local results
+discussed in \S\ref{sec:LH-status} and on the trace identity of
+Remark~\ref{rem:GH}, the final step of that argument had two gaps.
+
+\begin{enumerate}
+\item It fixed a finite set $V$ of places containing the archimedean
+places, derived an identity of the form (\ref{eq:S-identity}) with
+$S$ replaced by $V$, and then took $V=\{v_0\}$ for a single finite
+unramified place $v_0$. This is not permitted, since $V$ must contain the
+archimedean places, and the character identities it then used were only
+assumed at finite places.
+
+\item To obtain a single genuine representation on the right side of
+the identity, it used a count attributed to Waldspurger \cite{Wa2}
+(via \cite{PS}) of the genuine cuspidal representations
+$\overline{\pi}'$ with $\overline{\pi}'_v\cong\overline{\pi}_v$ for all
+$v\notin V$: namely $1$ if $\Sigma\subset V$ and
+$2^{|\Sigma|-|\Sigma\cap V|-1}$ otherwise, where $\Sigma$ is the set of
+places where $\overline{\pi}_v$ is a discrete series representation and
+$|\Sigma\cap V|$ is assumed even. But $V$ was chosen to contain at most
+one place of $\Sigma$, so the count as stated is $2^{|\Sigma|-1}$, which
+is greater than $1$ as soon as $|\Sigma|\geq 2$.
+\end{enumerate}
+
+The proof of Theorem~\ref{thm:main} avoids both points: the set $S$ is
+never shrunk, and uniqueness on the metaplectic side comes from the
+injectivity in (LH2) together with Waldspurger's multiplicity one
+theorem, rather than from a count of near-equivalent representations.
+
+\begin{example}
+If $|\Sigma|=3$ and $V\cap\Sigma=\emptyset$, the count quoted in item~2 is
+$2^{3-0-1}=4$, so it does not single out one representation.
+\end{example}
+
+
+```
 
 ## Draft 3: style-guide pass
 

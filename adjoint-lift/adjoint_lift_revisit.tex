@@ -197,6 +197,205 @@ An explicitly conditional proposition must not be used without its
 additional hypotheses.
 
 
+
+\subsection{The historical argument and its sources}
+\label{sec:0}
+
+The paper revisits the local identities associated with the
+Jacquet--Shalika norm maps $N_1$ and $N_2$. Historically, the first
+stage identifies the relevant $L$-parameters and stable conjugacy
+classes. A second stage uses the Satake transform to establish
+identities in the split case. A third stage reduces the remaining
+elliptic comparison to fixed-lattice calculations. The final unit
+calculation for the second endoscopic group is the contribution of
+\cite{Jo90}, while several of the earlier geometric constructions
+are attributed there to Langlands' unpublished notes \cite{LaUn}.
+The historical argument is retained in Sections~\ref{sec:1}--
+\ref{sec:3}, with the two extensive accounts of building geometry
+placed as subsections of Section~\ref{sec:revisit-background}.
+The source files available for this revisit do not coincide exactly
+with the published 1990 text. Accordingly, the historical portion is
+used as a corrected working source, not as a transcription or a
+claim of independent verification of every earlier lemma.
+
+The new geometric and combinatorial material serves a different
+purpose. It isolates statements that can be proved without relying
+on the full orbital-integral machinery and identifies precisely the
+extra geometric information required to return to the original
+comparison. A result may illuminate the mechanism of the transfer
+without establishing the transfer identity itself. This distinction
+is maintained throughout the paper.
+
+\subsection{The two buildings, orthogonal duality, and the Levi subcomplex}
+\label{sec:intro-geometry}
+
+The affine Bruhat--Tits building of $PGL_3(F)$ is two-dimensional:
+its vertices correspond to homothety classes of rank-three
+$\mathcal O_F$-lattices, and its chambers are triangles associated
+with chains of lattices. The building of $PGL_2(F)$ is a
+$(q+1)$-regular tree. The different dimensions are not an obstacle
+to comparison. They explain why a rank-one geometry appears as a
+fixed set or a subcomplex inside the rank-two building.
+
+For the split quadratic form represented by $J$, orthogonal duality
+acts on diagonal apartment coordinates by
+$\boldsymbol x\mapsto(-x_3,-x_2,-x_1)$. The fixed apartment is the
+line $x_1+x_3=2x_2$ (Proposition~\ref{prop:new-fold}). When the
+residue characteristic is odd, the fixed-point-building theorem of
+Prasad--Yu \cite[Theorem~1.9]{PY02} identifies the geometric
+$\sigma_J$-fixed building with the tree of the split group
+$SO_3\simeq PGL_2$. This concerns the involution $\sigma_J$ itself,
+not the fixed vertices of a general element $g\sigma_J$ in its
+twisted coset.
+
+The other key geometric object is the historical subcomplex
+$\mathcal Z$ associated with a decomposition of dimensions
+$1+2$. It resembles a tree thickened by one real direction; a tree
+edge becomes a triangulated band. Hence $\mathcal Z$ has dimension
+two and must not be identified with the one-dimensional orthogonal
+fixed tree. Proposition~\ref{prop:new-Z} formalizes this
+separation. The eventual comparison of fixed vertices for the
+norm-related elements still uses the characteristic-base and
+characteristic-leaf constructions whose complete verification is
+among the essential tasks in Section~\ref{sec:new-todo}.
+
+\subsection{Lattice types, parity, and ramification}
+\label{sec:intro-parity}
+
+Elementary invariants often decide whether a proposed geometric
+configuration is possible before one counts it. For a rank-$n$
+lattice, its type is the valuation of its determinant modulo $n$.
+The map $[L]\mapsto[AL^\vee]$ changes this type from $t$ to
+$v_F(\det A)-t$. Therefore a fixed vertex must satisfy the
+congruence $2t\equiv v_F(\det A)\pmod n$.
+This is a \emph{necessary} criterion; it does not construct a fixed
+vertex. Proposition~\ref{prop:new-type} proves the assertion
+from the lattice definition.
+
+In the $PGL_2$ tree the analogous type is parity. An element
+interchanging the two types cannot fix an original vertex, but it
+may fix a geometric edge midpoint. Barycentric subdivision makes
+such midpoints into vertices of the subdivided complex. In the
+$PGL_3$ apartment, diagonal duality likewise may fix a midpoint
+without fixing an integral lattice class (Proposition~
+\ref{prop:new-diagonal}). This distinction prevents accidental
+identification of geometric fixed points with fixed \emph{vertices}.
+In ramified quadratic extensions the norm character also depends
+on unit square classes, so valuation parity alone need not suffice.
+The examples over $\mathbb Q_3$ and $\mathbb Q_5$ in
+Section~\ref{sec:new-types} make these phenomena explicit.
+
+\subsection{Finite flags and the origin of the factor $Q$}
+\label{sec:intro-flags}
+
+The number
+\[
+ Q=(1+q^{-1})(1+q^{-1}+q^{-2})
+\]
+is not merely an arbitrary scalar that happens to occur in the
+spherical normalization. The link of a hyperspecial vertex in the
+$PGL_3$ building is the incidence geometry of the finite
+projective plane $PG(2,q)$. A complete flag chooses a point on a
+line. There are $q^2+q+1$ points and $q+1$ lines through each
+point, giving $(q^2+q+1)(q+1)$ flags. This equals the index of an
+Iwahori subgroup $I$ in a hyperspecial subgroup $K$; hence
+$Q=q^{-3}[K:I]$. Equivalently, $Q$ is the Poincar\'e polynomial
+of $S_3$ evaluated at $q^{-1}$.
+
+These identities, including the Iwahori-to-spherical averaging
+formula, are proved in Section~\ref{sec:new-flags}. For example,
+when $F=\mathbb Q_3$, the flag count is $52$ and
+$Q=52/27$. This exact incidence calculation explains why the
+factor naturally accompanies Iwahori-to-spherical comparisons.
+It does \emph{not}, by itself, settle the Haar measure on a
+centralizer quotient or the sign of an endoscopic transfer factor.
+That distinction is essential when interpreting the historical
+normalization $S(0)/Q=1$.
+
+\subsection{Hecke operators and graph recurrences}
+\label{sec:intro-hecke}
+
+The tree of $PGL_2$ is also a discrete model for its spherical
+Hecke algebra. Let $A_{\mathcal T}$ be adjacency, and let $D_m$
+sum over vertices at distance $m$. The branching structure gives
+$A_{\mathcal T}D_m=D_{m+1}+qD_{m-1}$ for $m\ge2$, with a
+separate initial relation at $m=1$. Thus the distance operators
+have a rational generating series, proved in
+Proposition~\ref{prop:new-D}. The rank-two building has a richer
+Hecke algebra: its two-step paths already split into different
+lattice-chain types, as Proposition~\ref{prop:new-U1} shows.
+
+The spectral side records the same adjoint lift through the
+three-dimensional character $z^2+1+z^{-2}$, obtained by
+restricting the symmetric-square representation. This explains
+why the graph operators and the Satake transform belong in the
+same account. It is not, however, an alternative proof of the
+split orbital-integral identities until the orbital Jacobian
+and the matching of measures have also been established.
+Section~\ref{sec:new-hecke} develops the exact recurrences and
+states that remaining analytical step explicitly.
+
+\subsection{Signed tree counts and the limit of the combinatorial argument}
+\label{sec:intro-counts}
+
+A second elementary calculation compares balls centered at a tree
+vertex with balls centered at an edge midpoint. If $B_v(m)$ and
+$B_e(m)$ are defined as in Section~\ref{sec:new-counts}, direct
+counting yields
+\[
+ B_v(m)-B_e(m)=q^m.
+\]
+For instance, in the $4$-regular tree associated with
+$F=\mathbb Q_3$, the radius-two counts are $17$ and $8$.
+Their difference is $9=3^2$. This is the exact arithmetic
+that would remain in the nonsplit fixed-vertex comparison if
+all additional characteristic leaves contributed equally to
+the two signed classes.
+
+The equality of those \emph{additional} contributions is not
+established by the ball-count formula. The manuscript isolates
+it as a common-correction hypothesis in Proposition~
+\ref{prop:new-conditional} and as a possible weight-preserving
+pairing in Proposition~\ref{prop:new-pair}. The transfer-factor
+sign is a separate unresolved issue. Counting, assigning norm
+characters, and inserting the correct Haar volumes are different
+operations. Keeping them separate is the principal safeguard
+against turning a useful numerical coincidence into an
+unsupported proof of the signed fundamental lemma.
+
+\subsection{Established results and remaining proof obligations}
+\label{sec:intro-proof-status}
+
+A short section is not necessarily a placeholder. Several of the
+new sections isolate results that have complete elementary proofs.
+In particular, the type obstruction, finite flag count, Iwahori
+averaging identity, tree-distance recurrence, and ball-difference
+formula are self-contained. Their sections are deliberately compact
+because each has a narrow mathematical objective. The literature
+review and final synthesis are likewise meant to be concise.
+
+Other short sections are concise \emph{because their broader
+program remains open}. The fixed-point-building theorem is cited
+under its tame hypotheses, but it does not supply the historical
+characteristic-leaf correspondence. The Hecke recurrences are
+proved, but a complete alternative split orbital-integral
+derivation is not given. The signed generating-function identity
+is conditional on a geometric pairing. These are research
+obligations, not missing paragraphs waiting to be filled with
+exposition. The precise remaining verifications are collected in
+Section~\ref{sec:new-todo}, with essential obligations
+separated from optional extensions.
+
+The reader may therefore use Sections~\ref{sec:new-geometry}--
+\ref{sec:new-counts} as a collection of independently checkable
+geometric and combinatorial deductions, while consulting the
+historical material for the original orbital-integral problem.
+Section~\ref{sec:new-synthesis} summarizes which implications
+are established and which require additional input. This working
+draft does not yet constitute a new independent proof of the full
+signed transfer identity.
+
+
 \section{Literature review: historical and subsequent work}
 \label{sec:revisit-literature}
 
@@ -284,9 +483,6 @@ $52$ chambers through that vertex. Thus a spherical-to-Iwahori
 normalization already introduces a factor $52$, even before one
 counts any fixed vertices of a twisted transformation.
 \end{example}
-
-\paragraph{Additional historical building background.}
-For readability, the two building-heavy historical sections are moved here as subsections of the general background section. Their original labels, equation tags, and theorem numbering are preserved so that the historical cross-references continue to work.
 
 
 \subsection{The buildings for $PGL(3)$ and $SL(2)$}
@@ -1432,37 +1628,7 @@ fundamental-lemma comparison.
 
  
 
-\section{Outline of the original paper}
-\label{sec:0}
-
-Only \S \ref{sec:5} 
-of this article contains original material, the rest of it
-can be essentially be found in the unpublished notes \cite{LaUn}. 
-Very briefly, \S \ref{sec:1} provides an 
-introduction including the definition (due to
-H. Jacquet and J. Shalika) of the ``norm map'', 
-\S \ref{sec:2} applies the Satake transform
-to proving some simple orbital integral identities in the ``split case'',
-\S \ref{sec:3} reduces the problem of 
-proving these identities in the ``non--split
-case'' to two counting problems on the buildings, 
-\S \ref{sec:4} recalls
-R. Langlands' solution of one of these problems for the unit 
-element of the Hecke algebra, and, finally, 
-\S \ref{sec:5}
-provides the solution to the other one (for the unit 
-element of the Hecke algebra). 
-In sections \ref{sec:4} and \ref{sec:5} we assume that $p\not= 2$.
-\par
-This paper was written independently of a recent paper \cite{Fl87}
-which also relied on Langlands' unpublished manuscript \cite{LaUn}.
-\vskip .1in
-
-\noindent
-The original historical acknowledgments, including those to R. Langlands,
-R. Kottwitz, and the 1990 referee, are collected at the end of this revisit.
-
-\section{Introduction}
+\section{Historical framework: norm maps and fundamental lemmas}
 \label{sec:1}
 
 \subsection{History}

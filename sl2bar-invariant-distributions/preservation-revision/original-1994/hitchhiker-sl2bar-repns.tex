@@ -1,0 +1,2282 @@
+
+\documentstyle[amsfonts,12pt]{article}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%\usepackage{amsmath}
+%\usepackage{amsthm}
+%\usepackage{amsgen}
+%\usepackage{amsfonts}
+%\usepackage{makeidx}  % allows for index generation
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{remark}[theorem]{Remark} % my addition
+\newtheorem{CA}[theorem]{Computer Algebra Commands} % my addition
+\newtheorem{definition}[theorem]{Definition} % my addition
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{fact}[theorem]{Fact}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{algorithm}[theorem]{Algorithm}
+\newtheorem{axiom}[theorem]{Axiom}
+\newtheorem{ponderable}[theorem]{Exercise}
+\newtheorem{exercise}[theorem]{Exercise}
+\newtheorem{solution}[theorem]{solution}
+
+%\input tcilatex
+\begin{document}
+
+\author{David Joyner}
+\title{A hitch-hiker's guide to genuine invariant distributions on metaplectic
+covers of SL(2) over a p-adic field}
+\date{1-4-94}
+\maketitle
+
+\begin{abstract}
+This is an expository account of certain aspects of non-abelian harmonic
+analysis on $n$-fold metaplectic covers of $SL(2)$ over a $p$-adic field.
+Here we allow $n$ to be any number greater than $1$ and $p$ to be any prime.
+We will conjecturally describe the admissible, tempered, and unitary duals
+of the $n$-fold metaplectic cover of $SL(2)$. Then we will give the
+Paley-Weiner theorems on these dual spaces based on these conjectural
+descriptions.
+\end{abstract}
+
+\tableofcontents
+
+
+
+\section{Introduction}
+
+This paper would be essentially an expository article if it weren't for all
+the conjectures. As it stands, it is a survey of what isn't known about the
+representations theory of central covering groups of p-adic reductive groups
+in the case of $SL(2)$. It is not by any means complete,
+nor is it a guide to the literature. Proofs and
+pointers to the literature are often omitted, although everything which is a
+theorem should be in one of the references listed at the end of the paper.
+We will follow the pattern of the expository paper [J1] which deals with the
+same topics (in more detail) in the case $n=1$ and $p>2$.
+
+Although this paper will concern itself only with certain issues in harmonic
+analysis on groups over a p-adic field $F$, some applications will be to
+harmonic analysis on groups over a global field, so our set-up will
+partially reflect the specific applications which need not concern us here.
+Our motivation is to verify the analogs of the local assumptions in [A]
+needed for the validity of Arthur's invariant trace formula for the n-fold
+metaplectic cover of $SL(2,{\Bbb A}_k)$. We have merely succeeded in
+reducing the local assumptions of [A] down to a list of specific conjectures
+regarding irreducible representations of the n-fold covering group of $%
+SL(2,F)$. The readers will have to decide for themselves whether or not I've
+made already muddy waters even worst. In any case, for this reason sometimes
+we will be working with $SL(2,F)$ and sometimes with a group $G$ defined
+over ${\Bbb Q}$ as in [A].
+
+
+\subsection{Basic notation}
+
+Let $F$ be a p-adic field with uniformizer $\pi =\pi _F$, ring of integers $%
+O_F,$ residual characteristic $p=char(O_F/\pi O_F),$ $q=\#(O_F/\pi O_F),$
+and normalized valuation $|...|=|...|_F.$ Suppose that $k/{\Bbb Q}$ is a
+number field containing the $n-th$ roots of unity $\mu _n$. (If $n>2$ then
+this implies $F$ has no real places, i.e, $k_v={\Bbb C}$ for all $v\in
+\Sigma _k^\infty $.) For $F=k_v$ p-adic, let $O=O_F=O_v$ denote the ring of
+integers of $F$, $\pi =\pi _F=\pi _v$ a local uniformizer, $q=q_v$ the
+cardinality of the residue field, and $\nu =\nu _F=\nu _v:F^{\times
+}\rightarrow {\Bbb {Z}}$ \ the normalized valuation, so that $\nu (\pi
+)=q^{-1}$.
+
+Let $G$ denote the reductive group over ${\Bbb {Q}}$ defined from $%
+G_0=SL(2)/k$\ via restriction of scalars $k/{\Bbb {Q}}$, so for example $G(%
+{\Bbb {Q})=}SL(2,k)$. Let $A_0\subset G_0$ denote the diagonal subgroup and
+let $A=Res_{k/{\Bbb Q}}(A_0/k)$.
+
+The subgroups 
+\[
+U_0=O_F^{\times },\;U_n=1+\pi ^nO_F,\;\;\;\;n>0,\; 
+\]
+form a basis of open neighborhoods of the identity in $F^{\times }$,
+generating the topology on $F^{\times }$. The subgroups 
+\[
+K_0=SL(2,O_F),\;K_n=\left\{ \left[ 
+\begin{array}{cc}
+a & b \\ 
+c & d
+\end{array}
+\right] \;\;|\;\;a,d\in 1+\pi ^nO_F,\;b,c\in \pi ^nO_F\right\}
+,\;\;\;\;n>0,\; 
+\]
+form a basis of open neighborhoods of the identity in $SL(2,F)$, generating
+its compact-open topology. A {\bf character} or {\bf representation} of $%
+F^{\times }$ or of $SL(2,F)$ will always mean a continuous multiplicative
+(not necessarily unitary) homomorphism into the automorphisms of a complex
+vector space, where the domain gets the ``compact-open'' topology above and
+the range gets the discrete topology.
+
+Occasionally we use {\bf Vinogradov's notation}: given two functions $f(x)$,
+complex-valued and perhaps depending on some parameter $\lambda $, and $%
+g(x)>0$, we write 
+\[
+f(x)<<_\lambda g(x), 
+\]
+if there is a constant $c>0,$ which may implicitly depend on $\lambda $,
+such that $|f(x)|\leq cg(x)$ for all $x$ in some range which depends on the
+context.
+
+\section{Background}
+
+\subsection{Local covers of $SL(2)$}
+
+\subsubsection{Over $F$}
+
+Let $F=k_v$, where $v\in \Sigma _k$. By our assumptions, $\mu _n\subset
+F^{\times }$. If $p<\infty $ then 
+\[
+F^{\times }=\pi ^{{\Bbb Z}}\cdot \mu _{q-1}\cdot U_1, 
+\]
+a direct product. If $(p,2n)=1$ then $\mu _n\subset F^{\times }$ implies $%
+q\equiv 1\ \pmod{n}$. Let 
+\begin{equation}
+N=\left\{ 
+\begin{array}{c}
+n,\;\;\;n\;{\rm odd}, \\ 
+n/2,\;\;\;n\;{\rm even}.
+\end{array}
+\right.
+\end{equation}
+
+For $g=\left( 
+\begin{array}{cc}
+a & b \\ 
+c & d
+\end{array}
+\right) \in SL_2(F)$, let 
+\[
+x(g)=\left\{ 
+\begin{array}{c}
+c,\;\;\;c\neq 0, \\ 
+d,\;\;\;c=0,
+\end{array}
+\right. 
+\]
+and let $\beta =\beta _v:SL_2(F)\times SL_2(F)\rightarrow \mu _n$ be defined
+by 
+\begin{eqnarray}
+\beta (g_1,g_2) &=&(x(g_1),x(g_2))_n\cdot (-x(g_1)^{-1}x(g_2),x(g_1g_2))_n \\
+&=&(\frac{x(g_1g_2)}{x(g_1)},\frac{x(g_1g_2)}{x(g_2)})_n,  \nonumber
+\end{eqnarray}
+where $(...,...)_n=(...,...)_{n,v}:F^{\times }\times F^{\times }\rightarrow $
+$\mu _n$ denotes the Hilbert symbol [W]. Note that this is trivial if $F=%
+{\Bbb {C}}$.
+
+\begin{lemma}
+(Kubota [K], Moore [M]) The map $\beta $ defines a continuous Borel
+2-cocycle (giving $\mu _n$ the discrete topology of course). Its cohomology
+class in the continuous cohomology group $H^2(SL_2(F),\mu _n)$ corresponds
+to an n-fold topological central extension $\overline{SL_2(F)}$ which fits
+into the short exact sequence 
+\[
+1\rightarrow \mu _n\rightarrow \overline{SL_2(F)}\stackrel{p}{\rightarrow }%
+SL_2(F)\rightarrow 1.
+\]
+\end{lemma}
+
+If $H<SL_2(F)$ is a subgroup then we define $\overline{H}=p^{-1}(H)\subset 
+\overline{SL_2(F)}$.
+
+Elements of $\overline{SL_2(F)}$ will be denoted by $(g,\varsigma )$, where $%
+g\in SL_2(F)$, $\varsigma \in \mu _n$. Multiplication on $\overline{SL_2(F)}$
+is given by 
+\begin{equation}
+(g_1,\varsigma _1)\cdot (g_2,\varsigma _2)=(g_1g_2,\beta (g_1,g_2)\varsigma
+_1\varsigma _2).
+\end{equation}
+so inverses are given by 
+\begin{equation}
+(g,\varsigma )^{-1}=(g^{-1},\beta (g,g^{-1})^{-1}\varsigma ^{-1})
+\end{equation}
+and conjugation is given by 
+\begin{equation}
+(g,\varsigma )\cdot (h,\varsigma ^{\prime })\cdot (g,\varsigma
+)^{-1}=(ghg^{-1},\beta (gh,g^{-1})\beta (g,h)\beta (g,g^{-1})^{-1}\varsigma
+^{\prime }).
+\end{equation}
+
+We let $B_0=\{\left( 
+\begin{array}{cc}
+\ast & * \\ 
+0 & *
+\end{array}
+\right) \}\subset SL_2$ denote the standard Borel, $N_0$ its unipotent
+radical, and $A_0$ its Levi component.
+
+\begin{lemma}
+For all $g\in A(F)$, 
+\[
+g=\left( 
+\begin{array}{cc}
+a & 0 \\ 
+0 & a^{-1}
+\end{array}
+\right) ,
+\]
+$\varsigma \in \mu _n$, we have $(g,\varsigma
+)^{-1}=(g^{-1},(a,a)_n\varsigma ^{-1})$.
+\end{lemma}
+
+{\sf proof}: This follows from the general properties: for $g_1,g_2\in
+A_0(F) $, 
+\[
+g_1=\left( 
+\begin{array}{cc}
+a_1 & 0 \\ 
+0 & a_1^{-1}
+\end{array}
+\right) ,\ \ \ \ g_2=\left( 
+\begin{array}{cc}
+a_2 & 0 \\ 
+0 & a_2^{-1}
+\end{array}
+\right) , 
+\]
+we have $\beta (g_1,g_2)=(a_2^{-1},a_1^{-1})_n$,
+
+(a) $(a_1,a_2)_n=1$, provided $a_1\in A_0(F)^n$ or $a_2\in A_0(F)^n$ (the
+set of $n$-th powers),
+
+(b) $(a_1,a_2)_n=(a_2,a_1)_n^{-1}$,
+
+(c) $(a_1^{-1},a_2)_n=(a_1,a_2)_n^{-1}$. $\Box $
+
+\begin{lemma}
+(a) $\overline{N_0(F)}=N_0(F)\times \mu _n$ (direct product),
+
+(b) if $p$ is relatively prime to $n$ then $\overline{SL_2(O)}=SL_2(O)\times
+\mu _n$ (direct product),
+
+(c) if $K_0=SL_2(O)$ and 
+\[
+K_m=\{\left( 
+\begin{array}{cc}
+a & b \\ 
+c & d
+\end{array}
+\right) \in SL_2(O)\;|\;a-1,d-1,b,c\in \pi ^mO\},\;m>0,
+\]
+
+then $\overline{K_m}=K_m\times \mu _n$ (direct product) for all $m\geq n$,
+
+(d) if $n=2,$ $F=k_v={\Bbb {R}}$, and $K_v=SO(2,{\Bbb {R})}$ then $\overline{%
+K_v}\neq K_v\times \mu _n$,
+
+(e) The center of $\overline{SL_2(F)}$ is $Z(\overline{SL_2(F)})=\{\pm
+1_2\}\times \mu _n$,
+
+(f) For $a_i=\left( 
+\begin{array}{cc}
+t_i & 0 \\ 
+0 & t_i^{-1}
+\end{array}
+\right) \in A_0(F)$, $i=1,2$, and $\varsigma _i\in \mu _n$, we have $%
+(a_1,\varsigma _1)\cdot (a_2,\varsigma _2)\cdot (a_1,\varsigma
+_1)^{-1}=(a_2,(t_1,t_2)_n^{-2}\varsigma _2)$,
+
+(g) the largest abelian subgroup of $\overline{A_0(F)}$ contains 
+\[
+C_F=\{\left( 
+\begin{array}{cc}
+a & 0 \\ 
+0 & a^{-1}
+\end{array}
+\right) \;|\;a\in (F^{\times })^N\},
+\]
+
+where $N$ is as in (2.1). (In particular, $\overline{A_0(F)}$ is abelian if $%
+n=1,2$.)
+\end{lemma}
+
+\begin{remark}
+In contrast to $GL(r)$, for $G_0=SL(2)$ the centralizer in $\overline{G_0(F)}
+$ of a regular element of the largest abelian subgroup of $\overline{A_0(F)}$
+is not equal to $\overline{A_0(F)}$.
+\end{remark}
+
+proof: These are conseqences of the well-known properties of the Hilbert
+symbol [W].
+
+For (d) see, for example, [Ge] or [Sa].
+
+For (f), we have
+
+\[
+\begin{array}{c}
+(a_1,\varsigma _1)^{-1}\cdot (a_2,\varsigma _2)\cdot (a_1,\varsigma
+_1)=(a_1^{-1},(t_1,t_1)_n\varsigma _1^{-1})\cdot (a_2,\varsigma _2)\cdot
+(a_1,\varsigma _1) \\ 
+=(a_2,(t_1,t_1)_n\varsigma _2\beta (a_1^{-1},a_2a_1)\beta (a_2,a_1)).
+\end{array}
+\]
+
+Now we compute 
+\[
+\begin{array}{c}
+\beta (a_2,a_1)=(t_2^{-1},t_1^{-1})_n\cdot (-t_2t_1^{-1},t_2^{-1}t_1^{-1})_n
+\\ 
+=(t_2^{-1},t_1^{-1})_n\cdot (-t_2t_1^{-1},t_2^{-1})_n\cdot
+(-t_2t_1^{-1},t_1^{-1})_n \\ 
+=(t_2^{-1},t_1^{-1})_n\cdot (-t_2,t_2^{-1})_n\cdot
+(t_1^{-1},t_2^{-1})_n\cdot (-t_2,t_1^{-1})_n\cdot (t_1^{-1},t_1^{-1})_n \\ 
+=(-t_2,t_2^{-1})_n\cdot (-t_2,t_1^{-1})_n\cdot (t_1,t_1)_n
+\end{array}
+\]
+and 
+\[
+\begin{array}{c}
+\beta (a_1^{-1},a_2a_1)=(t_1,t_2^{-1}t_1^{-1})_n\cdot
+(-t_2^{-1}t_1^{-2},t_2^{-1})_n \\ 
+=(t_1,t_2^{-1})_n\cdot (t_1,t_1^{-1})_n\cdot (-t_2^{-1},t_2^{-1})_n\cdot
+(t_1^{-2},t_2^{-1})_n \\ 
+=(t_1,t_1^{-1})_n\cdot (-t_2^{-1},t_2^{-1})_n\cdot (t_1^{-1},t_2^{-1})_n
+\end{array}
+\]
+The result follows since $(a_1,a_1)_n=(-a_1,a_1)_n\cdot
+(-1,a_1)_n=(-1,a_1)_n $.$\Box $
+
+\begin{corollary}
+If $n=2$\ then the 2-fold metaplectic cover $\overline{A_0(F)}$ of $A_0(F)$\
+is abelian.
+\end{corollary}
+
+For the purposes of the next section, we want to determine the maximal
+abelian subgroup of the $n$-fold cover of $\overline{A_0(F)}$, where $%
+F=k_{v_i}$ for some $1\leq i\leq m$. We may assume that $F$ is
+non-archimedian since
+
+(a) if $n=2$ then $\overline{A_0(F)}$ is abelian,
+
+(b) if $n>2$ and if $F$ is archimedian then $\overline{A_0(F)}$ is abelian
+(in fact, $\overline{A_0(F)}\cong {\Bbb C}^{\times }\times \mu _n$ splits).
+
+\begin{lemma}
+A subgroup $\overline{C}\subset \overline{A_0(F)}$\ is abelian if and only
+if $(a,a^{\prime })_n^2=1$\ for all $a,a^{\prime }\in A_0(F)$.
+\end{lemma}
+
+{\sf proof}: This is an immediate consequence of Lemma 2.3(f) above.$\;\Box $
+
+Note that if $C\subset A_0(F)$ is the maximal subgroup of $A_0(F)$ for which 
+$\overline{C}\subset \overline{A_0(F)}$ is abelian then $F^{\times N}\subset
+C$, so $F^{\times }/C$ is finite. We may assume that $C=\pi ^{a{\Bbb Z}}U$,
+for some open $U\subset O_F$. If $x=\pi ^ku$ and $y=\pi ^\ell v$, for $%
+k,\ell \in {\Bbb Z},\;u,v\in U$ then 
+\begin{equation}
+(x,y)_n=(\pi ,\pi )_n^{\ell k}(u^\ell /v^k,\pi )_n(u,v)_n.
+\end{equation}
+If $(p,N)=1$ then $1+\pi O_F$ is $N$-divisible in the sense that $1+\pi
+O_F=(1+\pi O_F)^N$. Identify $\mu _{q-1}$ with $O_F^{\times }/(1+\pi O_F)$.
+From this, the above equation, and Lemma 2.4, we have proven
+
+\begin{lemma}
+(a) If $(p,N)=1$\ then $C=\pi ^{{\Bbb Z}}O_F^{\times N}=\pi ^{{\Bbb Z}}\mu
+_{q-1}^N(1+\pi O_F)$\ is the maximal subgroup of $F^{\times }$\ for which $%
+\overline{C}\subset \overline{A_0(F)}$\ is abelian.
+
+(b) If $N=p^rd$, where $(d,p)=1$, and if $e\geq 0$\ is defined by $pO_F=\pi
+^eO_F$, then $C=\pi ^{{\Bbb Z}}O_F^{\times N}=\pi ^{{\Bbb Z}}\mu
+_{q-1}^d(1+\pi ^{re+1}O_F)$ is a subgroup of $A_0(F)$ for which $\overline{C}%
+\subset \overline{A_0(F)}$\ is abelian.
+\end{lemma}
+
+\begin{remark}
+The determination of $C$ should in principle follow from known explicit
+reciprocity laws. Unfortunately, they become rather cumbersome when $p=2$
+(which is the case we need them). See for example, [Sen].
+\end{remark}
+
+The order of $F^{\times }/\pi ^{{\Bbb Z}}(1+\pi O_F)$ is $q-1$, since 
+\begin{equation}
+F^{\times }/\pi ^{{\Bbb Z}}(1+\pi O_F)\cong O_F^{\times }/(1+\pi O_F)\cong
+(O_F/\pi O_F)^{\times }.
+\end{equation}
+The order of $\mu _{q-1}^N$ is $(q-1)/(q-1,N)$. Therefore, the order of $%
+F^{\times }/\mu _{q-1}^N\pi ^{{\Bbb Z}}(1+\pi O_F)$ is $(q-1,N)$. The fact
+that $F$ contains the $n$-th roots of unity implies that $N|(q-1)$. This
+proves part (a) of the following
+
+\begin{lemma}
+(a) If $(p,n)=1$\ then $C=\pi ^{{\Bbb Z}}(1+\pi O_F)\mu _{q-1}^N$\ has index 
+$N$ in $F^{\times }$.
+
+(b) In general, the index of $C=\pi ^{{\Bbb Z}}O_F^{\times N}=\pi ^{{\Bbb Z}%
+}\mu _{q-1}^d(1+\pi ^{re+1}O_F)$ in $F^{\times }$\ is $(q-1,d)\cdot q^{er}$.
+\end{lemma}
+
+{\sf proof}: (b) The map 
+\[
+x\longmapsto 1+\pi x+\pi ^{re+1}O_F 
+\]
+induces an isomorphism 
+\[
+O_F/\pi ^{re}O_F\rightarrow (1+\pi O_F)/(1+\pi ^{re+1}O_F). 
+\]
+Therefore, we have 
+\[
+\begin{array}{c}
+\#[(1+\pi O_F)/(1+\pi ^{re+1}O_F)]q^{re}, \\ 
+\#[\mu _{q-1}/\mu _{q-1}^d]=(q-1,d).
+\end{array}
+\]
+The lemma follows. $\Box $
+
+\subsubsection{Over ${\Bbb Q}_p$}
+
+There is an $\alpha \in E$ be such that $k={\Bbb Q}(\alpha )$ and let $f\in 
+{\Bbb Q}[x]$ denote the minimal polynomial of $\alpha $. If $f$ factors as $%
+f(x)=f_1(x)...f_m(x)$, where each $f_i\in {\Bbb Q}_p[x]$ is irreducible then 
+\[
+k\otimes _{{\Bbb Q}}{\Bbb Q}_p=\bigoplus_{1\leq i\leq m}{\Bbb Q}_p(\alpha
+_i), 
+\]
+where $\alpha _i$ is a root of $f_i$, $1\leq i\leq m$. The prime ideal $(p)$
+of ${\Bbb Z}$ when extended to the ring of integers of $k$, ${\cal O}_k$,
+factors into a product 
+\[
+pO_k=P_1^{e_1}...P_m^{e_m} 
+\]
+Moreover, after a possible reindexing, for each place $v_i\in \Sigma _k$
+(corresponding to the prime ideal $P_i$) over $p$ there is a field
+isomorphism $\theta _i:{\Bbb Q}_p(\alpha _i)\rightarrow k_{v_i}$, $1\leq
+i\leq m$. It follows that 
+\begin{equation}
+G\otimes _{{\Bbb Q}}{\Bbb Q}_p=\prod_{1\leq i\leq m}G_i,
+\end{equation}
+where $G_i=Res_{k_{v_i}/{\Bbb Q}_p}(SL(2)/k_{v_i})$. In particular, 
+\begin{equation}
+G({\Bbb Q}_p)=\prod_{1\leq i\leq m}k_{v_i}^{\times }.
+\end{equation}
+
+Note that $G({\Bbb Q}_p)=\prod_{v|p}SL_2(k_v)$. Define $\beta _p:G({\Bbb Q}%
+_p)\times G({\Bbb Q}_p)\rightarrow \mu _n$ by 
+\[
+\beta _p(g_1,g_2)=\prod_{v|p}\beta _v(g_{1,v},g_{2,v})\ . 
+\]
+This is a 2-cocycle by Lemma 2.1 above. Define $\overline{G({\Bbb Q}_p)}$ to
+be the n-fold covering of $G({\Bbb Q}_p)$ associated to this 2-cocycle. We
+may identify $\overline{G({\Bbb Q}_p)}$ with a subgroup of $\prod_{v|p}%
+\overline{SL_2(k_v)}$.
+
+Let $B=\{\left( 
+\begin{array}{cc}
+\ast & * \\ 
+0 & *
+\end{array}
+\right) \}\subset G$ denote the standard Borel (defined over ${\Bbb Q}$), $N$
+its unipotent radical, and $A$ its Levi component.
+
+\begin{lemma}
+(a) $\overline{N({\Bbb Q}_p)}=N({\Bbb Q}_p)\times \mu _n$ (direct product),
+
+(b) if $p$ is relatively prime to $n$ then $\overline{G({\Bbb Z}_p)}=G({\Bbb %
+Z}_p)\times \mu _n$ (direct product),
+
+(c) if $K_0=G({\Bbb Z}_p)$ and 
+\[
+K_m=\prod_{v|p}\{\left( 
+\begin{array}{cc}
+a & b \\ 
+c & d
+\end{array}
+\right) \in SL_2(k_v)\;|\;a-1,d-1,b,c\in \pi _v^mO_v\},\;m>0,
+\]
+then $\overline{K_m}=K_m\times \mu _n$ (direct product) for all $m\geq n$,
+
+(d) The center of $\overline{G({\Bbb Q}_p)}$ is $Z(\overline{G({\Bbb Q}_p)}%
+)=\{\pm 1_2\}\times \mu _n.$
+
+(e) For $a_i=\left( 
+\begin{array}{cc}
+t_i & 0 \\ 
+0 & t_i^{-1}
+\end{array}
+\right) \in A({\Bbb Q}_p)$, $i=1,2$, and $\varsigma _i\in \mu _n$, we have $%
+(a_1,\varsigma _1)^{-1}\cdot (a_2,\varsigma _2)\cdot (a_1,\varsigma
+_1)=(a_2,\prod_{v|p}(t_1,t_2)_{n,v}^2\varsigma _2)$,
+
+(f) the largest abelian subgroup of $\overline{A({\Bbb Q}_p)}$ contains 
+\[
+C_{{\Bbb Q}_p}=\{\left( 
+\begin{array}{cc}
+a & 0 \\ 
+0 & a^{-1}
+\end{array}
+\right) \;|\;a\in \prod_{1\leq i\leq m}(k_{v_i}^{\times })^N\},
+\]
+
+where $N$ is as in (2.1). (In particular, $\overline{A({\Bbb Q}_p)}$ is
+abelian if $n=1,2$.)
+\end{lemma}
+
+proof: These are all immediate conseqences of the previous lemmas. $\Box $
+
+\subsubsection{$NAK$ decompositions}
+
+By the above lemma, we may identify $N({\Bbb Q}_p)$ with a subgroup of $%
+\overline{G({\Bbb Q}_p)}$ via $n\longmapsto (n,1)$. We may identify $%
+K_0=K_{0,p}$ with a subset of $\overline{G({\Bbb Q}_p)}$ via $k\longmapsto
+(k,1)$. If $p|n$ then this image is a subgroup.
+
+\begin{lemma}
+We have 
+\[
+\overline{G({\Bbb Q}_p)}=N({\Bbb Q}_p)\cdot \overline{A({\Bbb Q}_p)}\cdot
+K_p.
+\]
+
+Furthermore, if $(g,\varsigma )=(n,1)\cdot (a,\varsigma ^{\prime })\cdot
+(k,1)$ then the map
+
+\[
+(g,\varsigma )\longmapsto a\ \pmod{Z(G({\Bbb Q}_p)}
+\]
+is well-defined.
+\end{lemma}
+
+We call a function $f$ of $\overline{A(F)}$ {\bf genuine} if it satisfies
+
+\begin{equation}
+f(g,\varsigma )=\varsigma ^{-1}\cdot f(g,1).
+\end{equation}
+Let $C_c^\infty (\overline{G_0(F)})$ denote the space of locally constant
+compactly supported {\em genuine} functions on $\overline{G_0(F)}$. We call
+a representation $\pi $ of $\overline{G_0(F)}$ (resp., of any subgroup $H$
+of $\overline{G_0(F)}$) {\bf genuine} if it satisfies
+
+\begin{equation}
+\pi (g,\varsigma )=\varsigma \cdot \pi (g,1).
+\end{equation}
+Let $\Pi (\overline{G_0(F)})$ (resp., $\Pi (H)$) denote the set of
+equivalence classes of genuine (continuous, not necessarily unitary,
+complex) irreducible representations of $\overline{G_0(F)}$ (resp., $H$).
+Let $\Pi _u(\overline{G_0(F)})$ denote the set of equivalence classes of
+genuine (continuous, complex) irreducible unitary representations of
+$\overline{G_0(F)}$ (resp., $\Pi _u(H)$).
+
+\subsection{Irreducible representations of $\overline{A_0(F)}$}
+
+We use Clifford-Mackey theory to determine\ the genuine irreducible
+representations\ of the local covers $\overline{A_0(F)}$. We assume that all
+representations are smooth (the definition of smooth is recalled in the next
+section).
+
+Let $\chi $ denote a genuine (smooth, one-dimensional) character of
+$\overline{C}$, where $\overline{C}$ is a maximal abelian subgroup of
+$\overline{A_0(F)}$ as in the previous subsection. Define $\chi
+^{a_2}(a_1)=\chi (a_2a_1a_2^{-1})$, for $a_1\in \overline{C},\;a_2\in 
+\overline{A_0(F)}$. The conjugates $\chi ^{a_2}$ are of the form 
+\begin{eqnarray}
+\chi ^{a_2}(a_1) &=&(t_1,t_2)_n^2\cdot \chi (a_1)\;\;\;\;\;\;\;\;(=\chi
+(a_1),\;{\rm if\;}\;a_i\in \overline{C},\;i=1,2)  \nonumber \\
+a_1 &=&(\left( 
+\begin{array}{cc}
+t_1 & 0 \\ 
+0 & t_1^{-1}
+\end{array}
+\right) ,\varsigma _1)\in \overline{C},\;a_2=(\left( 
+\begin{array}{cc}
+t_2 & 0 \\ 
+0 & t_2^{-1}
+\end{array}
+\right) ,\varsigma _2)\in \overline{A_0(F)}.
+\end{eqnarray}
+In particular, there are no genuine 1-dimensioanl representations of $%
+\overline{A_0(F)}$ unless $n=1,2$.
+
+By Pontryagin duality, the characters of $A_0(F)/C$ are in 1-1
+correspondence with $A_0(F)/C$ itself. Explicitly, the correspondence is
+given by $x\longmapsto \chi _x$, where $\chi _x(y)=(x,y)_n^2$. Therefore,
+there are $\#[A_0(F)/C$ $]$ distinct characters of $A_0(F)$ which are
+trivial on $C$. The number of distinct characters of $C$ of the form $\chi
+_x\;(x\in A_0(F))$ is therefore $\#[A_0(F)/C$ $]$. This proves the following
+
+\begin{lemma}
+Let $\chi $ denote a genuine character of $\overline{C}$, where $C$ is as in
+the previous subsection. The number of distinct conjugates $\chi ^h$ of $%
+\chi $\ is $\#[A_0(F)/C]$.
+\end{lemma}
+
+Let $C_p\subset A({\Bbb Q}_p)$ denote a maximal subgroup such that $%
+\overline{C_p}\subset \overline{A({\Bbb Q}_p)}$ is abelian.
+
+\begin{lemma}
+(Clifford-Mackey) If $\chi \in \Pi (\overline{C_p})$ then $\chi ^h\neq \chi $%
+\ for all $h\in \overline{A({\Bbb Q}_p)}/\overline{C_p}$ and 
+\[
+Ind_{\overline{C_p}}^{\overline{A({\Bbb Q}_p)}}(\chi )\cong Ind_{\overline{%
+C_p}}^{\overline{A({\Bbb Q}_p)}}(\chi ^h),\;\;\;h\in \overline{A({\Bbb Q}_p)}%
+,
+\]
+is both irreducible and genuine.
+\end{lemma}
+
+{\sf proof:} This follows from (2.13) and an irreducibility criterion of
+Mackey (see [Se] for the statement of the criterion for finite groups, the
+proof and statement of which extends to the case considered here). $\Box $
+
+To state more complete results, we state the extensions of some results of
+Clifford to the case of totally disconnected groups (see Gelbart-Knapp [GK],
+[BZ1, ch. I, section 2]):
+
+\begin{lemma}
+Let $N$ denote an open normal subgroup of a totally disconnected group $H$
+for which $H/N$ is finite abelian and let $\pi $ denote an irreducible
+admissible representation of $H$. Then
+
+(a) there are finitely many irreducible inequivalent admissible
+representations $\pi _i,\;1\leq i\leq M,$ such that 
+\[
+\pi |_N=\bigoplus_{i=1}^Mm_i\pi _i,
+\]
+
+(b) in the decomposition above, all the multipicities $m_i$ are equal,
+
+(c) the subgroup 
+\[
+H_i=\{h\in H\;|\;\pi _i^h\cong \pi _i\}
+\]
+
+has the property that $H/H_i$ acts transitively on the set of equivalence
+classes 
+\[
+\{\pi _i\;|\;1\leq i\leq M\}\subset \Pi (H).
+\]
+\end{lemma}
+
+\begin{lemma}
+Let $N$ denote an open normal subgroup of a totally disconnected group $H$
+for which $H/N$ is finite abelian and let $\pi $ denote an irreducible
+admissible representation of $N$. Then
+
+(a) there is an irreducible admissible representation $\Pi $ of $H$ such
+that $\pi $ is a constituent of $\Pi |_N,$
+
+(b) if $\Pi ,\Pi ^{\prime }$ are two irreducible admissible representations
+of $H$ such that (i) $\pi $ is a constituent of $\Pi |_N$ and
+$\Pi ^{\prime}|_N$ and (ii) $\Pi |_N$ and $\Pi ^{\prime }|_N$ are
+multiplicity-free then 
+
+\[
+\;\;\;\Pi |_N\cong \Pi ^{\prime }|_N
+\]
+and 
+\[
+\Pi ^{\prime }\cong \Pi \otimes \nu ,\;\;\;{\rm some}\;\nu
+\in Hom(H,{\Bbb C}^{\times }),\;\nu |_N=1.
+\]
+
+(c) Each irreducible admissible representation $\Pi $ of $H$ (is equivalent
+to a representation of $H$ which) occurs as a subrepresentation of
+$Ind_N^H\pi $, for some irreducible admissible representation of $N$.
+\end{lemma}
+
+\begin{remark}
+Part (c) is a corollary of the proof of [GK, Lemma 2.3], the other parts are
+as in [GK]. To be precise, part (c) is, when $H/N$ is cyclic of prime order,
+an immediate corollary of the proof of [GK, Lemma 2.3]. In general, one must
+verfify that the properties of induction of representations (such as
+inducing ``in stages'', induction commutes with direct sums) is compatible
+with the process of mathematical induction used in the above-mentioned
+proof. This is left to the reader.
+\end{remark}
+
+We apply this lemma with 
+\[
+H=\overline{A_0(F)},\;\;N=\overline{C}, 
+\]
+to obtain
+
+\begin{lemma}
+Let $\chi \in \Pi (\overline{A_0(F)})$. Then
+
+(a) 
+\[
+\chi |_{\overline{C}}=\bigoplus_{i=1}^mm_i\mu _i
+\]
+for some distinct characters $\mu _i$ of $\overline{C}$ and some integers $%
+m_i>0$.
+
+(b) If $\chi ,\chi ^{\prime }\in \Pi (\overline{A_0(F)})$ satisfy 
+\[
+\chi |_{\overline{C}}=\bigoplus_{i=1}^m\mu _i,\;\;\;\;\chi ^{\prime }|_{%
+\overline{C}}=\bigoplus_{i=1}^{m^{\prime }}\mu _i^{\prime },\;\;
+\]
+and $\mu _i=\mu _j^{\prime }$ for some $i,j$ then $m=m^{\prime }$, $\{\mu
+_i\;|\;1\leq i\leq m\}=\{\mu _i^{\prime }\;|\;1\leq i\leq m^{\prime }\}$,
+and $\chi ^{\prime }\cong \mu \otimes \chi $ for some character $\mu $ of $%
+\overline{A_0(F)}$ which is trivial on $\overline{C}$.
+
+(c) $\chi $ is a subrepresentation of $Ind_{\overline{C}}^{\overline{A_0(F)}%
+}\mu $ for some character $\mu $ of $\overline{C}$.
+\end{lemma}
+
+\begin{corollary}
+If $\chi =Ind_{\overline{C}}^{\overline{A_0(F)}}\mu \in \Pi (\overline{A_0(F)%
+})$ then 
+\[
+tr\;\chi (a)=\left\{ 
+\begin{array}{c}
+\sum_{h\in \overline{A_0(F)}/\overline{C}}\mu ^h(a),\;\;a\in \overline{C},
+\\ 
+0,\;\;\;\;\;\;\;\;\;a\in \overline{A_0(F)}-\overline{C}.
+\end{array}
+\right. 
+\]
+\end{corollary}
+
+\subsection{The dual spaces}
+
+In this subsection let $G$ denote an $\ell $-group in the sense of [BZ1].
+
+\subsubsection{General definitions}
+
+Let $V$ denote a complex vector space and let $\pi :G\rightarrow Aut(V)$
+denote an admissible representation in the sense of [BZ1]. Let $V^{\prime }$
+denote the dual space of all complex-valued linear functionals on $V$, let $%
+V_\infty ^{\prime }$ denote the subspace of vectors fixed by some compact
+open subgroup, and let $<v,v^{\prime }>=v^{\prime }(v)$ denote the
+evaluation pairing on $V\times V^{\prime }$. Recall the contragredient
+representation of an algebraic (i.e., smooth) $\pi :G\rightarrow Aut(V)$ is
+the representation $\pi ^{\prime }:G\rightarrow Aut(V_\infty ^{\prime })$
+satisfying $<v,v^{\prime }>=<\pi (g)v,\pi ^{\prime }(g)v^{\prime }>$, for
+all $v\in V,v^{\prime }\in V_\infty ^{\prime }$, and $g\in G.$ It is known
+that if a representation $\pi :G\rightarrow End(V)$ is admissible then its
+contragredient representation $\pi ^{\prime }:G\rightarrow Aut(V_\infty
+^{\prime })$ is admissible. A matrix coefficient of a representation $\pi
+:G\rightarrow Aut(V)$ is a function on $G$ of the form $g\longmapsto <\pi
+(g)v,v^{\prime }>,$ for some $v\in V,v^{\prime }\in V_\infty ^{\prime }.$
+The {\bf space of matrix coefficients} of $\pi $ is denoted by ${\cal A}(\pi
+)$.
+
+An admissible representation $\pi :G\rightarrow End(V)$ is called {\bf %
+square-integrable} or {\bf in the discrete series} if ${\cal A}(\pi )\subset
+L^2(G).$ It is called {\bf cuspidal} if every function $f\in {\cal A}(\pi )$
+has compact support modulo the center and satisfies, for each nilpotent
+radical $N$ of a proper parabolic subgroup of $G$, $\int_Nf(xn)dn=0$, for
+all $x\in G$. Clearly, a cuspidal representation is square-integrable. A
+representation $\pi :G\rightarrow Aut(V)$ is called {\bf unitarizable} if $V$
+has a positive-definite $G$-invariant inner product $(*,*)$ (that is, $(\pi
+(g)v,\pi (g)v^{\prime })=(v,v^{\prime })$ for all $v,v^{\prime }\in V$). The
+completion of $V$ with respect to this inner product is of course a $G$%
+-invariant Hilbert space $H$. Any representation $\pi :G\rightarrow Aut(H),$
+for some Hilbert space $H$ whose inner product is $G$-invariant, is called 
+{\bf unitary. }It is known and easy to check even at this level of
+generality that every square-integrable representation is unitarizable.
+
+We say that a representation $\pi :G\rightarrow Aut(V)$ is {\bf equivalent}
+to a representation $\pi ^{\prime }:G\rightarrow Aut(V^{\prime })$ if there
+is a non-zero linear transformation $A:V\rightarrow V^{\prime }$ such that $%
+A\pi (g)v=\pi ^{\prime }(g)Av$ for all $g\in G,$ $v\in V.$ The map $A$ is
+called an {\bf intertwining map}. The {\bf unitary dual} of $G$ is the set $%
+\Pi _u(G)$ of all equivalence classes of irreducible unitary representations
+of $G$ and the {\bf admissible dual} of $G$ is the set $\Pi _{ad}(G)$ of all
+equivalence classes of irreducible admissible representations of $G.$ For
+the group $G$ of all $F$-rational points of a reductive group over a p-adic
+field, it is known that $\Pi _u(G)\subset \Pi _{ad}(G)$ [S].
+
+If $G=\overline{G_0(F)}$ then we will modify this definition slightly: the 
+{\bf unitary dual} of $\overline{G_0(F)}$ is the set $\Pi _u(\overline{G_0(F)%
+})$ of all equivalence classes of genuine irreducible unitary admissible
+representations of $\overline{G_0(F)}$ and the {\bf admissible dual} of $%
+\overline{G_0(F)}$ is the set $\Pi _{ad}(\overline{G_0(F)})$ of all
+equivalence classes of genuine irreducible admissible representations of $G$%
+. Let $\Pi _c(\overline{G_0(F)})\subset \Pi _u(\overline{G_0(F)})$ denote
+the subset of cuspidals.
+
+Each admissible representation $\pi :G\rightarrow Aut(V)$ gives rise to a
+representation $\pi :C_c^\infty (G)\rightarrow End(V)$ of the Hecke algebra $%
+C_c^\infty (G)$ of all locally constant functions with compact support on $G$%
+: 
+\[
+\pi (f)v=\int_Gf(g)\pi (g)v\;dg,\;\;\;v\in V,\;\;f\in C_c^\infty (G), 
+\]
+where $dg$ denotes a Haar measure on $G$. The linear transformation $\pi (f)$
+is sometimes called the {\bf operator-valued Fourier transform} of $f$ at $%
+\pi .$ For admissible $\pi $ it is known that $\pi (f)$ is finite rank as an
+element of $End(V)$, so the trace of $\pi (f)$ exists. Let $||\pi (f)||$
+denote its operator norm and let 
+\[
+||f||_{*}=\sup_{\pi \in \hat G_u}||\pi (f)||. 
+\]
+The completion of $C_c^\infty (G)$ with respect to this norm $||...||_{*}$
+is a $C^{*}-$ algebra denoted by $C^{*}(G)$.
+
+Let $A$ denote a $C^{*}$-algebra. A primitive ideal of $A$ is the kernel of
+an irreducible representation of $A$. Put the Jacobson topology on the set $%
+\Pr (A)$ of all primitive ideals of $A$. Let $A^{\wedge }$ denote the set of
+equivalence classes of irreducible representations of $A$ on the bounded
+operators on a Hilbert space. There is a canonical surjection $A^{\wedge
+}\hookrightarrow \Pr (A)$ induced by $\pi \longmapsto \ker (\pi ).$ Give $%
+A^{\wedge }$ the smallest topology such that this surjection is continuous.
+Call this the {\bf Jacobson} topology. This topology is $T_0$.
+
+We define a topology on $\Pi _u(G)$ using the following
+
+\begin{lemma}
+(Special case of a theorem of Dixmier): Let $G$ denote a finite central
+covering group of a reductive p-adic group. There is a canonical bijection
+between the set $\Pi _u(G)$\ and the set $C^{*}(G)^{\wedge }$\ of
+equivalence classes of irreducible representations of $C^{*}(G).$
+\end{lemma}
+
+We give $\Pi _u(G)$ the smallest topology such that this bijection is
+continuous. Call this the {\bf Jacobson topology} on $\Pi _u(G).$
+
+A {\bf CCR algebra} is a $C^{*}-$algebra $A$ such that every irreducible
+representation $\pi :A\rightarrow End(H)$ is completely continuous (i.e.,
+compact). It is known, by a result of Fell, that if $A$ is a CCR algebra and
+if we topologize $A^{\wedge }$ using the Jacobson topology as above then the
+dual space $A^{\wedge }$ is a $T_1$ topological space. (The converse is also
+true, by a result of Dixmier.)
+
+\begin{conjecture}
+(Analog of a theorem of Bernstein) Let $G$ denote a finite topological
+covering group of a reductive p-adic group. Then $C^{*}(G)$\ is a CCR
+algebra.
+\end{conjecture}
+
+\begin{remark}
+Can one prove that $C^{*}(G_0(F))^{\wedge }$ is $T_1$ by redefining the
+topology on the dual using limits of matrix coefficients ([T])?
+\end{remark}
+
+Following Mackey, we say that the dual space $A^{\wedge }$ is {\bf smooth}
+if there is a Borel structure on it which is Borel isomorphic to the Borel
+structure on the real line.
+
+\begin{lemma}
+(Fell, Mackey) If $A$\ is a separable CCR algebra then $A^{\wedge }$\ has a
+smooth dual. Moreover, the Borel structure may be taken to be that generated
+by the Jacobson topology on $A^{\wedge }.$
+\end{lemma}
+
+\subsubsection{Jacquet functors}
+
+Let ${\cal L}(G)$ denote the set of all standard Levi's (with respect to $A$%
+), up to associates. Therefore, ${\cal L}(G)=\{A,G\}$.
+
+Let $(\sigma ,W)\in \Pi _c(\overline{M(F)})$ and let $I_M(\sigma ):\overline{%
+G(F)}\rightarrow Aut(V)$ denote the {\bf unitarily induced representation}:
+the representation of $\overline{G(F)}$ by right translation on 
+\begin{eqnarray*}
+V &=&\{f:\overline{G(F)}\rightarrow W\;\;{\rm genuine}\;|\; \\
+&& 
+\begin{array}{c}
+(1)\;\;f(mg)=\delta _M(m)^{1/2}\sigma (m)f(g),\;\; \\ 
+\;\forall g\in \overline{G(F)},\;m\in \overline{M(F)} \\ 
+(2)\;\;{\rm for\;some\;open\;subgp}\;K\subset \subset \overline{G(F)}%
+,\;f(gk)=f(g),\;\; \\ 
+\forall k\in K,\;g\in \overline{G(F)}\;
+\end{array}
+\}.
+\end{eqnarray*}
+Here $\delta _M(m)=|\det (Ad(m)_{{\frak n}})|$.
+
+It is remarked in [BD, \S 2.2] that the arguments of [BZ1, chapter 2] carry
+over to finite central extensions of reductive groups over a p-adic field
+(see also [KP, \S 1.2]). I claim that the arguments of [BZ2, section 2], and
+the corresponding sections of [Ca], carry over to finite central extensions
+of split reductive groups over a p-adic field. Perhaps this should be
+regarded as a conjecture since they will not be repeated here and those
+parts which we do need here can probably be proven directly with less
+effort. In any case, we shall state such results as needed for
+$\overline{G_0(F)}$ without proof, merely referencing [BZ1], [BZ2] and [Ca].
+
+If $(\pi ,V)$ denotes a $\overline{G_0(F)}$-module and if $P=MN$ denotes a
+standard parabolic of $G_0$, let $V_{\overline{N(F)}}$ denote the Jacquet
+module 
+\[
+V_{\overline{N(F)}}=V/\{\pi (n)v-v\ |\ v\in V,\ n\in \overline{N(F)}\}. 
+\]
+This sends admissible representations to admissible representations (this is
+due to Jacquet, see [BZ1, sections 3.16-3.17] for the $GL(r)$ case).
+
+\begin{lemma}
+(Jacquet [Ca, Theorem 5.2.1]) If $V_{\overline{N(F)}}=0$ for all proper
+standard parabolics $P$ of $G_0$ then $(\pi ,V)$ is cuspidal.
+\end{lemma}
+
+\begin{proposition}
+(Jacquet [BZ1, section 3.19]) If $\pi \in \Pi _{ad}(\overline{G_0(F)})$ then
+  there is a Levi $M\in {\cal L}(G_0)$ and a cuspidal
+  $\sigma \in \Pi _{ad}(\overline{M(F)})$
+  such that $\pi $ is a constituent of $I_M(\sigma )$.
+\end{proposition}
+
+In particular, every $\pi \in \Pi _{ad}(\overline{G_0(F)})$ which is not a
+constituent of an induced representation of a cuspidal representation of a
+proper Levi occurs discretely in the decomposition of the right regular
+representation of $\overline{G_0(F)}$ on $L^2(\overline{G_0(F)})$.
+
+Let $\chi ,\chi ^{\prime }\in \Pi (\overline{A_0(F)})$. If $\chi ^w\not
+=\chi $ for all $w\in W-\{1\}$ then we call $\chi $ {\bf regular}. We say
+that $\chi ,\chi ^{\prime }$ are {\bf $W$-conjugate} if $\chi ^{\prime
+}=\chi ^w$ for some $w\in W$. The following two results were proven for
+metaplectic covers of $GL(r)$ in [KP].
+
+\begin{lemma}
+([BZ2, Corollary 2.13]) Let $\chi \in \Pi (\overline{A_0(F)})$. The
+Jordan-Holder series of $I_{A_0}(\chi )_{\overline{N(F)}}$ has as its
+composition factors 
+\[
+Ind_{\overline{C}}^{\overline{A_0(F)}}(\chi ^w\cdot \delta _{A_0}^{1/2}),\ \
+w\in W.
+\]
+If $\chi $ is regular then 
+\[
+I_{A_0}(\chi )_{\overline{N(F)}}=\oplus _{w\in W}Ind_{\overline{C}}^{%
+\overline{A_0(F)}}(\chi ^w\cdot \delta _{A_0}^{1/2}).
+\]
+\end{lemma}
+
+\begin{proposition}
+([BZ2, Theorem 2.9(b)]) Let $\chi ,\chi ^{\prime }\in \Pi (\overline{A_0(F)})
+$. If $\chi $ is regular then 
+\[
+dim\ Hom_{\overline{G_0(F)}}(I_{A_0}(\chi ),I_{A_0}(\chi ^{\prime }))\leq 1,
+\]
+with equality if and only if $\chi ^{\prime },\chi $ are $W$-conjugate.
+\end{proposition}
+
+In other words, distinct $W$-conjugacy classes of $\chi \in \Pi (\overline{%
+A_0(F)})$ yield inequivalent representations.
+
+\section{Description of the dual spaces}
+
+\subsection{Principal series, reducible principal series}
+
+Let $\chi \in \Pi (\overline{A_0(F)})$. The induced representation $%
+I_{A_0}(\chi )$ is in general not irreducible. However, we do have the
+following
+
+\begin{theorem}
+(Moen [Mo2]) If $n$ is even and $(p,n)=1$ then $I_{A_0}(\chi )$ is
+irreducible for all $\chi \in \Pi _u(\overline{A_0(F)})$.
+\end{theorem}
+
+In fact, C. Moen [Mo1] explicitly computes the intertwining operators as
+matrices using the Kirillov model. In the notation of the next section, we
+have
+
+\begin{proposition}
+(Moen) If $n$ is even and $(p,n)=1$ then
+
+(1) if $n=2$ then $J_\mu J_{-\mu }=4\Gamma (2\mu )\Gamma (-2\mu )$,
+
+(2) if $n=2$ then $J_\mu J_{\mu ^w}=16\Gamma (4\mu )\Gamma (-4\mu )$,
+
+(3) if $n>4$ and $n/2$ is even then 
+\[
+\det (J_\mu )=n^{n/2}|y|^{-\alpha n/2}\beta q^{-\alpha n/2}\Gamma (n\alpha
+)^{\frac n4+1}\Gamma (-n\alpha )^{\frac n4-1}\Gamma _\gamma (-\frac{n\alpha }%
+2+\frac 12),
+\]
+
+(4) if $n>4$ and $n/2$ is odd then 
+\[
+\det (J_\mu )=n^{n/2}|y|^{-\alpha n/2}q^{-\alpha n/2}\Gamma (n\alpha
+)^{\frac n4+\frac 12}\Gamma (-n\alpha )^{\frac n4-\frac 12}.
+\]
+\end{proposition}
+
+\begin{conjecture}
+  If $n$ is even then $I_{A_0}(\chi )$ is irreducible for all
+  $\chi \in \Pi _u(\overline{A_0(F)})$.
+\end{conjecture}
+
+\begin{theorem}
+(Moen [Mo2]) If $n$ is odd and $(p,2n)=1$ then $I_{A_0}(\chi )$ is
+irreducible for all $\chi \in \Pi _u(\overline{A_0(F)})$ such that $\chi
+^w\neq \chi $ where $w=(\left( 
+\begin{array}{cc}
+0 & 1 \\ 
+-1 & 0
+\end{array}
+\right) ,1)$. If $\chi ^w=\chi $ then $I_{A_0}(\chi )$ is reducible and has
+two irreducible constituents.
+\end{theorem}
+
+\begin{conjecture}
+  If $n$ is odd then $I_{A_0}(\chi )$ is irreducible for all
+  $\chi \in \Pi _u(\overline{A_0(F)})$
+  such that $\chi ^w\neq \chi $ where $w=(\left( 
+\begin{array}{cc}
+0 & 1 \\ 
+-1 & 0
+\end{array}
+\right) ,1)$. If $\chi ^w=\chi $ then $I_{A_0}(\chi )$ is reducible and has
+two irreducible constituents.
+\end{conjecture}
+
+\begin{proposition}
+(Moen) If $n$ is odd and $(p,2n)=1$ then 
+\[
+\det (J_\mu )=n^n|y|^{-\alpha n}q^{-\alpha n}\Gamma (n\alpha )^{\frac
+n2+\frac 12}\Gamma (-n\alpha )^{\frac n2-\frac 12}.
+\]
+\end{proposition}
+
+We can investigate whether or not two induced representations are equivalent
+by using the Jacquet functor. In general, we have the following corollary to
+Proposition 2.22 above.
+
+\begin{lemma}
+If $\chi ,\chi ^{\prime }\in \Pi (\overline{A_0(F)})$ are not $W$-conjugate
+then $I_{A_0}(\chi )$ is not equivalent to $I_{A_0}(\chi ^{\prime })$.
+\end{lemma}
+
+Suppose that $\pi \in \Pi _u(\overline{G_0(F)})$. We call $\pi $ a (unitary) 
+{\bf principal series} representation if $\pi =I_{A_0}(\chi )$ for some
+$\chi \in \Pi _u(\overline{A_0(F)})$. These representations are tempered. (We
+define tempered in the next section.) We call $\pi $ a {\bf complementary
+  series} representation if $\pi =I_{A_0}(\chi )$ for some
+$\chi \in \Pi (\overline{A_0(F)})-\Pi _u(\overline{A_0(F)})$.
+These representations are not
+tempered.
+
+\subsection{Complementary series}
+
+In this subsection, we shall review the results of Ariturk [Ar], or at least
+those which easily generalize to the n-fold cover.
+
+Let $\mu \in \Pi (\overline{C})$,
+
+\[
+\chi =Ind_{\overline{C}}^{\overline{A_0(F)}}\mu \in \Pi (\overline{A_0(F)}).
+\]
+If $\mu (x)=\mu _0(x)|x|^s$, for some
+character $\mu _0$ of finite order and some $s\in {\Bbb C}$ then we write
+$s=s(\mu )=s(\chi )$.
+
+Let $K(\mu )$ denote the space of locally constant functions $f:F\times 
+\overline{A_0(F)}\rightarrow {\Bbb C}$ such that
+
+(i) $f(x,a_1a_2)=\mu (a_1)f(x,a_2)$, $a_1\in \overline{C}$, $a_2\in 
+\overline{A_0(F)}$,
+
+(ii) $|x|\chi (\left[ 
+\begin{array}{cc}
+x & 0 \\ 
+0 & x^{-1}
+\end{array}
+\right] ,1)f(x,a)$ is constant for $|x|$ large.
+
+Let $R\subset \overline{A_0(F)}$ denote a complete set of representatives of 
+$\overline{A_0(F)}/\overline{C}$, and let $r$ denote the cardinality of $R$.
+The elements $f\in K(\mu )$ may be identified with the $r$-tuple $%
+(f(x,a))_{a\in R}$.
+
+Let 
+\[
+F_i=\{x\in F\;|\;v(x)\equiv i\ \pmod{n}\} 
+\]
+and let ${\cal S}(F)$ denote the Schwartz space of $F$.
+
+\begin{lemma}
+  ([Ar, Lemma 3.1]) For $\phi \in {\cal S}(F),\;\mu _s(x)=|x|^s$ and
+  $0<{\rm Re}(s)<1$, $1\leq j\leq n-1$, then 
+\[
+\int_{F_i}\phi (x)\mu _s(x)(x,\pi ^j)_nd^{\times
+}x=c_jq^{s-1/2}\int_{F_{(n-1)i-1}}\widehat{\phi }(x)\mu _{1-s}(x)(x,\pi
+^{-j})_nd^{\times }x,
+\]
+
+where $|c_j|=1$ and $c_1...c_{n-1}=1$.
+\end{lemma}
+
+\begin{lemma}
+([Ar]) For $\phi \in {\cal S}(F),\;\mu _s(x)=|x|^s$ and $0<{\rm Re}(s)<1$,
+then 
+\[
+\int_{F_i}\phi (x)\mu _s(x)d^{\times }x=\int_F\widehat{\phi }(x)\mu
+_{1-s}(x)K_s(x)d^{\times }x,
+\]
+
+where $K_s$ is a locally constant function.
+\end{lemma}
+
+Let $V(\mu )$ denote the space of all locally constant functions
+\[
+\varphi :\overline{G_0(F)}\times \overline{A_0(F)}\rightarrow {\Bbb C}
+\]
+such that
+
+(i) $\varphi (g,a_1a_2)=\mu (a_1)\varphi (g,a_2)$, $a_1\in \overline{C}$,
+$a_2\in \overline{A_0(F)}$,
+
+(ii) $\varphi (a_1g,a_2)=\delta (a_1)\varphi (g,a_2a_1)$, where $a_1\in 
+\overline{A_0(F)}$, $a_2\in \overline{A_0(F)}$.
+
+Here $\delta $ denotes the usual modulus function (extended to
+$\overline{A_0(F)}$ via the obvious pull-back). For
+$\varphi \in V(\mu )$, let 
+
+\[
+I\varphi (g,a)=\int_F\varphi (w\cdot \left[ 
+\begin{array}{cc}
+1 & x \\ 
+0 & 1
+\end{array}
+\right] \cdot g,waw^{-1})dx,\;\;Re(s(\mu ))>0\ . 
+\]
+
+\begin{lemma}
+$I$ intertwines $I_{A_0}(\mu )$ and $I_{A_0}(\mu ^w)$.
+\end{lemma}
+
+Let $L(\overline{G_0(F)},\overline{B_0(F)})$ denote the space of all locally
+constant functions $\varphi $ on $\overline{G_0(F)}$ such that 
+\[
+\varphi ((\left[ 
+\begin{array}{cc}
+a & * \\ 
+0 & a^{-1}
+\end{array}
+\right] ,\varsigma )\cdot g)=|a|^2\varphi (g)\ . 
+\]
+For $\varphi _1\in V(\mu )$, $\varphi _2\in V(\mu ^w)$, the function 
+\[
+g\longmapsto \int_{\overline{A_0(F)}/\overline{C}}\varphi _1(g,a)\varphi
+_2(g,a)da 
+\]
+belongs to $L(\overline{G_0(F)},\overline{B_0(F)})$. Therefore, 
+\begin{eqnarray*}
+  &<&\varphi _1,\varphi _2>
+  =\int_{\overline{B_0(F)}\backslash \overline{G_0(F)}}
+  \int_{\overline{A_0(F)}/\overline{C}}\varphi _1(g,a)\varphi _2(g,a)dadg \\
+&=&\int_F\int_{\overline{A_0(F)}/\overline{C}}\varphi _1(w^{-1}\cdot \left[ 
+\begin{array}{cc}
+1 & x \\ 
+0 & 1
+\end{array}
+\right] ,a)\varphi _2(w^{-1}\cdot \left[ 
+\begin{array}{cc}
+1 & x \\ 
+0 & 1
+\end{array}
+\right] ,a)dad^{\times }x
+\end{eqnarray*}
+gives a non-degenerate bilinear form on $V(\mu )\times V(\mu ^w)$.
+
+\begin{lemma}
+$I_{A_0}(\mu ^w)$ is the contragredient of $I_{A_0}(\mu )$.
+\end{lemma}
+
+\begin{lemma}
+For $\varphi _1,$ $\varphi _2\in V(\mu )$, $\mu (x)=|x|^s$, we have 
+\[
+<\varphi _1,I\varphi _2>=\int_F\int_{\overline{A_0(F)}/\overline{C}%
+}f_1^{\wedge }(x,a)\overline{(Jf_2^{\wedge })(x,a)}dad^{\times },
+\]
+
+where $J=J_\mu $ is a linear transformation on $K(\mu )^{\wedge }$ and 
+\[
+f_i(x,a)=\varphi _i(w^{-1}\cdot \left[ 
+\begin{array}{cc}
+1 & x \\ 
+0 & 1
+\end{array}
+\right] ,a),\;\;i=1,2.
+\]
+\end{lemma}
+
+We may identify $J$ with an $r\times r$ matrix which we still denote by $J$.
+
+\begin{conjecture}
+If $\;0\leq Re(s(\mu ))\leq 1$ and $|Im(s(\mu ))|\leq \pi /n\ln (q)$ then $%
+\det (J)=0$ if and only if $\mu (x)=|x|^s$ and $s=1/n$.
+\end{conjecture}
+
+\begin{lemma}
+  (Langlands, Ariturk) If $0\leq Re(s(\mu ))\leq 1/n$ and
+  $|Im(s(\mu ))|\leq\pi /n\ln (q)$
+  then the image of $J_\mu $ is an irreducible representation
+of $\overline{G_0(F)}$.
+\end{lemma}
+
+\begin{conjecture}
+If $0<s(\mu )<1/n$ and $\mu (x)=|x|^s$ then $J_\mu $ is a positive definite
+matrix and $<\varphi _1,I\varphi _2>$ is a positive definite form. In
+particular, $I_A(\mu )$ is unitary in this range.
+\end{conjecture}
+
+\subsection{Special representation, non-tempered representation}
+
+In the notation of the previous subsection, we have the following
+
+\begin{conjecture}
+If $s=1/n$ and $\mu (x)=|x|^s$ then the image of $J_\mu $ is ``the special
+representation'' $\pi _{sp}$. It is elliptic, square-integrable and
+spherical. If $n>1$ then the kernel of $J_\mu $ is an infinite-dimensional,
+elliptic, non-tempered, non-spherical representation $\pi _{nt}$ which
+contains and Iwarori fixed vector.
+\end{conjecture}
+
+It seems reasonable to expect that
+
+(1) the representation $\pi _{sp}$ is the only square-integrable
+representation in $\Pi _u(\overline{G_0(F)})$ which is not cuspidal.
+
+(2) $\pi _{sp}$ is tempered.
+
+(3) The representation $\pi _{nt}$ and the complementary series comprise the
+only non-tempered representations in $\Pi _u(\overline{G_0(F)})$.
+
+\subsection{Cuspidal representations}
+
+Thanks to ideas originally introduced by Weil and Shale, much is known about
+the cuspidal representations in $\Pi _u(\overline{G_0(F)})$ in the case
+where $n=2$ and $p>2$. In the general case, a great deal of information can
+be obtained from [F], [Bl], by restricting from an n-fold cover
+$\overline{GL_2(F)}$ of $GL(2,F)$ to the n-fold cover of $SL(2,F)$.
+
+\begin{lemma}
+If $\Pi \in \Pi _u(\overline{GL_2(F)})$ is cuspidal then there are finitely
+many cuspidal representations $\pi _i\in \Pi _u(\overline{G_0(F)}),\;1\leq
+i\leq M$, such that 
+\[
+\Pi |_{\overline{G_0(F)}}=\bigoplus_{i=1}^M\pi _i.
+\]
+\end{lemma}
+
+\begin{remark}
+The number $M$ is independent of $\Pi $ if $n>1$ but not if $n=1$!
+\end{remark}
+
+We call the set $\{\pi _i\;|\;1\leq i\leq M\}$ a {\bf packet} associated to $%
+\Pi $ or a $\Pi $-{\bf packet}. It is natural to ask if every cuspidal
+representation $\pi \in \Pi _u(\overline{G_0(F)})$ occurs in some
+$\Pi $-packet. In the case $n=2$,\ $p>2$, this question is
+investigated in [GPS].
+
+\subsection{Summary}
+
+We sketch the conjectural structure of the dual spaces. For further details
+in a special case, see [J1].
+
+The admissible dual may be regarded as a real manifold which consists of an
+countably infinite number of disjoint non-compact ``cylinders'' each being
+analytically isomorphic to ${\Bbb C}/{\Bbb Z}$ (the principal series)
+disjoint union with an countably infinite number of distinct points (the
+reducible unitary principal series, the special representation, its
+non-tempered ``complement'', and the cuspidal representations).
+
+The unitary dual may be regarded as a real manifold which consists of an
+countably infinite number of disjoint compact ``circles'' each being
+isomorphic to ${\Bbb R}/{\Bbb Z}$ (the unitary principal series and the
+complementary series) disjoint union with an countably infinite number of
+distinct points (the reducible unitary principal series, the special
+representation, its non-tempered ``complement'', and the cuspidal
+representations).
+
+The tempered dual may be regarded as a real manifold which consists of an
+countably infinite number of disjoint compact ``circles'' (the unitary
+principal series) disjoint union with an countably infinite number of
+distinct points (the reducible unitary principal series, the special
+representation, and the cuspidal representations).
+
+\section{The Fourier Transform}
+
+For $f\in C_c^\infty (\overline{G_0(F)})$ and
+$\pi \in \Pi (\overline{G_0(F)})$, we define the
+{\bf operator-valued Fourier transform} of $f$ at $\pi $
+by 
+\[
+\pi (f)=\int_{\overline{G_0(F)}}f(x)\pi (x)\;dx,\;\;\;f\in C_c^\infty (%
+\overline{G_0(F)}). 
+\]
+
+\begin{lemma}
+If $f,g\in C_c^\infty (\overline{G_0(F)})$\ then $\pi (f*g)=\pi (f)\pi (g).$
+\end{lemma}
+
+Let
+\[
+\overline{G_0(F)}^{\prime }=\{(g,\varsigma )\in
+\overline{G_0(F)}\;|\;g\;{\rm has\;distinct\;eigenvalues}\},
+\]
+called the {\bf regular set} of 
+$\overline{G_0(F)}.$ In particular, every element in the regular set is
+semi-simple (i.e., diagonalizable). The following result is a corollary of a
+result of Howe and Harish-Chandra [S]:
+
+\begin{lemma}
+There exists a genuine locally constant function denoted $\Theta _\pi $ on
+the regular set $\overline{G_0(F)}^{\prime }$ which represents the trace of
+$\pi :$
+\[
+trace(\pi (f))=\int_{\overline{G_0(F)}}\Theta _\pi (x)f(x)dx,
+\]
+for all $f\in C_c^\infty (\overline{G_0(F)}).$
+\end{lemma}
+
+This trace, which we sometimes denote simply by $\Theta _\pi (f)$, is called
+the {\bf Fourier transform} of $f$ at $\pi $. The function $\Theta _\pi (x)$
+is called the {\bf character} of $\pi $.
+
+Sketch of proof: We modify the proof of [S, Corollary 4.8.2].
+
+By Lemma 2.3, over each sufficiently small compact open subgroup $K$ of $%
+G_0(F)$, the cover $\overline{G_0(F)}\rightarrow G_0(F)$ splits. For such a
+group, we may and will identify the dual group ${\cal E}(K)$ (in the
+notation of [S]), with the subset of the dual group ${\cal E}(\overline{K})$
+consisting of representations which are trivial on $\mu _n$. This allows us
+to extend the ``intertwines'' definition of [S, section 4.8] to $\overline{%
+G_0(F)}$.
+
+The following result is a consequence of a theorem of Howe [S, Theorem
+4.8.1]:
+
+\begin{lemma}
+Let $T$ be a Cartan subgroup of $G_0(F)$ and let $\omega \subset T^{\prime
+}=G_0(F)^{\prime }\cap T$. There exists a compact open subgroup $K_1\subset
+G_0(F)$ with the following properties:
+
+\begin{enumerate}
+\item  $\overline{K_1}$ splits,
+
+\item  Fix a compact open subgroup $K_2\subset G_0(F)$ such that $\overline{%
+K_2}$ splits, and an element ${\bf d}_2\in {\cal E}(K_2)$. Let $F$ denote
+the set of all ${\bf d}_1\in {\cal E}(K_1)$ such that
+
+(i) $\overline{G_0(F)}$ intertwines ${\bf d}_1$with ${\bf d}_2$,
+
+(ii) $\omega $ intertwines ${\bf d}_1$with itself.
+
+Then $F$ is finite.
+\end{enumerate}
+\end{lemma}
+
+Replace the use of [S, Theorem 4.8.1] in the proof of [S, Corollary 4.8.2]
+by the above lemma. This will yield the claimed result. $\Box $
+
+\subsection{The Schwartz space and the tempered dual}
+
+Let $||g||=\max (|a|,|b|,|c|,|d|),$ where $g=\left[ 
+\begin{array}{cc}
+a & b \\ 
+c & d
+\end{array}
+\right] \in G,$ and let $\sigma (g)=\log ||g||.$ For each compact open
+subgroup $K\subset \subset \overline{G_0(F)}$, let 
+\begin{eqnarray*}
+{\cal C}_K(\overline{G_0(F)}) &=&\{f\in C_c(\overline{G_0(F)}//K)\;|\; \\
+&&\ 
+\begin{array}{c}
+\;f\;{\rm genuine} \\ 
+|f(x)|<<_{r,f}\frac{\Xi (x)}{(1+\sigma (x))^r},\;\;\forall \overline{x}%
+=(x,\varsigma )\in \overline{G_0(F)}, \\ 
+{\rm for\;each}\;r>0
+\end{array}
+\},
+\end{eqnarray*}
+where $C_c(\overline{G_0(F)}//K)$ denotes the space of compacty supported
+functions which are bi-$K$-invariant, 
+\[
+\Xi (x)=\int_{K_0}\delta _B(xk)^{-1/2}dk. 
+\]
+Here, for $x\in \overline{G_0(F)}^{\prime }$, we have $\delta _B(\overline{x}%
+)=|\det (Ad(x_d))_{{\frak n}}|,$ where $x_d$ denotes a diagonalization of $x$
+in $SL(2,\overline{F}),$ where $\overline{F}$ denotes a separable algebraic
+closure of $F$ and the valuation $|...|$ has been extended to $\overline{F}$%
+. It's known that there are constants $c_1>0,\;c_2>0,\;N>0$ such that 
+\[
+c_1\leq \Xi (\overline{a})\leq c_2(1+\sigma (a))^N,\;\;\;\overline{a}%
+=(a,\varsigma ), 
+\]
+for all $a\in A^{+}=\{a\in A\;|\;a=\left[ 
+\begin{array}{cc}
+u\pi ^n & 0 \\ 
+0 & u^{-1}\pi ^{-n}
+\end{array}
+\right] ,\;u\in O_F^{\times },\;n\geq 0\}.$ We topologize ${\cal C}_K(%
+\overline{G_0(F)})$ via the semi-norms 
+\[
+\upsilon _n(f)=\sup_{x\in \overline{G_0(F)}}|f(x)|\frac{(1+\sigma (x))^n}{%
+\Xi (x)}. 
+\]
+Let 
+\[
+{\cal C}(\overline{G_0(F)})=\bigcup_K{\cal C}_K(\overline{G_0(F)}), 
+\]
+where $K$ runs over all compact open subgroups of $\overline{G_0(F)}$. This
+is the {\bf Schwartz space} of $\overline{G_0(F)}$. Let $S$ denote the
+collection of all seminorms on ${\cal C}(\overline{G_0(F)})$ whose
+restriction to each ${\cal C}_K(\overline{G_0(F)})$ is continuous. In the
+semi-norm topology induced by $S$, the Schwartz space is a complete locally
+convex topological vector space.
+
+\begin{lemma}
+(1) ${\cal C}(\overline{G_0(F)})\subset L^2(\overline{G_0(F)}),$
+
+(2) ${\cal C}(\overline{G_0(F)})$\ is an algebra under convolution.
+\end{lemma}
+
+Let 
+\[
+\begin{array}{c}
+D_{G_0/A_0}(\left[ 
+\begin{array}{cc}
+a & 0 \\ 
+0 & a^{-1}
+\end{array}
+\right] )=\det (1-Ad(\left[ 
+\begin{array}{cc}
+a & 0 \\ 
+0 & a^{-1}
+\end{array}
+\right] ))_{{\frak g}_0/{\frak a}_0} \\ 
+=(1-a^2)(1-a^{-2})=-(a-a^{-1})^2.
+\end{array}
+\]
+Here$\;{\frak g},{\frak a}_0$denote\ the\ Lie\ algebras\ of\ $G_0,A_0$. For $%
+t\in \overline{G_0(F)}^{\prime }$, let $T=Cent(t,\overline{G_0(F)})=%
+\overline{G_0(F)}_t$, denote the centralizer. Note $T$ need not be equal to
+the metaplectic cover of a centralizer of $G_0$. In other words, if $%
+t=(x,\varsigma )$ then in general $Cent((x,1),\overline{G_0(F)})\neq 
+\overline{Cent(x,G_0(F))}$. Define the {\bf orbital integral} of $f\in
+C_c^\infty (\overline{G_0(F)})$ by 
+\begin{equation}
+F_f^T(t)=|D(t)|^{1/2}\int_{T\backslash \overline{G_0(F)}}f(x^{-1}tx)\frac{dx%
+}{dt}.
+\end{equation}
+(This exists as a simple consequence of a well-known result of
+Harish-Chandra [HC].) We define $D$ as above by identifying $T$ with $A_0$
+over the algebraic closure. If $a\in \overline{A_0(F)}$, then define 
+\begin{equation}
+F_f^{A_0^N}(a)=|D(a)|^{1/2}\int_{\overline{A_0(F)^N}\backslash \overline{%
+G_0(F)}}f(x^{-1}ax)\frac{dx}{da}.
+\end{equation}
+
+\begin{lemma}
+For $f\in C_c^\infty (\overline{G_0(F)}),$ $a\in \overline{A_0(F)}-\overline{%
+A_0(F)^N}$, we have $F_f^{A_0^N}(a)=0$.
+\end{lemma}
+
+proof: Since $dx$ is a Haar measure, we may replace $x$ by $a_1x$, where $%
+a_1=(\left( 
+\begin{array}{cc}
+t_1 & 0 \\ 
+0 & t_1^{-1}
+\end{array}
+\right) ,\varsigma _1)\in \overline{A_0(F)}$, and the integral defining $%
+F_f^{A_0^N}(a)$ must remain invariant. Let $a=(\left( 
+\begin{array}{cc}
+t & 0 \\ 
+0 & t^{-1}
+\end{array}
+\right) ,\varsigma )$. Then 
+\[
+F_f^{A_0^N}(a)=(t,t_1)_n^2\cdot F_f^{A_0^N}(a). 
+\]
+It follows that $F_f^{A_0^N}(a)=0$ or $(t,t_1)_n^2=1$. By the properties of
+the Hilbert symbol, if $(t,t_1)_n^2=1$ for all $t_1$ then $t\in (F^{\times
+})^N$. $\Box $
+
+The following result will not be needed but is included for completeness.
+
+\begin{lemma}
+(1) The map $f\longmapsto F_f^{A_0^N}$\ defines a surjection $C_c^\infty (%
+\overline{G_0(F)})\rightarrow C_c^\infty (\overline{A_0(F)^N}).$
+
+(2) The map $f\longmapsto F_f^{A_0^N}$\ defines a continuous surjection $%
+{\cal C}(\overline{G_0(F)})\rightarrow {\cal C}(\overline{A_0(F)^N}).$
+\end{lemma}
+
+{\bf proof:} Because of Lemma 4.5, we may write, for $a\in \overline{A_0(F)^N%
+}\cap \overline{G_0(F)}^{\prime }$, 
+\begin{equation}
+F_f^{A_0^N}(a)=|D(a)|^{1/2}\int_{\overline{A_0(F)}\backslash \overline{G_0(F)%
+}}f(x^{-1}ax)\frac{dx}{da},
+\end{equation}
+since $Cent(a,\overline{G_0(F)})=\overline{A_0(F)}$. Here $da$ is a suitably
+normalized Haar measure on $\overline{A_0(F)}$.
+
+(1) For $f\in C_c^\infty (\overline{G_0(F)})$ and $a\in \overline{A_0(F)^N}%
+^{\prime }=\overline{A_0(F)^N}\cap \overline{G_0(F)}^{\prime },$ the
+function $x\longmapsto f(x^{-1}ax)$ is compactly supported on $\overline{%
+A_0(F)}\backslash \overline{G_0(F)}$ and 
+\[
+\begin{array}{c}
+F_f^{A_0^N}(a)=|D(a)|^{1/2}\int_{\overline{A_0(F)}\backslash \overline{G_0(F)%
+}}f(x^{-1}ax)\frac{dx}{da} \\ 
+=\delta _B(a)^{1/2}\int_N\int_{K_0}f(kank^{-1})dkdn \\ 
+=\delta _B(a)^{1/2}\int_Nf^{K_0}(an)dn,
+\end{array}
+\]
+where 
+\begin{equation}
+f^{K_0}(x)=\int_{K_0}f(kxk^{-1})dk.
+\end{equation}
+
+Since the function $x\longmapsto f(x^{-1}ax)$ is compactly supported on $%
+\overline{A_0(F)}\backslash \overline{G_0(F)}$ the function $x\longmapsto
+f^{K_0}(x^{-1}ax)$ is compactly supported on $\overline{A_0(F)}\backslash 
+\overline{G_0(F)}/K_0.$ We claim that given any compact set $Y\subset
+\subset \overline{G_0(F)},$ there is an $a\in \overline{A_0(F)}$ with
+sufficiently large $\sigma (a)$ such that $an\notin Y,$ for all $n\in N.$
+Indeed, we may map $Y$ onto $\overline{Y}\subset \overline{G_0(F)}/K_0$ via $%
+\overline{G_0(F)}\rightarrow \overline{G_0(F)}/K_0$ and $aN$ onto $\overline{%
+aN}$. Since $\overline{G_0(F)}/K_0$ is non-compact but $\overline{Y}$ is
+compact in $\overline{G_0(F)}/K_0$, the Iwasawa decomposition implies that
+we may find an $a\in \overline{A_0(F)}$ such that $\overline{aN}\cap 
+\overline{Y}=\emptyset $. From the claim it follows that $F_f^{A_0^N}(a)$ is
+compactly supported on $\overline{A_0(F)}^{\prime }.$
+
+Moreover, since $f$ is locally constant so is $f^{K_0}$. Since $f^{K_0}$ is
+compactly supported, $\int_Nf^{K_0}(an)dn$ is a locally constant function on 
+$\overline{A_0(F)}^{\prime }$.
+
+It remains to show that $F_f^{A_0^N}(a)$ extends to a locally constant
+function on all of $\overline{A_0(F)}$. This follows from the Shalika germ
+expansion for covering groups [V]. It is also an immediate corollary of part
+(2), which we turn to next.
+
+(2) The existence of the orbital integral $F_f^{A_0^N}(a)$ follows directly
+from the corresponding result on $G_0(F)$ (which is a consequence of a more
+general result of Clozel). As a consequence of a result of Harish-Chandra
+and Lemma 2.3(a), the map $f\longmapsto f^B$ defines a continuous map ${\cal %
+C}(\overline{G_0(F)})\rightarrow {\cal C}(\overline{A_0(F)}),$ where 
+\begin{equation}
+f^B(a)=\delta _B(a)^{1/2}\int_Nf(an)dn
+\end{equation}
+
+Note that both $\Xi $ and $\sigma $ are bi-$K_0$-invariant, so the map $%
+f\longmapsto f^{K_0}$ defines a continuous map ${\cal C}(G)\rightarrow {\cal %
+C}(G).$ Consequently, the composition $f\longmapsto f^{K_0}\longmapsto
+F_{f^{K_0}}^{A_0^N}$ defines a continuous map ${\cal C}(\overline{G_0(F)}%
+)\rightarrow {\cal C}(\overline{A_0(F)}).$ This completes the proof. $\Box $
+
+We call a distribution $D$ on $C_c^\infty (\overline{G_0(F)})$ {\bf tempered}
+if it extends continuously to ${\cal C}(\overline{G_0(F)}).$ We call a
+genuine locally constant function $h$ on $\overline{G_0(F)}$ {\bf tempered}
+if the distribution 
+\[
+f\longmapsto \int_{\overline{G_0(F)}}f(x)\overline{h(x)}dx 
+\]
+is tempered (here $\overline{h(x)}$ denotes the complex conjugate, so $%
+\overline{h(g,\varsigma )}=\varsigma \cdot \overline{h(g,1)}$, for all $%
+(g,\varsigma )\in \overline{G_0(F)}$). We call an admissible representation $%
+\pi $ {\bf tempered} if each $h\in {\cal A}(\pi )$ is tempered.
+
+\begin{lemma}
+(Analog of [S, Lemma 4.5.2]) Assume the conjectures of section 3. $\pi \in
+\Pi _{ad}(\overline{G_0(F)})$ is tempered if and only if the distribution $%
+f\longmapsto \Theta _\pi (f)$ extends continuously to ${\cal C}(\overline{%
+G_0(F)})$.
+\end{lemma}
+
+We will partially verify this below. It is clear from the definitions that
+if $\pi \in \Pi _{ad}(\overline{G_0(F)})$ is square-integrable then $\pi $
+is tempered.
+
+We will verify parts of the following statements below.
+
+\begin{conjecture}
+(a) A genuine tempered representation of $\overline{G_0(F)}$\ is unitary.
+
+(b) A genuine square-integrable representation of $\overline{G_0(F)}$ is
+tempered.
+\end{conjecture}
+
+To determine which representations of the unitary dual are tempered, we
+compute their characters and verify directly that they do not grow ``too
+rapidly'' in a neighborhood of the singular set.
+
+\subsection{Character calculations}
+
+Let $S$ denote a complete set of representatives of conjugacy classes of
+Cartan subgroups of $G_0(F)$.\ We may and do assume that $A\in S.$ For each $%
+T\in S$, let $W_T=N_{G_0(F)}(T)/T$ denote the Weyl group of $T$. If $t\in T$
+is regular then 
+\[
+T\subset G_0(F)_t=Cent(t,G_0(F)) 
+\]
+is finite index.
+
+We begin with the
+
+\begin{lemma}
+(Weyl integration formula [S, p. 198]) For each $f\in C_c^\infty (G_0(F)),$%
+\[
+\int_{G_0(F)}f(g)dg=\sum_{T\in S}\frac
+1{\#[W_T]}\int_T|D(t)|^{1/2}F_f^T(t)dt,
+\]
+where 
+\[
+F_f^T(t)=|D(t)|^{1/2}\int_{T\backslash G_0(F)}f(x^{-1}tx)\frac{dx}{dt},
+\]
+and where $D(t)=D_{G_0/T}(t)=\det (1-Ad(t))_{{\frak g}/{\frak t}}.\;$Here$\;%
+{\frak g},\;{\frak t}\;$denote\ the\ Lie\ algebras\ of\ $G_0,T$, resp., and $%
+S$ denotes a complete set of representatives of $G_0(F)$-conjugacy classes
+of Cartan subgroups of $G_0$ defined over $F$.
+\end{lemma}
+
+Note that $F_f^T(t)=F_f^T(t^w)$, where $w\in W_T,$ so that $%
+F_f^A(a)=F_f^A(a^{-1}),$ since $a^w=a^{-1},$ where $w=\left[ 
+\begin{array}{cc}
+0 & -1 \\ 
+1 & 0
+\end{array}
+\right] $, in the non-metaplectic case.
+
+\subsubsection{Principal series}
+
+\begin{lemma}
+Assume $\chi =Ind_{\overline{C}}^{\overline{A_0(F)}}\mu \in \Pi (\overline{%
+A_0(F)})$ and suppose that $\chi \neq \chi ^w$. The character of the
+irreducible representation $\pi =I_{A_0}(\chi )$\ is given on the regular
+set by 
+\[
+\Theta _\pi (x)=\left\{ 
+\begin{array}{c}
+\frac{tr\chi (a)+tr(\chi (a)^{-1})}{|a-a^{-1}|},\;\;x=a^g,\;{\rm for\;some}%
+\;g\in \overline{G_0(F)},\;a\in \overline{C}-\{\pm 1\}, \\ 
+0,\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;{\rm \;if\;}%
+\;\;\;x\in \overline{G_0(F)}^{\prime }-\overline{C}^{\overline{G_0(F)}},
+\end{array}
+\right. 
+\]
+where 
+\[
+\overline{C}^{\overline{G_0(F)}}=\{a^g\;|\;a\in \overline{C},\;g\in 
+\overline{G_0(F)}\}.\ 
+\]
+\end{lemma}
+
+proof: We will identify $K$ with the subset $(K,1)\subset \overline{G_0(F)}$%
+. Let $V(\chi )$ denote the space of $\pi =I_{A_0}(\chi )$. We have, for $%
+k\in K$, $\varphi \in V(\chi )$, 
+\begin{eqnarray*}
+(\pi (f)\varphi )(k) &=&\int_{\overline{G_0(F)}}f(x)(\pi (x)\varphi )(k)dx \\
+\ &=&\int_{\overline{G_0(F)}}f(x)\varphi (kx)dx \\
+\ &=&\int_{\overline{G_0(F)}}f(k^{-1}x)\varphi (x)dx \\
+\ &=&\int_K\int_{\overline{B_0(F)}}f(k^{-1}bk_1)\varphi (bk_1)d_lbdk_1 \\
+\ &=&\int_K\int_{\overline{B_0(F)}}\delta (b)^{1/2}\chi
+(b)f(k^{-1}bk_1)d_lb\cdot \varphi (k_1)dk_1,
+\end{eqnarray*}
+so 
+\begin{eqnarray}
+tr\pi (f) &=&\int_K\int_{\overline{B_0(F)}}\delta (b)^{1/2}tr\chi
+(b)f(k^{-1}bk)d_lbdk \\
+\ &=&\int_K\int_{\overline{A_0(F)}}\int_{N_0(F)}\delta (a)^{1/2}tr\chi
+(a)f(k^{-1}ank)dndadk.  \nonumber
+\end{eqnarray}
+
+If $n_\alpha =(\left( 
+\begin{array}{cc}
+1 & \alpha x \\ 
+0 & 1
+\end{array}
+\right) ,1),\;a=(\left( 
+\begin{array}{cc}
+t & 0 \\ 
+0 & t^{-1}
+\end{array}
+\right) ,\varsigma )$ then we have 
+\[
+n_{-\alpha }\cdot a\cdot n_\alpha =(\left( 
+\begin{array}{cc}
+t & \alpha x(t-t^{-1}) \\ 
+0 & t^{-1}
+\end{array}
+\right) ,\varsigma )=a\cdot n_1 
+\]
+if $\alpha =t/(t-t^{-1})$. After a simple change-of-variables, we have 
+\begin{eqnarray}
+tr\pi (f) &=&\int_{\overline{A_0(F)}}\int_K\int_{N_0(F)}\frac{|t-t^{-1}|}{|t|%
+}\delta (a)^{1/2}tr\chi (a)f(k^{-1}n^{-1}ank)\, dndkda \\
+&=&\int_{A_0(F)}\int_K\int_{N_0(F)}\frac{|t-t^{-1}|}{|t|}\delta
+(a)^{1/2}tr\chi (a,1)f(k^{-1}\cdot (n^{-1}an,1)\cdot k)\, dndkda.  \nonumber
+\end{eqnarray}
+
+On the other hand, by the Weyl integration formula, 
+\begin{eqnarray}
+tr\pi (f) &=&\int_{\overline{G_0(F)}}tr\pi (g)f(g)\, dg  \nonumber \\
+&=&\int_{G_0(F)}tr\pi (g,1)f(g,1)\, dg  \nonumber \\
+&=&\frac 12\sum_{T\in S}\int_T\Delta (t)^2\int_{T\backslash
+G_0(F)}f(x^{-1}tx,1)tr\pi (x^{-1}tx,1)\frac{dx}{dt}\, dt  \nonumber \\
+&=&\frac 12\int_{A_0(F)}\Delta
+(a)^2\int_K\int_{N_0(F)}f(k^{-1}n^{-1}ank,1)tr\pi (k^{-1}n^{-1}ank,1)\, dndkda 
+\nonumber \\
+&&+\frac 12\sum_{T\in S,\  T\neq A_0(F)} \int_T\Delta
+(t)^2\int_{T\backslash G_0(F)}f(x^{-1}tx,1)tr\pi (x^{-1}tx,1)\frac{dx}{dt}\, dt
+\nonumber \\
+&=&\frac 12\int_{A_0(F)}\Delta (a)^2\int_K\int_{N_0(F)}f(k^{-1}\cdot
+(n^{-1}an,1)\cdot k)\times  \nonumber \\
+&&\;\;\;\times tr\pi (k^{-1}\cdot (n^{-1}an,1)\cdot k)\, dndkda \\
+&&+\frac 12\sum_{T\in S,\ T\neq A_0(F)} \int_T\Delta
+(t)^2\int_{T\backslash G_0(F)}f(x^{-1}tx,1)tr\pi (x^{-1}tx,1)\frac{dx}{dt}\, dt.
+\nonumber
+\end{eqnarray}
+
+The result claimed follows by comparing equations (4.7), (4.8), and
+Corollary 2.15. $\Box $
+
+Let $\chi =Ind_{\overline{C}}^{\overline{A_0(F)}}\mu \in \Pi (\overline{%
+A_0(F)}),\pi =I_{A_0}(\chi )\in \Pi (\overline{G_0(F)})$. Then 
+\begin{equation}
+{\rm tr}\chi (a)=\sum_{h\in \overline{A_0(F)}/\overline{C}}\mu ^h(a,1)
+\end{equation}
+This lemma and the Weyl integration formula imply that, for $f\in C_c^\infty
+(\overline{G_0(F)})$, 
+\begin{equation}
+\begin{array}{c}
+\Theta _\pi (f)=\int_{\overline{G_0(F)}}\Theta _\pi (x)f(x)dx \\ 
+=\frac 12\int_{A_0(F)}({\rm tr}\chi (a,1)+{\rm tr}(\chi
+(a,1)^{-1}))F_f^{A_0(F)}(a,1)da \\ 
+=(F_f^{A_0(F)})^{\wedge }(\chi ) \\ 
+=\sum_{h\in \overline{A_0(F)}/\overline{C}}(F_f^{A_0(F)})^{\wedge }(\mu ^h),
+\end{array}
+\end{equation}
+where 
+\begin{equation}
+\begin{array}{c}
+\varphi ^{\wedge }(\chi )=\int_{\overline{A_0(F)}}{\rm tr}\chi (x)\varphi
+(x)dx \\ 
+\ \ \ \ \ \ \chi \in \Pi (\overline{A_0(F)}),
+\end{array}
+\end{equation}
+and 
+\begin{equation}
+\begin{array}{c}
+\varphi ^{\wedge }(\mu )=\int_{A_0(F)}\mu (x)\varphi (x)dx \\ 
+\ \ \ \ \ \ \mu \in \Pi (A_0(F)),
+\end{array}
+\end{equation}
+If $\chi =Ind_{\overline{C}}^{\overline{A_0(F)}}\mu $ is irreducible then 
+\begin{eqnarray}
+\ \varphi ^{\wedge }(\chi ) &=&\sum_{h\in \overline{A_0(F)}/\overline{C}%
+}\sum_{m=-\infty }^\infty (t_h,\pi ^m)_n\times \\
+&&\times \mu (\pi )^n\int_{O_F{}^{\times }}(t_h,u)_n\cdot \mu (u)\varphi
+(\pi ^nu)du, \\
+h &=&(\left( 
+\begin{array}{cc}
+t_h & 0 \\ 
+0 & t_h^{-1}
+\end{array}
+\right) ,1)\in \overline{A_0(F)}/\overline{C}  \nonumber
+\end{eqnarray}
+denotes the Fourier transform of $\varphi \in C_c(\overline{A_0(F)}).$ Note
+that this formula for the character extends to the Schwartz space provided $%
+\mu $ (and hence $\pi $) is unitary.
+
+\subsubsection{Reducible principal series}
+
+We shall not say much about this case, except to note that some information
+about the characters can be obtained by global means [J2], [Fl].
+
+\subsubsection{Complementary series}
+
+The fact that these representations are not tempered follows directly from
+the character formulas (Lemma 4.10) as in the non-metaplectic case [J1].
+
+\subsubsection{The non-tempered representation}
+
+This occurs as the ``complement'' of the special representation. Again, we
+merely observe that some information about the characters can be obtained by
+global means [J2], [Fl].
+
+\subsubsection{Square-integrable representations}
+
+These are all tempered and occur discretely. Since the characters are not
+really needed we will not say more, except to remark that some information
+about the characters can be obtained by global means [J2], [Fl].
+
+\section{The image of the Fourier transform}
+
+The above formulas allows us to classify (at least conjecturally) the image
+of the Fourier transforms of a ``generic'' {\em unitary} principal series
+representation $\pi =I_A(\chi ),\chi =Ind_{\overline{C}}^{\overline{A_0(F)}%
+}\mu \in \Pi (\overline{A_0(F)})\,$on either $C_c^\infty (\overline{G_0(F)})$
+or the Schwartz space. Note that $H=\overline{A_0(F)}/\overline{C}$ acts on $%
+C_c^\infty (\overline{C})$ and on ${\cal C}(\overline{C})$ by conjugation.
+Let $C_c^\infty (\overline{C})^H$ (resp., ${\cal C}(\overline{C})^H$) denote
+the subspace of invariant functions. The map 
+\begin{eqnarray*}
+f &\longmapsto &f^H, \\
+f^H(a) &=&\sum_{h\in H}f(hah^{-1}),
+\end{eqnarray*}
+defines a surjection $C_c^\infty (\overline{C})\rightarrow C_c^\infty (%
+\overline{C})^H$ (resp., ${\cal C}(\overline{C})\rightarrow {\cal C}(%
+\overline{C})^H$). Recall 
+\[
+\begin{array}{c}
+\varphi ^{\wedge }(\omega )=\int_{F^{\times }}\omega (x)\varphi (x)dx \\ 
+\ \ \ \ \ \ \omega \in \Pi (F^{\times }).
+\end{array}
+\]
+
+\begin{lemma}
+For $\varphi \in C_c^\infty (F^{\times }),$\ the image $C_c^\infty
+(F^{\times })^{\wedge }$\ of the Fourier transform $\varphi \longmapsto
+\varphi ^{\wedge }(\omega )$\ is given by 
+\[
+C_c^\infty (F^{\times })^{\wedge }=\{h\in C_c(\Pi _u(F^{\times }))\;|\;
+\begin{array}{c}
+h\;{\rm is\;a\;trig\;polynomial\;on} \\ 
+{\rm each\;circle\;in}\;\Pi _u(F^{\times })
+\end{array}
+\;\}.
+\]
+\end{lemma}
+
+We omit the proof. (This lemma, and its Schwartz space analog below, is
+proven using the inverse Fourier transform and the inversion formula, which
+may be found in [Ta, pp. 43-44], [Ba, ch 12].) A similar lemma holds for $%
+A_0:$
+
+\begin{lemma}
+For $\varphi \in C_c^\infty (A_0(F)),$\ the image $C_c^\infty
+(A_0(F))^{\wedge }$\ of the Fourier transform $\varphi \longmapsto \varphi
+^{\wedge }(\omega )$\ is given by 
+\[
+C_c^\infty (A_0(F))^{\wedge }=\{h\in C_c(\Pi _u(A_0(F)))\;|\;
+\begin{array}{c}
+h\;{\rm is\;a\;trig\;polynomial\;on} \\ 
+{\rm each\;circle\;in}\;\Pi _u(A_0(F))
+\end{array}
+\;\}.
+\]
+\end{lemma}
+
+A similar lemma holds for $\overline{C}$ as well:
+
+\begin{lemma}
+For $\varphi \in C_c^\infty (\overline{C}),$\ the image $C_c^\infty (%
+\overline{C})^{\wedge }$\ of the Fourier transform $\varphi \longmapsto
+\varphi ^{\wedge }(\omega )$\ is given by 
+\[
+C_c^\infty (\overline{C})^{\wedge }=\{h\in C_c(\Pi _u(\overline{C}))\;|\;
+\begin{array}{c}
+h\;{\rm is\;a\;trig\;polynomial\;on} \\ 
+{\rm each\;circle\;in}\;\Pi _u(\overline{C})
+\end{array}
+\;\}.
+\]
+\end{lemma}
+
+As a consequence of the above lemma, since the map $C_c^\infty (\overline{%
+G_0(F)})\rightarrow C_c^\infty (\overline{C})$, given by $f\longmapsto
+F_f^{A_0(F)}$, is surjective, it follows that the same description holds for
+the space of all functions of $\chi $ of the form $(F_f^{A_0(F)})^{\wedge
+}(\mu ),\;\mu \in \Pi (\overline{C}):$
+
+\begin{lemma}
+For $f\in C_c^\infty (\overline{G_0(F)}),$\ the image $C_c^\infty (\overline{%
+G_0(F)})_{ps}^{\wedge }$\ of the Fourier transform $f\longmapsto \Theta _\pi
+(f),\;\pi =I_{A_0}(\chi ),\;\chi \in \Pi _u(\overline{A_0(F)}),\;\chi =Ind_{%
+\overline{C}}^{A_0(F)}\mu $, is given by 
+\[
+C_c^\infty (\overline{G_0(F)})_{ps}^{\wedge }=\{h\in C_c(\Pi _u(\overline{C}%
+))^H\;|\;
+\begin{array}{c}
+h\;{\rm is\;a\;trig\;polynomial\;on} \\ 
+{\rm each\;circle\;in\;}\Pi _u(\overline{C}){\em \ }
+\end{array}
+\;\}.
+\]
+\end{lemma}
+
+Next, suppose $f\in {\cal C}(\overline{G_0(F)})$, so $F_f^{A_0(F)}\in {\cal C%
+}(\overline{C}).$
+
+\begin{lemma}
+For $\varphi \in {\cal C}(F^{\times }),$\ the image ${\cal C}(F^{\times
+})^{\wedge }$\ of the Fourier transform $\varphi \longmapsto \varphi
+^{\wedge }(\omega ),\;\omega \in \Pi _u(F^{\times }),$\ is given by 
+\[
+{\cal C}(F^{\times })^{\wedge }=\{h\in C_c(\Pi _u(F^{\times }))\;|\;
+\begin{array}{c}
+\;h\;{\rm is\;a\;trig\;series\;on\;each\;circle} \\ 
+{\rm in}\;\Pi _u(F^{\times })\;{\rm which\;converges\;absolutely}\; \\ 
+{\rm along\;with\;all\;of\;its\;derivatives}
+\end{array}
+\}.
+\]
+\end{lemma}
+
+Similarly, we have
+
+\begin{lemma}
+For $\varphi \in {\cal C}(\overline{C}),$\ the image ${\cal C}(\overline{C}%
+)^{\wedge }$\ of the Fourier transform $\varphi \longmapsto \varphi ^{\wedge
+}(\mu ),\;\mu \in \Pi _u(\overline{C}),$\ is given by 
+\[
+{\cal C}(\overline{C})^{\wedge }=\{h\in C_c(\Pi _u(\overline{C}))\;|\;
+\begin{array}{c}
+\;h\;{\rm is\;a\;trig\;series\;on\;each\;circle} \\ 
+{\rm in}\;\Pi _u(\overline{C})\;{\rm which\;converges\;absolutely}\; \\ 
+{\rm along\;with\;all\;of\;its\;derivatives}
+\end{array}
+\}.
+\]
+\end{lemma}
+
+Consequently, since the map ${\cal C}(\overline{G_0(F)})\rightarrow {\cal C}(%
+\overline{C})$ is surjective, it follows that the same description holds for
+the space of all functions of $\chi $ of the form $(F_f^{A_0(F)})^{\wedge
+}(\chi ):$
+
+\begin{lemma}
+For $f\in {\cal C}(\overline{G_0(F)}),$\ the image ${\cal C}(\overline{G_0(F)%
+})_{ps}^{\wedge }$\ of the Fourier transform $f\longmapsto \Theta _\pi
+(f),\;\pi =I_{A_0}(\chi )$\ is given by 
+\[
+{\cal C}(\overline{G_0(F)})_{ps}^{\wedge }=\{h\in C_c(\Pi _u(\overline{C}%
+))^H\;|\;
+\begin{array}{c}
+\;h\;{\rm is\;a\;trig\;series\;on\;each\;circle} \\ 
+{\rm in}\;\Pi _u(\overline{C})\;{\rm which\;converges\;absolutely\;} \\ 
+{\rm along\;with\;all\;of\;its\;derivatives}
+\end{array}
+\}.
+\]
+\end{lemma}
+
+\subsection{Admissible Paley-Wiener Theorem for smooth functions}
+
+We verify an analog of a result of Bernstein-Deligne-Kazhdan [BDK] for $%
+\overline{G_0(F)}$. The following result classifies the image of $C_c^\infty
+(\overline{G_0(F)})$ under the Fourier transform:
+
+\begin{theorem}
+(Assume the conjectures of section 3 above.) The image of the Fourier
+transform $\pi \longmapsto \Theta _\pi (f),$\ for $f\in C_c^\infty (%
+\overline{G_0(F)})$\ and $\pi \in \Pi \in \Pi _{ad}(\overline{G_0(F)})$,
+consists of the space of functions $h$\ on $\Pi _{ad}(\overline{G_0(F)})$\
+such that
+
+(1) $h$\ is supported on finitely many connected components of $\Pi _{ad}(%
+\overline{G_0(F)})$,
+
+(2) $h$\ is regular on $\Pi _{ad}(\overline{G_0(F)})$, regarded as a complex
+algebraic variety.
+\end{theorem}
+
+Let $C_c^\infty (\overline{G_0(F)})_{ad}^{\wedge }$ denote the space of
+functions described in the above theorem. We call it the {\bf admissible
+Paley-Wiener space}.
+
+sketch of proof: This follows from the (conjectural) classification above. $%
+\Box $
+
+\subsection{Unitary Paley-Wiener Theorem for smooth functions}
+
+We use the information above to prove the following
+
+\begin{theorem}
+(Assume the conjectures of section 3 above.) The image of the Fourier
+transform $\pi \longmapsto \Theta _\pi (f),$\ for $f\in C_c^\infty (%
+\overline{G_0(F)})$\ and $\pi \in \Pi \in \Pi _u(\overline{G_0(F)})$,
+consists of the space of functions $h$\ on $\Pi _u(\overline{G_0(F)})$\ such
+that
+
+(1) $h$\ is supported on finitely many connected components of $\Pi _u(%
+\overline{G_0(F)})$,
+
+(2) $h$\ is a trigonometric polynomial on each circle in $\Pi _u(\overline{%
+G_0(F)})$\ which it is supported on,
+
+(3) if $h$\ is supported on the complementary series then $h$\ is a finite
+Laurant series in $x=q^\rho .$
+\end{theorem}
+
+{\bf proof}: (1) follows from the admissible Paley-Wiener theorem.
+
+(2) follows from the section on characters of principal series
+representations.
+
+(3) follows from the section on characters of complementary series
+representations.
+
+This completes the proof since $h$ can be arbitrary on the discrete part of
+the unitary dual. $\Box $
+
+Let $C_c^\infty (\overline{G_0(F)})_u^{\wedge }$ denote the space of
+functions described in the above theorem. We call it the {\bf unitary
+Paley-Wiener space}.
+
+\subsection{Tempered Paley-Wiener Theorem for Schwartz functions}
+
+We also have the following
+
+\begin{theorem}
+(Assume the conjectures of section 3 above.) The image of the Fourier
+transform $\pi \longmapsto \Theta _\pi (f),$\ for $f\in {\cal C}(\overline{%
+G_0(F)})$\ and $\pi \in \Pi \in \Pi _t(\overline{G_0(F)})$, consists of the
+space of functions $h$\ on $\Pi _t(\overline{G_0(F)})$\ such that
+
+(1) $h$\ is supported on finitely many connected components of $\Pi _t(%
+\overline{G_0(F)})$,
+
+(2) $h$\ is a trigonometric series on each circle in $\Pi _t(\overline{G_0(F)%
+})$\ which it is supported on, converging absolutely along with all of its
+derivatives.
+\end{theorem}
+
+{\bf proof}: (1) follows from the admissible Paley-Wiener theorem.
+
+(2) follows from the section on characters of principal series
+representations.
+
+This completes the proof since $h$ can be arbitrary on the discrete part of
+the tempered dual. $\Box $
+
+Let ${\cal C}(\overline{G_0(F)})^{\wedge }$ denote the space of functions
+described in the above theorem. We call it the {\bf tempered Paley-Wiener
+space}.
+
+\section{Linear functionals on the tempered Paley-Wiener space}
+
+\subsection{A result of L. Schwartz}
+
+The space of linear functionals on the tempered Paley-Wiener space can be
+successfully described using the theory of distributions on the real line:
+
+\begin{proposition}
+(L. Schwartz [Sch, ch. III, Th\'eor\`eme XXI]) Let $S^1$\ denote the unit
+circle. If $T\in C^\infty (S^1)^{\prime }$\ then there is a continuous
+function $u$\ on $S^1$\ and an integer $m\geq 0$\ such that $T=\frac{d^m}{%
+d\theta ^m}u$\ (as distributions).
+\end{proposition}
+
+As a corollary of this and the above Paley-Wiener theorem, we have the
+following
+
+\begin{proposition}
+The dual space of the tempered Paley-Wiener space ${\cal C}(\overline{G_0(F)}%
+)^{\wedge }$ \ is isomorphic to the direct product 
+\[
+\bigoplus_{d\in \pi _0(\Pi _u(\overline{A_0(F)}))}\bigcup_{m\geq
+0}C(S_d)^{(m)}\bigoplus \bigoplus_{\sigma \in \pi _0(\Pi _{lds}(\overline{%
+G_0(F)}))}{\bf C}\delta _\sigma ,
+\]
+where $\pi _0(X)$\ denotes the set of connected components of a topological
+space $X,$ where $\Pi _{lds}(\overline{G_0(F)})$ denotes the union of the
+reducible principal series, the special representation, and the cuspidal
+representations,$\;{\em and\;where\;}\delta _\sigma $ denotes the evaluation
+functional on the space of (constant) functions on the (singleton) elements
+of $\pi _0(\Pi _{lds}(\overline{G_0(F)}))$, and, if we write the unitary
+dual $A_u^{\wedge }$\ as a union of circles $S_d\cong {\em {\bf R}/\frac{%
+2\pi }{\log (q)}{\bf Z,\;}where}$\ 
+\[
+C(S_d)^{(m)}=\{\frac{d^m}{d\theta ^m}u\;|\;u\;{\rm continuous\;on\;}S_d\},
+\]
+\end{proposition}
+
+\subsection{The Fourier transform of a tempered distribution}
+
+As a consequence of this, we can ``completely describe'' the Fourier
+transform of a tempered distribution:
+
+\begin{theorem}
+If $T$\ is a tempered distribution on $\overline{G_0(F)}$\ then there is a 
+\[
+T^{\wedge }\in \bigoplus_{d\in \pi _0(\Pi _u(\overline{A_0(F)}%
+))}\bigcup_{m\geq 0}C(S_d)^{(m)}\bigoplus \bigoplus_{\sigma \in \pi _0(\Pi
+_{lds}(\overline{G_0(F)}))}{\bf C}\delta _\sigma 
+\]
+\ such that 
+\[
+T(f)=T^{\wedge }(f^{\wedge }),
+\]
+for all $f\in {\cal C}(\overline{G_0(F)})$, where $f^{\wedge }(\pi )=\Theta
+_\pi (f)$\ denotes the Fourier transform of $f$\ at $\pi \in \Pi \in \Pi _t(%
+\overline{G_0(F)}).$
+\end{theorem}
+
+%\section{References}
+
+
+\begin{thebibliography}{99}
+
+\bibitem[Ar]{Ar}
+%  [Ar]
+  Ariturk, ``On the composition series of principal series
+representations of a three-fold covering group of $SL(2,K)$'', Nagoya Math
+J. \underline{77}(1980)177-196
+
+\bibitem[A]{A}
+  %[A]
+  J. Arthur, ``The trace formula in invariant form'', Ann. Math. 
+\underline{114}(1981)
+
+\bibitem[B]{B}
+  %[B]
+  J. Bernstein, ``All reductive p-adic groups are tame'', Funct. Anal.
+Appl. \underline{8}(1974)91-93
+
+\bibitem[BD]{BD}
+  %[BD]
+  ----, ``Le centre de Bernstein'', (notes by P. Deligne), in
+  {\bf Repr\'esentations des groupes r\'eductifs sur un corp local},
+Hermann, Paris, 1984
+
+\bibitem[BDK]{BDK}
+  %[BDK]
+  J. Bernstein, P. Deligne, D. Kazhdan, ``Trace Paley-Wiener theorem for
+reductive p-adic groups'', J. d'Anal. Math. \underline{47}(1986)180-192
+
+\bibitem[BZ1]{BZ1}
+  %[BZ1]
+  J. Bernstein, A. Zelevinski, ``Representations of the group $GL(n,F)$,
+where $F$ is a non-archimedian local field'', Russian Math Surveys 
+\underline{31}(1976)1-68
+
+\bibitem[BZ2]{BZ2}
+  %[BZ2]
+  ----, ``Induced representations of reductive p-adic groups, I'', Ann.
+scient. \'Ec. norm. Sup. \underline{10}(1977)441-472
+
+\bibitem[Bl]{Bl}
+  %[Bl]
+  C. Blondell, ``Les repr\'esentations supercuspidales 
+  des groupes m\'etaplectiques sur GL(2) et leurs caract\'eres'',
+  Bull. Math. Soc. France, Memoir 18, 1985
+
+\bibitem[Ca]{Ca}
+  %[Ca]
+  W. Casselman, ``Introduction to the theory of admissible
+representations on reductive p-adic groups'', preprint
+
+\bibitem[C]{C}
+  %[C]
+  L. Clozel, ``Invariant harmonic analysis on the Schwartz space of a
+reductive p-adic group'', in {\bf Harmonic analysis on reductive groups}, ed. W. Barker, P.
+Sally, Birkh\"auser, Boston, 1991
+
+\bibitem[D]{D}
+  %[D]
+  J. Dixmier, {\bf $C^{*}$-algebras}, North-Holland, Amsterdam, 1977
+
+\bibitem[F]{F}
+  %[F]
+  J. Fell, ``$C^{*}$-algebras with smooth dual'', Ill. J. Math. \underline{%
+4}(1960)221-230
+
+\bibitem[Fl]{Fl}
+  %[Fl]
+  Y. Flicker, ``Automorphic forms on covering groups of $SL(2)$'', Inv
+Math \underline{57}(1980)119-182
+
+\bibitem[Ge]{Ge}
+  %[Ge]
+  S. Gelbart, {\bf Weil's representation and the spectrum of the
+metaplectic group}, SLN Math \underline{530}, 1976
+
+\bibitem[GK]{GK}
+  %[GK]
+  S. Gelbart, T. Knapp, ``L-indistinguishability and R groups for the
+special linear group'', Adv. Math. 43(1982)101-121
+
+\bibitem[GPS]{GPS}
+  %[GPS]
+  S. Gelbart, I. Piatetski-Shapiro, ``Some remarks on metaplectic cusp
+forms and the correspondences of Shimura and Waldspurger'', Isreal J. Math. 
+\underline{44}(1983)97-126
+
+\bibitem[HC]{HC}
+  %[HC]
+  Harish-Chandra, {\bf Harmonic analysis on reductive p-adic groups}%
+, (notes by G. van Dijk), SLN Math \underline{162}, 1970
+
+\bibitem[J1]{J1}
+  %[J1]
+  D. Joyner, ``Hitch-hiker's guide to invariant distributions on $SL(2)$
+over a p-adic field'', preprint, 1994
+
+\bibitem[J2]{J2}
+  %[J2]
+  ------, ``The metaplectic analog of of Kazhdan's endoscopic lift'',
+Isreal J. Math. \underline{66}(1988)113-154
+
+\bibitem[KP]{KP}
+  %[KP]
+  D. Kazhdan, S. Patterson, ``Metaplectic forms'', Publ. Math. IHES 
+\underline{59}(1984)35-142
+
+\bibitem[K]{K}
+  %[K]
+  T. Kubota, ``Topological covering of $SL(2)$ over a local field'', J.
+Math. Soc. Japan \underline{19} (1967)114-121
+
+\bibitem[Ma]{Ma}
+  %[Ma]
+  G. Mackey, ``Borel structure in groups and their duals'', Trans. AMS 
+\underline{85}(1957)134-165
+
+\bibitem[Mo1]{Mo1}
+  %[Mo1]
+  C. Moen, ``Intertwining operators for covering groups of $SL(2)$ over
+a local field'', preprint
+
+\bibitem[Mo2]{Mo2}
+  %[Mo2]
+  ------, ``Irreducibiliy of unitary principal series representations
+for covering groups of $SL(2)$'', Pac. J. Math. 135(1988)89-110
+
+\bibitem[M]{M}
+  %[M]
+  C. Moore, ``Group extensions of p-adic linear groups'', Publ. Math. IHES 
+\underline{35} (1968)
+
+\bibitem[Sa]{Sa}
+  %[Sa]
+  P. Sally, ``Analytic continuation of the irreducible unitary
+  representations of the covering group of $SL(2,R)$'',
+  Memoirs AMS \underline{69}, 1967
+
+\bibitem[Sch]{Sch}
+  %[Sch]
+  L. Schwartz, {\bf Theorie des distributions, vol. I}, Hermann, Paris, 1950
+
+\bibitem[Sen]{Sen}
+  %[Sen]
+  S. Sen, ``Explicit reciprocity laws, II', Crelle's J.,
+  \underline{323}(1981)
+
+\bibitem[Se]{Se}
+  %[Se]
+  J.-P. Serre, \underline{Representations of finite groups},
+Springer-Verlag
+
+\bibitem[S]{S}
+  %[S]
+  A. Silberger, {\bf Introduction to harmonic analysis on reductive
+    p-adic groups}, Princeton Univ. Press, Princeton, 1979
+
+\bibitem[T]{T}
+  %[T]
+  M. Tadi\'c, ``The topology of the dual space of a reductive group over a
+local field'', Glasnik Matem., \underline{18}(1983)259-279
+
+\bibitem[Ta]{Ta}
+  %[Ta]
+  M. Taibleson, {\bf Fourier analysis on local fields},
+  Princeton Univ. Press, Princeton, 1975
+
+\bibitem[V]{V}
+  %[V]
+  M.-F. Vign\'eras, ``Caract\'erisation des integrales orbitales sur un
+  groupe r\'eductif p-adique'', J. Fac. Sci. Univ. Tokyo
+  \underline{28}(1981)945-961
+
+\bibitem[W]{W}
+  %[W]
+  A. Weil, {\bf Basic Number Theory}, Springer-Verlag, 1975
+
+\end{thebibliography}
+D. Joyner, Math Dept, USNA, Annapolis, MD
+
+\end{document}

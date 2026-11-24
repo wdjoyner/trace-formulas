@@ -3,7 +3,8 @@
 \usepackage[T1]{fontenc}
 \usepackage{amsmath,amssymb,amsthm,mathtools}
 \usepackage{newtxtext,newtxmath}
-\usepackage{booktabs,longtable,array,enumitem}
+\usepackage{booktabs,longtable,array,enumitem,tabularx,tikz}
+\usetikzlibrary{arrows.meta,positioning}
 \usepackage[hidelinks]{hyperref}
 \usepackage{microtype}
 \allowdisplaybreaks[2]
@@ -34,16 +35,16 @@
 \newcommand{\diag}{\operatorname{diag}}
 \newcommand{\Jac}{\operatorname{Jac}}
 \newcommand{\PW}{\operatorname{PW}}
-\title[A hitch-hiker's guide to invariant distributions]{A hitch-hiker's guide to invariant distributions on \\ $\mathrm{SL}_2$ over a $p$-adic field \\[0.6ex] Draft 2. Corrected and expanded version}
+\title[A hitch-hiker's guide to invariant distributions]{A hitch-hiker's guide to invariant distributions on \\ $\mathrm{SL}_2$ over a $p$-adic field \\[0.6ex] Draft 3. Corrected and expanded working version}
 \author{David Joyner}
 \email{wdjoyner@gmail.com}
-\thanks{The original is an unpublished manuscript of the same title, dated November 2, 1994. This corrected and expanded version is dated November 12, 2026.}
+\thanks{The original is an unpublished manuscript of the same title, dated November 2, 1994. This corrected and expanded version is dated November 24, 2026.}
 \date{Original draft: 1994. Corrected and expanded draft: 2026}
 \subjclass[2020]{22E50, 22E35, 11F70}
 \keywords{Invariant distributions, $p$-adic $\mathrm{SL}_2$, trace Paley--Wiener theorem, principal series, supertempered virtual characters}
 \begin{document}
 \begin{abstract}
-This AI-aided paper is a corrected and expanded version of notes written in 1994. Argon-Gemini and Sol-ChatGPT revised the notes, Sol-ChatGPT refereed them, and Fable-Claude made the style revision. See the Acknowledgments and the revision log for details. The paper is an expository introduction to invariant distributions on $G=\mathrm{SL}_2(F)$ for a non-archimedean local field $F$ of odd residue characteristic.  We explain the representation-theoretic background, distinguish the operator-valued Fourier transform from the trace transform, state the trace Paley--Wiener theorem in its correct Grothendieck-group form, and use the invariant quotient of the Hecke algebra to describe spectral distributions. We give an elementary example showing that normalized orbital integrals need not vanish at singular elements, prove a Laurent-coefficient criterion for analytic functionals, and distinguish weak constant terms from elliptic support in the discussion of supertempered virtual characters.  This version deliberately does not claim the more general distributional descent and spectral-image theorems proposed in the original notes where adequate proofs are lacking.
+This AI-aided paper is a corrected and expanded version of notes written in 1994. Argon-Gemini and Sol-ChatGPT revised the notes, Sol-ChatGPT refereed them, and Fable-Claude made the style revision. See the Acknowledgments and the revision log for details. The paper is an expository introduction to invariant distributions on $G=\mathrm{SL}_2(F)$ for a non-archimedean local field $F$ of odd residue characteristic.  We explain the representation-theoretic background, distinguish the operator-valued Fourier transform from the trace transform, state the trace Paley--Wiener theorem in its correct Grothendieck-group form, and use the invariant quotient of the Hecke algebra to describe spectral distributions. We give an elementary example showing that normalized orbital integrals need not vanish at singular elements, prove a Laurent-coefficient criterion for analytic functionals, and distinguish weak constant terms from elliptic support in the discussion of supertempered virtual characters.  We develop the geometry of exceptional Bernstein fibers, prove algebraic determination of admissible traces by tempered traces, and describe spectral duals by moment growth and central recurrences. The global Schwartz topology and the group-side analytic and descent assertions require further verification.
 \end{abstract}
 \maketitle
 \tableofcontents
@@ -53,7 +54,7 @@ The original notes were written to understand invariant distributions in the sim
 
 There is a conceptual distinction that controls the entire subject.  The map $f\mapsto\pi(f)$ is an \emph{operator-valued} Fourier transform.  Its traces $\Theta_\pi(f)=\tr\pi(f)$ are invariant spectral data, and do not determine the original test function $f$.  They determine instead its image in the \emph{invariant quotient} (also called the cocenter) of the Hecke algebra.  Once this is taken into account, the Bernstein--Deligne--Kazhdan theorem has a precise and efficient statement.
 
-This paper separates three sorts of statements: results proved here, standard results quoted with references, and directions left open.  In particular we do not attempt to prove a full explicit parametrization of the image of the Schwartz space, a new general descent theorem for admissible distributions, or a converse characterization of analytic distributions from unverified spectral growth estimates.  They require more work than an expository revision should conceal.
+We distinguish results proved here, cited results, conditional identifications and open problems. The rank-one spectral models make the comparison of the three trace images explicit. Their full global topological identification, general admissibility-preserving descent and group-side analyticity criteria remain research tasks.
 
 \subsection{Notation and conventions}\label{sec:notation}
 This subsection fixes the field, the group and its subgroups, the normalization of induction, and the main symbols. The table at the end collects the notation for later reference.
@@ -215,6 +216,8 @@ Fixing the restriction of a quasicharacter to $\mathcal O^\times$ leaves a one-d
 Take the family of unramified characters, so that $\chi|_{\mathcal O^\times}=1$ and $\chi(x)=z^{v(x)}$ with $z=\chi(\varpi)$. The character $|\cdot|^s$ has $z=q^{-s}$. By Theorem \ref{thm:reducibility}, the reducibility points in this family are $z=q^{-1}$, $z=q$ and $z=-1$. The first two are the characters $|\cdot|$ and $|\cdot|^{-1}$, where the constituents are the trivial and Steinberg representations. The third is the unramified quadratic character, where there are two tempered constituents. Inversion $z\mapsto z^{-1}$ exchanges $z=q^{-1}$ and $z=q$, and it fixes $z=-1$. Inversion also fixes $z=1$, the trivial character, and there $I(\chi)$ is irreducible.
 \end{example*}
 
+\input{spectral-geometry}
+
 \section{Orbital integrals, characters, and a singular-limit calculation}\label{sec:orbital}
 This section recalls orbital integrals and the character formulas on the split torus. It then computes one normalized orbital integral near the singular elements $\pm I$. The computation shows that such integrals need not vanish there.
 
@@ -351,7 +354,10 @@ The detailed Plancherel and Schwartz Paley--Wiener descriptions must keep track 
 Fix $x_0\in G$ and let $T_{x_0}(f)=f(x_0)$. Point evaluation is continuous on $\calC(G)$, but it is not invariant for general $x_0$. Take $f,g$ such that $f^g\ne f$ and $f(x_0)\ne f^g(x_0)$. Then $\mathcal F_{\rm tr}(f-f^g)=0$ while $T_{x_0}(f-f^g)\ne0$. Thus no functional of the trace transform alone can recover this tempered distribution.
 \end{example}
 
-\section{Analytic functionals on unramified parameter tori}\label{sec:analytic}
+\input{trace-pw-comparison}
+\input{spectral-duality}
+
+\subsection{The bilateral Laurent criterion}\label{sec:analytic}
 In rank one, a connected family of unramified twists is modeled on $\mathbb C^\times$, with coordinate $z=\psi(\varpi)$. This provides an elementary analytic-functional problem independently of the deeper global compatibility questions for the $G$-spectrum.
 
 Write $\mathcal O(\mathbb C^\times)$ for the Fr\'echet space of holomorphic functions with the compact-open topology, and $\mathbb C[z,z^{-1}]$ for the Laurent polynomials. Laurent polynomials are dense in $\mathcal O(\mathbb C^\times)$ by Laurent expansion. Their continuous dual is described by explicit bounds.
@@ -428,13 +434,13 @@ The assertion that every supertempered distribution is supported on the elliptic
 \section{Summary, limitations, and a comparison with metaplectic covers}\label{sec:summary}
 The reliable conclusions of this revision are as follows.  Smoothness and admissibility are distinct from continuity into a discrete automorphism group.  The normalized principal series has both quadratic and $|\cdot|^{\pm1}$ reducibility points.  Orbital-integral germs can compensate for discriminant factors, so singular vanishing cannot be inferred by inspection.  The trace transform is a transform of the \emph{invariant quotient}, and the Bernstein--Deligne--Kazhdan theorem requires regularity in unramified families, a uniform compact-open bound, and Grothendieck-group matching.  Laurent coefficients give a clean elementary analytic-functional criterion.  Supertemperedness is expressed by weak constant terms and does not imply literal support on the elliptic set.
 
-Three issues remain outside the scope of this paper:
+The new spectral geometry, trace comparison, and duality sections establish polynomial uniqueness, algebraic trace restriction isomorphisms, instability of non-tempered evaluation, moment extension criteria, and central eigenfunctional formulas, subject to the stated classical representation-theoretic inputs. The following issues remain incompletely resolved:
 \begin{enumerate}[label=\arabic*.,leftmargin=*]
-\item A fully explicit Schwartz trace Paley--Wiener space, including its topology, $R$-group points, and discrete-series matching;
+\item The global topology of the Schwartz trace image, including fixed-level realizations and identification of the closed commutator kernel;
 \item A general admissibility-preserving descent theorem formulated with the proper normalizations;
 \item The proposed global analyticity criterion for invariant distributions from growth bounds on orbital data.
 \end{enumerate}
-They are \emph{not claimed} here. A later version can attempt them separately, with proofs and independent verification. The corresponding theory on a metaplectic double cover requires additional care: genuine characters, choices of splittings and measures, and the relevant intertwining and $R$-group data. This ordinary-group account should therefore remain a separate companion manuscript, not a theorem-by-theorem template assumed valid for covers.
+The partial results and conditional formulations above do not settle these questions. Further proofs and independent verification are needed. The corresponding theory on a metaplectic double cover requires additional care: genuine characters, choices of splittings and measures, and the relevant intertwining and $R$-group data. This ordinary-group account should therefore remain a separate companion manuscript, not a theorem-by-theorem template assumed valid for covers.
 
 \section*{Glossary}\label{app:glossary}
 \begin{description}[style=nextline,leftmargin=1em]
@@ -458,7 +464,7 @@ They are \emph{not claimed} here. A later version can attempt them separately, w
 \section*{Acknowledgments}
 These notes were first written in November 1994 and were not published. In 2026 Argon (Gemini, Google) made a first, minor revision of the 1994 source. ChatGPT (Sol, OpenAI) refereed that revision and then wrote a second revision, an expository rewrite that responds to the referee report. That rewrite is Draft 1. Claude (Fable, Anthropic) prepared Draft 2. It brought the paper into line with the author's style guide, and it added the orienting paragraphs, the unnumbered examples, the literature review and these acknowledgments. It made no mathematical change to the existing statements and proofs.
 
-AI review is not an independent certification of the results. In particular, the same system wrote the referee report and the revision that answers it, and the material added in Draft 2 has not been refereed. Further details on the AI usage can be found in the revision log, the file \texttt{revision\_log.md} that accompanies the source of this paper.
+In Draft 3 ChatGPT developed the spectral geometry, trace Paley--Wiener comparison, and continuous spectral duality sections, including the diagrams and elementary proofs. The new sections preserve the distinction between established classical inputs and remaining verification tasks. AI review is not an independent certification of the results. In particular, the same system wrote the referee report and the revision that answers it, and the material added in Draft 2 has not been refereed. Further details on the AI usage can be found in the revision log, the file \texttt{revision\_log.md} that accompanies the source of this paper.
 
 \begin{thebibliography}{ADSS11}
 \bibitem[ADSS11]{ADSS11} J. D. Adler, S. DeBacker, P. J. Sally, Jr., and L. Spice, \emph{Supercuspidal characters of $\mathrm{SL}_2$ over a $p$-adic field}, in \emph{Harmonic Analysis on Reductive, $p$-adic Groups}, Contemp. Math. \textbf{543}, Amer. Math. Soc., 2011. Available as arXiv:1012.5548.
@@ -475,5 +481,13 @@ AI review is not an independent certification of the results. In particular, the
 \bibitem[SS84]{SS84} P. J. Sally, Jr. and J. A. Shalika, \emph{The Fourier transform of orbital integrals on $\mathrm{SL}_2$ over a $p$-adic field}, in \emph{Lie Group Representations II}, Lecture Notes in Math. \textbf{1041}, Springer, 1984, 303--340.
 \bibitem[SZ07]{SZ07} P. Schneider and E.-W. Zink, \emph{The algebraic theory of tempered representations of $p$-adic groups. Part I: Parabolic induction and restriction}, J. Inst. Math. Jussieu \textbf{6} (2007), no. 4, 639--688.
 \bibitem[Wa03]{Wa03} J.-L. Waldspurger, \emph{La formule de Plancherel pour les groupes $p$-adiques (d'apr\`es Harish-Chandra)}, J. Inst. Math. Jussieu \textbf{2} (2003), no. 2, 235--333.
+\bibitem[ABPS14]{ABPS14} A.-M. Aubert, P. Baum, R. Plymen and M. Solleveld, \emph{Geometric structure in smooth dual and local Langlands conjecture}, Japan. J. Math. \textbf{9} (2014), 99--136.
+\bibitem[ABPS19]{ABPS19} A.-M. Aubert, P. Baum, R. Plymen and M. Solleveld, \emph{Smooth duals of inner forms of $\mathrm{GL}_n$ and $\mathrm{SL}_n$}, Doc. Math. \textbf{24} (2019), 373--420.
+\bibitem[ABPS17]{ABPS17} A.-M. Aubert, P. Baum, R. Plymen and M. Solleveld, \emph{The principal series of $p$-adic groups with disconnected center}, Proc. London Math. Soc. \textbf{114} (2017), 798--854. \url{https://doi.org/10.1112/plms.12023}.
+\bibitem[Ar94]{Ar94} J. Arthur, \emph{The Trace Paley Wiener Theorem for Schwartz Functions}, Contemp. Math. \textbf{177} (1994), 171--180. \url{https://personal.math.ubc.ca/~cass/arthur/pdf/42.pdf}.
+\bibitem[BDK86]{BDK86} J. Bernstein, P. Deligne and D. Kazhdan, \emph{Trace Paley--Wiener theorem for reductive $p$-adic groups}, J. Analyse Math. \textbf{47} (1986), 180--192.
+\bibitem[Ro98]{Ro98} A. Roche, \emph{Types and Hecke algebras for principal series representations of split reductive $p$-adic groups}, Ann. Sci. École Norm. Sup. \textbf{31} (1998), 361--413.
+\bibitem[SS68]{SS68} P. J. Sally, Jr. and J. A. Shalika, \emph{Characters of the discrete series of representations of $\mathrm{SL}(2)$ over a local field}, Proc. Nat. Acad. Sci. USA \textbf{61} (1968), 1231--1237.
+\bibitem[Ta92]{Ta92} M. Tadi\'c, \emph{Notes on representations of non-Archimedean $\mathrm{SL}(n)$}, Pacific J. Math. \textbf{152} (1992), 375--396. Applicability to be reconciled with the original bibliography.
 \end{thebibliography}
 \end{document}

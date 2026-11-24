@@ -22,7 +22,7 @@ sl2-invariant-distributions/
 
 | File | What it is |
 | --- | --- |
-| `revised/sl2-invariant-distributions-2026.tex`, `.pdf` | The assembled Draft 3 working source (November 24, 2026). The adjacent PDF is still the 14-page Draft 2 build, not a Draft 3 PDF. |
+| `revised/sl2-invariant-distributions-2026.tex`, `.pdf` | The assembled Draft 3 working source (November 24, 2026). See the latest PDF build status in GitHub Actions. |
 | `revised/referee-report_argon-gemini-revision.md` | Referee report by ChatGPT on the Argon–Gemini revision of the 1994 notes. Verdict: major revision. Draft 1 is the response to it. |
 | `revision_log.md` | Stages, AI usage, original and new results, every Draft 2 change, the new text that still needs refereeing, citation checks, and the concordance. |
 | `original-1994/hitchhiker-sl2-repns.tex` | The 1994 notes as written (LaTeX 2.09), unchanged. |
@@ -37,17 +37,19 @@ sl2-invariant-distributions/
 
 ## Draft 3 development
 
-The main source now inputs all three new modules:
+The main source now inputs four new modules:
 
 - [spectral-geometry.tex](revised/spectral-geometry.tex): Section 3, including all four original TikZ figures.
 - [trace-pw-comparison.tex](revised/trace-pw-comparison.tex): Section 5, including six TikZ diagrams.
 - [spectral-duality.tex](revised/spectral-duality.tex): Sections 6–7, including five TikZ diagrams, continuous duals, Laurent growth, reducibility, central recurrences and corrected central-finiteness criterion.
 
-This is an integrated working draft using the corrected Draft 2 text as an interim editorial scaffold. The original 1994 manuscript remains unchanged and authoritative for the outstanding restoration and theorem concordance. The full recovery of its mathematical content is not yet completed. The combined source has not been compiled or independently refereed. In particular, the adjacent PDF remains Draft 2. Global Schwartz topology, closed commutator identification, descent and group-side analyticity remain verification tasks.
+- [admissible-distributions.tex](revised/admissible-distributions.tex): Section 8, including five TikZ diagrams, local finite-character interpolation, conditional finite-block admissibility and exact unramified split-descent criterion, corrected quasi-finite spectral definitions, and the original GL(2) question.
+
+This is an integrated working draft using the corrected Draft 2 text as an interim editorial scaffold. The original 1994 manuscript remains unchanged and authoritative for the outstanding restoration and theorem concordance. The full recovery of its mathematical content is not yet completed. The combined source has not been independently refereed. A scoped GitHub Actions workflow builds the combined PDF on changes to the revised LaTeX sources, using the same pattern as the adjoint-lift project. The PDF should be checked against the latest successful build. Global Schwartz topology, closed commutator identification, descent and group-side analyticity remain verification tasks.
 
 ## Building
 
-`pdflatex sl2-invariant-distributions-2026.tex` (three passes) in `revised/`. The bibliography is inline, so no BibTeX run is needed. The paper uses the `newtx` fonts (`newtxtext`, `newtxmath`). The PDF currently beside the source is the historical Draft 2 build. Rebuild after downloading all three input files.
+`pdflatex sl2-invariant-distributions-2026.tex` (three passes) in `revised/`. The bibliography is inline, so no BibTeX run is needed. The paper uses the `newtx` fonts (`newtxtext`, `newtxmath`). The PDF is built by the scoped GitHub Actions workflow; a local build requires all four input files.
 
 ## License
 

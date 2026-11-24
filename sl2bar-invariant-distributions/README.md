@@ -16,6 +16,10 @@
 
 The compiled files are [the Draft 3 paper PDF](sl2bar-invariant-distributions.pdf) (21 pages) and [the revision log PDF](revision_log.pdf) (6 pages). To rebuild them locally, run `pdflatex sl2bar-invariant-distributions.tex` twice and `pdflatex revision_log.tex` twice. The preamble uses newtx when it is installed and falls back to mathptmx otherwise. The committed PDFs of Draft 3 were built with the mathptmx fallback, so rebuilding with newtx changes the fonts and may move line breaks.
 
+## Preservation-first revision
+
+[`preservation-revision/`](preservation-revision/) holds a second revision path that starts directly from the 1994 manuscript and keeps all six of its sections. It is currently at Draft 2 (November 24, 2026, 60 pages), with its own README, revision log, conjecture-status table and verification scripts. It does not replace the Draft 3 synthesis described above.
+
 ## Review status
 
 This is an **expository working draft**, not an independently refereed article. Draft 2 was refereed by two AI referees (Gemini and Claude), and Draft 3 responds to both reports; Draft 3 itself has not been refereed. The topological Paley--Wiener step is explicitly conditional. Draft 3 proves the commutator structure of the covering torus and identifies the kernel and image of the endpoint intertwining operator (Proposition 6.8). The normalization of the endpoint s = 1/n, Moen's exceptional datum and the proposed principal-series images remain unverified against the sources. The published 2001 article is cited, not reproduced.

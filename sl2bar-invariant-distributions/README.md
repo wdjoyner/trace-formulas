@@ -1,29 +1,47 @@
 # Genuine invariant distributions on metaplectic covers of SL(2)
 
-**David Joyner**, *A hitch-hiker's guide to genuine invariant distributions on metaplectic covers of SL(2) over a p-adic field*.
+**David Joyner**, *A hitch-hiker's guide to genuine invariant distributions on metaplectic covers of SL(2) over a p-adic field* (manuscript of January 4, 1994).
 
-**Current manuscript:** Draft 3 (November 21, 2026), a corrected and expanded synthesis of the January 4, 1994 manuscript and the SL(2) material relevant to the author's 2001 *Journal of Fourier Analysis and Applications* article. The current paper excludes the GL(r) theory.
+**Current manuscript:** Draft 2 of the preservation-first revision (November 24, 2026). It starts from the 1994 manuscript and keeps all six of its sections and every one of its statements, in the original order. Statements are numbered consecutively within each section, and `revision_log.md` gives the concordance with the 1994 numbers. Draft 2 has not been refereed.
+
+**Earlier versions, in the git history.** Until November 24, 2026 this directory held a different revision, the "Draft 3" synthesis of the 1994 notes with the SL(2) part of the 2001 *J. Fourier Anal. Appl.* article, with its LaTeX revision log (last commit before the change: `28667a8`). Draft 1 of the preservation-first revision was in a subdirectory `preservation-revision/`. The present manuscript replaces both. Following the `trace-formulas` convention, file names carry no draft number.
 
 ## Contents
 
-- [`sl2bar-invariant-distributions.tex`](sl2bar-invariant-distributions.tex): editable manuscript (pdflatex, 12pt Times, US Letter).
-- [`revision_log.tex`](revision_log.tex): editorial revision log and mathematical verification status.
-- [`sl2bar-invariant-distributions.pdf`](sl2bar-invariant-distributions.pdf): compiled Draft 3 paper (21 pages).
-- [`revision_log.pdf`](revision_log.pdf): compiled revision log (6 pages), including the Draft 3 changes, verification levels and a Draft 2 to Draft 3 concordance.
-- [`referee-2026-11/`](referee-2026-11/): the two referee reports on Draft 2, by Gemini ("Carbon") and by Claude.
-- [`scripts/genuine_torus_check.py`](scripts/genuine_torus_check.py): exact checks of the cocycle, the commutators in the covering torus (Lemma 5.2), the unipotent sections and the Bruhat identities. Run by `run_checks.py` at the top of the repository.
-- [`original-1994/hitchhiker-sl2bar-repns.tex`](original-1994/hitchhiker-sl2bar-repns.tex): original 1994 manuscript, retained separately as a historical source.
+| File | What it is |
+|---|---|
+| `sl2bar-invariant-distributions.tex` | The manuscript (pdflatex, 12pt Times, US Letter). |
+| `sl2bar-invariant-distributions.pdf` | Compiled Draft 2, 60 pages. Built with the mathptmx fallback; see below. |
+| `original-1994/` | The 1994 source, unchanged. |
+| `revision_log.md` | Changes from Draft 1, corrections to the 1994 text, verification level of every statement, citation checks, concordance, agenda for Draft 3. |
+| `conjecture_status.md` | Conjecture-status table, comparison of the three Paley–Wiener theorems, theorem-dependency inventory. |
+| `scripts/kubota_cover_check.py` | Exact checks for tame covers over Q_p, eleven pairs (p, n): cocycle, covering torus, Weyl action, n-th power section, Weyl-fixed data, Kubota's splitting, ingredients of the Gindikin–Karpelevich formula. |
+| `scripts/wild_torus_check.py` | Wild examples: Q_2 with n = 2, Q_3(ω) with n = 3, Q_2(i) with n = 4. |
+| `scripts/spherical_trace_check.py` | Zeros and poles of c(X)c(1/X), Macdonald's formula, the separating functions of Example 5.12. |
+| `scripts/genuine_torus_check.py` | Checks written for the earlier synthesis draft (cocycle, torus commutators, unipotent sections, Bruhat identities). Still valid; its theorem numbers refer to that draft. |
+| `referee-2026-11/` | Referee reports by Gemini and Claude on Draft 2 of the earlier synthesis. Kept as history. |
 
-The compiled files are [the Draft 3 paper PDF](sl2bar-invariant-distributions.pdf) (21 pages) and [the revision log PDF](revision_log.pdf) (6 pages). To rebuild them locally, run `pdflatex sl2bar-invariant-distributions.tex` twice and `pdflatex revision_log.tex` twice. The preamble uses newtx when it is installed and falls back to mathptmx otherwise. The committed PDFs of Draft 3 were built with the mathptmx fallback, so rebuilding with newtx changes the fonts and may move line breaks.
+## What Draft 2 does
 
-## Preservation-first revision
-
-[`preservation-revision/`](preservation-revision/) holds a second revision path that starts directly from the 1994 manuscript and keeps all six of its sections. It is currently at Draft 2 (November 24, 2026, 60 pages), with its own README, revision log, conjecture-status table and verification scripts. It does not replace the Draft 3 synthesis described above.
+- Determines the center of the covering torus and the dimension of its genuine representations in every residue characteristic, and corrects the wild-case index formula.
+- Proves a Gindikin–Karpelevich formula for Kubota's cover directly from the cocycle (tame case). This fixes the endpoint of the complementary series at s = 1/n.
+- Turns the five conjectures of Section 3 into theorems for p ∤ n, using Goldberg–Szpruch (Plancherel measures) and Heiermann (rank-one theory for covers). Two of them needed corrected statements. One case stays open: unitary principal series for 4 | n and p = 2.
+- Restates the three Paley–Wiener theorems on the irreducible duals, with the compatibility relations at reducible points. Necessity is proved. Surjectivity is proved up to the reducible points for p ∤ 2n, and otherwise rests on Bernstein–Deligne–Kazhdan for covers (as asserted by W.-W. Li) and on Li's tempered Paley–Wiener theorem.
+- Adds a status section with a dependency diagram, worked examples (n = 1, 2, 3, 4 and three wild covers), connections to the companion manuscripts, and nine open problems.
 
 ## Review status
 
-This is an **expository working draft**, not an independently refereed article. Draft 2 was refereed by two AI referees (Gemini and Claude), and Draft 3 responds to both reports; Draft 3 itself has not been refereed. The topological Paley--Wiener step is explicitly conditional. Draft 3 proves the commutator structure of the covering torus and identifies the kernel and image of the endpoint intertwining operator (Proposition 6.8). The normalization of the endpoint s = 1/n, Moen's exceptional datum and the proposed principal-series images remain unverified against the sources. The published 2001 article is cited, not reproduced.
+An AI-assisted working draft. AI use is disclosed in the first sentence of the abstract and in the Acknowledgments. The new proofs are listed in `revision_log.md`, Section 5, and none has been refereed. The literature was consulted through automated extracts of the arXiv versions, so theorem numbers should be rechecked against the published papers, and page numbers are not given. Ten statements carry a "Remark 2026.k" note saying what was not verified.
 
-AI assistance by ChatGPT (OpenAI), Claude (Anthropic) and Gemini (Google) is identified in the first sentence of the abstract and explained in the Acknowledgments and the revision log.
+## Building
 
-Following the `trace-formulas` convention, file names do not carry draft numbers; Git history tracks successive drafts.
+```
+pdflatex sl2bar-invariant-distributions.tex   # three passes
+python3 ../run_checks.py                           # runs every *_check.py in the repository
+```
+
+The preamble uses `newtxtext`/`newtxmath` when installed and falls back to `mathptmx` otherwise. The PDF here was built with the fallback. A rebuild with newtx changes the fonts and may move line breaks.
+
+## License
+
+Text and LaTeX: CC BY 4.0. Scripts: MIT.

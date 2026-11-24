@@ -1,6 +1,6 @@
 # Conjecture status and theorem-dependency inventory (Draft 2)
 
-Companion to `sl2bar-invariant-distributions-2026.tex`. Theorem numbers are Draft 2 numbers (consecutive within sections). The first column of the table in Section 1 uses the 1994 numbers. The concordance is in `revision_log.md`, Section 9. Notation: F ⊃ Q_p finite with μ_n ⊂ F, ν = n/gcd(n,2), tame means p ∤ n.
+Companion to `sl2bar-invariant-distributions.tex`. Theorem numbers are Draft 2 numbers (consecutive within sections). The first column of the table in Section 1 uses the 1994 numbers. The concordance is in `revision_log.md`, Section 9. Notation: F ⊃ Q_p finite with μ_n ⊂ F, ν = n/gcd(n,2), tame means p ∤ n.
 
 Status labels: **P** proved in the paper · **D** deduced in the paper from cited theorems · **C** cited · **K** conditional · **O** open · **U** quoted, not verified.
 

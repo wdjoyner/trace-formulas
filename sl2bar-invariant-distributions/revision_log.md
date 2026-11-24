@@ -2,7 +2,9 @@
 
 Paper: *A hitch-hiker's guide to genuine invariant distributions on metaplectic covers of SL(2) over a p-adic field* (D. Joyner, 1994).
 Draft 2 prepared by Claude (Anthropic), November 24, 2026, from Draft 1 (ChatGPT, November 2026). Theorem numbers in this log are Draft 2 numbers unless marked "1994"; Section 9 has the concordance.
-Files: `sl2bar-invariant-distributions-2026.tex` and `.pdf` (60 pages), `conjecture_status.md`, `scripts/`.
+Files: `sl2bar-invariant-distributions.tex` and `.pdf` (60 pages), `conjecture_status.md`, `scripts/`.
+
+**Location (November 24, 2026).** At the author's direction Draft 2 now sits at the top of `sl2bar-invariant-distributions/` and replaces the manuscript that was there, the "Draft 3" synthesis of the 1994 notes with the 2001 article, together with its LaTeX revision log. The file was renamed from `sl2bar-invariant-distributions-2026.tex` to `sl2bar-invariant-distributions.tex`, and the subdirectory `preservation-revision/` was removed. The replaced files are in the git history (last commit containing them: `28667a8`). Where this log says "the other path" or "the synthesis" it means that replaced manuscript. The only change to the paper in this step is the bibliography entry and one sentence in Section 9 that describe the synthesis as an earlier revision.
 
 This log holds everything that the style guide keeps out of the paper: what was wrong in earlier versions, what changed, how each statement was verified, which citations were checked and how, the numbering concordance, and the agenda for Draft 3.
 
@@ -10,8 +12,8 @@ This log holds everything that the style guide keeps out of the paper: what was 
 
 Read in full:
 
-- Draft 1 of this path (`preservation-revision/sl2bar-invariant-distributions-2026.tex`), its README and revision log. The attached file was byte-identical to the repository copy.
-- Draft 3 of the other path (`sl2bar-invariant-distributions.tex` in the parent directory), and the referee report `referee-2026-11/report-claude.md`.
+- Draft 1 of this path (then at `preservation-revision/sl2bar-invariant-distributions-2026.tex`), its README and revision log. The attached file was byte-identical to the repository copy.
+- Draft 3 of the other path (the file then named `sl2bar-invariant-distributions.tex` at the top of the directory), and the referee report `referee-2026-11/report-claude.md`.
 - `joyner-math-paper-style-guide.md` (Draft 2 of the guide, from the repository; it was not attached to the request).
 - The proof of the image theorem for split orbital integrals in `sl2bar-unitary-dual/revised/sl2bar-unitary-dual-2026.tex`.
 

@@ -1,0 +1,37 @@
+name: Build SL2 invariant distributions PDF
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'sl2-invariant-distributions/revised/*.tex'
+      - '.github/workflows/build-sl2-invariant-distributions.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: sl2-invariant-distributions-pdf
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Compile manuscript
+        uses: xu-cheng/latex-action@v4
+        with:
+          root_file: sl2-invariant-distributions-2026.tex
+          working_directory: sl2-invariant-distributions/revised
+          latexmk_use_lualatex: false
+      - name: Commit generated PDF
+        shell: bash
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add sl2-invariant-distributions/revised/sl2-invariant-distributions-2026.pdf
+          if ! git diff --cached --quiet; then
+            git commit -m 'Build SL2 invariant distributions PDF'
+            git push
+          fi

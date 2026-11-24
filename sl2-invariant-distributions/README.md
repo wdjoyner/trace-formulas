@@ -22,7 +22,7 @@ sl2-invariant-distributions/
 
 | File | What it is |
 | --- | --- |
-| `revised/sl2-invariant-distributions-2026.tex`, `.pdf` | The revised paper, currently Draft 2 (November 12, 2026). File names carry no draft number, and git history tracks the drafts. `amsart`, 14 pages. |
+| `revised/sl2-invariant-distributions-2026.tex`, `.pdf` | The assembled Draft 3 working source (November 24, 2026). The adjacent PDF is still the 14-page Draft 2 build, not a Draft 3 PDF. |
 | `revised/referee-report_argon-gemini-revision.md` | Referee report by ChatGPT on the Argon–Gemini revision of the 1994 notes. Verdict: major revision. Draft 1 is the response to it. |
 | `revision_log.md` | Stages, AI usage, original and new results, every Draft 2 change, the new text that still needs refereeing, citation checks, and the concordance. |
 | `original-1994/hitchhiker-sl2-repns.tex` | The 1994 notes as written (LaTeX 2.09), unchanged. |
@@ -37,13 +37,17 @@ sl2-invariant-distributions/
 
 ## Draft 3 development
 
-The new insertable section [trace-pw-comparison.tex](revised/trace-pw-comparison.tex) develops the comparison of the admissible, unitary and tempered trace transforms. It includes proofs of algebraic determination by tempered traces, density, instability of non-tempered evaluation, and a Fourier-coefficient extension criterion, plus six TikZ diagrams.
+The main source now inputs all three new modules:
 
-The section is staged separately for incorporation into the expanded Draft 3 based on the original 1994 manuscript. The existing Draft 2 source and PDF remain unchanged. The new section requires TikZ and an Arthur 1994 bibliography entry (Ar94). It has not yet been compiled or independently refereed. The full blockwise Schwartz topology, global completion and closed commutator identification remain verification tasks.
+- [spectral-geometry.tex](revised/spectral-geometry.tex): Section 3, including all four original TikZ figures.
+- [trace-pw-comparison.tex](revised/trace-pw-comparison.tex): Section 5, including six TikZ diagrams.
+- [spectral-duality.tex](revised/spectral-duality.tex): Sections 6–7, including five TikZ diagrams, continuous duals, Laurent growth, reducibility, central recurrences and corrected central-finiteness criterion.
+
+This is an integrated working draft using the corrected Draft 2 text as an interim editorial scaffold. The original 1994 manuscript remains unchanged and authoritative for the outstanding restoration and theorem concordance. The full recovery of its mathematical content is not yet completed. The combined source has not been compiled or independently refereed. In particular, the adjacent PDF remains Draft 2. Global Schwartz topology, closed commutator identification, descent and group-side analyticity remain verification tasks.
 
 ## Building
 
-`pdflatex sl2-invariant-distributions-2026.tex` (three passes) in `revised/`. The bibliography is inline, so no BibTeX run is needed. The paper uses the `newtx` fonts (`newtxtext`, `newtxmath`). The compiled PDF is committed beside the source.
+`pdflatex sl2-invariant-distributions-2026.tex` (three passes) in `revised/`. The bibliography is inline, so no BibTeX run is needed. The paper uses the `newtx` fonts (`newtxtext`, `newtxmath`). The PDF currently beside the source is the historical Draft 2 build. Rebuild after downloading all three input files.
 
 ## License
 

@@ -35,6 +35,12 @@ sl2-invariant-distributions/
 - Three topics from the 1994 notes are not claimed and remain open: an explicit Schwartz-space trace Paley–Wiener theorem, an admissibility-preserving descent theorem, and a global analyticity criterion for invariant distributions.
 - **Not yet done:** an independent referee report on Draft 1 (the referee and the reviser were the same system), and refereeing of the text added in Draft 2, which is listed in `revision_log.md`.
 
+## Draft 3 development
+
+The new insertable section [trace-pw-comparison.tex](revised/trace-pw-comparison.tex) develops the comparison of the admissible, unitary and tempered trace transforms. It includes proofs of algebraic determination by tempered traces, density, instability of non-tempered evaluation, and a Fourier-coefficient extension criterion, plus six TikZ diagrams.
+
+The section is staged separately for incorporation into the expanded Draft 3 based on the original 1994 manuscript. The existing Draft 2 source and PDF remain unchanged. The new section requires TikZ and an Arthur 1994 bibliography entry (Ar94). It has not yet been compiled or independently refereed. The full blockwise Schwartz topology, global completion and closed commutator identification remain verification tasks.
+
 ## Building
 
 `pdflatex sl2-invariant-distributions-2026.tex` (three passes) in `revised/`. The bibliography is inline, so no BibTeX run is needed. The paper uses the `newtx` fonts (`newtxtext`, `newtxmath`). The compiled PDF is committed beside the source.

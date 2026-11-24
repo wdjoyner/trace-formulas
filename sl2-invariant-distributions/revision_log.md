@@ -176,3 +176,15 @@ No theorem, proposition, lemma, example, remark or equation number changed. Sect
 **Subsection 1.1 of Draft 1, "A brief guide to the literature"** (LaTeX source, verbatim):
 
 > Gelfand and Graev established fundamental rank-one representation-theoretic descriptions \cite{GG63}.  Sally and Shalika calculated the discrete-series characters and studied orbital-integral transforms \cite{SS68,SS84}.  Harish-Chandra's character theory and Schwartz-space theory are developed in accessible form by Silberger \cite{Si79}; Casselman's introduction explains admissible representations and Jacquet modules \cite{CaNotes}.  The trace Paley--Wiener theorem of Bernstein, Deligne and Kazhdan \cite{BDK86}, together with Kazhdan's density theorem \cite{Ka86}, supplies the invariant spectral description.  Clozel's work \cite{Cl91} concerns invariant harmonic analysis on the Schwartz space.  Arthur's treatment of elliptic tempered characters \cite{Ar93} and Herb's classification of supertempered virtual characters \cite{He94} clarify the final section.  We distinguish results actually obtained here from results only cited from these works.
+
+
+## Draft 3 working assembly — November 24, 2026 (ChatGPT)
+
+- Restored the full previously compiled spectral geometry supplement as an input module (four TikZ figures).
+- Integrated the trace comparison module (six TikZ diagrams) and the new spectral duality module (five TikZ diagrams). Preserved earlier theorem labels and the bilateral Laurent criterion.
+- Added the split exact sequence for reducibility constraints, moment growth classifications, central eigenfunctional and jet formulas, and global direct-sum duality. These are elementary derivations at the spectral-model level; group-side conclusions use the stated classical trace and topology inputs.
+- Corrected the proposed rational Laurent-moment converse: the finite sequence with only moment 1 nonzero has rational generating series but is not center-finite. Rationality of the monomial moment series is the correct equivalent criterion.
+- The unramified algebraic difference coordinate in Section 3 is converted in Sections 5–7 to the independent Steinberg trace, which survives restriction to the tempered spectrum. The non-tempered evaluation constraint is not imposed on smooth circle data.
+- Combined bibliography from the geometry supplement with the existing bibliography, retaining existing keys. No new comprehensive source audit was performed; the earlier geometry verification note records consulted and unverified sources. Solleveld survey references still need full bibliographic/version checking.
+- The assembled source uses Draft 2 as an interim editorial scaffold, not as a replacement for the authoritative 1994 baseline. The original files are unchanged. Full original theorem inventory and restoration remain outstanding.
+- No combined pdflatex build was performed: the compilation environment could not resolve GitHub, while the connector allowed text-source commits. The existing PDF is Draft 2. The new assembly is not yet independently refereed.

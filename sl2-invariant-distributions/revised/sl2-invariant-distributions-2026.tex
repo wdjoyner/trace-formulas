@@ -35,6 +35,12 @@
 \newcommand{\diag}{\operatorname{diag}}
 \newcommand{\Jac}{\operatorname{Jac}}
 \newcommand{\PW}{\operatorname{PW}}
+\newcommand{\triv}{\mathbf 1}
+\newcommand{\EP}{\operatorname{EP}}
+\newcommand{\ST}{\mathcal{ST}}
+\newcommand{\Ann}{\operatorname{Ann}}
+\newcommand{\Ext}{\operatorname{Ext}}
+\newcommand{\ev}{\operatorname{ev}}
 \title[A hitch-hiker's guide to invariant distributions]{A hitch-hiker's guide to invariant distributions on \\ $\mathrm{SL}_2$ over a $p$-adic field \\[0.6ex] Draft 3. Corrected and expanded working version}
 \author{David Joyner}
 \email{wdjoyner@gmail.com}
@@ -44,7 +50,7 @@
 \keywords{Invariant distributions, $p$-adic $\mathrm{SL}_2$, trace Paley--Wiener theorem, principal series, supertempered virtual characters}
 \begin{document}
 \begin{abstract}
-This AI-aided paper is a corrected and expanded version of notes written in 1994. Argon-Gemini and Sol-ChatGPT revised the notes, Sol-ChatGPT refereed them, and Fable-Claude made the style revision. See the Acknowledgments and the revision log for details. The paper is an expository introduction to invariant distributions on $G=\mathrm{SL}_2(F)$ for a non-archimedean local field $F$ of odd residue characteristic.  We explain the representation-theoretic background, distinguish the operator-valued Fourier transform from the trace transform, state the trace Paley--Wiener theorem in its correct Grothendieck-group form, and use the invariant quotient of the Hecke algebra to describe spectral distributions. We give an elementary example showing that normalized orbital integrals need not vanish at singular elements, prove a Laurent-coefficient criterion for analytic functionals, and distinguish weak constant terms from elliptic support in the discussion of supertempered virtual characters.  We develop the geometry of exceptional Bernstein fibers, prove algebraic determination of admissible traces by tempered traces, and describe spectral duals by moment growth and central recurrences. Local finite-character interpolation gives admissibility for finite Bernstein support, subject to classical character regularity inputs, and gives a corrected split descent criterion in the unramified block. The global Schwartz topology and the group-side analytic assertions require further verification.
+This AI-aided paper is a corrected and expanded version of notes written in 1994. Argon-Gemini and Sol-ChatGPT revised the notes, Sol-ChatGPT refereed them, and Fable-Claude made the style revision and developed the section on supertempered distributions. See the Acknowledgments and the revision log for details. The paper is an expository introduction to invariant distributions on $G=\mathrm{SL}_2(F)$ for a non-archimedean local field $F$ of odd residue characteristic.  We explain the representation-theoretic background, distinguish the operator-valued Fourier transform from the trace transform, state the trace Paley--Wiener theorem in its correct Grothendieck-group form, and use the invariant quotient of the Hecke algebra to describe spectral distributions. We give an elementary example showing that normalized orbital integrals need not vanish at singular elements, prove a Laurent-coefficient criterion for analytic functionals, and distinguish weak constant terms from elliptic support.  We develop the geometry of exceptional Bernstein fibers, prove algebraic determination of admissible traces by tempered traces, and describe spectral duals by moment growth and central recurrences. Local finite-character interpolation gives admissibility for finite Bernstein support, subject to classical character regularity inputs, and gives a corrected split descent criterion in the unramified block. For supertempered distributions we assume that $F$ has characteristic zero. We give a direct proof of Herb's classification in rank one, compare the tempered and algebraic splittings of the elliptic quotient, identify the weak constant term of a finite-block distribution with its induced part, and give a criterion at $\pm I$ in terms of the trivial-orbit coefficient of the local character expansion. The global Schwartz topology and the group-side analytic assertions require further verification.
 \end{abstract}
 \maketitle
 \tableofcontents
@@ -54,7 +60,7 @@ The original notes were written to understand invariant distributions in the sim
 
 There is a conceptual distinction that controls the entire subject.  The map $f\mapsto\pi(f)$ is an \emph{operator-valued} Fourier transform.  Its traces $\Theta_\pi(f)=\tr\pi(f)$ are invariant spectral data, and do not determine the original test function $f$.  They determine instead its image in the \emph{invariant quotient} (also called the cocenter) of the Hecke algebra.  Once this is taken into account, the Bernstein--Deligne--Kazhdan theorem has a precise and efficient statement.
 
-We distinguish results proved here, cited results, conditional identifications and open problems. The rank-one spectral models make the comparison of the three trace images explicit. Their full global topological identification, general admissibility-preserving descent beyond the rank-one cases treated here and group-side analyticity criteria remain research tasks.
+We distinguish results proved here, cited results, conditional identifications and open problems. Sections \ref{sec:spectral-geometry}, \ref{sec:descent} and \ref{sec:supertemp} assume that $F$ is a finite extension of $\mathbb Q_p$ with $p$ odd, because they use Harish-Chandra's regularity theory, the local character expansion and Herb's theorems. The rank-one spectral models make the comparison of the three trace images explicit. Their full global topological identification, general admissibility-preserving descent beyond the rank-one cases treated here and group-side analyticity criteria remain research tasks.
 
 \subsection{Notation and conventions}\label{sec:notation}
 This subsection fixes the field, the group and its subgroups, the normalization of induction, and the main symbols. The table at the end collects the notation for later reference.
@@ -104,6 +110,8 @@ Clozel \cite{Cl91} treats invariant harmonic analysis on the Schwartz space. It 
 
 Arthur \cite{Ar93} introduced the elliptic tempered virtual characters attached to the $R$-group. He expected them to span the supertempered virtual characters. Herb \cite{He94} proved this. She also showed that a tempered virtual character is supertempered if and only if all of its weak constant terms vanish. Section \ref{sec:supertemp} rests on these two papers. Herb's paper appeared in 1994, the year of the original notes.
 
+Casselman \cite{Ca77} related the character of an admissible representation on contracting elements to the character of its Jacquet module. Rodier \cite{Ro75} related Whittaker models to the regular terms of the local character expansion. Keys \cite{Ke82} computed the $R$-groups of the reducible principal series, and Labesse and Langlands \cite{LL79} described the packets of $\mathrm{SL}_2$. Borel \cite{Bo76} identified the unramified block with the modules over the Iwahori--Hecke algebra, and Kottwitz \cite{Ko88} introduced the Euler--Poincar\'e function. Harish-Chandra introduced supertempered distributions for real groups \cite{HC83}. Section \ref{sec:supertemp} uses these works.
+
 \subsection*{After 1994}
 Waldspurger \cite{Wa03} wrote out Harish-Chandra's unpublished proof of the Plancherel formula for reductive $p$-adic groups. The formula expresses a Schwartz function in terms of the tempered representations. This article complements \cite{Si79} as a detailed reference for the Schwartz-space theory that Subsections \ref{sec:schwartzbackground} and \ref{sec:schwartz} only quote.
 
@@ -113,7 +121,9 @@ Dat \cite{Da00} studies the group $K_0$ of the Hecke algebra of a reductive $p$-
 
 Adler, DeBacker, Sally and Spice \cite{ADSS11} derive the supercuspidal character formulas of $\mathrm{SL}_2$ announced in \cite{SS68} from the general theory of supercuspidal characters, and supply proofs.
 
-None of the works after 1994 is used in a proof in this paper. They are listed to orient the reader.
+Schneider and Stuhler \cite{SS97} proved that the Euler--Poincar\'e pairing is the elliptic pairing and gave a fixed-point formula for characters at elliptic elements. Korman \cite{Ko04} extended the formula to compact elements in rank one. Reeder \cite{Re01} related the elliptic space of Iwahori-spherical representations to elliptic representations of Weyl groups. Opdam and Solleveld \cite{OS13} computed extensions of tempered representations and recovered Arthur's inner product formula. Ciubotaru and He \cite{CH17,CH21} studied elliptic and rigid cocenters. Aubert and Plymen \cite{AP24} compared the character formulas of $\mathrm{SL}_2$ with the endoscopic character identities.
+
+Section \ref{sec:supertemp} uses the fixed-point formulas of \cite{SS97,Ko04} in two proofs. The other works after 1994 are not used in a proof in this paper. They are listed to orient the reader.
 
 \section{Representations: definitions and the rank-one families}\label{sec:rep}
 This section is the background for the rest of the paper. It recalls smooth and admissible representations, the principal series and its points of reducibility, the quadratic characters of $F^\times$, and the Schwartz space. Nothing in it is new. The section fixes the normalizations that the later sections use.
@@ -398,30 +408,10 @@ Theorem \ref{thm:laurent} is a theorem about \emph{one analytic family}. It does
 
 \input{admissible-distributions}
 
-\section{Supertempered virtual characters}\label{sec:supertemp}
-The words \emph{tempered}, \emph{square-integrable}, \emph{elliptic}, and \emph{supertempered} denote distinct concepts. They should not be interchanged merely because some important examples satisfy several of them.
-
-A tempered virtual character means a \emph{finite} linear combination of characters of irreducible tempered representations.  Herb defines supertemperedness using strengthened decay estimates, equivalently the appropriate vanishing weak-constant-term condition in the relevant setting \cite{He94}. The \emph{weak} constant term retains tempered exponents in the normalized Jacquet-module asymptotics; it is not simply the ordinary constant term.  The distinction matters even for the Steinberg representation.
-
-\begin{theorem}[Herb, in the form needed here \cite{He94}]\label{thm:herb}
-The space of supertempered virtual characters of a reductive $p$-adic group is spanned by the virtual characters arising from the elliptic constituents of tempered parabolic induction, including discrete-series characters.  In the rank-one group $\mathrm{SL}_2(F)$, the two constituents of a reducible unitary principal series at a nontrivial quadratic character give an alternating virtual character of this kind.
-\end{theorem}
-The general formulation and its precise indexing use the Knapp--Stein $R$-group and its elliptic representations; for a fully detailed statement consult \cite{He94,Ar93}. We invoke the published theorem here rather than purporting to reproduce its proof.
-
-\begin{example}[An elliptic cancellation]\label{ex:supertemp}
-Let $\eta$ be a nontrivial quadratic character of $F^\times$, and let $I(\eta)=\pi_\eta^+\oplus\pi_\eta^-$. Then
-\begin{equation}\label{eq:alt}
-D_\eta=\Theta_{\pi_\eta^+}-\Theta_{\pi_\eta^-}
-\end{equation}
-is a supertempered virtual character. On regular split elements the two constituent characters have equal values (half of the induced character); their difference vanishes. The interesting contribution of $D_\eta$ comes from elliptic regular classes, as described by the explicit character formulas \cite{SS68,SS84}.  Formula \eqref{eq:alt} is a \emph{virtual} character, not the character of a genuine representation.
-\end{example}
-
-\begin{remark}[Supertempered does not imply elliptic support]\label{rem:support}
-The assertion that every supertempered distribution is supported on the elliptic set is false. The Steinberg representation is square-integrable (modulo the finite center) and its character is supertempered in Herb's sense, but its character does not vanish on all regular split semisimple elements. The weak-constant-term criterion is not an elliptic-support criterion.
-\end{remark}
+\input{supertempered-distributions}
 
 \section{Summary, limitations, and a comparison with metaplectic covers}\label{sec:summary}
-The reliable conclusions of this revision are as follows.  Smoothness and admissibility are distinct from continuity into a discrete automorphism group.  The normalized principal series has both quadratic and $|\cdot|^{\pm1}$ reducibility points.  Orbital-integral germs can compensate for discriminant factors, so singular vanishing cannot be inferred by inspection.  The trace transform is a transform of the \emph{invariant quotient}, and the Bernstein--Deligne--Kazhdan theorem requires regularity in unramified families, a uniform compact-open bound, and Grothendieck-group matching.  Laurent coefficients give a clean elementary analytic-functional criterion.  Supertemperedness is expressed by weak constant terms and does not imply literal support on the elliptic set.
+The reliable conclusions of this revision are as follows.  Smoothness and admissibility are distinct from continuity into a discrete automorphism group.  The normalized principal series has both quadratic and $|\cdot|^{\pm1}$ reducibility points.  Orbital-integral germs can compensate for discriminant factors, so singular vanishing cannot be inferred by inspection.  The trace transform is a transform of the \emph{invariant quotient}, and the Bernstein--Deligne--Kazhdan theorem requires regularity in unramified families, a uniform compact-open bound, and Grothendieck-group matching.  Laurent coefficients give a clean elementary analytic-functional criterion.  Supertemperedness is expressed by weak constant terms and does not imply literal support on the elliptic set. In rank one the supertempered virtual characters are spanned by the discrete series characters and the three quadratic differences, they split the elliptic quotient, and their behavior at $\pm I$ is governed by the trivial-orbit coefficient (Section \ref{sec:supertemp}).
 
 The new spectral geometry, trace comparison, and duality sections establish polynomial uniqueness, algebraic trace restriction isomorphisms, instability of non-tempered evaluation, moment extension criteria, and central eigenfunctional formulas, subject to the stated classical representation-theoretic inputs. The following issues remain incompletely resolved:
 \begin{enumerate}[label=\arabic*.,leftmargin=*]
@@ -437,6 +427,8 @@ The partial results and conditional formulations above do not settle these quest
 \item[Analytic functional] A continuous linear functional on a space of holomorphic functions equipped with its compact-open topology.
 \item[Bernstein component] A connected algebraic family of irreducible smooth representations organized using supercuspidal support and unramified twisting.
 \item[Cocenter] The Hecke-algebra quotient by the span of convolution commutators.
+\item[Compact defect] The difference between the normalized split restriction of a character and its Jacquet-module character on the compact part of the split torus.
+\item[Elliptic quotient] The Grothendieck group of finite-length representations modulo the classes of parabolically induced representations.
 \item[Elliptic regular element] A regular semisimple element whose centralizer is anisotropic modulo the center; for $\mathrm{SL}_2$ these lie in nonsplit maximal tori.
 \item[Hecke algebra] The convolution algebra of compactly supported locally constant complex-valued functions on $G$.
 \item[Invariant distribution] A continuous linear functional on $C_c^\infty(G)$ invariant under conjugation by $G$.
@@ -444,16 +436,16 @@ The partial results and conditional formulations above do not settle these quest
 \item[Normalized induction] Parabolic induction including the $\delta_P^{1/2}$ factor.
 \item[Orbital integral] Integration of a test function along the conjugacy orbit of a regular semisimple element.
 \item[Shalika germ] A term describing the asymptotic expansion of orbital integrals near singular elements.
-\item[Supertempered virtual character] A finite linear combination of tempered irreducible characters satisfying the strengthened decay or weak-constant-term condition of Herb.
+\item[Supertempered virtual character] A finite linear combination of tempered irreducible characters whose normalized values decay rapidly on every Cartan subgroup. Equivalently, all of its weak constant terms vanish.
 \item[Tempered representation] An irreducible admissible representation occurring weakly in the regular representation; equivalently a representation satisfying the appropriate tempered matrix-coefficient bounds.
 \item[Trace Paley--Wiener theorem] The characterization of trace forms of Hecke-algebra elements by regularity under unramified twisting and uniform compact-open level bounds.
-\item[Weak constant term] The part of the normalized constant-term asymptotics associated with tempered exponents, not the entire Jacquet-module character.
+\item[Weak constant term] The part of the normalized Jacquet-module character of a tempered representation that comes from the unitary exponents, not the entire Jacquet-module character.
 \end{description}
 
 \section*{Acknowledgments}
 These notes were first written in November 1994 and were not published. In 2026 Argon (Gemini, Google) made a first, minor revision of the 1994 source. ChatGPT (Sol, OpenAI) refereed that revision and then wrote a second revision, an expository rewrite that responds to the referee report. That rewrite is Draft 1. Claude (Fable, Anthropic) prepared Draft 2. It brought the paper into line with the author's style guide, and it added the orienting paragraphs, the unnumbered examples, the literature review and these acknowledgments. It made no mathematical change to the existing statements and proofs.
 
-In Draft 3 ChatGPT developed the spectral geometry, trace Paley--Wiener comparison, and continuous spectral duality sections, including the diagrams and elementary proofs. ChatGPT also developed the local finite-character interpolation theorem, conditional finite-block admissibility and split descent criterion, and the revised quasi-finite spectral definitions in Section 8. The new sections preserve the distinction between established classical inputs and remaining verification tasks. AI review is not an independent certification of the results. In particular, the same system wrote the referee report and the revision that answers it, and the material added in Draft 2 has not been refereed. Further details on the AI usage can be found in the revision log, the file \texttt{revision\_log.md} that accompanies the source of this paper.
+In Draft 3 ChatGPT developed the spectral geometry, trace Paley--Wiener comparison, and continuous spectral duality sections, including the diagrams and elementary proofs. ChatGPT also developed the local finite-character interpolation theorem, conditional finite-block admissibility and split descent criterion, and the revised quasi-finite spectral definitions in Section 8. Claude (Fable, Anthropic) developed Section \ref{sec:supertemp} on supertempered distributions, including its proofs, examples and diagrams. The new sections preserve the distinction between established classical inputs and remaining verification tasks. AI review is not an independent certification of the results. In particular, the same system wrote the referee report and the revision that answers it, and the material added in Draft 2 has not been refereed. Further details on the AI usage can be found in the revision log, the file \texttt{revision\_log.md} that accompanies the source of this paper.
 
 \begin{thebibliography}{ADSS11}
 \bibitem[ADSS11]{ADSS11} J. D. Adler, S. DeBacker, P. J. Sally, Jr., and L. Spice, \emph{Supercuspidal characters of $\mathrm{SL}_2$ over a $p$-adic field}, in \emph{Harmonic Analysis on Reductive, $p$-adic Groups}, Contemp. Math. \textbf{543}, Amer. Math. Soc., 2011. Available as arXiv:1012.5548.
@@ -480,5 +472,19 @@ In Draft 3 ChatGPT developed the spectral geometry, trace Paley--Wiener comparis
 \bibitem[De02]{De02} S. DeBacker, \emph{Homogeneity results for invariant distributions of a reductive $p$-adic group}, Ann. Sci. \'{E}cole Norm. Sup. (4) \textbf{35} (2002), 391--422.
 \bibitem[AGS15]{AGS15} A. Aizenbud, D. Gourevitch and E. Sayag, \emph{$\mathfrak z$-Finite distributions on $p$-adic groups}, arXiv:1405.2540.
 \bibitem[CT26]{CT26} T.-H. Chen and C.-C. Tsai, \emph{Admissibility of Bernstein centers}, arXiv:2608.21981 (2026); preprint, full text not verified.
+\bibitem[AP24]{AP24} A.-M. Aubert and R. Plymen, \emph{Comparison of the Sally--Shalika character formulas with the endoscopic character identities for $\mathrm{SL}_2$}, arXiv:2410.20183; title and content from the abstract only.
+\bibitem[Bo76]{Bo76} A. Borel, \emph{Admissible representations of a semi-simple group over a local field with vectors fixed under an Iwahori subgroup}, Invent. Math. \textbf{35} (1976), 233--259.
+\bibitem[Ca77]{Ca77} W. Casselman, \emph{Characters and Jacquet modules}, Math. Ann. \textbf{230} (1977), 101--105.
+\bibitem[CH17]{CH17} D. Ciubotaru and X. He, \emph{Cocenters and representations of affine Hecke algebras}, J. Eur. Math. Soc. \textbf{19} (2017), 3143--3177.
+\bibitem[CH21]{CH21} D. Ciubotaru and X. He, \emph{Cocenters of $p$-adic groups, III: elliptic and rigid cocenters}, arXiv:1703.00378; journal data not verified.
+\bibitem[HC83]{HC83} Harish-Chandra, \emph{Supertempered distributions on real reductive groups}, in \emph{Studies in Applied Mathematics}, Adv. Math. Suppl. Stud. \textbf{8}, Academic Press, 1983, 139--153; pages not verified.
+\bibitem[Ke82]{Ke82} C. D. Keys, \emph{On the decomposition of reducible principal series representations of $p$-adic Chevalley groups}, Pacific J. Math. \textbf{101} (1982), 351--388; pages not verified.
+\bibitem[Ko88]{Ko88} R. E. Kottwitz, \emph{Tamagawa numbers}, Ann. of Math. (2) \textbf{127} (1988), 629--646.
+\bibitem[Ko04]{Ko04} J. Korman, \emph{A character formula for compact elements (the rank one case)}, arXiv:math/0409292.
+\bibitem[LL79]{LL79} J.-P. Labesse and R. P. Langlands, \emph{$L$-indistinguishability for $\mathrm{SL}(2)$}, Canad. J. Math. \textbf{31} (1979), 726--785.
+\bibitem[OS13]{OS13} E. Opdam and M. Solleveld, \emph{Extensions of tempered representations}, Geom. Funct. Anal. \textbf{23} (2013), 664--714; arXiv:1105.3802; last page not verified.
+\bibitem[Re01]{Re01} M. Reeder, \emph{Euler--Poincar\'e pairings and elliptic representations of Weyl groups and $p$-adic groups}, Compositio Math. \textbf{129} (2001), 149--181; pages not verified.
+\bibitem[Ro75]{Ro75} F. Rodier, \emph{Mod\`ele de Whittaker et caract\`eres de repr\'esentations}, in \emph{Non-Commutative Harmonic Analysis}, Lecture Notes in Math. \textbf{466}, Springer, 1975, 151--171.
+\bibitem[SS97]{SS97} P. Schneider and U. Stuhler, \emph{Representation theory and sheaves on the Bruhat--Tits building}, Publ. Math. Inst. Hautes \'Etudes Sci. \textbf{85} (1997), 97--191.
 \end{thebibliography}
 \end{document}

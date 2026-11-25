@@ -14,6 +14,7 @@ This is the ordinary-group companion to the metaplectic material in
 sl2-invariant-distributions/
 ├── original-1994/   the 1994 notes and their Argon–Gemini revision, as received
 ├── revised/         2026 revised drafts and referee reports
+├── research/        research reports written before material is integrated
 ├── revision_log.md   every change, stage by stage, and the AI usage
 └── README.md
 ```
@@ -24,6 +25,7 @@ sl2-invariant-distributions/
 | --- | --- |
 | `revised/sl2-invariant-distributions-2026.tex`, `.pdf` | The assembled Draft 3 working source (November 24, 2026). See the latest PDF build status in GitHub Actions. |
 | `revised/referee-report_argon-gemini-revision.md` | Referee report by ChatGPT on the Argon–Gemini revision of the 1994 notes. Verdict: major revision. Draft 1 is the response to it. |
+| `research/section9-supertempered-research-report.tex`, `.pdf` | Research report by Claude (November 24, 2026) on which Section 9 is based. Its statement numbers differ from the paper's. `research/section9-tree-checks.py` reruns the exact checks of the tree computations. |
 | `revision_log.md` | Stages, AI usage, original and new results, every Draft 2 change, the new text that still needs refereeing, citation checks, and the concordance. |
 | `original-1994/hitchhiker-sl2-repns.tex` | The 1994 notes as written (LaTeX 2.09), unchanged. |
 | `original-1994/hitchhikers-guide-to-invariant-distributions-on-sl2-over-p-adic-field2.tex` | The Argon–Gemini LaTeX revision of the 1994 notes: the version the referee reviewed and Draft 1 was rewritten from. |
@@ -37,19 +39,20 @@ sl2-invariant-distributions/
 
 ## Draft 3 development
 
-The main source now inputs four new modules:
+The main source now inputs five new modules:
 
 - [spectral-geometry.tex](revised/spectral-geometry.tex): Section 3, including all four original TikZ figures.
 - [trace-pw-comparison.tex](revised/trace-pw-comparison.tex): Section 5, including six TikZ diagrams.
 - [spectral-duality.tex](revised/spectral-duality.tex): Sections 6–7, including five TikZ diagrams, continuous duals, Laurent growth, reducibility, central recurrences and corrected central-finiteness criterion.
 
 - [admissible-distributions.tex](revised/admissible-distributions.tex): Section 8, including five TikZ diagrams, local finite-character interpolation, conditional finite-block admissibility and exact unramified split-descent criterion, corrected quasi-finite spectral definitions, and the original GL(2) question.
+- [supertempered-distributions.tex](revised/supertempered-distributions.tex): Section 9 (Claude), including six TikZ figures: the six notions around supertemperedness, constant terms, a rank-one proof of Herb's classification, the quadratic constituents and a tree formula, the elliptic quotient and its two splittings, weak constant terms of distributions, behavior at ±I and a general split descent criterion, the Bernstein center and Hecke-finiteness, Euler–Poincaré pairings, examples over Q_3 and Q_5, and a global characterization. It assumes characteristic zero. Its classical inputs are listed in its last subsection and in `revision_log.md`, and most still need a source audit.
 
 This is an integrated working draft using the corrected Draft 2 text as an interim editorial scaffold. The original 1994 manuscript remains unchanged and authoritative for the outstanding restoration and theorem concordance. The full recovery of its mathematical content is not yet completed. The combined source has not been independently refereed. A scoped GitHub Actions workflow builds the combined PDF on changes to the revised LaTeX sources, using the same pattern as the adjoint-lift project. The PDF should be checked against the latest successful build. Global Schwartz topology, closed commutator identification, descent and group-side analyticity remain verification tasks.
 
 ## Building
 
-`pdflatex sl2-invariant-distributions-2026.tex` (three passes) in `revised/`. The bibliography is inline, so no BibTeX run is needed. The paper uses the `newtx` fonts (`newtxtext`, `newtxmath`). The PDF is built by the scoped GitHub Actions workflow; a local build requires all four input files.
+`pdflatex sl2-invariant-distributions-2026.tex` (three passes) in `revised/`. The bibliography is inline, so no BibTeX run is needed. The paper uses the `newtx` fonts (`newtxtext`, `newtxmath`). The PDF is built by the scoped GitHub Actions workflow; a local build requires all five input files.
 
 ## License
 

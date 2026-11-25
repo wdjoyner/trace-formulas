@@ -198,3 +198,69 @@ No theorem, proposition, lemma, example, remark or equation number changed. Sect
 - Recovered the character-measure construction and extended it to higher spectral derivatives in a finite block; corrected the original quasi-finite type terminology, retaining the constant Fourier mode, exceptional coordinates and the distinction between uniform and blockwise order. The Dirac distribution at identity is a counterexample to unrestricted admissibility of invariant tempered distributions. Its nonrepresentability and the central finiteness counterexamples have elementary proofs.
 - Five native TikZ figures added; existing 15 figures retained. Harish-Chandra, DeBacker, Aizenbud–Gourevitch–Sayag and Chen–Tsai references added as literature leads. Full source-level verification is outstanding; Chen–Tsai full text was not retrieved and no result of that paper is used as a proof input.
 - Direct GitHub checkout from the local compilation environment failed (DNS). Added a path-scoped GitHub Actions PDF build, based on the repository's existing adjoint-lift workflow. This builds and commits only the SL2 manuscript PDF on revised LaTeX changes. No independent referee review has been performed. Original 1994 mathematical inventory and full restoration remain outstanding.
+
+
+## Section 9 expansion: supertempered distributions — November 24, 2026 (Claude)
+
+Author of this stage: Claude (Fable, Anthropic). The mathematics was first delivered to the author as a research report (`research/section9-supertempered-research-report.tex`, `.pdf`) and integrated at his request. The report's statement numbers differ from the paper's, because the paper adds Herb's theorem as a numbered statement and one remark.
+
+### Changes
+
+- Replaced the abbreviated Section 9 by the module `revised/supertempered-distributions.tex` (twelve subsections, six TikZ figures, four tables). The labels `sec:supertemp`, `thm:herb`, `ex:supertemp`, `rem:support` and `eq:alt` are retained. `thm:herb` now states Herb's Theorems 2.5, 3.1 and 3.2. The rank-one theorem is `thm:herb-rank-one`.
+- Main file: six macros (`\triv`, `\EP`, `\ST`, `\Ann`, `\Ext`, `\ev`); abstract, Introduction (one sentence on the characteristic-zero hypothesis), literature review (one paragraph before 1994, one after), summary (one sentence), glossary (two entries reworded, two added), Acknowledgments (one sentence), and fourteen bibliography entries.
+- `admissible-distributions.tex`: two sentences now point forward to Corollary `cor:descent` and Proposition `prop:hecke` (see "Errors and inconsistencies" below).
+- `spectral-duality.tex`: the closing paragraph on exceptional modes now says that the zero-moment subspace depends on the splitting and points to Theorems `thm:twosplit` and `thm:exact`.
+- Added `research/` with the report and `section9-tree-checks.py`, the script behind the exact checks.
+- The paper remains Draft 3. The original 1994 files are unchanged.
+
+### New mathematical text, for refereeing
+
+Everything in Section 9 is new text and has not been refereed. Levels: 1 = derived in this stage from the stated inputs; 2 = cited, statement read in the source during this stage; 3 = cited from memory, source not consulted.
+
+| Statement (label) | Content | Level and dependence |
+|---|---|---|
+| `tab:four`, `prop:cass` | Jacquet character, weak constant term, normalized split restriction, compact defect | Table: level 1 from the geometric lemma. Casselman's theorem: level 3, checked against the explicit characters of I(χ), St, 1, π_η^± |
+| `prop:bohr` | Weak constant term as the almost periodic part at infinity | Level 1 |
+| `thm:herb` | Herb's Theorems 2.5, 3.1, 3.2 | Level 2. The displayed inequalities of the strong estimate did not extract from the PDF and were written from memory in `def:six` |
+| `thm:herb-rank-one`, `cor:irr`, `cor:three-questions` | Rank-one proof of Herb's classification; kernel of the Jacquet functor; elliptic support implies cuspidal | Level 1, given the classification, `prop:cass` and Harish-Chandra's local boundedness (level 3) |
+| `thm:Deta` | Four descriptions of D_η; support on tori splitting over E_η | Level 1, given the GL(2) restriction argument of Section 8 and Keys (level 3) |
+| `thm:tree` | Θ_{π±}(γ) = ±(V_0 − V_1) on elliptic elements | Level 1, given the Schneider–Stuhler fixed-point formula at level zero. That formula was read only in the introduction of Korman's paper (level 2 for the statement; the level-zero hypothesis is not checked in [SS97]) |
+| `prop:pseudo` | Explicit pseudo-coefficients e_{K_0} − e_{K_1} and e_I − e_{K_0} − e_{K_1} | Level 1 |
+| `thm:twosplit`, `thm:exact` | Two complements of the induced part; exact sequences; annihilators; dimension table | Level 1. Attribution of the operator 1 − ½ i_B r_B to Bernstein–Deligne–Kazhdan and Dat is level 3 |
+| `def:wct`, `thm:decomp` | Weak constant term of a finite-block distribution; canonical decomposition | Level 1, given Theorems `thm:local-interpolation`, `thm:induced-descent`. Part (e) conditional on the Schwartz trace identification |
+| `thm:germ`, `cor:descent` | h_Θ = ½w + c_0 |t − t^{-1}| near I; split descent criterion | Level 1 from the local character expansion (level 3). c_0 = −d(π)/d(St) and Rodier's theorem are level 3 |
+| `prop:sc` | Depth-zero supercuspidal character on the split torus | Level 1, given Korman's truncated formula (level 2, introduction only). Sums checked exactly by the script. Not compared with [SS68], [ADSS11] |
+| `ex:cancel`, `ex:poisson` | Steinberg obstruction cancelled by supercuspidals; an elliptically supported distribution that is not supertempered | Level 1, given `prop:sc` |
+| `prop:center` | Center-finite, virtual character, and supertempered | Level 1, given `thm:duality-eigen`, `thm:duality-jets` |
+| `prop:hecke` | Hecke-finite equals blockwise center-finite | Level 1 in outline only. Needs a full write-up before it is relied on |
+| `rem:infinite` | δ_cusp probably not admissible | Heuristic |
+| `prop:EP`, `ex:norm` | Euler–Poincaré form from the infinite dihedral Hecke algebra; elliptic norm of Steinberg by integration | Level 1, given Borel and Roche (level 3). The integral identity was checked exactly for q = 3, 5, 7, 9 |
+| `thm:global` | Global characterization for finite Bernstein support | Level 1 from the above; (b) conditional |
+
+No novelty is claimed. No source was found, in a limited search, for `cor:descent`, `thm:twosplit` in this form, or the counterexamples of Subsection 9.10.
+
+### Errors and inconsistencies found in earlier material
+
+1. **1994 notes, Section 4.2.6.** Supercuspidal characters are stated to vanish off the elliptic set. False: by `prop:sc` a depth-zero supercuspidal character equals |t − t^{-1}|^{-1} − 1 on split elements near I, and in general c_0(π) = −d(π)/d(St) ≠ 0. Draft 3 does not repeat the claim. Nothing relying on it should be restored.
+2. **1994 notes, Section 9.1.** "A Hecke-finite distribution is a virtual character, hence automatically admissible" is false as stated: parameter derivatives of characters and locally finite infinite sums are Hecke-finite (`prop:hecke`). The definition of supertempered there does not say which constant term D_P is meant. With the ordinary one, Steinberg is not supertempered, contradicting the next sentence of the notes. The 1994 corollary "supertempered implies virtual character" holds for finite Bernstein support (`prop:center`(d)). The two 1994 questions are answered in `cor:three-questions`. The 1994 lemma on elliptic support is proved there as part (c).
+3. **Draft 3, old Theorem 9.1.** "Spanned by the virtual characters arising from the elliptic constituents of tempered parabolic induction" was imprecise: π_η^± are elliptic representations whose characters are not supertempered. Replaced by Herb's statement in terms of Arthur's Θ(M, σ, r) with r regular.
+4. **Draft 3, old Section 9 and Glossary.** "Tempered exponents" corrected to "unitary exponents".
+5. **Draft 3, Theorem `thm:unramified-descent`.** Correct for one block. The following sentence said no criterion was asserted with supercuspidal blocks. The criterion is `cor:descent`, and β = 0 is not the right condition across blocks (`ex:cancel`). Sentence amended.
+6. **Draft 3, end of Section 7.** The zero-moment subspace depends on the splitting. Section 3 uses tr St − tr 1 and Sections 5–7 use tr St. Sentence amended.
+7. **Draft 3, Section 8, implication diagram text.** "Not a synonym for center-finiteness" amended to point to `prop:hecke`.
+8. **Hypotheses on F.** Section 1 allows any non-archimedean local field of odd residue characteristic; Sections 3, 8 and 9 need characteristic zero. One sentence added to the Introduction.
+9. **Not fixed: structure of the assembled file.** `trace-pw-comparison.tex` begins with `\subsection`, so its parts are subsections of Section 5 although its text says "this section". The subsection "The bilateral Laurent criterion" lands at the end of Section 7 and duplicates Theorem `thm:duality-holomorphic`. Left for a decision by the author, because a fix renumbers Sections 5–7.
+
+### Sources not consulted in this stage
+
+Casselman [Ca77]; Harish-Chandra [HC99], [HC83]; Rodier [Ro75]; Keys [Ke82]; Labesse–Langlands [LL79]; Borel [Bo76]; Roche [Ro98]; Kottwitz [Ko88]; Schneider–Stuhler [SS97] (read only through Korman's introduction); Sally–Shalika [SS68] and Adler–DeBacker–Sally–Spice [ADSS11] (abstract only). Reeder [Re01], Opdam–Solleveld [OS13], Ciubotaru–He [CH17], [CH21] and Aubert–Plymen [AP24] were seen as titles, abstracts or search snippets only. Page ranges marked "not verified" in the bibliography are from memory.
+
+### Recommended audits
+
+1. Read [Ca77], [SS97, Section III.4] and [HC99] for the exact statements used in `prop:cass`, `thm:tree`, `prop:sc` and `thm:germ`.
+2. Compare `prop:sc` and `thm:tree` with the tables of [SS68] and [ADSS11].
+3. Write out `prop:hecke` in full and have it refereed.
+
+### Compilation
+
+The combined source was compiled with pdflatex (three passes) in a scratch copy with `mathptmx` substituted for `newtx`, which was not installed in the build environment: 56 pages, no undefined references or citations, no multiply defined labels. The committed PDF is produced by the GitHub Actions workflow after merge to main.

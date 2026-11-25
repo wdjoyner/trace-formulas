@@ -87,7 +87,7 @@
 
 \author{David Joyner\thanks{Original manuscript dated January 4, 1994. Working revision: November 2026. Email: wdjoyner@gmail.com.}}
 \title{A hitch-hiker's guide to genuine invariant distributions on metaplectic
-covers of SL(2) over a p-adic field\\[4pt]\large Draft 2. Corrected and expanded version}
+covers of SL(2) over a p-adic field\\[4pt]\large Draft 3. Corrected and expanded version}
 \date{Original draft: 1994. Corrected and expanded draft: 2026}
 \maketitle
 
@@ -105,7 +105,7 @@ the complementary series, and the special and non-tempered constituents are desc
 completely, by combining a Gindikin--Karpelevich computation proved here with the Plancherel
 measures of Goldberg and Szpruch and the rank-one theory of Harish-Chandra and Silberger as
 extended to covers by Heiermann.  The image of the trace transform on full principal series
-is determined for $p\nmid 2n$.  The admissible, unitary and tempered Paley--Wiener theorems
+is determined for $p\nmid n$.  The admissible, unitary and tempered Paley--Wiener theorems
 are restated in corrected form.  For each we separate the necessary conditions, which are
 proved, from the sufficiency, which rests on results of Bernstein--Deligne--Kazhdan and of
 W.-W.~Li for covering groups.  One case of the conjectures stays open: unitary principal
@@ -197,7 +197,7 @@ kernel of the intertwining operator is a square-integrable ``special'' represent
 and its image is a unitary non-tempered representation.  There is one special
 representation if $n$ is odd and there are $[F^\times:F^{\times2}]$ if $n$ is even.
 \item \emph{Paley--Wiener theorems} (Lemma~\ref{lem:PWps}, Theorems~\ref{thm:PWad},
-\ref{thm:PWu}, \ref{thm:PWt}).  For $p\nmid 2n$ the trace transform maps $C_c^\infty(\bG)$
+\ref{thm:PWu}, \ref{thm:PWt}).  For $p\nmid n$ the trace transform maps $C_c^\infty(\bG)$
 onto the space of Weyl-invariant functions on the principal-series parameters that are
 supported on finitely many components and are Laurent polynomials on each.  The three
 Paley--Wiener theorems are restated on the irreducible duals, with the compatibility
@@ -220,7 +220,7 @@ companion manuscripts.  Section~\ref{sec:open} lists open problems.
 Sections~\ref{sec:background} and \ref{sec:dual} allow every $n\ge1$ and every $p$ unless
 a statement says otherwise.  The explicit classification in Section~\ref{sec:dual} assumes
 $p\nmid n$.  The image theorem for principal series (Lemma~\ref{lem:PWps}) and the results
-that depend on it assume $p\nmid 2n$.  The wild case is treated to the extent indicated in
+that depend on it assume $p\nmid n$.  The wild case is treated to the extent indicated in
 each statement and in Section~\ref{sec:examples}.
 
 \subsection*{Numbering}
@@ -354,7 +354,7 @@ The following comparison shows how the sources fit together for $F=\Q_7$ and $n=
 Moen \cite{Mo88} gives the irreducibility of $I(\sigma)$ for the Weyl-fixed $\sigma$ with
 $\chi_\sigma=1$.  Goldberg and Szpruch \cite{GS16} give the Plancherel measure for every
 $\sigma$.  Heiermann \cite{He25} converts its poles into the statement that
-$I(\sigma\otimes\eta_s)$ is reducible exactly at $s=\pm1/3$ and unitary for $0<s<1/3$.
+$I(\sigma\otimes\eta_s)$ is reducible for real $s$ exactly at $s=\pm1/3$ and unitary for $0<s<1/3$.
 \end{xexample}
 
 %======================================================================
@@ -811,7 +811,7 @@ a_1=(h(t_1),\zeta_1)\in\bC,\quad a_2=(h(t_2),\zeta_2)\in\bA .
 In particular $\bA$ has no genuine one-dimensional representation unless it is abelian,
 that is, unless $\nu=1$.
 
-The characters of $A/h(C)$ correspond to $F^\times/C$ itself: the map
+The characters of $C/F^{\times\nu}$ correspond to $F^\times/C$ itself: the map
 $x\mapsto\langle x,\cdot\rangle|_C$ identifies $F^\times/C$ with the characters of
 $C/F^{\times\nu}$, because $C$ is its own orthogonal complement.
 
@@ -1451,7 +1451,7 @@ quadratic characters $\theta$ of $\Q_7^\times$: the trivial one, the unramified 
 $\theta_{ur}(a)=(-1)^{v(a)}$, and two ramified ones.  The representation $I(\sigma_1)$ is
 irreducible, and $I(\sigma_\theta)$ is the sum of two irreducible representations for the
 other three.  The twist $\sigma_1\otimes\eta_s$ has $\chi=|\cdot|^{3s}$, so
-$I(\sigma_1\otimes\eta_s)$ is reducible exactly at $s=\pm1/3$.  Note that
+$I(\sigma_1\otimes\eta_s)$ is reducible for real $s$ exactly at $s=\pm1/3$.  Note that
 $\sigma_{\theta_{ur}}=\sigma_1\otimes\eta_{s}$ with $s=\pi i/(3\ln7)$.  So $\sigma_1$ and
 $\sigma_{\theta_{ur}}$ lie on the same orbit of unramified twists.
 \end{xexample}
@@ -1462,7 +1462,7 @@ This subsection reviews the results of Arit\"urk \cite{Ar80} in the form that ge
 to the $n$-fold cover, and settles the two conjectures of the 1994 manuscript about the
 intertwining form.
 
-Fix $C$ and $\bC$ as in Section~\ref{subsec:torus-reps}.  Let $\mu\in\Pi(\bC)$ be a genuine
+Assume $p\nmid n$ in the following explicit model. Fix $C$ and $\bC$ as in Section~\ref{subsec:torus-reps}.  Let $\mu\in\Pi(\bC)$ be a genuine
 character and $\sigma=\Ind_{\bC}^{\bA}\mu\in\Pi(\bA)$.  Write $\sigma=\sigma_0\otimes\eta_s$ with
 $\sigma_0$ unitary.  The real part of $s$ is determined by $\sigma$, and we write
 $s=s(\mu)=s(\sigma)$ once $\sigma_0$ is fixed.  Let $d=d_\sigma=[\bA:\bC]$ and let
@@ -1773,15 +1773,19 @@ multiplicity $m\ge1$, such that
 \Pi|_{\bG}=m\bigoplus_{i=1}^M\pi_i .
 \]
 \end{lemma}
-This follows from Lemma~\ref{lem:clifford1}, applied to the open normal subgroup
-$\overline{Z}\cdot\bG$, where $\overline Z$ is the preimage of the scalar matrices.  The
-quotient is the finite abelian group $F^\times/F^{\times2}$, and $\overline Z$ commutes with
-$\bG$ because $SL(2,F)$ is perfect.
-
-\unverified{The 1994 manuscript stated the lemma with $m=1$ and remarked that $M$ is
-independent of $\Pi$ for $n>1$.  Neither claim was verified.  For $n=2$ the multiplicity
-$m$ can be greater than one.  The restriction problem is studied in \cite{GSS26}.  See
-Problem~\ref{prob:cuspidal}.}
+Apply Lemma~\ref{lem:clifford1} to the open normal subgroup
+$H=\overline Z\cdot\bG$, where $\overline Z$ is the preimage of the scalar matrices.
+The quotient is $F^\times/F^{\times2}$, and $\overline Z$ commutes with $\bG$
+because $SL(2,F)$ is perfect. Each irreducible constituent on $H$ is an external
+tensor product $\rho\otimes\pi'$ on the product of the commuting factors, with
+compatible actions on their intersection. Here $\rho$ is finite dimensional:
+the scalar covering group is finite over its center modulo a finite index
+subgroup, so its irreducible smooth representations are finite dimensional.
+Restriction to $\bG$ gives $(\dim\rho)\pi'$. Conjugation by the ambient group
+permutes the constituents transitively and preserves these dimensions, giving
+the common multiplicity $m$. The constituents remain cuspidal by the Jacquet
+module criterion. The multiplicities and packet sizes are studied in
+\cite{GSS26}; see Problem~\ref{prob:cuspidal}.
 
 We call $\{\pi_i\}$ the \emph{packet} associated to $\Pi$.  It is natural to ask whether
 every cuspidal $\pi\in\Piu$ occurs in some packet.  For $n=2$ and $p>2$ this is
@@ -1959,11 +1963,14 @@ Let $f$ be supported in a small neighborhood of a non-central element and let $y
 that $f^y$ has disjoint support.  Then $f-f^y\ne0$ has trace zero in every representation,
 while $\pi(f-f^y)\ne0$ for suitable $\pi$.  So the trace transform has a large kernel and
 the operator-valued transform does not.  A second example is special to covers.  Let
-$a\in\bA\setminus\bZ$ and choose $b\in\bA$ with $bab^{-1}=\zeta a$, $\zeta\ne1$.  Let $f$ be
-genuine, supported on $\mu_nU$ for a small neighborhood $U$ of $a$ that is stable under
-$x\mapsto\zeta^{-1}bxb^{-1}$, and equal to $1$ on $U$.  Then
-$f^{b^{-1}}(x)=f(bxb^{-1})=\zeta^{-1}f(x)$.  So $(1-\zeta^{-1})f$, and hence $f$ itself, lies in
-the kernel of every trace.  Genuine invariant distributions do not see such elements.
+Let $a\in\bA\setminus\bZ$ be regular. Choose $b\in\bA$ with
+$bab^{-1}=\zeta a$, $\zeta\ne1$. Every genuine character vanishes at $a$
+by conjugation invariance and genuineness. The regular noncentral split locus
+is open locally at $a$ (by the regular split conjugacy charts), and the same
+argument applies throughout this locus. Thus any nonzero genuine test function
+supported in a sufficiently small genuine neighborhood of $a$ has zero trace
+in every irreducible representation, by the character integral formula.
+See Lemma~\ref{lem:vanish} and the Weyl integration formula below.
 \end{xexample}
 
 \subsection{The Schwartz space and the tempered dual}\label{subsec:schwartz}
@@ -2050,7 +2057,7 @@ $C_c^\infty(\bZ)^W$ be the space of genuine functions in $C_c^\infty(\bZ)$ with 
 invariance, and define $\calC(\bZ)^W$ similarly.
 
 \begin{lemma}[\proved\ for (1); (2) is \cited\ and \cond]\label{lem:orbital-image}
-(1) Assume $p\nmid2n$.  The map $f\mapsto\Phi_f$ is a surjection
+(1) Assume $p\nmid n$.  The map $f\mapsto\Phi_f$ is a surjection
 $C_c^\infty(\bG)\to C_c^\infty(\bZ)^W$.
 
 (2) The map $f\mapsto\Phi_f$ extends to a continuous map
@@ -2061,8 +2068,8 @@ $\calC(\bG)\to\calC(\bZ)^W$.  It is surjective if Theorem~\ref{thm:PWt}(b) holds
 the argument.  The map $(\bA x,z)\mapsto x^{-1}zx$ from
 $(\bA\backslash\bG)\times\bZ_{reg}$ to $\bG$ is a local homeomorphism, with fibers
 $\{(\bA x,z),(\bA\wt x,\wt z\wt^{-1})\}$.  Let $\phi\in C_c^\infty(\bZ)^W$ vanish near the
-singular set, and let $\alpha$ be the characteristic function of $\bA K^*$ in
-$\bA\backslash\bG$.  The function
+singular set, and let $\alpha$ be the characteristic function of $\bA\bK$ in
+$\bA\backslash\bG$, with quotient measure normalized so its integral is one.
 $f(x^{-1}zx)=\phi(z)(\alpha(\bA x)+\alpha(\bA\wt x))/(2|D(z)|^{1/2})$, extended by zero, is
 well defined, genuine, locally constant and compactly supported, and $\Phi_f=\phi$.
 
@@ -2073,9 +2080,9 @@ $f_{\varepsilon,m}(z_\varepsilon s(k))=1$.  Since $K_m$ is normal in $K$ we have
 $f_{\varepsilon,m}^K=f_{\varepsilon,m}$.  By \eqref{eq:fB},
 $\Phi_{f_{\varepsilon,m}}$ is $q^{-m}$ times the genuine function supported on
 $\mu_nz_\varepsilon\hl(U_m)$ with value $1$ on $z_\varepsilon\hl(U_m)$.  Here
-$U_m\subset F^{\times\nu}$ because $p\nmid\nu$.  The two supports are disjoint because $p$ is
-odd.  Given $\phi\in C_c^\infty(\bZ)^W$, choose $m$ so large that $\phi$ is constant on
-$z_\varepsilon\hl(U_m)$.  Then
+$U_m\subset F^{\times\nu}$ because $p\nmid\nu$. Choose $m>v_F(2)$, so that
+$-1\notin U_m$ and the two supports are disjoint, including when $p=2$.
+Increase $m$ if necessary so that $\phi$ is constant on $z_\varepsilon\hl(U_m)$.
 $\phi-\sum_\varepsilon q^m\phi(z_\varepsilon)\Phi_{f_{\varepsilon,m}}$ vanishes near the
 singular set, and the first step applies.
 
@@ -2086,7 +2093,7 @@ many circles, is the trace transform of a Schwartz function.
 \end{proof}
 
 \begin{xexample}\label{ex:Phi-eK}
-Assume $p\nmid 2n$ and let $e_K$ be the genuine function supported on $\mu_nK^*$ with
+Assume $p\nmid n$ and let $e_K$ be the genuine function supported on $\mu_nK^*$ with
 $e_K(s(k))=1$.  Then $\Phi_{e_K}$ is the genuine function supported on
 $\mu_n\hl(\OF^{\times\nu})$ with value $1$ on $\hl(\OF^{\times\nu})$.  Indeed $z\tilde u\in\mu_nK^*$
 forces $z$ to lie over $h(\OF^\times)$ and $u\in N\cap K$.
@@ -2194,7 +2201,7 @@ polynomial in $\omega(\hl(\vp^\nu))$.  These formulas extend to $f\in\calC(\bG)$
 is unitary.
 
 \begin{xexample}\label{ex:trace-eK}
-For $p\nmid2n$ and $f=e_K$ (Example~\ref{ex:Phi-eK}), formula \eqref{eq:trace-ps} gives
+For $p\nmid n$ and $f=e_K$ (Example~\ref{ex:Phi-eK}), formula \eqref{eq:trace-ps} gives
 $\tr I(\sigma)(e_K)=d_\sigma\vol(\OF^{\times\nu})$ if $\sigma$ is unramified and $0$ otherwise.
 With $\vol(\OF^\times)=1$ this is $d_\sigma/\nu=1$, the dimension of $I(\sigma)^{K^*}$
 (Lemma~\ref{lem:spherical}).
@@ -2202,12 +2209,15 @@ With $\vol(\OF^\times)=1$ this is $d_\sigma/\nu=1$, the dimension of $I(\sigma)^
 
 \subsubsection{Reducible principal series}
 Let $n$ be odd and let $I(\sigma)=\pi^+\oplus\pi^-$ be reducible with $\sigma$ unitary.  The
-sum $\Theta_{\pi^+}+\Theta_{\pi^-}$ is given by Lemma~\ref{lem:ps-character}.  The difference
-is supported on the elliptic set and on the singular set, by the same lemma applied to the
-normalized intertwining operator.  For $n=1$ it is the well-known unstable character
-attached to a quadratic extension.  For odd $n>1$ it is not known explicitly.  Some
-information can be obtained by global means \cite{Jo88,Fl80}, and the Whittaker dimensions
-of $\pi^\pm$ are computed in \cite{Sz24}.
+sum $\Theta_{\pi^+}+\Theta_{\pi^-}$ is given by Lemma~\ref{lem:ps-character}.
+For $n=1$ the difference is the well-known unstable character attached to a
+quadratic extension and vanishes on the regular split set. For odd $n>1$,
+vanishing on the entire regular split set is an expectation, not a consequence
+of the induced-character formula. The Jacquet-module character formula gives
+vanishing for split elements over $h(t)$ with $|t|\ne1$; the compact split
+case requires a separate argument. Some information can be obtained by global
+means \cite{Jo88,Fl80}, and the Whittaker dimensions of $\pi^\pm$ are computed
+in \cite{Sz24}.
 
 \subsubsection{Complementary series}
 These representations are not tempered.  Their characters are given by
@@ -2288,7 +2298,7 @@ For $f\in C_c^\infty(\bG)$ let $f^\wedge_{ps}(\sigma)=\Theta_{I(\sigma)}(f)$, $\
 \begin{enumerate}[label=(\alph*),leftmargin=*,itemsep=1pt]
 \item For every $p$, the function $f^\wedge_{ps}$ vanishes outside finitely many orbits, is a
 Laurent polynomial on each orbit, and satisfies $f^\wedge_{ps}(\sigma^w)=f^\wedge_{ps}(\sigma)$.
-\item Assume $p\nmid2n$.  Every function on $\Pi(\bA)$ with these three properties is
+\item Assume $p\nmid n$.  Every function on $\Pi(\bA)$ with these three properties is
 $f^\wedge_{ps}$ for some $f\in C_c^\infty(\bG)$.
 \end{enumerate}
 Restricted to $\Pi_u(\bA)$, the image consists of the $W$-invariant functions that vanish
@@ -2370,14 +2380,15 @@ manuscript.  At a reducible point it constrains only the sum of the two values o
 Let $f\mapsto\hat f$ be the trace transform on $C_c^\infty(\bG)$.
 \begin{enumerate}[label=(\alph*),leftmargin=*,itemsep=1pt]
 \item (Necessity; \proved.)  For every $p$ and every $f$ we have $\hat f\in PW_{ad}(\bG)$.
-\item (Surjectivity up to the reducible points; \proved.)  Assume $p\nmid2n$.  Let $P$ be a
+\item (Surjectivity up to the reducible points; \proved.)  Assume $p\nmid n$.  Let $P$ be a
 $W$-invariant function on $\Pi(\bA)$ that vanishes outside finitely many orbits and is a
 Laurent polynomial on each, and let $c$ be a finitely supported function on $\Pi_c(\bG)$.
 Then there is $f\in C_c^\infty(\bG)$ with $\hat f^{\,ind}=P$ and $\hat f|_{\Pi_c(\bG)}=c$.
 \item (Surjectivity; \cited.)  The trace transform maps $C_c^\infty(\bG)$ onto
 $PW_{ad}(\bG)$.
-\item (Kernel; \cited.)  The kernel of the trace transform is the span of the functions
-$f-f^y$.
+\item (Kernel; \cond.) Assuming density of regular semisimple orbital integrals
+in the genuine invariant distributions on the cover, the kernel of the trace
+transform is the span of the functions $f-f^y$.
 \end{enumerate}
 \end{theorem}
 \begin{proof}
@@ -2405,7 +2416,14 @@ exactly when it satisfies (PW1) and (PW2).  Indeed $\bG$ has no nontrivial unram
 characters, so the regularity condition is empty for the Levi subgroup $\bG$ and is
 (PW2) for the Levi subgroup $\bA$.
 
-(d) This is \cite[Th\'eor\`eme~5.8.10]{Li12}.
+(d) By \cite[Th\'eor\`eme~5.8.10]{Li12}, vanishing of all tempered traces
+implies vanishing of regular orbital integrals (with the hypotheses of that
+density theorem). To identify the kernel with the conjugation-difference span
+one additionally needs regular semisimple orbital integrals to separate the
+invariant quotient: their linear span must be weakly dense in its invariant
+dual. Under this additional hypothesis every genuine invariant distribution
+annihilates $f$. Algebraic duality then puts $f$ in the conjugation-difference
+span. The reverse inclusion follows from invariance of traces.
 \end{proof}
 
 \unverified{We did not find a written proof of the theorem of \cite{BDK86} for covering
@@ -2422,7 +2440,7 @@ For $p\nmid n$ the reducible points are known (Theorem~\ref{thm:reducibility}), 
 theorem gives an explicit description.
 
 \begin{xcorollary}[\proved\ from Theorems~\ref{thm:PWad} and \ref{thm:reducibility}]\label{cor:PWad-explicit}
-Assume $p\nmid 2n$.  The space $PW_{ad}(\bG)$ is the direct sum of
+Assume $p\nmid n$.  The space $PW_{ad}(\bG)$ is the direct sum of
 \begin{itemize}[leftmargin=*,itemsep=1pt]
 \item the finitely supported functions on $\Pi_c(\bG)$,
 \item for each orbit $\fX\ne w\fX$, taken up to $W$, the Laurent polynomials on $\fX$,
@@ -2431,9 +2449,10 @@ Assume $p\nmid 2n$.  The space $PW_{ad}(\bG)$ is the direct sum of
 records the value of $h$ at one chosen constituent.
 \end{itemize}
 The first three summands are in the image of the trace transform by part (b).  The fourth
-is in the image by part (c).  There are four reducible points up to $W$, on two orbits:
-for $n$ odd they are $\chi_\sigma=|\cdot|$ and the three nontrivial quadratic characters,
-and for $n$ even they are the four classes with $\chi_\sigma=|\cdot|$.
+is in the image by part (c). There are $[F^\times:F^{\times2}]$ reducible points
+up to $W$: for $n$ odd they are $\chi_\sigma=|\cdot|$ and the nontrivial
+quadratic characters, and for $n$ even they are the classes with
+$\chi_\sigma=|\cdot|$. This number is four for odd residue characteristic.
 \end{xcorollary}
 
 \begin{xexample}[The linear group]\label{ex:EP}
@@ -2469,12 +2488,12 @@ polynomial $q^m\bigl(\sum_{|j|\le m}X^j-q^{-1}\sum_{|j|<m}X^j\bigr)$ in $X=\chi(
 \item The \emph{operator-valued transform} $f\mapsto(\pi(f))_\pi$ is injective on
 $C_c^\infty(\bG)$.  Its image is described by a matrix Paley--Wiener theorem
 (\cite[Appendix~A]{He25} for covers).
-\item The \emph{trace transform} $f\mapsto\hat f$ has kernel the span of the $f-f^y$, which
-equals the span of the commutators $f*g-g*f$.
-\item The \emph{cocenter} of the Hecke algebra is the quotient by this span.  By
-Theorem~\ref{thm:PWad} the trace transform identifies it with $PW_{ad}(\bG)$.  The
-identification is algebraic.  No topology is involved, and every linear functional on
-$C_c^\infty(\bG)$ is a distribution.
+\item The \emph{trace transform} $f\mapsto\hat f$ annihilates the span of the
+$f-f^y$, which equals the span of the commutators $f*g-g*f$.
+\item The \emph{cocenter} of the Hecke algebra is the quotient by this span.
+Theorem~\ref{thm:PWad}(c),(d) identifies it with $PW_{ad}(\bG)$ under the
+additional density hypothesis in (d). The identification is algebraic.
+Every linear functional on $C_c^\infty(\bG)$ is a distribution.
 \item The \emph{Schwartz-space transform} is the trace transform on $\calC(\bG)$,
 restricted to tempered representations.  Here the topology matters, and the image is
 described by smooth functions instead of Laurent polynomials (Theorem~\ref{thm:PWt}).
@@ -2518,14 +2537,14 @@ vanishes at every irreducible $I(\sigma)$, and its two values at the constituent
 reducible $I(\sigma)$ add up to zero.  By Theorem~\ref{thm:unitary-dual} every constituent
 of a reducible $I(\sigma)$ is unitary.  So $h=0$.  Conversely, given $h\in PW_u(\bG)$ with
 polynomials $P_{\fX}$, extend $h$ by $h(I(\sigma))=P_{\fX}(\sigma)$ at the irreducible
-non-unitary $I(\sigma)$ and by zero at the remaining cuspidal classes.  The result lies in
+non-unitary $I(\sigma)$. All cuspidal classes are already unitary. The result lies in
 $PW_{ad}(\bG)$.  (c) follows from (b) and Theorem~\ref{thm:PWad}(c).
 \end{proof}
 
 Conditions (U3) and (U4) show how the parts of the unitary dual are tied together.  The
 values of $h$ on a complementary series are determined by its values on the unitary
 principal series of the same orbit, by analytic continuation.  In the coordinate
-$x=q^{-\nu s}$ they are the values of a Laurent polynomial at real points, which is the
+$z=q^{-\nu s}$ they are the values of a Laurent polynomial at real points, which is the
 ``finite Laurent series'' of the 1994 statement.  The values at $\pi_{sp}$ and $\pi_{nt}$
 are not both free.  The value at $\pi_{sp}$ is free, and the value at $\pi_{nt}$ is then
 determined.  At a reducible unitary principal series one of the two values is free.  On
@@ -2681,7 +2700,9 @@ The functional $f\mapsto f(1)$ on $\calC(\bG)$ is invariant and tempered.  By th
 Plancherel formula \cite[Corollaire~2.6.5]{Li12} it is the functional on $PW_t(\bG)$ whose
 component on each circle $S_d$ is the Plancherel density, a positive multiple of
 $\mu(\sigma)\,d\theta$, and whose component at each square-integrable class is its formal
-degree.  All of its infinitely many components are nonzero.  On the circles through a
+degree. The components at the chosen constituents of reducible unitary
+principal series are zero: the continuous Plancherel term depends only on
+$h^{ind}$. The circle and square-integrable components are nonzero. On the circles through a
 Weyl-fixed point with $\chi_\sigma=1$ the density vanishes at that point, by
 Theorem~\ref{thm:plancherel}.
 \end{xexample}
@@ -2726,7 +2747,7 @@ Proposition~\ref{prop:cocenter}, which extends to $\calC(\bG)$ by continuity.
 \end{proof}
 Invariance of $T$ is necessary for the factorization.  Its sufficiency is the content of
 Theorem~\ref{thm:PWt}(c).  For compactly supported test functions the analogous statement
-is unconditional given the density theorem: by Theorem~\ref{thm:PWad}(d) every invariant
+follows under the additional density hypothesis of Theorem~\ref{thm:PWad}(d): every invariant
 distribution on $C_c^\infty(\bG)$ is $\lambda\circ\hat{\ }$ for a unique linear functional
 $\lambda$ on the image of the trace transform.
 
@@ -2839,9 +2860,9 @@ Conj.\ 3.13 & Theorem~\ref{thm:detJ} (corrected) & $p\nmid n$ & $p\mid n$\\
 Conj.\ 3.15 & Theorem~\ref{thm:complementary} & $p\nmid n$ & $p\mid n$\\
 Conj.\ 3.16 & Theorem~\ref{thm:special} (corrected) & $p\nmid n$ & $p\mid n$; ellipticity\\
 Conj.\ 4.8 & Proposition~\ref{prop:temp-unitary} & all $n$, $p$ (cited) & none\\
-Lemma 4.6 & Lemma~\ref{lem:orbital-image} & (1): $p\nmid2n$ (proved) & (1) for $p\mid2n$; (2) surjectivity\\
-Lemma 5.4 & Lemma~\ref{lem:PWps} & (a) all $p$; (b) $p\nmid2n$ (proved) & (b) for $p\mid2n$\\
-Theorem 5.8 & Theorem~\ref{thm:PWad} & (a) all $p$; (b) $p\nmid2n$ (proved) & (c), (d) cited\\
+Lemma 4.6 & Lemma~\ref{lem:orbital-image} & (1): $p\nmid n$ (proved) & (1) for $p\mid n$; (2) surjectivity\\
+Lemma 5.4 & Lemma~\ref{lem:PWps} & (a) all $p$; (b) $p\nmid n$ (proved) & (b) for $p\mid n$\\
+Theorem 5.8 & Theorem~\ref{thm:PWad} & (a) all $p$; (b) $p\nmid n$ (proved) & (c) cited; (d) conditional\\
 Theorem 5.9 & Theorem~\ref{thm:PWu} (corrected) & (a), (b): $p\nmid n$ (proved) & (c) through \ref{thm:PWad}(c)\\
 Theorem 5.10 & Theorem~\ref{thm:PWt} & (a) & (b), (c) conditional\\
 Prop.\ 6.2 & Proposition~\ref{prop:dual} (corrected) & all cases (proved) & none\\
@@ -2894,19 +2915,19 @@ Dotted arrows mark conditional steps.
 \draw[->] (torus)--(wfix);
 \draw[->,dashed] (cocycle)--(gk);
 \draw[->] (torus.south west)--(gk.north east);
-\draw[->] (gk)--(pl);
+% \draw[->] (gk)--(pl); % not a logical deduction
 \draw[->,dashed] (pl.north east) to[bend left=28] (red.north west);
 \draw[->,dashed] (r1)--(red);
 \draw[->] (wfix.south east)--(red.north west);
 \draw[->,dashed] (geom)--(red);
-\draw[->,dotted,thick] (red)--(wild);
+% \draw[->,dotted,thick] (red)--(wild); % not a logical deduction
 % rows B-C
 \draw[->] (red)--(spec);
 \draw[->] (red.south west)--(detj.north east);
 \draw[->,dashed] (r1)--(comp);
 \draw[->,dashed] (pl.south east)--(comp.north west);
 \draw[->,dashed] (lq.south west)--(spec.north east);
-\draw[->] (detj)--(comp);
+% \draw[->] (detj)--(comp); % not a logical deduction
 \draw[->] (comp)--(spec);
 \draw[->] (spec)--(udual);
 \draw[->] ($(torus.south)+(-0.4,0)$) -- (1.6,-1.25) -- (1.6,-3.65) -- (0.9,-3.65) -- ($(abel.north)+(0.9,0)$);
@@ -3031,8 +3052,10 @@ $X=7^{-3s}$ and $c(\sigma)=(1-7^{-1-3s})/(1-7^{-3s})$.  In the proof of
 Theorem~\ref{thm:GK} the contribution of the shell $v(x)=-m$ is the average over
 $u\in\mathbb F_7^\times$ of $(u,7)_3^{-m}$, a cubic character.  It is $1$ for $3\mid m$ and
 $0$ otherwise.
-\item \emph{Reducibility.}  $I(\sigma_1\otimes\eta_s)$ is reducible exactly at $s=\pm1/3$
-modulo $2\pi i/(3\ln7)$.  $I(\sigma_\theta)$ is reducible for the three nontrivial $\theta$.
+\item \emph{Reducibility.} $I(\sigma_1\otimes\eta_s)$ is reducible at $s=\pm1/3$
+and at $s=\pi i/(3\ln7)$ modulo $2\pi i/(3\ln7)$.
+The latter is the unramified quadratic datum. $I(\sigma_\theta)$ is reducible
+for the three nontrivial $\theta$.
 \item \emph{Complementary series.}  $I(\sigma_1\otimes\eta_s)$, $0<s<1/3$.  At $s=1/3$ we
 have $X=1/7$ and $c(\sigma)=8/7\ne0$, so the spherical vector survives in $\pi_{nt}$.
 \item \emph{Discrete series.}  One special representation, and the cuspidal
@@ -3084,7 +3107,7 @@ Spherical vector, $c(\sigma)$ & Theorem~\ref{thm:GK} & not available\\
 Unitary reducibility & Theorems~\ref{thm:n-even}, \ref{thm:n-odd-conj} & known unless $4\mid n$\\
 Plancherel measure & \cite{GS16} & \cite{Sz19} for $4\nmid n$\\
 Endpoint $s=1/n$ & Theorem~\ref{thm:detJ} & expected, see below\\
-Paley--Wiener (principal series) & Lemma~\ref{lem:PWps} for $p\nmid2n$ & necessity only\\
+Paley--Wiener (principal series) & Lemma~\ref{lem:PWps} for $p\nmid n$ & necessity only\\
 \bottomrule
 \end{tabular}
 \end{center}
@@ -3131,15 +3154,15 @@ matching is related to the map $\sigma\mapsto\chi_\sigma$ on principal-series pa
 The precise comparison was not carried out here.
 
 \paragraph{The synthesis manuscript \cite{JoSyn}.}  This is an earlier revision of
-the 1994 notes, combined with the $SL(2)$ part of \cite{Jo01}.  Four of its results are
-incorporated here after independent verification: the vanishing of orbital integrals off
-the center (Lemma~\ref{lem:vanish}), the Hermitian pairing that replaces the bilinear one
-(Lemma~\ref{lem:hermitian}), the identification of the kernel and the image of the
-endpoint operator (Theorem~\ref{thm:special}(a),(b)), and the algebraic factorization of
-invariant distributions through the trace transform (Theorem~\ref{thm:PWad}(d) and the
-remark after Proposition~\ref{prop:factor}).  That manuscript left open the normalization
-of the endpoint and the exceptional datum in Moen's theorem.  Both are settled here by
-Theorem~\ref{thm:GK} and Proposition~\ref{prop:Wfixed}.
+the 1994 notes, combined with the $SL(2)$ part of \cite{Jo01}. Three of its results
+are incorporated here: the vanishing of orbital integrals off the center
+(Lemma~\ref{lem:vanish}), the Hermitian pairing (Lemma~\ref{lem:hermitian}),
+and the identification of the kernel and image of the endpoint operator
+(Theorem~\ref{thm:special}(a),(b)). The algebraic factorization of invariant
+distributions through the trace transform requires the density hypothesis
+in Theorem~\ref{thm:PWad}(d). The normalization of the endpoint and the
+exceptional datum in Moen's theorem are treated in Theorem~\ref{thm:GK}
+and Proposition~\ref{prop:Wfixed}.
 
 \paragraph{Depth-zero characters \cite{JoCh}.}  For $n$ odd and $p\nmid2n$ that manuscript
 computes the characters of depth-zero supercuspidal representations of $\bG$ on the
@@ -3206,7 +3229,9 @@ Lemma~\ref{lem:splittings}(c).
 \emph{Obstruction.}  The wild Hilbert symbol on the unit filtration requires an explicit
 reciprocity law \cite{Se81}.  \emph{Known.}  Existence and the index
 $\nu|\nu|_F^{-1/2}$ (Proposition~\ref{prop:center}).  The subgroup $C_0$ is isotropic but
-too small.  A Lagrangian decomposition is constructed in \cite[Lemma~2.3]{Sz19}.
+too small. A Lagrangian decomposition is constructed in \cite[Lemma~2.3]{Sz19};
+the remaining task is an explicit description in the unit filtration and the
+determination of the least splitting depth $m_0$.
 \emph{Approaches.}  Use the formula of Artin--Hasse--Iwasawa for the symbol on principal
 units.  \emph{Consequences.}  Explicit models of $\sigma$ and of $I(\sigma)$, needed for any
 computation with $K$-types in the wild case.
@@ -3296,10 +3321,13 @@ $PGL(2)$.
 \begin{example}\label{ex:open}
 A concrete test case for Problem~\ref{prob:BDK} is $F=\Q_7$, $n=3$, and the reducible
 point $\sigma=\sigma_1\otimes\eta_{1/3}$.  One needs $f$ with $\hat f^{\,ind}=0$ and
-$\Theta_{\pi_{sp}}(f)\ne0$.  A candidate is $e_K+e_{K'}-e_I$, with the idempotents formed
-from the splittings over $K$, over the other maximal compact subgroup $K'$ and over the
-Iwahori subgroup $I$.  It has the required property if the two splittings agree on $I$ and
-the dimensions of fixed vectors are as in the table of Example~\ref{ex:EP}.
+$\Theta_{\pi_{sp}}(f)\ne0$. The linear-group expression $e_K+e_{K'}-e_I$
+suggests a test, not a verified candidate for the cover. First compute the
+ratio of the two splittings on $I$, including its restriction to diagonal
+units (conjugation by $\operatorname{diag}(\vp,1)$ may introduce a Hilbert
+symbol). If they disagree, the three idempotents cannot be used as in the
+linear example without modification. The dimensions of the relevant fixed
+spaces must also be computed independently.
 \end{example}
 
 %======================================================================
@@ -3316,7 +3344,7 @@ section (Lemmas~\ref{lem:weyl}, \ref{lem:power}).  The Weyl-fixed inducing data
 (Theorem~\ref{thm:GK}).  The Hermitian duality of principal series
 (Lemma~\ref{lem:hermitian}).  The character and the trace of principal series
 (Lemma~\ref{lem:ps-character}).  The image of the trace transform on full principal series
-for $p\nmid2n$ (Lemmas~\ref{lem:orbital-image}(1), \ref{lem:PWps}).  Necessity in the three
+for $p\nmid n$ (Lemmas~\ref{lem:orbital-image}(1), \ref{lem:PWps}).  Necessity in the three
 Paley--Wiener theorems, surjectivity up to the reducible points
 (Theorem~\ref{thm:PWad}(a),(b)), and the bijection between the admissible and the unitary
 Paley--Wiener spaces (Theorem~\ref{thm:PWu}(b)).  The dual of the tempered Paley--Wiener
@@ -3330,9 +3358,9 @@ non-cuspidal unitary and tempered duals, for $p\nmid n$
 
 \paragraph{Cited.}  Theorems~\ref{thm:CCR}, \ref{thm:moen-even}, \ref{thm:n-even},
 \ref{thm:moen-odd}, \ref{thm:n-odd-conj}, \ref{thm:plancherel}, \ref{thm:rankone}, the
-surjectivity and kernel statements \ref{thm:PWad}(c),(d).
+surjectivity statement \ref{thm:PWad}(c).
 
-\paragraph{Conditional.}  Theorem~\ref{thm:PWt}(b),(c) and Theorem~\ref{thm:FT-dist}.
+\paragraph{Conditional.} Theorem~\ref{thm:PWad}(d), Theorem~\ref{thm:PWt}(b),(c) and Theorem~\ref{thm:FT-dist}.
 
 \paragraph{Open.}  Conjecture~\ref{conj:wild4} and the problems of
 Section~\ref{sec:open}.
@@ -3341,8 +3369,8 @@ Section~\ref{sec:open}.
 For the reader who wants one case in full: for $F=\Q_7$ and $n=3$ every statement of
 Sections~\ref{sec:background} to \ref{sec:image} is either proved here or deduced from the
 cited theorems, with the exception of the surjectivity in
-Theorems~\ref{thm:PWad}(c), \ref{thm:PWu}(c) and \ref{thm:PWt}(b), and the kernel statement
-\ref{thm:PWt}(c).
+Theorems~\ref{thm:PWad}(c), \ref{thm:PWu}(c) and \ref{thm:PWt}(b), and the kernel statements
+\ref{thm:PWad}(d) and \ref{thm:PWt}(c).
 \end{example}
 
 %======================================================================

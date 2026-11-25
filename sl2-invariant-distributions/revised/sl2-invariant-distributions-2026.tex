@@ -41,7 +41,7 @@
 \newcommand{\Ann}{\operatorname{Ann}}
 \newcommand{\Ext}{\operatorname{Ext}}
 \newcommand{\ev}{\operatorname{ev}}
-\title[A hitch-hiker's guide to invariant distributions]{A hitch-hiker's guide to invariant distributions on \\ $\mathrm{SL}_2$ over a $p$-adic field \\[0.6ex] Draft 3. Corrected and expanded working version}
+\title[A hitch-hiker's guide to invariant distributions]{A hitch-hiker's guide to invariant distributions on \\ $\mathrm{SL}_2$ over a $p$-adic field \\[0.6ex] Draft 4. Corrected and expanded version}
 \author{David Joyner}
 \email{wdjoyner@gmail.com}
 \thanks{The original is an unpublished manuscript of the same title, dated November 2, 1994. This corrected and expanded version is dated November 24, 2026.}
@@ -50,17 +50,59 @@
 \keywords{Invariant distributions, $p$-adic $\mathrm{SL}_2$, trace Paley--Wiener theorem, principal series, supertempered virtual characters}
 \begin{document}
 \begin{abstract}
-This AI-aided paper is a corrected and expanded version of notes written in 1994. Argon-Gemini and Sol-ChatGPT revised the notes, Sol-ChatGPT refereed them, and Fable-Claude made the style revision and developed the section on supertempered distributions. See the Acknowledgments and the revision log for details. The paper is an expository introduction to invariant distributions on $G=\mathrm{SL}_2(F)$ for a non-archimedean local field $F$ of odd residue characteristic.  We explain the representation-theoretic background, distinguish the operator-valued Fourier transform from the trace transform, state the trace Paley--Wiener theorem in its correct Grothendieck-group form, and use the invariant quotient of the Hecke algebra to describe spectral distributions. We give an elementary example showing that normalized orbital integrals need not vanish at singular elements, prove a Laurent-coefficient criterion for analytic functionals, and distinguish weak constant terms from elliptic support.  We develop the geometry of exceptional Bernstein fibers, prove algebraic determination of admissible traces by tempered traces, and describe spectral duals by moment growth and central recurrences. Local finite-character interpolation gives admissibility for finite Bernstein support, subject to classical character regularity inputs, and gives a corrected split descent criterion in the unramified block. For supertempered distributions we assume that $F$ has characteristic zero. We give a direct proof of Herb's classification in rank one, compare the tempered and algebraic splittings of the elliptic quotient, identify the weak constant term of a finite-block distribution with its induced part, and give a criterion at $\pm I$ in terms of the trivial-orbit coefficient of the local character expansion. The global Schwartz topology and the group-side analytic assertions require further verification.
+This AI-aided paper is a corrected and expanded version of notes written in 1994. Argon-Gemini, Sol-ChatGPT and Fable-Claude revised and extended the notes, and Sol-ChatGPT refereed two of the drafts. See the Acknowledgments and the revision log for details. The paper is an expository and research-oriented account of invariant distributions on $G=\mathrm{SL}_2(F)$, where $F$ is a non-archimedean local field of odd residue characteristic. Its theme is the difference between the operator-valued Fourier transform $f\mapsto\pi(f)$ and the trace transform $f\mapsto\tr\pi(f)$, which sees only the cocenter of the Hecke algebra. Every conjugation-invariant linear functional on the Hecke algebra is a distribution, so the invariant distributions form the algebraic dual of the trace Paley--Wiener space. In rank one this space has explicit coordinates: a Laurent polynomial on each family of principal series, and finitely many scalars at the reducible points. We prove that tempered traces determine all admissible traces algebraically but not continuously. We describe the invariant distributions that extend to holomorphic, smooth and Schwartz spectral spaces by the growth of their spectral moments. A distribution with finite Bernstein support is locally a finite combination of tempered characters, and we determine when its normalized restriction to the split torus is locally constant. We give a direct proof of Herb's classification of supertempered virtual characters in rank one and compare two splittings of the elliptic quotient. The results on admissibility and on supertempered characters assume that $F$ has characteristic zero. The results on the Schwartz space depend on Arthur's trace Paley--Wiener theorem. The source checks that remain are listed in the text.
 \end{abstract}
 \maketitle
 \tableofcontents
 
 \section{Introduction and scope}\label{sec:intro}
+This section states the objectives of the paper, lists its principal results, describes its structure, and separates what is proved here from what is cited and from what remains open. It ends with the notation.
+
+\subsection{Background and objectives}\label{sec:objectives}
 The original notes were written to understand invariant distributions in the simplest non-abelian reductive $p$-adic group.  The rank-one case is especially attractive: the torus of diagonal matrices is one-dimensional, the principal-series characters are explicit, and the reducible principal series already illustrate the role of virtual characters.  These features also make $\mathrm{SL}_2(F)$ a useful point of comparison with genuine representations of metaplectic covers.
 
 There is a conceptual distinction that controls the entire subject.  The map $f\mapsto\pi(f)$ is an \emph{operator-valued} Fourier transform.  Its traces $\Theta_\pi(f)=\tr\pi(f)$ are invariant spectral data, and do not determine the original test function $f$.  They determine instead its image in the \emph{invariant quotient} (also called the cocenter) of the Hecke algebra.  Once this is taken into account, the Bernstein--Deligne--Kazhdan theorem has a precise and efficient statement.
 
-We distinguish results proved here, cited results, conditional identifications and open problems. Sections \ref{sec:spectral-geometry}, \ref{sec:descent} and \ref{sec:supertemp} assume that $F$ is a finite extension of $\mathbb Q_p$ with $p$ odd, because they use Harish-Chandra's regularity theory, the local character expansion and Herb's theorems. The rank-one spectral models make the comparison of the three trace images explicit. Their full global topological identification, general admissibility-preserving descent beyond the rank-one cases treated here and group-side analyticity criteria remain research tasks.
+The objective is to describe invariant distributions on $G$ as linear functionals on spectral data, in a case where every object can be written down. Three points of view meet. The algebraic one uses Bernstein components, Grothendieck groups, the cocenter and the action of the Bernstein center. The analytic one uses the Schwartz space, spaces of holomorphic functions and their continuous duals. The geometric one uses orbital integrals, descent to the torus, the exceptional fibers of the spectrum and the elliptic representations. The elementary rank-one calculations connect the three.
+
+\subsection{Principal results}\label{sec:results}
+The main statements are the following. Each is proved in the paper from the classical inputs named in its hypotheses.
+\begin{enumerate}[label=\arabic*.,leftmargin=*]
+\item \emph{Invariant distributions are an algebraic dual.} The span of the convolution commutators equals the span of the conjugation differences $f-f^g$ (Lemma \ref{lem:conj}). Every linear functional on the Hecke algebra is continuous. With Kazhdan's density theorem this identifies the invariant distributions with the full algebraic dual of the trace Paley--Wiener space (Proposition \ref{prop:alg-dual}).
+\item \emph{Normalized orbital integrals need not vanish at singular elements.} The normalized split orbital integral of $\mathbf 1_K$ is identically one on the regular units (Example \ref{ex:K}).
+\item \emph{The geometry of the spectrum.} The support map to the Bernstein variety has doubled fibers, and the unitary dual is not Hausdorff at them (Proposition \ref{prop:endpoint-limits}). The admissible dual has a standard Borel structure (Proposition \ref{prop:borel-model}). The trace image of a block is a polynomial ring with two extra scalar coordinates (Proposition \ref{prop:algebraic-pw}).
+\item \emph{Tempered traces determine admissible traces, but not continuously.} The restriction maps from admissible to unitary to tempered trace data are isomorphisms (Theorem \ref{thm:pwcomparison}). Evaluation at a non-tempered representation is not continuous for the smooth topology (Theorem \ref{thm:pwinstability}).
+\item \emph{Three duality theories.} A functional on the Laurent polynomials extends to holomorphic functions on $\mathbb C^\times$, or to smooth functions on the circle, exactly when its moments grow at most exponentially, or at most polynomially (Theorems \ref{thm:laurent}, \ref{thm:three-duals}, \ref{thm:duality-moments} and \ref{thm:duality-holomorphic}). Eigenfunctionals and generalized eigenfunctionals of the Bernstein center are computed by a recurrence (Theorems \ref{thm:duality-eigen} and \ref{thm:duality-jets}).
+\item \emph{Admissibility and descent.} A distribution with finite Bernstein support is, on each relatively compact open set, a finite combination of tempered characters (Theorem \ref{thm:local-interpolation}). It is therefore admissible (Theorem \ref{thm:finite-block-admissibility}). Its normalized restriction to the split torus extends to a locally constant function exactly when a condition on the trivial-orbit coefficients holds (Theorem \ref{thm:unramified-descent} and Corollary \ref{cor:descent}).
+\item \emph{Supertempered distributions.} The supertempered virtual characters are spanned by the discrete series characters and the three differences of quadratic constituents (Theorem \ref{thm:herb-rank-one}). They give one of two natural splittings of the elliptic quotient (Theorem \ref{thm:twosplit}). The weak constant term of a finite-block distribution is its induced part (Theorem \ref{thm:decomp}).
+\end{enumerate}
+No claim of novelty is made for these statements. Most are rank-one cases of general theorems, and the purpose is to make them explicit.
+
+\subsection{Structure of the paper}\label{sec:structure}
+The literature review follows this introduction. Section \ref{sec:rep} is background on representations, the principal series and the Schwartz space. Section \ref{sec:spectral-geometry} describes the spectrum as a set, a topological space, a Borel space and an algebraic variety. Section \ref{sec:orbital} recalls orbital integrals and computes one of them. Section \ref{sec:cocenter} is the center of the paper: the trace transform, the cocenter, the trace Paley--Wiener theorem, and the comparison of the admissible, unitary, tempered and Schwartz trace images. Sections \ref{sec:tempered-duality} and \ref{sec:admissible-duality} describe the continuous duals of the tempered and the admissible spectral spaces. Section \ref{sec:descent} treats admissible distributions, descent to the torus and finiteness conditions. Section \ref{sec:supertemp} treats supertempered distributions. Section \ref{sec:summary} summarizes the results and the open problems. A glossary of technical terms comes before the Acknowledgments.
+
+\subsection{Hypotheses, classical inputs and open questions}\label{sec:status}
+Sections \ref{sec:rep}, \ref{sec:orbital} and the first part of Section \ref{sec:cocenter} allow any non-archimedean local field of odd residue characteristic, except where Kazhdan's density theorem is used (Remark \ref{rem:density-char}). Sections \ref{sec:spectral-geometry}, \ref{sec:descent} and \ref{sec:supertemp} assume that $F$ is a finite extension of $\mathbb Q_p$ with $p$ odd, because they use Harish-Chandra's regularity theory, the local character expansion and Herb's theorems. Everything in the paper concerns the rank-one group $\mathrm{SL}_2$. No statement is made for groups of higher rank, except for the quoted general theorems.
+
+We distinguish results proved here, cited results, conditional identifications and open problems. The main cited results are the classification of the irreducible representations of $G$, the trace Paley--Wiener theorem \cite{BDK86}, the density theorem \cite{Ka86}, Arthur's trace Paley--Wiener theorem for Schwartz functions \cite{Ar94}, Harish-Chandra's regularity theorems \cite{HC99}, and the theorems of Casselman \cite{Ca77} and Herb \cite{He94}. A statement whose proof uses a source that has not been checked in detail says so, and the places where a check is outstanding are marked ``Remark 2026.$n$''.
+
+The rank-one spectral models make the comparison of the three trace images explicit. Three questions remain open: the full topological identification of the Schwartz trace image and of the closed commutator subspace, admissibility and descent for distributions with infinite Bernstein support, and a criterion on the group for the analyticity of a spectral functional. They are discussed in Section \ref{sec:summary}.
+
+\subsection{The running example}\label{sec:running}
+The field $F=\mathbb Q_3$ is used as a running example. Here $q=3$, the uniformizer is $3$, and the square classes are represented by $1,2,3,6$. The table lists where the example appears.
+\begin{center}\small
+\begin{tabularx}{\linewidth}{@{}p{.37\linewidth}X@{}}\toprule
+Topic & What is computed for $\mathbb Q_3$\\\midrule
+Reducibility (Section \ref{sec:rep}) & The five reducible inducing characters $|\cdot|^{\pm1}$, $\eta_2$, $\eta_3$, $\eta_6$, and the exceptional unramified parameters $z\in\{\tfrac13,-1,3\}$\\
+Complementary series (Section \ref{sec:rep}) & The interval $\tfrac13<z<1$ and its inverse\\
+Spectrum (Section \ref{sec:spectral-geometry}) & The doubled fibers over $u=-2$ and $u=\tfrac{10}3$\\
+Orbital integrals (Section \ref{sec:orbital}) & $\mathcal O_{a(t)}(\mathbf 1_K)=3^n$ at $t=1+3^n$\\
+Trace coordinates (Section \ref{sec:cocenter}) & The polynomial $Q(u)=u^2-2$, with values $2$ and $\tfrac{82}9$ at the exceptional points\\
+Moments and recurrences (Section \ref{sec:admissible-duality}) & The eigenfunctional with moments $3^n+3^{-n}$\\
+Descent (Section \ref{sec:descent}) & The values $3^{-n}$ of $|t-t^{-1}|$ at $t=1+3^n$\\
+Supertempered characters (Section \ref{sec:supertemp}) & The three differences $D_{\eta_2}$, $D_{\eta_3}$, $D_{\eta_6}$, and a combination of discrete series characters that descends\\\bottomrule
+\end{tabularx}
+\end{center}
 
 \subsection{Notation and conventions}\label{sec:notation}
 This subsection fixes the field, the group and its subgroups, the normalization of induction, and the main symbols. The table at the end collects the notation for later reference.
@@ -110,6 +152,10 @@ Clozel \cite{Cl91} treats invariant harmonic analysis on the Schwartz space. It 
 
 Arthur \cite{Ar93} introduced the elliptic tempered virtual characters attached to the $R$-group. He expected them to span the supertempered virtual characters. Herb \cite{He94} proved this. She also showed that a tempered virtual character is supertempered if and only if all of its weak constant terms vanish. Section \ref{sec:supertemp} rests on these two papers. Herb's paper appeared in 1994, the year of the original notes.
 
+Arthur \cite{Ar94} proved a trace Paley--Wiener theorem for the Schwartz space, also in 1994. The trace map from the Schwartz space to a space of smooth functions on the parameters $(M,\sigma,r)$ is continuous, open and surjective. The statements about the Schwartz trace image in Sections \ref{sec:spectral-geometry}, \ref{sec:cocenter} and \ref{sec:tempered-duality} depend on this theorem.
+
+Tadi\'c studied the topology of the unitary dual of a reductive group over a local field \cite{Ta83}. This is the source of the questions about the Fell topology and the Borel structure in Section \ref{sec:spectral-geometry}. His notes on $\mathrm{SL}(n)$ \cite{Ta92} describe the representations of $\mathrm{SL}(n)$ by restriction from $\mathrm{GL}(n)$.
+
 Casselman \cite{Ca77} related the character of an admissible representation on contracting elements to the character of its Jacquet module. Rodier \cite{Ro75} related Whittaker models to the regular terms of the local character expansion. Keys \cite{Ke82} computed the $R$-groups of the reducible principal series, and Labesse and Langlands \cite{LL79} described the packets of $\mathrm{SL}_2$. Borel \cite{Bo76} identified the unramified block with the modules over the Iwahori--Hecke algebra, and Kottwitz \cite{Ko88} introduced the Euler--Poincar\'e function. Harish-Chandra introduced supertempered distributions for real groups \cite{HC83}. Section \ref{sec:supertemp} uses these works.
 
 \subsection*{After 1994}
@@ -123,7 +169,11 @@ Adler, DeBacker, Sally and Spice \cite{ADSS11} derive the supercuspidal characte
 
 Schneider and Stuhler \cite{SS97} proved that the Euler--Poincar\'e pairing is the elliptic pairing and gave a fixed-point formula for characters at elliptic elements. Korman \cite{Ko04} extended the formula to compact elements in rank one. Reeder \cite{Re01} related the elliptic space of Iwahori-spherical representations to elliptic representations of Weyl groups. Opdam and Solleveld \cite{OS13} computed extensions of tempered representations and recovered Arthur's inner product formula. Ciubotaru and He \cite{CH17,CH21} studied elliptic and rigid cocenters. Aubert and Plymen \cite{AP24} compared the character formulas of $\mathrm{SL}_2$ with the endoscopic character identities.
 
-Section \ref{sec:supertemp} uses the fixed-point formulas of \cite{SS97,Ko04} in two proofs. The other works after 1994 are not used in a proof in this paper. They are listed to orient the reader.
+Harish-Chandra's lectures on admissible invariant distributions \cite{HC99} contain the regularity theorems and the local character expansion used in Sections \ref{sec:descent} and \ref{sec:supertemp}. DeBacker \cite{De02} proved homogeneity results that make the range of validity of the expansion precise. Aizenbud, Gourevitch and Sayag \cite{AGS15} studied distributions that are finite under the Bernstein center. They proved that the wave-front set of such a distribution lies in the nilpotent cone. The preprint \cite{CT26} concerns admissibility for the Bernstein center. No result of \cite{De02}, \cite{AGS15} or \cite{CT26} is used in a proof here.
+
+Roche \cite{Ro98} constructed types for the principal series blocks of split groups and identified their Hecke algebras. Aubert, Baum, Plymen and Solleveld \cite{ABPS14,ABPS17,ABPS19} described blocks of the smooth dual by extended quotients. Section \ref{sec:spectral-geometry} compares its explicit description with theirs. Solleveld studied completions of Hecke algebras \cite{So19} and computed the Hochschild homology of the Hecke algebra and of the Schwartz algebra \cite{So24}. His survey \cite{So25} covers both. Hochschild homology in degree zero is the cocenter, so these works bear on the open question about the closed commutator subspace of the Schwartz algebra.
+
+Section \ref{sec:supertemp} uses the fixed-point formulas of \cite{SS97,Ko04} in two proofs. Sections \ref{sec:spectral-geometry}, \ref{sec:cocenter} and \ref{sec:tempered-duality} use \cite{Ar94}, and Sections \ref{sec:descent} and \ref{sec:supertemp} use \cite{HC99}. The other works after 1994 are not used in a proof in this paper. They are listed to orient the reader.
 
 \section{Representations: definitions and the rank-one families}\label{sec:rep}
 This section is the background for the rest of the paper. It recalls smooth and admissible representations, the principal series and its points of reducibility, the quadratic characters of $F^\times$, and the Schwartz space. Nothing in it is new. The section fixes the normalizations that the later sections use.
@@ -163,9 +213,36 @@ At $|\cdot|^{\pm1}$ the induced representation has constituents the trivial repr
 This is the standard $\mathrm{SL}_2$ principal-series classification; see \cite{GG63,Si79,Ca93}.  The $|\cdot|^{\pm1}$ exceptions arise because the normalized induction \eqref{eq:induction} includes the modular factor $\delta_B^{1/2}=|\cdot|$ in its inducing model.  They must not be omitted when quoting a criterion originally formulated for an unnormalized induction.
 \end{proof}
 
-If $\chi$ is unitary and $I(\chi)$ is irreducible, it is tempered. The irreducible constituents at nontrivial quadratic characters, the Steinberg representation, and supercuspidal representations are also tempered; the trivial representation is not tempered.  Unitary complementary series exist on the real unramified segment (the precise endpoint conventions depend on the normalization above), but they are not tempered.  This paragraph is a guide to the families, not a new proof of the full unitary dual classification.
+If $\chi$ is unitary and $I(\chi)$ is irreducible, it is tempered. The irreducible constituents at nontrivial quadratic characters, the Steinberg representation, and supercuspidal representations are also tempered; the trivial representation is not tempered.
+
+With the normalization \eqref{eq:induction} the \emph{complementary series} consists of the representations
+\begin{equation}\label{eq:complementary}
+I(|\cdot|^s),\qquad 0<s<1 .
+\end{equation}
+They are irreducible and unitarizable, and they are not tempered. The Weyl symmetry $I(|\cdot|^s)\simeq I(|\cdot|^{-s})$ gives the same representations for $-1<s<0$. In terms of the parameter $z=\chi(\varpi)=q^{-s}$ of an unramified character, the complementary series is the interval
+\[
+q^{-1}<z<1
+\]
+together with its inverse $1<z<q$. At the endpoint $z=1$ the representation $I(1)$ is irreducible and tempered. At the endpoints $z=q^{\mp1}$ the induced representation is reducible, with constituents the trivial and Steinberg representations. Figure \ref{fig:parameters} shows these parameters. These paragraphs are a guide to the families, taken from the classification \cite{GG63,Ta92}. They are not a new proof of the classification of the unitary dual.
+\begin{figure}[htbp]\centering
+\begin{tikzpicture}[>=Latex,every node/.style={font=\small}]
+\draw[->,gray] (-2.6,0)--(5.2,0) node[right]{$\operatorname{Re}z$};
+\draw[->,gray] (0,-1.75)--(0,1.9) node[above]{$\operatorname{Im}z$};
+\draw[thick,teal!75!black] (0,0) circle (1.2);
+\draw[very thick,orange!80!black] (0.4,0)--(3.6,0);
+\fill (-1.2,0) circle (2pt);\node[below left] at (-1.2,0) {$-1$};
+\fill (1.2,0) circle (2pt);\node[below right] at (1.2,0) {$1$};
+\fill (0.4,0) circle (2pt);\node[below] at (0.4,-.05) {$q^{-1}$};
+\fill (3.6,0) circle (2pt);\node[below] at (3.6,-.05) {$q$};
+\node[teal!75!black,anchor=west] at (0.95,1.25) {$|z|=1$: tempered principal series};
+\node[orange!80!black,anchor=west] at (1.75,.4) {complementary series};
+\node[anchor=north] at (3.6,-.55) {$\triv$, $\St$};
+\node[anchor=east] at (-1.35,.45) {$\pi_+$, $\pi_-$};
+\end{tikzpicture}
+\caption{The unramified parameters $z=\chi(\varpi)\in\mathbb C^\times$, drawn for $q=3$. The Weyl symmetry is $z\mapsto z^{-1}$. The induced representation is reducible at $z=-1$ and at $z=q^{\pm1}$. The figure shows the parameter space of the unramified principal series, not the whole unitary dual.}\label{fig:parameters}
+\end{figure}
 \begin{example*}
-Let $F=\mathbb Q_3$, so $q=3$. By Theorem \ref{thm:reducibility}, exactly five quasicharacters $\chi$ of $F^\times$ give a reducible $I(\chi)$. Two of them are the unramified characters $|\cdot|$ and $|\cdot|^{-1}$, which take the values $1/3$ and $3$ at the uniformizer $3$. The other three are the nontrivial quadratic characters. In the notation of Subsection \ref{sec:quad} below they are $\eta_2$, $\eta_3$ and $\eta_6$. The character $\eta_2$ is unramified, because $\mathbb Q_3(\sqrt2)$ is the unramified quadratic extension of $\mathbb Q_3$. The characters $\eta_3$ and $\eta_6$ are ramified.
+Let $F=\mathbb Q_3$, so $q=3$. By Theorem \ref{thm:reducibility}, exactly five quasicharacters $\chi$ of $F^\times$ give a reducible $I(\chi)$. Two of them are the unramified characters $|\cdot|$ and $|\cdot|^{-1}$, which take the values $1/3$ and $3$ at the uniformizer $3$. The other three are the nontrivial quadratic characters. In the notation of Subsection \ref{sec:quad} below they are $\eta_2$, $\eta_3$ and $\eta_6$. The character $\eta_2$ is unramified, because $\mathbb Q_3(\sqrt2)$ is the unramified quadratic extension of $\mathbb Q_3$. The characters $\eta_3$ and $\eta_6$ are ramified. In the parameter $z$ of the unramified characters, the three exceptional points are $z=\tfrac13$, $z=3$ and $z=-1$, and the complementary series is $\tfrac13<z<1$. For instance $z=3^{-1/2}$ is the complementary series representation $I(|\cdot|^{1/2})$.
 \end{example*}
 
 \subsection{Quadratic characters and examples}\label{sec:quad}
@@ -199,12 +276,19 @@ For the trivial representation we have $V=\widetilde V=\mathbb C$, and every mat
 \end{example*}
 
 The Harish-Chandra Schwartz space is modeled on estimates involving a height function $\sigma:G\to\mathbb R_{\ge0}$ and the spherical function $\Xi$.  One may choose, for example, a $K$-bi-invariant proper length comparable to
-$\log_q\max\{\|g\|,\|g^{-1}\|\}$, where the matrix norm is the maximum absolute value of the entries. The defining seminorms have the schematic form
-\[
-\sup_{g\in G}\frac{|f(g)|\,(1+\sigma(g))^N}{\Xi(g)}
-\qquad(N\ge0),
-\]
-together with the fixed-vector smoothness requirements.  The explicit equivalent system of seminorms and their topology can be found in \cite{Si79,Cl91}. It is that \emph{topology}, rather than just the decay of a single function, that governs a tempered distribution.
+$\log_q\max\{\|g\|,\|g^{-1}\|\}$, where the matrix norm is the maximum absolute value of the entries. The defining seminorms are
+\begin{equation}\label{eq:seminorms}
+p_N(f)=\sup_{g\in G}\frac{|f(g)|\,(1+\sigma(g))^N}{\Xi(g)}
+\qquad(N\ge0).
+\end{equation}
+The topology is defined in two steps \cite{Si79,Wa03}. For an open compact subgroup $J$ let $\calC(G/\!/J)$ be the space of $J$-bi-invariant functions $f$ on $G$ with $p_N(f)<\infty$ for every $N$. The seminorms $p_N$ make it a Fr\'echet space. The Schwartz space is the union of these spaces, with the locally convex inductive-limit topology:
+\begin{equation}\label{eq:schwartz-limit}
+\calC(G)=\bigcup_J\calC(G/\!/J)=\varinjlim_J\calC(G/\!/J).
+\end{equation}
+A \emph{tempered distribution} is a continuous linear functional on $\calC(G)$. By the definition of the inductive-limit topology, a linear functional $T$ on $\calC(G)$ is continuous if and only if its restriction to each $\calC(G/\!/J)$ is continuous. This means that for each $J$ there are $N$ and $C$, which may depend on $J$, with $|T(f)|\le C\,p_N(f)$ for all $f\in\calC(G/\!/J)$. It is this \emph{topology}, rather than just the decay of a single function, that governs a tempered distribution.
+\begin{example*}
+Evaluation at the identity, $T(f)=f(1)$, is a tempered distribution. Indeed $\Xi(1)=1$ and $\sigma(1)=0$, so $|f(1)|\le p_0(f)$ on every $\calC(G/\!/J)$. The functional $f\mapsto\int_Gf(g)\,dg$ is defined on $\calH(G)$ and is the character of the trivial representation. It does not extend continuously to $\calC(G)$, because the trivial representation is not tempered.
+\end{example*}
 
 \begin{center}\small
 \begin{tabular}{@{}p{0.28\linewidth}p{0.28\linewidth}p{0.32\linewidth}@{}}\toprule
@@ -258,14 +342,35 @@ For the split torus, the normalized principal-series character on a regular elem
 while its regular elliptic character is zero.  The formula is for the character of the \emph{whole induced representation}; at a reducible point this character is the sum of the constituent characters.
 
 \begin{example}[The normalized orbital integral need not vanish at $\pm I$]\label{ex:K}
-Let $f=\mathbf 1_K$ and let $t\in\mathcal O^\times$ be regular. With $\vol(\mathcal O)=1$ and the standard Iwasawa normalization, the split normalized orbital integral is
-\begin{align*}
-F_f^A(a(t))
-&=\delta_B(a(t))^{1/2}\int_F\int_K f\bigl(k a(t)n(x)k^{-1}\bigr)\,dk\,dx\\
-&=|t|\int_F\mathbf 1_K(a(t)n(x))\,dx
-=\int_{\mathcal O}1\,dx=1.
-\end{align*}
-The identity $a(t)n(x)\in K\iff x\in\mathcal O$ follows because $t$ is a unit. Thus along regular $t\to1$ the normalized orbital integral is \emph{identically one}, not zero.  The vanishing factor $|\Delta_G(a(t))|^{1/2}$ is compensated by the growth of the unnormalized orbital integral near the singular locus.  Consequently the image of $f\mapsto F_f^A$ cannot be described as all compactly supported Weyl-invariant locally constant functions vanishing at $\pm1$.
+We first rewrite the split normalized orbital integral of an arbitrary $f\in\calH(G)$. By the Iwasawa decomposition $G=ANK$, the quotient $A\backslash G$ is parametrized by the elements $n(y)k$, and the invariant measure is $dy\,dk$, with $\vol(\mathcal O)=\vol(K)=1$. So for regular $t$
+\[
+\mathcal O_{a(t)}(f)=\int_F\int_Kf\bigl(k^{-1}n(y)^{-1}a(t)\,n(y)k\bigr)\,dk\,dy .
+\]
+Multiplying the matrices gives
+\begin{equation}\label{eq:conj-n}
+n(y)^{-1}a(t)\,n(y)=a(t)\,n\bigl((1-t^{-2})y\bigr).
+\end{equation}
+Substitute $x=(1-t^{-2})y$. The Jacobian is $dy=|1-t^{-2}|^{-1}dx$. The discriminant factor is $|t-t^{-1}|=|t|\,|1-t^{-2}|$ by \eqref{eq:disc}, so the two factors combine:
+\[
+\frac{|t-t^{-1}|}{|1-t^{-2}|}=|t|=\delta_B(a(t))^{1/2}.
+\]
+Therefore
+\begin{equation}\label{eq:FfA}
+F_f^A(a(t))=\delta_B(a(t))^{1/2}\int_F\int_K f\bigl(k^{-1}a(t)n(x)k\bigr)\,dk\,dx .
+\end{equation}
+The factor $|\Delta_G(a(t))|^{1/2}$, which vanishes at $t=\pm1$, has been cancelled exactly by the Jacobian, which blows up there. The right-hand side of \eqref{eq:FfA} is defined for every $t\in F^\times$.
+
+Now let $f=\mathbf 1_K$. The integrand does not depend on $k$. The matrix $a(t)n(x)$ has entries $t$, $tx$, $0$, $t^{-1}$. It lies in $K$ if and only if $t\in\mathcal O^\times$ and $x\in\mathcal O$. Hence
+\begin{equation}\label{eq:FK}
+F_{\mathbf 1_K}^A(a(t))=
+\begin{cases}
+1,&|t|=1,\ t\ne\pm1,\\
+0,&|t|\ne1.
+\end{cases}
+\end{equation}
+The vanishing for $|t|\ne1$ can also be seen directly: an element of $K$ has trace in $\mathcal O$, while $|t+t^{-1}|>1$. Thus along regular $t\to1$ the normalized orbital integral is \emph{identically one}, not zero.  The vanishing factor $|\Delta_G(a(t))|^{1/2}$ is compensated by the growth of the unnormalized orbital integral near the singular locus. For $F=\mathbb Q_3$ and $t=1+3^n$ we have $|t-t^{-1}|=3^{-n}$, so $\mathcal O_{a(t)}(\mathbf 1_K)=3^n$. Consequently the image of $f\mapsto F_f^A$ cannot be described as all compactly supported Weyl-invariant locally constant functions vanishing at $\pm1$.
+
+The result agrees with the trace transform. By \eqref{eq:adj} below, $\Theta_{I(\chi)}(f)=\int_A\chi(a)F_f^A(a)\,da$, where the Haar measure on $A\simeq F^\times$ gives $\mathcal O^\times$ volume one. With \eqref{eq:FK} this gives $\Theta_{I(\chi)}(\mathbf 1_K)=\int_{\mathcal O^\times}\chi(t)\,d^\times t$, which is $1$ if $\chi$ is unramified and $0$ otherwise. On the other hand $\Theta_{I(\chi)}(\mathbf 1_K)=\dim I(\chi)^K$, and by $G=BK$ this dimension is $1$ for unramified $\chi$ and $0$ for ramified $\chi$. So the trace polynomial of $\mathbf 1_K$ in the unramified block is the constant $1$.
 \end{example}
 
 The local behavior of orbital integrals near singular elements is controlled by Shalika germs, not by the Weyl-discriminant factor alone.  Conversely, an arbitrary Weyl-invariant function on the regular split torus need not arise from an orbital integral with all the desired global and singular-germ properties.  We therefore use orbital integrals to explain character formulas, \emph{not} as an unproved surjectivity theorem for the full spectral Paley--Wiener space.
@@ -291,7 +396,49 @@ Give $\calH(G)$ its convolution product and define the (algebraic) cocenter by
 \begin{equation}\label{eq:cocenter}
 \calH(G)_{\rm coc}=\calH(G)/[\calH(G),\calH(G)],
 \end{equation}
-where the bracket denotes the linear span of convolution commutators $f*h-h*f$. Traces vanish on commutators. The density theorem identifies the cocenter with the corresponding trace quotient in this setting \cite{Ka86}; we use the theorem only in its standard reductive-$p$-adic formulation, not as a consequence of Proposition \ref{prop:kernel} alone.
+where the bracket denotes the linear span of convolution commutators $f*h-h*f$. Traces vanish on commutators, so the trace transform factors through the cocenter.
+
+Two different statements relate the cocenter to invariance and to traces. The first is algebraic and elementary. The second is a deep theorem of representation theory. We separate them. Put
+\[
+\calH_{\rm conj}(G)=\operatorname{span}_{\mathbb C}\{f-f^g:\ f\in\calH(G),\ g\in G\}.
+\]
+\begin{lemma}[Commutators and conjugation differences]\label{lem:conj}
+$[\calH(G),\calH(G)]=\calH_{\rm conj}(G)$.
+\end{lemma}
+\begin{proof}
+Write $(L_yb)(x)=b(y^{-1}x)$ and $(R_yb)(x)=b(xy)$. The group $G$ is unimodular, so the Haar measure is invariant under left and right translation and under inversion. Hence
+\[
+(a*b)(x)=\int_Ga(y)\,b(y^{-1}x)\,dy,\qquad (b*a)(x)=\int_Ga(y)\,b(xy^{-1})\,dy .
+\]
+
+Let $f\in\calH(G)$ and $g\in G$. Choose an open compact subgroup $J$ such that $f$ is $J$-bi-invariant. Put $a=\vol(J)^{-1}\mathbf 1_{gJ}$ and $b=R_gf$, so that $b(x)=f(xg)$. For $y=gj$ with $j\in J$ we have $b(y^{-1}x)=f(j^{-1}g^{-1}xg)=f(g^{-1}xg)$ and $b(xy^{-1})=f(xj^{-1})=f(x)$. Averaging over $j\in J$ gives
+\[
+a*b=f^g,\qquad b*a=f .
+\]
+So $f^g-f=a*b-b*a$. This proves $\calH_{\rm conj}(G)\subseteq[\calH(G),\calH(G)]$.
+
+Conversely let $a,b\in\calH(G)$. The two formulas above give
+\[
+a*b-b*a=\int_Ga(y)\,\bigl(L_yb-R_{y^{-1}}b\bigr)\,dy .
+\]
+For each $y$ put $\varphi=L_yb$. Then $\varphi^{y^{-1}}(x)=\varphi(yxy^{-1})=b(xy^{-1})$, so $R_{y^{-1}}b=\varphi^{y^{-1}}$ and the integrand is $a(y)(\varphi-\varphi^{y^{-1}})\in\calH_{\rm conj}(G)$. Choose $J$ such that $b$ is $J$-bi-invariant. Then $y\mapsto L_yb$ is constant on each coset $yJ$ and $y\mapsto R_{y^{-1}}b$ is constant on each coset $Jy$. So the integrand is a locally constant function of $y$ with compact support and with values in $\calH_{\rm conj}(G)$. Its integral is a finite linear combination of its values. Hence $a*b-b*a\in\calH_{\rm conj}(G)$.
+\end{proof}
+The lemma uses only that $G$ is a unimodular locally profinite group. It shows that a linear functional on $\calH(G)$ is conjugation-invariant if and only if it vanishes on commutators, that is, if and only if it factors through the cocenter.
+
+\begin{theorem}[Density theorem, Kazhdan \cite{Ka86}]\label{thm:density}
+The kernel of the trace transform is the commutator subspace:
+\[
+\ker\mathcal F_{\rm tr}=[\calH(G),\calH(G)] .
+\]
+Equivalently, the trace transform induces an isomorphism of the cocenter $\calH(G)_{\rm coc}$ onto the trace image $\mathcal F_{\rm tr}(\calH(G))$.
+\end{theorem}
+The inclusion $[\calH(G),\calH(G)]\subseteq\ker\mathcal F_{\rm tr}$ is the invariance of traces. The reverse inclusion is the theorem. It says that a function all of whose traces vanish is a sum of commutators. It is not a consequence of Proposition \ref{prop:kernel} or of Lemma \ref{lem:conj}.
+\begin{remark}[Remark 2026.2: the characteristic of $F$]\label{rem:density-char}
+We recall the density theorem from \cite{Ka86} for $F$ of characteristic zero. Whether the statement in that source covers local fields of positive characteristic has not been checked for this paper. For such fields the statements below that use Theorem \ref{thm:density} are conditional on it.
+\end{remark}
+\begin{example*}
+Let $f=\mathbf 1_{gK}-\mathbf 1_{Kg}$ with $g\in G$. Then $\mathbf 1_{Kg}=(\mathbf 1_{gK})^{g^{-1}}$, because $x\mapsto gxg^{-1}$ maps $Kg$ onto $gK$. So $f\in\calH_{\rm conj}(G)$. The proof of Lemma \ref{lem:conj} writes it as a commutator: $f=a*b-b*a$ with $J=K\cap g^{-1}Kg$, $a=\vol(J)^{-1}\mathbf 1_{gJ}$ and $b=\mathbf 1_K$. All traces of $f$ vanish. For $g=a(\varpi)$ the cosets $gK$ and $Kg$ are different, so $f\ne0$.
+\end{example*}
 
 \begin{theorem}[Trace Paley--Wiener theorem, Bernstein--Deligne--Kazhdan \cite{BDK86}]\label{thm:BDK}
 The image of \eqref{eq:trace-map} consists exactly of the linear functionals $L:R(G)\to\mathbb C$ having the following two properties:
@@ -306,6 +453,15 @@ is regular on the complex algebraic torus of unramified characters of $M$.
 \end{theorem}
 \begin{remark}
 Property \ref{it:bdk-level} is \emph{uniform in the representation}; it is not merely a statement about a finite number of connected components. This corrects a common oversimplification of the rank-one picture.  Property \ref{it:bdk-regular} refers to the class of the \emph{whole induced representation} in $R(G)$, and automatically enforces relations at reducibility points.
+\end{remark}
+\begin{remark}[Remark 2026.3: three kinds of realization]\label{rem:three-realizations}
+Three assertions about realizing a trace form $L$ by a test function must be kept apart.
+\begin{enumerate}[label=(\arabic*),leftmargin=*]
+\item \emph{Global algebraic realization.} This is Theorem \ref{thm:BDK}: $L=\mathcal F_{\rm tr}(f)$ for some $f\in\calH(G)$. The subgroup $J$ of property \ref{it:bdk-level} is not asserted to be a level of $f$.
+\item \emph{Realization at a prescribed level.} Given $J$, is $L=\mathcal F_{\rm tr}(f)$ for some $J$-bi-invariant $f$? If $f$ is $J$-bi-invariant, then $\pi(f)=0$ whenever $\pi^J=0$, so property \ref{it:bdk-level} for this $J$ is necessary. Theorem \ref{thm:BDK} as stated does not say that it is sufficient. It is sufficient when the representations generated by their $J$-fixed vectors form a union of Bernstein components. An example is the Iwahori subgroup, for which they form the unramified block \cite{Bo76}. In that case the ideal generated by the idempotent $e_J$ is Morita equivalent to $\calH(G/\!/J)$, and the two algebras have the same cocenter. We state this for orientation. It has not been checked against the sources, and no proof in this paper uses it.
+\item \emph{Continuous realization in the Schwartz space.} This is Arthur's theorem \cite{Ar94}. It concerns a different space of test functions and includes a statement about topologies.
+\end{enumerate}
+The coordinate descriptions of Proposition \ref{prop:algebraic-pw} and of Subsection \ref{sec:pwcomparison} use only (1). The arguments about levels given there verify the hypothesis \ref{it:bdk-level} of Theorem \ref{thm:BDK}. They do not claim a realization at that level. The realization of the smooth block trace images at a fixed level is one of the open questions about the Schwartz topology (Section \ref{sec:tempered-duality}).
 \end{remark}
 
 \begin{example}[The relation at quadratic reducibility]\label{ex:matching}
@@ -342,21 +498,67 @@ This simple result helps explain the algebraic regularity in Theorem \ref{thm:BD
 \subsection{Invariant distributions and their spectral functionals}
 This subsection defines invariant distributions. It then explains how each one gives a linear functional on the image of the trace transform.
 
-An invariant distribution is a continuous linear functional $D:\calH(G)\to\mathbb C$ satisfying $D(f^g)=D(f)$ for all $g\in G$. Such a functional is a trace on the convolution algebra, hence factors through the cocenter.
+The space $\calH(G)$ has a standard topology. Choose an increasing sequence of compact open subsets $C_n$ with union $G$ and a decreasing sequence of open compact subgroups $J_n$ forming a basis of neighborhoods of the identity, and let $H_n$ be the space of $J_n$-bi-invariant functions supported in $C_n$. Each $H_n$ is finite-dimensional, and $\calH(G)=\bigcup_nH_n$. The topology is the locally convex inductive-limit topology, $\calH(G)=\varinjlim_nH_n$. A \emph{distribution} is a continuous linear functional on $\calH(G)$. An \emph{invariant distribution} is a distribution $D$ satisfying $D(f^g)=D(f)$ for all $g\in G$. By Lemma \ref{lem:conj} such a functional vanishes on commutators and factors through the cocenter.
 \begin{example*}
 The character $\Theta_\pi$ of an irreducible admissible representation is an invariant distribution, as noted after \eqref{eq:opFT}. The orbital integral $f\mapsto\mathcal O_\gamma(f)$ of Section \ref{sec:orbital} is another. Indeed $\mathcal O_\gamma(f^g)$ is the integral of $f\bigl((xg)^{-1}\gamma\,xg\bigr)$ over $G_\gamma\backslash G$, and the change of variable $x\mapsto xg^{-1}$ turns it into $\mathcal O_\gamma(f)$. A third example is evaluation at the identity, $f\mapsto f(1)$, because $f^g(1)=f(g^{-1}g)=f(1)$.
 \end{example*}
-  Using the density theorem, there is a well-defined linear functional
+By the density theorem, an invariant distribution $D$ vanishes on the kernel of the trace transform. So there is a well-defined linear functional
 \begin{equation}\label{eq:distribution-factor}
 \widehat D:\PW_{\rm tr}(G)=\mathcal F_{\rm tr}(\calH(G))\longrightarrow\mathbb C,
 \qquad D(f)=\widehat D(\mathcal F_{\rm tr}(f)).
 \end{equation}
-Conversely any linear functional on the trace image defines an algebraic invariant functional on $\calH(G)$ by composition; to obtain a \emph{distribution}, continuity in the Hecke-algebra topology must be checked. It is essential not to claim a bijection $\calH(G)\simeq\PW_{\rm tr}(G)$ before quotienting by the trace kernel.
+The next proposition says that this construction has an inverse and that no continuity condition is needed.
+
+\begin{proposition}[Invariant functionals are distributions]\label{prop:alg-dual}
+\begin{enumerate}[label=(\alph*),leftmargin=*]
+\item Every linear functional on $\calH(G)$ is continuous for the standard topology.
+\item The map $D\mapsto\widehat D$ is a linear isomorphism from the space $\calH(G)'^{\,G}$ of invariant distributions onto the full algebraic dual of the trace image:
+\[
+\calH(G)'^{\,G}\ \simeq\ \PW_{\rm tr}(G)^* .
+\]
+\end{enumerate}
+\end{proposition}
+\begin{proof}
+(a) A linear functional on a finite-dimensional space is continuous. A linear functional on a locally convex inductive limit is continuous if and only if its restriction to each stage is continuous. So every linear functional on $\calH(G)=\varinjlim_nH_n$ is continuous.
+
+(b) The map is defined by \eqref{eq:distribution-factor}, and it is injective because $\mathcal F_{\rm tr}$ maps onto $\PW_{\rm tr}(G)$. Let $L$ be any linear functional on $\PW_{\rm tr}(G)$ and put $D=L\circ\mathcal F_{\rm tr}$. Then $D$ is linear. It is invariant because traces are invariant. It is continuous by (a). So $D$ is an invariant distribution with $\widehat D=L$.
+\end{proof}
+Part (b) uses Theorem \ref{thm:density}. It is essential not to claim a bijection $\calH(G)\simeq\PW_{\rm tr}(G)$ before quotienting by the trace kernel. Figure \ref{fig:factorization} shows the factorization.
+\begin{figure}[htbp]\centering
+\begin{tikzpicture}[>=Latex,every node/.style={font=\small}]
+\node (h) at (0,1.6) {$\calH(G)$};
+\node (c) at (4.3,1.6) {$\calH(G)_{\rm coc}$};
+\node (p) at (8.8,1.6) {$\PW_{\rm tr}(G)\subset R(G)^*$};
+\node (k) at (4.3,0) {$\mathbb C$};
+\draw[->] (h)--node[above]{quotient}(c);
+\draw[->] (c)--node[above]{$\simeq$ (density)}(p);
+\draw[->] (h)--node[below left]{$D$}(k);
+\draw[->,dashed] (c)--(k);
+\draw[->] (p)--node[below right]{$\widehat D$}(k);
+\end{tikzpicture}
+\caption{An invariant distribution $D$ factors through the cocenter (Lemma \ref{lem:conj}) and then through the trace image (Theorem \ref{thm:density}). Every linear functional $\widehat D$ on the trace image arises (Proposition \ref{prop:alg-dual}).}\label{fig:factorization}
+\end{figure}
+\begin{example*}
+In the unramified block the trace image is $\mathbb C[u]\oplus\mathbb C^2$ (Proposition \ref{prop:algebraic-pw}). Choose any sequence of complex numbers $m_n$, for instance $m_n=n!$, and let $L$ be the functional with $L(z^n+z^{-n})=m_n$ that vanishes on the two exceptional coordinates. By Proposition \ref{prop:alg-dual} the functional $f\mapsto L(P_f)$, where $P_f$ is the trace polynomial of $f$, is an invariant distribution on $G$. No growth condition on the $m_n$ is required. Growth conditions appear only when one asks for an extension to a larger space of test functions.
+\end{example*}
 
 \subsection{What changes for the Schwartz space}\label{sec:schwartz}
 This subsection indicates, without proofs, how the picture changes when $\calH(G)$ is replaced by the Schwartz space.
 
-The Harish-Chandra Schwartz space $\calC(G)$ is a locally convex completion of smooth functions satisfying rapid-decay estimates measured using the Harish-Chandra function $\Xi$ and a proper length function. Its natural Fourier transform is initially operator-valued on tempered representations; traces yield invariant spectral data. A tempered distribution is an element of the continuous dual $\calC(G)'$. Only \emph{invariant} tempered distributions are candidates for factorization through the tempered \emph{trace} transform.
+Recall from Subsection \ref{sec:schwartzbackground} that $\calC(G)=\varinjlim_J\calC(G/\!/J)$ is an inductive limit of Fr\'echet spaces, and that a tempered distribution is a linear functional that is continuous on each $\calC(G/\!/J)$. The Hecke algebra is dense in $\calC(G)$ and the inclusion is continuous. So a tempered distribution is determined by its restriction to $\calH(G)$, and the question is which distributions on $\calH(G)$ extend. For the Hecke algebra, continuity is automatic (Proposition \ref{prop:alg-dual}). For the Schwartz space, continuity is a substantive condition.
+
+The natural Fourier transform on $\calC(G)$ is initially operator-valued on tempered representations; traces yield invariant spectral data. Only \emph{invariant} tempered distributions are candidates for factorization through the tempered \emph{trace} transform.
+
+In spectral terms the condition for extension is a growth condition. On one family of unramified twists, with coordinate $z$, a functional $\lambda$ on trace polynomials is determined by its coefficients $c_n=\lambda(z^n)$. Three spaces of spectral test functions occur in this paper, and they have three different duals.
+\begin{center}\small
+\begin{tabularx}{\linewidth}{@{}p{.43\linewidth}X@{}}\toprule
+Spectral test-function space & Condition on the dual coefficients $c_n$\\\midrule
+Laurent polynomials, inductive-limit topology & None\\
+Holomorphic functions on $\mathbb C^\times$, compact-open topology & $|c_n|\le CR^{|n|}$ for some $C$, $R$\\
+Smooth functions on the unit circle & $|c_n|\le C(1+|n|)^N$ for some $C$, $N$\\\bottomrule
+\end{tabularx}
+\end{center}
+These are three duality theories. They are compared in Theorem \ref{thm:three-duals}. The first row corresponds to $\calH(G)$ and the third to $\calC(G)$. The relation between them is one of the main themes of Sections \ref{sec:tempered-duality} and \ref{sec:admissible-duality}.
 
 The detailed Plancherel and Schwartz Paley--Wiener descriptions must keep track of discrete-series summands, the smooth families on unitary unramified tori, and matching at the reducible points \cite{Cl91,Si79}.  A direct-product description with arbitrary independent values at the discrete-series points is not a valid substitute for these matching conditions. We do not state an independent exact Schwartz-image theorem here.
 
@@ -367,124 +569,108 @@ Fix $x_0\in G$ and let $T_{x_0}(f)=f(x_0)$. Point evaluation is continuous on $\
 \input{trace-pw-comparison}
 \input{spectral-duality}
 
-\subsection{The bilateral Laurent criterion}\label{sec:analytic}
-In rank one, a connected family of unramified twists is modeled on $\mathbb C^\times$, with coordinate $z=\psi(\varpi)$. This provides an elementary analytic-functional problem independently of the deeper global compatibility questions for the $G$-spectrum.
-
-Write $\mathcal O(\mathbb C^\times)$ for the Fr\'echet space of holomorphic functions with the compact-open topology, and $\mathbb C[z,z^{-1}]$ for the Laurent polynomials. Laurent polynomials are dense in $\mathcal O(\mathbb C^\times)$ by Laurent expansion. Their continuous dual is described by explicit bounds.
-
-\begin{theorem}[Laurent-coefficient criterion]\label{thm:laurent}
-Let $\lambda:\mathbb C[z,z^{-1}]\to\mathbb C$ be linear and put $c_n=\lambda(z^n)$ for $n\in\mathbb Z$. Then $\lambda$ extends uniquely to a continuous linear functional on $\mathcal O(\mathbb C^\times)$ if and only if there exist constants $C>0$ and $R\ge1$ such that
-\begin{equation}\label{eq:coeff-bound}
-|c_n|\le C R^{|n|}\quad(n\in\mathbb Z).
-\end{equation}
-\end{theorem}
-\begin{proof}
-Suppose $\lambda$ is continuous. There exist a compact annulus $K=\{r\le|z|\le s\}$, with $0<r<1<s$, and $C_0$ such that $|\lambda(h)|\le C_0\sup_K|h|$. Applying this to $z^n$ and $z^{-n}$ gives $|c_n|\le C_0\max\{s,r^{-1}\}^{|n|}$.
-
-Conversely, assume \eqref{eq:coeff-bound}. Let $h(z)=\sum_{n\in\mathbb Z}a_nz^n$ be the Laurent series of $h\in\mathcal O(\mathbb C^\times)$, and choose numbers $0<r<R^{-1}$ and $s>R$.  Cauchy's coefficient estimates on the circles $|z|=r$ and $|z|=s$ give, respectively,
-\[
-|a_{-m}|\le r^m\max_{|z|=r}|h(z)|,\qquad
-|a_m|\le s^{-m}\max_{|z|=s}|h(z)|\quad(m\ge1).
-\]
-Consequently $\sum_{n\in\mathbb Z}a_nc_n$ converges absolutely and has absolute value bounded by a constant times $\sup_{r\le|z|\le s}|h(z)|$.  It therefore defines a continuous extension of $\lambda$. Uniqueness follows from the density of Laurent polynomials.
-\end{proof}
-
-\begin{example*}
-Fix $z_0\in\mathbb C^\times$ and let $\lambda(h)=h(z_0)$. Then $c_n=z_0^n$, and \eqref{eq:coeff-bound} holds with $C=1$ and $R=\max\{|z_0|,|z_0|^{-1}\}$. This agrees with the theorem, since evaluation at a point is continuous on $\mathcal O(\mathbb C^\times)$.
-
-By contrast, define $\lambda$ on Laurent polynomials by $\lambda(z^n)=n!$ for $n\ge0$ and $\lambda(z^n)=0$ for $n<0$. No bound of the form \eqref{eq:coeff-bound} holds, because $n!/R^n\to\infty$ for every $R$. By Theorem \ref{thm:laurent}, this $\lambda$ has no continuous extension to $\mathcal O(\mathbb C^\times)$.
-\end{example*}
-
-\begin{corollary}[Weyl-invariant version]
-Let $\iota(z)=z^{-1}$. A linear functional on the $\iota$-invariant Laurent polynomials extends to a continuous functional on $\mathcal O(\mathbb C^\times)^\iota$ if and only if its values on $z^n+z^{-n}$ grow at most exponentially with $|n|$.
-\end{corollary}
-\begin{proof}
-Use averaging $h\mapsto\tfrac12(h+h\circ\iota)$ to extend a functional from the invariant subspace to all Laurent polynomials, and then apply Theorem \ref{thm:laurent}.
-\end{proof}
-
-\begin{remark}[Scope]
-Theorem \ref{thm:laurent} is a theorem about \emph{one analytic family}. It does not, without further compatibility and continuity arguments, imply that an invariant distribution on $G$ is analytic merely from a bound along the diagonal torus. In particular no stronger global converse is claimed here (see Section \ref{sec:summary}).
-\end{remark}
-
 \input{admissible-distributions}
 
 \input{supertempered-distributions}
 
 \section{Summary, limitations, and a comparison with metaplectic covers}\label{sec:summary}
-The reliable conclusions of this revision are as follows.  Smoothness and admissibility are distinct from continuity into a discrete automorphism group.  The normalized principal series has both quadratic and $|\cdot|^{\pm1}$ reducibility points.  Orbital-integral germs can compensate for discriminant factors, so singular vanishing cannot be inferred by inspection.  The trace transform is a transform of the \emph{invariant quotient}, and the Bernstein--Deligne--Kazhdan theorem requires regularity in unramified families, a uniform compact-open bound, and Grothendieck-group matching.  Laurent coefficients give a clean elementary analytic-functional criterion.  Supertemperedness is expressed by weak constant terms and does not imply literal support on the elliptic set. In rank one the supertempered virtual characters are spanned by the discrete series characters and the three quadratic differences, they split the elliptic quotient, and their behavior at $\pm I$ is governed by the trivial-orbit coefficient (Section \ref{sec:supertemp}).
+This section collects the conclusions, the questions that remain open, and a comparison with the metaplectic case.
+
+The reliable conclusions of this revision are as follows.  Smoothness and admissibility are distinct from continuity into a discrete automorphism group.  The normalized principal series has both quadratic and $|\cdot|^{\pm1}$ reducibility points.  Orbital-integral germs can compensate for discriminant factors, so singular vanishing cannot be inferred by inspection.  The trace transform is a transform of the \emph{invariant quotient}, and the Bernstein--Deligne--Kazhdan theorem requires regularity in unramified families, a uniform compact-open bound, and Grothendieck-group matching.  Conjugation-invariant linear functionals on the Hecke algebra are automatically distributions, and they form the algebraic dual of the trace image. Continuity becomes a condition only on larger spaces of test functions, where it is a growth condition on Laurent coefficients: none for polynomials, exponential for holomorphic functions, polynomial for smooth functions on the circle.  Supertemperedness is expressed by weak constant terms and does not imply literal support on the elliptic set. In rank one the supertempered virtual characters are spanned by the discrete series characters and the three quadratic differences, they split the elliptic quotient, and their behavior at $\pm I$ is governed by the trivial-orbit coefficient (Section \ref{sec:supertemp}).
 
 The new spectral geometry, trace comparison, and duality sections establish polynomial uniqueness, algebraic trace restriction isomorphisms, instability of non-tempered evaluation, moment extension criteria, and central eigenfunctional formulas, subject to the stated classical representation-theoretic inputs. The following issues remain incompletely resolved:
 \begin{enumerate}[label=\arabic*.,leftmargin=*]
-\item The global topology of the Schwartz trace image, including fixed-level realizations and identification of the closed commutator kernel;
+\item The global topology of the Schwartz trace image, including fixed-level realizations (Remark \ref{rem:three-realizations}) and identification of the closed commutator kernel;
 \item Descent beyond the principal-series block results, with the proper normalizations, and admissibility for infinite spectral support;
 \item The proposed global analyticity criterion for invariant distributions from growth bounds on orbital data.
 \end{enumerate}
 The partial results and conditional formulations above do not settle these questions. Further proofs and independent verification are needed. The corresponding theory on a metaplectic double cover requires additional care: genuine characters, choices of splittings and measures, and the relevant intertwining and $R$-group data. This ordinary-group account should therefore remain a separate companion manuscript, not a theorem-by-theorem template assumed valid for covers.
+\begin{example*}
+The trivial character of $G=\mathrm{SL}_2(\mathbb Q_3)$ illustrates most of the distinctions made in the paper. In the unramified coordinates it is $(Q,d,b)\mapsto Q(\tfrac{10}3)-b$. It is an invariant distribution with finite Bernstein support, it is center-finite, and it is admissible. Its moments $3^n+3^{-n}$ grow exponentially, so it extends to the holomorphic spectral space and not to the smooth one. It is not tempered. Its normalized split restriction $|t-t^{-1}|$ takes the values $3^{-n}$ at $t=1+3^n$ and has no locally constant extension to $t=1$. Its values on tempered data are determined algebraically by the Steinberg trace and by the polynomial $Q$, and they do not depend continuously on them.
+\end{example*}
 
 \section*{Glossary}\label{app:glossary}
+Each entry is a short reminder of the meaning of a term. The entries are independent of each other and of the numbering of the paper.
 \begin{description}[style=nextline,leftmargin=1em]
-\item[Admissible representation] A smooth representation with finite-dimensional $J$-fixed spaces for every open compact subgroup $J$.
-\item[Analytic functional] A continuous linear functional on a space of holomorphic functions equipped with its compact-open topology.
-\item[Bernstein component] A connected algebraic family of irreducible smooth representations organized using supercuspidal support and unramified twisting.
-\item[Cocenter] The Hecke-algebra quotient by the span of convolution commutators.
-\item[Compact defect] The difference between the normalized split restriction of a character and its Jacquet-module character on the compact part of the split torus.
-\item[Elliptic quotient] The Grothendieck group of finite-length representations modulo the classes of parabolically induced representations.
-\item[Elliptic regular element] A regular semisimple element whose centralizer is anisotropic modulo the center; for $\mathrm{SL}_2$ these lie in nonsplit maximal tori.
-\item[Hecke algebra] The convolution algebra of compactly supported locally constant complex-valued functions on $G$.
-\item[Invariant distribution] A continuous linear functional on $C_c^\infty(G)$ invariant under conjugation by $G$.
-\item[Jacquet module] A representation obtained from the $N$-coinvariants of a smooth representation, usually normalized by a modular character.
-\item[Normalized induction] Parabolic induction including the $\delta_P^{1/2}$ factor.
-\item[Orbital integral] Integration of a test function along the conjugacy orbit of a regular semisimple element.
-\item[Shalika germ] A term describing the asymptotic expansion of orbital integrals near singular elements.
-\item[Supertempered virtual character] A finite linear combination of tempered irreducible characters whose normalized values decay rapidly on every Cartan subgroup. Equivalently, all of its weak constant terms vanish.
-\item[Tempered representation] An irreducible admissible representation occurring weakly in the regular representation; equivalently a representation satisfying the appropriate tempered matrix-coefficient bounds.
-\item[Trace Paley--Wiener theorem] The characterization of trace forms of Hecke-algebra elements by regularity under unramified twisting and uniform compact-open level bounds.
-\item[Weak constant term] The part of the normalized Jacquet-module character of a tempered representation that comes from the unitary exponents, not the entire Jacquet-module character.
+\item[Admissible distribution] An invariant distribution that satisfies a local finiteness condition at every point: near the point it is annihilated by convolution with the idempotents of all representations of small compact open subgroups outside a restricted set. Characters of irreducible admissible representations are the basic examples. The term refers to distributions. It should not be confused with admissibility of a representation.
+\item[Admissible representation] A smooth representation with finite-dimensional $J$-fixed spaces for every open compact subgroup $J$. For such a representation each operator $\pi(f)$ has finite rank, so the character $\tr\pi(f)$ is defined. Every irreducible smooth representation of a reductive $p$-adic group is admissible.
+\item[Analytic spectral functional] A linear functional on trace polynomials that extends continuously to a space of holomorphic functions of the twisting parameter, with the topology of uniform convergence on compact sets. In rank one this holds exactly when the moments of the functional grow at most exponentially. Evaluation of the induced trace at a non-unitary parameter is an example.
+\item[Bernstein center] The algebra of endomorphisms of the identity functor on smooth representations. It acts on every irreducible representation by a scalar that depends only on the supercuspidal support. It is the product, over the Bernstein components, of the rings of regular functions on their varieties, and it acts on distributions by duality.
+\item[Bernstein component] A connected algebraic family of irreducible smooth representations organized using supercuspidal support and unramified twisting. For $\mathrm{SL}_2$ a component is either a single supercuspidal representation or the set of constituents of the principal series with a fixed inducing character on the units, up to inversion. The associated variety is a point, a copy of $\mathbb C^\times$, or its quotient by inversion.
+\item[Center-finite distribution] A distribution whose translates under the Bernstein center span a finite-dimensional space. Such a distribution is supported on finitely many Bernstein components. In a component it is a finite combination of evaluations of the trace polynomial and of its derivatives, together with the exceptional coordinates.
+\item[Cocenter] The quotient of the Hecke algebra by the span of the convolution commutators. This span equals the span of the differences of a function and its conjugates. Invariant distributions are exactly the linear functionals on the cocenter, and the trace transform is injective on it.
+\item[Compact defect] The difference between the normalized split restriction of a character and its Jacquet-module character on the compact part of the split torus. Away from the compact part the two functions agree. The defect records the behavior of the character near the singular elements.
+\item[Complementary series] The irreducible principal series representations induced from the real non-unitary characters $|\cdot|^s$ with $0<|s|<1$, in the normalization of this paper. They are unitarizable and not tempered. They show that the unitary dual is strictly larger than the tempered dual.
+\item[Elliptic quotient] The Grothendieck group of finite-length representations modulo the classes of parabolically induced representations. For $\mathrm{SL}_2$ it is spanned by the supercuspidal classes, the three differences of quadratic constituents, and the class of the Steinberg representation. It has several natural splittings back into the Grothendieck group.
+\item[Elliptic regular element] A regular semisimple element whose centralizer is anisotropic modulo the center. For $\mathrm{SL}_2$ these are the regular elements of the nonsplit maximal tori, whose eigenvalues lie in a quadratic extension and not in $F$.
+\item[Extended quotient] For a finite group acting on a variety, the quotient of the set of pairs consisting of a group element and a point fixed by it. It contains the ordinary quotient and has extra components over the points with nontrivial stabilizer. The extra points are used to label the additional irreducible representations at reducible parameters.
+\item[Fixed-level trace image] The set of trace forms of functions that are bi-invariant under a prescribed open compact subgroup. It is contained in the trace forms that vanish on representations without vectors fixed by that subgroup. Whether the two sets are equal depends on the subgroup.
+\item[Hecke algebra] The convolution algebra of compactly supported locally constant complex-valued functions on $G$. It is the union of finite-dimensional subspaces of functions with prescribed support and level. For that reason every linear functional on it is continuous.
+\item[Invariant distribution] A linear functional on the Hecke algebra that is unchanged when a test function is conjugated by an element of $G$. No separate continuity condition is needed. Characters, orbital integrals and evaluation at a central element are examples.
+\item[Jacquet module] The representation of the torus on the $N$-coinvariants of a smooth representation, normalized by a modular character. It has finite dimension for a representation of finite length. Its character gives the character of the representation on the part of the split torus away from the compact subgroup.
+\item[Local character expansion] The expression of a character near the identity as a finite combination of Fourier transforms of nilpotent orbital integrals on the Lie algebra. For $\mathrm{SL}_2$ there are five nilpotent orbits, the trivial orbit and four regular ones. The coefficient of the trivial orbit governs the behavior of the normalized character on the split torus near the identity.
+\item[Normalized induction] Parabolic induction including the factor $\delta_P^{1/2}$. With this normalization unitary characters induce to unitarizable representations and the induced representations of a character and of its Weyl conjugate have the same constituents. The reducibility points depend on the normalization.
+\item[Orbital integral] The integral of a test function over the conjugacy class of a regular semisimple element. The normalized orbital integral is the product with the square root of the absolute value of the Weyl discriminant. It can remain nonzero as the element approaches a singular one.
+\item[Quasi-finite spectral type] A condition on a spectral functional supported on possibly infinitely many Bernstein components: its moments in each component are bounded by a polynomial, with one exponent for all components. Finite spectral type is the case of finitely many components. Without the common exponent the condition is called componentwise finite spectral order.
+\item[Shalika germ] A function on the regular set near a singular element that gives the coefficient of a singular orbital integral in the asymptotic expansion of regular orbital integrals. The germs, and not the discriminant factor alone, decide whether a normalized orbital integral vanishes at a singular element.
+\item[Spectral moment] The value of a spectral functional on a Laurent monomial in the twisting parameter, or on the symmetric combination $z^n+z^{-n}$ in a Weyl-invariant family. The sequence of moments determines the functional on the induced trace polynomial. Its rate of growth decides to which larger test spaces the functional extends.
+\item[Supertempered virtual character] A finite linear combination of tempered irreducible characters whose normalized values decay rapidly on every Cartan subgroup. Equivalently, all of its weak constant terms vanish. For $\mathrm{SL}_2$ these are the combinations of discrete series characters and of the differences of the two constituents of a quadratic principal series.
+\item[Tempered representation] An irreducible admissible representation occurring weakly in the regular representation; equivalently a representation satisfying the appropriate tempered matrix-coefficient bounds. Its character extends continuously to the Schwartz space. The trivial representation and the complementary series are not tempered.
+\item[Trace Paley--Wiener theorem] The characterization of trace forms of Hecke-algebra elements by regularity under unramified twisting and uniform compact-open level bounds. It describes the image of the trace transform and not the image of the operator-valued Fourier transform. A version for the Schwartz space replaces regular functions by smooth functions on the unitary parameters.
+\item[Weak constant term] The part of the normalized Jacquet-module character of a tempered representation that comes from the unitary exponents, not the entire Jacquet-module character. For the Steinberg representation the Jacquet-module character is nonzero and the weak constant term is zero.
 \end{description}
 
 \section*{Acknowledgments}
 These notes were first written in November 1994 and were not published. In 2026 Argon (Gemini, Google) made a first, minor revision of the 1994 source. ChatGPT (Sol, OpenAI) refereed that revision and then wrote a second revision, an expository rewrite that responds to the referee report. That rewrite is Draft 1. Claude (Fable, Anthropic) prepared Draft 2. It brought the paper into line with the author's style guide, and it added the orienting paragraphs, the unnumbered examples, the literature review and these acknowledgments. It made no mathematical change to the existing statements and proofs.
 
-In Draft 3 ChatGPT developed the spectral geometry, trace Paley--Wiener comparison, and continuous spectral duality sections, including the diagrams and elementary proofs. ChatGPT also developed the local finite-character interpolation theorem, conditional finite-block admissibility and split descent criterion, and the revised quasi-finite spectral definitions in Section 8. Claude (Fable, Anthropic) developed Section \ref{sec:supertemp} on supertempered distributions, including its proofs, examples and diagrams. The new sections preserve the distinction between established classical inputs and remaining verification tasks. AI review is not an independent certification of the results. In particular, the same system wrote the referee report and the revision that answers it, and the material added in Draft 2 has not been refereed. Further details on the AI usage can be found in the revision log, the file \texttt{revision\_log.md} that accompanies the source of this paper.
+In Draft 3 ChatGPT developed the spectral geometry, trace Paley--Wiener comparison, and continuous spectral duality sections, including the diagrams and elementary proofs. ChatGPT also developed the local finite-character interpolation theorem, conditional finite-block admissibility and split descent criterion, and the revised quasi-finite spectral definitions in Section 8. Claude (Fable, Anthropic) developed Section \ref{sec:supertemp} on supertempered distributions, including its proofs, examples and diagrams. The new sections preserve the distinction between established classical inputs and remaining verification tasks. 
 
-\begin{thebibliography}{ADSS11}
-\bibitem[ADSS11]{ADSS11} J. D. Adler, S. DeBacker, P. J. Sally, Jr., and L. Spice, \emph{Supercuspidal characters of $\mathrm{SL}_2$ over a $p$-adic field}, in \emph{Harmonic Analysis on Reductive, $p$-adic Groups}, Contemp. Math. \textbf{543}, Amer. Math. Soc., 2011. Available as arXiv:1012.5548.
-\bibitem[Ar93]{Ar93} J. Arthur, \emph{On elliptic tempered characters}, Acta Math. \textbf{171} (1993), 73--138.
-\bibitem[BDK86]{BDK86} J. Bernstein, P. Deligne, and D. Kazhdan, \emph{Trace Paley--Wiener theorem for reductive $p$-adic groups}, J. Analyse Math. \textbf{47} (1986), 180--192.
-\bibitem[Ca93]{Ca93} W. Casselman, \emph{Introduction to the theory of admissible representations of $p$-adic reductive groups}, unpublished notes written 1974--1993, draft of May 7, 1993. Consult the available revised online editions for exact theorem numbering.
-\bibitem[Cl91]{Cl91} L. Clozel, \emph{Invariant harmonic analysis on the Schwartz space of a reductive $p$-adic group}, in \emph{Harmonic Analysis on Reductive Groups} (Bowdoin, 1989), Progr. Math. \textbf{101}, Birkh\"auser, 1991, 101--122.
-\bibitem[Da00]{Da00} J.-F. Dat, \emph{On the $K_0$ of a $p$-adic group}, Invent. Math. \textbf{140} (2000), no. 1, 171--226.
-\bibitem[GG63]{GG63} I. M. Gelfand and M. I. Graev, \emph{Representations of a group of the second order with elements from a locally compact field}, Russian Math. Surveys \textbf{18} (1963), 29--100.
-\bibitem[He94]{He94} R. A. Herb, \emph{Supertempered virtual characters}, Compositio Math. \textbf{93} (1994), no. 2, 139--154.
-\bibitem[Ka86]{Ka86} D. Kazhdan, \emph{Cuspidal geometry of $p$-adic groups}, J. Analyse Math. \textbf{47} (1986), 1--36.
-\bibitem[Si79]{Si79} A. J. Silberger, \emph{Introduction to Harmonic Analysis on Reductive $p$-adic Groups}, Mathematical Notes \textbf{23}, Princeton Univ. Press, 1979.
-\bibitem[SS68]{SS68} P. J. Sally, Jr. and J. A. Shalika, \emph{Characters of the discrete series of representations of $\mathrm{SL}(2)$ over a local field}, Proc. Natl. Acad. Sci. USA \textbf{61} (1968), 1231--1237.
-\bibitem[SS84]{SS84} P. J. Sally, Jr. and J. A. Shalika, \emph{The Fourier transform of orbital integrals on $\mathrm{SL}_2$ over a $p$-adic field}, in \emph{Lie Group Representations II}, Lecture Notes in Math. \textbf{1041}, Springer, 1984, 303--340.
-\bibitem[SZ07]{SZ07} P. Schneider and E.-W. Zink, \emph{The algebraic theory of tempered representations of $p$-adic groups. Part I: Parabolic induction and restriction}, J. Inst. Math. Jussieu \textbf{6} (2007), no. 4, 639--688.
-\bibitem[Wa03]{Wa03} J.-L. Waldspurger, \emph{La formule de Plancherel pour les groupes $p$-adiques (d'apr\`es Harish-Chandra)}, J. Inst. Math. Jussieu \textbf{2} (2003), no. 2, 235--333.
+ChatGPT refereed the main file of Draft 3. The five sections kept in separate source files, which contain most of the mathematics added in Draft 3, were not part of that review. Claude prepared Draft 4 in response to the report. It added Lemma \ref{lem:conj}, Proposition \ref{prop:alg-dual}, Theorem \ref{thm:three-duals} and the remarks and examples around them, specified the topologies of the Hecke algebra and of the Schwartz space, expanded the Introduction and the Glossary, and checked the bibliography. Claude also read the four sections written by ChatGPT for correctness. It found no error in them, and it could not check their cited inputs against the sources.
+
+AI review is not an independent certification of the results. In particular, the first referee report and the revision that answers it were written by the same system, Section \ref{sec:supertemp} has been reviewed only by the system that wrote it, and the material added in Draft 4 has not been refereed. Further details on the AI usage can be found in the revision log, the file \texttt{revision\_log.md} that accompanies the source of this paper.
+
+\begin{thebibliography}{ABPS14}
 \bibitem[ABPS14]{ABPS14} A.-M. Aubert, P. Baum, R. Plymen and M. Solleveld, \emph{Geometric structure in smooth dual and local Langlands conjecture}, Japan. J. Math. \textbf{9} (2014), 99--136.
-\bibitem[ABPS19]{ABPS19} A.-M. Aubert, P. Baum, R. Plymen and M. Solleveld, \emph{Smooth duals of inner forms of $\mathrm{GL}_n$ and $\mathrm{SL}_n$}, Doc. Math. \textbf{24} (2019), 373--420.
 \bibitem[ABPS17]{ABPS17} A.-M. Aubert, P. Baum, R. Plymen and M. Solleveld, \emph{The principal series of $p$-adic groups with disconnected center}, Proc. London Math. Soc. \textbf{114} (2017), 798--854. \url{https://doi.org/10.1112/plms.12023}.
-\bibitem[Ar94]{Ar94} J. Arthur, \emph{The Trace Paley Wiener Theorem for Schwartz Functions}, Contemp. Math. \textbf{177} (1994), 171--180. \url{https://personal.math.ubc.ca/~cass/arthur/pdf/42.pdf}.
-\bibitem[Ro98]{Ro98} A. Roche, \emph{Types and Hecke algebras for principal series representations of split reductive $p$-adic groups}, Ann. Sci. École Norm. Sup. \textbf{31} (1998), 361--413.
-\bibitem[Ta92]{Ta92} M. Tadi\'c, \emph{Notes on representations of non-Archimedean $\mathrm{SL}(n)$}, Pacific J. Math. \textbf{152} (1992), 375--396. Applicability to be reconciled with the original bibliography.
-\bibitem[HC99]{HC99} Harish-Chandra, \emph{Admissible Invariant Distributions on Reductive $p$-adic Groups}, edited by S. DeBacker and P. J. Sally, Jr., University Lecture Series, vol. 16, American Mathematical Society, 1999.
-\bibitem[De02]{De02} S. DeBacker, \emph{Homogeneity results for invariant distributions of a reductive $p$-adic group}, Ann. Sci. \'{E}cole Norm. Sup. (4) \textbf{35} (2002), 391--422.
-\bibitem[AGS15]{AGS15} A. Aizenbud, D. Gourevitch and E. Sayag, \emph{$\mathfrak z$-Finite distributions on $p$-adic groups}, arXiv:1405.2540.
-\bibitem[CT26]{CT26} T.-H. Chen and C.-C. Tsai, \emph{Admissibility of Bernstein centers}, arXiv:2608.21981 (2026); preprint, full text not verified.
-\bibitem[AP24]{AP24} A.-M. Aubert and R. Plymen, \emph{Comparison of the Sally--Shalika character formulas with the endoscopic character identities for $\mathrm{SL}_2$}, arXiv:2410.20183; title and content from the abstract only.
+\bibitem[ABPS19]{ABPS19} A.-M. Aubert, P. Baum, R. Plymen and M. Solleveld, \emph{Smooth duals of inner forms of $\mathrm{GL}_n$ and $\mathrm{SL}_n$}, Doc. Math. \textbf{24} (2019), 373--420.
+\bibitem[ADSS11]{ADSS11} J. D. Adler, S. DeBacker, P. J. Sally, Jr., and L. Spice, \emph{Supercuspidal characters of $\mathrm{SL}_2$ over a $p$-adic field}, in \emph{Harmonic Analysis on Reductive, $p$-adic Groups}, Contemp. Math. \textbf{543}, Amer. Math. Soc., 2011, 19--69. Available as arXiv:1012.5548.
+\bibitem[AGS15]{AGS15} A. Aizenbud, D. Gourevitch and E. Sayag, \emph{$\mathfrak z$-finite distributions on $p$-adic groups}, Adv. Math. \textbf{285} (2015), 1376--1414. Available as arXiv:1405.2540.
+\bibitem[AP24]{AP24} A.-M. Aubert and R. Plymen, \emph{Comparison of the Sally--Shalika character formulas with the endoscopic character identities for $\mathrm{SL}_2$}, preprint, arXiv:2410.20183.
+\bibitem[Ar93]{Ar93} J. Arthur, \emph{On elliptic tempered characters}, Acta Math. \textbf{171} (1993), 73--138.
+\bibitem[Ar94]{Ar94} J. Arthur, \emph{The trace Paley Wiener theorem for Schwartz functions}, Contemp. Math. \textbf{177} (1994), 171--180. \url{https://personal.math.ubc.ca/~cass/arthur/pdf/42.pdf}.
+\bibitem[BDK86]{BDK86} J. Bernstein, P. Deligne, and D. Kazhdan, \emph{Trace Paley--Wiener theorem for reductive $p$-adic groups}, J. Analyse Math. \textbf{47} (1986), 180--192.
 \bibitem[Bo76]{Bo76} A. Borel, \emph{Admissible representations of a semi-simple group over a local field with vectors fixed under an Iwahori subgroup}, Invent. Math. \textbf{35} (1976), 233--259.
 \bibitem[Ca77]{Ca77} W. Casselman, \emph{Characters and Jacquet modules}, Math. Ann. \textbf{230} (1977), 101--105.
-\bibitem[CH17]{CH17} D. Ciubotaru and X. He, \emph{Cocenters and representations of affine Hecke algebras}, J. Eur. Math. Soc. \textbf{19} (2017), 3143--3177.
-\bibitem[CH21]{CH21} D. Ciubotaru and X. He, \emph{Cocenters of $p$-adic groups, III: elliptic and rigid cocenters}, arXiv:1703.00378; journal data not verified.
-\bibitem[HC83]{HC83} Harish-Chandra, \emph{Supertempered distributions on real reductive groups}, in \emph{Studies in Applied Mathematics}, Adv. Math. Suppl. Stud. \textbf{8}, Academic Press, 1983, 139--153; pages not verified.
-\bibitem[Ke82]{Ke82} C. D. Keys, \emph{On the decomposition of reducible principal series representations of $p$-adic Chevalley groups}, Pacific J. Math. \textbf{101} (1982), 351--388; pages not verified.
+\bibitem[Ca93]{Ca93} W. Casselman, \emph{Introduction to the theory of admissible representations of $p$-adic reductive groups}, unpublished notes written 1974--1993, draft of May 7, 1993.
+\bibitem[CH17]{CH17} D. Ciubotaru and X. He, \emph{Cocenters and representations of affine Hecke algebras}, J. Eur. Math. Soc. \textbf{19} (2017), no. 10, 3143--3177.
+\bibitem[CH21]{CH21} D. Ciubotaru and X. He, \emph{Cocenters of $p$-adic groups, III: elliptic and rigid cocenters}, Peking Math. J. \textbf{4} (2021), no. 2, 159--186. Available as arXiv:1703.00378.
+\bibitem[Cl91]{Cl91} L. Clozel, \emph{Invariant harmonic analysis on the Schwartz space of a reductive $p$-adic group}, in \emph{Harmonic Analysis on Reductive Groups} (Bowdoin, 1989), Progr. Math. \textbf{101}, Birkh\"auser, 1991, 101--122.
+\bibitem[CT26]{CT26} T.-H. Chen and C.-C. Tsai, \emph{Admissibility of Bernstein centers}, preprint, arXiv:2608.21981 (2026).
+\bibitem[Da00]{Da00} J.-F. Dat, \emph{On the $K_0$ of a $p$-adic group}, Invent. Math. \textbf{140} (2000), no. 1, 171--226.
+\bibitem[De02]{De02} S. DeBacker, \emph{Homogeneity results for invariant distributions of a reductive $p$-adic group}, Ann. Sci. \'Ecole Norm. Sup. (4) \textbf{35} (2002), 391--422.
+\bibitem[GG63]{GG63} I. M. Gelfand and M. I. Graev, \emph{Representations of a group of the second order with elements from a locally compact field}, Russian Math. Surveys \textbf{18} (1963), 29--100.
+\bibitem[HC83]{HC83} Harish-Chandra, \emph{Supertempered distributions on real reductive groups}, in \emph{Studies in Applied Mathematics}, Adv. Math. Suppl. Stud. \textbf{8}, Academic Press, 1983, 139--153.
+\bibitem[HC99]{HC99} Harish-Chandra, \emph{Admissible Invariant Distributions on Reductive $p$-adic Groups}, notes by S. DeBacker and P. J. Sally, Jr., University Lecture Series \textbf{16}, Amer. Math. Soc., 1999.
+\bibitem[He94]{He94} R. A. Herb, \emph{Supertempered virtual characters}, Compositio Math. \textbf{93} (1994), no. 2, 139--154.
+\bibitem[Ka86]{Ka86} D. Kazhdan, \emph{Cuspidal geometry of $p$-adic groups}, J. Analyse Math. \textbf{47} (1986), 1--36.
+\bibitem[Ke82]{Ke82} C. D. Keys, \emph{On the decomposition of reducible principal series representations of $p$-adic Chevalley groups}, Pacific J. Math. \textbf{101} (1982), no. 2, 351--388.
 \bibitem[Ko88]{Ko88} R. E. Kottwitz, \emph{Tamagawa numbers}, Ann. of Math. (2) \textbf{127} (1988), 629--646.
-\bibitem[Ko04]{Ko04} J. Korman, \emph{A character formula for compact elements (the rank one case)}, arXiv:math/0409292.
+\bibitem[Ko04]{Ko04} J. Korman, \emph{A character formula for compact elements (the rank one case)}, preprint, arXiv:math/0409292 (2004).
 \bibitem[LL79]{LL79} J.-P. Labesse and R. P. Langlands, \emph{$L$-indistinguishability for $\mathrm{SL}(2)$}, Canad. J. Math. \textbf{31} (1979), 726--785.
-\bibitem[OS13]{OS13} E. Opdam and M. Solleveld, \emph{Extensions of tempered representations}, Geom. Funct. Anal. \textbf{23} (2013), 664--714; arXiv:1105.3802; last page not verified.
-\bibitem[Re01]{Re01} M. Reeder, \emph{Euler--Poincar\'e pairings and elliptic representations of Weyl groups and $p$-adic groups}, Compositio Math. \textbf{129} (2001), 149--181; pages not verified.
+\bibitem[OS13]{OS13} E. Opdam and M. Solleveld, \emph{Extensions of tempered representations}, Geom. Funct. Anal. \textbf{23} (2013), no. 2, 664--714. Available as arXiv:1105.3802.
+\bibitem[Re01]{Re01} M. Reeder, \emph{Euler--Poincar\'e pairings and elliptic representations of Weyl groups and $p$-adic groups}, Compositio Math. \textbf{129} (2001), 149--181.
 \bibitem[Ro75]{Ro75} F. Rodier, \emph{Mod\`ele de Whittaker et caract\`eres de repr\'esentations}, in \emph{Non-Commutative Harmonic Analysis}, Lecture Notes in Math. \textbf{466}, Springer, 1975, 151--171.
+\bibitem[Ro98]{Ro98} A. Roche, \emph{Types and Hecke algebras for principal series representations of split reductive $p$-adic groups}, Ann. Sci. \'Ecole Norm. Sup. (4) \textbf{31} (1998), 361--413.
+\bibitem[Si79]{Si79} A. J. Silberger, \emph{Introduction to Harmonic Analysis on Reductive $p$-adic Groups}, Mathematical Notes \textbf{23}, Princeton Univ. Press, 1979.
+\bibitem[So19]{So19} M. Solleveld, \emph{On completions of Hecke algebras}, in \emph{Representations of Reductive $p$-adic Groups}, Progr. Math. \textbf{328}, Birkh\"auser, 2019. Available as arXiv:1612.01776.
+\bibitem[So24]{So24} M. Solleveld, \emph{Hochschild homology of reductive $p$-adic groups}, J. Noncommut. Geom. (2024), published online, DOI 10.4171/JNCG/556. Available as arXiv:2203.06435.
+\bibitem[So25]{So25} M. Solleveld, \emph{Group algebras of reductive $p$-adic groups, their representations and their noncommutative geometry}, preprint, arXiv:2510.17260 (2025).
+\bibitem[SS68]{SS68} P. J. Sally, Jr. and J. A. Shalika, \emph{Characters of the discrete series of representations of $\mathrm{SL}(2)$ over a local field}, Proc. Natl. Acad. Sci. USA \textbf{61} (1968), 1231--1237.
+\bibitem[SS84]{SS84} P. J. Sally, Jr. and J. A. Shalika, \emph{The Fourier transform of orbital integrals on $\mathrm{SL}_2$ over a $p$-adic field}, in \emph{Lie Group Representations II}, Lecture Notes in Math. \textbf{1041}, Springer, 1984, 303--340.
 \bibitem[SS97]{SS97} P. Schneider and U. Stuhler, \emph{Representation theory and sheaves on the Bruhat--Tits building}, Publ. Math. Inst. Hautes \'Etudes Sci. \textbf{85} (1997), 97--191.
+\bibitem[SZ07]{SZ07} P. Schneider and E.-W. Zink, \emph{The algebraic theory of tempered representations of $p$-adic groups. Part I: Parabolic induction and restriction}, J. Inst. Math. Jussieu \textbf{6} (2007), no. 4, 639--688.
+\bibitem[Ta83]{Ta83} M. Tadi\'c, \emph{The topology of the dual space of a reductive group over a local field}, Glas. Mat. \textbf{18} (1983), 259--279.
+\bibitem[Ta92]{Ta92} M. Tadi\'c, \emph{Notes on representations of non-Archimedean $\mathrm{SL}(n)$}, Pacific J. Math. \textbf{152} (1992), 375--396.
+\bibitem[Wa03]{Wa03} J.-L. Waldspurger, \emph{La formule de Plancherel pour les groupes $p$-adiques (d'apr\`es Harish-Chandra)}, J. Inst. Math. Jussieu \textbf{2} (2003), no. 2, 235--333.
 \end{thebibliography}
 \end{document}

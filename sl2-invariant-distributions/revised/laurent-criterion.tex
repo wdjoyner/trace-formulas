@@ -1,0 +1,98 @@
+% Subsection of Section 7 of sl2-invariant-distributions-2026.tex.
+% Input by spectral-duality.tex. Theorem thm:laurent and its corollary are
+% from Draft 1. Examples ex:jet, ex:nontempered and Theorem thm:three-duals
+% were added in Draft 4. See revision_log.md.
+\subsection{The bilateral Laurent criterion}\label{sec:analytic}
+In rank one, a connected family of unramified twists is modeled on $\mathbb C^\times$, with coordinate $z=\psi(\varpi)$. This gives an elementary problem about analytic functionals. It can be solved completely, and it is independent of the deeper compatibility questions for the spectrum of $G$. The subsection treats one family without Weyl symmetry. The next subsection adds the symmetry, annuli and the exceptional coordinates.
+
+Write $\mathcal O(\mathbb C^\times)$ for the Fr\'echet space of holomorphic functions with the compact-open topology, and $\mathbb C[z,z^{-1}]$ for the Laurent polynomials. Laurent polynomials are dense in $\mathcal O(\mathbb C^\times)$ by Laurent expansion. Their continuous dual is described by explicit bounds.
+
+\begin{theorem}[Laurent-coefficient criterion]\label{thm:laurent}
+Let $\lambda:\mathbb C[z,z^{-1}]\to\mathbb C$ be linear and put $c_n=\lambda(z^n)$ for $n\in\mathbb Z$. Then $\lambda$ extends uniquely to a continuous linear functional on $\mathcal O(\mathbb C^\times)$ if and only if there exist constants $C>0$ and $R\ge1$ such that
+\begin{equation}\label{eq:coeff-bound}
+|c_n|\le C R^{|n|}\quad(n\in\mathbb Z).
+\end{equation}
+\end{theorem}
+\begin{proof}
+Suppose $\lambda$ is continuous. There exist a compact annulus $K=\{r\le|z|\le s\}$, with $0<r<1<s$, and $C_0$ such that $|\lambda(h)|\le C_0\sup_K|h|$. Applying this to $z^n$ and $z^{-n}$ gives $|c_n|\le C_0\max\{s,r^{-1}\}^{|n|}$.
+
+Conversely, assume \eqref{eq:coeff-bound}. Let $h(z)=\sum_{n\in\mathbb Z}a_nz^n$ be the Laurent series of $h\in\mathcal O(\mathbb C^\times)$, and choose numbers $0<r<R^{-1}$ and $s>R$.  Cauchy's coefficient estimates on the circles $|z|=r$ and $|z|=s$ give, respectively,
+\[
+|a_{-m}|\le r^m\max_{|z|=r}|h(z)|,\qquad
+|a_m|\le s^{-m}\max_{|z|=s}|h(z)|\quad(m\ge1).
+\]
+Consequently $\sum_{n\in\mathbb Z}a_nc_n$ converges absolutely and has absolute value bounded by a constant times $\sup_{r\le|z|\le s}|h(z)|$.  It therefore defines a continuous extension of $\lambda$. Uniqueness follows from the density of Laurent polynomials.
+\end{proof}
+
+\begin{example*}
+Fix $z_0\in\mathbb C^\times$ and let $\lambda(h)=h(z_0)$. Then $c_n=z_0^n$, and \eqref{eq:coeff-bound} holds with $C=1$ and $R=\max\{|z_0|,|z_0|^{-1}\}$. This agrees with the theorem, since evaluation at a point is continuous on $\mathcal O(\mathbb C^\times)$.
+
+By contrast, define $\lambda$ on Laurent polynomials by $\lambda(z^n)=n!$ for $n\ge0$ and $\lambda(z^n)=0$ for $n<0$. No bound of the form \eqref{eq:coeff-bound} holds, because $n!/R^n\to\infty$ for every $R$. By Theorem \ref{thm:laurent}, this $\lambda$ has no continuous extension to $\mathcal O(\mathbb C^\times)$.
+\end{example*}
+
+\begin{example}[Derivative evaluation]\label{ex:jet}
+Fix $z_0\in\mathbb C^\times$ and let $\lambda(h)=z_0h'(z_0)$. Then $c_n=nz_0^n$. Put $\rho=\max\{|z_0|,|z_0|^{-1}\}$. For every $R>\rho$ the sequence $|n|(\rho/R)^{|n|}$ is bounded, so \eqref{eq:coeff-bound} holds with this $R$. The bound fails for $R=\rho$. So an analytic functional need not be a point evaluation, and the smallest admissible $R$ in \eqref{eq:coeff-bound} need not be attained. Functionals of this kind are the jets of Theorem \ref{thm:duality-jets}.
+\end{example}
+
+\begin{example}[An analytic functional that is not tempered]\label{ex:nontempered}
+Let $\lambda(h)=h(2)$, so that $c_n=2^n$. By Theorem \ref{thm:laurent} it is continuous on $\mathcal O(\mathbb C^\times)$. It is not continuous for the topology that the Laurent polynomials inherit from $C^\infty(S^1)$. Indeed, put $h_m(z)=2^{-m}z^m$. On the unit circle $z=e^{i\theta}$, and the $k$th derivative of $h_m$ in $\theta$ has supremum $m^k2^{-m}$. This tends to zero as $m\to\infty$ for each fixed $k$. So $h_m\to0$ in $C^\infty(S^1)$, while $\lambda(h_m)=h_m(2)=1$ for every $m$.
+
+For $F=\mathbb Q_3$ the same computation with $2$ replaced by $3$ concerns the parameter $z=3$ of $I(|\cdot|^{-1})$, where the trivial and Steinberg representations occur. With $2$ replaced by $3^{s}$, $0<s<1$, it concerns a complementary series representation. This is the mechanism of Theorem \ref{thm:pwinstability}: tempered trace data determine a non-tempered trace, and the determination is not continuous.
+\end{example}
+
+\begin{corollary}[Weyl-invariant version]\label{cor:laurent-weyl}
+Let $\iota(z)=z^{-1}$. A linear functional on the $\iota$-invariant Laurent polynomials extends to a continuous functional on $\mathcal O(\mathbb C^\times)^\iota$ if and only if its values on $z^n+z^{-n}$ grow at most exponentially with $|n|$.
+\end{corollary}
+\begin{proof}
+Use averaging $h\mapsto\tfrac12(h+h\circ\iota)$ to extend a functional from the invariant subspace to all Laurent polynomials, and then apply Theorem \ref{thm:laurent}.
+\end{proof}
+
+The criterion is one of three. The Laurent polynomials sit inside two larger spaces of test functions, and each space has its own dual. The next theorem puts the three side by side. It is the model for the comparison of the Hecke algebra, the holomorphic spectral spaces and the Schwartz space in the rest of the paper.
+
+Let $P=\mathbb C[z,z^{-1}]$, with the locally convex inductive-limit topology of its finite-dimensional subspaces. Let $C^\infty(S^1)$ be the Fr\'echet space of smooth functions on the unit circle, with the seminorms $\sup_\theta|h^{(k)}(e^{i\theta})|$ for $k\ge0$, where the derivative is taken in $\theta$.
+
+\begin{theorem}[Three duals in the elementary model]\label{thm:three-duals}
+\begin{enumerate}[label=(\alph*),leftmargin=*]
+\item The inclusion $P\to\mathcal O(\mathbb C^\times)$ and the restriction map $\mathcal O(\mathbb C^\times)\to C^\infty(S^1)$ are continuous and injective, and each has dense image.
+\item The transposed maps are injective. They give inclusions
+\[
+C^\infty(S^1)'\ \hookrightarrow\ \mathcal O(\mathbb C^\times)'\ \hookrightarrow\ P^*,
+\]
+where $P^*$ is the algebraic dual of $P$, which equals its continuous dual.
+\item A functional $\lambda\in P^*$ is determined by the sequence $c_n=\lambda(z^n)$, and every sequence occurs. It lies in $\mathcal O(\mathbb C^\times)'$ if and only if $|c_n|\le CR^{|n|}$ for some $C$ and $R$. It lies in $C^\infty(S^1)'$ if and only if $|c_n|\le C(1+|n|)^N$ for some $C$ and $N$.
+\item Both inclusions in (b) are strict.
+\item The same statements hold for the subspaces of functions invariant under $\iota(z)=z^{-1}$, with sequences satisfying $c_n=c_{-n}$.
+\end{enumerate}
+\end{theorem}
+\begin{proof}
+(a) A linear map out of $P$ is continuous because it is continuous on every finite-dimensional subspace. The image of $P$ is dense in $\mathcal O(\mathbb C^\times)$ because a Laurent series converges uniformly on compact sets. On the circle $d/d\theta=iz\,d/dz$. By Cauchy's estimates each derivative of $h$ on the circle is bounded by a constant times the supremum of $|h|$ over the annulus $\tfrac12\le|z|\le2$. So restriction is continuous. It is injective by the identity theorem. Its image contains the trigonometric polynomials. These are dense in $C^\infty(S^1)$, because the Fourier series of a smooth function converges to it together with all derivatives.
+
+(b) The transpose of a continuous linear map with dense image is injective. Every linear functional on $P$ is continuous, by the first sentence of (a).
+
+(c) The monomials $z^n$ form a basis of $P$, which gives the first statement. The second is Theorem \ref{thm:laurent}. For the third, suppose that $\lambda$ is continuous on $C^\infty(S^1)$. Then $|\lambda(h)|\le C\max_{k\le N}\sup|h^{(k)}|$ for some $C$ and $N$. The $k$th derivative of $e^{in\theta}$ has supremum $|n|^k$, which gives $|c_n|\le C(1+|n|)^N$. Conversely, assume this bound. Integration by parts shows that the Fourier coefficients $a_n$ of a smooth function $h$ satisfy $|a_n|\le|n|^{-k}\sup|h^{(k)}|$ for $n\ne0$. Taking $k=N+2$ shows that $\sum_na_nc_n$ converges absolutely and is bounded by a constant times $\max_{k\le N+2}\sup|h^{(k)}|$. This defines a continuous functional on $C^\infty(S^1)$ that agrees with $\lambda$ on $P$.
+
+(d) The sequence $c_n=2^n$ of Example \ref{ex:nontempered} satisfies the exponential bound and no polynomial bound. The sequence $c_n=|n|!$ satisfies no exponential bound.
+
+(e) The averaging operator $h\mapsto\tfrac12(h+h\circ\iota)$ is a continuous projection of each of the three spaces onto its invariant subspace, and it commutes with the two maps. The examples in (d) can be replaced by $c_n=2^n+2^{-n}$ and $c_n=|n|!$.
+\end{proof}
+
+\begin{figure}[htbp]\centering
+\begin{tikzpicture}[>=Latex,every node/.style={font=\small}]
+\node[draw,rounded corners,minimum width=3.2cm,minimum height=8mm] (p) at (0,1.5) {$\mathbb C[z,z^{-1}]$};
+\node[draw,rounded corners,minimum width=3.2cm,minimum height=8mm] (o) at (5,1.5) {$\mathcal O(\mathbb C^\times)$};
+\node[draw,rounded corners,minimum width=3.2cm,minimum height=8mm] (c) at (10,1.5) {$C^\infty(S^1)$};
+\node[draw,rounded corners,minimum width=3.2cm,minimum height=8mm] (pd) at (0,0) {arbitrary $c_n$};
+\node[draw,rounded corners,minimum width=3.2cm,minimum height=8mm] (od) at (5,0) {$|c_n|\le CR^{|n|}$};
+\node[draw,rounded corners,minimum width=3.2cm,minimum height=8mm] (cd) at (10,0) {$|c_n|\le C(1+|n|)^N$};
+\draw[->] (p)--node[above]{dense} (o);\draw[->] (o)--node[above]{dense} (c);
+\draw[->] (cd)--node[below]{strict} (od);\draw[->] (od)--node[below]{strict} (pd);
+\foreach \a/\b in {p/pd,o/od,c/cd}{\draw[dashed] (\a)--(\b);}
+\end{tikzpicture}
+\caption{The elementary rank-one model. The top row shows the test-function spaces and the bottom row the coefficient sequences of their continuous duals. Passing to duals reverses the arrows.}\label{fig:three-duals}
+\end{figure}
+
+In the application to $G$, the Laurent polynomials are the induced trace polynomials of functions in the Hecke algebra, and the smooth functions on the circle are the induced traces of Schwartz functions, by Arthur's theorem (Proposition \ref{prop:schwartz-pw}). The holomorphic space is a spectral construction. No space of test functions on $G$ with this trace image is identified in this paper.
+
+\begin{remark}[Scope]
+Theorems \ref{thm:laurent} and \ref{thm:three-duals} are theorems about \emph{one analytic family}. They do not, without further compatibility and continuity arguments, imply that an invariant distribution on $G$ is analytic merely from a bound along the diagonal torus. In particular no stronger global converse is claimed here (see Section \ref{sec:summary}).
+\end{remark}

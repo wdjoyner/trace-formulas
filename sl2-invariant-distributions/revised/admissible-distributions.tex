@@ -11,7 +11,9 @@ extended by zero. With Haar measure on $G$ this is the central isotypic idempote
 
 We use the local admissibility condition of the original notes: an invariant distribution $D$ is $(G,K)$-admissible at $\gamma$ if $D(f*e_\sigma)=0$ for all $f$ supported in $\gamma K$, all $K'\subset K$, and all $\sigma$ not intertwining the trivial type on $K$. In this formulation one may use the contragredient idempotent instead, with the corresponding change of type label. The intertwining condition with the trivial type is unchanged. Admissibility on an invariant open set means that such a $K$ exists at every point of the set.
 
-The Harish-Chandra regularity input used below is that irreducible admissible characters satisfy the local condition, and admissible invariant distributions have locally integrable invariant representatives, locally constant on the regular semisimple set and with locally bounded discriminant-normalized density. See \cite{HC99} for the regularity theory; the precise hypotheses and formulation in that source require a source-level audit (Remark 2026.8). We use the condition at every point, not only at regular points.
+\begin{remark}[Remark 2026.4: the Harish-Chandra input]\label{rem:hc-input}
+The regularity input used below has two parts. First, irreducible admissible characters satisfy the local condition. Second, admissible invariant distributions have locally integrable invariant representatives, which are locally constant on the regular semisimple set and have locally bounded discriminant-normalized density. See \cite{HC99} for the regularity theory. The definition of admissibility above is the one of the 1994 notes. Its agreement with Harish-Chandra's definition, and the precise hypotheses of the theorems in that source, have not been checked against the source. We use the condition at every point, not only at regular points.
+\end{remark}
 
 \begin{lemma}\label{lem:admissibility-local}
 The local admissibility condition is preserved by shrinking $K$, taking finite linear combinations of admissible distributions, and replacing a distribution by one agreeing with it on all test functions in an open neighborhood of $\gamma$.
@@ -21,6 +23,22 @@ If a type of a smaller subgroup intertwines the trivial representation on $K$, t
 \end{proof}
 
 Representability by a locally integrable function, local constancy on the regular set, and a locally bounded normalized density are distinct from global temperedness. In particular, a point mass at the identity is invariant but is not represented by a locally integrable function. We will return to this example below.
+
+\begin{remark}[Four conditions that must be kept apart]\label{rem:four-conditions}
+Several finiteness and regularity conditions on an invariant distribution $D$ occur in this section. They are not equivalent.
+\begin{center}\small
+\begin{tabularx}{\linewidth}{@{}p{.3\linewidth}X@{}}\toprule
+Condition & Meaning\\\midrule
+Finite Bernstein support & The spectral functional $\widehat D$ vanishes on all but finitely many Bernstein components.\\
+Center-finite & The orbit of $D$ under the Bernstein center spans a finite-dimensional space.\\
+Locally a finite character sum & On every relatively compact open set $V$, the distribution agrees on all of $C_c^\infty(V)$ with a finite linear combination of irreducible characters. The combination may depend on $V$.\\
+Locally representable & $D$ is given by a locally integrable function that is locally constant on the regular semisimple set.\\\bottomrule
+\end{tabularx}
+\end{center}
+The relations proved below are these. Center-finite implies finite Bernstein support, and the converse fails: a functional $D(f)=\lambda(P_f)$ of the trace polynomial of one component has support in that component, and its orbit under multiplication by Laurent polynomials can be infinite-dimensional. Finite Bernstein support implies that $D$ is locally a finite character sum (Theorems \ref{thm:local-interpolation} and \ref{thm:finite-block-admissibility}). This implies local admissibility and local representability, given the input of Remark \ref{rem:hc-input}. Temperedness is independent of all four.
+
+The size of the test-function space in the third condition matters. Agreement with a character sum on a finite-dimensional space of test functions would transfer nothing. Theorem \ref{thm:local-interpolation} gives agreement on the whole space $C_c^\infty(V)$. This is what Lemma \ref{lem:admissibility-local} needs in order to transfer the local properties of characters.
+\end{remark}
 
 \subsection{Local finite-character interpolation}
 Let $\mathfrak s$ be a principal-series Bernstein component. Fix the restriction $\xi$ of an inducing character to $\mathcal O^\times$ and use $\chi_{\xi,z}(\varpi^m a)=z^m\xi(a)$. For a regular split element $a(t)$ with $t=\varpi^m a$, the total induced character is
@@ -68,7 +86,7 @@ m_{|v(t)|},&v(t)\ne0,\\
 The constant mode is indispensable. On compact sets the normalized density is bounded, since only finitely many moments occur there.
 
 \begin{theorem}[Finite Bernstein support]\label{thm:finite-block-admissibility}
-Assume the algebraic block descriptions in Section~\ref{sec:pwcomparison} and the Harish-Chandra character admissibility input above. Every invariant distribution with finite Bernstein spectral support satisfies the local admissibility condition and is locally representable. No global bound on its Laurent moments is needed.
+Assume the algebraic block descriptions in Subsection~\ref{sec:pwcomparison} and the Harish-Chandra character admissibility input above. Every invariant distribution with finite Bernstein spectral support satisfies the local admissibility condition and is locally representable. No global bound on its Laurent moments is needed.
 \end{theorem}
 \begin{proof}
 In a principal-series block, decompose its spectral functional into the continuous-family functional $L$ and the two exceptional coefficients when present. The latter are finite combinations of irreducible characters. Each supercuspidal block is a single character coordinate since $G$ has no nontrivial unramified characters. Theorem~\ref{thm:local-interpolation} represents the $L$ contribution locally as a finite sum of characters. There are finitely many blocks by hypothesis, so the total sum is finite on each relatively compact open set. Lemma~\ref{lem:admissibility-local} and character admissibility give the assertion. Local integrability and the normalized bound follow either from the finite character formula or from regularity.

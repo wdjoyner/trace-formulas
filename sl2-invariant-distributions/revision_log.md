@@ -12,7 +12,10 @@ File names carry no draft number. Git history tracks the drafts. Draft 1 is the 
 | 1 | First, minor revision of the 1994 source by Argon (Gemini, Google): `original-1994/hitchhikers-guide-to-invariant-distributions-on-sl2-over-p-adic-field2.tex` | Done 2026 |
 | 2 | Referee report on stage 1 by ChatGPT (Sol, OpenAI): `revised/referee-report_argon-gemini-revision.md`. Verdict: major revision | Done 2026 |
 | 3 | Draft 1: expository rewrite by ChatGPT, responding to its own report | Done November 2026 |
-| 4 | Draft 2: style-guide pass by Claude (Fable, Anthropic). No mathematical changes | Done 2026-11-12 (this entry) |
+| 4 | Draft 2: style-guide pass by Claude (Fable, Anthropic). No mathematical changes | Done 2026-11-12 |
+| 5 | Draft 3: new sections by ChatGPT (Sections 3, 5–8) and Claude (Section 9) | Done 2026-11-24 |
+| 6 | Referee report on the main file of Draft 3 by ChatGPT: `revised/referee-report_draft3-main-file.md`. Recommendation: further revision | Done 2026-11-24 |
+| 7 | Draft 4: response to that report by Claude. Consolidation and verification, no new research section | Done 2026-11-24 |
 
 ## AI usage
 
@@ -264,3 +267,172 @@ Casselman [Ca77]; Harish-Chandra [HC99], [HC83]; Rodier [Ro75]; Keys [Ke82]; Lab
 ### Compilation
 
 The combined source was compiled with pdflatex (three passes) in a scratch copy with `mathptmx` substituted for `newtx`, which was not installed in the build environment: 56 pages, no undefined references or citations, no multiply defined labels. The committed PDF is produced by the GitHub Actions workflow after merge to main.
+
+
+## Draft 4: response to the referee report on Draft 3 — November 24, 2026 (Claude)
+
+Author of this stage: Claude (Fable, Anthropic). The report is `revised/referee-report_draft3-main-file.md`, by ChatGPT (Sol, OpenAI). The referee had only the main file. The five `\input` modules were not uploaded, so the report covers the main file and makes suggestions "requiring particular attention" for the modules.
+
+In this stage Claude read the main file and all five modules. The four modules written by ChatGPT were read for correctness (see "Review of the modules" below). The module on supertempered distributions was written by Claude in the previous stage, so reading it again is not an independent review.
+
+### Response to the referee, item by item
+
+Verdicts: **agree** (done as asked), **agree, already present** (the module the referee did not see already contains it; cross-references or small additions made), **partly agree** (done differently, with the reason).
+
+| Item | Verdict | What was done |
+|---|---|---|
+| M1 cocenter and conjugation quotient | agree | New Lemma `lem:conj` with a complete proof. Kazhdan's density theorem is now a separate numbered statement, Theorem `thm:density`, with an example |
+| M2 continuity on the Hecke algebra | agree | New Proposition `prop:alg-dual`: every linear functional on H(G) is continuous, and invariant distributions are the full algebraic dual of the trace image. The sentence "continuity must be checked" is removed. The standard topology of H(G) is now defined |
+| M3 Schwartz topology | agree | Section 2.3 defines C(G//J), its Fréchet topology and the inductive limit, with the continuity criterion and an example. Section 5.3 has the table of the three growth conditions |
+| M4 complementary series | agree, already present in Section 3 | Section 2 now gives I(\|·\|^s), 0 < s < 1, the interval q^{-1} < z < 1, and Figure `fig:parameters` |
+| M5 orbital integrals | agree | Example `ex:K` now derives the Jacobian, gives the value for non-unit t, the Q_3 value, and a check against the trace of 1_K |
+| M6 fixed level versus global | agree with the distinction. No misuse found | New Remark `rem:three-realizations` (Remark 2026.3). Every use of the Bernstein–Deligne–Kazhdan theorem in the modules was checked: each verifies hypothesis (ii) and uses only the global statement. None claims a realization at a prescribed level |
+| M7 Laurent criterion | agree | Examples `ex:jet` and `ex:nontempered` added |
+| M8 unified topology theorem | agree, mostly present as `thm:duality-holomorphic` | New Theorem `thm:three-duals` (the bilateral statement with density, injectivity of the transposes and strictness) and Figure `fig:three-duals`. The bilateral subsection moved to the start of Section 7, so that it precedes the Weyl-invariant refinement. This resolves item 9 of the "Not fixed" list of the previous stage |
+| M9 spectral geometry | agree, already present | Section 3 already separates the ordinary quotient, the extended quotient, the support map and the tempered dual, and treats the correcting cocharacter. No change beyond the citation of Tadić |
+| M10 algebraic determination | agree, already present as `thm:pwcomparison` | A table of the maps with domain, range and topology added after the theorem, with the identity for the trivial character |
+| M11 admissibility | agree, mostly present | New Remark `rem:four-conditions` with the four conditions, the relations proved, and the point about the size of the test space. Theorem `thm:local-interpolation` gives agreement on all of C_c^∞(V), which is what the referee asks to be verified. The dangling pointer "Remark 2026.8" is replaced by a real remark, `rem:hc-input` (Remark 2026.4) |
+| M12 central eigenfunctionals | agree, already present as `thm:duality-eigen`, `thm:duality-jets` | New Remark `rem:bilateral-recurrence` (the recurrence on all of Z, and why the symmetry forces B = 0) and Example `ex:q3-recurrence` |
+| M13 supertempered characters | agree, already present | The four distinctions listed by the referee are Definition `def:six`, Remark `rem:support`, Table `tab:four` and Theorem `thm:twosplit`. The criterion at ±I is specific: Corollary `cor:descent` is about extension of the normalized split restriction to a locally constant function. No change |
+| R1 orienting paragraphs | agree | Kept. Added to the new subsections and to Section 10 |
+| R2 roadmap | agree | Introduction now has subsections: objectives, principal results, structure, hypotheses and inputs, running example, notation |
+| R3 abstract | agree | Mathematical content 225 words. AI-disclosure sentences kept |
+| R4 number the literature review and glossary | partly agree | Not numbered. Numbering the literature review would shift every section number, against guide 1.9, and the guide's default places an unnumbered glossary before the Acknowledgments. Both already appear in the table of contents, because `amsart` lists starred sections |
+| R5 glossary | partly agree | Ten entries added and all entries expanded to two or three sentences. Section pointers were **not** added: the author's ruling of November 17, 2026 is that glossary entries are not self-referential |
+| R6 diagrams | agree, mostly present | Draft 3 already had 26 figures in the modules, covering six of the seven topics listed. Three added: `fig:parameters`, `fig:factorization`, `fig:three-duals` |
+| R7 running example Q_3 | agree | New Subsection 1.5 with a table. New Q_3 computations in Sections 2, 4, 7 and 10 |
+| Bibliography | agree | See "Bibliography" below |
+| Checklist item 1 (referee the five modules) | done in part | See "Review of the modules" |
+
+### Changes to the files
+
+- `sl2-invariant-distributions-2026.tex`: title (Draft 4), abstract, Introduction (five new subsections), literature review (four paragraphs added), Sections 2.1 and 2.3, Example 4.1, Section 5 (Lemma, density theorem, two Remarks 2026, Proposition, figure, two examples, Schwartz subsection), Section 10 (orienting paragraph, two sentences, one example), Glossary, Acknowledgments, bibliography. The subsection "The bilateral Laurent criterion" was moved out of this file.
+- `laurent-criterion.tex` (new): the bilateral Laurent subsection, with the old text unchanged and the additions listed below. Input by `spectral-duality.tex` at the start of Section 7.
+- `spectral-duality.tex`: `\input{laurent-criterion}`; the following subsection retitled "The unified Weyl-invariant criterion" with an orienting sentence; sketch of the commutator lemma replaced by a reference to `lem:conj`; Solleveld references turned into `\cite`; new Remark and Example after the recurrence figure; one overfull line fixed by displaying a formula.
+- `trace-pw-comparison.tex`: "this section" corrected; reference to `thm:density`; table of maps; `\cite{So24}`.
+- `admissible-distributions.tex`: `rem:hc-input`, `rem:four-conditions`; "Section" corrected to "Subsection" in one reference.
+- `spectral-geometry.tex`: `\cite{Ta83}`.
+- `supertempered-distributions.tex`: unchanged.
+
+No existing label was removed or renamed. No existing statement was changed, except that the sentence "to obtain a distribution, continuity in the Hecke-algebra topology must be checked" was replaced by Proposition `prop:alg-dual`, which shows the check is vacuous. This is a change of status from "to be checked" to "proved" (guide 4.2).
+
+### New mathematical text, for refereeing
+
+Levels: 1 = derived in this stage; 2 = cited, source read in this stage; 3 = cited from memory, source not consulted.
+
+| Statement (label) | Content | Level and dependence |
+|---|---|---|
+| `lem:conj` | [H,H] = span of f − f^g | Level 1. Uses only that G is unimodular and locally profinite |
+| `thm:density`, `rem:density-char` | Kazhdan's density theorem, and a caution about positive characteristic | Level 3. The statement was already used in Drafts 1–3. Whether [Ka86] covers positive characteristic was not checked. It is flagged as Remark 2026.2 |
+| Example after `thm:density` | 1_{gK} − 1_{Kg} as an explicit commutator | Level 1, checked by computing both convolutions |
+| `rem:three-realizations` | Global, fixed-level and Schwartz realization | The distinction is level 1. The statement that fixed-level realization holds for the Iwahori subgroup (Borel, Morita invariance of the cocenter) is level 3 and is not used in any proof. Flagged as Remark 2026.3 |
+| `prop:alg-dual` | Every linear functional on H(G) is continuous. Invariant distributions = algebraic dual of the trace image | (a) level 1. (b) level 1 given `lem:conj` and `thm:density` |
+| Section 2.3, `eq:schwartz-limit` | C(G) as the inductive limit of the Fréchet spaces C(G//J) | Level 3 ([Si79], [Wa03] not consulted). The example on the trivial character is standard |
+| `eq:complementary`, `fig:parameters` | Complementary series 0 < s < 1 | Level 3, consistent with Section 3 |
+| `ex:K`, `eq:conj-n`, `eq:FfA`, `eq:FK` | Jacobian, values for all t, check against dim I(χ)^K | Level 1 |
+| `ex:jet`, `ex:nontempered` | Two examples for the Laurent criterion | Level 1 |
+| `thm:three-duals` | Three test spaces and three duals | Level 1. Elementary Fourier and Laurent analysis |
+| `rem:bilateral-recurrence`, `ex:q3-recurrence` | The recurrence on Z; the eigenvalue 10/3 over Q_3 | Level 1 |
+| Table of maps in Section 5.5 | Domain, range and topology of each comparison map | Restates `thm:pwcomparison`, `thm:pwcompletion`, `thm:pwinstability`, and [Ar94] as already quoted |
+| `rem:four-conditions` | Four conditions and the relations among them | Restates results of Section 8. No new claim |
+| Example in Section 10 | The trivial character of SL_2(Q_3) | Level 1 from statements in the paper |
+| Glossary | 26 entries | Descriptions, no new claims. The entry "Local character expansion" says there are five nilpotent orbits (level 3) |
+| Literature review, new paragraphs | Summaries of [Ar94], [Ta83], [Ta92], [HC99], [De02], [AGS15], [CT26], [Ro98], [ABPS], [So19], [So24], [So25] | [AGS15], [So24]: from the abstracts, found by search in this stage. [Ar94]: repeats what Section 3 says. The rest: level 3 |
+
+### Review of the modules (referee checklist item 1)
+
+What was read: all of `spectral-geometry.tex`, `trace-pw-comparison.tex`, `spectral-duality.tex`, `admissible-distributions.tex`. What was done: each proof was followed step by step and each explicit computation was redone by hand. Nothing was checked against a source.
+
+No error was found. Points checked, all level 1:
+
+- `prop:fell-trace`: the inequality chain and the limit n → ∞ are correct. One basic open set suffices, so the last sentence on finite intersections is unnecessary but harmless.
+- `prop:poly-uniqueness`, `prop:algebraic-pw`: correct given the Bernstein–Deligne–Kazhdan theorem. Only the global theorem is used.
+- `thm:pwcomparison`: correct given the classification. Values in the example over Q_3 (2 and 82/9) are correct.
+- `thm:pwcompletion`, `thm:pwinstability`, `thm:pwdual`, `thm:duality-moments`, `thm:duality-holomorphic`: correct.
+- `thm:duality-eigen`, `thm:duality-jets`: correct, including B_n'(2) = n^2 and the action of the center on the exceptional coordinates.
+- `prop:duality-rational` and the identity F(w) = ((1−w^2)/(1+w^2)) M(w/(1+w^2)): checked on evaluations and on the counterexample, for which M is algebraic and not rational.
+- `lem:admissibility-local`, `lem:compact-exponents`, `thm:local-interpolation`: correct. The interpolation holds on all of C_c^∞(V).
+- The GL_2 restriction argument, h_St, `thm:induced-descent`, `thm:unramified-descent`: correct given the inputs named there.
+- The counterexamples of Section 8 (δ_I, the trivial character, the Haar-measure functional): correct.
+
+Still conditional, as the modules themselves say: everything about the Schwartz trace image depends on [Ar94] and on the identification of the closed commutator subspace. Local admissibility depends on the Harish-Chandra input (Remark 2026.4). The exact Fell topology is Remark 2026.1.
+
+### Bibliography
+
+Sorted alphabetically by key. Four entries added: [So19], [So24], [So25] (cited in the text of Draft 3 without bibliography entries) and [Ta83]. The qualifications that were printed in the bibliography are removed from the paper and recorded here.
+
+"Search" means confirmed in this stage from a publisher, Project Euclid, arXiv or university repository listing found by web search on 2026-11-24.
+
+| Key | Status |
+|---|---|
+| ADSS11 | Search: pages 19–69 (reference list of [AP24]). Added |
+| AGS15 | Search: Adv. Math. 285 (2015), 1376–1414. Added |
+| AP24 | Search: title and arXiv number confirmed (version 3). Still a preprint |
+| CH21 | Search: Peking Math. J. 4 (2021), no. 2, 159–186. Added |
+| CH17 | Search: no. 10 added |
+| CT26 | Search: a preprint with this title exists at arXiv:2608.21981. **Authors not confirmed** by the search result. Full text not read |
+| Ke82 | Search: Pacific J. Math. 101 (1982), no. 2, 351–388. Confirmed |
+| OS13 | Search: Geom. Funct. Anal. 23 (2013), no. 2, 664–714. Confirmed |
+| So24 | Search: J. Noncommut. Geom. (2024), online first, DOI 10.4171/JNCG/556; arXiv:2203.06435. No volume or pages yet |
+| So25 | Search: arXiv:2510.17260, title confirmed. The pinpoint "Examples 5.10 and 5.12, Theorem 5.14" is ChatGPT's from the previous stage and was **not** checked |
+| So19 | Search: arXiv:1612.01776 confirmed. Published in a Springer volume in 2019. Volume title, series number 328 and the absence of page numbers are from memory, **not confirmed** |
+| Ta83 | Taken from the bibliography of the 1994 notes ([T] there). This is the reference the 1994 notes use for the topology of the dual. **Not checked** |
+| Ta92 | The note "applicability to be reconciled with the original bibliography" is resolved as follows. The 1994 notes do not cite this paper. They cite [Ta83]. [Ta92] is kept as a reference for the classification, and [Ta83] is now cited for the topology. Volume and pages of [Ta92] from memory, **not confirmed** |
+| HC83 | Pages 139–153 from memory, **not confirmed**. A search found only the reprint in the collected papers |
+| Re01 | Pages 149–181 from memory, **not confirmed** |
+| Ca93 | The sentence "consult the available revised online editions for exact theorem numbering" removed from the entry. No theorem number of [Ca93] is cited |
+| HC99 | "edited by" changed to "notes by", from memory |
+| Ar94, Ro98, De02, ABPS14, ABPS17, ABPS19, Bo76, Ca77, Ko88, Ko04, LL79, Ro75, SS97 | Unchanged. Not rechecked in this stage. [Ko04] is confirmed as an arXiv preprint |
+
+Entries checked in the Draft 2 stage are listed in that section of this log.
+
+### Concordance, Draft 3 to Draft 4
+
+Labels are unchanged. Numbers changed because statements were added in Sections 2, 4, 5, 7 and 8 and one subsection moved.
+
+| Label | Draft 3 | Draft 4 |
+|---|---|---|
+| Subsection `sec:notation` | 1.1 | 1.6 |
+| `eq:squareclasses`, `eq:hilbert` | (2.3), (2.4) | (2.4), (2.5) |
+| `thm:BDK` | 5.2 | 5.5 |
+| Remark after `thm:BDK` | 5.3 | 5.6 |
+| `ex:matching` | 5.4 | 5.8 |
+| Mellin proposition | 5.5 | 5.9 |
+| Example "why invariance is necessary" | 5.6 | 5.11 |
+| `thm:pwcomparison` | 5.7 | 5.12 |
+| Example Q(u) = u^2 − 2 | 5.8 | 5.13 |
+| `thm:pwcompletion` | 5.9 | 5.14 |
+| `thm:pwinstability` | 5.10 | 5.15 |
+| `thm:pwdual` | 5.11 | 5.16 |
+| `thm:laurent` | 7.5 | 7.1 |
+| Weyl-invariant corollary (`cor:laurent-weyl`) | 7.6 | 7.4 |
+| Remark (Scope) | 7.7 | 7.6 |
+| `thm:duality-holomorphic` | 7.1 | 7.7 |
+| `thm:duality-eigen` | 7.2 | 7.8 |
+| `thm:duality-jets` | 7.3 | 7.11 |
+| `prop:duality-rational` | 7.4 | 7.12 |
+| `lem:admissibility-local` | 8.1 | 8.2 |
+| `lem:compact-exponents` | 8.2 | 8.4 |
+| `thm:local-interpolation` | 8.3 | 8.5 |
+| `thm:finite-block-admissibility` | 8.4 | 8.6 |
+| Example m_n = n! | 8.5 | 8.7 |
+| `ex:descent` | 8.6 | 8.8 |
+| `thm:induced-descent` | 8.7 | 8.9 |
+| `thm:unramified-descent` | 8.8 | 8.10 |
+| Figures 1–4 (Section 3) | 1–4 | 2–5 |
+| Figures 5–9 (Section 9) | 5–9 | 8–12 |
+
+Sections 3, 6 and 9 and all equation numbers outside Sections 2 and 4 are unchanged. New numbered items: Lemma 5.2, Theorem 5.3, Remarks 5.4 and 5.7, Proposition 5.10, Examples 7.2 and 7.3, Theorem 7.5, Remark 7.9, Example 7.10, Remarks 8.1 and 8.3, Figures 1, 6 and 7, equations (2.3), (2.6), (2.7), (4.4)–(4.6).
+
+Remarks 2026.n, in order of appearance: 2026.1 exact Fell topology (Section 3), 2026.2 characteristic in the density theorem, 2026.3 three kinds of realization (Section 5), 2026.4 the Harish-Chandra input (Section 8).
+
+### Not done in this stage
+
+- No source was read in full. The source audits recommended in the Section 9 stage are still outstanding, and so are those of the modules: Arthur [Ar94], Harish-Chandra [HC99], Kazhdan [Ka86] and the classification references.
+- The restoration of the remaining content of the 1994 notes, and the full concordance with them, are still outstanding.
+- Section 9 has had no review by a system other than its author.
+- Guide 3.8 (avoid semicolons): new text follows it. The semicolons in the text of Drafts 1–3 were left, under the ground rule set for this paper on November 12, 2026.
+
+### Compilation
+
+Compiled with pdflatex, three passes, in a scratch copy with `mathptmx` substituted for `newtx`, which is not installed in the build environment: 68 pages (Draft 3: 56), no errors, no undefined references or citations, no multiply defined labels, no overfull boxes. The overfull box at the monomial moment series in Section 7, present in Draft 3 under the same substitution, is fixed. The committed PDF is from this scratch build. The GitHub Actions workflow rebuilds it with `newtx` after merge to main.

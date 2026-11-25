@@ -23,10 +23,11 @@ sl2-invariant-distributions/
 
 | File | What it is |
 | --- | --- |
-| `revised/sl2-invariant-distributions-2026.tex`, `.pdf` | The assembled Draft 3 working source (November 24, 2026). See the latest PDF build status in GitHub Actions. |
+| `revised/sl2-invariant-distributions-2026.tex`, `.pdf` | The main file of Draft 4 (November 24, 2026). It inputs six module files (see below). See the latest PDF build status in GitHub Actions. |
+| `revised/referee-report_draft3-main-file.md` | Referee report by ChatGPT on the main file of Draft 3. The five module files were not part of that review. Recommendation: further revision. Draft 4 is the response. |
 | `revised/referee-report_argon-gemini-revision.md` | Referee report by ChatGPT on the Argon–Gemini revision of the 1994 notes. Verdict: major revision. Draft 1 is the response to it. |
 | `research/section9-supertempered-research-report.tex`, `.pdf` | Research report by Claude (November 24, 2026) on which Section 9 is based. Its statement numbers differ from the paper's. `research/section9-tree-checks.py` reruns the exact checks of the tree computations. |
-| `revision_log.md` | Stages, AI usage, original and new results, every Draft 2 change, the new text that still needs refereeing, citation checks, and the concordance. |
+| `revision_log.md` | Stages, AI usage, original and new results, every change by draft, the item-by-item response to the Draft 3 referee report, the new text that still needs refereeing, citation checks, and the concordances. |
 | `original-1994/hitchhiker-sl2-repns.tex` | The 1994 notes as written (LaTeX 2.09), unchanged. |
 | `original-1994/hitchhikers-guide-to-invariant-distributions-on-sl2-over-p-adic-field2.tex` | The Argon–Gemini LaTeX revision of the 1994 notes: the version the referee reviewed and Draft 1 was rewritten from. |
 
@@ -37,9 +38,13 @@ sl2-invariant-distributions/
 - Three topics from the 1994 notes are not claimed and remain open: an explicit Schwartz-space trace Paley–Wiener theorem, an admissibility-preserving descent theorem, and a global analyticity criterion for invariant distributions.
 - **Not yet done:** an independent referee report on Draft 1 (the referee and the reviser were the same system), and refereeing of the text added in Draft 2, which is listed in `revision_log.md`.
 
+## Draft 4
+
+**Draft 4** (Claude, November 24, 2026) responds to ChatGPT's referee report on the main file of Draft 3. It is a consolidation draft with no new research section. Main changes: a proof that the commutator subspace equals the span of conjugation differences; a proposition that every linear functional on the Hecke algebra is continuous, so that invariant distributions are the full algebraic dual of the trace image; the topologies of the Hecke algebra and the Schwartz space made explicit; a theorem comparing the three spectral duals (polynomial, holomorphic, smooth); the Jacobian computation for the orbital integral of 1_K; a remark separating global, fixed-level and Schwartz realization of trace forms; an introduction with a roadmap and a list of principal results; a running example over Q_3; an expanded glossary; a sorted and partly verified bibliography. The bilateral Laurent criterion moved from the end of Section 7 to its beginning (new module `laurent-criterion.tex`). Claude also read the four modules written by ChatGPT for correctness and found no error. The item-by-item response, the concordance of numbers, and what remains unverified are in `revision_log.md`.
+
 ## Draft 3 development
 
-The main source now inputs five new modules:
+The main source inputs these modules. The sixth, [laurent-criterion.tex](revised/laurent-criterion.tex), was split off in Draft 4 and is input by `spectral-duality.tex`:
 
 - [spectral-geometry.tex](revised/spectral-geometry.tex): Section 3, including all four original TikZ figures.
 - [trace-pw-comparison.tex](revised/trace-pw-comparison.tex): Section 5, including six TikZ diagrams.
@@ -48,11 +53,11 @@ The main source now inputs five new modules:
 - [admissible-distributions.tex](revised/admissible-distributions.tex): Section 8, including five TikZ diagrams, local finite-character interpolation, conditional finite-block admissibility and exact unramified split-descent criterion, corrected quasi-finite spectral definitions, and the original GL(2) question.
 - [supertempered-distributions.tex](revised/supertempered-distributions.tex): Section 9 (Claude), including six TikZ figures: the six notions around supertemperedness, constant terms, a rank-one proof of Herb's classification, the quadratic constituents and a tree formula, the elliptic quotient and its two splittings, weak constant terms of distributions, behavior at ±I and a general split descent criterion, the Bernstein center and Hecke-finiteness, Euler–Poincaré pairings, examples over Q_3 and Q_5, and a global characterization. It assumes characteristic zero. Its classical inputs are listed in its last subsection and in `revision_log.md`, and most still need a source audit.
 
-This is an integrated working draft using the corrected Draft 2 text as an interim editorial scaffold. The original 1994 manuscript remains unchanged and authoritative for the outstanding restoration and theorem concordance. The full recovery of its mathematical content is not yet completed. The combined source has not been independently refereed. A scoped GitHub Actions workflow builds the combined PDF on changes to the revised LaTeX sources, using the same pattern as the adjoint-lift project. The PDF should be checked against the latest successful build. Global Schwartz topology, closed commutator identification, descent and group-side analyticity remain verification tasks.
+Draft 3 was an integrated working draft using the corrected Draft 2 text as an interim editorial scaffold. The original 1994 manuscript remains unchanged and authoritative for the outstanding restoration and theorem concordance. The full recovery of its mathematical content is not yet completed. The combined source has not been independently refereed. A scoped GitHub Actions workflow builds the combined PDF on changes to the revised LaTeX sources, using the same pattern as the adjoint-lift project. The PDF should be checked against the latest successful build. Global Schwartz topology, closed commutator identification, descent and group-side analyticity remain verification tasks.
 
 ## Building
 
-`pdflatex sl2-invariant-distributions-2026.tex` (three passes) in `revised/`. The bibliography is inline, so no BibTeX run is needed. The paper uses the `newtx` fonts (`newtxtext`, `newtxmath`). The PDF is built by the scoped GitHub Actions workflow; a local build requires all five input files.
+`pdflatex sl2-invariant-distributions-2026.tex` (three passes) in `revised/`. The bibliography is inline, so no BibTeX run is needed. The paper uses the `newtx` fonts (`newtxtext`, `newtxmath`). The PDF is built by the scoped GitHub Actions workflow; a local build requires all six input files.
 
 ## License
 

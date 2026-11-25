@@ -4,7 +4,7 @@ We now use the spectral coordinates of the preceding sections to describe invari
 \subsection{Sequence spaces and the constant mode}
 Let $B_0=1$ and $B_n=z^n+z^{-n}$ for $n\ge1$. The variable $u=z+z^{-1}$ identifies the invariant Laurent polynomials with $\mathbb C[u]$. A smooth inversion-invariant circle function has a unique expansion $h=a_0+\sum_{n\ge1}a_nB_n$ with rapidly decreasing coefficients. Integration by parts in the angular variable gives rapid decay; conversely termwise differentiation of a rapidly decreasing series converges uniformly at every order. The constant coefficient $a_0$ is independent of the other coefficients and must not be omitted.
 
-Let $s$ be the space of sequences with all seminorms $\sup_n(1+n)^k|a_n|$ finite, and let $\varphi$ be the finite sequences with the locally convex inductive-limit topology of their finite-dimensional coordinate spaces. The Fourier expansion identifies $C^\infty(S^1)^W$ topologically with $s$. The polynomial space is identified with $\varphi$. In the unramified block the smooth space is modeled by $s\oplus\mathbb C^2$, with coordinates $(h,d,b)$; $d$ is the quadratic constituent difference and $b$ is the Steinberg trace. The representation-theoretic identification of this model is discussed in Section~\ref{sec:pwcomparison}.
+Let $s$ be the space of sequences with all seminorms $\sup_n(1+n)^k|a_n|$ finite, and let $\varphi$ be the finite sequences with the locally convex inductive-limit topology of their finite-dimensional coordinate spaces. The Fourier expansion identifies $C^\infty(S^1)^W$ topologically with $s$. The polynomial space is identified with $\varphi$. In the unramified block the smooth space is modeled by $s\oplus\mathbb C^2$, with coordinates $(h,d,b)$; $d$ is the quadratic constituent difference and $b$ is the Steinberg trace. The representation-theoretic identification of this model is discussed in Subsection~\ref{sec:pwcomparison}.
 
 \begin{theorem}\label{thm:duality-moments}
 A linear functional on $\varphi\oplus\mathbb C^2$ extends continuously to $s\oplus\mathbb C^2$ if and only if its moments $m_n=\lambda(B_n,0,0)$ satisfy $|m_n|\le C(1+n)^N$ for some $C,N$. The extension is unique, and its two exceptional coefficients are unrestricted.
@@ -46,9 +46,9 @@ Solving the algebraic constraints gives $x_\pm=(Q(-2)\pm d)/2$ and $t=Q(c)-b$. E
 For polynomials the sum is finite; in the smooth model it converges by Theorem~\ref{thm:duality-moments}. In particular the nonzero quadratic difference and Steinberg character both have zero Laurent moments. The exceptional coordinates are essential for uniqueness.
 
 \subsection{Invariant distributions and global topology}
-Let $H=C_c^\infty(G)$ and $S=\mathcal C(G)$. Conjugation invariance on $H$ is equivalent to vanishing on convolution commutators. Indeed a conjugation-invariant functional has equal values on $f*g$ and $g*f$ by integrating translates, and conversely a compact-open approximate identity expresses conjugation differences as commutators. For the latter, choose a compact-open subgroup fixing $f$ on both sides, write the conjugation difference as the commutator of a translated idempotent and a translated $f$, and use convolution associativity. The same equivalence holds for continuous functionals on $S$ by density of $H$ and continuity of multiplication and conjugation. Kazhdan density identifies the algebraic cocenter with the algebraic trace image. All linear forms on $H$ are continuous for its locally convex inductive limit of finite-dimensional support-and-level stages.
+Let $H=C_c^\infty(G)$ and $S=\mathcal C(G)$. Conjugation invariance on $H$ is equivalent to vanishing on convolution commutators. This is Lemma \ref{lem:conj}. The same equivalence holds for continuous functionals on $S$ by density of $H$ and continuity of multiplication and conjugation. Kazhdan density identifies the algebraic cocenter with the algebraic trace image. All linear forms on $H$ are continuous for its locally convex inductive limit of finite-dimensional support-and-level stages (Proposition \ref{prop:alg-dual}).
 
-For Schwartz functions the required identity is $\ker T_t=\overline{[S,S]}$. Arthur's open trace theorem \cite[p.~174]{Ar94} identifies the quotient by its trace kernel topologically with the smooth trace image. Solleveld's survey on group algebras, Examples 5.10 and 5.12 and Theorem 5.14, is a source for the closed-commutator identification; its exact version and hypotheses must be reconciled with Arthur's topology. Until that verification is complete, the assertion that every invariant tempered distribution has the displayed normal form is conditional on this identification.
+For Schwartz functions the required identity is $\ker T_t=\overline{[S,S]}$. Arthur's open trace theorem \cite[p.~174]{Ar94} identifies the quotient by its trace kernel topologically with the smooth trace image. Solleveld's survey \cite[Examples 5.10 and 5.12, Theorem 5.14]{So25} is a source for the closed-commutator identification; its exact version and hypotheses must be reconciled with Arthur's topology. Until that verification is complete, the assertion that every invariant tempered distribution has the displayed normal form is conditional on this identification.
 
 \begin{proposition}\label{prop:duality-global}
 For a locally convex direct sum $E=\bigoplus_{\mathfrak s}E_{\mathfrak s}$, restriction identifies $E'$ with $\prod_{\mathfrak s}E_{\mathfrak s}'$.
@@ -66,7 +66,7 @@ A functional on the sum is continuous precisely when all restrictions are contin
 \node[anchor=west] at (0,-1) {Every $\lambda_j$ may be nonzero};
 \end{tikzpicture}
 \end{center}
-In the anticipated global Schwartz model the growth constants and exponents may depend on the block; a single uniform exponent is not required. To identify the topology, use the stages $S^{K_m\times K_m}$ for principal congruence subgroups $K_m$. Bernstein finiteness restricts each stage to finitely many blocks. The converse requires realization of the full smooth block trace image at sufficiently deep fixed level with continuous control of seminorms. Types and blockwise Morita equivalences are useful tools. See Solleveld, \emph{On completions of Hecke algebras}, arXiv:1612.01776, for a direction to investigate.
+In the anticipated global Schwartz model the growth constants and exponents may depend on the block; a single uniform exponent is not required. To identify the topology, use the stages $S^{K_m\times K_m}$ for principal congruence subgroups $K_m$. Bernstein finiteness restricts each stage to finitely many blocks. The converse requires realization of the full smooth block trace image at sufficiently deep fixed level with continuous control of seminorms. Types and blockwise Morita equivalences are useful tools. See \cite{So19} for a direction to investigate. Remark \ref{rem:three-realizations} separates this fixed-level question from the global algebraic theorem.
 
 \subsection{Topologies on distribution spaces}
 The weak dual topology is pointwise convergence on test vectors. The strong dual topology is uniform convergence on bounded subsets, and the compact-convergence topology is uniform convergence on compact subsets. On $\varphi'$ the strong dual topology is the ordinary product topology of all sequences, since bounded subsets of $\varphi$ lie in finite-dimensional stages. For $s'$ the standard strong dual sequence-space model is the inductive limit of weighted bounded sequence spaces with norms $\sup_n |m_n|/(1+n)^N$. In particular a family of tempered spectral functionals is equicontinuous exactly when it satisfies a common polynomial estimate. These facts distinguish individual growth from uniform estimates on families.
@@ -74,8 +74,10 @@ The weak dual topology is pointwise convergence on test vectors. The strong dual
 \section{Linear functionals on the admissible Paley--Wiener space}\label{sec:admissible-duality}
 The admissible trace image is algebraic, but different completions of its polynomial coordinates provide intermediate dual spaces. We develop the Laurent criterion and then examine the action of the Bernstein center. The holomorphic models are spectral constructions; their identification with any independently defined notion of analytic distributions on $G$ is not assumed.
 
-\subsection{The unified Laurent criterion}
-For $r>1$ let $A_r=\{r^{-1}<|z|<r\}$. Append the same two exceptional scalar coordinates to each of the spaces below. Restriction gives dense continuous inclusions
+\input{laurent-criterion}
+
+\subsection{The unified Weyl-invariant criterion}
+This subsection refines Theorem \ref{thm:three-duals} in two ways. It imposes the Weyl symmetry, so that the moments are indexed by $n\ge0$, and it inserts the annuli between the punctured plane and the circle. For $r>1$ let $A_r=\{r^{-1}<|z|<r\}$. Append the same two exceptional scalar coordinates to each of the spaces below. Restriction gives dense continuous inclusions
 \[
 \mathbb C[z,z^{-1}]^W\ \longrightarrow\
 \mathcal O(\mathbb C^\times)^W\ \longrightarrow\
@@ -157,6 +159,19 @@ Thus the central eigenspace has dimension one except at $-2,c$, where it has dim
 \end{center}
 This is a tridiagonal sequence model, not the literal Bruhat--Tits adjacency operator. Comparison with the radial Satake operator is a possible further direction.
 
+\begin{remark}[The recurrence on all of $\mathbb Z$]\label{rem:bilateral-recurrence}
+The modified equations at $n=0$ and $n=1$ in Theorem \ref{thm:duality-eigen} have a simple explanation. Extend $\lambda$ from the invariant Laurent polynomials to all Laurent polynomials by averaging, and put $c_n=\lambda\bigl(\tfrac12(z^n+z^{-n})\bigr)$ for $n\in\mathbb Z$. Then $c_0=m_0$ and $c_n=c_{-n}=\tfrac12m_n$ for $n\ge1$. Since $u\cdot z^n=z^{n+1}+z^{n-1}$, the three equations of the theorem become the single recurrence
+\[
+c_{n+1}+c_{n-1}=\mu\,c_n\qquad(n\in\mathbb Z).
+\]
+Its solutions on $\mathbb Z$ form a space of dimension two. For $\mu\ne\pm2$ they are $c_n=Ar^n+Br^{-n}$ with $r+r^{-1}=\mu$, and the symmetry $c_n=c_{-n}$ forces $A=B$. For $\mu=\pm2$ the root is repeated and the solutions are $c_n=(A+Bn)(\pm1)^n$. Here the symmetry forces $B=0$. In every case the symmetric solutions form a line, spanned by evaluation at $\mu$. The boundary equations of the theorem are the symmetry condition in another form.
+
+The discarded solution $c_n=n(\pm1)^n$ is the moment sequence of $h\mapsto zh'(z)$ at $z=\pm1$ (Example \ref{ex:jet}). This functional vanishes on invariant polynomials, because $h(z)=h(z^{-1})$ implies $h'(\pm1)=0$. Derivatives do enter for \emph{generalized} eigenfunctionals, which are treated next. For instance $Q\mapsto Q'(2)$ satisfies $(u-2)^2\lambda=0$ and has moments $m_n=n^2$.
+\end{remark}
+\begin{example}[The exceptional eigenvalue over $\mathbb Q_3$]\label{ex:q3-recurrence}
+Let $F=\mathbb Q_3$ and $\mu=c=10/3$, the support parameter of the trivial and Steinberg representations. Then $r=3$, and the eigenfunctional with $m_0=1$ has moments $m_n=3^n+3^{-n}$: $m_1=10/3$ and $m_2=82/9$. The equation at $n=1$ reads $m_2+2m_0=100/9=\mu\,m_1$. The eigenspace has dimension two. It is spanned by this functional, which is $\Theta_{\triv}+\Theta_{\St}$, and by the Steinberg coordinate $\beta$. The first has growth radius $3$ and is not tempered. The second has all moments zero and is tempered.
+\end{example}
+
 \subsection{Generalized central eigendistributions}
 \begin{theorem}\label{thm:duality-jets}
 For $m\ge1$, the space of functionals satisfying $(u-\mu)^m\lambda=0$ has dimension
@@ -179,7 +194,11 @@ Central finiteness (finite-dimensional span of $\mathbb C[u]\lambda$) implies ra
 \begin{proof}
 A finite-dimensional central module is annihilated by a nonzero polynomial. Factoring that polynomial and using the Chinese remainder theorem expresses the polynomial functional as a finite sum of jets. Their generating functions are rational. For the converse counterexample, take $m_0=0$, $m_1=1$, and $m_n=0$ for $n\ge2$. Then $F_\lambda(w)=w$ is rational. The functional is proportional to extraction of the coefficient of $z$ from an invariant Laurent polynomial. No nonzero $p(u)$ annihilates it: the bilinear constant-coefficient pairing on symmetric Laurent polynomials is nondegenerate, since the basis $B_n$ is orthogonal with nonzero diagonal values. The functional equals constant-coefficient pairing with $B_1/2$, so annihilation would force $p(u)B_1=0$, impossible in the Laurent polynomial domain.
 \end{proof}
-The exact replacement criterion is rationality of the monomial moment series $M_\lambda(t)=\sum_{n\ge0}\lambda(u^n,0,0)t^n$. An eventual recurrence of its coefficients produces an annihilating polynomial after multiplying by a sufficiently large power of $u$; conversely an annihilating polynomial yields a recurrence. Exceptional summands can be killed by multiplying by $(u+2)(u-c)$. The formal identity
+The exact replacement criterion is rationality of the monomial moment series
+\[
+M_\lambda(t)=\sum_{n\ge0}\lambda(u^n,0,0)\,t^n .
+\]
+An eventual recurrence of its coefficients produces an annihilating polynomial after multiplying by a sufficiently large power of $u$; conversely an annihilating polynomial yields a recurrence. Exceptional summands can be killed by multiplying by $(u+2)(u-c)$. The formal identity
 \[
 F_\lambda(w)=\frac{1-w^2}{1+w^2}
 M_\lambda\left(\frac{w}{1+w^2}\right)

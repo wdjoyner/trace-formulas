@@ -311,3 +311,23 @@ Settled on November 24: numbering (consecutive within sections, no letters), not
 - Theorem 5.17(c): the proof is an outline.
 - Theorem 3.27(d) and the table of fixed vectors in Example 5.12 are from memory.
 - Example 3.33 and Problem 10.8 state a heuristic (SL(2) pattern for n odd, PGL(2) pattern for n even) that is supported by the reducibility points computed here, not by a proved correspondence.
+
+
+## Draft 3 — 2026-11-24
+
+Referee: Claude; revision and assessment: ChatGPT. Addressed the seven substantive
+findings: Plancherel coordinates, complex reducibility parameters, the kernel
+example, density needed for PWad(d), constituent-character difference, Clifford
+restriction multiplicities, and the tame splitting in the explicit model.
+The previous restriction of the principal-series image theorem to p prime to
+2n is unnecessary: choose congruence depth m > v_F(2). Updated the corresponding
+count to [F^×:F^{×2}]. The kernel/cocenter identification and its distributional
+factorization are conditional pending verification of the required geometric
+density theorem. Removed three misleading dependency arrows. The Iwahori
+idempotent construction is an unverified test, pending computation of the
+ratio of splittings and fixed-vector dimensions. Clarified the Lagrangian
+problem. The prior restriction lemma asserted multiplicity one and packet
+size independent of the ambient representation; neither assertion is used.
+The source was revised directly through GitHub; the PDF and scripts have
+not been rebuilt or checked. Broader notation and environment consolidation
+remain editorial tasks.

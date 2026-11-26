@@ -23,7 +23,10 @@ These are consistency checks.  The proofs in the paper do not depend on them.
     generators (Lemma 3.5) and from conjugation by the lift of
     D = diag(p,1) in the cover of GL_2 (eq. (3.5))                  (Prop. 3.8)
  7. s_1 is multiplicative on K_1                                    (Lemma 3.3)
- 8. Conjugation by (h(u),1) preserves the Kubota coordinate         (Prop. 7.1)
+ 8. Conjugation by (h(u),1) preserves the Kubota coordinate, and
+    conjugation by (diag(r1,r2),1) in the cover of GL_2 multiplies
+    it by v(r1 r2, g).  Formula r_1(k) = r_0(k0) v(p,k0)             (Prop. 7.1,
+    Example 7.2)
  9. Sphere sums, closed formulas and the tables                     (Thm. 5.4,
     Cor. 5.6, Section 6)
 10. Fixed balls of t_r in the tree over Q_p, by listing lattices    (Prop. 5.1)
@@ -331,7 +334,22 @@ def check_diag_conj(p, N=300):
         H = (h(u), 1)
         out = cmul(cmul(H, (g, 1), p), cinv(H, p), p)
         assert out[1] == 1, "diagonal conjugation"
-    print("  p=%d: conjugation by (h(u),1) preserves the coordinate        OK" % p)
+    for _ in range(N):
+        r1, r2 = rand_F(p), rand_F(p)
+        if r1 == 0 or r2 == 0:
+            continue
+        g = rand_sl2(p)
+        if random.random() < 0.3:
+            g = mul(h(rand_F(p) or 1), n_up(rand_F(p)))
+        R = (diag(r1, r2), 1)
+        out = emul(emul(R, (g, 1), p), einv(R, p), p)
+        assert out[1] == v_fn(r1 * r2, g, p), "Prop. 7.1(b)"
+    D = diag(p, 1)
+    for _ in range(N):
+        k0 = rand_K0(p)
+        k = mul(mul(D, k0), inv(D))
+        assert s1_by_unipotents(k, p)[1] == r0(k0, p) * v_fn(Fr(p), k0, p), "r_1"
+    print("  p=%d: diagonal conjugation in SL_2 and GL_2, formula for r_1  OK" % p)
 
 
 def sphere(q, d):

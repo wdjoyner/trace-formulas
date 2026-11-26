@@ -40,7 +40,7 @@ Draft 2 was prepared by Claude (Anthropic) from the Draft 1 source file and Draf
 
 Carbon's report arrived after the first version of Draft 2 had been committed. That version was based on an independent recheck of every statement of Draft 1, recorded in Section~\ref{sec:verif}. The report was then compared with it, and the responses are in Section~\ref{sec:carbon}. The report is in the repository as \texttt{referee-report\_draft1\_carbon.md}.
 
-The 1996 source \texttt{super.tex} is not in the repository and was not read in this pass. Statements about the content of the original notes (Sections 7 and 8 of the paper) are carried over from Draft 1.
+The 1996 source \texttt{super.tex} is not in the repository. David supplied it after the first version of Draft 2, and it was then read in full. The comparison is in Section~\ref{sec:source}.
 
 \section{Mathematical changes from Draft 1}
 \begin{enumerate}
@@ -61,12 +61,23 @@ The 1996 source \texttt{super.tex} is not in the repository and was not read in 
 \end{enumerate}
 No statement of Draft 1 was found to be false.
 
+\section{Comparison with the 1996 source}\label{sec:source}
+The source \texttt{super.tex} was read in full in this pass. It is not posted to the repository, at David's direction. Its content and the status of each item in Draft 2 are as follows.
+\begin{enumerate}
+\item \emph{Notation.} The cocycle $\beta$, the function $x(g)$, the extension $\beta'$ with $a(g)$ and $v$, and the splitting $s_1$ defined by conjugation with $(\omega,1)$, $\omega=\operatorname{diag}(\pi^{-1},1)$. These agree with Section 3 of the paper, where $D=\omega^{-1}$ and $K_1=DK_0D^{-1}$ is the same group. The source writes $r_0(g)=(c,d\det g)_2$ for $c\notin\mathcal O_F$. The condition was corrected in Draft 1.
+\item \emph{Lemma on diagonal conjugation in $\mathrm{GL}_2$.} For $r=\operatorname{diag}(r_1,r_2)$ the source states that $\beta'(r,r^{-1})\beta'(r,g)\beta'(rg,r^{-1})$ equals $(r_1,r_1r_2)_2$ if $c\ne0$ and $1$ if $c=0$, and that $\beta'(r,r^{-1})=(r_1,r_2)_2$. The last formula is correct. The first two are correct for $r\in G$, where both give $1$, and this is the only case the source uses. For general $r$ they are not correct. The value is $1$ if $c\ne0$ and $(r_1r_2,d)_2$ if $c=0$. The slip is in the factor $v$ of $\beta'(rg,r^{-1})$, whose second argument should be $a(rg)rg$. The corrected statement is now Proposition 7.1(b), with a proof by hand, and the script confirms it on about 1500 random samples. Draft 1 and the first version of Draft 2 contained only the case $r\in G$.
+\item \emph{Edge sign.} The source does not compute the ratio of $s_1$ and $s_0$ on $K_0\cap K_1$. The first version of Draft 2 said in Remark 3.9 that the notes computed this sign. That sentence was wrong and has been replaced. The edge discrepancy is new in Draft 1.
+\item \emph{Frobenius formula.} The source states a character formula as a grouped sum over $B_1\backslash G/K_0$, attributed to Kutzko, with convergence asserted and the proof described as similar to Kutzko's. It gives representatives $w_1tw_2$ for the double cosets. The paper replaces this on the regular elliptic set by the finite fixed-vertex sum of Theorem 4.2, with a complete proof. The description of the double cosets in Section 7.1 agrees with the source. The group $B_1$ of the source reduces to upper unipotent matrices, as the paper says.
+\item \emph{Main statements.} Theorem 3 of the source asserts $\chi_{\overline\pi}(x,\zeta)=r_0(x)\zeta\chi_\pi(x)$ for all regular $x$, for $\pi$ induced from Manderscheid's types on $K_0$. Theorem 4 asserts the same with $r_1$ for types on $K_1$. The proofs rest on a lemma that $r_0(gxg^{-1})$ is constant over the coset representatives, on the diagonal conjugation computation for elliptic $k$, and for Theorem 4 on conjugation by $(\omega,1)$. In Draft 2 the part that is proved is Corollary 4.5(c): for regular elliptic $x\in K_j$ the comparison holds at $s_j(x)$, for every type with admissible inductions. The statement for elements of other conjugates of $K_j$ uses the transported lift and can carry the sign $\ell(z)$ at the lift of the other type. The split case is proved only where both sides vanish (Proposition 7.3) and is otherwise open (Remark 2026.1). The source defines the genuine type as $\sigma\otimes1$. Draft 1 corrected this to the nontrivial character of $\mu_2$.
+\item \emph{Bibliography of the source.} Gelbart, Kutzko (pages 201--222, as in the paper), Manderscheid (dated 1987 in the source, correctly 1984) and Neukirch.
+\end{enumerate}
+
 \section{Original results and new results}
-\emph{From the 1996 notes (as reported in Draft 1):} the Kubota coordinates, the extended cocycle and the splitting $s_1$ by conjugation, the Frobenius sum over conjugates, the diagonal conjugation calculation (Proposition 7.1), and the comparison on the inducing compact subgroup (Corollary 4.5(c)).
+\emph{From the 1996 notes:} the Kubota coordinates, the extended cocycle and the definition of $s_1$ by conjugation, the diagonal conjugation computation (Proposition 7.1(a), and 7.1(b) in corrected form), the grouped Frobenius sum, and the comparison on the inducing compact subgroup (Corollary 4.5(c), in the elliptic case).
 
 \emph{New in Draft 1:} the edge discrepancy, the weighted formula and path product, the constant parity factor, the fixed balls, the depth-zero closed formulas and the signed sum.
 
-\emph{New in Draft 2:} Lemmas 2.1, 2.3, 2.5, 2.7, 3.5 and 3.6, the intrinsic edge formula (3.10), Remark 4.6 and Proposition 7.3.
+\emph{New in Draft 2:} Lemmas 2.1, 2.3, 2.5, 2.7, 3.5 and 3.6, the intrinsic edge formula (3.10), Remark 4.6, the formula for $r_1$ in Example 7.2 and Proposition 7.3.
 
 \section{Concordance, Draft 1 to Draft 2}
 \begin{center}
@@ -116,17 +127,17 @@ Carbon's verdict that the edge discrepancy, the weighted sum, the parity factor,
 \section{Verification and sources}\label{sec:verif}
 Levels follow Section 7.3 of the style guide. Level 1 is an independent derivation, Level 2 a check against a consulted source, Level 3 reliance on memory.
 \begin{itemize}
-\item \textbf{Level 1 (derived by hand in this pass):} Lemmas 2.1, 2.3, 2.5, 2.7, 3.3, 3.5, 3.6. Proposition 3.8 and both displays of Remark 3.9. Theorem 4.2, Lemma 4.4, Corollary 4.5. Proposition 5.1, Theorem 5.4, Corollary 5.6. Propositions 7.1 and 7.3. Every number in the tables and examples, including the two values of $r_0$ in Example 3.2.
+\item \textbf{Level 1 (derived by hand in this pass):} Lemmas 2.1, 2.3, 2.5, 2.7, 3.3, 3.5, 3.6. Proposition 3.8 and both displays of Remark 3.9. Proposition 7.1(b) and the formula for $r_1$. Theorem 4.2, Lemma 4.4, Corollary 4.5. Proposition 5.1, Theorem 5.4, Corollary 5.6. Propositions 7.1 and 7.3. Every number in the tables and examples, including the two values of $r_0$ in Example 3.2.
 \item \textbf{Computation (new script \texttt{twofold\_cover\_check.py}):} exact rational arithmetic over $\mathbb Q_p$ for $p=3,5,7,11$. It tests on random samples that $\beta$ and $\beta'$ are $2$-cocycles, that $r_0$ splits $\beta$ on $K_0$, Lemmas 3.5 and 3.6, the edge discrepancy on $I$ with $s_1$ computed in two independent ways, multiplicativity of $s_1$ on $K_1$, and Proposition 7.1. It checks the closed formulas for several $q$ and $r\le8$, the tables, and the fixed balls of $t_r$ for $r\le3$ by listing lattices. All checks pass. These are consistency checks on samples. No proof depends on them. The script runs under \texttt{run\_checks.py}.
 \item \textbf{Level 2 (bibliographic data confirmed by web search in this pass):} \cite{HW09} (authors Tatiana K. Howard and Martin H. Weissman, IMRN 2009 no.~21, 3979--3995), \cite{MP94} and \cite{DL76} (volume and pages, from citing papers), \cite{Jo98} (New York J. Math. 4 (1998), 223--235, from the journal page, newly added), and the title and abstract of \cite{Ma04} (publisher page, volume and pages not shown there).
 \item \textbf{Level 3 (not consulted):} the primary texts of \cite{Ku67}, \cite{Ge76}, \cite{Ne86}, \cite{Bo11}, \cite{Ku87}, \cite{Li12}, \cite{Ma84a}, \cite{Ma84b}, \cite{SS68}, \cite{Wa91}. In particular the following cited inputs have no page or theorem number yet: the cocycle property of $\beta$ and the splitting $r_0$, Gelbart's extended cocycle (3.4), the properties (H1)--(H3) of the Hilbert symbol, the finite character values (5.1), and the admissibility of the depth-zero inductions for $G$ and for the cover. The page range of \cite{Ku87} is carried over from Draft 1.
-\item \textbf{Not confirmed:} a web search for \cite{Jo99} (Arch. Math. 73 (1999), 332--340) returned only the 1998 New York J. Math. paper. The entry is kept as in Draft 1 and in the companion paper. David should confirm it.
+\item \textbf{Confirmed by the author:} \cite{Jo99} is ``A correspondence for the supercuspidal representations of the metaplectic cover of $\mathrm{SL}(2,F)$, $F$ $p$-adic'', Arch. Math. 73 (1999), 332--340. A web search had returned only the 1998 New York J. Math. paper.
 \end{itemize}
 
 \section{AI usage and build status}
 Claude (Anthropic) prepared Draft 2: it rechecked Draft 1, wrote the new proofs and lemmas listed above, wrote the verification script, and edited the text to the style guide. Carbon (Gemini, Google) refereed Draft 1. Draft 2 itself has not been independently refereed. AI review is not an independent certification.
 
-The paper was compiled three times with \texttt{pdflatex} (TeX Live 2023, \texttt{newtx} fonts). The output has 26 pages, no undefined references and no overfull boxes. Selected pages were rendered and inspected. The Draft 1 note that no PDF had been compiled is superseded.
+The paper was compiled three times with \texttt{pdflatex} (TeX Live 2023, \texttt{newtx} fonts). The output has 27 pages, no undefined references and no overfull boxes. Selected pages were rendered and inspected. The Draft 1 note that no PDF had been compiled is superseded.
 
 \begin{thebibliography}{Ma84b}
 \bibitem[Bo11]{Bo11} C. Bonnaf\'e, \emph{Representations of $\mathrm{SL}_2(\mathbb F_q)$}, Springer, 2011.

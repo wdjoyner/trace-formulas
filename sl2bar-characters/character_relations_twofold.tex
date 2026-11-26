@@ -401,7 +401,7 @@ where $a_0$ is the upper left entry of $k_0$. The element $g$ carries the lattic
 \end{proof}
 
 \begin{remark}[The extended cocycle]\label{rem:ext}
-The original notes computed the same sign from \eqref{eq:betaext}. Since $a(D)D=h(\varpi)$,
+The original notes define $s_1$ by \eqref{eq:s1}. The sign can therefore also be computed from \eqref{eq:betaext}. Since $a(D)D=h(\varpi)$,
 \[
  \beta'(D,h(u))=\beta(h(\varpi),h(u))=(u^{-1},\varpi^{-1})_2,
  \qquad
@@ -665,20 +665,51 @@ This section relates the geometric argument to the cocycle calculations and doub
 \subsection{Diagonal conjugation and double cosets}
 The original notes worked with the diagonal matrices $h(\varpi^m)$, the matrix $D^{-1}$ and the Weyl element $w(-1)=\sm0{-1}10$. On the line of vertices $D^mv_0$ the matrices $h(\varpi^m)$ act by translations of even length, and $w(-1)$ acts by the reflection about $v_0$. Their double cosets with respect to a pro-$p$ Iwahori subgroup index the orbits of that subgroup on the vertices. With the orientation used here $I^+$ reduces to the lower unipotent matrices. The upper unipotent convention corresponds to the adjacent vertex $D^{-1}v_0$.
 
-The following calculation from the notes is useful when conjugating local data along this line of vertices.
+The notes compare local traces by conjugating with lifts of diagonal matrices. The next proposition gives the effect of such a conjugation on the Kubota coordinate, first inside $\Mp$ and then for diagonal matrices of $G'=\mathrm{GL}_2(F)$. Part (b) uses the cover $\widetilde{G'}$ of Section~\ref{sec:cover}, which is cited from \cite{Ge76}.
 
 \begin{proposition}[Diagonal conjugation]\label{prop:diagconj}
-For $u\in F^\times$ and $(g,\zeta)\in\Mp$,
+Let $(g,\zeta)\in\Mp$ with $g=\sm abcd$.
+\begin{enumerate}[label=(\alph*),leftmargin=2.2em]
+\item For $u\in F^\times$,
 \[
  (h(u),1)\,(g,\zeta)\,(h(u),1)^{-1}=\bigl(h(u)gh(u)^{-1},\zeta\bigr).
 \]
+\item For $r=\diag(r_1,r_2)\in G'$, in the group $\widetilde{G'}$,
+\[
+ (r,1)\,(g,\zeta)\,(r,1)^{-1}=\bigl(rgr^{-1},\zeta\,v(r_1r_2,g)\bigr),
+ \qquad
+ v(r_1r_2,g)=\begin{cases}1&\text{if } c\ne0,\\(r_1r_2,d)_2&\text{if } c=0.\end{cases}
+\]
+\end{enumerate}
 \end{proposition}
 \begin{proof}
+(a)
 Let $g=\sm abcd$ with $c\ne0$. Then $x(h(u))=u^{-1}$, $x(g)=c$ and $x(h(u)g)=c/u$, so $\beta(h(u),g)=(c,u^{-1})_2$. Next $(h(u),1)^{-1}=(h(u^{-1}),(u,u^{-1})_2)$. Finally $x(h(u^{-1}))=u$ and $x(h(u)gh(u)^{-1})=c/u^2$, so $\beta(h(u)g,h(u^{-1}))=(u^{-1},cu^{-3})_2=(u,cu)_2$. The product of the three signs is $(c,u)_2(u,u)_2(u,c)_2(u,u)_2=1$. If $c=0$ the same computation with $d$ in place of $c$ gives $(d,u)_2(u,u)_2(u,d)_2(u,u)_2=1$.
+
+(b) Put $\delta=r_1r_2$. Then $a(r)r=h(r_1)$ and $a(r^{-1})=\diag(1,\delta)$. The sign to be computed is $\beta'(r,g)\,\beta'(rg,r^{-1})\,\beta'(r,r^{-1})$. By \eqref{eq:betaext}, $\beta'(r,g)=\beta(h(r_1),g)$, which is $(c,r_1)_2$ if $c\ne0$ and $(d,r_1)_2$ if $c=0$, as in (a). Next,
+\[
+ \beta'(r,r^{-1})=\beta(h(r_1),h(r_1^{-1}))\,v(\delta^{-1},h(r_1))=(r_1,r_1)_2(\delta,r_1)_2 .
+\]
+For the middle factor let $m=\diag(1,\delta)\,h(r_1)g\,\diag(1,\delta)^{-1}=\sm{r_1a}{r_1b/\delta}{\delta c/r_1}{d/r_1}$. Then
+\[
+ \beta'(rg,r^{-1})=\beta(m,h(r_1^{-1}))\,v(\delta^{-1},h(r_1)g).
+\]
+If $c\ne0$, then $x(m)=\delta c/r_1$, $x(mh(r_1^{-1}))=\delta c/r_1^2$ and $x(h(r_1^{-1}))=r_1$. So $\beta(m,h(r_1^{-1}))=(r_1^{-1},\delta cr_1^{-3})_2=(r_1,\delta cr_1)_2$, and the factor $v$ is $1$. The product of the three signs is
+\[
+ (c,r_1)_2\cdot(r_1,\delta)_2(r_1,c)_2(r_1,r_1)_2\cdot(r_1,r_1)_2(\delta,r_1)_2=1 .
+\]
+If $c=0$, then $x(m)=d/r_1$ and $x(mh(r_1^{-1}))=d$. So $\beta(m,h(r_1^{-1}))=(r_1,d/r_1)_2$ and $v(\delta^{-1},h(r_1)g)=(\delta,d/r_1)_2$. The product is
+\[
+ (d,r_1)_2\cdot(r_1,d)_2(r_1,r_1)_2(\delta,d)_2(\delta,r_1)_2\cdot(r_1,r_1)_2(\delta,r_1)_2=(\delta,d)_2 .
+\]
 \end{proof}
 
-\begin{example}
-Proposition~\ref{prop:diagconj} concerns elements of $G$. It says nothing about conjugation by $D$, which has determinant $\varpi$. By Remark~\ref{rem:ext}, conjugation by $\widetilde D$ changes the Kubota coordinate of $(h(u),1)$ by $(u,\varpi)_2$. This is the edge discrepancy. For a vertex $v=gv_j$ the lift to use at $t\in K_v$ is the transported one, $s_v(t)=\widetilde g\,s_j(g^{-1}tg)\,\widetilde g^{-1}$. If a regular elliptic element fixes no vertex of type $j$, both characters vanish at it.
+\begin{example}\label{ex:r1}
+Take $r=D$ in Proposition~\ref{prop:diagconj}(b). Conjugation by $\widetilde D$ preserves the Kubota coordinate of $(g,\zeta)$ when $c\ne0$ and multiplies it by $(\varpi,d)_2$ when $c=0$. For $g=h(u)$ the factor is $(\varpi,u)_2=\ell(\bar u)$, which is the edge discrepancy once more. With \eqref{eq:s1} this gives a closed formula for the second splitting. Write $s_1(k)=(k,r_1(k))$ and $k_0=D^{-1}kD$ for $k\in K_1$. Then
+\[
+ r_1(k)=r_0(k_0)\,v(\varpi,k_0).
+\]
+For a vertex $v=gv_j$ with $g\in G$, the lift to use at $t\in K_v$ is the transported one, $s_v(t)=\widetilde g\,s_j(g^{-1}tg)\,\widetilde g^{-1}$. If a regular elliptic element fixes no vertex of type $j$, both characters vanish at it.
 \end{example}
 
 \subsection{Split elements}

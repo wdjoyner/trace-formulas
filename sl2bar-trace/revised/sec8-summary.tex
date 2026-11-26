@@ -8,28 +8,28 @@
 % for refereeing in ../revision_log.md (Stage 8).
 % =====================================================================
 
-\section{Summary of results and open questions}\label{sec:summary}
+\chapter{Summary of results and open questions}\label{sec:summary}
 
-This section collects the main results of the paper, with the status
+This chapter collects the main results of the paper, with the status
 that the text gives them, and the questions that the paper leaves open.
-The status of each statement in detail is in the subsections ``Status of
-the results'' at the end of Sections~\ref{sec:background}--\ref{sec:stable}.
+The status of each statement in detail is in the sections ``Status of
+the results'' at the end of Chapters~\ref{sec:background}--\ref{sec:stable}.
 
-\subsection*{Results}
+\section*{Results}
 
 \begin{enumerate}[label=\arabic*.]
-\item \emph{The cover} (Section~\ref{sec:background}). The double cover
+\item \emph{The cover} (Chapter~\ref{sec:background}). The double cover
   of $G(\A)$ is built from Kubota's cocycle, with its topology fixed
   intrinsically, and it splits over $G(\Q)$ (Lemmas~\ref{lem:kubota}
   and~\ref{lem:global}). The cocycle and the existence of the topological
   cover are taken from~\cite{Ku67,Mo68}. The rest is proved in the text.
-\item \emph{Rank $0$} (Section~\ref{sec:rank0}). For the cover of a torus
+\item \emph{Rank $0$} (Chapter~\ref{sec:rank0}). For the cover of a torus
   the trace formula is Poisson summation, twisted by a genuine
   automorphic character (Theorem~\ref{thm:tf-rank0} and
   Lemma~\ref{lem:transfer}). For the split torus Weil's character
   $\chi_\psi$ gives a canonical choice (Lemma~\ref{lem:weil}, whose
   parts~(a) and~(b) are Weil's).
-\item \emph{The geometric side} (Section~\ref{sec:geometric}). The coarse
+\item \emph{The geometric side} (Chapter~\ref{sec:geometric}). The coarse
   geometric expansion is proved directly from the height inequality, with
   truncation parameter $T\ge0$ (Lemma~\ref{lem:height-ineq} and
   Theorem~\ref{thm:coarse}). Each class contributes a polynomial in $T$ of
@@ -39,7 +39,7 @@ the results'' at the end of Sections~\ref{sec:background}--\ref{sec:stable}.
   quoted from~\cite{Ar86,Li14a}. Its part~(a) is derived again in
   Proposition~\ref{prop:unipotent} when the ring of $S_k$-integers is
   principal.
-\item \emph{The spectral side} (Section~\ref{sec:spectral}). The
+\item \emph{The spectral side} (Chapter~\ref{sec:spectral}). The
   characters fixed by the Weyl group are the Weil characters
   $\chi_{\psi_b}$ (Lemma~\ref{lem:w-action}). The normalizing factor of the
   intertwining operator is $L^S(2\lambda,\chi^2)/L^S(2\lambda+1,\chi^2)$
@@ -51,7 +51,7 @@ the results'' at the end of Sections~\ref{sec:background}--\ref{sec:stable}.
   Theorem~\ref{thm:tf}. The spectral decomposition, the Eisenstein series
   and the polynomial behavior of the spectral terms are taken
   from~\cite{La76,MW95,Ar80,Li13}.
-\item \emph{The invariant form} (Section~\ref{sec:invariant}). The
+\item \emph{The invariant form} (Chapter~\ref{sec:invariant}). The
   invariant distributions are built by Fourier inversion on the abelian
   cover of $A$ (Theorem~\ref{thm:IA}). The invariant trace formula is
   Theorem~\ref{thm:itf}, with Corollary~\ref{cor:itf-final}, and
@@ -59,7 +59,7 @@ the results'' at the end of Sections~\ref{sec:background}--\ref{sec:stable}.
   (Proposition~\ref{prop:Mw0}). These are proved here, given the
   existence of normalizing factors, Theorem~\ref{thm:normalization}, which
   is taken from~\cite{Ar89,Li12a}.
-\item \emph{The stable(r) form} (Section~\ref{sec:stable}). Conjugation
+\item \emph{The stable(r) form} (Chapter~\ref{sec:stable}). Conjugation
   by $GL(2)$ can exchange the two lifts of an element
   (Lemma~\ref{lem:eta}). Stable conjugacy is conjugation by $GL(2)$
   twisted by the sign $(\det h,\det(1+\gamma))_v$, and its classes are
@@ -78,12 +78,32 @@ the results'' at the end of Sections~\ref{sec:background}--\ref{sec:stable}.
   (Proposition~\normref{}(a),~(b)). Their explicit form at the dyadic and
   ramified places, Proposition~\normref{}(c), is taken from
   Szpruch~\cite{Sz09,Sz16}.
+\item \emph{Comparison with $SL(2)$} (Chapter~\ref{sec:compare}). The
+  matching of orbital integrals at an element and at a lift of it, the
+  direct comparison of~\cite{JC26}, has the transfer factor $\Delta_\psi$
+  (Lemma~\ref{lem:direct-torus}, Definition~\ref{def:direct}). On the
+  split torus it is the character identity~\eqref{eq:packet-lift} with
+  the tori of $PGL(2)$ and $SL(2)$ identified by a map that is not a
+  homomorphism of groups (Proposition~\ref{prop:wrong-orbit}). The factor
+  satisfies a product formula on rational elements
+  (Lemma~\ref{lem:Delta-product}). At the elliptic elements of $K_v$ with
+  $2+\operatorname{tr}\gamma$ of odd valuation the stable orbital integral
+  of the unit element of the cover vanishes and the $\kappa$-orbital
+  integral does not, the reverse of $SL(2)$
+  (Proposition~\ref{prop:unit-swap}). So the direct comparison has no
+  fundamental lemma on the elliptic set (Corollary~\ref{cor:no-fl}), and
+  the rational elliptic terms differ by the factor $\varepsilon^S(\gamma)$
+  (Proposition~\ref{prop:epsilon}). The orbits of $GL(2,k)$ on the
+  continuous and residual spectrum are the fibers of the squaring map
+  (Proposition~\ref{prop:fibers}). These are proved here. The statements
+  about the trace formula of $SL(2)$ are quoted
+  (Remark~\ref{rem:compare-status}).
 \end{enumerate}
 
-\subsection*{Open questions}
+\section*{Open questions}
 
-The following questions are named as open in Sections~\ref{sec:intro}
-and~\ref{sec:stable}. They are not answered here.
+The following questions are named as open in Chapters~\ref{sec:intro},
+\ref{sec:stable} and~\ref{sec:compare}. They are not answered here.
 
 \begin{enumerate}[label=\arabic*.]
 \item The stabilization of the weighted terms $I_A(a(t),\cdot)$ and
@@ -108,4 +128,21 @@ and~\ref{sec:stable}. They are not answered here.
 \item The $n$-fold cover for $n>2$, which the 1995 notes treated and
   this revision does not (Remarks~\ref{rem:general-n}
   and~\ref{rem:general-n-rank0}).
+\item Which pairs of functions match directly
+  (Definition~\ref{def:direct}) on the elliptic set. Near the identity
+  the cover is a product and the question is trivial. Near the lifts of
+  $-1$ Proposition~\ref{prop:unit-swap} shows that the unit elements do
+  not match, and we do not know which functions do.
+\item Whether there is a matching on the elliptic set whose factor is
+  $\Delta_\psi$ times the factor of Labesse and Langlands for the torus of
+  $F[\gamma]$, which changes sign between the two classes in a stable
+  class. Proposition~\ref{prop:unit-swap} and Example~\ref{ex:epsilon}
+  suggest it: such a matching would exchange stable and $\kappa$-orbital
+  integrals, and so would pair the unstable part of the trace formula of
+  $SL(2)$ with the stable part of the trace formula of the cover. We have
+  not examined whether its factor satisfies a product formula.
+\item The comparison of the full trace formulas of $SL(2)$ and of the
+  cover through $PGL(2)$, that is, through the squaring correspondence of
+  Section~\ref{sec:wrong-orbit}, and what it says about the discrete
+  spectrum of $SL(2)$. This is the first open question of~\cite{JC26}.
 \end{enumerate}

@@ -11,14 +11,16 @@ A manuscript by David Joyner and Claude (Anthropic), revised in November 2026 fr
 - It is off by a square. The direct comparison matches unramified parameters up to sign; the Shimura–Waldspurger correspondence followed by restriction from PGL(2) squares them. Section 5.4 traces this through the trace formula: the torus terms match, and the intertwining operators, the residual spectrum and the cuspidal spectrum do not.
 - The 1995 strategy of deducing multiplicity one for SL(2) from Waldspurger's theorem by this comparison therefore cannot work (Proposition 5.10, Corollary 5.17). Multiplicity one for SL(2) is a theorem of Ramakrishnan (Ann. of Math. 152, 2000).
 
-**Status.** Current manuscript: **Draft 6 (November 23, 2026)**, revised by ChatGPT (OpenAI) from Draft 5 in response to Carbon's (Gemini's) referee report. The core global noncorrespondence theorem (Theorem 5.16) and Section 5.4 originated in Claude's revision and have not been independently checked by a specialist. Draft 6 repairs local cocycle and Gaussian-phase conventions, clarifies the global splitting and orbital-integral normalization, and explicitly qualifies the remaining formal Weil-character calculation. Unverified statements remain marked "Remark 2026.n" in the text.
+- Read through the trace formula of the cover (Chapter 6, new in Draft 7, based on the companion text [`sl2bar-trace`](../sl2bar-trace/)): the factor in the matching on the torus is the function Δ_ψ that defines stable conjugacy on the cover; the direct comparison is the known lifting to PGL(2) with the tori identified in the wrong way; and on the elliptic set it fails at the elements close to −1, where the unit elements of the Hecke algebras have their stable and κ-orbital integrals interchanged (Proposition 6.7).
+
+**Status.** Current manuscript: **Draft 7 (November 26, 2026)**. Claude added Chapter 6, the running example of Section 1.7 (k = ℚ, S = {∞, 2}, the same as in `sl2bar-trace`), and cross-references to the companion text. Chapter 6 has not been refereed. Draft 6 (November 23, 2026) was revised by ChatGPT (OpenAI) from Draft 5 in response to Carbon's (Gemini's) referee report. The core global noncorrespondence theorem (Theorem 5.16) and Section 5.4 originated in Claude's revision and have not been independently checked by a specialist. Draft 6 repairs local cocycle and Gaussian-phase conventions, clarifies the global splitting and orbital-integral normalization, and explicitly qualifies the remaining formal Weil-character calculation. Unverified statements remain marked "Remark 2026.n" in the text.
 
 ## Layout
 
 ```
 mult-one/
 ├── revised/
-│   ├── direct-comparison-SL2.tex, .pdf    the manuscript (Draft 6)
+│   ├── direct-comparison-SL2.tex, .pdf    the manuscript (Draft 7)
 │   ├── referee-report_draft5_carbon.md     Carbon's report on Draft 5
 │   ├── direct-comparison-SL2_draft6_revision-notes.md
 │   ├── direct-comparison-SL2_draft5-to-draft6.patch
@@ -35,13 +37,15 @@ Earlier drafts are not kept in this directory. The revision log describes them.
 
 ## Building
 
-In `revised/`, run `pdflatex direct-comparison-SL2.tex` three times. The bibliography is inline, so there is no BibTeX run. The document uses 12pt Times (`mathptmx`), letter paper, and has 81 pages. The compiled PDF is committed beside the source.
+In `revised/`, run `pdflatex direct-comparison-SL2.tex` three times. The bibliography is inline, so there is no BibTeX run. The document uses 12pt Times (`mathptmx`), letter paper, and has 96 pages. The compiled PDF is committed beside the source.
 
 The checks: `python3 scripts/local_formulas_check.py` (needs SymPy) and `python3 scripts/referee_check.py`, or `python3 run_checks.py` from the repository root.
 
 ## Open items
 
-- Verify the conditional real and nonarchimedean Weil-character kernel formulas and reconcile their phase/normalization with Adams's conventions.
+- Verify the conditional real and nonarchimedean Weil-character kernel formulas and reconcile their phase/normalization with Adams's conventions. The companion text proves the kernel formula and the character of r₊ − r₋ for Kubota's cocycle (`sl2bar-trace`, Lemma 7.4 and Proposition 7.5); what remains is to match the normalizations of the two texts (Section 6.1, item 6).
+- Have Chapter 6 refereed, together with Chapter 8 of `sl2bar-trace`.
+- Is there a matching on the elliptic set that exchanges stable and κ-orbital integrals (Section 5.7, open question 6)?
 
 - Have a specialist check Theorem 5.16 and Section 5.4 against Waldspurger, Gelbart–Jacquet and Jacquet–Shalika.
 - Is there a comparison of trace formulas built on the squaring correspondence, and what does it say about SL(2)?

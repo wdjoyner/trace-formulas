@@ -22,6 +22,8 @@ This log tracks every item of the 2026 referee report ([Claude Docs](https://cla
 | 5R | Response to the second referee report (ChatGPT, on Sections 2–6): topology of the cover and test functions, b′ = −b, Section 1 (overview, literature review), Glossary, Appendix A (comparisons with 1995), acknowledgements | Done 2026-11-11: see *Second referee report* below and `referee-2026-11/` |
 | 7 | Consistency pass after stage 6, and a second look at Section 7. (The independent re-referee, the literature review, the title page and the Introduction for Sections 2–6 were done in 5R; the Introduction, Appendix A and the Glossary were extended to Section 7 in stage 6.) | Done 2026-11-11 (see *Stage 7 notes*): cross-references, citations and numbering checked mechanically; three corrections in Section 7 (the condition (N5), the paragraph on Waldspurger's packets, Example 7.E); Proposition 7.5 now proved on the regular set; title page. **Section 7 still has no independent referee report**: none was in `referee-2026-11/` |
 | 8 | Style-guide pass: preamble, title page, AI disclosure, citation keys, literature review, Section 8, examples, Appendix A moved to this log | Done 2026-11-12 (see *Stage 8* below) |
+| 9 | Book format (like `mult-one`): the sections become chapters and the subsections become sections | Done 2026-11-26 (see *Stage 9* below). No number of a theorem, example, equation or dated remark changed |
+| 10 | New Chapter 8, *Comparison with SL(2)*: the connection with the companion text `mult-one` (*Direct comparison of SL(2) with its metaplectic cover*) | Done 2026-11-26 (see *Stage 10* below): `revised/comparison-sl2.tex`, checked by `revised/checks/comparison_n2_check.py`. **Not refereed** |
 
 ## Items
 
@@ -1083,3 +1085,43 @@ Earlier sections of this log use the old letters. No other section is renumbered
 - Rule 3.8 (no semicolons) was followed in the new text only.
 - The build still uses `mathptmx`.
 
+## Stage 9: book format (2026-11-26)
+
+Requested by DJ: "reformat sl2bar-trace in book format (like mult-one)". Done by Claude with a script, then read through.
+
+- `sl2bar-trace-2026.tex`: class `book` (`12pt,letterpaper,openany`) in place of `article`. An `abstract` environment is defined, as in `mult-one`, because the book class has none. Counters that were reset by section are reset by chapter.
+- In every `sec*.tex` and in `glossary.tex`: `\section` → `\chapter`, `\subsection` → `\section`, `\subsubsection` → `\subsection`. The literature review is an unnumbered section of Chapter 1, with unnumbered subsections, as decided on 2026-11-12. The Glossary and the Acknowledgments are unnumbered chapters.
+- Cross-references: "Section~\ref{…}" became "Chapter~\ref{…}" when the label is one of the eight chapter labels (`sec:intro`, `sec:background`, `sec:rank0`, `sec:geometric`, `sec:spectral`, `sec:invariant`, `sec:stable`, `sec:summary`), also in ranges and lists. No reference mixes the two kinds.
+- Prose: "subsection" became "section". The word "section" became "chapter" in the 27 places where it meant one of the former sections (the orienting sentences, the "Status of the results" remarks, the abstract and the Acknowledgments). It was left alone where it means a section of a covering map (Chapter 2 and Chapter 7) or a section of someone else's paper.
+- The labels are unchanged (they still begin with `sec:`), and so are the file names.
+
+**Numbering.** Nothing changed: Section n is Chapter n, Subsection n.m is Section n.m, and Theorem n.m, Example n.X, equation (n.m) and Remark 2026.n keep their numbers. The word "paper" was left in the text.
+
+**Not done.** The comments at the head of the source files still say "Section n".
+
+## Stage 10: Chapter 8, comparison with SL(2) (2026-11-26)
+
+Requested by DJ, after he asked Claude to compare this text with `mult-one` and to add the connections that neither text pointed out, "with as much detail as seems reasonable". Written by Claude in one pass. Draft 3.
+
+### New text, for refereeing
+
+- `revised/comparison-sl2.tex`, Chapter 8 (`sec:compare`), placed between Chapter 7 and the summary. The summary is now Chapter 9. This is the only number that changed.
+- New statements: Lemma 8.1 (the factor of the direct matching on the torus is Δ_ψ), Definition 8.2 (direct matching), Proposition 8.3 (the direct comparison on the split torus is the lifting (7.16) with the tori of PGL(2) and SL(2) identified by diag(s,1) ↦ a(s)), Lemma 8.4 (product formula for Δ_ψ on rational elements), Corollary 8.5 (conditional: if matching functions existed at every place, the regular elliptic and hyperbolic orbital integrals would agree), Proposition 8.6 (the unit elements at elliptic elements of K: Δ_ψ = 1 when 2 + tr γ is a unit; when it has odd valuation the stable orbital integral of e_v is 0 and the κ-orbital integral is 2 J_G, the reverse of SL(2)), Corollary 8.7 (no fundamental lemma for the direct comparison on the elliptic set), Proposition 8.8 (the factor ε^S(γ) on rational elements), Proposition 8.9 (the orbits of GL(2,k) on the continuous and residual spectrum are the fibers of the squaring map), Examples 8.A–8.G, Remarks 2026.21 and 2026.22.
+- Also new: a `definition` environment in the master file; a description of Chapter 8 in Section 1.1, a row in the table of Section 1.2, an item in the running example of Section 1.3, two paragraphs in the literature review; result 7 and open questions 8–10 in Chapter 9; the glossary entries "Direct comparison" and "Fundamental lemma"; a paragraph in the Acknowledgments; a sentence in the abstract; the bibliography entry [JC26].
+
+### Status (rule 4.1)
+
+- Proved in the text, given Chapters 2–7: all the lemmas, propositions and corollaries listed above. Corollary 8.5 is conditional on its hypothesis, and Corollary 8.7 shows that the hypothesis cannot be met with the unit elements.
+- Quoted and not rechecked (Remark 2026.22): the statements about the trace formula of SL(2) in Section 8.6 (the factor L(λ,χ)/L(λ+1,χ), the action of M(w,0) on the reducible principal series, the role of the tori in Labesse–Langlands), from memory; the statement about cuspidal representations after Proposition 8.9, from memory of Waldspurger; the comparison with Li's fundamental lemma in Remark 2026.21, which is a consistency check only.
+- Checked numerically by `comparison_n2_check.py` (about 10 seconds): Lemma 8.1 at ∞, 2, 3, 5, 7; Lemma 8.4 for 60 random regular elements of SL(2,ℚ); Proposition 8.6(a), (d) and the fact that Ad(diag(u,1)) preserves K* for p = 3, 5, 7, 11, 13; the values in Examples 8.D and 8.E. The orbital integrals of Proposition 8.6(b), (c) are not computed by the script.
+
+### A statement made before the chapter was written, and withdrawn
+
+In the chat that preceded this stage Claude said that under the direct comparison the regular elliptic terms "probably match too". Proposition 8.6 shows that they do not. The product formula (Lemma 8.4) is true, and it is what made the claim plausible, but the unit elements do not match on the elliptic set.
+
+### What was not done
+
+- Chapter 8 was not refereed by another system.
+- Labesse–Langlands, Gelbart–Jacquet, Li and Waldspurger were not reopened.
+- The related notes `sl2bar-characters/character_relations_twofold.tex` (the two compact splittings of the twofold cover and the elliptic characters) bear on Proposition 8.6 and were not compared with it.
+- Open questions 8–10 of Chapter 9.

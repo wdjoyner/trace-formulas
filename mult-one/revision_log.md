@@ -12,7 +12,55 @@
 
 - **Draft 6** (ChatGPT/OpenAI, November 23, 2026). Response to Carbon's detailed referee report on Draft 5, with local cocycle and Gaussian-phase corrections, clearer distinctions in Weyl and global-splitting normalizations, extra justification of the adjoint L-function pole argument, and explicit qualification of unverified Weil-character formulas. See the section "Draft 6" and `revised/direct-comparison-SL2_draft6_revision-notes.md`.
 
-The sections below are in reverse order: Draft 6, Draft 5, Draft 4, Draft 3, Draft 2, Draft 1. Theorem numbers in each section refer to the draft named there.
+- **Draft 7** (Claude, November 26, 2026). A new Chapter 6 that reads the comparison through the trace formula of the cover as written out in the companion text `sl2bar-trace` (cited as [JC]), a running example k = ℚ, S = {∞, 2} (Section 1.7), and cross-references to [JC] in the earlier chapters. See the section "Draft 7".
+
+The sections below are in reverse order: Draft 7, Draft 6, Draft 5, Draft 4, Draft 3, Draft 2, Draft 1. Theorem numbers in each section refer to the draft named there.
+
+## Draft 7: the comparison seen from the trace formula of the cover (November 26, 2026)
+
+**Origin.** The author asked Claude to compare this text with *A hitch-hiker's guide to the metaplectic trace formula for SL(2)* (`sl2bar-trace/`), and then to add the connections that neither text pointed out, with enough detail to explain them to a reader, and to add to this text the running example of Section 1.3 of that one. The two texts had been revised separately and neither cited the other.
+
+**AI usage.** Claude (Anthropic) compared the two texts, wrote all of the new material, wrote the check script `sl2bar-trace/revised/checks/comparison_n2_check.py`, and compiled the result. No other system has read Draft 7. Nothing in it has been refereed.
+
+**New text.**
+
+- *Chapter 6, "The comparison seen from the trace formula of the cover"* (labels `ch:cover`, `sec:cover-*`). Six sections: what [JC] supplies; the factor in the odd matching; the right factor and the wrong orbit; the elliptic terms; the spectral side again; the comparison term by term.
+- *Section 1.7, "A running example"* (`sec:running`): k = ℚ, S = {∞, 2}, the additive character with ψ_∞(x) = e^{−2πix}, and the representation attached to Δ, followed through the chapters. It is the last section of Chapter 1, so no section number changed. It contains no numbered statement.
+- Pointers to Chapter 6 and to [JC] in the abstract, in Sections 1.1, 1.2, 1.3 and 1.5, in Section 4.3.3 (after Lemma 4.21), at the head of Section 4.7, in Section 5.4 (opening paragraph, the diagnosis, Remark 2026.14), in Section 5.7 (summary and open questions), in Appendix B, in the Glossary (three new entries: direct comparison, stable conjugacy, transfer factor) and in the Acknowledgments. New bibliography entry [JC].
+
+**Results, and their status** (rule 4.1 of the style guide).
+
+| Statement | Status |
+|---|---|
+| Proposition 6.5 (on the split torus the direct comparison is the Adams–Schultz lifting with the tori of PGL(2) and SL(2) identified by diag(s,1) ↦ a(s)) | proved in the text; the lifting itself, (6.3), is quoted |
+| Lemma 6.2 (the function Δ_ψ), the product formula (6.4), Proposition 6.7, Corollary 6.8, formula (6.5) | quoted from [JC] (Lemma 7.3, Lemma 8.4, Proposition 8.6, Corollary 8.7, Proposition 8.8), where they are proved; Chapter 8 of [JC] is new and unrefereed |
+| Example 6.4 (the constant η₃ = −i for the standard ψ, η₅ = 1) | computed in the text from Definition 4.9 as printed |
+| Example 6.9 (γ = [[2,−1],[3,−1]], ε^S(γ) = −i) | values computed by `comparison_n2_check.py` |
+| Section 6.5 (the term at s = 0, the role of the tori for SL(2)) | quoted from memory of Labesse–Langlands; not checked (Remark 2026.16) |
+| The column "Squaring" of the table in Section 6.6 | expected from Waldspurger and Li; not proved in either text |
+
+**One statement of Draft 6 is changed.** Section 5.4 said: "We expect the same for the elliptic and unipotent terms of the geometric side, but have not examined them." Draft 7 says that the elliptic terms fail as well, at the elliptic elements close to −1 (Section 6.4), and that the unipotent terms and the weighted orbital integrals have not been examined. No status was raised silently: the three statements of Remark 2026.14 (the scalar of the intertwining operator, the residual spectrum, Weil's product formula) keep their label, and the remark now says where a proof is.
+
+**A correction to what Claude told the author before writing Draft 7.** In the chat that preceded this draft Claude said that the regular elliptic terms of the two trace formulas "probably match" under the direct comparison, by the product formula for Δ_ψ. Working it out showed that this is wrong. The product formula holds, but the unit elements of the two Hecke algebras do not match on the elliptic set: at the elliptic elements γ of K with 2 + tr γ of odd valuation the stable orbital integral of the unit element of the cover is 0 and the κ-orbital integral is not, the reverse of SL(2). This is Proposition 6.7.
+
+**Numbering.** Chapters 1–5 and the appendices keep their numbers, and so does every theorem, lemma and example in them. Two dated remarks are new, and the two in Appendix A move:
+
+| Draft 6 | Draft 7 | Label |
+|---|---|---|
+| — | Remark 2026.15 | `rem26:li-fl` |
+| — | Remark 2026.16 | `rem26:cover-status` |
+| Remark 2026.15 | Remark 2026.17 | `prop:164` |
+| Remark 2026.16 | Remark 2026.18 | (the second dated remark of Appendix A) |
+
+The PDF has 96 pages (Draft 6: 81).
+
+**Sources not consulted.** Labesse–Langlands, Gelbart–Jacquet, Adams, Schultz, Li and Waldspurger were not reopened for Draft 7. Statements about them are from memory or are taken from [JC], and are marked in Remark 2026.16.
+
+**Not done.**
+
+- No referee has read Chapter 6 or Chapter 8 of [JC].
+- The normalization of χ_ψ in Chapter 6 is that of [JC]. It was compared with Definition 4.9 and Lemma 4.17 only in Example 6.4, and with formula (iii) of Section 4.7.2 only through Lemma 5.7 of [JC].
+- The related notes `sl2bar-characters/character_relations_twofold.tex`, on the two compact splittings and the elliptic characters of the twofold cover, bear on Section 6.4 and were not compared with it.
 
 ## Draft 6: corrections following Carbon's referee report (November 23, 2026)
 

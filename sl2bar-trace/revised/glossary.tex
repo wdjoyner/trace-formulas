@@ -9,10 +9,10 @@
 % "Defined in" column.
 % =====================================================================
 
-\section*{Glossary}\label{sec:glossary}
-\addcontentsline{toc}{section}{Glossary}
+\chapter*{Glossary}\label{sec:glossary}
+\addcontentsline{toc}{chapter}{Glossary}\markboth{Glossary}{Glossary}
 
-\subsection*{Notation}
+\section*{Notation}
 
 {\small
 \begin{longtable}{@{}p{0.21\textwidth}p{0.55\textwidth}p{0.18\textwidth}@{}}
@@ -169,7 +169,7 @@ $r_v(\pi_v,\lambda)$, $R_v$, $R_S$ & local normalizing factor; normalized
   operator $r_v^{-1}M_v$; $\bigotimes_{v\in S_k}R_v$ &
   Theorem~\ref{thm:normalization}\\
 $S_{\mathrm{bad}}(\mu)$ & the places where $r_v$ is not explicit in
-  Section~\ref{sec:invariant}; made explicit in Proposition~\normref{}(c) &
+  Chapter~\ref{sec:invariant}; made explicit in Proposition~\normref{}(c) &
   \S\ref{sec:normalized}\\
 $\rho(\pi,\lambda)$, $\omega(\pi)$, $h_\pi$ & the scalar
   $M_v(\pi^w,-\lambda)M_v(\pi,\lambda)$; the value $\pi((w,1)^2)\in\mu_4$;
@@ -187,7 +187,7 @@ $I_A(\gamma,f)$, $I_A(z,f)$ & $J_A-\Phi_A$, the invariant distributions &
   \eqref{eq:IAgamma}\\
 $I_{\mathcal O}(f)$, $I_\chi(f)$ & the terms of the invariant trace
   formula & \eqref{eq:Iochi}\\[3pt]
-\multicolumn{3}{@{}l}{\emph{Section~\ref{sec:stable}}}\\
+\multicolumn{3}{@{}l}{\emph{Chapter~\ref{sec:stable}}}\\
 $G_1$, $\delta_a$, $\Ad(h)$ & $GL(2)$; $\diag(a,1)$; the
   automorphism of the cover lifting conjugation by $h\in G_1$ &
   Lemma~\ref{lem:gl2}, Lemma~\ref{lem:Ad}\\
@@ -221,7 +221,7 @@ $U_h$, $\Theta_b$, $\Theta^{\mathrm{st}}_b$ & the action of $G_1(k)$ on
 \end{longtable}
 }
 
-\subsection*{Terms}
+\section*{Terms}
 
 Each entry is a short reminder of what the term means in this paper. The
 entries can be read independently of the text and of each other.
@@ -299,6 +299,13 @@ entries can be read independently of the text and of each other.
   Weyl element, are equivalent. The class of $(A,\mu)$ is \emph{ramified}
   if $\mu^w=\mu$. This happens exactly when $\mu$ is a Weil character
   $\chi_{\psi_b}$.
+\item[Direct comparison.] The comparison of the cover with $SL(2)$ in
+  which an element $\gamma$ of $SL(2)$ is compared with a lift of the same
+  $\gamma$, as opposed to the comparison with $PGL(2)$ of Shimura and
+  Waldspurger. Two test functions \emph{match directly} if their orbital
+  integrals at corresponding elements differ by the factor $\Delta_\psi$
+  (Definition~\ref{def:direct}). The direct comparison is consistent on
+  the split torus and fails elsewhere (Chapter~\ref{sec:compare}).
 \item[Discrete series.] An irreducible unitary representation whose
   matrix coefficients are square integrable. For the real cover these are
   the representations of lowest weight $m$ or highest weight $-m$ with
@@ -338,6 +345,12 @@ entries can be read independently of the text and of each other.
   semisimple parts are conjugate and their unipotent parts are conjugate
   in the centralizer over $\Q_S$. The equivalence classes index the terms
   of the fine expansion.
+\item[Fundamental lemma.] The statement that the unit elements of two
+  Hecke algebras have matching orbital integrals. A comparison of trace
+  formulas needs it at almost all places, because there the test
+  functions are unit elements. For the direct comparison it holds on the
+  hyperbolic set and fails on the elliptic set
+  (Corollary~\ref{cor:no-fl}).
 \item[Genuine character.] A character of the cover of an abelian group
   that is the identity on $\mu_2$. The genuine characters of the cover of
   the diagonal torus are the products of one of them, for example Weil's

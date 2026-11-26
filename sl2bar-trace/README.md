@@ -13,7 +13,7 @@ The paper works out Arthur's trace formula, in non-invariant and then invariant 
 | `book-1997/` | Chapters of the 1997 book manuscript *An application of Arthur's invariant trace formula for SL(2)* (Scientific Word; needs `tcilatex`). Chapter 9 (`book7a`–`book7h`) is the source of the notes. |
 | `revision_log.md` | Every referee item, with its location, the planned fix, the revision stage, and its status |
 | `referee-2026-11/` | The referee reports by ChatGPT and the authors' responses: `report-chatgpt.md` and `response.md` (Sections 2–6), `report-chatgpt-section7.md` and `response-section7.md` (Section 7) |
-| `revised/` | The 2026 revision (n = 2), section by section: `sec1-introduction.tex` (overview, literature review), `sec8-summary.tex` (summary of results and open questions), `glossary.tex`, `sec2-foundations.tex` (stage 1), `sec3-rank0.tex` (stage 2), `sec4-geometric.tex` (stage 3), `sec5-spectral.tex` (stage 4), `sec6-invariant.tex` (stage 5), `sec7-stable.tex` (stage 6), the master file `sl2bar-trace-2026.tex` with its PDF, and `checks/` (verification scripts) |
+| `revised/` | The 2026 revision (n = 2), section by section: `sec1-introduction.tex` (overview, literature review), `comparison-sl2.tex` (Chapter 8, comparison with SL(2), stage 10), `sec8-summary.tex` (Chapter 9, summary of results and open questions), `glossary.tex`, `sec2-foundations.tex` (stage 1), `sec3-rank0.tex` (stage 2), `sec4-geometric.tex` (stage 3), `sec5-spectral.tex` (stage 4), `sec6-invariant.tex` (stage 5), `sec7-stable.tex` (stage 6), the master file `sl2bar-trace-2026.tex` with its PDF, and `checks/` (verification scripts) |
 
 The notes correspond to Chapter 9 of the book file by file:
 
@@ -29,6 +29,8 @@ The notes correspond to Chapter 9 of the book file by file:
 | `cctrace7.tex` | `book7h.tex` | Stable(r) form |
 
 ## Status (November 2026)
+
+- Draft 3 (2026-11-26, stages 9 and 10 of `revision_log.md`): the text is in **book format**, like `mult-one` (the sections are chapters, the subsections are sections, and no theorem, example or equation number changed), and has a new **Chapter 8, *Comparison with SL(2)*** (`revised/comparison-sl2.tex`). Chapter 8 connects this text with the companion text [`mult-one`](../mult-one/) (*Direct comparison of SL(2) with its metaplectic cover*). It shows that the matching of orbital integrals at an element and at a lift of the same element has the transfer factor Δ_ψ, that this factor satisfies a product formula on rational elements, and that the comparison nevertheless fails on the elliptic set: at the elliptic elements γ of K_v with 2 + tr γ of odd valuation the stable orbital integral of the unit element of the cover is 0 and the κ-orbital integral is not, the reverse of SL(2) (Proposition 8.6). The summary is now Chapter 9. Chapter 8 has not been refereed.
 
 - Referee report (2026): [Claude Docs](https://claude.ai/artifact/7MmqhX7GnoJNup9xbb9RNG). Its items are tracked in `revision_log.md`.
 - Second referee report (ChatGPT, 2026-11-11) and the response: [`referee-2026-11/`](referee-2026-11/). The revised draft has authors D. Joyner and Claude, a new Section 1 (overview and literature review), and a glossary.

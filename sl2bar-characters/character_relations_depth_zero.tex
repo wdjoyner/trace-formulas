@@ -35,9 +35,9 @@
 \newcommand{\Lie}{\operatorname{Lie}}
 
 \title{Two-orbit unramified elliptic character relations for depth-zero representations of metaplectic covers of $\mathrm{SL}_2$\\[0.6ex]
-\large Draft 2\\[0.2ex]\normalsize Corrected and expanded version}
-\author{David Joyner\thanks{Original manuscript notes prepared around 2000. The published companion is cited in the References.}\thanks{Email: \texttt{wdjoyner@gmail.com}}, Argon, and ChatGPT}
-\date{Original draft: 2000. Corrected and expanded draft: 2026\\November 12, 2026}
+\large Draft 3\\[0.2ex]\normalsize Corrected and expanded version}
+\author{David Joyner\thanks{Original manuscript notes prepared around 2000. The present paper revisits the published companion \cite{Jo99} from a more geometric perspective, using the Bruhat--Tits tree to organize and explain the character calculations.}\thanks{Email: \texttt{wdjoyner@gmail.com}}, Argon, and ChatGPT}
+\date{Original draft: 2000. Corrected and expanded draft: 2026\\November 25, 2026}
 
 \begin{document}
 \maketitle
@@ -53,7 +53,7 @@ This AI-aided paper used Argon-Gemini and Sol-ChatGPT to revise and correct note
 
 \section{Introduction and main results}\label{sec:intro}
 
-The paper compares ordinary and genuine depth-zero characters on two unramified elliptic torus classes. We first state the hypotheses and the resulting identities, then establish them through finite-field data and Bruhat--Tits geometry.
+This paper revisits the supercuspidal character correspondence studied in the published companion \cite{Jo99}, taking a more explicitly geometric perspective. The Bruhat--Tits tree turns the compact-induction character sum into a count of fixed vertices, separated according to their two $\mathrm{SL}_2(F)$-orbits. In particular, the distinction between interior and boundary vertices explains the alternating contributions near central elements and the cancellation in the packet sum. The geometry thus supplies an explanation of the character identities rather than merely a different notation for them. We restrict attention to the generic depth-zero unramified elliptic setting; we do not claim to replace the full scope of \cite{Jo99}. We first state the hypotheses and the resulting identities, then establish them through finite-field data and Bruhat--Tits geometry.
 
 \noindent\textbf{Example.} In the running case $F=\mathbb{Q}_7$ and $n=3$, the residue field has $q=7$ elements and the nonsplit finite torus has order $q+1=8$. Section~\ref{sec:example} evaluates the character relations in this setting.
 
@@ -168,11 +168,56 @@ It is instructive to note why both the unmodified equality \eqref{eq:direct-iden
 The assumptions that $n\ge 3$ is odd and $\gcd(n,q+1)=1$ are essential. For the twofold metaplectic cover ($n=2$) over a field of odd residue characteristic, $q+1$ is even, so $\gcd(2,q+1)=2$: the squaring map on $\bar{T}$ has a kernel of order two and is neither injective nor surjective, the modular inverse $e\equiv 2^{-1}\pmod{q+1}$ in \eqref{eq:theta-power} does not exist, and the uniqueness argument for the central lift of $-I$ (Lemma~\ref{lem:splittings-compat}) fails because $\mu_2$ has even order. Indeed, the genuine representation theory of the twofold metaplectic cover of $\G$ is governed by the Weil representation and the Shimura--Waldspurger correspondence (see Section~\ref{sec:lit-review}), which relates genuine representations of the twofold cover to representations of $\mathrm{PGL}_2(F)$ (and its inner forms) rather than directly to $\G$ via a power map on $\bar{T}$.
 \end{remark}
 
-\section{Literature review}\label{sec:lit-review}
+\subsection{Summary of results and their significance}\label{sec:summary}
+
+The results concern tame covers of odd degree and generic depth-zero supercuspidal representations. The following account explains what the identities measure and how the tree enters their proofs.
+
+\begin{enumerate}[label=(\roman*)]
+\item Proposition~\ref{prop:unique-splittings} shows that each of the two vertex stabilizers $K^{(i)}$ admits a unique continuous homomorphic lift $s_i$ into the cover. Thus multiplication of lifted compact elements agrees with multiplication downstairs, without a choice of cocycle normalization. This makes the comparison of ordinary and genuine compactly induced representations canonical once the faithful central character is fixed.
+\item Theorem~\ref{thm:main} compares the trace characters of the ordinary representation $\pi_{j,\theta}$ and its genuine counterpart at the canonical lift of every regular element $t$ of either unramified elliptic torus $T^{(i)}$. It also proves that replacing $t$ by $t^n$ and the finite torus character $\theta$ by $\theta^{\langle n\rangle}$ leaves the character value unchanged. The inverse exponent exists because $n$ is coprime to $q+1$, the order of the finite norm-one torus. The relation includes elements reducing to $\pm I$, not merely those having regular reduction. This clarifies precisely which portion of a power-map correspondence can be explained by a canonical splitting and an ordinary character symmetry.
+\item Theorem~\ref{thm:explicit} makes the comparison numerical. If the reduction $\bar\tau$ of $t$ is noncentral, only the vertex orbit containing the torus's fixed vertex contributes, and its value is $-\theta(\bar\tau)-\theta(\bar\tau^{-1})$. If the reduction is $zI$, the fixed subtree is a ball of radius $r=r_i(t)$, where $r$ measures the congruence of $t$ to $zI$. Its interior vertices contribute $(q-1)\theta(zI)$ each and its boundary vertices contribute $-\theta(zI)$ each. Counting separately in the two vertex orbits yields
+\[
+ \Theta_{\pi_{j,\theta}}(t)=\theta(zI)\bigl((-1)^{r+1+j-i}q^r-1\bigr).
+\]
+The alternating term records which orbit contains the boundary sphere. The two terms of size $q^r$ cancel in the packet sum, leaving $-2\theta(zI)$ independently of $r$. This explains geometrically the stable character sum associated with restriction from $\mathrm{GL}_2(F)$.
+\end{enumerate}
+
+For example, over $\mathbb{Q}_7$ with $n=3$, the two character values at depth one near $I$ are $6$ and $-8$. At depths two and three they become $-50,48$ and $342,-344$, respectively, while their sum remains $-2$ (Table~\ref{tab:Q7}). The split torus, exceptional quadratic parameters, ramified elliptic tori, and positive-depth cases remain outside the main theorem; see Section~\ref{sec:open}.
+
+\subsection{Notation}\label{sec:notation}
+
+This index collects the notation used in the introduction and the proofs. The common example $F=\mathbb{Q}_7$, $q=7$, $n=3$ illustrates $\OO=\mathbb{Z}_7$ and $\kk=\mathbb{F}_7$. Definitions and hypotheses remain at their original first uses.
+
+\noindent\textbf{Principal symbols.}
+\begin{center}
+\small
+\begin{tabular}{@{}lp{0.72\textwidth}@{}}
+\toprule
+Symbol & Meaning \\
+\midrule
+$F, \OO, \mathfrak{p}_F, \varpi$ & Nonarchimedean local field, ring of integers, maximal ideal, uniformizer \\
+$\kk, q, p$ & Residue field $\OO/\mathfrak{p}_F$ of odd cardinality $q$ and odd characteristic $p$ \\
+$G, \wtG, \mathbf{p}$ & $G=\G$ and its $n$-fold tame central cover $\mathbf{p}:\wtG\twoheadrightarrow G$ ($n\ge 3$ odd, $p\nmid n$) \\
+$\mu_n, \varepsilon$ & Group of $n$-th roots of unity in $F^\times$ and a faithful character $\varepsilon:\mu_n\hookrightarrow\mathbb{C}^\times$ \\
+$\mathscr{B}, d(v,w), B(v,r)$ & Bruhat--Tits tree of $\mathrm{PGL}_2(F)$, tree distance, and closed ball of radius $r$ \\
+$v_0, v_1, D$ & Base vertices $v_0=[\OO^2]$ and $v_1=Dv_0$, where $D=\operatorname{diag}(\varpi,1)\in\mathrm{GL}_2(F)$ \\
+$K^{(i)}, K^{(i)}_+, \rho_i$ & Vertex stabilizer $D^i\mathrm{SL}_2(\OO)D^{-i}$, pro-$p$ radical, and reduction $\rho_i:K^{(i)}\twoheadrightarrow\Gbar$ \\
+$s_i$ & Unique continuous homomorphic splitting $s_i:K^{(i)}\to\wtG$ ($i\in\{0,1\}$) \\
+$E/F, T^{(i)}, \bar{T}$ & Unramified quadratic extension, norm-one tori $T^{(i)}\subset K^{(i)}$, and reduction $\bar{T}\subset\Gbar$ \\
+$r_i(t)$ & Congruence depth $\max\{k\ge 1:D^{-i}(zI\cdot t)D^i\equiv I\pmod{\varpi^k}\}$ for $\rho_i(t)=zI$ \\
+$\theta, \theta^{\langle n\rangle}$ & Regular character of $\bar{T}$ and inverse-power character $\theta^{\langle n\rangle}(\bar{\tau})=\theta(\bar{\tau}^e)$, $en\equiv 1\pmod{q+1}$ \\
+$\sigma_\theta, \chi_\theta$ & Degree-$(q-1)$ cuspidal representation of $\Gbar$ and its character $\chi_\theta=\tr\sigma_\theta$ \\
+$\pi_{j,\theta}, \widetilde{\pi}_{j,\eta}$ & Ordinary and genuine depth-zero supercuspidal representations induced from $K^{(j)}$ and $\widetilde{K}^{(j)}$ \\
+$\Delta(t)$ & Weyl discriminant $\bigl|\det(1-\Ad(t)\mid\mathfrak{sl}_2(F)/\Lie(T^{(i)}))\bigr|_F^{1/2}$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\subsection{Literature review}\label{sec:lit-review}
 
 This review separates developments available before the original notes of approximately 2000 from later work. It situates the character comparison among explicit supercuspidal formulas, tame covers, and character correspondences. For a concrete instance of the setting, Section~\ref{sec:example} takes $F=\mathbb{Q}_7$ and $n=3$.
 
-\subsection{Foundations through 2000}
+\subsubsection{Foundations through 2000}
 
 The foundations explain the character formulas and covering constructions on which the present argument draws. The explicit computation of discrete series characters of $G=\G$ was initiated by Sally and Shalika \cite{SS68}, who determined the character tables of supercuspidal representations constructed via the Weil representation. For general connected reductive $p$-adic groups, Harish-Chandra established that the distribution character of an admissible representation is represented by a locally integrable function that is locally constant on the regular semisimple set. When a supercuspidal representation is realized by compact induction from an open, compact-modulo-center subgroup, its character on regular elliptic elements is given by a finite Frobenius-type sum over fixed cosets; see Sally \cite[Thm.~1.9 and Eq.~(1.10)]{Sa88} and Bushnell--Henniart \cite[Appendix~A, \S A.3, Thm.~A.4]{BH06} for a later treatment.
 
@@ -182,7 +227,7 @@ Topological central extensions of $p$-adic algebraic groups by roots of unity in
 
 For the twofold cover of $\G$, the correspondence with representations of $\mathrm{PGL}_2(F)$ was established via the theta correspondence by Waldspurger \cite{Wa80,Wa91}. For $n$-fold covers of $\mathrm{GL}_2(F)$ and $\mathrm{GL}_r(F)$, Flicker \cite{Fl80} and Flicker--Kazhdan \cite{FK86} used the trace formula to establish a metaplectic correspondence relating genuine representations of the $n$-fold cover to representations of the linear group via an $n$-th power map on regular eigenvalues. Explicit supercuspidal character calculations and Whittaker models on metaplectic covers were further investigated by Blondel \cite{Bl85}. In an earlier paper \cite{Jo99} and an accompanying unfinished manuscript (\texttt{CHART.TEX}--\texttt{CHAR2.TEX}), the first author investigated direct supercuspidal character comparisons for metaplectic covers of $\G$ via compact induction.
 
-\subsection{Developments after 2000}
+\subsubsection{Developments after 2000}
 
 Later work supplies general depth-zero machinery, refined finite-group formulas, and covering-group comparisons. The finite-group character table is treated in modern Deligne--Lusztig form by Bonnaf\'e \cite[Ch.~5, Table~5.4]{Bo11} and Digne--Michel \cite[Ch.~12 and \S 15.9]{DM20}. Cunningham and Gordon \cite{CG09} gave motivic and Green-function proofs of depth-zero character formulas for $\G$ on topologically unipotent elements, while DeBacker and Spice \cite{DS18} developed general character formulas for tame supercuspidal representations of reductive $p$-adic groups, incorporating explicit root-theoretic signs and Bruhat--Tits building geometry. Recently, Aubert and Plymen \cite{AP24} revisited the Sally--Shalika character formulas for depth-zero supercuspidal representations of $\G$, comparing them explicitly with endoscopic character identities and stable character sums across depth-zero $L$-packets.
 
@@ -211,35 +256,6 @@ A central cover is an extension such as \eqref{eq:cover}. It is tame when the ke
 A depth-zero type begins with a representation of the finite reductive quotient $\Gbar$, inflates it to a maximal compact subgroup, and then uses compact induction. On regular elliptic elements, its Harish-Chandra character can be computed from the finite character values over the fixed cosets. This is the link between the finite-field data of Section~\ref{sec:types} and the geometry of Section~\ref{sec:tree}.
 
 \noindent\textbf{Example.} For $q=7$, the finite nonsplit torus $\bar T$ has order $8$. A regular $\theta$ gives a cuspidal $\sigma_\theta$ of degree $6$, so $\chi_\theta(I)=6$. Section~\ref{sec:example} uses this value when counting interior vertices of a fixed ball.
-
-\section{Notation}\label{sec:notation}
-
-This index collects the notation used in the introduction and the proofs. The common example $F=\mathbb{Q}_7$, $q=7$, $n=3$ illustrates $\OO=\mathbb{Z}_7$ and $\kk=\mathbb{F}_7$. Definitions and hypotheses remain at their original first uses.
-
-\noindent\textbf{Principal symbols.}
-\begin{center}
-\small
-\begin{tabular}{@{}lp{0.72\textwidth}@{}}
-\toprule
-Symbol & Meaning \\
-\midrule
-$F, \OO, \mathfrak{p}_F, \varpi$ & Nonarchimedean local field, ring of integers, maximal ideal, uniformizer \\
-$\kk, q, p$ & Residue field $\OO/\mathfrak{p}_F$ of odd cardinality $q$ and odd characteristic $p$ \\
-$G, \wtG, \mathbf{p}$ & $G=\G$ and its $n$-fold tame central cover $\mathbf{p}:\wtG\twoheadrightarrow G$ ($n\ge 3$ odd, $p\nmid n$) \\
-$\mu_n, \varepsilon$ & Group of $n$-th roots of unity in $F^\times$ and a faithful character $\varepsilon:\mu_n\hookrightarrow\mathbb{C}^\times$ \\
-$\mathscr{B}, d(v,w), B(v,r)$ & Bruhat--Tits tree of $\mathrm{PGL}_2(F)$, tree distance, and closed ball of radius $r$ \\
-$v_0, v_1, D$ & Base vertices $v_0=[\OO^2]$ and $v_1=Dv_0$, where $D=\operatorname{diag}(\varpi,1)\in\mathrm{GL}_2(F)$ \\
-$K^{(i)}, K^{(i)}_+, \rho_i$ & Vertex stabilizer $D^i\mathrm{SL}_2(\OO)D^{-i}$, pro-$p$ radical, and reduction $\rho_i:K^{(i)}\twoheadrightarrow\Gbar$ \\
-$s_i$ & Unique continuous homomorphic splitting $s_i:K^{(i)}\to\wtG$ ($i\in\{0,1\}$) \\
-$E/F, T^{(i)}, \bar{T}$ & Unramified quadratic extension, norm-one tori $T^{(i)}\subset K^{(i)}$, and reduction $\bar{T}\subset\Gbar$ \\
-$r_i(t)$ & Congruence depth $\max\{k\ge 1:D^{-i}(zI\cdot t)D^i\equiv I\pmod{\varpi^k}\}$ for $\rho_i(t)=zI$ \\
-$\theta, \theta^{\langle n\rangle}$ & Regular character of $\bar{T}$ and inverse-power character $\theta^{\langle n\rangle}(\bar{\tau})=\theta(\bar{\tau}^e)$, $en\equiv 1\pmod{q+1}$ \\
-$\sigma_\theta, \chi_\theta$ & Degree-$(q-1)$ cuspidal representation of $\Gbar$ and its character $\chi_\theta=\tr\sigma_\theta$ \\
-$\pi_{j,\theta}, \widetilde{\pi}_{j,\eta}$ & Ordinary and genuine depth-zero supercuspidal representations induced from $K^{(j)}$ and $\widetilde{K}^{(j)}$ \\
-$\Delta(t)$ & Weyl discriminant $\bigl|\det(1-\Ad(t)\mid\mathfrak{sl}_2(F)/\Lie(T^{(i)}))\bigr|_F^{1/2}$ \\
-\bottomrule
-\end{tabular}
-\end{center}
 
 \section{Vertex splittings, finite-field data, and depth-zero types}\label{sec:types}
 
@@ -575,35 +591,59 @@ Several natural problems arise when moving beyond the unramified elliptic generi
 
 \noindent\textbf{Example of a case outside the theorem.} The $\mathbb{Q}_7$ calculation of Section~\ref{sec:example} concerns an unramified elliptic torus. Replacing it by a ramified elliptic torus would require a separate analysis of its fixed edge, as described in the preceding open-problems list.
 
-\section{Summary of results}\label{sec:summary}
-
-We summarize the results proved in this paper, distinguishing the established unramified elliptic case from the directions not treated. No new character identity is asserted here.
-
-\begin{enumerate}[label=(\roman*)]
- \item Proposition~\ref{prop:unique-splittings} establishes unique compact vertex splittings for the tame odd-degree covers under the stated hypotheses.
- \item Theorem~\ref{thm:main} identifies the ordinary and genuine characters on both unramified elliptic torus classes and gives the reparameterized $n$-th power identity.
- \item Theorem~\ref{thm:explicit} supplies explicit fixed-ball formulas. Its sum over the two vertex orbits is independent of the depth when reduction is central.
-\end{enumerate}
-
-\noindent\textbf{Example.} For $F=\mathbb{Q}_7$ and $n=3$, the two characters at depth $r=1$ take the values $6$ and $-8$, whose sum is $-2$. The same cancellation appears for $r=2,3$ in Table~\ref{tab:Q7}.
-
 \section*{Glossary of notation and terminology}
 \addcontentsline{toc}{section}{Glossary of notation and terminology}
 
 This reference list recalls specialist terms used in the body. Sections~\ref{sec:background} and~\ref{sec:notation} provide context and the recurring $\mathbb{Q}_7$ examples.
 
 \subsection*{Key terminology}
-The following entries give concise meanings of the technical terms introduced in the main text.
-\begin{description}[style=nextline,leftmargin=1.5em,itemsep=3pt]
- \item[Anti-genuine test function] A locally constant, compactly supported function $f:\wtG\to\mathbb{C}$ satisfying $f(\zeta\widetilde{g})=\varepsilon(\zeta)^{-1}f(\widetilde{g})$ for all $\zeta\in\mu_n$ and $\widetilde{g}\in\wtG$, used so that the integrand $f(\widetilde{g})\Theta_{\widetilde{\pi}}(\widetilde{g})$ descends to $G=\wtG/\mu_n$.
- \item[Bruhat--Tits tree ($\mathscr{B}$)] The $(q+1)$-regular simplicial tree whose vertices are homothety classes $[L]$ of rank-two $\OO$-lattices $L\subset F^2$, with an edge between $[L]$ and $[L']$ whenever $\varpi L\subsetneq L'\subsetneq L$.
- \item[Deligne--Lusztig cuspidal representation ($\sigma_\theta$)] An irreducible $(q-1)$-dimensional representation of $\Gbar$ having no nonzero fixed vectors under any nontrivial unipotent subgroup, parameterized by a regular character $\theta:\bar{T}\to\mathbb{C}^\times$ ($\theta^2\ne 1$).
- \item[Depth-zero supercuspidal representation] An irreducible supercuspidal representation of $G$ (or $\wtG$) possessing nonzero vectors fixed by the pro-$p$ first congruence subgroup $K^{(j)}_+$ (or its canonical lift $s_j(K^{(j)}_+)$) for a vertex $v_j$ of $\mathscr{B}$.
- \item[Genuine ($\varepsilon$-genuine) representation] A representation $(\widetilde{\pi},V)$ of the central cover $\wtG$ on which the central kernel $\mu_n$ acts via a fixed injective character $\varepsilon:\mu_n\hookrightarrow\mathbb{C}^\times$, i.e., $\widetilde{\pi}(\zeta\widetilde{g})=\varepsilon(\zeta)\widetilde{\pi}(\widetilde{g})$.
- \item[Good element of a covering group] An element $g\in G$ whose centralizer $Z_G(g)$ has abelian preimage $\mathbf{p}^{-1}(Z_G(g))$ in $\wtG$; genuine characters can be nonzero only on lifts of good elements.
- \item[Harish-Chandra character ($\Theta_\pi$)] The locally integrable, conjugation-invariant function on the regular semisimple set $G_{\mathrm{reg}}$ (smooth and locally constant on $G_{\mathrm{reg}}$) representing the trace distribution $\tr\pi(f)=\int_G f(g)\Theta_\pi(g)\,dg$.
- \item[$L$-packet (depth-zero)] A finite set of irreducible representations of $G=\G$ constituting a single restriction packet from $\mathrm{GL}_2(F)$ (here $\{\pi_{0,\theta},\pi_{1,\theta}\}$ for $\theta^2\ne 1$) whose sum of characters is stable on regular elliptic elements.
- \item[Tame central cover] A central extension $1\to\mu_n\to\wtG\to G\to 1$ whose kernel order $n$ is coprime to the residue characteristic $p$ of $F$.
+The following entries explain the technical terms used in the main text, including the geometric and representation-theoretic prerequisites and terminology used in the open problems.
+\begin{description}[style=nextline,leftmargin=1.5em,itemsep=5pt]
+ \item[Anti-genuine test function] A locally constant compactly supported function $f$ on $\wtG$ with $f(\zeta\widetilde g)=\varepsilon(\zeta)^{-1}f(\widetilde g)$. Its product with a genuine character is invariant under the central kernel and descends to $G$. This is the natural test-function convention for the genuine trace distribution.
+ \item[Apartment] A bi-infinite geodesic in the Bruhat--Tits tree associated with a decomposition of $F^2$ into two lines. A split diagonal torus preserves the apartment associated with the coordinate lines. Apartments provide a geometric model for the action of split tori.
+ \item[Ball and sphere] The ball $B(v,r)$ consists of vertices at distance at most $r$ from $v$; its boundary sphere consists of vertices at distance exactly $r$. In a $(q+1)$-regular tree the sphere has $(q+1)q^{r-1}$ vertices for $r\ge1$. Interior and boundary vertices have different character contributions in the present calculation.
+ \item[Borel subgroup] A maximal connected solvable algebraic subgroup, such as the upper triangular subgroup of $\mathrm{SL}_2$. Its diagonal torus and upper triangular unipotent radical give the ingredients for principal series induction. Its finite-field analogue is used in defining cuspidality.
+ \item[Bruhat--Tits tree ($mathscr{B}$)] The $(q+1)$-regular tree of homothety classes of rank-two $\OO$-lattices in $F^2$. Two classes are adjacent when representatives satisfy $\varpi L\subsetneq L'\subsetneq L$. The action of $G$ on this tree converts character sums into counts of fixed vertices.
+ \item[Central extension and splitting] A surjective group homomorphism whose kernel lies in the center of its domain. A splitting over a subgroup is a homomorphic right inverse of the projection on that subgroup. A splitting identifies its preimage with a direct product with the central kernel; uniqueness removes the ambiguity of choosing lifts.
+ \item[Central reduction] An element of $K^{(i)}$ has central reduction if $\rho_i(t)=\pm I$. It need not itself be central or singular. For regular elliptic elements of this kind the fixed ball has positive radius.
+ \item[Character of a representation] For a finite-dimensional representation $\sigma$, its character is the function $g\mapsto\tr\sigma(g)$. It is constant on conjugacy classes and determines a complex semisimple finite-group representation up to isomorphism. Infinite-dimensional admissible representations require the distributional version described under Harish-Chandra character.
+ \item[Compact induction] For an open subgroup $H$ and a smooth representation $\sigma$ on $V$, $\cInd_H^G\sigma$ consists of smooth functions $\phi:G\to V$ satisfying $\phi(hg)=\sigma(h)\phi(g)$ and having compact support modulo $H$. The group acts by right translation. For the compact vertex stabilizers here the support condition means finitely many cosets, and the character formula counts fixed cosets with finite-group trace weights.
+ \item[Congruence depth] For $t$ reducing to $zI$, the integer $r_i(t)$ is the largest $r$ for which $t$ is congruent to $zI$ modulo $\varpi^r$ in the lattice coordinates at $v_i$. It is finite for regular $t$. In the unramified elliptic case it equals the radius of the fixed ball; this is a specific element invariant rather than a general definition of representation depth.
+ \item[Continuous group cohomology] Group cohomology computed using continuous cochains for topological groups and continuous coefficient modules. Here $H^2$ classifies the central extension classes and $H^1$ measures the ambiguity of splittings. Their vanishing on the vertex stabilizers gives existence and uniqueness.
+ \item[Cuspidal representation (finite group)] An irreducible representation of a finite reductive group with no nonzero invariants under the unipotent radical of any proper rational parabolic subgroup. For $\Gbar$ the proper parabolics are Borel subgroups. Cuspidal representations supply the finite-dimensional input for depth-zero supercuspidal compact induction.
+ \item[Deligne--Lusztig cuspidal representation ($sigma_	heta$)] The degree-$(q-1)$ irreducible cuspidal representation of $\Gbar$ associated with a regular character $\theta$ of the finite nonsplit torus. Its regular elliptic values are $-\theta(\bar\tau)-\theta(\bar\tau^{-1})$. Its central and noncentral unipotent values supply the interior and boundary weights of the fixed-ball calculation.
+ \item[Depth-zero supercuspidal representation] An irreducible supercuspidal representation with nonzero vectors fixed by a vertex's pro-$p$ first congruence subgroup (or its canonical lift in the cover). The representations considered here arise by inflation and compact induction of finite cuspidal representations. Depth zero does not mean finite dimensionality of the resulting representation.
+ \item[Edge and geodesic] An edge joins adjacent vertices, and a geodesic is a shortest path between vertices. In a tree this path is unique and its length defines the graph distance. The absence of cycles is what makes radial counting particularly simple.
+ \item[Elliptic torus] A maximal torus anisotropic modulo the center; in $\mathrm{SL}_2(F)$ it arises from the norm-one group of a quadratic field extension. Its $F$-points are compact. Unramified elliptic tori in this paper fix a distinguished vertex, unlike the split torus.
+ \item[Fixed subtree] The vertices and edges fixed by a tree automorphism, with the induced graph structure. For a type-preserving automorphism fixing vertices this set is connected, since the unique path between fixed vertices is fixed pointwise. For the regular unramified elliptic elements considered here it is a finite ball.
+ \item[Frobenius character sum] A character formula for an induced representation expressed as a sum of traces on conjugates lying in the inducing subgroup. In the present compact-induction setting the relevant fixed cosets form a finite set for regular elliptic elements. Identifying these cosets with vertices turns the sum into a geometric count.
+ \item[Genuine representation] A representation $\widetilde\pi$ on which the kernel $\mu_n$ acts through the fixed faithful character $\varepsilon$. Thus $\widetilde\pi(\zeta\widetilde g)=\varepsilon(\zeta)\widetilde\pi(\widetilde g)$. Unlike a representation inflated from $G$, it detects the central covering kernel.
+ \item[Good element of a covering group] An element $g\in G$ for which a lift commutes with every lift of an element of $Z_G(g)$. This condition is independent of the lift, because the kernel is central. Conjugation invariance and genuineness force characters to vanish on regular elements that are not good. On a regular torus element the condition says that the element lies in the radical of the lifted torus commutator pairing.
+ \item[Harish-Chandra character ($Theta_pi$)] The locally integrable function representing the trace distribution $\tr\pi(f)=\int_G f(g)\Theta_\pi(g)\,dg$ for an admissible representation in the setting of this paper. It is locally constant on the regular semisimple set, where pointwise character identities make sense. The distributional formulation avoids taking the trace of an arbitrary infinite-dimensional operator $\pi(g)$.
+ \item[Homothety and homothety class] Two lattices $L,L'$ in $F^2$ are homothetic if $L'=aL$ for some $a\in F^\times$. A homothety class $[L]$ identifies lattices differing by this common scalar rescaling, not by arbitrary changes of shape. These classes are precisely the vertices of the tree; scalar matrices therefore act trivially.
+ \item[Induced representation] A construction extending a representation of a subgroup $H$ to a representation of a larger group $G$. In the smooth function model, functions obey $\phi(hg)=\sigma(h)\phi(g)$ and $G$ acts by right translation; smooth induction imposes no compact-support condition modulo $H$. Compact induction adds that condition, while normalized parabolic induction also inserts the square root of the parabolic modulus character.
+ \item[Inflation] Pulling a representation of a quotient back along the quotient homomorphism. Here $\sigma_\theta\circ\rho_i$ is a representation of $K^{(i)}$ trivial on $K^{(i)}_+$. Inflation is distinct from induction: it changes the acting group without enlarging the representation space.
+ \item[Iwahori subgroup] In this rank-one setting the subgroup of $G$ fixing both endpoints of an edge. At a chosen vertex it is the inverse image of a Borel subgroup under reduction. It is important for principal series and for studying ramified elliptic tori.
+ \item[Lattice] A rank-two $\OO$-submodule of $F^2$ generated by an $F$-basis. It is a compact open additive subgroup spanning $F^2$. Passing to homothety classes removes the overall scale while retaining relative positions of basis directions.
+ \item[Local field and residue field] A nonarchimedean local field is a nondiscrete locally compact field with a discrete valuation, such as $\mathbb Q_7$. Its ring of integers $\OO$ has maximal ideal generated by a uniformizer $\varpi$, and $\OO/\varpi\OO$ is the finite field of order $q$. This order determines the valency of the tree.
+ \item[$L$-packet (depth-zero)] A finite family of irreducible representations sharing a Langlands parameter. In the generic case here the two ordinary representations $\pi_{0,\theta},\pi_{1,\theta}$ constitute the restriction packet of a depth-zero supercuspidal representation of $\mathrm{GL}_2(F)$. Their character sum is stable on the regular elliptic set; the corresponding genuine sum is compared by the theorem without requiring a general covering-group Langlands classification.
+ \item[Maximal compact subgroup and vertex stabilizer] The stabilizer $K^{(i)}$ is the subgroup preserving the lattice class $v_i$ under the action of $G$. It is maximal compact and admits a finite reductive quotient. Its conjugacy class corresponds to one of the two vertex orbits.
+ \item[Metaplectic commutator pairing] For commuting elements downstairs, the commutator of their lifts is an element of $\mu_n$ independent of the chosen lifts. Restricted to a torus this defines an alternating bimultiplicative pairing. Its radical controls the good elements and hence possible genuine character support.
+ \item[Norm-one torus] The kernel of the norm map $E^\times\to F^\times$ for a quadratic extension $E/F$. Multiplication on $E$ viewed as a two-dimensional $F$-space embeds this group in $\mathrm{SL}_2(F)$ because the determinant equals the norm. For unramified $E/F$ its reduction is cyclic of order $q+1$.
+ \item[Parahoric subgroup] The compact open subgroup associated by Bruhat--Tits theory with a facet of the building. In the present $\mathrm{SL}_2$ tree the vertex parahorics are the vertex stabilizers and the edge parahorics are Iwahori subgroups. Their reductive quotients supply finite groups for depth-zero representation theory.
+ \item[Principal series] Representations obtained by smooth normalized induction from a Borel subgroup, typically from a character of its split torus extended trivially across the unipotent radical. In a covering group the inducing datum may instead be a genuine representation of a nonabelian torus preimage. Principal series contrast with supercuspidal representations and arise naturally in the proposed split-torus comparison.
+ \item[Pro-$p$ group] An inverse limit of finite groups of $p$-power order. The first congruence subgroup $K^{(i)}_+$ is such a group. A tame central extension by a finite kernel of order prime to $p$ splits uniquely over it, a fact central to the cohomological proof.
+ \item[Regular character of the finite torus] A character $\theta$ with $\theta^2\ne1$, equivalently one not fixed by inversion. The inverse pair $\theta,\theta^{-1}$ defines the same finite cuspidal representation. Regularity excludes the exceptional quadratic parameter for which the Deligne--Lusztig construction decomposes.
+ \item[Regular semisimple element] A semisimple element whose algebraic centralizer has minimal dimension, equal to the rank. In $\mathrm{SL}_2$ this means two distinct eigenvalues over an algebraic closure. In the elliptic tori here all elements other than $\pm I$ are regular semisimple, even if their reductions are central.
+ \item[Smooth and admissible representation] A representation of a totally disconnected locally compact group is smooth if each vector is fixed by some open subgroup. It is admissible if the fixed-vector space for every compact open subgroup is finite dimensional. Admissibility allows compactly supported locally constant test functions to define finite-rank operators with traces.
+ \item[Stable conjugacy] For regular semisimple elements, conjugacy over an algebraic closure with the appropriate rationality condition, which for $\mathrm{SL}_2$ allows distinct rational conjugacy classes within one stable class. Here the two unramified elliptic torus embeddings are conjugate over the algebraic closure but not by $G$. Stable character sums are insensitive to the distinction between rational classes within a stable class.
+ \item[Supercuspidal representation] An irreducible smooth admissible representation that is not a subquotient of parabolic induction from a proper parabolic subgroup. Equivalently for the linear reductive group, its matrix coefficients are compactly supported modulo the center. The depth-zero examples here are built by compact induction from finite cuspidal data.
+ \item[Tame central cover] A central extension by $\mu_n$ with $p\nmid n$. The prime-to-$p$ condition ensures the unique splitting over pro-$p$ subgroups. The additional odd-degree and root-of-unity assumptions in this paper are needed for its stronger conclusions.
+ \item[Tree valency and vertex orbit] Valency is the number of edges incident to a vertex, equal here to $q+1$. An orbit is the set of vertices reachable from one vertex by the group action. The determinant-one condition preserves the bipartite parity coloring, yielding exactly two $G$-orbits; their separate contributions explain the alternating character formulas.
+ \item[Unramified quadratic extension] A degree-two extension $E/F$ with ramification index one and residue degree two. The uniformizer of $F$ remains a uniformizer of $E$, and the residue field has order $q^2$. This gives the norm-one torus its particularly simple fixed-ball geometry.
+ \item[Unipotent element] A matrix all of whose eigenvalues are one, equivalently $I+N$ with $N$ nilpotent. Nonidentity unipotent elements of $\Gbar$ occur as reductions at boundary vertices after removal of the central sign. Their finite cuspidal character value is $-1$ in the generic case.
+ \item[Weyl discriminant] The factor $\Delta(t)=|\det(1-\Ad(t)\mid\mathfrak{sl}_2(F)/\Lie(T^{(i)}))|_F^{1/2}$ measuring the separation of root eigenvalues from one. It is nonzero on regular elements. Here it equals $q^{-r_i(t)}$ in the central-reduction regime and is unchanged under the $n$-th power map.
+ \item[Weyl group] The quotient of the algebraic normalizer of a maximal torus by the torus itself. In type $A_1$ it has order two and acts by inversion. This accounts for the paired terms involving $\theta$ and $\theta^{-1}$ in the finite elliptic character formula.
 \end{description}
 
 

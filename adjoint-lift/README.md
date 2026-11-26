@@ -1,6 +1,6 @@
 # adjoint-lift
 
-*On the twisted adjoint lifting for p-adic PGL(3)*, by David Joyner and ChatGPT (OpenAI), Draft 3 (November 26, 2026; prepared by Claude, Anthropic). A corrected and expanded version of D. Joyner, "On twisted orbital integral identities for PGL(3) over a p-adic field," Canad. J. Math. 42 (1990), 1098–1130.
+*On the twisted adjoint lifting for p-adic PGL(3)*, by David Joyner, ChatGPT (OpenAI), and Claude (Anthropic), Draft 3 (November 26, 2026). A corrected and expanded version of D. Joyner, "On twisted orbital integral identities for PGL(3) over a p-adic field," Canad. J. Math. 42 (1990), 1098–1130.
 
 | File | What it is |
 |---|---|

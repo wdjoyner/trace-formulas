@@ -6,95 +6,128 @@
 \usepackage{microtype,booktabs,enumitem,tikz}
 \usepackage[hidelinks]{hyperref}
 \numberwithin{equation}{section}
+\emergencystretch=2em
 \newtheorem{theorem}{Theorem}[section]
 \newtheorem{lemma}[theorem]{Lemma}
 \newtheorem{proposition}[theorem]{Proposition}
 \newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
 \theoremstyle{remark}
 \newtheorem{remark}[theorem]{Remark}
+\newtheorem{remarkyr}{Remark}
+\renewcommand{\theremarkyr}{2026.\arabic{remarkyr}}
 \newcommand{\OO}{\mathcal O_F}
+\newcommand{\OEr}{\mathcal O_E}
 \newcommand{\kk}{\mathbb F_q}
 \newcommand{\Mp}{\widetilde G}
 \newcommand{\cInd}{\operatorname{c-Ind}}
 \newcommand{\tr}{\operatorname{tr}}
 \newcommand{\val}{\operatorname{val}}
+\newcommand{\diag}{\operatorname{diag}}
 \newcommand{\BT}{\mathscr B}
-\title{Notes on characters of supercuspidal representations of the twofold metaplectic cover of $\mathrm{SL}_2(F)$, $F$ $p$-adic\\[.5ex]\large Draft 1: Corrected and expanded version\\A geometric perspective}
+\newcommand{\np}{n_{+}}
+\newcommand{\nm}{n_{-}}
+\newcommand{\sm}[4]{\left(\begin{smallmatrix}#1&#2\\#3&#4\end{smallmatrix}\right)}
+\title{Notes on characters of supercuspidal representations of the twofold metaplectic cover of $\mathrm{SL}_2(F)$, $F$ $p$-adic\\[.5ex]\large Draft 2: Corrected and expanded version\\A geometric perspective}
 \author{David Joyner\thanks{Based on the author's 1996 notes of conversations with Jeff Adams and Jason Schultz. This geometric revisit is a companion to the odd-degree study \cite{Jo26}. Email: \texttt{wdjoyner@gmail.com}.}}
-\date{Original draft: 1996. Corrected and expanded draft: 2026\\November 25, 2026}
+\date{Original draft: 1996. Corrected and expanded draft: 2026\\November 26, 2026}
 \begin{document}
 \maketitle
 \begin{abstract}
-This AI-aided paper used Sol-ChatGPT to revise and correct notes written in 1996; see the Acknowledgments for details. We revisit the comparison of characters of ordinary and genuine supercuspidal representations of the twofold metaplectic cover of $\mathrm{SL}_2(F)$ for a $p$-adic field of odd residue characteristic. The Frobenius sums in the original notes are interpreted as weighted sums over fixed vertices in the Bruhat--Tits tree. The two canonical compact splittings have a nontrivial discrepancy on their common Iwahori subgroup, given by a quadratic residue character. This yields a corrected comparison on regular elliptic elements and explicit formulas for generic depth-zero supercuspidals on unramified elliptic tori. The central sign depends on the parity of the vertex orbit and on the residue cardinality modulo four. We also formulate a comparison for arbitrary admissible compact inductions on regular elliptic elements, and identify the additional work required on the split torus and for the full positive-depth classification.
+This AI-aided paper used Sol-ChatGPT and Claude to revise and correct notes written in 1996. See the Acknowledgments for details. We compare the characters of ordinary and genuine supercuspidal representations of $\mathrm{SL}_2(F)$ and of its twofold metaplectic cover, for a $p$-adic field $F$ of odd residue characteristic. Both kinds of representation are compactly induced from a maximal compact subgroup. The Frobenius sums of the original notes become weighted sums over the vertices of the Bruhat--Tits tree fixed by the element. The two canonical compact splittings of the cover do not agree on their common Iwahori subgroup. Their ratio is a quadratic residue character, which we compute from the Kubota cocycle. On regular elliptic elements this gives a comparison of the genuine and ordinary characters up to an explicit sign. The sign is trivial at the lift attached to the inducing vertex type. For generic depth-zero supercuspidals we obtain closed formulas on the unramified elliptic tori. The sign there depends on the parity of the vertex orbit and on the residue cardinality modulo four. We also show that these depth-zero characters vanish at split elements with regular reduction, and we identify the work that remains on the rest of the split torus and for positive depth.
 \end{abstract}
 \noindent\textbf{2020 MSC:} 22E50, 22E35, 20G05.\\
 \textbf{Keywords:} metaplectic double cover, Hilbert symbol, Bruhat--Tits tree, compact induction, character relations.
 \tableofcontents
 
 \section{Introduction}\label{sec:intro}
-The character of a representation induced from a compact open subgroup is a sum of traces associated with conjugates of that subgroup. The original notes pursued a term-by-term comparison of this sum for linear and metaplectic representations. We preserve this approach, but interpret the conjugates as vertices of a tree. The main issue is no longer whether an individual cocycle expression can be simplified. It is whether the splittings at different fixed vertices agree on the element being studied.
+This section states the problem, the main results, the related literature and the notation.
 
-Throughout, $F$ is a finite extension of $\mathbb Q_p$ with $p$ odd. Its ring of integers is $\OO$, its uniformizer is $\varpi$, and its residue field is $\kk$ of order $q$. Write $G=\mathrm{SL}_2(F)$ and let $P:\Mp\to G$ denote the Kubota double cover. A genuine representation is one in which the nonidentity element of $\ker P=\{\pm1\}$ acts by minus the identity. We use the canonical compact splittings $s_v$ over vertex stabilizers $K_v$.
+The character of a representation induced from a compact open subgroup is a sum of traces, one for each conjugate of that subgroup containing the element. The original notes compared this sum term by term for a representation of $\mathrm{SL}_2(F)$ and for a representation of its double cover. We keep this approach. The conjugates of a maximal compact subgroup are the stabilizers of the vertices of a tree, so the sum runs over the vertices fixed by the element. The cover splits over each vertex stabilizer in exactly one way. The central question is then geometric. Do the splittings attached to two different fixed vertices agree at the element being studied?
+
+Throughout, $F$ is a finite extension of $\mathbb Q_p$ with $p$ odd. Its ring of integers is $\OO$, its uniformizer is $\varpi$, and its residue field is $\kk$ of order $q$. Write $G=\mathrm{SL}_2(F)$ and let $P:\Mp\to G$ denote the Kubota double cover, with kernel $\mu_2=\{\pm1\}$. A representation of $\Mp$ is \emph{genuine} if the element $-1$ of $\mu_2$ acts by minus the identity. All results in this paper are restricted to this twofold cover and to odd $p$. The explicit formulas of Section~\ref{sec:depthzero} are further restricted to depth zero and to unramified elliptic tori.
 
 \subsection{Main results and their significance}
-The following results distinguish geometric comparison from arithmetic signs. Proposition~\ref{prop:edge} identifies the discrepancy of the splittings on adjacent vertices. It is the quadratic residue character of a diagonal entry of the Iwahori reduction. Theorem~\ref{thm:weighted} expresses the genuine character as an ordinary fixed-vertex trace sum with this discrepancy as a weight. In particular, for regular elliptic elements with reduction having repeated eigenvalue $z=\pm1$, Corollary~\ref{cor:compare} gives a uniform factor
+We describe the results in the order in which they are proved. The tree has two orbits of vertices under $G$, called types $0$ and $1$. Each vertex $v$ has a compact open stabilizer $K_v$ and a unique splitting $s_v:K_v\to\Mp$ (Lemma~\ref{lem:unique}). Let $\ell$ denote the quadratic character of $\kk^\times$.
+
+\begin{enumerate}[leftmargin=2em]
+\item \emph{Edge discrepancy} (Proposition~\ref{prop:edge}). Let $v,v'$ be adjacent vertices and let $k$ fix both. The reduction of $k$ at $v$ is triangular with diagonal entries $\lambda,\lambda^{-1}\in\kk^\times$. Then $s_{v'}(k)=\ell(\lambda)s_v(k)$. The proof is a direct computation with the Kubota cocycle on unipotent generators.
+\item \emph{Weighted fixed-vertex formula} (Theorem~\ref{thm:weighted}). Let $\sigma_j$ be a representation of the base stabilizer $K_j$ of type $j$, and let $\pi_j$ and $\widetilde\pi_j$ be the ordinary and genuine compact inductions. For a regular elliptic element $t$ fixing a vertex $w$, the character $\Theta_{\pi_j}(t)$ is a finite sum of local traces over the fixed vertices of type $j$. The genuine character $\Theta_{\widetilde\pi_j}(s_w(t))$ is the same sum with each term weighted by the sign $s_w(t)s_v(t)^{-1}$.
+\item \emph{Direct comparison} (Corollary~\ref{cor:compare}). If $w$ has type $i$ and $t$ fixes an edge, then the reduction of $t$ has a repeated eigenvalue $z=\pm1$ and
 \[
- \Theta_{\widetilde\pi_j}(s_i(t))
- =\ell(z)^{j-i}\Theta_{\pi_j}(t),
+ \Theta_{\widetilde\pi_j}(s_w(t))=\ell(z)^{j-i}\,\Theta_{\pi_j}(t).
 \]
-where $\ell$ is the quadratic character of $\kk^\times$ and $i,j$ denote vertex types. Thus the comparison holds without a sign on the inducing vertex type, but a sign can appear on the other type.
+The sign is $-1$ exactly when $z=-1$, $q\equiv3\pmod4$ and $j\ne i$. Equivalently, the genuine character at the lift attached to the inducing type $j$ always equals the ordinary character.
+\item \emph{Depth-zero formulas} (Theorem~\ref{thm:depthzero}). For the generic depth-zero types and $t$ in an unramified elliptic torus at congruence depth $r\ge1$, the ordinary value is $\theta(z)\bigl((-1)^{r+1+j-i}q^r-1\bigr)$. The genuine value is this number times $\ell(z)^{j-i}$.
+\item \emph{Sums over the two types} (Corollary~\ref{cor:sum}). The terms of size $q^r$ cancel in the ordinary sum over $j$. In the genuine sum they cancel only after the sign $\ell(z)^{j-i}$ is inserted.
+\item \emph{Split elements with regular reduction} (Proposition~\ref{prop:splitvanish}). The depth-zero characters of both kinds vanish there.
+\end{enumerate}
 
-Theorem~\ref{thm:depthzero} evaluates these sums for generic depth-zero representations. At congruence depth $r\ge1$, the ordinary value is $\theta(z)((-1)^{r+1+j-i}q^r-1)$, and the genuine value is obtained by multiplying by $\ell(z)^{j-i}$. The geometry explains the cancellation of the terms of size $q^r$ in the ordinary packet sum. For the genuine sum, cancellation at $-I$ depends on whether $-1$ is a square in $\kk$. We give a twisted sum that always cancels.
-
-For example, take $F=\mathbb Q_7$. The quadratic character of $-1$ is $-1$. At depth one near $-I$, an ordinary representation induced from the opposite vertex type has character $-8\theta(-1)$, but its genuine counterpart has character $8\theta(-1)$ at the canonical lift from the torus vertex. This sign is invisible in the odd-degree case.
+\begin{example}\label{ex:intro}
+Take $F=\mathbb Q_7$. Then $\ell(-1)=-1$. Let $t$ lie at depth one near $-I$ in the unramified torus attached to $v_0$. The ordinary representation induced from the opposite type has character $-8\,\theta(-1)$ at $t$. Its genuine counterpart has character $8\,\theta(-1)$ at the lift $s_0(t)$. Over $\mathbb Q_5$ the two values agree. This sign does not occur for covers of odd degree \cite{Jo26}.
+\end{example}
 
 \subsection{Literature review}
-The literature supplies the compact constructions and the character-theoretic setting. We separate results available in 1996 from later developments.
+The literature supplies the cover, the compact constructions and the character theory. We separate the work available in 1996 from later developments.
 
-\subsubsection{Through 1996}
-Kubota \cite{Ku67} constructs the cover using the quadratic Hilbert symbol and gives its splitting over $\mathrm{SL}_2(\OO)$ in odd residue characteristic. Gelbart \cite{Ge76} explains the Weil representation and metaplectic groups. Neukirch \cite{Ne86} supplies the local class field theory behind the Hilbert symbol. For example, the symbol of a uniformizer and a unit detects whether the residue of the unit is a square.
+\subsubsection*{Through 1996}
+Kubota \cite{Ku67} constructs the cover from the quadratic Hilbert symbol and gives its splitting over $\mathrm{SL}_2(\OO)$ in odd residue characteristic. Gelbart \cite{Ge76} explains the Weil representation and the metaplectic groups, and extends the cocycle to $\mathrm{GL}_2(F)$. Neukirch \cite{Ne86} supplies the local class field theory behind the Hilbert symbol. For example, the symbol of a uniformizer and a unit detects whether the residue of the unit is a square.
 
-Sally and Shalika \cite{SS68} compute discrete-series characters of $\mathrm{SL}_2(F)$. Deligne and Lusztig \cite{DL76} construct finite reductive-group representations from torus characters. Kutzko \cite{Ku87} develops supercuspidal character sums for $\mathrm{GL}_{\ell}$, with $\ell$ prime. The 1996 notes use a related double-coset organization. We do not invoke a convergence theorem for the cover by analogy alone. On the regular elliptic domain used here, the sum is locally finite for geometric reasons.
+Sally and Shalika \cite{SS68} compute the discrete-series characters of $\mathrm{SL}_2(F)$. Deligne and Lusztig \cite{DL76} construct representations of finite reductive groups from characters of tori. Kutzko \cite{Ku87} develops character sums for supercuspidal representations of $\mathrm{GL}_{\ell}$ with $\ell$ prime. The 1996 notes organized their sums by double cosets in a related way. We do not use a convergence theorem here. On the regular elliptic set the sum is finite for a geometric reason (Lemma~\ref{lem:fixedset}).
 
-Manderscheid \cite{Ma84a,Ma84b} studies supercuspidals of $\mathrm{SL}_2$ and its double cover. The original notes refer to his strongly cuspidal types of level $m>1$ and cuspidal types of conductor one. Moy and Prasad \cite{MP94} place depth-zero constructions in a general building-theoretic framework. Waldspurger \cite{Wa91} develops the theta correspondence, a different kind of comparison from the direct compact-induction relation studied here.
+Manderscheid \cite{Ma84a,Ma84b} studies the supercuspidal representations of $\mathrm{SL}_2$ and of its double cover. The original notes refer to his strongly cuspidal types of level $m>1$ and to his cuspidal types of conductor one. Moy and Prasad \cite{MP94} place the depth-zero constructions in a general framework based on the building. Waldspurger \cite{Wa91} develops the theta correspondence. That correspondence relates the cover to $\mathrm{PGL}_2$ and is a different kind of comparison from the one studied here.
 
-\subsubsection{After 1996}
-Joyner \cite{Jo99} treats a metaplectic supercuspidal correspondence in higher-degree covers. Howard and Weissman \cite{HW09} extend depth-zero theory to tame nonlinear covers, including the metaplectic group in odd residue characteristic. Li \cite{Li12} develops local harmonic analysis for covering groups. Manderscheid \cite{Ma04} studies Waldspurger's involution through types. The companion manuscript \cite{Jo26} gives explicit odd-degree character relations using the two vertex orbits and fixed balls. Its power-map argument uses coprimality of the covering degree with $q+1$, which fails in degree two.
+\subsubsection*{After 1996}
+Joyner \cite{Jo98} compares Hecke algebras of $\mathrm{SL}_2(F)$ and of its $n$-fold cover at sufficiently large level, and \cite{Jo99} treats a supercuspidal correspondence for covers of higher degree. Howard and Weissman \cite{HW09} extend depth-zero theory to tame nonlinear covers, including the metaplectic group in odd residue characteristic. Li \cite{Li12} develops local harmonic analysis on covering groups, including the existence of character functions. Manderscheid \cite{Ma04} describes Waldspurger's involution in terms of types. Bonnaf\'e \cite{Bo11} gives a complete account of the characters of $\mathrm{SL}_2(\kk)$. The companion manuscript \cite{Jo26} gives explicit character relations in odd degree, using the two vertex orbits and fixed balls. Its power-map argument uses that the degree of the cover is prime to $q+1$. This fails in degree two.
 
-For example, the finite nonsplit torus over $\mathbb F_7$ has order eight. Cubing permutes it, but squaring does not. This paper consequently studies the direct comparison, not a purported inverse-square reparameterization.
+\begin{example}
+The finite nonsplit torus over $\mathbb F_7$ is cyclic of order eight. Cubing permutes it. Squaring does not, since its image has four elements. This is why the present paper studies the direct comparison and does not reparameterize by an inverse square.
+\end{example}
 
 \subsection{Notation}
 The following notation is used throughout. In the running example $\OO=\mathbb Z_7$ and $\varpi=7$.
 \begin{center}
-\begin{tabular}{@{}lp{.67\textwidth}@{}}
+\begin{tabular}{@{}lp{.68\textwidth}@{}}
 \toprule
 Symbol & Meaning\\ \midrule
-$G,\Mp,P$ & Linear group, double cover, covering projection\\
-$(a,b)_2,\ell$ & Quadratic Hilbert symbol and quadratic residue character\\
-$\BT,v_0,v_1$ & Bruhat--Tits tree and adjacent base vertices\\
-$K_v,s_v$ & Vertex stabilizer and its canonical splitting\\
-$K_i,K_i^+$ & Base stabilizer and first congruence subgroup\\
-$I,I^+$ & Common edge stabilizer and pro-$p$ radical\\
-$D,\omega$ & $\operatorname{diag}(\varpi,1)$ and $D^{-1}$\\
-$T_i,\bar T$ & Unramified norm-one torus and its finite reduction\\
-$\theta,\sigma_\theta$ & Regular finite torus character and cuspidal type\\
-$\pi_j,\widetilde\pi_j$ & Ordinary and genuine compact inductions\\
-$\Theta_\pi$ & Harish-Chandra character on the regular set\\
+$G,\Mp,P$ & $\mathrm{SL}_2(F)$, its double cover, the covering projection\\
+$(a,b)_2,\ \ell$ & Quadratic Hilbert symbol of $F$, quadratic character of $\kk^\times$\\
+$\beta,\ x(g)$ & Kubota cocycle and the Kubota coordinate function\\
+$\np(x),\nm(x)$ & Upper and lower elementary unipotent matrices\\
+$h(u),w(t)$ & $\diag(u,u^{-1})$ and $\np(t)\nm(-t^{-1})\np(t)$\\
+$\BT,v_0,v_1$ & Bruhat--Tits tree and the adjacent base vertices\\
+$B^t$ & Set of vertices fixed by $t$\\
+$K_v,K_v^+,s_v$ & Vertex stabilizer, its pro-$p$ radical, its canonical splitting\\
+$K_i,s_i$ & $K_{v_i}$ and $s_{v_i}$ for $i=0,1$\\
+$I,I^+$ & Stabilizer of the base edge and its pro-$p$ radical\\
+$D$ & $\diag(\varpi,1)$\\
+$c_{w,v}(t)$ & The sign $s_w(t)s_v(t)^{-1}$\\
+$T_i,\bar T$ & Unramified norm-one torus at $v_i$ and its finite reduction\\
+$\theta,\sigma_\theta,\chi_\theta$ & Regular character of $\bar T$, cuspidal representation, its character\\
+$\pi_j,\widetilde\pi_j$ & Ordinary and genuine compact inductions from type $j$\\
+$\Theta_\pi$ & Character function of $\pi$\\
 \bottomrule
 \end{tabular}
 \end{center}
 
-\section{Background: the tree and compact induction}\label{sec:background}
-We recall the geometric and representation-theoretic ingredients. The essential example is the tree of valency eight over $\mathbb Q_7$.
+\section{Background: the tree, compact induction and characters}\label{sec:background}
+This section recalls the geometry of the tree and the representation theory used later. It also proves three elementary lemmas that carry the geometric part of the argument. The running example is the tree of valency eight over $\mathbb Q_7$.
 
 \subsection{Lattices, vertices and edges}
-A lattice is an $\OO$-span of an $F$-basis of $F^2$. The vertices of $\BT$ are homothety classes $[L]$, where $L$ and $aL$ are identified for $a\in F^\times$. Two vertices are adjacent if representatives satisfy $\varpi L\subsetneq L'\subsetneq L$. The neighbors of $[L]$ correspond to lines in $L/\varpi L$, so their number is $q+1$. Elementary divisors give the distance: if $L'=\OO\varpi^a e_1+\OO\varpi^b e_2$ in a basis of $L$, then $d([L],[L'])=|a-b|$.
+We describe the tree by lattices, since the reduction of a group element at a vertex is then visible.
 
-Let $v_0=[\OO^2]$, $D=\operatorname{diag}(\varpi,1)$ and $v_1=Dv_0$. The tree is bipartite. The parity of distance from $v_0$ equals the valuation of the determinant of a lattice basis modulo two. Since $\det g=1$ for $g\in G$, there are exactly two $G$-orbits, denoted $Gv_0,Gv_1$. To see transitivity within a type, take a matrix carrying the base lattice to the given lattice, multiply by a scalar to make its determinant a unit, and change one basis vector by the inverse of that unit. Apply the same argument with $v_1$ for odd type. The stabilizers are
+A \emph{lattice} is the $\OO$-span of an $F$-basis of $F^2$. The vertices of $\BT$ are the homothety classes $[L]$, where $L$ and $aL$ are identified for $a\in F^\times$. Two vertices are adjacent if they have representatives with $\varpi L\subsetneq L'\subsetneq L$. The neighbors of $[L]$ correspond to the lines in $L/\varpi L\cong\kk^2$, so there are $q+1$ of them. The resulting graph is a tree. Distance is computed by elementary divisors. If $L'=\OO\varpi^a e_1+\OO\varpi^b e_2$ for a basis $e_1,e_2$ of $L$, then $d([L],[L'])=|a-b|$.
+
+Let $v_0=[\OO^2]$, $D=\diag(\varpi,1)$ and $v_1=Dv_0$. The parity of the distance from $v_0$ to $[L]$ equals the parity of the valuation of the determinant of a basis of $L$. An element of $G$ has determinant one, so it preserves this parity. Hence there are at least two $G$-orbits of vertices. There are exactly two, $Gv_0$ and $Gv_1$. To see this, take a matrix $g\in\mathrm{GL}_2(F)$ carrying $\OO^2$ to a lattice of even type. Multiply by a scalar to make $\det g$ a unit, and then replace $g$ by $g\,\diag(1,\det g^{-1})$, which carries $\OO^2$ to the same lattice. The same argument applies to $v_1$. We say that a vertex in $Gv_i$ has \emph{type} $i$. Adjacent vertices have different types.
+
+The stabilizer $K_v$ of a vertex $v=[L]$ in $G$ is the stabilizer of the lattice $L$. Indeed, if $gL=aL$ then $\det g=1$ forces $\val(a)=0$. The base stabilizers are
 \begin{equation}\label{eq:ki}
- K_0=\mathrm{SL}_2(\OO),\qquad K_1=DK_0D^{-1}.
+ K_0=\mathrm{SL}_2(\OO),\qquad K_1=DK_0D^{-1}
+ =\Bigl\{\sm{a}{\varpi b}{\varpi^{-1}c}{d}:\sm abcd\in K_0\Bigr\}.
 \end{equation}
-The stabilizer of a vertex class is its lattice stabilizer since determinant one forces the homothety scalar to have valuation zero.
+The group $K_v$ acts on $L/\varpi L$ with determinant one. This action is the \emph{reduction at $v$}. Its kernel $K_v^+$ is a pro-$p$ group, and $K_v/K_v^+\cong\mathrm{SL}_2(\kk)$.
 
 \begin{figure}[ht]
 \centering
@@ -113,347 +146,669 @@ The stabilizer of a vertex class is its lattice stabilizer since determinant one
 \caption{Two adjacent vertex types and their edge stabilizer. The other branches are schematic.}
 \label{fig:edge}
 \end{figure}
-For example, $D^m v_0$ lies at distance $|m|$ from $v_0$. The diagonal element $\operatorname{diag}(\varpi,\varpi^{-1})$ translates this apartment by two edges.
 
-\subsection{Compact induction and characters}
-For a compact open subgroup $H$ and a finite-dimensional smooth representation $\sigma$ of $H$, the compact induction $\cInd_H^G\sigma$ consists of locally constant functions $f:G\to V_\sigma$ satisfying $f(hg)=\sigma(h)f(g)$ and supported on finitely many left cosets of $H$. The action is right translation. Equivalently it is a direct sum of copies of the type space indexed by vertices when $H=K_j$. A fixed coset contributes its local trace, and a moved coset contributes zero to the diagonal trace. We justify the finite elliptic character formula in Section~\ref{sec:frob}.
+The next lemma attaches a pair of residue eigenvalues to an element fixing an edge.
 
-A smooth representation is admissible if its invariants under every compact open subgroup are finite-dimensional. A supercuspidal representation is an irreducible admissible representation not arising as a subquotient of proper parabolic induction. For the representations under consideration, admissibility and irreducibility may be supplied by the relevant type construction. We distinguish this input from our trace comparison, which does not itself establish either property.
+\begin{lemma}[Reduction on an edge]\label{lem:edgered}
+Let $v=[L]$ and $v'=[L']$ be adjacent with $\varpi L\subsetneq L'\subsetneq L$, and let $k\in K_v\cap K_{v'}$. Then the reduction of $k$ at $v$ preserves the line $L'/\varpi L$. It acts on this line by a scalar $\lambda\in\kk^\times$ and on $L/L'$ by $\lambda^{-1}$. The reduction of $k$ at $v'$ has the same two eigenvalues.
+\end{lemma}
+\begin{proof}
+We have $kL=L$ and $kL'=L'$, so the line is preserved. The action on $L/\varpi L$ has determinant one, which gives $\lambda^{-1}$ on the quotient $L/L'$. At $v'$, the space $L'/\varpi L'$ contains the line $\varpi L/\varpi L'$. Multiplication by $\varpi$ commutes with $k$ and identifies $L/L'$ with this line, so $k$ acts on it by $\lambda^{-1}$. The quotient is $L'/\varpi L$, on which $k$ acts by $\lambda$.
+\end{proof}
 
-For example, inflate a cuspidal representation of $\mathrm{SL}_2(\mathbb F_7)$ of dimension six along $K_0\to\mathrm{SL}_2(\mathbb F_7)$, and compactly induce to $G$. This is a depth-zero construction. The resulting space is infinite-dimensional, even though the type has dimension six.
+For an edge $e=\{v,v'\}$ and $k$ fixing $e$ we write $\lambda_e(k)$ for either eigenvalue. The sign $\ell(\lambda_e(k))$ does not depend on the choice, since $\ell(\lambda^{-1})=\ell(\lambda)$.
+
+\begin{example}\label{ex:baseedge}
+The base edge joins $v_0=[\OO^2]$ and $v_1=[\varpi\OO\oplus\OO]$. By \eqref{eq:ki}, its stabilizer $I=K_0\cap K_1$ consists of the matrices $\sm abcd\in K_0$ with $b\in\varpi\OO$. Such a matrix reduces to a lower triangular matrix with diagonal $(\bar a,\bar a^{-1})$. Thus $\lambda_e(k)=\bar a^{\pm1}$. The subgroup $I^+$ of matrices in $I$ with $\bar a=1$ is pro-$p$, and $I/I^+\cong\kk^\times$ by $k\mapsto\bar a$. Also, $D^mv_0$ lies at distance $|m|$ from $v_0$, and $\diag(\varpi,\varpi^{-1})$ translates this line of vertices by two edges.
+\end{example}
+
+\subsection{Fixed vertices of elliptic elements}
+The character formulas are sums over fixed vertices. We show that for a regular elliptic element this set is finite, nonempty and connected.
+
+An element $t\in G$ is \emph{regular elliptic} if its characteristic polynomial is irreducible over $F$. Write $B^t$ for the set of vertices fixed by $t$.
+
+\begin{lemma}[Fixed sets]\label{lem:fixedset}
+Let $t\in G$ be regular elliptic. Then $B^t$ is nonempty and finite. For any $x\in G$, the set $B^x$ is connected: the geodesic between two fixed vertices consists of fixed vertices.
+\end{lemma}
+\begin{proof}
+Let $E=F[t]$, a quadratic field extension of $F$. Choose a nonzero vector $e\in F^2$. The map $y\mapsto ye$ identifies $E$ with $F^2$, and $t$ acts as multiplication by an element $\tau\in E$ with norm $\det t=1$. Hence $\tau\in\OEr^\times$, and the lattice $\OEr$ is fixed. So $B^t$ is nonempty.
+
+A lattice $L\subset E$ satisfies $tL=L$ if and only if it is a module over the ring $\OO[\tau]$. Here we use that $t^{-1}=\tr(t)-t$ lies in $\OO[\tau]$. The ring $\OO[\tau]$ is an $\OO$-lattice in $E$ contained in $\OEr$, so $\varpi^r\OEr\subset\OO[\tau]$ for some $r\ge0$. Let $L$ be such a module and put $M=\OEr L$. Then $M$ is a fractional ideal of $E$ and
+\[
+ \varpi^rM=\varpi^r\OEr L\subset\OO[\tau]L=L\subset M .
+\]
+After scaling $L$ by a power of $\varpi$ we may assume that $M$ is $\OEr$ or the maximal ideal of $\OEr$. For each of these two choices there are finitely many lattices between $\varpi^rM$ and $M$. So $B^t$ is finite.
+
+For the last statement, $x$ acts on $\BT$ as an automorphism. It maps the geodesic between two fixed vertices to a geodesic with the same endpoints. Geodesics in a tree are unique, so this geodesic is fixed pointwise.
+\end{proof}
+
+\begin{example}
+A split element behaves differently. The matrix $\diag(3,3^{-1})$ over $\mathbb Q_7$ fixes every vertex $D^mv_0$, so its fixed set is infinite. Its characteristic polynomial is reducible.
+\end{example}
+
+\subsection{Compact induction and the vertex model}
+We recall compact induction and decompose its space into pieces indexed by vertices.
+
+Let $H$ be a compact open subgroup of $G$ and $\sigma$ a finite-dimensional smooth representation of $H$ on $V_\sigma$. The \emph{compact induction} $\cInd_H^G\sigma$ is the space of functions $f:G\to V_\sigma$ with $f(hg)=\sigma(h)f(g)$ whose support is a finite union of cosets $Hg$. The group acts by right translation, $(\pi(x)f)(y)=f(yx)$. The same definition applies to $\Mp$ and to an open subgroup of $\Mp$ containing $\mu_2$ with compact image in $G$.
+
+Fix $j\in\{0,1\}$ and a representation $\sigma_j$ of $K_j$. For a vertex $v=gv_j$ of type $j$ define a representation of $K_v=gK_jg^{-1}$ by $\sigma_v(k)=\sigma_j(g^{-1}kg)$. Its isomorphism class, and so its trace, does not depend on the choice of $g$.
+
+\begin{lemma}[Vertex model]\label{lem:model}
+Let $\pi_j=\cInd_{K_j}^G\sigma_j$ act on $V$. For $v=gv_j$ let $V_v\subset V$ be the subspace of functions supported on $K_jg^{-1}$. Then $V=\bigoplus_{v\in Gv_j}V_v$ and $\pi_j(x)V_v=V_{xv}$ for $x\in G$. The representation of $K_v$ on $V_v$ is isomorphic to $\sigma_v$.
+\end{lemma}
+\begin{proof}
+The coset $K_jg^{-1}$ depends only on $v$, and distinct vertices give disjoint cosets. This gives the direct sum. If $f$ is supported on $K_jg^{-1}$, then $\pi_j(x)f$ is supported on $K_jg^{-1}x^{-1}=K_j(xg)^{-1}$. Evaluation $f\mapsto f(g^{-1})$ is a linear isomorphism $V_v\to V_{\sigma_j}$. For $k=gk'g^{-1}\in K_v$ we get $(\pi_j(k)f)(g^{-1})=f(k'g^{-1})=\sigma_j(k')f(g^{-1})$.
+\end{proof}
+
+\begin{example}
+Inflate a cuspidal representation of $\mathrm{SL}_2(\mathbb F_7)$ of dimension six along $K_0\to\mathrm{SL}_2(\mathbb F_7)$ and compactly induce to $G$. Each $V_v$ has dimension six, and there is one for each vertex of type $0$. The induced space is infinite-dimensional.
+\end{example}
+
+\subsection{Admissibility and characters}
+We recall how a character is attached to an infinite-dimensional representation and express it through the vertex model.
+
+A smooth representation is \emph{admissible} if its invariants under every compact open subgroup are finite-dimensional. A \emph{supercuspidal} representation is an irreducible admissible representation that is not a subquotient of a representation parabolically induced from a proper parabolic subgroup. Fix a Haar measure on $G$. For a locally constant compactly supported function $f$ on $G$ put $\pi(f)=\int_Gf(g)\pi(g)\,dg$. If $\pi$ is admissible, then $\pi(f)$ has finite rank and $f\mapsto\tr\pi(f)$ is the \emph{distribution character}. Suppose that on an open set $U$ there is a locally constant function $\Theta_\pi$ with $\tr\pi(f)=\int_Uf(g)\Theta_\pi(g)\,dg$ for all $f$ supported in $U$. Then $\Theta_\pi$ is unique, and we call it the \emph{character function} of $\pi$ on $U$. Harish-Chandra proved that such a function exists on the regular semisimple set, and Li \cite{Li12} proved the analogue for covering groups. We do not need these theorems on the sets studied below, because the function is exhibited directly.
+
+\begin{lemma}[Block traces]\label{lem:blocks}
+Assume that $\pi_j=\cInd_{K_j}^G\sigma_j$ is admissible. Then for every locally constant compactly supported $f$,
+\begin{equation}\label{eq:blocks}
+ \tr\pi_j(f)=\sum_{v\in Gv_j}\int_{K_v}f(g)\,\tr\sigma_v(g)\,dg ,
+\end{equation}
+and only finitely many terms are nonzero.
+\end{lemma}
+\begin{proof}
+The operator $T=\pi_j(f)$ has finite rank. Its image lies in $W=\bigoplus_{v\in S}V_v$ for a finite set $S$ of vertices. The trace of $T$ equals the trace of its restriction to $W$, which is the sum over $v\in S$ of the traces of the diagonal blocks $P_vT|_{V_v}$. Here $P_v$ is the projection onto $V_v$. For $v\notin S$ the block is zero. Let $\varphi\in V_v$. By Lemma~\ref{lem:model}, $\pi_j(g)\varphi$ lies in $V_{gv}$. Its component in $V_v$ is $\pi_j(g)\varphi$ if $g\in K_v$ and zero otherwise. The integral defining $T\varphi$ is a finite sum, so $P_vT\varphi=\int_{K_v}f(g)\pi_j(g)\varphi\,dg$. Taking traces and using Lemma~\ref{lem:model} gives \eqref{eq:blocks}.
+\end{proof}
 
 \subsection{Unramified elliptic tori}
-Let $E/F$ be unramified quadratic and identify $F^2$ with $E$ using an integral basis of $\mathcal O_E$. Multiplication embeds the norm-one group $T_0=E^1$ into $K_0$. Set $T_1=DT_0D^{-1}$. These are the two rational conjugacy classes of unramified elliptic maximal tori. Indeed, conjugation by $\mathrm{GL}_2(F)$ is transitive on embeddings, and the determinant of the centralizer is the norm group, of index two with even valuation. Reduction gives the cyclic group $\bar T=\ker(N_{\mathbb F_{q^2}/\kk})$ of order $q+1$. Every element of $T_i$ except $\pm I$ is regular semisimple. For example, over $\mathbb Q_7$ we may take $E=\mathbb Q_7(\sqrt3)$, whose norm-one group consists of $\alpha+\beta\sqrt3$ with $\alpha^2-3\beta^2=1$.
+The explicit formulas of Section~\ref{sec:depthzero} concern the following tori.
+
+Let $E/F$ be the unramified quadratic extension. Identify $F^2$ with $E$ by an $\OO$-basis of $\OEr$. Multiplication embeds the norm-one group $E^1$ into $K_0$, and we call the image $T_0$. Set $T_1=DT_0D^{-1}\subset K_1$. Every element of $T_i$ other than $\pm I$ is regular elliptic. Reduction at $v_i$ maps $T_i$ onto the cyclic group $\bar T=\ker(N_{\mathbb F_{q^2}/\kk})$ of order $q+1$. The tori $T_0$ and $T_1$ are conjugate in $\mathrm{GL}_2(F)$ and not in $G$. Indeed, the normalizer of $T_0$ in $\mathrm{GL}_2(F)$ is generated by $E^\times$ and the Galois conjugation of $E$. The determinants of its elements are norms from $E^\times$ up to sign, so they have even valuation. If $gT_0g^{-1}=T_1$ with $g\in G$, then $D^{-1}g$ would lie in this normalizer and have determinant $\varpi^{-1}$.
+
+\begin{example}\label{ex:torus}
+Over $\mathbb Q_7$ the number $3$ is not a square modulo $7$, so $E=\mathbb Q_7(\sqrt3)$. The norm-one group consists of the $\alpha+\beta\sqrt3$ with $\alpha^2-3\beta^2=1$. In the basis $(1,\sqrt3)$ such an element acts by the matrix $\sm{\alpha}{3\beta}{\beta}{\alpha}$. Here $\bar T$ has order eight.
+\end{example}
 
 \section{The double cover and local splittings}\label{sec:cover}
-We retain the explicit Hilbert-symbol approach of the original notes to calculate the edge sign. This calculation is the arithmetic input for the geometric proof.
+This section constructs the cover and its splittings over the vertex stabilizers. It then computes the ratio of two splittings on an edge. We keep the explicit Hilbert-symbol approach of the original notes. This calculation is the arithmetic input for the geometric results.
 
-\subsection{Kubota coordinates and the two splittings}
-For $g=\left(\begin{smallmatrix}a&b\\c&d\end{smallmatrix}\right)$ put $x(g)=c$ if $c\ne0$, and $x(g)=d$ otherwise. The cover has multiplication
-\begin{equation}\label{eq:kubota}
- (g,\zeta)(h,\xi)=(gh,\zeta\xi\beta(g,h)),\qquad
- \beta(g,h)=\left(\frac{x(gh)}{x(g)},\frac{x(gh)}{x(h)}\right)_2.
-\end{equation}
-The Hilbert symbol is symmetric, bimultiplicative and trivial on pairs of units. For $a=\varpi^m u$, $b=\varpi^n v$ with units $u,v$, it is
+\subsection{The Hilbert symbol}
+The cover is built from the quadratic Hilbert symbol, so we collect its properties first.
+
+The quadratic Hilbert symbol $(a,b)_2\in\mu_2$ is defined for $a,b\in F^\times$. It equals $1$ exactly when $ax^2+by^2=1$ has a solution in $F$. We use the following standard facts \cite{Ne86}.
+\begin{enumerate}[label=(H\arabic*),leftmargin=3em]
+\item The symbol is symmetric and bimultiplicative. In particular $(a,b^2)_2=1$ and $(a,b^{-1})_2=(a,b)_2$.
+\item $(a,-a)_2=1$, and $(a,1-a)_2=1$ for $a\ne1$.
+\item Let $a=\varpi^mu$ and $b=\varpi^nv$ with units $u,v$. Since $p$ is odd,
 \begin{equation}\label{eq:hilbert}
- (a,b)_2=\ell(-1)^{mn}\ell(\bar u)^n\ell(\bar v)^m.
+ (a,b)_2=\ell(-1)^{mn}\,\ell(\bar u)^n\,\ell(\bar v)^m .
 \end{equation}
-In particular $(a,-a)_2=1$. The Kubota splitting over $K_0$, cited from the standard odd-residue-characteristic construction \cite{Ku67,Ge76}, is $s_0(k)=(k,r_0(k))$, where
+\end{enumerate}
+By \eqref{eq:hilbert} the symbol is trivial on pairs of units, and $(\varpi,u)_2=\ell(\bar u)$ for a unit $u$.
+
+\begin{example}
+Over $\mathbb Q_7$ the nonzero squares modulo $7$ are $1,2,4$. Hence $(7,8)_2=\ell(1)=1$ and $(7,3)_2=\ell(3)=-1$. Also $(7,7)_2=\ell(-1)=-1$, in agreement with $(7,-7)_2=1$ and $(7,-1)_2=-1$.
+\end{example}
+
+\subsection{Kubota coordinates and the splitting over \texorpdfstring{$K_0$}{K0}}
+We define the cover by Kubota's cocycle and recall its splitting over $K_0$.
+
+For $g=\sm abcd\in G$ put $x(g)=c$ if $c\ne0$, and $x(g)=d$ otherwise. Kubota \cite{Ku67} proved that
+\begin{equation}\label{eq:kubota}
+ \beta(g,h)=\left(\frac{x(gh)}{x(g)},\frac{x(gh)}{x(h)}\right)_2
+\end{equation}
+is a $2$-cocycle on $G$. The cover is $\Mp=G\times\mu_2$ with multiplication
+\[
+ (g,\zeta)(h,\xi)=(gh,\zeta\xi\beta(g,h)) .
+\]
+We call $\zeta$ the \emph{Kubota coordinate} of $(g,\zeta)$. Since $\beta(g,I)=\beta(I,g)=1$, the identity is $(I,1)$ and $(g,\zeta)^{-1}=(g^{-1},\zeta\beta(g,g^{-1}))$.
+
+A \emph{splitting} over a subgroup $H\subset G$ is a homomorphism $s:H\to\Mp$ with $P\circ s=\mathrm{id}$. The Kubota splitting over $K_0$ \cite{Ku67,Ge76} is $s_0(k)=(k,r_0(k))$, where for $k=\sm abcd$
 \begin{equation}\label{eq:r0}
  r_0(k)=
  \begin{cases}
- (c,d)_2 & cd\ne0,\ c\in\varpi\OO,\\
+ (c,d)_2 & \text{if } cd\ne0 \text{ and } c\in\varpi\OO,\\
  1&\text{otherwise}.
  \end{cases}
 \end{equation}
-This is a formula on $K_0$, not a homomorphic section on all of $G$.
+In the first case $d$ is a unit, so $r_0(k)=\ell(\bar d)^{\val(c)}$ by \eqref{eq:hilbert}. The formula is used only on $K_0$.
 
-For example, take $k=\left(\begin{smallmatrix}1&1\\7&8\end{smallmatrix}\right)$ over $\mathbb Q_7$. Then $r_0(k)=(7,8)_2=1$. A second example over $\mathbb Q_7$ is $k=\left(\begin{smallmatrix}5&2\\7&3\end{smallmatrix}\right)$ of determinant one, for which $r_0(k)=(7,3)_2=-1$.
+\begin{example}
+Over $\mathbb Q_7$ take $k=\sm1178$. Then $r_0(k)=(7,8)_2=1$. For $k=\sm5273$, of determinant one, $r_0(k)=(7,3)_2=-1$. For a diagonal matrix $h(u)=\diag(u,u^{-1})$ with $u$ a unit, $c=0$ and $r_0(h(u))=1$.
+\end{example}
 
-To transport the splitting, use the extension of the cocycle to $G'=\mathrm{GL}_2(F)$ in the original notes. Put $a(g)=\operatorname{diag}(1,\det(g)^{-1})$, $h^b=b^{-1}hb$, and
+\subsection{Uniqueness and equivariance}
+We show that each vertex stabilizer has exactly one splitting, and that these splittings are permuted by conjugation. The argument avoids Schur multipliers and applies also when $q=3$.
+
+The cover splits over $K_1$ as well. One way to see this uses Gelbart's extension of the cocycle to $G'=\mathrm{GL}_2(F)$ \cite{Ge76}, which was also the route of the original notes. Put $a(g)=\diag(1,\det(g)^{-1})$, $h^b=b^{-1}hb$, and
 \[
  v(u,h)=
- \begin{cases}1&h_{21}\ne0,\\(u,h_{22})_2&h_{21}=0.\end{cases}
+ \begin{cases}1&\text{if } h_{21}\ne0,\\(u,h_{22})_2&\text{if } h_{21}=0.\end{cases}
 \]
 The extended cocycle is
 \begin{equation}\label{eq:betaext}
- \beta'(g,h)=\beta((a(g)g)^{a(h)^{-1}},a(h)h)
- v(\det h,a(g)g).
+ \beta'(g,h)=\beta\bigl((a(g)g)^{a(h)^{-1}},a(h)h\bigr)\,
+ v\bigl(\det h,a(g)g\bigr).
 \end{equation}
-We use the corresponding covering group of $G'$ and the lift $\widetilde D=(D,1)$. In particular $\widetilde D$ belongs to the larger group, not to $\Mp$. Conjugation preserves $\Mp$, and
+It restricts to $\beta$ on $G$. It defines a double cover of $G'$ containing $\Mp$ as a normal subgroup. Let $\widetilde D=(D,1)$ in this larger group. Then
 \begin{equation}\label{eq:s1}
- s_1(k)=\widetilde D s_0(D^{-1}kD)\widetilde D^{-1}.
+ s_1(k)=\widetilde D\,s_0(D^{-1}kD)\,\widetilde D^{-1}\qquad(k\in K_1)
 \end{equation}
-The construction uses the standard extension in these coordinates as input. Only its diagonal specialization will be needed for the edge calculation.
-
-\subsection{Uniqueness and equivariance}
-The following elementary argument avoids exceptions in finite Schur multiplier calculations. In particular it works also for $q=3$.
+is a splitting over $K_1$.
 
 \begin{lemma}\label{lem:unique}
-The splittings over $K_0,K_1$ are unique. For every vertex $v$ there is a unique continuous homomorphic splitting $s_v$, and for $g\in G$ and any lift $\widetilde g$,
+For every vertex $v$ there is a unique splitting $s_v:K_v\to\Mp$. For $g\in G$, any lift $\widetilde g\in P^{-1}(g)$ and $k\in K_v$,
+\begin{equation}\label{eq:equiv}
+ s_{gv}(gkg^{-1})=\widetilde g\,s_v(k)\,\widetilde g^{-1}.
+\end{equation}
+\end{lemma}
+\begin{proof}
+First let $v=v_i$. Splittings exist by \eqref{eq:r0} and \eqref{eq:s1}. Two splittings differ by a homomorphism $\chi:K_i\to\mu_2$. The group $K_i$ is generated by its upper and lower unipotent elements. For $K_0$ this follows from the factorizations \eqref{eq:word} below, in which $h(a)=w(a)w(1)^{-1}$ is a product of unipotent elements of $K_0$. The group $K_1$ is conjugate to $K_0$ by $D$, and conjugation by $D$ preserves the upper and the lower unipotent subgroups. Every unipotent element of $K_i$ is the square of a unipotent element of $K_i$, because $2$ is a unit. So $\chi$ is trivial on the generators, and the splitting is unique.
+
+For a general vertex $gv_i$, the right side of \eqref{eq:equiv} with $v=v_i$ defines a splitting over $K_{gv_i}$. It does not depend on the lift, since the two lifts differ by a central element. Uniqueness over $K_{gv_i}$ follows from uniqueness over $K_i$ by conjugating back. Finally both sides of \eqref{eq:equiv} are splittings over $K_{gv}$, so they agree.
+\end{proof}
+
+We shall use one more elementary fact several times. For odd $p$, squaring is a bijection of every finite $p$-group, and so of every pro-$p$ group. Hence a homomorphism from a pro-$p$ group to $\mu_2$ is trivial, with no continuity assumption. In particular the ratio of two splittings $s_v,s_{v'}$ is trivial on the open pro-$p$ subgroup $K_v^+\cap K_{v'}$ of $K_v\cap K_{v'}$. The topology of $\Mp$ is the one for which $s_0$ is a homeomorphism of $K_0$ onto an open subgroup. Each $s_v$ agrees with $s_0$ on an open subgroup of $K_v\cap K_0$, so each $s_v$ is continuous.
+
+\begin{example}
+Over $\mathbb F_3$ the group $\mathrm{SL}_2(\mathbb F_3)$ is not perfect. It has a quotient of order three. The argument above still applies, since a homomorphism to $\mu_2$ kills all elements of order three.
+\end{example}
+
+\subsection{Unipotent elements and the lifted torus}
+The splittings are easy to describe on unipotent elements. Since these generate each $K_v$, this determines every $s_v$ and leads to the edge formula.
+
+Write $\np(x)=\sm1x01$ and $\nm(x)=\sm10x1$ for $x\in F$. For $t\in F^\times$ put
 \[
- s_{gv}(gkg^{-1})=\widetilde g s_v(k)\widetilde g^{-1}
- \quad(k\in K_v).
+ w(t)=\np(t)\,\nm(-t^{-1})\,\np(t)=\sm{0}{t}{-t^{-1}}{0},
+ \qquad h(t)=\diag(t,t^{-1})=w(t)w(1)^{-1}.
+\]
+For $k=\sm abcd\in K_0$ one has the factorizations
+\begin{equation}\label{eq:word}
+ k=\np\!\Bigl(\frac{a-1}{c}\Bigr)\nm(c)\,\np\!\Bigl(\frac{d-1}{c}\Bigr)\ \ (c\in\OO^\times),
+ \qquad
+ k=\nm\!\Bigl(\frac ca\Bigr)h(a)\,\np\!\Bigl(\frac ba\Bigr)\ \ (c\in\varpi\OO),
+\end{equation}
+with all arguments in $\OO$ and $a\in\OO^\times$ in the second case.
+
+\begin{lemma}[Unipotent lifts]\label{lem:unip}
+For all $x,y\in F$ we have $\beta(\np(x),\np(y))=1$ and $\beta(\nm(x),\nm(y))=1$. Consequently, for every vertex $v$ and every upper or lower unipotent $n\in K_v$,
+\[
+ s_v(n)=(n,1).
 \]
 \end{lemma}
 \begin{proof}
-Two splittings differ by a continuous homomorphism $K_i\to\mu_2$. Its restriction to the pro-$p$ first congruence subgroup is trivial, because every continuous finite quotient of a pro-$p$ group is a $p$-group. It therefore factors through $\mathrm{SL}_2(\kk)$. That group is generated by the upper and lower elementary unipotent matrices, each of order $p$ or one. Their images in $\mu_2$ are trivial. Existence over the two base vertices follows from \eqref{eq:r0} and \eqref{eq:s1}. Transport by a lift of $g$ supplies existence elsewhere, and uniqueness proves independence of all choices and the asserted equivariance.
+For upper unipotents $x(\cdot)=1$ on both factors and on the product, so $\beta=(1,1)_2=1$. For lower unipotents, if $x=0$ or $y=0$ then one factor is $I$ and $\beta=1$. If $x+y=0$ the product is $I$ and $\beta=(x^{-1},-x^{-1})_2=1$ by (H2). Otherwise put $a=x/(x+y)$ and $b=y/(x+y)$, so that $a+b=1$. Then
+\[
+ \beta(\nm(x),\nm(y))=\Bigl(\frac{x+y}{x},\frac{x+y}{y}\Bigr)_2=(a^{-1},b^{-1})_2=(a,1-a)_2=1
+\]
+by (H1) and (H2). Thus $n\mapsto(n,1)$ is a homomorphism on the group $N$ of upper unipotents and on the group $N^-$ of lower unipotents. Let $U$ be one of these groups. Then $U\cap K_v$ is a compact subgroup of $U\cong F$. The maps $s_v$ and $n\mapsto(n,1)$ are two splittings over it. They differ by a homomorphism to $\mu_2$. Every element of $U\cap K_v$ is a square in $U\cap K_v$, so this homomorphism is trivial.
 \end{proof}
-For instance, over $\mathbb F_3$ the elementary unipotents have order three, so no quadratic ambiguity in the splitting arises even though this finite group is not perfect.
+
+\begin{lemma}[Weyl and torus lifts]\label{lem:weyl}
+Put $\widetilde w(t)=(\np(t),1)(\nm(-t^{-1}),1)(\np(t),1)$ for $t\in F^\times$. Then $\widetilde w(t)=(w(t),1)$, and for $t,t'\in F^\times$
+\begin{equation}\label{eq:torus}
+ \widetilde w(t)\,\widetilde w(t')^{-1}=\bigl(h(t/t'),\,(-t',t)_2\bigr).
+\end{equation}
+\end{lemma}
+\begin{proof}
+Let $c=-t^{-1}$. The product $\np(t)\nm(c)=\sm{0}{t}{c}{1}$ has $x=c$, and $x(\np(t))=1$, $x(\nm(c))=c$. So $\beta(\np(t),\nm(c))=(c,1)_2=1$. Next $\sm0tc1\np(t)=w(t)$ has $x=c$, so $\beta=(1,c)_2=1$. This proves $\widetilde w(t)=(w(t),1)$.
+
+The inverse of $w(t')$ is $w(-t')$. We have $x(w(t'))=-1/t'$, $x(w(-t'))=1/t'$ and $x(I)=1$. So $\beta(w(t'),w(-t'))=(-t',t')_2=1$ and $\widetilde w(t')^{-1}=(w(-t'),1)$. Finally $w(t)w(-t')=h(t/t')$ has $x=t'/t$, and
+\[
+ \beta(w(t),w(-t'))=\Bigl(\frac{t'/t}{-1/t},\frac{t'/t}{1/t'}\Bigr)_2=(-t',t'^2/t)_2=(-t',t)_2 .
+\]
+\end{proof}
+
+\begin{example}
+Take $t=u$ a unit and $t'=1$. All three unipotent factors of $w(u)$ and of $w(1)$ lie in $K_0$. By Lemma~\ref{lem:unip}, $s_0(h(u))=\widetilde w(u)\widetilde w(1)^{-1}=(h(u),(-1,u)_2)=(h(u),1)$. This agrees with \eqref{eq:r0}.
+\end{example}
 
 \subsection{The obstruction on an edge}
-For the base edge let $I=K_0\cap K_1$. In the coordinates of $v_0$ it consists of integral determinant-one matrices with upper right entry in $\varpi\OO$. Its pro-$p$ radical $I^+$ is the inverse image of the lower unipotent subgroup under reduction. Thus $I/I^+\simeq\kk^\times$ via the upper left entry. This orientation is determined by our choice of $D$.
+We now compare the splittings at two adjacent vertices on the stabilizer of the edge. The result is the main arithmetic statement of the paper.
 
 \begin{proposition}[Edge discrepancy]\label{prop:edge}
-If $k=\left(\begin{smallmatrix}a&b\\c&d\end{smallmatrix}\right)\in I$, then
+Let $k=\sm abcd\in I=K_0\cap K_1$. Then
 \begin{equation}\label{eq:edge}
- s_1(k)s_0(k)^{-1}=\ell(\bar a)\in\mu_2.
+ s_1(k)=\ell(\bar a)\,s_0(k).
 \end{equation}
-For an arbitrary edge the same formula holds in transported coordinates. Reversing the orientation replaces the diagonal entry by its inverse and leaves the quadratic sign unchanged.
+More generally, let $e=\{v,v'\}$ be any edge and let $k\in K_v\cap K_{v'}$. Then
+\begin{equation}\label{eq:edgegen}
+ s_{v'}(k)=\ell\bigl(\lambda_e(k)\bigr)\,s_v(k),
+\end{equation}
+where $\lambda_e(k)$ is the residue eigenvalue of Lemma~\ref{lem:edgered}.
 \end{proposition}
 \begin{proof}
-The ratio of two splittings is a homomorphism into the central kernel. It is trivial on $I^+$, which is pro-$p$, and is determined by its values on $h(u)=\operatorname{diag}(u,u^{-1})$ for $u\in\OO^\times$. Formula \eqref{eq:r0} gives $s_0(h(u))=(h(u),1)$. Since $D$ commutes with $h(u)$ downstairs, the ratio in \eqref{eq:s1} is the commutator of their lifts. From \eqref{eq:betaext}, using $a(D)D=h(\varpi)$, one gets
+The map $\chi(k)=s_1(k)s_0(k)^{-1}$ takes values in the central subgroup $\mu_2$, so it is a homomorphism $I\to\mu_2$. Its restriction to the pro-$p$ group $I^+$ is trivial, by the remark following Lemma~\ref{lem:unique}. Each $k\in I$ lies in $h(a)I^+$ (Example~\ref{ex:baseedge}). So it suffices to prove $\chi(h(u))=\ell(\bar u)$ for $u\in\OO^\times$.
+
+We know $s_0(h(u))=(h(u),1)$. For $s_1$, note that $\np(\varpi u)$, $\nm(-(\varpi u)^{-1})$, $\np(\varpi)$ and $\nm(-\varpi^{-1})$ lie in $K_1$ by \eqref{eq:ki}. Hence $w(\varpi u)$ and $w(\varpi)$ lie in $K_1$, and $h(u)=w(\varpi u)w(\varpi)^{-1}$. By Lemma~\ref{lem:unip} the splitting $s_1$ sends each unipotent factor $n$ to $(n,1)$. By Lemma~\ref{lem:weyl} with $t=\varpi u$ and $t'=\varpi$,
+\[
+ s_1(h(u))=\widetilde w(\varpi u)\widetilde w(\varpi)^{-1}
+ =\bigl(h(u),(-\varpi,\varpi u)_2\bigr).
+\]
+By (H1) and (H2), $(-\varpi,\varpi u)_2=(-\varpi,\varpi)_2(-\varpi,u)_2=(-1,u)_2(\varpi,u)_2=\ell(\bar u)$. This proves \eqref{eq:edge}.
+
+For the general statement, the two vertices of $e$ have different types. Name them so that $v$ has type $0$. The group $G$ is transitive on vertices of type $0$, and $K_0$ is transitive on the neighbors of $v_0$, since $\mathrm{SL}_2(\kk)$ is transitive on the lines of $\kk^2$. So there is $g\in G$ with $v=gv_0$ and $v'=gv_1$. Put $k_0=g^{-1}kg\in I$. By \eqref{eq:equiv} and the centrality of $\mu_2$,
+\[
+ s_{v'}(k)s_v(k)^{-1}=\widetilde g\,s_1(k_0)s_0(k_0)^{-1}\,\widetilde g^{-1}=\ell(\bar a_0),
+\]
+where $a_0$ is the upper left entry of $k_0$. The element $g$ carries the lattices of $v_0,v_1$ to those of $v,v'$ up to a common scalar, so $\lambda_e(k)=\bar a_0^{\pm1}$ by Example~\ref{ex:baseedge}. The formula is symmetric in $v$ and $v'$ because the ratio is a sign.
+\end{proof}
+
+\begin{remark}[The extended cocycle]\label{rem:ext}
+The original notes computed the same sign from \eqref{eq:betaext}. Since $a(D)D=h(\varpi)$,
 \[
  \beta'(D,h(u))=\beta(h(\varpi),h(u))=(u^{-1},\varpi^{-1})_2,
+ \qquad
+ \beta'(h(u),D)=\beta(h(u),h(\varpi))\,(\varpi,u^{-1})_2=1 .
 \]
-whereas
-\[
- \beta'(h(u),D)=\beta(h(u),h(\varpi))(\varpi,u^{-1})_2=1.
-\]
-The ratio is $(u,\varpi)_2=\ell(\bar u)$ by \eqref{eq:hilbert}. The entire edge set is one $G$-orbit: $K_0$ acts transitively on the lines of $\kk^2$. Equivariance in Lemma~\ref{lem:unique} proves the transported formula.
-\end{proof}
-In particular $s_1(-I)=\ell(-1)s_0(-I)$. Over $\mathbb Q_7$ the two lifts differ by minus one, but over $\mathbb Q_5$ they coincide at $-I$. Even over $\mathbb Q_5$ the splittings differ on diagonal units with nonsquare reduction. Thus uniqueness on vertices must not be confused with compatibility on all intersections.
+So $\widetilde D(h(u),1)\widetilde D^{-1}=(h(u),(u,\varpi)_2)$, which is \eqref{eq:edge} by \eqref{eq:s1}. The proof above does not use $\beta'$. The script \texttt{twofold\_cover\_check.py} in the repository compares the two computations of $s_1$ on random elements of $I$ over $\mathbb Q_p$ for $p=3,5,7,11$.
+\end{remark}
+
+\begin{example}\label{ex:minusI}
+Taking $k=-I$ gives $s_1(-I)=\ell(-1)s_0(-I)$. Over $\mathbb Q_7$ the two lifts of $-I$ differ. Over $\mathbb Q_5$ they coincide. Even over $\mathbb Q_5$ the splittings differ at $h(2)$, since $2$ is not a square modulo $5$. Uniqueness of the splitting at each vertex does not imply agreement on intersections.
+\end{example}
 
 \section{Geometric Frobenius character formulas}\label{sec:frob}
-We replace the double-coset calculation by a sum over fixed vertices, retaining the local signs that arise in the cover.
+This section expresses the ordinary and genuine characters at a regular elliptic element as sums over fixed vertices. The genuine sum carries the signs of Section~\ref{sec:cover}. We then show that these signs are constant along the sum.
 
 \subsection{The weighted trace sum}
-For $j=0,1$ let $\sigma_j$ be a finite-dimensional smooth representation of $K_j$. Define the genuine type by
+We define the two inductions being compared and prove the fixed-vertex formula.
+
+For $j=0,1$ let $\sigma_j$ be a finite-dimensional smooth representation of $K_j$. The group $P^{-1}(K_j)$ is the direct product $\mu_2\times s_j(K_j)$. Define the genuine type and the two inductions by
 \[
  \widetilde\sigma_j(\zeta s_j(k))=\zeta\sigma_j(k),\qquad
- \pi_j=\cInd_{K_j}^G\sigma_j,\quad
+ \pi_j=\cInd_{K_j}^G\sigma_j,\qquad
  \widetilde\pi_j=\cInd_{P^{-1}(K_j)}^{\Mp}\widetilde\sigma_j .
 \]
-Assume both inductions are admissible, and use their regular semisimple Harish-Chandra character functions. The existence and regularity of covering-group characters are standard harmonic-analysis input \cite{Li12}. For $v=g v_j$, define $\sigma_v(k)=\sigma_j(g^{-1}kg)$ on $K_v$, up to isomorphism. Its trace is independent of the choice of $g$.
+For vertices $w,v$ and $t\in K_w\cap K_v$ put
+\begin{equation}\label{eq:cwv}
+ c_{w,v}(t)=s_w(t)s_v(t)^{-1}\in\mu_2 .
+\end{equation}
+
+\begin{example}
+Let $\sigma_0$ be the trivial representation of $K_0$. Then $\pi_0$ is the space of finitely supported functions on the vertices of type $0$, and $\tr\sigma_v(t)=1$ for every fixed vertex. This $\pi_0$ is not admissible. The indicator functions of the orbits of $K_0$ on these vertices are infinitely many linearly independent $K_0$-invariant vectors. The hypothesis of admissibility in the next theorem is a real restriction on $\sigma_j$.
+\end{example}
 
 \begin{theorem}[Weighted fixed-vertex comparison]\label{thm:weighted}
-Let $t\in G$ be regular elliptic, and let $w$ be a vertex fixed by $t$. Then
+Assume that $\pi_j$ and $\widetilde\pi_j$ are admissible. Let $t\in G$ be regular elliptic and let $w$ be a vertex fixed by $t$. Then $\pi_j$ has a character function near $t$, $\widetilde\pi_j$ has a character function near $s_w(t)$, and
 \begin{align}
- \Theta_{\pi_j}(t)&=\sum_{\substack{v\in Gv_j\\tv=v}}\tr\sigma_v(t),\label{eq:ordinary}\\
+ \Theta_{\pi_j}(t)&=\sum_{v\in B^t\cap Gv_j}\tr\sigma_v(t),\label{eq:ordinary}\\
  \Theta_{\widetilde\pi_j}(s_w(t))
- &=\sum_{\substack{v\in Gv_j\\tv=v}}
- c_{w,v}(t)\tr\sigma_v(t),\label{eq:weighted}
+ &=\sum_{v\in B^t\cap Gv_j}
+ c_{w,v}(t)\,\tr\sigma_v(t).\label{eq:weighted}
 \end{align}
-where $c_{w,v}(t)=s_w(t)s_v(t)^{-1}\in\mu_2$. If $w=w_0,w_1,\ldots,w_d=v$ is the unique geodesic, then
+Both sums are finite. If $w=w_0,w_1,\ldots,w_d=v$ is the geodesic from $w$ to $v\in B^t$, then
 \begin{equation}\label{eq:path}
- c_{w,v}(t)=\prod_{a=1}^{d}c_{w_{a-1},w_a}(t).
+ c_{w,v}(t)=\prod_{a=1}^{d}c_{w_{a-1},w_a}(t)
+ =\prod_{a=1}^{d}\ell\bigl(\lambda_{\{w_{a-1},w_a\}}(t)\bigr).
 \end{equation}
 \end{theorem}
 \begin{proof}
-The regular elliptic fixed set is nonempty and finite. To see nonemptiness, identify the two-dimensional space with the quadratic field $F[t]$. The eigenvalue of $t$ is a norm-one unit, so its multiplication preserves the ring of integers of this field. The fixed subtree is connected because the unique path between fixed vertices is fixed pointwise. If it were infinite, local finiteness would produce an infinite ray (choose at every step a branch containing infinitely many fixed vertices). Such a ray determines an end of the tree, hence an $F$-line in $F^2$. For completeness, after choosing a basis at the initial vertex, the successive vertices along a ray correspond to compatible rank-one directions modulo $\varpi^m$; completeness gives a line in the inverse limit. A fixed end would give an invariant $F$-line for $t$, contrary to its irreducible characteristic polynomial.
+By Lemma~\ref{lem:fixedset}, $B^t$ is finite. Choose $R$ with $B^t\subset B(w,R-1)$. Let $U$ be the set of $x\in K_w$ that fix every vertex of $B^t$ and move every other vertex of the finite ball $B(w,R)$. Each condition is open and closed in $K_w$, so $U$ is a compact open neighborhood of $t$. We claim $B^x=B^t$ for all $x\in U$. Inside $B(w,R)$ this holds by construction. Suppose $x$ fixes a vertex outside $B(w,R)$. By Lemma~\ref{lem:fixedset} it fixes the geodesic from $w$ to that vertex. This geodesic contains a vertex at distance exactly $R$ from $w$, which is moved by $x$. This is a contradiction.
 
-Choose $R$ so that the fixed set lies strictly inside $B(w,R)$. There is an open neighborhood of $t$ in $K_w$ on which no vertex of the finite sphere of radius $R$ is fixed. Shrink it to make all fixed-vertex conditions inside this ball constant. By connectedness, no vertex outside the ball is fixed anywhere in this neighborhood. The same holds on its lift near $s_w(t)$.
+Let $f$ be supported in $U$. In \eqref{eq:blocks} the term for $v$ is an integral over $U\cap K_v$. This set is $U$ if $v\in B^t$ and is empty otherwise. Hence
+\[
+ \tr\pi_j(f)=\int_Uf(x)\sum_{v\in B^t\cap Gv_j}\tr\sigma_v(x)\,dx .
+\]
+The integrand is locally constant, so it is the character function on $U$. Its value at $t$ is \eqref{eq:ordinary}.
 
-In the compact-induction function model, an operator associated with a locally constant compactly supported test function on this neighborhood is finite rank by admissibility. Its diagonal blocks are the integrals of the local type operators over those group elements fixing the corresponding coset. Only the finitely many indicated cosets can have nonzero diagonal blocks. The trace of a finite-rank operator on an algebraic direct sum equals the sum of its diagonal block traces. Equivariance of the splittings identifies the genuine local trace with $c_{w,v}(t)\tr\sigma_v(t)$; the factor is locally constant and is obtained by writing $s_w(t)=c_{w,v}(t)s_v(t)$. Integrating proves the two distribution identities on this neighborhood. Local constancy of the regular character functions then gives the pointwise formulas. Finally the path lies in the fixed subtree, so every splitting in \eqref{eq:path} is defined at $t$. Multiplication telescopes the ratios.
+For the cover, the vertex model of Lemma~\ref{lem:model} holds with $G$ replaced by $\Mp$ and $K_j$ by $P^{-1}(K_j)$, because $\Mp/P^{-1}(K_j)=G/K_j$. Let $v=gv_j$, let $\widetilde g$ be a lift of $g$, and let $k=gk'g^{-1}\in K_v$. By \eqref{eq:equiv}, $s_v(k)=\widetilde g\,s_j(k')\,\widetilde g^{-1}$. For $\varphi$ in the block $\widetilde V_v$ of functions supported on $P^{-1}(K_j)\widetilde g^{-1}$,
+\[
+ (\widetilde\pi_j(s_v(k))\varphi)(\widetilde g^{-1})=\varphi(s_j(k')\widetilde g^{-1})=\sigma_j(k')\varphi(\widetilde g^{-1}).
+\]
+So $\zeta s_v(k)$ acts on $\widetilde V_v$ with trace $\zeta\tr\sigma_v(k)$. The proof of Lemma~\ref{lem:blocks} applies without change. Let $\widetilde f$ be supported in $P^{-1}(U)$ and write its argument as $\zeta s_w(x)$ with $x\in U$. For $v\in B^t$ we have $s_w(x)=c_{w,v}(x)s_v(x)$. Therefore
+\[
+ \tr\widetilde\pi_j(\widetilde f)=\int_{P^{-1}(U)}\widetilde f(\widetilde x)\;\zeta\!\!\sum_{v\in B^t\cap Gv_j}c_{w,v}(x)\tr\sigma_v(x)\;d\widetilde x,
+ \qquad \widetilde x=\zeta s_w(x) .
+\]
+The function $c_{w,v}$ is a homomorphism $K_w\cap K_v\to\mu_2$ that is trivial on an open subgroup, so the sum is a locally constant function of $\widetilde x$. Evaluating at $\zeta=1$ and $x=t$ gives \eqref{eq:weighted}.
+
+Finally, each vertex $w_a$ of the geodesic is fixed by $t$ by Lemma~\ref{lem:fixedset}. So every $s_{w_a}(t)$ is defined, and the product of the ratios $s_{w_{a-1}}(t)s_{w_a}(t)^{-1}$ telescopes to $c_{w,v}(t)$. The second equality in \eqref{eq:path} is Proposition~\ref{prop:edge}.
 \end{proof}
 
-For example, if $t$ fixes only $v_0$, the character of a representation induced from the other vertex type vanishes, and no edge discrepancy enters the formula.
+\begin{example}
+If $t$ fixes only the vertex $v_0$, then \eqref{eq:ordinary} and \eqref{eq:weighted} both reduce to $\tr\sigma_0(t)$ for $j=0$ and to zero for $j=1$. No edge sign enters.
+\end{example}
 
 \subsection{The constant parity factor}
-The characteristic polynomial of $t$ has the same reduction at every fixed vertex, because trace and determinant are independent of the lattice basis. If it fixes an edge, that reduction has roots in $\kk$, since the edge reduction is triangular.
+We show that all the edge signs along the fixed set of a regular elliptic element are equal. The weight in \eqref{eq:weighted} then depends only on the two vertex types.
 
 \begin{lemma}\label{lem:repeated}
-If a regular elliptic element $t$ fixes an edge, its reduced characteristic polynomial is $(X-z)^2$ for $z=\pm1$.
+Let $t$ be regular elliptic and suppose that $t$ fixes an edge $e$. Then $\lambda_e(t)=z$ with $z=\pm1$, and the same $z$ occurs for every edge fixed by $t$. The reduction of $t$ at every fixed vertex has characteristic polynomial $(X-z)^2$.
 \end{lemma}
 \begin{proof}
-Distinct roots in $\kk$ would lift by Hensel's lemma to roots in $F$, contradicting ellipticity. Thus the roots coincide, and determinant one gives $z^2=1$.
+Let $v=[L]$ be a fixed vertex. The characteristic polynomial of $t$ on $L$ is that of $t$ on $F^2$. It has coefficients in $\OO$, and its reduction $\bar\chi$ is the characteristic polynomial of the reduction of $t$ at $v$. So $\bar\chi$ is the same at all fixed vertices. By Lemma~\ref{lem:edgered} its roots are $\lambda_e(t)^{\pm1}\in\kk^\times$. If these were distinct, Hensel's lemma would lift them to roots in $F$, contradicting ellipticity. So $\lambda_e(t)=\lambda_e(t)^{-1}$, which gives $\lambda_e(t)=\pm1$, and $\bar\chi=(X-z)^2$.
 \end{proof}
 
-\begin{corollary}[Corrected direct comparison]\label{cor:compare}
-Under the hypotheses of Theorem~\ref{thm:weighted}, suppose $w$ has type $i$. If the fixed set contains an edge, let $z$ be as in Lemma~\ref{lem:repeated}. Then
+If $B^t$ is a single vertex we leave $z$ undefined and read $\ell(z)^0$ as $1$.
+
+\begin{corollary}[Direct comparison]\label{cor:compare}
+Under the hypotheses of Theorem~\ref{thm:weighted}, suppose $w$ has type $i$.
+\begin{enumerate}[label=(\alph*),leftmargin=2.2em]
+\item If $B^t$ contains an edge and $z$ is as in Lemma~\ref{lem:repeated}, then
 \begin{equation}\label{eq:parity}
  \Theta_{\widetilde\pi_j}(s_w(t))
- =\ell(z)^{j-i}\Theta_{\pi_j}(t).
+ =\ell(z)^{j-i}\,\Theta_{\pi_j}(t).
 \end{equation}
-If the fixed set is a single vertex, the ordinary and genuine characters agree at its canonical lift for both inducing types. In particular the equality holds without a sign for any regular elliptic $t\in K_j$ at $s_j(t)$.
+The sign is $-1$ exactly when $j\ne i$, $z=-1$ and $q\equiv3\pmod4$.
+\item If $B^t=\{w\}$, then $\Theta_{\widetilde\pi_j}(s_w(t))=\Theta_{\pi_j}(t)$ for both $j$, and both sides vanish for $j\ne i$.
+\item In particular $\Theta_{\widetilde\pi_j}(s_j(t))=\Theta_{\pi_j}(t)$ for every regular elliptic $t\in K_j$.
+\end{enumerate}
 \end{corollary}
 \begin{proof}
-Each edge of the fixed subtree has triangular reduction with diagonal entries $z,z$. Proposition~\ref{prop:edge} gives the same sign $\ell(z)$ on every edge. Since $d(w,v)\equiv j-i\pmod2$, the weight in \eqref{eq:weighted} is independent of the summation vertex. The single-vertex case follows directly from the empty sum or the weight one. Taking $w=v_j$ proves the last claim.
+For (a), every edge of the geodesic from $w$ to a fixed vertex $v$ of type $j$ contributes $\ell(z)$ in \eqref{eq:path}. The length $d(w,v)$ is congruent to $j-i$ modulo two, because adjacent vertices have different types. So $c_{w,v}(t)=\ell(z)^{j-i}$ for all $v$ in the sum, and \eqref{eq:weighted} becomes \eqref{eq:parity}. Since $\ell(1)=1$ and $\ell(-1)=(-1)^{(q-1)/2}$, the sign is as stated. For (b) the sums have the single term $v=w$ with weight one if $j=i$, and are empty otherwise. Part (c) is the case $w=v_j$.
 \end{proof}
-For instance, this yields an elliptic comparison for any strongly cuspidal positive-depth type of the original notes for which both compact inductions are admissible. No formula for the individual finite type traces is needed. The conclusion does not assert a classification of all positive-depth representations.
+
+\begin{remark}[Lifts attached to a type]\label{rem:lifts}
+Let $t$ be regular elliptic. If $w,w'\in B^t$ have the same type, then $s_w(t)=s_{w'}(t)$, since $c_{w,w'}(t)=\ell(z)^{d(w,w')}$ and the distance is even. So $t$ has a well-defined lift $s^{(i)}(t)$ for each type $i$ occurring in $B^t$, and $s^{(1)}(t)=\ell(z)s^{(0)}(t)$ when both occur. In these terms Corollary~\ref{cor:compare} says that
+\[
+ \Theta_{\widetilde\pi_j}\bigl(s^{(j)}(t)\bigr)=\Theta_{\pi_j}(t)
+\]
+whenever $t$ fixes a vertex of type $j$, and that both characters vanish at $t$ and its lifts otherwise. The sign in \eqref{eq:parity} is the discrepancy between the two lifts of $t$.
+\end{remark}
+
+\begin{example}
+The comparison applies to any type $\sigma_j$ for which both inductions are admissible. This includes the strongly cuspidal types of positive level in the original notes, when they induce to admissible representations. No formula for the individual traces $\tr\sigma_v(t)$ is needed. The corollary does not classify the positive-depth representations.
+\end{example}
 
 \section{Explicit unramified depth-zero formulas}\label{sec:depthzero}
-We now compute the ordinary and genuine characters using the finite cuspidal character table and the geometry of the fixed ball. This gives the twofold counterpart of the odd-degree companion \cite{Jo26}.
+This section evaluates the fixed-vertex sums for the generic depth-zero types on the unramified elliptic tori. The inputs are the shape of the fixed set and the character table of $\mathrm{SL}_2(\kk)$. The result is the twofold counterpart of the formulas of \cite{Jo26}.
 
 \subsection{Fixed balls}
-At $v_i$, write the regular element of $T_i$ in the multiplication model for $E^1$. If its reduction is $z=\pm1$, put $r=\val_E(t-z)\ge1$. If its reduction is noncentral, put $r=0$.
+We show that the fixed set of an element of $T_i$ is a ball and find the reduction at each of its vertices.
 
-\begin{proposition}\label{prop:ball}
-The fixed vertices of $t\in T_i\setminus\{\pm I\}$ form $B(v_i,r)$. At interior vertices for $r\ge1$ the reduction is $zI$; at boundary vertices it is $z$ times a nonidentity unipotent.
+Let $t\in T_i\setminus\{\pm I\}$ correspond to $\tau\in E^1$. If the reduction of $\tau$ is $z=\pm1$, put $r=\val_E(\tau-z)\ge1$. Otherwise put $r=0$. We call $r$ the \emph{congruence depth} of $t$.
+
+\begin{proposition}[Fixed balls]\label{prop:ball}
+The fixed set of $t\in T_i\setminus\{\pm I\}$ is the ball $B(v_i,r)$. If $r\ge1$, the reduction of $t$ at a vertex at distance less than $r$ from $v_i$ is the scalar $z$. At a vertex at distance exactly $r$ it is $z$ times a nonidentity unipotent element.
 \end{proposition}
 \begin{proof}
-Transport to $i=0$. Choose an integral basis $(1,\alpha)$ of $\mathcal O_E$ with $\alpha$ having trace zero and nonsquare unit square. Write $t=a+b\alpha$. For noncentral reduction $b$ is a unit. For central reduction $a\equiv z$ and $b\equiv0$ modulo $\varpi$. Since $a^2-b^2\alpha^2=1$, $(a-z)(a+z)=b^2\alpha^2$, and $a+z$ is a unit. Hence $\val(b)=\val_E(t-z)=r$. In either case the order $\OO[t]$ is $\OO+\varpi^r\mathcal O_E$.
+Conjugation by $D$ carries $T_0$, $v_0$ and the statement for $i=0$ to those for $i=1$. So let $i=0$ and identify $F^2$ with $E$ as in Lemma~\ref{lem:fixedset}, with $v_0=[\OEr]$. Choose $\alpha\in\OEr$ with trace zero such that $\alpha^2$ is a nonsquare unit of $\OO$. Then $\OEr=\OO+\OO\alpha$. Write $\tau=a+b\alpha$ with $a,b\in\OO$. If the reduction of $\tau$ is not in $\kk$, then $b$ is a unit and $r=0$. If it is $z=\pm1$, then $a\equiv z$ and $b\equiv0$ modulo $\varpi$. From $a^2-b^2\alpha^2=1$ we get $(a-z)(a+z)=b^2\alpha^2$ with $a+z$ a unit, so $\val(a-z)=2\val(b)$ and $\val(b)=\val_E(\tau-z)=r$. In both cases
+\[
+ \OO[\tau]=\OO+\OO b\alpha=\OO+\varpi^r\OEr .
+\]
 
-Scale a lattice $L$ by a power of $\varpi$ so that $\mathcal O_E L=\mathcal O_E$. Then $L\subset\mathcal O_E$ contains a unit. Stability under $t$ is equivalent to stability under $\OO[t]$ (the inverse of $t$ is its trace minus $t$). Multiplication of a unit of $L$ by $\varpi^r\mathcal O_E$ shows that stability implies $\varpi^r\mathcal O_E\subset L$. Conversely the latter inclusion implies stability under the order. By elementary divisors and the normalization, this is exactly distance at most $r$.
+Let $L$ be a lattice. Scale it by a power of $\varpi$ so that $\OEr L=\OEr$. This is possible because $E/F$ is unramified. Then $L\subset\OEr$ and $L$ contains a unit $y$ of $\OEr$. As in Lemma~\ref{lem:fixedset}, $t$ fixes $[L]$ if and only if $\OO[\tau]L\subset L$. If this holds, then $\varpi^r\OEr=\varpi^r\OEr y\subset L$. Conversely, if $\varpi^r\OEr\subset L$, then $(\OO+\varpi^r\OEr)L\subset L+\varpi^r\OEr=L$. Choose a basis $e_1,e_2$ of $\OEr$ with $L=\OO e_1+\OO\varpi^de_2$, where $d=d(v_0,[L])$. Then $\varpi^r\OEr\subset L$ if and only if $d\le r$. This proves the first statement.
 
-If $d(v_0,[L])<r$, the inclusion $\varpi^r\mathcal O_E\subset\varpi L$ gives $(t-z)L\subset\varpi L$. At a boundary vertex the reduction cannot be scalar: if it were scalar, $t$ would fix all neighboring vertices, including one outside the fixed ball. Its characteristic polynomial modulo $\varpi$ is $(X-z)^2$, so it is a scalar times nonidentity unipotent.
+Let $r\ge1$. If $d<r$ then $\varpi^r\OEr\subset\varpi L$, and $(\tau-z)L\subset\varpi^r\OEr\subset\varpi L$. So the reduction at $[L]$ is the scalar $z$. Let $d=r$. By Lemma~\ref{lem:repeated} the reduction has characteristic polynomial $(X-z)^2$. If it were the scalar $z$, it would preserve every line of $L/\varpi L$, and $t$ would fix every neighbor of $[L]$. One of these neighbors lies at distance $r+1$ from $v_0$, which is impossible. So the reduction is $z$ times a nonidentity unipotent.
 \end{proof}
-For $F=\mathbb Q_7$ and $t=(1+7^r\sqrt3)/(1-7^r\sqrt3)$ the radius is $r$. Its trace reduction is $2$ for every $r\ge1$.
+
+\begin{example}\label{ex:tr}
+Let $F=\mathbb Q_7$, $E=\mathbb Q_7(\sqrt3)$ and
+\[
+ \tau_r=\frac{1+7^r\sqrt3}{1-7^r\sqrt3}\qquad(r\ge1).
+\]
+This has norm one, and $\tau_r-1=2\cdot7^r\sqrt3/(1-7^r\sqrt3)$ has valuation $r$. So the corresponding $t_r\in T_0$ fixes exactly the ball $B(v_0,r)$, which has $1+8+56+\cdots+8\cdot7^{r-1}$ vertices. The script \texttt{twofold\_cover\_check.py} confirms this by listing lattices for $r\le3$.
+\end{example}
 
 \subsection{Finite cuspidal data and counting}
-Let $\theta:\bar T\to\mathbb C^\times$ be regular, meaning $\theta^2\ne1$. The finite Deligne--Lusztig cuspidal representation $\sigma_\theta$ of $\mathrm{SL}_2(\kk)$ has dimension $q-1$. We use the standard generic finite character values \cite{DL76,Bo11}:
-\[
- \chi_\theta(zI)=(q-1)\theta(z),\quad
- \chi_\theta(zu)=-\theta(z),\quad
- \chi_\theta(\bar\tau)=-\theta(\bar\tau)-\theta(\bar\tau^{-1}),
-\]
-where $u$ is nonidentity unipotent and $\bar\tau$ is regular elliptic. Inflate $\sigma_\theta$ to each $K_j$ by reduction in its own coordinates, and use the ordinary and genuine inductions of Section~\ref{sec:frob}, denoted $\pi_{j,\theta}$ and $\widetilde\pi_{j,\theta}$. Their admissibility and depth-zero supercuspidality are inputs from the linear and covering depth-zero constructions \cite{MP94,HW09}.
+We recall the finite characters that give the local traces, and count the vertices of each sphere.
 
-There are $N_0=1$ vertices at distance zero and $N_d=(q+1)q^{d-1}$ at distance $d\ge1$. Indeed, after the first step every vertex has $q$ outgoing edges farther from the center. A vertex at distance $d$ from a type-$i$ center has type $i+d$ modulo two.
+A character $\theta:\bar T\to\mathbb C^\times$ is \emph{regular} if $\theta^2\ne1$. To a regular $\theta$ the Deligne--Lusztig construction attaches an irreducible cuspidal representation $\sigma_\theta$ of $\mathrm{SL}_2(\kk)$ of dimension $q-1$ \cite{DL76,Bo11}. Its character $\chi_\theta$ has the values
+\begin{equation}\label{eq:finite}
+ \chi_\theta(zI)=(q-1)\theta(z),\qquad
+ \chi_\theta(zu)=-\theta(z),\qquad
+ \chi_\theta(\bar\tau)=-\theta(\bar\tau)-\theta(\bar\tau^{-1}),\qquad
+ \chi_\theta(\bar h)=0 .
+\end{equation}
+Here $z=\pm1$, $u$ is any nonidentity unipotent element, $\bar\tau\in\bar T$ is not $\pm1$, and $\bar h$ is diagonalizable over $\kk$ with distinct eigenvalues. These values depend only on the characteristic polynomial and on whether the element is semisimple. So they are unchanged by the automorphisms of $\mathrm{SL}_2(\kk)$ induced from $\mathrm{GL}_2(\kk)$.
+
+Inflate $\sigma_\theta$ to $K_j$ through the reduction at $v_j$. Write $\pi_{j,\theta}$ and $\widetilde\pi_{j,\theta}$ for the resulting ordinary and genuine inductions of Section~\ref{sec:frob}. They are irreducible supercuspidal representations of depth zero, and in particular admissible. This is cited from \cite{MP94} for $G$ and from \cite{HW09} for $\Mp$.
+
+In the tree there is one vertex at distance zero from a given vertex, and
+\begin{equation}\label{eq:sphere}
+ N_d=(q+1)q^{d-1}
+\end{equation}
+vertices at distance $d\ge1$. Indeed, the center has $q+1$ neighbors, and every other vertex has $q$ neighbors farther from the center. A vertex at distance $d$ from a vertex of type $i$ has type $i+d$ modulo two.
+
+\begin{example}
+For $q=7$ the sphere sizes are $1,8,56,392$. A ball of radius two around $v_0$ contains $1+56=57$ vertices of type $0$ and $8$ of type $1$.
+\end{example}
+
+\subsection{The character formulas}
+We combine the fixed balls with the finite character values.
 
 \begin{theorem}[Twofold unramified character formulas]\label{thm:depthzero}
-Let $t\in T_i\setminus\{\pm I\}$ and let $\bar\tau$ denote its reduction at $v_i$.
-If $r=0$, both $\Theta_{\pi_{j,\theta}}(t)$ and $\Theta_{\widetilde\pi_{j,\theta}}(s_i(t))$ equal
+Let $\theta$ be a regular character of $\bar T$. Let $t\in T_i\setminus\{\pm I\}$ have congruence depth $r$ and reduction $\bar\tau$ at $v_i$.
+\begin{enumerate}[label=(\alph*),leftmargin=2.2em]
+\item If $r=0$, then
 \[
+ \Theta_{\pi_{j,\theta}}(t)=\Theta_{\widetilde\pi_{j,\theta}}(s_i(t))=
  \begin{cases}
- -\theta(\bar\tau)-\theta(\bar\tau^{-1})&j=i,\\
- 0&j\ne i.
+ -\theta(\bar\tau)-\theta(\bar\tau^{-1})&\text{if } j=i,\\
+ 0&\text{if } j\ne i.
  \end{cases}
 \]
-If $r\ge1$ and $\bar\tau=zI$, then
+\item If $r\ge1$ and $\bar\tau=z=\pm1$, then
 \begin{align}
  \Theta_{\pi_{j,\theta}}(t)&=\theta(z)
  \bigl((-1)^{r+1+j-i}q^r-1\bigr),\label{eq:closed}\\
  \Theta_{\widetilde\pi_{j,\theta}}(s_i(t))
- &=\ell(z)^{j-i}\theta(z)
+ &=\ell(z)^{j-i}\,\theta(z)
  \bigl((-1)^{r+1+j-i}q^r-1\bigr).\label{eq:closedgen}
 \end{align}
+\end{enumerate}
 \end{theorem}
 \begin{proof}
-When $r=0$, Proposition~\ref{prop:ball} gives just the center vertex. The finite elliptic character value proves the assertion. For $r\ge1$ write $A_r$ for the ordinary character divided by $\theta(z)$ on the type containing the boundary and $B_r$ for the other type. At depth one they are $A_1=-(q+1)$ and $B_1=q-1$. On increasing $r$ by one, all old boundary vertices change their weight from $-1$ to $q-1$, and the new boundary has the other type. Therefore $B_{r+1}=A_r+qN_r$ and $A_{r+1}=B_r-N_{r+1}$. Induction using $N_r=(q+1)q^{r-1}$ gives $A_r=-q^r-1$ and $B_r=q^r-1$. The boundary type satisfies $j-i\equiv r\pmod2$, which gives \eqref{eq:closed}. Corollary~\ref{cor:compare} gives \eqref{eq:closedgen}.
-\end{proof}
-For example, at radius two the center and its second sphere have the same type, and the character on that type is $-q^2-1$ times the central character.
+(a) By Proposition~\ref{prop:ball} the fixed set is $\{v_i\}$. Theorem~\ref{thm:weighted} and Corollary~\ref{cor:compare}(b) give $\tr\sigma_{v_i}(t)=\chi_\theta(\bar\tau)$ for $j=i$ and zero for $j\ne i$.
 
-\subsection{Packet sums and the central sign}
-The ordinary two-type sum at central reduction is $-2\theta(z)$. At noncentral reduction it is $-\theta(\bar\tau)-\theta(\bar\tau^{-1})$. This is the ordinary depth-zero packet sum, with the usual restriction interpretation from $\mathrm{GL}_2(F)$ in the generic case. We do not assert that the pair of genuine representations constitutes a Langlands packet for the double cover.
+(b) By Proposition~\ref{prop:ball} and \eqref{eq:finite}, a fixed vertex at distance $d<r$ contributes $(q-1)\theta(z)$ to \eqref{eq:ordinary}, and a fixed vertex at distance $r$ contributes $-\theta(z)$. A vertex at distance $d$ has type $j$ exactly when $d\equiv j-i$ modulo two. Let $A_r$ be $\Theta_{\pi_{j,\theta}}(t)/\theta(z)$ for the type $j$ of the boundary sphere, and $B_r$ the same quantity for the other type. Then $A_1=-N_1=-(q+1)$ and $B_1=q-1$.
+
+Pass from $r$ to $r+1$. The vertices of the old boundary sphere change their contribution from $-1$ to $q-1$, and their type is now the non-boundary type. So $B_{r+1}=A_r+qN_r$. The new boundary sphere has the old non-boundary type, so $A_{r+1}=B_r-N_{r+1}$. By induction with \eqref{eq:sphere},
+\[
+ A_r=-q^r-1,\qquad B_r=q^r-1 .
+\]
+Indeed $B_{r+1}=-q^r-1+(q+1)q^r=q^{r+1}-1$ and $A_{r+1}=q^r-1-(q+1)q^r=-q^{r+1}-1$. The boundary type satisfies $j-i\equiv r$, where $(-1)^{r+1+j-i}=-1$. This is \eqref{eq:closed}. Corollary~\ref{cor:compare}(a) with $w=v_i$ gives \eqref{eq:closedgen}.
+\end{proof}
+
+\begin{example}
+At $r=2$ the center and the second sphere have the same type $i$. The ordinary character on that type is $\theta(z)\bigl((q-1)-(q+1)q\bigr)=\theta(z)(-q^2-1)$. On the other type only the first sphere contributes, giving $\theta(z)(q-1)(q+1)=\theta(z)(q^2-1)$.
+\end{example}
+
+\subsection{Sums over the two types and the central sign}
+We add the characters of the two inducing types. For $G$ the large terms cancel. For $\Mp$ this requires a sign.
+
+By \eqref{eq:closed} the ordinary sum over $j$ at central reduction is $-2\theta(z)$. At noncentral reduction it is $-\theta(\bar\tau)-\theta(\bar\tau^{-1})$. The representations $\pi_{0,\theta}$ and $\pi_{1,\theta}$ are conjugate under $D$. It is standard that their sum is the restriction of a depth-zero supercuspidal representation of $\mathrm{GL}_2(F)$, so that the two form a packet for $G$. We recall this for orientation and do not use it. We do not assert that the pair of genuine representations is a packet for the double cover.
 
 \begin{corollary}\label{cor:sum}
-At central reduction $z$ the signed genuine sum is
+In the situation of Theorem~\ref{thm:depthzero}(b),
 \[
- \sum_{j=0}^1\ell(z)^{j-i}
+ \sum_{j=0}^1\ell(z)^{j-i}\,
  \Theta_{\widetilde\pi_{j,\theta}}(s_i(t))=-2\theta(z).
 \]
-The unweighted genuine sum equals this value when $\ell(z)=1$. When $\ell(z)=-1$, it equals $2(-1)^{r+1}\theta(z)q^r$.
+If $\ell(z)=1$ the unweighted genuine sum has the same value. If $\ell(z)=-1$ the unweighted genuine sum equals $2(-1)^{r+1}\theta(z)q^r$.
 \end{corollary}
 \begin{proof}
-Insert \eqref{eq:closedgen}; the squared sign is one. In the unweighted case with $\ell(z)=-1$, the constant terms cancel and the two terms of magnitude $q^r$ add, giving the claimed expression.
-\end{proof}
-The distinction also follows from the central characters. In the split fiber over $-I$, the two vertex splittings differ by $\ell(-1)$. For $q\equiv3\pmod4$, inducing with the same $\theta$ from both vertex types gives opposite genuine central characters at $s_0(-I)$. Their sum should therefore not be expected to behave like the ordinary packet sum near that lift.
-
-\section{Worked examples over $\mathbb Q_7$ and $\mathbb Q_5$}\label{sec:examples}
-The examples show that the quadratic correction is measurable even in the simplest depth-zero setting. Take $E=\mathbb Q_7(\sqrt3)$ and a character $\theta$ of order eight on $\bar T$. Then $\theta(-1)=-1$. Set
+Insert \eqref{eq:closedgen}. In the signed sum the factor $\ell(z)^{2(j-i)}$ is one, and the sum is that of \eqref{eq:closed}. If $\ell(z)=-1$, the unweighted sum is
 \[
- t_r=\frac{1+7^r\sqrt3}{1-7^r\sqrt3}.
+ \theta(z)\bigl((-1)^{r+1}q^r-1\bigr)-\theta(z)\bigl((-1)^{r+2}q^r-1\bigr)=2(-1)^{r+1}\theta(z)q^r .
 \]
-Multiplication by $t_r$ is norm one. Its congruence depth at $v_0$ is $r$ because $t_r-1=2\cdot7^r\sqrt3/(1-7^r\sqrt3)$ has valuation $r$. The table gives the ordinary and genuine characters for $i=0$, with the genuine values evaluated at $s_0(\pm t_r)$.
+\end{proof}
+
+\begin{remark}[Central characters]
+The same distinction is visible on the center. The element $-I$ acts on $\sigma_\theta$ by $\theta(-1)$. So $s_j(-I)$ acts on $\widetilde\pi_{j,\theta}$ by $\theta(-1)$. By Example~\ref{ex:minusI}, $s_0(-I)$ acts on $\widetilde\pi_{1,\theta}$ by $\ell(-1)\theta(-1)$. For $q\equiv3\pmod4$ the two genuine representations therefore have opposite central characters. Their unweighted sum cannot behave like the ordinary sum near the lifts of $-I$. In the language of Remark~\ref{rem:lifts}, the signed sum is $\sum_j\Theta_{\widetilde\pi_{j,\theta}}(s^{(j)}(t))$.
+\end{remark}
+
+\section{Worked examples over \texorpdfstring{$\mathbb Q_7$ and $\mathbb Q_5$}{Q7 and Q5}}\label{sec:examples}
+This section tabulates the formulas in the two smallest cases that separate $q\equiv3$ from $q\equiv1$ modulo four.
+
+Take $E=\mathbb Q_7(\sqrt3)$ and a character $\theta$ of order eight on $\bar T$. Then $\theta$ is regular and $\theta(-1)=-1$. Let $t_r$ be as in Example~\ref{ex:tr}, so that $t_r$ has congruence depth $r$ and $z=1$, and $-t_r$ has congruence depth $r$ and $z=-1$. Here $\ell(-1)=-1$. The table lists the pairs of values for $j=0,1$, with $i=0$ and the genuine characters evaluated at $s_0(\pm t_r)$.
 
 \begin{center}
 \small
-\begin{tabular}{cccccc}
+\begin{tabular}{ccccrr}
 \toprule
-$t$ & $r$ & Ordinary $(j=0,1)$ & Genuine $(j=0,1)$ & Genuine sum\\
+$t$ & $r$ & Ordinary & Genuine & Unweighted sum & Signed sum\\
 \midrule
-$t_r$ &1& $(6,-8)$ & $(6,-8)$ & $-2$\\
-$t_r$ &2& $(-50,48)$ & $(-50,48)$ & $-2$\\
-$t_r$ &3& $(342,-344)$ & $(342,-344)$ & $-2$\\
-$-t_r$ &1& $(-6,8)$ & $(-6,-8)$ & $-14$\\
-$-t_r$ &2& $(50,-48)$ & $(50,48)$ & $98$\\
-$-t_r$ &3& $(-342,344)$ & $(-342,-344)$ & $-686$\\
+$t_r$ &1& $(6,-8)$ & $(6,-8)$ & $-2$ & $-2$\\
+$t_r$ &2& $(-50,48)$ & $(-50,48)$ & $-2$ & $-2$\\
+$t_r$ &3& $(342,-344)$ & $(342,-344)$ & $-2$ & $-2$\\
+$-t_r$ &1& $(-6,8)$ & $(-6,-8)$ & $-14$ & $2$\\
+$-t_r$ &2& $(50,-48)$ & $(50,48)$ & $98$ & $2$\\
+$-t_r$ &3& $(-342,344)$ & $(-342,-344)$ & $-686$ & $2$\\
 \bottomrule
 \end{tabular}
 \end{center}
-At depth one, the center contributes six and the eight neighbors contribute minus one each near $I$. Near $-I$ the finite central character multiplies both ordinary values by minus one. The edge discrepancy introduces one further minus sign on the odd orbit. All numbers follow by exact substitution into \eqref{eq:closed} and \eqref{eq:closedgen}.
+At depth one near $I$, the center contributes $6$ to type $0$ and the eight neighbors contribute $-1$ each to type $1$. Near $-I$ the factor $\theta(-1)=-1$ changes the sign of both ordinary values. The edge discrepancy changes the sign once more on type $1$. The signed sum is $-2\theta(z)$ in every row. All entries follow from \eqref{eq:closed} and \eqref{eq:closedgen}.
 
-Over $\mathbb Q_5$ take $E=\mathbb Q_5(\sqrt2)$ and a character of order six. Here $\theta(-1)=-1$ but $\ell(-1)=1$. The ordinary and genuine values near $-I$ at radius one are both $(-4,6)$, and the sum is $2$. At radius two both are $(26,-24)$. Thus the difference between the two examples is not an artifact of the choice of type.
+Over $\mathbb Q_5$ take $E=\mathbb Q_5(\sqrt2)$ and a character $\theta$ of order six. Here $\theta(-1)=-1$ and $\ell(-1)=1$. Near $-I$ at depth one the ordinary and genuine values are both $(-4,6)$, with sum $2$. At depth two both are $(26,-24)$. The difference between the two fields comes from $\ell(-1)$ and not from the choice of type.
 
-\section{Relation to the original cocycle and double-coset method}\label{sec:old}
-We explain how the older approach fits the geometric proof and isolate its remaining analytic questions. The original notes use $\omega=D^{-1}$ and diagonal matrices $h(\varpi^m)$, together with the Weyl element $w_0=\left(\begin{smallmatrix}0&-1\\1&0\end{smallmatrix}\right)$. Their actions on the standard apartment are translations of even length and reflection about $v_0$, respectively. Their double cosets organize orbits of a pro-$p$ Iwahori on the vertices. With the present orientation $I^+$ consists of matrices reducing to lower unipotents. Equivalently the upper-unipotent convention corresponds to the adjacent vertex $D^{-1}v_0$ instead.
+\section{Relation to the cocycle and double-coset method}\label{sec:old}
+This section relates the geometric argument to the cocycle calculations and double-coset sums of the original notes. It also treats the split elements to which the argument extends.
 
-The original diagonal conjugation calculation has a useful special case: for $h(u)\in G$ and any $g\in G$, conjugating $(g,\zeta)$ by $(h(u),1)$ preserves the Kubota coordinate $\zeta$. Indeed if $c\ne0$, the three factors in the conjugation sign from \eqref{eq:kubota} are $(u,u)_2$, $(c,u^{-1})_2$ and $(u,u c)_2$. Their product is one. If $c=0$, replace $c$ by $d$ in the second factor and the third by $(u,d u)_2$, with the same result. This does not imply that the coordinates of two canonical splittings agree. For example, Proposition~\ref{prop:edge} shows the obstruction for the determinant-$\varpi$ translation, which is not an element of $G$.
+\subsection{Diagonal conjugation and double cosets}
+The original notes worked with the diagonal matrices $h(\varpi^m)$, the matrix $D^{-1}$ and the Weyl element $w(-1)=\sm0{-1}10$. On the line of vertices $D^mv_0$ the matrices $h(\varpi^m)$ act by translations of even length, and $w(-1)$ acts by the reflection about $v_0$. Their double cosets with respect to a pro-$p$ Iwahori subgroup index the orbits of that subgroup on the vertices. With the orientation used here $I^+$ reduces to the lower unipotent matrices. The upper unipotent convention corresponds to the adjacent vertex $D^{-1}v_0$.
 
-On the regular elliptic domain Theorem~\ref{thm:weighted} supplies a finite termwise comparison and Corollary~\ref{cor:compare} recovers the same-inducing-type direct identity on $K_j$. On conjugates of $K_j$, the correct lift is the transported one, not an unqualified value of $r_j$ outside its domain. If a regular elliptic element fixes no vertex of type $j$, both characters vanish.
+The following calculation from the notes is useful when conjugating local data along this line of vertices.
 
-\begin{remark}[Remark 2026.1: split regular elements]\label{rem:split}
-The original notes also assert a direct comparison on the split Cartan. A compact regular split element fixes an entire apartment, so the ungrouped fixed-vertex sum need not be finite or absolutely convergent. A proof requires the grouping or regularization appropriate to the compact-induction character formula, with an independent justification for the cover. Proposition~\ref{prop:edge} shows that along a fixed split apartment the edge sign is $\ell(\bar u)$ for a diagonal unit $u$. When this is $-1$, the weights alternate between vertex types, but for a sum over a single type they agree along paths within the apartment. Establishing the effect of branches away from the apartment and the analytic passage to pointwise characters remains to be done. No split character theorem is claimed here.
-\end{remark}
-For example, $\operatorname{diag}(3,3^{-1})$ over $\mathbb Q_7$ is regular split and fixes the standard apartment. Unlike the elliptic example, the argument excluding fixed vertices beyond a finite sphere cannot apply.
+\begin{proposition}[Diagonal conjugation]\label{prop:diagconj}
+For $u\in F^\times$ and $(g,\zeta)\in\Mp$,
+\[
+ (h(u),1)\,(g,\zeta)\,(h(u),1)^{-1}=\bigl(h(u)gh(u)^{-1},\zeta\bigr).
+\]
+\end{proposition}
+\begin{proof}
+Let $g=\sm abcd$ with $c\ne0$. Then $x(h(u))=u^{-1}$, $x(g)=c$ and $x(h(u)g)=c/u$, so $\beta(h(u),g)=(c,u^{-1})_2$. Next $(h(u),1)^{-1}=(h(u^{-1}),(u,u^{-1})_2)$. Finally $x(h(u^{-1}))=u$ and $x(h(u)gh(u)^{-1})=c/u^2$, so $\beta(h(u)g,h(u^{-1}))=(u^{-1},cu^{-3})_2=(u,cu)_2$. The product of the three signs is $(c,u)_2(u,u)_2(u,c)_2(u,u)_2=1$. If $c=0$ the same computation with $d$ in place of $c$ gives $(d,u)_2(u,u)_2(u,d)_2(u,u)_2=1$.
+\end{proof}
 
-\section{Positive depth, ramified tori, and the power map}\label{sec:extensions}
-The parity comparison is more general than the explicit finite-field calculation. We describe the remaining research directions without attributing new classification results to the 1996 notes.
+\begin{example}
+Proposition~\ref{prop:diagconj} concerns elements of $G$. It says nothing about conjugation by $D$, which has determinant $\varpi$. By Remark~\ref{rem:ext}, conjugation by $\widetilde D$ changes the Kubota coordinate of $(h(u),1)$ by $(u,\varpi)_2$. This is the edge discrepancy. For a vertex $v=gv_j$ the lift to use at $t\in K_v$ is the transported one, $s_v(t)=\widetilde g\,s_j(g^{-1}tg)\,\widetilde g^{-1}$. If a regular elliptic element fixes no vertex of type $j$, both characters vanish at it.
+\end{example}
+
+\subsection{Split elements}
+On the split torus the fixed set is infinite, and Theorem~\ref{thm:weighted} does not apply. For depth-zero types and regular reduction the block formula still decides the question.
+
+\begin{proposition}[Vanishing at split elements with regular reduction]\label{prop:splitvanish}
+Let $\theta$ be regular and let $u\in\OO^\times$ with $\bar u\ne\pm1$. Then the distribution characters of $\pi_{j,\theta}$ and of $\widetilde\pi_{j,\theta}$ vanish on $h(u)K_0^+$ and on $P^{-1}(h(u)K_0^+)$, respectively.
+\end{proposition}
+\begin{proof}
+Let $g\in h(u)K_0^+$ fix a vertex $v=[L]$. As in Lemma~\ref{lem:repeated}, the reduction of $g$ at $v$ has characteristic polynomial equal to the reduction of that of $g$. Since $g\equiv h(u)$ modulo $\varpi$, this is $(X-\bar u)(X-\bar u^{-1})$, with distinct roots in $\kk$. So the reduction of $g$ at $v$ is diagonalizable with distinct eigenvalues, and $\tr\sigma_v(g)=0$ by \eqref{eq:finite}. Every term of \eqref{eq:blocks} vanishes for $f$ supported in $h(u)K_0^+$. For the cover, the element $\zeta s_v(g)$ acts on the block at $v$ with trace $\zeta\tr\sigma_v(g)=0$, and the analogue of \eqref{eq:blocks} from the proof of Theorem~\ref{thm:weighted} gives the claim.
+\end{proof}
+
+\begin{example}
+Over $\mathbb Q_7$ the element $h(3)$ fixes exactly the vertices $D^mv_0$. Both depth-zero characters vanish near it and near its two lifts. Over $\mathbb Q_3$ there is no unit with $\bar u\ne\pm1$, and the proposition is empty.
+\end{example}
+
+\begin{remarkyr}[split elements near the center]\label{rem:split}
+A natural question is whether the direct comparison of Corollary~\ref{cor:compare} extends to the whole split torus and to types of positive depth. Let $t=h(u)$ with $u\equiv\pm1$ modulo $\varpi$, or let $\sigma_j$ be a type whose trace does not vanish on split elements. The fixed set of $t$ contains the infinite line of vertices $D^mv_0$. The ungrouped sum over fixed vertices need not converge, and the fixed set is not locally constant near $t$. By Proposition~\ref{prop:edge} the edge sign along the line is $\ell(\bar u)$. The weights $c_{w,v}(t)$ are therefore equal for all fixed vertices $v$ of one type on the line. This suggests that the comparison at the lift $s^{(j)}(t)$ holds without a sign. A proof requires a grouping of the terms of \eqref{eq:blocks} that is valid for both $G$ and $\Mp$, and control of the fixed vertices off the line. This has not been carried out. No theorem is claimed for these elements.
+\end{remarkyr}
+
+\section{Positive depth, ramified tori and the power map}\label{sec:extensions}
+This section records what the general comparison gives outside the unramified depth-zero case, and what remains to be computed.
 
 \subsection{Positive-depth types}
-For a strongly cuspidal type of level $m>1$ in the sense of Manderscheid, provided both compact inductions are admissible, Corollary~\ref{cor:compare} holds on the regular elliptic set with the same sign. It does not depend on the depth of the inducing type. For example, a type factoring through $K_0/K_0(m)$ has a finite local trace at each fixed vertex, but that trace is not generally determined by reduction modulo $\varpi$. Determining these traces in terms of the level and the element's congruence depth is a natural next calculation.
+Corollary~\ref{cor:compare} does not depend on the depth of the inducing type. Let $\sigma_j$ be a strongly cuspidal type of level $m>1$ in the sense of Manderscheid \cite{Ma84a,Ma84b}, and assume that both compact inductions are admissible. Then \eqref{eq:parity} holds on the regular elliptic set with the same sign.
 
-\begin{remark}[Remark 2026.2: higher levels]
-The original parameters $\sigma(\lambda,m,\alpha)$ and $\sigma_0(\lambda)$ should be matched precisely with the modern type notation, including the exceptional parameters and any reducibility or intertwining conditions. The comparison theorem is conditional on admissibility of the two inductions, rather than an unverified claim that all the parameters in the notes give precisely the desired supercuspidals.
-\end{remark}
+\begin{example}
+A type that factors through $K_0/K_0^{(m)}$, where $K_0^{(m)}$ is the kernel of reduction modulo $\varpi^m$, has a local trace $\tr\sigma_v(t)$ at each fixed vertex. For $m>1$ this trace is not determined by the reduction of $t$ modulo $\varpi$. Computing these traces in terms of the level and of the congruence depth of $t$ is the natural next calculation.
+\end{example}
+
+\begin{remarkyr}[higher levels]\label{rem:levels}
+The parameters $\sigma(\lambda,m,\alpha)$ and $\sigma_0(\lambda)$ of the original notes have not been matched with the modern notation for types. The exceptional parameters and the conditions for irreducibility have not been examined. The comparison for these types is conditional on the admissibility of the two inductions. We do not claim that every parameter in the notes gives a supercuspidal representation.
+\end{remarkyr}
 
 \subsection{Ramified elliptic elements}
-The general elliptic theorem already covers ramified tori at the level of a weighted sum. In a ramified quadratic extension a norm-one element preserves the lattice $\mathcal O_E$ and its maximal ideal, which are adjacent as $\OO$-lattices. For example, $\mathbb Q_7(\sqrt7)$ has such a pair of lattices. The fixed subtree therefore includes an edge, and the parity factor follows from Lemma~\ref{lem:repeated}. Explicit depth-zero evaluations require a separate fixed-subtree radius computation centered on this edge. We leave that calculation open rather than import the unramified formula.
+Theorem~\ref{thm:weighted} covers ramified tori as a weighted sum. Let $E/F$ be ramified quadratic and let $t$ correspond to $\tau\in E^1$. Then $\tau$ preserves $\OEr$ and its maximal ideal $\mathfrak p_E$. These satisfy $\varpi\OEr\subsetneq\mathfrak p_E\subsetneq\OEr$, so they give adjacent vertices. The fixed set contains an edge. By Lemma~\ref{lem:repeated} and Corollary~\ref{cor:compare}(a) the comparison holds with the factor $\ell(z)^{j-i}$, where $z=\pm1$ is the reduction of $\tau$.
 
-\subsection{Squaring and theta correspondence}
-The square map on $\bar T$ has kernel $\{\pm1\}$ and image of index two. On the full unramified norm-one torus the same obstruction remains, since squaring is an automorphism on its pro-$p$ kernel of reduction. Consequently no inverse-square exponent modulo $q+1$ exists. Over $\mathbb F_7$ the order-eight torus illustrates the obstruction: its square image has four elements. A root-sum relation would have to account for both $t$ and $-t$ and their possibly different lifted central signs. Such a relation is not established here.
+\begin{example}
+For $E=\mathbb Q_7(\sqrt7)$ the lattices $\mathbb Z_7[\sqrt7]$ and $\sqrt7\,\mathbb Z_7[\sqrt7]$ are fixed by every norm-one element. An explicit depth-zero formula requires the radius of the fixed set around this edge. We leave that computation open and do not import the unramified formula.
+\end{example}
 
-The Shimura--Waldspurger correspondence relates genuine representations of the double cover to representations of $\mathrm{PGL}_2(F)$ and its inner forms. It is not identical to the direct compact-induction comparison with $\mathrm{SL}_2(F)$. The relationship between the signed formulas above and theta correspondence is a further question, for which \cite{Wa91,Ma04} provide starting points.
+\subsection{Squaring and the theta correspondence}
+We explain why the power-map method of the odd-degree companion does not transfer, and how the present comparison differs from the theta correspondence.
+
+The square map on $\bar T$ has kernel $\{\pm1\}$ and image of index two. On the full torus $T_i$ the same holds, because squaring is bijective on the pro-$p$ kernel of reduction. So there is no inverse of squaring on $T_i$, and no exponent inverse to $2$ modulo $q+1$. A relation involving square roots would have to account for both $t$ and $-t$, whose lifts can carry different central signs by Example~\ref{ex:minusI}. No such relation is established here.
+
+\begin{example}
+Over $\mathbb F_7$ the torus $\bar T$ has order eight and its squares form the subgroup of order four. The elements $\bar\tau$ and $-\bar\tau$ have the same square.
+\end{example}
+
+The Shimura--Waldspurger correspondence relates genuine representations of $\Mp$ to representations of $\mathrm{PGL}_2(F)$ and its inner form \cite{Wa91}. It is not the direct comparison with $\mathrm{SL}_2(F)$ studied here. How the signed formulas above relate to it is a further question, for which \cite{Wa91,Ma04} are starting points.
 
 \section{Summary and open problems}\label{sec:summary}
-The geometric formulation separates the ordinary trace weights from the central sign. Proposition~\ref{prop:edge} computes this sign on edges by a Hilbert-symbol calculation. Theorem~\ref{thm:weighted} and Corollary~\ref{cor:compare} propagate it through the fixed subtree and recover the direct elliptic comparison on the inducing compact subgroup. Theorem~\ref{thm:depthzero} evaluates the generic unramified depth-zero case explicitly, including the sign on the opposite vertex type. Corollary~\ref{cor:sum} explains why the ordinary cancellation has a signed genuine analogue. For $q=7$, the unweighted genuine sum near the lift of $-I$ can grow as $2q^r$ in magnitude, whereas the signed sum remains constant.
+This section collects the results and the status of each, and lists the open problems.
 
-The main open tasks are to establish the grouped split character formula, compute ramified fixed-edge sums, work out explicit positive-depth traces, analyze exceptional quadratic finite parameters, and compare the signed formulas with the theta correspondence. These are not assumptions needed for the elliptic results proved here.
+The geometric formulation separates the local traces from the central sign.
+\begin{itemize}[leftmargin=2em]
+\item \emph{Proved here.} The edge discrepancy (Proposition~\ref{prop:edge}), from the Kubota cocycle. The weighted fixed-vertex formula and the direct comparison (Theorem~\ref{thm:weighted}, Corollary~\ref{cor:compare}), for admissible inductions and regular elliptic elements. The fixed balls (Proposition~\ref{prop:ball}), the depth-zero formulas (Theorem~\ref{thm:depthzero}), the sums over types (Corollary~\ref{cor:sum}) and the vanishing at split elements with regular reduction (Proposition~\ref{prop:splitvanish}).
+\item \emph{Cited.} The cocycle property of $\beta$ and the splitting $r_0$ \cite{Ku67,Ge76}, the extended cocycle \cite{Ge76}, the Hilbert symbol \cite{Ne86}, the finite character values \cite{DL76,Bo11}, and the admissibility of the depth-zero inductions \cite{MP94,HW09}.
+\item \emph{Conditional.} The comparison for positive-depth types assumes that both inductions are admissible.
+\item \emph{Checked by computation.} The script \texttt{twofold\_cover\_check.py} tests the cocycle identities, the splittings, the edge discrepancy, Proposition~\ref{prop:diagconj}, the fixed balls and the tables on samples over $\mathbb Q_p$. No proof depends on it.
+\end{itemize}
+For $q=7$ the unweighted genuine sum near the lifts of $-I$ grows like $2q^r$, whereas the signed sum is constant (Section~\ref{sec:examples}).
+
+The open problems are the following.
+\begin{enumerate}[leftmargin=2em]
+\item Establish a grouped character formula on the split torus near the center and for positive depth (Remark~\ref{rem:split}).
+\item Compute the fixed sets and the depth-zero sums for ramified elliptic tori.
+\item Compute the local traces of the positive-depth types and match the parameters of the notes with Manderscheid's types (Remark~\ref{rem:levels}).
+\item Treat the exceptional characters with $\theta^2=1$, where $\sigma_\theta$ is reducible.
+\item Compare the signed formulas with the theta correspondence.
+\end{enumerate}
+None of these is needed for the elliptic results proved here.
 
 \section*{Glossary}
 \addcontentsline{toc}{section}{Glossary}
-The following terms provide a reference for readers from algebra or graph theory.
+The following short summaries are a reminder of the technical terms. They are meant for readers from algebra or graph theory.
 \begin{description}[style=nextline,leftmargin=1.5em]
-\item[Admissible representation] A smooth representation with finite-dimensional invariants under compact open subgroups. This permits traces of test-function operators even on infinite-dimensional representation spaces.
-\item[Apartment] A bi-infinite geodesic of the tree associated with two complementary $F$-lines. A split torus preserves such a geodesic.
-\item[Ball and sphere] The ball contains all vertices at distance at most a specified radius. The sphere consists of vertices at exactly that distance and is the boundary of the ball.
-\item[Borel subgroup] A maximal connected solvable algebraic subgroup, such as the upper triangular subgroup of $\mathrm{SL}_2$. Its finite analogue has a unipotent radical and a diagonal quotient.
-\item[Bruhat--Tits tree] The tree of homothety classes of lattices in $F^2$. Its valency is $q+1$ because neighbors correspond to residue-field lines.
-\item[Central extension] A surjective group homomorphism with central kernel. The double cover has kernel $\mu_2$.
-\item[Character] For a finite-dimensional representation it is the trace of the representing matrix. For admissible $p$-adic representations one uses a distribution represented by the Harish-Chandra character function.
-\item[Cocycle] A function measuring the failure of a chosen section of an extension to preserve multiplication. Its cocycle identity is equivalent to associativity of the extension law.
-\item[Compact induction] Smooth induction with support compact modulo the inducing subgroup. Here it produces a direct sum of copies of a finite-dimensional type indexed by vertices.
-\item[Congruence depth] For an unramified elliptic element near $zI$, the largest power of the uniformizer dividing its difference from $zI$ in the distinguished lattice. It is the fixed-ball radius, not the depth of the representation.
-\item[Cuspidal finite representation] An irreducible representation with no invariants under unipotent radicals of proper rational parabolics. Such types furnish the input for depth-zero supercuspidals.
-\item[Depth zero] A representation has nonzero invariants under a pro-$p$ radical of a parahoric subgroup. This does not mean that the induced representation is finite-dimensional.
-\item[Edge discrepancy] The ratio of the two canonical splittings at adjacent vertices on their intersection. Here it is the quadratic residue character on the Iwahori quotient.
-\item[Elliptic torus] A maximal torus anisotropic modulo the center. In $\mathrm{SL}_2(F)$ it is the norm-one group of a quadratic field extension.
-\item[Fixed subtree] The vertices and edges fixed by an element. Its connectedness follows from uniqueness of geodesics.
-\item[Frobenius character formula] A sum of traces over cosets fixed by the element. On the regular elliptic domain considered here the sum is finite.
-\item[Genuine representation] A representation of the cover on which the nontrivial covering-kernel element acts by minus one. It cannot descend to the linear group.
-\item[Geodesic] The unique shortest path between two vertices in a tree. Products of edge discrepancies telescope along it.
-\item[Harish-Chandra character] The locally integrable function representing the trace distribution and locally constant on the regular semisimple set. It is not generally the trace of the action of an individual group element as an operator.
-\item[Hilbert symbol] A bimultiplicative pairing of local square classes with values in $\mu_2$. In odd residue characteristic its value on a uniformizer and a unit is the quadratic residue sign.
-\item[Homothety] Multiplication of a lattice by a common nonzero scalar. Identifying homothetic lattices removes scale and makes scalar matrices act trivially on the tree.
-\item[Induced representation] A representation on functions transforming according to a prescribed subgroup representation. The larger group acts by translation; compact induction adds a compact-support condition modulo the subgroup.
-\item[Inflation] Pullback of a quotient representation along a surjection. It preserves the representation space while enlarging the acting group.
-\item[Iwahori subgroup] The stabilizer of an edge in this rank-one setting. Its pro-$p$ radical has quotient the multiplicative residue-field group.
-\item[Lattice] The span of a vector-space basis over the ring of integers. Its homothety class is a vertex.
-\item[Norm-one torus] The kernel of the field norm from a quadratic extension. Multiplication on that field has determinant equal to the norm, so norm-one elements embed in $\mathrm{SL}_2$.
-\item[Parahoric subgroup] A compact open subgroup associated with a facet of a building. Here the vertex parahorics are $K_v$ and the edge parahorics are Iwahori subgroups.
-\item[Principal series] Representations obtained by normalized induction from a Borel subgroup. In the double cover the inducing data are genuine representations of the lifted torus.
-\item[Pro-$p$ group] An inverse limit of finite $p$-groups. It has no nontrivial continuous homomorphism to $\mu_2$ when $p$ is odd.
-\item[Quadratic residue character] The homomorphism $\ell:\kk^\times\to\{\pm1\}$ equal to one on squares. In particular $\ell(-1)=(-1)^{(q-1)/2}$.
-\item[Regular semisimple] An element with distinct eigenvalues over an algebraic closure in this rank-one group. Regular elliptic elements have irreducible characteristic polynomial over $F$.
-\item[Splitting] A homomorphic right inverse of a covering projection on a subgroup. Unique vertex splittings need not agree on edge intersections.
-\item[Stable packet sum] A sum of characters constant on regular elements within stable conjugacy classes. The ordinary depth-zero pair has this interpretation, unlike the unweighted genuine sum asserted nowhere in this paper.
-\item[Supercuspidal representation] An irreducible admissible representation not a subquotient of induction from a proper parabolic subgroup. The types in the original notes are designed to construct such representations.
-\item[Type] A compact subgroup representation used to characterize a class of smooth representations. Here it is the finite-dimensional input to compact induction.
-\item[Unipotent element] A matrix whose eigenvalues are all one. Boundary reductions in the fixed-ball formula are central scalars times nonidentity unipotents.
-\item[Vertex type] The parity of distance from the base vertex. The determinant-one group preserves the two types, and the determinant-$\varpi$ matrix interchanges them.
+\item[Admissible representation] A smooth representation whose invariants under each compact open subgroup are finite-dimensional. This makes the operators attached to test functions have finite rank, so that they have traces.
+\item[Apartment] A doubly infinite line of vertices in the tree attached to a pair of complementary lines in $F^2$. A split torus preserves such a line.
+\item[Ball and sphere] The ball of radius $r$ consists of the vertices at distance at most $r$ from a center. The sphere consists of those at distance exactly $r$.
+\item[Bruhat--Tits tree] The tree whose vertices are the homothety classes of lattices in $F^2$. Each vertex has $q+1$ neighbors, one for each line over the residue field.
+\item[Canonical lift] The image of an element of a vertex stabilizer under the unique splitting of that stabilizer. An element fixing vertices of both types has two canonical lifts, which may differ by a sign.
+\item[Central extension] A surjective group homomorphism with kernel in the center. The double cover has kernel $\mu_2$.
+\item[Character] For a finite-dimensional representation, the trace of the representing matrix. For an admissible representation of a $p$-adic group, a distribution on test functions that is given by a locally constant function on the regular set.
+\item[Cocycle] A function of two group elements measuring the failure of a chosen section of an extension to be multiplicative. The cocycle identity is the associativity of the extended group law.
+\item[Compact induction] The representation on functions that transform by a given representation of a compact open subgroup and are supported on finitely many cosets. It is a direct sum of copies of the inducing space indexed by the cosets, here by vertices.
+\item[Congruence depth] For an element of an unramified elliptic torus that reduces to $\pm1$, the largest power of the uniformizer dividing its difference from that sign. It equals the radius of the fixed ball. It is not the depth of a representation.
+\item[Cuspidal finite representation] An irreducible representation of a finite group of Lie type with no invariant vectors under the unipotent radical of any proper parabolic subgroup. These are the building blocks of depth-zero supercuspidals.
+\item[Depth zero] A representation has depth zero if it has nonzero invariants under the pro-$p$ radical of some parahoric subgroup. Such a representation is still infinite-dimensional in general.
+\item[Edge discrepancy] The ratio of the canonical splittings of two adjacent vertices on the stabilizer of the edge. It is the quadratic residue character of a residue eigenvalue.
+\item[Elliptic torus] A maximal torus that is compact modulo the center. In $\mathrm{SL}_2(F)$ it is the group of norm-one elements of a quadratic extension.
+\item[Fixed subtree] The vertices and edges fixed by a group element. It is connected because geodesics are unique.
+\item[Frobenius character formula] The expression of the character of an induced representation as a sum of local traces over the cosets fixed by the element. For regular elliptic elements the sum is finite.
+\item[Genuine representation] A representation of the cover on which the nontrivial element of the kernel acts by minus one. It does not come from a representation of the linear group.
+\item[Geodesic] The unique shortest path between two vertices of a tree.
+\item[Hilbert symbol] A symmetric bimultiplicative pairing on $F^\times$ with values $\pm1$. In odd residue characteristic its value on a uniformizer and a unit is the quadratic residue character of the unit.
+\item[Homothety] Multiplication of a lattice by a nonzero scalar. Homothetic lattices give the same vertex.
+\item[Inflation] The representation of a group obtained from a representation of a quotient by composing with the quotient map.
+\item[Iwahori subgroup] The stabilizer of an edge of the tree. Its quotient by its pro-$p$ radical is the multiplicative group of the residue field.
+\item[Kubota coordinate] The sign $\zeta$ in an element $(g,\zeta)$ of the cover written with Kubota's cocycle.
+\item[Lattice] The span of a basis of $F^2$ over the ring of integers.
+\item[Order] A subring of the ring of integers of a field extension that is also a lattice. The lattices fixed by an elliptic element are the modules over the order it generates.
+\item[Parahoric subgroup] A compact open subgroup attached to a vertex or an edge of the tree. Here these are the groups $K_v$ and the Iwahori subgroups.
+\item[Pro-$p$ group] An inverse limit of finite $p$-groups. For odd $p$ it has no nontrivial continuous homomorphism to $\mu_2$.
+\item[Quadratic residue character] The homomorphism $\ell$ from $\kk^\times$ to $\pm1$ that is $1$ exactly on squares. It satisfies $\ell(-1)=(-1)^{(q-1)/2}$.
+\item[Reduction at a vertex] The action of a vertex stabilizer on the two-dimensional space $L/\varpi L$ over the residue field, where $L$ is a lattice of the vertex.
+\item[Regular elliptic element] An element of $\mathrm{SL}_2(F)$ whose characteristic polynomial is irreducible over $F$.
+\item[Splitting] A homomorphism from a subgroup of the linear group to the cover that is a right inverse of the covering projection. Each vertex stabilizer has exactly one.
+\item[Supercuspidal representation] An irreducible admissible representation that is not a subquotient of a representation induced from a proper parabolic subgroup.
+\item[Type] A representation of a compact open subgroup used to construct or to characterize representations of the whole group. Here it is the finite-dimensional input to compact induction.
+\item[Unipotent element] A matrix all of whose eigenvalues are one.
+\item[Vertex type] The parity of the distance from the base vertex $v_0$. Elements of determinant one preserve the type, and $D$ exchanges the two types.
 \end{description}
 
 \section*{Acknowledgments}
 \addcontentsline{toc}{section}{Acknowledgments}
-The original notes were written by David Joyner following conversations with Jeff Adams and Jason Schultz in 1996. Sol-ChatGPT (OpenAI) assisted in drafting this geometric revision, identifying the edge discrepancy, developing the weighted comparison and explicit depth-zero formulas, and organizing the exposition. AI review is not an independent certification of the mathematical results. Further details on AI usage, changes of status, and citation verification are recorded in the separate revision log.
+The original notes were written by David Joyner following conversations with Jeff Adams and Jason Schultz in 1996. Sol-ChatGPT (OpenAI) acted as reviser for Draft~1. It drafted the geometric revision, identified the edge discrepancy, and developed the weighted comparison and the explicit depth-zero formulas. Claude (Anthropic) acted as reviser for Draft~2. It rederived the edge discrepancy from unipotent generators, completed the proofs of the fixed-vertex formula, added the vanishing result at split elements, wrote the verification script, and edited the exposition to the house style. AI review is not an independent certification of the mathematical results. Further details on the AI usage, on changes of status and on the verification of citations are recorded in the separate revision log.
 
-\begin{thebibliography}{HW09}
-\bibitem[Bo11]{Bo11} C. Bonnaf\'e, \emph{Representations of $\mathrm{SL}_2(\mathbb F_q)$}, Springer, 2011.
-\bibitem[DL76]{DL76} P. Deligne and G. Lusztig, Representations of reductive groups over finite fields, Ann. of Math. \textbf{103} (1976), 103--161.
+\begin{thebibliography}{Ma84b}
+\bibitem[Bo11]{Bo11} C. Bonnaf\'e, \emph{Representations of $\mathrm{SL}_2(\mathbb F_q)$}, Algebra and Applications 13, Springer, 2011.
+\bibitem[DL76]{DL76} P. Deligne and G. Lusztig, Representations of reductive groups over finite fields, Ann. of Math. (2) \textbf{103} (1976), 103--161.
 \bibitem[Ge76]{Ge76} S. Gelbart, \emph{Weil's Representation and the Spectrum of the Metaplectic Group}, Lecture Notes in Math. 530, Springer, 1976.
-\bibitem[HW09]{HW09} T. Howard and M. Weissman, Depth-zero representations of nonlinear covers of $p$-adic groups, IMRN (2009), 3979--3995.
-\bibitem[Jo99]{Jo99} D. Joyner, A correspondence for the supercuspidal representations of the metaplectic cover of $\mathrm{SL}_2(F)$, $F$ $p$-adic, Arch. Math. \textbf{73} (1999), 332--340.
+\bibitem[HW09]{HW09} T. K. Howard and M. H. Weissman, Depth-zero representations of nonlinear covers of $p$-adic groups, Int. Math. Res. Not. IMRN \textbf{2009}, no.~21, 3979--3995.
+\bibitem[Jo98]{Jo98} D. Joyner, A correspondence for the generalized Hecke algebra of the metaplectic cover of $\mathrm{SL}(2,F)$, $F$ $p$-adic, New York J. Math. \textbf{4} (1998), 223--235.
+\bibitem[Jo99]{Jo99} D. Joyner, A correspondence for the supercuspidal representations of the metaplectic cover of $\mathrm{SL}(2,F)$, $F$ $p$-adic, Arch. Math. (Basel) \textbf{73} (1999), 332--340.
 \bibitem[Jo26]{Jo26} D. Joyner, Argon, and ChatGPT, \emph{Two-orbit unramified elliptic character relations for depth-zero representations of metaplectic covers of $\mathrm{SL}_2$}, Draft 3, 2026, companion manuscript in the trace-formulas repository.
 \bibitem[Ku67]{Ku67} T. Kubota, Topological covering of $\mathrm{SL}(2)$ over a local field, J. Math. Soc. Japan \textbf{19} (1967), 114--121.
-\bibitem[Ku87]{Ku87} P. Kutzko, Character formulas for supercuspidal representations of $\mathrm{GL}(\ell)$, $\ell$ a prime, Amer. J. Math. \textbf{109} (1987), 201--222.
-\bibitem[Li12]{Li12} W.-W. Li, La formule des traces pour les rev\^etements de groupes r\'eductifs connexes. II. Analyse harmonique locale, Ann. Sci. \'Ec. Norm. Sup. \textbf{45} (2012), 787--859.
-\bibitem[Ma84a]{Ma84a} D. Manderscheid, On the supercuspidal representations of $\mathrm{SL}(2)$ and its two-fold cover I, Math. Ann. \textbf{266} (1984), 287--295.
-\bibitem[Ma84b]{Ma84b} D. Manderscheid, On the supercuspidal representations of $\mathrm{SL}(2)$ and its two-fold cover II, Math. Ann. \textbf{266} (1984), 297--305.
-\bibitem[Ma04]{Ma04} D. Manderscheid, Waldspurger's involution and types, J. London Math. Soc. \textbf{70} (2004), 567--578.
+\bibitem[Ku87]{Ku87} P. Kutzko, Character formulas for supercuspidal representations of $\mathrm{GL}_\ell$, $\ell$ a prime, Amer. J. Math. \textbf{109} (1987), 201--222.
+\bibitem[Li12]{Li12} W.-W. Li, La formule des traces pour les rev\^etements de groupes r\'eductifs connexes. II. Analyse harmonique locale, Ann. Sci. \'Ec. Norm. Sup\'er. (4) \textbf{45} (2012), 787--859.
+\bibitem[Ma84a]{Ma84a} D. Manderscheid, On the supercuspidal representations of $\mathrm{SL}_2$ and its two-fold cover I, Math. Ann. \textbf{266} (1984), 287--295.
+\bibitem[Ma84b]{Ma84b} D. Manderscheid, On the supercuspidal representations of $\mathrm{SL}_2$ and its two-fold cover II, Math. Ann. \textbf{266} (1984), 297--305.
+\bibitem[Ma04]{Ma04} D. Manderscheid, Waldspurger's involution and types, J. London Math. Soc. (2) \textbf{70} (2004), 567--578.
 \bibitem[MP94]{MP94} A. Moy and G. Prasad, Unrefined minimal $K$-types for $p$-adic groups, Invent. Math. \textbf{116} (1994), 393--408.
-\bibitem[Ne86]{Ne86} J. Neukirch, \emph{Class Field Theory}, Springer, 1986.
-\bibitem[SS68]{SS68} P. Sally and J. Shalika, Characters of the discrete series of representations of $\mathrm{SL}(2)$ over a local field, Proc. Natl. Acad. Sci. USA \textbf{61} (1968), 1231--1237.
+\bibitem[Ne86]{Ne86} J. Neukirch, \emph{Class Field Theory}, Grundlehren der mathematischen Wissenschaften 280, Springer, 1986.
+\bibitem[SS68]{SS68} P. J. Sally, Jr. and J. A. Shalika, Characters of the discrete series of representations of $\mathrm{SL}(2)$ over a local field, Proc. Natl. Acad. Sci. USA \textbf{61} (1968), 1231--1237.
 \bibitem[Wa91]{Wa91} J.-L. Waldspurger, Correspondances de Shimura et quaternions, Forum Math. \textbf{3} (1991), 219--307.
 \end{thebibliography}
 \end{document}

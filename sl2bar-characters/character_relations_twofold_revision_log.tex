@@ -1,0 +1,33 @@
+\documentclass[12pt,letterpaper]{article}
+\usepackage[T1]{fontenc}
+\usepackage[letterpaper,margin=1in]{geometry}
+\usepackage{newtxtext,newtxmath,amsmath,amssymb}
+\usepackage[hidelinks]{hyperref}
+\title{Revision log: twofold metaplectic character notes\\Draft 1}
+\author{David Joyner}
+\date{November 25, 2026}
+\begin{document}
+\maketitle
+\section{Scope and provenance}
+Source: \texttt{super.tex}, David Joyner's notes of conversations with Jeff Adams and Jason Schultz (1996). The revised source is \texttt{character\_relations\_twofold.tex}. The repository's mathematical paper style guide (Draft 2) and the odd-degree companion (Draft 3) guided the organization. The original is not overwritten. The original article class, the newtx font default, the end glossary, and human-only author line are retained. The title is retained with minor typographic normalization and a geometric subtitle.
+\section{Mathematical changes}
+\begin{enumerate}
+\item Correct the domain and formula of the Kubota compact splitting: for integral matrices the relevant nonunit condition is $c\in\varpi\mathcal O_F$, not $c\notin\mathcal O_F$. The genuine inducing type uses the nontrivial character of the kernel, not the trivial representation.
+\item Correct the location of the lift of the determinant-$\varpi$ matrix: it lies in the covering group of $\mathrm{GL}_2(F)$.
+\item Reorient the Iwahori to match the chosen adjacent vertex. The original displayed pro-$p$ Iwahori and the original intersection definition were not consistent as written.
+\item Replace unsupported global pointwise character statements by a finite regular elliptic trace formula. On the split torus the original grouped-convergence argument is not established in this draft.
+\item Preserve the original same-inducing-type elliptic comparison and its compact-induction method. Extend it to a weighted two-orbit comparison with explicit quadratic edge discrepancy. The edge calculation, path product, constant parity factor, fixed-ball proof, depth-zero closed formulas and signed sum are additions in this revision. The finite-group character values, character existence theorem and admissibility of standard depth-zero inductions are cited inputs, not new theorems.
+\item The general elliptic comparison for higher-level inducing types is conditional on admissibility of both inductions. No exhaustive identification of Manderscheid's parameters or positive-depth classification has been undertaken.
+\item Do not extrapolate the odd-degree inverse-power identity to squaring. Distinguish the direct comparison from theta correspondence.
+\end{enumerate}
+\section{Concordance}
+Original unnumbered notation and splitting discussion: revised Sections 1--3.
+Original Section 1 (cocycle calculations): revised Section 3 and Section 6.
+Original Section 2 (Frobenius formula): revised Section 4 and Section 6.
+Original Sections 3 and 4 (relations on the two compact subgroups): revised Section 4, especially the corrected direct comparison, and Section 5.
+The original split statements and higher-level parametrization are discussed as unfinished work in Sections 6--7, not reproduced as established theorems.
+\section{Verification and sources}
+The Hilbert-symbol diagonal calculation, uniqueness argument, path-product argument, lattice-order calculation, sphere recurrence and numerical examples were checked by symbolic reasoning. No computational experiment is required for the proofs. The 1996 source was read directly. Bibliographic search confirmed the Howard--Weissman publication details, Manderscheid's 1984 volume and page ranges through secondary bibliographic records, and the existence of the 2004 paper. A searchable modern account of the preferred Kubota section corroborated the nonunit condition. Full primary texts and exact theorem/page locations for the external character-theoretic inputs, the extended cocycle, finite character table, original Kutzko grouping, and all Manderscheid parametrization results were not independently checked in this pass. These citation and hypothesis checks are required before submission. The draft has not received independent mathematical refereeing.
+\section{AI and build status}
+Sol-ChatGPT (OpenAI) prepared the revised exposition and proposed and derived the new geometric comparisons. AI review is not independent certification. LaTeX source was committed to GitHub. The execution environment could not retrieve the committed source for local compilation because network access was unavailable. The PDF and compilation checks therefore remain outstanding; no compiled PDF is asserted to exist.
+\end{document}

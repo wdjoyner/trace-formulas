@@ -11,7 +11,7 @@
 % (the stable(r) form) in stage 6 of ../revision_log.md.
 % =====================================================================
 
-\section{Introduction}\label{sec:intro}
+\chapter{Introduction}\label{sec:intro}
 
 Let $k$ be a number field, $G=\Res_{k/\Q}SL(2)$, and $\overline{G(\A)}$
 the metaplectic double cover of $G(\A)=SL(2,\A_k)$. This paper writes out
@@ -25,43 +25,43 @@ and the cover of $A$ is abelian. As a result most of the general
 machinery reduces to statements that can be proved in a few lines and
 checked numerically, and the terms of the formula can be written down.
 
-\subsection{Overview}\label{sec:overview}
+\section{Overview}\label{sec:overview}
 
-The paper has six parts, each resting on the ones before it. They are
+The paper has seven parts, each resting on the ones before it. They are
 described here in order, with the main result after them.
 
 \begin{description}
-\item[The cover (Section~\ref{sec:background}).] The double cover is
+\item[The cover (Chapter~\ref{sec:background}).] The double cover is
   defined by Kubota's cocycle, place by place, and assembled into an
   adelic group that splits over $G(\Q)$. The cocycle is not continuous,
   so the topology of the cover and the spaces of test functions are
   defined intrinsically, and the coordinates $(g,\zeta)$ are used only as
   Borel coordinates. Test functions are \emph{anti-genuine}: they
   transform by $\zeta^{-1}$ under $\mu_2$.
-\item[Rank $0$ (Section~\ref{sec:rank0}).] For the cover of a torus the
+\item[Rank $0$ (Chapter~\ref{sec:rank0}).] For the cover of a torus the
   trace formula is Poisson summation, twisted by a genuine automorphic
   character. For the split torus Weil's character $\chi_\psi$ is a
   canonical choice. This case is used twice later: to describe the
   cuspidal data of the Borel subgroup, and to match the correction terms
   on the two sides of the invariant formula.
-\item[The geometric side (Section~\ref{sec:geometric}).] The kernel of
+\item[The geometric side (Chapter~\ref{sec:geometric}).] The kernel of
   $R(f)$ is truncated, and the integral of the truncated kernel is
   computed class by class: orbital integrals for the elliptic classes,
   weighted orbital integrals for the hyperbolic classes, and the finite
   part of a zeta integral for the two central classes.
-\item[The spectral side (Section~\ref{sec:spectral}).] The same
+\item[The spectral side (Chapter~\ref{sec:spectral}).] The same
   truncated integral is computed from the spectral decomposition. It
   gives the traces on the cuspidal spectrum and on the residual spectrum
   (even Weil representations), an integral of the logarithmic derivative
   of the intertwining operator $M(w,\lambda)$ along the unitary principal
   series, and one extra term $\frac14\operatorname{tr}(M(w,0)I(\mu_0,f))$
   for each character $\mu$ fixed by the Weyl group.
-\item[The invariant form (Section~\ref{sec:invariant}).] The weighted
+\item[The invariant form (Chapter~\ref{sec:invariant}).] The weighted
   orbital integrals and the term with $M^{-1}M'$ are not invariant under
   conjugation. Both fail in the same way, and subtracting a common
   correction, built from the normalized local intertwining operators by
   Fourier inversion on the cover of $A$, makes both sides invariant.
-\item[The stable(r) form (Section~\ref{sec:stable}).] $GL(2)$ acts on the
+\item[The stable(r) form (Chapter~\ref{sec:stable}).] $GL(2)$ acts on the
   cover, but conjugation by $GL(2)$ is not stable conjugacy there: it can
   exchange the two lifts of an element. Stable conjugacy is conjugation
   by $GL(2)$ twisted by a sign. With it, the regular elliptic terms are
@@ -71,6 +71,15 @@ described here in order, with the main result after them.
   other terms under $GL(2)$ is determined, and the unipotent coefficients
   are computed. The terms are not transferred to $SO(3)$; that is Li's
   theorem.
+\item[Comparison with $SL(2)$ (Chapter~\ref{sec:compare}).] The cover
+  lies over $SL(2)$, so its trace formula can be compared with that of
+  $SL(2)$ term by term, an element with a lift of the same element. The
+  companion text~\cite{JC26} shows that this \emph{direct comparison}
+  does not give a correspondence of automorphic representations. The
+  chapter reads the comparison through the formulas of the earlier
+  chapters. Its transfer factor is the function $\Delta_\psi$ that
+  defines stable conjugacy. It is consistent on the split torus, and it
+  fails on the elliptic set near the central element $-1$.
 \end{description}
 
 The result is Theorem~\ref{thm:itf} with Corollary~\ref{cor:itf-final}.
@@ -94,7 +103,7 @@ $L(2\lambda,\chi^2)/L(2\lambda+1,\chi^2)$. The notation is collected in
 the Glossary at the end.
 
 Three features distinguish the double cover from $SL(2)$ itself, and they
-are the main mathematical content of Sections~\ref{sec:spectral}
+are the main mathematical content of Chapters~\ref{sec:spectral}
 and~\ref{sec:invariant}. First, the Weyl group does not act on the cover
 of $A$ by inversion; the characters it fixes are the Weil characters
 $\chi_{\psi_b}$, one for each square class $b$
@@ -107,7 +116,7 @@ $SL(2)$ and a nontrivial quadratic character the corresponding operator
 is not a scalar and is the source of the multiplicity formula of Labesse
 and Langlands~\cite{LL79}.
 
-Section~\ref{sec:stable} adds a fourth. For $SL(2)$, conjugation by
+Chapter~\ref{sec:stable} adds a fourth. For $SL(2)$, conjugation by
 $GL(2)$ is stable conjugacy, and the unstable part of the trace formula
 is carried by the elliptic tori. For the double cover, an element $h$ of
 $GL(2)$ that commutes with $\gamma$ multiplies the lifts of $\gamma$ by
@@ -124,15 +133,15 @@ display are
 $a^G(S,u_\xi)=\frac12\bigl(c_S+\sum_{\kappa\ne1}\kappa_S(\xi)L^S(1,\kappa)
 \bigr)$ (Proposition~\ref{prop:unipotent}).
 
-\subsection{What is proved here and what is cited}\label{sec:proved-cited}
+\section{What is proved here and what is cited}\label{sec:proved-cited}
 
-Each section ends with a subsection ``Status of the results'', which
+Each chapter ends with a section ``Status of the results'', which
 lists the statements taken from the literature and the statements
 checked numerically. In summary:
 
 \begin{center}
 \begin{tabular}{p{0.11\textwidth}p{0.40\textwidth}p{0.40\textwidth}}
-Section & Proved in the text & Taken from the literature\\\hline
+Chapter & Proved in the text & Taken from the literature\\\hline
 \ref{sec:background} & the splittings, the center, commutativity of
   preimages of tori, the local triviality of the cocycle, the adelic
   cover and its splitting over $G(\Q)$ &
@@ -156,7 +165,7 @@ Section & Proved in the text & Taken from the literature\\\hline
 \ref{sec:invariant} & the variance formulas; the real normalizing
   factors; the invariance of $I_A$; the invariant trace formula;
   $M(w,0)=-1$ & the existence of normalizing factors~\cite{Ar89,Li12a},
-  which Section~\ref{sec:invariant} does not make explicit at the dyadic
+  which Chapter~\ref{sec:invariant} does not make explicit at the dyadic
   and ramified places\\
 \ref{sec:stable} & the action of $GL(2)$; stable conjugacy and the
   function $\Delta_\psi$; the elliptic regular terms as
@@ -166,37 +175,42 @@ Section & Proved in the text & Taken from the literature\\\hline
   $r^+_\psi-r^-_\psi$ on the regular set; the trace on the theta
   functions & the regularity of the character of the Weil
   representation~\cite{Ma99,Th08}; the Hasse norm theorem; everything
-  about the transfer to $SO(3)$~\cite{Li11,Li15,Li21}, which is not used
+  about the transfer to $SO(3)$~\cite{Li11,Li15,Li21}, which is not used\\
+\ref{sec:compare} & the transfer factor of the direct comparison and
+  its product formula; the orbital integrals of the unit elements at the
+  elliptic elements near $-1$; the orbits of $GL(2,k)$ on the continuous
+  and residual spectrum & the statements about the trace formula of
+  $SL(2)$~\cite{LL79,GJ79}; the results of~\cite{JC26}
 \end{tabular}
 \end{center}
 
 One ingredient of the invariant formula is therefore defined but not
-evaluated in Sections~\ref{sec:geometric}--\ref{sec:invariant}: the local
+evaluated in Chapters~\ref{sec:geometric}--\ref{sec:invariant}: the local
 normalizing factors $r_v$ at the places where the additive character or
 the inducing character is ramified, and at the dyadic places. Their
 explicit form is not computed in this paper. It is taken from
 Szpruch~\cite{Sz09,Sz16} in Proposition~\normref{}(c). (The unipotent coefficients $a^G(S,u_\xi)$, a second such
-ingredient in Sections~\ref{sec:geometric}--\ref{sec:invariant}, are
+ingredient in Chapters~\ref{sec:geometric}--\ref{sec:invariant}, are
 computed in Proposition~\ref{prop:unipotent}.) Remarks
 numbered ``2026.$n$'' record these and other points that rest on
 citation or on numerical checks only. The explicit formulas are tested
 by the scripts in \texttt{checks/}; they are evidence, not proofs.
 
 The stable form of the trace formula is only begun.
-Section~\ref{sec:stable} shows that stable conjugacy on the cover is
+Chapter~\ref{sec:stable} shows that stable conjugacy on the cover is
 conjugation by $GL(2)$ twisted by a sign, relates the twisted notion to
 that of Adams and Li~\cite{Ad98,Li11}, and stabilizes the regular
 elliptic terms. The
 hyperbolic and unipotent terms and the cuspidal spectrum are not
 stabilized; Section~\ref{sec:stable-form} lists what is missing. The
-statements of Section~\ref{sec:stable} about the weighted terms and about
+statements of Chapter~\ref{sec:stable} about the weighted terms and about
 the spectral terms $I_\chi$ use the property~\ref{N5} of the normalizing
 factors. It holds for the explicit factors, and
 Proposition~\normref{} shows that factors with this property exist at
 every place; at the dyadic and ramified places their explicit form is
 taken from Szpruch~\cite{Sz09,Sz16} (Remark~\ref{rem:N5}).
 
-\subsection{A running example}\label{sec:running}
+\section{A running example}\label{sec:running}
 
 The case $k=\Q$, $S=\{\infty,2\}$ is the smallest one in which every
 feature of the formula appears, and it is followed through the paper. We
@@ -242,7 +256,7 @@ $\psi_\infty(x)=e^{-2\pi ix}$.
   (Example~\ref{ex:real-R}), and the correction $\Phi_A$ is an Abel
   transform smoothed by an exponentially decaying kernel
   (Example~\ref{ex:Phi-real}). The only bad place is $2$, where the
-  normalizing factor is not computed in Section~\ref{sec:invariant}; by
+  normalizing factor is not computed in Chapter~\ref{sec:invariant}; by
   Proposition~\normref{}(c) it is a constant times $L_2(2\lambda,\chi_2^2)/
   L_2(2\lambda+1,\chi_2^2)$. The discrete correction is
   $-\frac14\sum_{b=\pm1,\pm2}\operatorname{tr}I(\chi_{\psi_b,0},f)$
@@ -257,20 +271,28 @@ $\psi_\infty(x)=e^{-2\pi ix}$.
   $b\in\{\pm1,\pm2\}$, span four spaces $\Theta_b\supset V_b$ whose traces
   are $\frac12\Theta^{\mathrm{st}}_b(f)+\frac12\Theta^{\mathrm{st}}_b(f_-)$
   (Proposition~\ref{prop:theta-packet}).
+\item \emph{Comparison with $SL(2)$.} The element $\gamma=\bigl(
+  \begin{smallmatrix}2&-1\\3&-1\end{smallmatrix}\bigr)$ of order $6$ in
+  $SL(2,\Z)$ has $2+\operatorname{tr}\gamma=3$. For test functions that
+  match at $\infty$ and at $2$, its term in the trace formula of the cover
+  is $-i$ times its term in the trace formula of $SL(2)$
+  (Examples~\ref{ex:coherent} and~\ref{ex:epsilon}). The four residual
+  representations $V_b$ are permuted transitively by $GL(2,\Q)$
+  (Example~\ref{ex:fibers}).
 \end{itemize}
 
-\subsection{Conventions}\label{sec:conventions-intro}
+\section{Conventions}\label{sec:conventions-intro}
 
-This subsection fixes the scope of the paper and says where the
+This section fixes the scope of the paper and says where the
 reference material is.
 The revision treats the double cover only; the 1995 notes treated the
-$n$-fold cover, and remarks in Sections~\ref{sec:background}
+$n$-fold cover, and remarks in Chapters~\ref{sec:background}
 and~\ref{sec:rank0} say what changes for $n>2$. Comparisons with the
 1995 notes and with the 1997 book manuscript, including the corrections
 made, are collected in the revision log that accompanies the source and
 are not needed to read the paper. The literature review follows this
 section. The main results and the open questions are collected in
-Section~\ref{sec:summary}, and notation and terms are listed in the
+Chapter~\ref{sec:summary}, and notation and terms are listed in the
 Glossary at the end.
 
 % ---------------------------------------------------------------------
@@ -322,7 +344,7 @@ results~\cite{Ge76,GPS80,Wa80}.
 Selberg~\cite{Se56}. For $GL(2)$ it was put in adelic form by Jacquet and
 Langlands~\cite{JL70}; the treatment of Gelbart and Jacquet~\cite{GJ79} is the
 closest in spirit to the present paper, and we compare signs and
-constants with it in Section~\ref{sec:spectral}. The classical Selberg
+constants with it in Chapter~\ref{sec:spectral}. The classical Selberg
 trace formula with multiplier systems and real weight, as in
 Hejhal~\cite{He83}, covers forms of half-integral weight on congruence
 subgroups of $SL(2,\Z)$. For a general connected reductive group the
@@ -343,7 +365,10 @@ Kazhdan~\cite{FK86} did the same for $GL(r)$; see also Kazhdan and Patterson~\ci
 The first author studied a metaplectic analog of Kazhdan's
 endoscopic lifting in~\cite{Jo88}. The 1995 version of the present notes
 wrote out Arthur's formula for the $n$-fold cover of $SL(2)$, with
-several steps conjectural.
+several steps conjectural. A second manuscript of the first author from
+the same year, \emph{Multiplicity one for $SL(2)$}, compared $SL(2)$ with
+its double cover directly, in order to deduce multiplicity one for
+$SL(2)$ from Waldspurger's theorem.
 
 \paragraph{Local harmonic analysis on the double cover of $SL(2)$.} The
 irreducibility of the unitary genuine principal series is due to
@@ -411,11 +436,11 @@ in~\cite{Mc12,Ga14}.
 \subsection*{The place of this paper}
 
 Nothing in
-Sections~\ref{sec:background}--\ref{sec:invariant} goes beyond what the
+Chapters~\ref{sec:background}--\ref{sec:invariant} goes beyond what the
 general theorems of Arthur and Li give. What the paper adds is an
 account in which the group is fixed, the constants are determined, the
 proofs that are short for this group are given in full, and the
-remaining appeals to the literature are listed. Section~\ref{sec:stable}
+remaining appeals to the literature are listed. Chapter~\ref{sec:stable}
 is likewise a special case of Li's endoscopy for the double cover of
 $Sp(2n)$, reached by a different route: there the elementary description
 of stable conjugacy through $GL(2)$, the identity between
@@ -423,3 +448,12 @@ $\kappa$-orbital integrals and stable orbital integrals of $f_-$, and the
 formula for the unipotent coefficients are worked out directly. We hope
 that the paper is useful as a worked example of Li's theory and as a
 companion to the classical treatments of half-integral weight.
+
+The revision~\cite{JC26} of the 1995 manuscript on multiplicity one shows
+that the direct comparison of $SL(2)$ with its cover is not a
+correspondence of automorphic representations, and that it differs from
+the correspondence of Shimura and Waldspurger by a square.
+Chapter~\ref{sec:compare} connects the two texts. It proves several
+statements that~\cite{JC26} quotes, and it shows that the direct
+comparison fails on the elliptic terms of the geometric side, which
+\cite{JC26} leaves unexamined.

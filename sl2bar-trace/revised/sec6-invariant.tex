@@ -25,14 +25,14 @@
 \providecommand{\AS}{\overline{A(\Q_S)}}
 \providecommand{\KS}{\overline{K_S}}
 
-\section{The invariant form}\label{sec:invariant}
+\chapter{The invariant form}\label{sec:invariant}
 
 The trace formula of Theorem~\ref{thm:tf} is an identity $\sum_{\mathcal O}
 J_{\mathcal O}(f)=\sum_\chi J_\chi(f)$ between distributions, but not all
 of the terms are invariant: $J(f^y)\ne J(f)$ in general, where
 $f^y(x)=f(yxy^{-1})$. The elliptic terms $J_{\mathcal O}$ and the cuspidal
 terms $J_\chi$ are invariant; the hyperbolic and central terms, and the
-terms $J_\chi$ with $\chi\in\mathcal X_A$, are not. This section computes
+terms $J_\chi$ with $\chi\in\mathcal X_A$, are not. This chapter computes
 the failure of invariance, defines the invariant distributions
 $I_A(\gamma,f)$ that replace the weighted orbital integrals
 $J_A(\gamma,f)$, following Arthur~\cite{Ar81,Ar88b,Ar88c}, and puts the trace
@@ -90,7 +90,7 @@ sides of Fourier inversion: $\varphi_A(f,\cdot)$ on characters $\pi$ of
 the cover of $A(\Q_S)$, $\Phi_A(\cdot,f)$ on its elements. Globally the
 corrections on the two sides are matched by Poisson summation on the
 cover of $A$, which is the rank-$0$ trace formula of
-Section~\ref{sec:rank0}, so the identity is preserved. The normalized
+Chapter~\ref{sec:rank0}, so the identity is preserved. The normalized
 operators $R_v$ are used, rather than $M$, because they are holomorphic
 and unitary on $i\R$ and trivial on the unramified vectors, so that
 $\varphi_A$ is given by finitely many local terms. The scalar that
@@ -98,7 +98,7 @@ remains, $m$ in $M=m\cdot R$, contributes $\frac{m'}m\operatorname{tr}
 I(\pi,f)$, which is invariant; this is the term that survives on the
 spectral side.
 
-\paragraph{Results.} The main points of the section are these.
+\paragraph{Results.} The main points of the chapter are these.
 \begin{itemize}
 \item The weight in the variance formulas is $u'_B(k,y)=-H(ky)$
   (Lemma~\ref{lem:uprime}).
@@ -164,9 +164,9 @@ anti-genuine functions, which is stable under $f\mapsto f^y$ and to which
 the distributions $J_G(\gamma,\cdot)$, $J_A(\gamma,\cdot)$ and
 $\operatorname{tr}I(\pi,\cdot)$ extend by the same formulas.
 
-\subsection{Non-invariance}\label{sec:noninv}
+\section{Non-invariance}\label{sec:noninv}
 
-This subsection computes $J(f^y)-J(f)$ for each of the distributions in
+This section computes $J(f^y)-J(f)$ for each of the distributions in
 the trace formula. In every case the difference is a rank-$0$
 distribution on the cover of $A$, evaluated at the function $f_{B,y}$
 defined below. The geometric and the spectral differences are the two
@@ -408,7 +408,7 @@ formula for $J_\chi(f^y)$ in Lemma~\ref{lem:variance-global}. (The
 operator $M(w,0)$ commutes with $I(\mu_0,y)$ when $\mu^w=\mu$, so
 $f\mapsto\operatorname{tr}(M(w,0)I(\mu_0,f))$ is invariant.)
 
-\subsection{Normalized intertwining operators}\label{sec:normalized}
+\section{Normalized intertwining operators}\label{sec:normalized}
 
 The correction terms are built from the logarithmic derivative of the
 intertwining operator. The global operator $M(w,\lambda)$ is not a
@@ -685,7 +685,7 @@ $m(\mu,\lambda)=c\,q^{-\lambda}\Lambda(2\lambda,\chi^2)/\Lambda(2\lambda+1,
 \chi^2)$ with the completed Hecke $L$-function and constants $c$, $q>0$,
 as the Shimura correspondence suggests. The distributions $I_A(\gamma,f)$ and the function $m'/m$
 below depend on the choice of the $r_v$; the invariant trace formula
-holds for each choice, and this section does not use more. The question
+holds for each choice, and this chapter does not use more. The question
 is taken up again in Section~\ref{sec:hyperbolic-gl2}:
 Proposition~\normref{} there gives a canonical choice at every finite
 place, and by Szpruch's computation of the local
@@ -696,7 +696,7 @@ $m(\mu,\lambda)$ is a constant times $\Lambda(2\lambda,\chi^2)/
 \Lambda(2\lambda+1,\chi^2)$.
 \end{remarkrev}
 
-\subsection{The map \texorpdfstring{$\varphi_A$}{phi\_A} and the
+\section{The map \texorpdfstring{$\varphi_A$}{phi\_A} and the
 distributions \texorpdfstring{$I_A(\gamma,f)$}{I\_A(gamma,f)}}
 \label{sec:IAgamma}
 
@@ -880,9 +880,9 @@ a,f_v)>0$ at every $\tilde a$ in the cosets of $\{a(s)\mid s>0\}$ that
 meet the support of $F_{f_v}$, although $F_{f_v}$ is compactly supported.
 \end{example}
 
-\subsection{The invariant trace formula}\label{sec:itf}
+\section{The invariant trace formula}\label{sec:itf}
 
-This subsection assembles the invariant trace formula from the
+This section assembles the invariant trace formula from the
 distributions of Section~\ref{sec:IAgamma}.
 
 
@@ -1010,7 +1010,7 @@ coefficients $a^G(S,u_\xi)$ in~(a) are computed in
 Proposition~\ref{prop:unipotent}.) The normalizing factors $r_v$ at the
 places of $S_{\mathrm{bad}}(\mu)$, which always include the dyadic places,
 are those of Theorem~\ref{thm:normalization}, defined but not evaluated
-in this section (for their evaluation by means of~\cite{Sz09,Sz16} see
+in this chapter (for their evaluation by means of~\cite{Sz09,Sz16} see
 Proposition~\normref{}); the function $m'/m$ in~(e) and~(f) and the distributions $I_A$
 in~(a) and~(c) depend on them (Remark~\ref{rem:bad-places}). The elliptic
 terms~(b), the discrete terms~(d), the residual term and the ramified term
@@ -1234,15 +1234,15 @@ $j\ge1$, and their terms are $c_\Q\,I_A(a(t)_S,f_S)$. The archimedean part of th
 given by Example~\ref{ex:Phi-real}.
 \end{example}
 
-\subsection{Status of the results}\label{sec:status6}
+\section{Status of the results}\label{sec:status6}
 
-This subsection lists the statements of Section~\ref{sec:invariant}
+This section lists the statements of Chapter~\ref{sec:invariant}
 that rest on citation or on numerical checks.
 
 
 \begin{remarkrev}\label{rem:sec6-status}
 \emph{What rests on citation.} Proved here, given
-Sections~\ref{sec:rank0}--\ref{sec:spectral} and
+Chapters~\ref{sec:rank0}--\ref{sec:spectral} and
 Theorem~\ref{thm:normalization}: Lemmas~\ref{lem:uprime}--%
 \ref{lem:conj-identity}; Lemma~\ref{lem:explicit-r}(b), and~(a) except
 for rationality; Corollary~\ref{cor:global-m}; Proposition~\ref{prop:phiA};

@@ -1,6 +1,6 @@
 %% Direct comparison of SL(2) with its metaplectic cover -- David Joyner and Claude
 %% (formerly: Multiplicity one for SL(2))
-%% Draft 6 (2026) of the 1995 Scientific Word manuscript aabook.tex and its
+%% Draft 7 (2026) of the 1995 Scientific Word manuscript aabook.tex and its
 %% \input files, assembled into a single file.  See ../revision_log.md.
 \documentclass[12pt,letterpaper,openany]{book}
 \usepackage[american]{babel}
@@ -45,10 +45,10 @@ version of the first author's unpublished manuscript \emph{Multiplicity one for
 $SL(2)$}, written in Scientific Word (files \texttt{aabook.tex},
 \texttt{aabook1}--\texttt{aabook6}, \texttt{aabookrf.tex}, dated April 9,
 1995). The title was changed in Draft~5.
-This revision is Draft~6, November 2026.}
+This revision is Draft~7, November 2026.}
 \and Claude\\[0.5ex] \normalsize Anthropic}
 \title{Direct comparison of $SL(2)$ with its metaplectic cover\\[2ex]
-\large Draft 6\\[0.5ex] Corrected and expanded version}
+\large Draft 7\\[0.5ex] Corrected and expanded version}
 \date{Original draft: 1995. Corrected and expanded draft: 2026}
 \maketitle
 
@@ -83,7 +83,14 @@ discrete series to discrete series or limits of discrete series; these are
 of the squaring type. Tracing the proposed comparison through the trace
 formula, we find that it is consistent for the split torus, and fails for
 the terms that involve the root: the intertwining operators, the residual
-spectrum and the cuspidal spectrum. Multiplicity one for $SL(2)$ is a theorem of
+spectrum and the cuspidal spectrum. A last chapter reads the comparison
+through the trace formula of the cover, which a companion text writes
+out. The factor in the matching on the torus is the function that
+defines stable conjugacy on the cover, the direct comparison is the
+known correspondence with $PGL(2)$ with the tori identified in the wrong
+way, and on the elliptic set it fails at the elements close to $-1$,
+where the unit elements of the Hecke algebras have their stable and
+unstable orbital integrals interchanged. Multiplicity one for $SL(2)$ is a theorem of
 Ramakrishnan. Statements that have not been fully verified are marked as
 ``Remark 2026.$n$''.
 \end{abstract}
@@ -174,7 +181,11 @@ discussed in Remark~\ref{rem:even}. \S\ref{sec:where-fails} traces the
 proposed comparison through the trace formula and shows which terms match
 and which do not: the direct comparison is globally consistent on the
 torus, and fails for the intertwining operators, the residual spectrum and
-the cuspidal spectrum.
+the cuspidal spectrum. Chapter~\ref{ch:cover} takes both points further,
+using the trace formula of the cover as written out in the companion
+text \cite{JC}. It gives the direct comparison a meaning in terms of
+stable conjugacy, and it shows that the comparison fails on the elliptic
+terms of the geometric side as well.
 
 \begin{example}
 The cusp form $\Delta$ of weight $12$ corresponds, under Shimura's
@@ -242,6 +253,17 @@ element of the cover over $r(2\theta)$. We call matchings of this kind
 \emph{even}.
 \end{itemize}
 No matching is established at the dyadic places.
+
+\emph{A reading through the trace formula of the cover}
+(Chapter~\ref{ch:cover}). The factor in the odd matching is the function
+$\Delta_\psi$ that defines stable conjugacy on the cover
+(Lemma~\ref{lem:Delta}). On the split torus the direct comparison is the
+lifting of characters between the cover and $PGL(2)$, with the tori of
+$PGL(2)$ and $SL(2)$ identified by a map that is not a homomorphism of
+groups (Proposition~\ref{prop:wrong-orbit}). On the elliptic set the unit
+elements of the Hecke algebras do not match
+(Proposition~\ref{prop:unit-swap}, Corollary~\ref{cor:no-fl}). Most of
+these statements are proved in \cite{JC}.
 
 \emph{A conditional statement} (Proposition~\ref{thm:main}).
 Fix a cuspidal automorphic representation $\pi=\otimes_v\pi_v$ of
@@ -398,6 +420,15 @@ $SO(3)\cong PGL(2)$. This agrees with Waldspurger's description and with
 Theorem~\ref{thm:nonexist}: the linear group naturally paired with the
 cover of $SL(2)$ is $PGL(2)$, not $SL(2)$.
 
+The companion text \cite{JC} is the 2026 revision of the first author's
+notes of 1995 on the trace formula of the cover of $SL(2)$. It writes
+out Arthur's trace formula for the 2-fold cover, in non-invariant and
+invariant form, with the constants determined, and computes the action
+of $GL(2)$ on the cover and on each term. It proves several statements
+that the present text quotes (\S\ref{sec:cover-supplies}), and its last
+chapter treats the direct comparison of the present text.
+Chapter~\ref{ch:cover} is based on it.
+
 \section{Conventions on the status of statements}
 
 This section explains how the status of each statement is shown. Every
@@ -463,6 +494,11 @@ their formal consequence (Proposition~\ref{thm:main}), the main
 theorem (Theorem~\ref{thm:nonexist}), and an account of which terms of the
 trace formulas match under the direct comparison
 (\S\ref{sec:where-fails}).
+
+Chapter~\ref{ch:cover} reads the comparison through the trace formula of
+the cover of \cite{JC}: stable conjugacy, the elliptic terms, and a table
+of the terms that match and the terms that do not. It is not used in the
+earlier chapters.
 
 Appendix~\ref{ch:sc} discusses a proposed correspondence between
 supercuspidal representations for $p>2$. Its main statement is false when
@@ -543,6 +579,110 @@ $t$, $t'$ & unramified parameters on $SL(2,F)$ and on the cover
 \hline
 \end{tabular}
 \end{center}
+
+
+\section{A running example}\label{sec:running}
+
+This section collects one example that is followed through the text:
+the field ${\mathbb Q}$, the set of places $S=\{\infty,2\}$, and the cusp
+form $\Delta$. It is the smallest case in which every feature of the
+comparison appears. The same field and the same $S$ are the running
+example of the companion text \cite[\S1.3]{JC}, where they are followed
+through the trace formula of the cover. The items below are in the order
+of the chapters.
+
+\begin{itemize}
+\item \emph{The data.} $k={\mathbb Q}$ and $S=\{\infty,2\}$. The additive
+character $\psi$ of ${\mathbb Q}\backslash{\mathbb A}$ has
+$\psi_\infty(x)=e^{-2\pi ix}$ and $\psi_p(x)=e^{2\pi i\{x\}_p}$, where
+$\{x\}_p$ is the $p$-adic fractional part. The representation $\pi$ of
+$SL(2,{\mathbb A})$ is a cuspidal constituent of the restriction of the
+representation of $GL(2,{\mathbb A})$ generated by $\Delta$, the cusp
+form of weight $12$ and level one, with
+$\tau(p)=p^{11/2}(\alpha_p+\alpha_p^{-1})$. Its exceptional set
+(Definition~\ref{def:exceptional}) is $S(\pi)=\{\infty,2\}$, provided
+that $\tau(p)\neq0$ for every odd prime $p$. Test functions are
+\[
+f=f_\infty\otimes f_2\otimes\bigotimes_{p\ \mathrm{odd}}1_{K_p},\qquad
+\overline f=\overline f_\infty\otimes\overline f_2\otimes
+\bigotimes_{p\ \mathrm{odd}}e_{K_p},
+\]
+with $1_{K_p}$ and $e_{K_p}$ the unit elements of the two spherical Hecke
+algebras.
+
+\item \emph{The cover} (Chapter~\ref{ch:background}). At the real place,
+$(-1,-1)_2=-1$, so $(-I,1)^2=(I,-1)$: the center of
+$\overline{SL(2,{\mathbb R})}$ is cyclic of order $4$, and the cover does
+not split over $SO(2)$ (Lemma~\ref{lem:facts}(d),~(e)). The same holds
+for the center at the place $2$ (the example at the end of
+\S\ref{sec:dyadic}). At an odd prime $p$ the cover splits over
+$K_{0,p}=SL(2,{\mathbb Z}_p)$ by $\kappa_p(k)=(k,s_p(k))$, and the
+splitting is not $k\mapsto(k,1)$. For
+$\gamma=\left(\begin{smallmatrix}a&b\\c&d\end{smallmatrix}\right)\in
+SL(2,{\mathbb Z})$ with $cd\neq0$, formula (\ref{eq:sv}) gives
+$\prod_{p\ \mathrm{odd}}s_p(\gamma)=\left(\frac d{c'}\right)$, the Jacobi
+symbol, where $c'$ is the odd part of $|c|$. This is the symbol in the
+multiplier of the theta function $\theta(z)=\sum_ne^{2\pi in^2z}$.
+
+\item \emph{Representations} (Chapter~\ref{ch:reps}). At an odd prime
+$p$, $\pi_p$ is the spherical constituent of $I_A(\chi)$ with
+$\chi(a(p))=t_p=\alpha_p^2$. At the real place $\pi_\infty$ is one of the
+two discrete series $\pi_{\pm11}$ into which the discrete series of
+weight $12$ of $GL(2,{\mathbb R})$ decomposes.
+
+\item \emph{The torus} (\S\ref{sec:charsA}, \S\ref{sec:realA}). At $p=3$,
+$(3,3)_2=-1$, so a genuine character of $\overline{A({\mathbb Q}_3)}$
+takes a value $\pm i\vartheta$ at $(a(3),1)$ where the corresponding
+character of $A({\mathbb Q}_3)$ takes the value $\vartheta$. At $p=5$,
+$(5,5)_2=1$ and the values agree up to sign. At the real place the
+factor in the matching of functions is $-i$ for $x<0$
+(Lemma~\ref{lem:realA-match}). These constants are the values of Weil's
+character $\chi_\psi$ for the character $\psi$ above, up to the choices
+discussed in Example~\ref{ex:eta-psi}.
+
+\item \emph{The odd places} (\S\ref{sec:spherical}). The unit elements
+$1_{K_p}$ and $e_{K_p}$ correspond under the Satake correspondence, and
+a genuine unramified representation with parameter $t'$ corresponds to
+the representation of $SL(2,{\mathbb Q}_p)$ with $t=\pm t'$
+(Lemma~\ref{lem:square}). So a direct partner of $\pi$ would have
+$t'_p=\pm\alpha_p^2$.
+
+\item \emph{The real place} (\S\ref{sec:realds}). The even elliptic
+matching transfers the genuine discrete series
+$\overline\pi{}^{\pm}_{13/2}$ to $\pi_{\pm11}$, by
+Lemma~\ref{lem:realds}(a) with $k=13$. This is weight $13/2$ going to
+weight $12$, the archimedean form of the Shimura correspondence.
+
+\item \emph{The place $2$} (\S\ref{sec:dyadic}). No matching is
+established. Everything that the comparison would need at $2$ is a
+hypothesis.
+
+\item \emph{The global statements} (Chapter~\ref{ch:global}). For this
+$\pi$, Hypothesis~\ref{hyp:GH} is an identity of traces for all pairs
+$(f,\overline f)$ as above with $(f_\infty,\overline f_\infty)$ and
+$(f_2,\overline f_2)$ in prescribed classes, and Hypothesis~\ref{hyp:LH}
+is a condition on those two classes. Proposition~\ref{thm:main} would
+then give $m(\pi)=1$ and a genuine cuspidal partner with parameters
+$t'_p=\pm\alpha_p^2$. Theorem~\ref{thm:nonexist} says that there is no
+such genuine cusp form. The partner that does exist is the form of
+weight $13/2$ attached to $\Delta$ by Shimura, with $t'_p=\pm\alpha_p$
+and $t_p=t_p'^{\,2}$.
+
+\item \emph{The trace formulas} (\S\ref{sec:where-fails},
+Chapter~\ref{ch:cover}). The scalar of the intertwining operator is
+$\xi(s)/\xi(1+s)$ for $SL(2)$, with a pole at $s=1$ that gives the
+constants, and $\xi(2s)/\xi(1+2s)$ for the cover, with a pole at
+$s=1/2$ that gives $\theta$. Four theta representations are unramified
+outside $S$, those of the square classes of $\pm1$ and $\pm2$, and
+$GL(2,{\mathbb Q})$ permutes them (\S\ref{sec:cover-spectral}). The
+hyperbolic classes that contribute are those of $a(\pm2^j)$, $j\geq1$,
+and their orbital integrals agree under the direct comparison. The
+elliptic element
+$\gamma=\left(\begin{smallmatrix}2&-1\\3&-1\end{smallmatrix}\right)$ of
+order $6$ has $2+\tr\gamma=3$, and its term in the trace formula of the
+cover is $-i$ times its term in the trace formula of $SL(2)$
+(Example~\ref{ex:epsilon}).
+\end{itemize}
 
 %% ===== begin aabook1.tex =====
 \chapter{Background on covers of \texorpdfstring{$SL(2)$}{SL(2)}}\label{ch:background}
@@ -2047,7 +2187,13 @@ the term for $G$. Summing over ${\cal T}_{ell}$ gives the result.
 The character relation (\ref{eq:ell-char-rel}) for supercuspidal
 representations is Remark~\ref{prop:164}, which needs correction
 (Remark~\ref{rem:sc-caveat}). Lemma~\ref{lem:ell-odd} is therefore
-stated with (\ref{eq:ell-char-rel}) as a hypothesis.
+stated with (\ref{eq:ell-char-rel}) as a hypothesis. The condition
+$\Phi_f(t)=\Phi_{\overline f}(t,1)$ and the relation
+(\ref{eq:ell-char-rel}) both use the section $t\mapsto(t,1)$, which is
+not compatible with conjugation. \S\ref{sec:cover-factor} gives a form of
+both that is, with the function $\Delta_\psi$ in place of the section
+(Definition~\ref{def:direct}), and \S\ref{sec:cover-elliptic} shows what
+happens to it on the elliptic set.
 
 \subsection{Corresponding spherical functions, \texorpdfstring{$p> 2$}{p> 2}}\label{sec:spherical}
 
@@ -2763,7 +2909,11 @@ the distribution character requires an argument beyond the formal
 calculation. We then discuss possible consequences for local matching
 of representations. Only formula (iii) of \S\ref{sec:weil-rep} (in
 Lemma~\ref{lem:A00}) and the lemmas on non-tempered representations (in
-Remark~\ref{rem:LH-families}) are used later.
+Remark~\ref{rem:LH-families}) are used later. The kernel of the Weil
+representation and the character of $r_+-r_-$ on the regular set are
+computed, for Kubota's cocycle and with a proof that the diagonal
+integral is the character, in the companion text \cite{JC}; see item~6
+of \S\ref{sec:cover-supplies}.
 
 Here $F$ may be either p-adic or real. If $F$ is p-adic we shall
 sometimes impose the assumption that $p\not= 2$.
@@ -4300,7 +4450,8 @@ formulas and locates the terms that match and the terms that do not. It
 explains Corollary~\ref{cor:inconsistent} rather than proving anything
 new. The statements about intertwining operators and about the residual
 spectrum of the cover are quoted from memory
-(Remark~\ref{rem26:where-fails}).
+(Remark~\ref{rem26:where-fails}). Proofs of them are in the companion
+text \cite{JC}, as \S\ref{sec:cover-supplies} explains.
 
 \subsection*{The proposed argument}
 
@@ -4456,8 +4607,10 @@ root. The parts of the trace formula that see only the torus match: the
 hyperbolic orbital integrals, the traces of principal series, and the
 continuous spectrum as a set. The parts that see the root do not: the
 intertwining operators, the residual spectrum, and the cuspidal spectrum.
-We expect the same for the elliptic and unipotent terms of the geometric
-side, but have not examined them. At the real place the discrete series
+The elliptic terms of the geometric side are examined in
+\S\ref{sec:cover-elliptic}. They fail as well, at the elliptic elements
+close to $-1$. The unipotent terms and the weighted orbital integrals
+have not been examined. At the real place the discrete series
 are attached to the compact torus, where the root cannot be avoided, and
 the matchings that transfer them (Lemma~\ref{lem:realds}) are forced to
 double the parameter.
@@ -4471,7 +4624,11 @@ against the sources. The claim that the hyperbolic matching with
 $\chi_{\psi_v}^{-1}$ agrees with Definition~\ref{def:corrA} for a suitable
 $\eta_\varpi$ follows from Lemma~\ref{lem:square} and its proof, but the
 normalizations of $\chi_{\psi_v}$ have not been compared with those of
-\S\ref{sec:weil}.
+\S\ref{sec:weil}. The first three statements are proved in \cite{JC}
+(\S\ref{sec:cover-supplies}), which has not been refereed by a
+specialist. For $F={\mathbb Q}_3$ and the real field the comparison with
+Definition~\ref{def:corrA} and Lemma~\ref{lem:realA-match} is carried out
+in Example~\ref{ex:eta-psi}.
 \end{remyy}
 
 \begin{example}
@@ -4634,7 +4791,24 @@ Lemma~\ref{lem:ell-odd}, given a character relation on every anisotropic
 Cartan subgroup, and the three real elliptic matchings
 (Lemma~\ref{lem:realds}), with their consequence for non-tempered
 representations.
+\item Proposition~\ref{prop:wrong-orbit}: on the split torus the direct
+comparison is the lifting of characters between the cover and $PGL(2)$,
+with the tori of $PGL(2)$ and $SL(2)$ identified by
+$\mathrm{diag}(s,1)\mapsto a(s)$.
 \end{enumerate}
+
+\emph{Quoted from the companion text \cite{JC}}
+(Chapter~\ref{ch:cover}). The factor of the odd matching is the function
+$\Delta_\psi$ that defines stable conjugacy on the cover
+(Lemma~\ref{lem:Delta}), and it satisfies a product formula on rational
+elements. At the elliptic elements $\gamma$ of $K_0$ with $2+\tr\gamma$
+of odd valuation, the unit elements of the two Hecke algebras have their
+stable and $\kappa$-orbital integrals interchanged
+(Proposition~\ref{prop:unit-swap}). So the direct comparison has no
+fundamental lemma on the elliptic set (Corollary~\ref{cor:no-fl}). The
+orbits of $GL(2,k)$ on the continuous and residual spectrum of the cover
+are the fibers of the squaring correspondence
+(\S\ref{sec:cover-spectral}).
 
 \emph{Assumed or unverified.} The character formula of
 \S\ref{sec:weil} rests on a Conjecture. The statements labeled
@@ -4650,14 +4824,32 @@ say about multiplicities (Remark~\ref{rem:even})?
 \item Do the odd matchings of \S\ref{sec:charsA}--\S\ref{sec:spherical}
 have a representation-theoretic meaning beyond the identity of
 Proposition~\ref{prop:hyp-ps}? They do not preserve unitarity or
-reducibility (Remark~\ref{rem:choices}).
+reducibility (Remark~\ref{rem:choices}). A partial answer is in
+\S\ref{sec:cover-factor}: on characters they are multiplication by the
+stable character of the Weil representation. Which representations,
+other than principal series, satisfy the relation
+\eqref{eq:direct-char} is not known.
 \item Is there a character relation for supercuspidal representations of
 the kind proposed in Appendix~\ref{ch:sc} when $q\equiv1\pmod4$
-(Remark~\ref{rem:sc-caveat})?
+(Remark~\ref{rem:sc-caveat})? By \S\ref{sec:cover-factor} the question
+should be asked with a factor that is invariant under conjugation, such
+as $\Delta_\psi$, and for every $q$. By
+Proposition~\ref{prop:unit-swap} the unit elements do not match with the
+factor $\Delta_\psi$ at the elements close to $-1$, so the factor on the
+elliptic set, if there is one, is not $\Delta_\psi$ alone.
 \item Establish matchings at the dyadic places, perhaps by way of the
 Iwahori-level results of \cite{GS12}, \cite{TW}.
 \item Check the labels of Remark~\ref{rem26:ds-labels} and the
 normalizations of Remarks~\ref{rem26:A00-norm} and~\ref{rem26:nonexist}.
+\item Is there a matching on the elliptic set that exchanges stable and
+$\kappa$-orbital integrals, with factor $\Delta_\psi$ times a factor
+that changes sign between the two classes in a stable class, as
+Proposition~\ref{prop:unit-swap} and Example~\ref{ex:epsilon} suggest?
+It would pair the unstable part of the trace formula of $SL(2)$, which
+\cite{LL} attach to the tori, with the stable part of the trace formula
+of the cover.
+\item Compare the weighted orbital integrals and the unipotent terms of
+the two trace formulas (\S\ref{sec:cover-table}).
 \end{enumerate}
 
 \begin{example}
@@ -4670,6 +4862,779 @@ by the even elliptic matching at the real place.
 %% ===== end aabook6.tex =====
 
 
+
+%% ===== begin Chapter 6 (new in Draft 7) =====
+\chapter{The comparison seen from the trace formula of the cover}\label{ch:cover}
+\chaptermark{The trace formula of the cover}
+
+Chapter~\ref{ch:global} shows that the direct comparison is not a
+correspondence of automorphic representations, and \S\ref{sec:where-fails}
+locates the failure in the terms of the trace formula that involve the
+root. That section works with a sketch of the trace formula of the cover
+(Appendix~\ref{ch:tf}), quotes several facts from memory, and leaves the
+elliptic terms unexamined. A companion text \cite{JC} now writes out the
+trace formula of the cover in full, in its invariant form, and begins its
+stabilization. This chapter reads the direct comparison through that
+text. It has three aims.
+\begin{itemize}
+\item To say which statements of this text are proved in \cite{JC}
+(\S\ref{sec:cover-supplies}).
+\item To explain the direct comparison in the language of stable
+conjugacy. The factor in the odd matching turns out to be the function
+that defines stable conjugacy on the cover (\S\ref{sec:cover-factor}),
+and the direct comparison turns out to be the known correspondence with
+$PGL(2)$ in which the tori have been identified in the wrong way
+(\S\ref{sec:cover-orbit}). This is a second explanation of the square,
+on the geometric side, to set beside the one on the dual side in
+\S\ref{sec:where-fails}.
+\item To settle what happens on the elliptic set. The direct comparison
+fails there as well. It fails at the elliptic elements close to $-1$,
+where the unit elements of the two Hecke algebras have their stable and
+unstable orbital integrals interchanged (\S\ref{sec:cover-elliptic}).
+\end{itemize}
+\S\ref{sec:cover-spectral} returns to the spectral side, and
+\S\ref{sec:cover-table} collects the result in a table. The proofs are in
+\cite[Chapter~8]{JC}. We repeat the short ones and explain the others.
+Nothing in this chapter is used in Chapters~\ref{ch:local}
+and~\ref{ch:global}. The status of the statements is in
+Remark~\ref{rem26:cover-status}.
+
+\paragraph{Notation.} The two texts use the same cocycle $\beta$, so
+elements $(g,\zeta)$ of the local cover mean the same in both. The text
+\cite{JC} writes $\phi$ and $f$ where we write $f$ and $\overline f$, and
+it writes $\mu=\chi_\psi\cdot(\chi\circ p)$ where we write
+$\overline\chi=\chi_\psi\mu$. We keep the notation of this text. For a
+regular semisimple $\gamma\in G(F)$ and $x\in\overline{G(F)}$ over
+$\gamma$ put
+\[
+J_f(\gamma)=|D(\gamma)|^{1/2}O_f(\gamma),\qquad
+J_{\overline f}(x)=|D(\gamma)|^{1/2}O_{\overline f}(x),\qquad
+D(\gamma)=(\tr\gamma)^2-4 .
+\]
+On the split torus these are $F_f$ and $F_{\overline f}$. We write
+$\delta_a=\left(\begin{smallmatrix}a&0\\0&1\end{smallmatrix}\right)$ and
+\[
+D^+(\gamma)=\det(1+\gamma)=2+\tr\gamma .
+\]
+
+In this chapter $\chi_\psi(x)=\gamma_\psi(x)/\gamma_\psi(1)$, where
+$\gamma_\psi(a)$ is the Weil index of the character $x\mapsto\psi(ax^2)$
+of $F$, as in \cite[Lemma~3.3]{JC}. It has the properties used in
+\S\ref{sec:nonexist}: it depends only on the class of $x$ modulo squares,
+$\chi_\psi(xy)=(x,y)_2\chi_\psi(x)\chi_\psi(y)$, and $\chi_\psi=1$ on
+${\cal O}^\times$ when $p$ is odd and $\psi$ has conductor ${\cal O}$. By
+\cite[Lemma~5.7]{JC} the function $\omega$ in formula (iii) of
+\S\ref{sec:weil-rep} is $\chi_{\psi^{-1}}$ in this normalization, for the
+Weil representation in which $n(b)$ acts by $\psi(bx^2)$. Replacing $\psi$
+by $\psi^{-1}$ multiplies $\chi_\psi$ by the quadratic character
+$(-1,\cdot)_2$. This does not affect any absolute value, and it is the
+normalization that Remarks~\ref{rem26:A00-norm} and~\ref{rem26:nonexist}
+ask to have checked.
+
+\section{What the companion text supplies}\label{sec:cover-supplies}
+
+This section lists the statements of the present text that are proved in
+\cite{JC}.
+
+The text \cite{JC} is a corrected and expanded version of notes from
+1995 that came from Chapter~9 of \cite{J2}. It treats the 2-fold cover of
+$SL(2)$ over a number field. It proves the trace formula in its
+non-invariant form (coarse and fine geometric expansions, spectral side),
+then in its invariant form, and then determines how $GL(2)$ acts on the
+cover and on each term. It is the worked-out form of what
+Appendix~\ref{ch:tf} sketches, and the terms (a)--(e) of that appendix
+are Theorems~5.16 and~6.11 of \cite{JC}.
+
+\begin{enumerate}
+\item \emph{Weil's product formula, and the automorphic character
+$\chi_\psi$ of the cover of the torus} (used in \S\ref{sec:where-fails}):
+\cite[Lemma~3.3]{JC}. Weil's theorem itself is quoted there from
+\cite{We3}.
+\item \emph{The torus is globally consistent} (\S\ref{sec:where-fails}):
+\cite[Theorem~3.4 and Lemma~3.5]{JC}. The trace formula of the cover of a
+torus is Poisson summation, and multiplying by $\chi_\psi$ identifies it
+with Poisson summation on the torus. This is the same argument as in
+\S\ref{sec:where-fails}.
+\item \emph{The scalar of the intertwining operator},
+$\overline c(s,\mu)=L(2s,\mu^2)/L(1+2s,\mu^2)$:
+\cite[Lemma~5.6]{JC}. The unramified computation is done in the cover,
+with Kubota's cocycle.
+\item \emph{The residual spectrum of the cover is the sum of the even
+theta representations, one for each square class}:
+\cite[Theorem~5.8]{JC}. That the residues exist, are square integrable
+and are indexed by the square classes is proved there. Their
+irreducibility is quoted from \cite{Ge2}, \cite{GePS}, \cite{Wa1}.
+\item \emph{The Jacquet module of the even Weil representation}
+(fact~(ii) in the proof of Lemma~\ref{lem:A00}): \cite[Lemma~5.7]{JC}
+proves, from the cocycle, that the torus acts in the Weil representation
+by $\zeta\,\chi_{\psi^{-1}}(a)|a|^{1/2}\phi(ax)$, so that $r^+$ maps into
+the principal series with exponent $-\frac12$.
+\item \emph{The kernel and the character of the Weil representation}
+(\S\ref{sec:weil}, where the character is obtained by a formal
+computation and stated as a conjecture). The kernel, with its constant,
+is \cite[Lemma~7.4]{JC}. The constant is checked there by composing two
+kernels and recovering $\beta$. The character of $r_+-r_-$ on the
+regular set is \cite[Proposition~7.5]{JC}:
+\[
+\Theta_+(g,\zeta)-\Theta_-(g,\zeta)=\zeta\,(c,D^+(g))_2\,\chi_\psi(D^+(g))\,
+|D^+(g)|^{-1/2}\qquad(c\neq0).
+\]
+The character of $r_++r_-$ is the same formula with $D^-(g)=\tr g-2$ in
+place of $D^+(g)$, \cite[(7.7)]{JC}. The trick of \S\ref{sec:weil-rep},
+which passes from one to the other by translating by $-I$, is the
+operation $\overline f\mapsto\overline f_-$ of
+\S\ref{sec:cover-elliptic}. The proof in \cite{JC} that the formal
+diagonal integral is the character uses the regularity theorem for the
+characters of the Weil representation, which is quoted there.
+\end{enumerate}
+
+In each case the statement in the present text keeps the status it has
+here. The list says where a proof can be found. It does not replace the
+checks asked for in Remarks~\ref{rem26:A00-norm},
+\ref{rem26:nonexist} and~\ref{rem26:where-fails}, because \cite{JC} has
+not been refereed by a specialist either, and because the normalizations
+of the two texts were compared only as far as stated in the paragraph on
+notation above.
+
+\begin{example}
+Let $k={\mathbb Q}$. The example at the end of \S\ref{sec:where-fails}
+uses $\xi(2s)/\xi(1+2s)$ and its pole at $s=1/2$. In \cite[Example~5.B]{JC}
+the same function appears with the Euler factor at $2$ removed,
+$(1-2^{-2s})\zeta(2s)/((1-2^{-1-2s})\zeta(2s+1))$, and its residue at
+$s=1/2$ is computed to be $2/\pi^2$. The residual representation is
+identified there with the even Weil representation that contains
+$\theta(z)=\sum_ne^{2\pi in^2z}$.
+\end{example}
+
+\section{The factor in the odd matching}\label{sec:cover-factor}
+
+This section identifies the factor in the odd matching on the split
+torus with a function that is defined on all regular elements of the
+cover, and explains what that function is for.
+
+\subsection*{Stable conjugacy on the cover}
+
+Two semisimple elements of $SL(2,F)$ are \emph{stably conjugate} if they
+are conjugate under $GL(2,F)$. A stable conjugacy class of regular
+elliptic elements is the union of two conjugacy classes, those of
+$\gamma$ and of $\delta_a\gamma\delta_a^{-1}$, where $a$ is not a norm
+from $E=F[\gamma]$. Labesse and Langlands \cite{LL} organize the trace
+formula of $SL(2)$ by stable classes. The sum of the orbital integrals
+over the two classes is the \emph{stable} orbital integral, and their
+difference is the \emph{$\kappa$-orbital integral}.
+
+The group $GL(2,F)$ also acts on the cover, by automorphisms
+$\mathrm{Ad}(h)$ that lift conjugation by $h$ (through the cover of
+$GL_2(F)$ of \S\ref{sec:local}). One might define stable conjugacy on the
+cover in the same way. This does not work. For example
+\[
+\mathrm{Ad}(\delta_a)(a(t),\zeta)=(a(t),(a,t)_2\,\zeta),
+\]
+so when $t$ is not a square, $\mathrm{Ad}(\delta_a)$ carries a lift of
+$a(t)$ to the \emph{other} lift, for suitable $a$. A genuine function
+takes opposite values on the two lifts, so no genuine function other
+than $0$ could be constant on such classes. In general, if $h\in GL(2,F)$
+commutes with $\gamma$, then $\mathrm{Ad}(h)$ multiplies the lifts of
+$\gamma$ by the sign $(\det h,D^+(\gamma))_2$ \cite[Lemma~7.2]{JC}. The
+remedy, due to Adams \cite{Ad2} and Li, is to twist: put
+\[
+h\star x=(\det h,D^+(p(x)))_2\cdot\mathrm{Ad}(h)x .
+\]
+This is an action of $GL(2,F)$ on the elements of the cover with
+$\tr p(x)\neq-2$. Its orbits are the \emph{stable conjugacy classes} of
+the cover. They map bijectively to the stable classes of $SL(2,F)$, and
+they never contain both lifts of an element.
+
+\begin{lemma}[{\cite[Lemma~7.3]{JC}}]\label{lem:Delta}
+There is exactly one function $\Delta_\psi$ on the regular set of
+$\overline{G(F)}$, with values in the fourth roots of unity, that is
+invariant under conjugation by $\overline{G(F)}$ and is given by
+\[
+\Delta_\psi(g,\zeta)=\zeta\,(c,D^+(g))_2\;\chi_\psi(D^+(g))
+\]
+when the lower left entry $c$ of $g$ is not $0$. It is genuine, it is
+invariant under the action $\star$ of $GL(2,F)$, and on the split torus
+\[
+\Delta_\psi(a(x),\zeta)=\zeta\,\chi_\psi(x)^{-1}.
+\]
+Two regular elements of the cover are stably conjugate if and only if
+their images in $SL(2,F)$ are stably conjugate and $\Delta_\psi$ takes
+the same value on them. Up to the positive factor $|D^+|^{1/2}$,
+$\Delta_\psi$ is the character of $r_+-r_-$.
+\end{lemma}
+
+So $\Delta_\psi$ is the function that tells the two lifts of an element
+apart in a way that is compatible with stable conjugacy. In the theory of
+Adams and Li it is the transfer factor between the cover and $SO(3)$.
+
+\subsection*{The odd matching}
+
+In \S\ref{sec:where-fails} the globally consistent form of the odd
+matching on the torus is
+$\overline\phi(a(x),1)=\chi_\psi(x)^{-1}\phi(a(x))$. By
+Lemma~\ref{lem:Delta} this is
+\begin{equation}\label{eq:odd-Delta}
+\overline\phi(\tilde a)=\Delta_\psi(\tilde a)\,\phi(a)\qquad
+\text{for }\tilde a\in\overline{A(F)}\text{ over }a .
+\end{equation}
+The factor of the odd matching is the transfer factor of Adams and Li,
+restricted to the split torus. This has two consequences.
+
+First, it explains the choices. Definition~\ref{def:corrA} contains a
+constant $\eta_\varpi$ with $\eta_\varpi^2=(\varpi,\varpi)_2$, and
+Lemma~\ref{lem:realA-match} contains the factor $-i$. By
+Remark~\ref{rem:choices} there are exactly two bijections
+$\chi\mapsto\overline\chi$, and neither is preferred. In
+\eqref{eq:odd-Delta} the choice is the choice of the additive character
+$\psi$. Replacing $\psi$ by $\psi_a(x)=\psi(ax)$ multiplies
+$\Delta_\psi(x)$ by $(a,D^+(p(x)))_2$ \cite[Lemma~7.3(d)]{JC}. For $a$ a
+unit that is not a square this exchanges the two bijections. The choices
+at different places are not independent: globally one needs one
+character $\psi$ of $k\backslash{\mathbb A}$.
+
+Second, it shows how to extend the odd matching beyond the torus. The
+section $\gamma\mapsto(\gamma,1)$ is not compatible with conjugation, so
+a condition such as $\Phi_f(t)=\Phi_{\overline f}(t,1)$ in
+Definition~\ref{def:ell-corr}(a), or a character relation such as
+\eqref{eq:ell-char-rel}, depends on the coordinates. This is the
+reason for the failure recorded in Remark~\ref{rem:sc-caveat}: for
+$q\equiv3\pmod4$ the relation is not invariant under conjugation. The
+invariant form of the same idea is the following.
+
+\begin{definition}\label{def:direct}
+Functions $f\in C_c^\infty(G(F))$ and
+$\overline f\in C_c^\infty(\overline{G(F)})_{gen}$ \textbf{match directly}
+on a set $U$ of regular elements of $G(F)$, invariant under conjugation,
+if
+\[
+J_{\overline f}(x)=\Delta_\psi(x)\,J_f(p(x))\qquad\text{for all }x\text{ with }
+p(x)\in U .
+\]
+\end{definition}
+
+On the hyperbolic set this is the odd matching, by \eqref{eq:odd-Delta}.
+The corresponding relation between characters is
+\begin{equation}\label{eq:direct-char}
+\Theta_{\overline\pi}(x)=\overline{\Delta_\psi(x)}\,\Theta_\pi(p(x)),
+\end{equation}
+because then $\Theta_{\overline\pi}(x)J_{\overline f}(x)=\Theta_\pi(p(x))
+J_f(p(x))$ and the Weyl integration formulas of \S\ref{sec:elliptic}
+give $\tr\overline\pi(\overline f)=\tr\pi(f)$. For principal series
+\eqref{eq:direct-char} holds, with $\overline\chi=\chi_\psi\mu$ and
+$\chi=\mu$, and it gives Proposition~\ref{prop:hyp-ps}. By the last
+statement of Lemma~\ref{lem:Delta}, the relation \eqref{eq:direct-char}
+says: \emph{the character of $\overline\pi$ is the character of $\pi$
+times the character of $r_+-r_-$ for $\psi^{-1}$, times
+$|\det(1+\gamma)|^{1/2}$.} This is a partial answer to the second open
+question of \S\ref{sec:summary}. The odd matchings do have a meaning for
+representations: they multiply characters by the stable character of the
+Weil representation.
+
+The factor $\Delta_\psi$ is $1$ at $(\gamma,1)$ in the cases where the
+relation \eqref{eq:ell-char-rel} looks right. For $F={\mathbb R}$ this
+holds for the rotations $r(\theta)$, $0<\theta<\pi$, in the
+normalization of \cite[Example~7.B]{JC}. For $p$ odd it holds for
+$\gamma\in K_0$ with $c$ and $D^+(\gamma)$ units. It is not $1$ at the
+element $h$ of Remark~\ref{rem:sc-caveat}. That element has
+$\tr h=-2+\varpi e$, so $D^+(h)=\varpi e$ has valuation $1$, and
+$\Delta_\psi(h,\zeta)^2=(\varpi,-1)_2=(-1)^{(q-1)/2}$. For $q\equiv3
+\pmod4$ the value is $\pm i$. We return to these elements in
+\S\ref{sec:cover-elliptic}.
+
+\begin{example}\label{ex:eta-psi}
+Let $k={\mathbb Q}$ and let $\psi$ be the character of
+${\mathbb Q}\backslash{\mathbb A}$ with $\psi_\infty(x)=e^{-2\pi ix}$ and
+$\psi_p(x)=e^{2\pi i\{x\}_p}$. By \cite[Example~3.B]{JC},
+$\chi_{\psi_\infty}(x)$ is $1$ for $x>0$ and $i$ for $x<0$, and for $p$
+odd $\chi_{\psi_p}(u)=1$ and
+$\chi_{\psi_p}(pu)=\left(\frac up\right)\epsilon_p$ for a unit $u$, with
+$\epsilon_p=1$ if $p\equiv1\pmod4$ and $\epsilon_p=i$ if
+$p\equiv3\pmod4$.
+
+At the real place \eqref{eq:odd-Delta} gives the factor $1$ for $x>0$ and
+$-i$ for $x<0$. This is Lemma~\ref{lem:realA-match}. So the real matching
+of \S\ref{sec:realA} belongs to $\psi_\infty(x)=e^{-2\pi ix}$.
+
+At $p=3$, with $\varpi=3$, \eqref{eq:odd-Delta} gives the factor $1$ on
+$A_2(F)$ and $\chi_{\psi_3}(3u)^{-1}=-i\left(\frac u3\right)$ at
+$a(3u)$. Definition~\ref{def:corrA} gives
+$\eta_3^{-1}(3u,3)_2=-\eta_3^{-1}\left(\frac u3\right)$, because
+$(3,3)_2=-1$. They agree for $\eta_3=-i$. The choice $\eta_3=i$ in the example after
+Remark~\ref{rem:choices} belongs to the additive character
+$\psi_3^{-1}$. At $p=5$ the same computation gives $\eta_5=1$ for
+$\psi_5$, and $\eta_5=-1$ for $x\mapsto\psi_5(ux)$ with $u$ a unit that
+is not a square.
+
+So for this $\psi$ the constants are $-i$ at the real place, $-i$ at
+$3$ and $1$ at $5$. They are linked. Another character of
+${\mathbb Q}\backslash{\mathbb A}$ is $x\mapsto\psi(bx)$ with
+$b\in{\mathbb Q}^\times$, and it changes the local factors by the Hilbert
+symbols $(b,\cdot)_{2,v}$ at all places at once. Their product is $1$ on
+${\mathbb Q}^\times$. A choice of the constants place by place, without
+this constraint, would not be consistent globally.
+\end{example}
+
+\section{The right factor and the wrong orbit}\label{sec:cover-orbit}
+
+This section compares the direct comparison with the character identity
+between the cover and $PGL(2)$ that is known to hold, and finds that the
+two differ only in how the tori are identified.
+
+For the pair formed by the cover and $SO(3)\cong PGL(2)$ there is a
+lifting of characters, due to Adams \cite{Ad2} over ${\mathbb R}$ and to
+Schultz over p-adic fields (see \cite[\S7.7]{JC} for references and for
+the status of the statement). For a principal series it reads
+\begin{equation}\label{eq:adams}
+\Theta_{\overline\pi}(x)=\bigl(\Theta_+(x)-\Theta_-(x)\bigr)\cdot
+\Theta_\sigma\bigl(t(x)\bigr),
+\end{equation}
+where $\sigma$ is a representation of $PGL(2,F)$, $\Theta_\pm$ are the
+characters of the two halves of a Weil representation, and $t(x)$ is the
+conjugacy class in $PGL(2,F)$ with eigenvalue ratio $\epsilon$ when
+$p(x)$ has eigenvalues $\epsilon^{\pm1}$. For $x$ over $a(s)$, $t(x)$ is
+the class of $\mathrm{diag}(s,1)$.
+
+Compare this with \eqref{eq:direct-char}. The first factor is the same:
+up to $|D^+|^{1/2}$ it is $\Delta$. The second factor is a character of
+$PGL(2,F)$ at $\mathrm{diag}(s,1)$ in one case and a character of
+$SL(2,F)$ at $a(s)$ in the other.
+
+\begin{proposition}[{\cite[Proposition~8.3]{JC}}]\label{prop:wrong-orbit}
+For a character $\mu$ of $F^\times$ let $\sigma(\mu)$ be the principal
+series of $PGL(2,F)$ induced from
+$\mathrm{diag}(t_1,t_2)\mapsto\mu(t_1/t_2)$. Let $s\in F^\times$,
+$s\neq\pm1$.
+
+(a) $D(a(s))=D^+(a(s))\cdot D'(s)$, where $D'(s)=(1-s)^2/s$ is the Weyl
+discriminant of $\mathrm{diag}(s,1)$ in $PGL(2,F)$.
+
+(b) $|D^+(a(s))|^{-1/2}\,\Theta_{\sigma(\mu)}(\mathrm{diag}(s,1))
+=\Theta_{I_A(\mu)}(a(s))$, where $I_A(\mu)$ is the principal series of
+$SL(2,F)$ induced from $a(x)\mapsto\mu(x)$.
+
+(c) The restriction of $\sigma(\mu)$ to $SL(2,F)$ is $I_A(\mu^2)$.
+\end{proposition}
+
+\begin{proof}
+(a) $D(a(s))=(s-s^{-1})^2=(s-1)^2(s+1)^2/s^2$ and
+$D^+(a(s))=2+s+s^{-1}=(1+s)^2/s$. (b) Both characters are
+$\mu(s)+\mu(s)^{-1}$ divided by the square root of the absolute value of
+the Weyl discriminant, which is $D'(s)$ on the left and $D(a(s))$ on the
+right. Apply (a). (c) The torus of $SL(2)$ maps to that of $PGL(2)$ by
+$a(x)\mapsto\mathrm{diag}(x,x^{-1})\equiv\mathrm{diag}(x^2,1)$, where the
+inducing character is $\mu(x^2)$, and $PGL(2,F)$ is the product of its
+Borel subgroup and the image of $SL(2,F)$.
+\end{proof}
+
+By (b), on the split torus the right side of \eqref{eq:adams} for
+$\sigma=\sigma(\mu)$ is the right side of \eqref{eq:direct-char} for
+$\pi=I_A(\mu)$. So for principal series the direct comparison \emph{is}
+the lifting \eqref{eq:adams}, read as follows: the element
+$\mathrm{diag}(s,1)$ of $PGL(2)$ is replaced by the element $a(s)$ of
+$SL(2)$, and the representation $\sigma(\mu)$ of $PGL(2)$ by the
+representation $I_A(\mu)$ of $SL(2)$.
+
+There are two ways to go from $PGL(2)$ to $SL(2)$, and they give
+different answers.
+\begin{itemize}
+\item \emph{Restriction.} This is what happens to automorphic forms. By
+(c), $\sigma(\mu)$ restricts to $I_A(\mu^2)$. An element $a(s)$ of
+$SL(2)$ becomes $\mathrm{diag}(s^2,1)$ in $PGL(2)$, which
+\eqref{eq:adams} compares with a lift of $a(s^2)$. This is the squaring
+correspondence $t=t'^{\,2}$, and the even matching that compares
+$r(\theta)$ with the element over $r(2\theta)$.
+\item \emph{Identifying the tori.} The map
+$\mathrm{diag}(s,1)\mapsto a(s)$ is an isomorphism of the diagonal tori
+that commutes with the Weyl groups. It sends $\sigma(\mu)$ to $I_A(\mu)$
+and compares $a(s)$ with a lift of $a(s)$. This is the direct
+comparison, $t=\pm t'$. The map is not induced by a homomorphism between
+$PGL(2)$ and $SL(2)$ in either direction.
+\end{itemize}
+The direct comparison therefore uses the right transfer factor together
+with the wrong correspondence of orbits. This is the geometric form of
+the diagnosis of \S\ref{sec:where-fails}. There the direct comparison is
+an identification of the dual tori that does not extend to the dual
+groups. Here it is an identification of the tori that does not extend to
+the groups.
+
+The squares have a special position on the cover, which explains the
+shape of Definition~\ref{def:ell-corr}(b). If $\gamma=\delta^2$ with
+$\delta$ in the same torus, then
+$1+\gamma=\delta(\delta+\delta^{-1})=\delta\cdot\tr\delta$, so
+\[
+D^+(\delta^2)=(\tr\delta)^2 .
+\]
+Hence the sign $(\det h,D^+)_2$ is trivial at the elements over squares:
+there $GL(2,F)$ does not exchange the two lifts, and the element
+$\tau(\delta)=(\delta,1)^2$ of Definition~\ref{def:ell-corr}(b) is a
+canonical lift of $\delta^2$. Away from the classes with $D^+$ a square
+or $\theta$ times a square, the average of an orbital integral of a
+genuine function over the conjugates under $GL(2,F)$ is zero
+\cite[Lemma~7.6(b)]{JC}. A character of $PGL(2,F)$, restricted to
+$SL(2,F)$, is invariant under $GL(2,F)$. So a comparison of the cover
+with $SL(2)$ that passes through $PGL(2)$ can only see the cover near
+the elements over squares. This is why an even matching requires
+$\Phi_{\overline f}$ to vanish outside $\tau(T(F))$.
+
+\begin{example}
+For the running example, $\Delta$ has parameters
+$\tau(p)=p^{11/2}(\alpha_p+\alpha_p^{-1})$. The representation of
+$PGL(2,{\mathbb Q}_p)$ is $\sigma(\mu)$ with $\mu(p)=\alpha_p$, and
+\eqref{eq:adams} pairs it with the genuine principal series
+$I_A(\chi_\psi\mu)$, with $t'=\alpha_p$. Restriction gives $I_A(\mu^2)$,
+with $t=\alpha_p^2$. Identifying the tori gives $I_A(\mu)$, with
+$t=\alpha_p$, which is not a local component of any cuspidal
+representation attached to $\Delta$.
+\end{example}
+
+\section{The elliptic terms}\label{sec:cover-elliptic}
+
+This section answers the question left open at the end of
+\S\ref{sec:where-fails}: what the direct comparison does on the elliptic
+set.
+
+\subsection*{What is consistent}
+
+The function $\Delta_\psi$ has a product formula. If $\gamma\in G(k)$ is
+regular and $x_v$ are the local components of its image in
+$\overline{G({\mathbb A})}$, then
+\begin{equation}\label{eq:Delta-product}
+\prod_v\Delta_{\psi_v}(x_v)=1
+\end{equation}
+\cite[Lemma~8.4]{JC}. In the restricted-product coordinates of
+\S\ref{sec:global} one may take $x_v=(\gamma,1)$, and then the product is
+$\prod_v(c,D^+)_{2,v}\cdot\prod_v\chi_{\psi_v}(D^+)$, which is $1$ by
+Hilbert reciprocity and Weil's product formula. For $\gamma$ in the
+torus this is the product formula $\prod_v\chi_{\psi_v}(x)=1$ of
+\S\ref{sec:where-fails}. So the consistency found there for the torus is
+a special case: if $f=\otimes f_v$ and $\overline f=\otimes\overline f_v$
+match directly at \emph{every} place, on the whole regular set, then
+\[
+\prod_vJ_{\overline f_v}(x_v)=\prod_vJ_{f_v}(\gamma)
+\]
+for every regular $\gamma\in G(k)$, elliptic or hyperbolic, and the
+regular elliptic terms of the two trace formulas agree
+\cite[Corollary~8.5]{JC}.
+
+\subsection*{What fails}
+
+In a comparison of trace formulas the functions at almost all places are
+not at our disposal. They are the unit elements $1_K$ and $e_K$ of the
+spherical Hecke algebras, which correspond under the Satake
+correspondence of \S\ref{sec:spherical}. On the hyperbolic set the unit
+elements match directly. On the elliptic set they do not.
+
+\begin{proposition}[{\cite[Proposition~8.6]{JC}}]\label{prop:unit-swap}
+Let $p$ be odd, $\psi$ of conductor ${\cal O}$, $K=K_0$, and let
+$\gamma\in K$ be regular, with lift $\gamma^*=\kappa(\gamma)$ in the
+image of the splitting. Let $u$ be a unit that is not a square.
+
+(a) If $D^+(\gamma)$ is a unit, then $\Delta_\psi(\gamma^*)=1$.
+
+(b) Suppose that $D^+(\gamma)=2+\tr\gamma$ has odd valuation. Then
+$\gamma$ is elliptic, $F[\gamma]$ is ramified, and the stable class of
+$\gamma$ consists of the classes of $\gamma$ and of
+$\gamma'=\delta_u\gamma\delta_u^{-1}$. Both lie in $K$, and
+\[
+J_{1_K}(\gamma')=J_{1_K}(\gamma),\qquad
+J_{e_K}(\delta_u\star\gamma^*)=-J_{e_K}(\gamma^*).
+\]
+So for $SL(2,F)$ the stable orbital integral of the unit element at
+$\gamma$ is $2J_{1_K}(\gamma)\neq0$ and its $\kappa$-orbital integral is
+$0$. For the cover the stable orbital integral of the unit element at
+$\gamma^*$ is $0$ and its $\kappa$-orbital integral is
+$2J_{e_K}(\gamma^*)$.
+
+(c) If $D(\gamma)$ has valuation $1$, then
+$J_{e_K}(\gamma^*)=J_{1_K}(\gamma)>0$.
+\end{proposition}
+
+The proof of (b) is short, and it shows what is going on. The
+automorphism $\mathrm{Ad}(\delta_u)$ preserves the image of the splitting
+of $K$, because the splitting is unique. So
+$\mathrm{Ad}(\delta_u)\gamma^*=\gamma'^*$, and $e_K$ takes the same value
+on the conjugates of $\gamma^*$ and of $\gamma'^*$. But the element that
+is \emph{stably} conjugate to $\gamma^*$ is
+$\delta_u\star\gamma^*=(u,D^+(\gamma))_2\,\gamma'^*=-\gamma'^*$, because $u$
+is a non-square unit and $D^+(\gamma)$ has odd valuation. The twist that
+makes stable conjugacy well defined moves the element out of the image
+of the splitting, and $e_K$ changes sign.
+
+So at these elements the unit elements have their stable and
+$\kappa$-orbital integrals \emph{interchanged}. Any matching that
+respects stable conjugacy, as the matching with factor $\Delta_\psi$
+does, would have to send the stable orbital integral $2J_{1_K}(\gamma)$
+of $1_K$ to the stable orbital integral $0$ of $e_K$. Hence:
+
+\begin{corollary}[{\cite[Corollary~8.7]{JC}}]\label{cor:no-fl}
+Let $p$ be odd and let $\gamma\in K_0$ be regular with $D^+(\gamma)$ of
+odd valuation. The unit elements $1_K$ and $e_K$ do not match directly
+on any invariant set that contains $\gamma$. The same holds with
+$\Delta_\psi$ replaced by any nowhere vanishing genuine function that is
+constant on stable conjugacy classes.
+\end{corollary}
+
+The elements in question satisfy $\gamma\equiv-1$ modulo the prime of
+$F[\gamma]$. The element $h$ of Remark~\ref{rem:sc-caveat} is
+one of them, with $D^+(h)=\varpi e$. So the counterexample to the
+supercuspidal character relation in Appendix~\ref{ch:sc} and the failure
+of the direct comparison on the elliptic set are the same phenomenon,
+and it is not special to $q\equiv3\pmod4$. Near $+1$ nothing of the
+kind happens: the cover is a product near the identity, and
+$\Delta_\psi=1$ there on $(\gamma,1)$.
+
+Why $-1$? On the cover the $\kappa$-orbital integral of
+$\overline f$ at $x$ is, up to the sign $(-1,-1)_2$, the stable orbital
+integral at the element $(-I,1)x$ over $-\gamma$ of the translate
+$\overline f_-(y)=\overline f((-I,1)y)$ \cite[Lemma~7.6(c)]{JC}. For
+$SL(2)$ there is no such identity: the $\kappa$-orbital integrals are new
+functions on the elliptic tori, and \cite{LL} attach to them the tori as
+endoscopic groups. For the cover the two endoscopic groups are both
+$SO(3)$, and they are exchanged by the central element $-1$. The trace
+formula of the cover has the form $S(\overline f)+S(\overline f_-)$ on
+its elliptic regular terms, with one stable distribution $S$
+\cite[Theorem~7.7]{JC}. The elements close to $-1$ are where the two
+halves trade places.
+
+\begin{remyy}\label{rem26:li-fl}
+The vanishing in Proposition~\ref{prop:unit-swap}(b) is what the
+fundamental lemma for the cover and $SO(3)$ predicts. Write
+$\gamma=e/\overline e$ with $e\in F[\gamma]^\times$. The class in
+$PGL(2,F)$ that corresponds to $\gamma^*$ is the image of $e$, and
+$D^+(\gamma)=\tr(e)^2/N(e)$ has odd valuation exactly when $\det e$ does.
+Such an element is not conjugate into the center times
+$GL(2,{\cal O})$, so the unit element of the Hecke algebra of
+$PGL(2,F)$ has orbital integral $0$ there. The normalizations of the
+transfer factors of Li and of \cite{JC} have not been compared, so this
+is a consistency check only.
+\end{remyy}
+
+\subsection*{The size of the failure}
+
+The failure can be measured on rational elements. Let $S$ contain the
+archimedean and dyadic places and the places where $\psi_v$ is ramified.
+Let $f=f_S\otimes\bigotimes_{v\notin S}1_{K_v}$ and
+$\overline f=\overline f_S\otimes\bigotimes_{v\notin S}e_{K_v}$, with
+$f_v$ and $\overline f_v$ matching directly at each $v\in S$. Let
+$\gamma\in G(k)$ be regular, lying in $K_v$ and with $D(\gamma)$ of
+valuation at most $1$ for all $v\notin S$. Then
+\begin{equation}\label{eq:epsilon}
+\prod_vJ_{\overline f_v}(x_v)=\varepsilon^S(\gamma)\prod_vJ_{f_v}(\gamma),
+\qquad\varepsilon^S(\gamma)=\prod_{v\notin S}\Delta_{\psi_v}(\gamma_v^*)^{-1},
+\end{equation}
+where $\gamma_v^*=\kappa_v(\gamma)$ \cite[Proposition~8.8]{JC}. The
+factor $\varepsilon^S(\gamma)$ is a fourth root of unity. It is $1$ when
+$D^+(\gamma)$ is a unit outside $S$, by
+Proposition~\ref{prop:unit-swap}(a). For a hyperbolic $\gamma$ the two
+sides agree. For elliptic $\gamma$ the factor is not $1$ in general.
+
+\begin{example}\label{ex:epsilon}
+Let $k={\mathbb Q}$, $S=\{\infty,2\}$, $\psi$ as in
+Example~\ref{ex:eta-psi}, and
+\[
+\gamma=\left(\begin{array}{cc}2&-1\\3&-1\end{array}\right)\in
+SL(2,{\mathbb Z}),\qquad\tr\gamma=1,\quad D^+(\gamma)=3,\quad
+D(\gamma)=-3 .
+\]
+It has order $6$, and ${\mathbb Q}[\gamma]={\mathbb Q}(\sqrt{-3})$. In
+the coordinates $(\gamma,1)$,
+\[
+\Delta_{\psi_\infty}(\gamma,1)=1,\qquad\Delta_{\psi_2}(\gamma,1)=i,\qquad
+\Delta_{\psi_3}(\gamma,1)=-i,
+\]
+and $\Delta_{\psi_p}(\gamma,1)=1$ for $p\geq5$. The product is $1$, as
+\eqref{eq:Delta-product} says. At $p=3$ the splitting is
+$\kappa_3(\gamma)=(\gamma,s_3(\gamma))$ with
+$s_3(\gamma)=(3,-1)_2=-1$ by (\ref{eq:sv}), so
+$\Delta_{\psi_3}(\gamma_3^*)=i$ and
+\[
+\varepsilon^S(\gamma)=-i .
+\]
+For test functions that match directly at $\infty$ and at $2$ and are
+the unit elements elsewhere, the term of $\gamma$ in the trace formula
+of the cover is $-i$ times its term in the trace formula of $SL(2)$. For
+$\gamma'=\delta_{-1}\gamma\delta_{-1}^{-1}$, which is conjugate to
+$\gamma$ under $GL(2,{\mathbb Q})$ and not under $SL(2,{\mathbb Q})$, the
+factor is $+i$. So where the trace formula of $SL(2)$ has the sum of the
+two orbital integrals of $f$, the trace formula of the cover has $-i$
+times their difference.
+
+The sign $s_3(\gamma)=-1$ is the value at $\gamma$ of the Jacobi symbol
+$\left(\frac d{c}\right)$ that occurs in the multiplier of the theta
+function. So the multiplier system of forms of half-integral weight is
+what prevents the direct comparison on the elliptic set. The values
+above are computed by the script \texttt{comparison\_n2\_check.py} of
+\cite{JC}.
+\end{example}
+
+\section{The spectral side again}\label{sec:cover-spectral}
+
+This section adds three points to the account of the spectral side in
+\S\ref{sec:where-fails}. They use the invariant trace formula of the
+cover, \cite[Corollary~6.14]{JC}:
+\[
+\sum_{\overline\pi}m(\overline\pi)\tr\overline\pi(\overline f)
+-\frac14\sum_{b\in k^\times/k^{\times2}}\tr I_A(\chi_{\psi_b})(\overline f)
+-\frac12\sum_{\mu}\frac1{2\pi}\int_{\mathbb R}\frac{m'}{m}(\mu,it)\,
+\tr I_A(\chi_\psi\mu|\cdot|^{it})(\overline f)\,dt .
+\]
+Here $\overline\pi$ runs over the discrete spectrum, cuspidal and
+residual, $\mu$ runs over the Hecke characters of $k$ that are trivial on
+the positive reals embedded diagonally at the archimedean places,
+$\psi_b(x)=\psi(bx)$, and $m(\mu,s)$ is the scalar
+$\overline c(s,\mu)$ of \S\ref{sec:where-fails} completed at the bad
+places.
+
+\subsection*{The term at $s=0$}
+
+The characters of the torus fixed by the Weyl group contribute a term
+$\frac14\tr(M(w,0)I_A(\cdot))$ to the spectral side of either trace
+formula. For the cover the fixed characters are the
+$\chi_{\psi_b}=\chi_\psi\cdot(b,\cdot)_2$, and they correspond under the
+direct comparison to the quadratic characters $(b,\cdot)_2$ of the torus
+of $SL(2)$, which are the fixed characters there. The operators do not
+correspond. For the cover $M(w,0)=-1$ for every $b$
+\cite[Proposition~6.13]{JC}. This is the second term of the display. For
+$SL(2)$ and $b\neq1$, the representation $I_A((b,\cdot)_2)$ is reducible
+at every place, into $\pi_v^+\oplus\pi_v^-$, and $M(w,0)$ acts on
+$\otimes_v\pi_v^{\epsilon_v}$ by $\prod_v\epsilon_v$ \cite{LL}. For
+directly matching functions the two terms therefore differ by
+\[
+\frac14\Bigl(\tr\bigl(M(w,0)I_A((b,\cdot)_2)(f)\bigr)
++\tr I_A((b,\cdot)_2)(f)\Bigr)
+=\frac12\sum_{\prod_v\epsilon_v=1}\ \prod_v\tr\pi_v^{\epsilon_v}(f_v) .
+\]
+In \cite{LL} this is the contribution of the trivial character of the
+torus of $k(\sqrt b)$, one of the endoscopic groups of $SL(2)$. On the
+cover there is nothing to match it. The sum on the right has the same
+shape as the trace of $\overline f$ on the theta series of one square
+class, $\sum_{\prod\epsilon_v=1}\prod_v\tr r_{\epsilon_v}(\overline f_v)$
+\cite[Proposition~7.12]{JC}. On the cover the representations of this
+shape are in the discrete spectrum. On $SL(2)$ they are in a term of the
+continuous spectrum.
+
+\subsection*{Where the multiplicities are}
+
+Remark~\ref{rem:even}(3) argues heuristically that a comparison through
+$PGL(2)$ controls sums over $L$-packets and not the multiplicity of one
+representation. The structure of the two trace formulas gives a more
+definite form of this. For $SL(2)$ the multiplicity of a representation
+inside its $L$-packet is decided by the unstable part of the trace
+formula, which has two sources: the $\kappa$-orbital integrals on the
+elliptic tori, and the operators $M(w,0)$ at the quadratic characters.
+Both lead to tori as endoscopic groups \cite{LL}. The cover has neither.
+Its $\kappa$-orbital integrals are stable orbital integrals of
+$\overline f_-$, its operators $M(w,0)$ are the scalar $-1$, and its
+endoscopic groups are two copies of $SO(3)$. What decides multiplicities
+on the cover is the pair $(\overline f,\overline f_-)$, that is, the
+central character and the sign in Waldspurger's theorem. The terms of
+the trace formula of $SL(2)$ that would have to be controlled to prove
+multiplicity one have no image in the trace formula of the cover.
+
+\subsection*{The fibers of the squaring map}
+
+The map $t'\mapsto t'^{\,2}$ is two-to-one (Remark~\ref{rem:even}(1)),
+and the bijection $\chi\mapsto\overline\chi$ depends on a choice between
+two (Remark~\ref{rem:choices}). Both are the action of $GL(2)$ on the
+cover. For $a\in F^\times$,
+\[
+I_A(\chi_\psi\mu)\circ\mathrm{Ad}(\delta_a)\cong
+I_A(\chi_\psi\mu\cdot(a,\cdot)_2)=I_A(\chi_{\psi_a}\mu)
+\]
+\cite[Proposition~8.9]{JC}. For $p$ odd and $a=u$ a non-square unit,
+$\mathrm{Ad}(\delta_u)$ preserves the splitting of $K_0$ and exchanges the
+unramified genuine representations with parameters $t'$ and $-t'$.
+Globally, $GL(2,k)$ acts on the genuine automorphic spectrum, and its
+orbits on the continuous and residual spectrum are the sets with
+$\mu^2$ fixed. In particular it permutes the theta representations of the
+different square classes transitively. So \emph{the fibers of the
+squaring correspondence are the orbits of $GL(2)$.} The direct comparison
+needs a section of the squaring map, and there is none that $GL(2)$
+respects. Each choice of $\psi$ gives one, and $\psi\mapsto\psi_u$
+exchanges the two.
+
+\begin{example}
+Let $k={\mathbb Q}$ and $S=\{\infty,2\}$. The theta representations
+unramified outside $S$ belong to the square classes of $\pm1,\pm2$
+\cite[Example~5.A]{JC}. The matrices $\mathrm{diag}(b,1)$,
+$b\in\{\pm1,\pm2\}$, permute them transitively. Under the squaring
+correspondence all four go to the trivial representation of
+$SL(2,{\mathbb A})$. For the running example, the genuine cusp form of
+weight $13/2$ attached to $\Delta$ and its conjugates under
+$\mathrm{diag}(b,1)$ correspond to $\Delta$ twisted by the quadratic
+characters $(b,\cdot)_2$, and these twists have the same restriction to
+$SL(2)$.
+\end{example}
+
+\section{The comparison term by term}\label{sec:cover-table}
+
+This section collects the results of \S\ref{sec:where-fails} and of this
+chapter in one table.
+
+\begin{center}
+\renewcommand{\arraystretch}{1.2}
+\begin{tabular}{p{0.27\textwidth}p{0.33\textwidth}p{0.32\textwidth}}
+\hline
+Term & Direct comparison ($t=\pm t'$) & Squaring ($t=t'^{\,2}$)\\
+\hline
+automorphic characters of the torus & correspond, through $\chi_\psi$ &
+two-to-one\\
+regular hyperbolic orbital integrals & agree
+(\S\ref{sec:where-fails}) & compared at $a(s)$ and over $a(s^2)$\\
+traces of principal series & agree (Proposition~\ref{prop:hyp-ps}) &
+agree at $(\mu,s)$ and $(\mu^2,2s)$\\
+regular elliptic orbital integrals & differ by $\varepsilon^S(\gamma)$;
+no fundamental lemma (Corollary~\ref{cor:no-fl}) & expected to agree,
+through $PGL(2)$ (Li)\\
+weights $m'/m$ of the continuous spectrum & differ: $L(s,\mu)$ against
+$L(2s,\mu^2)$ & agree\\
+the term at $s=0$ & differ by a term of \cite{LL}
+(\S\ref{sec:cover-spectral}) & not examined\\
+residual spectrum & no partner & every theta representation goes to the
+trivial representation\\
+cuspidal spectrum & no partner (Theorem~\ref{thm:nonexist}) &
+Shimura--Waldspurger, then restriction\\
+weighted orbital integrals, unipotent terms & not examined & not
+examined\\
+\hline
+\end{tabular}
+\end{center}
+
+\medskip
+The first three rows are the torus. The direct comparison is right for
+them and for nothing else.
+
+\begin{remyy}\label{rem26:cover-status}
+\emph{Status of Chapter~\ref{ch:cover}.} The chapter was written by
+Claude in November 2026, together with Chapter~8 of \cite{JC}, and
+neither has been refereed. Lemma~\ref{lem:Delta},
+Proposition~\ref{prop:unit-swap}, Corollary~\ref{cor:no-fl} and the
+identities \eqref{eq:Delta-product} and \eqref{eq:epsilon} are quoted
+from \cite{JC}, where they are proved. Proposition~\ref{prop:wrong-orbit}
+is proved here. The numerical values in Examples~\ref{ex:eta-psi}
+and~\ref{ex:epsilon} are computed by the scripts of \cite{JC}. The
+identification of $\eta_3$ in Example~\ref{ex:eta-psi} uses
+Definition~\ref{def:corrA} as printed and the normalization of
+$\chi_\psi$ fixed at the beginning of this chapter. The statements about
+the trace formula of $SL(2)$ in \S\ref{sec:cover-spectral} (the form of
+the term at $s=0$, the action of $M(w,0)$, and the role of the tori) are
+quoted from memory of \cite{LL} and have not been checked. The lifting
+\eqref{eq:adams} is quoted. The column ``Squaring'' of the table in
+\S\ref{sec:cover-table} records what is expected from the work of
+Waldspurger and Li, and it is not proved in either text. References to
+\cite{JC} by number are to its Draft~3.
+\end{remyy}
+
+\begin{example}
+For the running example, the table reads as follows at an odd prime $p$.
+The unit elements $1_{K_p}$ and $e_{K_p}$ correspond under the Satake
+correspondence, their traces agree on $I_A(\mu)$ and
+$I_A(\chi_{\psi_p}\mu)$, and their hyperbolic orbital integrals agree. At
+the elliptic element $\gamma$ of Example~\ref{ex:epsilon} and $p=3$
+their orbital integrals are equal, both being $J_{1_K}(\gamma)$, while a
+direct matching would require the ratio $\Delta_{\psi_3}(\gamma^*)=i$.
+\end{example}
+%% ===== end Chapter 6 =====
 
 \appendix
 
@@ -5279,7 +6244,9 @@ of an intertwining operator) given by the definition and lemma above.
 
 The analogs of the definitions above for the 2-fold cover of $SL(2)$
 are so similar that we do not repeat them (precise definitions
-are all given in \cite{J2}).
+are all given in \cite{J2}). The companion text \cite{JC} writes this
+trace formula out in full, with proofs, and puts it in invariant form.
+See \S\ref{sec:cover-supplies}.
 
 The geometric side of the trace formula is the sum of the following terms:
 
@@ -5373,6 +6340,11 @@ terms.
 \item[Discrete series.] Irreducible representations whose matrix
 coefficients are square integrable. A limit of discrete series is a
 tempered representation at the boundary of the discrete series parameters.
+\item[Direct comparison.] The comparison of $SL(2)$ with its cover in
+which an element of $SL(2)$ is compared with a lift of the same element.
+The odd matchings are of this kind. Two functions match directly if
+their orbital integrals differ by the factor $\Delta_\psi$
+(Definition~\ref{def:direct}).
 \item[Dyadic place.] A place of $k$ lying over $2$.
 \item[Elementary theta series.] Theta series on the metaplectic cover
 built from the Weil representation of a one-dimensional quadratic form.
@@ -5426,6 +6398,17 @@ these are compactly induced from maximal compact subgroups.
 \item[Trace formula.] An identity between a sum of orbital integrals and a
 sum of traces of automorphic representations, valid for all test
 functions.
+\item[Stable conjugacy.] Two elements of $SL(2,F)$ are stably
+conjugate if an element $h$ of $GL(2,F)$ conjugates one to the other. On
+the cover the action of $h$ is twisted by a sign, the Hilbert symbol of
+$\det h$ and $\det(1+\gamma)$. With the twist, the two lifts
+of an element are never stably conjugate (\S\ref{sec:cover-factor}). The
+stable orbital integral is the sum of the orbital integrals over the
+conjugacy classes in a stable class. For an elliptic class there are
+two of them, and their difference is the $\kappa$-orbital integral.
+\item[Transfer factor.] A function by which orbital integrals on two
+groups are multiplied before they are compared. For the cover it is the
+genuine function $\Delta_\psi$ of Lemma~\ref{lem:Delta}.
 \item[Transfer.] A map from representations of the cover to
 representations of $SL(2)$ under which the traces of corresponding pairs
 agree.
@@ -5478,7 +6461,11 @@ internal algebra of these changes, and verified several
 bibliographic details against public records.
 Where the formal Weil-character computation still lacks
 a proof, Draft~6 labels it as conditional rather than
-asserting the former formulas.
+asserting the former formulas. In Draft~7 the author asked how this text
+is related to the companion text \cite{JC}. Claude compared the two,
+wrote Chapter~\ref{ch:cover} and \S\ref{sec:running}, and added the
+references to \cite{JC} in the earlier chapters. Chapter~\ref{ch:cover}
+has not been refereed.
 
 AI review, including the referee reports described above, is not an
 independent certification of the results. Further details of the AI usage,
@@ -5767,6 +6754,12 @@ endoscopic lift'', Israel J. Math. \textbf{66}(1988)113-154
 
 \bibitem[J2]{J2} ------, ``An application of Arthur's invariant
 trace formula to $SL(2)$'', preprint, Feb/1996
+
+\bibitem[JC]{JC} D. Joyner and Claude, \emph{A hitch-hiker's guide to
+the metaplectic trace formula for $SL(2)$: basic theory}, Draft~3,
+November 2026. Corrected and expanded version of notes of the first
+author from 1995. Directory \texttt{sl2bar-trace} of the repository
+\texttt{github.com/wdjoyner/trace-formulas}.
 
 \bibitem[J3]{J3} ------, ``A correspondence for the generalized Hecke
 algebra of the metaplectic cover $\overline{SL(2,F)}$, $F$ p-adic'',

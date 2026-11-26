@@ -15,16 +15,16 @@
 % Revised after the second referee report (ChatGPT, November 2026): the
 % topology of the cover and the spaces of test functions (Lemma 2.1,
 % Lemma 2.2(i), Sections 2.1.4 and 2.2); see ../referee-2026-11/response.md.
-% Background pass of November 18, 2026: an example in every subsection,
+% Background pass of November 18, 2026: an example in every section,
 % and Sections 2.4 (local representations) and 2.5 (automorphic forms and
 % the Shimura correspondence). The new examples are checked by
 % checks/background_n2_check.py.
 % Comments beginning "% [Claude]" are editorial notes by Claude.
 % =====================================================================
 
-\section{Background on the metaplectic double cover}\label{sec:background}
+\chapter{Background on the metaplectic double cover}\label{sec:background}
 
-This section fixes the double cover of $G=\Res_{k/\Q}SL(2)$ and the
+This chapter fixes the double cover of $G=\Res_{k/\Q}SL(2)$ and the
 conventions used in the rest of the paper. Section~\ref{sec:local}
 treats a single place: Kubota's cocycle, the splittings over unipotent
 and compact subgroups, the center, and the preimages of tori. These are
@@ -32,12 +32,12 @@ then assembled into the cover of $G(\Q_p)$. Section~\ref{sec:global}
 builds the adelic cover and its splitting over $G(\Q)$, and
 Section~\ref{sec:gl2} fixes a double cover of $GL(2)$ and the resulting
 $GL(2)$-action on the cover of $SL(2)$, which is what
-Section~\ref{sec:stable} uses. The last two subsections are background on
+Chapter~\ref{sec:stable} uses. The last two sections are background on
 representations. Section~\ref{sec:rep-local} describes the genuine
 representations of the local cover, and Section~\ref{sec:rep-global}
 describes the automorphic representations of the adelic cover and their
 relation to modular forms of half-integral weight in the sense of
-Shimura. Each subsection contains at least one worked example.
+Shimura. Each section contains at least one worked example.
 
 One point needs care throughout. The cover is described by an explicit
 cocycle, in coordinates $(g,\zeta)$, but the cocycle is only a Borel
@@ -55,9 +55,9 @@ commutativity of preimages of abelian subgroups
 (Lemma~\ref{lem:local}(g)), becomes a two-line argument. What changes
 for general $n$ is listed in Remark~\ref{rem:general-n}.
 
-\subsection*{Notation}
+\section*{Notation}
 
-This subsection fixes the notation for number fields, places and the
+This section fixes the notation for number fields, places and the
 quadratic Hilbert symbol that is used throughout the paper.
 
 
@@ -120,7 +120,7 @@ Let $G$ be the group over $\Q$ obtained from $SL(2)$ by restriction of
 scalars from $k$ to $\Q$, so $G(\Q)=SL(2,k)$ and
 $G(\Q_p)=\prod_{v\mid p}SL(2,k_v)$.
 
-\subsection{Local aspects}\label{sec:local}
+\section{Local aspects}\label{sec:local}
 
 Here $F=k_v$ for one place $v$. We define the cover, compute it on the
 subgroups that matter later (unipotent, compact, diagonal, central,
@@ -486,11 +486,11 @@ Each statement holds componentwise by Lemma~\ref{lem:local}, and the
 quotient map is compatible with all of them.
 \end{proof}
 
-\subsubsection{\texorpdfstring{$NAK$}{NAK} decompositions}
+\subsection{\texorpdfstring{$NAK$}{NAK} decompositions}
 
 Every element of the local cover factors as a unipotent element, a lift
 of a diagonal element and a lift of an element of the maximal compact
-subgroup. This factorization defines the height in the next subsection.
+subgroup. This factorization defines the height in the next section.
 
 
 \begin{lemma}\label{lem:NAK-local}
@@ -539,7 +539,7 @@ is read off from the action on the upper half plane:
 $\bar n(c)\cdot i=(c+i)/(1+c^2)$, and $n(x)a(t)k_\theta\cdot i=x+it^2$.
 \end{example}
 
-\subsubsection{Heights}
+\subsection{Heights}
 
 Heights measure how far an element lies from the maximal compact
 subgroup. They are used to truncate kernels in Section~\ref{sec:kernels}.
@@ -594,9 +594,9 @@ finite place when $|c|_p\ge1$, and the bound of Lemma~\ref{lem:H}(c)
 cannot be improved there. At the real place $|H(x)|<\log\|x\|_\infty$.
 \end{example}
 
-\subsubsection{Characteristic functions of Weyl chambers}\label{sec:chambers}
+\subsection{Characteristic functions of Weyl chambers}\label{sec:chambers}
 
-This subsection identifies the space $\mathfrak a$ with $\R$ and
+This section identifies the space $\mathfrak a$ with $\R$ and
 records the characteristic functions of Arthur that enter the truncation.
 In rank one they are elementary.
 
@@ -655,9 +655,9 @@ root $a(s)\mapsto s^2$. The factor $2/d$ is what Remark~\ref{rem:alpha}
 keeps track of.
 \end{example}
 
-\subsubsection{Algebras of functions}\label{sec:functions}
+\subsection{Algebras of functions}\label{sec:functions}
 
-This subsection defines the test functions on the local cover. The
+This section defines the test functions on the local cover. The
 definition uses the topology of Lemma~\ref{lem:kubota}(c), not the
 coordinates $(g,\zeta)$.
 
@@ -689,7 +689,7 @@ product of the smooth function $u\mapsto f((g_0,1)(u,1))$ and the Borel
 function $u\mapsto\beta_p(g_0,u)$. In general it is not continuous,
 because the section $g\mapsto(g,1)$ is not
 (Example~\ref{ex:discontinuous}); the unit element below is an example.
-Later sections use the coordinates only to integrate (in them $f$ is
+Later chapters use the coordinates only to integrate (in them $f$ is
 bounded and Borel, with compact support) and to restrict $f$ to the
 continuous sections of Lemma~\ref{lem:local}(i).
 
@@ -733,9 +733,9 @@ functions. For a representation that is trivial on $\mu_2$ both operators
 are zero.
 \end{example}
 
-\subsubsection{Measures}\label{sec:measures-local}
+\subsection{Measures}\label{sec:measures-local}
 
-This subsection fixes the Haar measures on the local groups and on their
+This section fixes the Haar measures on the local groups and on their
 covers. They are fixed once and for all. The global measures of
 Section~\ref{sec:measures-global} are their products, and every volume in
 this paper is taken with respect to them.
@@ -774,7 +774,7 @@ n^{-1}$; see~\cite[Ch.~VIII]{Kn02} for the real case.
 
 By~\eqref{eq:iwasawa} the volume of $K_p$ for $dg$ is the volume of
 $N(\Q_p)\cap K_p$ for $dn$. It is $1$ when the $\psi_v$, $v\mid p$, are
-unramified, which we assume in the rest of this subsection.
+unramified, which we assume in the rest of this section.
 
 On a cover we use $d\tilde g=dg\,d\zeta$, where $d\zeta$ gives
 $\mu_2$ total volume~$1$. Then $\overline{K_p}$ has volume $1$, and
@@ -806,7 +806,7 @@ trivially on $\mathfrak H$, the quotient $SL(2,\Z)\backslash SL(2,\R)$ has
 volume $\frac12\cdot\frac\pi3=\frac\pi6$ for this measure.
 \end{example}
 
-\subsection{Global aspects}\label{sec:global}
+\section{Global aspects}\label{sec:global}
 
 The adelic cover is not the cover defined by $\prod_v\beta_v$: that
 product does not converge, because $\beta_v$ is not trivial on
@@ -844,7 +844,7 @@ $\overline{SL(2,k_v)}$ with respect to the subgroups $K_v^*$, divided by
 $\{(\zeta_v)\in\bigoplus_v\mu_2\mid\prod_v\zeta_v=1\}$. It is a
 \emph{quotient} of the restricted product, not a subgroup. Factorization
 of genuine representations of $\overline{G(\A)}$ (and of
-$\overline{A(\A)}$ in Section~\ref{sec:rank0}) refers to this quotient. Group law,
+$\overline{A(\A)}$ in Chapter~\ref{sec:rank0}) refers to this quotient. Group law,
 inverses and conjugation are given by~\eqref{eq:law}
 and~\eqref{eq:inverse} with $\sigma_\A$ in place of $\beta$. For
 $H\subset G(\A)$ put $\overline H=p^{-1}(H)$.
@@ -937,7 +937,7 @@ From now on we identify $G(\Q)$ with its image under
 Lemma~\ref{lem:global}(a), and $N(\A)$ with $N(\A)\times1$. By~(b), the
 two identifications agree on $N(\Q)$. The splitting over $B(\Q)$ by
 $b\mapsto(b,1)$ is what the constant terms, Eisenstein series and the
-truncation operator of Sections~\ref{sec:geometric} and~\ref{sec:spectral} use.
+truncation operator of Chapters~\ref{sec:geometric} and~\ref{sec:spectral} use.
 
 \begin{example}\label{ex:jacobi}
 Let $k=\Q$ and $\gamma=\begin{pmatrix}a&b\\c&d\end{pmatrix}\in SL(2,\Z)$
@@ -986,7 +986,7 @@ of $G(\A)$ with disjoint supports commute: $\sigma_v(1,h)=\sigma_v(h,1)=1$.
 % [Claude] The 1995 lemma uses K = prod_{p<=infty} K_p, which is not open,
 % and a disjoint union over i; for simply connected G there is one term.
 
-\subsubsection{\texorpdfstring{$NAK$}{NAK} decompositions}
+\subsection{\texorpdfstring{$NAK$}{NAK} decompositions}
 
 The local decompositions of Section~\ref{sec:local} assemble into an
 adelic one, which defines the global height.
@@ -1034,7 +1034,7 @@ cosets, as in the Eisenstein series~\eqref{eq:Eis}, is the classical sum
 of $y^s|c_0z+d_0|^{-2s}$ with $s=(\lambda+1)/2$.
 \end{example}
 
-\subsubsection{Heights}
+\subsection{Heights}
 
 The global norm is the product of the local norms. Its elementary
 properties are recorded here for later use.
@@ -1071,7 +1071,7 @@ invariant under $B(\Q)$ and measures the distance from the cusp in
 $G(\Q)\backslash G(\A)$.
 \end{example}
 
-\subsubsection{Algebras of functions}
+\subsection{Algebras of functions}
 
 The global test functions are products of local ones, almost all of
 them equal to the unit element.
@@ -1107,9 +1107,9 @@ a trace formula for the lattice $\widetilde{\Gamma(8)}$ in the
 metaplectic group $\overline{SL(2,\R)}$.
 \end{example}
 
-\subsubsection{Measures}\label{sec:measures-global}
+\subsection{Measures}\label{sec:measures-global}
 
-This subsection fixes the global measures. They are the products of the
+This section fixes the global measures. They are the products of the
 local measures of Section~\ref{sec:measures-local}. One normalization is
 used throughout the paper, in the general statements and in the
 examples. It is not the Tamagawa measure, and
@@ -1198,9 +1198,9 @@ For $k=\Q(\sqrt5)$ this is $2\pi^2/(15\sqrt5)$. We do not need the value
 for fields with complex places.
 \end{example}
 
-\subsection{The double cover of \texorpdfstring{$GL(2)$}{GL(2)}}\label{sec:gl2}
+\section{The double cover of \texorpdfstring{$GL(2)$}{GL(2)}}\label{sec:gl2}
 
-Section~\ref{sec:stable} compares $SL(2)$-conjugacy with $GL(2)$-conjugacy on the cover,
+Chapter~\ref{sec:stable} compares $SL(2)$-conjugacy with $GL(2)$-conjugacy on the cover,
 so we need a double cover of $GL(2)$ which restricts to the one above.
 There are two natural choices for $n=2$ (Remark~\ref{rem:gl2-twist}); we
 fix one, and compute the conjugation action of $GL(2,F)$ on
@@ -1258,7 +1258,7 @@ $\gamma=a(t)$: $x(h\gamma)=t^{-1}$ and $x(h)=1$, giving $(t^{-1},y)=
 (y,t)$. This is nontrivial for suitable $y,t$ unless $F=\C$.
 \end{proof}
 
-The consequences are taken up in Section~\ref{sec:stable}: the sign
+The consequences are taken up in Chapter~\ref{sec:stable}: the sign
 in~\eqref{eq:gl2-commutator} is $(\det h,\det(1+\gamma))_v$
 (Lemma~\ref{lem:eta}), conjugation by $GL(2,F)$ can exchange the two lifts
 of an element, and stable conjugacy on the cover is conjugation by
@@ -1289,7 +1289,7 @@ $(-1,\zeta)$ for every unit $u$, since $(u,-1)_3=1$.
 The cocycle $\sigma'(g_1,g_2)=\sigma(g_1,g_2)\,(\det g_1,\det g_2)_v$ is
 another double cover of $GL(2,F)$ with the same restriction to $SL(2,F)$;
 these are the two Kazhdan--Patterson covers for $n=2$~\cite{KP84}. We fix
-$\sigma$. Section~\ref{sec:stable} uses the cover of $GL(2,F)$ only
+$\sigma$. Chapter~\ref{sec:stable} uses the cover of $GL(2,F)$ only
 through the automorphisms $\Ad(h)$ of $\overline{SL(2,F)}$, and
 these are the same for $\sigma$ and $\sigma'$: an automorphism of
 $\overline{SL(2,F)}$ is determined by the automorphism of $SL(2,F)$ that
@@ -1312,12 +1312,12 @@ $1+\varpi^m\OO\subset F^{\times n}$ (the same proof). Genuine
 convention $R(f)$ vanishes on $L^2_{\mathrm{gen}}$ unless $n\mid2$.
 \end{remarkrev}
 
-\subsection{Representations of the local cover}\label{sec:rep-local}
+\section{Representations of the local cover}\label{sec:rep-local}
 
 The spectral side of the trace formula is a sum of traces of test
-functions in representations of the cover. This subsection collects the
+functions in representations of the cover. This section collects the
 representation theory of $\overline{SL(2,F)}$, $F=k_v$, that the later
-sections use or refer to. Nothing in it is new. Statements given without
+chapters use or refer to. Nothing in it is new. Statements given without
 proof are quoted from the literature, and Remark~\ref{rem:sec2-status}
 lists them. The Weil characters and the Weil representation are defined
 in Sections~\ref{sec:torus-cover} and~\ref{sec:eisenstein}. We use them
@@ -1348,7 +1348,7 @@ is the \emph{character} of $\pi$. It is an invariant distribution:
 $\Theta_\pi(f^y)=\Theta_\pi(f)$ for $f^y(x)=f(yxy^{-1})$. It determines
 $\pi$ when $\pi$ is irreducible. The characters $\operatorname{tr}I(\pi,f)$ of
 principal series are the spectral terms that the invariant trace formula
-of Section~\ref{sec:invariant} is built from.
+of Chapter~\ref{sec:invariant} is built from.
 
 \paragraph{The central character.} By Schur's lemma the center
 $\overline{\{\pm1\}}$ acts in an irreducible genuine representation $\pi$
@@ -1395,7 +1395,7 @@ a)}\,\varphi(x)\qquad(n\in N(F),\ \tilde a\in\overline{A(F)}).
 The shift by $1$ is the square root of the modulus character
 $\delta_B=e^{2H}$. With it $I(\pi_\lambda)$ is unitary, for the norm
 $\int_{\overline K}|\varphi|^2$, when $\pi$ is unitary and
-$\lambda\in i\R$. Section~\ref{sec:invariant} realizes all the
+$\lambda\in i\R$. Chapter~\ref{sec:invariant} realizes all the
 $I(\pi_\lambda)$ on one space $V(\pi)$ of functions on $\overline K$. The
 \emph{intertwining operator}
 \[
@@ -1513,7 +1513,7 @@ $\pi\mapsto\pi\circ\Ad(h)$ (Lemma~\ref{lem:gl2}(c)). This action is not
 trivial on equivalence classes. For example
 $r^\pm_{\psi'}\circ\Ad(\diag(a,1))=r^\pm_{\psi'_a}$
 (Lemma~\ref{lem:weil-kernel}), and Example~\ref{ex:gl2-center} shows the
-effect on the central character. Section~\ref{sec:stable} studies this
+effect on the central character. Chapter~\ref{sec:stable} studies this
 action on the terms of the trace formula.
 
 \begin{example}\label{ex:unramified-weil}
@@ -1549,10 +1549,10 @@ is not unitary, in accordance with the fact that $r^+_{\psi'}$ is not
 tempered.
 \end{example}
 
-\subsection{Automorphic forms and the Shimura correspondence}
+\section{Automorphic forms and the Shimura correspondence}
 \label{sec:rep-global}
 
-This subsection describes the automorphic representations of the adelic
+This section describes the automorphic representations of the adelic
 cover and explains how they are related to the modular forms of
 half-integral weight of Shimura~\cite{Sh73}. The trace formula of this
 paper is a formula for the trace of a test function on this spectrum, and
@@ -1561,7 +1561,7 @@ Hecke operators on forms of half-integral weight. The precise
 statements about the spectrum are in Section~\ref{sec:decomp}. Here we
 give the dictionary, with one lemma proved in full, and state the
 theorems of Shimura and Waldspurger that put the results of the later
-sections in context.
+chapters in context.
 
 \paragraph{Genuine automorphic forms.} A function $\varphi$ on
 $\overline{G(\A)}$ is \emph{genuine} if $\varphi(x\zeta)=\zeta\varphi(x)$
@@ -1602,7 +1602,7 @@ upper half plane. For $z=u+iy\in\mathfrak H$ let $\tilde g_z$ be the
 element $(n(u)a(y^{1/2}),1)$ of $\overline{G(\R)}\subset\overline{G(\A)}$.
 The map $z\mapsto\tilde g_z$ is continuous (Lemma~\ref{lem:local}(i)), and
 every element of $\overline{G(\R)}$ is $\tilde g_z\tilde k_r$ for a
-unique $z$ and a unique angle $r$ modulo $4\pi$. (In this subsection the
+unique $z$ and a unique angle $r$ modulo $4\pi$. (In this section the
 angle is written $r$, because $\theta$ denotes the theta function.) Let
 \[
 \theta(z)=\sum_{n\in\Z}e^{2\pi in^2z},\qquad
@@ -1828,9 +1828,9 @@ A_1(p)$, which is the Satake parameter of the representation of
 $PGL(2,\Q_p)$ generated by $F$.
 \end{example}
 
-\subsection{Status of the results}\label{sec:status2}
+\section{Status of the results}\label{sec:status2}
 
-This subsection lists the statements of Section~\ref{sec:background}
+This section lists the statements of Chapter~\ref{sec:background}
 that rest on citation or on numerical checks.
 
 
@@ -1861,7 +1861,7 @@ the text: the statements on the central character, Lemma~\ref{lem:classical}
 (which uses the theta function of Example~\ref{ex:theta} and
 Lemma~\ref{lem:strong}), and Examples~\ref{ex:hilbert}--\ref{ex:gl2-center}
 and~\ref{ex:unramified-weil}. The sources for the quoted statements were
-cited from memory in this pass and were not reopened. No later section
+cited from memory in this pass and were not reopened. No later chapter
 depends on Sections~\ref{sec:rep-local} and~\ref{sec:rep-global}.
 \end{remarkrev}
 
@@ -1875,10 +1875,10 @@ Lemma~\ref{lem:global}(a),~(b),~(d); Example~\ref{ex:jacobi}; and
 Lemma~\ref{lem:gl2}(a)--(c) with Remark~\ref{rem:gl2-twist}. The checks
 are on random elements of $SL(2,\Q)$, $GL(2,\Q)$, $SL(2,\Z_{(p)})$ and
 the tori $T_\theta(\Q)$; they are evidence, not proofs. Of the
-statements in this section, Lemma~\ref{lem:local}(b) and
+statements in this chapter, Lemma~\ref{lem:local}(b) and
 Lemma~\ref{lem:gl2}(a),~(b) are supported here only by citation and these
 checks. The script \texttt{checks/background\_n2\_check.py} verifies the
-numerical statements of the examples added to this section: the Hilbert
+numerical statements of the examples added to this chapter: the Hilbert
 symbols and square classes of Example~\ref{ex:hilbert}, the
 decomposition and the heights of Examples~\ref{ex:nak-local},
 \ref{ex:height-local} and~\ref{ex:nak-global}, the index in

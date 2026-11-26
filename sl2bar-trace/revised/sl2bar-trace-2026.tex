@@ -5,8 +5,12 @@
 % was called preview.tex. Stage 8 (November 12, 2026) brought it into line
 % with ../../joyner-math-paper-style-guide.md; the former Appendix A
 % (comparison with the 1995 notes) is now in ../revision_log.md.
+% Stage 9 (November 26, 2026) put the text in book format, like
+% ../../mult-one/revised/direct-comparison-SL2.tex: the former sections
+% are chapters and the former subsections are sections. The numbers of
+% theorems, examples and equations did not change.
 % Build: latexmk -pdf sl2bar-trace-2026.tex
-\documentclass[12pt,letterpaper]{article}
+\documentclass[12pt,letterpaper,openany]{book}
 \usepackage[T1]{fontenc}
 % Times for text and math. The style guide prefers newtx; it was not
 % installed where this draft was built, so the fallback mathptmx is used.
@@ -20,15 +24,16 @@
 \usepackage[colorlinks=true,linkcolor=blue!50!black,citecolor=blue!50!black,urlcolor=blue!50!black]{hyperref}
 \emergencystretch=3em
 
-\numberwithin{equation}{section}
+\numberwithin{equation}{chapter}
 \theoremstyle{plain}
-\newtheorem{lemma}{Lemma}[section]
+\newtheorem{lemma}{Lemma}[chapter]
 \newtheorem{proposition}[lemma]{Proposition}
 \newtheorem{theorem}[lemma]{Theorem}
 \newtheorem{corollary}[lemma]{Corollary}
 \theoremstyle{definition}
-\newtheorem{example}{Example}[section]
-\renewcommand{\theexample}{\thesection.\Alph{example}}
+\newtheorem{definition}[lemma]{Definition}
+\newtheorem{example}{Example}[chapter]
+\renewcommand{\theexample}{\thechapter.\Alph{example}}
 \theoremstyle{remark}
 \newtheorem{remarkrev}{Remark}
 % A lemma added after Proposition 7.5 without renumbering what follows.
@@ -58,13 +63,18 @@
 \DeclareMathOperator{\Ind}{Ind}
 \DeclareMathOperator{\Resid}{Res}
 
+% The book class has no abstract environment.
+\newenvironment{abstract}%
+  {\begin{center}\bfseries Abstract\end{center}\begin{quote}}%
+  {\end{quote}}
+
 \begin{document}
 \title{A hitch-hiker's guide to the metaplectic trace formula for $SL(2)$:
 basic theory\thanks{This is a revision of the unpublished notes of the
 same title by D.~Joyner (January 1995, slightly revised June 2002). The
 revision was made in November 2026. It is restricted to the double cover
 of $SL(2)$, while the 1995 notes treated the $n$-fold cover.}\\[6pt]
-\large Draft 2. Corrected and expanded version}
+\large Draft 3. Corrected and expanded version}
 \author{D. Joyner\thanks{\texttt{wdjoyner@gmail.com}} \and
 Claude\thanks{Claude is an AI model made by Anthropic. See the
 Acknowledgments for the division of work.}}
@@ -90,7 +100,7 @@ and the value $M(w,0)=-1$. The invariant distributions are constructed by
 Fourier inversion on the abelian cover of the diagonal torus, without
 appeal to a trace Paley--Wiener theorem, and the unipotent coefficients
 of the fine geometric expansion are computed in terms of the values at
-$1$ of quadratic Hecke $L$-functions. In the last section we determine
+$1$ of quadratic Hecke $L$-functions. We then determine
 the action of $GL(2)$ on the cover: conjugation by $GL(2)$ can exchange
 the two lifts of an element, and stable conjugacy in the sense of Adams
 and Li is conjugation by $GL(2)$ twisted by the sign
@@ -99,7 +109,13 @@ then take the form $S(f)+S(f_-)$, with $S$ a stable distribution and
 $f_-$ the translate of $f$ by the central element $-1$; the theta
 functions contribute to the spectral side in the same form. The
 stabilization of the remaining terms, which is due to Li, is not
-reproduced. One ingredient is not computed here but taken from the work of
+reproduced. A further chapter compares the result with the trace
+formula of $SL(2)$ itself: the matching of orbital integrals at an element
+and at a lift of the same element has the function that defines stable
+conjugacy as its transfer factor, it is consistent on the split torus,
+and it fails on the elliptic set, where the stable and the
+$\kappa$-orbital integrals of the unit elements of the Hecke algebras are
+interchanged near the central element $-1$. One ingredient is not computed here but taken from the work of
 Szpruch: the explicit form of the local normalizing factors at the dyadic
 and ramified places. This is a
 revision, restricted to the double cover, of notes of the first author
@@ -115,37 +131,43 @@ from 1995; the explicit formulas are checked by accompanying scripts.
 \input{sec5-spectral}
 \input{sec6-invariant}
 \input{sec7-stable}
+\input{comparison-sl2}
 
 \input{sec8-summary}
 
 \input{glossary}
 
-\section*{Acknowledgments}
-\addcontentsline{toc}{section}{Acknowledgments}
+\chapter*{Acknowledgments}
+\addcontentsline{toc}{chapter}{Acknowledgments}\markboth{Acknowledgments}{Acknowledgments}
 
 The 1995 notes and the 1997 book manuscript from which they came are by
 the first author. The revision of November 2026 was carried out by the
 two authors together. The first author directed the work and reviewed
 it. Claude (Anthropic), an AI model, took part in three roles. As a
 referee, it wrote the first referee report on the 1995 notes. As a
-co-author and reviser, it drafted the revised sections, the
+co-author and reviser, it drafted the revised chapters, the
 introduction, the glossary and the summary. It also wrote the
 verification scripts in \texttt{checks/}.
 
 ChatGPT (OpenAI), an AI model, acted as an independent referee. It
 refereed the November 2026 draft of
-Sections~\ref{sec:background}--\ref{sec:invariant} in one report and
-Section~\ref{sec:stable} in a second report. Several definitions, proofs
+Chapters~\ref{sec:background}--\ref{sec:invariant} in one report and
+Chapter~\ref{sec:stable} in a second report. Several definitions, proofs
 and examples of the present draft were added or corrected in response
 to these reports.
 
 Gemini (Google), an AI model, acted as a second independent referee. It
 refereed the draft of November 16, 2026 in two reports, one on the master
-file and one on all sections. Claude checked each point of these reports
-against the source. One misprint in Section~\ref{sec:stable}, several
+file and one on all chapters. Claude checked each point of these reports
+against the source. One misprint in Chapter~\ref{sec:stable}, several
 inconsistent sentences and two bibliography entries were corrected in
-response, and the background of Section~\ref{sec:background} and the
+response, and the background of Chapter~\ref{sec:background} and the
 glossary were then enlarged at the first author's request.
+
+Draft~3 put the text in book format and added
+Chapter~\ref{sec:compare}. That chapter was written by Claude at the
+first author's request, after the first author asked how this text and
+the companion text~\cite{JC26} are related. It has not been refereed.
 
 Review by AI systems is not an independent certification of the
 results. The errors that remain are the authors'. Further details on the
@@ -232,6 +254,11 @@ Hilbert modular forms of half-integral weight I'', Compos. Math.
 \bibitem[Ho10]{Ho10} T. K. Howard, ``Lifting of characters on $p$-adic
 orthogonal and metaplectic groups'', Compos. Math. \textbf{146} (2010),
 795--810.
+\bibitem[JC26]{JC26} D. Joyner and Claude, \emph{Direct comparison of
+$SL(2)$ with its metaplectic cover}, Draft~7, November 2026. Corrected
+and expanded version of the manuscript \emph{Multiplicity one for
+$SL(2)$} (1995). Directory \texttt{mult-one} of the repository
+\texttt{github.com/wdjoyner/trace-formulas}.
 \bibitem[JL70]{JL70} H. Jacquet and R. P. Langlands, \emph{Automorphic forms on
 $GL(2)$}, Lecture Notes in Math. \textbf{114}, Springer, 1970.
 \bibitem[Jo88]{Jo88} D. Joyner, ``On the metaplectic analog of Kazhdan's

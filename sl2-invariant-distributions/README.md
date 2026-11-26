@@ -8,6 +8,20 @@ corrected with AI assistance in November 2026.
 This is the ordinary-group companion to the metaplectic material in
 `../sl2bar-characters/` and `../sl2bar-trace/`.
 
+## Summary
+
+The notes are an expository introduction to invariant distributions on G = SL(2, F): linear functionals on the Hecke algebra that are invariant under conjugation, such as orbital integrals and characters of representations. They explain the representation-theoretic background, separate the operator-valued Fourier transform from the trace transform, and state the trace Paley–Wiener theorem in its correct form, on the Grothendieck group. Spectral distributions are then described through the invariant quotient of the Hecke algebra.
+
+Results and examples in the current draft:
+
+- an example showing that normalized orbital integrals need not vanish at singular elements;
+- a Laurent-coefficient criterion for analytic functionals, and the distinction between weak constant terms and elliptic support;
+- the geometry of the exceptional Bernstein components; admissible traces are determined algebraically by tempered traces; spectral duals described by moment growth and central recurrences;
+- admissibility for finite Bernstein support (from local interpolation of finite characters, subject to classical regularity inputs) and a corrected descent criterion for the unramified principal-series block;
+- supertempered distributions (characteristic zero): a direct proof of Herb's classification in rank one, a comparison of the tempered and algebraic splittings of the elliptic quotient, and a criterion at ±I in terms of the local character expansion, with examples over ℚ₃ and ℚ₅.
+
+The global Schwartz topology and the group-side analytic statements still need verification.
+
 ## Layout
 
 ```

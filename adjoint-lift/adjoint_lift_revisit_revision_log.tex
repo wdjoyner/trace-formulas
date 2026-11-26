@@ -1,13 +1,13 @@
 \documentclass[12pt,letterpaper]{amsart}
 \usepackage[T1]{fontenc}
-\usepackage{newtxtext,newtxmath}
+\IfFileExists{newtxtext.sty}{\usepackage{newtxtext,newtxmath}}{\usepackage{mathptmx}}
 \usepackage[letterpaper,margin=1in]{geometry}
 \usepackage{microtype}
 \usepackage{booktabs,longtable,array}
 \usepackage[hidelinks]{hyperref}
-\title{Revision log for \emph{On twisted orbital-integral identities for $PGL(3)$ over a $p$-adic field}}
-\author{David Joyner and ChatGPT (OpenAI)}
-\date{Corrected revisit, Draft 1 --- November 23, 2026}
+\title{Revision log for \emph{On the $p$-adic adjoint lifting for $PGL(3)$}}
+\author{David Joyner, ChatGPT (OpenAI), and Claude (Anthropic)}
+\date{Draft 3 --- November 26, 2026 (Drafts 1--2: November 23, 2026)}
 \begin{document}
 \begin{abstract}
 This AI-aided editorial and mathematical audit accompanies Draft 1 of the
@@ -16,6 +16,220 @@ It distinguishes inherited claims, newly proved elementary statements,
 conditional reductions, and unverified historical proof obligations.
 \end{abstract}
 \maketitle
+
+\section*{Draft 3 (November 26, 2026), prepared by Claude (Anthropic)}
+
+\emph{Draft numbering.} The file posted on November 23, 2026 was
+labeled Draft 1 throughout. It had already been reorganized once (the
+four unnumbered sections that follow this one describe that
+reorganization). That state is counted here as Draft 2, and the present
+revision is Draft 3. The manuscript was previously titled \emph{On
+twisted orbital-integral identities for $PGL(3)$ over a $p$-adic
+field}, with the subtitle ``Corrected revisit: buildings, trees, and
+combinatorial identities''.
+
+\subsection*{Structural changes requested by the author}
+\begin{itemize}
+\item New title, \emph{On the $p$-adic adjoint lifting for $PGL(3)$},
+with no subtitle. The draft number and the phrase ``corrected and
+expanded'' are in the title-page footnote and the date line.
+\item The literature review is now Subsection~1.4 of the introduction.
+\item The section ``Historical framework: norm maps and fundamental
+lemmas'' is merged into the background section, as its
+Subsections~2.1--2.4, ahead of the two building subsections (now 2.5
+and 2.6). A paragraph at the start of Section~2 describes the order.
+\item A running example over $\mathbb Q_3$ is carried through the
+paper (Subsection~1.10 and thirteen ``Running example'' items, with a
+summary in Table~1 of Section~10).
+\end{itemize}
+
+\subsection*{Numbering}
+After the merger the historical statement numbers, which had been
+forced with \verb|\setcounter| and \verb|\tag|, collided: there would
+have been two statements numbered 2.11, and equation tags such as
+(4.1) no longer matched any section. All forced counters and tags were
+removed. Statements and equations are now numbered consecutively
+within each section. All cross-references in the paper use labels, and
+the two hard-coded references (``(4.1)'' and ``subsection 1.3'') were
+converted. Concordance:
+
+\begin{longtable}{@{}lll@{}}
+\toprule
+Item & label in \cite{Jo90} and Drafts 1--2 & Draft 3\\
+\midrule
+\endhead
+Section & 0 & 1.3\\
+Section & 1 & 2.1\\
+Section & 1.2 & 2.2\\
+Section & 1.3 & 2.3\\
+Section & 1.4 & 2.4\\
+Lemma & 1.10 & 2.3\\
+Lemma & 1.11 & 2.4\\
+Definition & 1.12 & 2.5\\
+Proposition & 1.13 & 2.6\\
+Corollary & 1.14 & 2.7\\
+Lemma & 1.21 & 2.9\\
+Section & 2 & 3\\
+Section & 2.2 & 3.2\\
+Section & 2.3 & 3.3\\
+Section & 2.4 & 3.4\\
+Lemma & 2.11 & 3.1\\
+Section & 3 & 4\\
+Section & 3.1 & 4.1\\
+Section & 3.2 & 4.2\\
+Lemma & 3.3 & 4.1\\
+Lemma & 3.4 & 4.3\\
+Lemma & 3.19 & 4.4\\
+Section & 4 & 2.5\\
+Lemma & 4.4 & 2.13\\
+Lemma & 4.5 & 2.14\\
+Figure & 4.6 & 2\\
+Figure & 4.8 & 3\\
+Lemma & 4.9 & 2.15\\
+Figure & 4.10 & 4\\
+Lemma & 4.13 & 2.16\\
+Lemma & 4.14 & 2.18\\
+Lemma & 4.16 & 2.19\\
+Figure & 4.17 & 5\\
+Lemma & 4.18 & 2.20\\
+Section & 5 & 2.6\\
+Lemma & 5.1 & 2.22\\
+Lemma & 5.2 & 2.23\\
+Lemma & 5.3 & 2.24\\
+Lemma & 5.4 & 2.25\\
+Proposition & 5.6 & 2.26\\
+Theorem (fundamental lemma for $H_1$) & 1.24 & 2.10\\
+Conjecture (fundamental lemma for $H_2$) & 1.27 & 2.11\\
+\bottomrule
+\end{longtable}
+
+Displayed equations:
+\begin{longtable}{@{}ll@{\qquad}ll@{\qquad}ll@{}}
+\toprule
+old & new & old & new & old & new\\
+\midrule
+\endhead
+(1.1) & (2.1) & (1.2) & (2.2) & (1.3) & (2.3)\\
+(1.4) & (2.4) & (1.5) & (2.5) & (1.6) & (2.6)\\
+(1.7) & (2.7) & (1.8) & (2.8) & (1.9) & (2.9)\\
+(1.15) & (2.10) & (1.16) & (2.11) & (1.17) & (2.12)\\
+(1.18) & (2.13) & (1.19) & (2.14) & (1.20) & (2.15)\\
+(1.22) & (2.16) & (1.23) & (2.17) & (1.24) & (2.18)\\
+(1.25) & (2.19) & (1.26) & (2.20) & (1.27) & (2.21)\\
+(2.1) & (3.1) & (2.2) & (3.2) & (2.3) & (3.3)\\
+(2.4) & (3.4) & (2.5) & (3.5) & (2.6) & (3.6)\\
+(2.7) & (3.7) & (2.8) & (3.8) & (2.9) & (3.9)\\
+(2.10) & (3.10) & (2.12) & (3.11) & (2.13) & (3.12)\\
+(3.1) & (4.1) & (3.2) & (4.2) & (3.5) & (4.3)\\
+(3.6) & (4.4) & (3.7) & (4.5) & (3.8) & (4.6)\\
+(3.9) & (4.7) & (3.10) & (4.8) & (3.11) & (4.9)\\
+(3.12) & (4.10) & (3.13) & (4.11) & (3.14) & (4.12)\\
+(3.15) & (4.13) & (3.16) & (4.14) & (3.17) & (4.15)\\
+(3.18) & (4.16) & (4.1) & (2.22) & (4.2) & (2.23)\\
+(4.3) & (2.24) & (4.7) & (2.25) & (4.11) & (2.26)\\
+(4.12) & (2.27) & (4.15) & (2.29) & (4.19) & (2.30)\\
+(5.5) & (2.31) & (5.7) & (2.32) & (5.10) & (2.33)\\
+(5.11) & (2.34) & (5.12) & (2.35) & (5.13) & (2.36)\\
+\bottomrule
+\end{longtable}
+
+
+\subsection*{The running example: what is proved and what is computed}
+Four elements over $\mathbb Q_3$ are used, each determined by a matrix
+$B\in GL_2(\mathbb Q_3)$ through $C=-Bw$ and
+$A_a=\operatorname{diag}(a,C)$: specimens I, II, III with $E$
+unramified and $(m,k')=(0,0),(0,1),(1,0)$, where
+$|1+\beta_1|_E=3^{-m}$ and $|1-\beta_1|_E=3^{-k'}$, and specimen IV
+with $E=\mathbb Q_3(\sqrt3)$. Proved by hand in the paper: the formula
+for $h$, the action of $T_{A_a}$ on $\mathcal Z$, the fixed vertices
+in $\mathcal Z$ (new Proposition~5.8), completeness of the fixed set
+in specimen~I, the four leaves of specimen~II being fixed, and the
+values of $\kappa$. Established only by enumeration (script
+\path{scripts/running_example_q3_check.py}, all vertices within
+distance $4$ of $[\mathbb Z_3^3]$): that specimens II, III, IV have no
+further fixed vertices, the leaves of the representative $A_2$ in
+specimen~II, and the depth-two specimen
+$B=1+9\left(\begin{smallmatrix}0&-1\\1&0\end{smallmatrix}\right)$.
+The enumeration is not a proof of completeness, because no a priori
+bound on the distance of a fixed vertex from $[\mathbb Z_3^3]$ is
+proved; the totals agree with $R(0)=r(0)$.
+
+\subsection*{New statements in Draft 3}
+\begin{itemize}
+\item Proposition~5.8 (fixed vertices in $\mathcal Z$ for block
+representatives): direct proof. Part (d) gives the rational twisted
+conjugacy $A_a\sim A_{a/N(e)}$.
+\item Proposition~9.3 (the two parity classes of a ball): direct
+proof; $\sum_{j\le m}(-1)^{m-j}|S_j|=q^m$.
+\item Remarks 2026.1 (parity of $c$), 2026.3 (sign evidence) and
+2026.8 (a conditional route to case (c)) are not theorems; each states
+its hypotheses.
+\item Figure~7 (types on the tree of $PGL_2(\mathbb Q_3)$). The text
+of Draft 2 already referred to a figure with this label, which did not
+exist.
+\end{itemize}
+
+\subsection*{Points where the running example differs from the historical text}
+These are recorded here and only briefly in the paper.
+\begin{enumerate}
+\item \emph{Parity of $c$.} The remark after the lemma on $D_A$ (old
+4.13) says that $[A]\sigma$ has no fixed point when $c$ is odd, and
+the paragraph after old Lemma~4.14 says that in the unramified case
+exactly one of the two rational classes has a fixed point. In
+specimen~III ($m=1$) the two classes have $1$ and $4$ fixed vertices.
+This is forced by the paper's own identities: $R(0)=r(0)=5Q$ and
+$|S(0)|=Q$ require counts $4$ and $1$. The dichotomy holds in the
+example when $m=0$. Also, $c$ is not well defined modulo $2$ until $C$
+is normalized.
+\item \emph{The common term $R$ in old (5.12)--(5.13).} In
+specimen~III and in the depth-two specimen the two counts are
+$(q^{m+1}-1)/(q-1)$ and $(q^m-1)/(q-1)$. They have the form
+$B_v(m)+R$, $B_e(m)+R$ only with $R=-(q^m-1)/(q-1)<0$, so $R$ is not a
+count of extra leaves, and in these specimens there are no leaves at
+all. The pairing strategy of Proposition~9.7 does not apply literally
+to them.
+\item \emph{The sign.} With $\kappa$ computed from the definition
+(split or nonsplit twisted centralizer of the symmetric part), the
+signed sums are $1,5,3,0$ and give $S(0)=s(0)$ with a plus sign in all
+four specimens. With the rule $\pm\kappa(g_a)=(a,\epsilon)_2$ and the
+labeling $g_a\leftrightarrow A_a$, specimen~III has the opposite sign
+from specimens I and II.
+\item \emph{Old Lemma~5.2(b).} In specimen~II the representative $A_2$
+has four fixed vertices outside $\mathcal Z$ although
+$|\mathrm{Fix}(A\sigma)|\neq0$ and $2$ is not a square in
+$\mathbb Z_3^\times$. Since $2$ is a norm from the unramified
+extension, the conclusion $(u,\epsilon)_2=1$ still holds there; the
+statement ``$u$ is a square'' appears to hold only for leaves on a
+fixed characteristic segment.
+\item \emph{Ramified case.} In specimen~IV, old formula (3.17) with
+$U=N_{E/F}(E^\times)$ gives $R(0)=2Q$ while old Lemma~3.3 gives
+$r(0)=Q$. The ramified formula of old Lemma~4.5 gives
+$|\mathrm{Fix}(h)|=2$ only with $k=1$, while $\Delta(h)=3^{-1/2}$.
+\end{enumerate}
+None of the historical statements or proofs was rewritten. The
+corresponding obligations were added to the To Do section.
+
+\subsection*{Other changes}
+\begin{itemize}
+\item The abstract, the notation table, the summary subsection, the
+To Do list, the glossary (four entries added) and the acknowledgments
+were updated for the above.
+\item Two cross-references that had been corrupted to a line break
+followed by ``ef\{\dots\}'' were restored to \verb|\ref|.
+\item The Times fonts are loaded as \texttt{newtx} when it is
+installed and as \texttt{mathptmx} otherwise; Draft 3 was compiled
+with \texttt{mathptmx}.
+\item Source basis: Draft 3 was made from the copy in the repository,
+which is later than the file uploaded for this revision (the uploaded
+file still had the separate sections ``Outline of the original paper''
+and ``Introduction'').
+\end{itemize}
+
+\subsection*{AI contributions in Draft 3 and their limits}
+Claude (Anthropic) made all the changes listed in this section,
+including the running example, the script, and the two new
+propositions. None of it has been refereed. The checks performed were
+the enumeration script and recompilation.
 
 \section*{Typesetting corrections (November 23, 2026)}
 The table of contents now uses separate indentation and number-label

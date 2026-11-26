@@ -1,6 +1,6 @@
 # SPDX-License-Identifier: MIT
 # Copyright (c) 2026 David Joyner
-"""Running example of "On the p-adic adjoint lifting for PGL(3)" (F = Q_3).
+"""Running example of "On the twisted adjoint lifting for p-adic PGL(3)" (F = Q_3).
 
 For B in GL_2(Z_3) put C = -B w, w = [[0,1],[-1,0]], and A_a = diag(a, C).
 The normalized twisted action on vertices of the building of PGL_3(Q_3) is

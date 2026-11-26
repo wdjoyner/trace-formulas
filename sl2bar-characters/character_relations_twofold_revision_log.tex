@@ -38,7 +38,7 @@ Sol-ChatGPT (OpenAI) prepared the revised exposition and proposed and derived th
 \section{Scope of this pass}
 Draft 2 was prepared by Claude (Anthropic) from the Draft 1 source file and Draft 2 of the repository style guide. David asked for a revision that responds to Carbon's (Gemini's) referee report on Draft 1, follows the style guide and fills in details.
 
-\textbf{Carbon's referee report was not available to this pass.} It was not attached to the request and is not in the repository. Draft 2 therefore does not respond to it. Every statement of Draft 1 was instead rechecked independently, as recorded in Section~\ref{sec:verif}. The report still has to be compared with Draft 2.
+Carbon's report arrived after the first version of Draft 2 had been committed. That version was based on an independent recheck of every statement of Draft 1, recorded in Section~\ref{sec:verif}. The report was then compared with it, and the responses are in Section~\ref{sec:carbon}. The report is in the repository as \texttt{referee-report\_draft1\_carbon.md}.
 
 The 1996 source \texttt{super.tex} is not in the repository and was not read in this pass. Statements about the content of the original notes (Sections 7 and 8 of the paper) are carried over from Draft 1.
 
@@ -85,6 +85,22 @@ Corollary 4.3 & Corollary 4.5 & Remark 7.1 (2026.2) & Remark 2026.2\\
 \end{center}
 Draft 1 Section 6 (worked examples) is Section 6. Draft 1 Sections 6--8 (old method, extensions, summary) are Sections 7--9. The \LaTeX{} labels of all Draft 1 statements are unchanged.
 
+\section{Response to Carbon's referee report on Draft 1}\label{sec:carbon}
+Carbon found the core mathematics sound and listed clarifications. Each point was checked independently. Statement numbers are those of Draft 2.
+\begin{enumerate}
+\item \emph{Multiplication law for the extended cocycle.} Agreed. The law on $\mathrm{GL}_2(F)\times\mu_2$ is now displayed in Section 3.3. Remark 3.9 now explains that $\widetilde D(h(u),1)$ and $(h(u),1)\widetilde D$ differ by $\beta'(D,h(u))\beta'(h(u),D)$ because $D$ and $h(u)$ commute, so the inverse of $\widetilde D$ is not needed.
+\item \emph{Description of $I^+$.} Agreed. $I^+$ is now defined in coordinates in Example 2.2, with $a\equiv d\equiv1$ and $b\in\varpi\mathcal O_F$.
+\item \emph{Haar measure in Theorem 4.2.} Agreed in substance. The proof already used that every $x\in U$ has the same fixed set. Two sentences now state that the same Haar measure appears on both sides, for $G$ and for the cover. No volume of $U$ enters, since the identity is between two integrals over $U$.
+\item \emph{Inflation to $K_1$ and outer automorphisms.} Agreed, with one correction to the report. For $\theta^2\ne1$ the representation $\sigma_\theta$ is irreducible, so there are no two components $\sigma_\theta^\pm$ to exchange. The relevant point is that an automorphism from $\mathrm{GL}_2(\mathbb F_q)$ can exchange the two unipotent classes, and $\chi_\theta$ takes the same value on both. Section 5.2 now says this and notes that the case $\theta^2=1$ is different.
+\item \emph{Ramified elements.} Agreed. Section 8.2 now gives the reason that $\bar\tau=\pm1$.
+\item \emph{$K_i^+$ and $K_0(m)$.} Agreed. $K_v^+$ is defined in Section 2.1, $K_0^{(m)}$ is in the notation table, and $K_0^{(1)}=K_0^+$ is stated.
+\item \emph{$\mu_2$.} Agreed. It is defined in the introduction and in the notation table.
+\item \emph{Remark numbering.} The clumsy double label is removed. The labels ``Remark 2026.$n$'' are kept on their own counter, as rule 6.7 of the style guide requires for statements not fully verified. Carbon's proposed plain titles are used as the remark titles.
+\item \emph{Exponent $j-i$.} A sentence after Lemma 4.4 states that only the parity of $j-i$ matters.
+\item \emph{Glossary.} The entry on packet sums is restored with a mathematical statement in place of the phrase Carbon objected to. The entries for \emph{lattice} and \emph{central extension} are expanded. Carbon's suggested wording that central extensions are ``classified'' by symbol cocycles was not used, since the paper does not cite a classification theorem.
+\end{enumerate}
+Carbon's verdict that the edge discrepancy, the weighted sum, the parity factor, the fixed-ball radius and the numerical examples are correct agrees with the independent checks of Section~\ref{sec:verif}.
+
 \section{Style-guide changes}
 \begin{enumerate}
 \item Title page: Draft 2 and new date. The abstract opens with the AI disclosure and names both systems. The restriction to the twofold cover, odd $p$, depth zero and unramified tori is stated in the introduction.
@@ -108,7 +124,7 @@ Levels follow Section 7.3 of the style guide. Level 1 is an independent derivati
 \end{itemize}
 
 \section{AI usage and build status}
-Claude (Anthropic) prepared Draft 2: it rechecked Draft 1, wrote the new proofs and lemmas listed above, wrote the verification script, and edited the text to the style guide. It did not act as referee of its own draft. Draft 2 has not been independently refereed. AI review is not an independent certification.
+Claude (Anthropic) prepared Draft 2: it rechecked Draft 1, wrote the new proofs and lemmas listed above, wrote the verification script, and edited the text to the style guide. Carbon (Gemini, Google) refereed Draft 1. Draft 2 itself has not been independently refereed. AI review is not an independent certification.
 
 The paper was compiled three times with \texttt{pdflatex} (TeX Live 2023, \texttt{newtx} fonts). The output has 26 pages, no undefined references and no overfull boxes. Selected pages were rendered and inspected. The Draft 1 note that no PDF had been compiled is superseded.
 

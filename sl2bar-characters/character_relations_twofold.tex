@@ -93,6 +93,7 @@ The following notation is used throughout. In the running example $\OO=\mathbb Z
 \toprule
 Symbol & Meaning\\ \midrule
 $G,\Mp,P$ & $\mathrm{SL}_2(F)$, its double cover, the covering projection\\
+$\mu_2$ & The kernel $\{\pm1\}$ of $P$\\
 $(a,b)_2,\ \ell$ & Quadratic Hilbert symbol of $F$, quadratic character of $\kk^\times$\\
 $\beta,\ x(g)$ & Kubota cocycle and the Kubota coordinate function\\
 $\np(x),\nm(x)$ & Upper and lower elementary unipotent matrices\\
@@ -101,6 +102,7 @@ $\BT,v_0,v_1$ & Bruhat--Tits tree and the adjacent base vertices\\
 $B^t$ & Set of vertices fixed by $t$\\
 $K_v,K_v^+,s_v$ & Vertex stabilizer, its pro-$p$ radical, its canonical splitting\\
 $K_i,s_i$ & $K_{v_i}$ and $s_{v_i}$ for $i=0,1$\\
+$K_0^{(m)}$ & Kernel of reduction of $K_0$ modulo $\varpi^m$, so that $K_0^{(1)}=K_0^+$\\
 $I,I^+$ & Stabilizer of the base edge and its pro-$p$ radical\\
 $D$ & $\diag(\varpi,1)$\\
 $c_{w,v}(t)$ & The sign $s_w(t)s_v(t)^{-1}$\\
@@ -159,7 +161,7 @@ We have $kL=L$ and $kL'=L'$, so the line is preserved. The action on $L/\varpi L
 For an edge $e=\{v,v'\}$ and $k$ fixing $e$ we write $\lambda_e(k)$ for either eigenvalue. The sign $\ell(\lambda_e(k))$ does not depend on the choice, since $\ell(\lambda^{-1})=\ell(\lambda)$.
 
 \begin{example}\label{ex:baseedge}
-The base edge joins $v_0=[\OO^2]$ and $v_1=[\varpi\OO\oplus\OO]$. By \eqref{eq:ki}, its stabilizer $I=K_0\cap K_1$ consists of the matrices $\sm abcd\in K_0$ with $b\in\varpi\OO$. Such a matrix reduces to a lower triangular matrix with diagonal $(\bar a,\bar a^{-1})$. Thus $\lambda_e(k)=\bar a^{\pm1}$. The subgroup $I^+$ of matrices in $I$ with $\bar a=1$ is pro-$p$, and $I/I^+\cong\kk^\times$ by $k\mapsto\bar a$. Also, $D^mv_0$ lies at distance $|m|$ from $v_0$, and $\diag(\varpi,\varpi^{-1})$ translates this line of vertices by two edges.
+The base edge joins $v_0=[\OO^2]$ and $v_1=[\varpi\OO\oplus\OO]$. By \eqref{eq:ki}, its stabilizer $I=K_0\cap K_1$ consists of the matrices $\sm abcd\in K_0$ with $b\in\varpi\OO$. Such a matrix reduces to a lower triangular matrix with diagonal $(\bar a,\bar a^{-1})$. Thus $\lambda_e(k)=\bar a^{\pm1}$. Let $I^+$ be the set of $\sm abcd\in K_0$ with $a\equiv d\equiv1$ modulo $\varpi$ and $b\in\varpi\OO$. It is the preimage of the lower unipotent subgroup of $\mathrm{SL}_2(\kk)$ under the reduction $K_0\to\mathrm{SL}_2(\kk)$. It is a pro-$p$ group, and $I/I^+\cong\kk^\times$ by $k\mapsto\bar a$. Also, $D^mv_0$ lies at distance $|m|$ from $v_0$, and $\diag(\varpi,\varpi^{-1})$ translates this line of vertices by two edges.
 \end{example}
 
 \subsection{Fixed vertices of elliptic elements}
@@ -290,7 +292,11 @@ The extended cocycle is
  \beta'(g,h)=\beta\bigl((a(g)g)^{a(h)^{-1}},a(h)h\bigr)\,
  v\bigl(\det h,a(g)g\bigr).
 \end{equation}
-It restricts to $\beta$ on $G$. It defines a double cover of $G'$ containing $\Mp$ as a normal subgroup. Let $\widetilde D=(D,1)$ in this larger group. Then
+It restricts to $\beta$ on $G$. The set $G'\times\mu_2$ with the multiplication
+\[
+ (g,\zeta)(h,\xi)=(gh,\zeta\xi\beta'(g,h))
+\]
+is a double cover $\widetilde{G'}$ of $G'$ containing $\Mp$ as a normal subgroup \cite{Ge76}. Let $\widetilde D=(D,1)\in\widetilde{G'}$. Then
 \begin{equation}\label{eq:s1}
  s_1(k)=\widetilde D\,s_0(D^{-1}kD)\,\widetilde D^{-1}\qquad(k\in K_1)
 \end{equation}
@@ -401,7 +407,7 @@ The original notes computed the same sign from \eqref{eq:betaext}. Since $a(D)D=
  \qquad
  \beta'(h(u),D)=\beta(h(u),h(\varpi))\,(\varpi,u^{-1})_2=1 .
 \]
-So $\widetilde D(h(u),1)\widetilde D^{-1}=(h(u),(u,\varpi)_2)$, which is \eqref{eq:edge} by \eqref{eq:s1}. The proof above does not use $\beta'$. The script \texttt{twofold\_cover\_check.py} in the repository compares the two computations of $s_1$ on random elements of $I$ over $\mathbb Q_p$ for $p=3,5,7,11$.
+By the multiplication law of $\widetilde{G'}$, $\widetilde D\,(h(u),1)=(Dh(u),\beta'(D,h(u)))$ and $(h(u),1)\,\widetilde D=(h(u)D,\beta'(h(u),D))$. The matrices $D$ and $h(u)$ commute, so these two elements differ by the sign $\beta'(D,h(u))\beta'(h(u),D)=(u,\varpi)_2$. The inverse of $\widetilde D$ never has to be computed. Hence $\widetilde D(h(u),1)\widetilde D^{-1}=(h(u),(u,\varpi)_2)$, which is \eqref{eq:edge} by \eqref{eq:s1}. The proof above does not use $\beta'$. The script \texttt{twofold\_cover\_check.py} in the repository compares the two computations of $s_1$ on random elements of $I$ over $\mathbb Q_p$ for $p=3,5,7,11$.
 \end{remark}
 
 \begin{example}\label{ex:minusI}
@@ -450,7 +456,7 @@ Let $f$ be supported in $U$. In \eqref{eq:blocks} the term for $v$ is an integra
 \[
  \tr\pi_j(f)=\int_Uf(x)\sum_{v\in B^t\cap Gv_j}\tr\sigma_v(x)\,dx .
 \]
-The integrand is locally constant, so it is the character function on $U$. Its value at $t$ is \eqref{eq:ordinary}.
+Both sides use the same Haar measure of $G$, restricted to the open set $U$. So no volume factor appears, and the result does not depend on the normalization. The integrand is locally constant, so it is the character function on $U$. Its value at $t$ is \eqref{eq:ordinary}.
 
 For the cover, the vertex model of Lemma~\ref{lem:model} holds with $G$ replaced by $\Mp$ and $K_j$ by $P^{-1}(K_j)$, because $\Mp/P^{-1}(K_j)=G/K_j$. Let $v=gv_j$, let $\widetilde g$ be a lift of $g$, and let $k=gk'g^{-1}\in K_v$. By \eqref{eq:equiv}, $s_v(k)=\widetilde g\,s_j(k')\,\widetilde g^{-1}$. For $\varphi$ in the block $\widetilde V_v$ of functions supported on $P^{-1}(K_j)\widetilde g^{-1}$,
 \[
@@ -461,7 +467,7 @@ So $\zeta s_v(k)$ acts on $\widetilde V_v$ with trace $\zeta\tr\sigma_v(k)$. The
  \tr\widetilde\pi_j(\widetilde f)=\int_{P^{-1}(U)}\widetilde f(\widetilde x)\;\zeta\!\!\sum_{v\in B^t\cap Gv_j}c_{w,v}(x)\tr\sigma_v(x)\;d\widetilde x,
  \qquad \widetilde x=\zeta s_w(x) .
 \]
-The function $c_{w,v}$ is a homomorphism $K_w\cap K_v\to\mu_2$ that is trivial on an open subgroup, so the sum is a locally constant function of $\widetilde x$. Evaluating at $\zeta=1$ and $x=t$ gives \eqref{eq:weighted}.
+The function $c_{w,v}$ is a homomorphism $K_w\cap K_v\to\mu_2$ that is trivial on an open subgroup, so the sum is a locally constant function of $\widetilde x$. The Haar measure of $\Mp$ is the one that lifts the measure of $G$, and again the same measure appears on both sides. Evaluating at $\zeta=1$ and $x=t$ gives \eqref{eq:weighted}.
 
 Finally, each vertex $w_a$ of the geodesic is fixed by $t$ by Lemma~\ref{lem:fixedset}. So every $s_{w_a}(t)$ is defined, and the product of the ratios $s_{w_{a-1}}(t)s_{w_a}(t)^{-1}$ telescopes to $c_{w,v}(t)$. The second equality in \eqref{eq:path} is Proposition~\ref{prop:edge}.
 \end{proof}
@@ -480,7 +486,7 @@ Let $t$ be regular elliptic and suppose that $t$ fixes an edge $e$. Then $\lambd
 Let $v=[L]$ be a fixed vertex. The characteristic polynomial of $t$ on $L$ is that of $t$ on $F^2$. It has coefficients in $\OO$, and its reduction $\bar\chi$ is the characteristic polynomial of the reduction of $t$ at $v$. So $\bar\chi$ is the same at all fixed vertices. By Lemma~\ref{lem:edgered} its roots are $\lambda_e(t)^{\pm1}\in\kk^\times$. If these were distinct, Hensel's lemma would lift them to roots in $F$, contradicting ellipticity. So $\lambda_e(t)=\lambda_e(t)^{-1}$, which gives $\lambda_e(t)=\pm1$, and $\bar\chi=(X-z)^2$.
 \end{proof}
 
-If $B^t$ is a single vertex we leave $z$ undefined and read $\ell(z)^0$ as $1$.
+If $B^t$ is a single vertex we leave $z$ undefined and read $\ell(z)^0$ as $1$. Since $\ell(z)=\pm1$, the power $\ell(z)^{j-i}$ depends only on the parity of $j-i$. It equals $\ell(z)$ if $j\ne i$ and $1$ if $j=i$.
 
 \begin{corollary}[Direct comparison]\label{cor:compare}
 Under the hypotheses of Theorem~\ref{thm:weighted}, suppose $w$ has type $i$.
@@ -551,7 +557,7 @@ A character $\theta:\bar T\to\mathbb C^\times$ is \emph{regular} if $\theta^2\ne
  \chi_\theta(\bar\tau)=-\theta(\bar\tau)-\theta(\bar\tau^{-1}),\qquad
  \chi_\theta(\bar h)=0 .
 \end{equation}
-Here $z=\pm1$, $u$ is any nonidentity unipotent element, $\bar\tau\in\bar T$ is not $\pm1$, and $\bar h$ is diagonalizable over $\kk$ with distinct eigenvalues. These values depend only on the characteristic polynomial and on whether the element is semisimple. So they are unchanged by the automorphisms of $\mathrm{SL}_2(\kk)$ induced from $\mathrm{GL}_2(\kk)$.
+Here $z=\pm1$, $u$ is any nonidentity unipotent element, $\bar\tau\in\bar T$ is not $\pm1$, and $\bar h$ is diagonalizable over $\kk$ with distinct eigenvalues. These values depend only on the characteristic polynomial and on whether the element is semisimple. So $\chi_\theta$ is unchanged by the automorphisms of $\mathrm{SL}_2(\kk)$ induced by conjugation in $\mathrm{GL}_2(\kk)$. This matters because the identification of $K_v/K_v^+$ with $\mathrm{SL}_2(\kk)$ depends on a basis of the lattice. A change of basis, or transport by $D$ from $v_0$ to $v_1$, can alter it by such an automorphism. Such an automorphism can exchange the two classes of nonidentity unipotent elements. For regular $\theta$ the value $-\theta(z)$ is the same on both classes, so the local traces are well defined. For $\theta^2=1$ the two classes are separated by the constituents of the reducible $\sigma_\theta$, and that case is excluded here.
 
 Inflate $\sigma_\theta$ to $K_j$ through the reduction at $v_j$. Write $\pi_{j,\theta}$ and $\widetilde\pi_{j,\theta}$ for the resulting ordinary and genuine inductions of Section~\ref{sec:frob}. They are irreducible supercuspidal representations of depth zero, and in particular admissible. This is cited from \cite{MP94} for $G$ and from \cite{HW09} for $\Mp$.
 
@@ -700,7 +706,7 @@ This section records what the general comparison gives outside the unramified de
 Corollary~\ref{cor:compare} does not depend on the depth of the inducing type. Let $\sigma_j$ be a strongly cuspidal type of level $m>1$ in the sense of Manderscheid \cite{Ma84a,Ma84b}, and assume that both compact inductions are admissible. Then \eqref{eq:parity} holds on the regular elliptic set with the same sign.
 
 \begin{example}
-A type that factors through $K_0/K_0^{(m)}$, where $K_0^{(m)}$ is the kernel of reduction modulo $\varpi^m$, has a local trace $\tr\sigma_v(t)$ at each fixed vertex. For $m>1$ this trace is not determined by the reduction of $t$ modulo $\varpi$. Computing these traces in terms of the level and of the congruence depth of $t$ is the natural next calculation.
+A type that factors through $K_0/K_0^{(m)}$, where $K_0^{(m)}$ is the kernel of reduction modulo $\varpi^m$ and $K_0^{(1)}=K_0^+$, has a local trace $\tr\sigma_v(t)$ at each fixed vertex. For $m>1$ this trace is not determined by the reduction of $t$ modulo $\varpi$. Computing these traces in terms of the level and of the congruence depth of $t$ is the natural next calculation.
 \end{example}
 
 \begin{remarkyr}[higher levels]\label{rem:levels}
@@ -708,7 +714,7 @@ The parameters $\sigma(\lambda,m,\alpha)$ and $\sigma_0(\lambda)$ of the origina
 \end{remarkyr}
 
 \subsection{Ramified elliptic elements}
-Theorem~\ref{thm:weighted} covers ramified tori as a weighted sum. Let $E/F$ be ramified quadratic and let $t$ correspond to $\tau\in E^1$. Then $\tau$ preserves $\OEr$ and its maximal ideal $\mathfrak p_E$. These satisfy $\varpi\OEr\subsetneq\mathfrak p_E\subsetneq\OEr$, so they give adjacent vertices. The fixed set contains an edge. By Lemma~\ref{lem:repeated} and Corollary~\ref{cor:compare}(a) the comparison holds with the factor $\ell(z)^{j-i}$, where $z=\pm1$ is the reduction of $\tau$.
+Theorem~\ref{thm:weighted} covers ramified tori as a weighted sum. Let $E/F$ be ramified quadratic and let $t$ correspond to $\tau\in E^1$. Then $\tau$ preserves $\OEr$ and its maximal ideal $\mathfrak p_E$. These satisfy $\varpi\OEr\subsetneq\mathfrak p_E\subsetneq\OEr$, so they give adjacent vertices. The fixed set contains an edge. By Lemma~\ref{lem:repeated} and Corollary~\ref{cor:compare}(a) the comparison holds with the factor $\ell(z)^{j-i}$, where $z$ is the reduction of $\tau$. Here $z=\pm1$ for a direct reason. The residue field of $E$ is $\kk$, and the Galois conjugation of $E$ acts trivially on it, so $N_{E/F}(\tau)=1$ gives $\bar\tau^2=1$.
 
 \begin{example}
 For $E=\mathbb Q_7(\sqrt7)$ the lattices $\mathbb Z_7[\sqrt7]$ and $\sqrt7\,\mathbb Z_7[\sqrt7]$ are fixed by every norm-one element. An explicit depth-zero formula requires the radius of the fixed set around this edge. We leave that computation open and do not import the unramified formula.
@@ -756,7 +762,7 @@ The following short summaries are a reminder of the technical terms. They are me
 \item[Ball and sphere] The ball of radius $r$ consists of the vertices at distance at most $r$ from a center. The sphere consists of those at distance exactly $r$.
 \item[Bruhat--Tits tree] The tree whose vertices are the homothety classes of lattices in $F^2$. Each vertex has $q+1$ neighbors, one for each line over the residue field.
 \item[Canonical lift] The image of an element of a vertex stabilizer under the unique splitting of that stabilizer. An element fixing vertices of both types has two canonical lifts, which may differ by a sign.
-\item[Central extension] A surjective group homomorphism with kernel in the center. The double cover has kernel $\mu_2$.
+\item[Central extension] A surjective group homomorphism whose kernel lies in the center. The double cover is a central extension of $\mathrm{SL}_2(F)$ by $\mu_2$. It is described by a cocycle, here Kubota's, which is built from the Hilbert symbol.
 \item[Character] For a finite-dimensional representation, the trace of the representing matrix. For an admissible representation of a $p$-adic group, a distribution on test functions that is given by a locally constant function on the regular set.
 \item[Cocycle] A function of two group elements measuring the failure of a chosen section of an extension to be multiplicative. The cocycle identity is the associativity of the extended group law.
 \item[Compact induction] The representation on functions that transform by a given representation of a compact open subgroup and are supported on finitely many cosets. It is a direct sum of copies of the inducing space indexed by the cosets, here by vertices.
@@ -774,8 +780,9 @@ The following short summaries are a reminder of the technical terms. They are me
 \item[Inflation] The representation of a group obtained from a representation of a quotient by composing with the quotient map.
 \item[Iwahori subgroup] The stabilizer of an edge of the tree. Its quotient by its pro-$p$ radical is the multiplicative group of the residue field.
 \item[Kubota coordinate] The sign $\zeta$ in an element $(g,\zeta)$ of the cover written with Kubota's cocycle.
-\item[Lattice] The span of a basis of $F^2$ over the ring of integers.
+\item[Lattice] The span of a basis of $F^2$ over the ring of integers. The group $\mathrm{GL}_2(F)$ permutes the lattices transitively. Two lattices give adjacent vertices when one contains the other with index $q$, after scaling.
 \item[Order] A subring of the ring of integers of a field extension that is also a lattice. The lattices fixed by an elliptic element are the modules over the order it generates.
+\item[Packet sum] The sum of the characters of the two representations induced from the two vertex types with the same finite datum. For $\mathrm{SL}_2(F)$ this sum is constant near $\pm I$ on an unramified elliptic torus. For the cover the unweighted sum is not constant when $\ell(z)=-1$, and the sum weighted by $\ell(z)^{j-i}$ is.
 \item[Parahoric subgroup] A compact open subgroup attached to a vertex or an edge of the tree. Here these are the groups $K_v$ and the Iwahori subgroups.
 \item[Pro-$p$ group] An inverse limit of finite $p$-groups. For odd $p$ it has no nontrivial continuous homomorphism to $\mu_2$.
 \item[Quadratic residue character] The homomorphism $\ell$ from $\kk^\times$ to $\pm1$ that is $1$ exactly on squares. It satisfies $\ell(-1)=(-1)^{(q-1)/2}$.
@@ -790,7 +797,7 @@ The following short summaries are a reminder of the technical terms. They are me
 
 \section*{Acknowledgments}
 \addcontentsline{toc}{section}{Acknowledgments}
-The original notes were written by David Joyner following conversations with Jeff Adams and Jason Schultz in 1996. Sol-ChatGPT (OpenAI) acted as reviser for Draft~1. It drafted the geometric revision, identified the edge discrepancy, and developed the weighted comparison and the explicit depth-zero formulas. Claude (Anthropic) acted as reviser for Draft~2. It rederived the edge discrepancy from unipotent generators, completed the proofs of the fixed-vertex formula, added the vanishing result at split elements, wrote the verification script, and edited the exposition to the house style. AI review is not an independent certification of the mathematical results. Further details on the AI usage, on changes of status and on the verification of citations are recorded in the separate revision log.
+The original notes were written by David Joyner following conversations with Jeff Adams and Jason Schultz in 1996. Sol-ChatGPT (OpenAI) acted as reviser for Draft~1. It drafted the geometric revision, identified the edge discrepancy, and developed the weighted comparison and the explicit depth-zero formulas. Claude (Anthropic) acted as reviser for Draft~2. Carbon (Gemini, Google) acted as referee for Draft~1, and its report was used in the revision. Claude rederived the edge discrepancy from unipotent generators, completed the proofs of the fixed-vertex formula, added the vanishing result at split elements, wrote the verification script, and edited the exposition to the house style. AI review is not an independent certification of the mathematical results. Further details on the AI usage, on changes of status and on the verification of citations are recorded in the separate revision log.
 
 \begin{thebibliography}{Ma84b}
 \bibitem[Bo11]{Bo11} C. Bonnaf\'e, \emph{Representations of $\mathrm{SL}_2(\mathbb F_q)$}, Algebra and Applications 13, Springer, 2011.

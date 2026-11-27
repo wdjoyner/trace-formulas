@@ -1,8 +1,16 @@
 # sl2bar-characters
 
-Character relations between supercuspidal representations of SL(2, F), F p-adic, and genuine supercuspidal representations of its metaplectic covers. Two papers by David Joyner, each reconstructed and revised with AI assistance in November 2026 from unfinished notes.
+Character relations between supercuspidal representations of SL(2, F), F p-adic, and genuine supercuspidal representations of its metaplectic covers. Two papers by David Joyner, each reconstructed and revised with AI assistance in November 2026 from unfinished notes, and a third paper that merges them.
 
 ## Summaries
+
+**Characters of supercuspidal representations of tame metaplectic covers of SL(2, F): a Bruhat–Tits tree approach** (`character_relations_tame_covers.tex`; by David Joyner, Gemini, ChatGPT and Claude; Draft 1, November 27, 2026). This paper merges the two papers below into one statement, valid for every central cover of degree n prime to the residue characteristic p, including even n ≥ 4.
+
+- The cover splits in exactly one way over each vertex stabilizer of the tree. The two canonical lifts of −I, at the two vertex types, differ by a sign ε = ±1 that depends only on the cover. It is +1 when n is odd.
+- On regular elliptic elements the genuine character equals the ordinary one times ε(z)^(j−i), where z = ±1 is the repeated residue eigenvalue and i, j are the vertex types. The sign occurs only near −I.
+- For the Kubota cover of degree n the ratio of the two splittings on the Iwahori subgroup is the n-th power residue character, and ε = (−1)^((q−1)/n). For n = 2 this is the condition q ≡ 3 mod 4 of the twofold notes. The fourfold cover over ℚ₅ has ε = −1.
+- For odd n there is an n-th power character relation. For even n the n-th power map on the unramified torus has kernel ±1, and there is none.
+- Each result that the two sources prove differently has one main proof, with the other sketched in a remark.
 
 **Two-orbit unramified elliptic character relations for depth-zero representations of metaplectic covers of SL(2)** (`character_relations_depth_zero.tex`; notes of about 2000; by David Joyner, Argon and ChatGPT). Here the cover is n-fold with n ≥ 3 odd and prime to the residue characteristic p, and F contains the n-th roots of unity. The SL(2, F)-conjugacy classes of maximal compact subgroups correspond to the two vertex orbits of the Bruhat–Tits tree. The paper shows, by continuous group cohomology, that the cover splits uniquely over both of them. Using these two splittings it compares the characters of ordinary and genuine depth-zero supercuspidal representations, induced from either vertex orbit, on the two classes of unramified elliptic tori.
 
@@ -21,6 +29,9 @@ Character relations between supercuspidal representations of SL(2, F), F p-adic,
 
 | File | What it is |
 |---|---|
+| `character_relations_tame_covers.tex`, `.pdf` | The merged paper |
+| `character_relations_tame_covers_revision_log.tex`, `.pdf` | Revision log of the merged paper: sources, new results, concordance, verification levels |
+| `tame_cover_check.py` | Exact checks over ℚ_p of the n-th Hilbert symbol, the Kubota cocycle, the splittings, the edge character and the central sign, for 14 pairs (p, n); run by `../run_checks.py` |
 | `character_relations_depth_zero.tex`, `.pdf` | The odd-degree paper |
 | `revision_log.md` | Revision history of the odd-degree paper |
 | `verify_sl2bar_characters.py` | Finite consistency checks for the odd-degree paper (finite-field character tables and related statements); not a proof |

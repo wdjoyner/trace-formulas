@@ -1,0 +1,137 @@
+\documentclass[12pt,letterpaper]{article}
+\usepackage[T1]{fontenc}
+\usepackage[letterpaper,margin=1in]{geometry}
+\usepackage{amsmath,amssymb}
+\IfFileExists{newtxtext.sty}{\usepackage{newtxtext,newtxmath}}{\usepackage{mathptmx}}
+\usepackage{microtype,booktabs,enumitem,longtable}
+\usepackage[hidelinks]{hyperref}
+\emergencystretch=2em
+\title{Revision log for ``Characters of supercuspidal representations of tame metaplectic covers of $\mathrm{SL}_2(F)$: a Bruhat--Tits tree approach''}
+\author{David Joyner, Gemini (Google), ChatGPT (OpenAI), and Claude (Anthropic)}
+\date{Draft 1 --- November 27, 2026}
+\begin{document}
+\maketitle
+
+\section{Purpose of Draft 1}
+Draft 1 merges two manuscripts of the directory \texttt{sl2bar-characters} into one paper.
+\begin{itemize}[leftmargin=2em]
+\item \textbf{[Jo26a]} \emph{Two-orbit unramified elliptic character relations for depth-zero representations of metaplectic covers of $\mathrm{SL}_2$}, Draft 3 (file \texttt{character\_relations\_depth\_zero.tex}). Covers of odd degree $n\ge3$. Based on notes of about 2000.
+\item \textbf{[Jo26b]} \emph{Notes on characters of supercuspidal representations of the twofold metaplectic cover of $\mathrm{SL}_2(F)$, $F$ $p$-adic}, Draft 2 (file \texttt{character\_relations\_twofold.tex}). The twofold cover. Based on notes of 1996.
+\end{itemize}
+Both source files remain in the repository unchanged. The merged paper is the file\\ \texttt{character\_relations\_tame\_covers.tex}.
+
+The merger was requested by David Joyner on November 27, 2026, with these instructions: follow the outline proposed by Claude, keep one main proof of each duplicated result and sketch the second proof in a remark, list the authors as David Joyner, Gemini, ChatGPT and Claude, and merge the acknowledgments.
+
+\section{The unifying statement}
+The two sources treat two values of one invariant. For a tame cover $\widetilde G\to G$ with kernel $\mu_n$, $p\nmid n$, each vertex stabilizer $K_v$ has a unique splitting $s_v$. The \emph{central sign} $\epsilon=\iota\bigl(s_1(-I)s_0(-I)^{-1}\bigr)\in\{\pm1\}$ is an invariant of the cover. The main theorem (Theorem 4.3) is
+\[
+ \Theta_{\widetilde\pi_j}(s_w(t))=\epsilon(z)^{j-i}\,\Theta_{\pi_j}(t)
+\]
+for regular elliptic $t$ fixing an edge and a vertex $w$ of type $i$. In [Jo26a] $n$ is odd and $\epsilon=1$. In [Jo26b] $n=2$ and $\epsilon=\ell(-1)$.
+
+\section{Results that are new relative to both sources}
+These statements appear in neither source. All are proved in the paper, except where marked.
+\begin{enumerate}[leftmargin=2em]
+\item Proposition 3.3 for every tame cover, including even $n\ge4$ and the residue fields $\mathbb F_3$ and $\mathbb F_9$. The existence proof uses the direct product decomposition of the preimage of $K_v^+$ and $H^2(\mathrm{SL}_2(\mathbb F_q),\mu_n)=0$. [Jo26a] proved existence for odd $n$ with $n\mid q-1$ by a spectral sequence. [Jo26b] took existence from Kubota's formula and Gelbart's extension.
+\item Definition 3.7 and Proposition 3.8: the central sign and its properties. Lemma 3.6(d): the ratio of two adjacent splittings factors through the residue eigenvalue on the edge.
+\item Theorem 4.3 for all $n$ prime to $p$. In particular the comparison for even $n\ge4$.
+\item Proposition 6.4: the formula for the splitting of the $n$-fold Kubota cover over $K_0$ is derived from unipotent words. In [Jo26b] it was cited for $n=2$.
+\item Proposition 6.6 and Corollary 6.7: the edge character of the $n$-fold Kubota cover is the $n$-th power residue character, and $\epsilon=(-1)^{(q-1)/n}$. For $n=2$ this is Proposition 3.8 of [Jo26b].
+\item Proposition 6.10: the lifts of $h(u)$ along the standard apartment.
+\item Proposition 7.5: the kernel and image of the $n$-th power map for even $n$.
+\item Remark 2026.1 is extended. It now records what Proposition 6.10 gives on the split torus. It remains unproved.
+\end{enumerate}
+A statement made in conversation before drafting, that on the split torus the power-residue weights give the $n$-th power support, was refined while writing. For depth-zero types the characters vanish at split elements with regular reduction (Proposition 9.1), and near $\pm I$ the weights are powers of the central sign. The power-residue weights matter only for positive depth. Remark 2026.1 states this.
+
+\section{Duplicated results: main proof and second proof}
+\begin{center}
+\small
+\begin{tabular}{@{}p{.24\textwidth}p{.34\textwidth}p{.34\textwidth}@{}}
+\toprule
+Result & Main proof & Second proof, sketched\\
+\midrule
+Uniqueness and existence of vertex splittings (Prop.\ 3.3) & Unipotent generators, from [Jo26b]. Existence by a direct product decomposition, new & Continuous cohomology, from [Jo26a]: Remark 3.4\\
+Fixed balls (Prop.\ 5.1) & Lattices and the order $\mathcal O_F[\tau]$, from [Jo26b] & Matrix computation, from [Jo26a]: Remark 5.2\\
+Closed formula (Thm.\ 5.6) & Recursion in $r$, from [Jo26b] & Direct summation in four cases, from [Jo26a]: Remark 5.7\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\section{Concordance}
+\begin{center}
+\small
+\begin{tabular}{@{}lll@{}}
+\toprule
+{[Jo26b]}, Draft 2 & {[Jo26a]}, Draft 3 & Merged paper, Draft 1\\
+\midrule
+Lemma 2.1 & & Lemma 2.1 (oriented)\\
+Lemma 2.3 & & Lemma 2.3\\
+Lemma 4.4 & & Lemma 2.4\\
+Lemma 2.5 & & Lemma 2.6\\
+Lemma 2.7 & & Lemma 2.8\\
+Lemma 3.3 & Proposition 1.1 & Proposition 3.3\\
+ & Lemma 3.1 & Lemma 3.6 and Proposition 3.8\\
+Theorem 4.2 & eqs.\ (5.1), (5.2) & Theorem 4.1\\
+Corollary 4.5 & Theorem 1.2, first identity & Theorem 4.3\\
+Remark 4.6 & & Remark 4.4\\
+Proposition 5.1 & Lemma 4.2, Proposition 4.3 & Proposition 5.1, Remark 5.2\\
+eq.\ (5.1) & Proposition 3.2 & eq.\ (5.1)\\
+ & Proposition 3.3 & Proposition 5.4\\
+Theorem 5.4 & Theorem 1.3(i), (ii) & Theorem 5.6, Remark 5.7\\
+Corollary 5.6 & Theorem 1.3(iii) & Corollary 5.9, Theorem 7.3\\
+ & Remark 5.1 & Remark 5.10\\
+Lemma 3.5 & & Lemma 6.2\\
+Lemma 3.6 & & Lemma 6.3\\
+eq.\ (3.3) & & Proposition 6.4\\
+Proposition 3.8 & & Proposition 6.6\\
+Remark 3.9, Proposition 7.1 & & Remark 6.9 (cited only)\\
+ & Lemma 4.1 & Lemma 7.1\\
+ & Theorem 1.2, second identity & Theorem 7.3\\
+ & Remarks 1.4, 5.2 & Remark 7.4\\
+ & Remark 1.5 & Proposition 7.5\\
+Proposition 7.3 & & Proposition 9.1\\
+Remarks 2026.1, 2026.2 & & Remarks 2026.1, 2026.2\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\section{Material not carried over}
+\begin{itemize}[leftmargin=2em]
+\item From [Jo26b]: Gelbart's extended cocycle on $\mathrm{GL}_2(F)$, the second computation of the edge discrepancy from it (Remark 3.9), and the diagonal conjugation formulas (Proposition 7.1, Example 7.2). These are specific to $n=2$. The merged paper cites [Jo26b] for them.
+\item From [Jo26a]: the separate statement of Lemma 4.2 (anisotropic leading coefficient), which is now part of the sketch in Remark 5.2. The long glossary of [Jo26a] was merged with that of [Jo26b] and shortened.
+\item The hypotheses $n\ge3$ odd and $\mu_n\subset F^\times$ of [Jo26a] are no longer needed for the comparison. They are kept where used: odd $n$ in Section 7, and $\mu_n\subset F^\times$ in Section 6.
+\end{itemize}
+
+\section{Status of statements}
+No status was upgraded without proof. The statuses are listed in Section 10 of the paper. Remarks 2026.1 and 2026.2 are not proved. The comparison for positive-depth types is conditional on admissibility.
+
+\section{Verification}
+Levels follow Section 7 of the style guide.
+\begin{itemize}[leftmargin=2em]
+\item \textbf{Level 1 (independent derivation).} All proofs in Sections 2--7 and 9 were written out or rechecked by Claude for this draft. The computations with the $n$-th Hilbert symbol in Section 6 were derived by hand and then tested by the script \texttt{tame\_cover\_check.py}. The script works over $\mathbb Q_p$ with exact rational arithmetic for the pairs $(p,n)=(3,2)$, $(5,2)$, $(5,4)$, $(7,2)$, $(7,3)$, $(7,6)$, $(11,2)$, $(11,5)$, $(11,10)$, $(13,2)$, $(13,3)$, $(13,4)$, $(13,6)$, $(13,12)$. It checks the symbol identities, the cocycle identity, the unipotent and Weyl lifts, the formula for $r_0$, the edge character, the central sign, the apartment lifts, the closed formulas and tables, and the fixed balls. It passed on November 27, 2026. No proof depends on it.
+\item \textbf{Level 3 (not consulted).} No primary source was consulted for this draft. The citations and pinpoint references were carried over from the two sources or recalled from memory. In particular: the cocycle property and topology of the $n$-fold Kubota cover [Ku67]; properties (H1)--(H4) of the $n$-th Hilbert symbol and the normalization of the tame formula [Ne86]; the abelianization and Schur multiplier of $\mathrm{SL}_2(\mathbb F_q)$ [Sc07, St81]; the pinpoint references [HW09, Prop.\ 2.3 and Thm.\ 3.5] and [BH06, \S11.4]; Moore's classification [Mo68]; the finite character values [DL76, Bo11, DM20]. The entries [Sc07] and [St81] are new in this draft and should be checked against the sources.
+\end{itemize}
+
+\section{AI usage}
+Claude (Anthropic) prepared Draft 1 in one session on November 27, 2026. It read both source files in full, proposed the unifying statement and the outline, wrote and ran \texttt{tame\_cover\_check.py}, wrote the merged text, and compiled it. The contributions of Gemini (sessions Argon and Carbon) and of ChatGPT (session Sol) are those recorded in the revision logs of the two sources, \texttt{revision\_log.md} and \texttt{character\_relations\_twofold\_revision\_log.tex}. Their text was reused where the merged paper keeps a proof from a source. Draft 1 has not been refereed.
+
+\section{Defaults used}
+\begin{itemize}[leftmargin=2em]
+\item Document class \texttt{article}, as in both sources. Times via \texttt{newtx}, with \texttt{mathptmx} as fallback.
+\item The paper has a new title, since it has two sources. The subtitle is ``Draft 1'' and ``Merged, corrected and expanded version''. The date line names both sets of original notes.
+\item The literature review is split at 2000, the date of the later set of notes.
+\item Glossary at the end, before the acknowledgments. Notation table in the introduction.
+\item The running example is $\mathbb Q_7$ with $n=2,3,6$.
+\end{itemize}
+
+\section{Compilation}
+The paper compiles with \texttt{pdflatex} to 37 pages, with no undefined references and no overfull boxes.
+
+\section{Points for a referee}
+\begin{enumerate}[leftmargin=2em]
+\item The existence proof in Proposition 3.3, especially the cited values of $H_1$ and $H_2$ of $\mathrm{SL}_2(\mathbb F_q)$ for $q=3$ and $q=9$.
+\item Whether [Ku67] states the cocycle for the $n$-th symbol in the form (6.3) and proves the covering topology in the generality used.
+\item The orientation conventions in Lemma 2.1 and Proposition 6.6 for $n\ge3$, where the symbol is not symmetric.
+\item Proposition 5.4: the intertwining computation and the cited passage from irreducibility to admissibility.
+\end{enumerate}
+\end{document}

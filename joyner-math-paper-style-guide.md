@@ -1,6 +1,6 @@
 # Style guide for mathematical papers (D. Joyner)
 
-Draft 2, November 11, 2026. Compiled from instructions given to Claude and ChatGPT during the 2026 revisions.
+Draft 3, November 27, 2026. Compiled from instructions given to Claude and ChatGPT during the 2026 revisions.
 
 **How to use this file.** Paste it into the first prompt of any chat that drafts, revises or referees a paper. Instructions in the prompt override this file. Rules marked **[DECIDE]** have varied between papers and need a ruling from David. Until then, follow the stated default and say which default you used.
 
@@ -64,6 +64,38 @@ A paper has these parts, in this order.
 7. Do not skip nontrivial steps in proofs.
 8. Use short, direct sentences. Each argument is a chain of related sentences leading to its conclusion. Avoid semicolons.
 
+
+### 3.1. Readability and visual whitespace (mandatory)
+
+Write and typeset for a human reader, not merely for mathematical correctness or compactness. Use meaningful whitespace to reduce visual density and eyestrain. Do not sacrifice clarity to minimize page count.
+
+1. **Display important mathematics.** During every drafting, revision and readability review, actively look for equations and mathematical expressions buried in prose. Display those that introduce a central definition, state an important identity or hypothesis, express a key conclusion, contain complicated notation, or will be used or referred to later. Even a short expression may deserve a display because of its importance.
+2. **Use appropriate LaTeX displays.** Prefer `\[ ... \]` for unnumbered displays, rather than plain TeX `$ ... $`. Use the `equation` environment with a stable label for equations that will be cross-referenced, and `align` or `gather` for multiline mathematics as appropriate. Number referenced equations within sections. Punctuate displays as part of the surrounding sentence.
+3. **Use displays selectively.** Keep routine symbols, short incidental expressions and simple references inline. Introduce important displays with explanatory prose and, where useful, follow them with a sentence explaining their significance. Avoid uninterrupted walls of formulas or unnecessary manual vertical spacing.
+4. **Simplify dense sentences.** Identify long sentences, nested clauses, strings of hypotheses, multiple conclusions and sentences interrupted by substantial inline mathematics. Rewrite them as shorter, direct sentences, generally with one principal assertion or logical step per sentence. Separate hypotheses, conclusions and explanations when doing so helps the reader.
+5. **Preserve mathematical meaning.** When splitting or rewriting sentences, preserve quantifier scope, dependencies, hypotheses, exceptions and the strength of every assertion. Do not remove necessary qualifications merely to shorten the prose.
+6. **Break up dense paragraphs.** Start a new paragraph when the argument changes purpose, introduces a new idea, or moves from a calculation to its interpretation. Use the natural whitespace provided by paragraphs, displays, theorem environments and subsection headings. Do not manipulate margins, font size or line spacing simply to fit a page limit.
+7. **Perform a dedicated readability pass.** In a referee report, identify specific locations (section, theorem, equation or quoted opening words) where inline mathematics should be displayed or dense prose should be rewritten. Supply proposed replacement LaTeX or wording, rather than merely recommending greater readability. In a revision, implement these changes and inspect the compiled PDF for visually crowded pages whenever possible. If PDF inspection is unavailable, say so.
+
+**Example.** Instead of burying a key identity in a sentence:
+
+`For every class function $f$ on $G$, we have $f(x)=\sum_{\chi\in\operatorname{Irr}(G)}\langle f,\chi\rangle\chi(x)$, which we use below.`
+
+write (for a finite group $G$):
+
+```latex
+For every class function $f$ on $G$, the irreducible characters
+provide the expansion
+\begin{equation}\label{eq:character-expansion}
+  f(x)=\sum_{\chi\in\operatorname{Irr}(G)}
+       \langle f,\chi\rangle\chi(x).
+\end{equation}
+We use this expansion in the next section.
+```
+
+The displayed identity is easier to locate, read and reference. The surrounding prose separates the mathematical assertion from its subsequent use.
+
+
 ## 4. Correctness and honesty (mandatory)
 
 1. Every result must be visibly one of four kinds. It is proved in the paper, or cited from a source, or conditional on stated hypotheses, or conjectural. Computational evidence and open problems are labeled as such.
@@ -101,6 +133,7 @@ A paper has these parts, in this order.
 4. Check each claim of another referee independently before agreeing or disagreeing with it.
 5. Give a verdict on each issue: correct, misprint, fixable gap, or false.
 6. Report violations of Sections 1 to 6 as well as mathematical errors.
+7. Perform the dedicated readability pass specified in Section 3.1, including concrete suggestions for displayed mathematics and sentence rewrites.
 
 ## 8. Workflow and deliverables
 
@@ -124,7 +157,7 @@ These apply only to the named project.
 
 ## Provenance of this draft
 
-Most rules appear in the recollections of both Claude and ChatGPT. Draft 2 adds David's own changes of November 11, 2026.
+Most rules appear in the recollections of both Claude and ChatGPT. Draft 2 adds David's own changes of November 11, 2026. Draft 3 adds Section 3.1, implementing David's November 27, 2026 instructions on visual whitespace, displayed mathematics and simpler prose.
 
 The following come only from ChatGPT's recollection and were not found in the Claude chats searched: the `amsart` class, the citation-key examples `KP84` and `DS18`, the three verification levels in Section 7, and the ZIP archive.
 

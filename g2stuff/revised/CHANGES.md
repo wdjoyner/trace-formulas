@@ -2,10 +2,10 @@
 
 **Manuscript:** D. Joyner, Claude, and Gemini, *"On the transfer of Shalika germs for $G_2$"*  
 **Repository Directory:** `g2stuff/` in `wdjoyner/trace-formulas`  
-**Current Revision:** Draft 8 (November 16, 2026), intended as the final form of the revision  
-**Prepared by:** Claude for Drafts 1 and 4; Gemini ("Carbon") for Drafts 2, 3, 5 and 6, with Claude's edits when committing Draft 6; Claude for Drafts 7 and 8. The verification status is recorded in `../revision_log.md`.
+**Current Revision:** Draft 9 (November 27, 2026), a readability revision of Draft 8 (the final mathematical form)  
+**Prepared by:** Claude for Drafts 1 and 4; Gemini ("Carbon") for Drafts 2, 3, 5 and 6, with Claude's edits when committing Draft 6; Claude for Drafts 7, 8 and 9 (Draft 9 from Carbon's editorial plan). The verification status is recorded in `../revision_log.md`.
 
-This document records the mathematical corrections, closed-form derivations, structural additions, and typesetting updates made across the 2026 revisions (Drafts 1–8) relative to the summer 1994 AMS-TeX sources (`g2new0.tex`–`g2new9.tex`, variants `g2new5d.tex` and `g2new9d.tex`, and `g2newapp.tex`).
+This document records the mathematical corrections, closed-form derivations, structural additions, and typesetting updates made across the 2026 revisions (Drafts 1–9) relative to the summer 1994 AMS-TeX sources (`g2new0.tex`–`g2new9.tex`, variants `g2new5d.tex` and `g2new9d.tex`, and `g2newapp.tex`).
 
 ## Overview of Revision Passes
 
@@ -19,6 +19,37 @@ This document records the mathematical corrections, closed-form derivations, str
 | **Draft 6** | Nov 14, 2026 | Sixth pass (Open Problem 1, the 6-dimensional cubic integral $J_3(X)$): intrinsic $X$-free fiber coordinates `(8.7d)` and an $\mathrm{SL}_2(\alpha)$-fibration onto $\mathbb{P}^1(K)\times\mathcal{Q}_3$ (`Prop. 8.3F`); $\mathcal{Q}_3(F)$ identified with a smooth split quadric cone $\mathcal{C}_K(F)$, with a Hilbert 90 reduction of $\kappa_1(t_*)$ and $\omega_{\mathcal{Q}_3}$ (`Prop. 8.3G`); a sketched evaluation of $J_3(X)$ with constants $\lvert C_3(q)\rvert$ (`Claim 8.3H`, `Eq. (8.8)`). Carbon presented 8.3H as a theorem proving $(\mathrm{X}_3)$; when committing, Claude marked it a claim with a sketched proof, corrected its residue to $-2/9$, kept `Theorem 8.3` conditional on $(\mathrm{X}_3)$, and recorded what remains in Open Problem (1). |
 | **Draft 7** | Nov 16, 2026 | Editorial pass (Claude) after a second referee report on the post-Draft-6 source: compile fix (`mathrsfs`); glossary expanded from 9 to 46 entries with $G_2$ examples; notation table extended for §§7–8; corrections of 1994 misprints moved to a new Appendix B; repeated-polar remark rewritten to be self-contained and moved after Claim 8.3H; proof structure of Theorems 7.2 and 8.3 fixed; several local corrections (Jacobian identity in the proof of Theorem 7.6H, Lemma 3.6 count). No result upgraded. |
 | **Draft 8** | Nov 16, 2026 | Completion of the write-up (Claude), at David Joyner's direction: Claim 8.3H restated as Conjecture 8.3H with a heuristic derivation (the Draft 7 sketch kept in `../notes/`); intermediate formulas printed in the proofs of Propositions 7.6E, 8.3C and 8.3D; Langlands–Shelstad justification of the one-variable factors in Theorem 7.6H recorded; (X₁) and (X₃) stated as open problems; scope stated in §0. |
+| **Draft 9** | Nov 27, 2026 | Readability revision (Claude, from Carbon's editorial plan `../referee/g2_draft8_readability_plan_carbon.md`): inline formulas promoted to displays throughout §§0–8 and Appendix B; nine dense paragraphs restructured; `\jot` = 6pt and `\arraystretch` = 1.25 in the Notation table. No mathematical change; all labels, tags and numbers kept. 78 → 82 pages. |
+
+## Draft 9 Changes (readability; by Claude from Carbon's plan, Nov 27, 2026)
+
+Carbon's plan is `../referee/g2_draft8_readability_plan_carbon.md`. Every item was carried out. No statement, label, tag or number changed.
+
+**Part 1: inline formulas promoted to displays.**
+- §0: the dimension formula for $\mathcal O$ (definitions of $G_u$, $r$, $\Sigma^+_G$ moved to a following sentence); the normalized germ $\Gamma^*_{\mathcal O}$ and its scaling; the transfer-factor relation for stably conjugate $\gamma'_G$.
+- §1: $t^g=(t'_+n'_-)^{n_+}$ in the coordinates on $Y''$.
+- §2: the auxiliary quantities $t$, $y_\alpha$ (before (2.11)) and $t$, $u_\beta$, $y_\beta$ (before (2.13)), each now stated once; $D_\alpha$, $D_\beta$ in Proposition 2.14A.
+- §3: the four regular patches of $Z$ as two-row `align*` blocks; the three monomial identities on $Z$; the formula for $x(\rho)$ and the generator count in the proof of Lemma 3.5.
+- §4: $m_\omega$ and $\omega_Z$ before Table 4.3A; the three factorizations of $b$ and the commutator relations in the proof of Lemma 4.4.
+- §5: the normal-crossing conditions (5.1)–(5.3); $t_0T_\sigma=\alpha^\vee(z(W_0,\alpha))$ and $\kappa(\tilde t_*)=\theta(\phi_T(\tilde t_*))$ in the proof of Lemma 5.17.
+- §7: $b$, the kernel relation and the base/fiber coordinate split on $E_{\emptyset,\alpha,\delta}$; $\lambda=\ell_E z(\alpha)^2$, $D_E$, the norm identities and $\omega_{K/L}(c(X))$ in the proof of Proposition 7.6E; the fiber equations and an `align*` block of $D_\alpha^0,F_0,H,D_{-1},D_{s_\zeta}$ in Proposition 7.6G; the Jacobian identity, the $\xi$-form identity, the combined 4-form identity, $\Phi_E|_{u_0}$ in terms of $U$, and the factorization of $J'(X)$ in the proof of Theorem 7.6H.
+- §8: $\pi(y)$ and the orbit/fiber coordinate split on $E_{\emptyset,\beta,\zeta}$; the asymptotics of $p_1,p_2,q_1,q_2$ and the $(\tau^2)^*$ composition identity (Proposition 8.3D); the chamber-hexagon definition, $m_1,m_2,d_{024},d_{135}$ and the discriminant factorization (Proposition 8.3E); $\omega_{\mathcal Q_3}$ and the cross-ratio formula (Proposition 8.3F); $j_2$, the non-vertex $F$-point, $Q_0,A_{\mathrm{num}},W_\alpha,S_F,\Lambda_F$, the norm-regulator factorization and $R_{\mathrm{cone}}$, and the identities for $c_4j_2$, $c_2j_2$ (Proposition 8.3G); the factorization of $J_3(X)$, the integral $J_{\mathcal Q_3}(X)$ and a table of the shell-sum values (heuristic derivation of Conjecture 8.3H).
+- Appendix B (Remark 2026.31, `rem:1.22`): the three triangular gallery equations, in a separate sentence after the coordinate count.
+
+**Part 2: paragraphs restructured.**
+1. §0: "endoscopically Richardson" defined in its own paragraph with the two conditions enumerated.
+2. §0: the paragraph after (0.1) split; the ingredients of (0.1) (the sum over $\mathcal O$, the curve parameter, $t_*$, the $\Gamma$-fixed fiber and its measure) are now a bulleted list.
+3. §0, "Status of the results": the *Proved* item split into four themed sub-items (i)–(iv).
+4. §2: the proof that $n_0=1$ rewritten step by step, with the conjugation cancellation displayed.
+5. §4, Remark 2026.11 (`rem:exceptional`): split into the face combinatorics and the subdivision rays, with the example ray $u$ displayed.
+6. §5, Remark 2026.15 (`rem:main-gap`): split into three paragraphs (why no admissible $Y$ exists; Hales's $GSp(4)$ strategy and the 1994 normalization; Hypothesis $(\mathrm X_r)$).
+7. Proof of Proposition 7.6D: split into the minor computation and the Tate–Nakayama restriction, with $x\mapsto x+s_\alpha x$ and its values on $\beta^\vee,\alpha^\vee$ displayed.
+8. Proof of Theorem 7.6H(d): split into boundary regularization, $I_t$ (two cases), $I_s$ and $I_\xi$, and assembly. $I_\xi$ is now defined explicitly as the regularized integral of $|y_1|_F^{-2}\,dx_1\,dy_1$ over $\mathbb P^1(K_\zeta)$ (from `../notes/shell-sums-2026-11-15.tex`).
+9. Acknowledgments: three paragraphs (1994 origins; Drafts 1–6; Drafts 7–9 and responsibility), with a sentence on Draft 9.
+
+**Part 3: spacing.** `\setlength{\jot}{6pt}` in the preamble; `\arraystretch` 1.25 in the Notation longtable. The regulator display in Proposition 8.3G(b) was stacked to avoid an overfull line.
+
+**Metadata.** Subtitle, date line and header comment now say Draft 9.
 
 ## Draft 6 Changes (by Carbon, as delivered; see the next section for what was changed on commit)
 

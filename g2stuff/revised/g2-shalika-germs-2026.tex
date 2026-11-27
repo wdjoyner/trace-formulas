@@ -1,9 +1,11 @@
 % SPDX-License-Identifier: CC-BY-4.0
 % =====================================================================
 % D. Joyner, "On the transfer of Shalika germs for G_2"
-% Draft 8. Corrected and expanded version, November 2026; intended as the final form
-% of the revision. Draft 7 was an editorial revision of Draft 6; Draft 8 completes the
-% write-up and states (X_1), (X_3) as open problems. See ../revision_log.md.
+% Draft 9. Corrected and expanded version, November 27, 2026. Draft 9 is a
+% readability revision of Draft 8 (more displayed formulas, shorter paragraphs),
+% made from Carbon's editorial plan ../referee/g2_draft8_readability_plan_carbon.md;
+% no statement, label or number changed. Draft 8 completed the write-up and
+% stated (X_1), (X_3) as open problems. See ../revision_log.md.
 %
 % Built from ../transcription/g2_shalika_germs_transcription.tex (the literal
 % transcription of the 1994 manuscript in ../original-1994/) and the referee
@@ -29,6 +31,7 @@
 \usepackage{microtype}
 \usepackage[hidelinks]{hyperref}
 \setlength{\emergencystretch}{3em}
+\setlength{\jot}{6pt}
 \allowdisplaybreaks
 
 % ---------- numbering ----------
@@ -97,7 +100,7 @@
 \DeclareMathOperator{\Aut}{Aut}
 
 \title[Transfer of Shalika germs for \texorpdfstring{$G_2$}{G2}]{On the transfer of Shalika germs for \texorpdfstring{$G_2$}{G2}\\[4pt]
-\normalsize Draft 8. Corrected and expanded version}
+\normalsize Draft 9. Corrected and expanded version}
 \author{David Joyner}
 \thanks{This is a revision of the unpublished manuscript of the same title by
 D.~Joyner, dated summer 1994. The 1994 AMS-\TeX\ source, a literal transcription
@@ -113,7 +116,7 @@ in the numbered ``Remarks 2026.$n$''.}
 \thanks{Gemini is an AI model made by Google; it is called ``Carbon'' in the
 project's notes. See the Acknowledgments for the division of work among the
 authors.}
-\date{Original draft: 1994. Corrected and expanded draft: November 2026 (Draft 8)}
+\date{Original draft: 1994. Corrected and expanded draft: November 2026 (Draft 9)}
 
 \begin{document}
 
@@ -272,13 +275,17 @@ on the $1$-, $2$- and $3$-regular unipotent orbits, (b) compute local
 coordinates and rational Leray quotient forms on the fibers of the base divisors
 over those orbits, and (c) express the contribution of each orbit to the
 Igusa expansion as a principal value integral over a single base divisor.
+
 The $2$- and $3$-regular classes of $G_2$ are not Richardson in $G_2$, but are
-\textbf{endoscopically Richardson}: for an endoscopic group $H$ of $G$, we call
-a unipotent class $\ooo$ of $G$ endoscopically Richardson (with respect to $H$)
-if $\dim\ooo = \dim G - \dim H$ (equivalently $r(\ooo) = |\Sigma_H^+|$) and
-$\ooo = \Ind_M^G(1)$ is induced in Spaltenstein's sense \cite{Spa82} from the
-trivial class of a pseudo-Levi subgroup $M\subset G$ of the same rank and
-dimension as $H$.
+\textbf{endoscopically Richardson}. Specifically, for an endoscopic group $H$
+of $G$, we call a unipotent class $\ooo$ of $G$ \emph{endoscopically
+Richardson} (with respect to $H$) if
+\begin{enumerate}[(1)]
+\item $\dim\ooo = \dim G - \dim H$ (equivalently, $r(\ooo) = |\Sigma_H^+|$), and
+\item $\ooo = \Ind_M^G(1)$ is induced in Spaltenstein's sense \cite{Spa82} from
+the trivial class of a pseudo-Levi subgroup $M\subset G$ having the same rank
+and dimension as $H$.
+\end{enumerate}
 Replacing Hales' inapplicable reduction lemma requires determining the
 dependence of these fiber integrals on the tangent direction $X$
 (Hypotheses $(\mathrm X_r)$ of Remark~\ref{rem:main-gap}); we prove
@@ -464,26 +471,31 @@ as in \cite{LS90}, $\gamma_G^0$ being a fixed regular element of $T_G(F)$.
 This is only the part $\Delta_{III_1}\Delta_{IV}$ of the transfer factor
 of \cite{LS87}; the remaining factors form the term $\Delta_0(X)$ below,
 which is computed for the biquadratic tori in Proposition~\ref{res:7.6A}.
-The sum over ${\mathcal O}$ in \eqref{eq:0.1} runs over all stable unipotent
+
+The other ingredients of \eqref{eq:0.1} are as follows.
+\begin{itemize}
+\item \emph{The sum over ${\mathcal O}$.} It runs over all stable unipotent
 classes ${\mathcal O}^{st}$ in $G(F)$, ${\mathcal O}\subset {\mathcal O}^{st}$
 denoting an arbitrarily chosen $G(F)$-orbit within ${\mathcal O}^{st}$.
-Also, in \eqref{eq:0.1},
+\item \emph{The curve parameter.} The element
 $\gamma_\lambda=\gamma_{\lambda,G}\in C\cap V_f\subset T_G$
-has parameter $\lambda$,
-so that $\gamma_0=1$, where $V_f\subset G_{reg}$
-is a punctured neighborhood of $1$,
-$t_*$ is a cocycle-valued function defined after
-Formula~\ref{res:0.6} below, and
+has parameter $\lambda$, so that $\gamma_0=1$. Here $V_f\subset G_{reg}$
+is a punctured neighborhood of $1$.
+\item \emph{The cocycle.} $t_*$ is a cocycle-valued function defined after
+Formula~\ref{res:0.6} below.
+\item \emph{The $\Gamma$-fixed fiber and its measure.}
 $\phi^{-1}(\gamma_\lambda)^\Gamma$ denotes the fixed points of the fiber
 under the action of $\Gamma:=\Gal(\overline{F}/F)$ on $Y_C$ determined
-by $T_G$, as described in \S\ref{sec:2}.
-The measure
+by $T_G$, as described in \S\ref{sec:2}. The measure
 ${|\omega|/ |\phi^*(d\lambda)|}$ incorporates the factor
 $|D_G(\gamma_{\lambda,G})|$.
+\end{itemize}
 If $\gamma_G'\in G(F)$ is stably conjugate to $\gamma_G$ then
-$\Delta_{G/H}^{T_G,\kappa}(\gamma_H,\gamma'_G)
+\[
+\Delta_{G/H}^{T_G,\kappa}(\gamma_H,\gamma'_G)
 =\kappa(\inv(\gamma_G,\gamma'_G))
-\Delta_{G/H}^{T_G,\kappa}(\gamma_H,\gamma_G)$.
+\Delta_{G/H}^{T_G,\kappa}(\gamma_H,\gamma_G).
+\]
 We normalize
 the measures and use the same notation as in \cite{LS89}. In particular,
 \[
@@ -504,20 +516,26 @@ ${\mathcal O}$ is $r$-regular then
 \Gamma_{\mathcal O}(\exp( X)),
 \]
 where for any $u\in {\mathcal O}$,
-$\dim{\mathcal O}=\dim G_u\setminus G=\dim G -\mathrm{rk}(G)-2r=2|\Sigma^+_G|-2r$,
-$G_u$ denoting the centralizer of $u$ in $G$,
-$r=\dim {\mathcal B}_u$, ${\mathcal B}$ the Borel variety,
+\[
+\dim{\mathcal O}=\dim G_u\setminus G=\dim G -\mathrm{rk}(G)-2r=2|\Sigma^+_G|-2r.
+\]
+Here $G_u$ denotes the centralizer of $u$ in $G$,
+$r=\dim {\mathcal B}_u$, where ${\mathcal B}$ is the Borel variety and
 ${\mathcal B}_u$ its subvariety fixed by $u$,
-and $\Sigma^+_G$ the positive roots with respect to some Borel subgroup.
+and $\Sigma^+_G$ is the set of positive roots with respect to some Borel
+subgroup.
 Since
 \[
 D_G(\exp(\lambda X))=\prod_{\sigma >0}(1-\sigma(\exp(\lambda X))^{-1})
 =\lambda^{|\Sigma^+_G|}\prod_{\sigma >0}\sigma(X)+\text{ higher order terms},
 \]
-the normalized germ $\Gamma^*_{\mathcal O}(\gamma)
-:=|D_G(\gamma)|\Gamma_{\mathcal O}(\gamma)$ satisfies
-$\Gamma^*_{\mathcal O}(\exp(\lambda^2 X))
-=|\lambda|^{2r}\Gamma^*_{\mathcal O}(\exp( X))$.
+the normalized germ
+\[
+\Gamma^*_{\mathcal O}(\gamma):=|D_G(\gamma)|\Gamma_{\mathcal O}(\gamma)
+\qquad\text{satisfies}\qquad
+\Gamma^*_{\mathcal O}(\exp(\lambda^2 X))
+=|\lambda|^{2r}\Gamma^*_{\mathcal O}(\exp( X)).
+\]
 Consequently the $\kappa$-germ satisfies
 \begin{equation}\tag{0.1A}\label{eq:0.1A}
 \Gamma_{{\mathcal O}}^{T,\kappa}(\exp(\lambda^2 X))
@@ -791,25 +809,40 @@ misprints in the 1994 text that do not affect the argument are collected in
 Appendix~\ref{sec:B}.
 
 \begin{itemize}
-\item \emph{Proved:} the regularity of the essential patches and the
+\item \emph{Proved:}
+\begin{enumerate}[(i)]
+\item \emph{Toric geometry of $Z$ and its branches} (\S\S\ref{sec:3}--\ref{sec:4}):
+the regularity of the essential patches and the
 covering of $Z$ up to codimension two (Proposition~\ref{res:3.4A}); the
-normality and Cohen--Macaulayness of $Z$ (Proposition~\ref{res:3.7}); the list
-of all branches of $\lambda=0$ on $Z$ with their Igusa constants and unipotent
-orbit images under $\pi$ (Table~\ref{tab:4.3A} and Lemma~\ref{res:4.4}); the
-root-type structure of the subregular Dynkin curve of $G_2$ (Remark~\ref{rem:dynkin});
-the Kirillov--Kostant orbit forms, rational Leray fiber forms, and exact
-$X$-scaling degrees on $E_\alpha$, $E_\beta$, $E_{\emptyset,\alpha,\delta}$ and
-$E_{\emptyset,\beta,\zeta}$ (\S\S\ref{sec:6}--\ref{sec:8}); the biquadratic and
-cubic transfer factors $\Delta_0(Y)$ and special-fiber cocycles $\kappa_1(t_*)$
-(Propositions~\ref{res:7.6A}, \ref{res:7.6D}, \ref{res:7.6E}, \ref{res:8.3A}--\ref{res:8.3D});
-the birational trivialization $E_{\emptyset,\alpha,\delta}(u_0)\dashrightarrow(\mathbb{P}^1)^4$
-and explicit $p$-adic evaluation of $J'(X)$ proving $(\mathrm X_2)$ directly for
-the biquadratic tori (Theorem~\ref{res:7.6H}); the $SL_2(\alpha)$-fibration
-$E_{\emptyset,\beta,\zeta}(u_0)(F)\dashrightarrow(\mathbb{P}^1(K)\setminus\mathbb{P}^1(F))\times\mathcal C_K(F)$
+normality and Cohen--Macaulayness of $Z$ (Proposition~\ref{res:3.7}); and the
+list of all branches of $\lambda=0$ on $Z$ with their Igusa constants and
+unipotent orbit images under $\pi$ (Table~\ref{tab:4.3A} and
+Lemma~\ref{res:4.4}).
+\item \emph{Differential forms and Galois actions} (\S\S\ref{sec:1}--\ref{sec:2},
+\ref{sec:6}--\ref{sec:8}): the root-type structure of the subregular Dynkin
+curve of $G_2$ (Remark~\ref{rem:dynkin}); and the Kirillov--Kostant orbit
+forms, rational Leray fiber forms, and exact $X$-scaling degrees on
+$E_\alpha$, $E_\beta$, $E_{\emptyset,\alpha,\delta}$ and
+$E_{\emptyset,\beta,\zeta}$.
+\item \emph{Biquadratic $2$-regular matching $(\mathrm X_2)$} (\S\ref{sec:7}):
+the biquadratic transfer factor $\Delta_0(Y)$ and special-fiber cocycle
+$\kappa_1(t_*)$ (Propositions~\ref{res:7.6A}, \ref{res:7.6D}, \ref{res:7.6E});
+and the birational trivialization
+$E_{\emptyset,\alpha,\delta}(u_0)\dashrightarrow(\mathbb{P}^1)^4$
+with the explicit $p$-adic evaluation of $J'(X)$, proving $(\mathrm X_2)$
+directly for the biquadratic tori (Theorem~\ref{res:7.6H}).
+\item \emph{Cubic $3$-regular reduction and group-theoretic tables}
+(\S\ref{sec:8}, Appendix~\ref{sec:A}): the cubic transfer factor
+$\Delta_0(Y)$ and special-fiber cocycle $\kappa_1(t_*)$
+(Propositions~\ref{res:8.3A}--\ref{res:8.3D}); the $SL_2(\alpha)$-fibration
+\[
+E_{\emptyset,\beta,\zeta}(u_0)(F)\dashrightarrow(\mathbb{P}^1(K)\setminus\mathbb{P}^1(F))\times\mathcal C_K(F)
+\]
 onto a split quadric cone for the cyclic cubic tori
 (Propositions~\ref{res:8.3F}--\ref{res:8.3G}); the list
 of elliptic endoscopic data (Table~\ref{tab:A.6}); and the stability of the
 $2$- and $3$-regular classes (\S\ref{sec:A7}).
+\end{enumerate}
 \item \emph{Proved modulo Lemma~\ref{res:5.14} and the divisor proviso of Lemma~\ref{res:0.8}:}
 the formulas \eqref{eq:7.1} and \eqref{eq:8.2} expressing the $2$- and
 $3$-regular parts of the $\kappa$-orbital integral as principal value
@@ -904,6 +937,8 @@ $\gamma,\delta,\epsilon,\zeta$ denote both positive roots and other objects.
 The meaning is always clear from the argument ($\beta(E)$ always has a divisor
 as argument).
 
+\begingroup
+\renewcommand{\arraystretch}{1.25}
 \begin{longtable}{p{0.27\textwidth}p{0.65\textwidth}}
 \toprule
 Symbol & Meaning\\
@@ -956,6 +991,7 @@ $\Lambda_F$, $S_F$ & functions on $\mathcal C_K$ in \eqref{eq:8.7h}; $\{\Lambda_
 $\mathscr D(X)$ & the discriminant of the polar quadratic, \eqref{eq:8.polar-discriminant}\\
 \bottomrule
 \end{longtable}
+\endgroup
 % =====================================================================
 % Section 1. Source: g2new1.tex.
 % =====================================================================
@@ -1385,8 +1421,11 @@ g=g_0t_+n_-n_+,
 \]
 where $T_G^{g_0}=T_+$, $t_+\in T_+(\ovF)$, $n_-\in N_-(\ovF)$,
 and $n_+\in N_+(\ovF)$. Let $t'_+:=t^{g_0}\in T_+(\ovF)$,
-and write $t^g=(t'_+n'_-)^{n_+}$
-with $n'_-\in N_-(\ovF)$. Then
+and write
+\[
+t^g=(t'_+n'_-)^{n_+},\qquad n'_-\in N_-(\ovF).
+\]
+Then
 \[
 (t^g,(B_G(W)^g)_{W})=(t'_+n'_-,(B_-^{n_W})_W)^{n_+},
 \]
@@ -1827,8 +1866,13 @@ $Y''(B_+,B_-)$, assuming that $T_+=B_+\cap B_-$ and $B_-$ (together with the
 Chevalley basis of \S A.4) are $F$-split, so $c_\sigma=1$ in \eqref{eq:2.9}.
 (Non-trivial $c_\sigma$ are treated in \eqref{eq:2.16}--\eqref{eq:2.17}.)
 
-Take $\sigma=\sigma_\alpha$. Since $\theta_\alpha(x(\alpha))^{\theta_{-\alpha}(z)}$
-already places $t=\alpha^\vee(1+x(\alpha)z)$ to the left of
+Take $\sigma=\sigma_\alpha$, and put
+\[
+t = \alpha^\vee(1+x(\alpha)z),\qquad
+y_\alpha = -\frac{x(\alpha)z^2}{1+x(\alpha)z}.
+\]
+Since $\theta_\alpha(x(\alpha))^{\theta_{-\alpha}(z)}$
+already places $t$ to the left of
 $\theta_\alpha(x(\alpha)/(1+x(\alpha)z))$ and of the remaining conjugated
 factors, collecting the root subgroups in the fixed order
 $(\alpha,\beta,\gamma,\delta,\eps,\zeta)$ yields the exact identity
@@ -1837,8 +1881,7 @@ $(\alpha,\beta,\gamma,\delta,\eps,\zeta)$ yields the exact identity
 =\theta_{-\alpha}(y_\alpha)\,
 t\prod_{\rho >0}\theta_\rho(\phi_\rho^\alpha(\unx,z)),
 \end{equation}
-with $t=\alpha^\vee(1+x(\alpha)z)$, $y_\alpha=-x(\alpha)z^2/(1+x(\alpha)z)$,
-$\unx =(x(\alpha),\dots, x(\zeta))$, and
+where $\unx =(x(\alpha),\dots, x(\zeta))$ and
 \[
 \begin{split}
 \phi_\alpha^\alpha(\unx,z)
@@ -1855,20 +1898,35 @@ $\unx =(x(\alpha),\dots, x(\zeta))$, and
 &=x(\zeta)+3zx(\delta)^2-3z^2x(\delta)x(\eps)+z^3x(\eps)^2.
 \end{split}
 \]
-Now apply \eqref{eq:2.9} to $b=t_0\prod_{\rho>0}\theta_\rho(x(\rho))$ when
-$t_0=t^{g_0}$ is the image of $t\in T_G(F)$, so $\sigma_\alpha(t_0)=s_\alpha(t_0)
-=t_0\,\alpha^\vee(\alpha(t_0))^{-1}$. With $c_{\sigma_\alpha}=1$, we have
-$m_{\sigma_\alpha}=\theta_{-\alpha}(z_{\sigma_\alpha})$ and hence
-$b'=m_{\sigma_\alpha}\sigma_\alpha(b)m_{\sigma_\alpha}^{-1}
-=\sigma_\alpha(b)^{\theta_{-\alpha}(-z_{\sigma_\alpha})}$. Because
-$x(\alpha)z(W_0,\alpha)=1-\alpha(t_0)^{-1}$ by \eqref{eq:1.22}, applying
+We now show that the factor $n_0$ of \eqref{eq:2.9} is trivial. Apply
+\eqref{eq:2.9} to $b=t_0\prod_{\rho>0}\theta_\rho(x(\rho))$, where
+$t_0=t^{g_0}$ is the image of $t\in T_G(F)$. Then
+\[
+\sigma_\alpha(t_0)=s_\alpha(t_0)=t_0\,\alpha^\vee(\alpha(t_0))^{-1}.
+\]
+With $c_{\sigma_\alpha}=1$, we have
+$m_{\sigma_\alpha}=\theta_{-\alpha}(z_{\sigma_\alpha})$, and hence
+\[
+b'=m_{\sigma_\alpha}\sigma_\alpha(b)m_{\sigma_\alpha}^{-1}
+=\sigma_\alpha(b)^{\theta_{-\alpha}(-z_{\sigma_\alpha})}.
+\]
+By \eqref{eq:1.22}, $x(\alpha)z(W_0,\alpha)=1-\alpha(t_0)^{-1}$. Applying
 $\sigma_\alpha$ gives $\sigma_\alpha(x(\alpha))z_{\sigma_\alpha}=1-\alpha(t_0)$,
 so at $z=-z_{\sigma_\alpha}$ we have $1+\sigma_\alpha(x(\alpha))z=\alpha(t_0)$.
-Moreover,
-$\theta_{-\alpha}(-z)\,\sigma_\alpha(t_0)\,\theta_{-\alpha}(z)
-=\sigma_\alpha(t_0)\,\theta_{-\alpha}(z(1-\alpha(t_0)^{-1}))$, which cancels
-$\theta_{-\alpha}(y_\alpha)=\theta_{-\alpha}(z(\alpha(t_0)^{-1}-1))$ identically,
-while $\sigma_\alpha(t_0)\,\alpha^\vee(\alpha(t_0))=t_0$. Thus $n_0=1$ in
+Conjugating the torus factor gives
+\[
+\theta_{-\alpha}(-z)\,\sigma_\alpha(t_0)\,\theta_{-\alpha}(z)
+=\sigma_\alpha(t_0)\,\theta_{-\alpha}\bigl(z(1-\alpha(t_0)^{-1})\bigr),
+\]
+and the root-group factor on the right cancels
+\[
+\theta_{-\alpha}(y_\alpha)=\theta_{-\alpha}\bigl(z(\alpha(t_0)^{-1}-1)\bigr)
+\]
+identically. Finally, at $z=-z_{\sigma_\alpha}$ the torus factor $t$ of
+\eqref{eq:2.11} is $\alpha^\vee(\alpha(t_0))$, and
+\[
+\sigma_\alpha(t_0)\,\alpha^\vee(\alpha(t_0))=t_0.
+\] Thus $n_0=1$ in
 \eqref{eq:2.9}, and for $c_{\sigma_\alpha}=1$ we obtain the exact action
 \begin{equation}\tag{2.12}\label{eq:2.12}
 \sigma_\alpha :x(\rho)\longmapsto
@@ -1908,7 +1966,12 @@ y_\beta:=\frac{-xz^2}{1+xz},
 \theta_\zeta(x)^{\theta_{-\beta}(z)}=\theta_\zeta(x)\theta_\epsilon(-xz)
 =\theta_\epsilon(-xz)\theta_\zeta(x).
 \]
-Moving $\theta_{-\beta}(y_\beta)\,\beta^\vee(u_\beta)$ ($u_\beta:=1+x(\beta)z$)
+Now put
+\[
+t = \beta^\vee(u_\beta),\qquad u_\beta = 1+x(\beta)z,\qquad
+y_\beta = -\frac{x(\beta)z^2}{u_\beta}.
+\]
+Moving $\theta_{-\beta}(y_\beta)\,\beta^\vee(u_\beta)$
 to the left past $\theta_\alpha(x(\alpha))$ rescales $x(\alpha)$ to
 $u_\beta x(\alpha)$ (since $\langle\alpha,\beta^\vee\rangle=-1$), and reordering
 $\theta_\alpha(-zx(\gamma))$ past $\theta_\beta(x(\beta)/u_\beta)$ gives the
@@ -1917,7 +1980,7 @@ exact identity
 \Big(\prod_{\rho >0}\theta_\rho(x(\rho))\Big)^{\theta_{-\beta}(z)}
 =\theta_{-\beta}(y_\beta)\,t\prod_{\rho >0}\theta_\rho(\phi_\rho^\beta(\unx,z)),
 \end{equation}
-with $t=\beta^\vee(u_\beta)$, $u_\beta=1+x(\beta)z$, $y_\beta=-x(\beta)z^2/u_\beta$, and
+where
 \[
 \begin{split}
 \phi_\alpha^\beta(\unx,z)
@@ -1953,8 +2016,11 @@ Assume $c_\sigma=1$. At $\lambda=0$, the transformations \eqref{eq:2.12} and
 \eqref{eq:2.14} induce birational Galois involutions on
 $(z(\alpha),z(\beta),w(\gamma),w(\delta),w(\eps),w(\zeta))$:
 \begin{enumerate}[{\upshape(a)}]
-\item For $\sigma=\sigma_\alpha$, putting
-$D_\alpha:=1+3\alpha(X)\sigma(w(\gamma))-3\alpha(X)^2\sigma(w(\delta))+\alpha(X)^3\sigma(w(\eps))$,
+\item For $\sigma=\sigma_\alpha$, put
+\[
+D_\alpha:=1+3\alpha(X)\sigma(w(\gamma))-3\alpha(X)^2\sigma(w(\delta))+\alpha(X)^3\sigma(w(\eps)).
+\]
+Then
 \[
 z'(\alpha)=\sigma(z(\alpha)),\qquad
 z'(\beta)=\frac{\sigma(z(\beta))}{D_\alpha},\qquad
@@ -1965,7 +2031,11 @@ w'(\zeta)=\frac{\sigma(w(\zeta))}{D_\alpha^2},
 w'(\gamma)=\frac{\sigma(w(\gamma))-2\alpha(X)\sigma(w(\delta))+\alpha(X)^2\sigma(w(\eps))}{D_\alpha},\qquad
 w'(\delta)=\frac{\sigma(w(\delta))-\alpha(X)\sigma(w(\eps))}{D_\alpha}.
 \]
-\item For $\sigma=\sigma_\beta$, putting $D_\beta:=1-\beta(X)\sigma(w(\gamma))$,
+\item For $\sigma=\sigma_\beta$, put
+\[
+D_\beta:=1-\beta(X)\sigma(w(\gamma)).
+\]
+Then
 \[
 z'(\alpha)=\frac{\sigma(z(\alpha))}{D_\beta},\qquad
 z'(\beta)=\sigma(z(\beta)),\qquad
@@ -2118,44 +2188,59 @@ functions of the generators on the patch.
 \medskip\noindent
 $x(\alpha)\not= 0$. Generators: $x(\alpha)$, $x(\beta)$, $z(\beta)$, $x(\gamma)$,
 $x(\delta)$, $x(\epsilon)$, $x(\zeta)$. Remaining coordinates:
-$\lambda=x(\beta)z(\beta)$, $z(\alpha)=x(\beta)z(\beta)/x(\alpha)$,
-$w(\gamma)=x(\gamma)z(\beta)/x(\alpha)$,
-$w(\delta)=x(\delta)z(\alpha)z(\beta)/x(\alpha)$,
-$w(\epsilon)=x(\epsilon)z(\alpha)^2 z(\beta)/x(\alpha)$,
-$w(\zeta)=x(\zeta)z(\alpha)^2 z(\beta)^2 /x(\alpha)$.
+\begin{align*}
+\lambda&=x(\beta)z(\beta), &
+z(\alpha)&=\frac{x(\beta)z(\beta)}{x(\alpha)}, &
+w(\gamma)&=\frac{x(\gamma)z(\beta)}{x(\alpha)},\\
+w(\delta)&=\frac{x(\delta)z(\alpha)z(\beta)}{x(\alpha)}, &
+w(\epsilon)&=\frac{x(\epsilon)z(\alpha)^2 z(\beta)}{x(\alpha)}, &
+w(\zeta)&=\frac{x(\zeta)z(\alpha)^2 z(\beta)^2}{x(\alpha)}.
+\end{align*}
 
 \medskip\noindent
 $x(\beta)\not= 0$. Generators: $x(\alpha)$, $x(\beta)$, $z(\alpha)$, $x(\gamma)$,
 $x(\delta)$, $x(\epsilon)$, $x(\zeta)$. Remaining coordinates:
-$\lambda=x(\alpha)z(\alpha)$, $z(\beta)=x(\alpha)z(\alpha)/x(\beta)$,
-$w(\gamma)=x(\gamma)z(\alpha)/x(\beta)$,
-$w(\delta)=x(\delta)z(\alpha)^2 /x(\beta)$,
-$w(\epsilon)=x(\epsilon)z(\alpha)^3 /x(\beta)$,
-$w(\zeta)=x(\zeta)x(\alpha)z(\alpha)^4 /x(\beta)^2$.
+\begin{align*}
+\lambda&=x(\alpha)z(\alpha), &
+z(\beta)&=\frac{x(\alpha)z(\alpha)}{x(\beta)}, &
+w(\gamma)&=\frac{x(\gamma)z(\alpha)}{x(\beta)},\\
+w(\delta)&=\frac{x(\delta)z(\alpha)^2}{x(\beta)}, &
+w(\epsilon)&=\frac{x(\epsilon)z(\alpha)^3}{x(\beta)}, &
+w(\zeta)&=\frac{x(\zeta)x(\alpha)z(\alpha)^4}{x(\beta)^2}.
+\end{align*}
 
 \medskip\noindent
 $x(\gamma)\not= 0$. Generators: $x(\alpha)$, $x(\beta)$, $x(\gamma)$, $w(\gamma)$,
 $x(\delta)$, $x(\epsilon)$, $x(\zeta)$. Remaining coordinates:
-$\lambda=x(\alpha)x(\beta)w(\gamma)/x(\gamma)$,
-$z(\alpha)=x(\beta)w(\gamma)/x(\gamma)$, $z(\beta)=x(\alpha)w(\gamma)/x(\gamma)$,
-$w(\delta)=x(\delta)w(\gamma)^2 x(\beta)/x(\gamma)^2$,
-$w(\epsilon)=x(\epsilon)w(\gamma)^3 x(\beta)^2 /x(\gamma)^3$,
-$w(\zeta)=x(\zeta)x(\alpha) x(\beta)^2 w(\gamma)^4 /x(\gamma)^4$.
+\begin{align*}
+\lambda&=\frac{x(\alpha)x(\beta)w(\gamma)}{x(\gamma)}, &
+z(\alpha)&=\frac{x(\beta)w(\gamma)}{x(\gamma)}, &
+z(\beta)&=\frac{x(\alpha)w(\gamma)}{x(\gamma)},\\
+w(\delta)&=\frac{x(\delta)w(\gamma)^2 x(\beta)}{x(\gamma)^2}, &
+w(\epsilon)&=\frac{x(\epsilon)w(\gamma)^3 x(\beta)^2}{x(\gamma)^3}, &
+w(\zeta)&=\frac{x(\zeta)x(\alpha) x(\beta)^2 w(\gamma)^4}{x(\gamma)^4}.
+\end{align*}
 
 \medskip\noindent
 $w(\zeta)\not= 0$. Generators: $z(\alpha)$, $z(\beta)$, $w(\gamma)$,
 $w(\delta)$, $w(\epsilon)$, $w(\zeta)$, $x(\zeta)$. Remaining coordinates:
-$\lambda=x(\zeta)z(\alpha)^3 z(\beta)^2 /w(\zeta)$,
-$x(\alpha)=x(\zeta)z(\alpha)^2 z(\beta)^2 /w(\zeta)$,
-$x(\beta)=x(\zeta)z(\alpha)^3 z(\beta) /w(\zeta)$,
-$x(\gamma)=w(\gamma)x(\zeta) z(\alpha)^2 z(\beta) /w(\zeta)$,
-$x(\delta)=w(\delta)x(\zeta) z(\alpha) z(\beta) /w(\zeta)$,
-$x(\epsilon)=w(\epsilon)x(\zeta)z(\beta) /w(\zeta)$.
+\begin{align*}
+\lambda&=\frac{x(\zeta)z(\alpha)^3 z(\beta)^2}{w(\zeta)}, &
+x(\alpha)&=\frac{x(\zeta)z(\alpha)^2 z(\beta)^2}{w(\zeta)}, &
+x(\beta)&=\frac{x(\zeta)z(\alpha)^3 z(\beta)}{w(\zeta)},\\
+x(\gamma)&=\frac{w(\gamma)x(\zeta) z(\alpha)^2 z(\beta)}{w(\zeta)}, &
+x(\delta)&=\frac{w(\delta)x(\zeta) z(\alpha) z(\beta)}{w(\zeta)}, &
+x(\epsilon)&=\frac{w(\epsilon)x(\zeta)z(\beta)}{w(\zeta)}.
+\end{align*}
 
 \medskip
-On $Z$ the monomial identities $x(\delta)z(\alpha)^2=x(\beta)w(\delta)$,
-$x(\epsilon)z(\alpha)^3=x(\beta)w(\epsilon)$ and
-$x(\zeta)z(\alpha)^3z(\beta)=x(\beta)w(\zeta)$ hold, because both sides are
+On $Z$ the monomial identities
+\[
+x(\delta)z(\alpha)^2=x(\beta)w(\delta),\qquad
+x(\epsilon)z(\alpha)^3=x(\beta)w(\epsilon),\qquad
+x(\zeta)z(\alpha)^3z(\beta)=x(\beta)w(\zeta)
+\]
+hold, because both sides are
 the same character of the torus. Hence, if $x(\alpha)=x(\beta)=x(\gamma)=w(\zeta)=0$
 and $z(\alpha)\neq0$, then also $x(\delta)=x(\epsilon)=x(\zeta)=0$. So the
 complement of the four patches is contained in $K\cup K_0$, and the claim
@@ -2303,11 +2388,17 @@ z(\alpha)^{m_\rho(\alpha)}\prod_{\alpha\in S_1}x(\alpha)^{-m_\rho(\alpha)}.
 \]
 If $\rho\notin\Sigma^+_{\Delta-S_1}$ then $m_{S_1}(\rho)\geq1$, and $w(\rho)$
 is regular in $x(\rho)$ and the generators. If $\rho\in\Sigma^+_{\Delta-S_1}$
-then $m_{S_1}(\rho)=0$ and $x(\rho)=\lambda w(\rho)\prod_{\alpha\notin
-S_1}z(\alpha)^{-m_\rho(\alpha)}$ is regular in $w(\rho)$ and the generators.
+then $m_{S_1}(\rho)=0$ and
+\[
+x(\rho)=\lambda w(\rho)\prod_{\alpha\notin S_1}z(\alpha)^{-m_\rho(\alpha)}
+\]
+is regular in $w(\rho)$ and the generators.
 So all coordinates are regular functions of the listed ones, whose number is
-$1+(\ell-|S_1|)+(p-|\Sigma^+_{\Delta-S_1}|)+(|\Sigma^+_{\Delta-S_1}|-(\ell-|S_1|))
-=p+1=\dim Z$. Hence $Z_{S_1}$ is an open subset of affine space, with $\lambda$
+\[
+1+(\ell-|S_1|)+(p-|\Sigma^+_{\Delta-S_1}|)+(|\Sigma^+_{\Delta-S_1}|-(\ell-|S_1|))
+=p+1=\dim Z.
+\]
+Hence $Z_{S_1}$ is an open subset of affine space, with $\lambda$
 one of the coordinates.
 \end{proof}
 
@@ -2669,10 +2760,16 @@ w(\zeta))$, the vector $u_E$ lists the orders of vanishing of these
 coordinates along $E$, and the order of vanishing of any monomial is the
 pairing of its exponent vector with $u_E$. Thus $a(E)=\langle
 \lambda,u_E\rangle$, and $b(E)=\langle m_\omega,u_E\rangle$, where
-$m_\omega=(7,-10,-6,1,1,1,1)$ is the exponent vector with
-$\omega_{Z}=\lambda^{7}z(\alpha)^{-10}z(\beta)^{-6}w(\gamma)w(\delta)
-w(\epsilon)w(\zeta)\,\tfrac{d\lambda}{\lambda}\wedge\cdots\wedge
-\tfrac{dw(\zeta)}{w(\zeta)}$, up to sign. This gives a check of
+\[
+m_\omega=(7,-10,-6,1,1,1,1)
+\]
+is the exponent vector with
+\[
+\omega_{Z}=\lambda^{7}z(\alpha)^{-10}z(\beta)^{-6}w(\gamma)w(\delta)
+w(\epsilon)w(\zeta)\,\frac{d\lambda}{\lambda}\wedge\cdots\wedge
+\frac{dw(\zeta)}{w(\zeta)},
+\]
+up to sign. This gives a check of
 Table~\ref{tab:4.3} that does not depend on the choice of patch.
 
 \begin{table}[ht]
@@ -2738,18 +2835,27 @@ $\dim A_1=6$ \cite{Spa82}. For the images under $\pi$, recall that on
 $Y''(B_+,B_-)\times N_+$ at $\lambda=0$ we have $\pi(b,s,z,n_+)=n_+^{-1}bn_+$
 with $b=\prod_{\rho>0}\theta_\rho(x(\rho))$. By $G_2$-equivariance and
 properness of $\pi$ on $Y_C$, $\pi(E)$ is the closure of the $G_2$-saturate of
-$b$ along $E$. From the last column of Table~\ref{tab:4.3A}: on
-$E_{\emptyset,\beta,\zeta}$, $b=\theta_\zeta(x(\zeta))$ with $x(\zeta)\neq0$
-generic, a long-root element, so $\pi(E_{\emptyset,\beta,\zeta})=\overline{A_1}$;
-on $E_{\emptyset,\alpha,\delta}$, $b=\theta_\delta(x(\delta))\theta_\epsilon(x(\epsilon))
-\theta_\zeta(x(\zeta))$ with $x(\delta)\neq0$, and since
-$[X_\alpha,X_\delta]=3X_\epsilon$, $[X_\gamma,X_\delta]=3X_\zeta$, and
-$[X_\alpha,X_\epsilon]=[X_\gamma,X_\epsilon]=0$ in the Chevalley basis of
-\S A.4, conjugating $\theta_\delta(x(\delta))$ by $\theta_\alpha(t_1)\theta_\gamma(t_2)$
+$b$ along $E$. From the last column of Table~\ref{tab:4.3A}, the element
+$b$ on the three branches is
+\begin{align*}
+E_{\emptyset,\beta,\zeta}&:\quad b=\theta_\zeta(x(\zeta)),\\
+E_{\emptyset,\alpha,\delta}&:\quad b=\theta_\delta(x(\delta))\theta_\epsilon(x(\epsilon))
+\theta_\zeta(x(\zeta)),\\
+E_{\emptyset,\alpha,\zeta}&:\quad b=\theta_\epsilon(x(\epsilon))\theta_\zeta(x(\zeta)).
+\end{align*}
+On $E_{\emptyset,\beta,\zeta}$, $b$ with $x(\zeta)\neq0$
+generic is a long-root element, so $\pi(E_{\emptyset,\beta,\zeta})=\overline{A_1}$.
+On $E_{\emptyset,\alpha,\delta}$ we have $x(\delta)\neq0$, and in the
+Chevalley basis of \S A.4
+\[
+[X_\alpha,X_\delta]=3X_\epsilon,\qquad [X_\gamma,X_\delta]=3X_\zeta,\qquad
+[X_\alpha,X_\epsilon]=[X_\gamma,X_\epsilon]=0.
+\]
+So conjugating $\theta_\delta(x(\delta))$ by $\theta_\alpha(t_1)\theta_\gamma(t_2)$
 sweeps out all $(x(\epsilon),x(\zeta))$, showing that $b$ is conjugate to the
 short-root element $\theta_\delta(x(\delta))\in\tilde A_1$ and hence
 $\pi(E_{\emptyset,\alpha,\delta})=\overline{\tilde A_1}$. Similarly, on
-$E_{\emptyset,\alpha,\zeta}$, $b=\theta_\epsilon(x(\epsilon))\theta_\zeta(x(\zeta))$
+$E_{\emptyset,\alpha,\zeta}$, $b$
 is $U_\beta$-conjugate for $x(\epsilon)\neq0$ to $\theta_\epsilon(x(\epsilon))\in A_1$,
 giving $\pi(E_{\emptyset,\alpha,\zeta})=\overline{A_1}$.
 \end{proof}
@@ -2775,11 +2881,16 @@ minimal singular faces:
 \{E_{\emptyset,\alpha,\delta},E_{\emptyset,\alpha,\zeta},E_\emptyset,D_{w(\zeta)},D_{w(\epsilon)}\}.
 \end{gathered}
 \]
+
 A toric resolution subdivides $\sigma$, and each new ray $u$ gives an
 exceptional divisor with $a=\langle\lambda,u\rangle$, $b=\langle
 m_\omega,u\rangle$. Integral values of $\beta$ cannot be excluded in advance.
-For example, $u=(3,2,2,2,3,5,7)=u_{E_{\{\alpha,\beta\}}}+u_{E_{\{\alpha\}}}
-+u_{E_{\{\beta\}}}+u_{D_{w(\gamma)}}$ lies in the relative interior of the
+For example, the ray
+\[
+u=(3,2,2,2,3,5,7)=u_{E_{\{\alpha,\beta\}}}+u_{E_{\{\alpha\}}}
++u_{E_{\{\beta\}}}+u_{D_{w(\gamma)}}
+\]
+lies in the relative interior of the
 third face (which is $4$-dimensional with five rays), and has $a=3$, $b=6$ and $\beta=2$; other lattice points of the singular
 faces give $\beta=5/2$, $7/3$, $7/2$, $13/4$, $9/2$, $13/3$. Which rays occur
 depends on the resolution. So for $\beta=2,3,4$ the coefficients $F_1(1,\beta,
@@ -2827,15 +2938,21 @@ such that the following hold.
 \item[(5.1)]\fixedlabel{5.1}\label{eq:5.1} $\phi^{-1}(0)$ has normal crossings; more precisely,
 the irreducible components $E_i$ of $\phi^{-1}(0)\cap U$
 are of the form $\{\mu_i =0\}$ on $U$ and
-$\lambda=\upsilon\prod_i\mu_i^{a_i}$
+\[
+\lambda=\upsilon\prod_i\mu_i^{a_i}
+\]
 for some integers $a_i\ge0$, where $\upsilon$ is a non-vanishing
 function on $U$ with $|\upsilon|=q^{-m(\upsilon)}$ constant.
 \item[(5.2)]\fixedlabel{5.2}\label{eq:5.2} On $U$, $f(y)$ is of the form
-$f(\mu_1,\dots,\mu_n)=c_f \prod_i\kappa_i(\mu_i)$,
+\[
+f(\mu_1,\dots,\mu_n)=c_f \prod_i\kappa_i(\mu_i),
+\]
 where $c_f$ is a constant and the $\kappa_i$ are quasi-characters of
 $F^\times$ (extended by $\kappa_i(0)=0$ when $\kappa_i\neq1$).
 \item[(5.3)]\fixedlabel{5.3}\label{eq:5.3} The form $\omega$ is given on $U$ by
-$\omega=\prod_i\mu_i^{b_i-1}\,d\mu_1\wedge\cdots\wedge d\mu_n$.
+\[
+\omega=\prod_i\mu_i^{b_i-1}\,d\mu_1\wedge\cdots\wedge d\mu_n.
+\]
 \item[(5.4)]\fixedlabel{5.4}\label{eq:5.4} We \textbf{assume} that $f$ vanishes off $U$, and that
 if $b_i=0$ then $\kappa_i\not= 1$, $1\leq i\leq n$.
 \end{itemize}
@@ -3212,7 +3329,10 @@ $\nu^{-1}\in N_+$, the diagonal factor $T_\sigma^{w_\sigma^{-1}}$ is the
 torus part of $n^{-1}w_\sigma^{-1}$, which can be read off from its leading
 principal minors \cite[Ch.~I, Remark~5.6]{Ha92a}. If $w_\sigma=s_\alpha$ is a
 simple reflection, \cite[Ch.~I, Cor.~5.4]{Ha92a} gives
-$t_0T_\sigma=\alpha^\vee(z(W_0,\alpha))$ for a constant $t_0$, in agreement with
+\[
+t_0T_\sigma=\alpha^\vee(z(W_0,\alpha))
+\]
+for a constant $t_0$, in agreement with
 $n_\alpha=1/z(W_0,\alpha)$ in \eqref{eq:1.21b}. For the elements acting by
 non-simple reflections, or by $-1$, see Proposition~\ref{res:7.6D}.
 
@@ -3225,7 +3345,10 @@ character $\theta$ of $F^\times/N_{E_{T_G}/F}E_{T_G}^\times$, where $E_{T_G}$
 is the Galois closure of the splitting field of $T_G$. One may
 construct a (non-canonical) map
 $\phi_T:H^1(F,T_G) \rightarrow F^\times/N_{E_{T_G}/F}E_{T_G}^\times$
-such that $\kappa(\tilde{t}_*)=\theta(\phi_T(\tilde{t}_*))$.
+such that
+\[
+\kappa(\tilde{t}_*)=\theta(\phi_T(\tilde{t}_*)).
+\]
 The 1994 text asserted that this is a monomial in the coordinates of
 $Y''(B_+,B_-)\times N_+$, so that \eqref{eq:5.1}--\eqref{eq:5.4} hold. For
 the biquadratic tori, Proposition~\ref{res:7.6D} shows instead that
@@ -3278,7 +3401,9 @@ $G_2$, so $\Lie Z(H)=0$. Moreover the centralizer in $G$ of an element $Y$ of
 $\mathfrak t_G$ is a Levi subgroup, and the Levi subgroups of $G_2$ are $T$,
 the two $GL(2)$'s and $G_2$; none of them is $SL(3)$ or $SO(4)$, the
 subgroups of $G_2$ that the 1994 text uses as ``$H\subset G$''. So no
-admissible $Y$ exists. In \cite[\S2, Prop.~2.4(1), Prop.~2.11 and Prop.~2.14, pp.~199--204]{Ha89},
+admissible $Y$ exists.
+
+Hales's own strategy for $GSp(4)$ is different. In \cite[\S2, Prop.~2.4(1), Prop.~2.11 and Prop.~2.14, pp.~199--204]{Ha89},
 Hales's descent is to elements of the connected center $Z_H^\circ$ or to a
 product decomposition $T=T_1T_2$ when $H=H_1\times H_2$ up to finite center, and
 for the cuspidal endoscopic group $SO(4)$ of $GSp(4)$ the dependence on the
@@ -3653,17 +3778,29 @@ By \S\ref{sec:A7} it contains a single $F$-class, so it is stable.
 On $E_{\emptyset,\alpha,\delta}$ ($z(\alpha)=0$), we have
 $x(\alpha)=x(\beta)=x(\gamma)=0$, so the projection
 $\pi(b,s,z,n_+)=n_+^{-1}bn_+$ acts on
-$b=\theta_\delta(x(\delta))\theta_\epsilon(x(\epsilon))\theta_\zeta(x(\zeta))$
-($x(\delta)\neq0$), and is completely independent of $z(\beta)$, $w(\gamma)$,
+\[
+b=\theta_\delta(x(\delta))\theta_\epsilon(x(\epsilon))\theta_\zeta(x(\zeta))
+\qquad(x(\delta)\neq0),
+\]
+and is completely independent of $z(\beta)$, $w(\gamma)$,
 and $w(\delta)$. In the matrix model of \S A.4, the differential of $\pi$ with
 respect to the nine variables $(x(\delta),x(\epsilon),x(\zeta),v(\alpha),\dots,v(\zeta))$
 has generic rank $8=\dim{\mathcal O}_2$, with one-dimensional kernel given at
-$v=0$ by $dv(\beta)+x(\epsilon)\,dx(\zeta)=0$. Following Hales's coordinates for
-the $2$-regular divisor of $Sp(4)$ \cite[\S6, pp.~239--240]{Ha89}, local
-coordinates on an open subset of ${\mathcal O}_2$ are given by
-$(x(\delta),x(\epsilon),x(\zeta),v(\alpha),v(\gamma),v(\delta),v(\epsilon),v(\zeta))$,
-while $(z(\beta),w(\gamma),w(\delta),v(\beta))$ serve as local coordinates on
-the $4$-dimensional fiber $E_{\emptyset,\alpha,\delta}(u)$.
+$v=0$ by
+\[
+dv(\beta)+x(\epsilon)\,dx(\zeta)=0.
+\]
+Following Hales's coordinates for
+the $2$-regular divisor of $Sp(4)$ \cite[\S6, pp.~239--240]{Ha89}, we split
+the twelve coordinates into eight local coordinates on an open subset of
+${\mathcal O}_2$ and four local coordinates on
+the $4$-dimensional fiber $E_{\emptyset,\alpha,\delta}(u)$:
+\begin{align*}
+\text{base }{\mathcal O}_2&:\quad
+\bigl(x(\delta),x(\epsilon),x(\zeta),v(\alpha),v(\gamma),v(\delta),v(\epsilon),v(\zeta)\bigr),\\
+\text{fiber }E_{\emptyset,\alpha,\delta}(u)&:\quad
+\bigl(z(\beta),w(\gamma),w(\delta),v(\beta)\bigr).
+\end{align*}
 
 On $E_{\emptyset,\alpha,\delta}$ the residue $12$-form, in the normalization of
 \eqref{eq:8.1}, is
@@ -3885,23 +4022,38 @@ $K/L$ and $c=\pm1$ is a constant. Moreover $\omega_{K/L}(Q)=1$ at these points.
 \end{res}
 
 \begin{proof}
+We first compute $T_\tau$ from leading principal minors.
 By \eqref{eq:5.18} with $w_\tau$ a representative of $-1=(s_\alpha s_\beta)^3$,
 the torus part of $n^{-1}w_\tau^{-1}$ in the model of \S A.4 is
 $\alpha^\vee(R)\beta^\vee(Q)$, computed from the first two leading principal
 minors (the other six are then determined, and agree). Since $w_\tau$ acts on
-$T_+$ by inversion, $T_\tau=\alpha^\vee(R)^{-1}\beta^\vee(Q)^{-1}$, up to a
+$T_+$ by inversion,
+\[
+T_\tau=\alpha^\vee(R)^{-1}\beta^\vee(Q)^{-1},
+\]
+up to a
 constant independent of the point. The cocycle condition for $\tau$, whose
 twisted action on $T_+$ is $t\mapsto\tau(t)^{-1}$, says that $R,Q\in L^\times$.
-Over $L$, $T$ is the product of two norm-one tori of $K/L$, and
+
+Next we restrict from $F$ to $L$. Over $L$, $T$ is the product of two norm-one tori of $K/L$, and
 $H^1(L,T)\cong(L^\times/N_{K/L}K^\times)^2$; by Tate--Nakayama this is
 $X_*/2X_*$, the class of $\alpha^\vee(a_1)\beta^\vee(a_2)$ ($a_i\in L^\times$)
 corresponding to $\alpha^\vee$ times the class of $a_1$ plus $\beta^\vee$
 times the class of $a_2$. Under the Tate--Nakayama isomorphisms
 $H^1(F,T)\cong X_*/I_\Gamma X_*$ and $H^1(L,T)\cong X_*/2X_*$, restriction is the
-map $x\mapsto x+s_\alpha x$ (a sum over representatives of
-$\Gal(K/F)/\langle\tau\rangle$). It sends the generator $\beta^\vee$ of
-$X_*/I_\Gamma X_*\cong\zzz/2\zzz$ (Table~\ref{tab:A.6}) to
-$\alpha^\vee+2\beta^\vee\equiv\alpha^\vee$, and kills $\alpha^\vee$. So
+map
+\[
+x\longmapsto x+s_\alpha x
+\]
+(a sum over representatives of
+$\Gal(K/F)/\langle\tau\rangle$). On the generator $\beta^\vee$ of
+$X_*/I_\Gamma X_*\cong\zzz/2\zzz$ (Table~\ref{tab:A.6}) and on $\alpha^\vee$
+it gives
+\[
+\beta^\vee\longmapsto\alpha^\vee+2\beta^\vee\equiv\alpha^\vee,\qquad
+\alpha^\vee\longmapsto 0.
+\]
+So
 restriction is injective with image $\{0,\alpha^\vee\}$, and for the class of
 $t_*$ we get $\omega_{K/L}(Q)=1$ and $\kappa(t_*)=\omega_{K/L}(R)$, up to the
 constant.
@@ -3942,8 +4094,11 @@ with $c'=\pm1$ a constant and $\Phi_E\in L^\times$.
 \end{res}
 
 \begin{proof}
-Write $\lambda=\ell_E\,z(\alpha)^2$ with $\ell_E:=x(\delta)z(\beta)/w(\delta)$
-(not to be confused with the field $L$), so
+Write
+\[
+\lambda=\ell_E\,z(\alpha)^2,\qquad \ell_E:=\frac{x(\delta)z(\beta)}{w(\delta)}
+\]
+($\ell_E$ is not to be confused with the field $L$), so
 $x(\alpha)=\ell_E\,z(\alpha)$, $x(\beta)=(\ell_E/z(\beta))z(\alpha)^2$,
 $x(\gamma)=(\ell_Ew(\gamma)/z(\beta))z(\alpha)$, and expand
 $(1-\rho(t_0)^{-1})^{-1}=(\lambda\rho(X))^{-1}+\frac12+O(z(\alpha)^2)$ formally
@@ -3953,7 +4108,10 @@ $n_\alpha,\dots,n_\zeta$ as formal Laurent series in $z(\alpha)$ shows
 symbolically that $n_\alpha,n_\gamma=O(z(\alpha)^{-1})$, $n_\beta=O(1)$,
 $n_\delta=O(z(\alpha)^{-2})$, and $n_\epsilon,n_\zeta=O(z(\alpha)^{-3})$ (with
 $x(\epsilon),x(\zeta)$ entering only at $O(z(\alpha)^{-2})$). Explicitly, with
-$D_E:=\beta\gamma\,w(\delta)-2F_0$, the leading terms are
+\[
+D_E:=\beta\gamma\,w(\delta)-2F_0,
+\]
+the leading terms are
 \[
 \begin{gathered}
 n_\alpha\sim\frac{1}{\alpha z(\alpha)},\qquad
@@ -3978,10 +4136,16 @@ $\Phi_E=(x(\delta)^2/w(\delta)^2)F_1F_2$, which extends to
 $E_{\emptyset,\alpha,\delta}$ with $\theta=1$ in Formula~\ref{res:0.6}.
 By the projection formula, $\omega_{K/L}(x)=(N_{L/F}x,d_\alpha)_F$ for
 $x\in L^\times$, and the non-trivial element of $\Gal(L/F)$ acts on root values
-through $s_\alpha$. Since $N_{L/F}(\alpha\zeta)=-\alpha^2\zeta^2=-d_\alpha d_\zeta
-u^2v^2$, $N_{L/F}(\gamma\epsilon)=\beta\gamma\delta\epsilon=P(X)$, and
-$N_{L/F}(\delta^2)=(\gamma\delta)^2$ with $\gamma\delta\in F^\times$, we obtain
-$\omega_{K/L}(c(X))=(-d_\alpha d_\zeta,d_\alpha)_F\,(P(X),d_\alpha)_F$. Likewise,
+through $s_\alpha$. Since
+\[
+N_{L/F}(\alpha\zeta)=-\alpha^2\zeta^2=-d_\alpha d_\zeta u^2v^2,\qquad
+N_{L/F}(\gamma\epsilon)=\beta\gamma\delta\epsilon=P(X),
+\]
+and $N_{L/F}(\delta^2)=(\gamma\delta)^2$ with $\gamma\delta\in F^\times$, we obtain
+\[
+\omega_{K/L}(c(X))=(-d_\alpha d_\zeta,d_\alpha)_F\,(P(X),d_\alpha)_F.
+\]
+Likewise,
 the $X$-part of $Q_E$ has trivial symbol, consistently with $\omega_{K/L}(Q)=1$.
 \end{proof}
 
@@ -4017,13 +4181,21 @@ $s_\alpha^*$ and $s_\beta^*$ of Proposition~\ref{res:2.14A}.
 \begin{res}{Proposition}{7.6G}[exact $\Omega(G_2)$ action on $E_{\emptyset,\alpha,\delta}(u_0)$]\label{res:7.6G}
 In the model of \S A.4, the condition $n_+^{-1}bn_+=u_0=\theta_\delta(1)$ on
 $E_{\emptyset,\alpha,\delta}$ cuts out the $4$-dimensional fiber
-$E_{\emptyset,\alpha,\delta}(u_0)$ by $x(\delta)=1$, $x(\epsilon)=x(\zeta)=0$,
-and $v(\alpha)=v(\gamma)=v(\delta)=v(\epsilon)=v(\zeta)=0$, with free birational
-coordinates $(z(\beta),w(\gamma),w(\delta),\xi:=v(\beta))$. Putting
-$D_\alpha^0:=1-3\alpha w(\gamma)-3\alpha^2w(\delta)$, $F_0=1+\beta w(\gamma)$,
-$H:=\zeta(\beta\gamma w(\delta)-2F_0)(\gamma\zeta w(\delta)-F_0)$,
-$D_{-1}:=F_0^4\,s_\beta^*(G)$, and
-$D_{s_\zeta}:=3\gamma^2w(\delta)+\beta\zeta w(\gamma)^2+\epsilon w(\gamma)-1$:
+$E_{\emptyset,\alpha,\delta}(u_0)$ by
+\[
+x(\delta)=1,\qquad x(\epsilon)=x(\zeta)=0,\qquad
+v(\alpha)=v(\gamma)=v(\delta)=v(\epsilon)=v(\zeta)=0,
+\]
+with free birational
+coordinates $(z(\beta),w(\gamma),w(\delta),\xi:=v(\beta))$. Put
+\begin{align*}
+D_\alpha^0&:=1-3\alpha w(\gamma)-3\alpha^2w(\delta), &
+F_0&=1+\beta w(\gamma),\\
+H&:=\zeta(\beta\gamma w(\delta)-2F_0)(\gamma\zeta w(\delta)-F_0), &
+D_{-1}&:=F_0^4\,s_\beta^*(G),\\
+D_{s_\zeta}&:=3\gamma^2w(\delta)+\beta\zeta w(\gamma)^2+\epsilon w(\gamma)-1.
+\end{align*}
+Then the following hold.
 \begin{enumerate}[{\upshape(a)}]
 \item The geometric generators $s_\alpha^*$ and $s_\beta^*$ act on
 $(z(\beta),w(\gamma),w(\delta),\xi)$ and $(\alpha,\beta)$ by
@@ -4153,14 +4325,21 @@ $F_0^2$ divide $G$, and $F_1F_2=F_0^2\,c(U)$ with $c(U)$ independent of
 $w(\gamma)$. So at fixed $U$ the function $V=(G/F_0^2)/(c(U)F_0)$ is a ratio of
 two affine linear functions of $w(\gamma)$, which gives (a). Differentiating
 $(U,\log V)$ with respect to $(w(\gamma),w(\delta))$ gives the exact identity
-$\det\frac{\partial(U,\log V)}{\partial(w(\gamma),w(\delta))}
-=\frac{\alpha\zeta\,H}{F_0^2\,G}$ (equivalently, the Jacobian of $(U,V)$ is
-$\alpha\zeta H/(F_0^3F_1F_2)$). Since $U-1=\alpha\zeta w(\delta)/F_0$ and,
+\[
+\det\frac{\partial(U,\log V)}{\partial(w(\gamma),w(\delta))}
+=\frac{\alpha\zeta\,H}{F_0^2\,G}
+\]
+(equivalently, the Jacobian of $(U,V)$ is
+$\alpha\zeta H/(F_0^3F_1F_2)$). We also have $U-1=\alpha\zeta w(\delta)/F_0$ and,
 modulo $dw(\gamma)$ and $dw(\delta)$,
-$d\xi_1\wedge d\xi_2/(\xi_1-\xi_2)^2=(G/(Hz(\beta)^2))\,d\xi\wedge dz(\beta)$,
-we get
-$\alpha\zeta\frac{dU}{(U-1)^2}\wedge\frac{dV}{V}\wedge\frac{d\xi_1\wedge d\xi_2}{(\xi_1-\xi_2)^2}
-=\pm\frac{1}{w(\delta)^2z(\beta)^2}dw(\gamma)\wedge dw(\delta)\wedge d\xi\wedge dz(\beta)$.
+\[
+\frac{d\xi_1\wedge d\xi_2}{(\xi_1-\xi_2)^2}=\frac{G}{Hz(\beta)^2}\,d\xi\wedge dz(\beta).
+\]
+Combining these, we get
+\[
+\alpha\zeta\frac{dU}{(U-1)^2}\wedge\frac{dV}{V}\wedge\frac{d\xi_1\wedge d\xi_2}{(\xi_1-\xi_2)^2}
+=\pm\frac{1}{w(\delta)^2z(\beta)^2}\,dw(\gamma)\wedge dw(\delta)\wedge d\xi\wedge dz(\beta).
+\]
 Proposition~\ref{res:7.6G}(c) gives $s_\alpha^*(U)=U^{-1}$, $(-1)^*(U)=U$, and
 $s_\alpha^*(V)=V$; substituting $(-1)^*(w(\gamma))$ in $(U,w(\gamma))$-coordinates
 gives $(-1)^*(V)=V^{-1}$, and Proposition~\ref{res:7.6G}(b) gives the action on
@@ -4168,7 +4347,10 @@ $(\xi_1,\xi_2)$ (compare \cite[Eqs.~(6.7)--(6.9), p.~242]{Ha89}).
 
 (c) Substituting $w(\delta)=(U-1)F_0/(\alpha\zeta)$ into
 $\Phi_E|_{u_0}=F_1F_2/w(\delta)^2$ cancels $F_0^2$ and gives
-$\Phi_E|_{u_0}=\alpha\zeta U(\alpha\zeta+\gamma\epsilon(U-1))/(U-1)^2$. Putting
+\[
+\Phi_E|_{u_0}=\frac{\alpha\zeta U\bigl(\alpha\zeta+\gamma\epsilon(U-1)\bigr)}{(U-1)^2}.
+\]
+Putting
 $U=(t+\delta_L)/(t-\delta_L)$ gives the stated factorization of $\Phi_E|_{u_0}$;
 since $\frac{uv}{8}(2uvt+d_\zeta v^2-3d_\alpha u^2)\in F^\times$ (off a single
 point in $t$) and $\omega_{K/L}|_{F^\times}=1$, we obtain
@@ -4178,7 +4360,10 @@ $\delta_L$ in $\alpha(X)\zeta(X)=\delta_L uv$, while the two $\sqrt{d_\zeta}$
 factors in $dV/V$ and $d\xi_1\wedge d\xi_2$ cancel $4d_\zeta$ in
 $(\xi_1-\xi_2)^2=4d_\zeta y_1^2$ (and $|2|_F=1$ for $p\ge 5$).
 
-(d) By Lemma~\ref{res:5.14} ($e(1,3)=1$), no branch $E'$ of $\phi^{-1}(1)$
+(d) We evaluate $J'(X)$ in four steps.
+
+\emph{Boundary regularization.}
+By Lemma~\ref{res:5.14} ($e(1,3)=1$), no branch $E'$ of $\phi^{-1}(1)$
 with $(\theta,\beta)=(1,3)$ other than the strict transform of
 $E_{\emptyset,\alpha,\delta}$ meets that strict transform; by the divisor
 proviso of Lemma~\ref{res:0.8}, no other branch with these data contributes to
@@ -4186,27 +4371,56 @@ the $\mathcal O_2$-term. In the Langlands--Shelstad
 regularization \cite[\S\S1--2]{LS83}, each boundary divisor $E'$ meeting the
 proper transform of $E_{\emptyset,\alpha,\delta}$ enters through an analytic
 continuation factor $(1-q^{a_{E'}(3-\beta(E'))-a_{E'}s})^{-1}$, which is regular
-at $s=0$ because $(\theta_{E'},\beta(E'))\neq(1,3)$; multiplying a local boundary coordinate by
+at $s=0$ because $(\theta_{E'},\beta(E'))\neq(1,3)$. Multiplying a local
+boundary coordinate by
 an $X$-dependent unit therefore contributes $|c(X)|^{a_{E'}s}|_{s=0}=1$ (compare
 \cite[Lemma~6.10, p.~243]{Ha89}). Since $|uv|_F=|d_\alpha d_\zeta|_F^{-1/2}|\alpha(X)\zeta(X)|_F$,
-the integral $J'(X)$ factors as $|d_\alpha d_\zeta|_F^{-1/2}|\alpha(X)\zeta(X)|_F\,|I_t\,I_s\,I_\xi|$.
+the integral $J'(X)$ factors as
+\[
+J'(X)=|d_\alpha d_\zeta|_F^{-1/2}\,|\alpha(X)\zeta(X)|_F\,|I_t\,I_s\,I_\xi|,
+\]
+where $I_t$, $I_s$, $I_\xi$ are the integrals over $t$, $s$ and $\xi_1$
+evaluated below.
 This product is invariant under rescaling $d_\alpha\mapsto c_1^2d_\alpha$,
 $d_\zeta\mapsto c_2^2d_\zeta$ ($c_i\in F^\times$), so we may choose
 representatives with $v_F(d_\alpha),v_F(d_\zeta)\in\{0,1\}$ (since $p\ge 5$,
-at least one of the two quadratic extensions is ramified). For $|t|_F>1$,
+at least one of the two quadratic extensions is ramified).
+
+\emph{The integral $I_t$.} For $|t|_F>1$,
 $t^2-d_\alpha d_\zeta$ is a square in $F^\times$, and
 $\mathrm{PV}\int_{|t|_F>1}dt=-1$, so
-$I_t=\int_{\OF}[(t^2-d_\alpha d_\zeta,d_\alpha)_F-1]\,dt$: when
-$v_F(d_\alpha d_\zeta)=1$ ($L/F$ ramified), the integrand vanishes on $\OF^\times$
-and equals $-2$ on $\mathfrak p_F$, giving $I_t=-2/q$; when
-$v_F(d_\alpha)=v_F(d_\zeta)=1$ ($d_\zeta=\varepsilon d_\alpha$, $L/F$ unramified),
-it vanishes on $\OF^\times$ and reduces on $t\in\mathfrak p_F$ to the conic
-Legendre sum $q^{-2}\sum_{\bar y\in\mathbb F_q}[((\bar y^2-\bar\varepsilon)/\mathfrak p_F)-1]=-(q+1)/q^2$.
-The compact torus integral $I_s=\int_F|s^2-d_\zeta|_F^{-1}ds$ converges
+\[
+I_t=\int_{\OF}\bigl[(t^2-d_\alpha d_\zeta,d_\alpha)_F-1\bigr]\,dt.
+\]
+There are two cases.
+\begin{itemize}
+\item If $v_F(d_\alpha d_\zeta)=1$ ($L/F$ ramified), the integrand vanishes on
+$\OF^\times$ and equals $-2$ on $\mathfrak p_F$, giving $I_t=-2/q$.
+\item If $v_F(d_\alpha)=v_F(d_\zeta)=1$ ($d_\zeta=\varepsilon d_\alpha$, $L/F$
+unramified), the integrand vanishes on $\OF^\times$ and reduces on
+$t\in\mathfrak p_F$ to the conic Legendre sum
+\[
+q^{-2}\sum_{\bar y\in\mathbb F_q}\Bigl[\Bigl(\frac{\bar y^2-\bar\varepsilon}{\mathfrak p_F}\Bigr)-1\Bigr]=-\frac{q+1}{q^2}.
+\]
+\end{itemize}
+
+\emph{The integrals $I_s$ and $I_\xi$.} The compact torus integral
+\[
+I_s=\int_F|s^2-d_\zeta|_F^{-1}\,ds
+\]
+converges
 absolutely to $(q+1)/q$ when $v_F(d_\zeta)=0$ and to $2$ when $v_F(d_\zeta)=1$.
 Covering $\mathbb{P}^1(K_\zeta)$ by $\mathcal O_{K_\zeta}$ and its complement
-via $\tilde\xi_1=\xi_1^{-1}$ gives $I_\xi=-2/q$ when $v_F(d_\zeta)=0$ and
-$I_\xi=-(q+1)/q^2$ when $v_F(d_\zeta)=1$. Multiplying
+via $\tilde\xi_1=\xi_1^{-1}$, the principal value
+\[
+I_\xi=\mathrm{PV}\int_{\mathbb{P}^1(K_\zeta)}|y_1|_F^{-2}\,dx_1\,dy_1
+\]
+(in the coordinate $\tilde\xi_1$ on the second piece; see
+\texttt{notes/shell-sums-2026-11-15.tex})
+is $I_\xi=-2/q$ when $v_F(d_\zeta)=0$ and
+$I_\xi=-(q+1)/q^2$ when $v_F(d_\zeta)=1$.
+
+\emph{Assembly.} Multiplying
 $|d_\alpha d_\zeta|_F^{-1/2}|I_tI_sI_\xi|$ gives \eqref{eq:7.13} in all cases;
 note that the two asymmetric subcases $(v_F(d_\alpha),v_F(d_\zeta))=(0,1)$ and
 $(1,0)$ yield the identical constant $4(q+1)q^{-5/2}$.
@@ -4349,9 +4563,18 @@ since $\zeta-\alpha=2\alpha+2\beta$ is not a root of $G_2$. Writing
 $n_+=\theta_{-\alpha}(v(\alpha))n_+'$ with
 $n_+'\in U_{-\beta}U_{-\gamma}U_{-\delta}U_{-\epsilon}U_{-\zeta}$, the factor
 $\theta_{-\alpha}(v(\alpha))$ commutes with $b$, so
-$\pi(y)=(n_+')^{-1}\theta_\zeta(x(\zeta))n_+'$ depends solely on the six
-variables $(x(\zeta),v(\beta),v(\gamma),v(\delta),v(\epsilon),v(\zeta))$ and is
-constant with respect to $(z(\alpha),w(\gamma),w(\delta),w(\epsilon),w(\zeta),v(\alpha))$.
+\[
+\pi(y)=(n_+')^{-1}\theta_\zeta(x(\zeta))n_+'.
+\]
+This depends solely on six of the twelve coordinates and is constant in the
+other six. As in \S\ref{sec:7}, the coordinates split into orbit and fiber
+coordinates:
+\begin{align*}
+\text{base }{\mathcal O}_3&:\quad
+\bigl(x(\zeta),v(\beta),v(\gamma),v(\delta),v(\epsilon),v(\zeta)\bigr),\\
+\text{fiber }E_{\emptyset,\beta,\zeta}(u)&:\quad
+\bigl(z(\alpha),w(\gamma),w(\delta),w(\epsilon),w(\zeta),v(\alpha)\bigr).
+\end{align*}
 Computing the Kirillov--Kostant symplectic Pfaffian on ${\mathcal O}_3$ via the
 trace form on $\mathfrak g_2\subset\mathfrak{so}(8)$ gives, up to a non-zero
 constant, the $G_2$-invariant $6$-form pullback
@@ -4527,12 +4750,15 @@ P_2:=F_0F_2+\gamma^2\delta\bigl(w(\epsilon)+\beta w(\zeta)\bigr),
 \[
 Q_2:=(1-\zeta w(\gamma))F_0^2-3\gamma^2F_0w(\delta)-\gamma^3\bigl(w(\epsilon)+\beta w(\zeta)\bigr),
 \]
-and let $Q_1$ be the polynomial numerator in
-$q_1=-Q_1/(\alpha^3\delta^3\epsilon^2\zeta\,z(\alpha)^6z(\beta)^3)\,(1+O(z(\beta)))$.
-Then $p_1\sim P_1/(\alpha^2\delta\epsilon\,z(\alpha)^3z(\beta))$,
-$p_2\sim P_2/(\beta\gamma^2\delta\zeta\,z(\alpha)^3z(\beta)^2)$,
-$q_2\sim Q_2/(\beta^2\gamma^3\zeta\,z(\alpha)^3z(\beta)^3)$, and on
-$E_{\emptyset,\beta,\zeta}(F)$,
+and let $Q_1$ be the polynomial numerator in the expansion of $q_1$ below.
+Then
+\begin{align*}
+p_1&\sim\frac{P_1}{\alpha^2\delta\epsilon\,z(\alpha)^3z(\beta)}, &
+p_2&\sim\frac{P_2}{\beta\gamma^2\delta\zeta\,z(\alpha)^3z(\beta)^2},\\
+q_1&=-\frac{Q_1}{\alpha^3\delta^3\epsilon^2\zeta\,z(\alpha)^6z(\beta)^3}\,\bigl(1+O(z(\beta))\bigr), &
+q_2&\sim\frac{Q_2}{\beta^2\gamma^3\zeta\,z(\alpha)^3z(\beta)^3},
+\end{align*}
+and on $E_{\emptyset,\beta,\zeta}(F)$,
 \begin{equation}\tag{8.7c}\label{eq:8.7c}
 \kappa_1(t_*)=c'\cdot\omega_{K/F}^{-1}(\tilde\Phi_{E,3}),\qquad
 \tilde\Phi_{E,3}:=\frac{z(\alpha)^3}{x(\zeta)^3w(\zeta)^3}
@@ -4565,9 +4791,14 @@ is trivial under $\omega_{K/F}$, while $\omega_{K/F}(x^2)=\omega_{K/F}^{-1}(x)$ 
 $x\in F^\times$. Writing
 $\lambda^3\,\mathfrak N(t_*)^2=(\lambda q_2^2p_2^{-2})\cdot\tau^2(\lambda p_2)^2$ cancels
 $z(\beta)^2$ and $\tau^2(z(\beta))^4$ identically as $z(\beta)\to 0$ (confirming
-directly that $\theta=1$). Exact polynomial composition of $(\tau^2)^*=(w^4)^*$ on
-$\frac{x(\zeta)z(\alpha)^3}{w(\zeta)}p_2 z(\beta)^2=\frac{x(\zeta)P_2}{\beta\gamma^2\delta\zeta\,w(\zeta)}$
-gives $\frac{-x(\zeta)Q_1}{\alpha\delta^2\epsilon\zeta\,w(\zeta)P_1}$ (using
+directly that $\theta=1$). Exact polynomial composition of $(\tau^2)^*=(w^4)^*$
+gives
+\[
+(\tau^2)^*\Bigl(\frac{x(\zeta)z(\alpha)^3}{w(\zeta)}\,p_2\, z(\beta)^2\Bigr)
+=(\tau^2)^*\Bigl(\frac{x(\zeta)P_2}{\beta\gamma^2\delta\zeta\,w(\zeta)}\Bigr)
+=\frac{-x(\zeta)Q_1}{\alpha\delta^2\epsilon\zeta\,w(\zeta)P_1}
+\]
+(using
 $x(\zeta)=1$ after normalizing on the fiber, or keeping $x(\zeta)\in F^\times$
 whose sixth power lies in $(F^\times)^3$; script
 \texttt{verify\_g2\_open\_problem\_1.py}). All root factors combine to
@@ -4583,9 +4814,13 @@ $(z(\alpha),w(\gamma),w(\delta),w(\epsilon),w(\zeta),\eta:=v(\alpha))$ and
 geometric generators $s_\alpha^*(\eta)=\eta+\alpha z(\alpha)$,
 $s_\beta^*(\eta)=\eta$ extending Proposition~\ref{res:2.14A}. Let
 $(\eta_0,\dots,\eta_5)$ be the six distinct $\Omega(G_2)$-translates of $\eta$
-ordered around the chamber hexagon ($\eta_0=\eta$, $\eta_1=s_\alpha^*(\eta)$,
-$\eta_5=s_\beta^*s_\alpha^*(\eta)$, $\eta_2=s_\alpha^*(\eta_5)$,
-$\eta_4=s_\beta^*(\eta_2)$, $\eta_3=s_\alpha^*(\eta_4)$). Then:
+ordered around the chamber hexagon:
+\[
+\eta_0=\eta,\quad \eta_1=s_\alpha^*(\eta),\quad
+\eta_5=s_\beta^*s_\alpha^*(\eta),\quad \eta_2=s_\alpha^*(\eta_5),\quad
+\eta_4=s_\beta^*(\eta_2),\quad \eta_3=s_\alpha^*(\eta_4).
+\]
+Then:
 \begin{enumerate}[{\upshape(a)}]
 \item $\Omega(G_2)\cong D_6$ acts on $(\eta_0,\dots,\eta_5)$ purely by dihedral
 permutations independent of $X$; in particular $\tau^*=(w^2)^*$ acts by the
@@ -4597,10 +4832,13 @@ quadratic double cover
 \[
 y_{\mathrm{hex}}^2=(m_1+m_2)^2-4\,d_{024}\,d_{135},
 \]
-where $m_1=(\eta_1-\eta_0)(\eta_3-\eta_2)(\eta_5-\eta_4)$,
-$m_2=(\eta_2-\eta_1)(\eta_4-\eta_3)(\eta_0-\eta_5)$,
-$d_{024}=(\eta_0-\eta_2)(\eta_2-\eta_4)(\eta_4-\eta_0)$, and
-$d_{135}=(\eta_1-\eta_3)(\eta_3-\eta_5)(\eta_5-\eta_1)$.
+where
+\begin{align*}
+m_1&=(\eta_1-\eta_0)(\eta_3-\eta_2)(\eta_5-\eta_4), &
+m_2&=(\eta_2-\eta_1)(\eta_4-\eta_3)(\eta_0-\eta_5),\\
+d_{024}&=(\eta_0-\eta_2)(\eta_2-\eta_4)(\eta_4-\eta_0), &
+d_{135}&=(\eta_1-\eta_3)(\eta_3-\eta_5)(\eta_5-\eta_1).
+\end{align*}
 \end{enumerate}
 \end{res}
 
@@ -4609,7 +4847,9 @@ Solving sequentially for $(\eta,z(\alpha),w(\gamma),w(\epsilon),w(\zeta))$ in
 terms of $(\eta_0,\eta_1,\eta_5,\eta_2,\eta_4)$ is linear at each step, and
 substituting into $\eta_3$ yields a quadratic equation in $w(\delta)$ whose
 discriminant factors as
-$\alpha^4\beta^2\delta^2(\eta_5-\eta_0)^2(\eta_1-\eta_0)^{-6}[(m_1+m_2)^2-4d_{024}d_{135}]$
+\[
+\alpha^4\beta^2\delta^2(\eta_5-\eta_0)^2(\eta_1-\eta_0)^{-6}\bigl[(m_1+m_2)^2-4d_{024}d_{135}\bigr]
+\]
 (verified symbolically in \texttt{verify\_g2\_open\_problem\_1.py}). Since
 $[\Gamma_T:1]=3$ is odd, $\tau^*$ lifts uniquely with $+1$ sign to
 $y_{\mathrm{hex}}$. Unlike \eqref{eq:7.12}, pulling back \eqref{eq:8.5} directly to
@@ -4680,9 +4920,12 @@ splits as
 \frac{d\eta_0\wedge d\eta_2\wedge d\eta_4}{(\eta_0-\eta_2)(\eta_2-\eta_4)(\eta_4-\eta_0)}
 \wedge\omega_{\mathcal Q_3},
 \end{equation}
-where $\omega_{\mathcal Q_3}:=\beta(X)\epsilon(X)\zeta(X)\,
+where
+\[
+\omega_{\mathcal Q_3}:=\beta(X)\epsilon(X)\zeta(X)\,
 \bigl(3\alpha(X)(j_2-j_3'')-\beta(X)(j_3'+2j_3'')\bigr)^{-3}\,
-dj_2\wedge dj_3'\wedge dj_3''$.
+dj_2\wedge dj_3'\wedge dj_3''.
+\]
 \end{enumerate}
 \end{res}
 
@@ -4703,8 +4946,11 @@ fixing $(z_a,r_\gamma,\tilde n_\delta,\tilde n_\epsilon,\tilde n_\zeta)$, and
 conjugating by $s_\alpha\in N_{G_2}(T_+)$ gives inversion; elimination of the
 M\"obius parameter $u$ in $r_\gamma\mapsto(r_\gamma+u)/(1+u)$ yields the three
 invariants \eqref{eq:8.7e}. Solving
-$(\eta_2-\eta_0)/(\eta_4-\eta_0)=\frac{(j_2-1)(j_2r_\gamma+(j_3'+j_3'')(r_\gamma-1))}
-{j_2((3j_2+j_3'-1)r_\gamma-(2j_2+j_3'))}$ linearly for $r_\gamma$ and then for
+\[
+\frac{\eta_2-\eta_0}{\eta_4-\eta_0}=\frac{(j_2-1)\bigl(j_2r_\gamma+(j_3'+j_3'')(r_\gamma-1)\bigr)}
+{j_2\bigl((3j_2+j_3'-1)r_\gamma-(2j_2+j_3')\bigr)}
+\]
+linearly for $r_\gamma$ and then for
 $z_a$ inverts the map birationally. Dividing $\tilde\Phi_{E,3}$ by
 $-(\eta_0-\eta_2)(\eta_2-\eta_4)(\eta_4-\eta_0)=N_{K/F}(\eta_2-\eta_0)\in N_{K/F}(K^\times)$
 eliminates $(\eta_0,\eta_2,\eta_4)$ identically, and direct Jacobian
@@ -4724,19 +4970,31 @@ quadric cone
 Y^2+k_0\tau(k_0)+\tau(k_0)\tau^2(k_0)+\tau^2(k_0)k_0=0\bigr\},
 \end{equation}
 identifying $\mathcal Q_3(F)\stackrel{\sim}{\dashrightarrow}\mathcal C_K(F)$
-birationally over $F$ via $j_2=\frac{(1-k_2)(k_0+k_1)}{(Y+1)(Y+k_0)}$, with
+birationally over $F$ via
+\[
+j_2=\frac{(1-k_2)(k_0+k_1)}{(Y+1)(Y+k_0)},
+\]
+with
 $\tau^*(Y)=+Y$ and $(-1)^*(Y+1)=4/(Y+1)$. Since $K/F$ is cyclic cubic,
 $\mathcal C_K$ has square discriminant $\tfrac14 D_{K/F}\in(F^\times)^2$ and
-non-vertex $F$-point $\bigl(\frac{2\tau\theta-\tau^2\theta-\theta}{\theta-\tau\theta},\,3\bigr)$
-($\theta\in K\setminus F$), so $\mathcal C_K$ is split over $F$:
+non-vertex $F$-point
+\[
+\Bigl(\frac{2\tau\theta-\tau^2\theta-\theta}{\theta-\tau\theta},\,3\Bigr)
+\qquad(\theta\in K\setminus F),
+\]
+so $\mathcal C_K$ is split over $F$:
 $\mathbb{P}(\mathcal C_K)\cong\mathbb{P}^1_F\times\mathbb{P}^1_F$. (The affine
 cone $\mathcal C_K$ is singular at its vertex $(k_0,Y)=(0,0)$; only its
 projectivization is smooth.)
-\item Put $Q_0:=Y^2+Y(k_0-k_1)+k_0^2+k_0k_1+k_1^2$,
-$A_{\mathrm{num}}:=(Y-k_1)(Y+k_0)(k_0+k_1)$, and
-$W_\alpha:=\frac{(k_1-Y)(k_0k_1-Y(k_0+1)-2k_0-k_1)}{Q_0}\in K^0$. Then
-$S_F:=Q_0^3/A_{\mathrm{num}}^2$ and
-$\Lambda_F:=\tr_{K/F}(\alpha(X)W_\alpha)$ lie in $F(\mathcal C_K)$, $S_F$ lies
+\item Put
+\begin{align*}
+Q_0&:=Y^2+Y(k_0-k_1)+k_0^2+k_0k_1+k_1^2, &
+A_{\mathrm{num}}&:=(Y-k_1)(Y+k_0)(k_0+k_1),\\
+W_\alpha&:=\frac{(k_1-Y)(k_0k_1-Y(k_0+1)-2k_0-k_1)}{Q_0}\in K^0, &
+S_F&:=\frac{Q_0^3}{A_{\mathrm{num}}^2},\\
+\Lambda_F&:=\tr_{K/F}(\alpha(X)W_\alpha).
+\end{align*}
+Then $S_F$ and $\Lambda_F$ lie in $F(\mathcal C_K)$, $S_F$ lies
 in $\delta_K\cdot N_{K/F}(K^\times)(F^\times)^3$ ($\delta_K=\sqrt{D_{K/F}}\in F^\times$),
 and on $\mathcal C_K(F)$,
 \begin{equation}\tag{8.7h}\label{eq:8.7h}
@@ -4746,16 +5004,22 @@ and on $\mathcal C_K(F)$,
 \end{equation}
 with $c'''\in\mu_3$ constant, while the Igusa norm regulator on
 $E_{\emptyset,\beta,\zeta}(u_0)(F)$ factors as
-$N_{K/F}(z(\alpha)^3/w(\zeta))=N_{K/F}(\beta(X))^2\,d_{024}^3\,R_{\mathrm{cone}}$
-with $R_{\mathrm{cone}}=-\frac{N_{K/F}(Y+k_0)^2N_{K/F}(k_0+1)^2N_{K/F}(1-k_0)^2}
-{64(Y+1)^3N_{K/F}(Q_0)\Lambda_F^3}$.
+\begin{align*}
+N_{K/F}\Bigl(\frac{z(\alpha)^3}{w(\zeta)}\Bigr)&=N_{K/F}(\beta(X))^2\,d_{024}^3\,R_{\mathrm{cone}},\\
+R_{\mathrm{cone}}&:=-\frac{N_{K/F}(Y+k_0)^2N_{K/F}(k_0+1)^2N_{K/F}(1-k_0)^2}
+{64(Y+1)^3N_{K/F}(Q_0)\,\Lambda_F^3}.
+\end{align*}
 \end{enumerate}
 \end{res}
 
 \begin{proof}
-Setting $c_2=(1-j_2)/(2j_2+j_3')$ and $c_4=-j_2/(j_3'+j_3'')$, we have
-$c_4j_2=2/(1-k_0)$ and $c_2j_2=2(k_0+k_1)/(Y(k_0+1)-k_0k_1+2k_0+k_1)$ on
-\eqref{eq:8.7g}, giving (a). On $\mathcal C_K$, Hilbert's Theorem~90 for
+Setting $c_2=(1-j_2)/(2j_2+j_3')$ and $c_4=-j_2/(j_3'+j_3'')$, we have on
+\eqref{eq:8.7g}
+\[
+c_4j_2=\frac{2}{1-k_0},\qquad
+c_2j_2=\frac{2(k_0+k_1)}{Y(k_0+1)-k_0k_1+2k_0+k_1},
+\]
+giving (a). On $\mathcal C_K$, Hilbert's Theorem~90 for
 $-(k_0+k_1)/(Y+k_1)$ (whose $K/F$-norm is $+1$ since
 $N_{K/F}(Y+k_0)=-N_{K/F}(k_0+k_1)$ on $Y^2+s_2(k_0)=0$) produces
 $W_0=-Q_0/A_{\mathrm{num}}$ with $\tau^*(W_0)/W_0=-(k_0+k_1)/(Y+k_1)$,
@@ -4789,8 +5053,11 @@ cover the two directions of Remark~\ref{rem:8.polar-regular}.
 By Proposition~\ref{res:8.3F}(b), the $SL_2(\alpha)$-fibration splits the
 fiber form \eqref{eq:8.7f}. Granting the divisor proviso of
 Lemma~\ref{res:0.8}, $J_3(X)$ then factors formally as
-$|\alpha(X)\gamma(X)\delta(X)|_F\cdot I_{\mathbb P^1(K)}\cdot
-J_{\mathcal Q_3}(X)$. Here $I_{\mathbb P^1(K)}$ is the regularized volume of
+\[
+J_3(X)=|\alpha(X)\gamma(X)\delta(X)|_F\cdot I_{\mathbb P^1(K)}\cdot
+J_{\mathcal Q_3}(X).
+\]
+Here $I_{\mathbb P^1(K)}$ is the regularized volume of
 $\mathbb P^1(K)\setminus\mathbb P^1(F)$ for the $PGL_2(F)$-invariant form in
 \eqref{eq:8.7f}. Writing $\eta_0=c_0+c_1\theta+c_2\theta^2$ in an
 $\OF$-basis of $\mathcal O_K$, this form becomes
@@ -4801,7 +5068,9 @@ chart gives $I_{\mathbb P^1(K)}=-2(q+1)q^{-2}$, both for $K/F$ unramified and
 for $K/F$ tamely ramified.
 
 The factor
-$J_{\mathcal Q_3}(X)=\int_{\mathcal C_K(F)}\kappa_1(t_*)\,|\omega_{\mathcal Q_3}|$
+\[
+J_{\mathcal Q_3}(X)=\int_{\mathcal C_K(F)}\kappa_1(t_*)\,|\omega_{\mathcal Q_3}|
+\]
 is evaluated in radial and ruling coordinates on the split cone
 $\mathcal C_K$, with the regulator $R_{\mathrm{cone}}^{\sigma/3}$ of
 Proposition~\ref{res:8.3G}(b) ($S=q^\sigma\to1$). In these coordinates the
@@ -4823,12 +5092,16 @@ $X$-dependent part, so that $J_{\mathcal Q_3}(X)$ does not depend on $X$, and
 J_{\mathcal Q_3}(X)=\lim_{S\to1}\frac{(1-q^{-1})(S-1)}{1-S^4}\,B_1'(1)B_2(1)
 =-\frac{q-1}{4q}\,B_1'(1)B_2(1).
 \]
-Valuation-shell sums give $B_1'(1)B_2(1)=12/(q^2-1)$ when $K/F$ is
-unramified, and $B_1'(1)=-4/(q-1)$,
-$|B_2(1)|=(q^2+q+1)/(q(q+1))$ when $K/F$ is tamely ramified. Hence
-$|J_{\mathcal Q_3}(X)|$ is $3/(q(q+1))$, respectively
-$(q^2+q+1)/(q^2(q+1))$, and multiplying by $|I_{\mathbb P^1(K)}|$ gives
-\eqref{eq:8.8}.
+Valuation-shell sums give the following values:
+\begin{align*}
+&\text{$K/F$ unramified:} &
+B_1'(1)B_2(1)&=\frac{12}{q^2-1}, &
+|J_{\mathcal Q_3}(X)|&=\frac{3}{q(q+1)},\\
+&\text{$K/F$ tamely ramified:} &
+B_1'(1)&=-\frac{4}{q-1},\quad |B_2(1)|=\frac{q^2+q+1}{q(q+1)}, &
+|J_{\mathcal Q_3}(X)|&=\frac{q^2+q+1}{q^2(q+1)}.
+\end{align*}
+Multiplying by $|I_{\mathbb P^1(K)}|$ gives \eqref{eq:8.8}.
 
 The radial and ruling coordinates and the auxiliary functions of this
 computation are written in explicit models of $K$. The full computation, as it
@@ -5842,12 +6115,16 @@ $7$-dimensional variety $Y_1(B_+,B_-)$. By \eqref{eq:1.21b}, $n_\gamma$ is
 already determined by $n_\gamma=(z(W_0,\beta)z(s_\beta W_0,\gamma))^{-1}$;
 eliminating $n_\gamma$ leaves the six algebraically independent birational
 coordinates $(z(W_0,\alpha),z(W_0,\beta),z(s_\beta W_0,\gamma),n_\delta,n_\epsilon,n_\zeta)$
-on $S(B_+,B_-)$ (or, continuing the gallery $W_0,W_1,\dots,W_5$ with wall
-coordinates $b_1=z(W_0,\beta)$, $a_2=z(s_\beta W_0,\gamma)$, $b_3$, $a_4$, $b_5$,
-solving triangularly via $3a_2^2 b_1 b_3 n_\delta = -(b_1+b_3) - a_2^3 b_1 b_3(n_\epsilon + b_1 n_\zeta)$,
-$a_2^3 a_4 b_1 b_3 n_\epsilon = 3a_2 b_1 + 2a_4(b_1+b_3) - a_2^3 a_4 b_1^2 b_3 n_\zeta$,
-and $a_2^3 a_4^3 b_1^2 b_3^2 b_5 n_\zeta = a_4^3 b_3^2 b_5 - b_1^2(a_2^3 b_3 + (a_2+a_4)^3 b_5)$),
+on $S(B_+,B_-)$,
 which together with $\lambda$ form seven independent coordinates on $Y_1(B_+,B_-)$.
+Equivalently, one may continue the gallery $W_0,W_1,\dots,W_5$ with wall
+coordinates $b_1=z(W_0,\beta)$, $a_2=z(s_\beta W_0,\gamma)$, $b_3$, $a_4$, $b_5$,
+and solve triangularly via
+\begin{align*}
+3a_2^2 b_1 b_3 n_\delta &= -(b_1+b_3) - a_2^3 b_1 b_3(n_\epsilon + b_1 n_\zeta),\\
+a_2^3 a_4 b_1 b_3 n_\epsilon &= 3a_2 b_1 + 2a_4(b_1+b_3) - a_2^3 a_4 b_1^2 b_3 n_\zeta,\\
+a_2^3 a_4^3 b_1^2 b_3^2 b_5 n_\zeta &= a_4^3 b_3^2 b_5 - b_1^2\bigl(a_2^3 b_3 + (a_2+a_4)^3 b_5\bigr).
+\end{align*}
 \end{rem26}
 
 \subsection*{Corrections in \S\ref{sec:2}}
@@ -6428,7 +6705,9 @@ $6$-dimensional cubic principal-value integral $J_3(X)$
 in that computation and its verification script, and marked the claim as a
 sketch. After Draft~6, auxiliary notes in \texttt{g2stuff/notes} (dated
 November 15, 2026) established the facts recorded in
-Remark~\ref{rem:8.polar-regular}; see the revision log. Claude prepared Draft~7
+Remark~\ref{rem:8.polar-regular}; see the revision log.
+
+Claude prepared Draft~7
 (November 16, 2026): it refereed the post-Draft-6 text, corrected the Jacobian
 identity in the proof of Theorem~\ref{res:7.6H} and several local slips,
 rewrote Remark~\ref{rem:8.polar-regular} so that it is self-contained, expanded
@@ -6440,7 +6719,9 @@ and~\ref{res:8.3C}--\ref{res:8.3D}, restated the evaluation of $J_3(X)$ as
 Conjecture~\ref{res:8.3H} with a heuristic derivation, recorded the
 Langlands--Shelstad justification of the one-variable factors in
 Theorem~\ref{res:7.6H}, and stated $(\mathrm X_1)$ and $(\mathrm X_3)$ as open
-problems.
+problems. Draft~9 (November 27, 2026) is a readability revision: Gemini
+wrote an editorial plan for more displayed formulas and shorter paragraphs,
+and Claude carried it out without changing any statement or numbering.
 David Joyner directed the work and is solely
 responsible for the final text. AI review is not an independent
 certification: the computations were checked by scripts, but the

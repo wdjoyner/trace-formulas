@@ -17,7 +17,7 @@ g2stuff/
 ├── referee/         referee reports on the 1994 manuscript and later drafts
 ├── notes/           independent analytical notes (not part of the main draft)
 ├── scripts/         computational checks accompanying the revised drafts
-├── revised/         corrected edition (currently Draft 8, the final form) and CHANGES.md
+├── revised/         corrected edition (currently Draft 9) and CHANGES.md
 ├── revision_log.md  drafts, AI usage, verification levels, sources not consulted
 └── README.md
 ```
@@ -30,13 +30,14 @@ g2stuff/
 | `original-1994/g2new5d.tex`, `g2new9d.tex` | Variant versions of §5 and §9. It is not known which version is later. |
 | `transcription/g2_shalika_germs_transcription.tex`, `.pdf` | All sections in one amsart file, 12pt Times, letter paper, 49 pages. It is literal, as in §6.7 of the style guide: errors are kept, and Claude's notes appear only as `% Claude:` comments. The variant passages and the text that follows `\enddocument` in four source files are kept in `\iffalse` blocks, all of which compile when switched on. |
 | `referee/g2_referee_report.tex`, `.pdf` | Referee report by Claude (15 pages): eleven major issues, a table of minor issues and misprints, the results verified as correct, readability, a bibliography check, compliance with the style guide, and notes on the transcription. Every point has a verdict and a verification level (L1–L3). It also serves as the errata log for the transcription. |
-| `revised/g2-shalika-germs-2026.tex`, `.pdf` | **Draft 8** corrected and expanded edition (78 pages), intended as the final form, by David Joyner, Claude, and Gemini (Carbon). It proves (X₂) for the biquadratic tori, subject to the manuscript's remaining hypotheses, and states the expected value of the cubic fiber integral as Conjecture 8.3H; (X₁) and (X₃) are open problems. The PDF is built from the committed source. |
+| `revised/g2-shalika-germs-2026.tex`, `.pdf` | **Draft 9** corrected and expanded edition (82 pages), a readability revision of Draft 8 (the final mathematical form), by David Joyner, Claude, and Gemini (Carbon). It proves (X₂) for the biquadratic tori, subject to the manuscript's remaining hypotheses, and states the expected value of the cubic fiber integral as Conjecture 8.3H; (X₁) and (X₃) are open problems. The PDF is built from the committed source. |
 | `referee/g2_shalika_germs_draft3_referee_report.tex`, `.pdf` | Report on Draft 3 by Carbon (5 pages), the author of Drafts 2–3, so not independent. Recommends release as a preprint. Claude's check of Draft 3 is in `revision_log.md`. |
-| `revised/CHANGES.md` | Consolidated history of Drafts 1–8 and the 1994 errata, including Claude's edits when committing Draft 6 and the Draft 7 editorial pass (with the renumbering of the Remarks 2026.n). |
+| `revised/CHANGES.md` | Consolidated history of Drafts 1–9 and the 1994 errata, including Claude's edits when committing Draft 6 and the Draft 7 editorial pass (with the renumbering of the Remarks 2026.n). |
 | `referee/g2_shalika_germs_draft5_referee_report.tex` | Carbon's 3-page Draft 5 referee / verification report (author of this revision; not an independent referee). |
 | `referee/g2_shalika_germs_draft6_referee_report.tex`, `.pdf` | Carbon's 3-page Draft 6 report (by the author of the revision; not an independent referee). Committed unchanged; it predates the corrections below. |
 | `referee/g2_draft6_referee_report_claude.tex`, `.pdf` | Claude's 4-page referee report on Draft 6: the failed residue check (the residue is −2/9, not ±2/27), the incomplete proof of 8.3H, the overstated abstract, and how each point was handled on commit. |
 | `referee/g2_draft6_referee_report_claude_2.tex`, `.pdf` | Claude's second report (5 pages) on the post-Draft-6 source, including the November 15 remark: the compile error, independent checks, the scope of the repeated-polar issue for Claim 8.3H, a wrong Jacobian in the proof of Theorem 7.6H, and readability. Its points were addressed in Draft 7. |
+| `referee/g2_draft8_readability_plan_carbon.md` | Carbon's editorial plan for Draft 8: inline formulas to display, dense paragraphs to split, and extra vertical spacing. Carried out in Draft 9; it changes no mathematics. |
 | `scripts/verify_g2_open_problem_1.py` | SymPy suite for Drafts 5–6, six suites: §6 Pfaffians; §7 identities, birational map and the product giving C′(q); §8 cocycle and cover; Propositions 8.3F–8.3G, the residue at t_* (exact), and the arithmetic of the C₃(q) shell formulas. About 20 s. |
 | `revision_log.md` | Drafts, AI usage, verification levels (L1–L3), original vs. new results, sources not consulted, next steps. |
 | `scripts/g2_toric_divisors.py` | Toric structure of the monomial variety Z of §3: every branch of λ = 0 with its Igusa constants a, b, β, and which patches meet which divisors (about 75 s). |
@@ -99,7 +100,7 @@ Run them one at a time, for example `python3 g2_tori_endoscopy.py`.
 
 ## Status
 
-**Draft 8 of the corrected edition (November 16, 2026), intended as the final form.** It completes the write-up of Draft 7: the evaluation of the cubic fiber integral is stated as Conjecture 8.3H with a heuristic derivation, intermediate formulas are printed, and (X₁) and (X₃) are stated as open problems. The editable source is `revised/g2-shalika-germs-2026.tex`; the committed PDF is built from it.
+**Draft 9 of the corrected edition (November 27, 2026).** Draft 9 is a readability revision of Draft 8, made from Carbon's editorial plan (`referee/g2_draft8_readability_plan_carbon.md`): the inline formulas it lists are now displayed, nine dense paragraphs are split, and multi-line displays have more vertical space. No statement, label or equation number changed. Draft 8 (November 16, 2026) is the final mathematical form. It completes the write-up of Draft 7: the evaluation of the cubic fiber integral is stated as Conjecture 8.3H with a heuristic derivation, intermediate formulas are printed, and (X₁) and (X₃) are stated as open problems. The editable source is `revised/g2-shalika-germs-2026.tex`; the committed PDF is built from it.
 
 - **Established in the revision, subject to the paper's stated assumptions (Lemma 5.14 and the proviso of Lemma 0.8):**
   - the normal, Cohen–Macaulay toric model, its codimension-one patches, and the special-fiber constants;

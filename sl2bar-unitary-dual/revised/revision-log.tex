@@ -6,28 +6,581 @@
   {\usepackage{newtxtext,newtxmath}}%
   {\usepackage{mathptmx}\usepackage{amssymb}}
 \usepackage[letterpaper,margin=1in]{geometry}
-\usepackage{booktabs,longtable,array,enumitem}
+\usepackage{booktabs,longtable,tabularx,array,enumitem}
 \usepackage{microtype}
 \usepackage{url}
 \usepackage[hidelinks]{hyperref}
 \newcommand{\Gt}{\widetilde G}
 \newcommand{\At}{\widetilde A}
+\newcommand{\Ct}{\widetilde C}
 \newcommand{\hl}{\tilde h}
 \newcommand{\wt}{\tilde w}
 \newcommand{\ZA}{Z_A}
 \newcommand{\Of}{\mathcal O}
+\newcommand{\Qq}{\mathbb Q}
 \newcommand{\SL}{\mathrm{SL}}
+\newcommand{\GL}{\mathrm{GL}}
 \DeclareMathOperator{\tr}{tr}
+\DeclareMathOperator{\PI}{I}
 
 \title{Revision log for\\ ``On the unitary dual of $\overline{SL(2,F)}$,
-$F$ $p$-adic''\\[4pt]\large Draft 1 (November 9, 2026) to Draft 3
-(November 13, 2026)}
+$F$ $p$-adic''\\[4pt]\large Draft 1 (November 9, 2026) to Draft 4
+(November 27, 2026)}
 \author{Prepared by Claude (Anthropic) for D. Joyner}
-\date{November 13, 2026}
+\date{November 27, 2026}
 
 \begin{document}
 \maketitle
 \tableofcontents
+
+\section{Draft 3 to Draft 4: response to Carbon's review}
+\label{sec:draft4}
+
+Carbon-Gemini reviewed Draft~3 and wrote an action plan for Draft~4. The
+plan is in the repository as
+\path{revised/action-plan_draft3_carbon.md}. It has five parts. This
+section answers each. Theorem numbers in
+Sections~\ref{sec:draft4}--\ref{sec:conc4} refer to Draft~4. The later
+sections are the logs of the earlier drafts, and their numbers refer to
+those drafts. The concordance in Section~\ref{sec:conc4} converts
+Draft~3 numbers to Draft~4 numbers.
+
+No theorem, proposition or lemma changed its statement or its proof in
+Draft~4, apart from the two citation changes in
+Section~\ref{subsec:cit4}. Draft~4 changes the organization, moves the
+revision history here, and adds examples, a figure and a remark.
+
+\subsection{The five parts of the plan}
+
+\begin{longtable}{@{}>{\raggedright\arraybackslash}p{0.27\linewidth}>{\raggedright\arraybackslash}p{0.68\linewidth}@{}}
+\toprule
+Plan item & Action in Draft 4\\
+\midrule
+\endhead
+1. Title and footnote. & Subtitle ``Draft 4. Corrected and expanded
+version''. The footnote names the 1999 manuscript and the date of
+Draft~4. The dates of Drafts 1 to 3 are in the title of this log and in
+Section~\ref{sec:files}.\\
+1. Abstract and Section~1. & The sentence ``Instead we compare each
+unitary-dual claim\dots'' is gone. The paragraph ``Relation to the 1999
+and 2001 unitary-dual accounts'', Table~1 of Draft~3 and every
+$s_{\mathrm{old}}$ are now in Section~\ref{sec:moved} of this log. A
+short ``Scope'' paragraph in the introduction says what the paper does
+not prove, with no history.\\
+1. Remark on normalizations. & Remark~4.5 keeps the comparison of the
+three quotients and drops the 1999 and 2001 comparison, which is in
+Section~\ref{subsec:norm-moved}.\\
+1. Complementary series. & Section~5.1 now defines the family
+$\lambda_s$ in display (5.3) and the endpoint $s_0=d/n$ in display (5.4),
+directly in the parameter $s$. The conversion $s=d\,s_{\mathrm{old}}$
+and the critique of the $\GL(2,F)$ extension step are in
+Sections~\ref{subsec:conv-moved} and~\ref{subsec:gl2-moved}.\\
+1. Caution. & Caution~6.5 now starts from the linear character formula and
+explains why $\tr\chi(a)+\tr\chi(a^{-1})$ is not genuine. It does not
+mention the 1999 formula (Section~\ref{subsec:g-moved}).\\
+1. Open question (1). & Restated with the wording of the plan.\\
+1. Acknowledgments. & Shortened. They name each AI system and its role,
+say that AI review is not a certification, and point to this log.\\
+2. Notation and literature review inside Section~1. & Done:
+Section~1.1 (Notation) and Section~1.2 (Literature review), with the
+labels unchanged. ``Work before 1999'' and ``Work from 1999 on'' are
+paragraph headings, and the topic headings inside them are run-in
+italics. The top-level sections are renumbered as in the plan
+(Section~\ref{sec:conc4}). The outline paragraph is updated.\\
+3. Small fields. & New Remark~1.1 (two sentences) on $\Qq_2$ and
+$\Qq_3$.\\
+3. Running example. & The threefold cover of $\SL(2,\Qq_7)$ is the
+single running example. It is named in the abstract and the
+introduction and is picked up in every section and in each background
+subsection. New Example~3.7 gives explicit $3\times3$ matrices for
+$\chi_\lambda(\hl(7))$ and $\chi_\lambda(\hl(3))$. See
+Section~\ref{subsec:choices} for the choice of $\Qq_7$ over $\Qq_5$.\\
+3. Contrast for $\Qq_3$, $n=2$. & Added to Remark~7.6:
+$\beta(h(3),h(-1))=(-1,3)_2=-1$.\\
+4. TikZ diagram. & New Figure~1 at the end of Section~5, with solid
+lines and filled dots for what is proved here and dashed lines and
+hollow markers for what is cited or open.\\
+5.1 Unnumbered subsections. & The subsections with no reference to
+their number are now \texttt{\textbackslash subsection*}. Numbers remain
+on the nine subsections that the plan lists.\\
+5.2 Orienting paragraphs. & Added to the glossary. In
+Sections~3.1, 5.1, 5.2 and in the subsection on the constant
+term, the orienting sentences are now a paragraph of their own.\\
+5.3 Examples. & New Example~5.5 in Section~5.1. The literature
+review and the summary refer to the running example. Each unnumbered
+subsection of Section~5 also has a running-example sentence.\\
+5.4 Citation locators. & See Section~\ref{subsec:cit4}.\\
+5.5 Script reference. & The paper cites the script by repository, path
+and commit \texttt{2f1edcd}, and says that Lemma~2.3 does not depend on
+it.\\
+5.6 Compilation. & Both files compile with \texttt{pdflatex} with no
+errors, no undefined references and no overfull or underfull boxes.
+Spelling is American. See Section~\ref{subsec:choices} for the
+defaults.\\
+\bottomrule
+\end{longtable}
+
+\subsection{Citation locators}\label{subsec:cit4}
+
+\begin{longtable}{@{}>{\raggedright\arraybackslash}p{0.15\linewidth}>{\raggedright\arraybackslash}p{0.80\linewidth}@{}}
+\toprule
+Key & Locator and how it was checked\\
+\midrule
+\endhead
+Ne86 & Now \cite[Ch.~III, \S5]{Ne86}. Level~2 for the locator only: the
+publisher's table of contents lists ``III. Local Class Field Theory,
+\S5. The Hilbert Symbol''. The text was not consulted, so no
+proposition numbers are given. Properties (H1) to (H5) are standard.\\
+BZ77 & Now Proposition~1.9(a) for exactness of coinvariants and
+Proposition~1.9(b) for Frobenius reciprocity, in the setting of \S1.8.
+Level~2: an online scan of the paper was read through its text layer.
+The scan is imperfect, so the wording of 1.9(b) was not checked letter
+by letter. Remark~2026.1 now says ``source checked'' for this
+reference.\\
+BZ76 & Not consulted. The paper no longer cites it for a specific
+fact. The isomorphism $C_c^\infty(N)_N\cong\mathbb C$, formerly cited to
+\cite{BZ76,BZ77}, is now proved in two sentences before
+Lemma~5.1 (Level~1). Remark~2026.1 says that the proofs of
+\cite[Prop.~1.9]{BZ77} are in \cite{BZ76}, which is what the scan of
+\cite{BZ77} says.\\
+Si79 & Not consulted, and no locator was found. The 1999 manuscript
+cites p.~198, which was not checked. The Weyl integration formula is
+now cited to \cite[Theorem~47]{Wi15}, a new reference. \cite{Si79} is
+kept only as the historical source.\\
+Wi15 & New reference: J.~Witte, arXiv:1506.07295. Level~2: the arXiv
+page shows the title, the author and Theorem~47 of the appendix, the
+Weyl integration formula for one maximal torus $T$ with the factor
+$1/|W|$. The proof was not read. The passage from Theorem~47 to the
+form \eqref{eq:weyl-log} used in the paper, a sum over conjugacy classes of
+maximal tori, is standard and is stated without proof.\\
+Mo & Rule~1.7 asks for initials and a two-digit year. Moen's preprint
+``Intertwining operators for covering groups of $SL(2)$ over a local
+field'' is undated in the 1999 manuscript, and a web search on
+November~27, 2026 found no published version and no date. The key
+\texttt{Mo} is kept as a documented exception.\\
+Ar80 & The comparison of Arit\"urk's $s=\pm1/3$ with $s=\pm1$ in the
+parameter of the paper is formal. His normalization was not checked.
+Remark~2026.3 says so.\\
+Jo01 & Not consulted for Draft~4. The citation \cite[\S3]{Jo01} for the
+general complementary-series statement rests on the October 2026 review
+of that paper (Level~3).\\
+\bottomrule
+\end{longtable}
+In this log the Weyl integration formula is
+\begin{equation}\label{eq:weyl-log}
+\int_G\phi(g)\,dg=\frac12\int_A|D(a)|\int_{A\backslash G}
+\phi(x^{-1}ax)\,d\dot x\,da+E(\phi),
+\end{equation}
+which is display (2.9) of the paper.
+
+\subsection{Choices and departures from the plan}\label{subsec:choices}
+
+\begin{enumerate}[leftmargin=*]
+\item \emph{File names.} The plan asks for new file names that carry
+  the draft number. Rule~9 of the style guide says that in the
+  trace-formula repository file names carry no draft number and git
+  history tracks the drafts. So the paper and the log keep their file
+  names. Rename them if you prefer.
+\item \emph{Which running example.} The plan prefers $\Qq_5$, $n=4$,
+  $d=2$, and allows $\Qq_7$, $n=3$, $d=3$ with explicit matrices. We
+  chose $\Qq_7$, $n=3$, for three reasons. Draft~3 already computed
+  every quantity for it. It has $n$ odd, so it shows the reducible
+  unitary principal series, which do not exist for even $n$. And it is
+  the cover treated by Arit\"urk. The fourfold cover of $\SL(2,\Qq_5)$
+  is kept in two places as a labeled contrast, because the difference
+  between inversion and Weyl conjugation on $\hl(t)$ occurs only for
+  even $n$.
+\item \emph{The endpoint for $n=3$.} The plan's figure has $s_0=1/3$
+  for $n=3$. In the parameter of the paper the endpoint is $s_0=d/n=1$
+  for $n=3$, and $1/3$ is the value in Arit\"urk's parameter. The figure
+  and its caption use $s_0=d/n$ and name both values.
+\item \emph{Carbon in the abstract and acknowledgments.} Carbon-Gemini
+  is named in the AI-disclosure sentence of the abstract and in the
+  acknowledgments, as the reviewer of Draft~3. The author line is
+  unchanged.
+\item \emph{[DECIDE] defaults.} The \texttt{article} class is kept from
+  Draft~3. The preamble uses \texttt{newtxtext} and \texttt{newtxmath}
+  when they are installed and \texttt{mathptmx} otherwise. The draft was
+  compiled here with \texttt{mathptmx}, because \texttt{newtx} is not
+  installed in this session. It has not been test-compiled with
+  \texttt{newtx}. Notation is in Section~1, by the plan, and the
+  glossary is at the end, before the acknowledgments.
+\item \emph{Section order.} The plan overrides Section~2 of the style
+  guide: notation and literature review are subsections of the
+  introduction.
+\item \emph{Glossary.} Two entries that pointed to equation numbers
+  now describe the term in words, and entries for ``Endpoint'' and
+  ``Tempered'' are new.
+\end{enumerate}
+
+\subsection{New mathematics in Draft 4 and its verification}
+\label{subsec:new4}
+
+Level~1 is an independent derivation, Level~2 a check against a source
+consulted for this draft, and Level~3 reliance on memory or an earlier
+session. The next referee should check these items first.
+
+\begin{enumerate}[leftmargin=*]
+\item \emph{Example~3.7 (explicit matrices).} Level~1, by hand, from
+  Lemma~3.1 and the induced model. Also checked by the script: the
+  function \texttt{check\_matrices} verifies in exact arithmetic that
+  the monomial matrices satisfy
+  $X(a)X(b)=\beta(h(a),h(b))\,X(ab)$ for random $a,b\in\Qq_p^\times$,
+  and that the trace is $d\lambda$ on $\ZA$ and $0$ elsewhere, for
+  $(p,n)=(7,3),(13,3),(11,5)$.
+\item \emph{Examples~2.1 and 2.4.} New statements:
+  $(7,u)_3=\omega^k$ for $u\equiv3^k\pmod 7$, and
+  $\hl(7)\hl(7)=\hl(49)$. Level~1.
+\item \emph{Example~4.2.} Draft~3 said that $b^{-1}ab=\zeta a$ with
+  $\zeta$ a nontrivial cube root of unity. Draft~4 gives the value,
+  $\zeta=\omega$. Level~1.
+\item \emph{The proof that $C_c^\infty(N)_N\cong\mathbb C$}, before
+  Lemma~5.1. Level~1.
+\item \emph{Section~5.1, the endpoint.} The formula $s_0=d/n$ is the
+  Draft~3 conversion of the 1999 endpoint. Its characterization by
+  $|\varpi^n|^{s_0/d}=q^{-1}$ is Level~1 arithmetic. That the principal
+  series is reducible there, and the description of the constituents,
+  are not proved: Level~3 for $n=2$, Level~2 for the reducibility
+  points for $n=3$ (Draft~2 log), conjectural in general.
+\item \emph{Example~5.5.} Level~1: $\eta_{\lambda_s}=|\cdot|^s$,
+  and Theorem~7.4 applies to nonunitary $\lambda$, since its
+  hypotheses ask only for a genuine smooth character. The statement
+  that $\operatorname{Ind}_B^G(\delta_B)$ has the trivial and Steinberg
+  representations as constituents is classical and is not proved in
+  the paper.
+\item \emph{Remark~2026.2, the count for $\Qq_7$.} $\Qq_7^\times$ has
+  three nontrivial quadratic characters. With the cited criterion of
+  Goldberg--Szpruch this gives three reducible unitary principal series
+  for the threefold cover of $\SL(2,\Qq_7)$. Level~1 for the count,
+  given the cited criterion. For odd $n$ the character $\lambda$ is
+  determined by $\eta_\lambda$, because $\ZA=\mu_n\times\ZA^0$ and
+  $\nu$ maps $A$ onto $\ZA^0$.
+\item \emph{Example~5.4.} New statement: for unramified
+  $\lambda$, $\lambda^w=\lambda$ exactly when $\alpha=\pm1$. Level~1.
+\item \emph{Remark~7.6, the contrast.} $(-1,3)_2=-1$ in $\Qq_3$ and
+  $\beta(h(3),h(-1))=-1$. Level~1, and checked by the script.
+\item \emph{Figure~1.} The figure is a summary and proves nothing.
+  Its solid parts are Proposition~5.2. Everything else in it is
+  cited or open, as the legend says. The placement of the
+  complementary segment at a point with $\lambda_0^w=\lambda_0$ and
+  $\PI(\chi_{\lambda_0})$ irreducible is the expected picture of
+  Section~5.1, not a theorem.
+\end{enumerate}
+
+\subsection{The script}
+The script \path{scripts/kubota_torus_check.py} gained the function
+\texttt{check\_matrices} and the two checks for $\Qq_3$ and for
+$(7,3)_3$. It prints \texttt{ALL PASS}. The paper cites it at commit
+\texttt{2f1edcd}. No proof depends on it.
+
+\subsection{AI usage in Draft 4}
+Carbon-Gemini reviewed Draft~3 and wrote the action plan. Claude
+(Anthropic) carried out the plan on November~27, 2026: the
+reorganization, the new examples, remark and figure, the citation
+checks by web search, the script additions, and this log. Claude did
+not see Carbon's review other than the action plan. The earlier AI
+usage is in Section~\ref{sec:ai}.
+
+\section{Material moved from the paper to this log}\label{sec:moved}
+
+Rule~6.4 of the style guide keeps revision history out of the body.
+Draft~3 still had the following material in the paper. It is reproduced
+here with Draft~4 numbers.
+
+\subsection{Relation to the 1999 and 2001 unitary-dual accounts}
+
+The 1999 manuscript described the genuine unitary dual by reducing it,
+through Jacquet's theorem, to principal series, complementary series,
+the representations at the end of the complementary interval, and
+supercuspidal representations. The author's 2001 paper (J. Fourier
+Anal. Appl. 7, 343--358) restates these claims in its Section~3 and
+adds a list of the types of unitary and tempered representations, for
+$\gcd(p,2n)=1$. That list is only as reliable as the claims it rests
+on. Table~\ref{tab:status} compares each claim with what is proved in
+Draft~4. Here $s_{\mathrm{old}}$ is the 1999 parameter
+(Section~\ref{subsec:conv-moved}).
+
+\begin{table}[ht]
+\centering
+\small
+\renewcommand{\arraystretch}{1.15}
+\begin{tabularx}{\linewidth}{@{}>{\raggedright\arraybackslash}p{0.33\linewidth}>{\raggedright\arraybackslash}X@{}}
+\toprule
+Claim of the 1999 manuscript (repeated in the 2001 paper) & Status in
+Draft~4\\
+\midrule
+(a) Genuine representations of $\At$ come 2-to-1 from characters of
+$h(\varpi^{n\mathbb Z}\Of^\times)$. & False as stated. Corrected and
+proved: Theorem~3.6.\\
+(b) Split orbital integrals of genuine functions fill out the
+Weyl-invariant genuine functions on the center. & Proved:
+Theorem~4.4, with the normalizations compared in
+Remark~4.5 and Section~\ref{subsec:norm-moved}.\\
+(c) Unitary principal series: irreducible for $n$ even, and for $n$ odd
+reducible exactly when $\chi^{\wt}=\chi\ne1$ (attributed to Moen). &
+Irreducibility for Weyl-regular data is proved
+(Proposition~5.2). The reducible cases are source checked
+against Goldberg--Szpruch (Remark~2026.2).\\
+(d) $\PI(\chi)$ is a complementary series for
+$0<s_{\mathrm{old}}<1/n$, by extending it to a cover of $\GL(2,F)$ and
+applying Flicker--Kazhdan, \S\S26--27. & Not proved. The extension step
+was never proved (Section~\ref{subsec:gl2-moved}, Remark~2026.3).\\
+(e) At $s_{\mathrm{old}}=1/n$: a square-integrable subrepresentation and
+a non-tempered spherical quotient, unitary by Kazhdan--Patterson,
+Thm.~II.2.1. & Cited only (Remark~2026.3).\\
+(f) The list of all unitary and tempered types (in the 2001 paper). &
+Cited only. It follows from (c)--(e) and Jacquet's theorem
+(Remark~2026.4).\\
+(g) The principal-series character uses $\tr\chi(a)+\tr(\chi(a)^{-1})$.
+& False for $n>2$. Corrected and proved with Weyl conjugation:
+Theorem~6.3 (Section~\ref{subsec:g-moved}).\\
+(h) The character identity holds for every $n$ with $\gcd(p,2n)=1$. &
+Proved only for $n$ odd or $4\mid n$: Theorem~7.4.\\
+\bottomrule
+\end{tabularx}
+\caption{The 1999 and 2001 claims and their status in Draft~4. This was
+Table~1 of Draft~3.}
+\label{tab:status}
+\end{table}
+
+So Draft~4 proves (a), (b), (g) and (h) in corrected form, and the
+Weyl-regular part of (c). It neither proves nor refutes (d), (e) and
+(f). The title is the 1999 title, kept by rule~6.2.
+
+\subsection{The parameter conversion}\label{subsec:conv-moved}
+
+The 1999 manuscript induces from a character $\mu$ of $\Ct$ of the form
+$\mu_0(x)|x|^{s_{\mathrm{old}}}$, where $x$ is the torus coordinate of
+$h(x)\in C$. The paper uses
+$\lambda_s(\zeta\hl(u))=\lambda_0(\zeta\hl(u))|u|^{s/d}$ on $\ZA$. On
+the common subgroup $\ZA$, where $x=t^d$, the first gives
+$|t^d|^{s_{\mathrm{old}}}$ and the second gives $|t|^{s}$. So, formally,
+\begin{equation}\label{eq:s-conversion}
+s=d\,s_{\mathrm{old}} .
+\end{equation}
+This is a comparison of exponents on $\ZA$ only. The two texts use
+different subgroups and sections, so \eqref{eq:s-conversion} must be
+checked against each source before endpoint values are copied. Under
+\eqref{eq:s-conversion} the 1999 endpoint $s_{\mathrm{old}}=1/n$ becomes
+$s=d/n$, which is $1$ for odd $n$ and $1/2$ for even $n$. This is the
+endpoint $s_0$ of display (5.4) of Draft~4. Display \eqref{eq:s-conversion}
+was (7.3) in Draft~3.
+
+\subsection{The $\GL(2,F)$ extension step}\label{subsec:gl2-moved}
+
+The 1999 manuscript asserted, for every $n$, that
+$0<s_{\mathrm{old}}<1/n$ gives complementary series and that the
+endpoint $s_{\mathrm{old}}=1/n$ has a square-integrable
+subrepresentation and a non-tempered spherical quotient. It proved
+unitarizability by extending the representation to a cover of
+$\GL(2,F)$ and citing Flicker--Kazhdan, \S\S26--27. The extension was
+not proved. It deduced unitarity of the quotient from
+Kazhdan--Patterson, Theorem~II.2.1. These are claims (d) and (e) of
+Table~\ref{tab:status}. Draft~4 states the resulting picture in
+Section~5.1 as expected, labels it conjectural for general $n$ in
+Remark~2026.3, and makes it Open question~(1).
+
+\subsection{Normalizations of the image theorem in 1999 and 2001}
+\label{subsec:norm-moved}
+
+The 1999 manuscript writes the transform as $F_f^{\overline A}$ on the
+preimage of $A^{n_0}=h((F^\times)^d)$, which is $\ZA$, with the quotient
+$\overline A\backslash\overline G$. With the Haar measures of the paper
+it is $\Phi_f$. The image theorem of the 2001 paper uses yet another
+notation, and its quotient and measures must be matched by display (4.4)
+of the paper before the two statements are identified. The 2001 lemma
+itself was not consulted.
+
+\subsection{The 1999 character formula}\label{subsec:g-moved}
+
+The 1999 manuscript stated the principal-series character with
+$\tr\chi(a)+\tr(\chi(a)^{-1})$, with the proof omitted. For $n>2$ this
+is not genuine. Theorem~6.3 replaces inversion by Weyl
+conjugation, and Caution~6.5 explains the difference without
+reference to the 1999 text.
+
+\subsection{The attribution to Moen}
+
+The 1999 manuscript attributes to Moen the statement that for
+$\gcd(p,n)=1$ all unitary genuine principal series are irreducible when
+$n$ is even, and that for $n$ odd they are reducible exactly when
+$\chi^{\wt}=\chi\ne1$. Draft~3 recorded this attribution in its
+literature review. Draft~4 cites Moen only for what the abstract of his
+1988 paper states, irreducibility of certain unitary principal series
+for odd $p$, and cites Goldberg--Szpruch for the complete criterion.
+
+\section{Original results and newly established results, as of Draft 4}
+\label{sec:orig4}
+
+Rule~6.5 asks for this separation. Numbers are those of Draft~4. The
+lists by draft, with the numbers of Draft~2, are in
+Section~\ref{sec:orig2}.
+
+\subsection{Results of the 1999 manuscript}
+\begin{enumerate}[leftmargin=*]
+\item Vanishing of orbital integrals off the $d$th powers. Kept, with
+  the correct quotient: Lemma~4.1.
+\item Surjectivity of the split orbital-integral map, sketched in 1999.
+  Kept and fully proved: Theorem~4.4.
+\item Genuine representations of $\At$. The 1999 statement is wrong.
+  Replaced by Theorem~3.6.
+\item Character formula for principal series. Corrected and proved:
+  Theorem~6.3.
+\item Character identity with $\SL(2,F)$. Correct only for $n$ odd or
+  $4\mid n$: Theorem~7.4.
+\item Unitarity of principal series: proved,
+  Proposition~5.2(a). Complementary series and endpoint
+  constituents: not proved, Remark~2026.3.
+\end{enumerate}
+
+\subsection{Newly established in the 2026 revision}
+\begin{enumerate}[leftmargin=*]
+\item Draft~1 (Sol-ChatGPT): the center $\ZA$ and the index $d^2$
+  (Lemma~3.2), the Stone--von Neumann parametrization
+  (Theorem~3.6), Weyl conjugation versus inversion, the power map
+  and the restriction on $n$ (Lemma~7.1).
+\item Draft~2 (Claude): Lemmas~2.2, 3.1, 3.4, 4.3,
+  5.3 and 6.1, the complete proofs of Theorems~4.4
+  and~6.3, and Proposition~5.2.
+\item Draft~3 (Claude): Lemma~2.3 (Kubota's splitting) and
+  Lemma~5.1 (Jacquet module), and the new proof of
+  Proposition~5.2(b).
+\item Draft~4 (Claude): no new theorem. New are
+  Examples~3.7 and~5.5, Remark~1.1, the contrast in
+  Remark~7.6, the count in Remark~2026.2, the proof of
+  $C_c^\infty(N)_N\cong\mathbb C$, and Figure~1
+  (Section~\ref{subsec:new4}).
+\end{enumerate}
+
+\section{Concordance of numbering, Draft 3 to Draft 4}\label{sec:conc4}
+
+The rule is simple. Sections~1 and~2 to~4 of Draft~3 become
+Section~1, Section~1.2 (literature), Section~2 (background) and
+Section~1.1 (notation). Sections~5 to~11 become Sections~3 to~9. A
+theorem or equation numbered $3.x$ becomes $2.x$, and one numbered
+$k.x$ with $k\ge5$ becomes $(k-2).y$, where $y=x$ unless an insertion
+shifted it. Subsections that lost their number are not listed. The
+table gives every labeled item, by its \LaTeX{} label, which did not
+change.
+
+\clearpage
+{\footnotesize
+\begin{longtable}{@{}lll@{}}
+\toprule
+Item and label & Draft 3 & Draft 4\\
+\midrule
+\endhead
+Section \texttt{sec:intro} & 1 & 1\\
+Section \texttt{sec:literature} & 2 & 1.2\\
+Section \texttt{sec:background} & 3 & 2\\
+Section \texttt{subsec:hilbert} & 3.1 & 2.1\\
+Section \texttt{subsec:kubota} & 3.2 & 2.2\\
+Section \texttt{subsec:genuine} & 3.3 & 2.3\\
+Section \texttt{subsec:haar} & 3.4 & 2.4\\
+Section \texttt{subsec:orbital-linear} & 3.5 & 2.5\\
+Section \texttt{subsec:ps-linear} & 3.6 & 2.6\\
+Section \texttt{sec:notation} & 4 & 1.1\\
+Section \texttt{sec:torus} & 5 & 3\\
+Section \texttt{subsec:svn} & 5.2 & 3.1\\
+Section \texttt{sec:orbital} & 6 & 4\\
+Section \texttt{sec:unitary} & 7 & 5\\
+Section \texttt{subsec:complementary} & 7.3 & 5.1\\
+Section \texttt{subsec:intertwining} & 7.4 & 5.2\\
+Section \texttt{sec:characters} & 8 & 6\\
+Section \texttt{sec:transfer} & 9 & 7\\
+Section \texttt{sec:limitations} & 10 & 8\\
+Section \texttt{sec:glossary} & 11 & 9\\
+Example \texttt{ex:hilbert} & 3.1 & 2.1\\
+Lemma \texttt{lem:cocycle} & 3.2 & 2.2\\
+Lemma \texttt{lem:splitting} & 3.3 & 2.3\\
+Example \texttt{ex:noncommute} & 3.4 & 2.4\\
+Example \texttt{ex:eK} & 3.5 & 2.5\\
+Example \texttt{ex:volume} & 3.6 & 2.6\\
+Example \texttt{ex:FA-unit} & 3.7 & 2.7\\
+Example \texttt{ex:trace-linear} & 3.8 & 2.8\\
+Lemma \texttt{lem:commutator} & 5.1 & 3.1\\
+Lemma \texttt{lem:radical} & 5.2 & 3.2\\
+Remark \texttt{rem:centralizer} & 5.3 & 3.3\\
+Lemma \texttt{lem:weyl-torus} & 5.4 & 3.4\\
+Example \texttt{ex:inverse} & 5.5 & 3.5\\
+Theorem \texttt{thm:torus} & 5.6 & 3.6\\
+Example \texttt{ex:two-three} & 5.7 & 3.8\\
+Example \texttt{ex:four-six} & 5.8 & 3.9\\
+Lemma \texttt{lem:vanishing} & 6.1 & 4.1\\
+Example \texttt{ex:vanishing} & 6.2 & 4.2\\
+Lemma \texttt{lem:abel} & 6.3 & 4.3\\
+Theorem \texttt{thm:orbital} & 6.4 & 4.4\\
+Remark \texttt{rem:image-jo01} & 6.5 & 4.5\\
+Example \texttt{ex:Phi-unit} & 6.6 & 4.6\\
+Remark \texttt{rem:satake} & 6.7 & 4.7\\
+Lemma \texttt{lem:jacquet} & 7.1 & 5.1\\
+Proposition \texttt{prop:tempered} & 7.2 & 5.2\\
+Lemma \texttt{lem:Kfixed} & 7.3 & 5.3\\
+Example \texttt{ex:Kfixed-three} & 7.4 & 5.4\\
+Lemma \texttt{lem:induced-trace} & 8.1 & 6.1\\
+Corollary \texttt{cor:trace-integral} & 8.2 & 6.2\\
+Theorem \texttt{thm:character} & 8.3 & 6.3\\
+Remark \texttt{rem:reducible-character} & 8.4 & 6.4\\
+Caution \texttt{caution:inverse} & 8.5 & 6.5\\
+Example \texttt{ex:char-three} & 8.6 & 6.6\\
+Lemma \texttt{lem:norm} & 9.1 & 7.1\\
+Definition \texttt{def:match} & 9.2 & 7.2\\
+Example \texttt{ex:units-match} & 9.3 & 7.3\\
+Theorem \texttt{thm:transfer} & 9.4 & 7.4\\
+Example \texttt{ex:degree-three} & 9.5 & 7.5\\
+Remark \texttt{rem:weil} & 9.6 & 7.6\\
+Remark \texttt{rem:spherical} & 9.7 & 7.7\\
+Remark \texttt{uv:geometric} & 2026.1 & 2026.1\\
+Remark \texttt{uv:reducible} & 2026.2 & 2026.2\\
+Remark \texttt{uv:complementary} & 2026.3 & 2026.3\\
+Remark \texttt{uv:subquotient} & 2026.4 & 2026.4\\
+Equation \texttt{eq:kubota} & (3.1) & (2.1)\\
+Equation \texttt{eq:kappa} & (3.2) & (2.2)\\
+Equation \texttt{eq:genuine} & (3.3) & (2.3)\\
+Equation \texttt{eq:iwasawa} & (3.4) & (2.4)\\
+Equation \texttt{eq:D} & (3.5) & (2.5)\\
+Equation \texttt{eq:delta} & (3.6) & (2.6)\\
+Equation \texttt{eq:FA} & (3.7) & (2.7)\\
+Equation \texttt{eq:abel-linear} & (3.8) & (2.8)\\
+Equation \texttt{eq:weyl} & (3.9) & (2.9)\\
+Equation \texttt{eq:char-linear} & (3.10) & (2.10)\\
+Equation \texttt{eq:trace-linear} & (3.11) & (2.11)\\
+Equation \texttt{eq:commutator} & (5.1) & (3.1)\\
+Equation \texttt{eq:Z} & (5.2) & (3.2)\\
+Equation \texttt{eq:indices} & (5.3) & (3.3)\\
+Equation \texttt{eq:stone} & (5.4) & (3.4)\\
+Equation \texttt{eq:torus-trace} & (5.5) & (3.5)\\
+Equation \texttt{eq:OZ} & (6.1) & (4.1)\\
+Equation \texttt{eq:Phi} & (6.2) & (4.2)\\
+Equation \texttt{eq:index-phi} & (6.3) & (4.3)\\
+Equation \texttt{eq:three-quotients} & (6.4) & (4.4)\\
+Equation \texttt{eq:Psi} & (6.5) & (4.5)\\
+Equation \texttt{eq:Abel} & (6.6) & (4.6)\\
+Equation \texttt{eq:orb-surj} & (6.7) & (4.7)\\
+Equation \texttt{eq:induction} & (7.1) & (5.1)\\
+Equation \texttt{eq:weyl-action} & (7.2) & (5.2)\\
+Equation \texttt{eq:s-conversion} & (7.3) & moved to this log\\
+Equation \texttt{eq:trace-first} & (8.1) & (6.1)\\
+Equation \texttt{eq:trace-second} & (8.2) & (6.2)\\
+Equation \texttt{eq:char-formula} & (8.3) & (6.3)\\
+Equation \texttt{eq:char-Z} & (8.4) & (6.4)\\
+Equation \texttt{eq:restriction} & (9.1) & (7.1)\\
+Equation \texttt{eq:nu} & (9.2) & (7.2)\\
+Equation \texttt{eq:nu-w} & (9.3) & (7.3)\\
+Equation \texttt{eq:haar-push} & (9.4) & (7.4)\\
+Equation \texttt{eq:match} & (9.5) & (7.5)\\
+Equation \texttt{eq:eta} & (9.6) & (7.6)\\
+Equation \texttt{eq:transfer-identity} & (9.7) & (7.7)\\
+Table \texttt{tab:status} & 1 & moved to this log\\
+Table \texttt{tab:running} & 2 & 1\\
+Remark \texttt{rem:small-fields} & -- & 1.1\\
+Example \texttt{ex:matrices} & -- & 3.7\\
+Equation \texttt{eq:lambda-s} & -- & (5.3)\\
+Equation \texttt{eq:endpoint} & -- & (5.4)\\
+Example \texttt{ex:endpoint} & -- & 5.5\\
+Figure \texttt{fig:dual} & -- & 1\\
+\bottomrule
+\end{longtable}}
 
 \section{Draft 2 to Draft 3: response to the referee report}
 \label{sec:draft3}
@@ -202,7 +755,7 @@ sandbox. The preamble loads \texttt{newtxtext} and \texttt{newtxmath}
 when they are installed, so a local build will use them. It has not
 been test-compiled with \texttt{newtx}.
 
-\section{AI usage}
+\section{AI usage (Drafts 1 and 2)}\label{sec:ai}
 
 \begin{itemize}[leftmargin=*]
 \item \textbf{Argon-Gemini.} Refereed the 1999 manuscript, suggested
@@ -222,7 +775,7 @@ been test-compiled with \texttt{newtx}.
 Claude did not see the Argon-Gemini manuscript or either referee
 report. Claude's knowledge of them comes only from Draft~1.
 
-\section{Original results and results new in the revision}
+\section{Original results and results new in the revision (Draft 2 numbers)}\label{sec:orig2}
 
 Rule~6.5 asks for this separation.
 
@@ -576,11 +1129,27 @@ Equations (8.1)--(8.7) & & (9.1)--(9.7)\\
 \bottomrule
 \end{longtable}
 
-\begin{thebibliography}{Mc12}
+\begin{thebibliography}{BZ77}
+\bibitem[BZ76]{BZ76} I.~N.~Bernstein and A.~V.~Zelevinsky,
+Representations of the group $GL(n,F)$, where $F$ is a
+non-archimedean local field, Russian Math. Surveys 31 (1976), 1--68.
+\bibitem[BZ77]{BZ77} I.~N.~Bernstein and A.~V.~Zelevinsky, Induced
+representations of reductive $p$-adic groups.~I, Ann. Sci. \'Ecole
+Norm. Sup. 10 (1977), 441--472.
+\bibitem[Jo01]{Jo01} D.~Joyner, Invariant distributions on the $n$-fold
+metaplectic covers of $GL(r,F)$, $F$ $p$-adic, J. Fourier Anal. Appl. 7
+(2001), no.~4, 343--358.
 \bibitem[Mc12]{Mc12} P.~J.~McNamara, Principal series representations
 of metaplectic groups over local fields, Progr. Math.~300, 2012.
+\bibitem[Ne86]{Ne86} J.~Neukirch, Class Field Theory, Grundlehren der
+Math. Wiss.~280, Springer, 1986.
+\bibitem[Si79]{Si79} A.~J.~Silberger, Introduction to Harmonic
+Analysis on Reductive $p$-adic Groups, Princeton University Press,
+1979.
 \bibitem[Sz25]{Sz25} D.~Szpruch, Whittaker spaces for reducible unitary
 principal series representations of coverings of $SL(2,F)$, Proc.
 Amer. Math. Soc. 153 (2025).
+\bibitem[Wi15]{Wi15} J.~Witte, Local summability of characters on
+$p$-adic reductive groups, arXiv:1506.07295, 2015.
 \end{thebibliography}
 \end{document}

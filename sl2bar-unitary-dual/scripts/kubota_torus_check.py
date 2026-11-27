@@ -1,7 +1,7 @@
 # SPDX-License-Identifier: MIT
 # Copyright (c) 2026 David Joyner
 """Exact checks of the covering-torus computations in
-"On the unitary dual of SL(2,F)-bar, F p-adic" (Draft 2, 2026).
+"On the unitary dual of SL(2,F)-bar, F p-adic" (Draft 4, 2026).
 Run: python3 kubota_torus_check.py (about one second).
 
 Model: F = Q_p with n | p-1 (so mu_n is in F and gcd(p, n) = 1).
@@ -165,6 +165,62 @@ def check_splitting(p, n, trials=400, seed=2):
     return ok
 
 
+def check_matrices(p, n, trials=300, seed=3):
+    """Explicit model of chi_lambda for odd n (Draft 4, the example with
+    explicit matrices), lambda unramified with lambda(h~(pi^n)) = alpha,
+    alpha an indeterminate.  Basis e_0, ..., e_{n-1}.
+
+        chi(h~(pi)) e_j = e_{j-1} (j >= 1),   chi(h~(pi)) e_0 = alpha e_{n-1},
+        chi(h~(u))  e_j = (pi,u)^(-2j) e_j    (u a unit).
+
+    Every operator is monomial, e_j -> zeta^k alpha^m e_t, and is stored as
+    a list of triples (t, k mod n, m), so the arithmetic is exact.  Checks:
+    (1) X(a) X(b) = beta(h(a),h(b)) X(ab), so the model is a genuine
+        representation of the covering torus,
+    (2) the trace: X(a) is a scalar when a lies in (F^x)^d (here d = n),
+        and has trace zero otherwise.
+    """
+    assert n % 2 == 1
+    g = primroot(p); rng = random.Random(seed); d = n
+    def P():
+        return [((j - 1) % d, 0, 1 if j == 0 else 0) for j in range(d)]
+    def Pinv():
+        return [((j + 1) % d, 0, -1 if j == d - 1 else 0) for j in range(d)]
+    def D(u):
+        e = hilb(Fr(p), u, p, n, g)
+        return [(j, (-2 * j * e) % n, 0) for j in range(d)]
+    def comp(A, B):  # A after B
+        out = []
+        for j in range(d):
+            t, k, m = B[j]; t2, k2, m2 = A[t]
+            out.append((t2, (k + k2) % n, m + m2))
+        return out
+    def scal(A, k):
+        return [(t, (kk + k) % n, m) for (t, kk, m) in A]
+    def X(a):
+        i = val(a, p); u = Fr(a) / Fr(p) ** i
+        M = D(u)
+        for _ in range(abs(i)):
+            M = comp(P() if i > 0 else Pinv(), M)
+        # h~(pi^i u) = (u, pi^i)^(-1) h~(pi)^i h~(u)
+        return scal(M, -hilb(u, Fr(p) ** i, p, n, g))
+    ok_hom = ok_tr = True
+    for _ in range(trials):
+        a, b = rand_elt(p, rng), rand_elt(p, rng)
+        ok_hom &= comp(X(a), X(b)) == scal(X(a * b), beta(h(a), h(b), p, n, g))
+        Xa = X(a)
+        central = val(a, p) % d == 0 and dlog(unit_residue(a, p), p, g) % d == 0
+        diag = [Xa[j] for j in range(d) if Xa[j][0] == j]
+        if central:
+            ok_tr &= len(diag) == d and len({(k, m) for (_, k, m) in diag}) == 1
+        else:
+            # zero trace: no diagonal entries, or the d-th roots of unity sum to 0
+            ks = sorted(k for (_, k, m) in diag)
+            ok_tr &= (not diag) or (len({m for (_, _, m) in diag}) == 1 and
+                     len(set(ks)) == d and d == n)
+    return ok_hom, ok_tr
+
+
 if __name__ == "__main__":
     import sys
     PAIRS = [(7, 3), (13, 3), (5, 4), (13, 4), (7, 6), (13, 6), (3, 2), (7, 2)]
@@ -175,8 +231,22 @@ if __name__ == "__main__":
         ok = all(res.values())
         all_ok &= ok
         print(f"p={p:2d} n={n}:", "all checks pass" if ok else res)
+    for p, n in [(7, 3), (13, 3), (11, 5)]:
+        hom, trc = check_matrices(p, n)
+        print(f"p={p:2d} n={n}: explicit matrices of chi_lambda:",
+              "representation and trace checks pass" if hom and trc else (hom, trc))
+        all_ok &= hom and trc
+    # Contrast in the remark on n = 2 mod 4: over Q_3 with n = 2,
+    # beta(h(3), h(-1)) = (-1,3)_2 = -1, so t -> (h(t),1) is not a homomorphism.
+    c = beta(h(3), h(-1), 3, 2, primroot(3))
+    print("Q_3, n=2: beta(h(3),h(-1)) has exponent", c, "(1 means -1)")
+    all_ok &= (c == 1 and hilb(-1, 3, 3, 2, primroot(3)) == 1)
+    # (7,3)_3 is the primitive cube root of unity that reduces to 4 mod 7.
+    g7 = primroot(7); e73 = hilb(7, 3, 7, 3, g7)
+    all_ok &= pow(pow(g7, 2, 7), e73, 7) == 4
+    print("(7,3)_3 reduces to", pow(pow(g7, 2, 7), e73, 7), "mod 7")
     ex = hilb(5, -1, 5, 4, primroot(5))
-    print("Example 3.1: (5,-1)_4 has exponent", ex, "(2 means -1)")
+    print("Example on the Hilbert symbol: (5,-1)_4 has exponent", ex, "(2 means -1)")
     all_ok &= (ex == 2)
     print("ALL PASS" if all_ok else "SOME CHECK FAILED")
     sys.exit(0 if all_ok else 1)
